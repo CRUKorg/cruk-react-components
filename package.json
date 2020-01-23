@@ -1,0 +1,42 @@
+{
+  "name": "cruk-react-components",
+  "version": "0.0.1",
+  "description": "React components implementing CRUC and SU2C design tokens",
+  "main": "components/index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open --hot --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CRUKorg/cruk-react-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CRUKorg/cruk-react-components/issues"
+  },
+  "homepage": "https://github.com/CRUKorg/cruk-react-components#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-flow": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^8.0.6",
+    "flow-bin": "^0.116.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+  },
+  "dependencies": {
+    "@mdx-js/loader": "^1.5.5",
+    "@mdx-js/mdx": "^0.20.3",
+    "@reach/router": "^1.2.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-focus-lock": "^2.2.1",
+    "react-live": "^2.0.1",
+    "styled-components": "^5.0.0"
+  }
+}
