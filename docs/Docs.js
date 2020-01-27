@@ -306,32 +306,36 @@ class Docs extends React.Component {
             <SideBar>
               <Nav>
                 <Heading h2>Components</Heading>
-                <Link to="/">Avatar</Link>
-                <Link to="/badge">Badge</Link>
-                <Link to="/box">Box</Link>
-                <Link to="/button">Button</Link>
-                <Link to="/checkbox">Checkbox</Link>
-                <Link to="/collapse">Collapse</Link>
-                <Link to="/errortext">ErrorText</Link>
-                <Link to="/heading">Heading</Link>
-                <Link to="/icon">Icon</Link>
-                <Link to="/loader">Loader</Link>
-                <Link to="/modal">Modal</Link>
-                <Link to="/pagination">Pagination</Link>
-                <Link to="/popover">PopOver</Link>
-                <Link to="/progressbar">ProgressBar</Link>
-                <Link to="/radio">Radio</Link>
-                <Link to="/select">Select</Link>
-                <Link to="/step">Step</Link>
-                <Link to="/textfield">TextField</Link>
-                <Link to="/totaliser">Totaliser</Link>
-                <Link to="/userblock">UserBlock</Link>
+                <Link to={`${this.props.basepath}/`}>Avatar</Link>
+                <Link to={`${this.props.basepath}/badge`}>Badge</Link>
+                <Link to={`${this.props.basepath}/box`}>Box</Link>
+                <Link to={`${this.props.basepath}/button`}>Button</Link>
+                <Link to={`${this.props.basepath}/checkbox`}>Checkbox</Link>
+                <Link to={`${this.props.basepath}/collapse`}>Collapse</Link>
+                <Link to={`${this.props.basepath}/errortext`}>ErrorText</Link>
+                <Link to={`${this.props.basepath}/heading`}>Heading</Link>
+                <Link to={`${this.props.basepath}/icon`}>Icon</Link>
+                <Link to={`${this.props.basepath}/loader`}>Loader</Link>
+                <Link to={`${this.props.basepath}/modal`}>Modal</Link>
+                <Link to={`${this.props.basepath}/pagination`}>Pagination</Link>
+                <Link to={`${this.props.basepath}/popover`}>PopOver</Link>
+                <Link to={`${this.props.basepath}/progressbar`}>
+                  ProgressBar
+                </Link>
+                <Link to={`${this.props.basepath}/radio`}>Radio</Link>
+                <Link to={`${this.props.basepath}/select`}>Select</Link>
+                <Link to={`${this.props.basepath}/step`}>Step</Link>
+                <Link to={`${this.props.basepath}/textfield`}>TextField</Link>
+                <Link to={`${this.props.basepath}/totaliser`}>Totaliser</Link>
+                <Link to={`${this.props.basepath}/userblock`}>UserBlock</Link>
                 <Heading h2>Pages</Heading>
-                <Link to="/fundraising">Fundraising</Link>
+                <Link to={`${this.props.basepath}/fundraising`}>
+                  Fundraising
+                </Link>
               </Nav>
             </SideBar>
             <Content>
-              <Router>
+              <Router basepath={this.props.basepath}>
                 <AvatarMDX path="/" />
                 <BadgeMDX path="/badge" />
                 <BoxMDX path="/box" />

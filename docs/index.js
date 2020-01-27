@@ -1,7 +1,9 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import React from "react";
-import ReactDOM from "react-dom";
+import Docs from './Docs';
 
-import Docs from "./Docs";
-
-ReactDOM.render(<Docs />, document.querySelector("#root"));
+ReactDOM.render(
+  <Docs basepath="/cruk-react-components" />,
+  document.querySelector('#root')
+);

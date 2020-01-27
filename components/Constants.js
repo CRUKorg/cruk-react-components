@@ -3,7 +3,7 @@ export const SITECONFIG = {
   assetPath: '/profiles/cruk_fundraising/themes/cruk_of_bootstrap/',
   siteSlogan: 'Together we will beat cancer',
   siteUrl: 'https://fundraise.cancerresearchuk.org/',
-  logoUrl: '/',
+  logoUrl: '/cruk-react-components',
   logoAlt: 'Cancer Research UK Giving Page',
   logoSrc: 'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png',
 };

@@ -4,7 +4,8 @@
   "description": "React components implementing CRUC and SU2C design tokens",
   "main": "components/index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --hot --mode development"
+    "start": "webpack-dev-server --open --hot --mode development",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -13,7 +14,7 @@
   "bugs": {
     "url": "https://github.com/CRUKorg/cruk-react-components/issues"
   },
-  "homepage": "https://github.com/CRUKorg/cruk-react-components#readme",
+  "homepage": "https://crukorg.github.io/cruk-react-components",
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
