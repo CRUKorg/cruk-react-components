@@ -1,11 +1,13 @@
 export const SITECONFIG = {
   cdnPath: 'https://ccp-s3.int.cruk.org/',
-  assetPath: '/profiles/cruk_fundraising/themes/cruk_of_bootstrap/',
+  assetPath:
+    'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/',
   siteSlogan: 'Together we will beat cancer',
   siteUrl: 'https://fundraise.cancerresearchuk.org/',
   logoUrl: '/',
   logoAlt: 'Cancer Research UK Giving Page',
-  logoSrc: 'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png',
+  logoSrc:
+    'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png',
 };
 
 export const AVATAR = {
@@ -54,12 +56,16 @@ export const COLORS = {
 };
 
 export const TYPOGRAPHY = {
-  customFonts: [{
-    family: 'MuseoSans-500',
-    url: '/sites/all/themes/contrib/cruk_bootstrap/assets/fonts/museo/2F8E8A_2_0',
-  }],
+  customFonts: [
+    {
+      family: 'MuseoSans-500',
+      url:
+        'https://fundraise.cancerresearchuk.org/sites/all/themes/contrib/cruk_bootstrap/assets/fonts/museo/2F8E8A_2_0',
+    },
+  ],
   fontUrl: `${SITECONFIG.cdnPath}fonts`,
-  fontFamilyBase: 'Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif',
+  fontFamilyBase:
+    'Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif',
   fontFamilyHeadings: 'MuseoSans-500,Calibri,Arial,sans-serif',
   fontSizeExtraSmall: '0.75rem', // 12px
   fontSizeSmall: '0.857rem', // 14px
