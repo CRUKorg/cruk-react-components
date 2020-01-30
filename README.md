@@ -1,6 +1,9 @@
 # cruk-react-components
 React components implementing CRUK and SU2C design tokens
 
+Documentation: https://master.d2qmm2ybdxfdzp.amplifyapp.com/
+Username: cruk - Password: jvku2cgl4n
+
 ## Usage
 
 As this is currently a private repository, to import it you you have two options, https+oauth or ssh. As ssh is not always possible, https+oauth option is detailed bellow.
