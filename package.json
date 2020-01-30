@@ -4,7 +4,8 @@
   "description": "React components implementing CRUC and SU2C design tokens",
   "main": "components/index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --hot --mode development"
+    "start": "webpack-dev-server --open --hot --mode development",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
