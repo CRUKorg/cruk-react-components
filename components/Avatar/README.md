@@ -2,7 +2,7 @@
 
 ### Display an avatar
 
-You can use an avitar to display ownership of an item of content. If you pass a URL of an image that will be displayed otherwise the first letter of the name will be used to display a branded avitar. 
+You can use an avatar to display ownership of an item of content. If you pass a URL of an image that will be displayed otherwise the first letter of the name will be used to display a branded avatar.
 
 ### Try it out
 
