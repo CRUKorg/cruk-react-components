@@ -41,6 +41,10 @@ const libConfig = {
     path: path.join(__dirname, 'lib'),
     filename: 'index.js',
   },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+  },
   devtool: 'source-map',
   ...config,
 };
