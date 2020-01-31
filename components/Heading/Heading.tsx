@@ -2,6 +2,12 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../Constants';
 
+type StyledHeadingProps = {
+  center?: string,
+  right?: string,
+  css?: any
+}
+
 const StyledHeading = css`
   font-family: ${props => (props.theme.typography ? props.theme.typography.fontFamilyHeadings : TYPOGRAPHY.fontFamilyHeadings)};
   font-weight: ${TYPOGRAPHY.fontWeightMedium};
@@ -10,13 +16,13 @@ const StyledHeading = css`
   margin-top: 0;
   margin-bottom: ${UTILITIES.rhythmVerticalBase};
   max-width: 100%;
-  text-align: ${(props) => {
+  text-align: ${(props: StyledHeadingProps) => {
     if (props.center) return 'center';
     if (props.right) return 'right';
     return 'left';
   }};
 
-  ${props => css([props.css])}
+  ${props => (css as any)([props.css])}
 `;
 
 const H1 = styled.h1`
@@ -57,7 +63,7 @@ const H6 = styled.h6`
 
 const Heading = ({
   h1, h2, h3, h4, h5, h6, ...props
-}) => {
+} : {h1: string, h2: String, h3: string, h4: string, h5: string, h6: string}) => {
   if (h2) return <H2 {...props} />;
   if (h3) return <H3 {...props} />;
   if (h4) return <H4 {...props} />;

@@ -1,17 +1,16 @@
-// @Flow
-
 import React from 'react';
 import styled, { withTheme } from 'styled-components';
 import { COLORS } from '../Constants';
+
+type ErrorTextProps = {
+  theme: { colors: {} },
+  children: any
+};
 
 const StyledErrorText = styled.div`
   color: ${props => props.theme.colors.textError};
   font-weight: normal;
 `;
-
-type ErrorTextProps = {
-  theme: { colors: {} },
-};
 
 const ErrorText = (props: ErrorTextProps) => {
   const theme = {

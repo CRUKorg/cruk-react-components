@@ -1,21 +1,23 @@
-// @Flow
-
 import React from 'react';
 import styled, { css, withTheme } from 'styled-components';
 import { COLORS, TYPOGRAPHY, UTILITIES } from '../Constants';
-import { Icon } from '../index';
+import Icon from '../Icon/Icon';
 
 type ButtonProps = {
-  ariaLabel: string,
-  appearance: string,
-  children: string,
-  href: string,
-  icon: string,
-  iconAlign: string,
-  full: boolean,
-  name: string,
-  theme: { button: {}, colors: {} },
-};
+  appearance?: string,
+  children?: any,
+  iconAlign?: string,
+  full?: boolean,
+  theme?: { button: {}, colors: {white: string, gray: string, primary: string, secondary: string, secondaryHover: string, tertiary: string, tertiaryHover: string} },
+  ariaLabel?: string,
+  href?: string,
+  icon?: string,
+  name?: string,
+  css?: any,
+  size?: string,
+  disabled?: boolean, 
+  as?: any
+}
 
 const StyledButton = styled.button`
   background-color: ${props => props.theme.colors.white};
@@ -36,19 +38,19 @@ const StyledButton = styled.button`
     color: ${props => props.theme.colors.secondary}
   }
   
-  ${props => props.appearance === 'primary' && css`
+  ${(props: ButtonProps) => props.appearance === 'primary' && css`
     background-color: ${props.theme.colors.secondary};
     border-color: ${props.theme.colors.secondary};
     color: ${props.theme.colors.white} !important;
     :focus,
     :hover {
-      background-color: ${props.theme.colors.secondaryHover};
+      background-color: ${props.theme.colors.secondaryHover}
       border-color: ${props.theme.colors.secondaryHover};
       color: ${props.theme.colors.white} !important;
     }
   `}
 
-  ${props => props.appearance === 'secondary' && css`
+  ${(props: ButtonProps) => props.appearance === 'secondary' && css`
     background-color: ${props.theme.colors.tertiary};
     border-color: ${props.theme.colors.tertiary};
     color: ${props.theme.colors.white};
@@ -60,7 +62,7 @@ const StyledButton = styled.button`
     }
   `}
 
-  ${props => props.appearance === 'link' && css`
+  ${(props: ButtonProps) => props.appearance === 'link' && css`
     border: 0px;
     background-color: none;
     color: ${props.theme.colors.primary};
@@ -71,21 +73,21 @@ const StyledButton = styled.button`
     }
   `}
   
-  ${props => props.children[1] && css`
+  ${(props: ButtonProps) => props.children[1] && css`
     svg {
       ${props.iconAlign === 'right' ? 'margin-left: 5px' : 'margin-right: 5px'};
     }
   `}
   
-  ${props => props.size === 'small' && css`
+  ${(props: ButtonProps) => props.size === 'small' && css`
     font-size: ${TYPOGRAPHY.fontSizeSmall};
   `}
   
-  ${props => props.size === 'large' && css`
+  ${(props: ButtonProps) => props.size === 'large' && css`
     font-size: ${TYPOGRAPHY.fontSizeLarge};
   `}
   
-  ${props => props.disabled && css`
+  ${(props: ButtonProps) => props.disabled && css`
     cursor: not-allowed;    
     background-color: ${props.appearance === 'primary' || props.appearance === 'secondary' ?
     props.theme.colors.gray : 'transparent'};
@@ -103,12 +105,12 @@ const StyledButton = styled.button`
     text-decoration: none;
     }
   `}
-  ${props => props.full && css`
+  ${(props: ButtonProps) => props.full && css`
     width: 100%;
   `}
   
-  ${props => props.theme.button}
-  ${props => css([props.css])}
+  ${(props: ButtonProps) => props.theme.button}
+  ${(props: ButtonProps) => (css as any)([props.css])}
 `;
 
 const Button = (props: ButtonProps) => {
@@ -122,14 +124,14 @@ const Button = (props: ButtonProps) => {
   };
   const icon = (props.icon && <Icon name={props.icon} />);
   const iconRight = props.iconAlign === 'right';
-  const camelToLowerCase = string => string && string.replace(/([a-z])([A-Z][a-z])/g, '$1 $2').toLowerCase();
+  const camelToLowerCase = (string: string) => string && string.replace(/([a-z])([A-Z][a-z])/g, '$1 $2').toLowerCase();
   const ariaLabel = () => {
     if (props.ariaLabel) return props.ariaLabel;
     return (React.Children.toArray(props.children).find(child => typeof child === 'string')) || camelToLowerCase(props.icon);
   };
 
   return (
-    <StyledButton {...props} as={props.href && 'a'} aria-label={ariaLabel()} theme={theme}>
+    <StyledButton {...props}  aria-label={ariaLabel()} theme={theme}>
       {!iconRight && icon}
       {props.children}
       {iconRight && icon}

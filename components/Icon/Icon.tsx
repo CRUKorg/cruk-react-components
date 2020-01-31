@@ -1,39 +1,38 @@
-// @Flow
-
 import React from 'react';
 import styled, { ThemeProvider, withTheme } from 'styled-components';
 import { COLORS, ICONS } from '../Constants';
 import { camelize } from '../Helper';
 
 type IconProps = {
-  name: string,
-  color: string,
-  size: number,
-  transform: string,
-  theme: { icon: {}, colors: {} },
+  name?: string,
+  color?: string,
+  size?: number,
+  transform?: string,
+  theme?: { icon: {}, colors: {} },
+  getColor?: string
 };
 
 const StyledIcon = styled.svg`
   display: inline-block;
-  height: ${props => props.size};
+  height: ${(props: IconProps) => props.size};
   margin-top: -0.2em;
   vertical-align: middle;
-  width: ${props => props.size};
+  width: ${(props: IconProps) => props.size};
   path {
-    fill: ${props => props.getColor};
+    fill: ${(props: IconProps) => props.getColor};
   }
 `;
 
 const Icon = (props: IconProps) => {
   const name = props.name && camelize(props.name);
-  const icon = ICONS[name] || ICONS.question;
+  const icon = (ICONS as any)[name] || ICONS.question;
   const theme = {
     colors: {
       ...COLORS,
       ...props.theme.colors,
     },
   };
-  const color = theme.colors[props.color] || props.color;
+  const color = (theme.colors as any)[props.color] || props.color;
   return (
     <ThemeProvider theme={theme}>
       <StyledIcon
@@ -45,7 +44,7 @@ const Icon = (props: IconProps) => {
         transform={icon.transform}
         {...props}
       >
-        {icon.paths.map((path, index) => (
+        {icon.paths.map((path: string, index: number) => (
           <path key={index} d={path} />
         ))}
       </StyledIcon>

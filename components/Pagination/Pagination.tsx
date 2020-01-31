@@ -1,5 +1,3 @@
-// @Flow
-
 import React from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
 import { BREAKPOINT, COLORS, TYPOGRAPHY } from '../Constants';
@@ -12,7 +10,14 @@ type PaginationProps = {
   perPage: number,
   searchParam?: string,
   theme: { pagination: {}, colors: {} },
+  children: any
 };
+
+type PaginationStyledProps = {
+  active?: boolean,
+  name?: string,
+  disabled?: boolean
+}
 
 const PagerWrapper = styled.div`
   display: table;
@@ -46,7 +51,7 @@ const PagerLink = styled.a`
     text-decoration: none;
   }
   
-  ${itemProps => itemProps.active && css`
+  ${(itemProps: PaginationStyledProps) => itemProps.active && css`
     color: ${props => props.theme.colors.grayDarker};
     background-color: ${props => props.theme.colors.grayLight};
     cursor: default;
@@ -112,14 +117,14 @@ const Pagination = (props: PaginationProps) => {
   };
   const perPage = (props.perPage > 0) ? props.perPage : 1;
   const totalPages = (Math.ceil(props.items / perPage)) || 1;
-  const linkProps = number => ({
+  const linkProps = (number: number) => ({
     href: `${window.location.pathname}?${props.searchParam}=${number}`,
-    onClick: (e) => {
+    onClick: (e: any) => {
       e.preventDefault();
       props.pagerCallback(number);
     },
   });
-  const renderPager = (active, total) => {
+  const renderPager = (active: number, total: number) => {
     const list = [];
     let pager = [];
     // get the list of items

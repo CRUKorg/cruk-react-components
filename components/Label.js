@@ -13,11 +13,17 @@ const Label = styled.label`
   }
 `
 
-export const WithLabel = ({ children, label, required }) => (
+const StyledSpan = styled.span`
+  margin: 10px 0px;
+  display: block;
+`
+
+export const WithLabel = ({ children, label, hintText, required }) => (
   label
     ? (
       <Label>
         {label} {!required && <span>(optional)</span>}
+        <StyledSpan>{hintText}</StyledSpan>
         {children}
       </Label>)
     : <React.Fragment>{children}</React.Fragment>

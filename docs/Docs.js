@@ -8,49 +8,51 @@ import styled, { css, ThemeProvider } from 'styled-components';
 
 import {
   Avatar,
-  AvatarMDX,
   Badge,
-  BadgeMDX,
   Box,
-  BoxMDX,
-  ButtonMDX,
   Button,
   Checkbox,
-  CheckboxMDX,
+  Collapse,
   ErrorText,
-  ErrorTextMDX,
   Flex,
   Fundraising,
-  Heading,
-  HeadingMDX,
   Header,
+  Heading,
   Icon,
-  IconMDX,
   Loader,
-  LoaderMDX,
   Modal,
-  ModalMDX,
   Pagination,
-  PaginationMDX,
   PopOver,
-  PopOverMDX,
   ProgressBar,
-  ProgressBarMDX,
   Radio,
-  RadioMDX,
   Select,
-  SelectMDX,
   Step,
-  StepMDX,
   TextField,
-  TextFieldMDX,
   Totaliser,
-  TotaliserMDX,
   UserBlock,
-  UserBlockMDX,
-  Collapse,
-  CollapseMDX,
 } from '../components';
+import AvatarReadme from '../components/Avatar/README.md';
+import BadgeReadme from '../components/Badge/README.md';
+import BoxReadme from '../components/Box/README.md';
+import ButtonReadme from '../components/Button/README.md';
+import CheckboxReadme from '../components/Checkbox/README.md';
+import CollapseReadme from '../components/Collapse/README.md';
+import ErrorTextReadme from '../components/ErrorText/README.md';
+import FundraisingReadme from '../components/Pages/README.md';
+import HeadingReadme from '../components/Heading/README.md';
+import IconReadme from '../components/Icon/README.md';
+import LoaderReadme from '../components/Loader/README.md';
+import ModalReadme from '../components/Modal/README.md';
+import PaginationReadme from '../components/Pagination/README.md';
+import PopOverReadme from '../components/PopOver/README.md';
+import ProgressBarReadme from '../components/ProgressBar/README.md';
+import RadioReadme from '../components/Radio/README.md';
+import SelectReadme from '../components/Select/README.md';
+import StepReadme from '../components/Step/README.md';
+import TextFieldReadme from '../components/TextField/README.md';
+import TotaliserReadme from '../components/Totaliser/README.md';
+import UserBlockReadme from '../components/UserBlock/README.md';
+
 import { BREAKPOINT, COLORS } from '../components/Constants';
 import su2cTheme from '../components/themes/su2c';
 import GlobalStyle from '../components/GlobalStyle';
@@ -59,10 +61,10 @@ import RadioGroup from '../components/Radio/RadioGroup.js';
 /*
  * Doc specific styling
  * layout, toggle, theme switch, code area
-*/
+ */
 const SwitchTheme = styled(Button)`
   float: right;
-  
+
   @media (max-width: ${BREAKPOINT.tablet}) {
     font-size: 0.875rem;
     font-weight: 500;
@@ -78,7 +80,7 @@ const SideBar = styled(Box)`
   background-color: ${COLORS.grayVLight};
   height: 100vh;
   border: none;
-  
+
   @media (max-width: ${BREAKPOINT.tablet}) {
     bottom: 0;
     height: 100%;
@@ -94,21 +96,26 @@ const SideBar = styled(Box)`
     -moz-transition: left 0.5s ease;
     transition: left 0.5s ease;
   }
-  
-  @media (min-width: ${BREAKPOINT.tablet}) { flex: 1; }
+
+  @media (min-width: ${BREAKPOINT.tablet}) {
+    flex: 1;
+  }
 `;
 
 const Content = styled.div`
   max-width: 940px;
   margin: 0 0 0 32px;
-  
-  @media (min-width: ${BREAKPOINT.tablet}) { flex: 3; margin: 0 auto; }
+
+  @media (min-width: ${BREAKPOINT.tablet}) {
+    flex: 3;
+    margin: 0 auto;
+  }
 `;
 
 const StyledFlex = styled(Flex)`
   width: 100%;
   padding-top: 0;
-  
+
   .sticky & {
     padding-top: 117px;
   }
@@ -129,18 +136,18 @@ const ToggleIcon = styled.label`
   ${BaseToggleStyle}
   z-index: 9999;
   transform: rotate(0deg);
-  transition: .5s ease-in-out;
+  transition: 0.5s ease-in-out;
   border-width: 2px 2px 0 0;
   border-style: solid;
   transform: rotate(45deg);
-  
+
   &:before,
   &:after {
     position: absolute;
     background-color: ${COLORS.grayDarker};
     content: '';
   }
-  
+
   &:before {
     right: 0;
     top: -1px;
@@ -150,28 +157,30 @@ const ToggleIcon = styled.label`
     width: 21px;
     transform-origin: right top;
   }
-  
-  @media (min-width: ${BREAKPOINT.tablet}) { display: none; }
+
+  @media (min-width: ${BREAKPOINT.tablet}) {
+    display: none;
+  }
 `;
 
 const StyledToggle = styled.input`
   ${BaseToggleStyle}
   opacity: 0;
   z-index: 10000;
-  
+
   :checked,
   :checked ~ ${ToggleIcon} {
     left: 265px;
   }
-  
+
   :checked ~ ${SideBar} {
     left: 0;
   }
-  
+
   :checked ~ ${ToggleIcon} {
     border: 0;
     transform: none;
-    
+
     &:before,
     &:after {
       left: 22px;
@@ -190,21 +199,21 @@ const StyledToggle = styled.input`
       top: -4px;
     }
   }
-  
-  @media (min-width: ${BREAKPOINT.tablet}) { display: none; }
+
+  @media (min-width: ${BREAKPOINT.tablet}) {
+    display: none;
+  }
 `;
 
-const Toggle = props => (
-  <StyledToggle type="checkbox" {...props} />
-);
+const Toggle = props => <StyledToggle type="checkbox" {...props} />;
 
-const Nav = styled.nav`  
+const Nav = styled.nav`
   a {
     display: block;
     color: ${COLORS.grayDarker};
     text-decoration: none;
     margin-left: 10px;
-    
+
     :hover {
       color: ${COLORS.secondary};
       text-decoration: underline;
@@ -242,7 +251,10 @@ const components = {
         Collapse,
       }}
     >
-      <LivePreview aria-label="Example code preview" style={{ border: '1px solid grey', padding: '5px' }} />
+      <LivePreview
+        aria-label="Example code preview"
+        style={{ border: '1px solid grey', padding: '5px' }}
+      />
       <LiveEditor
         aria-label="Example code editor"
         style={{
@@ -284,7 +296,7 @@ class Docs extends React.Component {
    * outline when user start tabbing
    * https://jmperezperez.com/outline-focus-ring-a11y/
    */
-  handleOutline = (e) => {
+  handleOutline = e => {
     if (e.key === 9) {
       document.documentElement.classList.remove('no-focus-outline');
     }
@@ -296,7 +308,13 @@ class Docs extends React.Component {
         <MDXProvider components={components}>
           <GlobalStyle />
           <Header isSticky>
-            <SwitchTheme onClick={() => this.setState({ theme: this.state.theme === 'su2c' ? 'cruk' : 'su2c' })}>
+            <SwitchTheme
+              onClick={() =>
+                this.setState({
+                  theme: this.state.theme === 'su2c' ? 'cruk' : 'su2c',
+                })
+              }
+            >
               Switch theme
             </SwitchTheme>
           </Header>
@@ -332,27 +350,27 @@ class Docs extends React.Component {
             </SideBar>
             <Content>
               <Router>
-                <AvatarMDX path="/" />
-                <BadgeMDX path="/badge" />
-                <BoxMDX path="/box" />
-                <ButtonMDX path="/button" />
-                <CheckboxMDX path="/checkbox" />
-                <CollapseMDX path="/collapse" />
-                <ErrorTextMDX path="/errortext" />
+                <AvatarReadme path="/" />
+                <BadgeReadme path="/badge" />
+                <BoxReadme path="/box" />
+                <ButtonReadme path="/button" />
+                <CheckboxReadme path="/checkbox" />
+                <CollapseReadme path="/collapse" />
+                <ErrorTextReadme path="/errortext" />
                 <Fundraising path="/fundraising" />
-                <HeadingMDX path="/heading" />
-                <IconMDX path="/icon" />
-                <LoaderMDX path="/loader" />
-                <ModalMDX path="/modal" />
-                <PaginationMDX path="/pagination" />
-                <PopOverMDX path="/popover" />
-                <ProgressBarMDX path="/progressbar" />
-                <RadioMDX path="/radio" />
-                <SelectMDX path="/select" />
-                <StepMDX path="/step" />
-                <TextFieldMDX path="/textfield" />
-                <TotaliserMDX path="/totaliser" />
-                <UserBlockMDX path="/userblock" />
+                <HeadingReadme path="/heading" />
+                <IconReadme path="/icon" />
+                <LoaderReadme path="/loader" />
+                <ModalReadme path="/modal" />
+                <PaginationReadme path="/pagination" />
+                <PopOverReadme path="/popover" />
+                <ProgressBarReadme path="/progressbar" />
+                <RadioReadme path="/radio" />
+                <SelectReadme path="/select" />
+                <StepReadme path="/step" />
+                <TextFieldReadme path="/textfield" />
+                <TotaliserReadme path="/totaliser" />
+                <UserBlockReadme path="/userblock" />
               </Router>
             </Content>
           </StyledFlex>
