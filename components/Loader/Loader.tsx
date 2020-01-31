@@ -1,11 +1,10 @@
-// @Flow
-
 import React from 'react';
 import styled, { keyframes, ThemeProvider, withTheme } from 'styled-components';
 import { COLORS } from '../Constants';
 
 type LoaderProps = {
   theme: { colors: {} },
+  children: any
 };
 
 const SpinnerWrapper = styled.div`

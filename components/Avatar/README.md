@@ -6,7 +6,7 @@ You can use an avatar to display ownership of an item of content. If you pass a 
 
 ### Try it out
 
-```.jsx
+```.tsx
 <React.Fragment>
   <Avatar />
   <Avatar name="Sam" size="small" />

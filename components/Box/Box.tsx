@@ -7,6 +7,9 @@ import { COLORS, UTILITIES } from '../Constants';
 type BoxProps = {
   bgColor: string,
   theme: { colors: {} },
+  getBgColor: string,
+  children: any,
+  css: any
 };
 
 const StyledBox = styled.div`
@@ -19,12 +22,12 @@ const StyledBox = styled.div`
   box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
   &:last-child { margin-bottom: 0;}
   
-  ${props => props.getBgColor && css`
+  ${(props: BoxProps) => props.getBgColor && css`
     background-color: ${props.getBgColor};
     color: ${COLORS.white};
   `}
   
-  ${props => css([props.css])}
+  ${(props: BoxProps)  => (css as any)([props.css])}
 `;
 const Box = (props: BoxProps) => {
   const theme = {
@@ -33,7 +36,7 @@ const Box = (props: BoxProps) => {
       ...props.theme.colors,
     },
   };
-  const checkBgColor = theme.colors[props.bgColor] || props.bgColor;
+  const checkBgColor = (theme.colors as any)[props.bgColor] || props.bgColor;
   return (
     <ThemeProvider theme={theme}>
       <StyledBox

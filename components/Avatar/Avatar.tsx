@@ -1,15 +1,6 @@
-// @Flow
-
 import React from 'react';
 import styled, { withTheme } from 'styled-components';
-import { AVATAR } from '../Constants';
-
-const StyledAvatar = styled.img`
-  border-radius: 50%;
-  height: ${props => props.size};
-  object-fit: cover;
-  width: ${props => props.size};
-`;
+import {AVATAR} from "../Constants"
 
 type AvatarProps = {
   name: string,
@@ -17,6 +8,18 @@ type AvatarProps = {
   size?: 'small' | 'medium' | 'large' | 'xlarge',
   theme: { avatar: {} },
 };
+
+type AvatarStyledprops = {
+  size?: string
+}
+
+
+const StyledAvatar = styled.img`
+  border-radius: 50%;
+  height: ${(props: AvatarStyledprops) => props.size};
+  object-fit: cover;
+  width: ${(props: AvatarStyledprops) => props.size};
+`;
 
 const Avatar = (props: AvatarProps) => {
   const theme = {

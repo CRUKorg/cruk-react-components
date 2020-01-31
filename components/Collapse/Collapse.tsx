@@ -1,29 +1,36 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, Fragment, KeyboardEvent } from 'react';
 import styled from 'styled-components';
 import { COLORS, TYPOGRAPHY, UTILITIES,  } from '../Constants';
 import Button from '../Button/Button';
-import Box from '../Box/Box';
+
+type CollapseProps = {
+  active: boolean,
+  contentHeight?: string,
+  headerTitle?: any,
+  children: any,
+  id?: string,
+};
 
 const DefaultHeader = styled(Button)`
   color: ${COLORS.secondary};
   font-size: ${TYPOGRAPHY.fontSizeSmall};
   font-weight: normal;
   margin-bottom: 0;
-  padding-bottom: 0;
+  padding: 0 0 10px;
   :hover, 
   :focus { text-decoration:none;}
 
   & svg {
     font-size: ${TYPOGRAPHY.fontSizeExtraSmall};
-    transform: ${props => props.active === true ? 'rotate(90deg)' : 'none'};
+    transform: ${(props: CollapseProps) => props.active === true ? 'rotate(90deg)' : 'none'};
     transition-duration: 0.5s;
   }
 `;
 
 const CollapseContent = styled.div`
-  margin: 0 0 0 ${UTILITIES.spacingUnit * 2}px;
+  margin: 0;
   font-size: ${TYPOGRAPHY.fontSizeSmall};
-  height: ${props => props.contentHeight}px;
+  height: ${(props: CollapseProps) => props.contentHeight}px;
   overflow: hidden;
   transition: 0.5s ease;
   &>p {margin-top: 0;}
@@ -33,17 +40,17 @@ const CustomHeader = styled.div`
   cursor:pointer;
 `;
 
-const Collapse = (props) => {
+const Collapse = (props: CollapseProps) => {
   const [activeStatus, setActiveStatus] = useState(false);
-  const [contentHeight, setContentHeight] = useState(0);
+  const [contentHeight, setContentHeight] = useState("0");
   const content = useRef(null);
 
   const toggleCollapse = () => {
     setActiveStatus(activeStatus === false ? true : false);
-    setContentHeight(activeStatus === true ? 0 : `${content.current.scrollHeight}`);
+    setContentHeight(activeStatus === true ? "0" : `${content.current.scrollHeight}`);
   }
 
-  const triggerToggle = (event) => {
+  const triggerToggle = (event: KeyboardEvent) => {
     if (event.which == 32 || event.which == 13) {
       event.preventDefault();
       toggleCollapse();
@@ -56,7 +63,6 @@ const Collapse = (props) => {
 
   const renderHeader = () => {
     const defaultProps = {
-      active: activeStatus,
       'aria-controls': `${props.id}-header`,
       'aria-expanded': activeStatus,
       id: `${props.id}-header`,
@@ -65,7 +71,7 @@ const Collapse = (props) => {
 
     if (isDefault())
       return (
-        <DefaultHeader {...defaultProps} appearance="link" icon="chevronRight" iconAlign="right">
+        <DefaultHeader {...defaultProps}  active={activeStatus} appearance="link" icon="chevronRight" iconAlign="right">
           {props.headerTitle}
         </DefaultHeader>
       );
@@ -77,7 +83,7 @@ const Collapse = (props) => {
         aria-disabled={false}
         onKeyDown={triggerToggle}
         role="button"
-        tabIndex="0"
+        tabIndex={0}
       >
         {props.headerTitle}
       </CustomHeader>
@@ -85,7 +91,7 @@ const Collapse = (props) => {
   }
 
   return (
-    <Box>
+    <Fragment>
       {renderHeader()}
       <CollapseContent 
         role='region' 
@@ -98,7 +104,7 @@ const Collapse = (props) => {
       >
         {props.children}
       </CollapseContent>
-    </Box>
+    </Fragment>
   );
 };
 
