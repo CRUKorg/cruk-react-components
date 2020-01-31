@@ -2,7 +2,7 @@
   "name": "cruk-react-components",
   "version": "0.0.1",
   "description": "React components implementing CRUC and SU2C design tokens",
-  "main": "components/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "start": "webpack-dev-server --open --hot --mode development",
     "build": "webpack --mode production",
