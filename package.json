@@ -5,7 +5,9 @@
   "main": "components/index.js",
   "scripts": {
     "start": "webpack-dev-server --open --hot --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "preanalyze": "npm run build",
+    "analyze": "source-map-explorer lib/index.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,7 @@
     "flow-bin": "^0.116.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "source-map-explorer": "^2.2.2",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1"

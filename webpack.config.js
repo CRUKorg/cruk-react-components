@@ -41,6 +41,7 @@ const libConfig = {
     path: path.join(__dirname, 'lib'),
     filename: 'index.js',
   },
+  devtool: 'source-map',
   ...config,
 };
 
