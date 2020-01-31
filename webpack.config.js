@@ -1,6 +1,7 @@
+const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-module.exports = {
-  entry: './docs/index.js',
+
+const config = {
   module: {
     rules: [
       {
@@ -29,13 +30,32 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js', '.json'],
+  },
+};
+
+const libConfig = {
+  entry: './components',
+  output: {
+    path: path.join(__dirname, 'lib'),
+    filename: 'index.js',
+  },
+  ...config,
+};
+
+const docsConfig = {
+  entry: './docs',
+  output: {
+    path: path.join(__dirname, 'public'),
+  },
   plugins: [
     new HtmlWebPackPlugin({
       template: './docs/index.html',
       filename: './index.html',
     }),
   ],
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.json'],
-  },
+  ...config,
 };
+
+module.exports = [libConfig, docsConfig];
