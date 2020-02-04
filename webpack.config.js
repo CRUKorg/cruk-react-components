@@ -40,10 +40,11 @@ const libConfig = {
   output: {
     path: path.join(__dirname, 'lib'),
     filename: 'index.js',
+    libraryTarget: 'umd'
   },
   externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
+    react: 'umd react',
+    'styled-components': 'umd styled-components'
   },
   devtool: 'source-map',
   ...config,
