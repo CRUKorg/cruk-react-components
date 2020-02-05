@@ -225,6 +225,7 @@ const ProgressBar = (props: ProgressBarProps) => {
 
 ProgressBar.defaultProps = {
   percentage: '0',
+  theme: {},
 };
 
 export default withTheme(ProgressBar);
