@@ -74,4 +74,8 @@ const Loader = (props: LoaderProps) => {
   );
 };
 
+Loader.defaultProps = {
+  theme: {},
+};
+
 export default withTheme(Loader);
