@@ -1,13 +1,18 @@
 {
   "name": "cruk-react-components",
   "version": "0.0.1",
-  "description": "React components implementing CRUC and SU2C design tokens",
+  "description": "React components implementing CRUK and SU2C design tokens",
   "main": "lib/index.js",
   "scripts": {
     "start": "webpack-dev-server --open --hot --mode development",
     "build": "webpack --mode production",
     "preanalyze": "npm run build",
     "analyze": "source-map-explorer lib/index.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run build && git add ./lib"
+    }
   },
   "repository": {
     "type": "git",
@@ -34,6 +39,7 @@
     "flow-bin": "^0.116.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^4.2.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-focus-lock": "^2.2.1",
