@@ -56,7 +56,6 @@ const libConfig = {
         commonjs: 'styled-components',
         amd: 'styled-components'
     }
-
   },
   devtool: 'source-map',
   ...config,
