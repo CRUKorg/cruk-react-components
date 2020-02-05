@@ -183,6 +183,7 @@ const Pagination = (props: PaginationProps) => {
 
 Pagination.defaultProps = ({
   searchParam: 'page',
+  theme: {},
 });
 
 export default withTheme(Pagination);
