@@ -50,6 +50,13 @@ const libConfig = {
       commonjs: 'react',
       amd: 'react'
     },
+    'styled-components': {
+        root: 'StyledComponents',
+        commonjs2: 'styled-components',
+        commonjs: 'styled-components',
+        amd: 'styled-components'
+    }
+
   },
   devtool: 'source-map',
   ...config,
