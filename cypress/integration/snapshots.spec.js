@@ -53,14 +53,21 @@ const selectComponent = (componentName, brand) => {
 };
 
 components.forEach(componentName => {
-  it(`CRUK ${componentName} Should match snapshot`, () => {
-    cy.visit('/');
-    selectComponent(componentName, 'cruk');
-  });
+  // it(`CRUK ${componentName} Should match snapshot`, () => {
+  //   cy.visit('/');
+  //   selectComponent(componentName, 'cruk');
+  // });
 
-  it(`SU2C ${componentName} Should match snapshot`, () => {
+  // it(`SU2C ${componentName} Should match snapshot`, () => {
+  //   cy.visit('/');
+  //   cy.contains('button', 'Switch theme').click();
+  //   selectComponent(componentName, 'su2c');
+  // });
+
+  it('has no detectable a11y violations', () => {
     cy.visit('/');
-    cy.contains('button', 'Switch theme').click();
-    selectComponent(componentName, 'su2c');
+    cy.injectAxe();
+    cy.contains('a', componentName).click();
+    cy.checkA11y('[aria-label="Example code preview"]');
   });
 });
