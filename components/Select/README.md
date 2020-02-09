@@ -6,7 +6,7 @@ Select components are used for collecting user provided information from a list 
 
 ```.jsx
 <>
-  <Select defaultValue="" onChange={e => console.log(event.target.value)}>
+  <Select defaultValue="" label="Disabled option" onChange={e => console.log(event.target.value)}>
     <option disabled value="">--Please choose an option--</option>
     <option value="dog">Dog</option>
     <option value="cat">Cat</option>
