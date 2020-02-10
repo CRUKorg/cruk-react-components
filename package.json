@@ -4,14 +4,15 @@
   "description": "React components implementing CRUK and SU2C design tokens",
   "main": "lib/index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --hot --mode development",
-    "build": "webpack --mode production",
-    "preanalyze": "npm run build",
+    "start": "webpack-dev-server --config webpack.config.docs.js --open --hot --mode development",
+    "build-lib": "webpack --config webpack.config.lib.js --mode production",
+    "build-docs": "webpack --config webpack.config.docs.js --mode production",
+    "preanalyze": "npm run build-lib",
     "analyze": "source-map-explorer lib/index.js"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run build && git add ./lib"
+      "pre-commit": "npm run build-lib && git add ./lib"
     }
   },
   "repository": {

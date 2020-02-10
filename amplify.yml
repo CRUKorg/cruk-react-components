@@ -6,7 +6,7 @@ frontend:
         - npm ci
     build:
       commands:
-        - npm run build
+        - npm run build-docs
   artifacts:
     baseDirectory: public
     files:
