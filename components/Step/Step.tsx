@@ -1,13 +1,12 @@
-// @Flow
-
 import React from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
 import { COLORS, TYPOGRAPHY } from '../Constants';
 
 type StepProps = {
-  theme: { colors: {} },
-  current: number,
-  steps: [],
+  theme: { colors: {} };
+  current: number;
+  steps: [];
+  children: any;
 };
 
 const StepWrapper = styled.div`
@@ -17,22 +16,29 @@ const StepWrapper = styled.div`
   font-size: ${TYPOGRAPHY.fontSizeSmall};
   font-weight: ${TYPOGRAPHY.fontWeightHeavy};
 `;
-const StepList = styled.ul`
+
+type StepListProps = {
+  total: number;
+};
+
+const StepList = styled.ul<StepListProps>`
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   justify-content: space-between;
   width: 100%;
-  
-  ${ItemProps => ItemProps.total && css`
-    li {
-      width: ${100 / ItemProps.total}%;
-    }
-    li:last-child span:after {
-      display: none;
-    }
-  `}
+
+  ${props =>
+    props.total &&
+    css`
+      li {
+        width: ${100 / props.total}%;
+      }
+      li:last-child span:after {
+        display: none;
+      }
+    `}
 `;
 const StepBar = styled.span`
   border-radius: 50%;
@@ -44,7 +50,7 @@ const StepBar = styled.span`
   margin: 0 auto 0.5em auto;
   border: 3px solid ${props => props.theme.colors.grayLight};
   text-indent: -999px;
-  
+
   &:after {
     display: block;
     position: absolute;
@@ -68,25 +74,35 @@ const StepTick = styled.span`
   margin-top: 3.5px;
   margin-left: 6.5px;
 `;
-const StepItem = styled.li`
+
+type StepItemProps = {
+  active: boolean;
+  done: boolean;
+};
+
+const StepItem = styled.li<StepItemProps>`
   display: flex;
   flex-direction: column;
-  position: relative; 
-  
-  ${ItemProps => ItemProps.active && css`
-    ${StepBar} {
-      border-color: ${props => props.theme.colors.tertiary};
-    }
-  `}
-  ${ItemProps => ItemProps.done && css`
-    ${StepBar} {
-      border: none;
-      background-color: ${props => props.theme.colors.tertiary};
-      &:after {
-        border-bottom: 3px solid ${props => props.theme.colors.tertiary};
+  position: relative;
+
+  ${props =>
+    props.active &&
+    css`
+      ${StepBar} {
+        border-color: ${props => props.theme.colors.tertiary};
       }
-    }
-  `}
+    `}
+  ${props =>
+    props.done &&
+    css`
+      ${StepBar} {
+        border: none;
+        background-color: ${props => props.theme.colors.tertiary};
+        &:after {
+          border-bottom: 3px solid ${props => props.theme.colors.tertiary};
+        }
+      }
+    `}
 `;
 
 const Step = (props: StepProps) => {
@@ -96,21 +112,20 @@ const Step = (props: StepProps) => {
       ...props.theme.colors,
     },
   };
-  const totalSteps = Array.isArray(props.steps) && Object.keys(props.steps).length;
+  const totalSteps =
+    Array.isArray(props.steps) && Object.keys(props.steps).length;
   return (
     <ThemeProvider theme={theme}>
       <StepWrapper>
         <StepList total={totalSteps}>
-          {Array.isArray(props.steps) && props.steps.map((step, i) =>
-            (
+          {Array.isArray(props.steps) &&
+            props.steps.map((step, i) => (
               <StepItem
                 key={i}
-                active={(i + 1) === parseFloat(props.current)}
-                done={(i + 1) < parseFloat(props.current)}
+                active={i + 1 === props.current}
+                done={i + 1 < props.current}
               >
-                <StepBar>
-                  {(i + 1) < parseFloat(props.current) && <StepTick />}
-                </StepBar>
+                <StepBar>{i + 1 < props.current && <StepTick />}</StepBar>
                 {step}
               </StepItem>
             ))}
@@ -121,9 +136,9 @@ const Step = (props: StepProps) => {
   );
 };
 
-Step.defaultProps = ({
+Step.defaultProps = {
   current: 1,
   theme: {},
-});
+};
 
 export default withTheme(Step);
