@@ -1,9 +1,7 @@
-// @Flow
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
-import FocusLock from "react-focus-lock";
+import FocusLock from 'react-focus-lock';
 
 import Box from '../Box/Box';
 import Button from '../Button/Button';
@@ -34,7 +32,7 @@ const Wrapper = styled.div`
 const Content = styled(Box)`
   background: ${COLORS.white};
   border-radius: 4px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
   margin: 100px auto 20px;
   max-width: 90%;
   padding: 10px;
@@ -43,7 +41,11 @@ const Content = styled(Box)`
   z-index: 9999;
 `;
 
-const CloseButton = styled(Button)`
+type CloseButtonProps = {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+};
+
+const CloseButton = styled(Button)<CloseButtonProps>`
   float: right;
   margin-left: 10px;
   font-size: 1.2rem;
@@ -51,30 +53,35 @@ const CloseButton = styled(Button)`
 `;
 
 type ModalProps = {
-  children: any,
-  closeButton?: Function | null,
-  disableEsc: Boolean,
+  children: any;
+  closeButton?: Function | null;
+  disableEsc: Boolean;
 };
 
 class Modal extends React.Component<ModalProps> {
+  static defaultProps: any;
 
-  constructor(props){
+  constructor(props: ModalProps) {
     super(props);
     this.closeByEsc = this.closeByEsc.bind(this);
   }
 
   componentDidMount() {
     document.body.style.overflow = 'hidden';
-    document.addEventListener("keydown", this.closeByEsc);
+    document.addEventListener('keydown', this.closeByEsc);
   }
 
   componentWillUnmount() {
     document.body.style.overflow = 'unset';
-    document.removeEventListener("keydown", this.closeByEsc);
+    document.removeEventListener('keydown', this.closeByEsc);
   }
 
-  closeByEsc(event) {
-    if (!this.props.disableEsc && event.which == 27 && this.props.closeButton !== null) {
+  closeByEsc(event: KeyboardEvent) {
+    if (
+      !this.props.disableEsc &&
+      event.which == 27 &&
+      this.props.closeButton !== null
+    ) {
       this.props.closeButton();
     }
   }
@@ -84,10 +91,16 @@ class Modal extends React.Component<ModalProps> {
     return ReactDOM.createPortal(
       <FocusLock returnFocus>
         <Wrapper>
-          <Content aria-modal="true" >
-            {closeButton &&
-              <CloseButton appearance="link" icon="close" onClick={closeButton} />
-            }
+          <Content aria-modal="true" bgColor="" getBgColor="" css="">
+            {closeButton && (
+              <CloseButton
+                appearance="link"
+                icon="close"
+                onClick={() => {
+                  closeButton();
+                }}
+              />
+            )}
             {children}
           </Content>
           <Background />
