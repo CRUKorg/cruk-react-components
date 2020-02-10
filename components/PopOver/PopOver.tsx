@@ -1,19 +1,23 @@
-// @Flow
-
-import React, { useState } from 'react';
-import styled, { css, ThemeProvider, withTheme } from 'styled-components';
-import {BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES} from '../Constants';
+import React, { useState } from "react";
+import styled, { css, ThemeProvider, withTheme } from "styled-components";
+import { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from "../Constants";
 
 type PopOverProps = {
-  theme: { colors: {} },
-  position: string,
-  overlay: any,
+  theme: {colors: {};};
+  position: string;
+  overlay: any;
+  css: string;
+  children: any;
 };
 
-const PopOverWrapper = styled.div`
+type PopOverWrapperProps = {
+  css: string
+};
+
+const PopOverWrapper = styled.div<PopOverWrapperProps>`
   position: relative;
   display: inline-block;
-  ${props => css([props.css])}
+  ${props => (css as any)([props.css])}
 `;
 const PopOverContent = styled.div`
   display: flex;
@@ -59,12 +63,12 @@ const PopOver = (props: PopOverProps) => {
   const theme = {
     colors: {
       ...COLORS,
-      ...props.theme.colors,
-    },
+      ...props.theme.colors
+    }
   };
   const StyledPopOverContent = styled(PopOverContent)`
     ${props.position === 'bottom' && css` margin-top: 10px; `}
-    ${((props.position === 'bottom') || (props.position === 'left') || (props.position === 'right')) && css`
+    ${(props.position === 'bottom' || props.position === 'left' || props.position === 'right') && css`
       bottom: unset; left: unset; top: 100%;  margin-bottom: 0; 
       &:after, &:before { bottom: 100%; top: unset; }
       &:before { border-color: transparent transparent rgba(0,0,0,.25); }
@@ -85,32 +89,22 @@ const PopOver = (props: PopOverProps) => {
       `}
     } 
   `;
-  return (
-    <ThemeProvider theme={theme}>
+  return <ThemeProvider theme={theme}>
       <PopOverWrapper {...props}>
-        {showPopOver && (
-          <StyledPopOverContent
-            role="dialog"
-            aria-modal={showPopOver}
-          >
+        {showPopOver && <StyledPopOverContent role="dialog" aria-modal={showPopOver}>
             {props.overlay}
-          </StyledPopOverContent>
-        )}
-        {React.Children.map(props.children, child => React.cloneElement(
-          child,
-          {
-            onClick: toggle,
-            'aria-expanded': showPopOver,
-            'aria-haspopup': 'dialog',
-          },
-        ))}
+          </StyledPopOverContent>}
+        {React.Children.map(props.children, child => React.cloneElement(child, {
+        onClick: toggle,
+        'aria-expanded': showPopOver,
+        'aria-haspopup': 'dialog'
+      }))}
       </PopOverWrapper>
-    </ThemeProvider>
-  );
+    </ThemeProvider>;
 };
 
-PopOver.defaultProps = ({
-  theme: {},
-});
+PopOver.defaultProps = {
+  theme: {}
+};
 
 export default withTheme(PopOver);
