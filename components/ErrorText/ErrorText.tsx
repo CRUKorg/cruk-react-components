@@ -26,4 +26,8 @@ const ErrorText = (props: ErrorTextProps) => {
   );
 };
 
+ErrorText.defaultProps = {
+  theme: {},
+};
+
 export default withTheme(ErrorText);

@@ -33,7 +33,6 @@ const ProgressBarWrapper = styled.div`
   margin-top: 7px;
   border: solid 1px ${COLORS.grayMedium};
   border-radius: ${UTILITIES.borderRadius};
-  width: 100%;
   position: relative;
 `;
 const Total = styled.p`

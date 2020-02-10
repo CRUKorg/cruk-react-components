@@ -109,4 +109,8 @@ const PopOver = (props: PopOverProps) => {
   );
 };
 
+PopOver.defaultProps = ({
+  theme: {},
+});
+
 export default withTheme(PopOver);

@@ -123,6 +123,7 @@ const Step = (props: StepProps) => {
 
 Step.defaultProps = ({
   current: 1,
+  theme: {},
 });
 
 export default withTheme(Step);

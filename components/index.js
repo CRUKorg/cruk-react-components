@@ -18,6 +18,7 @@ import Pagination from './Pagination/Pagination';
 import PopOver from './PopOver/PopOver';
 import ProgressBar from './ProgressBar/ProgressBar';
 import Radio from './Radio/Radio';
+import RadioGroup from './Radio/RadioGroup';
 import Select from './Select/Select';
 import Step from './Step/Step';
 import TextField from './TextField/TextField';
@@ -46,6 +47,7 @@ export {
   PopOver,
   ProgressBar,
   Radio,
+  RadioGroup,
   Select,
   Step,
   TextField,
