@@ -8,6 +8,9 @@ import { WithLabel } from '../Label';
 type StyledInputProps = {
   hasError: boolean,
   error: string,
+  label: string;
+  hintText: string;
+  required: boolean;
 }
 
 const StyledInput = styled.select<StyledInputProps>`

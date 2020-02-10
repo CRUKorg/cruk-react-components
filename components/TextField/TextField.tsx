@@ -1,10 +1,8 @@
-// @Flow
-
 import React from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
 import { COLORS, TYPOGRAPHY, UTILITIES } from '../Constants';
-import { ErrorText } from '../';
+import ErrorText from '../ErrorText/ErrorText';
 import { WithLabel } from '../Label';
 
 const Extra = styled.div`
@@ -49,12 +47,23 @@ const ExtraWrapper = styled.div`
   display: flex;
 `;
 
-const StyledInput = styled.input`
+type StyledInputProps = {
+  hasError: boolean;
+  error: string;
+  extraTop?: string;
+  extraBottom?: string;
+  extraLeft?: string;
+  extraRight?: string;
+};
+
+const StyledInput = styled.input<StyledInputProps>`
   background-color: ${props => props.theme.colors.white};
   background-image: none;
   border-radius: ${props => props.theme.utilities.borderRadius};
   border: solid 2px ${props =>
-    props.hasError || props.error ? props.theme.colors.textError : props.theme.colors.gray};
+    props.hasError || props.error
+      ? props.theme.colors.textError
+      : props.theme.colors.gray};
   color: ${props => props.theme.colors.grayDarker};
   display: block;
   font-size: ${props => props.theme.typography.fontSize};
@@ -101,24 +110,39 @@ const StyledInput = styled.input`
     `}
 `;
 
-const Wrapper = props => (
-  (!props.extraTop && !props.extraBottom && !props.extraRight && !props.extraLeft)
-    ? props.children
-    : <div>{props.children}</div>
-);
+type WrapperProps = {
+  extraTop?: string;
+  extraBottom?: string;
+  extraLeft?: string;
+  extraRight?: string;
+  children: any;
+};
+
+const Wrapper = (props: WrapperProps) =>
+  !props.extraTop &&
+  !props.extraBottom &&
+  !props.extraRight &&
+  !props.extraLeft ? (
+    props.children
+  ) : (
+    <div>{props.children}</div>
+  );
 
 type TextFieldProps = {
-  error: String,
-  extraBottom: String,
-  extraLeft: String,
-  extraRight: String,
-  extraTop: String,
-  hasError: Boolean,
-  onChange: Function,
-  placeholder: String,
-  theme?: { colors: {}, typography: {}, utilities: {} },
-  type: 'text' | 'number' | 'email' | 'password',
-  value: String,
+  error: string;
+  extraBottom: string;
+  extraLeft: string;
+  extraRight: string;
+  extraTop: string;
+  hasError: boolean;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  placeholder: string;
+  theme?: { colors: {}; typography: {}; utilities: {} };
+  type: 'text' | 'number' | 'email' | 'password';
+  value: string;
+  label: string;
+  hintText: string;
+  required: boolean;
 };
 
 const TextField = (props: TextFieldProps) => {
@@ -139,18 +163,34 @@ const TextField = (props: TextFieldProps) => {
 
   const renderContent = (
     <React.Fragment>
-      {!!props.extraLeft && <ExtraLeft theme={theme}>{props.extraLeft}</ExtraLeft>}
-      <StyledInput {...props} theme={theme} aria-invalid={props.hasError || !!props.error} />
-      {!!props.extraRight && <ExtraRight theme={theme}>{props.extraRight}</ExtraRight>}
+      {!!props.extraLeft && (
+        <ExtraLeft theme={theme}>{props.extraLeft}</ExtraLeft>
+      )}
+      <StyledInput
+        {...props}
+        theme={theme}
+        aria-invalid={props.hasError || !!props.error}
+      />
+      {!!props.extraRight && (
+        <ExtraRight theme={theme}>{props.extraRight}</ExtraRight>
+      )}
     </React.Fragment>
   );
 
   return (
     <WithLabel {...props}>
       <Wrapper {...props}>
-        {!!props.extraTop && <ExtraTop theme={theme}>{props.extraTop}</ExtraTop>}
-        {!!props.extraRight || !!props.extraLeft ? <ExtraWrapper>{renderContent}</ExtraWrapper> : renderContent}
-        {!!props.extraBottom && <ExtraBottom theme={theme}>{props.extraBottom}</ExtraBottom>}
+        {!!props.extraTop && (
+          <ExtraTop theme={theme}>{props.extraTop}</ExtraTop>
+        )}
+        {!!props.extraRight || !!props.extraLeft ? (
+          <ExtraWrapper>{renderContent}</ExtraWrapper>
+        ) : (
+          renderContent
+        )}
+        {!!props.extraBottom && (
+          <ExtraBottom theme={theme}>{props.extraBottom}</ExtraBottom>
+        )}
         {!!props.error && <ErrorText>{props.error}</ErrorText>}
       </Wrapper>
     </WithLabel>
