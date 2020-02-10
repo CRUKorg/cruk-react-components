@@ -1,15 +1,13 @@
-// @Flow
-
 import React from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
 import { COLORS, UTILITIES } from '../Constants';
 
 type BoxProps = {
-  bgColor: string,
-  theme: { colors: {} },
-  getBgColor: string,
-  children: any,
-  css: any
+  bgColor: string;
+  theme: { colors: {} };
+  getBgColor: string;
+  children: any;
+  css: any;
 };
 
 const StyledBox = styled.div`
@@ -19,15 +17,19 @@ const StyledBox = styled.div`
   margin-bottom: ${UTILITIES.spacingUnit * 4}px;
   border: 1px solid ${COLORS.grayLight};
   border-radius: ${UTILITIES.borderRadius};
-  box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
-  &:last-child { margin-bottom: 0;}
-  
-  ${(props: BoxProps) => props.getBgColor && css`
-    background-color: ${props.getBgColor};
-    color: ${COLORS.white};
-  `}
-  
-  ${(props: BoxProps)  => (css as any)([props.css])}
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  ${(props: BoxProps) =>
+    props.getBgColor &&
+    css`
+      background-color: ${props.getBgColor};
+      color: ${COLORS.white};
+    `}
+
+  ${(props: BoxProps) => (css as any)([props.css])}
 `;
 const Box = (props: BoxProps) => {
   const theme = {
@@ -39,10 +41,7 @@ const Box = (props: BoxProps) => {
   const checkBgColor = (theme.colors as any)[props.bgColor] || props.bgColor;
   return (
     <ThemeProvider theme={theme}>
-      <StyledBox
-        getBgColor={props.bgColor && checkBgColor}
-        {...props}
-      >
+      <StyledBox getBgColor={props.bgColor && checkBgColor} {...props}>
         {props.children}
       </StyledBox>
     </ThemeProvider>
