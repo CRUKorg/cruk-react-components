@@ -1,5 +1,3 @@
-// @Flow
-
 import React from 'react';
 import styled from 'styled-components';
 
@@ -21,10 +19,12 @@ const StyledDivider = styled.div`
   }
 `;
 
-export const Divider = ({ children }) => (
-  <StyledDivider>
-    {children}
-  </StyledDivider>
+type DividerProps = {
+  children: any;
+};
+
+export const Divider = (props: DividerProps) => (
+  <StyledDivider>{props.children}</StyledDivider>
 );
 
 export default Divider;
