@@ -38,7 +38,6 @@ import ButtonReadme from '../components/Button/README.md';
 import CheckboxReadme from '../components/Checkbox/README.md';
 import CollapseReadme from '../components/Collapse/README.md';
 import ErrorTextReadme from '../components/ErrorText/README.md';
-import FundraisingReadme from '../components/Pages/README.md';
 import HeadingReadme from '../components/Heading/README.md';
 import IconReadme from '../components/Icon/README.md';
 import LoaderReadme from '../components/Loader/README.md';
@@ -344,8 +343,6 @@ class Docs extends React.Component {
                 <Link to="/textfield">TextField</Link>
                 <Link to="/totaliser">Totaliser</Link>
                 <Link to="/userblock">UserBlock</Link>
-                <Heading h2>Pages</Heading>
-                <Link to="/fundraising">Fundraising</Link>
               </Nav>
             </SideBar>
             <Content>
