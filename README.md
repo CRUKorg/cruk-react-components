@@ -13,7 +13,7 @@ cruk-react-component docs site: https://master.d2qmm2ybdxfdzp.amplifyapp.com/
 This repository is private, so to install the library you will need SSH access or a personal access token (PAT) if SSH is not possible.
 
 
-Add cruk-react-components and its peer dependencies react, react-dom and styled-components to your package.json file. Replace 
+Add cruk-react-components and its peer dependencies react, react-dom and styled-components to your package.json file. 
 
 ```sh
 "dependencies": {
