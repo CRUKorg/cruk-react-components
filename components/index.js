@@ -6,7 +6,6 @@ import Checkbox from './Checkbox/Checkbox';
 import Divider from './Divider';
 import ErrorText from './ErrorText/ErrorText';
 import Flex from './Flex';
-import Fundraising from './Pages/Fundraising';
 import Heading from './Heading/Heading';
 import Header from './Header';
 import Icon from './Icon/Icon';
@@ -35,7 +34,6 @@ export {
   Divider,
   ErrorText,
   Flex,
-  Fundraising,
   Heading,
   Header,
   Icon,
