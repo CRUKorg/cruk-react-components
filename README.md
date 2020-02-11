@@ -1,8 +1,12 @@
 # cruk-react-components
+
 React components implementing CRUK and SU2C design tokens
 
-Documentation: https://master.d2qmm2ybdxfdzp.amplifyapp.com/
-Username: cruk - Password: jvku2cgl4n
+## View the docs
+
+cruk-react-component docs site: https://master.d2qmm2ybdxfdzp.amplifyapp.com/
+
+**Username**: cruk **Password**: jvku2cgl4n
 
 ## Usage
 
