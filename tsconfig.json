@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "noImplicitAny": true, // Setting to true means if no type given it will not automatically assign ANY.
+    "noUnusedLocals": true,
     "module": "es6",
     "target": "es5",
     "jsx": "react",
