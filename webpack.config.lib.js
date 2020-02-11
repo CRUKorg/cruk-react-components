@@ -17,11 +17,18 @@ module.exports = createWebpackConfig({
       amd: 'react',
     },
     'styled-components': {
-        root: 'StyledComponents',
-        commonjs2: 'styled-components',
-        commonjs: 'styled-components',
-        amd: 'styled-components'
-    }
+      root: 'StyledComponents',
+      commonjs2: 'styled-components',
+      commonjs: 'styled-components',
+      amd: 'styled-components',
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom',
+      umd: 'react-dom',
+    },
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
 });
