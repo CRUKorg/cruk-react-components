@@ -1,11 +1,9 @@
-// @Flow
-
-import React from 'react';
-import styled from 'styled-components';
-import { BREAKPOINT, COLORS, SITECONFIG, TYPOGRAPHY, UTILITIES } from './Constants';
+import React from "react";
+import styled from "styled-components";
+import { BREAKPOINT, COLORS, SITECONFIG, TYPOGRAPHY, UTILITIES } from "./Constants";
 
 type HeaderProps = {
-  isSticky: boolean,
+  isSticky: boolean;
 };
 
 const HeaderNav = styled.div`
@@ -97,6 +95,7 @@ const StyledHeader = styled.header`
 `;
 
 class Header extends React.Component<HeaderProps> {
+
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
   }
@@ -118,21 +117,16 @@ class Header extends React.Component<HeaderProps> {
   };
 
   render() {
-    return (
-      <StyledHeader {...this.props} onScroll={this.handleScroll}>
-        <SkipToMain class="skip-main" href="#main">Skip to main content</SkipToMain>
+    return <StyledHeader {...this.props} onScroll={this.handleScroll}>
+        <SkipToMain className="skip-main" href="#main">Skip to main content</SkipToMain>
         <HeaderNav>
           <a href={SITECONFIG.logoUrl} title="Home">
-            <Logo
-              src={SITECONFIG.logoSrc}
-              alt={SITECONFIG.logoAlt}
-            />
+            <Logo src={SITECONFIG.logoSrc} alt={SITECONFIG.logoAlt} />
           </a>
           <Tagline>{SITECONFIG.siteSlogan}</Tagline>
           {this.props.children}
         </HeaderNav>
-      </StyledHeader>
-    );
+      </StyledHeader>;
   }
 }
 

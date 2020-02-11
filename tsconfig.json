@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
     "noImplicitAny": true, // Setting to true means if no type given it will not automatically assign ANY.
+    "noUnusedLocals": true,
     "module": "es6",
     "target": "es5",
     "jsx": "react",
     "allowJs": false, //Only TS and TSX will be compilied.
-    "allowSyntheticDefaultImports": true // This is needed for the React components.
+    "allowSyntheticDefaultImports": true, // This is needed for the React components.
+    "moduleResolution": "node"
   }
 }

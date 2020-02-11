@@ -1,12 +1,17 @@
-// @Flow
-
 import React from 'react';
 import styled, { withTheme } from 'styled-components';
 import { COLORS, UTILITIES } from '../Constants';
 
-const StyledLabel = styled.label`
+type StyledLabelProps = {
+  checked: boolean;
+  theme: any;
+};
+
+const StyledLabel = styled.label<StyledLabelProps>`
   border-radius: ${props => props.theme.utilities.borderRadius};
-  border: solid 2px ${props => (props.checked ? props.theme.colors.primary : props.theme.colors.gray)};
+  border: solid 2px
+    ${props =>
+      props.checked ? props.theme.colors.primary : props.theme.colors.gray};
   cursor: pointer;
   display: block;
   font-weight: ${props => (props.checked ? 'bold' : 'normal')};
@@ -19,12 +24,13 @@ const StyledInput = styled.input`
 `;
 
 type CheckboxProps = {
-  checked: boolean,
-  disabled: boolean,
-  name: string, // Adding this because formiK requires name or id.
-  onChange: Function,
-  theme?: { colors: {}, utilities: {}},
-  value: string,
+  checked: boolean;
+  disabled: boolean;
+  name: string; // Adding this because formiK requires name or id.
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  theme?: { colors: {}; utilities: {} };
+  value: string;
+  children: any;
 };
 
 const Checkbox = (props: CheckboxProps) => {
