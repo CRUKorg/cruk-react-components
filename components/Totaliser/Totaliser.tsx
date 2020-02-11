@@ -1,18 +1,17 @@
-// @Flow
-
 import React from 'react';
 import styled, { css, withTheme } from 'styled-components';
 import { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../Constants';
-import { ProgressBar } from '../index';
+import ProgressBar from '../ProgressBar/ProgressBar';
 import { calculatePercentRounded, formatMoney } from '../Helper';
 
 type TotaliserProps = {
-  giftAid: number,
-  isCompact: boolean,
-  summary?: Function,
-  target?: number | null,
-  theme: { target: {}, colors: {}, typography:{} },
-  total: number,
+  giftAid: number;
+  summary?: Function;
+  target?: number | null;
+  theme: { target: {}; colors: {}; typography: {} };
+  total: number;
+  isCompact: boolean;
+  children: any;
 };
 
 const DetailWrapper = styled.div`
@@ -23,7 +22,7 @@ const DetailWrapper = styled.div`
   padding: 5px;
   position: relative;
   z-index: 10;
-  
+
   p {
     margin: 0;
   }
@@ -44,20 +43,29 @@ const Summary = styled.div`
   margin-top: 12px;
   margin-bottom: 0;
 `;
-const TotaliserWrapper = styled.div`
+
+type TotaliserWrapperProps = {
+  isCompact: boolean;
+};
+
+const TotaliserWrapper = styled.div<TotaliserWrapperProps>`
   font-family: ${props => props.theme.typography.fontFamilyHeadings};
   margin: 0 0 20px 0;
-  ${props => !props.isCompact && css`
-    @media (min-width: ${BREAKPOINT.desktop}) {
-      max-width: 335px;
-    }
-  `}
-  ${props => props.isCompact && css`
-    ${ProgressBarWrapper} {
-      border: none;
-      padding: 0;
-    }
-  `}
+  ${props =>
+    !props.isCompact &&
+    css`
+      @media (min-width: ${BREAKPOINT.desktop}) {
+        max-width: 335px;
+      }
+    `}
+  ${props =>
+    props.isCompact &&
+    css`
+      ${ProgressBarWrapper} {
+        border: none;
+        padding: 0;
+      }
+    `}
 `;
 const CompactWrapper = styled.div`
   justify-content: space-between;
@@ -87,24 +95,29 @@ const Totaliser = (props: TotaliserProps) => {
   };
   const result = calculatePercentRounded(+props.total, props.target);
   const StyledProgressBar = styled(ProgressBar)`
-    ${!props.isCompact && css`
-      > div > div:after {
-        content: '\\25bc';
-        color: ${theme.colors.tertiary};
-        z-index: 11;
-        position: absolute;
-        top: -39px;
-        right: -15px;
-        font-size: 32px;
-      }
-    `}
+    ${!props.isCompact &&
+      css`
+        > div > div:after {
+          content: '\\25bc';
+          color: ${theme.colors.tertiary};
+          z-index: 11;
+          position: absolute;
+          top: -39px;
+          right: -15px;
+          font-size: 32px;
+        }
+      `}
   `;
   return (
     <TotaliserWrapper isCompact={props.isCompact} theme={theme}>
       {props.isCompact ? (
         <CompactWrapper theme={theme}>
           <Total>£{formatMoney(props.total)}</Total>
-          {props.target !== null && <Summary as="span" >{props.summary(formatMoney(props.target), result)}</Summary>}
+          {props.target !== null && (
+            <Summary as="span">
+              {props.summary(formatMoney(props.target), result)}
+            </Summary>
+          )}
         </CompactWrapper>
       ) : (
         <DetailWrapper theme={theme}>
@@ -113,12 +126,16 @@ const Totaliser = (props: TotaliserProps) => {
           <p>+ £{formatMoney(props.giftAid)} Gift Aid</p>
         </DetailWrapper>
       )}
-      {props.target !== null &&
+      {props.target !== null && (
         <ProgressBarWrapper theme={theme}>
           <StyledProgressBar percentage={result} />
-          {!props.isCompact && <Summary>{props.summary(formatMoney(props.target), result)}</Summary>}
+          {!props.isCompact && (
+            <Summary>
+              {props.summary(formatMoney(props.target), result)}
+            </Summary>
+          )}
         </ProgressBarWrapper>
-      }
+      )}
       {props.children}
     </TotaliserWrapper>
   );
@@ -127,7 +144,7 @@ const Totaliser = (props: TotaliserProps) => {
 Totaliser.defaultProps = {
   theme: {},
   target: null,
-  summary: (target, percentage) => `${percentage}% of £${target} target`,
+  summary: (target: number, percentage: number) => `${percentage}% of £${target} target`,
 };
 
 export default withTheme(Totaliser);

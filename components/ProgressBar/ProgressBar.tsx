@@ -10,9 +10,9 @@ import { COLORS, TYPOGRAPHY, UTILITIES } from '../Constants';
 type ProgressBarProps = {
   theme: { progress: {}; colors: {} };
   percentage: number;
-  isCircular: boolean;
-  showIndicator: boolean;
-  children: any;
+  isCircular?: boolean;
+  showIndicator?: boolean;
+  children?: any;
 };
 
 type PercentageProps = {
