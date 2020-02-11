@@ -1,14 +1,22 @@
-// @Flow
-
 import React from 'react';
-import styled, { css, keyframes, ThemeProvider, withTheme } from 'styled-components';
+import styled, {
+  css,
+  keyframes,
+  ThemeProvider,
+  withTheme,
+} from 'styled-components';
 import { COLORS, TYPOGRAPHY, UTILITIES } from '../Constants';
 
 type ProgressBarProps = {
-  theme: { progress: {}, colors: {} },
-  percentage: number,
-  isCircular: boolean,
-  showIndicator: boolean,
+  theme: { progress: {}; colors: {} };
+  percentage: number;
+  isCircular: boolean;
+  showIndicator: boolean;
+  children: any;
+};
+
+type PercentageProps = {
+  percentage: number;
 };
 
 const ProgressBarWrapper = styled.div`
@@ -20,7 +28,7 @@ const ProgressBarSharedStyling = css`
   width: 1%;
   height: 100%;
   font-size: ${TYPOGRAPHY.fontSizeSmall}
-  line-height: ${TYPOGRAPHY.lineHeight};
+  line-height: ${UTILITIES.lineHeight};
   color: ${props => props.theme.colors.white};
   text-align: center;
   background-color: ${props => props.theme.colors.progressBar};
@@ -36,21 +44,25 @@ const ProgressSharedStyling = css`
   height: 15px;
   margin-bottom: 0;
   background-color: ${props => props.theme.colors.progressBarBg};
-  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 `;
 
 const LineProgressBarWrapper = styled.div`
   ${ProgressSharedStyling};
 `;
 
-const LineProgressBar = styled.div`
+type LineProgressBarProps = PercentageProps;
+
+const LineProgressBar = styled.div<LineProgressBarProps>`
   ${ProgressBarSharedStyling}
   position: relative;
-  
-  ${barProps => barProps.percentage && css`
-    width: ${barProps.percentage}%;
-  `}
+
+  ${props =>
+    props.percentage &&
+    css`
+      width: ${props.percentage}%;
+    `}
 `;
 
 const SROnly = styled.span`
@@ -77,7 +89,7 @@ const CircularColorFill = styled.span`
 
 const CircularLeft = styled.span`
   left: 0;
-  
+
   ${CircularColorFill} {
     left: 100%;
     border-top-right-radius: 45px;
@@ -90,7 +102,7 @@ const CircularLeft = styled.span`
 
 const CircularRight = styled.span`
   right: 0;
-  
+
   ${CircularColorFill} {
     left: -100%;
     border-top-left-radius: 45px;
@@ -101,25 +113,39 @@ const CircularRight = styled.span`
   }
 `;
 
-const AnimationRight = props => keyframes`
+type AnimationRightProps = PercentageProps;
+
+const AnimationRight = (props: AnimationRightProps) => keyframes`
   0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
   100% {
-    -webkit-transform: rotate(${props.percentage > 50 ? '180' : props.percentage * 3.6});
-    transform: rotate(${props.percentage > 50 ? '180' : props.percentage * 3.6}deg);
+    -webkit-transform: rotate(${
+      props.percentage > 50 ? '180' : props.percentage * 3.6
+    });
+    transform: rotate(${
+      props.percentage > 50 ? '180' : props.percentage * 3.6
+    }deg);
   }
 `;
 
-const AnimationLeft = props => keyframes`
+type AnimationLeftProps = PercentageProps;
+
+const AnimationLeft = (props: AnimationLeftProps) => keyframes`
   0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
   100% {
-    -webkit-transform: rotate(${props.percentage > 100 ? '180' : (props.percentage * 3.6) - 180});
-    transform: rotate(${props.percentage > 100 ? '180' : (props.percentage * 3.6) - 180}deg);
+    -webkit-transform: rotate(${
+      props.percentage > 100 ? '180' : props.percentage * 3.6 - 180
+    });
+    transform: rotate(${
+      props.percentage > 100 ? '180' : props.percentage * 3.6 - 180
+    }deg);
   }
 `;
 
-const CircularWrapper = styled.div`
+type CircularWrapperProps = PercentageProps;
+
+const CircularWrapper = styled.div<CircularWrapperProps>`
   ${ProgressSharedStyling};
-  
+
   width: 90px;
   height: 90px;
   line-height: 90px;
@@ -127,9 +153,9 @@ const CircularWrapper = styled.div`
   margin: 0 auto;
   box-shadow: none;
   position: relative;
-  
+
   &:after {
-    content: "";
+    content: '';
     width: 100%;
     height: 100%;
     border-radius: 50%;
@@ -146,28 +172,34 @@ const CircularWrapper = styled.div`
     top: 0;
     z-index: 1;
   }
-  
-  ${props => props.percentage < '51' && css`
-    ${CircularRight} ${CircularColorFill} {
-      animation: ${AnimationRight} 0.5s linear forwards;
-    }
-  `};
-  ${props => props.percentage > '50' && css`
-    ${CircularRight} ${CircularColorFill} {
-      animation: ${AnimationRight} 0.5s linear forwards;
-    }
-    ${CircularLeft} ${CircularColorFill} {
-      animation: ${AnimationLeft} 0.5s linear forwards 0.5s;
-    }
-  `};
-  ${props => props.percentage >= '100' && css`
-    ${CircularRight} ${CircularColorFill} {
-      animation: ${AnimationRight} 0.5s linear forwards;
-    }
-    ${CircularLeft} ${CircularColorFill} {
-      animation: ${AnimationLeft} 0.5s linear forwards 0.5s;
-    }
-  `};
+
+  ${props =>
+    props.percentage < 51 &&
+    css`
+      ${CircularRight} ${CircularColorFill} {
+        animation: ${AnimationRight as any} 0.5s linear forwards;
+      }
+    `};
+  ${props =>
+    props.percentage > 50 &&
+    css`
+      ${CircularRight} ${CircularColorFill} {
+        animation: ${AnimationRight as any} 0.5s linear forwards;
+      }
+      ${CircularLeft} ${CircularColorFill} {
+        animation: ${AnimationLeft as any} 0.5s linear forwards 0.5s;
+      }
+    `};
+  ${props =>
+    props.percentage >= 100 &&
+    css`
+      ${CircularRight} ${CircularColorFill} {
+        animation: ${AnimationRight as any} 0.5s linear forwards;
+      }
+      ${CircularLeft} ${CircularColorFill} {
+        animation: ${AnimationLeft as any} 0.5s linear forwards 0.5s;
+      }
+    `};
 `;
 
 const CircularValue = styled.div`
@@ -191,32 +223,27 @@ const ProgressBar = (props: ProgressBarProps) => {
     },
     progress: props.theme.progress,
   };
-  const number = Number.parseInt(props.percentage, 10);
+  const number = props.percentage;
   const text = `${!Number.isNaN(number) ? number : '0'}%`;
   return (
     <ThemeProvider theme={theme}>
       <ProgressBarWrapper {...props}>
-        {props.isCircular ?
-          (
-            <CircularWrapper percentage={number}>
-              <CircularLeft className="Left">
-                <CircularColorFill />
-              </CircularLeft>
-              <CircularRight className="Right">
-                <CircularColorFill />
-              </CircularRight>
-              <CircularValue>
-                {text}
-              </CircularValue>
-            </CircularWrapper>
-          ) : (
-            <LineProgressBarWrapper>
-              <LineProgressBar
-                percentage={number > 100 ? '100' : number}
-              />
-              <SROnly>{`${text} Complete`}</SROnly>
-            </LineProgressBarWrapper>
-          )}
+        {props.isCircular ? (
+          <CircularWrapper percentage={number}>
+            <CircularLeft className="Left">
+              <CircularColorFill />
+            </CircularLeft>
+            <CircularRight className="Right">
+              <CircularColorFill />
+            </CircularRight>
+            <CircularValue>{text}</CircularValue>
+          </CircularWrapper>
+        ) : (
+          <LineProgressBarWrapper>
+            <LineProgressBar percentage={number > 100 ? 100 : number} />
+            <SROnly>{`${text} Complete`}</SROnly>
+          </LineProgressBarWrapper>
+        )}
         {props.children}
       </ProgressBarWrapper>
     </ThemeProvider>
