@@ -15,7 +15,6 @@ import {
   Collapse,
   ErrorText,
   Flex,
-  Fundraising,
   Header,
   Heading,
   Icon,
@@ -354,7 +353,6 @@ class Docs extends React.Component {
                 <CheckboxReadme path="/checkbox" />
                 <CollapseReadme path="/collapse" />
                 <ErrorTextReadme path="/errortext" />
-                <Fundraising path="/fundraising" />
                 <HeadingReadme path="/heading" />
                 <IconReadme path="/icon" />
                 <LoaderReadme path="/loader" />
