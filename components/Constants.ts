@@ -58,7 +58,7 @@ export const COLORS = {
 export const TYPOGRAPHY = {
   customFonts: [{
     family: 'MuseoSans-500',
-    url: '/sites/all/themes/contrib/cruk_bootstrap/assets/fonts/museo/2F8E8A_2_0',
+    url: 'https://ccp-s3.int.cruk.org/fonts/MuseoSansRounded-500',
   }],
   fontUrl: `${SITECONFIG.cdnPath}fonts`,
   fontFamilyBase: 'Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif',

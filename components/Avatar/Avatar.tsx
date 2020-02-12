@@ -1,18 +1,17 @@
 import React from 'react';
 import styled, { withTheme } from 'styled-components';
-import {AVATAR} from "../Constants"
+import { AVATAR } from '../Constants';
 
 type AvatarProps = {
-  name: string,
-  url: string,
-  size?: 'small' | 'medium' | 'large' | 'xlarge',
-  theme: { avatar: {} },
+  name: string;
+  url: string;
+  size?: 'small' | 'medium' | 'large' | 'xlarge';
+  theme: { avatar: {} };
 };
 
 type AvatarStyledprops = {
-  size?: string
-}
-
+  size?: string;
+};
 
 const StyledAvatar = styled.img`
   border-radius: 50%;
@@ -42,11 +41,7 @@ const Avatar = (props: AvatarProps) => {
   };
 
   return (
-    <StyledAvatar
-      size={theme[props.size]}
-      src={avatarUrl()}
-      alt="avatar"
-    />
+    <StyledAvatar size={theme[props.size]} src={avatarUrl()} alt="avatar" />
   );
 };
 
