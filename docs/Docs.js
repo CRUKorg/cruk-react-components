@@ -322,7 +322,7 @@ class Docs extends React.Component {
             <SideBar>
               <Nav>
                 <Heading h2>Components</Heading>
-                <Link to="/">Avatar</Link>
+                <Link to="/avatar">Avatar</Link>
                 <Link to="/badge">Badge</Link>
                 <Link to="/box">Box</Link>
                 <Link to="/button">Button</Link>
@@ -346,7 +346,7 @@ class Docs extends React.Component {
             </SideBar>
             <Content>
               <Router>
-                <AvatarReadme path="/" />
+                <AvatarReadme default path="/avatar" />
                 <BadgeReadme path="/badge" />
                 <BoxReadme path="/box" />
                 <ButtonReadme path="/button" />
