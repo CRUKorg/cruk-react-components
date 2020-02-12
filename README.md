@@ -66,7 +66,6 @@ npm start
 * Sort out folder structure
 * Migrate tests from OF
 * Write more tests
-* Replace Flow with Typescript
 * CI/CD pipeline
   * Build docs to github pages until CRUK Design system takes over
   * Build components
