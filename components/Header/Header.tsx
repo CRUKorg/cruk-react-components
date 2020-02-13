@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { BREAKPOINT, COLORS, SITECONFIG, TYPOGRAPHY, UTILITIES } from "./Constants";
+import { BREAKPOINT, COLORS, SITECONFIG, TYPOGRAPHY, UTILITIES } from "../Constants";
 
 type HeaderProps = {
   isSticky: boolean;
+  children: React.ReactNode;
 };
 
 const HeaderNav = styled.div`
@@ -94,20 +95,11 @@ const StyledHeader = styled.header`
   }
 `;
 
-class Header extends React.Component<HeaderProps> {
-
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-  }
-
-  handleScroll = () => {
+const Header = (props: HeaderProps): React.ReactElement => {
+  const handleScroll = () => {
     const top = document.documentElement.scrollTop || document.body.scrollTop;
     const body = document.documentElement.classList || document.body.classList;
-    if (this.props.isSticky) {
+    if (props.isSticky) {
       if (top > 100) {
         body.add('sticky');
       } else {
@@ -115,19 +107,29 @@ class Header extends React.Component<HeaderProps> {
       }
     }
   };
+  
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
 
-  render() {
-    return <StyledHeader {...this.props} onScroll={this.handleScroll}>
-        <SkipToMain className="skip-main" href="#main">Skip to main content</SkipToMain>
-        <HeaderNav>
-          <a href={SITECONFIG.logoUrl} title="Home">
-            <Logo src={SITECONFIG.logoSrc} alt={SITECONFIG.logoAlt} />
-          </a>
-          <Tagline>{SITECONFIG.siteSlogan}</Tagline>
-          {this.props.children}
-        </HeaderNav>
-      </StyledHeader>;
-  }
+    return function cleanup() {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  });
+
+  console.log(props);
+
+  return (
+    <StyledHeader {...props} onScroll={handleScroll}>
+      <SkipToMain className="skip-main" href="#main">Skip to main content</SkipToMain>
+      <HeaderNav>
+        <a href={SITECONFIG.logoUrl} title="Home">
+          <Logo src={SITECONFIG.logoSrc} alt={SITECONFIG.logoAlt} />
+        </a>
+        <Tagline>{SITECONFIG.siteSlogan}</Tagline>
+        {props.children}
+      </HeaderNav>
+    </StyledHeader>
+  );
 }
 
 export default Header;
