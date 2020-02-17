@@ -23,6 +23,7 @@ const components = [
 
 const selectComponent = (componentName, brand) => {
   cy.contains('a', componentName).click();
+  // Hide header so it doesn't get in the way.
   cy.get('head').invoke(
     'append',
     '<style type="text/css">header {display: none;}</style>',
@@ -30,7 +31,9 @@ const selectComponent = (componentName, brand) => {
   switch (componentName) {
     case 'Modal':
       cy.contains('Show me a modal').click();
-      cy.matchImageSnapshot(`${brand}_${componentName}`);
+      cy.get('[aria-modal="true"').matchImageSnapshot(
+        `${brand}_${componentName}`,
+      );
       break;
     case 'PopOver':
       cy.contains('Share left').click();
@@ -59,15 +62,14 @@ components.forEach(componentName => {
   });
 
   it(`SU2C ${componentName} Should match snapshot`, () => {
-    cy.visit('/');
+    cy.visit(`/${componentName.toLowerCase()}`);
     cy.contains('button', 'Switch theme').click();
     selectComponent(componentName, 'su2c');
   });
 
   it('has no detectable a11y violations', () => {
-    cy.visit('/');
+    cy.visit(`/${componentName.toLowerCase()}`);
     cy.injectAxe();
-    cy.contains('a', componentName).click();
     cy.checkA11y('[aria-label="Example code preview"]', {
       rules: {
         'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.

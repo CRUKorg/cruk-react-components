@@ -1,6 +1,6 @@
 context('Modal', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.visit('/modal');
   });
 
   it('should open modal, focus trap inside the modal', () => {

@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, withTheme } from 'styled-components';
 import { COLORS, TYPOGRAPHY, UTILITIES } from './Constants';
 
 const buildCustomFonts = customFonts => (
@@ -56,4 +56,4 @@ GlobalStyle.defaultProps = {
   theme: {},
 };
 
-export default GlobalStyle;
+export default withTheme(GlobalStyle);

@@ -14,7 +14,8 @@ export default {
   typography: {
     customFonts: [{
       family: 'itc_avant_garde_pro_mdbold',
-      url: '/profiles/cruk_fundraising/themes/cruk_of_bootstrap/assets/fonts/itcavantgardepro/itc_-_itcavantgardepro-bold-webfont',
+      // TODO push this to cdn.
+      url: 'http://crukorg.github.io/SU2C-drupal/assets/fonts/su2c/itc_-_itcavantgardepro-bold-webfont',
     }],
     fontFamilyHeadings: 'itc_avant_garde_pro_mdbold,Arial,sans-serif',
   },
@@ -24,7 +25,7 @@ export default {
     text-transform: uppercase;
   `,
   avatar: {
-    path: '/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/icon-avatars/su2c/',
+    path: 'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/icon-avatars/su2c/',
   },
   utilities: {
     borderRadius: 'unset',
