@@ -7,7 +7,7 @@ import Divider from './Divider';
 import ErrorText from './ErrorText/ErrorText';
 import Flex from './Flex';
 import Heading from './Heading/Heading';
-import Header from './Header';
+import Header from './Header/Header';
 import Icon from './Icon/Icon';
 import Label from './Label';
 import Link from './Link';

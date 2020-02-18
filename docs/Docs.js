@@ -38,6 +38,7 @@ import CheckboxReadme from '../components/Checkbox/README.md';
 import CollapseReadme from '../components/Collapse/README.md';
 import ErrorTextReadme from '../components/ErrorText/README.md';
 import HeadingReadme from '../components/Heading/README.md';
+import HeaderReadme from '../components/Header/README.md';
 import IconReadme from '../components/Icon/README.md';
 import LoaderReadme from '../components/Loader/README.md';
 import ModalReadme from '../components/Modal/README.md';
@@ -233,6 +234,7 @@ const components = {
         Checkbox,
         ErrorText,
         Heading,
+        Header,
         Icon,
         Loader,
         Modal,
@@ -329,6 +331,7 @@ class Docs extends React.Component {
                 <Link to="/checkbox">Checkbox</Link>
                 <Link to="/collapse">Collapse</Link>
                 <Link to="/errortext">ErrorText</Link>
+                <Link to="/header">Header</Link>
                 <Link to="/heading">Heading</Link>
                 <Link to="/icon">Icon</Link>
                 <Link to="/loader">Loader</Link>
@@ -354,6 +357,7 @@ class Docs extends React.Component {
                 <CollapseReadme path="/collapse" />
                 <ErrorTextReadme path="/errortext" />
                 <HeadingReadme path="/heading" />
+                <HeaderReadme path="/header" />
                 <IconReadme path="/icon" />
                 <LoaderReadme path="/loader" />
                 <ModalReadme path="/modal" />
