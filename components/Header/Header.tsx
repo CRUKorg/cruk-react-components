@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import styled from 'styled-components';
+
+import { useScrollPosition } from '../hooks/useScrollPosition';
+
 import {
   BREAKPOINT,
   COLORS,
@@ -8,26 +11,39 @@ import {
   UTILITIES,
 } from '../Constants';
 
-type HeaderProps = {
-  isSticky: boolean;
-};
+// TODO: Should we use REMs, do all sites use the same base size
+const HEADER_HEIGHT_LARGE = '120px';
+const HEADER_SCROLL_THRESHOLD = 100;
+const HEADER_HEIGHT_SMALL = '54px';
 
-const HeaderNav = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: ${UTILITIES.contentMaxWidth};
-  margin: 0 auto;
-`;
+const HEADER_PADDING = '15px';
+const HEADER_PADDING_SMALL = '5px';
+const HEADER_LOGO_HEIGHT_LARGE = '100px';
+const HEADER_LOGO_HEIGHT_SMALL = '50px';
+
+const HEADER_TRANSITION = '0.3s linear';
 
 const Logo = styled.img`
-  height: 60px;
-  transition: all 0.4s ease;
+  max-width: 100%;
+  max-height: 100%;
+`;
 
-  @media (min-width: ${BREAKPOINT.tablet}) {
-    height: inherit;
+const LogoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  height: ${HEADER_LOGO_HEIGHT_SMALL};
+  @media (min-width: ${BREAKPOINT.desktop}) {
+    height: ${({ isSmall }: { isSmall: boolean }) =>
+      isSmall ? HEADER_LOGO_HEIGHT_SMALL : HEADER_LOGO_HEIGHT_LARGE};
   }
+  transition: height ${HEADER_TRANSITION};
+  width: auto;
+`;
+
+const StyledLink = styled.a`
+  display: inline-block;
 `;
 
 const SkipToMain = styled.a`
@@ -57,88 +73,132 @@ const SkipToMain = styled.a`
 `;
 
 const Tagline = styled.p`
+  display: none;
   font-family: ${TYPOGRAPHY.fontFamilyHeadings};
   font-weight: ${TYPOGRAPHY.fontWeightLight};
   font-size: ${TYPOGRAPHY.headingLarge};
   color: ${COLORS.primary};
+  text-align: center;
 
-  @media (max-width: ${BREAKPOINT.tablet}) {
-    display: none;
+  @media (min-width: ${BREAKPOINT.tablet}) {
+    display: block;
   }
 `;
 
 const StyledHeader = styled.header`
-  padding: 5px 0 0 0;
+  box-sizing: border-box;
+  padding: ${HEADER_PADDING_SMALL} 0 0 0;
   position: relative;
   width: 100%;
-  border-bottom: solid 1px ${COLORS.grayLight};
+
   background-color: ${COLORS.white};
+  /* TODO: Shouldn't this all haven with post css auto-prefixing */
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   z-index: 9998;
   img {
     width: auto;
   }
-  .sticky & {
-    position: fixed;
-    z-index: 200;
-    padding: 0;
-
-    ${Logo} {
-      height: 43px;
-      margin-top: 4px;
-    }
-
-    ${Tagline} {
-      margin: 0 0 0 110px;
-    }
-  }
 
   @media (min-width: ${BREAKPOINT.mobile}) {
-    padding: 5px;
+    padding: ${HEADER_PADDING_SMALL};
   }
   @media (min-width: ${BREAKPOINT.desktop}) {
-    padding: 15px 0;
+    padding: ${HEADER_PADDING} 0;
   }
 `;
 
-class Header extends React.Component<HeaderProps> {
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
+const HeaderStickyPlaceHolder = styled.div`
+  width: 100%;
+  height: ${HEADER_HEIGHT_SMALL};
+  @media (min-width: ${BREAKPOINT.desktop}) {
+    height: ${({ isSmall }: { isSmall: boolean }) =>
+      isSmall ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE};
   }
+`;
 
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
+type HeaderStickyContainerProps = {
+  isSmall: boolean;
+  isSticky: boolean;
+};
+
+const HeaderStickyContainer = styled.div`
+  width: 100%;
+  height: ${HEADER_HEIGHT_SMALL};
+  transition: height ${HEADER_TRANSITION};
+  @media (min-width: ${BREAKPOINT.desktop}) {
+    height: ${({ isSmall }: HeaderStickyContainerProps) =>
+      isSmall ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE};
   }
+  background-color: ${COLORS.white};
+  border-bottom: solid 1px ${COLORS.grayLight};
+  position: ${({ isSticky }: HeaderStickyContainerProps) =>
+    isSticky ? 'fixed' : 'relative'};
+  top: ${({ isSticky }: HeaderStickyContainerProps) => (isSticky ? 0 : 'auto')};
+`;
 
-  handleScroll = () => {
-    const top = document.documentElement.scrollTop || document.body.scrollTop;
-    const body = document.documentElement.classList || document.body.classList;
-    if (this.props.isSticky) {
-      if (top > 100) {
-        body.add('sticky');
-      } else {
-        body.remove('sticky');
+const HeaderMainContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  max-width: ${UTILITIES.contentMaxWidth};
+  margin: 0 auto;
+`;
+
+type HeaderProps = {
+  isSticky: boolean;
+};
+
+export const Header: FunctionComponent<HeaderProps> = ({
+  isSticky,
+  children,
+}) => {
+  const [isSmall, setIsSmall] = useState(false);
+  const isBrowser = typeof window !== `undefined`;
+
+  useScrollPosition(
+    ({
+      currPos,
+    }: {
+      prevPos: { x: number; y: number };
+      currPos: { x: number; y: number };
+    }) => {
+      const shouldShrink = isBrowser
+        ? currPos.y > HEADER_SCROLL_THRESHOLD
+        : false;
+      if (shouldShrink !== isSmall) {
+        console.log({ shouldShrink });
+        setIsSmall(shouldShrink);
       }
-    }
-  };
+    },
+    [isSmall],
+    null,
+    true,
+    200,
+  );
 
-  render() {
-    return (
-      <StyledHeader {...this.props} onScroll={this.handleScroll}>
-        <SkipToMain className="skip-main" href="#main">
-          Skip to main content
-        </SkipToMain>
-        <HeaderNav>
-          <a href={SITECONFIG.logoUrl} title="Home">
-            <Logo src={SITECONFIG.logoSrc} alt={SITECONFIG.logoAlt} />
-          </a>
-          <Tagline>{SITECONFIG.siteSlogan}</Tagline>
-          {this.props.children}
-        </HeaderNav>
-      </StyledHeader>
-    );
-  }
-}
+  return (
+    <StyledHeader>
+      <HeaderStickyPlaceHolder isSmall={isSmall}>
+        <HeaderStickyContainer isSmall={isSmall} isSticky={isSticky}>
+          <SkipToMain className="skip-main" href="#main">
+            Skip to main content
+          </SkipToMain>
+          <HeaderMainContent>
+            <StyledLink href={SITECONFIG.logoUrl} title="Home">
+              <LogoWrapper isSmall={isSmall}>
+                <Logo src={SITECONFIG.logoSrc} alt={SITECONFIG.logoAlt} />
+              </LogoWrapper>
+            </StyledLink>
+            <Tagline>{SITECONFIG.siteSlogan}</Tagline>
+            {children}
+          </HeaderMainContent>
+        </HeaderStickyContainer>
+      </HeaderStickyPlaceHolder>
+    </StyledHeader>
+  );
+};
 
 export default Header;
