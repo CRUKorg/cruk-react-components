@@ -13,17 +13,18 @@ import {
 
 // TODO: Should we use REMs, do all sites use the same base size
 const HEADER_HEIGHT_LARGE = '120px';
-const HEADER_SCROLL_THRESHOLD = 100;
 const HEADER_HEIGHT_SMALL = '54px';
+const HEADER_SCROLL_DOWN_THRESHOLD = 0;
+const HEADER_SCROLL_UP_THRESHOLD = 120;
 
-const HEADER_PADDING = '15px';
-const HEADER_PADDING_SMALL = '5px';
-const HEADER_LOGO_HEIGHT_LARGE = '100px';
-const HEADER_LOGO_HEIGHT_SMALL = '50px';
+const HEADER_LOGO_HEIGHT_LARGE = '80px';
+const HEADER_LOGO_HEIGHT_SMALL = '40px';
 
-const HEADER_TRANSITION = '0.3s linear';
+const HEADER_TRANSITION = '0.2s linear';
 
 const Logo = styled.img`
+  height: 100%;
+  width: auto;
   max-width: 100%;
   max-height: 100%;
 `;
@@ -32,13 +33,12 @@ const LogoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 100%;
+  transition: height ${HEADER_TRANSITION};
   height: ${HEADER_LOGO_HEIGHT_SMALL};
   @media (min-width: ${BREAKPOINT.desktop}) {
     height: ${({ isSmall }: { isSmall: boolean }) =>
       isSmall ? HEADER_LOGO_HEIGHT_SMALL : HEADER_LOGO_HEIGHT_LARGE};
   }
-  transition: height ${HEADER_TRANSITION};
   width: auto;
 `;
 
@@ -79,6 +79,7 @@ const Tagline = styled.p`
   font-size: ${TYPOGRAPHY.headingLarge};
   color: ${COLORS.primary};
   text-align: center;
+  flex: 1 1 auto;
 
   @media (min-width: ${BREAKPOINT.tablet}) {
     display: block;
@@ -87,33 +88,19 @@ const Tagline = styled.p`
 
 const StyledHeader = styled.header`
   box-sizing: border-box;
-  padding: ${HEADER_PADDING_SMALL} 0 0 0;
   position: relative;
   width: 100%;
-
   background-color: ${COLORS.white};
-  /* TODO: Shouldn't this all haven with post css auto-prefixing */
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
   z-index: 9998;
-  img {
-    width: auto;
-  }
-
-  @media (min-width: ${BREAKPOINT.mobile}) {
-    padding: ${HEADER_PADDING_SMALL};
-  }
-  @media (min-width: ${BREAKPOINT.desktop}) {
-    padding: ${HEADER_PADDING} 0;
-  }
 `;
 
 const HeaderStickyPlaceHolder = styled.div`
+  box-sizing: border-box;
   width: 100%;
+  transition: height ${HEADER_TRANSITION};
   height: ${HEADER_HEIGHT_SMALL};
   @media (min-width: ${BREAKPOINT.desktop}) {
-    height: ${({ isSmall }: { isSmall: boolean }) =>
-      isSmall ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE};
+    height: ${HEADER_HEIGHT_LARGE};
   }
 `;
 
@@ -124,8 +111,8 @@ type HeaderStickyContainerProps = {
 
 const HeaderStickyContainer = styled.div`
   width: 100%;
-  height: ${HEADER_HEIGHT_SMALL};
   transition: height ${HEADER_TRANSITION};
+  height: ${HEADER_HEIGHT_SMALL};
   @media (min-width: ${BREAKPOINT.desktop}) {
     height: ${({ isSmall }: HeaderStickyContainerProps) =>
       isSmall ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE};
@@ -160,14 +147,20 @@ export const Header: FunctionComponent<HeaderProps> = ({
 
   useScrollPosition(
     ({
+      prevPos,
       currPos,
     }: {
       prevPos: { x: number; y: number };
       currPos: { x: number; y: number };
     }) => {
+      const scrollingDown = prevPos.y <= currPos.y;
+
       const shouldShrink = isBrowser
-        ? currPos.y > HEADER_SCROLL_THRESHOLD
+        ? scrollingDown
+          ? currPos.y > HEADER_SCROLL_DOWN_THRESHOLD
+          : currPos.y > HEADER_SCROLL_UP_THRESHOLD
         : false;
+
       if (shouldShrink !== isSmall) {
         console.log({ shouldShrink });
         setIsSmall(shouldShrink);
@@ -181,7 +174,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
 
   return (
     <StyledHeader>
-      <HeaderStickyPlaceHolder isSmall={isSmall}>
+      <HeaderStickyPlaceHolder>
         <HeaderStickyContainer isSmall={isSmall} isSticky={isSticky}>
           <SkipToMain className="skip-main" href="#main">
             Skip to main content
