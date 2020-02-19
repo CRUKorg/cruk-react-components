@@ -10,7 +10,7 @@ It is also recommended that the logo width doesn't exceed 350px. If you need a w
 
 ### Header Text (optional)
 
-This is a single line of text and the character limit depends on the theme, logo and children width.
+This is a single line of text and the character limit depends on the theme, logo and children width. This is only visible on desktop at the top of the page
 
 ### Right section (optional)
 

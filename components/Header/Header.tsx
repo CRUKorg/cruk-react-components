@@ -11,15 +11,75 @@ import {
   UTILITIES,
 } from '../Constants';
 
-// TODO: Should we use REMs, do all sites use the same base size
+// TODO: Should we use REMs? Do all sites use the same base size?
 const HEADER_HEIGHT_LARGE = '120px';
 const HEADER_HEIGHT_SMALL = '54px';
 const HEADER_SCROLL_THRESHOLD = 66;
-
+const HEADER_PADDING = '20px';
 const HEADER_LOGO_HEIGHT_LARGE = '80px';
 const HEADER_LOGO_HEIGHT_SMALL = '40px';
 
-const HEADER_TRANSITION = '0.3s linear';
+type HeaderStickyContainerProps = {
+  isSmall: boolean;
+  isSticky: boolean;
+};
+
+const StyledHeader = styled.header`
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  background-color: ${COLORS.white};
+  z-index: 9998;
+`;
+
+const HeaderStickyPlaceHolder = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  border-bottom: ${({ isSmall, isSticky }: HeaderStickyContainerProps) =>
+    !isSmall || !isSticky ? `solid 1px ${COLORS.grayLight}` : `none`};
+
+  height: ${HEADER_HEIGHT_SMALL};
+
+  @media (min-width: ${BREAKPOINT.desktop}) {
+    height: ${HEADER_HEIGHT_LARGE};
+  }
+`;
+
+const HeaderStickyContainer = styled.div`
+  width: 100%;
+  /* Parent border adds 1 px, we sometimes want the border on the parent during size changes */
+  padding: 0;
+  background-color: ${COLORS.white};
+  position: relative;
+  border-bottom: solid 1px ${COLORS.grayLight};
+  padding: 0 ${HEADER_PADDING};
+  border-bottom: ${({ isSmall, isSticky }: HeaderStickyContainerProps) =>
+    isSmall && isSticky ? `solid 1px ${COLORS.grayLight}` : `none`};
+  top: ${({ isSticky }: HeaderStickyContainerProps) => (isSticky ? 0 : 'auto')};
+
+  height: calc(${HEADER_HEIGHT_SMALL} - 1px);
+  position: ${({ isSticky }: HeaderStickyContainerProps) =>
+    isSticky ? 'fixed' : 'relative'};
+
+  @media (min-width: ${BREAKPOINT.desktop}) {
+    position: ${({ isSticky, isSmall }: HeaderStickyContainerProps) =>
+      isSticky && isSmall ? 'fixed' : 'relative'};
+    height: ${({ isSmall, isSticky }: HeaderStickyContainerProps) =>
+      isSmall && isSticky
+        ? HEADER_HEIGHT_SMALL
+        : `calc(${HEADER_HEIGHT_LARGE} - 1px)`};
+  }
+`;
+
+const HeaderMainContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  max-width: ${UTILITIES.contentMaxWidth};
+  margin: 0 auto;
+`;
 
 const Logo = styled.img`
   height: 100%;
@@ -32,13 +92,16 @@ const LogoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* transition: height ${HEADER_TRANSITION}; */
-  height: ${HEADER_LOGO_HEIGHT_SMALL};
-  @media (min-width: ${BREAKPOINT.desktop}) {
-    height: ${({ isSmall }: { isSmall: boolean }) =>
-      isSmall ? HEADER_LOGO_HEIGHT_SMALL : HEADER_LOGO_HEIGHT_LARGE};
-  }
   width: auto;
+
+  height: ${HEADER_LOGO_HEIGHT_SMALL};
+
+  @media (min-width: ${BREAKPOINT.desktop}) {
+    height: ${({ isSmall, isSticky }: HeaderStickyContainerProps) =>
+      isSmall && isSticky
+        ? HEADER_LOGO_HEIGHT_SMALL
+        : HEADER_LOGO_HEIGHT_LARGE};
+  }
 `;
 
 const StyledLink = styled.a`
@@ -72,73 +135,19 @@ const SkipToMain = styled.a`
 `;
 
 const Tagline = styled.p`
-  display: none;
+  flex: 1 1 auto;
   font-family: ${TYPOGRAPHY.fontFamilyHeadings};
   font-weight: ${TYPOGRAPHY.fontWeightLight};
   font-size: ${TYPOGRAPHY.headingLarge};
   color: ${COLORS.primary};
   text-align: center;
-  flex: 1 1 auto;
+
+  display: none;
 
   @media (min-width: ${BREAKPOINT.desktop}) {
-    display: ${({ isSmall }: { isSmall: boolean }) =>
-      isSmall ? `none` : `block`};
+    display: ${({ isSmall, isSticky }: HeaderStickyContainerProps) =>
+      isSmall && isSticky ? `none` : `block`};
   }
-`;
-
-const StyledHeader = styled.header`
-  box-sizing: border-box;
-  position: relative;
-  width: 100%;
-  background-color: ${COLORS.white};
-  z-index: 9998;
-`;
-
-const HeaderStickyPlaceHolder = styled.div`
-  box-sizing: border-box;
-  width: 100%;
-  height: ${HEADER_HEIGHT_SMALL};
-  border-bottom: none;
-
-  @media (min-width: ${BREAKPOINT.desktop}) {
-    height: ${HEADER_HEIGHT_LARGE};
-    border-bottom: ${({ isSmall }: { isSmall: boolean }) =>
-      isSmall ? `none` : `solid 1px ${COLORS.grayLight}`};
-  }
-`;
-
-type HeaderStickyContainerProps = {
-  isSmall: boolean;
-  isSticky: boolean;
-};
-
-const HeaderStickyContainer = styled.div`
-  width: 100%;
-  /* transition: height ${HEADER_TRANSITION}; */
-  height: ${HEADER_HEIGHT_SMALL};
-  background-color: ${COLORS.white};
-  position: fixed;
-  border-bottom: solid 1px ${COLORS.grayLight};
-
-  @media (min-width: ${BREAKPOINT.desktop}) {
-    height: ${({ isSmall }: HeaderStickyContainerProps) =>
-      isSmall ? HEADER_HEIGHT_SMALL : `calc(${HEADER_HEIGHT_LARGE} - 1px)`};
-    position: ${({ isSticky, isSmall }: HeaderStickyContainerProps) =>
-      isSticky && isSmall ? 'fixed' : 'relative'};
-    border-bottom: ${({ isSmall }: HeaderStickyContainerProps) =>
-      isSmall ? `solid 1px ${COLORS.grayLight}` : `none`};
-  }
-  top: ${({ isSticky }: HeaderStickyContainerProps) => (isSticky ? 0 : 'auto')};
-`;
-
-const HeaderMainContent = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  max-width: ${UTILITIES.contentMaxWidth};
-  margin: 0 auto;
 `;
 
 type HeaderProps = {
@@ -183,19 +192,21 @@ export const Header: FunctionComponent<HeaderProps> = ({
 
   return (
     <StyledHeader>
-      <HeaderStickyPlaceHolder isSmall={isSmall}>
+      <HeaderStickyPlaceHolder isSmall={isSmall} isSticky={isSticky}>
         <HeaderStickyContainer isSmall={isSmall} isSticky={isSticky}>
           <SkipToMain className="skip-main" href="#main">
             Skip to main content
           </SkipToMain>
           <HeaderMainContent>
             <StyledLink href={logoLinkUrl} title="Home">
-              <LogoWrapper isSmall={isSmall}>
+              <LogoWrapper isSmall={isSmall} isSticky={isSticky}>
                 <Logo src={logoImageSrc} alt={logoAltText} />
               </LogoWrapper>
             </StyledLink>
             {headerText && headerText.length && (
-              <Tagline isSmall={isSmall}>{headerText}</Tagline>
+              <Tagline isSmall={isSmall} isSticky={isSticky}>
+                {headerText}
+              </Tagline>
             )}
             {children}
           </HeaderMainContent>
