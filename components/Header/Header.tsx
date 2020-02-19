@@ -14,13 +14,12 @@ import {
 // TODO: Should we use REMs, do all sites use the same base size
 const HEADER_HEIGHT_LARGE = '120px';
 const HEADER_HEIGHT_SMALL = '54px';
-const HEADER_SCROLL_DOWN_THRESHOLD = 0;
-const HEADER_SCROLL_UP_THRESHOLD = 120;
+const HEADER_SCROLL_THRESHOLD = 66;
 
 const HEADER_LOGO_HEIGHT_LARGE = '80px';
 const HEADER_LOGO_HEIGHT_SMALL = '40px';
 
-const HEADER_TRANSITION = '0.2s linear';
+const HEADER_TRANSITION = '0.3s linear';
 
 const Logo = styled.img`
   height: 100%;
@@ -33,7 +32,7 @@ const LogoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  transition: height ${HEADER_TRANSITION};
+  /* transition: height ${HEADER_TRANSITION}; */
   height: ${HEADER_LOGO_HEIGHT_SMALL};
   @media (min-width: ${BREAKPOINT.desktop}) {
     height: ${({ isSmall }: { isSmall: boolean }) =>
@@ -81,8 +80,9 @@ const Tagline = styled.p`
   text-align: center;
   flex: 1 1 auto;
 
-  @media (min-width: ${BREAKPOINT.tablet}) {
-    display: block;
+  @media (min-width: ${BREAKPOINT.desktop}) {
+    display: ${({ isSmall }: { isSmall: boolean }) =>
+      isSmall ? `none` : `block`};
   }
 `;
 
@@ -97,10 +97,13 @@ const StyledHeader = styled.header`
 const HeaderStickyPlaceHolder = styled.div`
   box-sizing: border-box;
   width: 100%;
-  transition: height ${HEADER_TRANSITION};
   height: ${HEADER_HEIGHT_SMALL};
+  border-bottom: none;
+
   @media (min-width: ${BREAKPOINT.desktop}) {
     height: ${HEADER_HEIGHT_LARGE};
+    border-bottom: ${({ isSmall }: { isSmall: boolean }) =>
+      isSmall ? `none` : `solid 1px ${COLORS.grayLight}`};
   }
 `;
 
@@ -111,16 +114,20 @@ type HeaderStickyContainerProps = {
 
 const HeaderStickyContainer = styled.div`
   width: 100%;
-  transition: height ${HEADER_TRANSITION};
+  /* transition: height ${HEADER_TRANSITION}; */
   height: ${HEADER_HEIGHT_SMALL};
+  background-color: ${COLORS.white};
+  position: fixed;
+  border-bottom: solid 1px ${COLORS.grayLight};
+
   @media (min-width: ${BREAKPOINT.desktop}) {
     height: ${({ isSmall }: HeaderStickyContainerProps) =>
-      isSmall ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE};
+      isSmall ? HEADER_HEIGHT_SMALL : `calc(${HEADER_HEIGHT_LARGE} - 1px)`};
+    position: ${({ isSticky, isSmall }: HeaderStickyContainerProps) =>
+      isSticky && isSmall ? 'fixed' : 'relative'};
+    border-bottom: ${({ isSmall }: HeaderStickyContainerProps) =>
+      isSmall ? `solid 1px ${COLORS.grayLight}` : `none`};
   }
-  background-color: ${COLORS.white};
-  border-bottom: solid 1px ${COLORS.grayLight};
-  position: ${({ isSticky }: HeaderStickyContainerProps) =>
-    isSticky ? 'fixed' : 'relative'};
   top: ${({ isSticky }: HeaderStickyContainerProps) => (isSticky ? 0 : 'auto')};
 `;
 
@@ -135,11 +142,19 @@ const HeaderMainContent = styled.div`
 `;
 
 type HeaderProps = {
-  isSticky: boolean;
+  isSticky?: boolean;
+  logoImageSrc?: string;
+  logoLinkUrl?: string;
+  logoAltText?: string;
+  headerText?: string | null;
 };
 
 export const Header: FunctionComponent<HeaderProps> = ({
   isSticky,
+  logoImageSrc = SITECONFIG.logoSrc,
+  logoLinkUrl = SITECONFIG.logoUrl,
+  logoAltText = SITECONFIG.logoAlt,
+  headerText = SITECONFIG.siteSlogan,
   children,
 }) => {
   const [isSmall, setIsSmall] = useState(false);
@@ -147,45 +162,41 @@ export const Header: FunctionComponent<HeaderProps> = ({
 
   useScrollPosition(
     ({
-      prevPos,
       currPos,
     }: {
       prevPos: { x: number; y: number };
       currPos: { x: number; y: number };
     }) => {
-      const scrollingDown = prevPos.y <= currPos.y;
-
       const shouldShrink = isBrowser
-        ? scrollingDown
-          ? currPos.y > HEADER_SCROLL_DOWN_THRESHOLD
-          : currPos.y > HEADER_SCROLL_UP_THRESHOLD
+        ? currPos.y > HEADER_SCROLL_THRESHOLD
         : false;
 
       if (shouldShrink !== isSmall) {
-        console.log({ shouldShrink });
         setIsSmall(shouldShrink);
       }
     },
     [isSmall],
     null,
     true,
-    200,
+    100,
   );
 
   return (
     <StyledHeader>
-      <HeaderStickyPlaceHolder>
+      <HeaderStickyPlaceHolder isSmall={isSmall}>
         <HeaderStickyContainer isSmall={isSmall} isSticky={isSticky}>
           <SkipToMain className="skip-main" href="#main">
             Skip to main content
           </SkipToMain>
           <HeaderMainContent>
-            <StyledLink href={SITECONFIG.logoUrl} title="Home">
+            <StyledLink href={logoLinkUrl} title="Home">
               <LogoWrapper isSmall={isSmall}>
-                <Logo src={SITECONFIG.logoSrc} alt={SITECONFIG.logoAlt} />
+                <Logo src={logoImageSrc} alt={logoAltText} />
               </LogoWrapper>
             </StyledLink>
-            <Tagline>{SITECONFIG.siteSlogan}</Tagline>
+            {headerText && headerText.length && (
+              <Tagline isSmall={isSmall}>{headerText}</Tagline>
+            )}
             {children}
           </HeaderMainContent>
         </HeaderStickyContainer>

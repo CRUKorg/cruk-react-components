@@ -26,6 +26,11 @@ This has been kept quite open you can place any child elements in here but ideal
 
 ## Props
 
-<!-- | Name | Type | Options | Default | Description |
-| :- | :- | :-: | :- | :- |
-|  | "h1" "h2" "h3" "h4" "h5" "h6" |  |  | Apply correct level of headings | -->
+| Name         | Type      | Options | Default               | Description                                                      |
+| :----------- | :-------- | :-----: | :-------------------- | :--------------------------------------------------------------- |
+| isSticky     | boolean   |         | false                 | should header stick to the top of the page when the user scrolls |
+| logoImageSrc | string    |         | SITECONFIG.logoSrc    | src of logo image                                                |
+| logoLinkUrl  | string    |         | SITECONFIG.logoUrl    | Logo link URL                                                    |
+| logoAltText  | string    |         | SITECONFIG.logoAlt    | Logo link alternative text for accessibility                     |
+| headerText   | string    |         | SITECONFIG.siteSlogan | Text that appears in the center of the header                    |
+| children     | ReactNode |         | null                  | Used to place components on the right side                       |
