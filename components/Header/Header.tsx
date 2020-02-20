@@ -50,9 +50,9 @@ const HeaderStickyContainer = styled.div`
   position: relative;
   border-bottom: solid 1px ${COLORS.grayLight};
   padding: 0 ${HEADER_PADDING};
+  height: ${HEADER_HEIGHT_SMALL};
 
   top: ${({ isSticky }: HeaderStickyContainerProps) => (isSticky ? 0 : 'auto')};
-  height: ${HEADER_HEIGHT_SMALL};
   position: ${({ isSticky }: HeaderStickyContainerProps) =>
     isSticky ? 'fixed' : 'relative'};
 
@@ -186,7 +186,11 @@ export const Header: FunctionComponent<HeaderProps> = ({
   return (
     <StyledHeader>
       <HeaderStickyPlaceHolder>
-        <HeaderStickyContainer isSmall={isSmall} isSticky={isSticky}>
+        <HeaderStickyContainer
+          className="cy-header-sticky-container"
+          isSmall={isSmall}
+          isSticky={isSticky}
+        >
           <SkipToMain className="skip-main" href="#main">
             Skip to main content
           </SkipToMain>
