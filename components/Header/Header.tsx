@@ -8,6 +8,7 @@ import {
   COLORS,
   SITECONFIG,
   TYPOGRAPHY,
+  SPACING,
   UTILITIES,
 } from '../Constants';
 
@@ -15,7 +16,7 @@ import {
 const HEADER_HEIGHT_LARGE = '120px';
 const HEADER_HEIGHT_SMALL = '54px';
 const HEADER_SCROLL_THRESHOLD = 66;
-const HEADER_PADDING = '20px';
+const HEADER_PADDING = SPACING.small;
 const HEADER_LOGO_HEIGHT_LARGE = '80px';
 const HEADER_LOGO_HEIGHT_SMALL = '40px';
 
@@ -35,9 +36,6 @@ const StyledHeader = styled.header`
 const HeaderStickyPlaceHolder = styled.div`
   box-sizing: border-box;
   width: 100%;
-  border-bottom: ${({ isSmall, isSticky }: HeaderStickyContainerProps) =>
-    !isSmall || !isSticky ? `solid 1px ${COLORS.grayLight}` : `none`};
-
   height: ${HEADER_HEIGHT_SMALL};
 
   @media (min-width: ${BREAKPOINT.desktop}) {
@@ -47,17 +45,14 @@ const HeaderStickyPlaceHolder = styled.div`
 
 const HeaderStickyContainer = styled.div`
   width: 100%;
-  /* Parent border adds 1 px, we sometimes want the border on the parent during size changes */
   padding: 0;
   background-color: ${COLORS.white};
   position: relative;
   border-bottom: solid 1px ${COLORS.grayLight};
   padding: 0 ${HEADER_PADDING};
-  border-bottom: ${({ isSmall, isSticky }: HeaderStickyContainerProps) =>
-    isSmall && isSticky ? `solid 1px ${COLORS.grayLight}` : `none`};
-  top: ${({ isSticky }: HeaderStickyContainerProps) => (isSticky ? 0 : 'auto')};
 
-  height: calc(${HEADER_HEIGHT_SMALL} - 1px);
+  top: ${({ isSticky }: HeaderStickyContainerProps) => (isSticky ? 0 : 'auto')};
+  height: ${HEADER_HEIGHT_SMALL};
   position: ${({ isSticky }: HeaderStickyContainerProps) =>
     isSticky ? 'fixed' : 'relative'};
 
@@ -65,9 +60,7 @@ const HeaderStickyContainer = styled.div`
     position: ${({ isSticky, isSmall }: HeaderStickyContainerProps) =>
       isSticky && isSmall ? 'fixed' : 'relative'};
     height: ${({ isSmall, isSticky }: HeaderStickyContainerProps) =>
-      isSmall && isSticky
-        ? HEADER_HEIGHT_SMALL
-        : `calc(${HEADER_HEIGHT_LARGE} - 1px)`};
+      isSmall && isSticky ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE};
   }
 `;
 
@@ -125,7 +118,7 @@ const SkipToMain = styled.a`
     height: auto;
     overflow: auto;
     margin: 10px 35%;
-    padding: 5px;
+    padding: ${SPACING.extraSmall};
     border-radius: 15px;
     border: 4px solid yellow;
     text-align: center;
@@ -192,7 +185,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
 
   return (
     <StyledHeader>
-      <HeaderStickyPlaceHolder isSmall={isSmall} isSticky={isSticky}>
+      <HeaderStickyPlaceHolder>
         <HeaderStickyContainer isSmall={isSmall} isSticky={isSticky}>
           <SkipToMain className="skip-main" href="#main">
             Skip to main content
