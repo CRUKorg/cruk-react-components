@@ -4,7 +4,7 @@ context('Modal', () => {
   });
 
   it('should open modal, focus trap inside the modal', () => {
-    cy.contains('Show me a modal').click();
+    cy.contains('Show me a modal').type('{enter}');
     cy.focused().should('have.attr', 'aria-label', 'close');
     cy.focused().tab();
     cy.focused().should('have.text', 'Get me out of here');
