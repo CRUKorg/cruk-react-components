@@ -3,14 +3,7 @@ import styled from 'styled-components';
 
 import { useScrollPosition } from 'hooks/useScrollPosition';
 
-import {
-  BREAKPOINT,
-  COLORS,
-  SITECONFIG,
-  TYPOGRAPHY,
-  SPACING,
-  UTILITIES,
-} from 'components/Constants';
+import { BREAKPOINT, COLORS, SITECONFIG, FONT_SIZES, TYPOGRAPHY, SPACING, UTILITIES } from 'components/Constants';
 
 // TODO: Should we use REMs? Do all sites use the same base size?
 const HEADER_HEIGHT_LARGE = '120px';
