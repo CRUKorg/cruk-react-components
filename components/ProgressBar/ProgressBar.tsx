@@ -5,7 +5,7 @@ import styled, {
   ThemeProvider,
   withTheme,
 } from 'styled-components';
-import { COLORS, TYPOGRAPHY, UTILITIES } from '../Constants';
+import { COLORS, FONT_SIZES, UTILITIES } from '../Constants';
 
 type ProgressBarProps = {
   theme: { progress: {}; colors: {} };
@@ -27,17 +27,17 @@ const ProgressBarSharedStyling = css`
   float: left;
   width: 1%;
   height: 100%;
-  font-size: ${TYPOGRAPHY.fontSizeSmall}
+  font-size: ${FONT_SIZES.small};
   line-height: ${UTILITIES.lineHeight};
   color: ${props => props.theme.colors.white};
   text-align: center;
   background-color: ${props => props.theme.colors.progressBar};
   border-radius: ${UTILITIES.borderRadius};
-  -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
-  box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
-  -webkit-transition: width .6s ease;
-  -o-transition: width .6s ease;
-  transition: width .6s ease;
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  -webkit-transition: width 0.6s ease;
+  -o-transition: width 0.6s ease;
+  transition: width 0.6s ease;
 `;
 
 const ProgressSharedStyling = css`
@@ -207,8 +207,8 @@ const CircularValue = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  font-size: ${TYPOGRAPHY.fontSizeMedium};
-  line-height: ${TYPOGRAPHY.fontSizeMedium};
+  font-size: ${FONT_SIZES.large};
+  line-height: ${FONT_SIZES.large};
   text-align: center;
   height: 100%;
   text-transform: uppercase;

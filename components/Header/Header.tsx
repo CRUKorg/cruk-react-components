@@ -10,6 +10,7 @@ import {
   TYPOGRAPHY,
   SPACING,
   UTILITIES,
+  FONT_SIZES,
 } from '../Constants';
 
 // TODO: Should we use REMs? Do all sites use the same base size?
@@ -131,7 +132,7 @@ const Tagline = styled.p`
   flex: 1 1 auto;
   font-family: ${TYPOGRAPHY.fontFamilyHeadings};
   font-weight: ${TYPOGRAPHY.fontWeightLight};
-  font-size: ${TYPOGRAPHY.headingLarge};
+  font-size: ${FONT_SIZES.extraLarge};
   color: ${COLORS.primary};
   text-align: center;
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
-import { COLORS, TYPOGRAPHY } from '../Constants';
+import { COLORS, TYPOGRAPHY, FONT_SIZES } from '../Constants';
 
 type StepProps = {
   theme: { colors: {} };
@@ -13,7 +13,7 @@ const StepWrapper = styled.div`
   text-align: center;
   text-transform: capitalize;
   font-family: ${TYPOGRAPHY.fontFamilyHeadings};
-  font-size: ${TYPOGRAPHY.fontSizeSmall};
+  font-size: ${FONT_SIZES.small};
   font-weight: ${TYPOGRAPHY.fontWeightHeavy};
 `;
 

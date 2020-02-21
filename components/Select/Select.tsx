@@ -1,17 +1,17 @@
 import React from 'react';
 import styled, { withTheme } from 'styled-components';
 
-import { COLORS, TYPOGRAPHY, UTILITIES } from '../Constants';
+import { COLORS, TYPOGRAPHY, FONT_SIZES, UTILITIES } from '../Constants';
 import ErrorText from '../ErrorText/ErrorText';
 import { WithLabel } from '../Label';
 
 type StyledInputProps = {
-  hasError: boolean,
-  error: string,
+  hasError: boolean;
+  error: string;
   label: string;
   hintText: string;
   required: boolean;
-}
+};
 
 const StyledInput = styled.select<StyledInputProps>`
   appearance: none;
@@ -36,7 +36,7 @@ const StyledInput = styled.select<StyledInputProps>`
         : props.theme.colors.gray};
   color: ${props => props.theme.colors.grayDarker};
   display: block;
-  font-size: ${props => props.theme.typography.fontSize};
+  font-size: ${props => props.theme.fontSizes.medium};
   padding: 7px 24px 5px 10px;
   width: 100%;
   height: 40px;
@@ -53,7 +53,7 @@ type SelectProps = {
   label: string;
   onChange: React.ChangeEventHandler<HTMLSelectElement>;
   placeholder: string;
-  theme?: { colors: {}; typography: {}; utilities: {} };
+  theme?: { colors: {}; typography: {}; fontSizes: {}; utilities: {} };
   type: 'text' | 'number' | 'email' | 'password';
   value: string;
   hintText: string;
@@ -70,6 +70,10 @@ const Select = (props: SelectProps) => {
     typography: {
       ...TYPOGRAPHY,
       ...props.theme.typography,
+    },
+    fontSizes: {
+      ...FONT_SIZES,
+      ...props.theme.fontSizes,
     },
     utilities: {
       ...UTILITIES,
