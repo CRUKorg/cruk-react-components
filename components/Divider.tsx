@@ -23,8 +23,6 @@ type DividerProps = {
   children: any;
 };
 
-export const Divider = (props: DividerProps) => (
-  <StyledDivider>{props.children}</StyledDivider>
-);
+export const Divider = (props: DividerProps) => <StyledDivider>{props.children}</StyledDivider>;
 
 export default Divider;

@@ -113,11 +113,7 @@ const Totaliser = (props: TotaliserProps) => {
       {props.isCompact ? (
         <CompactWrapper theme={theme}>
           <Total>£{formatMoney(props.total)}</Total>
-          {props.target !== null && (
-            <Summary as="span">
-              {props.summary(formatMoney(props.target), result)}
-            </Summary>
-          )}
+          {props.target !== null && <Summary as="span">{props.summary(formatMoney(props.target), result)}</Summary>}
         </CompactWrapper>
       ) : (
         <DetailWrapper theme={theme}>
@@ -129,11 +125,7 @@ const Totaliser = (props: TotaliserProps) => {
       {props.target !== null && (
         <ProgressBarWrapper theme={theme}>
           <StyledProgressBar percentage={result} />
-          {!props.isCompact && (
-            <Summary>
-              {props.summary(formatMoney(props.target), result)}
-            </Summary>
-          )}
+          {!props.isCompact && <Summary>{props.summary(formatMoney(props.target), result)}</Summary>}
         </ProgressBarWrapper>
       )}
       {props.children}

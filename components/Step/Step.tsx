@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
-import { COLORS, TYPOGRAPHY } from '../Constants';
+import { COLORS, TYPOGRAPHY, FONT_SIZES } from '../Constants';
 
 type StepProps = {
   theme: { colors: {} };
@@ -13,7 +13,7 @@ const StepWrapper = styled.div`
   text-align: center;
   text-transform: capitalize;
   font-family: ${TYPOGRAPHY.fontFamilyHeadings};
-  font-size: ${TYPOGRAPHY.fontSizeSmall};
+  font-size: ${FONT_SIZES.small};
   font-weight: ${TYPOGRAPHY.fontWeightHeavy};
 `;
 
@@ -112,19 +112,14 @@ const Step = (props: StepProps) => {
       ...props.theme.colors,
     },
   };
-  const totalSteps =
-    Array.isArray(props.steps) && Object.keys(props.steps).length;
+  const totalSteps = Array.isArray(props.steps) && Object.keys(props.steps).length;
   return (
     <ThemeProvider theme={theme}>
       <StepWrapper>
         <StepList total={totalSteps}>
           {Array.isArray(props.steps) &&
             props.steps.map((step, i) => (
-              <StepItem
-                key={i}
-                active={i + 1 === props.current}
-                done={i + 1 < props.current}
-              >
+              <StepItem key={i} active={i + 1 === props.current} done={i + 1 < props.current}>
                 <StepBar>{i + 1 < props.current && <StepTick />}</StepBar>
                 {step}
               </StepItem>

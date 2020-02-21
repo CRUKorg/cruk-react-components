@@ -3,8 +3,8 @@ import styled, { keyframes, ThemeProvider, withTheme } from 'styled-components';
 import { COLORS } from '../Constants';
 
 type LoaderProps = {
-  theme: { colors: {} },
-  children: any
+  theme: { colors: {} };
+  children: any;
 };
 
 const SpinnerWrapper = styled.div`
@@ -27,7 +27,7 @@ const Spinner = styled.div`
   width: 70px;
   margin: 22px auto;
   text-align: center;
-  
+
   span {
     display: inline-block;
     width: 16px;
@@ -37,17 +37,17 @@ const Spinner = styled.div`
     border-radius: 100%;
     animation: ${BounceDelay} 1.2s infinite ease-in-out both;
   }
-  
+
   span:nth-child(1) {
     animation-delay: -0.32s;
-    -webkit-animation-delay: -0.32s
+    -webkit-animation-delay: -0.32s;
   }
-  
+
   span:nth-child(2) {
     background-color: ${props => props.theme.colors.secondary};
     animation-delay: -0.16s;
   }
-  
+
   span:nth-child(3) {
     background-color: ${props => props.theme.colors.tertiary};
   }

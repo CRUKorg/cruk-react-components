@@ -1,23 +1,23 @@
 import React from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
-import { BREAKPOINT, COLORS, TYPOGRAPHY } from '../Constants';
+import { BREAKPOINT, COLORS, TYPOGRAPHY, FONT_SIZES } from '../Constants';
 
 type PaginationProps = {
-  current: number,
-  items: number,
-  hideLast: boolean,
-  pagerCallback: Function,
-  perPage: number,
-  searchParam?: string,
-  theme: { pagination: {}, colors: {} },
-  children: any
+  current: number;
+  items: number;
+  hideLast: boolean;
+  pagerCallback: Function;
+  perPage: number;
+  searchParam?: string;
+  theme: { pagination: {}; colors: {} };
+  children: any;
 };
 
 type PaginationStyledProps = {
-  active?: boolean,
-  name?: string,
-  disabled?: boolean
-}
+  active?: boolean;
+  name?: string;
+  disabled?: boolean;
+};
 
 const PagerWrapper = styled.div`
   display: table;
@@ -33,7 +33,7 @@ const PagerList = styled.ul`
 const PagerLink = styled.a`
   font-weight: normal;
   font-family: ${TYPOGRAPHY.fontFamilyBase};
-  font-size: ${TYPOGRAPHY.fontSizeSmall};
+  font-size: ${FONT_SIZES.small};
   color: ${props => props.theme.colors.white};
   background-color: ${props => props.theme.colors.primary};
   cursor: pointer;
@@ -51,43 +51,57 @@ const PagerLink = styled.a`
     text-decoration: none;
   }
   
-  ${(itemProps: PaginationStyledProps) => itemProps.active && css`
-    color: ${props => props.theme.colors.grayDarker};
-    background-color: ${props => props.theme.colors.grayLight};
-    cursor: default;
-    &:hover {
-      background-color: ${props => props.theme.colors.grayLight};
-      text-decoration: none;
-    }
-  `}
-  ${itemProps => (itemProps.name === 'Prev' || itemProps.name === 'Next') && css`
-    color: ${props => props.theme.colors.primary};
-    background-color: transparent;
-    font-weight: bold;
-    padding: 8px 6px;
-    background-color: transparent;
-    &:hover {
+  ${(itemProps: PaginationStyledProps) =>
+    itemProps.active &&
+    css`
+      color: ${props => props.theme.colors.grayDarker};
+      background-color: ${({
+        theme: {
+          colors: { grayLight },
+        },
+      }) => grayLight};
+      cursor: default;
+      &:hover {
+        background-color: ${({
+          theme: {
+            colors: { grayLight },
+          },
+        }) => grayLight};
+        text-decoration: none;
+      }
+    `}
+  ${itemProps =>
+    (itemProps.name === 'Prev' || itemProps.name === 'Next') &&
+    css`
+      color: ${props => props.theme.colors.primary};
       background-color: transparent;
-      text-decoration: underline;
-    }
-    &:focus,
-    &:active, 
-    &:visited {
-      text-decoration: none;
-    }
-  `}
-  ${itemProps => itemProps.disabled && css`
-    color: ${props => props.theme.colors.grayLight};
-    cursor: not-allowed;
-    text-decoration: none;
-    &:hover,
-    &:focus,
-    &:active, 
-    &:visited {
+      font-weight: bold;
+      padding: 8px 6px;
+      background-color: transparent;
+      &:hover {
+        background-color: transparent;
+        text-decoration: underline;
+      }
+      &:focus,
+      &:active,
+      &:visited {
+        text-decoration: none;
+      }
+    `}
+  ${itemProps =>
+    itemProps.disabled &&
+    css`
       color: ${props => props.theme.colors.grayLight};
+      cursor: not-allowed;
       text-decoration: none;
-    }
-  `}
+      &:hover,
+      &:focus,
+      &:active,
+      &:visited {
+        color: ${props => props.theme.colors.grayLight};
+        text-decoration: none;
+      }
+    `}
 `;
 const PagerItem = styled.li`
   display: none;
@@ -115,8 +129,8 @@ const Pagination = (props: PaginationProps) => {
     },
     pagination: props.theme.pagination,
   };
-  const perPage = (props.perPage > 0) ? props.perPage : 1;
-  const totalPages = (Math.ceil(props.items / perPage)) || 1;
+  const perPage = props.perPage > 0 ? props.perPage : 1;
+  const totalPages = Math.ceil(props.items / perPage) || 1;
   const linkProps = (number: number) => ({
     href: `${window.location.pathname}?${props.searchParam}=${number}`,
     onClick: (e: any) => {
@@ -129,24 +143,38 @@ const Pagination = (props: PaginationProps) => {
     let pager = [];
     // get the list of items
     for (let number = 1; number <= total; number++) {
-      list.push(<PagerItem key={number}>
-        <PagerLink active={number === active} {...linkProps(number)}>
-          {number}
-        </PagerLink>
-      </PagerItem>);
+      list.push(
+        <PagerItem key={number}>
+          <PagerLink active={number === active} {...linkProps(number)}>
+            {number}
+          </PagerLink>
+        </PagerItem>,
+      );
     }
-    const first = list.slice(0, 1).concat(<PagerItem key="first"><span>...</span></PagerItem>);
-    const last = list.slice(list.length - 1).concat(<PagerItem key="last"><span>...</span></PagerItem>).reverse();
+    const first = list.slice(0, 1).concat(
+      <PagerItem key="first">
+        <span>...</span>
+      </PagerItem>,
+    );
+    const last = list
+      .slice(list.length - 1)
+      .concat(
+        <PagerItem key="last">
+          <span>...</span>
+        </PagerItem>,
+      )
+      .reverse();
     pager = list.slice(0, total);
     if (total > 7) {
       if (active <= 4) {
         pager = props.hideLast ? list.slice(0, 7) : list.slice(0, 5).concat(last);
       } else {
-        pager = (active > (total - 4)) ?
-          first.concat(list.slice(-5)) :
-          (props.hideLast ? first.concat(list.slice(active - 3, active + 2)) :
-            first.concat(list.slice(active - 2, active + 1)).concat(last)
-          );
+        pager =
+          active > total - 4
+            ? first.concat(list.slice(-5))
+            : props.hideLast
+            ? first.concat(list.slice(active - 3, active + 2))
+            : first.concat(list.slice(active - 2, active + 1)).concat(last);
       }
     }
     return pager;
@@ -181,9 +209,9 @@ const Pagination = (props: PaginationProps) => {
   );
 };
 
-Pagination.defaultProps = ({
+Pagination.defaultProps = {
   searchParam: 'page',
   theme: {},
-});
+};
 
 export default withTheme(Pagination);

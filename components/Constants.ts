@@ -10,6 +10,7 @@ export const SITECONFIG = {
     'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png',
 };
 
+// TODO: should this be in shared constants it feels pretty specific to avatar
 export const AVATAR = {
   small: '35px',
   medium: '50px',
@@ -55,6 +56,7 @@ export const COLORS = {
   circularProgressBg: '#c8c9c7',
 };
 
+// TODO: possibly convert to REMS, once a base font size has been agreed.
 export const SPACING = {
   extraExtraSmall: '8px',
   extraSmall: '16px',
@@ -63,6 +65,16 @@ export const SPACING = {
   large: '40px',
   extraLarge: '48px',
   extraExtraLarge: '56px',
+};
+
+export const FONT_SIZES = {
+  extraSmall: '0.75rem', // 12px
+  small: '0.857rem', // 14px
+  medium: '1em', // 16px
+  large: '1.125rem', // 18px
+  extraLarge: '1.4375rem', // 23px
+  extraExtraLarge: '2rem', // 32px
+  extraExtraExtraLarge: '3.125rem', // 50px
 };
 
 export const TYPOGRAPHY = {
@@ -76,23 +88,11 @@ export const TYPOGRAPHY = {
   fontFamilyBase:
     'Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif',
   fontFamilyHeadings: 'MuseoSans-500,Calibri,Arial,sans-serif',
-  fontSizeExtraSmall: '0.75rem', // 12px
-  fontSizeSmall: '0.857rem', // 14px
   fontSizeBase: '16px',
-  fontSize: '1rem', // 16px
-  fontSizeMedium: '1.125rem', // 18px
-  fontSizeLarge: '1.4375rem', // 23px
-  fontSizeExtraLarge: '3.125rem', // 50px
   fontWeightHeavy: '700',
   fontWeightMedium: '500', // default
   fontWeightLight: '300',
   fontWeightVLight: '100',
-  headingExtraLarge: '2rem', // 32px
-  headingLarge: '1.4375rem', // 23px
-  headingMedium: '1.1875rem', // 19px
-  headingBase: '1rem', // 16px
-  headingSmall: '0.875rem', // 14px
-  headingExtraSmall: '0.75rem', // 12px
 };
 
 export const UTILITIES = {

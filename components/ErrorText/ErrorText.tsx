@@ -3,8 +3,8 @@ import styled, { withTheme } from 'styled-components';
 import { COLORS } from '../Constants';
 
 type ErrorTextProps = {
-  theme: { colors: {} },
-  children: any
+  theme: { colors: {} };
+  children: any;
 };
 
 const StyledErrorText = styled.div`

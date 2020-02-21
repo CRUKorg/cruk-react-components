@@ -1,6 +1,6 @@
 import React, { useState, useRef, Fragment, KeyboardEvent } from 'react';
 import styled from 'styled-components';
-import { COLORS, TYPOGRAPHY } from '../Constants';
+import { COLORS, FONT_SIZES } from '../Constants';
 import Button from '../Button/Button';
 
 type CollapseProps = {
@@ -13,7 +13,7 @@ type CollapseProps = {
 
 const DefaultHeader = styled(Button)`
   color: ${COLORS.secondary};
-  font-size: ${TYPOGRAPHY.fontSizeSmall};
+  font-size: ${FONT_SIZES.small};
   font-weight: normal;
   margin-bottom: 0;
   padding: 0 0 10px;
@@ -23,16 +23,15 @@ const DefaultHeader = styled(Button)`
   }
 
   & svg {
-    font-size: ${TYPOGRAPHY.fontSizeExtraSmall};
-    transform: ${(props: CollapseProps) =>
-      props.active === true ? 'rotate(90deg)' : 'none'};
+    font-size: ${FONT_SIZES.extraSmall};
+    transform: ${(props: CollapseProps) => (props.active === true ? 'rotate(90deg)' : 'none')};
     transition-duration: 0.5s;
   }
 `;
 
 const CollapseContent = styled.div`
   margin: 0;
-  font-size: ${TYPOGRAPHY.fontSizeSmall};
+  font-size: ${FONT_SIZES.small};
   height: ${(props: CollapseProps) => props.contentHeight}px;
   overflow: hidden;
   transition: 0.5s ease;
@@ -52,9 +51,7 @@ const Collapse = (props: CollapseProps) => {
 
   const toggleCollapse = () => {
     setActiveStatus(activeStatus === false ? true : false);
-    setContentHeight(
-      activeStatus === true ? '0' : `${content.current.scrollHeight}`,
-    );
+    setContentHeight(activeStatus === true ? '0' : `${content.current.scrollHeight}`);
   };
 
   const triggerToggle = (event: KeyboardEvent) => {
@@ -78,13 +75,7 @@ const Collapse = (props: CollapseProps) => {
 
     if (isDefault())
       return (
-        <DefaultHeader
-          {...defaultProps}
-          active={activeStatus}
-          appearance="link"
-          icon="chevronRight"
-          iconAlign="right"
-        >
+        <DefaultHeader {...defaultProps} active={activeStatus} appearance="link" icon="chevronRight" iconAlign="right">
           {props.headerTitle}
         </DefaultHeader>
       );
