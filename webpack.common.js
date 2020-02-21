@@ -1,3 +1,5 @@
+const path = require('path');
+
 function createWebpackConfig(config) {
   const defaults = {
     module: {
@@ -29,11 +31,15 @@ function createWebpackConfig(config) {
       ],
     },
     resolve: {
+      modules: [
+        path.resolve(__dirname, 'node_modules'),
+        path.resolve(__dirname, './'),
+      ],
       extensions: ['.tsx', '.ts', '.js', '.json'],
     },
   };
 
   return Object.assign({}, defaults, config);
-};
+}
 
 exports.createWebpackConfig = createWebpackConfig;
