@@ -1,10 +1,5 @@
 import React from 'react';
-import styled, {
-  css,
-  keyframes,
-  ThemeProvider,
-  withTheme,
-} from 'styled-components';
+import styled, { css, keyframes, ThemeProvider, withTheme } from 'styled-components';
 import { COLORS, FONT_SIZES, UTILITIES } from '../Constants';
 
 type ProgressBarProps = {
@@ -118,12 +113,8 @@ type AnimationRightProps = PercentageProps;
 const AnimationRight = (props: AnimationRightProps) => keyframes`
   0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
   100% {
-    -webkit-transform: rotate(${
-      props.percentage > 50 ? '180' : props.percentage * 3.6
-    });
-    transform: rotate(${
-      props.percentage > 50 ? '180' : props.percentage * 3.6
-    }deg);
+    -webkit-transform: rotate(${props.percentage > 50 ? '180' : props.percentage * 3.6});
+    transform: rotate(${props.percentage > 50 ? '180' : props.percentage * 3.6}deg);
   }
 `;
 
@@ -132,12 +123,8 @@ type AnimationLeftProps = PercentageProps;
 const AnimationLeft = (props: AnimationLeftProps) => keyframes`
   0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
   100% {
-    -webkit-transform: rotate(${
-      props.percentage > 100 ? '180' : props.percentage * 3.6 - 180
-    });
-    transform: rotate(${
-      props.percentage > 100 ? '180' : props.percentage * 3.6 - 180
-    }deg);
+    -webkit-transform: rotate(${props.percentage > 100 ? '180' : props.percentage * 3.6 - 180});
+    transform: rotate(${props.percentage > 100 ? '180' : props.percentage * 3.6 - 180}deg);
   }
 `;
 

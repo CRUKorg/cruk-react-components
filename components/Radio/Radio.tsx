@@ -8,9 +8,7 @@ type StyledLabelProps = {
 
 const StyledLabel = styled.label<StyledLabelProps>`
   border-radius: ${props => props.theme.utilities.borderRadius};
-  border: solid 2px
-    ${props =>
-      props.checked ? props.theme.colors.primary : props.theme.colors.gray};
+  border: solid 2px ${props => (props.checked ? props.theme.colors.primary : props.theme.colors.gray)};
   cursor: pointer;
   display: inline-block;
   font-weight: ${props => (props.checked ? 'bold' : 'normal')};
@@ -22,7 +20,7 @@ const StyledInput = styled.input`
 `;
 
 type RadioProps = {
-  className: string,
+  className: string;
   checked: boolean;
   disabled: boolean;
   name: string;
@@ -45,11 +43,7 @@ const Radio = (props: RadioProps) => {
   };
 
   return (
-    <StyledLabel
-      className={props.className}
-      checked={props.checked}
-      theme={theme}
-    >
+    <StyledLabel className={props.className} checked={props.checked} theme={theme}>
       <StyledInput
         checked={props.checked}
         disabled={props.disabled}

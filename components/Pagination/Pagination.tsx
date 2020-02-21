@@ -167,9 +167,7 @@ const Pagination = (props: PaginationProps) => {
     pager = list.slice(0, total);
     if (total > 7) {
       if (active <= 4) {
-        pager = props.hideLast
-          ? list.slice(0, 7)
-          : list.slice(0, 5).concat(last);
+        pager = props.hideLast ? list.slice(0, 7) : list.slice(0, 5).concat(last);
       } else {
         pager =
           active > total - 4
@@ -199,8 +197,7 @@ const Pagination = (props: PaginationProps) => {
             <PagerLink
               name="Next"
               disabled={props.current === totalPages}
-              {...(props.current !== totalPages &&
-                linkProps(props.current + 1))}
+              {...(props.current !== totalPages && linkProps(props.current + 1))}
             >
               Next
             </PagerLink>

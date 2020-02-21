@@ -112,19 +112,14 @@ const Step = (props: StepProps) => {
       ...props.theme.colors,
     },
   };
-  const totalSteps =
-    Array.isArray(props.steps) && Object.keys(props.steps).length;
+  const totalSteps = Array.isArray(props.steps) && Object.keys(props.steps).length;
   return (
     <ThemeProvider theme={theme}>
       <StepWrapper>
         <StepList total={totalSteps}>
           {Array.isArray(props.steps) &&
             props.steps.map((step, i) => (
-              <StepItem
-                key={i}
-                active={i + 1 === props.current}
-                done={i + 1 < props.current}
-              >
+              <StepItem key={i} active={i + 1 === props.current} done={i + 1 < props.current}>
                 <StepBar>{i + 1 < props.current && <StepTick />}</StepBar>
                 {step}
               </StepItem>

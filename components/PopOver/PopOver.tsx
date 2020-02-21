@@ -71,9 +71,7 @@ const PopOver = (props: PopOverProps) => {
       css`
         margin-top: 10px;
       `}
-    ${(props.position === 'bottom' ||
-      props.position === 'left' ||
-      props.position === 'right') &&
+    ${(props.position === 'bottom' || props.position === 'left' || props.position === 'right') &&
       css`
         bottom: unset;
         left: unset;
@@ -108,8 +106,7 @@ const PopOver = (props: PopOverProps) => {
             top: calc(50% - 10px);
           }
           &:before {
-            border-color: transparent rgba(0, 0, 0, 0.25) transparent
-              transparent;
+            border-color: transparent rgba(0, 0, 0, 0.25) transparent transparent;
           }
           &:after {
             border-color: transparent ${COLORS.white} transparent transparent;
@@ -132,8 +129,7 @@ const PopOver = (props: PopOverProps) => {
             top: calc(50% - 10px);
           }
           &:before {
-            border-color: transparent transparent transparent
-              rgba(0, 0, 0, 0.25);
+            border-color: transparent transparent transparent rgba(0, 0, 0, 0.25);
           }
           &:after {
             border-color: transparent transparent transparent ${COLORS.white};

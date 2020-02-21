@@ -24,8 +24,7 @@ const DefaultHeader = styled(Button)`
 
   & svg {
     font-size: ${FONT_SIZES.extraSmall};
-    transform: ${(props: CollapseProps) =>
-      props.active === true ? 'rotate(90deg)' : 'none'};
+    transform: ${(props: CollapseProps) => (props.active === true ? 'rotate(90deg)' : 'none')};
     transition-duration: 0.5s;
   }
 `;
@@ -52,9 +51,7 @@ const Collapse = (props: CollapseProps) => {
 
   const toggleCollapse = () => {
     setActiveStatus(activeStatus === false ? true : false);
-    setContentHeight(
-      activeStatus === true ? '0' : `${content.current.scrollHeight}`,
-    );
+    setContentHeight(activeStatus === true ? '0' : `${content.current.scrollHeight}`);
   };
 
   const triggerToggle = (event: KeyboardEvent) => {
@@ -78,13 +75,7 @@ const Collapse = (props: CollapseProps) => {
 
     if (isDefault())
       return (
-        <DefaultHeader
-          {...defaultProps}
-          active={activeStatus}
-          appearance="link"
-          icon="chevronRight"
-          iconAlign="right"
-        >
+        <DefaultHeader {...defaultProps} active={activeStatus} appearance="link" icon="chevronRight" iconAlign="right">
           {props.headerTitle}
         </DefaultHeader>
       );

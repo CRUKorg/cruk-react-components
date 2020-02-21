@@ -8,30 +8,25 @@ const StyledUserBlock = styled.div`
   align-items: center;
   justify-content: start;
   margin-bottom: ${props =>
-    (props.theme.utilities && props.theme.utilities.rhythmVerticalBase) ||
-    UTILITIES.rhythmVerticalBase};
+    (props.theme.utilities && props.theme.utilities.rhythmVerticalBase) || UTILITIES.rhythmVerticalBase};
   flex: 1;
 `;
 
 const Details = styled.div`
   flex: 1;
   margin-left: ${props =>
-    (props.theme.utilities && props.theme.utilities.rhythmHorizontalBase) ||
-    UTILITIES.rhythmHorizontalBase};
+    (props.theme.utilities && props.theme.utilities.rhythmHorizontalBase) || UTILITIES.rhythmHorizontalBase};
   text-align: left;
 `;
 
 const Name = styled.div`
   font-weight: ${props =>
-    (props.theme.typography && props.theme.typography.fontWeightHeavy) ||
-    TYPOGRAPHY.fontWeightHeavy};
-  font-size: ${({ theme: { fontSizes } }) =>
-    fontSizes && fontSizes.medium ? fontSizes.medium : FONT_SIZES.medium};
+    (props.theme.typography && props.theme.typography.fontWeightHeavy) || TYPOGRAPHY.fontWeightHeavy};
+  font-size: ${({ theme: { fontSizes } }) => (fontSizes && fontSizes.medium ? fontSizes.medium : FONT_SIZES.medium)};
 `;
 
 const Extra = styled.div`
-  color: ${props =>
-    (props.theme.colors && props.theme.colors.grayDark) || COLORS.grayDark};
+  color: ${props => (props.theme.colors && props.theme.colors.grayDark) || COLORS.grayDark};
   margin-top: 4px;
 `;
 
@@ -46,11 +41,7 @@ type UserBlockProps = {
 const UserBlock = (props: UserBlockProps) => {
   return (
     <StyledUserBlock>
-      <Avatar
-        name={props.avatarName || props.name}
-        url={props.avatarUrl}
-        size={props.size}
-      />
+      <Avatar name={props.avatarName || props.name} url={props.avatarUrl} size={props.size} />
       <Details>
         <Name>{props.name || 'Anonymous'}</Name>
         {props.extra && <Extra>{props.extra}</Extra>}

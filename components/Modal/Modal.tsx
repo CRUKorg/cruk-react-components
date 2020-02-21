@@ -77,11 +77,7 @@ class Modal extends React.Component<ModalProps> {
   }
 
   closeByEsc(event: KeyboardEvent) {
-    if (
-      !this.props.disableEsc &&
-      event.which == 27 &&
-      this.props.closeButton !== null
-    ) {
+    if (!this.props.disableEsc && event.which == 27 && this.props.closeButton !== null) {
       this.props.closeButton();
     }
   }

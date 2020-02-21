@@ -94,9 +94,7 @@ const StyledButton = styled.button`
     props.children[1] &&
     css`
       svg {
-        ${props.iconAlign === 'right'
-          ? 'margin-left: 5px'
-          : 'margin-right: 5px'};
+        ${props.iconAlign === 'right' ? 'margin-left: 5px' : 'margin-right: 5px'};
       }
     `}
   
@@ -116,24 +114,20 @@ const StyledButton = styled.button`
     props.disabled &&
     css`
       cursor: not-allowed;
-      background-color: ${props.appearance === 'primary' ||
-      props.appearance === 'secondary'
+      background-color: ${props.appearance === 'primary' || props.appearance === 'secondary'
         ? props.theme.colors.gray
         : 'transparent'};
-      color: ${props.appearance === 'primary' ||
-      props.appearance === 'secondary'
+      color: ${props.appearance === 'primary' || props.appearance === 'secondary'
         ? COLORS.white
         : props.theme.colors.gray};
       border-color: ${props.theme.colors.gray};
 
       &:focus,
       &:hover {
-        background-color: ${props.appearance === 'primary' ||
-        props.appearance === 'secondary'
+        background-color: ${props.appearance === 'primary' || props.appearance === 'secondary'
           ? props.theme.colors.gray
           : 'transparent'};
-        color: ${props.appearance === 'primary' ||
-        props.appearance === 'secondary'
+        color: ${props.appearance === 'primary' || props.appearance === 'secondary'
           ? COLORS.white
           : props.theme.colors.gray};
         border-color: ${props.theme.colors.gray};
@@ -161,14 +155,11 @@ const Button = (props: ButtonProps) => {
   };
   const icon = props.icon && <Icon name={props.icon} />;
   const iconRight = props.iconAlign === 'right';
-  const camelToLowerCase = (string: string) =>
-    string && string.replace(/([a-z])([A-Z][a-z])/g, '$1 $2').toLowerCase();
+  const camelToLowerCase = (string: string) => string && string.replace(/([a-z])([A-Z][a-z])/g, '$1 $2').toLowerCase();
   const ariaLabel = () => {
     if (props.ariaLabel) return props.ariaLabel;
     return (
-      React.Children.toArray(props.children).find(
-        child => typeof child === 'string',
-      ) || camelToLowerCase(props.icon)
+      React.Children.toArray(props.children).find(child => typeof child === 'string') || camelToLowerCase(props.icon)
     );
   };
 

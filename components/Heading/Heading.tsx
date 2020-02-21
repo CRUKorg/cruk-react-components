@@ -3,13 +3,14 @@ import styled, { css } from 'styled-components';
 import { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../Constants';
 
 type StyledHeadingProps = {
-  center?: string,
-  right?: string,
-  css?: any
-}
+  center?: string;
+  right?: string;
+  css?: any;
+};
 
 const StyledHeading = css`
-  font-family: ${props => (props.theme.typography ? props.theme.typography.fontFamilyHeadings : TYPOGRAPHY.fontFamilyHeadings)};
+  font-family: ${props =>
+    props.theme.typography ? props.theme.typography.fontFamilyHeadings : TYPOGRAPHY.fontFamilyHeadings};
   font-weight: ${TYPOGRAPHY.fontWeightMedium};
   color: ${COLORS.grayDarker};
   line-height: ${UTILITIES.lineHeight};
@@ -27,43 +28,68 @@ const StyledHeading = css`
 
 const H1 = styled.h1`
   ${StyledHeading}
-  font-size: 1.4375rem;                                              // 23px
-  @media (min-width: ${BREAKPOINT.desktop}) { font-size: 2rem; }     // 32px
+  font-size: 1.4375rem; // 23px
+  @media (min-width: ${BREAKPOINT.desktop}) {
+    font-size: 2rem;
+  } // 32px
 `;
 
 const H2 = styled.h2`
   ${StyledHeading};
-  font-size: 1.1875rem;                                               // 19px
-  @media (min-width: ${BREAKPOINT.desktop}) { font-size: 1.4375rem; } // 23px
+  font-size: 1.1875rem; // 19px
+  @media (min-width: ${BREAKPOINT.desktop}) {
+    font-size: 1.4375rem;
+  } // 23px
 `;
 
 const H3 = styled.h3`
   ${StyledHeading};
-  font-size: 1rem;                                                    // 16px
-  @media (min-width: ${BREAKPOINT.desktop}) { font-size: 1.1875rem; } // 19px
+  font-size: 1rem; // 16px
+  @media (min-width: ${BREAKPOINT.desktop}) {
+    font-size: 1.1875rem;
+  } // 19px
 `;
 
 const H4 = styled.h4`
   ${StyledHeading};
-  font-size: 0.875rem;                                                // 14px
-  @media (min-width: ${BREAKPOINT.desktop}) { font-size: 1rem; }      // 16px
+  font-size: 0.875rem; // 14px
+  @media (min-width: ${BREAKPOINT.desktop}) {
+    font-size: 1rem;
+  } // 16px
 `;
 
 const H5 = styled.h5`
   ${StyledHeading};
-  font-size: 0.875rem;                                                // 14px
-  @media (min-width: ${BREAKPOINT.desktop}) { font-size: 1rem; }      // 16px
+  font-size: 0.875rem; // 14px
+  @media (min-width: ${BREAKPOINT.desktop}) {
+    font-size: 1rem;
+  } // 16px
 `;
 
 const H6 = styled.h6`
   ${StyledHeading};
-  font-size: 0.75rem;                                                 // 12px
-  @media (min-width: ${BREAKPOINT.desktop}) { font-size: 0.875rem; }  // 14px
+  font-size: 0.75rem; // 12px
+  @media (min-width: ${BREAKPOINT.desktop}) {
+    font-size: 0.875rem;
+  } // 14px
 `;
 
 const Heading = ({
-  h1, h2, h3, h4, h5, h6, ...props
-} : {h1: string, h2: String, h3: string, h4: string, h5: string, h6: string}) => {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  ...props
+}: {
+  h1: string;
+  h2: String;
+  h3: string;
+  h4: string;
+  h5: string;
+  h6: string;
+}) => {
   if (h2) return <H2 {...props} />;
   if (h3) return <H3 {...props} />;
   if (h4) return <H4 {...props} />;
