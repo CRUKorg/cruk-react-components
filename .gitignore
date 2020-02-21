@@ -4,4 +4,8 @@
 # production
 /public
 
+# test
+/cypress/screenshots
+/cypress/videos
+
 .idea
