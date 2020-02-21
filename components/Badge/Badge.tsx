@@ -11,6 +11,7 @@ type BadgeProps = {
   children?: any;
 };
 
+// TODO Look at where 15 comes from in the height and width bellow.
 const StyledBadge = styled.span`
   background-color: ${props => props.getBgColor};
   color: ${COLORS.white};
@@ -26,9 +27,9 @@ const StyledBadge = styled.span`
       padding: 0;
       border-radius: 50%;
       display: block;
-      height: ${props.size + parseFloat('15')}px;
-      width: ${props.size + parseFloat('15')}px;
-      line-height: ${props.size + parseFloat('15')}px;
+      height: ${props.size + 15}px;
+      width: ${props.size + 15}px;
+      line-height: ${props.size + 15}px;
       svg {
         height: ${props.size}px;
       }
