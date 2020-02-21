@@ -4,12 +4,12 @@ import { COLORS, ICONS } from '../Constants';
 import { camelize } from '../Helper';
 
 type IconProps = {
-  name?: string,
-  color?: string,
-  size?: number,
-  transform?: string,
-  theme?: { icon: {}, colors: {} },
-  getColor?: string
+  name?: string;
+  color?: string;
+  size?: number;
+  transform?: string;
+  theme?: { icon: {}; colors: {} };
+  getColor?: string;
 };
 
 const StyledIcon = styled.svg`

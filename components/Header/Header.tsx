@@ -53,12 +53,10 @@ const HeaderStickyContainer = styled.div`
   height: ${HEADER_HEIGHT_SMALL};
 
   top: ${({ isSticky }: HeaderStickyContainerProps) => (isSticky ? 0 : 'auto')};
-  position: ${({ isSticky }: HeaderStickyContainerProps) =>
-    isSticky ? 'fixed' : 'relative'};
+  position: ${({ isSticky }: HeaderStickyContainerProps) => (isSticky ? 'fixed' : 'relative')};
 
   @media (min-width: ${BREAKPOINT.desktop}) {
-    position: ${({ isSticky, isSmall }: HeaderStickyContainerProps) =>
-      isSticky && isSmall ? 'fixed' : 'relative'};
+    position: ${({ isSticky, isSmall }: HeaderStickyContainerProps) => (isSticky && isSmall ? 'fixed' : 'relative')};
     height: ${({ isSmall, isSticky }: HeaderStickyContainerProps) =>
       isSmall && isSticky ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE};
   }
@@ -91,9 +89,7 @@ const LogoWrapper = styled.div`
 
   @media (min-width: ${BREAKPOINT.desktop}) {
     height: ${({ isSmall, isSticky }: HeaderStickyContainerProps) =>
-      isSmall && isSticky
-        ? HEADER_LOGO_HEIGHT_SMALL
-        : HEADER_LOGO_HEIGHT_LARGE};
+      isSmall && isSticky ? HEADER_LOGO_HEIGHT_SMALL : HEADER_LOGO_HEIGHT_LARGE};
   }
 `;
 
@@ -131,15 +127,14 @@ const Tagline = styled.p`
   flex: 1 1 auto;
   font-family: ${TYPOGRAPHY.fontFamilyHeadings};
   font-weight: ${TYPOGRAPHY.fontWeightLight};
-  font-size: ${TYPOGRAPHY.headingLarge};
+  font-size: ${FONT_SIZES.extraLarge};
   color: ${COLORS.primary};
   text-align: center;
 
   display: none;
 
   @media (min-width: ${BREAKPOINT.desktop}) {
-    display: ${({ isSmall, isSticky }: HeaderStickyContainerProps) =>
-      isSmall && isSticky ? `none` : `block`};
+    display: ${({ isSmall, isSticky }: HeaderStickyContainerProps) => (isSmall && isSticky ? `none` : `block`)};
   }
 `;
 
@@ -163,15 +158,8 @@ export const Header: FunctionComponent<HeaderProps> = ({
   const isBrowser = typeof window !== `undefined`;
 
   useScrollPosition(
-    ({
-      currPos,
-    }: {
-      prevPos: { x: number; y: number };
-      currPos: { x: number; y: number };
-    }) => {
-      const shouldShrink = isBrowser
-        ? currPos.y > HEADER_SCROLL_THRESHOLD
-        : false;
+    ({ currPos }: { prevPos: { x: number; y: number }; currPos: { x: number; y: number } }) => {
+      const shouldShrink = isBrowser ? currPos.y > HEADER_SCROLL_THRESHOLD : false;
 
       if (shouldShrink !== isSmall) {
         setIsSmall(shouldShrink);
@@ -186,11 +174,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
   return (
     <StyledHeader>
       <HeaderStickyPlaceHolder>
-        <HeaderStickyContainer
-          className="cy-header-sticky-container"
-          isSmall={isSmall}
-          isSticky={isSticky}
-        >
+        <HeaderStickyContainer className="cy-header-sticky-container" isSmall={isSmall} isSticky={isSticky}>
           <SkipToMain className="skip-main" href="#main">
             Skip to main content
           </SkipToMain>

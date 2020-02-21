@@ -40,9 +40,7 @@ const Avatar = (props: AvatarProps) => {
     return theme.path + fileName;
   };
 
-  return (
-    <StyledAvatar size={theme[props.size]} src={avatarUrl()} alt="avatar" />
-  );
+  return <StyledAvatar size={theme[props.size]} src={avatarUrl()} alt="avatar" />;
 };
 
 Avatar.defaultProps = {

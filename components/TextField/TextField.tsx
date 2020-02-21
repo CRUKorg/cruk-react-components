@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
-import { COLORS, TYPOGRAPHY, UTILITIES } from '../Constants';
+import { COLORS, TYPOGRAPHY, FONT_SIZES, UTILITIES } from '../Constants';
 import ErrorText from '../ErrorText/ErrorText';
 import { WithLabel } from '../Label';
 
@@ -10,7 +10,7 @@ const Extra = styled.div`
   border-radius: ${props => props.theme.utilities.borderRadius};
   border: solid 2px ${props => props.theme.colors.grayLight};
   color: ${props => props.theme.colors.grayDarker};
-  font-size: ${props => props.theme.typography.fontSize};
+  font-size: ${props => props.theme.typography.medium};
   font-weight: ${props => props.theme.typography.fontWeightLight};
   padding: 7px 6px 5px;
   line-height: 1rem;
@@ -61,12 +61,10 @@ const StyledInput = styled.input<StyledInputProps>`
   background-image: none;
   border-radius: ${props => props.theme.utilities.borderRadius};
   border: solid 2px ${props =>
-    props.hasError || props.error
-      ? props.theme.colors.textError
-      : props.theme.colors.gray};
+    props.hasError || props.error ? props.theme.colors.textError : props.theme.colors.gray};
   color: ${props => props.theme.colors.grayDarker};
   display: block;
-  font-size: ${props => props.theme.typography.fontSize};
+  font-size: ${props => props.theme.fontSizes.medium};
   padding: 6px 8px;
   width: 100%;
   transition: border-color 150ms linear;
@@ -119,10 +117,7 @@ type WrapperProps = {
 };
 
 const Wrapper = (props: WrapperProps) =>
-  !props.extraTop &&
-  !props.extraBottom &&
-  !props.extraRight &&
-  !props.extraLeft ? (
+  !props.extraTop && !props.extraBottom && !props.extraRight && !props.extraLeft ? (
     props.children
   ) : (
     <div>{props.children}</div>
@@ -155,6 +150,9 @@ const TextField = (props: TextFieldProps) => {
       ...TYPOGRAPHY,
       ...props.theme.typography,
     },
+    fontSizes: {
+      ...FONT_SIZES,
+    },
     utilities: {
       ...UTILITIES,
       ...props.theme.utilities,
@@ -163,34 +161,18 @@ const TextField = (props: TextFieldProps) => {
 
   const renderContent = (
     <React.Fragment>
-      {!!props.extraLeft && (
-        <ExtraLeft theme={theme}>{props.extraLeft}</ExtraLeft>
-      )}
-      <StyledInput
-        {...props}
-        theme={theme}
-        aria-invalid={props.hasError || !!props.error}
-      />
-      {!!props.extraRight && (
-        <ExtraRight theme={theme}>{props.extraRight}</ExtraRight>
-      )}
+      {!!props.extraLeft && <ExtraLeft theme={theme}>{props.extraLeft}</ExtraLeft>}
+      <StyledInput {...props} theme={theme} aria-invalid={props.hasError || !!props.error} />
+      {!!props.extraRight && <ExtraRight theme={theme}>{props.extraRight}</ExtraRight>}
     </React.Fragment>
   );
 
   return (
     <WithLabel {...props}>
       <Wrapper {...props}>
-        {!!props.extraTop && (
-          <ExtraTop theme={theme}>{props.extraTop}</ExtraTop>
-        )}
-        {!!props.extraRight || !!props.extraLeft ? (
-          <ExtraWrapper>{renderContent}</ExtraWrapper>
-        ) : (
-          renderContent
-        )}
-        {!!props.extraBottom && (
-          <ExtraBottom theme={theme}>{props.extraBottom}</ExtraBottom>
-        )}
+        {!!props.extraTop && <ExtraTop theme={theme}>{props.extraTop}</ExtraTop>}
+        {!!props.extraRight || !!props.extraLeft ? <ExtraWrapper>{renderContent}</ExtraWrapper> : renderContent}
+        {!!props.extraBottom && <ExtraBottom theme={theme}>{props.extraBottom}</ExtraBottom>}
         {!!props.error && <ErrorText>{props.error}</ErrorText>}
       </Wrapper>
     </WithLabel>
