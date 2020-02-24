@@ -5,7 +5,7 @@ import { COLORS, FONT_SIZES } from '../Constants';
 type BadgeProps = {
   bgColor: string;
   text: boolean;
-  theme: { colors: {} };
+  theme: { colors: { [key: string]: string } };
   getBgColor?: string;
   size?: number;
   children?: any;

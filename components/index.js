@@ -6,11 +6,12 @@ import Checkbox from './Checkbox/Checkbox';
 import Divider from './Divider';
 import ErrorText from './ErrorText/ErrorText';
 import Flex from './Flex';
+import Footer from './Footer';
 import Heading from './Heading/Heading';
 import Header from './Header/Header';
 import Icon from './Icon/Icon';
 import Label from './Label';
-import Link from './Link';
+import A from './A';
 import Loader from './Loader/Loader';
 import Modal from './Modal/Modal';
 import Pagination from './Pagination/Pagination';
@@ -34,11 +35,12 @@ export {
   Divider,
   ErrorText,
   Flex,
+  Footer,
   Heading,
   Header,
   Icon,
   Label,
-  Link,
+  A,
   Loader,
   Modal,
   Pagination,

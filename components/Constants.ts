@@ -1,13 +1,11 @@
 export const SITECONFIG = {
   cdnPath: 'https://ccp-s3.int.cruk.org/',
-  assetPath:
-    'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/',
+  assetPath: 'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/',
   siteSlogan: 'Together we will beat cancer',
   siteUrl: 'https://fundraise.cancerresearchuk.org/',
   logoUrl: '/',
   logoAlt: 'Cancer Research UK Giving Page',
-  logoSrc:
-    'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png',
+  logoSrc: 'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png',
 };
 
 // TODO: should this be in shared constants it feels pretty specific to avatar
@@ -26,7 +24,7 @@ export const BREAKPOINT = {
   desktopLarge: '1200px',
 };
 
-export const COLORS = {
+export const COLORS: { [key: string]: string } = {
   primary: 'hsl(260, 100%, 27%)', // #2e008b
   primaryHover: '#ec008c',
   secondary: '#ec008c',
@@ -67,7 +65,16 @@ export const SPACING = {
   extraExtraLarge: '56px',
 };
 
-export const FONT_SIZES = {
+export type FontSizeType =
+  | 'extraSmall'
+  | 'small'
+  | 'medium'
+  | 'large'
+  | 'extraLarge'
+  | 'extraExtraLarge'
+  | 'extraExtraExtraLarge';
+
+export const FONT_SIZES: { [key: string]: string } = {
   extraSmall: '0.75rem', // 12px
   small: '0.857rem', // 14px
   medium: '1em', // 16px
@@ -85,8 +92,7 @@ export const TYPOGRAPHY = {
     },
   ],
   fontUrl: `${SITECONFIG.cdnPath}fonts`,
-  fontFamilyBase:
-    'Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif',
+  fontFamilyBase: 'Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif',
   fontFamilyHeadings: 'MuseoSans-500,Calibri,Arial,sans-serif',
   fontSizeBase: '16px',
   fontWeightHeavy: '700',

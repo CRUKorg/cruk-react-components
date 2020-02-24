@@ -15,6 +15,7 @@ import {
   Collapse,
   ErrorText,
   Flex,
+  Footer,
   Header,
   Heading,
   Icon,
@@ -30,6 +31,11 @@ import {
   Totaliser,
   UserBlock,
 } from '../components';
+
+import A from '../components/A';
+import Span from '../components/Span';
+import P from '../components/P';
+
 import AvatarReadme from '../components/Avatar/README.md';
 import BadgeReadme from '../components/Badge/README.md';
 import BoxReadme from '../components/Box/README.md';
@@ -37,6 +43,7 @@ import ButtonReadme from '../components/Button/README.md';
 import CheckboxReadme from '../components/Checkbox/README.md';
 import CollapseReadme from '../components/Collapse/README.md';
 import ErrorTextReadme from '../components/ErrorText/README.md';
+import FooterReadme from '../components/Footer/README.md';
 import HeadingReadme from '../components/Heading/README.md';
 import HeaderReadme from '../components/Header/README.md';
 import IconReadme from '../components/Icon/README.md';
@@ -227,12 +234,16 @@ const components = {
       code={children}
       aria-label="Example code"
       scope={{
+        A,
+        P,
+        Span,
         Avatar,
         Badge,
         Button,
         Box,
         Checkbox,
         ErrorText,
+        Footer,
         Heading,
         Header,
         Icon,
@@ -251,10 +262,7 @@ const components = {
         Collapse,
       }}
     >
-      <LivePreview
-        aria-label="Example code preview"
-        style={{ border: '1px solid grey', padding: '5px' }}
-      />
+      <LivePreview aria-label="Example code preview" style={{ border: '1px solid grey', padding: '5px' }} />
       <LiveEditor
         aria-label="Example code editor"
         style={{
@@ -331,6 +339,7 @@ class Docs extends React.Component {
                 <Link to="/checkbox">Checkbox</Link>
                 <Link to="/collapse">Collapse</Link>
                 <Link to="/errortext">ErrorText</Link>
+                <Link to="/footer">Footer</Link>
                 <Link to="/header">Header</Link>
                 <Link to="/heading">Heading</Link>
                 <Link to="/icon">Icon</Link>
@@ -356,6 +365,7 @@ class Docs extends React.Component {
                 <CheckboxReadme path="/checkbox" />
                 <CollapseReadme path="/collapse" />
                 <ErrorTextReadme path="/errortext" />
+                <FooterReadme path="/footer" />
                 <HeadingReadme path="/heading" />
                 <HeaderReadme path="/header" />
                 <IconReadme path="/icon" />
