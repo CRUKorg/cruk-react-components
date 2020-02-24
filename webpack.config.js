@@ -31,6 +31,10 @@ const config = {
     ],
   },
   resolve: {
+    modules: [
+      path.resolve(__dirname, 'node_modules'),
+      path.resolve(__dirname, './'),
+    ],
     extensions: ['.tsx', '.ts', '.js', '.json'],
   },
 };
@@ -41,21 +45,21 @@ const libConfig = {
     path: path.join(__dirname, 'lib'),
     filename: 'index.js',
     library: 'crukReactComponents',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
   },
-  externals:{
+  externals: {
     react: {
       root: 'React',
       commonjs2: 'react',
       commonjs: 'react',
-      amd: 'react'
+      amd: 'react',
     },
     'styled-components': {
-        root: 'StyledComponents',
-        commonjs2: 'styled-components',
-        commonjs: 'styled-components',
-        amd: 'styled-components'
-    }
+      root: 'StyledComponents',
+      commonjs2: 'styled-components',
+      commonjs: 'styled-components',
+      amd: 'styled-components',
+    },
   },
   devtool: 'source-map',
   ...config,
