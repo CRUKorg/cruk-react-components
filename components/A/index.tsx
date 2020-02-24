@@ -9,10 +9,10 @@ const StyledLink = styled.a`
 
   ${Span}, ${P} {
     transition: color 0.2s ease;
-    color: ${COLORS.linkColor};
+    color: ${({ theme: { colors } }) => (colors && colors.linkColor ? colors.linkColor : COLORS.linkColor)};
     text-decoration: none;
     &:hover {
-      color: ${COLORS.linkColorHover};
+      color: ${({ theme: { colors } }) => (colors && colors.linkColorHover ? colors.linkColor : COLORS.linkColorHover)};
       text-decoration: none;
       cursor: pointer;
     }
