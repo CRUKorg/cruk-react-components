@@ -2,7 +2,8 @@
   "name": "cruk-react-components",
   "version": "0.0.1",
   "description": "React components implementing CRUK and SU2C design tokens",
-  "main": "lib/index.js",
+  "main": "lib/index.ts",
+  "types": "lib/components/index.d.ts",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.docs.js --open --hot --mode development --historyApiFallback",
     "build-lib": "webpack --config webpack.config.lib.js --mode production",
