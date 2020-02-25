@@ -65,7 +65,10 @@ export const Footer: FunctionComponent = ({ children }) => (
   <StyledFooter>
     <FooterContentWrapper>
       <FooterSectionLogo>
-        <StyledRegulatorLogo src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/fundreg.png" />
+        <StyledRegulatorLogo
+          alt="funding regulator logo"
+          src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/fundreg.png"
+        />
       </FooterSectionLogo>
       <FooterSectionLinks>
         <StyledNav>{children}</StyledNav>
