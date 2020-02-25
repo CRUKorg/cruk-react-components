@@ -18,19 +18,30 @@ const StyledFieldSet = styled.fieldset`
 `;
 
 const RadioGroupWrapper = styled.div`
-  display: flex;  
+  display: flex;
   align-items: center;
   flex-flow: row wrap;
 `;
 
-const RadioGroup = (props) => {
+type RadioGroupProps = {
+  legend: string;
+  attributes: Array<{
+    value: string;
+    option: string;
+  }>;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  checked: string;
+  name: string;
+};
 
+const RadioGroup = (props: RadioGroupProps) => {
   return (
     <StyledFieldSet>
       <RadioGroupWrapper>
         <StyledLegend>{props.legend}</StyledLegend>
-        {props.attributes.map((item, index) =>
-          <StyledRadio key={index}
+        {props.attributes.map((item, index: number) => (
+          <StyledRadio
+            key={index}
             checked={props.checked === item.value}
             onChange={props.onChange}
             name={props.name}
@@ -38,7 +49,7 @@ const RadioGroup = (props) => {
           >
             {item.option}
           </StyledRadio>
-        )}
+        ))}
       </RadioGroupWrapper>
     </StyledFieldSet>
   );

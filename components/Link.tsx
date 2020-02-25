@@ -2,18 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from './Constants';
 
-const Link = styled.a`
+const StyledLink = styled.a`
   color: ${COLORS.linkColor};
   text-decoration: none;
-  
+
   &:hover {
     color: ${COLORS.linkColorHover};
     text-decoration: underline;
   }
 `;
 
-export default props => (
-  <Link {...props} >
-    {props.children}
-  </Link>
-);
+type LinkProps = {
+   children: any 
+};
+
+export default (props: LinkProps ) => <StyledLink {...props} />;

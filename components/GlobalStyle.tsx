@@ -1,9 +1,15 @@
 import { createGlobalStyle, withTheme } from 'styled-components';
 import { COLORS, TYPOGRAPHY, UTILITIES } from './Constants';
 
-const buildCustomFonts = customFonts => (
-  customFonts.reduce((fonts, font) => (
-    `${fonts}
+type CustomFont = {
+  family: string;
+  url: string;
+};
+
+const buildCustomFonts = (customFonts: Array<CustomFont>) =>
+  customFonts.reduce(
+    (fonts, font) =>
+      `${fonts}
       @font-face {
       font-family: ${font.family};
       src: url("${font.url}.eot");
@@ -14,12 +20,17 @@ const buildCustomFonts = customFonts => (
       url("${font.url}/.svg##{$font-family}") format('svg');
       font-weight: normal;
       font-style: normal;
-    }`
-  ), '')
-);
+    }`,
+    '',
+  );
 
 const GlobalStyle = createGlobalStyle`
-  ${props => buildCustomFonts(props.theme.typography ? props.theme.typography.customFonts : TYPOGRAPHY.customFonts)}
+  ${props =>
+    buildCustomFonts(
+      (props.theme as any).typography
+        ? (props.theme as any).typography.customFonts
+        : TYPOGRAPHY.customFonts,
+    )}
   html {
     font-size: ${TYPOGRAPHY.fontSizeBase};
     font-family: ${TYPOGRAPHY.fontFamilyBase};
@@ -53,7 +64,9 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 GlobalStyle.defaultProps = {
-  theme: {},
+  theme: {
+    typography: {},
+  },
 };
 
 export default withTheme(GlobalStyle);
