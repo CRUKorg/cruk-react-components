@@ -2,7 +2,7 @@ const path = require('path');
 const createWebpackConfig = require('./webpack.common').createWebpackConfig;
 
 module.exports = createWebpackConfig({
-  entry: './components',
+  entry: 'src/components',
   output: {
     path: path.join(__dirname, 'lib'),
     filename: 'index.js',
