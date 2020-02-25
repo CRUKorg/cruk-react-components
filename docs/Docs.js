@@ -62,7 +62,7 @@ import UserBlockReadme from '../components/UserBlock/README.md';
 import { BREAKPOINT, COLORS } from '../components/Constants';
 import su2cTheme from '../components/themes/su2c';
 import GlobalStyle from '../components/GlobalStyle';
-import RadioGroup from '../components/Radio/RadioGroup.js';
+import RadioGroup from '../components/Radio/RadioGroup';
 
 /*
  * Doc specific styling
