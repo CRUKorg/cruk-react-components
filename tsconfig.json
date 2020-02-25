@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
+    "target": "es5",
+    "module": "es6",
+    "jsx": "react",
+    "baseUrl": "./",
+    "allowJs": false, //Only TS and TSX will be compilied.
+    "moduleResolution": "node",
     "noImplicitAny": true, // Setting to true means if no type given it will not automatically assign ANY.
     "noUnusedLocals": true,
-    "module": "es6",
-    "target": "es5",
-    "jsx": "react",
-    "allowJs": false, //Only TS and TSX will be compilied.
-    "allowSyntheticDefaultImports": true, // This is needed for the React components.
-    "moduleResolution": "node"
+    "allowSyntheticDefaultImports": true // This is needed for the React components.
   }
 }

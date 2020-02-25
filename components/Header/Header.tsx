@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useState } from 'react';
 import styled from 'styled-components';
 
-import { useScrollPosition } from '../hooks/useScrollPosition';
+import { useScrollPosition } from '../../hooks/useScrollPosition';
 
-import { BREAKPOINT, COLORS, SITECONFIG, TYPOGRAPHY, SPACING, UTILITIES, FONT_SIZES } from '../Constants';
+import { BREAKPOINT, COLORS, SITECONFIG, FONT_SIZES, TYPOGRAPHY, SPACING, UTILITIES } from '../Constants';
 
 // TODO: Should we use REMs? Do all sites use the same base size?
 const HEADER_HEIGHT_LARGE = '120px';
