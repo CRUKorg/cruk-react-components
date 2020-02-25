@@ -20,9 +20,9 @@ const StyledInput = styled.input`
 `;
 
 type RadioProps = {
-  className: string;
+  className?: string;
   checked: boolean;
-  disabled: boolean;
+  disabled?: boolean;
   name: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   theme?: { colors: {}; utilities: {} };

@@ -1,12 +1,16 @@
 import styled, { css } from 'styled-components';
 import { BREAKPOINT } from './Constants';
 
-const Flex = styled.div`
+type FlexProps = {
+  css: string
+};
+
+const Flex = styled.div<FlexProps>`
   display: block;
   @media (min-width: ${BREAKPOINT.tablet}) {
     display: flex;
   }
-  ${props => css([props.css])}
+  ${props => (css as any)([props.css])}
 `;
 
 export default Flex;
