@@ -6,6 +6,7 @@ import Checkbox from './Checkbox/Checkbox';
 import Divider from './Divider';
 import ErrorText from './ErrorText/ErrorText';
 import Flex from './Flex';
+import Footer from './Footer';
 import Heading from './Heading/Heading';
 import Header from './Header/Header';
 import Icon from './Icon/Icon';
@@ -34,6 +35,7 @@ export {
   Divider,
   ErrorText,
   Flex,
+  Footer,
   Heading,
   Header,
   Icon,

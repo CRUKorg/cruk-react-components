@@ -8,7 +8,7 @@ type TotaliserProps = {
   giftAid: number;
   summary?: Function;
   target?: number | null;
-  theme: { target: {}; colors: {}; typography: {} };
+  theme: { target: {}; colors: { [key: string]: string }; typography: {} };
   total: number;
   isCompact: boolean;
   children: any;
