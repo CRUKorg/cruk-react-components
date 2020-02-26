@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Link } from '@reach/router';
+import { Router, Link as RouterLink } from '@reach/router';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 // import { MDXProvider } from '@mdx-js/tag';
 import { MDXProvider } from '@mdx-js/react';
@@ -234,7 +234,7 @@ const components = {
       code={children}
       aria-label="Example code"
       scope={{
-        A,
+        Link,
         P,
         Span,
         Avatar,
@@ -332,28 +332,28 @@ class Docs extends React.Component {
             <SideBar>
               <Nav>
                 <Heading h2>Components</Heading>
-                <Link to="/avatar">Avatar</Link>
-                <Link to="/badge">Badge</Link>
-                <Link to="/box">Box</Link>
-                <Link to="/button">Button</Link>
-                <Link to="/checkbox">Checkbox</Link>
-                <Link to="/collapse">Collapse</Link>
-                <Link to="/errortext">ErrorText</Link>
-                <Link to="/footer">Footer</Link>
-                <Link to="/header">Header</Link>
-                <Link to="/heading">Heading</Link>
-                <Link to="/icon">Icon</Link>
-                <Link to="/loader">Loader</Link>
-                <Link to="/modal">Modal</Link>
-                <Link to="/pagination">Pagination</Link>
-                <Link to="/popover">PopOver</Link>
-                <Link to="/progressbar">ProgressBar</Link>
-                <Link to="/radio">Radio</Link>
-                <Link to="/select">Select</Link>
-                <Link to="/step">Step</Link>
-                <Link to="/textfield">TextField</Link>
-                <Link to="/totaliser">Totaliser</Link>
-                <Link to="/userblock">UserBlock</Link>
+                <RouterLink to="/avatar">Avatar</RouterLink>
+                <RouterLink to="/badge">Badge</RouterLink>
+                <RouterLink to="/box">Box</RouterLink>
+                <RouterLink to="/button">Button</RouterLink>
+                <RouterLink to="/checkbox">Checkbox</RouterLink>
+                <RouterLink to="/collapse">Collapse</RouterLink>
+                <RouterLink to="/errortext">ErrorText</RouterLink>
+                <RouterLink to="/footer">Footer</RouterLink>
+                <RouterLink to="/header">Header</RouterLink>
+                <RouterLink to="/heading">Heading</RouterLink>
+                <RouterLink to="/icon">Icon</RouterLink>
+                <RouterLink to="/loader">Loader</RouterLink>
+                <RouterLink to="/modal">Modal</RouterLink>
+                <RouterLink to="/pagination">Pagination</RouterLink>
+                <RouterLink to="/popover">PopOver</RouterLink>
+                <RouterLink to="/progressbar">ProgressBar</RouterLink>
+                <RouterLink to="/radio">Radio</RouterLink>
+                <RouterLink to="/select">Select</RouterLink>
+                <RouterLink to="/step">Step</RouterLink>
+                <RouterLink to="/textfield">TextField</RouterLink>
+                <RouterLink to="/totaliser">Totaliser</RouterLink>
+                <RouterLink to="/userblock">UserBlock</RouterLink>
               </Nav>
             </SideBar>
             <Content>
