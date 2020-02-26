@@ -21,33 +21,7 @@ export declare const BREAKPOINT: {
     desktopLarge: string;
 };
 export declare const COLORS: {
-    primary: string;
-    primaryHover: string;
-    secondary: string;
-    secondaryHover: string;
-    tertiary: string;
-    tertiaryHover: string;
-    grayVLight: string;
-    grayLight: string;
-    grayMedium: string;
-    gray: string;
-    disabled: string;
-    grayDark: string;
-    grayDarker: string;
-    white: string;
-    black: string;
-    danger: string;
-    warning: string;
-    success: string;
-    info: string;
-    bodyBg: string;
-    textError: string;
-    linkColor: string;
-    linkColorHover: string;
-    progressBar: string;
-    progressBarBg: string;
-    circularProgress: string;
-    circularProgressBg: string;
+    [key: string]: string;
 };
 export declare const SPACING: {
     extraExtraSmall: string;
@@ -58,14 +32,9 @@ export declare const SPACING: {
     extraLarge: string;
     extraExtraLarge: string;
 };
+export declare type FontSizeType = 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge' | 'extraExtraLarge' | 'extraExtraExtraLarge';
 export declare const FONT_SIZES: {
-    extraSmall: string;
-    small: string;
-    medium: string;
-    large: string;
-    extraLarge: string;
-    extraExtraLarge: string;
-    extraExtraExtraLarge: string;
+    [key: string]: string;
 };
 export declare const TYPOGRAPHY: {
     customFonts: {

@@ -3,7 +3,9 @@ declare type BadgeProps = {
     bgColor: string;
     text: boolean;
     theme: {
-        colors: {};
+        colors: {
+            [key: string]: string;
+        };
     };
     getBgColor?: string;
     size?: number;

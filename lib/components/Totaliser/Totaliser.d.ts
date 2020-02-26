@@ -5,7 +5,9 @@ declare type TotaliserProps = {
     target?: number | null;
     theme: {
         target: {};
-        colors: {};
+        colors: {
+            [key: string]: string;
+        };
         typography: {};
     };
     total: number;
