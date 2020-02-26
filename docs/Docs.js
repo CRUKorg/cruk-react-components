@@ -32,7 +32,7 @@ import {
   UserBlock,
 } from '../components';
 
-import A from '../components/A';
+import Link from '../components/Link';
 import Span from '../components/Span';
 import P from '../components/P';
 

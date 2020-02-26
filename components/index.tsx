@@ -11,7 +11,7 @@ import Heading from './Heading/Heading';
 import Header from './Header/Header';
 import Icon from './Icon/Icon';
 import Label from './Label';
-import A from './A';
+import Link from './Link';
 import Loader from './Loader/Loader';
 import Modal from './Modal/Modal';
 import Pagination from './Pagination/Pagination';
@@ -40,7 +40,7 @@ export {
   Header,
   Icon,
   Label,
-  A,
+  Link,
   Loader,
   Modal,
   Pagination,
