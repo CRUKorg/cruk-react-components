@@ -66,7 +66,7 @@ export const Footer: FunctionComponent = ({ children }) => (
     <FooterContentWrapper>
       <FooterSectionLogo>
         <StyledRegulatorLogo
-          alt="funding regulator logo"
+          alt="Registered with Fundraising Regulator"
           src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/fundreg.png"
         />
       </FooterSectionLogo>
