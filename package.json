@@ -12,7 +12,8 @@
     "analyze": "source-map-explorer lib/index.js",
     "test-dev": "$(npm bin)/cypress open",
     "prettier": "$(npm bin)/prettier --write 'components/**/*.tsx'",
-    "test": "$(npm bin)/cypress run"
+    "test": "$(npm bin)/cypress run",
+    "clean": "rm -rf node_modules/"
   },
   "husky": {
     "hooks": {
@@ -41,7 +42,7 @@
     "axe-core": "^3.4.2",
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.0.6",
-    "cypress": "^4.0.1",
+    "cypress": "4.0.1",
     "cypress-axe": "^0.5.3",
     "cypress-image-snapshot": "^3.1.1",
     "cypress-plugin-tab": "^1.0.5",

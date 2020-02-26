@@ -6,6 +6,7 @@ const components = [
   'Checkbox',
   'Collapse',
   'ErrorText',
+  'Footer',
   'Heading',
   'Icon',
   'Loader',
@@ -24,16 +25,11 @@ const components = [
 const selectComponent = (componentName, brand) => {
   cy.contains('a', componentName).click();
   // Hide header so it doesn't get in the way.
-  cy.get('head').invoke(
-    'append',
-    '<style type="text/css">header {display: none;}</style>',
-  );
+  cy.get('head').invoke('append', '<style type="text/css">header {display: none;}</style>');
   switch (componentName) {
     case 'Modal':
       cy.contains('Show me a modal').click();
-      cy.get('[aria-modal="true"').matchImageSnapshot(
-        `${brand}_${componentName}`,
-      );
+      cy.get('[aria-modal="true"').matchImageSnapshot(`${brand}_${componentName}`);
       break;
     case 'PopOver':
       cy.contains('Share left').click();
@@ -57,7 +53,7 @@ const selectComponent = (componentName, brand) => {
 
 components.forEach(componentName => {
   it(`CRUK ${componentName} Should match snapshot`, () => {
-    cy.visit('/');
+    cy.visit(`/${componentName.toLowerCase()}`);
     selectComponent(componentName, 'cruk');
   });
 

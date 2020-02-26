@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Link } from '@reach/router';
+import { Router, Link as RouterLink } from '@reach/router';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 // import { MDXProvider } from '@mdx-js/tag';
 import { MDXProvider } from '@mdx-js/react';
@@ -15,6 +15,7 @@ import {
   Collapse,
   ErrorText,
   Flex,
+  Footer,
   Header,
   Heading,
   Icon,
@@ -30,6 +31,11 @@ import {
   Totaliser,
   UserBlock,
 } from '../components';
+
+import Link from '../components/Link';
+import Span from '../components/Span';
+import P from '../components/P';
+
 import AvatarReadme from '../components/Avatar/README.md';
 import BadgeReadme from '../components/Badge/README.md';
 import BoxReadme from '../components/Box/README.md';
@@ -37,6 +43,7 @@ import ButtonReadme from '../components/Button/README.md';
 import CheckboxReadme from '../components/Checkbox/README.md';
 import CollapseReadme from '../components/Collapse/README.md';
 import ErrorTextReadme from '../components/ErrorText/README.md';
+import FooterReadme from '../components/Footer/README.md';
 import HeadingReadme from '../components/Heading/README.md';
 import HeaderReadme from '../components/Header/README.md';
 import IconReadme from '../components/Icon/README.md';
@@ -227,12 +234,16 @@ const components = {
       code={children}
       aria-label="Example code"
       scope={{
+        Link,
+        P,
+        Span,
         Avatar,
         Badge,
         Button,
         Box,
         Checkbox,
         ErrorText,
+        Footer,
         Heading,
         Header,
         Icon,
@@ -251,10 +262,7 @@ const components = {
         Collapse,
       }}
     >
-      <LivePreview
-        aria-label="Example code preview"
-        style={{ border: '1px solid grey', padding: '5px' }}
-      />
+      <LivePreview aria-label="Example code preview" style={{ border: '1px solid grey', padding: '5px' }} />
       <LiveEditor
         aria-label="Example code editor"
         style={{
@@ -324,27 +332,28 @@ class Docs extends React.Component {
             <SideBar>
               <Nav>
                 <Heading h2>Components</Heading>
-                <Link to="/avatar">Avatar</Link>
-                <Link to="/badge">Badge</Link>
-                <Link to="/box">Box</Link>
-                <Link to="/button">Button</Link>
-                <Link to="/checkbox">Checkbox</Link>
-                <Link to="/collapse">Collapse</Link>
-                <Link to="/errortext">ErrorText</Link>
-                <Link to="/header">Header</Link>
-                <Link to="/heading">Heading</Link>
-                <Link to="/icon">Icon</Link>
-                <Link to="/loader">Loader</Link>
-                <Link to="/modal">Modal</Link>
-                <Link to="/pagination">Pagination</Link>
-                <Link to="/popover">PopOver</Link>
-                <Link to="/progressbar">ProgressBar</Link>
-                <Link to="/radio">Radio</Link>
-                <Link to="/select">Select</Link>
-                <Link to="/step">Step</Link>
-                <Link to="/textfield">TextField</Link>
-                <Link to="/totaliser">Totaliser</Link>
-                <Link to="/userblock">UserBlock</Link>
+                <RouterLink to="/avatar">Avatar</RouterLink>
+                <RouterLink to="/badge">Badge</RouterLink>
+                <RouterLink to="/box">Box</RouterLink>
+                <RouterLink to="/button">Button</RouterLink>
+                <RouterLink to="/checkbox">Checkbox</RouterLink>
+                <RouterLink to="/collapse">Collapse</RouterLink>
+                <RouterLink to="/errortext">ErrorText</RouterLink>
+                <RouterLink to="/footer">Footer</RouterLink>
+                <RouterLink to="/header">Header</RouterLink>
+                <RouterLink to="/heading">Heading</RouterLink>
+                <RouterLink to="/icon">Icon</RouterLink>
+                <RouterLink to="/loader">Loader</RouterLink>
+                <RouterLink to="/modal">Modal</RouterLink>
+                <RouterLink to="/pagination">Pagination</RouterLink>
+                <RouterLink to="/popover">PopOver</RouterLink>
+                <RouterLink to="/progressbar">ProgressBar</RouterLink>
+                <RouterLink to="/radio">Radio</RouterLink>
+                <RouterLink to="/select">Select</RouterLink>
+                <RouterLink to="/step">Step</RouterLink>
+                <RouterLink to="/textfield">TextField</RouterLink>
+                <RouterLink to="/totaliser">Totaliser</RouterLink>
+                <RouterLink to="/userblock">UserBlock</RouterLink>
               </Nav>
             </SideBar>
             <Content>
@@ -356,6 +365,7 @@ class Docs extends React.Component {
                 <CheckboxReadme path="/checkbox" />
                 <CollapseReadme path="/collapse" />
                 <ErrorTextReadme path="/errortext" />
+                <FooterReadme path="/footer" />
                 <HeadingReadme path="/heading" />
                 <HeaderReadme path="/header" />
                 <IconReadme path="/icon" />

@@ -1,6 +1,6 @@
 # Header
 
-There should be only on header component near or at the top of the body of each page.
+There should be only one header component near or at the top of the body of each page.
 
 ### Logos
 
