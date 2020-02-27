@@ -1,4 +1,4 @@
-import { FontSizeType } from '../Constants';
+import { FontSizeType } from '../../Constants';
 export declare type BaseTextProps = {
     color?: string;
     textAlign?: 'left' | 'right' | 'center';

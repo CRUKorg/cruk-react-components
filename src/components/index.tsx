@@ -25,4 +25,33 @@ import TextField from './TextField';
 import Totaliser from './Totaliser';
 import UserBlock from './UserBlock';
 import Collapse from './Collapse';
-export { Avatar, Badge, Box, Button, Checkbox, Divider, ErrorText, Flex, Footer, Heading, Header, Icon, Label, Link, Loader, Modal, Pagination, PopOver, ProgressBar, Radio, RadioInput, Select, Step, TextField, Totaliser, UserBlock, Collapse, };
+
+export {
+  Avatar,
+  Badge,
+  Box,
+  Button,
+  Checkbox,
+  Divider,
+  ErrorText,
+  Flex,
+  Footer,
+  Heading,
+  Header,
+  Icon,
+  Label,
+  Link,
+  Loader,
+  Modal,
+  Pagination,
+  PopOver,
+  ProgressBar,
+  Radio,
+  RadioInput,
+  Select,
+  Step,
+  TextField,
+  Totaliser,
+  UserBlock,
+  Collapse,
+};
