@@ -17,7 +17,7 @@ import Modal from './Modal';
 import Pagination from './Pagination';
 import PopOver from './PopOver';
 import ProgressBar from './ProgressBar';
-import RadioInput from './Radio/RadioInput';
+import RadioGroup from './RadioGroup';
 import Radio from './Radio';
 import Select from './Select';
 import Step from './Step';
@@ -47,7 +47,7 @@ export {
   PopOver,
   ProgressBar,
   Radio,
-  RadioInput,
+  RadioGroup,
   Select,
   Step,
   TextField,
