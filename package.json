@@ -12,9 +12,11 @@
     "preanalyze": "npm run build-lib",
     "analyze": "source-map-explorer lib/index.js",
     "prettier": "$(npm bin)/prettier --write 'components/**/*.tsx'",
+    "cypress-ci": "$(npm bin)/cypress run",
     "cypress": "$(npm bin)/cypress open",
-    "jest": "jest",
-    "test": "jest && $(npm bin)/cypress run",
+    "jest-ci": "jest --watchAll=false",
+    "jest": "jest --watch",
+    "test": "npm run jest-ci && npm run cypress-ci",
     "clean": "rm -rf node_modules/"
   },
   "husky": {
