@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Radio from './Radio';
+import RadioInput from './RadioInput';
 
-const StyledRadio = styled(Radio)`
+const StyledRadio = styled(RadioInput)`
   flex: 2 2 auto;
   text-align: center;
   margin-left: 20px;
@@ -39,7 +39,7 @@ const RadioGroup = (props: RadioGroupProps) => {
     <StyledFieldSet>
       <RadioGroupWrapper>
         <StyledLegend>{props.legend}</StyledLegend>
-        {props.attributes.map((item) => (
+        {props.attributes.map(item => (
           <StyledRadio
             key={props.name}
             checked={props.checked === item.value}

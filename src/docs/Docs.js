@@ -26,10 +26,12 @@ import P from '../components/P';
 import PopOver from '../components/PopOver';
 import ProgressBar from '../components/ProgressBar';
 import Radio from '../components/Radio';
+import RadioInput from '../components/Radio';
 import Span from '../components/Span';
 import Select from '../components/Select';
 import Step from '../components/Step';
 import TextField from '../components/TextField';
+import Totaliser from '../components/Totaliser';
 import UserBlock from '../components/UserBlock';
 
 import AvatarReadme from '../components/Avatar/README.md';
@@ -58,7 +60,6 @@ import UserBlockReadme from '../components/UserBlock/README.md';
 import { BREAKPOINT, COLORS } from '../Constants';
 import su2cTheme from '../themes/su2c';
 import GlobalStyle from '../components/GlobalStyle';
-import RadioGroup from '../components/Radio/RadioGroup';
 
 /*
  * Doc specific styling
@@ -248,13 +249,13 @@ const components = {
         PopOver,
         ProgressBar,
         Radio,
+        RadioInput,
         Select,
         Span,
         Step,
         TextField,
         Totaliser,
         UserBlock,
-        RadioGroup,
         Collapse,
       }}
     >

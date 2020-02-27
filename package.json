@@ -6,7 +6,8 @@
   "types": "lib/components/index.d.ts",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.docs.js --open --hot --mode development --historyApiFallback",
-    "build-lib": "webpack --config webpack.config.lib.js --mode production",
+    "clean-lib": "rm -rf ./lib/*",
+    "build-lib": "npm run clean-lib && webpack --config webpack.config.lib.js --mode production",
     "build-docs": "webpack --config webpack.config.docs.js --mode production",
     "preanalyze": "npm run build-lib",
     "analyze": "source-map-explorer lib/index.js",
