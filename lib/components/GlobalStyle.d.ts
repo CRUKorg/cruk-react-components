@@ -1,3 +1,4 @@
+/// <reference types="styled-components" />
 /// <reference types="react" />
 declare const _default: import("react").ForwardRefExoticComponent<Pick<Pick<{}, never> & {
     theme?: import("styled-components").DefaultTheme;

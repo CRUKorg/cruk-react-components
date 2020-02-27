@@ -7,6 +7,7 @@ const components = [
   'Collapse',
   'ErrorText',
   'Footer',
+  'Header',
   'Heading',
   'Icon',
   'Loader',
@@ -24,20 +25,25 @@ const components = [
 
 const selectComponent = (componentName, brand) => {
   cy.contains('a', componentName).click();
-  // Hide header so it doesn't get in the way.
-  cy.get('head').invoke('append', '<style type="text/css">header {display: none;}</style>');
   switch (componentName) {
+    case 'Header':
+      cy.viewport(1000, 480)
+      cy.get('header').first().matchImageSnapshot(`${brand}_${componentName}`);
+      break;
     case 'Modal':
+      cy.get('head').invoke('append', '<style type="text/css">header {display: none;}</style>');
       cy.contains('Show me a modal').click();
       cy.get('[aria-modal="true"').matchImageSnapshot(`${brand}_${componentName}`);
       break;
     case 'PopOver':
+      cy.get('head').invoke('append', '<style type="text/css">header {display: none;}</style>');
       cy.contains('Share left').click();
       cy.get('[aria-label="Example code preview"]')
         .first()
         .matchImageSnapshot(`${brand}_${componentName}`);
       break;
     case 'Collapse':
+      cy.get('head').invoke('append', '<style type="text/css">header {display: none;}</style>');
       cy.contains('What is Lorem Ipsum?').click();
       cy.wait(500); // Wait to expand
       cy.get('[aria-label="Example code preview"]')
@@ -45,6 +51,7 @@ const selectComponent = (componentName, brand) => {
         .matchImageSnapshot(`${brand}_${componentName}`);
       break;
     default:
+      cy.get('head').invoke('append', '<style type="text/css">header {display: none;}</style>');
       cy.get('[aria-label="Example code preview"]')
         .first()
         .matchImageSnapshot(`${brand}_${componentName}`);

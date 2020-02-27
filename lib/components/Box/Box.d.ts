@@ -1,3 +1,4 @@
+/// <reference types="styled-components" />
 import React from 'react';
 declare type BoxProps = {
     bgColor: string;
