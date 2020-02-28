@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 
 import { useScrollPosition } from '../../../src/hooks/useScrollPosition';
 
@@ -14,8 +14,8 @@ const HEADER_LOGO_HEIGHT_LARGE = '80px';
 const HEADER_LOGO_HEIGHT_SMALL = '40px';
 
 type HeaderStickyContainerProps = {
-  isSmall: boolean;
-  isSticky: boolean;
+  isSmall?: boolean;
+  isSticky?: boolean;
 };
 
 const StyledHeader = styled.header`
@@ -133,18 +133,27 @@ const Tagline = styled.p`
 
 type HeaderProps = {
   isSticky?: boolean;
-  logoImageSrc?: string;
-  logoLinkUrl?: string;
-  logoAltText?: string;
-  headerText?: string | null;
+  theme?: {
+    siteConfig?: {
+      logoSrc?: string;
+      logoUrl?: string;
+      logoAlt?: string;
+      siteSlogan?: string;
+    };
+  };
 };
 
 export const Header: FunctionComponent<HeaderProps> = ({
   isSticky,
-  logoImageSrc = SITECONFIG.logoSrc,
-  logoLinkUrl = SITECONFIG.logoUrl,
-  logoAltText = SITECONFIG.logoAlt,
-  headerText = SITECONFIG.siteSlogan,
+  theme: {
+    siteConfig: {
+      logoSrc = SITECONFIG.logoSrc,
+      logoUrl = SITECONFIG.logoUrl,
+      logoAlt = SITECONFIG.logoAlt,
+      siteSlogan = SITECONFIG.siteSlogan,
+    } = {},
+  } = {},
+
   children,
 }) => {
   const [isSmall, setIsSmall] = useState(false);
@@ -172,14 +181,14 @@ export const Header: FunctionComponent<HeaderProps> = ({
             Skip to main content
           </SkipToMain>
           <HeaderMainContent>
-            <StyledLink href={logoLinkUrl} title="Home">
+            <StyledLink href={logoUrl} title="Home">
               <LogoWrapper isSmall={isSmall} isSticky={isSticky}>
-                <Logo src={logoImageSrc} alt={logoAltText} />
+                <Logo src={logoSrc} alt={logoAlt} />
               </LogoWrapper>
             </StyledLink>
-            {headerText && headerText.length && (
+            {siteSlogan && siteSlogan.length && (
               <Tagline isSmall={isSmall} isSticky={isSticky}>
-                {headerText}
+                {siteSlogan}
               </Tagline>
             )}
             {children}
@@ -190,4 +199,4 @@ export const Header: FunctionComponent<HeaderProps> = ({
   );
 };
 
-export default Header;
+export default withTheme(Header);
