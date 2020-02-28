@@ -27,8 +27,12 @@ const selectComponent = (componentName, brand) => {
   cy.contains('a', componentName).click();
   switch (componentName) {
     case 'Header':
-      cy.viewport(1000, 480)
-      cy.get('header').first().matchImageSnapshot(`${brand}_${componentName}`);
+      cy.viewport(1000, 480);
+      // header is only full size when scroll top is < 60px
+      cy.scrollTo(0, 0);
+      cy.get('header')
+        .first()
+        .matchImageSnapshot(`${brand}_${componentName}`);
       break;
     case 'Modal':
       cy.get('head').invoke('append', '<style type="text/css">header {display: none;}</style>');
