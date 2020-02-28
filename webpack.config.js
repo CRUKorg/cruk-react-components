@@ -31,16 +31,13 @@ const config = {
     ],
   },
   resolve: {
-    modules: [
-      path.resolve(__dirname, 'node_modules'),
-      path.resolve(__dirname, './'),
-    ],
+    modules: [path.resolve(__dirname, 'node_modules'), path.resolve(__dirname, './')],
     extensions: ['.tsx', '.ts', '.js', '.json'],
   },
 };
 
 const libConfig = {
-  entry: './components',
+  entry: './src/components',
   output: {
     path: path.join(__dirname, 'lib'),
     filename: 'index.js',
@@ -66,13 +63,13 @@ const libConfig = {
 };
 
 const docsConfig = {
-  entry: './docs',
+  entry: './src/docs',
   output: {
     path: path.join(__dirname, 'public'),
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: './docs/index.html',
+      template: './src/docs/index.html',
       filename: './index.html',
     }),
   ],
