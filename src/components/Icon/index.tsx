@@ -26,13 +26,16 @@ const StyledIcon = styled.svg`
 const Icon = (props: IconProps) => {
   const name = props.name && camelize(props.name);
   const icon = (ICONS as any)[name] || ICONS.question;
+
+  // TODO fix this complication and duplicating type definitions
   const theme = {
     colors: {
       ...COLORS,
       ...props.theme.colors,
     },
   };
-  const color = (theme.colors as any)[props.color] || props.color;
+  const color = (theme.colors as { [key: string]: string })[props.color] || props.color;
+
   return (
     <ThemeProvider theme={theme}>
       <StyledIcon

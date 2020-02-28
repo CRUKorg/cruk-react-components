@@ -9,6 +9,9 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
 
 ```.jsx
   <React.Fragment>
+   <IconCalendar />
+   <IconCalendar color="primary" hover="primaryHover" />
+   <IconCalendar color="secondary" />
     <Icon />
     <Icon size="36px" color="primary" hover="primaryHover" />
     <Icon size="48px" color="secondary"/>
@@ -52,8 +55,8 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
 
 ## Props
 
-| Name | Type | Options | Default | Description |
-| :- | :- | :-: | :- | :- |
-| name | String |  |  | From icon list. Default to question mark. |
-| size | String |  |  | Define the size of the icon. Default size 24px. |
-| color | String |  |  | From color list or hex code. |
+| Name  | Type   | Options | Default | Description                                     |
+| :---- | :----- | :-----: | :------ | :---------------------------------------------- |
+| name  | String |         |         | From icon list. Default to question mark.       |
+| size  | String |         |         | Define the size of the icon. Default size 24px. |
+| color | String |         |         | From color list or hex code.                    |

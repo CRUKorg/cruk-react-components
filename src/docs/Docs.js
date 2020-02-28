@@ -18,6 +18,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Heading from '../components/Heading';
 import Icon from '../components/Icon';
+import IconCalendar from '../components/icons/IconCalendar';
 import Link from '../components/Link';
 import Loader from '../components/Loader';
 import Modal from '../components/Modal';
@@ -242,6 +243,7 @@ const components = {
         Heading,
         Header,
         Icon,
+        IconCalendar,
         Link,
         Loader,
         Modal,

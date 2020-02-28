@@ -28,13 +28,14 @@ function createWebpackConfig(config) {
           test: /\.mdx?$/,
           use: ['babel-loader', '@mdx-js/loader'],
         },
+        {
+          test: /\.svg$/,
+          use: ['@svgr/webpack'],
+        },
       ],
     },
     resolve: {
-      modules: [
-        path.resolve(__dirname, 'node_modules'),
-        path.resolve(__dirname, './'),
-      ],
+      modules: [path.resolve(__dirname, 'node_modules'), path.resolve(__dirname, './')],
       extensions: ['.tsx', '.ts', '.js', '.json'],
     },
   };
