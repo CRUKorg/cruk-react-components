@@ -25,8 +25,8 @@ import Pagination from '../components/Pagination';
 import P from '../components/P';
 import PopOver from '../components/PopOver';
 import ProgressBar from '../components/ProgressBar';
+import RadioGroup from '../components/RadioGroup';
 import Radio from '../components/Radio';
-import RadioInput from '../components/Radio';
 import Span from '../components/Span';
 import Select from '../components/Select';
 import Step from '../components/Step';
@@ -51,6 +51,7 @@ import PaginationReadme from '../components/Pagination/README.md';
 import PopOverReadme from '../components/PopOver/README.md';
 import ProgressBarReadme from '../components/ProgressBar/README.md';
 import RadioReadme from '../components/Radio/README.md';
+import RadioGroupReadme from '../components/RadioGroup/README.md';
 import SelectReadme from '../components/Select/README.md';
 import StepReadme from '../components/Step/README.md';
 import TextFieldReadme from '../components/TextField/README.md';
@@ -249,7 +250,7 @@ const components = {
         PopOver,
         ProgressBar,
         Radio,
-        RadioInput,
+        RadioGroup,
         Select,
         Span,
         Step,
@@ -346,6 +347,7 @@ class Docs extends React.Component {
                 <RouterLink to="/popover">PopOver</RouterLink>
                 <RouterLink to="/progressbar">ProgressBar</RouterLink>
                 <RouterLink to="/radio">Radio</RouterLink>
+                <RouterLink to="/radiogroup">Radio Group</RouterLink>
                 <RouterLink to="/select">Select</RouterLink>
                 <RouterLink to="/step">Step</RouterLink>
                 <RouterLink to="/textfield">TextField</RouterLink>
@@ -372,6 +374,7 @@ class Docs extends React.Component {
                 <PopOverReadme path="/popover" />
                 <ProgressBarReadme path="/progressbar" />
                 <RadioReadme path="/radio" />
+                <RadioGroupReadme path="/radiogroup" />
                 <SelectReadme path="/select" />
                 <StepReadme path="/step" />
                 <TextFieldReadme path="/textfield" />

@@ -1,58 +1,64 @@
 import React from 'react';
-import styled from 'styled-components';
-import RadioInput from './RadioInput';
+import styled, { withTheme } from 'styled-components';
+import { COLORS, UTILITIES } from '../../Constants';
 
-const StyledRadio = styled(RadioInput)`
-  flex: 2 2 auto;
-  text-align: center;
-  margin-left: 20px;
-`;
-
-const StyledLegend = styled.legend`
-  flex: 1 1 auto;
-  max-width: 20%;
-`;
-
-const StyledFieldSet = styled.fieldset`
-  border: none;
-`;
-
-const RadioGroupWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex-flow: row wrap;
-`;
-
-type RadioGroupProps = {
-  legend: string;
-  attributes: Array<{
-    value: string;
-    option: string;
-  }>;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
-  checked: string;
-  name: string;
+type StyledLabelProps = {
+  checked: boolean;
 };
 
-const RadioGroup = (props: RadioGroupProps) => {
+const StyledLabel = styled.label<StyledLabelProps>`
+  border-radius: ${props => props.theme.utilities.borderRadius};
+  border: solid 2px ${props => (props.checked ? props.theme.colors.primary : props.theme.colors.gray)};
+  cursor: pointer;
+  display: inline-block;
+  font-weight: ${props => (props.checked ? 'bold' : 'normal')};
+  padding: 5px;
+`;
+
+const StyledInput = styled.input`
+  margin-right: 5px;
+`;
+
+type RadioProps = {
+  className?: string;
+  checked: boolean;
+  disabled?: boolean;
+  name: string;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  theme?: { colors: {}; utilities: {} };
+  value: string;
+  children: any;
+};
+
+const RadioInput = (props: RadioProps) => {
+  const theme = {
+    colors: {
+      ...COLORS,
+      ...props.theme.colors,
+    },
+    utilities: {
+      ...UTILITIES,
+      ...props.theme.utilities,
+    },
+  };
+
   return (
-    <StyledFieldSet>
-      <RadioGroupWrapper>
-        <StyledLegend>{props.legend}</StyledLegend>
-        {props.attributes.map(item => (
-          <StyledRadio
-            key={props.name}
-            checked={props.checked === item.value}
-            onChange={props.onChange}
-            name={props.name}
-            value={item.value}
-          >
-            {item.option}
-          </StyledRadio>
-        ))}
-      </RadioGroupWrapper>
-    </StyledFieldSet>
+    <StyledLabel className={props.className} checked={props.checked} theme={theme}>
+      <StyledInput
+        checked={props.checked}
+        disabled={props.disabled}
+        onChange={props.onChange}
+        name={props.name}
+        type="radio"
+        value={props.value}
+      />
+      {props.children || props.value}
+    </StyledLabel>
   );
 };
 
-export default RadioGroup;
+RadioInput.defaultProps = {
+  theme: {},
+};
+
+export default withTheme(RadioInput);
