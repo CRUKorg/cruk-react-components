@@ -1,15 +1,10 @@
 import React from 'react';
-import IconStyled from '../IconStyled';
+import IconStyled, { IconStyledProps } from '../IconStyled';
 import SVGCalendar from '../../assets/svg/calendar.svg';
 
-type Props = {
-  color?: string;
-  size?: string;
-};
-
-export const IconCalendar = ({ color, size }: Props) => {
+export const IconCalendar = (props: IconStyledProps) => {
   return (
-    <IconStyled color={color} size={size}>
+    <IconStyled {...props}>
       <SVGCalendar />
     </IconStyled>
   );

@@ -35,13 +35,18 @@ const SVGWrapper = styled.div`
   }
 `;
 
-type Props = {
+export type IconStyledProps = {
   color?: string;
   hoverColor?: string;
   size?: string;
   transform?: string;
+};
+
+type ThemeProps = {
   theme?: { colors: {} };
 };
+
+type Props = IconStyledProps & ThemeProps;
 
 export const IconStyled: FunctionComponent<Props> = ({
   theme = { colors: {} },
