@@ -5,7 +5,7 @@ import SVGCalendar from '../../assets/svg/calendar.svg';
 export const IconCalendar = (props: IconStyledProps) => {
   return (
     <IconStyled {...props}>
-      <SVGCalendar />
+      <SVGCalendar aria-hidden="true" focusable="false" />
     </IconStyled>
   );
 };
