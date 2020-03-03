@@ -28,7 +28,7 @@ const selectComponent = (componentName, brand) => {
     case 'Avatar':
       cy.get('head').invoke('append', '<style type="text/css">header {display: none;}</style>');
       cy.get(
-        '[src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/modules/cruk_online_fundraising/images/hero_desktop.jpg"]',
+        '[src="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"]',
       ).should($img => {
         expect($img[0].naturalWidth).to.be.greaterThan(0);
       });
