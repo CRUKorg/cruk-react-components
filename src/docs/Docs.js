@@ -18,7 +18,27 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Heading from '../components/Heading';
 import Icon from '../components/Icon';
+
 import IconCalendar from '../components/icons/IconCalendar';
+import IconChevronRight from '../components/icons/IconChevronRight';
+import IconClock from '../components/icons/IconClock';
+import IconClose from '../components/icons/IconClose';
+import IconComment from '../components/icons/IconComment';
+import IconDelete from '../components/icons/IconDelete';
+import IconEdit from '../components/icons/IconEdit';
+import IconEventName from '../components/icons/IconEventName';
+import IconEnvelopeSquare from '../components/icons/IconEnvelopeSquare';
+import IconLinkedIn from '../components/icons/IconLinkedIn';
+import IconFacebook from '../components/icons/IconFacebook';
+import IconFacebookSquare from '../components/icons/IconFacebookSquare';
+import IconQuestion from '../components/icons/IconQuestion';
+import IconMessengerSquare from '../components/icons/IconMessengerSquare';
+import IconMove from '../components/icons/IconMove';
+import IconMoveDown from '../components/icons/IconMoveDown';
+import IconMoveUp from '../components/icons/IconMoveUp';
+import IconMoveLeft from '../components/icons/IconMoveLeft';
+import IconMoveRight from '../components/icons/IconMoveRight';
+
 import Link from '../components/Link';
 import Loader from '../components/Loader';
 import Modal from '../components/Modal';
@@ -244,6 +264,23 @@ const components = {
         Header,
         Icon,
         IconCalendar,
+        IconChevronRight,
+        IconClock,
+        IconClose,
+        IconDelete,
+        IconEdit,
+        IconEventName,
+        IconEnvelopeSquare,
+        IconLinkedIn,
+        IconFacebook,
+        IconFacebookSquare,
+        IconQuestion,
+        IconMessengerSquare,
+        IconMove,
+        IconMoveDown,
+        IconMoveUp,
+        IconMoveLeft,
+        IconMoveRight,
         Link,
         Loader,
         Modal,

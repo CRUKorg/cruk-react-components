@@ -9,9 +9,25 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
 
 ```.jsx
   <React.Fragment>
-   <IconCalendar />
-   <IconCalendar color="primary" hover="primaryHover" />
-   <IconCalendar color="secondary" />
+    <IconCalendar />
+    <IconChevronRight />
+    <IconClock />
+    <IconClose />
+    <IconDelete />
+    <IconEdit />
+    <IconEventName/>
+    <IconEnvelopeSquare />
+    <IconLinkedIn />
+    <IconFacebook />
+    <IconFacebookSquare />
+    <IconQuestion />
+    <IconMessengerSquare />
+    <IconMove />
+    <IconMoveDown />
+    <IconMoveUp />
+    <IconMoveLeft />
+    <IconMoveRight />
+
     <Icon />
     <Icon size="36px" color="primary" hover="primaryHover" />
     <Icon size="48px" color="secondary"/>

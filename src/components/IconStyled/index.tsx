@@ -4,16 +4,15 @@ import { COLORS } from '../../Constants';
 
 type StyledIconProps = {
   color: string;
-  hoverColor: string;
   size: string;
-  transform: string;
+  transformStyle: string;
 };
 
 const SVGWrapper = styled.div`
   display: inline-block;
   height: ${({ size }: StyledIconProps) => size};
   width: ${({ size }: StyledIconProps) => size};
-  transform: ${({ transform }: StyledIconProps) => transform};
+  transform: ${({ transformStyle }: StyledIconProps) => transformStyle};
   /* TODO: what is this magic number? if this is fixing inline block alignment it can differ on different browsers */
   margin-top: -0.2em;
   vertical-align: middle;
@@ -23,14 +22,6 @@ const SVGWrapper = styled.div`
     path {
       transition: fill 0.3s ease;
       fill: ${({ color }: StyledIconProps) => color};
-    }
-  }
-
-  &:hover {
-    svg {
-      path {
-        fill: ${({ hoverColor }: StyledIconProps) => hoverColor};
-      }
     }
   }
 `;
@@ -51,7 +42,6 @@ type Props = IconStyledProps & ThemeProps;
 export const IconStyled: FunctionComponent<Props> = ({
   theme = { colors: {} },
   color = 'currentColor',
-  hoverColor = 'currentColor',
   size = '1.1em',
   transform = 'none',
   children,
@@ -64,11 +54,10 @@ export const IconStyled: FunctionComponent<Props> = ({
     },
   };
   const foundColor = (mergedTheme.colors as { [key: string]: string })[color] || color;
-  const foundHoverColor = (mergedTheme.colors as { [key: string]: string })[hoverColor] || hoverColor;
 
   return (
     <ThemeProvider theme={theme}>
-      <SVGWrapper color={foundColor} hoverColor={foundHoverColor} size={size} transform={transform}>
+      <SVGWrapper transformStyle={transform} size={size} color={foundColor}>
         {children}
       </SVGWrapper>
     </ThemeProvider>

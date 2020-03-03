@@ -1,13 +1,21 @@
 import React from 'react';
-import IconStyled, { IconStyledProps } from '../IconStyled';
-import SVGChevronRight from '../../assets/svg/chevronRight.svg';
+import styled, { ThemeProvider, withTheme } from 'styled-components';
 
-export const IconChevronRight = (props: IconStyledProps) => {
+import { COLORS } from '../../Constants';
+
+import IconBase, { IconBasePropsType, IconBaseStyledPropsType } from '../IconBase';
+import SVGChevronRight from '../../assets/svg/icons/chevronRight.svg';
+
+const SVGChevronRightStyled = styled(SVGChevronRight)`
+  ${(props: IconBaseStyledPropsType) => IconBase(props)}
+`;
+
+export const IconChevronRight = ({ theme = { colors: COLORS }, color, ...props }: IconBasePropsType) => {
   return (
-    <IconStyled {...props}>
-      <SVGChevronRight aria-hidden="true" focusable="false" />
-    </IconStyled>
+    <ThemeProvider theme={theme}>
+      <SVGChevronRightStyled aria-hidden="true" focusable="false" iconColor={color} {...props} />
+    </ThemeProvider>
   );
 };
 
-export default IconChevronRight;
+export default withTheme(IconChevronRight);

@@ -1,6 +1,6 @@
 import React from 'react';
 import IconStyled, { IconStyledProps } from '../IconStyled';
-import SVGComment from '../../assets/svg/comment.svg';
+import SVGComment from '../../assets/svg/icons/comment.svg';
 
 export const IconComment = (props: IconStyledProps) => {
   return (

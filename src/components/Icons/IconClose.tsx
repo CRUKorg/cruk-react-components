@@ -1,6 +1,6 @@
 import React from 'react';
 import IconStyled, { IconStyledProps } from '../IconStyled';
-import SVGClose from '../../assets/svg/close.svg';
+import SVGClose from '../../assets/svg/icons/close.svg';
 
 export const IconClose = (props: IconStyledProps) => {
   return (

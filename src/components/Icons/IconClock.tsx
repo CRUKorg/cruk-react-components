@@ -1,13 +1,21 @@
 import React from 'react';
-import IconStyled, { IconStyledProps } from '../IconStyled';
-import SVGClock from '../../assets/svg/clock.svg';
+import styled, { ThemeProvider, withTheme } from 'styled-components';
 
-export const IconClock = (props: IconStyledProps) => {
+import { COLORS } from '../../Constants';
+
+import IconBase, { IconBasePropsType, IconBaseStyledPropsType } from '../IconBase';
+import SVGClock from '../../assets/svg/icons/clock.svg';
+
+const SVGClockStyled = styled(SVGClock)`
+  ${(props: IconBaseStyledPropsType) => IconBase(props)}
+`;
+
+export const IconClock = ({ theme = { colors: COLORS }, color, ...props }: IconBasePropsType) => {
   return (
-    <IconStyled {...props}>
-      <SVGClock aria-hidden="true" focusable="false" />
-    </IconStyled>
+    <ThemeProvider theme={theme}>
+      <SVGClockStyled aria-hidden="true" focusable="false" iconColor={color} {...props} />
+    </ThemeProvider>
   );
 };
 
-export default IconClock;
+export default withTheme(IconClock);
