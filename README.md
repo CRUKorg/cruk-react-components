@@ -1,14 +1,17 @@
-# cruk-react-components
+cruk-react-components
+=====================
 
 React components implementing CRUK and SU2C design tokens
 
-## View the docs
+View the docs
+-------------
 
 cruk-react-component docs site: https://master.d2qmm2ybdxfdzp.amplifyapp.com/
 
 **Username**: cruk **Password**: jvku2cgl4n
 
-## Usage
+Usage
+-----
 
 This repository is private, so to install the library you will need SSH access or a personal access token (PAT) if SSH is not possible.
 
@@ -44,7 +47,8 @@ const MyComponent = () => (<div>
 </div>)
 ```
 
-## Development
+Development
+-----------
 
 Clone this repository
 ```sh
@@ -56,12 +60,33 @@ Install dependencies.
 npm i
 ```
 
-Start local development environment 💥
+Start local development environment
 ```sh
 npm start
 ```
 
-## Roadmap
+Docker
+------
+
+A docker-compose.yml file is provided to aid development/testing in a consistent environment.
+
+Install dependencies.
+```bash
+docker-compose run npm
+```
+
+Start local development environment
+```bash
+docker-compose run server
+```
+
+Run Cypress tests
+```bash
+docker-compose run cypress
+```
+
+Roadmap
+-------
 
 * Sort out folder structure
 * Migrate tests from OF
