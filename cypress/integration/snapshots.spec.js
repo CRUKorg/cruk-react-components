@@ -24,12 +24,20 @@ const components = [
 ];
 
 const selectComponent = (componentName, brand) => {
-  cy.contains('a', componentName).click();
   switch (componentName) {
+    case 'Avatar':
+      cy.get('head').invoke('append', '<style type="text/css">header {display: none;}</style>');
+      cy.get(
+        '[src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/modules/cruk_online_fundraising/images/hero_desktop.jpg"]',
+      ).should($img => {
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
+      cy.get('[aria-label="Example code preview"]')
+        .first()
+        .matchImageSnapshot(`${brand}_${componentName}`);
+      break;
     case 'Header':
       cy.viewport(1000, 480);
-      // header is only full size when scroll top is < 60px
-      cy.scrollTo(0, 0);
       cy.get('header')
         .first()
         .matchImageSnapshot(`${brand}_${componentName}`);
