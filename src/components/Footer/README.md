@@ -7,12 +7,12 @@ There should be only one footer component at the bottom of the body of each page
 ```.jsx
   <React.Fragment>
     <Footer>
-      <Link href="https://www.cancerresearchuk.org/about-us/contact-us"><Text as="span" textSize="small" textWeight="700">Contact us</Text></Link>
-      <Link href="https://www.cancerresearchuk.org/privacy-statement"><Text as="span" textSize="small" textWeight="700">Privacy</Text></Link>
-      <Link href="https://www.cancerresearchuk.org/about-us/contact-us"><Text as="span" textSize="small" textWeight="700">Contact us</Text></Link>
-      <Link href="https://www.cancerresearchuk.org/privacy-statement"><Text as="span" textSize="small" textWeight="700">Privacy</Text></Link>
-      <Link href="https://www.cancerresearchuk.org/about-us/contact-us"><Text as="span" textSize="small" textWeight="700">Contact us</Text></Link>
-      <Link href="https://www.cancerresearchuk.org/privacy-statement"><Text as="span" textSize="small" textWeight="700">Privacy</Text></Link>
+      <Link href="https://www.cancerresearchuk.org/about-us/contact-us">Contact us</Link>
+      <Link href="https://www.cancerresearchuk.org/privacy-statement">Privacy</Link>
+      <Link href="https://www.cancerresearchuk.org/about-us/contact-us">Contact us</Link>
+      <Link href="https://www.cancerresearchuk.org/privacy-statement">Privacy</Link>
+      <Link href="https://www.cancerresearchuk.org/about-us/contact-us">Contact us</Link>
+      <Link href="https://www.cancerresearchuk.org/privacy-statement">Privacy</Link>
     </Footer>
   </React.Fragment>
 ```

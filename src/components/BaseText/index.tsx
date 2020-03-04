@@ -9,6 +9,7 @@ export type BaseTextProps = {
   textWeight?: number;
   ellipsis?: boolean;
   as?: any;
+  theme?: any;
 };
 
 export const baseText = (props: BaseTextProps) => `

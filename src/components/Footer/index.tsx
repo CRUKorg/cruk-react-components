@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 
-import { COLORS, UTILITIES, SPACING, BREAKPOINT } from '../../Constants';
-import Text from '../Text';
+import { COLORS, UTILITIES, SPACING, FONT_SIZES, BREAKPOINT, TYPOGRAPHY } from '../../Constants';
+import Text, { TextStyled } from '../Text';
 
 const StyledFooter = styled.footer`
   box-sizing: border-box;
@@ -48,6 +48,12 @@ const FooterSectionLinks = styled(FooterSection)`
 const StyledNav = styled.nav`
   display: flex;
   flex-direction: column;
+
+  /* TODO: make this work with themes currently there is no difference, will fix when themes are strongly typed */
+  ${TextStyled} {
+    font-size: ${FONT_SIZES.small};
+    font-weight: ${TYPOGRAPHY.fontWeightHeavy};
+  }
 `;
 
 const StyledRegulatorLogo = styled.img`
