@@ -95,46 +95,9 @@ const StyledAddress = styled.address`
   font-style: normal;
 `;
 
-export const Footer: FunctionComponent = ({ children }) => (
-  <StyledFooter>
-    <FooterContentWrapper>
-      <FooterSectionLogo>
-        <StyledRegulatorLogo
-          alt="Registered with Fundraising Regulator"
-          src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/fundreg.png"
-        />
-      </FooterSectionLogo>
-      <FooterSectionLinks>
-        <StyledNav>{children}</StyledNav>
-      </FooterSectionLinks>
-
-      <FooterSection>
-        <Text textSize="small">
-          Cancer Research UK is a registered charity in England and Wales (1089464), Scotland (SC041666), the Isle of
-          Man (1103) and Jersey (247). Registered as a company limited by guarantee in England and Wales No. 4325234.
-        </Text>
-      </FooterSection>
-
-      <FooterSectionAddress>
-        <StyledAddress>
-          <Text as="span" textSize="small">
-            2 Redman Place
-          </Text>
-          <Text as="span" textSize="small">
-            London
-          </Text>
-          <Text as="span" textSize="small">
-            E20 1JQ
-          </Text>
-        </StyledAddress>
-      </FooterSectionAddress>
-    </FooterContentWrapper>
-  </StyledFooter>
-);
 export const Footer: FunctionComponent = ({ children }) => {
   // Removing null/falsey children to avoid creating empty <li> elements
   const childArray = React.Children.toArray(children).filter(Boolean);
-
   return (
     <StyledFooter>
       <FooterContentWrapper>
@@ -153,17 +116,23 @@ export const Footer: FunctionComponent = ({ children }) => {
         </FooterSectionLinks>
 
         <FooterSection>
-          <P fontSize="small">
+          <Text textSize="small">
             Cancer Research UK is a registered charity in England and Wales (1089464), Scotland (SC041666), the Isle of
             Man (1103) and Jersey (247). Registered as a company limited by guarantee in England and Wales No. 4325234.
-          </P>
+          </Text>
         </FooterSection>
 
         <FooterSectionAddress>
           <StyledAddress>
-            <Span fontSize="small">2 Redman Place</Span>
-            <Span fontSize="small">London</Span>
-            <Span fontSize="small">E20 1JQ</Span>
+            <Text as="span" textSize="small">
+              2 Redman Place
+            </Text>
+            <Text as="span" textSize="small">
+              London
+            </Text>
+            <Text as="span" textSize="small">
+              E20 1JQ
+            </Text>
           </StyledAddress>
         </FooterSectionAddress>
       </FooterContentWrapper>
