@@ -90,6 +90,7 @@ const StyledAddress = styled.address`
 `;
 
 export const Footer: FunctionComponent = ({ children }) => {
+  // Removing null/falsey children to avoid creating empty <li> elements
   const childArray = React.Children.toArray(children).filter(Boolean);
   console.log({ childArray });
   return (
