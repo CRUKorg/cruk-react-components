@@ -1,13 +1,12 @@
 import React, { AnchorHTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { COLORS } from '../../Constants';
-import Span from '../Span';
-import P from '../P';
 
 const StyledLink = styled.a`
   text-decoration: none;
 
-  ${Span}, ${P} {
+  span,
+  p {
     transition: color 0.2s ease;
     color: ${({ theme: { colors } }) => (colors && colors.linkColor ? colors.linkColor : COLORS.linkColor)};
     text-decoration: none;
@@ -23,6 +22,6 @@ const StyledLink = styled.a`
   }
 `;
 
-const A = (props: AnchorHTMLAttributes<{}>) => <StyledLink {...props}>{props.children}</StyledLink>;
+const Link = (props: AnchorHTMLAttributes<{}>) => <StyledLink {...props}>{props.children}</StyledLink>;
 
-export default A;
+export default Link;

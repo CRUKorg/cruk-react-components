@@ -1,21 +1,23 @@
 import { COLORS, TYPOGRAPHY, FONT_SIZES, FontSizeType } from '../../Constants';
 import styled from 'styled-components';
 
+// the 'as' prop is for styled component casting
 export type BaseTextProps = {
-  color?: string;
+  textColor?: string;
   textAlign?: 'left' | 'right' | 'center';
-  fontSize?: FontSizeType;
-  fontWeight?: number;
+  textSize?: FontSizeType;
+  textWeight?: number;
   ellipsis?: boolean;
+  as?: any;
 };
 
 export const baseText = (props: BaseTextProps) => `
     font-family: ${TYPOGRAPHY.fontFamilyBase};
-    color: ${props.color ? COLORS[`${props.color}`] : COLORS.grayDarker};
+    color: ${props.textColor ? COLORS[`${props.textColor}`] : COLORS.grayDarker};
     text-align: ${props.textAlign ? props.textAlign : 'left'};
-    font-size: ${props.fontSize ? FONT_SIZES[`${props.fontSize}`] : FONT_SIZES.medium};
+    font-size: ${props.textSize ? FONT_SIZES[`${props.textSize}`] : FONT_SIZES.medium};
     line-height: 1.5em;
-    font-weight: ${!!props.fontWeight ? props.fontWeight : TYPOGRAPHY.fontWeightMedium};
+    font-weight: ${!!props.textWeight ? props.textWeight : TYPOGRAPHY.fontWeightMedium};
     overflow: ${!!props.ellipsis ? 'hidden' : 'visible'};
     text-overflow: ${!!props.ellipsis ? 'ellipsis' : 'unset'};
     padding: 0;
