@@ -1,16 +1,16 @@
 import React, { FunctionComponent } from 'react';
-import styled, { css, ThemeProvider, withTheme } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { COLORS, UTILITIES } from '../../Constants';
 
 export type BoxProps = {
-  bgColor: string;
-  theme: { colors: {} };
-  getBgColor: string;
-  css: any;
+  bgColor?: string;
+  getBgColor?: string;
+  css?: any;
+  theme?: any;
 };
 
-const StyledBox = styled.div`
-  background-color: ${COLORS.white};
+const BoxStyled = styled.div`
+  background-color: ${COLORS.bodyBg};
   padding: ${UTILITIES.spacingUnit * 4}px;
   margin: 0 0 ${UTILITIES.spacingUnit * 4}px 0;
   margin-bottom: ${UTILITIES.spacingUnit * 4}px;
@@ -21,34 +21,24 @@ const StyledBox = styled.div`
     margin-bottom: 0;
   }
 
-  ${(props: BoxProps) =>
-    props.getBgColor &&
-    css`
-      background-color: ${props.getBgColor};
-      color: ${COLORS.white};
-    `}
+  ${({ bgColor, theme }: BoxProps) => {
+    const checkTheme = theme.colors ? theme : { colors: COLORS };
+    const { colors } = checkTheme;
+    const checkBgColor = bgColor ? (typeof colors[bgColor] !== 'undefined' ? colors[bgColor] : bgColor) : null;
+    return (
+      checkBgColor &&
+      css`
+        background-color: ${checkBgColor};
+        color: ${COLORS.bodyTextLight};
+      `
+    );
+  }}
 
   ${(props: BoxProps) => (css as any)([props.css])}
 `;
+
 const Box: FunctionComponent<BoxProps> = props => {
-  const theme = {
-    colors: {
-      ...COLORS,
-      ...props.theme.colors,
-    },
-  };
-  const checkBgColor = (theme.colors as any)[props.bgColor] || props.bgColor;
-  return (
-    <ThemeProvider theme={theme}>
-      <StyledBox getBgColor={props.bgColor && checkBgColor} {...props}>
-        {props.children}
-      </StyledBox>
-    </ThemeProvider>
-  );
+  return <BoxStyled {...props}>{props.children}</BoxStyled>;
 };
 
-Box.defaultProps = {
-  theme: { colors: COLORS },
-};
-
-export default withTheme(Box);
+export default Box;
