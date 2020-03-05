@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 
 import { COLORS, UTILITIES, SPACING, FONT_SIZES, BREAKPOINT, TYPOGRAPHY } from '../../Constants';
-import Text, { TextStyled } from '../Text';
+import Text from '../Text';
 
 const StyledFooter = styled.footer`
   box-sizing: border-box;
@@ -60,7 +60,7 @@ const StyledNav = styled.nav`
   flex-direction: column;
 
   /* TODO: make this work with themes currently there is no difference, will fix when themes are strongly typed */
-  ${TextStyled} {
+  a {
     font-size: ${FONT_SIZES.small};
     font-weight: ${TYPOGRAPHY.fontWeightHeavy};
   }
@@ -96,8 +96,7 @@ const StyledAddress = styled.address`
 `;
 
 export const Footer: FunctionComponent = ({ children }) => {
-  // Removing null/falsey children to avoid creating empty <li> elements
-  const childArray = React.Children.toArray(children).filter(Boolean);
+  const childArray = React.Children.toArray(children);
   return (
     <StyledFooter>
       <FooterContentWrapper>

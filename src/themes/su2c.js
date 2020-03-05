@@ -15,6 +15,8 @@ export default {
     tertiaryHover: '#eb2f24',
     progressBar: '#ee5a04',
     circularProgress: '#f67d12',
+    linkColor: '#ee5a04',
+    linkColorHover: '#ee5a04',
   },
   typography: {
     customFonts: [
@@ -25,6 +27,7 @@ export default {
       },
     ],
     fontFamilyHeadings: 'itc_avant_garde_pro_mdbold,Arial,sans-serif',
+    linkTextDecoration: 'underline',
   },
   button: css`
     border-radius: 1.5rem;
