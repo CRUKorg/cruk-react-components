@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
 import { COLORS, UTILITIES } from '../../Constants';
 
@@ -7,7 +7,6 @@ export type BoxProps = {
   theme: { colors: {} };
   getBgColor: string;
   css: any;
-  children?: any;
 };
 
 const StyledBox = styled.div`
@@ -31,7 +30,7 @@ const StyledBox = styled.div`
 
   ${(props: BoxProps) => (css as any)([props.css])}
 `;
-const Box = (props: BoxProps) => {
+const Box: FunctionComponent<BoxProps> = props => {
   const theme = {
     colors: {
       ...COLORS,
@@ -49,7 +48,7 @@ const Box = (props: BoxProps) => {
 };
 
 Box.defaultProps = {
-  theme: {},
+  theme: { colors: COLORS },
 };
 
 export default withTheme(Box);
