@@ -1,5 +1,4 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React, { FunctionComponent } from 'react';
 import { Router, Link as RouterLink } from '@reach/router';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 // import { MDXProvider } from '@mdx-js/tag';
@@ -209,7 +208,7 @@ const StyledToggle = styled.input`
   }
 `;
 
-const Toggle = props => <StyledToggle type="checkbox" {...props} />;
+const Toggle: FunctionComponent = props => <StyledToggle type="checkbox" {...props} />;
 
 const Nav = styled.nav`
   a {
@@ -225,7 +224,7 @@ const Nav = styled.nav`
   }
 `;
 
-const components = {
+const components: any = {
   pre: props => <div {...props} />,
   code: ({ children }) => (
     <LiveProvider
@@ -282,13 +281,14 @@ const components = {
   h6: props => <Heading h3 {...props} />,
 };
 
-class Docs extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      theme: 'cruk',
-    };
-  }
+type State = {
+  theme: string;
+};
+
+class Docs extends React.Component<{}, State> {
+  state = {
+    theme: 'cruk',
+  };
 
   componentDidMount() {
     window.addEventListener('keyup', this.handleOutline);
