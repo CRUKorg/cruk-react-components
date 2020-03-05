@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { BREAKPOINT } from '../Constants';
 
 type FlexProps = {
-  css: string;
+  css?: string;
 };
 
 const Flex = styled.div<FlexProps>`
