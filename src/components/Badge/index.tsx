@@ -1,19 +1,33 @@
-import React from 'react';
-import styled, { css, ThemeProvider, withTheme } from 'styled-components';
+import React, { FunctionComponent } from 'react';
+import styled, { css } from 'styled-components';
 import { COLORS, FONT_SIZES } from '../../Constants';
 
 type BadgeProps = {
-  bgColor: string;
+  bgColor?: string;
   text: boolean;
   theme: { colors: { [key: string]: string } };
   getBgColor?: string;
   size?: number;
   children?: any;
 };
+type StyledBadgeProps = {
+  bgColor?: string;
+  text: boolean;
+  getBgColor?: string;
+  size?: number;
+};
 
 // TODO Look at where 15 comes from in the height and width bellow.
-const StyledBadge = styled.span`
-  background-color: ${props => props.getBgColor};
+const StyledBadge = styled.span<StyledBadgeProps>`
+  background-color: ${({ theme = { colors: COLORS }, bgColor }) => {
+    const foundTheme = theme.colors ? theme : { colors: COLORS };
+    const defaultBgColor = bgColor
+      ? typeof foundTheme.colors[bgColor] !== 'undefined'
+        ? foundTheme.colors[bgColor]
+        : bgColor
+      : foundTheme.colors.primary;
+    return defaultBgColor;
+  }};
   color: ${COLORS.white};
   text-align: center;
   border-radius: 1.5rem;
@@ -36,35 +50,20 @@ const StyledBadge = styled.span`
     `}
 `;
 
-const Badge = (props: BadgeProps) => {
-  const theme = {
-    colors: {
-      ...COLORS,
-      ...props.theme.colors,
-    },
-  };
+const Badge: FunctionComponent<BadgeProps> = props => {
   const getChildSize =
     props.children.props && props.children.props.size !== undefined
       ? parseFloat(props.children.props.size.match(/\d+/)[0])
       : 15;
-  const defaultBgColor = theme.colors.primary || COLORS.primary;
-  const checkBgColor = (theme.colors as any)[props.bgColor] || props.bgColor;
   return (
-    <ThemeProvider theme={theme}>
-      <StyledBadge
-        text={typeof props.children === 'string'}
-        size={parseFloat(getChildSize.toString())}
-        getBgColor={props.bgColor !== undefined ? checkBgColor : defaultBgColor}
-        {...props}
-      >
-        {props.children}
-      </StyledBadge>
-    </ThemeProvider>
+    <StyledBadge
+      text={typeof props.children === 'string'}
+      size={parseFloat(getChildSize.toString())}
+      bgColor={props.bgColor}
+    >
+      {props.children}
+    </StyledBadge>
   );
 };
 
-Badge.defaultProps = {
-  theme: {},
-};
-
-export default withTheme(Badge);
+export default Badge;
