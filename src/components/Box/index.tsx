@@ -29,7 +29,7 @@ const BoxStyled = styled.div`
       checkBgColor &&
       css`
         background-color: ${checkBgColor};
-        color: ${COLORS.bodyTextLight};
+        color: ${COLORS.white};
       `
     );
   }}
