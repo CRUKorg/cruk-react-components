@@ -2,12 +2,12 @@ import React from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
 import { COLORS, UTILITIES } from '../../Constants';
 
-type BoxProps = {
+export type BoxProps = {
   bgColor: string;
   theme: { colors: {} };
   getBgColor: string;
-  children: any;
   css: any;
+  children?: any;
 };
 
 const StyledBox = styled.div`

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled, { css } from 'styled-components';
 import { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../Constants';
 
@@ -74,27 +74,21 @@ const H6 = styled.h6`
   } // 14px
 `;
 
-const Heading = ({
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  ...props
-}: {
-  h1: string;
-  h2: String;
-  h3: string;
-  h4: string;
-  h5: string;
-  h6: string;
-}) => {
-  if (h2) return <H2 {...props} />;
-  if (h3) return <H3 {...props} />;
-  if (h4) return <H4 {...props} />;
-  if (h5) return <H5 {...props} />;
-  if (h6) return <H6 {...props} />;
+type Props = {
+  h1: boolean;
+  h2: boolean;
+  h3: boolean;
+  h4: boolean;
+  h5: boolean;
+  h6: boolean;
+};
+
+const Heading: FunctionComponent<Props> = props => {
+  if (props.h2) return <H2 {...props} />;
+  if (props.h3) return <H3 {...props} />;
+  if (props.h4) return <H4 {...props} />;
+  if (props.h5) return <H5 {...props} />;
+  if (props.h6) return <H6 {...props} />;
   return <H1 {...props} />;
 };
 

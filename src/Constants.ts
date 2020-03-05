@@ -113,3 +113,16 @@ export const UTILITIES = {
   spacingBase: '5px',
   spacingUnit: 5,
 };
+
+const theme = {
+  avatar: AVATAR,
+  utilities: UTILITIES,
+  colors: COLORS,
+  typography: TYPOGRAPHY,
+  fontSizes: FONT_SIZES,
+  spacing: SPACING,
+  breakpoint: BREAKPOINT,
+  siteConfig: SITECONFIG,
+};
+
+export default theme;

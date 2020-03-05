@@ -7,7 +7,7 @@ import styled, { css, ThemeProvider } from 'styled-components';
 
 import Avatar from '../components/Avatar';
 import Badge from '../components/Badge';
-import Box from '../components/Box';
+import Box, { BoxProps } from '../components/Box';
 import Button from '../components/Button';
 import Checkbox from '../components/Checkbox';
 import Collapse from '../components/Collapse';
@@ -65,7 +65,7 @@ import GlobalStyle from '../components/GlobalStyle';
  * Doc specific styling
  * layout, toggle, theme switch, code area
  */
-const SwitchTheme = styled(Button)`
+const SwitchThemeStyled = styled(Button)`
   float: right;
 
   @media (max-width: ${BREAKPOINT.tablet}) {
@@ -77,7 +77,16 @@ const SwitchTheme = styled(Button)`
   }
 `;
 
-const SideBar = styled(Box)`
+type SwitchThemePropsType = {
+  onClick: () => void;
+};
+
+const SwitchTheme: FunctionComponent<SwitchThemePropsType & React.HTMLAttributes<HTMLElement>> = ({
+  onClick,
+  children,
+}) => <SwitchThemeStyled onClick={onClick}>{children}</SwitchThemeStyled>;
+
+const SideBarStyled = styled(Box)`
   margin-left: 0;
   max-width: 265px;
   background-color: ${COLORS.grayVLight};
@@ -105,6 +114,8 @@ const SideBar = styled(Box)`
   }
 `;
 
+const SideBar: FunctionComponent<BoxProps> = props => <SideBarStyled {...props}>{props.children}</SideBarStyled>;
+
 const Content = styled.div`
   max-width: 940px;
   margin: 0 0 0 32px;
@@ -123,6 +134,8 @@ const StyledFlex = styled(Flex)`
     padding-top: 117px;
   }
 `;
+
+const FlexContainer: FunctionComponent = props => <StyledFlex>{props.children}</StyledFlex>;
 
 const BaseToggleStyle = css`
   display: block;
@@ -176,7 +189,7 @@ const StyledToggle = styled.input`
     left: 265px;
   }
 
-  :checked ~ ${SideBar} {
+  :checked ~ ${SideBarStyled} {
     left: 0;
   }
 
@@ -224,9 +237,9 @@ const Nav = styled.nav`
   }
 `;
 
-const components: any = {
-  pre: props => <div {...props} />,
-  code: ({ children }) => (
+const components = {
+  pre: (props: any) => <div {...props} />,
+  code: ({ children }: any) => (
     <LiveProvider
       code={children}
       aria-label="Example code"
@@ -273,12 +286,6 @@ const components: any = {
       <LiveError />
     </LiveProvider>
   ),
-  h1: props => <Heading {...props} />,
-  h2: props => <Heading h2 {...props} />,
-  h3: props => <Heading h3 {...props} />,
-  h4: props => <Heading h3 {...props} />,
-  h5: props => <Heading h3 {...props} />,
-  h6: props => <Heading h3 {...props} />,
 };
 
 type State = {
@@ -302,29 +309,28 @@ class Docs extends React.Component<{}, State> {
    * outline when user start tabbing
    * https://jmperezperez.com/outline-focus-ring-a11y/
    */
-  handleOutline = e => {
-    if (e.key === 9) {
+  handleOutline = (e: KeyboardEvent) => {
+    if (e.key === '9') {
       document.documentElement.classList.remove('no-focus-outline');
     }
   };
 
+  handleOnThemeSwitchClick = () => {
+    this.setState({
+      theme: this.state.theme === 'su2c' ? 'cruk' : 'su2c',
+    });
+  };
+
   render() {
+    const { theme } = this.state;
     return (
-      <ThemeProvider theme={this.state.theme === 'su2c' ? su2cTheme : {}}>
+      <ThemeProvider theme={theme === 'su2c' ? su2cTheme : {}}>
         <MDXProvider components={components}>
           <GlobalStyle />
           <Header isSticky>
-            <SwitchTheme
-              onClick={() =>
-                this.setState({
-                  theme: this.state.theme === 'su2c' ? 'cruk' : 'su2c',
-                })
-              }
-            >
-              Switch theme
-            </SwitchTheme>
+            <SwitchTheme onClick={this.handleOnThemeSwitchClick}>Switch theme</SwitchTheme>
           </Header>
-          <StyledFlex>
+          <FlexContainer>
             <Toggle />
             <ToggleIcon />
             <SideBar>
@@ -382,7 +388,7 @@ class Docs extends React.Component<{}, State> {
                 <UserBlockReadme path="/userblock" />
               </Router>
             </Content>
-          </StyledFlex>
+          </FlexContainer>
         </MDXProvider>
       </ThemeProvider>
     );

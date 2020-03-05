@@ -28,6 +28,7 @@ type ButtonProps = {
   size?: string;
   disabled?: boolean;
   as?: any;
+  onClick?: () => void;
 };
 
 const StyledButton = styled.button`
