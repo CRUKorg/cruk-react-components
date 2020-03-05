@@ -7,6 +7,7 @@ import Divider from './Divider';
 import ErrorText from './ErrorText';
 import Flex from './Flex';
 import Footer from './Footer';
+import GlobalStyle from './GlobalStyle';
 import Heading from './Heading';
 import Header from './Header';
 import Icon from './Icon';
@@ -36,6 +37,7 @@ export {
   ErrorText,
   Flex,
   Footer,
+  GlobalStyle,
   Heading,
   Header,
   Icon,
