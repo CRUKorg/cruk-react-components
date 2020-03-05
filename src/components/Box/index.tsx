@@ -4,12 +4,11 @@ import { COLORS, UTILITIES } from '../../Constants';
 
 export type BoxProps = {
   bgColor?: string;
-  getBgColor?: string;
   css?: any;
-  theme?: any;
+  children?: any;
 };
 
-const BoxStyled = styled.div`
+const BoxStyled = styled.div<BoxProps>`
   background-color: ${COLORS.bodyBg};
   padding: ${UTILITIES.spacingUnit * 4}px;
   margin: 0 0 ${UTILITIES.spacingUnit * 4}px 0;
@@ -20,18 +19,13 @@ const BoxStyled = styled.div`
   &:last-child {
     margin-bottom: 0;
   }
+  color: ${({ bgColor }) => (bgColor ? COLORS.white : COLORS.grayDarker)};
 
-  ${({ bgColor, theme }: BoxProps) => {
+  ${({ bgColor, theme }) => {
     const checkTheme = theme.colors ? theme : { colors: COLORS };
     const { colors } = checkTheme;
     const checkBgColor = bgColor ? (typeof colors[bgColor] !== 'undefined' ? colors[bgColor] : bgColor) : null;
-    return (
-      checkBgColor &&
-      css`
-        background-color: ${checkBgColor};
-        color: ${COLORS.white};
-      `
-    );
+    return `background-color: ${checkBgColor};`;
   }}
 
   ${(props: BoxProps) => (css as any)([props.css])}

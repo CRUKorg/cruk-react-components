@@ -87,7 +87,7 @@ class Modal extends React.Component<ModalProps> {
     return ReactDOM.createPortal(
       <FocusLock returnFocus>
         <Wrapper>
-          <Content aria-modal="true" bgColor="" getBgColor="" css="">
+          <Content aria-modal="true" bgColor="" css="">
             {closeButton && (
               <CloseButton
                 appearance="link"
