@@ -3,12 +3,14 @@ import Badge from './Badge';
 import Box from './Box';
 import Button from './Button';
 import Checkbox from './Checkbox';
+import Collapse from './Collapse';
 import Divider from './Divider';
 import ErrorText from './ErrorText';
 import Flex from './Flex';
 import Footer from './Footer';
-import Heading from './Heading';
+import GlobalStyle from './GlobalStyle';
 import Header from './Header';
+import Heading from './Heading';
 import Icon from './Icon';
 import Label from './Label';
 import Link from './Link';
@@ -17,14 +19,13 @@ import Modal from './Modal';
 import Pagination from './Pagination';
 import PopOver from './PopOver';
 import ProgressBar from './ProgressBar';
-import RadioGroup from './RadioGroup';
 import Radio from './Radio';
+import RadioGroup from './RadioGroup';
 import Select from './Select';
 import Step from './Step';
 import TextField from './TextField';
 import Totaliser from './Totaliser';
 import UserBlock from './UserBlock';
-import Collapse from './Collapse';
 
 export {
   Avatar,
@@ -32,12 +33,14 @@ export {
   Box,
   Button,
   Checkbox,
+  Collapse,
   Divider,
   ErrorText,
   Flex,
   Footer,
-  Heading,
+  GlobalStyle,
   Header,
+  Heading,
   Icon,
   Label,
   Link,
@@ -53,5 +56,4 @@ export {
   TextField,
   Totaliser,
   UserBlock,
-  Collapse,
 };
