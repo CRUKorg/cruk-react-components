@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { COLORS, FONT_SIZES } from '../../Constants';
 
 type BadgeProps = {
@@ -7,7 +7,7 @@ type BadgeProps = {
   text: boolean;
   theme: { colors: { [key: string]: string } };
   getBgColor?: string;
-  size?: number;
+  size: number;
   children?: any;
 };
 type StyledBadgeProps = {
@@ -18,7 +18,7 @@ type StyledBadgeProps = {
 };
 
 // TODO Look at where 15 comes from in the height and width bellow.
-const StyledBadge = styled.span<StyledBadgeProps>`
+const StyledBadge = styled.div<StyledBadgeProps>`
   background-color: ${({ theme = { colors: COLORS }, bgColor }) => {
     const foundTheme = theme.colors ? theme : { colors: COLORS };
     const defaultBgColor = bgColor
@@ -30,37 +30,32 @@ const StyledBadge = styled.span<StyledBadgeProps>`
   }};
   color: ${COLORS.white};
   text-align: center;
-  border-radius: 1.5rem;
   font-size: ${FONT_SIZES.small};
-  padding: 3px 10px;
-  display: inline-block;
 
-  ${(props: BadgeProps) =>
-    !props.text &&
-    css`
-      padding: 0;
-      border-radius: 50%;
-      display: block;
-      height: ${props.size + 15}px;
-      width: ${props.size + 15}px;
-      line-height: ${props.size + 15}px;
-      svg {
-        height: ${props.size}px;
-      }
-    `}
+  display: inline;
+
+  padding: ${({ text }) => (!!text ? '3px 10px;' : '0')};
+
+  border-radius: ${({ text }) => (!!text ? '1.5rem' : '50%')};
+  height: ${({ size, text }) => (!!text ? 'auto' : `calc(${size}px + 15px)`)};
+  width: ${({ size, text }) => (!!text ? 'auto' : `calc(${size}px + 15px)`)};
+  line-height: ${({ size, text }) => (!!text ? 'inherit' : `calc(${size}px + 15px)`)};
+
+  svg {
+    height: ${({ size }) => `${size}px`};
+  }
 `;
 
 const Badge: FunctionComponent<BadgeProps> = props => {
+  const { children } = props;
   const getChildSize =
-    props.children.props && props.children.props.size !== undefined
-      ? parseFloat(props.children.props.size.match(/\d+/)[0])
-      : 15;
+    children.props && children.props.size !== undefined ? parseFloat(props.children.props.size.match(/\d+/)[0]) : 15;
+  const getChildSizeFloat = parseFloat(getChildSize.toString());
+  const isChildText = typeof children === 'string';
+
+  console.log({ isChildText, children });
   return (
-    <StyledBadge
-      text={typeof props.children === 'string'}
-      size={parseFloat(getChildSize.toString())}
-      bgColor={props.bgColor}
-    >
+    <StyledBadge text={isChildText} size={getChildSizeFloat} bgColor={props.bgColor}>
       {props.children}
     </StyledBadge>
   );
