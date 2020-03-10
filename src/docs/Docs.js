@@ -22,14 +22,13 @@ import Link from '../components/Link';
 import Loader from '../components/Loader';
 import Modal from '../components/Modal';
 import Pagination from '../components/Pagination';
-import P from '../components/P';
 import PopOver from '../components/PopOver';
 import ProgressBar from '../components/ProgressBar';
 import RadioGroup from '../components/RadioGroup';
 import Radio from '../components/Radio';
-import Span from '../components/Span';
 import Select from '../components/Select';
 import Step from '../components/Step';
+import Text from '../components/Text';
 import TextField from '../components/TextField';
 import Totaliser from '../components/Totaliser';
 import UserBlock from '../components/UserBlock';
@@ -245,15 +244,14 @@ const components = {
         Link,
         Loader,
         Modal,
-        P,
         Pagination,
         PopOver,
         ProgressBar,
         Radio,
         RadioGroup,
         Select,
-        Span,
         Step,
+        Text,
         TextField,
         Totaliser,
         UserBlock,

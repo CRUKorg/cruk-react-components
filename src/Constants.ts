@@ -99,6 +99,7 @@ export const TYPOGRAPHY = {
   fontWeightMedium: '500', // default
   fontWeightLight: '300',
   fontWeightVLight: '100',
+  linkTextDecoration: 'none',
 };
 
 export const UTILITIES = {

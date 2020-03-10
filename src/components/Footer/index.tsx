@@ -1,9 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 
-import { COLORS, UTILITIES, SPACING, BREAKPOINT } from '../../Constants';
-import P from '../P';
-import Span from '../Span';
+import { COLORS, UTILITIES, SPACING, FONT_SIZES, BREAKPOINT, TYPOGRAPHY } from '../../Constants';
+import Text from '../Text';
 
 const StyledFooter = styled.footer`
   box-sizing: border-box;
@@ -60,6 +59,12 @@ const FooterSectionLinks = styled(FooterSection)`
 const StyledNav = styled.nav`
   display: flex;
   flex-direction: column;
+
+  /* TODO: make this work with themes currently there is no difference, will fix when themes are strongly typed */
+  a {
+    font-size: ${FONT_SIZES.small};
+    font-weight: ${TYPOGRAPHY.fontWeightHeavy};
+  }
 `;
 
 const StyledUL = styled.ul`
@@ -88,12 +93,11 @@ const StyledRegulatorLogo = styled.img`
 const StyledAddress = styled.address`
   display: flex;
   flex-direction: column;
+  font-style: normal;
 `;
 
 export const Footer: FunctionComponent = ({ children }) => {
-  // Removing null/falsey children to avoid creating empty <li> elements
-  const childArray = React.Children.toArray(children).filter(Boolean);
-
+  const childArray = React.Children.toArray(children);
   return (
     <StyledFooter>
       <FooterContentWrapper>
@@ -112,17 +116,23 @@ export const Footer: FunctionComponent = ({ children }) => {
         </FooterSectionLinks>
 
         <FooterSection>
-          <P fontSize="small">
+          <Text textSize="small">
             Cancer Research UK is a registered charity in England and Wales (1089464), Scotland (SC041666), the Isle of
             Man (1103) and Jersey (247). Registered as a company limited by guarantee in England and Wales No. 4325234.
-          </P>
+          </Text>
         </FooterSection>
 
         <FooterSectionAddress>
           <StyledAddress>
-            <Span fontSize="small">2 Redman Place</Span>
-            <Span fontSize="small">London</Span>
-            <Span fontSize="small">E20 1JQ</Span>
+            <Text as="span" textSize="small">
+              2 Redman Place
+            </Text>
+            <Text as="span" textSize="small">
+              London
+            </Text>
+            <Text as="span" textSize="small">
+              E20 1JQ
+            </Text>
           </StyledAddress>
         </FooterSectionAddress>
       </FooterContentWrapper>
