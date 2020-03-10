@@ -9,7 +9,7 @@ type StyledLabelProps = {
 
 const StyledLabel = styled.label<StyledLabelProps>`
   border-radius: ${props => props.theme.utilities.borderRadius};
-  border: solid 2px ${props => (props.checked ? props.theme.colors.primary : props.theme.colors.gray)};
+  border: solid 2px ${props => (props.checked ? props.theme.colors.primary : props.theme.colors.checkboxBorder)};
   cursor: pointer;
   display: block;
   font-weight: ${props => (props.checked ? 'bold' : 'normal')};

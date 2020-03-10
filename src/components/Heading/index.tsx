@@ -12,7 +12,7 @@ const StyledHeading = css`
   font-family: ${props =>
     props.theme.typography ? props.theme.typography.fontFamilyHeadings : TYPOGRAPHY.fontFamilyHeadings};
   font-weight: ${TYPOGRAPHY.fontWeightMedium};
-  color: ${COLORS.grayDarker};
+  color: ${COLORS.textDark};
   line-height: ${UTILITIES.lineHeight};
   margin-top: 0;
   margin-bottom: ${UTILITIES.rhythmVerticalBase};

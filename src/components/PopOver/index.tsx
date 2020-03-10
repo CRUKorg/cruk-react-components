@@ -30,7 +30,7 @@ const PopOverContent = styled.div`
   max-width: 276px;
   font-size: ${FONT_SIZES.small};
   word-wrap: break-word;
-  background-color: ${COLORS.white};
+  background-color: ${COLORS.popoverBg};
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: ${UTILITIES.borderRadius};
@@ -53,7 +53,7 @@ const PopOverContent = styled.div`
   }
   &:after {
     margin-top: -1px;
-    border-color: ${COLORS.white} transparent transparent;
+    border-color: ${COLORS.popoverBg} transparent transparent;
   }
 `;
 
@@ -86,7 +86,7 @@ const PopOver = (props: PopOverProps) => {
           border-color: transparent transparent rgba(0, 0, 0, 0.25);
         }
         &:after {
-          border-color: transparent transparent ${COLORS.white};
+          border-color: transparent transparent ${COLORS.popoverBg};
           margin: 0 0 -1px 0;
         }
       `}
@@ -109,7 +109,7 @@ const PopOver = (props: PopOverProps) => {
             border-color: transparent rgba(0, 0, 0, 0.25) transparent transparent;
           }
           &:after {
-            border-color: transparent ${COLORS.white} transparent transparent;
+            border-color: transparent ${COLORS.popoverBg} transparent transparent;
             margin: 0 0 0 1px;
           }
         `}
@@ -132,7 +132,7 @@ const PopOver = (props: PopOverProps) => {
             border-color: transparent transparent transparent rgba(0, 0, 0, 0.25);
           }
           &:after {
-            border-color: transparent transparent transparent ${COLORS.white};
+            border-color: transparent transparent transparent ${COLORS.popoverBg};
             margin: 0 0 0 -1px;
           }
         `}

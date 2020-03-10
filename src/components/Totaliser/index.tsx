@@ -15,7 +15,7 @@ type TotaliserProps = {
 };
 
 const DetailWrapper = styled.div`
-  color: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.textLight};
   text-align: center;
   background-color: ${props => props.theme.colors.tertiary};
   border-radius: 3.2rem;
@@ -30,7 +30,7 @@ const DetailWrapper = styled.div`
 const ProgressBarWrapper = styled.div`
   padding: 0 46px 12px;
   margin-top: 7px;
-  border: solid 1px ${COLORS.grayMedium};
+  border: solid 1px ${COLORS.totaliserBorder};
   border-radius: ${UTILITIES.borderRadius};
   position: relative;
 `;
@@ -73,7 +73,7 @@ const CompactWrapper = styled.div`
   ${Total} {
     background-color: ${props => props.theme.colors.primary};
     border-radius: 20px;
-    color: ${props => props.theme.colors.white};
+    color: ${props => props.theme.colors.textLight};
     font-size: 1rem;
     line-height: ${UTILITIES.lineHeight};
     margin: -5px 0 5px;

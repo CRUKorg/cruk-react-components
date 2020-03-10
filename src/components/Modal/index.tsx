@@ -8,7 +8,7 @@ import Button from '../Button';
 import { COLORS } from '../../Constants';
 
 const Background = styled.div`
-  background: ${COLORS.grayDarker};
+  background: ${COLORS.modalBaffle};
   bottom: 0;
   left: 0;
   opacity: 0.5;
@@ -30,7 +30,7 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled(Box)`
-  background: ${COLORS.white};
+  background: ${COLORS.bodyBg};
   border-radius: 4px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
   margin: 100px auto 20px;

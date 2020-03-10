@@ -15,7 +15,7 @@ export type TextProps = {
 
 export const TextStyled = styled.p<TextProps>`
   font-family: ${({ theme }) => (theme.typography ? theme.typography.fontFamilyBase : TYPOGRAPHY.fontFamilyBase)};
-  color: ${({ theme, textColor }) => (theme.colors ? theme.colors[textColor] : COLORS.grayDarker)};
+  color: ${({ theme, textColor }) => (theme.colors ? theme.colors[textColor] : COLORS.textDark)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'left')};
   font-size: ${({ theme, textSize }) =>
     textSize ? (theme.fontSizes ? theme.fontSizes[`${textSize}`] : FONT_SIZES[`${textSize}`]) : FONT_SIZES.medium};

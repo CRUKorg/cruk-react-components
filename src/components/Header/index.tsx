@@ -22,7 +22,7 @@ const StyledHeader = styled.header`
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  background-color: ${COLORS.white};
+  background-color: ${COLORS.headerBg};
   z-index: 9998;
 `;
 
@@ -39,9 +39,9 @@ const HeaderStickyPlaceHolder = styled.div`
 const HeaderStickyContainer = styled.div`
   width: 100%;
   padding: 0;
-  background-color: ${COLORS.white};
+  background-color: ${COLORS.headerBg};
   position: relative;
-  border-bottom: solid 1px ${COLORS.grayLight};
+  border-bottom: solid 1px ${COLORS.headerBorder};
   padding: 0 ${HEADER_PADDING};
   height: ${HEADER_HEIGHT_SMALL};
 
