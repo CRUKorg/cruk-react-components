@@ -16,6 +16,7 @@ const StyledFooter = styled.footer`
 const FooterContentWrapper = styled.div`
   max-width: ${UTILITIES.contentMaxWidth};
   display: block;
+  margin: 0 auto;
 
   @media (min-width: ${BREAKPOINT.desktop}) {
     display: flex;
