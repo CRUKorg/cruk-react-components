@@ -1,6 +1,6 @@
 import React from 'react';
-import styled, { css, withTheme } from 'styled-components';
-import { COLORS, TYPOGRAPHY, FONT_SIZES, UTILITIES } from '../../themes/cruk';
+import styled, { css, withTheme, ThemeProvider } from 'styled-components';
+import { COLORS, TYPOGRAPHY, FONT_SIZES, BUTTON } from '../../themes/cruk';
 import Icon from '../Icon';
 
 type ButtonProps = {
@@ -24,7 +24,7 @@ type ButtonProps = {
 
 const StyledButton = styled.button`
   background-color: ${props => props.theme.colors.bodyBg};
-  border-radius: ${UTILITIES.borderRadius};
+  border-radius: ${props => props.theme.button.borderRadius};
   border: 2px solid ${props => props.theme.colors.buttonBorder};
   box-sizing: border-box;
   color: ${props => props.theme.colors.primary};
@@ -35,7 +35,8 @@ const StyledButton = styled.button`
   line-height: 1;
   padding: 10px;
   text-align: center;
-  text-decoration: none;
+  text-decoration: ${props => props.theme.button.textDecoration};
+  text-transform: ${props => props.theme.button.textTransform};
   :focus,
   :hover {
     color: ${props => props.theme.colors.secondary}
@@ -143,7 +144,10 @@ const Button = (props: ButtonProps) => {
       ...COLORS,
       ...props.theme.colors,
     },
-    button: () => props.theme.button || {},
+    button: {
+      ...BUTTON,
+      ...props.theme.button,
+    },
   };
   const icon = props.icon && <Icon name={props.icon} />;
   const iconRight = props.iconAlign === 'right';
@@ -156,11 +160,13 @@ const Button = (props: ButtonProps) => {
   };
 
   return (
-    <StyledButton {...props} aria-label={ariaLabel()} theme={theme}>
-      {!iconRight && icon}
-      {props.children}
-      {iconRight && icon}
-    </StyledButton>
+    <ThemeProvider theme={theme}>
+      <StyledButton {...props} aria-label={ariaLabel()} theme={theme}>
+        {!iconRight && icon}
+        {props.children}
+        {iconRight && icon}
+      </StyledButton>
+    </ThemeProvider>
   );
 };
 
