@@ -1,5 +1,5 @@
 import { createGlobalStyle, withTheme } from 'styled-components';
-import { COLORS, TYPOGRAPHY, UTILITIES } from '../themes/cruk';
+import { COLORS, TYPOGRAPHY } from '../themes/cruk';
 
 type CustomFont = {
   family: string;
@@ -35,17 +35,13 @@ const GlobalStyle = createGlobalStyle`
         ...TYPOGRAPHY,
         ...(props.theme as any).typography,
       },
-      utilities: {
-        ...UTILITIES,
-        ...(props.theme as any).utilities,
-      },
     };
     return `
       ${buildCustomFonts(theme.typography.customFonts)}
       html {
         font-size: ${theme.typography.fontSizeBase};
         font-family: ${theme.typography.fontFamilyBase};
-        line-height: ${theme.utilities.lineHeight};
+        line-height: ${theme.typography.lineHeight};
       }
       body {
         background-color: ${theme.colors.bodyBg};

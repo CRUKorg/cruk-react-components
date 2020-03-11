@@ -153,12 +153,12 @@ export const TYPOGRAPHY = {
   fontWeightLight: '300',
   fontWeightVLight: '100',
   linkTextDecoration: 'none',
+  lineHeight: '1.5',
+  lineHeightLarge: '2',
 };
 
 export const UTILITIES = {
   borderRadius: '3px',
-  lineHeight: '1.5',
-  lineHeightLarge: '2',
   rhythmBase: '15px',
   rhythmVerticalBase: '15px',
   rhythmHorizontalBase: '15px',
@@ -166,3 +166,7 @@ export const UTILITIES = {
   spacingBase: '5px',
   spacingUnit: 5,
 };
+
+const theme = {};
+
+export default theme;
