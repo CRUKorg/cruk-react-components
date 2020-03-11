@@ -102,7 +102,7 @@ export const COLORS: { [key: string]: string } = {
 
   selectBackground: TOKEN_COLORS.grayDarker,
 
-  modalBaffle: TOKEN_COLORS.grayDarker,
+  modalBackdrop: TOKEN_COLORS.grayDarker,
 
   userBlockExtraText: TOKEN_COLORS.grayDark,
 };

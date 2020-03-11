@@ -8,7 +8,7 @@ import Button from '../Button';
 import { COLORS } from '../../Constants';
 
 const Background = styled.div`
-  background: ${COLORS.modalBaffle};
+  background: ${COLORS.modalBackdrop};
   bottom: 0;
   left: 0;
   opacity: 0.5;
