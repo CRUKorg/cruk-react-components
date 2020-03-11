@@ -27,9 +27,17 @@ const buildCustomFonts = (customFonts: Array<CustomFont>) =>
 const GlobalStyle = createGlobalStyle`
   ${props => {
     const theme = {
+      colors: {
+        ...COLORS,
+        ...(props.theme as any).colors,
+      },
       typography: {
         ...TYPOGRAPHY,
         ...(props.theme as any).typography,
+      },
+      utilities: {
+        ...UTILITIES,
+        ...(props.theme as any).utilities,
       },
     };
     return `
@@ -37,17 +45,17 @@ const GlobalStyle = createGlobalStyle`
       html {
         font-size: ${theme.typography.fontSizeBase};
         font-family: ${theme.typography.fontFamilyBase};
-        line-height: ${UTILITIES.lineHeight};
+        line-height: ${theme.utilities.lineHeight};
+      }
+      body {
+        background-color: ${theme.colors.bodyBg};
+        color: ${theme.colors.textDark};
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
       }
     `;
   }}
-  body {
-    background-color: ${COLORS.bodyBg};
-    color: ${COLORS.textDark};
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
   *, *:after, *:before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
