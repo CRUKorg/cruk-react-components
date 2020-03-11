@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { ThemeProvider, withTheme } from 'styled-components';
-import { COLORS } from '../../Constants';
+import { COLORS } from '../../themes/cruk';
 import { ICONS } from './iconList';
 import { camelize } from '../../utils/Helper';
 

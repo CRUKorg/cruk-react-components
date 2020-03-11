@@ -1,5 +1,5 @@
 import { createGlobalStyle, withTheme } from 'styled-components';
-import { COLORS, TYPOGRAPHY, UTILITIES } from '../Constants';
+import { COLORS, TYPOGRAPHY, UTILITIES } from '../themes/cruk';
 
 type CustomFont = {
   family: string;

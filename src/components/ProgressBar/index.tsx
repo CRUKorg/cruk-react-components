@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css, keyframes, ThemeProvider, withTheme } from 'styled-components';
-import { COLORS, FONT_SIZES, UTILITIES } from '../../Constants';
+import { COLORS, FONT_SIZES, UTILITIES } from '../../themes/cruk';
 
 type ProgressBarProps = {
   theme: { progress: {}; colors: {} };

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../Constants';
+import { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../themes/cruk';
 
 type StyledHeadingProps = {
   center?: string;

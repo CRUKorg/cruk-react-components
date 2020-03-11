@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css, withTheme } from 'styled-components';
-import { COLORS, TYPOGRAPHY, FONT_SIZES, UTILITIES } from '../../Constants';
+import { COLORS, TYPOGRAPHY, FONT_SIZES, UTILITIES } from '../../themes/cruk';
 import Icon from '../Icon';
 
 type ButtonProps = {

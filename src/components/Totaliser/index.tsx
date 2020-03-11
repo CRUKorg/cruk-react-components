@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css, withTheme } from 'styled-components';
-import { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../Constants';
+import { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../themes/cruk';
 import ProgressBar from '../ProgressBar';
 import { calculatePercentRounded, formatMoney } from '../../utils/Helper';
 

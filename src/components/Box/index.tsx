@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
-import { COLORS, UTILITIES } from '../../Constants';
+import { COLORS, UTILITIES } from '../../themes/cruk';
 
 type BoxProps = {
   bgColor: string;

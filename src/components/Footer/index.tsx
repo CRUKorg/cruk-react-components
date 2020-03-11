@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 
-import { COLORS, UTILITIES, SPACING, FONT_SIZES, BREAKPOINT, TYPOGRAPHY } from '../../Constants';
+import { COLORS, UTILITIES, SPACING, FONT_SIZES, BREAKPOINT, TYPOGRAPHY } from '../../themes/cruk';
 import Text from '../Text';
 
 const StyledFooter = styled.footer`
