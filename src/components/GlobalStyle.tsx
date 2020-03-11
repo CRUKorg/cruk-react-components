@@ -25,15 +25,22 @@ const buildCustomFonts = (customFonts: Array<CustomFont>) =>
   );
 
 const GlobalStyle = createGlobalStyle`
-  ${props =>
-    buildCustomFonts(
-      (props.theme as any).typography ? (props.theme as any).typography.customFonts : TYPOGRAPHY.customFonts,
-    )}
-  html {
-    font-size: ${TYPOGRAPHY.fontSizeBase};
-    font-family: ${TYPOGRAPHY.fontFamilyBase};
-    line-height: ${UTILITIES.lineHeight};
-  }
+  ${props => {
+    const theme = {
+      typography: {
+        ...TYPOGRAPHY,
+        ...(props.theme as any).typography,
+      },
+    };
+    return `
+      ${buildCustomFonts(theme.typography.customFonts)}
+      html {
+        font-size: ${theme.typography.fontSizeBase};
+        font-family: ${theme.typography.fontFamilyBase};
+        line-height: ${UTILITIES.lineHeight};
+      }
+    `;
+  }}
   body {
     background-color: ${COLORS.bodyBg};
     color: ${COLORS.textDark};
@@ -62,9 +69,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 GlobalStyle.defaultProps = {
-  theme: {
-    typography: {},
-  },
+  theme: {},
 };
 
 export default withTheme(GlobalStyle);
