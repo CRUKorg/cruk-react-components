@@ -26,7 +26,7 @@ const Name = styled.div`
 `;
 
 const Extra = styled.div`
-  color: ${props => (props.theme.colors && props.theme.colors.grayDark) || COLORS.grayDark};
+  color: ${props => (props.theme.colors && props.theme.colors.userBlockExtraText) || COLORS.userBlockExtraText};
   margin-top: 4px;
 `;
 

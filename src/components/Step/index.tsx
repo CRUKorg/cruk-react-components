@@ -45,10 +45,10 @@ const StepBar = styled.span`
   background-clip: padding-box;
   width: 20px;
   height: 20px;
-  background-color: ${props => props.theme.colors.white};
+  background-color: ${props => props.theme.colors.stepBg};
   display: block;
   margin: 0 auto 0.5em auto;
-  border: 3px solid ${props => props.theme.colors.grayLight};
+  border: 3px solid ${props => props.theme.colors.stepBorder};
   text-indent: -999px;
 
   &:after {
@@ -59,7 +59,7 @@ const StepBar = styled.span`
     height: 3px;
     content: '';
     background-color: transparent;
-    border-bottom: 3px solid ${props => props.theme.colors.grayLight};
+    border-bottom: 3px solid ${props => props.theme.colors.stepBorder};
     left: 50%;
     margin-left: 10px;
   }
@@ -69,8 +69,8 @@ const StepTick = styled.span`
   transform: rotate(45deg);
   height: 11px;
   width: 7px;
-  border-bottom: 2.5px solid ${props => props.theme.colors.white};
-  border-right: 2.5px solid ${COLORS.white};
+  border-bottom: 2.5px solid ${props => props.theme.colors.textLight};
+  border-right: 2.5px solid ${COLORS.textLight};
   margin-top: 3.5px;
   margin-left: 6.5px;
 `;

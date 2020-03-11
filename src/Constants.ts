@@ -24,34 +24,87 @@ export const BREAKPOINT = {
   desktopLarge: '1200px',
 };
 
-export const COLORS: { [key: string]: string } = {
-  primary: 'hsl(260, 100%, 27%)', // #2e008b
-  primaryHover: '#ec008c',
-  secondary: '#ec008c',
-  secondaryHover: '#ff20a4',
-  tertiary: '#00b6ed',
-  tertiaryHover: '#21cbff',
+export const TOKEN_COLORS: { [key: string]: string } = {
+  blue: '#2e008b',
+  magenta: '#ec008c',
+  magentaLight: '#ff20a4',
+  cyan: '#00b6ed',
+  cyanLight: '#21cbff',
+  grayLightest: '#f5f5f5',
   grayVLight: '#fafafa',
   grayLight: '#e3e3e3',
   grayMedium: '#c7c7c7',
   gray: '#c8c9c7',
-  disabled: '#999',
   grayDark: '#666',
+  grayDarkMedium: '#999',
   grayDarker: '#333',
   white: '#fff',
   black: '#000',
-  danger: '#ef5350',
-  warning: '#fdc02f',
-  success: '#8bc34a',
-  info: '#00b6ed',
-  bodyBg: 'white',
-  textError: '#ef5350',
-  linkColor: '#2e008b',
-  linkColorHover: '#ec008c',
-  progressBar: '#ec008c',
-  progressBarBg: '#f5f5f5',
-  circularProgress: '#00b6ed',
-  circularProgressBg: '#c8c9c7',
+  red: '#ef5350',
+  yellow: '#fdc02f',
+  green: '#8bc34a',
+};
+
+export const COLORS: { [key: string]: string } = {
+  primary: TOKEN_COLORS.blue,
+  primaryHover: TOKEN_COLORS.magenta,
+  secondary: TOKEN_COLORS.magenta,
+  secondaryHover: TOKEN_COLORS.magentaLight,
+  tertiary: TOKEN_COLORS.cyan,
+  tertiaryHover: TOKEN_COLORS.cyanLight,
+
+  disabled: TOKEN_COLORS.grayDarkMedium,
+  danger: TOKEN_COLORS.red,
+  warning: TOKEN_COLORS.yellow,
+  success: TOKEN_COLORS.green,
+  info: TOKEN_COLORS.cyan,
+  textError: TOKEN_COLORS.red,
+
+  linkColor: TOKEN_COLORS.blue,
+  linkColorHover: TOKEN_COLORS.magenta,
+
+  progressBar: TOKEN_COLORS.magenta,
+  progressBarBg: TOKEN_COLORS.grayLightest,
+  circularProgress: TOKEN_COLORS.cyan,
+  circularProgressBg: TOKEN_COLORS.gray,
+
+  headerBg: TOKEN_COLORS.white,
+  bodyBg: TOKEN_COLORS.white,
+  textDark: TOKEN_COLORS.grayDarker,
+  textLight: TOKEN_COLORS.white,
+
+  boxBorder: TOKEN_COLORS.grayLight,
+
+  paginationActive: TOKEN_COLORS.grayLight,
+  paginationDisabled: TOKEN_COLORS.grayLight,
+
+  footerBg: TOKEN_COLORS.grayLight,
+
+  headerBorder: TOKEN_COLORS.grayLight,
+
+  stepBorder: TOKEN_COLORS.grayLight,
+  stepBg: TOKEN_COLORS.white,
+
+  popoverBg: TOKEN_COLORS.white,
+
+  textInputBorder: TOKEN_COLORS.grayLight,
+
+  totaliserBorder: TOKEN_COLORS.grayMedium,
+
+  buttonBorder: TOKEN_COLORS.gray,
+  buttonDisabled: TOKEN_COLORS.gray,
+
+  checkboxBorder: TOKEN_COLORS.gray,
+
+  radioLabelBorder: TOKEN_COLORS.gray,
+
+  inputBorder: TOKEN_COLORS.gray,
+
+  selectBackground: TOKEN_COLORS.grayDarker,
+
+  modalBackdrop: TOKEN_COLORS.grayDarker,
+
+  userBlockExtraText: TOKEN_COLORS.grayDark,
 };
 
 // TODO: possibly convert to REMS, once a base font size has been agreed.
@@ -104,7 +157,6 @@ export const TYPOGRAPHY = {
 
 export const UTILITIES = {
   borderRadius: '3px',
-  borderColor: COLORS.gray,
   lineHeight: '1.5',
   lineHeightLarge: '2',
   rhythmBase: '15px',

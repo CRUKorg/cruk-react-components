@@ -14,7 +14,7 @@ type BadgeProps = {
 // TODO Look at where 15 comes from in the height and width bellow.
 const StyledBadge = styled.span`
   background-color: ${props => props.getBgColor};
-  color: ${COLORS.white};
+  color: ${COLORS.textLight};
   text-align: center;
   border-radius: 1.5rem;
   font-size: ${FONT_SIZES.small};

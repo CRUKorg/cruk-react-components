@@ -10,15 +10,7 @@ type ButtonProps = {
   full?: boolean;
   theme?: {
     button: {};
-    colors: {
-      white: string;
-      gray: string;
-      primary: string;
-      secondary: string;
-      secondaryHover: string;
-      tertiary: string;
-      tertiaryHover: string;
-    };
+    colors: { [key: string]: string };
   };
   ariaLabel?: string;
   href?: string;
@@ -31,9 +23,9 @@ type ButtonProps = {
 };
 
 const StyledButton = styled.button`
-  background-color: ${props => props.theme.colors.white};
+  background-color: ${props => props.theme.colors.bodyBg};
   border-radius: ${UTILITIES.borderRadius};
-  border: 2px solid ${props => props.theme.colors.gray};
+  border: 2px solid ${props => props.theme.colors.buttonBorder};
   box-sizing: border-box;
   color: ${props => props.theme.colors.primary};
   cursor: pointer;
@@ -54,12 +46,12 @@ const StyledButton = styled.button`
     css`
     background-color: ${props.theme.colors.secondary};
     border-color: ${props.theme.colors.secondary};
-    color: ${props.theme.colors.white} !important;
+    color: ${props.theme.colors.textLight} !important;
     :focus,
     :hover {
       background-color: ${props.theme.colors.secondaryHover}
       border-color: ${props.theme.colors.secondaryHover};
-      color: ${props.theme.colors.white} !important;
+      color: ${props.theme.colors.textLight} !important;
     }
   `}
 
@@ -68,12 +60,12 @@ const StyledButton = styled.button`
     css`
       background-color: ${props.theme.colors.tertiary};
       border-color: ${props.theme.colors.tertiary};
-      color: ${props.theme.colors.white};
+      color: ${props.theme.colors.textLight};
       :focus,
       :hover {
         background-color: ${props.theme.colors.tertiaryHover};
         border-color: ${props.theme.colors.tertiaryHover};
-        color: ${props.theme.colors.white};
+        color: ${props.theme.colors.textLight};
       }
     `}
 
@@ -115,22 +107,22 @@ const StyledButton = styled.button`
     css`
       cursor: not-allowed;
       background-color: ${props.appearance === 'primary' || props.appearance === 'secondary'
-        ? props.theme.colors.gray
+        ? props.theme.colors.buttonDisabled
         : 'transparent'};
       color: ${props.appearance === 'primary' || props.appearance === 'secondary'
-        ? COLORS.white
-        : props.theme.colors.gray};
-      border-color: ${props.theme.colors.gray};
+        ? COLORS.textLight
+        : props.theme.colors.buttonDisabled};
+      border-color: ${props.theme.colors.buttonDisabled};
 
       &:focus,
       &:hover {
         background-color: ${props.appearance === 'primary' || props.appearance === 'secondary'
-          ? props.theme.colors.gray
+          ? props.theme.colors.buttonDisabled
           : 'transparent'};
         color: ${props.appearance === 'primary' || props.appearance === 'secondary'
-          ? COLORS.white
-          : props.theme.colors.gray};
-        border-color: ${props.theme.colors.gray};
+          ? COLORS.textLight
+          : props.theme.colors.buttonDisabled};
+        border-color: ${props.theme.colors.buttonDisabled};
         text-decoration: none;
       }
     `}

@@ -15,14 +15,15 @@ type StyledInputProps = {
 
 const StyledInput = styled.select<StyledInputProps>`
   appearance: none;
-  background: linear-gradient(45deg, transparent 50%, ${props => props.theme.colors.grayDarker} 50%),
-    linear-gradient(135deg, ${props => props.theme.colors.grayDarker} 50%, transparent 50%);
+  background: linear-gradient(45deg, transparent 50%, ${props => props.theme.colors.selectBackground} 50%),
+    linear-gradient(135deg, ${props => props.theme.colors.selectBackground} 50%, transparent 50%);
   background-position: calc(100% - 16px) 1em, calc(100% - 10px) 1em;
   background-size: 6px 6px;
   background-repeat: no-repeat;
   border-radius: ${props => props.theme.utilities.borderRadius};
-  border: solid 2px ${props => (props.hasError || props.error ? props.theme.colors.textError : props.theme.colors.gray)};
-  color: ${props => props.theme.colors.grayDarker};
+  border: solid 2px
+    ${props => (props.hasError || props.error ? props.theme.colors.textError : props.theme.colors.inputBorder)};
+  color: ${props => props.theme.colors.textDark};
   display: block;
   font-size: ${props => props.theme.fontSizes.medium};
   padding: 7px 24px 5px 10px;

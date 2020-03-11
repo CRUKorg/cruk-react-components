@@ -35,8 +35,8 @@ const GlobalStyle = createGlobalStyle`
     line-height: ${UTILITIES.lineHeight};
   }
   body {
-    background-color: ${COLORS.white};
-    color: ${COLORS.grayDarker};
+    background-color: ${COLORS.bodyBg};
+    color: ${COLORS.textDark};
     margin: 0;
     padding: 0;
     overflow-x: hidden;

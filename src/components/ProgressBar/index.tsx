@@ -24,7 +24,7 @@ const ProgressBarSharedStyling = css`
   height: 100%;
   font-size: ${FONT_SIZES.small};
   line-height: ${UTILITIES.lineHeight};
-  color: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.textLight};
   text-align: center;
   background-color: ${props => props.theme.colors.progressBar};
   border-radius: ${UTILITIES.borderRadius};

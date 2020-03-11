@@ -9,7 +9,7 @@ const StyledFooter = styled.footer`
   display: block;
   position: relative;
   width: 100%;
-  background-color: ${COLORS.grayLight};
+  background-color: ${COLORS.footerBg};
 `;
 
 const FooterContentWrapper = styled.div`

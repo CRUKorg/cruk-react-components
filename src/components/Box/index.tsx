@@ -11,11 +11,11 @@ type BoxProps = {
 };
 
 const StyledBox = styled.div`
-  background-color: ${COLORS.white};
+  background-color: ${COLORS.bodyBg};
   padding: ${UTILITIES.spacingUnit * 4}px;
   margin: 0 0 ${UTILITIES.spacingUnit * 4}px 0;
   margin-bottom: ${UTILITIES.spacingUnit * 4}px;
-  border: 1px solid ${COLORS.grayLight};
+  border: 1px solid ${COLORS.boxBorder};
   border-radius: ${UTILITIES.borderRadius};
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   &:last-child {
@@ -26,7 +26,7 @@ const StyledBox = styled.div`
     props.getBgColor &&
     css`
       background-color: ${props.getBgColor};
-      color: ${COLORS.white};
+      color: ${COLORS.textLight};
     `}
 
   ${(props: BoxProps) => (css as any)([props.css])}

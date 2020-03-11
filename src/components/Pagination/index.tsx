@@ -34,7 +34,7 @@ const PagerLink = styled.a`
   font-weight: normal;
   font-family: ${TYPOGRAPHY.fontFamilyBase};
   font-size: ${FONT_SIZES.small};
-  color: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.textLight};
   background-color: ${props => props.theme.colors.primary};
   cursor: pointer;
   border-radius: 0;
@@ -54,19 +54,19 @@ const PagerLink = styled.a`
   ${(itemProps: PaginationStyledProps) =>
     itemProps.active &&
     css`
-      color: ${props => props.theme.colors.grayDarker};
+      color: ${props => props.theme.colors.textDark};
       background-color: ${({
         theme: {
-          colors: { grayLight },
+          colors: { paginationActive },
         },
-      }) => grayLight};
+      }) => paginationActive};
       cursor: default;
       &:hover {
         background-color: ${({
           theme: {
-            colors: { grayLight },
+            colors: { paginationActive },
           },
-        }) => grayLight};
+        }) => paginationActive};
         text-decoration: none;
       }
     `}
@@ -91,14 +91,14 @@ const PagerLink = styled.a`
   ${itemProps =>
     itemProps.disabled &&
     css`
-      color: ${props => props.theme.colors.grayLight};
+      color: ${props => props.theme.colors.paginationDisabled};
       cursor: not-allowed;
       text-decoration: none;
       &:hover,
       &:focus,
       &:active,
       &:visited {
-        color: ${props => props.theme.colors.grayLight};
+        color: ${props => props.theme.colors.paginationDisabled};
         text-decoration: none;
       }
     `}

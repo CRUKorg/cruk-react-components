@@ -147,7 +147,7 @@ const ToggleIcon = styled.label`
   &:before,
   &:after {
     position: absolute;
-    background-color: ${COLORS.grayDarker};
+    background-color: ${COLORS.textDark};
     content: '';
   }
 
@@ -213,7 +213,7 @@ const Toggle = props => <StyledToggle type="checkbox" {...props} />;
 const Nav = styled.nav`
   a {
     display: block;
-    color: ${COLORS.grayDarker};
+    color: ${COLORS.textDark};
     text-decoration: none;
     margin-left: 10px;
 
