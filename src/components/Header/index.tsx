@@ -133,27 +133,22 @@ const Tagline = styled.p`
 
 type HeaderProps = {
   isSticky?: boolean;
+  siteSlogan?: string;
   theme?: {
     siteConfig?: {
       logoSrc?: string;
       logoUrl?: string;
       logoAlt?: string;
-      siteSlogan?: string;
     };
   };
 };
 
 export const Header: FunctionComponent<HeaderProps> = ({
   isSticky,
+  siteSlogan,
   theme: {
-    siteConfig: {
-      logoSrc = SITECONFIG.logoSrc,
-      logoUrl = SITECONFIG.logoUrl,
-      logoAlt = SITECONFIG.logoAlt,
-      siteSlogan = SITECONFIG.siteSlogan,
-    } = {},
+    siteConfig: { logoSrc = SITECONFIG.logoSrc, logoUrl = SITECONFIG.logoUrl, logoAlt = SITECONFIG.logoAlt } = {},
   } = {},
-
   children,
 }) => {
   const [isSmall, setIsSmall] = useState(false);
@@ -186,11 +181,11 @@ export const Header: FunctionComponent<HeaderProps> = ({
                 <Logo src={logoSrc} alt={logoAlt} />
               </LogoWrapper>
             </StyledLink>
-            {siteSlogan && siteSlogan.length && (
+            {siteSlogan ? (
               <Tagline isSmall={isSmall} isSticky={isSticky}>
                 {siteSlogan}
               </Tagline>
-            )}
+            ) : null}
             {children}
           </HeaderMainContent>
         </HeaderStickyContainer>
