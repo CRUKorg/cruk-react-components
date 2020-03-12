@@ -3,7 +3,7 @@ import styled, { withTheme } from 'styled-components';
 
 import { useScrollPosition } from '../../../src/hooks/useScrollPosition';
 
-import { BREAKPOINT, COLORS, SITECONFIG, FONT_SIZES, TYPOGRAPHY, SPACING, UTILITIES } from '../../themes/cruk';
+import defaultTheme, { SPACING, BREAKPOINT, UTILITIES, SITECONFIG, FONT_SIZES, TYPOGRAPHY } from '../../themes/cruk';
 
 // TODO: Should we use REMs? Do all sites use the same base size?
 const HEADER_HEIGHT_LARGE = '120px';
@@ -22,7 +22,7 @@ const StyledHeader = styled.header`
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  background-color: ${COLORS.headerBg};
+  background-color: ${({ theme }) => (theme.colors ? theme.colors.headerBg : defaultTheme.colors.headerBg)};
   z-index: 9998;
 `;
 
@@ -39,9 +39,10 @@ const HeaderStickyPlaceHolder = styled.div`
 const HeaderStickyContainer = styled.div`
   width: 100%;
   padding: 0;
-  background-color: ${COLORS.headerBg};
+  background-color: ${({ theme }) => (theme.colors ? theme.colors.headerBg : defaultTheme.colors.headerBg)};
   position: relative;
-  border-bottom: solid 1px ${COLORS.headerBorder};
+  border-bottom: ${({ theme }) =>
+    theme.colors ? `solid 1px ${theme.colors.headerBorder}` : `solid 1px ${defaultTheme.colors.headerBorder}`};
   padding: 0 ${HEADER_PADDING};
   height: ${HEADER_HEIGHT_SMALL};
 
@@ -118,10 +119,11 @@ const SkipToMain = styled.a`
 
 const Tagline = styled.p`
   flex: 1 1 auto;
-  font-family: ${TYPOGRAPHY.fontFamilyHeadings};
+  font-family: ${({ theme }) =>
+    theme.typography ? theme.typography.fontFamilyHeadings : defaultTheme.typography.fontFamilyHeadings};
   font-weight: ${TYPOGRAPHY.fontWeightLight};
   font-size: ${FONT_SIZES.extraLarge};
-  color: ${COLORS.primary};
+  color: ${({ theme }) => (theme.colors ? theme.colors.primary : defaultTheme.colors.primary)};
   text-align: center;
 
   display: none;
@@ -139,6 +141,9 @@ type HeaderProps = {
       logoSrc?: string;
       logoUrl?: string;
       logoAlt?: string;
+    };
+    typography: {
+      fontFamilyHeadings: string;
     };
   };
 };
