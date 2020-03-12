@@ -4,6 +4,7 @@ import styled, { withTheme } from 'styled-components';
 import { useScrollPosition } from '../../../src/hooks/useScrollPosition';
 
 import defaultTheme, { SPACING, BREAKPOINT, UTILITIES, SITECONFIG, FONT_SIZES, TYPOGRAPHY } from '../../themes/cruk';
+import { ThemeType } from '../../themes/types';
 
 // TODO: Should we use REMs? Do all sites use the same base size?
 const HEADER_HEIGHT_LARGE = '120px';
@@ -136,16 +137,7 @@ const Tagline = styled.p`
 type HeaderProps = {
   isSticky?: boolean;
   siteSlogan?: string;
-  theme?: {
-    siteConfig?: {
-      logoSrc?: string;
-      logoUrl?: string;
-      logoAlt?: string;
-    };
-    typography: {
-      fontFamilyHeadings: string;
-    };
-  };
+  theme?: ThemeType;
 };
 
 export const Header: FunctionComponent<HeaderProps> = ({
