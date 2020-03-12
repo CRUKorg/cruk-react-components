@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { keyframes, ThemeProvider, withTheme } from 'styled-components';
-import { COLORS } from '../../Constants';
+import { COLORS } from '../../themes/cruk';
 
 type LoaderProps = {
   theme: { colors: {} };

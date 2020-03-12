@@ -1,6 +1,6 @@
 import React, { useState, useRef, Fragment, KeyboardEvent } from 'react';
 import styled from 'styled-components';
-import { COLORS, FONT_SIZES } from '../../Constants';
+import { COLORS, FONT_SIZES } from '../../themes/cruk';
 import Button from '../Button';
 
 type CollapseProps = {

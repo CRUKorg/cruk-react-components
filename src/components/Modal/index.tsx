@@ -5,7 +5,7 @@ import FocusLock from 'react-focus-lock';
 
 import Box from '../Box';
 import Button from '../Button';
-import { COLORS } from '../../Constants';
+import { COLORS } from '../../themes/cruk';
 
 const Background = styled.div`
   background: ${COLORS.modalBackdrop};

@@ -1,3 +1,6 @@
+import cruckTheme from '../themes/cruk';
+import su2cTheme from '../themes/su2c';
+
 import Avatar from './Avatar';
 import Badge from './Badge';
 import Box from './Box';
@@ -28,6 +31,8 @@ import Totaliser from './Totaliser';
 import UserBlock from './UserBlock';
 
 export {
+  cruckTheme,
+  su2cTheme,
   Avatar,
   Badge,
   Box,

@@ -2,7 +2,7 @@ import React, { FunctionComponent, AnchorHTMLAttributes } from 'react';
 import styled from 'styled-components';
 import Text from '../Text';
 
-import { COLORS, TYPOGRAPHY } from '../../Constants';
+import { COLORS, TYPOGRAPHY } from '../../themes/cruk';
 
 const StyledLink = styled(Text)`
   transition: color 0.2s ease;

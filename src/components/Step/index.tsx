@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
-import { COLORS, TYPOGRAPHY, FONT_SIZES } from '../../Constants';
+import { COLORS, TYPOGRAPHY, FONT_SIZES } from '../../themes/cruk';
 
 type StepProps = {
   theme: { colors: {} };

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Avatar from '../Avatar';
-import { COLORS, TYPOGRAPHY, UTILITIES, FONT_SIZES } from '../../Constants';
+import { COLORS, TYPOGRAPHY, UTILITIES, FONT_SIZES } from '../../themes/cruk';
 
 const StyledUserBlock = styled.div`
   display: flex;

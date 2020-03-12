@@ -1,3 +1,13 @@
+export const UTILITIES = {
+  borderRadius: '3px',
+  rhythmBase: '15px',
+  rhythmVerticalBase: '15px',
+  rhythmHorizontalBase: '15px',
+  contentMaxWidth: '1020px',
+  spacingBase: '5px',
+  spacingUnit: 5,
+};
+
 export const SITECONFIG = {
   cdnPath: 'https://ccp-s3.int.cruk.org/',
   assetPath: 'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/',
@@ -8,13 +18,18 @@ export const SITECONFIG = {
   logoSrc: 'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png',
 };
 
-// TODO: should this be in shared constants it feels pretty specific to avatar
 export const AVATAR = {
   small: '35px',
   medium: '50px',
   large: '60px',
   xlarge: '90px',
   path: `${SITECONFIG.assetPath}images/icon-avatars/`,
+};
+
+export const BUTTON = {
+  borderRadius: UTILITIES.borderRadius,
+  textDecoration: 'none',
+  textTransform: 'none',
 };
 
 export const BREAKPOINT = {
@@ -153,16 +168,20 @@ export const TYPOGRAPHY = {
   fontWeightLight: '300',
   fontWeightVLight: '100',
   linkTextDecoration: 'none',
-};
-
-export const UTILITIES = {
-  borderRadius: '3px',
   lineHeight: '1.5',
   lineHeightLarge: '2',
-  rhythmBase: '15px',
-  rhythmVerticalBase: '15px',
-  rhythmHorizontalBase: '15px',
-  contentMaxWidth: '1020px',
-  spacingBase: '5px',
-  spacingUnit: 5,
 };
+
+const theme = {
+  avatar: AVATAR,
+  breakpoint: BREAKPOINT,
+  tokenColors: TOKEN_COLORS,
+  colors: COLORS,
+  spacing: SPACING,
+  fontSizes: FONT_SIZES,
+  siteConfig: SITECONFIG,
+  typography: TYPOGRAPHY,
+  utilities: UTILITIES,
+};
+
+export default theme;
