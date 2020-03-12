@@ -3,7 +3,7 @@ import styled, { withTheme } from 'styled-components';
 
 import { useScrollPosition } from '../../../src/hooks/useScrollPosition';
 
-import defaultTheme, { SPACING, BREAKPOINT, UTILITIES, SITECONFIG, FONT_SIZES, TYPOGRAPHY } from '../../themes/cruk';
+import defaultTheme, { SPACING, BREAKPOINT, UTILITIES, FONT_SIZES, TYPOGRAPHY } from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
 // TODO: Should we use REMs? Do all sites use the same base size?
@@ -140,16 +140,13 @@ type HeaderProps = {
   theme?: ThemeType;
 };
 
-export const Header: FunctionComponent<HeaderProps> = ({
-  isSticky,
-  siteSlogan,
-  theme: {
-    siteConfig: { logoSrc = SITECONFIG.logoSrc, logoUrl = SITECONFIG.logoUrl, logoAlt = SITECONFIG.logoAlt } = {},
-  } = {},
-  children,
-}) => {
+export const Header: FunctionComponent<HeaderProps> = ({ isSticky, siteSlogan, theme, children }) => {
   const [isSmall, setIsSmall] = useState(false);
   const isBrowser = typeof window !== `undefined`;
+
+  const logoUrl = theme.siteConfig ? theme.siteConfig.logoUrl : defaultTheme.siteConfig.logoUrl;
+  const logoSrc = theme.siteConfig ? theme.siteConfig.logoSrc : defaultTheme.siteConfig.logoSrc;
+  const logoAlt = theme.siteConfig ? theme.siteConfig.logoAlt : defaultTheme.siteConfig.logoAlt;
 
   useScrollPosition(
     ({ currPos }: { prevPos: { x: number; y: number }; currPos: { x: number; y: number } }) => {

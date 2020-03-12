@@ -1,12 +1,13 @@
 import React from 'react';
 import styled, { withTheme } from 'styled-components';
-import { AVATAR } from '../../themes/cruk';
+import defaultTheme, { AVATAR } from '../../themes/cruk';
+import { ThemeType } from '../../themes/types';
 
 type AvatarProps = {
   name: string;
   url: string;
   size?: 'small' | 'medium' | 'large' | 'xlarge';
-  theme: { avatar: {} };
+  theme: ThemeType;
 };
 
 type AvatarStyledprops = {
@@ -45,7 +46,7 @@ const Avatar = (props: AvatarProps) => {
 
 Avatar.defaultProps = {
   size: 'medium',
-  theme: {},
+  theme: defaultTheme,
 };
 
 export default withTheme(Avatar);

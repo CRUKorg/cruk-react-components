@@ -1,9 +1,11 @@
 import React from 'react';
 import styled, { keyframes, ThemeProvider, withTheme } from 'styled-components';
-import { COLORS } from '../../themes/cruk';
+import defaultTheme, { COLORS } from '../../themes/cruk';
+
+import { ThemeType } from '../../themes/types';
 
 type LoaderProps = {
-  theme: { colors: {} };
+  theme: ThemeType;
   children: any;
 };
 
@@ -75,7 +77,7 @@ const Loader = (props: LoaderProps) => {
 };
 
 Loader.defaultProps = {
-  theme: {},
+  theme: defaultTheme,
 };
 
 export default withTheme(Loader);

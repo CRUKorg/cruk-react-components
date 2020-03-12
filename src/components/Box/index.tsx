@@ -1,10 +1,11 @@
 import React from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
-import { COLORS, UTILITIES } from '../../themes/cruk';
+import defualtTheme, { COLORS, UTILITIES } from '../../themes/cruk';
+import { ThemeType } from '../../themes/types';
 
 type BoxProps = {
   bgColor: string;
-  theme: { colors: {} };
+  theme: ThemeType;
   getBgColor: string;
   children: any;
   css: any;
@@ -49,7 +50,7 @@ const Box = (props: BoxProps) => {
 };
 
 Box.defaultProps = {
-  theme: {},
+  theme: defualtTheme,
 };
 
 export default withTheme(Box);

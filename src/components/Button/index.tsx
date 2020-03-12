@@ -1,17 +1,15 @@
 import React from 'react';
 import styled, { css, withTheme, ThemeProvider } from 'styled-components';
-import { COLORS, TYPOGRAPHY, FONT_SIZES, BUTTON } from '../../themes/cruk';
+import defaultTheme, { COLORS, TYPOGRAPHY, FONT_SIZES, BUTTON } from '../../themes/cruk';
 import Icon from '../Icon';
+import { ThemeType } from '../../themes/types';
 
 type ButtonProps = {
   appearance?: string;
   children?: any;
   iconAlign?: string;
   full?: boolean;
-  theme?: {
-    button: {};
-    colors: { [key: string]: string };
-  };
+  theme?: ThemeType;
   ariaLabel?: string;
   href?: string;
   icon?: string;
@@ -132,8 +130,6 @@ const StyledButton = styled.button`
     css`
       width: 100%;
     `}
-  
-  ${(props: ButtonProps) => props.theme.button}
   ${(props: ButtonProps) => (css as any)([props.css])}
 `;
 
@@ -171,7 +167,7 @@ const Button = (props: ButtonProps) => {
 };
 
 Button.defaultProps = {
-  theme: {},
+  theme: defaultTheme,
 };
 
 export default withTheme(Button);

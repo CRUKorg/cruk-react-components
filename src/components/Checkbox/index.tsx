@@ -1,10 +1,11 @@
 import React from 'react';
 import styled, { withTheme } from 'styled-components';
-import { COLORS, UTILITIES } from '../../themes/cruk';
+import defaultTheme, { COLORS, UTILITIES } from '../../themes/cruk';
+import { ThemeType } from '../../themes/types';
 
 type StyledLabelProps = {
   checked: boolean;
-  theme: any;
+  theme: ThemeType;
 };
 
 const StyledLabel = styled.label<StyledLabelProps>`
@@ -59,7 +60,7 @@ const Checkbox = (props: CheckboxProps) => {
 };
 
 Checkbox.defaultProps = {
-  theme: {},
+  theme: defaultTheme,
 };
 
 export default withTheme(Checkbox);

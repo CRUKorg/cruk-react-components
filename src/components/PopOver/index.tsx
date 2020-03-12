@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
-import { BREAKPOINT, COLORS, FONT_SIZES, UTILITIES } from '../../themes/cruk';
+import defaultTheme, { BREAKPOINT, COLORS, FONT_SIZES, UTILITIES } from '../../themes/cruk';
+import { ThemeType } from '../../themes/types';
 
 type PopOverProps = {
-  theme: { colors: {} };
+  theme: ThemeType;
   position: string;
   overlay: any;
   css: string;
@@ -159,7 +160,7 @@ const PopOver = (props: PopOverProps) => {
 };
 
 PopOver.defaultProps = {
-  theme: {},
+  theme: defaultTheme,
 };
 
 export default withTheme(PopOver);

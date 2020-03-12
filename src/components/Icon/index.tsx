@@ -1,15 +1,17 @@
 import React from 'react';
 import styled, { ThemeProvider, withTheme } from 'styled-components';
-import { COLORS } from '../../themes/cruk';
+import defaultTheme, { COLORS } from '../../themes/cruk';
 import { ICONS } from './iconList';
 import { camelize } from '../../utils/Helper';
+
+import { ThemeType, ColorsType } from '../../themes/types';
 
 type IconProps = {
   name?: string;
   color?: string;
   size?: number;
   transform?: string;
-  theme?: { icon: {}; colors: {} };
+  theme?: ThemeType;
   getColor?: string;
 };
 
@@ -33,7 +35,7 @@ const Icon = (props: IconProps) => {
       ...props.theme.colors,
     },
   };
-  const color = (theme.colors as any)[props.color] || props.color;
+  const color = (theme.colors as ColorsType)[props.color] || props.color;
   return (
     <ThemeProvider theme={theme}>
       <StyledIcon
@@ -56,7 +58,7 @@ const Icon = (props: IconProps) => {
 Icon.defaultProps = {
   color: 'currentColor',
   size: '1.1em',
-  theme: {},
+  theme: defaultTheme,
 };
 
 export default withTheme(Icon);

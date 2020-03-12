@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
-import { BREAKPOINT, COLORS, TYPOGRAPHY, FONT_SIZES } from '../../themes/cruk';
+import defaultTheme, { BREAKPOINT, COLORS, TYPOGRAPHY, FONT_SIZES } from '../../themes/cruk';
+
+import { ThemeType } from '../../themes/types';
 
 type PaginationProps = {
   current: number;
@@ -9,7 +11,7 @@ type PaginationProps = {
   pagerCallback: Function;
   perPage: number;
   searchParam?: string;
-  theme: { pagination: {}; colors: {} };
+  theme: ThemeType;
   children: any;
 };
 
@@ -127,7 +129,6 @@ const Pagination = (props: PaginationProps) => {
       ...COLORS,
       ...props.theme.colors,
     },
-    pagination: props.theme.pagination,
   };
   const perPage = props.perPage > 0 ? props.perPage : 1;
   const totalPages = Math.ceil(props.items / perPage) || 1;
@@ -211,7 +212,7 @@ const Pagination = (props: PaginationProps) => {
 
 Pagination.defaultProps = {
   searchParam: 'page',
-  theme: {},
+  theme: defaultTheme,
 };
 
 export default withTheme(Pagination);

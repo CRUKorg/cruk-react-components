@@ -1,11 +1,12 @@
 import React from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
-import { COLORS, FONT_SIZES } from '../../themes/cruk';
+import defualtTheme, { COLORS, FONT_SIZES } from '../../themes/cruk';
+import { ThemeType } from '../../themes/types';
 
 type BadgeProps = {
   bgColor: string;
   text: boolean;
-  theme: { colors: { [key: string]: string } };
+  theme: ThemeType;
   getBgColor?: string;
   size?: number;
   children?: any;
@@ -64,7 +65,7 @@ const Badge = (props: BadgeProps) => {
 };
 
 Badge.defaultProps = {
-  theme: {},
+  theme: defualtTheme,
 };
 
 export default withTheme(Badge);
