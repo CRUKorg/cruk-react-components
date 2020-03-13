@@ -1,23 +1,37 @@
 import React, { FunctionComponent } from 'react';
-import styled from 'styled-components';
+import styled, { withTheme, ThemeProvider } from 'styled-components';
 
-import { COLORS, UTILITIES, SPACING, FONT_SIZES, BREAKPOINT, TYPOGRAPHY } from '../../themes/cruk';
+import defaultTheme from '../../themes/cruk';
 import Text from '../Text';
+
+import { ThemeType } from '../../themes/types';
 
 const StyledFooter = styled.footer`
   box-sizing: border-box;
   display: block;
   position: relative;
   width: 100%;
-  background-color: ${COLORS.footerBg};
+  background-color: ${({
+    theme: {
+      colors: { footerBg },
+    },
+  }) => footerBg};
 `;
 
 const FooterContentWrapper = styled.div`
-  max-width: ${UTILITIES.contentMaxWidth};
+  max-width: ${({
+    theme: {
+      utilities: { contentMaxWidth },
+    },
+  }) => contentMaxWidth};
   display: block;
   margin: 0 auto;
 
-  @media (min-width: ${BREAKPOINT.desktop}) {
+  @media (min-width: ${({
+      theme: {
+        breakpoint: { desktop },
+      },
+    }) => desktop}) {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -26,7 +40,11 @@ const FooterContentWrapper = styled.div`
 
 const FooterSection = styled.div`
   display: block;
-  padding: ${SPACING.extraSmall};
+  padding: ${({
+    theme: {
+      spacing: { extraSmall },
+    },
+  }) => extraSmall};
   position: relative;
   width: 100%;
   flex: 0 1 auto;
@@ -37,7 +55,11 @@ const FooterSectionLogo = styled(FooterSection)`
   display: block;
   float: left;
 
-  @media (min-width: ${BREAKPOINT.desktop}) {
+  @media (min-width: ${({
+      theme: {
+        breakpoint: { desktop },
+      },
+    }) => desktop}) {
     flex: 0 0 140px;
     width: auto;
   }
@@ -50,7 +72,11 @@ const FooterSectionLinks = styled(FooterSection)`
   display: block;
   float: left;
 
-  @media (min-width: ${BREAKPOINT.desktop}) {
+  @media (min-width: ${({
+      theme: {
+        breakpoint: { desktop },
+      },
+    }) => desktop}) {
     flex: 0 0 170px;
     width: auto;
   }
@@ -62,8 +88,16 @@ const StyledNav = styled.nav`
 
   /* TODO: make this work with themes currently there is no difference, will fix when themes are strongly typed */
   a {
-    font-size: ${FONT_SIZES.small};
-    font-weight: ${TYPOGRAPHY.fontWeightHeavy};
+    font-size: ${({
+      theme: {
+        fontSizes: { small },
+      },
+    }) => small};
+    font-weight: ${({
+      theme: {
+        typography: { fontWeightHeavy },
+      },
+    }) => fontWeightHeavy};
   }
 `;
 
@@ -78,7 +112,11 @@ const StyledLI = styled.li`
   padding: 0;
   margin: 0;
   line-height: 1;
-  padding-bottom: ${SPACING.extraExtraSmall};
+  padding-bottom: ${({
+    theme: {
+      spacing: { extraExtraSmall },
+    },
+  }) => extraExtraSmall};
 `;
 
 const FooterSectionAddress = styled(FooterSection)`
@@ -96,48 +134,61 @@ const StyledAddress = styled.address`
   font-style: normal;
 `;
 
-export const Footer: FunctionComponent = ({ children }) => {
-  const childArray = React.Children.toArray(children);
+type FooterPropsType = {
+  theme?: ThemeType;
+};
+
+export const Footer: FunctionComponent<FooterPropsType> = props => {
+  const childArray = React.Children.toArray(props.children);
+
+  const theme = {
+    ...defaultTheme,
+    ...props.theme,
+  };
+
   return (
-    <StyledFooter>
-      <FooterContentWrapper>
-        <FooterSectionLogo>
-          <StyledRegulatorLogo
-            alt="Registered with Fundraising Regulator"
-            src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/fundreg.png"
-          />
-        </FooterSectionLogo>
-        <FooterSectionLinks>
-          <StyledNav aria-label="footer links">
-            <StyledUL>
-              {childArray.length ? childArray.map((child, index) => <StyledLI key={index}>{child}</StyledLI>) : null}
-            </StyledUL>
-          </StyledNav>
-        </FooterSectionLinks>
+    <ThemeProvider theme={theme}>
+      <StyledFooter>
+        <FooterContentWrapper>
+          <FooterSectionLogo>
+            <StyledRegulatorLogo
+              alt="Registered with Fundraising Regulator"
+              src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/fundreg.png"
+            />
+          </FooterSectionLogo>
+          <FooterSectionLinks>
+            <StyledNav aria-label="footer links">
+              <StyledUL>
+                {childArray.length ? childArray.map((child, index) => <StyledLI key={index}>{child}</StyledLI>) : null}
+              </StyledUL>
+            </StyledNav>
+          </FooterSectionLinks>
 
-        <FooterSection>
-          <Text textSize="small">
-            Cancer Research UK is a registered charity in England and Wales (1089464), Scotland (SC041666), the Isle of
-            Man (1103) and Jersey (247). Registered as a company limited by guarantee in England and Wales No. 4325234.
-          </Text>
-        </FooterSection>
+          <FooterSection>
+            <Text textSize="small">
+              Cancer Research UK is a registered charity in England and Wales (1089464), Scotland (SC041666), the Isle
+              of Man (1103) and Jersey (247). Registered as a company limited by guarantee in England and Wales No.
+              4325234.
+            </Text>
+          </FooterSection>
 
-        <FooterSectionAddress>
-          <StyledAddress>
-            <Text as="span" textSize="small">
-              2 Redman Place
-            </Text>
-            <Text as="span" textSize="small">
-              London
-            </Text>
-            <Text as="span" textSize="small">
-              E20 1JQ
-            </Text>
-          </StyledAddress>
-        </FooterSectionAddress>
-      </FooterContentWrapper>
-    </StyledFooter>
+          <FooterSectionAddress>
+            <StyledAddress>
+              <Text as="span" textSize="small">
+                2 Redman Place
+              </Text>
+              <Text as="span" textSize="small">
+                London
+              </Text>
+              <Text as="span" textSize="small">
+                E20 1JQ
+              </Text>
+            </StyledAddress>
+          </FooterSectionAddress>
+        </FooterContentWrapper>
+      </StyledFooter>
+    </ThemeProvider>
   );
 };
 
-export default Footer;
+export default withTheme(Footer);

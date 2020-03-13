@@ -1,6 +1,7 @@
 import React from 'react';
-import styled, { ThemeProvider, withTheme } from 'styled-components';
-import defaultTheme, { COLORS } from '../../themes/cruk';
+import styled, { withTheme } from 'styled-components';
+
+import defaultTheme from '../../themes/cruk';
 import { ICONS } from './iconList';
 import { camelize } from '../../utils/Helper';
 
@@ -30,35 +31,30 @@ const Icon = (props: IconProps) => {
   const name = props.name && camelize(props.name);
   const icon = (ICONS as any)[name] || ICONS.question;
   const theme = {
-    colors: {
-      ...COLORS,
-      ...props.theme.colors,
-    },
+    ...defaultTheme,
+    ...props.theme,
   };
   const color = (theme.colors as ColorsType)[props.color] || props.color;
   return (
-    <ThemeProvider theme={theme}>
-      <StyledIcon
-        aria-hidden="true"
-        role="presentation"
-        getColor={color}
-        viewBox={`0 0 ${icon.width} ${icon.height}`}
-        size={props.size}
-        transform={icon.transform}
-        {...props}
-      >
-        {icon.paths.map((path: string, index: number) => (
-          <path key={index} d={path} />
-        ))}
-      </StyledIcon>
-    </ThemeProvider>
+    <StyledIcon
+      aria-hidden="true"
+      role="presentation"
+      getColor={color}
+      viewBox={`0 0 ${icon.width} ${icon.height}`}
+      size={props.size}
+      transform={icon.transform}
+      {...props}
+    >
+      {icon.paths.map((path: string, index: number) => (
+        <path key={index} d={path} />
+      ))}
+    </StyledIcon>
   );
 };
 
 Icon.defaultProps = {
   color: 'currentColor',
   size: '1.1em',
-  theme: defaultTheme,
 };
 
 export default withTheme(Icon);

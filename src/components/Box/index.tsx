@@ -1,14 +1,14 @@
 import React from 'react';
-import styled, { css, ThemeProvider, withTheme } from 'styled-components';
-import defualtTheme, { COLORS, UTILITIES } from '../../themes/cruk';
+import styled, { css, withTheme } from 'styled-components';
+import defaultTheme, { UTILITIES, COLORS } from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
 type BoxProps = {
   bgColor: string;
-  theme: ThemeType;
   getBgColor: string;
   children: any;
   css: any;
+  theme?: ThemeType;
 };
 
 const StyledBox = styled.div`
@@ -34,23 +34,15 @@ const StyledBox = styled.div`
 `;
 const Box = (props: BoxProps) => {
   const theme = {
-    colors: {
-      ...COLORS,
-      ...props.theme.colors,
-    },
+    ...defaultTheme,
+    ...props.theme,
   };
   const checkBgColor = (theme.colors as any)[props.bgColor] || props.bgColor;
   return (
-    <ThemeProvider theme={theme}>
-      <StyledBox getBgColor={props.bgColor && checkBgColor} {...props}>
-        {props.children}
-      </StyledBox>
-    </ThemeProvider>
+    <StyledBox theme={theme} getBgColor={props.bgColor && checkBgColor} {...props}>
+      {props.children}
+    </StyledBox>
   );
-};
-
-Box.defaultProps = {
-  theme: defualtTheme,
 };
 
 export default withTheme(Box);

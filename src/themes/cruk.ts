@@ -22,7 +22,7 @@ export const UTILITIES: UtilitiesType = {
   spacingUnit: 5,
 };
 
-export const SITECONFIG: SiteConfigType = {
+export const SITE_CONFIG: SiteConfigType = {
   cdnPath: 'https://ccp-s3.int.cruk.org/',
   assetPath: 'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/',
   siteUrl: 'https://fundraise.cancerresearchuk.org/',
@@ -36,7 +36,7 @@ export const AVATAR: AvatarType = {
   medium: '50px',
   large: '60px',
   xlarge: '90px',
-  path: `${SITECONFIG.assetPath}images/icon-avatars/`,
+  path: `${SITE_CONFIG.assetPath}images/icon-avatars/`,
 };
 
 export const BUTTON: ButtonType = {
@@ -163,7 +163,7 @@ export const TYPOGRAPHY: TypographyType = {
       url: 'https://ccp-s3.int.cruk.org/fonts/MuseoSansRounded-500',
     },
   ],
-  fontUrl: `${SITECONFIG.cdnPath}fonts`,
+  fontUrl: `${SITE_CONFIG.cdnPath}fonts`,
   fontFamilyBase: 'Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif',
   fontFamilyHeadings: 'MuseoSans-500,Calibri,Arial,sans-serif',
   fontSizeBase: '16px',
@@ -184,7 +184,7 @@ const theme: ThemeType = {
   colors: COLORS,
   spacing: SPACING,
   fontSizes: FONT_SIZES,
-  siteConfig: SITECONFIG,
+  siteConfig: SITE_CONFIG,
   typography: TYPOGRAPHY,
   utilities: UTILITIES,
 };

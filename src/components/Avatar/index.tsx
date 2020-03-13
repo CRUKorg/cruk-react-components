@@ -1,30 +1,30 @@
 import React from 'react';
 import styled, { withTheme } from 'styled-components';
-import defaultTheme, { AVATAR } from '../../themes/cruk';
+import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
 type AvatarProps = {
   name: string;
   url: string;
   size?: 'small' | 'medium' | 'large' | 'xlarge';
-  theme: ThemeType;
+  theme?: ThemeType;
 };
 
-type AvatarStyledprops = {
+type AvatarStyledProps = {
   size?: string;
 };
 
-const StyledAvatar = styled.img`
+const StyledAvatar = styled.img<AvatarStyledProps>`
   border-radius: 50%;
-  height: ${(props: AvatarStyledprops) => props.size};
+  height: ${props => props.size};
   object-fit: cover;
-  width: ${(props: AvatarStyledprops) => props.size};
+  width: ${props => props.size};
 `;
 
 const Avatar = (props: AvatarProps) => {
   const theme = {
-    ...AVATAR,
-    ...props.theme.avatar,
+    ...defaultTheme,
+    ...props.theme,
   };
   const avatarUrl = () => {
     if (props.url) return props.url;
@@ -38,15 +38,14 @@ const Avatar = (props: AvatarProps) => {
       fileName = `icon-avatar-${props.name[0].trim().toUpperCase()}.png`;
     }
 
-    return theme.path + fileName;
+    return theme.avatar.path + fileName;
   };
 
-  return <StyledAvatar size={theme[props.size]} src={avatarUrl()} alt="avatar" />;
+  return <StyledAvatar theme={theme} size={theme.avatar[props.size]} src={avatarUrl()} alt="avatar" />;
 };
 
 Avatar.defaultProps = {
   size: 'medium',
-  theme: defaultTheme,
 };
 
 export default withTheme(Avatar);

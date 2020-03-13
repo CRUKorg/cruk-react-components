@@ -4,11 +4,11 @@ import defaultTheme, { BREAKPOINT, COLORS, FONT_SIZES, UTILITIES } from '../../t
 import { ThemeType } from '../../themes/types';
 
 type PopOverProps = {
-  theme: ThemeType;
   position: string;
   overlay: any;
   css: string;
   children: any;
+  theme?: ThemeType;
 };
 
 type PopOverWrapperProps = {
@@ -62,10 +62,8 @@ const PopOver = (props: PopOverProps) => {
   const [showPopOver, setPopOver] = useState(false);
   const toggle = () => setPopOver(!showPopOver);
   const theme = {
-    colors: {
-      ...COLORS,
-      ...props.theme.colors,
-    },
+    ...defaultTheme,
+    ...props.theme,
   };
   const StyledPopOverContent = styled(PopOverContent)`
     ${props.position === 'bottom' &&
@@ -157,10 +155,6 @@ const PopOver = (props: PopOverProps) => {
       </PopOverWrapper>
     </ThemeProvider>
   );
-};
-
-PopOver.defaultProps = {
-  theme: defaultTheme,
 };
 
 export default withTheme(PopOver);

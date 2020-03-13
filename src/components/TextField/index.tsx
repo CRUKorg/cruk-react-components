@@ -1,9 +1,11 @@
 import React from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
-import { COLORS, TYPOGRAPHY, FONT_SIZES, UTILITIES } from '../../themes/cruk';
+import defaultTheme from '../../themes/cruk';
 import ErrorText from '../ErrorText';
 import { WithLabel } from '../Label';
+
+import { ThemeType } from '../../themes/types';
 
 const Extra = styled.div`
   background-color: ${props => props.theme.colors.textInputBorder};
@@ -132,7 +134,7 @@ type TextFieldProps = {
   hasError: boolean;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   placeholder: string;
-  theme?: { colors: {}; typography: {}; utilities: {} };
+  theme?: ThemeType;
   type: 'text' | 'number' | 'email' | 'password';
   value: string;
   label: string;
@@ -142,21 +144,8 @@ type TextFieldProps = {
 
 const TextField = (props: TextFieldProps) => {
   const theme = {
-    colors: {
-      ...COLORS,
-      ...props.theme.colors,
-    },
-    typography: {
-      ...TYPOGRAPHY,
-      ...props.theme.typography,
-    },
-    fontSizes: {
-      ...FONT_SIZES,
-    },
-    utilities: {
-      ...UTILITIES,
-      ...props.theme.utilities,
-    },
+    ...defaultTheme,
+    ...props.theme,
   };
 
   const renderContent = (
@@ -180,7 +169,6 @@ const TextField = (props: TextFieldProps) => {
 };
 
 TextField.defaultProps = {
-  theme: {},
   type: 'text',
 };
 

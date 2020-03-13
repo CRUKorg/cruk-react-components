@@ -19,7 +19,7 @@ export const UTILITIES: UtilitiesType = {
   borderRadius: 'unset',
 };
 
-export const SITECONFIG: SiteConfigType = {
+export const SITE_CONFIG: SiteConfigType = {
   ...defaultTheme.siteConfig,
   logoSrc:
     'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/su2c-logo.png',
@@ -94,7 +94,7 @@ const theme: ThemeType = {
   colors: COLORS,
   spacing: SPACING,
   fontSizes: FONT_SIZES,
-  siteConfig: SITECONFIG,
+  siteConfig: SITE_CONFIG,
   typography: TYPOGRAPHY,
   utilities: UTILITIES,
 };

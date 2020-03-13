@@ -1,8 +1,10 @@
 import React, { FunctionComponent } from 'react';
-import styled from 'styled-components';
-import { COLORS, TYPOGRAPHY, FONT_SIZES } from '../../themes/cruk';
+import styled, { withTheme } from 'styled-components';
+import defaultTheme from '../../themes/cruk';
 
 import { FontSizeType } from '../../themes/types';
+
+import { ThemeType } from '../../themes/types';
 
 // the 'as' prop is for styled component casting
 export type TextProps = {
@@ -12,21 +14,47 @@ export type TextProps = {
   textWeight?: number;
   ellipsis?: boolean;
   as?: any;
-  theme?: any;
+  theme?: ThemeType;
 };
 
 export const TextStyled = styled.p<TextProps>`
-  font-family: ${({ theme }) => (theme.typography ? theme.typography.fontFamilyBase : TYPOGRAPHY.fontFamilyBase)};
-  color: ${({ theme, textColor }) => (theme.colors ? theme.colors[textColor] : COLORS.textDark)};
+  font-family: ${({
+    theme: {
+      typography: { fontFamilyBase },
+    },
+  }) => fontFamilyBase};
+  color: ${({
+    theme: {
+      colors,
+      colors: { textDark },
+    },
+    textColor,
+  }) => (colors[textColor] ? colors[textColor] : colors[textDark])};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'left')};
-  font-size: ${({ theme, textSize }) =>
-    textSize ? (theme.fontSizes ? theme.fontSizes[textSize] : FONT_SIZES[textSize]) : FONT_SIZES.medium};
+  font-size: ${({
+    theme: {
+      fontSizes,
+      fontSizes: { medium },
+    },
+    textSize,
+  }) => (textSize ? fontSizes[textSize] : medium)};
   line-height: 1.5em;
-  font-weight: ${({ textWeight }) => (textWeight ? textWeight : TYPOGRAPHY.fontWeightMedium)};
+  font-weight: ${({
+    textWeight,
+    theme: {
+      typography: { fontWeightMedium },
+    },
+  }) => (textWeight ? textWeight : fontWeightMedium)};
   padding: 0;
   margin: 0;
 `;
 
-export const Text: FunctionComponent<TextProps> = props => <TextStyled {...props} />;
+export const Text: FunctionComponent<TextProps> = props => {
+  const theme = {
+    ...defaultTheme,
+    ...props.theme,
+  };
+  return <TextStyled theme={theme} {...props} />;
+};
 
-export default Text;
+export default withTheme(Text);
