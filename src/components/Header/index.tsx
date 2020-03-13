@@ -23,7 +23,11 @@ const StyledHeader = styled.header`
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  background-color: ${({ theme }) => (theme.colors ? theme.colors.headerBg : defaultTheme.colors.headerBg)};
+  background-color: ${({
+    theme: {
+      colors: { headerBg },
+    },
+  }) => headerBg};
   z-index: 9998;
 `;
 
