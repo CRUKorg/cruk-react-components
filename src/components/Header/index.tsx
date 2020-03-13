@@ -44,10 +44,17 @@ const HeaderStickyPlaceHolder = styled.div`
 const HeaderStickyContainer = styled.div`
   width: 100%;
   padding: 0;
-  background-color: ${({ theme }) => (theme.colors ? theme.colors.headerBg : defaultTheme.colors.headerBg)};
+  background-color: ${({
+    theme: {
+      colors: { headerBg },
+    },
+  }) => headerBg};
   position: relative;
-  border-bottom: ${({ theme }) =>
-    theme.colors ? `solid 1px ${theme.colors.headerBorder}` : `solid 1px ${defaultTheme.colors.headerBorder}`};
+  border-bottom: ${({
+    theme: {
+      colors: { headerBorder },
+    },
+  }) => `solid 1px ${headerBorder}`};
   padding: 0 ${HEADER_PADDING};
   height: ${HEADER_HEIGHT_SMALL};
 
