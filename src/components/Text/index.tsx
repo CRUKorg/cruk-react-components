@@ -18,12 +18,12 @@ export type TextProps = {
 
 export const TextStyled = styled.p<TextProps>`
   font-family: ${({ theme }) => theme.typography.fontFamilyBase};
-  color: ${({ theme, textColor }) =>
-    textColor && typeof theme.colors[textColor] !== 'undefined'
-      ? theme.colors[textColor]
+  color: ${({ theme: { colors }, textColor }) =>
+    textColor && typeof colors[textColor] !== 'undefined'
+      ? colors[textColor]
       : textColor
       ? textColor
-      : theme.colors['textDark']};
+      : colors['textDark']};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'left')};
   font-size: ${({
     theme: {
@@ -48,7 +48,7 @@ export const Text: FunctionComponent<TextProps> = props => {
     ...defaultTheme,
     ...props.theme,
   };
-  return <TextStyled theme={theme} {...props} />;
+  return <TextStyled {...props} theme={theme} />;
 };
 
 export default withTheme(Text);
