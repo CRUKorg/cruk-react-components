@@ -3,6 +3,12 @@ import styled, { css } from 'styled-components';
 import { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../themes/cruk';
 
 type StyledHeadingProps = {
+  h1?: boolean;
+  h2?: boolean;
+  h3?: boolean;
+  h4?: boolean;
+  h5?: boolean;
+  h6?: boolean;
   center?: string;
   right?: string;
   css?: any;
@@ -74,22 +80,8 @@ const H6 = styled.h6`
   } // 14px
 `;
 
-const Heading = ({
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  ...props
-}: {
-  h1: string;
-  h2: String;
-  h3: string;
-  h4: string;
-  h5: string;
-  h6: string;
-}) => {
+const Heading = ({ h1, h2, h3, h4, h5, h6, ...props }: StyledHeadingProps) => {
+  if (h1) return <H1 {...props} />;
   if (h2) return <H2 {...props} />;
   if (h3) return <H3 {...props} />;
   if (h4) return <H4 {...props} />;
