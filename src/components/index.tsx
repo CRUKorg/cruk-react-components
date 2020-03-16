@@ -26,6 +26,7 @@ import Radio from './Radio';
 import RadioGroup from './RadioGroup';
 import Select from './Select';
 import Step from './Step';
+import Text from './Text';
 import TextField from './TextField';
 import Totaliser from './Totaliser';
 import UserBlock from './UserBlock';
@@ -59,6 +60,7 @@ export {
   Select,
   Step,
   TextField,
+  Text,
   Totaliser,
   UserBlock,
 };
