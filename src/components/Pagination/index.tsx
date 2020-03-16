@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
-import { BREAKPOINT, COLORS, TYPOGRAPHY, FONT_SIZES } from '../../themes/cruk';
+import defaultTheme from '../../themes/cruk';
+
+import { ThemeType } from '../../themes/types';
 
 type PaginationProps = {
   current: number;
@@ -9,8 +11,8 @@ type PaginationProps = {
   pagerCallback: Function;
   perPage: number;
   searchParam?: string;
-  theme: { pagination: {}; colors: {} };
   children: any;
+  theme?: ThemeType;
 };
 
 type PaginationStyledProps = {
@@ -32,8 +34,16 @@ const PagerList = styled.ul`
 `;
 const PagerLink = styled.a`
   font-weight: normal;
-  font-family: ${TYPOGRAPHY.fontFamilyBase};
-  font-size: ${FONT_SIZES.small};
+  font-family: ${({
+    theme: {
+      typography: { fontFamilyBase },
+    },
+  }) => fontFamilyBase};
+  font-size: ${({
+    theme: {
+      fontSizes: { small },
+    },
+  }) => small};
   color: ${props => props.theme.colors.textLight};
   background-color: ${props => props.theme.colors.primary};
   cursor: pointer;
@@ -109,7 +119,11 @@ const PagerItem = styled.li`
   &:last-child {
     display: inline;
   }
-  @media (min-width: ${BREAKPOINT.mobile}) {
+  @media (min-width: ${({
+      theme: {
+        breakpoint: { mobile },
+      },
+    }) => mobile}) {
     display: inline;
   }
   span {
@@ -123,11 +137,8 @@ const PagerItem = styled.li`
 
 const Pagination = (props: PaginationProps) => {
   const theme = {
-    colors: {
-      ...COLORS,
-      ...props.theme.colors,
-    },
-    pagination: props.theme.pagination,
+    ...defaultTheme,
+    ...props.theme,
   };
   const perPage = props.perPage > 0 ? props.perPage : 1;
   const totalPages = Math.ceil(props.items / perPage) || 1;
@@ -211,7 +222,6 @@ const Pagination = (props: PaginationProps) => {
 
 Pagination.defaultProps = {
   searchParam: 'page',
-  theme: {},
 };
 
 export default withTheme(Pagination);

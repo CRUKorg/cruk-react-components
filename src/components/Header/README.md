@@ -20,7 +20,7 @@ This has been kept quite open you can place any child elements in here but ideal
 
 ```.jsx
   <React.Fragment>
-    <Header></Header>
+    <Header siteSlogan="Header slogan here"></Header>
   </React.Fragment>
 ```
 
@@ -29,6 +29,7 @@ This has been kept quite open you can place any child elements in here but ideal
 | Name         | Type      | Options | Default               | Description                                                      |
 | :----------- | :-------- | :-----: | :-------------------- | :--------------------------------------------------------------- |
 | isSticky     | boolean   |         | false                 | should header stick to the top of the page when the user scrolls |
+| siteSlogan   | string    |         | null                  | slogan that appears in the middle of the header                  |
 | logoImageSrc | string    |         | SITECONFIG.logoSrc    | src of logo image                                                |
 | logoLinkUrl  | string    |         | SITECONFIG.logoUrl    | Logo link URL                                                    |
 | logoAltText  | string    |         | SITECONFIG.logoAlt    | Logo link alternative text for accessibility                     |

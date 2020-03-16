@@ -1,12 +1,13 @@
 import React from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
-import { COLORS, TYPOGRAPHY, FONT_SIZES } from '../../themes/cruk';
+import defaultTheme, { TYPOGRAPHY, FONT_SIZES } from '../../themes/cruk';
+import { ThemeType } from '../../themes/types';
 
 type StepProps = {
-  theme: { colors: {} };
   current: number;
   steps: [];
   children: any;
+  theme?: ThemeType;
 };
 
 const StepWrapper = styled.div`
@@ -69,8 +70,16 @@ const StepTick = styled.span`
   transform: rotate(45deg);
   height: 11px;
   width: 7px;
-  border-bottom: 2.5px solid ${props => props.theme.colors.textLight};
-  border-right: 2.5px solid ${COLORS.textLight};
+  border-bottom: ${({
+    theme: {
+      colors: { textLight },
+    },
+  }) => `2.5px solid ${textLight}`};
+  border-right: ${({
+    theme: {
+      colors: { textLight },
+    },
+  }) => `2.5px solid ${textLight}`};
   margin-top: 3.5px;
   margin-left: 6.5px;
 `;
@@ -107,10 +116,8 @@ const StepItem = styled.li<StepItemProps>`
 
 const Step = (props: StepProps) => {
   const theme = {
-    colors: {
-      ...COLORS,
-      ...props.theme.colors,
-    },
+    ...defaultTheme,
+    ...props.theme,
   };
   const totalSteps = Array.isArray(props.steps) && Object.keys(props.steps).length;
   return (
@@ -133,7 +140,6 @@ const Step = (props: StepProps) => {
 
 Step.defaultProps = {
   current: 1,
-  theme: {},
 };
 
 export default withTheme(Step);

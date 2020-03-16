@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled, { css, keyframes, ThemeProvider, withTheme } from 'styled-components';
-import { COLORS, FONT_SIZES, UTILITIES, TYPOGRAPHY } from '../../themes/cruk';
+import defaultTheme from '../../themes/cruk';
+
+import { ThemeType } from '../../themes/types';
 
 type ProgressBarProps = {
-  theme: { progress: {}; colors: {} };
   percentage: number;
   isCircular?: boolean;
   showIndicator?: boolean;
   children?: any;
+  theme?: ThemeType;
 };
 
 type PercentageProps = {
@@ -22,24 +24,44 @@ const ProgressBarSharedStyling = css`
   float: left;
   width: 1%;
   height: 100%;
-  font-size: ${FONT_SIZES.small};
-  line-height: ${TYPOGRAPHY.lineHeight};
-  color: ${props => props.theme.colors.textLight};
+  font-size: ${({
+    theme: {
+      fontSizes: { small },
+    },
+  }) => small};
+  line-height: ${({
+    theme: {
+      typography: { lineHeight },
+    },
+  }) => lineHeight};
+  color: ${({
+    theme: {
+      colors: { textLight },
+    },
+  }) => textLight};
   text-align: center;
-  background-color: ${props => props.theme.colors.progressBar};
-  border-radius: ${UTILITIES.borderRadius};
-  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  background-color: ${({
+    theme: {
+      colors: { progressBar },
+    },
+  }) => progressBar};
+  border-radius: ${({
+    theme: {
+      utilities: { borderRadius },
+    },
+  }) => borderRadius};
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-  -webkit-transition: width 0.6s ease;
-  -o-transition: width 0.6s ease;
   transition: width 0.6s ease;
 `;
 
 const ProgressSharedStyling = css`
   height: 15px;
   margin-bottom: 0;
-  background-color: ${props => props.theme.colors.progressBarBg};
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  background-color: ${({
+    theme: {
+      colors: { progressBarBg },
+    },
+  }) => progressBarBg};
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 `;
 
@@ -79,7 +101,11 @@ const CircularColorFill = styled.span`
   border-style: solid;
   position: absolute;
   top: 0;
-  border-color: ${props => props.theme.colors.circularProgress};
+  border-color: ${({
+    theme: {
+      colors: { circularProgress },
+    },
+  }) => circularProgress};
 `;
 
 const CircularLeft = styled.span`
@@ -111,9 +137,8 @@ const CircularRight = styled.span`
 type AnimationRightProps = PercentageProps;
 
 const AnimationRight = (props: AnimationRightProps) => keyframes`
-  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  0% { transform: rotate(0deg); }
   100% {
-    -webkit-transform: rotate(${props.percentage > 50 ? '180' : props.percentage * 3.6});
     transform: rotate(${props.percentage > 50 ? '180' : props.percentage * 3.6}deg);
   }
 `;
@@ -121,9 +146,8 @@ const AnimationRight = (props: AnimationRightProps) => keyframes`
 type AnimationLeftProps = PercentageProps;
 
 const AnimationLeft = (props: AnimationLeftProps) => keyframes`
-  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  0% { transform: rotate(0deg); }
   100% {
-    -webkit-transform: rotate(${props.percentage > 100 ? '180' : props.percentage * 3.6 - 180});
     transform: rotate(${props.percentage > 100 ? '180' : props.percentage * 3.6 - 180}deg);
   }
 `;
@@ -146,7 +170,11 @@ const CircularWrapper = styled.div<CircularWrapperProps>`
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 4px solid ${props => props.theme.colors.circularProgressBg};
+    border: ${({
+      theme: {
+        colors: { circularProgressBg },
+      },
+    }) => `4px solid ${circularProgressBg}`};
     position: absolute;
     top: 0;
     left: 0;
@@ -194,21 +222,30 @@ const CircularValue = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  font-size: ${FONT_SIZES.large};
-  line-height: ${FONT_SIZES.large};
+  font-size: ${({
+    theme: {
+      fontSizes: { large },
+    },
+  }) => large};
+  line-height: ${({
+    theme: {
+      fontSizes: { large },
+    },
+  }) => large};
   text-align: center;
   height: 100%;
   text-transform: uppercase;
-  color: ${props => props.theme.colors.circularProgress};
+  color: ${({
+    theme: {
+      colors: { circularProgress },
+    },
+  }) => circularProgress};
 `;
 
-const ProgressBar = (props: ProgressBarProps) => {
+const ProgressBar: FunctionComponent<ProgressBarProps> = props => {
   const theme = {
-    colors: {
-      ...COLORS,
-      ...props.theme.colors,
-    },
-    progress: props.theme.progress,
+    ...defaultTheme,
+    ...props.theme,
   };
   const number = props.percentage;
   const text = `${!Number.isNaN(number) ? number : '0'}%`;
@@ -238,8 +275,7 @@ const ProgressBar = (props: ProgressBarProps) => {
 };
 
 ProgressBar.defaultProps = {
-  percentage: '0',
-  theme: {},
+  percentage: 0,
 };
 
 export default withTheme(ProgressBar);

@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { withTheme } from 'styled-components';
-import { COLORS, UTILITIES } from '../../themes/cruk';
+import defaultTheme from '../../themes/cruk';
+
+import { ThemeType } from '../../themes/types';
 
 type StyledLabelProps = {
   checked: boolean;
@@ -20,26 +22,20 @@ const StyledInput = styled.input`
 `;
 
 type RadioProps = {
-  className?: string;
   checked: boolean;
-  disabled?: boolean;
   name: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
-  theme?: { colors: {}; utilities: {} };
   value: string;
   children: any;
+  className?: string;
+  disabled?: boolean;
+  theme?: ThemeType;
 };
 
 const RadioInput = (props: RadioProps) => {
   const theme = {
-    colors: {
-      ...COLORS,
-      ...props.theme.colors,
-    },
-    utilities: {
-      ...UTILITIES,
-      ...props.theme.utilities,
-    },
+    ...defaultTheme,
+    ...props.theme,
   };
 
   return (
@@ -55,10 +51,6 @@ const RadioInput = (props: RadioProps) => {
       {props.children || props.value}
     </StyledLabel>
   );
-};
-
-RadioInput.defaultProps = {
-  theme: {},
 };
 
 export default withTheme(RadioInput);

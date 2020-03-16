@@ -1,4 +1,18 @@
-export const UTILITIES = {
+import {
+  UtilitiesType,
+  SiteConfigType,
+  AvatarType,
+  ButtonType,
+  BreakPointType,
+  TokenColorsType,
+  ColorsType,
+  SpacingType,
+  FontSizesType,
+  TypographyType,
+  ThemeType,
+} from './types';
+
+export const UTILITIES: UtilitiesType = {
   borderRadius: '3px',
   rhythmBase: '15px',
   rhythmVerticalBase: '15px',
@@ -8,38 +22,37 @@ export const UTILITIES = {
   spacingUnit: 5,
 };
 
-export const SITECONFIG = {
+export const SITE_CONFIG: SiteConfigType = {
   cdnPath: 'https://ccp-s3.int.cruk.org/',
   assetPath: 'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/',
-  siteSlogan: 'Together we will beat cancer',
   siteUrl: 'https://fundraise.cancerresearchuk.org/',
   logoUrl: '/',
   logoAlt: 'Cancer Research UK Giving Page',
   logoSrc: 'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png',
 };
 
-export const AVATAR = {
+export const AVATAR: AvatarType = {
   small: '35px',
   medium: '50px',
   large: '60px',
   xlarge: '90px',
-  path: `${SITECONFIG.assetPath}images/icon-avatars/`,
+  path: `${SITE_CONFIG.assetPath}images/icon-avatars/`,
 };
 
-export const BUTTON = {
+export const BUTTON: ButtonType = {
   borderRadius: UTILITIES.borderRadius,
   textDecoration: 'none',
   textTransform: 'none',
 };
 
-export const BREAKPOINT = {
+export const BREAKPOINT: BreakPointType = {
   mobile: '576px',
   tablet: '768px',
   desktop: '992px',
   desktopLarge: '1200px',
 };
 
-export const TOKEN_COLORS: { [key: string]: string } = {
+export const TOKEN_COLORS: TokenColorsType = {
   blue: '#2e008b',
   magenta: '#ec008c',
   magentaLight: '#ff20a4',
@@ -60,7 +73,7 @@ export const TOKEN_COLORS: { [key: string]: string } = {
   green: '#8bc34a',
 };
 
-export const COLORS: { [key: string]: string } = {
+export const COLORS: ColorsType = {
   primary: TOKEN_COLORS.blue,
   primaryHover: TOKEN_COLORS.magenta,
   secondary: TOKEN_COLORS.magenta,
@@ -123,7 +136,7 @@ export const COLORS: { [key: string]: string } = {
 };
 
 // TODO: possibly convert to REMS, once a base font size has been agreed.
-export const SPACING = {
+export const SPACING: SpacingType = {
   extraExtraSmall: '8px',
   extraSmall: '16px',
   small: '24px',
@@ -133,16 +146,7 @@ export const SPACING = {
   extraExtraLarge: '56px',
 };
 
-export type FontSizeType =
-  | 'extraSmall'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'extraLarge'
-  | 'extraExtraLarge'
-  | 'extraExtraExtraLarge';
-
-export const FONT_SIZES: { [key: string]: string } = {
+export const FONT_SIZES: FontSizesType = {
   extraSmall: '0.75rem', // 12px
   small: '0.857rem', // 14px
   medium: '1em', // 16px
@@ -152,14 +156,14 @@ export const FONT_SIZES: { [key: string]: string } = {
   extraExtraExtraLarge: '3.125rem', // 50px
 };
 
-export const TYPOGRAPHY = {
+export const TYPOGRAPHY: TypographyType = {
   customFonts: [
     {
       family: 'MuseoSans-500',
       url: 'https://ccp-s3.int.cruk.org/fonts/MuseoSansRounded-500',
     },
   ],
-  fontUrl: `${SITECONFIG.cdnPath}fonts`,
+  fontUrl: `${SITE_CONFIG.cdnPath}fonts`,
   fontFamilyBase: 'Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif',
   fontFamilyHeadings: 'MuseoSans-500,Calibri,Arial,sans-serif',
   fontSizeBase: '16px',
@@ -172,14 +176,15 @@ export const TYPOGRAPHY = {
   lineHeightLarge: '2',
 };
 
-const theme = {
+const theme: ThemeType = {
   avatar: AVATAR,
   breakpoint: BREAKPOINT,
+  button: BUTTON,
   tokenColors: TOKEN_COLORS,
   colors: COLORS,
   spacing: SPACING,
   fontSizes: FONT_SIZES,
-  siteConfig: SITECONFIG,
+  siteConfig: SITE_CONFIG,
   typography: TYPOGRAPHY,
   utilities: UTILITIES,
 };

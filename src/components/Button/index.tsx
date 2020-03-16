@@ -1,17 +1,15 @@
 import React from 'react';
-import styled, { css, withTheme, ThemeProvider } from 'styled-components';
-import { COLORS, TYPOGRAPHY, FONT_SIZES, BUTTON } from '../../themes/cruk';
+import styled, { css, withTheme } from 'styled-components';
+import defaultTheme from '../../themes/cruk';
 import Icon from '../Icon';
+import { ThemeType } from '../../themes/types';
 
 type ButtonProps = {
   appearance?: string;
   children?: any;
   iconAlign?: string;
   full?: boolean;
-  theme?: {
-    button: {};
-    colors: { [key: string]: string };
-  };
+  theme?: ThemeType;
   ariaLabel?: string;
   href?: string;
   icon?: string;
@@ -30,8 +28,16 @@ const StyledButton = styled.button`
   color: ${props => props.theme.colors.primary};
   cursor: pointer;
   display: inline-block;
-  font-size: ${FONT_SIZES.medium};
-  font-weight: ${TYPOGRAPHY.fontWeightHeavy};
+  font-size: ${({
+    theme: {
+      fontSizes: { medium },
+    },
+  }) => medium};
+  font-weight: ${({
+    theme: {
+      typography: { fontWeightHeavy },
+    },
+  }) => fontWeightHeavy};
   line-height: 1;
   padding: 10px;
   text-align: center;
@@ -94,13 +100,21 @@ const StyledButton = styled.button`
   ${(props: ButtonProps) =>
     props.size === 'small' &&
     css`
-      font-size: ${FONT_SIZES.small};
+      font-size: ${({
+        theme: {
+          fontSizes: { small },
+        },
+      }) => small};
     `}
   
   ${(props: ButtonProps) =>
     props.size === 'large' &&
     css`
-      font-size: ${FONT_SIZES.extraLarge};
+      font-size: ${({
+        theme: {
+          fontSizes: { extraLarge },
+        },
+      }) => extraLarge};
     `}
   
   ${(props: ButtonProps) =>
@@ -111,7 +125,7 @@ const StyledButton = styled.button`
         ? props.theme.colors.buttonDisabled
         : 'transparent'};
       color: ${props.appearance === 'primary' || props.appearance === 'secondary'
-        ? COLORS.textLight
+        ? props.theme.colors.textLight
         : props.theme.colors.buttonDisabled};
       border-color: ${props.theme.colors.buttonDisabled};
 
@@ -121,7 +135,7 @@ const StyledButton = styled.button`
           ? props.theme.colors.buttonDisabled
           : 'transparent'};
         color: ${props.appearance === 'primary' || props.appearance === 'secondary'
-          ? COLORS.textLight
+          ? props.theme.colors.textLight
           : props.theme.colors.buttonDisabled};
         border-color: ${props.theme.colors.buttonDisabled};
         text-decoration: none;
@@ -132,22 +146,14 @@ const StyledButton = styled.button`
     css`
       width: 100%;
     `}
-  
-  ${(props: ButtonProps) => props.theme.button}
   ${(props: ButtonProps) => (css as any)([props.css])}
 `;
 
 const Button = (props: ButtonProps) => {
   // TODO create theme spread function.
   const theme = {
-    colors: {
-      ...COLORS,
-      ...props.theme.colors,
-    },
-    button: {
-      ...BUTTON,
-      ...props.theme.button,
-    },
+    ...defaultTheme,
+    ...props.theme,
   };
   const icon = props.icon && <Icon name={props.icon} />;
   const iconRight = props.iconAlign === 'right';
@@ -160,18 +166,12 @@ const Button = (props: ButtonProps) => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <StyledButton {...props} aria-label={ariaLabel()} theme={theme}>
-        {!iconRight && icon}
-        {props.children}
-        {iconRight && icon}
-      </StyledButton>
-    </ThemeProvider>
+    <StyledButton {...props} aria-label={ariaLabel()} theme={theme}>
+      {!iconRight && icon}
+      {props.children}
+      {iconRight && icon}
+    </StyledButton>
   );
-};
-
-Button.defaultProps = {
-  theme: {},
 };
 
 export default withTheme(Button);

@@ -1,6 +1,10 @@
 import React, { FunctionComponent } from 'react';
-import { COLORS, TYPOGRAPHY, FONT_SIZES, FontSizeType } from '../../themes/cruk';
 import styled, { withTheme } from 'styled-components';
+import defaultTheme from '../../themes/cruk';
+
+import { FontSizeType } from '../../themes/types';
+
+import { ThemeType } from '../../themes/types';
 
 // the 'as' prop is for styled component casting
 export type TextProps = {
@@ -9,7 +13,7 @@ export type TextProps = {
   textSize?: FontSizeType;
   textWeight?: number;
   as?: any;
-  theme?: any;
+  theme?: ThemeType;
 };
 
 export const TextStyled = styled.p<TextProps>`
@@ -21,29 +25,30 @@ export const TextStyled = styled.p<TextProps>`
       ? textColor
       : theme.colors['textDark']};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'left')};
-  font-size: ${({ theme, textSize }) =>
-    textSize ? (theme.fontSizes ? theme.fontSizes[`${textSize}`] : FONT_SIZES[`${textSize}`]) : FONT_SIZES.medium};
+  font-size: ${({
+    theme: {
+      fontSizes,
+      fontSizes: { medium },
+    },
+    textSize,
+  }) => (textSize ? fontSizes[textSize] : medium)};
   line-height: 1.5em;
-  font-weight: ${({ textWeight }) => (textWeight ? textWeight : TYPOGRAPHY.fontWeightMedium)};
+  font-weight: ${({
+    textWeight,
+    theme: {
+      typography: { fontWeightMedium },
+    },
+  }) => (textWeight ? textWeight : fontWeightMedium)};
   padding: 0;
   margin: 0;
 `;
 
 export const Text: FunctionComponent<TextProps> = props => {
-  // TODO clean this up once clean-theme-2 has been merged
   const theme = {
-    colors: { ...COLORS, ...props.theme.colors },
-    fontSizes: { ...FONT_SIZES, ...props.theme.fontSizes },
-    typography: { ...TYPOGRAPHY, ...props.theme.typography },
+    ...defaultTheme,
+    ...props.theme,
   };
-
-  console.log({ preTheme: theme });
-
-  return (
-    <TextStyled {...props} theme={theme}>
-      {props.children}
-    </TextStyled>
-  );
+  return <TextStyled theme={theme} {...props} />;
 };
 
 export default withTheme(Text);

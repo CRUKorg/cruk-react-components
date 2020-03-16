@@ -1,10 +1,13 @@
 import React from 'react';
-import styled, { withTheme } from 'styled-components';
-import { COLORS, UTILITIES } from '../../themes/cruk';
+import styled, { withTheme, ThemeProvider } from 'styled-components';
+
+import defaultTheme from '../../themes/cruk';
+
+import { ThemeType } from '../../themes/types';
 
 type StyledLabelProps = {
   checked: boolean;
-  theme: any;
+  theme?: ThemeType;
 };
 
 const StyledLabel = styled.label<StyledLabelProps>`
@@ -26,40 +29,32 @@ type CheckboxProps = {
   disabled: boolean;
   name: string; // Adding this because formiK requires name or id.
   onChange: React.ChangeEventHandler<HTMLInputElement>;
-  theme?: { colors: {}; utilities: {} };
   value: string;
   children: any;
+  theme?: ThemeType;
 };
 
 const Checkbox = (props: CheckboxProps) => {
   const theme = {
-    colors: {
-      ...COLORS,
-      ...props.theme.colors,
-    },
-    utilities: {
-      ...UTILITIES,
-      ...props.theme.utilities,
-    },
+    ...defaultTheme,
+    ...props.theme,
   };
 
   return (
-    <StyledLabel checked={props.checked} theme={theme}>
-      <StyledInput
-        checked={props.checked}
-        disabled={props.disabled}
-        name={props.name}
-        onChange={props.onChange}
-        type="checkbox"
-        value={props.value}
-      />
-      {props.children || props.value}
-    </StyledLabel>
+    <ThemeProvider theme={theme}>
+      <StyledLabel checked={props.checked}>
+        <StyledInput
+          checked={props.checked}
+          disabled={props.disabled}
+          name={props.name}
+          onChange={props.onChange}
+          type="checkbox"
+          value={props.value}
+        />
+        {props.children || props.value}
+      </StyledLabel>
+    </ThemeProvider>
   );
-};
-
-Checkbox.defaultProps = {
-  theme: {},
 };
 
 export default withTheme(Checkbox);
