@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css, withTheme } from 'styled-components';
-import defaultTheme, { COLORS, FONT_SIZES } from '../../themes/cruk';
+import defaultTheme from '../../themes/cruk';
 import { ThemeType, ColorsType } from '../../themes/types';
 
 type BadgeProps = {
@@ -15,10 +15,10 @@ type BadgeProps = {
 // TODO Look at where 15 comes from in the height and width bellow.
 const StyledBadge = styled.span`
   background-color: ${props => props.getBgColor};
-  color: ${COLORS.textLight};
+  color: ${props => props.theme.colors.textLight};
   text-align: center;
   border-radius: 1.5rem;
-  font-size: ${FONT_SIZES.small};
+  font-size: ${props => props.theme.fontSizes.small};
   padding: 3px 10px;
   display: inline-block;
 
@@ -46,13 +46,12 @@ const Badge = (props: BadgeProps) => {
     props.children.props && props.children.props.size !== undefined
       ? parseFloat(props.children.props.size.match(/\d+/)[0])
       : 15;
-  const defaultBgColor = theme.colors.primary || COLORS.primary;
   const checkBgColor = (theme.colors as ColorsType)[props.bgColor] || props.bgColor;
   return (
     <StyledBadge
       text={typeof props.children === 'string'}
       size={parseFloat(getChildSize.toString())}
-      getBgColor={props.bgColor !== undefined ? checkBgColor : defaultBgColor}
+      getBgColor={props.bgColor !== undefined ? checkBgColor : theme.colors.primary}
       {...props}
     >
       {props.children}
