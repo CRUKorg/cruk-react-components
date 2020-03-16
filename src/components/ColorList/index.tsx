@@ -59,7 +59,7 @@ const ColorList = (props: ColorListProps) => {
             <ColorTile color={tokenColors[`${color}`]}></ColorTile>
             <ColorLabelWrapper>
               <Text>{camelCaseToCaptilalisedCase(color)}</Text>
-              <Text>{tokenColors[`${color}`]}</Text>
+              <code>{tokenColors[`${color}`]}</code>
             </ColorLabelWrapper>
           </ColorTileWrapper>
         ))}
