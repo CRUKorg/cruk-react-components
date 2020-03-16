@@ -12,24 +12,18 @@ export type TextProps = {
   textAlign?: 'left' | 'right' | 'center';
   textSize?: FontSizeType;
   textWeight?: number;
-  ellipsis?: boolean;
   as?: any;
   theme?: ThemeType;
 };
 
 export const TextStyled = styled.p<TextProps>`
-  font-family: ${({
-    theme: {
-      typography: { fontFamilyBase },
-    },
-  }) => fontFamilyBase};
-  color: ${({
-    theme: {
-      colors,
-      colors: { textDark },
-    },
-    textColor,
-  }) => (colors[textColor] ? colors[textColor] : colors[textDark])};
+  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
+  color: ${({ theme: { colors }, textColor }) =>
+    textColor && typeof colors[textColor] !== 'undefined'
+      ? colors[textColor]
+      : textColor
+      ? textColor
+      : colors['textDark']};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'left')};
   font-size: ${({
     theme: {
@@ -54,7 +48,7 @@ export const Text: FunctionComponent<TextProps> = props => {
     ...defaultTheme,
     ...props.theme,
   };
-  return <TextStyled theme={theme} {...props} />;
+  return <TextStyled {...props} theme={theme} />;
 };
 
 export default withTheme(Text);
