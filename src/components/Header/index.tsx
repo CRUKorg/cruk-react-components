@@ -211,7 +211,7 @@ export const Header: FunctionComponent<HeaderProps> = props => {
     <ThemeProvider theme={theme}>
       <StyledHeader>
         <HeaderStickyPlaceHolder>
-          <HeaderStickyContainer className="cy-header-sticky-container" isSmall={isSmall} isSticky={isSticky}>
+          <HeaderStickyContainer data-cy="header-sticky-container" isSmall={isSmall} isSticky={isSticky}>
             <SkipToMain className="skip-main" href="#main">
               Skip to main content
             </SkipToMain>

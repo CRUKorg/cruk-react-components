@@ -26,15 +26,17 @@ context('Header', () => {
     cy.focused().should('have.attr', 'href', '/');
   });
 
-  it('should stick to the top of the page when sticky and reduce to smaller height', () => {
+  it('should stick to the top of the page', () => {
     cy.get('header')
-      .find('.cy-header-sticky-container')
+      .find('[data-cy="header-sticky-container"]')
       .should('have.css', 'height', '120px')
       .should('have.css', 'position', 'relative');
+  });
 
+  it('should reduce to smaller height when not at top of page', () => {
     cy.window().scrollTo(0, 800);
     cy.get('header')
-      .find('.cy-header-sticky-container')
+      .find('[data-cy="header-sticky-container"]')
       .should('have.css', 'height', '54px')
       .should('have.css', 'position', 'fixed')
       .should('have.css', 'top', '0px');
