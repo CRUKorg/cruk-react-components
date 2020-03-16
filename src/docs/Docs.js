@@ -12,6 +12,7 @@ import Box from '../components/Box';
 import Button from '../components/Button';
 import Checkbox from '../components/Checkbox';
 import Collapse from '../components/Collapse';
+import ColorList from '../components/ColorList';
 import ErrorText from '../components/ErrorText';
 import Flex from '../components/Flex';
 import Footer from '../components/Footer';
@@ -39,6 +40,7 @@ import BoxReadme from '../components/Box/README.md';
 import ButtonReadme from '../components/Button/README.md';
 import CheckboxReadme from '../components/Checkbox/README.md';
 import CollapseReadme from '../components/Collapse/README.md';
+import ColorListReadme from '../components/ColorList/README.md';
 import ErrorTextReadme from '../components/ErrorText/README.md';
 import FooterReadme from '../components/Footer/README.md';
 import HeadingReadme from '../components/Heading/README.md';
@@ -236,6 +238,8 @@ const components = {
         Button,
         Box,
         Checkbox,
+        Collapse,
+        ColorList,
         ErrorText,
         Footer,
         Heading,
@@ -255,7 +259,6 @@ const components = {
         TextField,
         Totaliser,
         UserBlock,
-        Collapse,
       }}
     >
       <LivePreview aria-label="Example code preview" style={{ border: '1px solid grey', padding: '5px' }} />
@@ -334,6 +337,7 @@ class Docs extends React.Component {
                 <RouterLink to="/button">Button</RouterLink>
                 <RouterLink to="/checkbox">Checkbox</RouterLink>
                 <RouterLink to="/collapse">Collapse</RouterLink>
+                <RouterLink to="/colorList">Color List</RouterLink>
                 <RouterLink to="/errortext">ErrorText</RouterLink>
                 <RouterLink to="/footer">Footer</RouterLink>
                 <RouterLink to="/header">Header</RouterLink>
@@ -361,6 +365,7 @@ class Docs extends React.Component {
                 <ButtonReadme path="/button" />
                 <CheckboxReadme path="/checkbox" />
                 <CollapseReadme path="/collapse" />
+                <ColorListReadme path="/colorList" />
                 <ErrorTextReadme path="/errortext" />
                 <FooterReadme path="/footer" />
                 <HeadingReadme path="/heading" />

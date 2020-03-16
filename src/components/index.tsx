@@ -7,6 +7,7 @@ import Box from './Box';
 import Button from './Button';
 import Checkbox from './Checkbox';
 import Collapse from './Collapse';
+import ColorList from './ColorList';
 import Divider from './Divider';
 import ErrorText from './ErrorText';
 import Flex from './Flex';
@@ -39,6 +40,7 @@ export {
   Button,
   Checkbox,
   Collapse,
+  ColorList,
   Divider,
   ErrorText,
   Flex,
