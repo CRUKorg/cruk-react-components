@@ -1,11 +1,12 @@
 import React from 'react';
-import styled, { css, ThemeProvider, withTheme } from 'styled-components';
-import { COLORS, FONT_SIZES } from '../../themes/cruk';
+import styled, { css, withTheme } from 'styled-components';
+import defaultTheme from '../../themes/cruk';
+import { ThemeType, ColorsType } from '../../themes/types';
 
 type BadgeProps = {
-  bgColor: string;
+  bgColor?: string;
   text: boolean;
-  theme: { colors: { [key: string]: string } };
+  theme?: ThemeType;
   getBgColor?: string;
   size?: number;
   children?: any;
@@ -14,10 +15,10 @@ type BadgeProps = {
 // TODO Look at where 15 comes from in the height and width bellow.
 const StyledBadge = styled.span`
   background-color: ${props => props.getBgColor};
-  color: ${COLORS.textLight};
+  color: ${props => props.theme.colors.textLight};
   text-align: center;
   border-radius: 1.5rem;
-  font-size: ${FONT_SIZES.small};
+  font-size: ${props => props.theme.fontSizes.small};
   padding: 3px 10px;
   display: inline-block;
 
@@ -37,34 +38,23 @@ const StyledBadge = styled.span`
 `;
 
 const Badge = (props: BadgeProps) => {
-  const theme = {
-    colors: {
-      ...COLORS,
-      ...props.theme.colors,
-    },
+  const { bgColor, text, theme, getBgColor, size, children, ...rest } = props;
+  const mergedTheme = {
+    ...defaultTheme,
+    ...theme,
   };
-  const getChildSize =
-    props.children.props && props.children.props.size !== undefined
-      ? parseFloat(props.children.props.size.match(/\d+/)[0])
-      : 15;
-  const defaultBgColor = theme.colors.primary || COLORS.primary;
-  const checkBgColor = (theme.colors as any)[props.bgColor] || props.bgColor;
+  const checkBgColor = (mergedTheme.colors as ColorsType)[bgColor] || bgColor;
   return (
-    <ThemeProvider theme={theme}>
-      <StyledBadge
-        text={typeof props.children === 'string'}
-        size={parseFloat(getChildSize.toString())}
-        getBgColor={props.bgColor !== undefined ? checkBgColor : defaultBgColor}
-        {...props}
-      >
-        {props.children}
-      </StyledBadge>
-    </ThemeProvider>
+    <StyledBadge
+      theme={mergedTheme}
+      text={typeof children === 'string'}
+      size={15}
+      getBgColor={bgColor !== undefined ? checkBgColor : mergedTheme.colors.primary}
+      {...rest}
+    >
+      {children}
+    </StyledBadge>
   );
-};
-
-Badge.defaultProps = {
-  theme: {},
 };
 
 export default withTheme(Badge);

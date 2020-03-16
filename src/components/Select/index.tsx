@@ -1,9 +1,11 @@
 import React from 'react';
 import styled, { withTheme } from 'styled-components';
+import defaultTheme from '../../themes/cruk';
 
-import { COLORS, TYPOGRAPHY, FONT_SIZES, UTILITIES } from '../../themes/cruk';
 import ErrorText from '../ErrorText';
 import { WithLabel } from '../Label';
+
+import { ThemeType } from '../../themes/types';
 
 type StyledInputProps = {
   hasError: boolean;
@@ -42,32 +44,18 @@ type SelectProps = {
   label: string;
   onChange: React.ChangeEventHandler<HTMLSelectElement>;
   placeholder: string;
-  theme?: { colors: {}; typography: {}; fontSizes: {}; utilities: {} };
   type: 'text' | 'number' | 'email' | 'password';
   value: string;
   hintText: string;
   required: boolean;
   children: any;
+  theme?: ThemeType;
 };
 
 const Select = (props: SelectProps) => {
   const theme = {
-    colors: {
-      ...COLORS,
-      ...props.theme.colors,
-    },
-    typography: {
-      ...TYPOGRAPHY,
-      ...props.theme.typography,
-    },
-    fontSizes: {
-      ...FONT_SIZES,
-      ...props.theme.fontSizes,
-    },
-    utilities: {
-      ...UTILITIES,
-      ...props.theme.utilities,
-    },
+    ...defaultTheme,
+    ...props.theme,
   };
 
   return (
@@ -78,10 +66,6 @@ const Select = (props: SelectProps) => {
       {!!props.error && <ErrorText>{props.error}</ErrorText>}
     </WithLabel>
   );
-};
-
-Select.defaultProps = {
-  theme: {},
 };
 
 export default withTheme(Select);

@@ -1,17 +1,19 @@
 import React from 'react';
 import styled, { css, withTheme } from 'styled-components';
-import { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../themes/cruk';
+import defaultTheme, { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../themes/cruk';
 import ProgressBar from '../ProgressBar';
 import { calculatePercentRounded, formatMoney } from '../../utils/Helper';
 
+import { ThemeType } from '../../themes/types';
+
 type TotaliserProps = {
   giftAid: number;
-  summary?: Function;
-  target?: number | null;
-  theme: { target: {}; colors: { [key: string]: string }; typography: {} };
   total: number;
   isCompact: boolean;
   children: any;
+  summary?: Function;
+  target?: number | null;
+  theme?: ThemeType;
 };
 
 const DetailWrapper = styled.div`
@@ -83,15 +85,8 @@ const CompactWrapper = styled.div`
 
 const Totaliser = (props: TotaliserProps) => {
   const theme = {
-    colors: {
-      ...COLORS,
-      ...props.theme.colors,
-    },
-    typography: {
-      ...TYPOGRAPHY,
-      ...props.theme.typography,
-    },
-    target: props.theme.target,
+    ...defaultTheme,
+    ...props.theme,
   };
   const result = calculatePercentRounded(+props.total, props.target);
   const StyledProgressBar = styled(ProgressBar)`
@@ -134,7 +129,6 @@ const Totaliser = (props: TotaliserProps) => {
 };
 
 Totaliser.defaultProps = {
-  theme: {},
   target: null,
   summary: (target: number, percentage: number) => `${percentage}% of £${target} target`,
 };

@@ -1,33 +1,33 @@
 import React from 'react';
 import styled, { withTheme } from 'styled-components';
-import { COLORS } from '../../themes/cruk';
+import defaultTheme from '../../themes/cruk';
+
+import { ThemeType } from '../../themes/types';
 
 type ErrorTextProps = {
-  theme: { colors: {} };
   children: any;
+  theme?: ThemeType;
 };
 
-const StyledErrorText = styled.div`
-  color: ${props => props.theme.colors.textError};
+const StyledErrorText = styled.div<ErrorTextProps>`
+  color: ${({
+    theme: {
+      colors: { textError },
+    },
+  }) => textError};
   font-weight: normal;
 `;
 
 const ErrorText = (props: ErrorTextProps) => {
   const theme = {
-    colors: {
-      ...COLORS,
-      ...props.theme.colors,
-    },
+    ...defaultTheme,
+    ...props.theme,
   };
   return (
     <StyledErrorText theme={theme} role="alert">
       {props.children}
     </StyledErrorText>
   );
-};
-
-ErrorText.defaultProps = {
-  theme: {},
 };
 
 export default withTheme(ErrorText);

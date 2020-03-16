@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
-import { BREAKPOINT, COLORS, FONT_SIZES, UTILITIES } from '../../themes/cruk';
+import defaultTheme, { BREAKPOINT, COLORS, FONT_SIZES, UTILITIES } from '../../themes/cruk';
+import { ThemeType } from '../../themes/types';
 
 type PopOverProps = {
-  theme: { colors: {} };
   position: string;
   overlay: any;
   css: string;
   children: any;
+  theme?: ThemeType;
 };
 
 type PopOverWrapperProps = {
@@ -61,10 +62,8 @@ const PopOver = (props: PopOverProps) => {
   const [showPopOver, setPopOver] = useState(false);
   const toggle = () => setPopOver(!showPopOver);
   const theme = {
-    colors: {
-      ...COLORS,
-      ...props.theme.colors,
-    },
+    ...defaultTheme,
+    ...props.theme,
   };
   const StyledPopOverContent = styled(PopOverContent)`
     ${props.position === 'bottom' &&
@@ -156,10 +155,6 @@ const PopOver = (props: PopOverProps) => {
       </PopOverWrapper>
     </ThemeProvider>
   );
-};
-
-PopOver.defaultProps = {
-  theme: {},
 };
 
 export default withTheme(PopOver);

@@ -1,28 +1,49 @@
 import React, { FunctionComponent, AnchorHTMLAttributes } from 'react';
-import styled from 'styled-components';
-import Text from '../Text';
+import styled, { withTheme } from 'styled-components';
 
-import { COLORS, TYPOGRAPHY } from '../../themes/cruk';
+import Text from '../Text';
+import defaultTheme from '../../themes/cruk';
+
+import { ThemeType } from 'src/themes/types';
 
 const StyledLink = styled(Text)`
   transition: color 0.2s ease;
-  color: ${({ theme: { colors } }) => (colors ? colors.linkColor : COLORS.linkColor)};
+  color: ${({
+    theme: {
+      colors: { linkColor },
+    },
+  }) => linkColor};
   text-decoration: none;
 
   &:hover {
     cursor: pointer;
-    color: ${({ theme: { colors } }) => (colors && colors.linkColorHover ? colors.linkColor : COLORS.linkColorHover)};
-    text-decoration: ${({ theme: { typography } }) =>
-      typography && typography.linkTextDecoration ? typography.linkTextDecoration : TYPOGRAPHY.linkTextDecoration};
+    color: ${({
+      theme: {
+        colors: { linkColorHover },
+      },
+    }) => linkColorHover};
+    text-decoration: ${({
+      theme: {
+        typography: { linkTextDecoration },
+      },
+    }) => linkTextDecoration};
   }
 `;
 
-const Link: FunctionComponent<AnchorHTMLAttributes<{}>> = props => {
+type LinkProps = AnchorHTMLAttributes<{}> & {
+  theme?: ThemeType;
+};
+
+const Link: FunctionComponent<LinkProps> = props => {
+  const theme = {
+    ...defaultTheme,
+    ...props.theme,
+  };
   return (
-    <StyledLink as="a" {...props}>
+    <StyledLink as="a" theme={theme} {...props}>
       {props.children}
     </StyledLink>
   );
 };
 
-export default Link;
+export default withTheme(Link);
