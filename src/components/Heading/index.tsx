@@ -9,8 +9,8 @@ type StyledHeadingProps = {
   h4?: boolean;
   h5?: boolean;
   h6?: boolean;
-  center?: string;
-  right?: string;
+  center?: boolean;
+  right?: boolean;
   css?: any;
 };
 
