@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { withTheme, ThemeProvider } from 'styled-components';
 import { TOKEN_COLORS, SPACING } from '../../themes/cruk';
 
+import { camelCaseToCaptilalisedCase } from '../../utils/Helper';
 import Text from '../Text';
 
 type ColorListProps = {
@@ -57,7 +58,7 @@ const ColorList = (props: ColorListProps) => {
           <ColorTileWrapper key={color}>
             <ColorTile color={tokenColors[`${color}`]}></ColorTile>
             <ColorLabelWrapper>
-              <Text>{color}</Text>
+              <Text>{camelCaseToCaptilalisedCase(color)}</Text>
               <Text>{tokenColors[`${color}`]}</Text>
             </ColorLabelWrapper>
           </ColorTileWrapper>

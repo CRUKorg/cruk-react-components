@@ -1,4 +1,4 @@
-import { camelize, formatMoney, calculatePercentRounded } from '../Helper';
+import { camelize, camelCaseToCaptilalisedCase, formatMoney, calculatePercentRounded } from '../Helper';
 
 describe('camelize', () => {
   it('converts a string to camel case correctly', () => {
@@ -28,5 +28,14 @@ describe('calculatePercentRounded', () => {
     expect(calculatePercentRounded(1, 2)).toEqual(50);
     expect(calculatePercentRounded(1.000000003, 2)).toEqual(50);
     expect(calculatePercentRounded(1, 2.000000003)).toEqual(49);
+  });
+});
+
+describe('camelCaseToCaptilalisedCase', () => {
+  it('converts cammel case string to sentence case strings correcty', () => {
+    expect(camelCaseToCaptilalisedCase('ThisIsACamelCaseString')).toEqual('This Is A Camel Case String');
+    expect(camelCaseToCaptilalisedCase('thisIsACamelCaseString')).toEqual('This Is A Camel Case String');
+    expect(camelCaseToCaptilalisedCase('thisIsACamelCaseString_500')).toEqual('This Is A Camel Case String 500');
+    expect(camelCaseToCaptilalisedCase('this')).toEqual('This');
   });
 });

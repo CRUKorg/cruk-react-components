@@ -21,3 +21,9 @@ export const camelize = (str: string): string =>
       index === 0 ? word.toLowerCase() : word.toUpperCase(),
     )
     .replace(/\s+/g, '');
+
+export const camelCaseToCaptilalisedCase = (text: string): string => {
+  const underScoreToSpace = text.replace('_', ' ');
+  const result = underScoreToSpace.replace(/([A-Z])/g, ' $1').trim();
+  return result.charAt(0).toUpperCase() + result.slice(1);
+};
