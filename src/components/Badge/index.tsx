@@ -4,7 +4,7 @@ import defaultTheme from '../../themes/cruk';
 import { ThemeType, ColorsType } from '../../themes/types';
 
 type BadgeProps = {
-  bgColor: string;
+  bgColor?: string;
   text: boolean;
   theme?: ThemeType;
   getBgColor?: string;
@@ -38,23 +38,21 @@ const StyledBadge = styled.span`
 `;
 
 const Badge = (props: BadgeProps) => {
-  const theme = {
+  const { bgColor, text, theme, getBgColor, size, children, ...rest } = props;
+  const mergedTheme = {
     ...defaultTheme,
-    ...props.theme,
+    ...theme,
   };
-  const getChildSize =
-    props.children.props && props.children.props.size !== undefined
-      ? parseFloat(props.children.props.size.match(/\d+/)[0])
-      : 15;
-  const checkBgColor = (theme.colors as ColorsType)[props.bgColor] || props.bgColor;
+  const checkBgColor = (mergedTheme.colors as ColorsType)[bgColor] || bgColor;
   return (
     <StyledBadge
-      text={typeof props.children === 'string'}
-      size={parseFloat(getChildSize.toString())}
-      getBgColor={props.bgColor !== undefined ? checkBgColor : theme.colors.primary}
-      {...props}
+      theme={mergedTheme}
+      text={typeof children === 'string'}
+      size={15}
+      getBgColor={bgColor !== undefined ? checkBgColor : mergedTheme.colors.primary}
+      {...rest}
     >
-      {props.children}
+      {children}
     </StyledBadge>
   );
 };
