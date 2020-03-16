@@ -57,7 +57,7 @@ import TextFieldReadme from '../components/TextField/README.md';
 import TotaliserReadme from '../components/Totaliser/README.md';
 import UserBlockReadme from '../components/UserBlock/README.md';
 
-import { BREAKPOINT, COLORS } from '../Constants';
+import { BREAKPOINT, COLORS } from '../themes/cruk';
 import su2cTheme from '../themes/su2c';
 import GlobalStyle from '../components/GlobalStyle';
 

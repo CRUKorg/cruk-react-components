@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
-import { BREAKPOINT, COLORS, FONT_SIZES, UTILITIES } from '../../Constants';
+import { BREAKPOINT, COLORS, FONT_SIZES, UTILITIES } from '../../themes/cruk';
 
 type PopOverProps = {
   theme: { colors: {} };

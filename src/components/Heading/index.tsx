@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../Constants';
+import { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../themes/cruk';
 
 type StyledHeadingProps = {
   center?: string;
@@ -13,7 +13,7 @@ const StyledHeading = css`
     props.theme.typography ? props.theme.typography.fontFamilyHeadings : TYPOGRAPHY.fontFamilyHeadings};
   font-weight: ${TYPOGRAPHY.fontWeightMedium};
   color: ${COLORS.textDark};
-  line-height: ${UTILITIES.lineHeight};
+  line-height: ${TYPOGRAPHY.lineHeight};
   margin-top: 0;
   margin-bottom: ${UTILITIES.rhythmVerticalBase};
   max-width: 100%;

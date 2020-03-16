@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { BREAKPOINT } from '../Constants';
+import { BREAKPOINT } from '../themes/cruk';
 
 type FlexProps = {
   css: string;

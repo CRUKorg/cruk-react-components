@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css, keyframes, ThemeProvider, withTheme } from 'styled-components';
-import { COLORS, FONT_SIZES, UTILITIES } from '../../Constants';
+import { COLORS, FONT_SIZES, UTILITIES, TYPOGRAPHY } from '../../themes/cruk';
 
 type ProgressBarProps = {
   theme: { progress: {}; colors: {} };
@@ -23,7 +23,7 @@ const ProgressBarSharedStyling = css`
   width: 1%;
   height: 100%;
   font-size: ${FONT_SIZES.small};
-  line-height: ${UTILITIES.lineHeight};
+  line-height: ${TYPOGRAPHY.lineHeight};
   color: ${props => props.theme.colors.textLight};
   text-align: center;
   background-color: ${props => props.theme.colors.progressBar};

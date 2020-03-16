@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { COLORS, TYPOGRAPHY, FONT_SIZES, FontSizeType } from '../../Constants';
+import { COLORS, TYPOGRAPHY, FONT_SIZES, FontSizeType } from '../../themes/cruk';
 import styled from 'styled-components';
 
 // the 'as' prop is for styled component casting

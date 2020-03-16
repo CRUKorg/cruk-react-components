@@ -1,5 +1,3 @@
-import { css } from 'styled-components';
-
 export default {
   siteConfig: {
     siteSlogan: '',
@@ -29,11 +27,11 @@ export default {
     fontFamilyHeadings: 'itc_avant_garde_pro_mdbold,Arial,sans-serif',
     linkTextDecoration: 'underline',
   },
-  button: css`
-    border-radius: 1.5rem;
-    text-decoration: underline;
-    text-transform: uppercase;
-  `,
+  button: {
+    borderRadius: '1.5rem',
+    textDecoration: 'underline',
+    textTransform: 'uppercase',
+  },
   avatar: {
     path:
       'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/icon-avatars/su2c/',

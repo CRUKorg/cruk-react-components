@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { withTheme } from 'styled-components';
-import { AVATAR } from '../../Constants';
+import { AVATAR } from '../../themes/cruk';
 
 type AvatarProps = {
   name: string;
