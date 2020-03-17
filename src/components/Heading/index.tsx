@@ -12,8 +12,7 @@ type HeadingProps = {
   h5?: boolean;
   h6?: boolean;
   textSize?: FontSizeType;
-  center?: string;
-  right?: string;
+  textAlign?: 'left' | 'right' | 'center';
   css?: any;
   theme?: ThemeType;
 };
@@ -46,12 +45,7 @@ const StyledHeading = (props: HeadingProps) => css`
     },
   }) => rhythmVerticalBase};
   max-width: 100%;
-  text-align: ${(props: HeadingProps) => {
-    if (props.center) return 'center';
-    if (props.right) return 'right';
-    return 'left';
-  }};
-
+  text-align: ${({ textAlign }) => (textAlign ? textAlign : 'left')};
   ${props => (css as any)([props.css])}
 `;
 

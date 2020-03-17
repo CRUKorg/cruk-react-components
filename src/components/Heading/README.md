@@ -15,15 +15,14 @@ use the corresponding heading class. Write all headings in sentence case.
     <Heading h4>This is H4 heading</Heading>
     <Heading h5>This is H5 heading</Heading>
     <Heading h6>This is H6 heading</Heading>
-    <Heading center>This is center aligned</Heading>
-    <Heading right>This is right aligned</Heading>
+    <Heading textAlign="center">This is center aligned</Heading>
+    <Heading  textAlign="right">This is right aligned</Heading>
   </React.Fragment>
 ```
 
 ## Props
 
-| Name              |  Type   | Default | Description                  |
-| :---------------- | :-----: | :------ | :--------------------------- |
-| h1 h2 h3 h4 h5 h6 |         | h2      | Choose the heading level     |
-| center            | boolean | false   | Make the text center-aligned |
-| right             | boolean | false   | Make the text right-aligned  |
+| Name              |          Type           | Default | Description              |
+| :---------------- | :---------------------: | :------ | :----------------------- |
+| h1 h2 h3 h4 h5 h6 |                         | h2      | Choose the heading level |
+| textAlign         | 'left'/'right'/'center' | 'left'  | text alignment           |
