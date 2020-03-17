@@ -327,7 +327,7 @@ class Docs extends React.Component {
             <ToggleIcon />
             <SideBar>
               <Nav>
-                <Heading h2>Components</Heading>
+                <Heading h4>Components</Heading>
                 <RouterLink to="/avatar">Avatar</RouterLink>
                 <RouterLink to="/badge">Badge</RouterLink>
                 <RouterLink to="/box">Box</RouterLink>
