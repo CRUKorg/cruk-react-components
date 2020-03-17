@@ -45,8 +45,8 @@ const StyledHeading = (props: HeadingProps) => css`
     },
   }) => rhythmVerticalBase};
   max-width: 100%;
-  text-align: ${({ textAlign }) => (textAlign ? textAlign : 'left')};
-  ${props => (css as any)([props.css])}
+  text-align: ${({ textAlign }: HeadingProps) => (textAlign ? textAlign : 'left')};
+  ${({ css }: HeadingProps) => css}
 `;
 
 const H1 = styled.h1<HeadingProps>`
