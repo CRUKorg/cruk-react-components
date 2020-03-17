@@ -5,12 +5,12 @@ import defaultTheme from '../../themes/cruk';
 import { ThemeType, FontSizeType } from '../../themes/types';
 
 type HeadingProps = {
-  h1?: string;
-  h2?: string;
-  h3?: string;
-  h4?: string;
-  h5?: string;
-  h6?: string;
+  h1?: boolean;
+  h2?: boolean;
+  h3?: boolean;
+  h4?: boolean;
+  h5?: boolean;
+  h6?: boolean;
   textSize?: FontSizeType;
   center?: string;
   right?: string;
