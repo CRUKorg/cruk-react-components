@@ -78,7 +78,7 @@ const components = {
       <LiveError />
     </LiveProvider>
   ),
-  h1: (props: HTMLAttributes<{}>) => <Heading {...props} />,
+  h1: (props: HTMLAttributes<{}>) => <Heading h1 {...props} />,
   h2: (props: HTMLAttributes<{}>) => <Heading h2 {...props} />,
   h3: (props: HTMLAttributes<{}>) => <Heading h3 {...props} />,
   h4: (props: HTMLAttributes<{}>) => <Heading h3 {...props} />,
