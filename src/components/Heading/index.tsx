@@ -12,8 +12,8 @@ type HeadingProps = {
   h5?: boolean;
   h6?: boolean;
   textSize?: FontSizeType;
-  center?: string;
-  right?: string;
+  center?: boolean;
+  right?: boolean;
   css?: any;
   theme?: ThemeType;
 };
