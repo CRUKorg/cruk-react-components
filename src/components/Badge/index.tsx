@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import { ThemeType, ColorsType } from '../../themes/types';
@@ -37,7 +37,7 @@ const StyledBadge = styled.span`
     `}
 `;
 
-const Badge = (props: BadgeProps) => {
+const Badge: FunctionComponent<BadgeProps> = props => {
   const { bgColor, text, theme, getBgColor, size, children, ...rest } = props;
   const mergedTheme = {
     ...defaultTheme,

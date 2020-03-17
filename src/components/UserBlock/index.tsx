@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import Avatar from '../Avatar';
 import { COLORS, TYPOGRAPHY, UTILITIES, FONT_SIZES } from '../../themes/cruk';
@@ -38,7 +38,7 @@ type UserBlockProps = {
   size: 'small' | 'medium' | 'large' | 'xlarge';
 };
 
-const UserBlock = (props: UserBlockProps) => {
+const UserBlock: FunctionComponent<UserBlockProps> = props => {
   return (
     <StyledUserBlock>
       <Avatar name={props.avatarName || props.name} url={props.avatarUrl} size={props.size} />

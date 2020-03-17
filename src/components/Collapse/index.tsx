@@ -1,4 +1,4 @@
-import React, { useState, useRef, Fragment, KeyboardEvent } from 'react';
+import React, { useState, useRef, Fragment, KeyboardEvent, FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { COLORS, FONT_SIZES } from '../../themes/cruk';
 import Button from '../Button';
@@ -7,7 +7,6 @@ type CollapseProps = {
   active: boolean;
   contentHeight?: string;
   headerTitle?: any;
-  children: any;
   id?: string;
 };
 
@@ -44,7 +43,7 @@ const CustomHeader = styled.div`
   cursor: pointer;
 `;
 
-const Collapse = (props: CollapseProps) => {
+const Collapse: FunctionComponent<CollapseProps> = props => {
   const [activeStatus, setActiveStatus] = useState(false);
   const [contentHeight, setContentHeight] = useState('0');
   const content = useRef(null);

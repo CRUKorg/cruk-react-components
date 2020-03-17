@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 
 const Label = styled.label`
@@ -20,10 +20,9 @@ type WithLabelProps = {
   label: string;
   hintText: string;
   required: boolean;
-  children: any;
 };
 
-export const WithLabel = ({ children, label, hintText, required }: WithLabelProps) =>
+export const WithLabel: FunctionComponent<WithLabelProps> = ({ label, hintText, required, children }) =>
   label ? (
     <Label>
       {label} {!required && <span>(optional)</span>}

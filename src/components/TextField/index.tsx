@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, FunctionComponent } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -115,12 +115,11 @@ type WrapperProps = {
   extraBottom?: string;
   extraLeft?: string;
   extraRight?: string;
-  children: any;
 };
 
-const Wrapper = (props: WrapperProps) =>
+const Wrapper: FunctionComponent<WrapperProps> = props =>
   !props.extraTop && !props.extraBottom && !props.extraRight && !props.extraLeft ? (
-    props.children
+    <Fragment>{props.children}</Fragment>
   ) : (
     <div>{props.children}</div>
   );
@@ -142,7 +141,7 @@ type TextFieldProps = {
   required: boolean;
 };
 
-const TextField = (props: TextFieldProps) => {
+const TextField: FunctionComponent<TextFieldProps> = props => {
   const theme = {
     ...defaultTheme,
     ...props.theme,

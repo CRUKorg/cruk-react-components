@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import Icon from '../Icon';
@@ -149,7 +149,7 @@ const StyledButton = styled.button`
   ${(props: ButtonProps) => (css as any)([props.css])}
 `;
 
-const Button = (props: ButtonProps) => {
+const Button: FunctionComponent<ButtonProps> = props => {
   // TODO create theme spread function.
   const theme = {
     ...defaultTheme,

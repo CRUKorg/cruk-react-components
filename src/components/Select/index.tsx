@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled, { withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 
@@ -48,11 +48,10 @@ type SelectProps = {
   value: string;
   hintText: string;
   required: boolean;
-  children: any;
   theme?: ThemeType;
 };
 
-const Select = (props: SelectProps) => {
+const Select: FunctionComponent<SelectProps> = props => {
   const theme = {
     ...defaultTheme,
     ...props.theme,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import RadioInput from '../Radio';
 
@@ -34,7 +34,7 @@ type RadioGroupProps = {
   name: string;
 };
 
-const RadioGroup = (props: RadioGroupProps) => {
+const RadioGroup: FunctionComponent<RadioGroupProps> = props => {
   return (
     <StyledFieldSet>
       <RadioGroupWrapper>

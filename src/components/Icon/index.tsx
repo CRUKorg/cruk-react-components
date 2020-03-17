@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled, { withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -10,7 +10,7 @@ import { ThemeType, ColorsType } from '../../themes/types';
 type IconProps = {
   name?: string;
   color?: string;
-  size?: number;
+  size?: string;
   transform?: string;
   theme?: ThemeType;
   getColor?: string;
@@ -27,7 +27,7 @@ const StyledIcon = styled.svg`
   }
 `;
 
-const Icon = (props: IconProps) => {
+const Icon: FunctionComponent<IconProps> = props => {
   const name = props.name && camelize(props.name);
   const icon = (ICONS as any)[name] || ICONS.question;
   const theme = {

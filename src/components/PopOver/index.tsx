@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, FunctionComponent } from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
 import defaultTheme, { BREAKPOINT, COLORS, FONT_SIZES, UTILITIES } from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
@@ -7,7 +7,6 @@ type PopOverProps = {
   position: string;
   overlay: any;
   css: string;
-  children: any;
   theme?: ThemeType;
 };
 
@@ -58,7 +57,7 @@ const PopOverContent = styled.div`
   }
 `;
 
-const PopOver = (props: PopOverProps) => {
+const PopOver: FunctionComponent<PopOverProps> = props => {
   const [showPopOver, setPopOver] = useState(false);
   const toggle = () => setPopOver(!showPopOver);
   const theme = {
@@ -145,7 +144,7 @@ const PopOver = (props: PopOverProps) => {
             {props.overlay}
           </StyledPopOverContent>
         )}
-        {React.Children.map(props.children, child =>
+        {React.Children.map(props.children, (child: React.ReactElement) =>
           React.cloneElement(child, {
             onClick: toggle,
             'aria-expanded': showPopOver,

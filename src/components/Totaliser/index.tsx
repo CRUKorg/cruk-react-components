@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 import defaultTheme, { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../themes/cruk';
 import ProgressBar from '../ProgressBar';
@@ -10,7 +10,6 @@ type TotaliserProps = {
   giftAid: number;
   total: number;
   isCompact: boolean;
-  children: any;
   summary?: Function;
   target?: number | null;
   theme?: ThemeType;
@@ -83,7 +82,7 @@ const CompactWrapper = styled.div`
   }
 `;
 
-const Totaliser = (props: TotaliserProps) => {
+const Totaliser: FunctionComponent<TotaliserProps> = props => {
   const theme = {
     ...defaultTheme,
     ...props.theme,

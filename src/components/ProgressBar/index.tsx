@@ -8,7 +8,6 @@ type ProgressBarProps = {
   percentage: number;
   isCircular?: boolean;
   showIndicator?: boolean;
-  children?: any;
   theme?: ThemeType;
 };
 

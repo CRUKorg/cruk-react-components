@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
 import defaultTheme, { TYPOGRAPHY, FONT_SIZES } from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
@@ -6,7 +6,6 @@ import { ThemeType } from '../../themes/types';
 type StepProps = {
   current: number;
   steps: [];
-  children: any;
   theme?: ThemeType;
 };
 
@@ -114,7 +113,7 @@ const StepItem = styled.li<StepItemProps>`
     `}
 `;
 
-const Step = (props: StepProps) => {
+const Step: FunctionComponent<StepProps> = props => {
   const theme = {
     ...defaultTheme,
     ...props.theme,
