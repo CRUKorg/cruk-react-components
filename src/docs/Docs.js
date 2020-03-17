@@ -53,6 +53,7 @@ import RadioReadme from '../components/Radio/README.md';
 import RadioGroupReadme from '../components/RadioGroup/README.md';
 import SelectReadme from '../components/Select/README.md';
 import StepReadme from '../components/Step/README.md';
+import TextReadme from '../components/Text/README.md';
 import TextFieldReadme from '../components/TextField/README.md';
 import TotaliserReadme from '../components/Totaliser/README.md';
 import UserBlockReadme from '../components/UserBlock/README.md';
@@ -349,6 +350,7 @@ class Docs extends React.Component {
                 <RouterLink to="/select">Select</RouterLink>
                 <RouterLink to="/step">Step</RouterLink>
                 <RouterLink to="/textfield">TextField</RouterLink>
+                <RouterLink to="/text">Text</RouterLink>
                 <RouterLink to="/totaliser">Totaliser</RouterLink>
                 <RouterLink to="/userblock">UserBlock</RouterLink>
               </Nav>
@@ -375,6 +377,7 @@ class Docs extends React.Component {
                 <RadioGroupReadme path="/radiogroup" />
                 <SelectReadme path="/select" />
                 <StepReadme path="/step" />
+                <TextReadme path="/text" />
                 <TextFieldReadme path="/textfield" />
                 <TotaliserReadme path="/totaliser" />
                 <UserBlockReadme path="/userblock" />
