@@ -5,7 +5,8 @@ export type FontSizeType =
   | 'large'
   | 'extraLarge'
   | 'extraExtraLarge'
-  | 'extraExtraExtraLarge';
+  | 'extraExtraExtraLarge'
+  | 'extraExtraExtraExtraLarge';
 
 export type FontSizesType = { [key in FontSizeType]: string };
 

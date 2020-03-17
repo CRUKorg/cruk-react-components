@@ -53,52 +53,55 @@ export const BREAKPOINT: BreakPointType = {
 };
 
 export const TOKEN_COLORS: TokenColorsType = {
-  blue: '#2e008b',
-  magenta: '#ec008c',
-  magentaLight: '#ff20a4',
-  cyan: '#00b6ed',
-  cyanLight: '#21cbff',
-  grayLightest: '#f5f5f5',
-  grayVLight: '#fafafa',
+  darkBlue_500: '#2e008b',
+  magenta_500: '#ec008c',
+  magenta_900: '#710044',
+  cyan_500: '#00b6ed',
+  cyan_900: '#005870',
+
+  grey_100: '#ededed',
+  grey_200: '#c6c6c6',
   grayLight: '#e3e3e3',
   grayMedium: '#c7c7c7',
   gray: '#c8c9c7',
   grayDark: '#666',
   grayDarkMedium: '#999',
-  grayDarker: '#333',
+  grey_900: '#2e2d2c',
+
   white: '#fff',
   black: '#000',
-  red: '#ef5350',
+
+  red: '#e61616',
   yellow: '#fdc02f',
-  green: '#8bc34a',
+  green: '#3d854d',
 };
 
 export const COLORS: ColorsType = {
-  primary: TOKEN_COLORS.blue,
-  primaryHover: TOKEN_COLORS.magenta,
-  secondary: TOKEN_COLORS.magenta,
-  secondaryHover: TOKEN_COLORS.magentaLight,
-  tertiary: TOKEN_COLORS.cyan,
-  tertiaryHover: TOKEN_COLORS.cyanLight,
+  primary: TOKEN_COLORS.darkBlue_500,
+  primaryHover: TOKEN_COLORS.magenta_500,
+  secondary: TOKEN_COLORS.magenta_500,
+  secondaryHover: TOKEN_COLORS.magenta_900,
+  tertiary: TOKEN_COLORS.cyan_500,
+  tertiaryHover: TOKEN_COLORS.cyan_900,
 
   disabled: TOKEN_COLORS.grayDarkMedium,
   danger: TOKEN_COLORS.red,
   warning: TOKEN_COLORS.yellow,
   success: TOKEN_COLORS.green,
-  info: TOKEN_COLORS.cyan,
+  info: TOKEN_COLORS.cyan_500,
   textError: TOKEN_COLORS.red,
 
-  linkColor: TOKEN_COLORS.blue,
-  linkColorHover: TOKEN_COLORS.magenta,
+  linkColor: TOKEN_COLORS.darkBlue_500,
+  linkColorHover: TOKEN_COLORS.magenta_500,
 
-  progressBar: TOKEN_COLORS.magenta,
-  progressBarBg: TOKEN_COLORS.grayLightest,
-  circularProgress: TOKEN_COLORS.cyan,
+  progressBar: TOKEN_COLORS.magenta_500,
+  progressBarBg: TOKEN_COLORS.grey_100,
+  circularProgress: TOKEN_COLORS.cyan_500,
   circularProgressBg: TOKEN_COLORS.gray,
 
   headerBg: TOKEN_COLORS.white,
   bodyBg: TOKEN_COLORS.white,
-  textDark: TOKEN_COLORS.grayDarker,
+  textDark: TOKEN_COLORS.grey_900,
   textLight: TOKEN_COLORS.white,
 
   boxBorder: TOKEN_COLORS.grayLight,
@@ -128,9 +131,9 @@ export const COLORS: ColorsType = {
 
   inputBorder: TOKEN_COLORS.gray,
 
-  selectBackground: TOKEN_COLORS.grayDarker,
+  selectBackground: TOKEN_COLORS.grey_900,
 
-  modalBackdrop: TOKEN_COLORS.grayDarker,
+  modalBackdrop: TOKEN_COLORS.grey_900,
 
   userBlockExtraText: TOKEN_COLORS.grayDark,
 };
@@ -150,10 +153,11 @@ export const FONT_SIZES: FontSizesType = {
   extraSmall: '0.75rem', // 12px
   small: '0.857rem', // 14px
   medium: '1em', // 16px
-  large: '1.125rem', // 18px
-  extraLarge: '1.4375rem', // 23px
-  extraExtraLarge: '2rem', // 32px
-  extraExtraExtraLarge: '3.125rem', // 50px
+  large: '1.25rem', // 20px
+  extraLarge: '1.5625rem', // 25px
+  extraExtraLarge: '1.9531rem', // 31px
+  extraExtraExtraLarge: '2.4375rem', // 39px
+  extraExtraExtraExtraLarge: '3.0625rem', // 49px
 };
 
 export const TYPOGRAPHY: TypographyType = {
