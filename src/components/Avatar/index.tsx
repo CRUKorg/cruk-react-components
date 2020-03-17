@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled, { withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
@@ -21,7 +21,7 @@ const StyledAvatar = styled.img<AvatarStyledProps>`
   width: ${props => props.size};
 `;
 
-const Avatar = (props: AvatarProps) => {
+const Avatar: FunctionComponent<AvatarProps> = props => {
   const theme = {
     ...defaultTheme,
     ...props.theme,

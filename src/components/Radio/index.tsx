@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled, { withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 
@@ -26,13 +26,12 @@ type RadioProps = {
   name: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   value: string;
-  children: any;
   className?: string;
   disabled?: boolean;
   theme?: ThemeType;
 };
 
-const RadioInput = (props: RadioProps) => {
+const RadioInput: FunctionComponent<RadioProps> = props => {
   const theme = {
     ...defaultTheme,
     ...props.theme,

@@ -5,7 +5,6 @@ import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
 type LoaderProps = {
-  children: any;
   theme?: ThemeType;
 };
 

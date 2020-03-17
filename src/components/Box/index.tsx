@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
@@ -6,7 +6,6 @@ import { ThemeType } from '../../themes/types';
 type BoxProps = {
   bgColor?: string;
   getBgColor: string;
-  children: any;
   css?: any;
   theme: ThemeType;
 };
@@ -32,7 +31,7 @@ const StyledBox = styled.div<BoxProps>`
 
   ${(props: BoxProps) => (css as any)([props.css])}
 `;
-const Box = (props: BoxProps) => {
+const Box: FunctionComponent<BoxProps> = props => {
   const { bgColor, getBgColor, children, css, theme, ...rest } = props;
   const mergedTheme = {
     ...defaultTheme,

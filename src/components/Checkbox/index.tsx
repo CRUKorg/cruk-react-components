@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled, { withTheme, ThemeProvider } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -30,11 +30,10 @@ type CheckboxProps = {
   name: string; // Adding this because formiK requires name or id.
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   value: string;
-  children: any;
   theme?: ThemeType;
 };
 
-const Checkbox = (props: CheckboxProps) => {
+const Checkbox: FunctionComponent<CheckboxProps> = props => {
   const theme = {
     ...defaultTheme,
     ...props.theme,

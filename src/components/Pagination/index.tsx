@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 
@@ -11,7 +11,6 @@ type PaginationProps = {
   pagerCallback: Function;
   perPage: number;
   searchParam?: string;
-  children: any;
   theme?: ThemeType;
 };
 
@@ -135,7 +134,7 @@ const PagerItem = styled.li`
   }
 `;
 
-const Pagination = (props: PaginationProps) => {
+const Pagination: FunctionComponent<PaginationProps> = props => {
   const theme = {
     ...defaultTheme,
     ...props.theme,

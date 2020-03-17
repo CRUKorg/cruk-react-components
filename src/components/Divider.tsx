@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled from 'styled-components';
 
 const StyledDivider = styled.div`
@@ -19,10 +19,6 @@ const StyledDivider = styled.div`
   }
 `;
 
-type DividerProps = {
-  children: any;
-};
-
-export const Divider = (props: DividerProps) => <StyledDivider>{props.children}</StyledDivider>;
+export const Divider: FunctionComponent = props => <StyledDivider>{props.children}</StyledDivider>;
 
 export default Divider;

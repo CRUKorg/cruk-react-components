@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 
@@ -113,7 +113,7 @@ const H6 = styled.h6<HeadingProps>`
   font-size: ${({ theme }) => theme.fontSizes.medium};
 `;
 
-const Heading = ({ h1, h2, h3, h4, h5, h6, ...props }: HeadingProps) => {
+const Heading: FunctionComponent<HeadingProps> = ({ h1, h2, h3, h4, h5, h6, ...props }) => {
   const theme = {
     ...defaultTheme,
     ...props.theme,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import FocusLock from 'react-focus-lock';
@@ -53,12 +53,11 @@ const CloseButton = styled(Button)<CloseButtonProps>`
 `;
 
 type ModalProps = {
-  children: any;
   closeButton?: Function | null;
   disableEsc: Boolean;
 };
 
-class Modal extends React.Component<ModalProps> {
+class Modal extends Component<ModalProps> {
   static defaultProps: any;
 
   constructor(props: ModalProps) {
