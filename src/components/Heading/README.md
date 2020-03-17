@@ -19,6 +19,6 @@ use the corresponding heading class. Write all headings in sentence case.
 
 ## Props
 
-| Name | Type | Options | Default | Description |
-| :- | :- | :-: | :- | :- |
-|  | "h1" "h2" "h3" "h4" "h5" "h6" |  |  | Apply correct level of headings |
+| Name | Type                          | Options | Default | Description                     |
+| :--- | :---------------------------- | :-----: | :------ | :------------------------------ |
+|      | "h1" "h2" "h3" "h4" "h5" "h6" |         | 'h2'    | Apply correct level of headings |

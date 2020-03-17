@@ -18,7 +18,7 @@ type HeadingProps = {
   theme?: ThemeType;
 };
 
-const StyledHeading = css`
+const StyledHeading = (props: HeadingProps) => css`
   font-family: ${({
     theme: {
       typography: { fontFamilyHeadings },
@@ -56,7 +56,7 @@ const StyledHeading = css`
 `;
 
 const H1 = styled.h1<HeadingProps>`
-  ${StyledHeading}
+  ${props => StyledHeading(props)}
   font-size: ${({ theme }) => theme.fontSizes.extraExtraLarge};
   @media (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
     font-size: ${({ theme }) => theme.fontSizes.extraExtraExtraLarge};
@@ -67,7 +67,7 @@ const H1 = styled.h1<HeadingProps>`
 `;
 
 const H2 = styled.h2<HeadingProps>`
-  ${StyledHeading};
+  ${props => StyledHeading(props)}
   font-size: ${({ theme }) => theme.fontSizes.extraLarge};
   @media (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
     font-size: ${({ theme }) => theme.fontSizes.extraExtraLarge};
@@ -78,7 +78,7 @@ const H2 = styled.h2<HeadingProps>`
 `;
 
 const H3 = styled.h3<HeadingProps>`
-  ${StyledHeading};
+  ${props => StyledHeading(props)}
   font-size: ${({ theme }) => theme.fontSizes.large};
   @media (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
     font-size: ${({ theme }) => theme.fontSizes.extraLarge};
@@ -89,7 +89,7 @@ const H3 = styled.h3<HeadingProps>`
 `;
 
 const H4 = styled.h4<HeadingProps>`
-  ${StyledHeading};
+  ${props => StyledHeading(props)}
   font-size: ${({ theme }) => theme.fontSizes.medium};
   @media (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
     font-size: ${({ theme }) => theme.fontSizes.large};
@@ -100,7 +100,7 @@ const H4 = styled.h4<HeadingProps>`
 `;
 
 const H5 = styled.h5<HeadingProps>`
-  ${StyledHeading};
+  ${props => StyledHeading(props)}
   font-size: ${({ theme }) => theme.fontSizes.medium};
 
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
@@ -109,7 +109,7 @@ const H5 = styled.h5<HeadingProps>`
 `;
 
 const H6 = styled.h6<HeadingProps>`
-  ${StyledHeading};
+  ${props => StyledHeading(props)}
   font-size: ${({ theme }) => theme.fontSizes.medium};
 `;
 
@@ -119,12 +119,18 @@ const Heading = ({ h1, h2, h3, h4, h5, h6, ...props }: HeadingProps) => {
     ...props.theme,
   };
 
-  if (h2) return <H2 {...props} theme={theme} />;
-  if (h3) return <H3 {...props} theme={theme} />;
-  if (h4) return <H4 {...props} theme={theme} />;
-  if (h5) return <H5 {...props} theme={theme} />;
-  if (h6) return <H6 {...props} theme={theme} />;
-  return <H1 {...props} />;
+  const propsWithTheme = {
+    ...props,
+    theme: theme,
+  };
+
+  if (h1) return <H1 {...propsWithTheme} />;
+  if (h2) return <H2 {...propsWithTheme} />;
+  if (h3) return <H3 {...propsWithTheme} />;
+  if (h4) return <H4 {...propsWithTheme} />;
+  if (h5) return <H5 {...propsWithTheme} />;
+  if (h6) return <H6 {...propsWithTheme} />;
+  return <H2 {...propsWithTheme} />;
 };
 
 export default withTheme(Heading);
