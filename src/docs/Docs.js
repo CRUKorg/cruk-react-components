@@ -2,36 +2,17 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Link as RouterLink } from '@reach/router';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
-// import { MDXProvider } from '@mdx-js/tag';
-import { MDXProvider } from '@mdx-js/react';
+import MdxProvider from '../hocs/MdxProvider';
 import styled, { css, ThemeProvider } from 'styled-components';
 
-import Avatar from '../components/Avatar';
-import Badge from '../components/Badge';
-import Box from '../components/Box';
+// /////////////////////////////////////////////////////////
+// HAVE YOU ADDED YOUR COMPONENT TO THE MDX PROVIDER HOC? //
+// /////////////////////////////////////////////////////////
 import Button from '../components/Button';
-import Checkbox from '../components/Checkbox';
-import Collapse from '../components/Collapse';
-import ErrorText from '../components/ErrorText';
+import Box from '../components/Box';
 import Flex from '../components/Flex';
-import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Heading from '../components/Heading';
-import Icon from '../components/Icon';
-import Link from '../components/Link';
-import Loader from '../components/Loader';
-import Modal from '../components/Modal';
-import Pagination from '../components/Pagination';
-import PopOver from '../components/PopOver';
-import ProgressBar from '../components/ProgressBar';
-import RadioGroup from '../components/RadioGroup';
-import Radio from '../components/Radio';
-import Select from '../components/Select';
-import Step from '../components/Step';
-import Text from '../components/Text';
-import TextField from '../components/TextField';
-import Totaliser from '../components/Totaliser';
-import UserBlock from '../components/UserBlock';
 
 import AvatarReadme from '../components/Avatar/README.md';
 import BadgeReadme from '../components/Badge/README.md';
@@ -225,62 +206,6 @@ const Nav = styled.nav`
   }
 `;
 
-const components = {
-  pre: props => <div {...props} />,
-  code: ({ children }) => (
-    <LiveProvider
-      code={children}
-      aria-label="Example code"
-      scope={{
-        Avatar,
-        Badge,
-        Button,
-        Box,
-        Checkbox,
-        ErrorText,
-        Footer,
-        Heading,
-        Header,
-        Icon,
-        Link,
-        Loader,
-        Modal,
-        Pagination,
-        PopOver,
-        ProgressBar,
-        Radio,
-        RadioGroup,
-        Select,
-        Step,
-        Text,
-        TextField,
-        Totaliser,
-        UserBlock,
-        Collapse,
-      }}
-    >
-      <LivePreview aria-label="Example code preview" style={{ border: '1px solid grey', padding: '5px' }} />
-      <LiveEditor
-        aria-label="Example code editor"
-        style={{
-          backgroundColor: 'black',
-          caretColor: 'white',
-          lineHeight: '1',
-          fontSize: '0.875rem',
-          marginBottom: '20px',
-        }}
-      />
-      <LiveError />
-    </LiveProvider>
-  ),
-  h1: props => <Heading {...props} />,
-  h2: props => <Heading h2 {...props} />,
-  h3: props => <Heading h3 {...props} />,
-  h4: props => <Heading h3 {...props} />,
-  h5: props => <Heading h3 {...props} />,
-  h6: props => <Heading h3 {...props} />,
-};
-
 class Docs extends React.Component {
   constructor(props) {
     super(props);
@@ -310,52 +235,52 @@ class Docs extends React.Component {
   render() {
     return (
       <ThemeProvider theme={this.state.theme === 'su2c' ? su2cTheme : {}}>
-        <MDXProvider components={components}>
-          <GlobalStyle />
-          <Header isSticky>
-            <SwitchTheme
-              onClick={() =>
-                this.setState({
-                  theme: this.state.theme === 'su2c' ? 'cruk' : 'su2c',
-                })
-              }
-            >
-              Switch theme
-            </SwitchTheme>
-          </Header>
-          <StyledFlex>
-            <Toggle />
-            <ToggleIcon />
-            <SideBar>
-              <Nav>
-                <Heading h4>Components</Heading>
-                <RouterLink to="/avatar">Avatar</RouterLink>
-                <RouterLink to="/badge">Badge</RouterLink>
-                <RouterLink to="/box">Box</RouterLink>
-                <RouterLink to="/button">Button</RouterLink>
-                <RouterLink to="/checkbox">Checkbox</RouterLink>
-                <RouterLink to="/collapse">Collapse</RouterLink>
-                <RouterLink to="/errortext">ErrorText</RouterLink>
-                <RouterLink to="/footer">Footer</RouterLink>
-                <RouterLink to="/header">Header</RouterLink>
-                <RouterLink to="/heading">Heading</RouterLink>
-                <RouterLink to="/icon">Icon</RouterLink>
-                <RouterLink to="/loader">Loader</RouterLink>
-                <RouterLink to="/modal">Modal</RouterLink>
-                <RouterLink to="/pagination">Pagination</RouterLink>
-                <RouterLink to="/popover">PopOver</RouterLink>
-                <RouterLink to="/progressbar">ProgressBar</RouterLink>
-                <RouterLink to="/radio">Radio</RouterLink>
-                <RouterLink to="/radiogroup">Radio Group</RouterLink>
-                <RouterLink to="/select">Select</RouterLink>
-                <RouterLink to="/step">Step</RouterLink>
-                <RouterLink to="/textfield">TextField</RouterLink>
-                <RouterLink to="/text">Text</RouterLink>
-                <RouterLink to="/totaliser">Totaliser</RouterLink>
-                <RouterLink to="/userblock">UserBlock</RouterLink>
-              </Nav>
-            </SideBar>
-            <Content>
+        <GlobalStyle />
+        <Header isSticky>
+          <SwitchTheme
+            onClick={() =>
+              this.setState({
+                theme: this.state.theme === 'su2c' ? 'cruk' : 'su2c',
+              })
+            }
+          >
+            Switch theme
+          </SwitchTheme>
+        </Header>
+        <StyledFlex>
+          <Toggle />
+          <ToggleIcon />
+          <SideBar>
+            <Nav>
+              <Heading h4>Components</Heading>
+              <RouterLink to="/avatar">Avatar</RouterLink>
+              <RouterLink to="/badge">Badge</RouterLink>
+              <RouterLink to="/box">Box</RouterLink>
+              <RouterLink to="/button">Button</RouterLink>
+              <RouterLink to="/checkbox">Checkbox</RouterLink>
+              <RouterLink to="/collapse">Collapse</RouterLink>
+              <RouterLink to="/errortext">ErrorText</RouterLink>
+              <RouterLink to="/footer">Footer</RouterLink>
+              <RouterLink to="/header">Header</RouterLink>
+              <RouterLink to="/heading">Heading</RouterLink>
+              <RouterLink to="/icon">Icon</RouterLink>
+              <RouterLink to="/loader">Loader</RouterLink>
+              <RouterLink to="/modal">Modal</RouterLink>
+              <RouterLink to="/pagination">Pagination</RouterLink>
+              <RouterLink to="/popover">PopOver</RouterLink>
+              <RouterLink to="/progressbar">ProgressBar</RouterLink>
+              <RouterLink to="/radio">Radio</RouterLink>
+              <RouterLink to="/radiogroup">Radio Group</RouterLink>
+              <RouterLink to="/select">Select</RouterLink>
+              <RouterLink to="/step">Step</RouterLink>
+              <RouterLink to="/textfield">TextField</RouterLink>
+              <RouterLink to="/text">Text</RouterLink>
+              <RouterLink to="/totaliser">Totaliser</RouterLink>
+              <RouterLink to="/userblock">UserBlock</RouterLink>
+            </Nav>
+          </SideBar>
+          <Content>
+            <MdxProvider>
               <Router>
                 <AvatarReadme default path="/avatar" />
                 <BadgeReadme path="/badge" />
@@ -382,9 +307,9 @@ class Docs extends React.Component {
                 <TotaliserReadme path="/totaliser" />
                 <UserBlockReadme path="/userblock" />
               </Router>
-            </Content>
-          </StyledFlex>
-        </MDXProvider>
+            </MdxProvider>
+          </Content>
+        </StyledFlex>
       </ThemeProvider>
     );
   }
