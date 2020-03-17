@@ -9,7 +9,7 @@ use the corresponding heading class. Write all headings in sentence case.
 ```.jsx
   <React.Fragment>
     <Heading h1>This is H1 heading</Heading>
-    <Heading>H1 is the default</Heading>
+    <Heading>H2 is the default</Heading>
     <Heading h2>This is H2 heading</Heading>
     <Heading h3>This is H3 heading</Heading>
     <Heading h4>This is H4 heading</Heading>
@@ -24,6 +24,6 @@ use the corresponding heading class. Write all headings in sentence case.
 
 | Name              |  Type   | Default | Description                  |
 | :---------------- | :-----: | :------ | :--------------------------- |
-| h1 h2 h3 h4 h5 h6 |         | h1      | Choose the heading level     |
+| h1 h2 h3 h4 h5 h6 |         | h2      | Choose the heading level     |
 | center            | boolean | false   | Make the text center-aligned |
 | right             | boolean | false   | Make the text right-aligned  |
