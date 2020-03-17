@@ -23,10 +23,9 @@ use the corresponding heading class. Write all headings in sentence case.
 
 ## Props
 
-| Name              |        Type         | Default                                               | Description                  |
-| :---------------- | :-----------------: | :---------------------------------------------------- | :--------------------------- |
-| h1 h2 h3 h4 h5 h6 |                     | h2                                                    | Choose the heading level     |
-| center            |       boolean       | false                                                 | Make the text center-aligned |
-| right             |       boolean       | false                                                 | Make the text right-aligned  |
-| textSize          |
-| FontSizeType      | depends on h number | font size of header, this will scale with breakpoints |
+| Name              | Type         | Default             | Description                                           |
+| :---------------- | :----------- | :------------------ | :---------------------------------------------------- |
+| h1 h2 h3 h4 h5 h6 |              | h2                  | Choose the heading level                              |
+| center            | boolean      | false               | Make the text center-aligned                          |
+| right             | boolean      | false               | Make the text right-aligned                           |
+| textSize          | FontSizeType | depends on h number | font size of header, this will scale with breakpoints |
