@@ -17,7 +17,7 @@ use the corresponding heading class. Write all headings in sentence case.
     <Heading h5>This is H5 heading</Heading>
     <Heading h6>This is H6 heading</Heading>
     <Heading textAlign="center">This is center aligned</Heading>
-    <Heading  textAlign="right">This is right aligned</Heading>
+    <Heading textAlign="right">This is right aligned</Heading>
   </React.Fragment>
 ```
 
