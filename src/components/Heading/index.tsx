@@ -13,7 +13,6 @@ type HeadingProps = {
   h6?: boolean;
   textSize?: FontSizeType;
   textAlign?: 'left' | 'right' | 'center';
-  css?: any;
   theme?: ThemeType;
 };
 
@@ -46,7 +45,6 @@ const StyledHeading = (props: HeadingProps) => css`
   }) => rhythmVerticalBase};
   max-width: 100%;
   text-align: ${({ textAlign }: HeadingProps) => (textAlign ? textAlign : 'left')};
-  ${({ css }: HeadingProps) => css}
 `;
 
 const desktopFontSize = (textSize: FontSizeType, defaultFontSize: FontSizeType, theme: ThemeType) => {
