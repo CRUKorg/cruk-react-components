@@ -1,4 +1,4 @@
-import cruckTheme from '../themes/cruk';
+import crukTheme from '../themes/cruk';
 import su2cTheme from '../themes/su2c';
 
 import Avatar from './Avatar';
@@ -61,7 +61,7 @@ import TotaliserReadme from './Totaliser/README.md';
 import UserBlockReadme from './UserBlock/README.md';
 
 export {
-  cruckTheme,
+  crukTheme,
   su2cTheme,
   Avatar,
   Badge,
