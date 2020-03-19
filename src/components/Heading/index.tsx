@@ -12,9 +12,7 @@ type HeadingProps = {
   h5?: boolean;
   h6?: boolean;
   textSize?: FontSizeType;
-  center?: boolean;
-  right?: boolean;
-  css?: any;
+  textAlign?: 'left' | 'right' | 'center';
   theme?: ThemeType;
 };
 
@@ -46,13 +44,7 @@ const StyledHeading = (props: HeadingProps) => css`
     },
   }) => rhythmVerticalBase};
   max-width: 100%;
-  text-align: ${(props: HeadingProps) => {
-    if (props.center) return 'center';
-    if (props.right) return 'right';
-    return 'left';
-  }};
-
-  ${props => (css as any)([props.css])}
+  text-align: ${({ textAlign }: HeadingProps) => (textAlign ? textAlign : 'left')};
 `;
 
 const desktopFontSize = (textSize: FontSizeType, defaultFontSize: FontSizeType, theme: ThemeType) => {

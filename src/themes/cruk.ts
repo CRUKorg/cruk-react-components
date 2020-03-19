@@ -155,7 +155,7 @@ export const FONT_SIZES: FontSizesType = {
   medium: '1em', // 16px
   large: '1.25rem', // 20px
   extraLarge: '1.5625rem', // 25px
-  extraExtraLarge: '1.9531rem', // 31px
+  extraExtraLarge: '1.9375rem', // 31px
   extraExtraExtraLarge: '2.4375rem', // 39px
   extraExtraExtraExtraLarge: '3.0625rem', // 49px
 };
