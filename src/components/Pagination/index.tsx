@@ -100,14 +100,14 @@ const PagerLink = styled.a`
   ${itemProps =>
     itemProps.disabled &&
     css`
-      color: ${props => props.theme.colors.paginationDisabled};
+      color: ${props => props.theme.colors.disabled};
       cursor: not-allowed;
       text-decoration: none;
       &:hover,
       &:focus,
       &:active,
       &:visited {
-        color: ${props => props.theme.colors.paginationDisabled};
+        color: ${props => props.theme.colors.disabled};
         text-decoration: none;
       }
     `}

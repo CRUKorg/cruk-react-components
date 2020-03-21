@@ -23,7 +23,7 @@ type ButtonProps = {
 const StyledButton = styled.button`
   background-color: ${props => props.theme.colors.bodyBg};
   border-radius: ${props => props.theme.button.borderRadius};
-  border: 2px solid ${props => props.theme.colors.buttonBorder};
+  border: 2px solid ${props => props.theme.colors.inputBorder};
   box-sizing: border-box;
   color: ${props => props.theme.colors.primary};
   cursor: pointer;
@@ -122,22 +122,22 @@ const StyledButton = styled.button`
     css`
       cursor: not-allowed;
       background-color: ${props.appearance === 'primary' || props.appearance === 'secondary'
-        ? props.theme.colors.buttonDisabled
+        ? props.theme.colors.disabled
         : 'transparent'};
       color: ${props.appearance === 'primary' || props.appearance === 'secondary'
         ? props.theme.colors.textLight
-        : props.theme.colors.buttonDisabled};
-      border-color: ${props.theme.colors.buttonDisabled};
+        : props.theme.colors.disabled};
+      border-color: ${props.theme.colors.disabled};
 
       &:focus,
       &:hover {
         background-color: ${props.appearance === 'primary' || props.appearance === 'secondary'
-          ? props.theme.colors.buttonDisabled
+          ? props.theme.colors.disabled
           : 'transparent'};
         color: ${props.appearance === 'primary' || props.appearance === 'secondary'
           ? props.theme.colors.textLight
-          : props.theme.colors.buttonDisabled};
-        border-color: ${props.theme.colors.buttonDisabled};
+          : props.theme.colors.disabled};
+        border-color: ${props.theme.colors.disabled};
         text-decoration: none;
       }
     `}
