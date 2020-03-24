@@ -15,9 +15,7 @@ const StyledBox = styled.div<BoxProps>`
   padding: ${props => props.theme.utilities.spacingUnit * 4}px;
   margin: 0 0 ${props => props.theme.utilities.spacingUnit * 4}px 0;
   margin-bottom: ${props => props.theme.utilities.spacingUnit * 4}px;
-  border: 1px solid ${props => props.theme.colors.boxBorder};
-  border-radius: ${props => props.theme.utilities.borderRadius};
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+
   &:last-child {
     margin-bottom: 0;
   }
