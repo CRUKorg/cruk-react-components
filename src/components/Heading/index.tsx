@@ -13,6 +13,7 @@ type HeadingProps = {
   h6?: boolean;
   textSize?: FontSizeType;
   textAlign?: 'left' | 'right' | 'center';
+  textColor?: string;
   theme?: ThemeType;
 };
 
@@ -27,11 +28,12 @@ const StyledHeading = (props: HeadingProps) => css`
       typography: { fontWeightMedium },
     },
   }) => fontWeightMedium};
-  color: ${({
-    theme: {
-      colors: { textDark },
-    },
-  }) => textDark};
+  color: ${({ theme: { colors }, textColor }) =>
+    textColor && typeof colors[textColor] !== 'undefined'
+      ? colors[textColor]
+      : textColor
+      ? textColor
+      : colors['textDark']};
   line-height: ${({
     theme: {
       typography: { lineHeight },
