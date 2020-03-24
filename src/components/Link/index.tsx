@@ -47,14 +47,16 @@ const Link: FunctionComponent<LinkProps> = props => {
   const rel = props.rel ? props.rel : 'noopener noreferrer';
 
   // Show a warning in console if required but missing in props
-  const childArray = React.Children.toArray(props.children);
-  const hasString = childArray.reduce((child, hasStringChild) => {
-    const isChildString = typeof child === 'string';
-    return isChildString ? true : hasStringChild;
-  }, false);
-  const showAriaWarning = !hasString && typeof props.ariaLabel === 'undefined';
-  if (showAriaWarning) {
-    console.error("If the Link component doesn't contain text please use the ariaLabel prop for accessibility");
+  if (process.env.NODE_ENV !== 'production') {
+    const childArray = React.Children.toArray(props.children);
+    const hasString = childArray.reduce((child, hasStringChild) => {
+      const isChildString = typeof child === 'string';
+      return isChildString ? true : hasStringChild;
+    }, false);
+    const showAriaWarning = !hasString && typeof props.ariaLabel === 'undefined';
+    if (showAriaWarning) {
+      console.error("If the Link component doesn't contain text please use the ariaLabel prop for accessibility");
+    }
   }
 
   return (
