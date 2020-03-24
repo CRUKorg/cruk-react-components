@@ -40,7 +40,16 @@ export const TextStyled = styled.p<TextProps>`
     },
   }) => (textWeight ? textWeight : fontWeightMedium)};
   padding: 0;
-  margin: 0;
+
+  ${({ as, theme }) =>
+    as === 'p'
+      ? // block
+        `margin-top: 0;
+         margin-right: 0;
+         margin-bottom: ${theme.utilities.rhythmVerticalBase};
+         margin-left: 0;`
+      : // inline
+        'margin: 0;'}
 `;
 
 export const Text: FunctionComponent<TextProps> = props => {
@@ -49,6 +58,10 @@ export const Text: FunctionComponent<TextProps> = props => {
     ...props.theme,
   };
   return <TextStyled {...props} theme={theme} />;
+};
+
+Text.defaultProps = {
+  as: 'p',
 };
 
 export default withTheme(Text);
