@@ -25,6 +25,7 @@ import FooterReadme from '../components/Footer/README.md';
 import HeadingReadme from '../components/Heading/README.md';
 import HeaderReadme from '../components/Header/README.md';
 import IconReadme from '../components/Icon/README.md';
+import LinkReadme from '../components/Link/README.md';
 import LoaderReadme from '../components/Loader/README.md';
 import ModalReadme from '../components/Modal/README.md';
 import PaginationReadme from '../components/Pagination/README.md';
@@ -264,6 +265,7 @@ class Docs extends React.Component {
               <RouterLink to="/header">Header</RouterLink>
               <RouterLink to="/heading">Heading</RouterLink>
               <RouterLink to="/icon">Icon</RouterLink>
+              <RouterLink to="/link">Link</RouterLink>
               <RouterLink to="/loader">Loader</RouterLink>
               <RouterLink to="/modal">Modal</RouterLink>
               <RouterLink to="/pagination">Pagination</RouterLink>
@@ -293,6 +295,7 @@ class Docs extends React.Component {
                 <HeadingReadme path="/heading" />
                 <HeaderReadme path="/header" />
                 <IconReadme path="/icon" />
+                <LinkReadme path="/link" />
                 <LoaderReadme path="/loader" />
                 <ModalReadme path="/modal" />
                 <PaginationReadme path="/pagination" />
