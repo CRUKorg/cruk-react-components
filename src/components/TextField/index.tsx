@@ -8,9 +8,9 @@ import { WithLabel } from '../Label';
 import { ThemeType } from '../../themes/types';
 
 const Extra = styled.div`
-  background-color: ${props => props.theme.colors.textInputBorder};
+  background-color: ${props => props.theme.colors.textInputExtraInfo};
   border-radius: ${props => props.theme.utilities.borderRadius};
-  border: solid 2px ${props => props.theme.colors.textInputBorder};
+  border: solid 2px ${props => props.theme.colors.textInputExtraInfo};
   color: ${props => props.theme.colors.textDark};
   font-size: ${props => props.theme.typography.medium};
   font-weight: ${props => props.theme.typography.fontWeightLight};
@@ -39,7 +39,7 @@ const ExtraRight = styled(Extra)`
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   width: initial;
-  border: solid 2px ${props => props.theme.colors.inputBorder};
+  border: solid 2px ${props => props.theme.colors.textInputBorder};
   border-left: 0;
   background-color: transparent;
   padding: 0;
@@ -63,7 +63,7 @@ const StyledInput = styled.input<StyledInputProps>`
   background-image: none;
   border-radius: ${props => props.theme.utilities.borderRadius};
   border: solid 2px ${props =>
-    props.hasError || props.error ? props.theme.colors.textError : props.theme.colors.inputBorder};
+    props.hasError || props.error ? props.theme.colors.textError : props.theme.colors.textInputBorder};
   color: ${props => props.theme.colors.textDark};
   display: block;
   font-size: ${props => props.theme.fontSizes.medium};

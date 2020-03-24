@@ -61,11 +61,7 @@ export const TOKEN_COLORS: TokenColorsType = {
 
   grey_100: '#ededed',
   grey_200: '#c6c6c6',
-  grayLight: '#e3e3e3',
-  grayMedium: '#c7c7c7',
-  gray: '#c8c9c7',
-  grayDark: '#666',
-  grayDarkMedium: '#999',
+  grey_800: '#575757',
   grey_900: '#2e2d2c',
 
   white: '#fff',
@@ -84,7 +80,7 @@ export const COLORS: ColorsType = {
   tertiary: TOKEN_COLORS.cyan_500,
   tertiaryHover: TOKEN_COLORS.cyan_900,
 
-  disabled: TOKEN_COLORS.grayDarkMedium,
+  disabled: TOKEN_COLORS.grey_200,
   danger: TOKEN_COLORS.red,
   warning: TOKEN_COLORS.yellow,
   success: TOKEN_COLORS.green,
@@ -97,45 +93,37 @@ export const COLORS: ColorsType = {
   progressBar: TOKEN_COLORS.magenta_500,
   progressBarBg: TOKEN_COLORS.grey_100,
   circularProgress: TOKEN_COLORS.cyan_500,
-  circularProgressBg: TOKEN_COLORS.gray,
+  circularProgressBg: TOKEN_COLORS.grey_200,
 
   headerBg: TOKEN_COLORS.white,
   bodyBg: TOKEN_COLORS.white,
   textDark: TOKEN_COLORS.grey_900,
   textLight: TOKEN_COLORS.white,
 
-  boxBorder: TOKEN_COLORS.grayLight,
+  paginationActive: TOKEN_COLORS.grey_200,
 
-  paginationActive: TOKEN_COLORS.grayLight,
-  paginationDisabled: TOKEN_COLORS.grayLight,
+  footerBg: TOKEN_COLORS.grey_100,
 
-  footerBg: TOKEN_COLORS.grayLight,
+  headerBorder: TOKEN_COLORS.grey_200,
 
-  headerBorder: TOKEN_COLORS.grayLight,
-
-  stepBorder: TOKEN_COLORS.grayLight,
+  stepBorder: TOKEN_COLORS.grey_200,
   stepBg: TOKEN_COLORS.white,
 
   popoverBg: TOKEN_COLORS.white,
 
-  textInputBorder: TOKEN_COLORS.grayLight,
+  textInputExtraInfo: TOKEN_COLORS.grey_100,
 
-  totaliserBorder: TOKEN_COLORS.grayMedium,
+  totaliserBorder: TOKEN_COLORS.grey_200,
 
-  buttonBorder: TOKEN_COLORS.gray,
-  buttonDisabled: TOKEN_COLORS.gray,
+  inputBorder: TOKEN_COLORS.grey_200,
 
-  checkboxBorder: TOKEN_COLORS.gray,
-
-  radioLabelBorder: TOKEN_COLORS.gray,
-
-  inputBorder: TOKEN_COLORS.gray,
+  textInputBorder: TOKEN_COLORS.grey_900,
 
   selectBackground: TOKEN_COLORS.grey_900,
 
   modalBackdrop: TOKEN_COLORS.grey_900,
 
-  userBlockExtraText: TOKEN_COLORS.grayDark,
+  userBlockExtraText: TOKEN_COLORS.grey_800,
 };
 
 // TODO: possibly convert to REMS, once a base font size has been agreed.
