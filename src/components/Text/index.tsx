@@ -7,8 +7,10 @@ import { FontSizeType } from '../../themes/types';
 import { ThemeType } from '../../themes/types';
 
 // the 'as' prop is for styled component casting
+// text hover color prop is only used in Link which extends Text
 export type TextProps = {
   textColor?: string;
+  textHoverColor?: string;
   textAlign?: 'left' | 'right' | 'center';
   textSize?: FontSizeType;
   textWeight?: number;

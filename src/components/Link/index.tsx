@@ -8,30 +8,33 @@ import { ThemeType } from 'src/themes/types';
 
 const StyledLink = styled(Text)`
   transition: color 0.2s ease;
-  color: ${({
+  color: ${({ theme: { colors }, textColor }) =>
+    textColor && typeof colors[textColor] !== 'undefined'
+      ? colors[textColor]
+      : textColor
+      ? textColor
+      : colors['linkColor']};
+  text-decoration: ${({
     theme: {
-      colors: { linkColor },
+      typography: { linkTextDecoration },
     },
-  }) => linkColor};
-  text-decoration: none;
+  }) => linkTextDecoration};
 
   &:hover {
     cursor: pointer;
-    color: ${({
-      theme: {
-        colors: { linkColorHover },
-      },
-    }) => linkColorHover};
-    text-decoration: ${({
-      theme: {
-        typography: { linkTextDecoration },
-      },
-    }) => linkTextDecoration};
+    color: ${({ theme: { colors }, textHoverColor }) =>
+      textHoverColor && typeof colors[textHoverColor] !== 'undefined'
+        ? colors[textHoverColor]
+        : textHoverColor
+        ? textHoverColor
+        : colors['linkColorHover']};
   }
 `;
 
 type LinkProps = AnchorHTMLAttributes<{}> & {
   theme?: ThemeType;
+  textHoverColor?: string;
+  ariaLabel?: string;
 };
 
 const Link: FunctionComponent<LinkProps> = props => {
@@ -39,8 +42,23 @@ const Link: FunctionComponent<LinkProps> = props => {
     ...defaultTheme,
     ...props.theme,
   };
+
+  // security by default
+  const rel = props.rel ? props.rel : 'noopener noreferrer';
+
+  // Show a warning in console if required but missing in props
+  const childArray = React.Children.toArray(props.children);
+  const hasString = childArray.reduce((child, hasStringChild) => {
+    const isChildString = typeof child === 'string';
+    return isChildString ? true : hasStringChild;
+  }, false);
+  const showAriaWarning = !hasString && typeof props.ariaLabel === 'undefined';
+  if (showAriaWarning) {
+    console.error("If the Link component doesn't contain text please use the ariaLabel prop for accessibility");
+  }
+
   return (
-    <StyledLink as="a" theme={theme} {...props}>
+    <StyledLink {...props} forwardedAs="a" theme={theme} rel={rel} aria-label={props.ariaLabel}>
       {props.children}
     </StyledLink>
   );
