@@ -164,11 +164,11 @@ const Button: FunctionComponent<ButtonProps> = props => {
 
   return (
     <StyledButton {...props} aria-label={ariaLabel()} theme={theme}>
-      <VerticalAlign>{!iconRight && icon}</VerticalAlign>
+      {!iconRight && icon && <VerticalAlign>{icon}</VerticalAlign>}
       {React.Children.toArray(props.children).map((child: ReactNode, index: number) => (
         <VerticalAlign key={index}>{child}</VerticalAlign>
       ))}
-      <VerticalAlign>{iconRight && icon}</VerticalAlign>
+      {iconRight && icon && <VerticalAlign>{icon}</VerticalAlign>}
     </StyledButton>
   );
 };
