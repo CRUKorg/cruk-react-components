@@ -1,6 +1,6 @@
 # Text
 
-For non-header text. provides a simple API for setting the colors and sizes of text that are available withing the theme.
+For non-header text. The Text component provides a simple API for setting the colors, size and alignment of the text whilst using sizes and colors specified in the theme.
 
 ### Try them out
 
