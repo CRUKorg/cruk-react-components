@@ -10,17 +10,15 @@ For non-header text. provides a simple API for setting the colors and sizes of t
     <Text as='span'>This is text as a span tag</Text>
     <Text textColor='primary'>Color is Primary</Text>
     <Text textColor='#ff0000'>Color is Primary</Text>
-    <Text textWeight="800">Text weight 800</Text>
     <Text textSize="large">Text size large</Text>
   </React.Fragment>
 ```
 
 ## Props
 
-| Name       | Type                       | Options | Default        | Description                                                                   |
-| :--------- | :------------------------- | :-----: | :------------- | :---------------------------------------------------------------------------- |
-| textColor  | string                     |         | 'currentColor' | Color of text                                                                 |
-| textAlign  | 'left' /'right' / 'center' |         | 'left'         | Horizontal text alignment                                                     |
-| textSize   | FontSizeType               |         | 'medium'       | Font size uses t-shirt sizes of small medium large etc                        |
-| textWeight | number                     |         | '500'          | Font weight                                                                   |
-| as         | element as string          |         | 'p'            | Takes the font styling and applies it to an element such as 'label' or 'span' |
+| Name      | Type                       | Options | Default        | Description                                                                   |
+| :-------- | :------------------------- | :-----: | :------------- | :---------------------------------------------------------------------------- |
+| textColor | string                     |         | 'currentColor' | Color of text                                                                 |
+| textAlign | 'left' /'right' / 'center' |         | 'left'         | Horizontal text alignment                                                     |
+| textSize  | FontSizeType               |         | 'medium'       | Font size uses t-shirt sizes of small medium large etc                        |
+| as        | element as string          |         | 'p'            | Takes the font styling and applies it to an element such as 'label' or 'span' |
