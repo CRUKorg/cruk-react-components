@@ -49,7 +49,7 @@ const Link: FunctionComponent<LinkProps> = props => {
   // Show a warning in console if required but missing in props
   if (process.env.NODE_ENV !== 'production') {
     const childArray = React.Children.toArray(props.children);
-    const hasString = childArray.reduce((child, hasStringChild) => {
+    const hasString = childArray.reduce((hasStringChild, child) => {
       const isChildString = typeof child === 'string';
       return isChildString ? true : hasStringChild;
     }, false);
