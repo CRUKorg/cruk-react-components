@@ -90,13 +90,22 @@ const StyledButton = styled.button`
   ${(props: ButtonProps) =>
     props.appearance === 'link' &&
     css`
+      display: inline-block;
       border: 0px;
       background-color: none;
+      transition: color 0.2s ease;
+      height: auto;
+      padding: 0;
       color: ${props.theme.colors.primary};
+      text-decoration: underline;
+      font-family: ${({
+        theme: {
+          typography: { fontFamilyBase },
+        },
+      }) => fontFamilyBase};
       :focus,
       :hover {
-        color: ${props.theme.colors.secondary};
-        text-decoration: underline;
+        color: ${props.theme.colors.linkColorHover};
       }
     `}
   

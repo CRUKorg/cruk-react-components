@@ -1,6 +1,6 @@
 # Link
 
-Links are for wrapping plain text or elements to create clickable link. This is to be treated as an anchor tag with the addition of the Text component API. This component contains standard Anchor tag props like 'href' and 'target', but it also contains Text component props like 'textColor' and 'textAlign'. A link should really only be used for navigation to take a user to as new location. The onClick handler can be use for more complicated scenarios.
+Links are for wrapping plain text or elements to create clickable link. This is to be treated as an anchor tag with the addition of the Text component API. This component contains standard Anchor tag props like 'href' and 'target', but it also contains Text component props like 'textColor' and 'textAlign'. A link should really only be used for navigation to take a user to as new location. The onClick handler can be use for more complicated scenarios. If you want something that looks like a link but behaves like a button ie. nothing to do with navigation, please consider using a button with appearance set to 'link'
 
 ### Try it out
 
