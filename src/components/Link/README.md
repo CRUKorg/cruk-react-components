@@ -33,14 +33,15 @@ Links are for wrapping plain text or an element and turn it into a clickable lin
 
 ## Props
 
-| Name       | Type                       | Options | Default               | Description                                                                         |
-| :--------- | :------------------------- | :-----: | :-------------------- | :---------------------------------------------------------------------------------- |
-| href       | string                     |         |                       | URL of link                                                                         |
-| target     | string                     |         | '\_self'              | How the link opens                                                                  |
-| aria-label | string                     |         |                       | This should be used when there is no text in the link to describe where it is going |
-| rel        | string                     |         | "noopener noreferrer" | Relationship with the link and the current page                                     |
-| onClick    | function                   |         |                       | On click handler function                                                           |
-| textColor  | string                     |         | 'currentColor'        | Color of text                                                                       |
-| textAlign  | 'left' /'right' / 'center' |         | 'left'                | Horizontal text alignment                                                           |
-| textSize   | FontSizeType               |         | 'medium'              | Font size uses t-shirt sizes of small medium large etc                              |
-| textWeight | number                     |         | '500'                 | Font weight                                                                         |
+| Name           | Type                       | Options | Default               | Description                                                                         |
+| :------------- | :------------------------- | :-----: | :-------------------- | :---------------------------------------------------------------------------------- |
+| href           | string                     |         |                       | URL of link                                                                         |
+| target         | string                     |         | '\_self'              | How the link opens                                                                  |
+| ariaLabel      | string                     |         |                       | This should be used when there is no text in the link to describe where it is going |
+| rel            | string                     |         | "noopener noreferrer" | Relationship with the link and the current page                                     |
+| onClick        | function                   |         |                       | On click handler function                                                           |
+| textColor      | string                     |         | 'currentColor'        | Color of text                                                                       |
+| textHoverColor | string                     |         | 'currentColor'        | Hover color of text                                                                 |
+| textAlign      | 'left' /'right' / 'center' |         | 'left'                | Horizontal text alignment                                                           |
+| textSize       | FontSizeType               |         | 'medium'              | Font size uses t-shirt sizes of small medium large etc                              |
+| textWeight     | number                     |         | '500'                 | Font weight                                                                         |
