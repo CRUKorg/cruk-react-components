@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import Icon from '../Icon';
@@ -20,10 +20,14 @@ type ButtonProps = {
   as?: any;
 };
 
+const VerticalAlign = styled.span`
+  vertical-align: middle;
+`;
+
 const StyledButton = styled.button`
   background-color: ${props => props.theme.colors.bodyBg};
   border-radius: ${props => props.theme.button.borderRadius};
-  border: 2px solid ${props => props.theme.colors.inputBorder};
+  border: 1px solid ${props => props.theme.colors.buttonBorder};
   box-sizing: border-box;
   color: ${props => props.theme.colors.primary};
   cursor: pointer;
@@ -33,34 +37,41 @@ const StyledButton = styled.button`
       fontSizes: { medium },
     },
   }) => medium};
+  font-family: ${({
+    theme: {
+      typography: { fontFamilyHeadings },
+    },
+  }) => fontFamilyHeadings};
   font-weight: ${({
     theme: {
-      typography: { fontWeightHeavy },
+      typography: { fontWeightMedium },
     },
-  }) => fontWeightHeavy};
+  }) => fontWeightMedium};
   line-height: 1;
-  padding: 10px;
+  height: 2.5em;
+  padding: ${({ theme }) => `0 ${theme.spacing.medium}`};
+
   text-align: center;
   text-decoration: ${props => props.theme.button.textDecoration};
   text-transform: ${props => props.theme.button.textTransform};
   :focus,
   :hover {
-    color: ${props => props.theme.colors.secondary}
+    color: ${props => props.theme.colors.linkColorHover}
   }
   
   ${(props: ButtonProps) =>
     props.appearance === 'primary' &&
     css`
-    background-color: ${props.theme.colors.secondary};
-    border-color: ${props.theme.colors.secondary};
-    color: ${props.theme.colors.textLight} !important;
-    :focus,
-    :hover {
-      background-color: ${props.theme.colors.secondaryHover}
-      border-color: ${props.theme.colors.secondaryHover};
+      background-color: ${props.theme.colors.secondary};
+      border-color: ${props.theme.colors.secondary};
       color: ${props.theme.colors.textLight} !important;
-    }
-  `}
+      :focus,
+      :hover {
+        background-color: ${props.theme.colors.secondaryHover};
+        border-color: ${props.theme.colors.secondaryHover};
+        color: ${props.theme.colors.textLight} !important;
+      }
+    `}
 
   ${(props: ButtonProps) =>
     props.appearance === 'secondary' &&
@@ -98,23 +109,9 @@ const StyledButton = styled.button`
     `}
   
   ${(props: ButtonProps) =>
-    props.size === 'small' &&
-    css`
-      font-size: ${({
-        theme: {
-          fontSizes: { small },
-        },
-      }) => small};
-    `}
-  
-  ${(props: ButtonProps) =>
     props.size === 'large' &&
     css`
-      font-size: ${({
-        theme: {
-          fontSizes: { extraLarge },
-        },
-      }) => extraLarge};
+      height: 4em;
     `}
   
   ${(props: ButtonProps) =>
@@ -167,9 +164,11 @@ const Button: FunctionComponent<ButtonProps> = props => {
 
   return (
     <StyledButton {...props} aria-label={ariaLabel()} theme={theme}>
-      {!iconRight && icon}
-      {props.children}
-      {iconRight && icon}
+      <VerticalAlign>{!iconRight && icon}</VerticalAlign>
+      {React.Children.toArray(props.children).map((child: ReactNode, index: number) => (
+        <VerticalAlign key={index}>{child}</VerticalAlign>
+      ))}
+      <VerticalAlign>{iconRight && icon}</VerticalAlign>
     </StyledButton>
   );
 };

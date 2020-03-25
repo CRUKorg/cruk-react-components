@@ -2,7 +2,7 @@
 
 Use headings consistently to create a clear hierarchy throughout your service.
 Markup headings semantically using the appropriate <h#> level HTML element and
-use the corresponding heading class. Write all headings in sentence case.
+use the corresponding heading class (h1, h2, h3, ....). Write all headings in sentence case.
 
 ### Try it out
 

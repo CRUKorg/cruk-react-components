@@ -62,6 +62,7 @@ export const TOKEN_COLORS: TokenColorsType = {
 
   grey_100: '#ededed',
   grey_200: '#c6c6c6',
+  grey_500: '#9A9A9A',
   grey_800: '#575757',
   grey_900: '#2e2d2c',
 
@@ -97,6 +98,8 @@ export const COLORS: ColorsType = {
   progressBarBg: TOKEN_COLORS.grey_100,
   circularProgress: TOKEN_COLORS.cyan_500,
   circularProgressBg: TOKEN_COLORS.grey_200,
+
+  buttonBorder: TOKEN_COLORS.grey_500,
   inputBorder: TOKEN_COLORS.grey_200,
 
   headerBg: TOKEN_COLORS.white,
