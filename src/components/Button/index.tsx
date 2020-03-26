@@ -164,7 +164,6 @@ const StyledButton = styled.button`
           ? props.theme.colors.textLight
           : props.theme.colors.disabled};
         border-color: ${props.theme.colors.disabled};
-        text-decoration: none;
       }
     `}
   ${(props: ButtonProps) =>
