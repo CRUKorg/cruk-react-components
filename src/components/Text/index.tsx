@@ -42,7 +42,12 @@ export const TextStyled = styled.p<TextProps>`
     },
   }) => (textWeight ? textWeight : fontWeightMedium)};
   padding: 0;
-  margin: ${({ as }) => (typeof as === 'undefined' ? '0 0 1rem 0' : 0)};
+  margin: ${({
+    as,
+    theme: {
+      spacing: { extraSmall },
+    },
+  }) => (typeof as === 'undefined' ? `0 0 ${extraSmall} 0` : 0)};
 `;
 
 export const Text: FunctionComponent<TextProps> = props => {

@@ -42,9 +42,9 @@ const StyledHeading = (props: HeadingProps) => css`
   margin-top: 0;
   margin-bottom: ${({
     theme: {
-      utilities: { rhythmVerticalBase },
+      spacing: { small },
     },
-  }) => rhythmVerticalBase};
+  }) => small};
   max-width: 100%;
   text-align: ${({ textAlign }: HeadingProps) => (textAlign ? textAlign : 'left')};
 `;
