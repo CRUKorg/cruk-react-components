@@ -84,6 +84,7 @@ const components = {
   h4: (props: HTMLAttributes<{}>) => <Heading h3 {...props} />,
   h5: (props: HTMLAttributes<{}>) => <Heading h3 {...props} />,
   h6: (props: HTMLAttributes<{}>) => <Heading h3 {...props} />,
+  p: (props: HTMLAttributes<{}>) => <Text {...props} />,
 };
 
 const MdxProvider: FunctionComponent = props => <MDXProvider components={components}>{props.children}</MDXProvider>;
