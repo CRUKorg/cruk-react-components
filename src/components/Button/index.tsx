@@ -111,13 +111,31 @@ const StyledButton = styled.button`
     `}
   
   ${(props: ButtonProps) =>
+    // only add margin on icons if there is more than one child
     props.children[1] &&
     props.children.length > 1 &&
     css`
       svg {
-        ${props.iconAlign === 'right' ? 'margin-left: 5px' : 'margin-right: 5px'};
+        ${({
+          theme: {
+            spacing: { extraExtraSmall },
+          },
+        }) => (props.iconAlign === 'right' ? `margin-left: ${extraExtraSmall}` : `margin-right: ${extraExtraSmall}`)};
       }
     `}
+
+  ${(props: ButtonProps) => {
+    // If we only have an icon and no text make it a square/round button
+    return (
+      props.children[1] === null &&
+      props.children[0].type !== 'undefined' &&
+      props.children[0].type.displayName === 'WithTheme(Icon)' &&
+      css`
+        padding: 0;
+        width: ${BUTTON_HEIGHT};
+      `
+    );
+  }};
   
   ${(props: ButtonProps) =>
     props.size === 'large' &&
