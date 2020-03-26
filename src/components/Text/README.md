@@ -16,9 +16,11 @@ For non-header text. The Text component provides a simple API for setting the co
 
 ## Props
 
-| Name      | Type                       | Options | Default        | Description                                                                   |
-| :-------- | :------------------------- | :-----: | :------------- | :---------------------------------------------------------------------------- |
-| textColor | string                     |         | 'currentColor' | Color of text                                                                 |
-| textAlign | 'left' /'right' / 'center' |         | 'left'         | Horizontal text alignment                                                     |
-| textSize  | FontSizeType               |         | 'medium'       | Font size uses t-shirt sizes of small medium large etc                        |
-| as        | element as string          |         | 'p'            | Takes the font styling and applies it to an element such as 'label' or 'span' |
+| Name         | Type                       | Options | Default        | Description                                                                     |
+| :----------- | :------------------------- | :-----: | :------------- | :------------------------------------------------------------------------------ |
+| textColor    | string                     |         | 'currentColor' | Color of text                                                                   |
+| textAlign    | 'left' /'right' / 'center' |         | 'left'         | Horizontal text alignment                                                       |
+| textSize     | FontSizeType               |         | 'medium'       | Font size uses t-shirt sizes of small medium large etc                          |
+| as           | element as string          |         | 'p'            | Takes the font styling and applies it to an element such as 'label' or 'span'   |
+| gutterBottom | boolean                    |         | true           | Adds bottom gutter to the text element only works when 'as' is undefined or 'p' |
+| gutterTop    | boolean                    |         | false          | Adds top gutter to the text element only works when 'as' is undefined or 'p'    |

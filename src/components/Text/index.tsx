@@ -16,6 +16,8 @@ export type TextProps = {
   textWeight?: number;
   as?: any;
   theme?: ThemeType;
+  gutterBottom?: boolean;
+  gutterTop?: boolean;
 };
 
 export const TextStyled = styled.p<TextProps>`
@@ -42,12 +44,21 @@ export const TextStyled = styled.p<TextProps>`
     },
   }) => (textWeight ? textWeight : fontWeightMedium)};
   padding: 0;
-  margin: ${({
+  margin: 0;
+  margin-bottom: ${({
     as,
+    gutterBottom,
     theme: {
       spacing: { extraSmall },
     },
-  }) => (typeof as === 'undefined' ? `0 0 ${extraSmall} 0` : 0)};
+  }) => ((typeof as === 'undefined' || as === 'p') && gutterBottom ? `${extraSmall}` : 0)};
+  margin-top: ${({
+    as,
+    gutterTop,
+    theme: {
+      spacing: { extraSmall },
+    },
+  }) => ((typeof as === 'undefined' || as === 'p') && gutterTop ? `${extraSmall}` : 0)};
 `;
 
 export const Text: FunctionComponent<TextProps> = props => {
@@ -55,7 +66,7 @@ export const Text: FunctionComponent<TextProps> = props => {
     ...defaultTheme,
     ...props.theme,
   };
-  return <TextStyled {...props} theme={theme} />;
+  return <TextStyled gutterBottom={true} {...props} theme={theme} />;
 };
 
 export default withTheme(Text);
