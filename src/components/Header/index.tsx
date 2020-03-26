@@ -8,7 +8,7 @@ import { ThemeType } from '../../themes/types';
 
 // TODO: Should we use REMs? Do all sites use the same base size?
 const HEADER_HEIGHT_LARGE = '120px';
-const HEADER_HEIGHT_SMALL = '54px';
+const HEADER_HEIGHT_SMALL = '72px';
 const HEADER_SCROLL_THRESHOLD = 66;
 const HEADER_PADDING = defaultTheme.spacing.small;
 const HEADER_LOGO_HEIGHT_LARGE = '80px';
