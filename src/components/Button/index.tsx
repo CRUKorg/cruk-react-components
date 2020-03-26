@@ -4,6 +4,8 @@ import defaultTheme from '../../themes/cruk';
 import Icon from '../Icon';
 import { ThemeType } from '../../themes/types';
 
+const BUTTON_HEIGHT = '2.5rem';
+
 type ButtonProps = {
   appearance?: string;
   children?: any;
@@ -21,17 +23,19 @@ type ButtonProps = {
 };
 
 const VerticalAlign = styled.span`
+  line-height: ${BUTTON_HEIGHT};
   vertical-align: middle;
 `;
 
 const StyledButton = styled.button`
+  display: inline-block;
+  vertical-align: middle;
   background-color: ${props => props.theme.colors.bodyBg};
   border-radius: ${props => props.theme.button.borderRadius};
   border: 1px solid ${props => props.theme.colors.buttonBorder};
   box-sizing: border-box;
   color: ${props => props.theme.colors.primary};
   cursor: pointer;
-  display: inline-block;
   font-size: ${({
     theme: {
       fontSizes: { medium },
@@ -48,7 +52,7 @@ const StyledButton = styled.button`
     },
   }) => fontWeightMedium};
   line-height: 1;
-  height: 2.5em;
+  height: ${BUTTON_HEIGHT};
   padding: ${({ theme }) => `0 ${theme.spacing.medium}`};
 
   text-align: center;
@@ -94,8 +98,6 @@ const StyledButton = styled.button`
       border: 0px;
       background-color: none;
       transition: color 0.2s ease;
-      height: auto;
-      padding: 0;
       color: ${props.theme.colors.primary};
       text-decoration: underline;
       font-family: ${({
@@ -111,6 +113,7 @@ const StyledButton = styled.button`
   
   ${(props: ButtonProps) =>
     props.children[1] &&
+    props.children.length > 1 &&
     css`
       svg {
         ${props.iconAlign === 'right' ? 'margin-left: 5px' : 'margin-right: 5px'};
@@ -172,12 +175,14 @@ const Button: FunctionComponent<ButtonProps> = props => {
   };
 
   return (
-    <StyledButton {...props} aria-label={ariaLabel()} theme={theme}>
-      {!iconRight && icon}
-      {React.Children.toArray(props.children).map((child: ReactNode, index: number) => (
-        <VerticalAlign key={index}>{child}</VerticalAlign>
-      ))}
-      {iconRight && icon}
+    <StyledButton as={props.href ? 'a' : 'button'} {...props} aria-label={ariaLabel()} theme={theme}>
+      {!iconRight && !!icon && icon}
+      {props.children && props.children.length
+        ? React.Children.toArray(props.children).map((child: ReactNode, index: number) => (
+            <VerticalAlign key={index}>{child}</VerticalAlign>
+          ))
+        : null}
+      {iconRight && !!icon && icon}
     </StyledButton>
   );
 };
