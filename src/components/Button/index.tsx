@@ -92,14 +92,13 @@ const StyledButton = styled.button`
     `}
 
   ${(props: ButtonProps) =>
-    props.appearance === 'link' &&
+    props.appearance === 'text' &&
     css`
       display: inline-block;
       border: 0px;
       background-color: none;
       transition: color 0.2s ease;
       color: ${props.theme.colors.primary};
-      text-decoration: underline;
       font-family: ${({
         theme: {
           typography: { fontFamilyBase },

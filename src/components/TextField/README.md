@@ -31,7 +31,7 @@ Text fields let users enter and edit text.
   />
   <TextField
     label="Extra right"
-    extraRight={<Button appearance="link" icon="search" />}
+    extraRight={<Button appearance="text" icon="search" />}
   />
   <TextField
     label="Extra bottom"
@@ -42,17 +42,17 @@ Text fields let users enter and edit text.
 
 ## Props
 
-| Name | Type | Options | Default | Description |
-| :- | :- | :-: | :- | :- |
-| disabled | boolean | | false | Applies disabled attribute to HTML input |
-| extraTop | String | |  | Displayed on top of the input |
-| extraRight | String | |  | Displayed inline after the input |
-| extraBottom | String | |  | Displayed under the input |
-| extraLeft | String | |  | Displayed inline before the input |
-| hasError | boolean | |  | Applies error styling to input |
-| label | String | |  | Will wrap input with label and apply text |
-| onChange | Function | |  | Callback function called on input change|
-| value | String | | | Default value for input |
+| Name        | Type     | Options | Default | Description                               |
+| :---------- | :------- | :-----: | :------ | :---------------------------------------- |
+| disabled    | boolean  |         | false   | Applies disabled attribute to HTML input  |
+| extraTop    | String   |         |         | Displayed on top of the input             |
+| extraRight  | String   |         |         | Displayed inline after the input          |
+| extraBottom | String   |         |         | Displayed under the input                 |
+| extraLeft   | String   |         |         | Displayed inline before the input         |
+| hasError    | boolean  |         |         | Applies error styling to input            |
+| label       | String   |         |         | Will wrap input with label and apply text |
+| onChange    | Function |         |         | Callback function called on input change  |
+| value       | String   |         |         | Default value for input                   |
 
 ## Accessibility
 

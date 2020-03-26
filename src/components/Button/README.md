@@ -17,7 +17,7 @@ for multiple sizes, states, and more.
   <Button icon="view">Icon button</Button>
   <Button icon="edit" iconAlign="right">Icon Right</Button>
   <Button href="https://www.styled-components.com/">Link as Button</Button>
-  <Button appearance="link">Button as Link</Button>
+  <Button appearance="text">Button with no borders</Button>
   <Button icon="uploadPhoto"></Button>
   <Button icon="upload Photo"></Button>
   <Button ariaLabel="camera" icon="Upload Photo"></Button>
@@ -30,7 +30,7 @@ for multiple sizes, states, and more.
 
 | Name       | Type              |           Options            | Default | Description                                                                                                                                                                                      |
 | :--------- | :---------------- | :--------------------------: | :------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| appearance | String            | "primary" "secondary" "link" | outline | The `appearance` prop defines the overall visual style of the Button. You can use this prop to indicate to the user the purpose or importance of the button, or call their attention to it.      |
+| appearance | String            | "primary" "secondary" "text" | outline | The `appearance` prop defines the overall visual style of the Button. You can use this prop to indicate to the user the purpose or importance of the button, or call their attention to it.      |
 | size       | String            |           "large"            |         | Define the size of the button. Add "large" for additional sizes.                                                                                                                                 |
 | icon       | String/React node |                              |         | Name of the available icon                                                                                                                                                                       |
 | iconAlign  | Boolean           |           "right"            | left    |                                                                                                                                                                                                  |
