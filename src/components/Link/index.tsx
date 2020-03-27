@@ -40,10 +40,15 @@ const StyledLink = styled(Text)<LinkProps>`
     },
   }) => (appearance === 'primary' || appearance === 'secondary' ? 'none' : linkTextDecoration)};
 
-  ${(props: LinkProps) =>
-    props.appearance === 'secondary' &&
+  ${({
+    appearance,
+    theme: {
+      typography: { fontWeightHeavy },
+    },
+  }: LinkProps) =>
+    (appearance === 'primary' || appearance === 'secondary') &&
     css`
-      font-weight: ${props.theme.typography.fontWeightHeavy};
+      font-weight: ${fontWeightHeavy};
     `}
 
   &:hover {
