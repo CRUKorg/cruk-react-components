@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
-import Icon from '../Icon';
+import Icon, { IconNameType } from '../Icon';
 import { ThemeType } from '../../themes/types';
 
 const BUTTON_HEIGHT = '2.5rem';
@@ -14,7 +14,7 @@ type ButtonProps = {
   theme?: ThemeType;
   ariaLabel?: string;
   href?: string;
-  icon?: string;
+  icon?: IconNameType;
   name?: string;
   css?: any;
   size?: string;
