@@ -1,6 +1,6 @@
 {
   "name": "@crukorg/cruk-react-components",
-  "version": "0.1.0-alpha.12",
+  "version": "0.1.0-alpha.14",
   "description": "React components implementing CRUK and SU2C design tokens",
   "main": "lib/index.js",
   "types": "lib/components/index.d.ts",
@@ -20,7 +20,8 @@
     "jest-ci": "jest --watchAll=false",
     "jest": "jest --watch",
     "test": "npm run jest-ci && npm run cypress-ci",
-    "clean": "rm -rf node_modules/"
+    "clean": "rm -rf node_modules/",
+    "deploy": "npm run build-lib && npm run build-docs && npm publish"
   },
   "husky": {
     "hooks": {
