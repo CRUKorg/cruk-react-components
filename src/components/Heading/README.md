@@ -2,7 +2,7 @@
 
 Use headings consistently to create a clear hierarchy throughout your service.
 Markup headings semantically using the appropriate <h#> level HTML element and
-use the corresponding heading class. Write all headings in sentence case.
+use the corresponding heading class (h1, h2, h3, ....). Write all headings in sentence case.
 
 ### Try it out
 
@@ -29,3 +29,5 @@ use the corresponding heading class. Write all headings in sentence case.
 | textAlign         | 'left'/'right'/'center' | 'left'                  | text alignment                                              |
 | textColor         | string                  | 'theme.colors.textDark' | set the heading text color alignment                        |
 | textSize          | FontSizeType            | depends on h number     | font size of header, this will scale still with breakpoints |
+| gutterBottom      | boolean                 | true                    | Adds bottom gutter to the heading                           |
+| gutterTop         | boolean                 | false                   | Adds top gutter to the heading                              |

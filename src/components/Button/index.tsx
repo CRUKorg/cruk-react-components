@@ -1,8 +1,10 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import Icon from '../Icon';
 import { ThemeType } from '../../themes/types';
+
+const BUTTON_HEIGHT = '2.5rem';
 
 type ButtonProps = {
   appearance?: string;
@@ -20,47 +22,60 @@ type ButtonProps = {
   as?: any;
 };
 
+const VerticalAlign = styled.span`
+  line-height: ${BUTTON_HEIGHT};
+  vertical-align: middle;
+`;
+
 const StyledButton = styled.button`
+  display: inline-block;
+  vertical-align: middle;
   background-color: ${props => props.theme.colors.bodyBg};
   border-radius: ${props => props.theme.button.borderRadius};
-  border: 2px solid ${props => props.theme.colors.inputBorder};
+  border: 1px solid ${props => props.theme.colors.buttonBorder};
   box-sizing: border-box;
   color: ${props => props.theme.colors.primary};
   cursor: pointer;
-  display: inline-block;
   font-size: ${({
     theme: {
       fontSizes: { medium },
     },
   }) => medium};
+  font-family: ${({
+    theme: {
+      typography: { fontFamilyHeadings },
+    },
+  }) => fontFamilyHeadings};
   font-weight: ${({
     theme: {
-      typography: { fontWeightHeavy },
+      typography: { fontWeightMedium },
     },
-  }) => fontWeightHeavy};
+  }) => fontWeightMedium};
   line-height: 1;
-  padding: 10px;
+  height: ${BUTTON_HEIGHT};
+  padding: ${({ theme }) => `0 ${theme.spacing.medium}`};
+
   text-align: center;
   text-decoration: ${props => props.theme.button.textDecoration};
   text-transform: ${props => props.theme.button.textTransform};
   :focus,
   :hover {
-    color: ${props => props.theme.colors.secondary}
+    color: ${props => props.theme.colors.linkColorHover}
   }
   
   ${(props: ButtonProps) =>
     props.appearance === 'primary' &&
     css`
-    background-color: ${props.theme.colors.secondary};
-    border-color: ${props.theme.colors.secondary};
-    color: ${props.theme.colors.textLight} !important;
-    :focus,
-    :hover {
-      background-color: ${props.theme.colors.secondaryHover}
-      border-color: ${props.theme.colors.secondaryHover};
+      background-color: ${props.theme.colors.secondary};
+      border-color: ${props.theme.colors.secondary};
       color: ${props.theme.colors.textLight} !important;
-    }
-  `}
+      :focus,
+      :hover {
+        background-color: ${props.theme.colors.secondaryHover};
+        border-color: ${props.theme.colors.secondaryHover};
+        color: ${props.theme.colors.textLight} !important;
+      }
+    `}
 
   ${(props: ButtonProps) =>
     props.appearance === 'secondary' &&
@@ -77,44 +92,55 @@ const StyledButton = styled.button`
     `}
 
   ${(props: ButtonProps) =>
-    props.appearance === 'link' &&
+    props.appearance === 'text' &&
     css`
+      display: inline-block;
       border: 0px;
       background-color: none;
+      transition: color 0.2s ease;
       color: ${props.theme.colors.primary};
+      font-family: ${({
+        theme: {
+          typography: { fontFamilyBase },
+        },
+      }) => fontFamilyBase};
       :focus,
       :hover {
-        color: ${props.theme.colors.secondary};
-        text-decoration: underline;
+        color: ${props.theme.colors.linkColorHover};
       }
     `}
   
   ${(props: ButtonProps) =>
+    // only add margin on icons if there is more than one child
     props.children[1] &&
+    props.children.length > 1 &&
     css`
       svg {
-        ${props.iconAlign === 'right' ? 'margin-left: 5px' : 'margin-right: 5px'};
+        ${({
+          theme: {
+            spacing: { extraExtraSmall },
+          },
+        }) => (props.iconAlign === 'right' ? `margin-left: ${extraExtraSmall}` : `margin-right: ${extraExtraSmall}`)};
       }
     `}
-  
-  ${(props: ButtonProps) =>
-    props.size === 'small' &&
-    css`
-      font-size: ${({
-        theme: {
-          fontSizes: { small },
-        },
-      }) => small};
-    `}
+
+  ${(props: ButtonProps) => {
+    // If we only have an icon and no text make it a square/round button
+    return (
+      props.children[1] === null &&
+      props.children[0].type !== 'undefined' &&
+      props.children[0].type.displayName === 'WithTheme(Icon)' &&
+      css`
+        padding: 0;
+        width: ${BUTTON_HEIGHT};
+      `
+    );
+  }};
   
   ${(props: ButtonProps) =>
     props.size === 'large' &&
     css`
-      font-size: ${({
-        theme: {
-          fontSizes: { extraLarge },
-        },
-      }) => extraLarge};
+      height: 4em;
     `}
   
   ${(props: ButtonProps) =>
@@ -138,7 +164,6 @@ const StyledButton = styled.button`
           ? props.theme.colors.textLight
           : props.theme.colors.disabled};
         border-color: ${props.theme.colors.disabled};
-        text-decoration: none;
       }
     `}
   ${(props: ButtonProps) =>
@@ -166,10 +191,14 @@ const Button: FunctionComponent<ButtonProps> = props => {
   };
 
   return (
-    <StyledButton {...props} aria-label={ariaLabel()} theme={theme}>
-      {!iconRight && icon}
-      {props.children}
-      {iconRight && icon}
+    <StyledButton as={props.href ? 'a' : 'button'} {...props} aria-label={ariaLabel()} theme={theme}>
+      {!iconRight && !!icon && icon}
+      {props.children && props.children.length
+        ? React.Children.toArray(props.children).map((child: ReactNode, index: number) => (
+            <VerticalAlign key={index}>{child}</VerticalAlign>
+          ))
+        : null}
+      {iconRight && !!icon && icon}
     </StyledButton>
   );
 };

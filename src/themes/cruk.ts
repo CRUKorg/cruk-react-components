@@ -55,12 +55,14 @@ export const BREAKPOINT: BreakPointType = {
 export const TOKEN_COLORS: TokenColorsType = {
   darkBlue_500: '#2e008b',
   magenta_500: '#ec008c',
+  magenta_800: '#BB0071',
   magenta_900: '#710044',
   cyan_500: '#00b6ed',
   cyan_900: '#005870',
 
   grey_100: '#ededed',
   grey_200: '#c6c6c6',
+  grey_500: '#9A9A9A',
   grey_800: '#575757',
   grey_900: '#2e2d2c',
 
@@ -88,17 +90,20 @@ export const COLORS: ColorsType = {
   textError: TOKEN_COLORS.red,
 
   linkColor: TOKEN_COLORS.darkBlue_500,
-  linkColorHover: TOKEN_COLORS.magenta_500,
+  linkColorHover: TOKEN_COLORS.magenta_800,
+  textDark: TOKEN_COLORS.grey_900,
+  textLight: TOKEN_COLORS.white,
 
   progressBar: TOKEN_COLORS.magenta_500,
   progressBarBg: TOKEN_COLORS.grey_100,
   circularProgress: TOKEN_COLORS.cyan_500,
   circularProgressBg: TOKEN_COLORS.grey_200,
 
+  buttonBorder: TOKEN_COLORS.grey_500,
+  inputBorder: TOKEN_COLORS.grey_200,
+
   headerBg: TOKEN_COLORS.white,
   bodyBg: TOKEN_COLORS.white,
-  textDark: TOKEN_COLORS.grey_900,
-  textLight: TOKEN_COLORS.white,
 
   paginationActive: TOKEN_COLORS.grey_200,
 
@@ -114,8 +119,6 @@ export const COLORS: ColorsType = {
   textInputExtraInfo: TOKEN_COLORS.grey_100,
 
   totaliserBorder: TOKEN_COLORS.grey_200,
-
-  inputBorder: TOKEN_COLORS.grey_200,
 
   textInputBorder: TOKEN_COLORS.grey_900,
 
@@ -163,7 +166,7 @@ export const TYPOGRAPHY: TypographyType = {
   fontWeightMedium: '500', // default
   fontWeightLight: '300',
   fontWeightVLight: '100',
-  linkTextDecoration: 'none',
+  linkTextDecoration: 'underline',
   lineHeight: '1.5',
   lineHeightLarge: '2',
 };
