@@ -14,7 +14,7 @@ const ChevyWithLevee = styled(Icon)`
     },
   }) => extraExtraSmall};
 `;
-const Chevron = () => <ChevyWithLevee name={ICON_NAMES.chevronRight} />;
+const Chevron = () => <ChevyWithLevee name={ICON_NAMES.chevronRightBold} />;
 
 type LinkProps = AnchorHTMLAttributes<{}> & {
   theme?: ThemeType;
