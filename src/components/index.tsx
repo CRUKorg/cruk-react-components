@@ -46,6 +46,7 @@ import FooterReadme from './Footer/README.md';
 import HeadingReadme from './Heading/README.md';
 import HeaderReadme from './Header/README.md';
 import IconReadme from './Icon/README.md';
+import LinkReadme from './Link/README.md';
 import LoaderReadme from './Loader/README.md';
 import ModalReadme from './Modal/README.md';
 import PaginationReadme from './Pagination/README.md';
@@ -104,6 +105,7 @@ export {
   HeadingReadme,
   HeaderReadme,
   IconReadme,
+  LinkReadme,
   LoaderReadme,
   ModalReadme,
   PaginationReadme,
