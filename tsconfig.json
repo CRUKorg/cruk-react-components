@@ -10,6 +10,7 @@
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true, // This is needed for the React components.
     "declaration": true,
-    "declarationDir": "./lib/"
+    "declarationDir": "./lib/",
+    "noErrorTruncation": true
   }
 }
