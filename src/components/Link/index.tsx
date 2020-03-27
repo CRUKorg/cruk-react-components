@@ -1,24 +1,55 @@
 import React, { FunctionComponent, AnchorHTMLAttributes } from 'react';
-import styled, { withTheme } from 'styled-components';
+import styled, { css, withTheme, ThemeProvider } from 'styled-components';
+import defaultTheme from '../../themes/cruk';
 
 import Text from '../Text';
-import defaultTheme from '../../themes/cruk';
+import Icon, { ICON_NAMES } from '../Icon';
 
 import { ThemeType } from 'src/themes/types';
 
-const StyledLink = styled(Text)`
+const ChevyWithLevee = styled(Icon)`
+  padding-right: ${({
+    theme: {
+      spacing: { extraExtraSmall },
+    },
+  }) => extraExtraSmall};
+`;
+const Chevron = () => <ChevyWithLevee name={ICON_NAMES.chevronRightBold} />;
+
+type LinkProps = AnchorHTMLAttributes<{}> & {
+  theme?: ThemeType;
+  textHoverColor?: string;
+  ariaLabel?: string;
+  appearance?: 'primary' | 'secondary';
+};
+
+const StyledLink = styled(Text)<LinkProps>`
   transition: color 0.2s ease;
-  color: ${({ theme: { colors }, textColor }) =>
+  color: ${({ theme: { colors }, textColor, appearance }) =>
     textColor && typeof colors[textColor] !== 'undefined'
       ? colors[textColor]
       : textColor
       ? textColor
+      : appearance && appearance === 'primary'
+      ? colors['secondary']
       : colors['linkColor']};
   text-decoration: ${({
+    appearance,
     theme: {
       typography: { linkTextDecoration },
     },
-  }) => linkTextDecoration};
+  }) => (appearance === 'primary' || appearance === 'secondary' ? 'none' : linkTextDecoration)};
+
+  ${({
+    appearance,
+    theme: {
+      typography: { fontWeightHeavy },
+    },
+  }: LinkProps) =>
+    (appearance === 'primary' || appearance === 'secondary') &&
+    css`
+      font-weight: ${fontWeightHeavy};
+    `}
 
   &:hover {
     cursor: pointer;
@@ -31,25 +62,21 @@ const StyledLink = styled(Text)`
   }
 `;
 
-type LinkProps = AnchorHTMLAttributes<{}> & {
-  theme?: ThemeType;
-  textHoverColor?: string;
-  ariaLabel?: string;
-};
-
 const Link: FunctionComponent<LinkProps> = props => {
   const theme = {
     ...defaultTheme,
     ...props.theme,
   };
-
   // security by default
   const rel = props.rel ? props.rel : 'noopener noreferrer';
 
   return (
-    <StyledLink {...props} forwardedAs="a" theme={theme} rel={rel} aria-label={props.ariaLabel}>
-      {props.children}
-    </StyledLink>
+    <ThemeProvider theme={theme}>
+      <StyledLink {...props} forwardedAs="a" theme={theme} rel={rel} aria-label={props.ariaLabel}>
+        {props.appearance === 'primary' && <Chevron />}
+        {props.children}
+      </StyledLink>
+    </ThemeProvider>
   );
 };
 

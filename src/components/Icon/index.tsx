@@ -7,8 +7,16 @@ import { camelize } from '../../utils/Helper';
 
 import { ThemeType, ColorsType } from '../../themes/types';
 
+export type IconNameType = keyof typeof ICONS;
+
+// utility to provide people with a list of icon names
+export const ICON_NAMES = Object.keys(ICONS).reduce((acc: { [key: string]: IconNameType }, item: IconNameType) => {
+  acc[item] = item;
+  return acc;
+}, {});
+
 type IconProps = {
-  name?: string;
+  name?: IconNameType;
   color?: string;
   size?: string;
   transform?: string;
@@ -37,6 +45,7 @@ const Icon: FunctionComponent<IconProps> = props => {
   const color = (theme.colors as ColorsType)[props.color] || props.color;
   return (
     <StyledIcon
+      theme={theme}
       aria-hidden="true"
       role="presentation"
       getColor={color}

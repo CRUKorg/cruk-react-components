@@ -66,11 +66,19 @@ class Modal extends Component<ModalProps> {
   }
 
   componentDidMount() {
+    if (typeof window === `undefined`) {
+      return;
+    }
+
     document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', this.closeByEsc);
   }
 
   componentWillUnmount() {
+    if (typeof window === `undefined`) {
+      return;
+    }
+
     document.body.style.overflow = 'unset';
     document.removeEventListener('keydown', this.closeByEsc);
   }
@@ -82,6 +90,10 @@ class Modal extends Component<ModalProps> {
   }
 
   render() {
+    if (typeof window === `undefined`) {
+      return;
+    }
+
     const { children, closeButton } = this.props;
     return ReactDOM.createPortal(
       <FocusLock returnFocus>

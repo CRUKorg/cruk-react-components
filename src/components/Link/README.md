@@ -10,6 +10,12 @@ Links are for wrapping plain text or elements to create clickable link. This is 
       <Link href="http://www.google.com">Default link</Link>
     </div>
     <div>
+      <Link href="http://www.google.com" appearance="primary">Primary link</Link>
+    </div>
+    <div>
+      <Link href="http://www.google.com" appearance="secondary">secondary link</Link>
+    </div>
+    <div>
       <Link href="http://www.google.com" target='_blank'>Link opens new page</Link>
     </div>
     <div>
@@ -20,7 +26,7 @@ Links are for wrapping plain text or elements to create clickable link. This is 
     <Link href="http://www.google.com" textColor="secondary" textHoverColor="#004400">Link using different colours</Link>
     </div>
     <div>
-    <Link href="http://www.google.com" textSize="extraLarge" textWeight="800">Link with extra large text and 800 weight</Link>
+    <Link href="http://www.google.com" textSize="extraLarge" >Link with extra large text</Link>
     </div>
     <div>
     <Link href="http://www.google.com" ariaLabel="google homepage"><img style={{width: '80px', height: '30px'}} alt="" src='https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png'/></Link>
@@ -39,6 +45,7 @@ Links are for wrapping plain text or elements to create clickable link. This is 
 | target         | string                     |         | '\_self'              | How the link opens                                                                  |
 | ariaLabel      | string                     |         |                       | This should be used when there is no text in the link to describe where it is going |
 | rel            | string                     |         | "noopener noreferrer" | Relationship with the link and the current page                                     |
+| appearance     | null / primary / secondary |         | null                  | Default, primary or secondary link appearance                                       |
 | onClick        | function                   |         |                       | On click handler function                                                           |
 | textColor      | string                     |         | 'currentColor'        | Color of text                                                                       |
 | textHoverColor | string                     |         | 'currentColor'        | Hover color of text                                                                 |
