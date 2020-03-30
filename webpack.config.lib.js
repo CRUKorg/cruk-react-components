@@ -8,6 +8,7 @@ module.exports = createWebpackConfig({
     filename: 'index.js',
     library: 'crukReactComponents',
     libraryTarget: 'umd',
+    globalObject: 'this',
   },
   externals: {
     react: {
