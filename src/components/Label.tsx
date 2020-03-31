@@ -18,19 +18,24 @@ const StyledSpan = styled.span`
 
 type WithLabelProps = {
   label: string;
-  hintText: string;
-  required: boolean;
+  hintText?: string;
+  required?: boolean;
 };
 
 export const WithLabel: FunctionComponent<WithLabelProps> = ({ label, hintText, required, children }) =>
   label ? (
     <Label>
       {label} {!required && <span>(optional)</span>}
-      <StyledSpan>{hintText}</StyledSpan>
+      {hintText && <StyledSpan>{hintText}</StyledSpan>}
       {children}
     </Label>
   ) : (
-    <React.Fragment>{children}</React.Fragment>
+    <>{children}</>
   );
+
+WithLabel.defaultProps = {
+  hintText: '',
+  required: false,
+};
 
 export default Label;
