@@ -11,6 +11,7 @@ Text fields let users enter and edit text.
     <TextField
       label="First name"
       type="text"
+      name="firstName"
     />
   </p>
   <p>
@@ -18,6 +19,7 @@ Text fields let users enter and edit text.
     <TextField
       label="Your favourite food"
       type="text"
+      name="yourFavouriteFood"
       placeholder="Cookies"
     />
   </p>
@@ -26,6 +28,7 @@ Text fields let users enter and edit text.
     <TextField
       label="This is the label"
       type="text"
+      name="hintText"
       hintText="This is the hint text"
     />
   </p>
@@ -34,21 +37,25 @@ Text fields let users enter and edit text.
     <TextField
       label="Fundraising target"
       type="text"
+      name="fundraisingTarget"
       extraLeft="£"
     />
     <TextField
       label="Search"
       type="text"
+      name="search"
       extraRight={<Button appearance="text" icon="search" />}
     />
     <TextField
       label="Fundraising page"
       type="text"
+      name="fundraisingPage"
       extraTop={`https://fundraise.cancerresearchuk.org/page/`}
     />
     <TextField
       label="Email address"
       type="text"
+      name="emailAddress"
       extraBottom="Wash your hands for 20 seconds"
     />
   </p>
@@ -57,6 +64,7 @@ Text fields let users enter and edit text.
     <TextField
       label="Phone number"
       type="text"
+      name="phoneNumber"
       hasError
       error="You have made more than one daily outing for exercise"
     />
@@ -66,6 +74,7 @@ Text fields let users enter and edit text.
     <TextField
       label="Number of cats"
       type="text"
+      name="numberOfCats"
       required
     />
   </p>
@@ -74,6 +83,7 @@ Text fields let users enter and edit text.
     <TextField
       label="Favourite pasta type"
       type="text"
+      name="favouritePastaType"
       value="Spaghetti"
       disabled
     />
@@ -83,17 +93,17 @@ Text fields let users enter and edit text.
 
 ## Props
 
+Other props not listed here (disabled, placeholder, etc.) will be passed to the child &lt;input&gt; element.
+
 | Name        | Type     | Required | Default | Description                                      |
 | :---------- | :------- | :------- | :------ | :----------------------------------------------- |
 | label       | string   | Yes      |         | Will wrap input with label and apply text        |
 | type        | string   | Yes      |         | HTML input type: text, number, email or password |
 | onChange    | function | Yes      |         | Event handler for input change                   |
 | value       | string   | Yes      |         | Controlled value of input                        |
-| disabled    | boolean  |          | false   | If true, add disabled attribute to HTML input    |
 | required    | boolean  |          | false   | If false, add (optional) to the label text       |
 | hasError    | boolean  |          | false   | If true, use error styling for the input         |
 | error       | string   |          |         | Error message text                               |
-| placeholder | string   |          |         | Placeholder text in the input                    |
 | hintText    | string   |          |         | Extra help text between the label and input      |
 | extraTop    | string   |          |         | Displayed on top of the input                    |
 | extraRight  | string   |          |         | Displayed inline after the input                 |
