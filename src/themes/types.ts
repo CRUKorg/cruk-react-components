@@ -33,7 +33,7 @@ export type AvatarType = {
   small: string;
   medium: string;
   large: string;
-  xlarge: string;
+  extraLarge: string;
   path: string;
 };
 

@@ -35,7 +35,7 @@ export const AVATAR: AvatarType = {
   small: '35px',
   medium: '50px',
   large: '60px',
-  xlarge: '90px',
+  extraLarge: '90px',
   path: `${SITE_CONFIG.assetPath}images/icon-avatars/`,
 };
 
