@@ -7,22 +7,19 @@ type CustomFont = {
 };
 
 const buildCustomFonts = (customFonts: Array<CustomFont>) =>
-  customFonts.reduce(
-    (fonts, font) =>
-      `${fonts}
-      @font-face {
-      font-family: ${font.family};
-      src: url("${font.url}.eot");
-      src: url("${font.url}.eot?#iefix") format('embedded-opentype'),
-      url("${font.url}.woff") format('woff'),
-      url("${font.url}.woff2") format('woff2'),
-      url("${font.url}.ttf") format('truetype'),
-      url("${font.url}/.svg##{$font-family}") format('svg');
-      font-weight: normal;
-      font-style: normal;
-    }`,
-    '',
-  );
+  customFonts
+    .map(
+      font => `
+        @font-face {
+          font-family: ${font.family};
+          src: url("${font.url}.woff2") format('woff2'),
+               url("${font.url}.woff") format('woff');
+          font-weight: normal;
+          font-style: normal;
+        }
+      `,
+    )
+    .join('');
 
 const GlobalStyle = createGlobalStyle`
   ${props => {
