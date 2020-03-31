@@ -38,7 +38,7 @@ const GlobalStyle = createGlobalStyle`
         line-height: ${theme.typography.lineHeight};
       }
       body {
-        background-color: ${theme.colors.bodyBg};
+        background-color: ${theme.colors.midBg};
         color: ${theme.colors.textDark};
         margin: 0;
         padding: 0;
