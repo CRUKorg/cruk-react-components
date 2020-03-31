@@ -60,8 +60,9 @@ export const TOKEN_COLORS: TokenColorsType = {
   cyan_500: '#00b6ed',
   cyan_900: '#005870',
 
-  grey_100: '#ededed',
-  grey_200: '#c6c6c6',
+  grey_100: '#f5f5f5',
+  grey_200: '#ededed',
+  grey_300: '#c6c6c6',
   grey_500: '#9A9A9A',
   grey_800: '#575757',
   grey_900: '#2e2d2c',
@@ -82,7 +83,7 @@ export const COLORS: ColorsType = {
   tertiary: TOKEN_COLORS.cyan_500,
   tertiaryHover: TOKEN_COLORS.cyan_900,
 
-  disabled: TOKEN_COLORS.grey_200,
+  disabled: TOKEN_COLORS.grey_300,
   danger: TOKEN_COLORS.red,
   warning: TOKEN_COLORS.yellow,
   success: TOKEN_COLORS.green,
@@ -95,30 +96,31 @@ export const COLORS: ColorsType = {
   textLight: TOKEN_COLORS.white,
 
   progressBar: TOKEN_COLORS.magenta_500,
-  progressBarBg: TOKEN_COLORS.grey_100,
+  progressBarBg: TOKEN_COLORS.grey_200,
   circularProgress: TOKEN_COLORS.cyan_500,
-  circularProgressBg: TOKEN_COLORS.grey_200,
+  circularProgressBg: TOKEN_COLORS.grey_300,
 
   buttonBorder: TOKEN_COLORS.grey_500,
-  inputBorder: TOKEN_COLORS.grey_200,
+  inputBorder: TOKEN_COLORS.grey_300,
 
   headerBg: TOKEN_COLORS.white,
-  bodyBg: TOKEN_COLORS.white,
+  lightBg: TOKEN_COLORS.white,
+  midBg: TOKEN_COLORS.grey_100,
 
-  paginationActive: TOKEN_COLORS.grey_200,
+  paginationActive: TOKEN_COLORS.grey_300,
 
-  footerBg: TOKEN_COLORS.grey_100,
+  footerBg: TOKEN_COLORS.grey_200,
 
-  headerBorder: TOKEN_COLORS.grey_200,
+  headerBorder: TOKEN_COLORS.grey_300,
 
-  stepBorder: TOKEN_COLORS.grey_200,
+  stepBorder: TOKEN_COLORS.grey_300,
   stepBg: TOKEN_COLORS.white,
 
   popoverBg: TOKEN_COLORS.white,
 
-  textInputExtraInfo: TOKEN_COLORS.grey_100,
+  textInputExtraInfo: TOKEN_COLORS.grey_200,
 
-  totaliserBorder: TOKEN_COLORS.grey_200,
+  totaliserBorder: TOKEN_COLORS.grey_300,
 
   textInputBorder: TOKEN_COLORS.grey_900,
 

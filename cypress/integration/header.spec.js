@@ -37,7 +37,7 @@ context('Header', () => {
     cy.window().scrollTo(0, 800);
     cy.get('header')
       .find('[data-cy="header-sticky-container"]')
-      .should('have.css', 'height', '54px')
+      .should('have.css', 'height', '72px')
       .should('have.css', 'position', 'fixed')
       .should('have.css', 'top', '0px');
   });
