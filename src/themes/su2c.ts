@@ -64,7 +64,6 @@ export const COLORS: ColorsType = {
   linkColorHover: TOKEN_COLORS.su2cOrange,
 };
 
-// TODO: possibly convert to REMS, once a base font size has been agreed.
 export const SPACING: SpacingType = {
   ...defaultTheme.spacing,
 };
