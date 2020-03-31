@@ -11,7 +11,7 @@ type BoxProps = {
 };
 
 const StyledBox = styled.div<BoxProps>`
-  background-color: ${props => props.theme.colors.bodyBg};
+  background-color: ${props => props.theme.colors.lightBg};
   padding: ${props => props.theme.utilities.spacingUnit * 4}px;
   margin: 0 0 ${props => props.theme.utilities.spacingUnit * 4}px 0;
   margin-bottom: ${props => props.theme.utilities.spacingUnit * 4}px;
