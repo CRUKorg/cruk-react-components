@@ -7,15 +7,15 @@ Wrapper container with consistent spacing
 ```.jsx
 <React.Fragment>
   <Box>This is box</Box>
-  <Box bgColor="primary">This is box</Box>
-  <Box bgColor="secondary">This is box</Box>
-  <Box bgColor="tertiary">This is box</Box>
-  <Box bgColor="#fdc02f">This is box</Box>
+  <Box backgroundColor="primary">This is box</Box>
+  <Box backgroundColor="secondary">This is box</Box>
+  <Box backgroundColor="tertiary">This is box</Box>
+  <Box backgroundColor="#fdc02f">This is box</Box>
 </React.Fragment>
 ```
 
 ## Props
 
-| Name | Type | Options | Default | Description |
-| :- | :- | :-: | :- | :- |
-| bgColor | String |  |  | Define the background colour of the container |
+| Name            | Type   | Options | Default | Description                                   |
+| :-------------- | :----- | :-----: | :------ | :-------------------------------------------- |
+| backgroundColor | String |         |         | Define the background colour of the container |

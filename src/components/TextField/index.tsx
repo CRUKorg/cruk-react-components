@@ -59,7 +59,7 @@ type StyledInputProps = {
 };
 
 const StyledInput = styled.input<StyledInputProps>`
-  background-color: ${props => props.theme.colors.lightBg};
+  background-color: ${props => props.theme.colors.lightBackground};
   background-image: none;
   border-radius: ${props => props.theme.utilities.borderRadius};
   border: solid 2px ${props =>

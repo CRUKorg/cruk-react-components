@@ -96,27 +96,27 @@ export const COLORS: ColorsType = {
   textLight: TOKEN_COLORS.white,
 
   progressBar: TOKEN_COLORS.magenta_500,
-  progressBarBg: TOKEN_COLORS.grey_200,
+  progressBarBackground: TOKEN_COLORS.grey_200,
   circularProgress: TOKEN_COLORS.cyan_500,
-  circularProgressBg: TOKEN_COLORS.grey_300,
+  circularProgressBackground: TOKEN_COLORS.grey_300,
 
   buttonBorder: TOKEN_COLORS.grey_500,
   inputBorder: TOKEN_COLORS.grey_300,
 
-  headerBg: TOKEN_COLORS.white,
-  lightBg: TOKEN_COLORS.white,
-  midBg: TOKEN_COLORS.grey_100,
+  headerBackground: TOKEN_COLORS.white,
+  lightBackground: TOKEN_COLORS.white,
+  midBackground: TOKEN_COLORS.grey_100,
 
   paginationActive: TOKEN_COLORS.grey_300,
 
-  footerBg: TOKEN_COLORS.grey_200,
+  footerBackground: TOKEN_COLORS.grey_200,
 
   headerBorder: TOKEN_COLORS.grey_300,
 
   stepBorder: TOKEN_COLORS.grey_300,
-  stepBg: TOKEN_COLORS.white,
+  stepBackground: TOKEN_COLORS.white,
 
-  popoverBg: TOKEN_COLORS.white,
+  popoverBackground: TOKEN_COLORS.white,
 
   textInputExtraInfo: TOKEN_COLORS.grey_200,
 

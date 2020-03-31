@@ -30,7 +30,7 @@ const PopOverContent = styled.div`
   max-width: 276px;
   font-size: ${FONT_SIZES.small};
   word-wrap: break-word;
-  background-color: ${COLORS.popoverBg};
+  background-color: ${COLORS.popoverBackground};
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: ${UTILITIES.borderRadius};
@@ -53,7 +53,7 @@ const PopOverContent = styled.div`
   }
   &:after {
     margin-top: -1px;
-    border-color: ${COLORS.popoverBg} transparent transparent;
+    border-color: ${COLORS.popoverBackground} transparent transparent;
   }
 `;
 
@@ -84,7 +84,7 @@ const PopOver: FunctionComponent<PopOverProps> = props => {
           border-color: transparent transparent rgba(0, 0, 0, 0.25);
         }
         &:after {
-          border-color: transparent transparent ${COLORS.popoverBg};
+          border-color: transparent transparent ${COLORS.popoverBackground};
           margin: 0 0 -1px 0;
         }
       `}
@@ -107,7 +107,7 @@ const PopOver: FunctionComponent<PopOverProps> = props => {
             border-color: transparent rgba(0, 0, 0, 0.25) transparent transparent;
           }
           &:after {
-            border-color: transparent ${COLORS.popoverBg} transparent transparent;
+            border-color: transparent ${COLORS.popoverBackground} transparent transparent;
             margin: 0 0 0 1px;
           }
         `}
@@ -130,7 +130,7 @@ const PopOver: FunctionComponent<PopOverProps> = props => {
             border-color: transparent transparent transparent rgba(0, 0, 0, 0.25);
           }
           &:after {
-            border-color: transparent transparent transparent ${COLORS.popoverBg};
+            border-color: transparent transparent transparent ${COLORS.popoverBackground};
             margin: 0 0 0 -1px;
           }
         `}

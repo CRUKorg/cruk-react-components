@@ -13,9 +13,9 @@ const StyledFooter = styled.footer`
   width: 100%;
   background-color: ${({
     theme: {
-      colors: { footerBg },
+      colors: { footerBackground },
     },
-  }) => footerBg};
+  }) => footerBackground};
 `;
 
 const FooterContentWrapper = styled.div`

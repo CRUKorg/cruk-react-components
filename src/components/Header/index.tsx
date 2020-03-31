@@ -25,9 +25,9 @@ const StyledHeader = styled.header`
   width: 100%;
   background-color: ${({
     theme: {
-      colors: { headerBg },
+      colors: { headerBackground },
     },
-  }) => headerBg};
+  }) => headerBackground};
   z-index: 9998;
 `;
 
@@ -50,9 +50,9 @@ const HeaderStickyContainer = styled.div`
   padding: 0;
   background-color: ${({
     theme: {
-      colors: { headerBg },
+      colors: { headerBackground },
     },
-  }) => headerBg};
+  }) => headerBackground};
   position: relative;
   border-bottom: ${({
     theme: {

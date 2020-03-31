@@ -50,7 +50,7 @@ import GlobalStyle from '../components/GlobalStyle';
  */
 const SwitchTheme = styled(Button)`
   float: right;
-  background-color: ${COLORS.lightBg};
+  background-color: ${COLORS.lightBackground};
 
   @media (max-width: ${BREAKPOINT.tablet}) {
     font-size: 0.875rem;
@@ -66,7 +66,7 @@ const SideBar = styled(Box)`
   max-width: 265px;
   height: 100vh;
   border: none;
-  background-color: ${COLORS.lightBg};
+  background-color: ${COLORS.lightBackground};
 
   @media (max-width: ${BREAKPOINT.tablet}) {
     bottom: 0;
@@ -95,7 +95,7 @@ const Content = styled.div`
   flex-grow: 1;
 
   max-width: 940px;
-  background-color: ${COLORS.lightBg};
+  background-color: ${COLORS.lightBackground};
   @media (min-width: ${BREAKPOINT.tablet}) {
     flex: 3;
     margin: 0 auto;
@@ -155,7 +155,7 @@ const ToggleIcon = styled.label`
 `;
 
 const StyledToggle = styled.input`
-  background-color: ${COLORS.lightBg};
+  background-color: ${COLORS.lightBackground};
   ${BaseToggleStyle}
   opacity: 0;
   z-index: 10000;
