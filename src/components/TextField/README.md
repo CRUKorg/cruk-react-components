@@ -6,53 +6,99 @@ Text fields let users enter and edit text.
 
 ```.jsx
 <>
-  <TextField
-    label="Label text"
-    onChange={(e) => console.log(e.target.value)}
-    placeholder="This is a placeholder"
-    defaultValue="Initial value"
-  />
-  <TextField
-    label="Has error"
-    hasError
-    label="A label"
-    onChange={(e) => console.log(e.target.value)}
-    placeholder="This is a placeholder"
-    error="This field is required"
-  />
-  <TextField
-    label="Extra top"
-    extraTop={`${location.hostname}/page/`}
-  />
-  <TextField
-    label="Extra left"
-    extraLeft="£"
-    error="This field has an error 🙁"
-  />
-  <TextField
-    label="Extra right"
-    extraRight={<Button appearance="text" icon="search" />}
-  />
-  <TextField
-    label="Extra bottom"
-    extraBottom="Extra stuff here"
-  />
+  <p>
+    Text field
+    <TextField
+      label="First name"
+      type="text"
+    />
+  </p>
+  <p>
+    With a placeholder
+    <TextField
+      label="Your favourite food"
+      type="text"
+      placeholder="Cookies"
+    />
+  </p>
+  <p>
+    With hint text
+    <TextField
+      label="This is the label"
+      type="text"
+      hintText="This is the hint text"
+    />
+  </p>
+  <p>
+    With extra bits
+    <TextField
+      label="Fundraising target"
+      type="text"
+      extraLeft="£"
+    />
+    <TextField
+      label="Search"
+      type="text"
+      extraRight={<Button appearance="text" icon="search" />}
+    />
+    <TextField
+      label="Fundraising page"
+      type="text"
+      extraTop={`https://fundraise.cancerresearchuk.org/page/`}
+    />
+    <TextField
+      label="Email address"
+      type="text"
+      extraBottom="Wash your hands for 20 seconds"
+    />
+  </p>
+  <p>
+    With error message
+    <TextField
+      label="Phone number"
+      type="text"
+      hasError
+      error="You have made more than one daily outing for exercise"
+    />
+  </p>
+  <p>
+    Required
+    <TextField
+      label="Number of cats"
+      type="text"
+      required
+    />
+  </p>
+  <p>
+    Disabled
+    <TextField
+      label="Favourite pasta type"
+      type="text"
+      value="Spaghetti"
+      disabled
+    />
+  </p>
 </>
 ```
 
 ## Props
 
-| Name        | Type     | Options | Default | Description                               |
-| :---------- | :------- | :-----: | :------ | :---------------------------------------- |
-| disabled    | boolean  |         | false   | Applies disabled attribute to HTML input  |
-| extraTop    | String   |         |         | Displayed on top of the input             |
-| extraRight  | String   |         |         | Displayed inline after the input          |
-| extraBottom | String   |         |         | Displayed under the input                 |
-| extraLeft   | String   |         |         | Displayed inline before the input         |
-| hasError    | boolean  |         |         | Applies error styling to input            |
-| label       | String   |         |         | Will wrap input with label and apply text |
-| onChange    | Function |         |         | Callback function called on input change  |
-| value       | String   |         |         | Default value for input                   |
+| Name        | Type     | Required | Default | Description                                      |
+| :---------- | :------- | :------- | :------ | :----------------------------------------------- |
+| label       | string   | Yes      |         | Will wrap input with label and apply text        |
+| type        | string   | Yes      |         | HTML input type: text, number, email or password |
+| onChange    | function | Yes      |         | Event handler for input change                   |
+| value       | string   | Yes      |         | Controlled value of input                        |
+| disabled    | boolean  |          | false   | If true, add disabled attribute to HTML input    |
+| required    | boolean  |          | false   | If false, add (optional) to the label text       |
+| hasError    | boolean  |          | false   | If true, use error styling for the input         |
+| error       | string   |          |         | Error message text                               |
+| placeholder | string   |          |         | Placeholder text in the input                    |
+| hintText    | string   |          |         | Extra help text between the label and input      |
+| extraTop    | string   |          |         | Displayed on top of the input                    |
+| extraRight  | string   |          |         | Displayed inline after the input                 |
+| extraBottom | string   |          |         | Displayed under the input                        |
+| extraLeft   | string   |          |         | Displayed inline before the input                |
 
 ## Accessibility
 

@@ -17,6 +17,7 @@ export type TextProps = {
   theme?: ThemeType;
   gutterBottom?: boolean;
   gutterTop?: boolean;
+  role?: string;
 };
 
 export const TextStyled = styled.p<TextProps>`

@@ -1,21 +1,12 @@
 import React, { FunctionComponent } from 'react';
-import styled, { withTheme } from 'styled-components';
+import { withTheme } from 'styled-components';
+import Text from '../Text';
 import defaultTheme from '../../themes/cruk';
-
 import { ThemeType } from '../../themes/types';
 
 type ErrorTextProps = {
-  theme?: ThemeType;
+  theme: ThemeType;
 };
-
-const StyledErrorText = styled.div<ErrorTextProps>`
-  color: ${({
-    theme: {
-      colors: { textError },
-    },
-  }) => textError};
-  font-weight: normal;
-`;
 
 const ErrorText: FunctionComponent<ErrorTextProps> = props => {
   const theme = {
@@ -23,9 +14,9 @@ const ErrorText: FunctionComponent<ErrorTextProps> = props => {
     ...props.theme,
   };
   return (
-    <StyledErrorText theme={theme} role="alert">
+    <Text as="span" textColor="textError" theme={theme} role="alert">
       {props.children}
-    </StyledErrorText>
+    </Text>
   );
 };
 

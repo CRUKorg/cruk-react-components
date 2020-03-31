@@ -7,13 +7,17 @@ import { WithLabel } from '../Label';
 
 import { ThemeType } from '../../themes/types';
 
-const Extra = styled.div`
-  background-color: ${props => props.theme.colors.textInputExtraInfo};
-  border-radius: ${props => props.theme.utilities.borderRadius};
-  border: solid 2px ${props => props.theme.colors.textInputExtraInfo};
-  color: ${props => props.theme.colors.textDark};
-  font-size: ${props => props.theme.typography.medium};
-  font-weight: ${props => props.theme.typography.fontWeightLight};
+type ExtraProps = {
+  theme: ThemeType;
+};
+
+const Extra = styled.span<ExtraProps>`
+  display: block;
+  background-color: ${({ theme }) => theme.colors.textInputExtraInfo};
+  border-radius: ${({ theme }) => theme.utilities.borderRadius};
+  color: ${({ theme }) => theme.colors.textDark};
+  font-size: ${({ theme }) => theme.typography.medium};
+  font-weight: ${({ theme }) => theme.typography.fontWeightLight};
   padding: 7px 6px 5px;
   line-height: 1rem;
   width: 100%;
@@ -39,13 +43,14 @@ const ExtraRight = styled(Extra)`
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   width: initial;
-  border: solid 2px ${props => props.theme.colors.textInputBorder};
+  border: solid 2px ${({ theme }) => theme.colors.textInputBorder};
+  transition: border-color 150ms linear;
   border-left: 0;
   background-color: transparent;
   padding: 0;
 `;
 
-const ExtraWrapper = styled.div`
+const ExtraWrapper = styled.span`
   display: flex;
 `;
 
@@ -121,24 +126,25 @@ const Wrapper: FunctionComponent<WrapperProps> = props =>
   !props.extraTop && !props.extraBottom && !props.extraRight && !props.extraLeft ? (
     <Fragment>{props.children}</Fragment>
   ) : (
-    <div>{props.children}</div>
+    <span>{props.children}</span>
   );
 
 type TextFieldProps = {
-  error: string;
-  extraBottom: string;
-  extraLeft: string;
-  extraRight: string;
-  extraTop: string;
-  hasError: boolean;
+  disabled?: boolean;
+  error?: string;
+  extraBottom?: string;
+  extraLeft?: string;
+  extraRight?: string;
+  extraTop?: string;
+  hasError?: boolean;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
-  placeholder: string;
-  theme?: ThemeType;
+  placeholder?: string;
+  theme: ThemeType;
   type: 'text' | 'number' | 'email' | 'password';
   value: string;
   label: string;
-  hintText: string;
-  required: boolean;
+  hintText?: string;
+  required?: boolean;
 };
 
 const TextField: FunctionComponent<TextFieldProps> = props => {
@@ -148,27 +154,42 @@ const TextField: FunctionComponent<TextFieldProps> = props => {
   };
 
   const renderContent = (
-    <React.Fragment>
+    <>
       {!!props.extraLeft && <ExtraLeft theme={theme}>{props.extraLeft}</ExtraLeft>}
-      <StyledInput {...props} theme={theme} aria-invalid={props.hasError || !!props.error} />
+      <StyledInput
+        disabled={props.disabled}
+        error={props.error}
+        extraBottom={props.extraBottom}
+        extraLeft={props.extraLeft}
+        extraRight={props.extraRight}
+        extraTop={props.extraTop}
+        hasError={props.hasError}
+        onChange={props.onChange}
+        placeholder={props.placeholder}
+        theme={theme}
+        type={props.type}
+        value={props.value}
+        aria-invalid={props.hasError || !!props.error}
+      />
       {!!props.extraRight && <ExtraRight theme={theme}>{props.extraRight}</ExtraRight>}
-    </React.Fragment>
+    </>
   );
 
   return (
-    <WithLabel {...props}>
-      <Wrapper {...props}>
+    <WithLabel label={props.label} hintText={props.hintText} required={props.required}>
+      <Wrapper
+        extraBottom={props.extraBottom}
+        extraLeft={props.extraLeft}
+        extraRight={props.extraRight}
+        extraTop={props.extraTop}
+      >
         {!!props.extraTop && <ExtraTop theme={theme}>{props.extraTop}</ExtraTop>}
         {!!props.extraRight || !!props.extraLeft ? <ExtraWrapper>{renderContent}</ExtraWrapper> : renderContent}
         {!!props.extraBottom && <ExtraBottom theme={theme}>{props.extraBottom}</ExtraBottom>}
-        {!!props.error && <ErrorText>{props.error}</ErrorText>}
+        {!!props.error && <ErrorText theme={theme}>{props.error}</ErrorText>}
       </Wrapper>
     </WithLabel>
   );
-};
-
-TextField.defaultProps = {
-  type: 'text',
 };
 
 export default withTheme(TextField);
