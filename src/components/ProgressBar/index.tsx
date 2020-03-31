@@ -58,9 +58,9 @@ const ProgressSharedStyling = css`
   margin-bottom: 0;
   background-color: ${({
     theme: {
-      colors: { progressBarBg },
+      colors: { progressBarBackground },
     },
-  }) => progressBarBg};
+  }) => progressBarBackground};
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 `;
 
@@ -171,9 +171,9 @@ const CircularWrapper = styled.div<CircularWrapperProps>`
     border-radius: 50%;
     border: ${({
       theme: {
-        colors: { circularProgressBg },
+        colors: { circularProgressBackground },
       },
-    }) => `4px solid ${circularProgressBg}`};
+    }) => `4px solid ${circularProgressBackground}`};
     position: absolute;
     top: 0;
     left: 0;

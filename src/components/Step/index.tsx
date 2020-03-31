@@ -45,7 +45,7 @@ const StepBar = styled.span`
   background-clip: padding-box;
   width: 20px;
   height: 20px;
-  background-color: ${props => props.theme.colors.stepBg};
+  background-color: ${props => props.theme.colors.stepBackground};
   display: block;
   margin: 0 auto 0.5em auto;
   border: 3px solid ${props => props.theme.colors.stepBorder};

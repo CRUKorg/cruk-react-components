@@ -8,20 +8,20 @@ indicate the importance of the badge to the user.
 ```.jsx
 <React.Fragment>
   <Badge><Icon name="poundSign"/></Badge>
-  <Badge bgColor="secondary"><Icon name="search"/></Badge>
-  <Badge bgColor="tertiary"><Icon name="eventName"/></Badge>
-  <Badge bgColor="#8bc34a">2</Badge>
-  <Badge bgColor="tertiary"><Icon name="comment" size="23px" /></Badge>
+  <Badge backgroundColor="secondary"><Icon name="search"/></Badge>
+  <Badge backgroundColor="tertiary"><Icon name="eventName"/></Badge>
+  <Badge backgroundColor="#8bc34a">2</Badge>
+  <Badge backgroundColor="tertiary"><Icon name="comment" size="23px" /></Badge>
   <Badge>This is text</Badge>
 </React.Fragment>
 ```
 
 ## Props
 
-| Name | Type | Options | Default | Description |
-| :- | :- | :-: | :- | :- |
-| bgColor | String | | "primary" | Define the background colour of the Badge |
-| text | Boolean |  | true | Return true when type of children is string |
+| Name            | Type    | Options | Default   | Description                                 |
+| :-------------- | :------ | :-----: | :-------- | :------------------------------------------ |
+| backgroundColor | String  |         | "primary" | Define the background colour of the Badge   |
+| text            | Boolean |         | true      | Return true when type of children is string |
 
 ## Usage
 

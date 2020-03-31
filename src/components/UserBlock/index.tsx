@@ -35,7 +35,7 @@ type UserBlockProps = {
   avatarUrl?: string | null;
   avatarName?: string | null;
   extra: string | Node;
-  size: 'small' | 'medium' | 'large' | 'xlarge';
+  size: 'small' | 'medium' | 'large' | 'extraLarge';
 };
 
 const UserBlock: FunctionComponent<UserBlockProps> = props => {

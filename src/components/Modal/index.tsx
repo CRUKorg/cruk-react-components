@@ -30,7 +30,7 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled(Box)`
-  background: ${COLORS.lightBg};
+  background: ${COLORS.lightBackground};
   border-radius: 4px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
   margin: 100px auto 20px;
@@ -98,7 +98,7 @@ class Modal extends Component<ModalProps> {
     return ReactDOM.createPortal(
       <FocusLock returnFocus>
         <Wrapper>
-          <Content aria-modal="true" bgColor="" getBgColor="" css="">
+          <Content aria-modal="true" backgroundColor="" getBackgroundColor="" css="">
             {closeButton && (
               <CloseButton
                 appearance="text"

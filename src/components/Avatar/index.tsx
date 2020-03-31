@@ -6,7 +6,7 @@ import { ThemeType } from '../../themes/types';
 type AvatarProps = {
   name: string;
   url: string;
-  size?: 'small' | 'medium' | 'large' | 'xlarge';
+  size?: 'small' | 'medium' | 'large' | 'extraLarge';
   theme?: ThemeType;
 };
 
