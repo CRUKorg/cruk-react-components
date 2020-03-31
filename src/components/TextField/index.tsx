@@ -145,6 +145,7 @@ type TextFieldProps = {
   label: string;
   hintText?: string;
   required?: boolean;
+  name?: string;
 };
 
 const TextField: FunctionComponent<TextFieldProps> = props => {
@@ -169,6 +170,7 @@ const TextField: FunctionComponent<TextFieldProps> = props => {
         theme={theme}
         type={props.type}
         value={props.value}
+        name={props.name}
         aria-invalid={props.hasError || !!props.error}
       />
       {!!props.extraRight && <ExtraRight theme={theme}>{props.extraRight}</ExtraRight>}
