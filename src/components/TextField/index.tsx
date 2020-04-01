@@ -1,4 +1,4 @@
-import React, { Fragment, FunctionComponent } from 'react';
+import React, { FunctionComponent, InputHTMLAttributes } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -61,56 +61,57 @@ type StyledInputProps = {
   extraBottom?: string;
   extraLeft?: string;
   extraRight?: string;
+  theme: ThemeType;
 };
 
 const StyledInput = styled.input<StyledInputProps>`
-  background-color: ${props => props.theme.colors.lightBackground};
+  background-color: ${({ theme }) => theme.colors.lightBackground};
   background-image: none;
-  border-radius: ${props => props.theme.utilities.borderRadius};
-  border: solid 2px ${props =>
-    props.hasError || props.error ? props.theme.colors.textError : props.theme.colors.textInputBorder};
-  color: ${props => props.theme.colors.textDark};
+  border-radius: ${({ theme }) => theme.utilities.borderRadius};
+  border: solid 2px ${({ error, hasError, theme }) =>
+    hasError || error ? theme.colors.textError : theme.colors.textInputBorder};
+  color: ${({ theme }) => theme.colors.textDark};
   display: block;
-  font-size: ${props => props.theme.fontSizes.medium};
+  font-size: ${({ theme }) => theme.fontSizes.medium};
   padding: 6px 8px;
   width: 100%;
   transition: border-color 150ms linear;
   &:focus {
-    border-color: ${props => props.theme.colors.tertiary};
+    border-color: ${({ theme }) => theme.colors.tertiary};
     outline: 0;
     ~ ${ExtraRight} {
-      border-color: ${props => props.theme.colors.tertiary};
+      border-color: ${({ theme }) => theme.colors.tertiary};
     }
   }
-  ${props =>
-    !!props.extraTop &&
+  ${({ extraTop }) =>
+    !!extraTop &&
     css`
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     `}
-  ${props =>
-    !!props.extraBottom &&
+  ${({ extraBottom }) =>
+    !!extraBottom &&
     css`
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     `}
-  ${props =>
-    !!props.extraLeft &&
+  ${({ extraLeft }) =>
+    !!extraLeft &&
     css`
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     `}
-  ${props =>
-    !!props.extraRight &&
+  ${({ extraRight }) =>
+    !!extraRight &&
     css`
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     `}
-  ${props =>
-    (props.hasError || props.error) &&
+  ${({ error, hasError, theme }: StyledInputProps) =>
+    (error || hasError) &&
     css`
       ~ ${ExtraRight} {
-        border-color: ${props.theme.colors.textError};
+        border-color: ${theme.colors.textError};
       }
     `}
 `;
@@ -122,15 +123,10 @@ type WrapperProps = {
   extraRight?: string;
 };
 
-const Wrapper: FunctionComponent<WrapperProps> = props =>
-  !props.extraTop && !props.extraBottom && !props.extraRight && !props.extraLeft ? (
-    <Fragment>{props.children}</Fragment>
-  ) : (
-    <span>{props.children}</span>
-  );
+const Wrapper: FunctionComponent<WrapperProps> = ({ extraTop, extraBottom, extraRight, extraLeft, children }) =>
+  extraTop || extraBottom || extraRight || extraLeft ? <span>{children}</span> : <>{children}</>;
 
-type TextFieldProps = {
-  disabled?: boolean;
+type TextFieldProps = InputHTMLAttributes<{}> & {
   error?: string;
   extraBottom?: string;
   extraLeft?: string;
@@ -138,55 +134,60 @@ type TextFieldProps = {
   extraTop?: string;
   hasError?: boolean;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
-  placeholder?: string;
+  required?: boolean;
   theme: ThemeType;
-  type: 'text' | 'number' | 'email' | 'password';
   value: string;
   label: string;
   hintText?: string;
-  required?: boolean;
 };
 
-const TextField: FunctionComponent<TextFieldProps> = props => {
+const TextField: FunctionComponent<TextFieldProps> = ({
+  error,
+  extraBottom,
+  extraLeft,
+  extraRight,
+  extraTop,
+  hasError,
+  onChange,
+  required,
+  theme: propsTheme,
+  value,
+  label,
+  hintText,
+  ...props
+}) => {
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...propsTheme,
   };
 
   const renderContent = (
     <>
-      {!!props.extraLeft && <ExtraLeft theme={theme}>{props.extraLeft}</ExtraLeft>}
+      {!!extraLeft && <ExtraLeft theme={theme}>{extraLeft}</ExtraLeft>}
       <StyledInput
-        disabled={props.disabled}
-        error={props.error}
-        extraBottom={props.extraBottom}
-        extraLeft={props.extraLeft}
-        extraRight={props.extraRight}
-        extraTop={props.extraTop}
-        hasError={props.hasError}
-        onChange={props.onChange}
-        placeholder={props.placeholder}
+        error={error}
+        extraBottom={extraBottom}
+        extraLeft={extraLeft}
+        extraRight={extraRight}
+        extraTop={extraTop}
+        hasError={hasError}
+        onChange={onChange}
         theme={theme}
-        type={props.type}
-        value={props.value}
-        aria-invalid={props.hasError || !!props.error}
+        value={value}
+        aria-invalid={hasError || !!error}
+        {...props}
       />
-      {!!props.extraRight && <ExtraRight theme={theme}>{props.extraRight}</ExtraRight>}
+      {!!extraRight && <ExtraRight theme={theme}>{extraRight}</ExtraRight>}
     </>
   );
 
   return (
-    <WithLabel label={props.label} hintText={props.hintText} required={props.required}>
-      <Wrapper
-        extraBottom={props.extraBottom}
-        extraLeft={props.extraLeft}
-        extraRight={props.extraRight}
-        extraTop={props.extraTop}
-      >
-        {!!props.extraTop && <ExtraTop theme={theme}>{props.extraTop}</ExtraTop>}
-        {!!props.extraRight || !!props.extraLeft ? <ExtraWrapper>{renderContent}</ExtraWrapper> : renderContent}
-        {!!props.extraBottom && <ExtraBottom theme={theme}>{props.extraBottom}</ExtraBottom>}
-        {!!props.error && <ErrorText theme={theme}>{props.error}</ErrorText>}
+    <WithLabel label={label} hintText={hintText} required={required}>
+      <Wrapper extraBottom={extraBottom} extraLeft={extraLeft} extraRight={extraRight} extraTop={extraTop}>
+        {!!extraTop && <ExtraTop theme={theme}>{extraTop}</ExtraTop>}
+        {!!extraRight || !!extraLeft ? <ExtraWrapper>{renderContent}</ExtraWrapper> : renderContent}
+        {!!extraBottom && <ExtraBottom theme={theme}>{extraBottom}</ExtraBottom>}
+        {!!error && <ErrorText theme={theme}>{error}</ErrorText>}
       </Wrapper>
     </WithLabel>
   );
