@@ -21,7 +21,7 @@
     "jest": "jest --watch",
     "test": "npm run jest-ci && npm run cypress-ci",
     "clean": "rm -rf node_modules/",
-    "deploy": "npm run build-lib && npm run build-docs && npm publish"
+    "release": "node release.js"
   },
   "husky": {
     "hooks": {
