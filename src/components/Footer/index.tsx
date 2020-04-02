@@ -39,7 +39,7 @@ const FooterContentWrapper = styled.div`
 `;
 
 const FooterSection = styled.div`
-  display: block;
+  display: inline-block;
   padding: ${({
     theme: {
       spacing: { extraSmall },
