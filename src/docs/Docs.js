@@ -53,11 +53,9 @@ const SwitchTheme = styled(Button)`
   background-color: ${COLORS.lightBackground};
 
   @media (max-width: ${BREAKPOINT.tablet}) {
-    font-size: 0.875rem;
+    padding: 0.025em 1em;
     font-weight: 500;
-    padding: 5px 10px;
     width: auto;
-    margin: 0 40px 0 0;
   }
 `;
 
@@ -243,7 +241,7 @@ class Docs extends React.Component {
     return (
       <ThemeProvider theme={this.state.theme === 'su2c' ? su2cTheme : {}}>
         <GlobalStyle />
-        <Header isSticky>
+        <Header isSticky fullWidth>
           <SwitchTheme
             onClick={() =>
               this.setState({

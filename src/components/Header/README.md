@@ -26,12 +26,13 @@ This has been kept quite open you can place any child elements in here but ideal
 
 ## Props
 
-| Name         | Type      | Options | Default               | Description                                                      |
-| :----------- | :-------- | :-----: | :-------------------- | :--------------------------------------------------------------- |
-| isSticky     | boolean   |         | false                 | should header stick to the top of the page when the user scrolls |
-| siteSlogan   | string    |         | null                  | slogan that appears in the middle of the header                  |
-| logoImageSrc | string    |         | SITECONFIG.logoSrc    | src of logo image                                                |
-| logoLinkUrl  | string    |         | SITECONFIG.logoUrl    | Logo link URL                                                    |
-| logoAltText  | string    |         | SITECONFIG.logoAlt    | Logo link alternative text for accessibility                     |
-| headerText   | string    |         | SITECONFIG.siteSlogan | Text that appears in the center of the header                    |
-| children     | ReactNode |         | null                  | Used to place components on the right side                       |
+| Name         | Type      | Options | Default               | Description                                                                                                                                       |
+| :----------- | :-------- | :-----: | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
+| isSticky     | boolean   |         | false                 | should header stick to the top of the page when the user scrolls                                                                                  |
+| siteSlogan   | string    |         | null                  | slogan that appears in the middle of the header                                                                                                   |
+| logoImageSrc | string    |         | SITECONFIG.logoSrc    | src of logo image                                                                                                                                 |
+| logoLinkUrl  | string    |         | SITECONFIG.logoUrl    | Logo link URL                                                                                                                                     |
+| logoAltText  | string    |         | SITECONFIG.logoAlt    | Logo link alternative text for accessibility                                                                                                      |
+| headerText   | string    |         | SITECONFIG.siteSlogan | Text that appears in the center of the header                                                                                                     |
+| fullWidth    | boolean   |         | false                 | When true header content stretches to the width of its container when false header content honours maxContentWidth value in theme and is centered |
+| children     | ReactNode |         | null                  | Used to place components on the right side                                                                                                        |
