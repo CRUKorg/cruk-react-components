@@ -120,3 +120,5 @@ export {
   TotaliserReadme,
   UserBlockReadme,
 };
+
+export * from "../themes/types";
