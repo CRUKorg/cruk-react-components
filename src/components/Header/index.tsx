@@ -17,6 +17,7 @@ const HEADER_LOGO_HEIGHT_SMALL = '40px';
 type HeaderStickyContainerProps = {
   isSmall?: boolean;
   isSticky?: boolean;
+  fullWidth?: boolean;
 };
 
 const StyledHeader = styled.header`
@@ -45,7 +46,7 @@ const HeaderStickyPlaceHolder = styled.div`
   }
 `;
 
-const HeaderStickyContainer = styled.div`
+const HeaderStickyContainer = styled.div<HeaderStickyContainerProps>`
   width: 100%;
   padding: 0;
   background-color: ${({
@@ -62,31 +63,31 @@ const HeaderStickyContainer = styled.div`
   padding: 0 ${HEADER_PADDING};
   height: ${HEADER_HEIGHT_SMALL};
 
-  top: ${({ isSticky }: HeaderStickyContainerProps) => (isSticky ? 0 : 'auto')};
-  position: ${({ isSticky }: HeaderStickyContainerProps) => (isSticky ? 'fixed' : 'relative')};
+  top: ${({ isSticky }) => (isSticky ? 0 : 'auto')};
+  position: ${({ isSticky }) => (isSticky ? 'fixed' : 'relative')};
 
   @media (min-width: ${({
       theme: {
         breakpoint: { desktop },
       },
     }) => desktop}) {
-    position: ${({ isSticky, isSmall }: HeaderStickyContainerProps) => (isSticky && isSmall ? 'fixed' : 'relative')};
-    height: ${({ isSmall, isSticky }: HeaderStickyContainerProps) =>
-      isSmall && isSticky ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE};
+    position: ${({ isSticky, isSmall }) => (isSticky && isSmall ? 'fixed' : 'relative')};
+    height: ${({ isSmall, isSticky }) => (isSmall && isSticky ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE)};
   }
 `;
 
-const HeaderMainContent = styled.div`
+const HeaderMainContent = styled.div<HeaderStickyContainerProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   height: 100%;
   max-width: ${({
+    fullWidth,
     theme: {
       utilities: { contentMaxWidth },
     },
-  }) => contentMaxWidth};
+  }) => (fullWidth ? `100%` : contentMaxWidth)};
   margin: 0 auto;
 `;
 
@@ -178,6 +179,7 @@ const Tagline = styled.p`
 
 type HeaderProps = {
   isSticky?: boolean;
+  fullWidth?: boolean;
   siteSlogan?: string;
   theme?: ThemeType;
 };
@@ -200,7 +202,7 @@ export const Header: FunctionComponent<HeaderProps> = props => {
     100,
   );
 
-  const { isSticky, siteSlogan, children } = props;
+  const { isSticky, siteSlogan, fullWidth, children } = props;
   const theme = {
     ...defaultTheme,
     ...props.theme,
@@ -215,7 +217,7 @@ export const Header: FunctionComponent<HeaderProps> = props => {
             <SkipToMain className="skip-main" href="#main">
               Skip to main content
             </SkipToMain>
-            <HeaderMainContent>
+            <HeaderMainContent fullWidth={fullWidth}>
               <StyledLink href={logoUrl} title="Home">
                 <LogoWrapper isSmall={isSmall} isSticky={isSticky}>
                   <Logo src={logoSrc} alt={logoAlt} />
