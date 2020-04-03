@@ -1,12 +1,14 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
+
 import Icon, { IconNameType } from '../Icon';
+import Spacing, { SpacingProps } from '../Spacing';
 import { ThemeType } from '../../themes/types';
 
 const BUTTON_HEIGHT = '2.5rem';
 
-type ButtonProps = {
+type ButtonProps = SpacingProps & {
   appearance?: string;
   children?: any;
   iconAlign?: string;
@@ -172,6 +174,7 @@ const StyledButton = styled.button`
       width: 100%;
     `}
   ${(props: ButtonProps) => (css as any)([props.css])}
+  ${props => Spacing(props)}
 `;
 
 const Button: FunctionComponent<ButtonProps> = props => {
