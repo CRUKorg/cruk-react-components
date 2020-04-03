@@ -55,7 +55,19 @@ export type TokenColorsType = { [key: string]: string };
 // TODO make this much more explicit once we know what they should be
 export type ColorsType = { [key: string]: string };
 
+export type SpaceType =
+  | 'auto'
+  | 'extraExtraSmall'
+  | 'extraSmall'
+  | 'small'
+  | 'medium'
+  | 'large'
+  | 'extraLarge'
+  | 'extraExtraLarge'
+  | 'none';
+
 export type SpacingType = {
+  auto: string;
   extraExtraSmall: string;
   extraSmall: string;
   small: string;
@@ -63,6 +75,7 @@ export type SpacingType = {
   large: string;
   extraLarge: string;
   extraExtraLarge: string;
+  none: string;
 };
 
 export type customFontType = {
