@@ -18,10 +18,17 @@ indicate the importance of the badge to the user.
 
 ## Props
 
-| Name            | Type    | Options | Default   | Description                                 |
-| :-------------- | :------ | :-----: | :-------- | :------------------------------------------ |
-| backgroundColor | String  |         | "primary" | Define the background colour of the Badge   |
-| text            | Boolean |         | true      | Return true when type of children is string |
+| Name             | Type      | Options | Default   | Description                                 |
+| :--------------- | :-------- | :-----: | :-------- | :------------------------------------------ |
+| backgroundColor  | String    |         | "primary" | Define the background colour of the Badge   |
+| text             | Boolean   |         | true      | Return true when type of children is string |
+| margin           | SpaceType |         | unset     | margin, top, bottom, left and right         |
+| marginVertical   | SpaceType |         | unset     | margin top and bottom                       |
+| marginHorizontal | SpaceType |         | unset     | margin left and right                       |
+| marginTop        | SpaceType |         | unset     | margin top                                  |
+| marginRight      | SpaceType |         | unset     | margin right right                          |
+| marginBottom     | SpaceType |         | unset     | margin bottom bottom                        |
+| marginLeft       | SpaceType |         | unset     | margin left left                            |
 
 ## Usage
 
