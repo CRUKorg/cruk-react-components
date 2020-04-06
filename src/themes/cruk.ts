@@ -141,7 +141,7 @@ export const SPACING: SpacingType = {
   medium: '2rem',
   large: '2.5rem',
   extraLarge: '3rem',
-  extraExtraLarge: '3.5res',
+  extraExtraLarge: '3.5rem',
 };
 
 export const FONT_SIZES: FontSizesType = {
