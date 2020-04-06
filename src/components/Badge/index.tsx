@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
-import Spacing, { SpacingProps } from '../Spacing';
+import spacing, { SpacingProps } from '../Spacing';
 import defaultTheme from '../../themes/cruk';
 import { ThemeType, ColorsType } from '../../themes/types';
 
@@ -37,7 +37,7 @@ const StyledBadge = styled.span`
         height: ${props.size}px;
       }
 
-      ${props => Spacing(props)}
+      ${props => spacing(props)}
     `}
 `;
 

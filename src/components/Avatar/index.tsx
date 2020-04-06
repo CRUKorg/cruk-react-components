@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import styled, { withTheme } from 'styled-components';
 
-import Spacing, { SpacingProps } from '../Spacing';
+import spacing, { SpacingProps } from '../Spacing';
 import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
@@ -21,7 +21,7 @@ const StyledAvatar = styled.img<AvatarStyledProps>`
   height: ${props => props.size};
   object-fit: cover;
   width: ${props => props.size};
-  ${props => Spacing(props)}
+  ${props => spacing(props)}
 `;
 
 const Avatar: FunctionComponent<AvatarProps> = props => {
