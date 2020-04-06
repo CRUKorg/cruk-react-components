@@ -18,7 +18,8 @@ Use a collapse component to show and hide content. It has a default view; howeve
 
 ## Props
 
-| Name        | Type   | Options | Default | Description                                                                                                                                                                                                   |
-| :---------- | :----- | :-----: | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| headerTitle | String |         |         | To use the dafault view, enter the collapse heading title. Or you could also pass a custom component. For the purpose of aria-label, you will need to pass headerTitle as a prop within the custom component. |
-| id          | String |         |         | This is mandatory and this id will be used to reference aria attributes between the collapse header and the content.                                                                                          |
+| Name                 | Type      | Options | Default | Description                                                                                                          |
+| :------------------- | :-------- | :-----: | :------ | :------------------------------------------------------------------------------------------------------------------- |
+| headerTitleText      | String    |         |         | Header text. If you pass a custom component this text is still need as it will be used for the aria-label            |
+| headerTitleComponent | ReactNode |         |         | Custom header component                                                                                              |
+| id                   | String    |         |         | This is mandatory and this id will be used to reference aria attributes between the collapse header and the content. |
