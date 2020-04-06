@@ -177,7 +177,11 @@ const Button: FunctionComponent<ButtonProps> = props => {
       theme={theme}
     >
       {props.children && childArray.length
-        ? childArray.map((child: ReactNode, index: number) => <VerticalAlign key={index}>{child}</VerticalAlign>)
+        ? childArray.map((child: ReactNode, index: number) => (
+            <VerticalAlign theme={theme} key={index}>
+              {child}
+            </VerticalAlign>
+          ))
         : null}
     </StyledButton>
   );

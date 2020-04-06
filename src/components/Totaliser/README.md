@@ -56,7 +56,9 @@ function () {
   const summary = (target, percentage) => (
     <>
       {!isEditing &&
-        <Button appearance="text" icon="edit" onClick={toggleIsEditing}/>
+        <Button appearance="text" ariaLabel="edit" onClick={toggleIsEditing}>
+          <Icon name="edit"/>
+        </Button>
       }
       Awesome you have raised {percentage}% of your £
       {isEditing

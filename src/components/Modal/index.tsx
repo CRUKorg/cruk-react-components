@@ -5,6 +5,7 @@ import FocusLock from 'react-focus-lock';
 
 import Box from '../Box';
 import Button from '../Button';
+import Icon from '../Icon';
 import { COLORS } from '../../themes/cruk';
 
 const Background = styled.div`
@@ -101,12 +102,14 @@ class Modal extends Component<ModalProps> {
           <Content aria-modal="true" backgroundColor="" getBackgroundColor="" css="">
             {closeButton && (
               <CloseButton
+                ariaLabel="close"
                 appearance="text"
-                icon="close"
                 onClick={() => {
                   closeButton();
                 }}
-              />
+              >
+                <Icon name="close" />
+              </CloseButton>
             )}
             {children}
           </Content>
