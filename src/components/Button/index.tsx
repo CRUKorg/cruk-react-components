@@ -1,11 +1,11 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, ReactNode, ButtonHTMLAttributes } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
 const BUTTON_HEIGHT = '2.5rem';
 
-type ButtonProps = {
+type ButtonProps = ButtonHTMLAttributes<{}> & {
   appearance?: string;
   full?: boolean;
   theme?: ThemeType;
@@ -14,6 +14,7 @@ type ButtonProps = {
   name?: string;
   size?: string;
   disabled?: boolean;
+  css?: any;
   as?: any;
 };
 
@@ -149,6 +150,7 @@ const StyledButton = styled.button`
     css`
       width: 100%;
     `}
+    ${(props: ButtonProps) => (css as any)([props.css])}
 `;
 
 const Button: FunctionComponent<ButtonProps> = props => {
