@@ -22,15 +22,8 @@ You can use an avatar to display ownership of an item of content. If you pass a 
 
 ## Props
 
-| Name             | Type      |                Options                | Default   | Description                           |
-| :--------------- | :-------- | :-----------------------------------: | :-------- | :------------------------------------ |
-| name             | String    |                                       | Anonymous | Title to be displayed as primary text |
-| size             | String    | "small" "medium" "large" "extraLarge" | "medium"  | Define the size of the avatar         |
-| url              | String    |                                       |           | URL of image for avatar               |
-| margin           | SpaceType |                                       | unset     | margin, top, bottom, left and right   |
-| marginVertical   | SpaceType |                                       | unset     | margin top and bottom                 |
-| marginHorizontal | SpaceType |                                       | unset     | margin left and right                 |
-| marginTop        | SpaceType |                                       | unset     | margin top                            |
-| marginRight      | SpaceType |                                       | unset     | margin right right                    |
-| marginBottom     | SpaceType |                                       | unset     | margin bottom bottom                  |
-| marginLeft       | SpaceType |                                       | unset     | margin left left                      |
+| Name | Type   |                Options                | Default   | Description                           |
+| :--- | :----- | :-----------------------------------: | :-------- | :------------------------------------ |
+| name | String |                                       | Anonymous | Title to be displayed as primary text |
+| size | String | "small" "medium" "large" "extraLarge" | "medium"  | Define the size of the avatar         |
+| url  | String |                                       |           | URL of image for avatar               |
