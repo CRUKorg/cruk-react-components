@@ -44,7 +44,11 @@ Text fields let users enter and edit text.
       label="Search"
       type="text"
       name="search"
-      extraRight={<Button appearance="text"><Icon name="search"></Button>}
+      extraRight={
+        <Button appearance="text" ariaLabel="search">
+          <Icon name="search"/>
+        </Button>
+      }
     />
     <TextField
       label="Fundraising page"
