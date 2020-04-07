@@ -135,13 +135,13 @@ export const COLORS: ColorsType = {
 export const SPACING: SpacingType = {
   none: '0',
   auto: 'auto',
-  extraExtraSmall: '0.5rem',
-  extraSmall: '1rem',
-  small: '1.5rem',
-  medium: '2rem',
-  large: '2.5rem',
-  extraLarge: '3rem',
-  extraExtraLarge: '3.5rem',
+  extraExtraSmall: '0.5rem', // 8px
+  extraSmall: '1rem', // 16px
+  small: '1.5rem', // 24px
+  medium: '2rem', // 32px
+  large: '2.5rem', // 40px
+  extraLarge: '3rem', // 48px
+  extraExtraLarge: '3.5rem', // 56px
 };
 
 export const FONT_SIZES: FontSizesType = {
