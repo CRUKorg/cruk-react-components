@@ -1,10 +1,10 @@
 # Spacing
 
-The spacing API is available on all components. You can use it to customise the margin and padding on every component using the set sizes from the theme.
+The spacing API is available on almost all components. You can use it to customise the margin and padding of component using the set sizes from the theme.
 
-Components may have default padding and margin but using the spacing API props like 'marginTop' will override the default values within a component.
+Components may have default padding and margin but using the spacing API props like `marginTop` will override the default values within a component.
 
-The more specific the the target the higher priority the css will have. For example 'margin' will be overridden by the 'marginVertical' or 'marginHorizontal' props. 'marginTop', 'marginBottom', 'marginLeft', 'marginRight' will override the the 'marginVertical' and 'marginHorizontal' props.
+The more specific the the target the higher priority the css will have. For example `margin` will be overridden by the `marginVertical` or `marginHorizontal` props. `marginTop`, `marginBottom`, `marginLeft`, `marginRight` will override the the `marginVertical` and `marginHorizontal` props.
 
 ### Try them out
 
