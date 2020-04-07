@@ -3,7 +3,7 @@ import styled, { css, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 
 import Icon, { IconNameType } from '../Icon';
-import Spacing, { SpacingProps } from '../Spacing';
+import spacing, { SpacingProps } from '../Spacing';
 import { ThemeType } from '../../themes/types';
 
 const BUTTON_HEIGHT = '2.5rem';
@@ -60,6 +60,7 @@ const StyledButton = styled.button`
   text-align: center;
   text-decoration: ${props => props.theme.button.textDecoration};
   text-transform: ${props => props.theme.button.textTransform};
+  
   :focus,
   :hover {
     color: ${props => props.theme.colors.linkColorHover}
@@ -168,13 +169,15 @@ const StyledButton = styled.button`
         border-color: ${props.theme.colors.disabled};
       }
     `}
+
   ${(props: ButtonProps) =>
     props.full &&
     css`
       width: 100%;
     `}
+
   ${(props: ButtonProps) => (css as any)([props.css])}
-  ${props => Spacing(props)}
+  ${props => spacing(props)}
 `;
 
 const Button: FunctionComponent<ButtonProps> = props => {

@@ -2,11 +2,11 @@ import React, { FunctionComponent, useState } from 'react';
 import styled, { withTheme, ThemeProvider } from 'styled-components';
 
 import { useScrollPosition } from '../../../src/hooks/useScrollPosition';
+import spacing, { SpacingProps } from '../Spacing';
 
 import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
-// TODO: Should we use REMs? Do all sites use the same base size?
 const HEADER_HEIGHT_LARGE = '120px';
 const HEADER_HEIGHT_SMALL = '72px';
 const HEADER_SCROLL_THRESHOLD = 66;
@@ -14,13 +14,13 @@ const HEADER_PADDING = defaultTheme.spacing.small;
 const HEADER_LOGO_HEIGHT_LARGE = '80px';
 const HEADER_LOGO_HEIGHT_SMALL = '40px';
 
-type HeaderStickyContainerProps = {
+type HeaderStickyContainerProps = SpacingProps & {
   isSmall?: boolean;
   isSticky?: boolean;
   fullWidth?: boolean;
 };
 
-const StyledHeader = styled.header`
+const StyledHeader = styled.header<HeaderStickyContainerProps>`
   box-sizing: border-box;
   position: relative;
   width: 100%;
@@ -30,6 +30,7 @@ const StyledHeader = styled.header`
     },
   }) => headerBackground};
   z-index: 9998;
+  ${props => spacing(props)}
 `;
 
 const HeaderStickyPlaceHolder = styled.div`
@@ -98,7 +99,7 @@ const Logo = styled.img`
   max-height: 100%;
 `;
 
-const LogoWrapper = styled.div`
+const LogoWrapper = styled.div<HeaderStickyContainerProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -111,8 +112,7 @@ const LogoWrapper = styled.div`
         breakpoint: { desktop },
       },
     }) => desktop}) {
-    height: ${({ isSmall, isSticky }: HeaderStickyContainerProps) =>
-      isSmall && isSticky ? HEADER_LOGO_HEIGHT_SMALL : HEADER_LOGO_HEIGHT_LARGE};
+    height: ${({ isSmall, isSticky }) => (isSmall && isSticky ? HEADER_LOGO_HEIGHT_SMALL : HEADER_LOGO_HEIGHT_LARGE)};
   }
 `;
 
@@ -150,7 +150,7 @@ const SkipToMain = styled.a`
   }
 `;
 
-const Tagline = styled.p`
+const Tagline = styled.p<HeaderStickyContainerProps>`
   flex: 1 1 auto;
   font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
   font-weight: ${({
@@ -173,7 +173,7 @@ const Tagline = styled.p`
         breakpoint: { desktop },
       },
     }) => desktop}) {
-    display: ${({ isSmall, isSticky }: HeaderStickyContainerProps) => (isSmall && isSticky ? `none` : `block`)};
+    display: ${({ isSmall, isSticky }) => (isSmall && isSticky ? `none` : `block`)};
   }
 `;
 

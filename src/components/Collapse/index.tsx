@@ -2,17 +2,22 @@ import React, { useState, useRef, KeyboardEvent, FunctionComponent } from 'react
 import styled, { withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 
+import spacing, { SpacingProps } from '../Spacing';
 import { ThemeType } from '../../themes/types';
 
 import Button from '../Button';
 
-type CollapseProps = {
+type CollapseProps = SpacingProps & {
   active: boolean;
   contentHeight?: string;
   headerTitle?: any;
   id?: string;
   theme?: ThemeType;
 };
+
+const CollapseWrapper = styled.div`
+  ${props => spacing(props)}
+`;
 
 const DefaultHeader = styled(Button)`
   color: ${({
@@ -123,7 +128,7 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
   };
 
   return (
-    <>
+    <CollapseWrapper>
       {renderHeader(theme)}
       <CollapseContent
         theme={theme}
@@ -137,7 +142,7 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
       >
         {props.children}
       </CollapseContent>
-    </>
+    </CollapseWrapper>
   );
 };
 

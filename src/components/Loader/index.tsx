@@ -1,19 +1,23 @@
 import React, { FunctionComponent } from 'react';
 import styled, { keyframes, ThemeProvider, withTheme } from 'styled-components';
+
 import defaultTheme from '../../themes/cruk';
+import spacing, { SpacingProps } from '../Spacing';
 
 import { ThemeType } from '../../themes/types';
 
-type LoaderProps = {
+type LoaderProps = SpacingProps & {
   theme?: ThemeType;
 };
 
-const SpinnerWrapper = styled.div`
+const SpinnerWrapper = styled.div<LoaderProps>`
   position: static;
   top: 0;
   left: 50%;
   margin-left: -35px;
+  ${props => spacing(props)}
 `;
+
 const BounceDelay = keyframes`
   0%,
   80%,
