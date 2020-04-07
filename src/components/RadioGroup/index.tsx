@@ -29,7 +29,7 @@ const RadioGroupWrapper = styled.div`
   flex-flow: row wrap;
 `;
 
-type RadioGroupProps = {
+type RadioGroupProps = SpacingProps & {
   legend: string;
   attributes: Array<{
     value: string;

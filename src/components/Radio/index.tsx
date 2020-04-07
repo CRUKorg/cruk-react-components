@@ -29,7 +29,7 @@ const StyledInput = styled.input`
   margin-right: 5px;
 `;
 
-type RadioProps = {
+type RadioProps = SpacingProps & {
   checked: boolean;
   name: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;

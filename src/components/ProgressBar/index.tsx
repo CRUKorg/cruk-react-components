@@ -6,7 +6,7 @@ import spacing, { SpacingProps } from '../Spacing';
 
 import { ThemeType } from '../../themes/types';
 
-type ProgressBarProps = {
+type ProgressBarProps = SpacingProps & {
   percentage: number;
   isCircular?: boolean;
   showIndicator?: boolean;

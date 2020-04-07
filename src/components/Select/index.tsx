@@ -1,24 +1,35 @@
 import React, { FunctionComponent } from 'react';
 import styled, { withTheme } from 'styled-components';
-import defaultTheme from '../../themes/cruk';
 
+import defaultTheme from '../../themes/cruk';
 import ErrorText from '../ErrorText';
 import { WithLabel } from '../Label';
 
+import { SpacingProps } from '../Spacing';
 import { ThemeType } from '../../themes/types';
 
-type StyledInputProps = {
+type StyledInputProps = SpacingProps & {
   hasError: boolean;
   error: string;
   label: string;
   hintText: string;
   required: boolean;
+  theme?: ThemeType;
 };
 
 const StyledInput = styled.select<StyledInputProps>`
   appearance: none;
-  background: linear-gradient(45deg, transparent 50%, ${props => props.theme.colors.selectBackground} 50%),
-    linear-gradient(135deg, ${props => props.theme.colors.selectBackground} 50%, transparent 50%);
+  background: ${({
+    theme: {
+      colors: { selectBackground },
+    },
+  }) =>
+    `linear-gradient(
+      45deg,
+      transparent 50%,
+      ${selectBackground} 50%
+    ),
+    linear-gradient(135deg, ${selectBackground} 50%, transparent 50%)`};
   background-position: calc(100% - 16px) 1em, calc(100% - 10px) 1em;
   background-size: 6px 6px;
   background-repeat: no-repeat;
@@ -38,7 +49,7 @@ const StyledInput = styled.select<StyledInputProps>`
   }
 `;
 
-type SelectProps = {
+type SelectProps = SpacingProps & {
   error: string;
   hasError: boolean;
   label: string;

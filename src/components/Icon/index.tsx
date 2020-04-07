@@ -16,7 +16,7 @@ export const ICON_NAMES = Object.keys(ICONS).reduce((acc: { [key: string]: IconN
   return acc;
 }, {});
 
-type IconProps = {
+type IconProps = SpacingProps & {
   name?: IconNameType;
   color?: string;
   size?: string;
@@ -25,14 +25,14 @@ type IconProps = {
   getColor?: string;
 };
 
-const StyledIcon = styled.svg<SpacingProps>`
+const StyledIcon = styled.svg<IconProps>`
   display: inline-block;
-  height: ${(props: IconProps) => props.size};
+  height: ${props => props.size};
   margin-top: -0.2em;
   vertical-align: middle;
-  width: ${(props: IconProps) => props.size};
+  width: ${props => props.size};
   path {
-    fill: ${(props: IconProps) => props.getColor};
+    fill: ${props => props.getColor};
   }
   ${props => spacing(props)}
 `;

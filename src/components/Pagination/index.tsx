@@ -6,7 +6,7 @@ import spacing, { SpacingProps } from '../Spacing';
 
 import { ThemeType } from '../../themes/types';
 
-type PaginationProps = {
+type PaginationProps = SpacingProps & {
   current: number;
   items: number;
   hideLast: boolean;

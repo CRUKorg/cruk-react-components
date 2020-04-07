@@ -4,6 +4,7 @@ import styled, { css, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import ErrorText from '../ErrorText';
 import { WithLabel } from '../Label';
+import spacing, { SpacingProps } from '../Spacing';
 
 import { ThemeType } from '../../themes/types';
 
@@ -64,6 +65,8 @@ type StyledInputProps = {
   theme: ThemeType;
 };
 
+// TODO: disabled styles
+
 const StyledInput = styled.input<StyledInputProps>`
   background-color: ${({ theme }) => theme.colors.lightBackground};
   background-image: none;
@@ -116,30 +119,25 @@ const StyledInput = styled.input<StyledInputProps>`
     `}
 `;
 
-type WrapperProps = {
-  extraTop?: string;
-  extraBottom?: string;
-  extraLeft?: string;
-  extraRight?: string;
-};
+const Wrapper = styled.span<SpacingProps>`
+  ${props => spacing(props)}
+`;
 
-const Wrapper: FunctionComponent<WrapperProps> = ({ extraTop, extraBottom, extraRight, extraLeft, children }) =>
-  extraTop || extraBottom || extraRight || extraLeft ? <span>{children}</span> : <>{children}</>;
-
-type TextFieldProps = InputHTMLAttributes<{}> & {
-  error?: string;
-  extraBottom?: string;
-  extraLeft?: string;
-  extraRight?: string;
-  extraTop?: string;
-  hasError?: boolean;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
-  required?: boolean;
-  theme: ThemeType;
-  value: string;
-  label: string;
-  hintText?: string;
-};
+type TextFieldProps = InputHTMLAttributes<{}> &
+  SpacingProps & {
+    error?: string;
+    extraBottom?: string;
+    extraLeft?: string;
+    extraRight?: string;
+    extraTop?: string;
+    hasError?: boolean;
+    onChange: React.ChangeEventHandler<HTMLInputElement>;
+    required?: boolean;
+    theme: ThemeType;
+    value: string;
+    label: string;
+    hintText?: string;
+  };
 
 const TextField: FunctionComponent<TextFieldProps> = ({
   error,
@@ -183,7 +181,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
 
   return (
     <WithLabel label={label} hintText={hintText} required={required}>
-      <Wrapper extraBottom={extraBottom} extraLeft={extraLeft} extraRight={extraRight} extraTop={extraTop}>
+      <Wrapper {...props}>
         {!!extraTop && <ExtraTop theme={theme}>{extraTop}</ExtraTop>}
         {!!extraRight || !!extraLeft ? <ExtraWrapper>{renderContent}</ExtraWrapper> : renderContent}
         {!!extraBottom && <ExtraBottom theme={theme}>{extraBottom}</ExtraBottom>}
