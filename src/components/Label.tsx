@@ -7,18 +7,31 @@ import { ThemeType } from 'src/themes/types';
 
 const Label = styled.label<SpacingProps>`
   display: block;
-  font-weight: bold;
   width: 100%;
-  & > * {
-    margin-top: 5px;
-    font-weight: normal;
-  }
   ${props => spacing(props)}
 `;
 
-const StyledSpan = styled.span`
-  margin: 10px 0px;
+const Hint = styled.span`
   display: block;
+  margin: ${({
+    theme: {
+      spacing: { extraExtraSmall },
+    },
+  }) => `${extraExtraSmall} 0`};
+`;
+
+const LabelText = styled.span`
+  font-weight: bold;
+  display: block;
+  margin: ${({
+    theme: {
+      spacing: { extraExtraSmall },
+    },
+  }) => `${extraExtraSmall} 0`};
+
+  & > * {
+    font-weight: normal;
+  }
 `;
 
 // TODO split withLabel from label into different files and place withLabel in HOC folder
@@ -42,8 +55,10 @@ export const WithLabel: FunctionComponent<WithLabelProps> = props => {
     <ThemeProvider theme={theme}>
       {label ? (
         <Label>
-          {label} {!required && <span>(optional)</span>}
-          {hintText && <StyledSpan>{hintText}</StyledSpan>}
+          <LabelText>
+            {label} {!required && <span>(optional)</span>}
+          </LabelText>
+          {hintText && <Hint>{hintText}</Hint>}
           {children}
         </Label>
       ) : (

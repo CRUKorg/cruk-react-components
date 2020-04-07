@@ -41,6 +41,7 @@ const StyledHeading = (props: HeadingProps) => css`
       typography: { lineHeight },
     },
   }) => lineHeight};
+  margin-top: 0;
   margin-bottom: ${({
     theme: {
       spacing: { small },
