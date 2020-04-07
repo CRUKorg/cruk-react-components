@@ -78,12 +78,12 @@ const components = {
       <LiveError />
     </LiveProvider>
   ),
-  h1: (props: HTMLAttributes<{}>) => <Heading h1 {...props} />,
-  h2: (props: HTMLAttributes<{}>) => <Heading h2 {...props} />,
-  h3: (props: HTMLAttributes<{}>) => <Heading h3 {...props} />,
-  h4: (props: HTMLAttributes<{}>) => <Heading h3 {...props} />,
-  h5: (props: HTMLAttributes<{}>) => <Heading h3 {...props} />,
-  h6: (props: HTMLAttributes<{}>) => <Heading h3 {...props} />,
+  h1: (props: HTMLAttributes<{}>) => <Heading h1 marginTop="medium" {...props} />,
+  h2: (props: HTMLAttributes<{}>) => <Heading h2 marginTop="medium" {...props} />,
+  h3: (props: HTMLAttributes<{}>) => <Heading h3 marginTop="medium" {...props} />,
+  h4: (props: HTMLAttributes<{}>) => <Heading h4 marginTop="medium" {...props} />,
+  h5: (props: HTMLAttributes<{}>) => <Heading h5 marginTop="medium" {...props} />,
+  h6: (props: HTMLAttributes<{}>) => <Heading h6 marginTop="medium" {...props} />,
   p: (props: HTMLAttributes<{}>) => <Text {...props} />,
 };
 
