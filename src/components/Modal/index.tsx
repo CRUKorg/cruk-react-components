@@ -102,7 +102,7 @@ class Modal extends Component<ModalProps> {
           <Content aria-modal="true" backgroundColor="" getBackgroundColor="" css="">
             {closeButton && (
               <CloseButton
-                ariaLabel="close"
+                aria-label="close"
                 appearance="text"
                 onClick={() => {
                   closeButton();

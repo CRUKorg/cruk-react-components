@@ -9,11 +9,8 @@ type ButtonProps = ButtonHTMLAttributes<{}> & {
   appearance?: string;
   full?: boolean;
   theme?: ThemeType;
-  ariaLabel?: string;
   href?: string;
-  name?: string;
   size?: string;
-  disabled?: boolean;
   css?: any;
   as?: any;
 };
@@ -170,14 +167,9 @@ const Button: FunctionComponent<ButtonProps> = props => {
   // button has a fixed width if there is a single icon
   const isIconButton = props.children && childArray.length === 1 && isIcon(childArray[0]);
 
+  console.log(props);
   return (
-    <StyledButton
-      as={props.href ? 'a' : 'button'}
-      {...props}
-      aria-label={props.ariaLabel}
-      iconButton={isIconButton}
-      theme={theme}
-    >
+    <StyledButton as={props.href ? 'a' : 'button'} {...props} iconButton={isIconButton} theme={theme}>
       {props.children && childArray.length
         ? childArray.map((child: ReactNode, index: number) => (
             <VerticalAlign theme={theme} key={index}>

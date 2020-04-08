@@ -113,7 +113,7 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
         theme={theme}
         appearance="text"
         active={activeStatus}
-        ariaLabel={props.headerTitleText}
+        aria-label={props.headerTitleText}
       >
         {props.headerTitleText}
         <Icon name="chevronRight" />

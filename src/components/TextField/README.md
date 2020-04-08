@@ -45,7 +45,7 @@ Text fields let users enter and edit text.
       type="text"
       name="search"
       extraRight={
-        <Button appearance="text" ariaLabel="search">
+        <Button appearance="text" aria-label="search">
           <Icon name="search"/>
         </Button>
       }
