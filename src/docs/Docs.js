@@ -106,6 +106,7 @@ const StyledFlex = styled(Flex)`
   display: inline-flex;
   flex-direction: row;
   min-width: 100%;
+  background-color: ${COLORS.lightBackground};
 
   .sticky & {
     padding-top: 117px;

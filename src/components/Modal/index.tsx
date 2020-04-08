@@ -5,6 +5,7 @@ import FocusLock from 'react-focus-lock';
 
 import Box from '../Box';
 import Button from '../Button';
+import Icon from '../Icon';
 import { COLORS } from '../../themes/cruk';
 
 import defaultTheme from '../../themes/cruk';
@@ -123,12 +124,14 @@ class Modal extends Component<ModalProps> {
             <Content aria-modal="true" backgroundColor="" getBackgroundColor="" css="">
               {closeButton && (
                 <CloseButton
+                  aria-label="close"
                   appearance="text"
-                  icon="close"
                   onClick={() => {
                     closeButton();
                   }}
-                />
+                >
+                  <Icon name="close" />
+                </CloseButton>
               )}
               {children}
             </Content>

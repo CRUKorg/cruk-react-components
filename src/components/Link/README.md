@@ -29,7 +29,7 @@ Links are for wrapping plain text or elements to create clickable link. This is 
     <Link href="http://www.google.com" textSize="extraLarge" >Link with extra large text</Link>
     </div>
     <div>
-    <Link href="http://www.google.com" ariaLabel="google homepage"><img style={{width: '80px', height: '30px'}} alt="" src='https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png'/></Link>
+    <Link href="http://www.google.com" aria-label="google homepage"><img style={{width: '80px', height: '30px'}} alt="" src='https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png'/></Link>
     </div>
       <div>
       <Link href="#" onClick={() => {alert("from link");}}>With click handler</Link>
@@ -43,7 +43,7 @@ Links are for wrapping plain text or elements to create clickable link. This is 
 | :------------- | :------------------------- | :-----: | :-------------------- | :---------------------------------------------------------------------------------- |
 | href           | string                     |         |                       | URL of link                                                                         |
 | target         | string                     |         | '\_self'              | How the link opens                                                                  |
-| ariaLabel      | string                     |         |                       | This should be used when there is no text in the link to describe where it is going |
+| aria-label     | string                     |         |                       | This should be used when there is no text in the link to describe where it is going |
 | rel            | string                     |         | "noopener noreferrer" | Relationship with the link and the current page                                     |
 | appearance     | null / primary / secondary |         | null                  | Default, primary or secondary link appearance                                       |
 | onClick        | function                   |         |                       | On click handler function                                                           |
