@@ -78,8 +78,11 @@ docker-compose run npm
 Start local development environment
 
 ```bash
-docker-compose run server
+docker-compose up -d server
 ```
+
+This should start the server and you should be able to see it running here: http://127.0.0.1:8080/
+Tests will not work locally unless this is running in a terminal
 
 Run Cypress tests
 
