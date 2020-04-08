@@ -1,20 +1,27 @@
-import React, { useState, useRef, KeyboardEvent, FunctionComponent } from 'react';
+import React, { useState, useRef, KeyboardEvent, FunctionComponent, ReactNode } from 'react';
 import styled, { withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 
 import { ThemeType } from '../../themes/types';
 
 import Button from '../Button';
+import { Icon } from '..';
 
 type CollapseProps = {
   active: boolean;
+  headerTitleText: string;
+  headerComponent?: ReactNode;
   contentHeight?: string;
-  headerTitle?: any;
   id?: string;
   theme?: ThemeType;
 };
 
-const DefaultHeader = styled(Button)`
+type DefaultHeaderProps = {
+  theme: ThemeType;
+  active: boolean;
+};
+
+const DefaultHeader = styled(Button)<DefaultHeaderProps>`
   color: ${({
     theme: {
       colors: { secondary },
@@ -36,19 +43,23 @@ const DefaultHeader = styled(Button)`
         fontSizes: { extraSmall },
       },
     }) => extraSmall};
-    transform: ${(props: CollapseProps) => (props.active === true ? 'rotate(90deg)' : 'none')};
+    transform: ${({ active }) => (active === true ? 'rotate(90deg)' : 'none')};
     transition-duration: 0.5s;
   }
 `;
 
-const CollapseContent = styled.div<CollapseProps>`
+type CollapseContentProps = {
+  contentHeight: string;
+};
+
+const CollapseContent = styled.div<CollapseContentProps>`
   margin: 0;
   font-size: ${({
     theme: {
       fontSizes: { small },
     },
   }) => small};
-  height: ${props => props.contentHeight}px;
+  height: ${({ contentHeight }) => contentHeight};
   overflow: hidden;
   transition: 0.5s ease;
   & > p {
@@ -77,10 +88,6 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
     }
   };
 
-  const isDefault = () => {
-    return typeof props.headerTitle === 'string' ? true : false;
-  };
-
   const renderHeader = (theme: ThemeType) => {
     const defaultProps = {
       'aria-controls': `${props.id}-header`,
@@ -89,31 +96,28 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
       onClick: toggleCollapse,
     };
 
-    if (isDefault())
-      return (
-        <DefaultHeader
-          {...defaultProps}
-          theme={theme}
-          active={activeStatus}
-          appearance="text"
-          icon="chevronRight"
-          iconAlign="right"
-        >
-          {props.headerTitle}
-        </DefaultHeader>
-      );
-
-    return (
+    return props.headerComponent ? (
       <CustomHeader
         {...defaultProps}
-        aria-label={props.headerTitle.props.headerTitle}
         aria-disabled={false}
+        aria-label={props.headerTitleText}
         onKeyDown={triggerToggle}
         role="button"
         tabIndex={0}
       >
-        {props.headerTitle}
+        {props.headerComponent}
       </CustomHeader>
+    ) : (
+      <DefaultHeader
+        {...defaultProps}
+        theme={theme}
+        appearance="text"
+        active={activeStatus}
+        aria-label={props.headerTitleText}
+      >
+        {props.headerTitleText}
+        <Icon name="chevronRight" />
+      </DefaultHeader>
     );
   };
 
@@ -128,7 +132,6 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
       <CollapseContent
         theme={theme}
         role="region"
-        active={activeStatus}
         aria-hidden={activeStatus === false ? true : false}
         aria-labelledby={`${props.id}-header`}
         ref={content}

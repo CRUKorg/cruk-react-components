@@ -19,7 +19,6 @@ const Chevron = () => <ChevyWithLevee name={ICON_NAMES.chevronRightBold} />;
 type LinkProps = AnchorHTMLAttributes<{}> & {
   theme?: ThemeType;
   textHoverColor?: string;
-  ariaLabel?: string;
   appearance?: 'primary' | 'secondary';
 };
 
@@ -72,7 +71,7 @@ const Link: FunctionComponent<LinkProps> = props => {
 
   return (
     <ThemeProvider theme={theme}>
-      <StyledLink {...props} forwardedAs="a" theme={theme} rel={rel} aria-label={props.ariaLabel}>
+      <StyledLink {...props} forwardedAs="a" theme={theme} rel={rel}>
         {props.appearance === 'primary' && <Chevron />}
         {props.children}
       </StyledLink>
