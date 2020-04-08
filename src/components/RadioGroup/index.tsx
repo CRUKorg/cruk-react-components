@@ -52,9 +52,9 @@ const RadioGroup: FunctionComponent<RadioGroupProps> = props => {
       <StyledFieldSet>
         <RadioGroupWrapper>
           <StyledLegend>{props.legend}</StyledLegend>
-          {props.attributes.map((item, index) => (
+          {props.attributes.map(item => (
             <StyledRadio
-              key={index}
+              key={item.value}
               checked={props.checked === item.value}
               onChange={props.onChange}
               name={props.name}
