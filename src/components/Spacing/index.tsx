@@ -47,11 +47,10 @@ export const Spacing = (props: SpacingProps) => {
   const ml = marginLeft ? theme.spacing[marginLeft] : null;
 
   const maString = ma ? `margin: ${ma};` : '';
-  const mxyString = mv && mh ? `margin: ${mv} ${mh};` : mv ? `margin: ${mv} 0;` : mh ? `margin: 0 ${mh};` : '';
-  const mtString = mt ? `margin-top: ${mt};` : '';
-  const mrString = mr ? `margin-right: ${mr};` : '';
-  const mbString = mb ? `margin-bottom: ${mb};` : '';
-  const mlString = ml ? `margin-left: ${ml};` : '';
+  const mtString = mt ? `margin-top: ${mt};` : mv ? `margin-top: ${mv};` : '';
+  const mrString = mr ? `margin-right: ${mr};` : mh ? `margin-right: ${mh};` : '';
+  const mbString = mb ? `margin-bottom: ${mb};` : mv ? `margin-bottom: ${mv};` : '';
+  const mlString = ml ? `margin-left: ${ml};` : mh ? `margin-left: ${mh};` : '';
 
   const pa = padding ? theme.spacing[padding] : null;
   const pv = paddingVertical ? theme.spacing[paddingVertical] : null;
@@ -62,21 +61,18 @@ export const Spacing = (props: SpacingProps) => {
   const pl = paddingLeft ? theme.spacing[paddingLeft] : null;
 
   const paString = pa ? `padding: ${pa};` : '';
-  const pxyString = pv && ph ? `padding: ${pv} ${ph};` : pv ? `padding: ${pv} 0;` : ph ? `padding: 0 ${ph};` : '';
-  const ptString = pt ? `padding-top: ${pt};` : '';
-  const prString = pr ? `padding-right: ${pr};` : '';
-  const pbString = pb ? `padding-bottom: ${pb};` : '';
-  const plString = pl ? `padding-left: ${pl};` : '';
+  const ptString = pt ? `padding-top: ${pt};` : pv ? `padding-top: ${pv};` : '';
+  const prString = pr ? `padding-right: ${pr};` : ph ? `padding-right: ${ph};` : '';
+  const pbString = pb ? `padding-bottom: ${pb};` : pv ? `padding-bottom: ${pv};` : '';
+  const plString = pl ? `padding-left: ${pl};` : ph ? `padding-left: ${ph};` : '';
 
   return `
     ${maString}
-    ${mxyString}
     ${mtString}
     ${mrString}
     ${mbString}
     ${mlString}
     ${paString}
-    ${pxyString}
     ${ptString}
     ${prString}
     ${pbString}
