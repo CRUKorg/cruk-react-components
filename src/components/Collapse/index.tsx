@@ -10,7 +10,7 @@ import { Icon } from '..';
 type CollapseProps = {
   active: boolean;
   headerTitleText: string;
-  headerTitleComponent?: ReactNode;
+  headerComponent?: ReactNode;
   contentHeight?: string;
   id?: string;
   theme?: ThemeType;
@@ -96,7 +96,7 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
       onClick: toggleCollapse,
     };
 
-    return props.headerTitleComponent ? (
+    return props.headerComponent ? (
       <CustomHeader
         {...defaultProps}
         aria-disabled={false}
@@ -105,7 +105,7 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
         role="button"
         tabIndex={0}
       >
-        {props.headerTitleComponent}
+        {props.headerComponent}
       </CustomHeader>
     ) : (
       <DefaultHeader
