@@ -1,10 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import styled, { css, keyframes, ThemeProvider, withTheme } from 'styled-components';
+
 import defaultTheme from '../../themes/cruk';
+import spacing, { SpacingProps } from '../Spacing';
 
 import { ThemeType } from '../../themes/types';
 
-type ProgressBarProps = {
+type ProgressBarProps = SpacingProps & {
   percentage: number;
   isCircular?: boolean;
   showIndicator?: boolean;
@@ -15,8 +17,9 @@ type PercentageProps = {
   percentage: number;
 };
 
-const ProgressBarWrapper = styled.div`
+const ProgressBarWrapper = styled.div<SpacingProps>`
   margin-top: 15px;
+  ${props => spacing(props)}
 `;
 
 const ProgressBarSharedStyling = css`

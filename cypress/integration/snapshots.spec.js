@@ -18,6 +18,7 @@ const components = [
   'ProgressBar',
   'Radio',
   'Select',
+  'Spacing',
   'Step',
   'Text',
   'TextField',
@@ -78,7 +79,7 @@ components.forEach(componentName => {
 
   it(`SU2C ${componentName} Should match snapshot`, () => {
     cy.visit(`/${componentName.toLowerCase()}`);
-    cy.contains('button', 'Switch theme').click();
+    cy.get('select[name="themeSelector"]').select('su2c');
     selectComponent(componentName, 'su2c');
   });
 

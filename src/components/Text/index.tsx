@@ -1,22 +1,21 @@
 import React, { FunctionComponent } from 'react';
 import styled, { withTheme } from 'styled-components';
+
 import defaultTheme from '../../themes/cruk';
+import spacing, { SpacingProps } from '../Spacing';
 
 import { FontSizeType } from '../../themes/types';
-
 import { ThemeType } from '../../themes/types';
 
 // the 'as' prop is for styled component casting
 // text hover color prop is only used in Link which extends Text
-export type TextProps = {
+export type TextProps = SpacingProps & {
   textColor?: string;
   textAlign?: 'left' | 'right' | 'center';
   textSize?: FontSizeType;
   textWeight?: number;
   as?: any;
   theme?: ThemeType;
-  gutterBottom?: boolean;
-  gutterTop?: boolean;
   role?: string;
 };
 
@@ -47,18 +46,11 @@ export const TextStyled = styled.p<TextProps>`
   margin: 0;
   margin-bottom: ${({
     as,
-    gutterBottom,
     theme: {
       spacing: { extraSmall },
     },
-  }) => ((typeof as === 'undefined' || as === 'p') && gutterBottom ? `${extraSmall}` : 0)};
-  margin-top: ${({
-    as,
-    gutterTop,
-    theme: {
-      spacing: { extraSmall },
-    },
-  }) => ((typeof as === 'undefined' || as === 'p') && gutterTop ? `${extraSmall}` : 0)};
+  }) => (typeof as === 'undefined' || as === 'p' ? `${extraSmall}` : 0)};
+  ${props => spacing(props)}
 `;
 
 export const Text: FunctionComponent<TextProps> = props => {
@@ -66,7 +58,7 @@ export const Text: FunctionComponent<TextProps> = props => {
     ...defaultTheme,
     ...props.theme,
   };
-  return <TextStyled gutterBottom={true} {...props} theme={theme} />;
+  return <TextStyled {...props} theme={theme} />;
 };
 
 export default withTheme(Text);

@@ -1,10 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import styled, { css, withTheme } from 'styled-components';
+
 import defaultTheme from '../../themes/cruk';
+import spacing, { SpacingProps } from '../Spacing';
 
 import { ThemeType, FontSizeType } from '../../themes/types';
 
-type HeadingProps = {
+type HeadingProps = SpacingProps & {
   h1?: boolean;
   h2?: boolean;
   h3?: boolean;
@@ -15,8 +17,6 @@ type HeadingProps = {
   textAlign?: 'left' | 'right' | 'center';
   textColor?: string;
   theme?: ThemeType;
-  gutterBottom?: boolean;
-  gutterTop?: boolean;
 };
 
 const StyledHeading = (props: HeadingProps) => css`
@@ -30,7 +30,7 @@ const StyledHeading = (props: HeadingProps) => css`
       typography: { fontWeightMedium },
     },
   }) => fontWeightMedium};
-  color: ${({ theme: { colors }, textColor }) =>
+  color: ${({ theme: { colors }, textColor }: HeadingProps) =>
     textColor && typeof colors[textColor] !== 'undefined'
       ? colors[textColor]
       : textColor
@@ -41,20 +41,15 @@ const StyledHeading = (props: HeadingProps) => css`
       typography: { lineHeight },
     },
   }) => lineHeight};
+  margin-top: 0;
   margin-bottom: ${({
-    gutterBottom,
     theme: {
       spacing: { small },
     },
-  }) => (gutterBottom ? small : 0)};
-  margin-top: ${({
-    gutterTop,
-    theme: {
-      spacing: { medium },
-    },
-  }) => (gutterTop ? medium : 0)};
+  }) => small};
   max-width: 100%;
   text-align: ${({ textAlign }: HeadingProps) => (textAlign ? textAlign : 'left')};
+  ${props => spacing(props)}
 `;
 
 const desktopFontSize = (textSize: FontSizeType, defaultFontSize: FontSizeType, theme: ThemeType) => {
@@ -198,13 +193,13 @@ const Heading: FunctionComponent<HeadingProps> = ({ h1, h2, h3, h4, h5, h6, ...p
     theme: theme,
   };
 
-  if (h1) return <H1 gutterBottom={true} {...propsWithTheme} />;
-  if (h2) return <H2 gutterBottom={true} {...propsWithTheme} />;
-  if (h3) return <H3 gutterBottom={true} {...propsWithTheme} />;
-  if (h4) return <H4 gutterBottom={true} {...propsWithTheme} />;
-  if (h5) return <H5 gutterBottom={true} {...propsWithTheme} />;
-  if (h6) return <H6 gutterBottom={true} {...propsWithTheme} />;
-  return <H2 gutterBottom={true} {...propsWithTheme} />;
+  if (h1) return <H1 {...propsWithTheme} />;
+  if (h2) return <H2 {...propsWithTheme} />;
+  if (h3) return <H3 {...propsWithTheme} />;
+  if (h4) return <H4 {...propsWithTheme} />;
+  if (h5) return <H5 {...propsWithTheme} />;
+  if (h6) return <H6 {...propsWithTheme} />;
+  return <H2 {...propsWithTheme} />;
 };
 
 export default withTheme(Heading);

@@ -10,27 +10,47 @@ commonly used for displaying additional rich content on top of something.
 ```.jsx
 function () {
   const content = (<>
-    <Button icon="facebookSquare" appearance="text" css="color: #4267b2" size="large" />
-    <Button icon="twitterSquare" appearance="text" css="color: #1da1f2" size="large" />
-    <Button icon="whatsappSquare" appearance="text" css="color: #4dc247" size="large" />
-    <Button icon="messengerSquare" appearance="text" css="color: #288ef8" size="large" />
-    <Button icon="linkedin" appearance="text" css="color: #0077b5" size="large" />
-    <Button icon="envelopeSquare" appearance="text" css="color: #00b6ed" size="large" />
+    <Button appearance="text" size="large">
+      <Icon name="facebookSquare" color="#4267b2" />
+    </Button>
+    <Button appearance="text" size="large">
+      <Icon name="twitterSquare" color="#1da1f2" />
+    </Button>
+    <Button  appearance="text" size="large" >
+      <Icon name="whatsappSquare" color="#4dc247" />
+    </Button>
+    <Button  appearance="text" size="large">
+      <Icon name="messengerSquare" color="#288ef8" />
+    </Button>
+    <Button appearance="text" size="large">
+      <Icon name="linkedin" color="#0077b5" />
+    </Button>
+    <Button appearance="text" size="large" >
+      <Icon name="envelopeSquare" color="#00b6ed" />
+    </Button>
   </>);
 
   return (
     <>
       <PopOver overlay={content}>
-        <Button icon="share" appearance="secondary">Share top</Button>
+        <Button appearance="secondary">
+          <Icon name="share" />Share top
+        </Button>
       </PopOver>
       <PopOver position="bottom" overlay={content}>
-        <Button icon="share" appearance="secondary">Share bottom</Button>
+        <Button appearance="secondary">
+          <Icon name="share" />Share bottom
+        </Button>
       </PopOver>
       <PopOver position="left" overlay={content}>
-        <Button icon="share" appearance="text" css={`color: #ec008c;`}>Share left</Button>
+        <Button appearance="text">
+          <Icon name="share" />Share left
+        </Button>
       </PopOver>
       <PopOver position="right" overlay={content}>
-        <Button icon="share" appearance="text" css={`color: #ec008c;`}>Share right</Button>
+        <Button appearance="text">
+          <Icon name="share" />Share right
+        </Button>
       </PopOver>
     </>
   );

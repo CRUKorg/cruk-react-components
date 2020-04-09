@@ -56,6 +56,7 @@ import RadioReadme from './Radio/README.md';
 import RadioGroupReadme from './RadioGroup/README.md';
 import SelectReadme from './Select/README.md';
 import StepReadme from './Step/README.md';
+import SpacingReadme from './Spacing/README.md';
 import TextReadme from './Text/README.md';
 import TextFieldReadme from './TextField/README.md';
 import TotaliserReadme from './Totaliser/README.md';
@@ -114,6 +115,7 @@ export {
   RadioReadme,
   RadioGroupReadme,
   SelectReadme,
+  SpacingReadme,
   StepReadme,
   TextReadme,
   TextFieldReadme,
@@ -121,4 +123,4 @@ export {
   UserBlockReadme,
 };
 
-export * from "../themes/types";
+export * from '../themes/types';

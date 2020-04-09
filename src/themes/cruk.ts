@@ -122,7 +122,7 @@ export const COLORS: ColorsType = {
 
   totaliserBorder: TOKEN_COLORS.grey_300,
 
-  textInputBorder: TOKEN_COLORS.grey_900,
+  textInputBorder: TOKEN_COLORS.grey_300,
 
   selectBackground: TOKEN_COLORS.grey_900,
 
@@ -133,13 +133,15 @@ export const COLORS: ColorsType = {
 
 // TODO: possibly convert to REMS, once a base font size has been agreed.
 export const SPACING: SpacingType = {
-  extraExtraSmall: '8px',
-  extraSmall: '16px',
-  small: '24px',
-  medium: '32px',
-  large: '40px',
-  extraLarge: '48px',
-  extraExtraLarge: '56px',
+  none: '0',
+  auto: 'auto',
+  extraExtraSmall: '0.5rem', // 8px
+  extraSmall: '1rem', // 16px
+  small: '1.5rem', // 24px
+  medium: '2rem', // 32px
+  large: '2.5rem', // 40px
+  extraLarge: '3rem', // 48px
+  extraExtraLarge: '3.5rem', // 56px
 };
 
 export const FONT_SIZES: FontSizesType = {

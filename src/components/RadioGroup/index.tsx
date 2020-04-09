@@ -1,6 +1,11 @@
 import React, { FunctionComponent } from 'react';
-import styled from 'styled-components';
+import styled, { withTheme, ThemeProvider } from 'styled-components';
+
 import RadioInput from '../Radio';
+import defaultTheme from '../../themes/cruk';
+import spacing, { SpacingProps } from '../Spacing';
+
+import { ThemeType } from '../../themes/types';
 
 const StyledRadio = styled(RadioInput)`
   flex: 2 2 auto;
@@ -13,8 +18,9 @@ const StyledLegend = styled.legend`
   max-width: 20%;
 `;
 
-const StyledFieldSet = styled.fieldset`
+const StyledFieldSet = styled.fieldset<SpacingProps>`
   border: none;
+  ${props => spacing(props)}
 `;
 
 const RadioGroupWrapper = styled.div`
@@ -23,7 +29,7 @@ const RadioGroupWrapper = styled.div`
   flex-flow: row wrap;
 `;
 
-type RadioGroupProps = {
+type RadioGroupProps = SpacingProps & {
   legend: string;
   attributes: Array<{
     value: string;
@@ -32,27 +38,35 @@ type RadioGroupProps = {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   checked: string;
   name: string;
+  theme: ThemeType;
 };
 
 const RadioGroup: FunctionComponent<RadioGroupProps> = props => {
+  const theme = {
+    ...defaultTheme,
+    ...props.theme,
+  };
+
   return (
-    <StyledFieldSet>
-      <RadioGroupWrapper>
-        <StyledLegend>{props.legend}</StyledLegend>
-        {props.attributes.map(item => (
-          <StyledRadio
-            key={props.name}
-            checked={props.checked === item.value}
-            onChange={props.onChange}
-            name={props.name}
-            value={item.value}
-          >
-            {item.option}
-          </StyledRadio>
-        ))}
-      </RadioGroupWrapper>
-    </StyledFieldSet>
+    <ThemeProvider theme={theme}>
+      <StyledFieldSet>
+        <RadioGroupWrapper>
+          <StyledLegend>{props.legend}</StyledLegend>
+          {props.attributes.map(item => (
+            <StyledRadio
+              key={item.value}
+              checked={props.checked === item.value}
+              onChange={props.onChange}
+              name={props.name}
+              value={item.value}
+            >
+              {item.option}
+            </StyledRadio>
+          ))}
+        </RadioGroupWrapper>
+      </StyledFieldSet>
+    </ThemeProvider>
   );
 };
 
-export default RadioGroup;
+export default withTheme(RadioGroup);

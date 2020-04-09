@@ -1,30 +1,35 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, ReactNode, ButtonHTMLAttributes } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
-import Icon, { IconNameType } from '../Icon';
+
+import spacing, { SpacingProps } from '../Spacing';
 import { ThemeType } from '../../themes/types';
 
 const BUTTON_HEIGHT = '2.5rem';
 
-type ButtonProps = {
-  appearance?: string;
-  children?: any;
-  iconAlign?: string;
-  full?: boolean;
-  theme?: ThemeType;
-  ariaLabel?: string;
-  href?: string;
-  icon?: IconNameType;
-  name?: string;
-  css?: any;
-  size?: string;
-  disabled?: boolean;
-  as?: any;
-};
+type ButtonProps = ButtonHTMLAttributes<{}> &
+  SpacingProps & {
+    appearance?: string;
+    full?: boolean;
+    theme?: ThemeType;
+    href?: string;
+    size?: string;
+    css?: any;
+    as?: any;
+  };
 
 const VerticalAlign = styled.span`
   line-height: ${BUTTON_HEIGHT};
   vertical-align: middle;
+  margin-left: ${({
+    theme: {
+      spacing: { extraSmall },
+    },
+  }) => extraSmall};
+
+  &:first-of-type {
+    margin-left: 0;
+  }
 `;
 
 const StyledButton = styled.button`
@@ -53,11 +58,13 @@ const StyledButton = styled.button`
   }) => fontWeightMedium};
   line-height: 1;
   height: ${BUTTON_HEIGHT};
-  padding: ${({ theme }) => `0 ${theme.spacing.medium}`};
-
+  padding: ${({ theme, iconButton }: { theme: ThemeType; iconButton: boolean }) =>
+    iconButton ? '0' : `0 ${theme.spacing.medium}`};
+  width: ${({ iconButton }: { iconButton: boolean }) => (iconButton ? `${BUTTON_HEIGHT}` : 'auto')};
   text-align: center;
   text-decoration: ${props => props.theme.button.textDecoration};
   text-transform: ${props => props.theme.button.textTransform};
+  
   :focus,
   :hover {
     color: ${props => props.theme.colors.linkColorHover}
@@ -111,33 +118,6 @@ const StyledButton = styled.button`
     `}
   
   ${(props: ButtonProps) =>
-    // only add margin on icons if there is more than one child
-    props.children[1] &&
-    props.children.length > 1 &&
-    css`
-      svg {
-        ${({
-          theme: {
-            spacing: { extraExtraSmall },
-          },
-        }) => (props.iconAlign === 'right' ? `margin-left: ${extraExtraSmall}` : `margin-right: ${extraExtraSmall}`)};
-      }
-    `}
-
-  ${(props: ButtonProps) => {
-    // If we only have an icon and no text make it a square/round button
-    return (
-      props.children[1] === null &&
-      props.children[0].type !== 'undefined' &&
-      props.children[0].type.displayName === 'WithTheme(Icon)' &&
-      css`
-        padding: 0;
-        width: ${BUTTON_HEIGHT};
-      `
-    );
-  }};
-  
-  ${(props: ButtonProps) =>
     props.size === 'large' &&
     css`
       height: 4em;
@@ -166,39 +146,44 @@ const StyledButton = styled.button`
         border-color: ${props.theme.colors.disabled};
       }
     `}
+
   ${(props: ButtonProps) =>
     props.full &&
     css`
       width: 100%;
     `}
+
   ${(props: ButtonProps) => (css as any)([props.css])}
+  ${props => spacing(props)}
 `;
 
 const Button: FunctionComponent<ButtonProps> = props => {
-  // TODO create theme spread function.
   const theme = {
     ...defaultTheme,
     ...props.theme,
   };
-  const icon = props.icon && <Icon name={props.icon} />;
-  const iconRight = props.iconAlign === 'right';
-  const camelToLowerCase = (string: string) => string && string.replace(/([a-z])([A-Z][a-z])/g, '$1 $2').toLowerCase();
-  const ariaLabel = () => {
-    if (props.ariaLabel) return props.ariaLabel;
-    return (
-      React.Children.toArray(props.children).find(child => typeof child === 'string') || camelToLowerCase(props.icon)
-    );
-  };
+  const childArray = React.Children.toArray(props.children);
 
+  // TODO: find a better way to check if a child is a specific component
+  const isIcon = (child: any) =>
+    typeof child !== 'string' &&
+    typeof child !== 'number' &&
+    child.type !== 'undefined' &&
+    child.type.displayName !== undefined &&
+    child.type.displayName === 'WithTheme(Icon)';
+  // button has a fixed width if there is a single icon
+  const isIconButton = props.children && childArray.length === 1 && isIcon(childArray[0]);
+
+  console.log(props);
   return (
-    <StyledButton as={props.href ? 'a' : 'button'} {...props} aria-label={ariaLabel()} theme={theme}>
-      {!iconRight && !!icon && icon}
-      {props.children && props.children.length
-        ? React.Children.toArray(props.children).map((child: ReactNode, index: number) => (
-            <VerticalAlign key={index}>{child}</VerticalAlign>
+    <StyledButton as={props.href ? 'a' : 'button'} {...props} iconButton={isIconButton} theme={theme}>
+      {props.children && childArray.length
+        ? childArray.map((child: ReactNode, index: number) => (
+            <VerticalAlign theme={theme} key={index}>
+              {child}
+            </VerticalAlign>
           ))
         : null}
-      {iconRight && !!icon && icon}
     </StyledButton>
   );
 };

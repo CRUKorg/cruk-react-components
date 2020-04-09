@@ -13,6 +13,8 @@ import Box from '../components/Box';
 import Flex from '../components/Flex';
 import Header from '../components/Header';
 import Heading from '../components/Heading';
+import Select from '../components/Select';
+import ThemeCheatSheet from '../components/ThemeCheatSheet';
 
 import AvatarReadme from '../components/Avatar/README.md';
 import BadgeReadme from '../components/Badge/README.md';
@@ -34,23 +36,26 @@ import ProgressBarReadme from '../components/ProgressBar/README.md';
 import RadioReadme from '../components/Radio/README.md';
 import RadioGroupReadme from '../components/RadioGroup/README.md';
 import SelectReadme from '../components/Select/README.md';
+import SpacingReadme from '../components/Spacing/README.md';
 import StepReadme from '../components/Step/README.md';
 import TextReadme from '../components/Text/README.md';
 import TextFieldReadme from '../components/TextField/README.md';
 import TotaliserReadme from '../components/Totaliser/README.md';
 import UserBlockReadme from '../components/UserBlock/README.md';
 
-import { BREAKPOINT, COLORS } from '../themes/cruk';
+import crukTheme, { BREAKPOINT, COLORS } from '../themes/cruk';
 import su2cTheme from '../themes/su2c';
+import cruk2Theme from '../themes/cruk2';
 import GlobalStyle from '../components/GlobalStyle';
 
 /*
  * Doc specific styling
  * layout, toggle, theme switch, code area
  */
-const SwitchTheme = styled(Button)`
+const SwitchTheme = styled(Select)`
   float: right;
   background-color: ${COLORS.lightBackground};
+  max-width: 150px;
 
   @media (max-width: ${BREAKPOINT.tablet}) {
     padding: 0.025em 1em;
@@ -104,6 +109,7 @@ const StyledFlex = styled(Flex)`
   display: inline-flex;
   flex-direction: row;
   min-width: 100%;
+  background-color: ${COLORS.lightBackground};
 
   .sticky & {
     padding-top: 117px;
@@ -212,12 +218,9 @@ const Nav = styled.nav`
 `;
 
 class Docs extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      theme: 'cruk',
-    };
-  }
+  state = {
+    theme: 'cruk',
+  };
 
   componentDidMount() {
     window.addEventListener('keyup', this.handleOutline);
@@ -238,18 +241,33 @@ class Docs extends React.Component {
   };
 
   render() {
+    const theme = () => {
+      switch (this.state.theme) {
+        case 'su2c':
+          return su2cTheme;
+        case 'cruk2':
+          return cruk2Theme;
+        default:
+          return crukTheme;
+      }
+    };
+
     return (
-      <ThemeProvider theme={this.state.theme === 'su2c' ? su2cTheme : {}}>
+      <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Header isSticky fullWidth>
           <SwitchTheme
-            onClick={() =>
+            name="themeSelector"
+            onChange={e => {
+              console.log(e.target.value);
               this.setState({
-                theme: this.state.theme === 'su2c' ? 'cruk' : 'su2c',
-              })
-            }
+                theme: e.target.value,
+              });
+            }}
           >
-            Switch theme
+            <option value="cruk">CRUK theme</option>
+            <option value="cruk2">CRUK 2 theme</option>
+            <option value="su2c">SU2C theme</option>
           </SwitchTheme>
         </Header>
         <StyledFlex>
@@ -278,11 +296,13 @@ class Docs extends React.Component {
               <RouterLink to="/radio">Radio</RouterLink>
               <RouterLink to="/radiogroup">Radio Group</RouterLink>
               <RouterLink to="/select">Select</RouterLink>
+              <RouterLink to="/spacing">Spacing</RouterLink>
               <RouterLink to="/step">Step</RouterLink>
               <RouterLink to="/textfield">TextField</RouterLink>
               <RouterLink to="/text">Text</RouterLink>
               <RouterLink to="/totaliser">Totaliser</RouterLink>
               <RouterLink to="/userblock">UserBlock</RouterLink>
+              <RouterLink to="/theme">Theme cheatsheet</RouterLink>
             </Nav>
           </SideBar>
           <Content>
@@ -308,11 +328,13 @@ class Docs extends React.Component {
                 <RadioReadme path="/radio" />
                 <RadioGroupReadme path="/radiogroup" />
                 <SelectReadme path="/select" />
+                <SpacingReadme path="/spacing" />
                 <StepReadme path="/step" />
                 <TextReadme path="/text" />
                 <TextFieldReadme path="/textfield" />
                 <TotaliserReadme path="/totaliser" />
                 <UserBlockReadme path="/userblock" />
+                <ThemeCheatSheet path="/theme" />
               </Router>
             </MdxProvider>
           </Content>

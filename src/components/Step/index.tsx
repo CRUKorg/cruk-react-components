@@ -1,20 +1,24 @@
 import React, { FunctionComponent } from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
+
 import defaultTheme, { TYPOGRAPHY, FONT_SIZES } from '../../themes/cruk';
+import spacing, { SpacingProps } from '../Spacing';
+
 import { ThemeType } from '../../themes/types';
 
-type StepProps = {
+type StepProps = SpacingProps & {
   current: number;
   steps: [];
   theme?: ThemeType;
 };
 
-const StepWrapper = styled.div`
+const StepWrapper = styled.div<SpacingProps>`
   text-align: center;
   text-transform: capitalize;
   font-family: ${TYPOGRAPHY.fontFamilyHeadings};
   font-size: ${FONT_SIZES.small};
   font-weight: ${TYPOGRAPHY.fontWeightHeavy};
+  ${props => spacing(props)}
 `;
 
 type StepListProps = {

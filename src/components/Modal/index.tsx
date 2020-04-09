@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
+import styled, { ThemeProvider, withTheme } from 'styled-components';
 import FocusLock from 'react-focus-lock';
 
 import Box from '../Box';
 import Button from '../Button';
+import Icon from '../Icon';
 import { COLORS } from '../../themes/cruk';
+
+import defaultTheme from '../../themes/cruk';
+import { ThemeType } from '../../themes/types';
 
 const Background = styled.div`
   background: ${COLORS.modalBackdrop};
@@ -33,11 +37,19 @@ const Content = styled(Box)`
   background: ${COLORS.lightBackground};
   border-radius: 4px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-  margin: 100px auto 20px;
-  max-width: 90%;
-  padding: 10px;
+  margin: ${({
+    theme: {
+      spacing: { small, extraExtraLarge },
+    },
+  }) => `calc(${extraExtraLarge} * 2) auto ${small}`};
+  width: 90%;
+  padding: ${({
+    theme: {
+      spacing: { extraSmall },
+    },
+  }) => extraSmall};
   position: relative;
-  width: 500px;
+  max-width: 500px;
   z-index: 9999;
 `;
 
@@ -47,14 +59,19 @@ type CloseButtonProps = {
 
 const CloseButton = styled(Button)<CloseButtonProps>`
   float: right;
-  margin-left: 10px;
+  margin-left: ${({
+    theme: {
+      spacing: { extraSmall },
+    },
+  }) => extraSmall};
   font-size: 1.2rem;
   padding: 0;
 `;
 
 type ModalProps = {
-  closeButton?: Function | null;
   disableEsc: Boolean;
+  closeButton?: Function | null;
+  theme?: ThemeType;
 };
 
 class Modal extends Component<ModalProps> {
@@ -94,24 +111,33 @@ class Modal extends Component<ModalProps> {
       return;
     }
 
+    const theme = {
+      ...defaultTheme,
+      ...this.props.theme,
+    };
     const { children, closeButton } = this.props;
+
     return ReactDOM.createPortal(
       <FocusLock returnFocus>
-        <Wrapper>
-          <Content aria-modal="true" backgroundColor="" getBackgroundColor="" css="">
-            {closeButton && (
-              <CloseButton
-                appearance="text"
-                icon="close"
-                onClick={() => {
-                  closeButton();
-                }}
-              />
-            )}
-            {children}
-          </Content>
-          <Background />
-        </Wrapper>
+        <ThemeProvider theme={theme}>
+          <Wrapper>
+            <Content aria-modal="true" backgroundColor="" getBackgroundColor="" css="">
+              {closeButton && (
+                <CloseButton
+                  aria-label="close"
+                  appearance="text"
+                  onClick={() => {
+                    closeButton();
+                  }}
+                >
+                  <Icon name="close" />
+                </CloseButton>
+              )}
+              {children}
+            </Content>
+            <Background />
+          </Wrapper>
+        </ThemeProvider>
       </FocusLock>,
       document.body,
     );
@@ -121,6 +147,7 @@ class Modal extends Component<ModalProps> {
 Modal.defaultProps = {
   closeButton: null,
   disableEsc: false,
+  theme: null,
 };
 
-export default Modal;
+export default withTheme(Modal);
