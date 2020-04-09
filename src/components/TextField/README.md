@@ -6,34 +6,34 @@ Text fields let users enter and edit text.
 
 ```.jsx
 <>
-  <p>
-    Text field
+  <section>
+    <Heading h4>Text field</Heading>
     <TextField
       label="First name"
       type="text"
       name="firstName"
     />
-  </p>
-  <p>
-    With a placeholder
+  </section>
+  <section>
+    <Heading h4 paddingTop="medium">With a placeholder</Heading>
     <TextField
       label="Your favourite food"
       type="text"
       name="yourFavouriteFood"
       placeholder="Cookies"
     />
-  </p>
-  <p>
-    With hint text
+  </section>
+  <section>
+    <Heading h4 paddingTop="medium">With hint text</Heading>
     <TextField
       label="This is the label"
       type="text"
       name="hintText"
       hintText="This is the hint text"
     />
-  </p>
-  <p>
-    With extra bits
+  </section>
+  <section>
+    <Heading h4 paddingTop="medium">With extra bits</Heading>
     <TextField
       label="Fundraising target"
       type="text"
@@ -62,9 +62,9 @@ Text fields let users enter and edit text.
       name="emailAddress"
       extraBottom="Wash your hands for 20 seconds"
     />
-  </p>
-  <p>
-    With error message
+  </section>
+  <section>
+    <Heading h4 paddingTop="medium">With error message</Heading>
     <TextField
       label="Phone number"
       type="text"
@@ -72,18 +72,18 @@ Text fields let users enter and edit text.
       hasError
       error="You have made more than one daily outing for exercise"
     />
-  </p>
-  <p>
-    Required
+  </section>
+  <section>
+    <Heading h4 paddingTop="medium">Required</Heading>
     <TextField
       label="Number of cats"
       type="text"
       name="numberOfCats"
       required
     />
-  </p>
-  <p>
-    Disabled
+  </section>
+  <section>
+    <Heading h4 paddingTop="medium">Disabled</Heading>
     <TextField
       label="Favourite pasta type"
       type="text"
@@ -91,7 +91,7 @@ Text fields let users enter and edit text.
       value="Spaghetti"
       disabled
     />
-  </p>
+  </section>
 </>
 ```
 

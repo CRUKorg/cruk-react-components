@@ -1,10 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
+
 import defaultTheme from '../../themes/cruk';
+import spacing, { SpacingProps } from '../Spacing';
 
 import { ThemeType } from '../../themes/types';
 
-type PaginationProps = {
+type PaginationProps = SpacingProps & {
   current: number;
   items: number;
   hideLast: boolean;
@@ -14,24 +16,27 @@ type PaginationProps = {
   theme?: ThemeType;
 };
 
-type PaginationStyledProps = {
+type PaginationStyledProps = SpacingProps & {
   active?: boolean;
   name?: string;
   disabled?: boolean;
 };
 
-const PagerWrapper = styled.div`
+const PagerWrapper = styled.div<PaginationStyledProps>`
   display: table;
   width: 100%;
   clear: both;
   text-align: center;
+  ${props => spacing(props)}
 `;
+
 const PagerList = styled.ul`
   display: inline-block;
   padding-left: 0;
   margin: 20px 0;
 `;
-const PagerLink = styled.a`
+
+const PagerLink = styled.a<PaginationStyledProps>`
   font-weight: normal;
   font-family: ${({
     theme: {
@@ -79,7 +84,8 @@ const PagerLink = styled.a`
         text-decoration: none;
       }
     `}
-  ${itemProps =>
+
+  ${(itemProps: PaginationStyledProps) =>
     (itemProps.name === 'Prev' || itemProps.name === 'Next') &&
     css`
       color: ${props => props.theme.colors.primary};
@@ -97,7 +103,8 @@ const PagerLink = styled.a`
         text-decoration: none;
       }
     `}
-  ${itemProps =>
+
+  ${(itemProps: PaginationStyledProps) =>
     itemProps.disabled &&
     css`
       color: ${props => props.theme.colors.disabled};
@@ -112,6 +119,7 @@ const PagerLink = styled.a`
       }
     `}
 `;
+
 const PagerItem = styled.li`
   display: none;
   &:first-child,
@@ -189,6 +197,7 @@ const Pagination: FunctionComponent<PaginationProps> = props => {
     }
     return pager;
   };
+
   return (
     <ThemeProvider theme={theme}>
       <PagerWrapper>

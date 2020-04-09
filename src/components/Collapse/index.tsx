@@ -2,12 +2,13 @@ import React, { useState, useRef, KeyboardEvent, FunctionComponent, ReactNode } 
 import styled, { withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 
+import spacing, { SpacingProps } from '../Spacing';
 import { ThemeType } from '../../themes/types';
 
 import Button from '../Button';
 import { Icon } from '..';
 
-type CollapseProps = {
+type CollapseProps = SpacingProps & {
   active: boolean;
   headerTitleText: string;
   headerComponent?: ReactNode;
@@ -15,6 +16,10 @@ type CollapseProps = {
   id?: string;
   theme?: ThemeType;
 };
+
+const CollapseWrapper = styled.div`
+  ${props => spacing(props)}
+`;
 
 type DefaultHeaderProps = {
   theme: ThemeType;
@@ -127,7 +132,7 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
   };
 
   return (
-    <>
+    <CollapseWrapper>
       {renderHeader(theme)}
       <CollapseContent
         theme={theme}
@@ -140,7 +145,7 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
       >
         {props.children}
       </CollapseContent>
-    </>
+    </CollapseWrapper>
   );
 };
 

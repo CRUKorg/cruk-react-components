@@ -1,9 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import styled, { css, withTheme } from 'styled-components';
+
+import spacing, { SpacingProps } from '../Spacing';
 import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
-type BoxProps = {
+type BoxProps = SpacingProps & {
   backgroundColor?: string;
   getBackgroundColor: string;
   css?: any;
@@ -28,6 +30,7 @@ const StyledBox = styled.div<BoxProps>`
     `}
 
   ${(props: BoxProps) => (css as any)([props.css])}
+  ${props => spacing(props)}
 `;
 const Box: FunctionComponent<BoxProps> = props => {
   const { backgroundColor, getBackgroundColor, children, css, theme, ...rest } = props;

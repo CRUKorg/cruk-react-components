@@ -1,12 +1,14 @@
 import React, { FunctionComponent } from 'react';
 import styled, { css, withTheme } from 'styled-components';
+
 import defaultTheme, { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../themes/cruk';
 import ProgressBar from '../ProgressBar';
 import { calculatePercentRounded, formatMoney } from '../../utils/Helper';
+import spacing, { SpacingProps } from '../Spacing';
 
 import { ThemeType } from '../../themes/types';
 
-type TotaliserProps = {
+type TotaliserProps = SpacingProps & {
   giftAid: number;
   total: number;
   isCompact: boolean;
@@ -45,7 +47,7 @@ const Summary = styled.div`
   margin-bottom: 0;
 `;
 
-type TotaliserWrapperProps = {
+type TotaliserWrapperProps = SpacingProps & {
   isCompact: boolean;
 };
 
@@ -67,6 +69,7 @@ const TotaliserWrapper = styled.div<TotaliserWrapperProps>`
         padding: 0;
       }
     `}
+    ${props => spacing(props)}
 `;
 const CompactWrapper = styled.div`
   justify-content: space-between;
@@ -103,7 +106,7 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
       `}
   `;
   return (
-    <TotaliserWrapper isCompact={props.isCompact} theme={theme}>
+    <TotaliserWrapper {...props} isCompact={props.isCompact} theme={theme}>
       {props.isCompact ? (
         <CompactWrapper theme={theme}>
           <Total>£{formatMoney(props.total)}</Total>

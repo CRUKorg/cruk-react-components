@@ -1,19 +1,22 @@
 import React, { FunctionComponent, ReactNode, ButtonHTMLAttributes } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
+
+import spacing, { SpacingProps } from '../Spacing';
 import { ThemeType } from '../../themes/types';
 
 const BUTTON_HEIGHT = '2.5rem';
 
-type ButtonProps = ButtonHTMLAttributes<{}> & {
-  appearance?: string;
-  full?: boolean;
-  theme?: ThemeType;
-  href?: string;
-  size?: string;
-  css?: any;
-  as?: any;
-};
+type ButtonProps = ButtonHTMLAttributes<{}> &
+  SpacingProps & {
+    appearance?: string;
+    full?: boolean;
+    theme?: ThemeType;
+    href?: string;
+    size?: string;
+    css?: any;
+    as?: any;
+  };
 
 const VerticalAlign = styled.span`
   line-height: ${BUTTON_HEIGHT};
@@ -61,6 +64,7 @@ const StyledButton = styled.button`
   text-align: center;
   text-decoration: ${props => props.theme.button.textDecoration};
   text-transform: ${props => props.theme.button.textTransform};
+  
   :focus,
   :hover {
     color: ${props => props.theme.colors.linkColorHover}
@@ -142,12 +146,15 @@ const StyledButton = styled.button`
         border-color: ${props.theme.colors.disabled};
       }
     `}
+
   ${(props: ButtonProps) =>
     props.full &&
     css`
       width: 100%;
     `}
-    ${(props: ButtonProps) => (css as any)([props.css])}
+
+  ${(props: ButtonProps) => (css as any)([props.css])}
+  ${props => spacing(props)}
 `;
 
 const Button: FunctionComponent<ButtonProps> = props => {

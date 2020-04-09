@@ -4,6 +4,7 @@ import styled, { withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import { ICONS } from './iconList';
 import { camelize } from '../../utils/Helper';
+import spacing, { SpacingProps } from '../Spacing';
 
 import { ThemeType, ColorsType } from '../../themes/types';
 
@@ -15,7 +16,7 @@ export const ICON_NAMES = Object.keys(ICONS).reduce((acc: { [key: string]: IconN
   return acc;
 }, {});
 
-type IconProps = {
+type IconProps = SpacingProps & {
   name?: IconNameType;
   color?: string;
   size?: string;
@@ -24,15 +25,16 @@ type IconProps = {
   getColor?: string;
 };
 
-const StyledIcon = styled.svg`
+const StyledIcon = styled.svg<IconProps>`
   display: inline-block;
-  height: ${(props: IconProps) => props.size};
+  height: ${props => props.size};
   margin-top: -0.2em;
   vertical-align: middle;
-  width: ${(props: IconProps) => props.size};
+  width: ${props => props.size};
   path {
-    fill: ${(props: IconProps) => props.getColor};
+    fill: ${props => props.getColor};
   }
+  ${props => spacing(props)}
 `;
 
 const Icon: FunctionComponent<IconProps> = props => {

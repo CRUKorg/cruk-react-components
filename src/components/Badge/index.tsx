@@ -1,9 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import styled, { css, withTheme } from 'styled-components';
+
+import spacing, { SpacingProps } from '../Spacing';
 import defaultTheme from '../../themes/cruk';
 import { ThemeType, ColorsType } from '../../themes/types';
 
-type BadgeProps = {
+type BadgeProps = SpacingProps & {
   backgroundColor?: string;
   text: boolean;
   theme?: ThemeType;
@@ -34,6 +36,8 @@ const StyledBadge = styled.span`
       svg {
         height: ${props.size}px;
       }
+
+      ${props => spacing(props)}
     `}
 `;
 

@@ -1,15 +1,30 @@
 import React, { FunctionComponent } from 'react';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
+
+import defaultTheme from '../../themes/cruk';
 import Avatar from '../Avatar';
 import { COLORS, TYPOGRAPHY, UTILITIES, FONT_SIZES } from '../../themes/cruk';
+import spacing, { SpacingProps } from '../Spacing';
 
-const StyledUserBlock = styled.div`
+import { ThemeType } from '../../themes/types';
+
+type UserBlockProps = SpacingProps & {
+  name: string;
+  avatarUrl?: string | null;
+  avatarName?: string | null;
+  extra: string | Node;
+  size: 'small' | 'medium' | 'large' | 'extraLarge';
+  theme?: ThemeType;
+};
+
+const StyledUserBlock = styled.div<UserBlockProps>`
   display: flex;
   align-items: center;
   justify-content: start;
   margin-bottom: ${props =>
     (props.theme.utilities && props.theme.utilities.rhythmVerticalBase) || UTILITIES.rhythmVerticalBase};
   flex: 1;
+  ${props => spacing(props)}
 `;
 
 const Details = styled.div`
@@ -30,17 +45,13 @@ const Extra = styled.div`
   margin-top: 4px;
 `;
 
-type UserBlockProps = {
-  name: string;
-  avatarUrl?: string | null;
-  avatarName?: string | null;
-  extra: string | Node;
-  size: 'small' | 'medium' | 'large' | 'extraLarge';
-};
-
 const UserBlock: FunctionComponent<UserBlockProps> = props => {
+  const theme = {
+    ...defaultTheme,
+    ...props.theme,
+  };
   return (
-    <StyledUserBlock>
+    <StyledUserBlock {...props} theme={theme}>
       <Avatar name={props.avatarName || props.name} url={props.avatarUrl} size={props.size} />
       <Details>
         <Name>{props.name || 'Anonymous'}</Name>
@@ -53,6 +64,7 @@ const UserBlock: FunctionComponent<UserBlockProps> = props => {
 UserBlock.defaultProps = {
   avatarUrl: null,
   avatarName: null,
+  theme: null,
 };
 
-export default UserBlock;
+export default withTheme(UserBlock);

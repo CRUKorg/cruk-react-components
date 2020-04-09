@@ -4,6 +4,7 @@ import defaultTheme from '../../themes/cruk';
 
 import Text from '../Text';
 import Icon, { ICON_NAMES } from '../Icon';
+import spacing, { SpacingProps } from '../Spacing';
 
 import { ThemeType } from 'src/themes/types';
 
@@ -16,11 +17,12 @@ const ChevyWithLevee = styled(Icon)`
 `;
 const Chevron = () => <ChevyWithLevee name={ICON_NAMES.chevronRightBold} />;
 
-type LinkProps = AnchorHTMLAttributes<{}> & {
-  theme?: ThemeType;
-  textHoverColor?: string;
-  appearance?: 'primary' | 'secondary';
-};
+type LinkProps = AnchorHTMLAttributes<{}> &
+  SpacingProps & {
+    theme?: ThemeType;
+    textHoverColor?: string;
+    appearance?: 'primary' | 'secondary';
+  };
 
 const StyledLink = styled(Text)<LinkProps>`
   transition: color 0.2s ease;
@@ -59,6 +61,8 @@ const StyledLink = styled(Text)<LinkProps>`
         ? textHoverColor
         : colors['linkColorHover']};
   }
+
+  ${props => spacing(props)}
 `;
 
 const Link: FunctionComponent<LinkProps> = props => {
