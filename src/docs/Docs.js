@@ -13,6 +13,7 @@ import Box from '../components/Box';
 import Flex from '../components/Flex';
 import Header from '../components/Header';
 import Heading from '../components/Heading';
+import Select from '../components/Select';
 import ThemeCheatSheet from '../components/ThemeCheatSheet';
 
 import AvatarReadme from '../components/Avatar/README.md';
@@ -42,17 +43,19 @@ import TextFieldReadme from '../components/TextField/README.md';
 import TotaliserReadme from '../components/Totaliser/README.md';
 import UserBlockReadme from '../components/UserBlock/README.md';
 
-import { BREAKPOINT, COLORS } from '../themes/cruk';
+import crukTheme, { BREAKPOINT, COLORS } from '../themes/cruk';
 import su2cTheme from '../themes/su2c';
+import cruk2Theme from '../themes/cruk2';
 import GlobalStyle from '../components/GlobalStyle';
 
 /*
  * Doc specific styling
  * layout, toggle, theme switch, code area
  */
-const SwitchTheme = styled(Button)`
+const SwitchTheme = styled(Select)`
   float: right;
   background-color: ${COLORS.lightBackground};
+  max-width: 150px;
 
   @media (max-width: ${BREAKPOINT.tablet}) {
     padding: 0.025em 1em;
@@ -215,12 +218,9 @@ const Nav = styled.nav`
 `;
 
 class Docs extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      theme: 'cruk',
-    };
-  }
+  state = {
+    theme: 'cruk',
+  };
 
   componentDidMount() {
     window.addEventListener('keyup', this.handleOutline);
@@ -241,18 +241,32 @@ class Docs extends React.Component {
   };
 
   render() {
+    const theme = () => {
+      switch (this.state.theme) {
+        case 'su2c':
+          return su2cTheme;
+        case 'cruk2':
+          return cruk2Theme;
+        default:
+          return crukTheme;
+      }
+    };
+
     return (
-      <ThemeProvider theme={this.state.theme === 'su2c' ? su2cTheme : {}}>
+      <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Header isSticky fullWidth>
           <SwitchTheme
-            onClick={() =>
+            onChange={e => {
+              console.log(e.target.value);
               this.setState({
-                theme: this.state.theme === 'su2c' ? 'cruk' : 'su2c',
-              })
-            }
+                theme: e.target.value,
+              });
+            }}
           >
-            Switch theme
+            <option value="cruk">CRUK theme</option>
+            <option value="cruk2">CRUK 2 theme</option>
+            <option value="su2c">SU2C theme</option>
           </SwitchTheme>
         </Header>
         <StyledFlex>
