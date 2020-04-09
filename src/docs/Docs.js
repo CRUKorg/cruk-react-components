@@ -257,6 +257,7 @@ class Docs extends React.Component {
         <GlobalStyle />
         <Header isSticky fullWidth>
           <SwitchTheme
+            name="themeSelector"
             onChange={e => {
               console.log(e.target.value);
               this.setState({
