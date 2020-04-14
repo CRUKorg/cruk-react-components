@@ -122,7 +122,7 @@ export const COLORS: ColorsType = {
 
   totaliserBorder: TOKEN_COLORS.grey_300,
 
-  textInputBorder: TOKEN_COLORS.grey_900,
+  textInputBorder: TOKEN_COLORS.grey_300,
 
   selectBackground: TOKEN_COLORS.grey_900,
 
