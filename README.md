@@ -53,16 +53,10 @@ Clone this repository
 git clone git@github.com:CRUKorg/cruk-react-components.git
 ```
 
-Install dependencies.
-
-```sh
-npm i
-```
-
 Start local development environment 💥
 
 ```sh
-npm start
+npm run dev
 ```
 
 ## Docker
@@ -78,7 +72,7 @@ docker-compose run npm
 Start local development environment
 
 ```bash
-docker-compose up -d server
+docker-compose up server
 ```
 
 This should start the server and you should be able to see it running here: http://127.0.0.1:8080/
