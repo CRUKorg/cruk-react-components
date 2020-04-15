@@ -54,7 +54,7 @@ export const WithLabel: FunctionComponent<WithLabelProps> = props => {
   return (
     <ThemeProvider theme={theme}>
       {label ? (
-        <Label>
+        <Label {...props}>
           <LabelText>
             {label} {!required && <span>(optional)</span>}
           </LabelText>
