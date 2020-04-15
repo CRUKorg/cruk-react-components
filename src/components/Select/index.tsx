@@ -40,10 +40,6 @@ const StyledSelect = styled.select<StyledSelectProps>`
   }
 `;
 
-const Wrapper = styled.span<SpacingProps>`
-  ${props => spacing(props)}
-`;
-
 type SelectProps = SelectHTMLAttributes<{}> &
   SpacingProps & {
     error?: string;
@@ -74,20 +70,18 @@ const Select: FunctionComponent<SelectProps> = ({
   };
 
   return (
-    <WithLabel label={label} hintText={hintText} required={required}>
-      <Wrapper {...props}>
-        <StyledSelect
-          error={error}
-          hasError={hasError}
-          onChange={onChange}
-          theme={theme}
-          value={value}
-          aria-invalid={hasError || !!error}
-          children={children}
-          {...props}
-        />
-        {!!error && <ErrorText>{error}</ErrorText>}
-      </Wrapper>
+    <WithLabel label={label} hintText={hintText} required={required} {...props}>
+      <StyledSelect
+        error={error}
+        hasError={hasError}
+        onChange={onChange}
+        theme={theme}
+        value={value}
+        aria-invalid={hasError || !!error}
+        children={children}
+        {...props}
+      />
+      {!!error && <ErrorText>{error}</ErrorText>}
     </WithLabel>
   );
 };
