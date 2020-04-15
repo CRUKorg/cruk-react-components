@@ -4,7 +4,7 @@ import styled, { withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import ErrorText from '../ErrorText';
 import { WithLabel } from '../Label';
-import spacing, { SpacingProps } from '../Spacing';
+import { SpacingProps } from '../Spacing';
 
 import { ThemeType } from '../../themes/types';
 
