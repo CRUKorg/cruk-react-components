@@ -2,8 +2,10 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Link as RouterLink } from '@reach/router';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
-import MdxProvider from '../hocs/MdxProvider';
 import styled, { css, ThemeProvider } from 'styled-components';
+
+import defaultTheme from '../themes/cruk';
+import MdxProvider from '../hocs/MdxProvider';
 
 // /////////////////////////////////////////////////////////
 // HAVE YOU ADDED YOUR COMPONENT TO THE MDX PROVIDER HOC? //
@@ -36,7 +38,6 @@ import ProgressBarReadme from '../components/ProgressBar/README.md';
 import RadioReadme from '../components/Radio/README.md';
 import RadioGroupReadme from '../components/RadioGroup/README.md';
 import SelectReadme from '../components/Select/README.md';
-import SpacingReadme from '../components/Spacing/README.md';
 import StepReadme from '../components/Step/README.md';
 import TextReadme from '../components/Text/README.md';
 import TextFieldReadme from '../components/TextField/README.md';
@@ -273,7 +274,7 @@ class Docs extends React.Component {
         <StyledFlex>
           <Toggle />
           <ToggleIcon />
-          <SideBar>
+          <SideBar padding="extraSmall">
             <Nav>
               <Heading h4>Components</Heading>
               <RouterLink to="/avatar">Avatar</RouterLink>
@@ -296,7 +297,6 @@ class Docs extends React.Component {
               <RouterLink to="/radio">Radio</RouterLink>
               <RouterLink to="/radiogroup">Radio Group</RouterLink>
               <RouterLink to="/select">Select</RouterLink>
-              <RouterLink to="/spacing">Spacing</RouterLink>
               <RouterLink to="/step">Step</RouterLink>
               <RouterLink to="/textfield">TextField</RouterLink>
               <RouterLink to="/text">Text</RouterLink>
@@ -328,7 +328,6 @@ class Docs extends React.Component {
                 <RadioReadme path="/radio" />
                 <RadioGroupReadme path="/radiogroup" />
                 <SelectReadme path="/select" />
-                <SpacingReadme path="/spacing" />
                 <StepReadme path="/step" />
                 <TextReadme path="/text" />
                 <TextFieldReadme path="/textfield" />
