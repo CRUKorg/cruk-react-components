@@ -15,7 +15,7 @@ You can use an avatar to display ownership of an item of content. If you pass a 
   <Avatar name="Sam" size="extraLarge" />
   <Avatar
     name="Sam"
-    url="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/modules/cruk_online_fundraising/images/hero_desktop.jpg"
+    url="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"
   />
 </React.Fragment>
 ```

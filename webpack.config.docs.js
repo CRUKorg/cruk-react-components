@@ -13,4 +13,11 @@ module.exports = createWebpackConfig({
       filename: './index.html',
     }),
   ],
+  // webpack-dev-server configuration
+  devServer: {
+    host: '0.0.0.0',
+    contentBase: path.resolve(__dirname, './src'),
+    watchContentBase: true,
+    port: 8080,
+  },
 });
