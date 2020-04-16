@@ -14,12 +14,7 @@ import {
 
 export const UTILITIES: UtilitiesType = {
   borderRadius: '3px',
-  rhythmBase: '15px',
-  rhythmVerticalBase: '15px',
-  rhythmHorizontalBase: '15px',
   contentMaxWidth: '1020px',
-  spacingBase: '5px',
-  spacingUnit: 5,
 };
 
 export const SITE_CONFIG: SiteConfigType = {
