@@ -11,7 +11,7 @@ type StyledInputProps = {
   hasError: boolean;
   error: string;
   label: string;
-  hintText: string;
+  hintText?: string;
   required: boolean;
   theme?: ThemeType;
 };
@@ -56,7 +56,7 @@ type SelectProps = {
   placeholder: string;
   type: 'text' | 'number' | 'email' | 'password';
   value: string;
-  hintText: string;
+  hintText?: string;
   required: boolean;
   theme?: ThemeType;
 };
