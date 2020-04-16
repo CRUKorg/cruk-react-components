@@ -49,7 +49,7 @@ type SelectProps = SelectHTMLAttributes<{}> &
     theme: ThemeType;
     label: string;
     value: string;
-    hintText: string;
+    hintText?: string;
   };
 
 const Select: FunctionComponent<SelectProps> = ({
