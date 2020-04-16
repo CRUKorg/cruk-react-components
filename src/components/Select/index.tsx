@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, SelectHTMLAttributes } from 'react';
 import styled, { withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -10,69 +10,77 @@ import { ThemeType } from '../../themes/types';
 type StyledInputProps = {
   hasError: boolean;
   error: string;
-  label: string;
-  hintText?: string;
-  required: boolean;
-  theme?: ThemeType;
+  theme: ThemeType;
 };
 
-const StyledInput = styled.select<StyledInputProps>`
+const StyledSelect = styled.select<StyledSelectProps>`
   appearance: none;
-  background: ${({
-    theme: {
-      colors: { selectBackground },
-    },
-  }) =>
-    `linear-gradient(
+  background: linear-gradient(
       45deg,
       transparent 50%,
-      ${selectBackground} 50%
+      ${({ theme }: StyledSelectProps) => theme.colors.selectBackground} 50%
     ),
-    linear-gradient(135deg, ${selectBackground} 50%, transparent 50%)`};
-  background-position: calc(100% - 16px) 1em, calc(100% - 10px) 1em;
+    linear-gradient(135deg, ${({ theme }: StyledSelectProps) => theme.colors.selectBackground} 50%, transparent 50%);
+  background-position: calc(100% - 16px) 50%, calc(100% - 10px) 50%;
   background-size: 6px 6px;
   background-repeat: no-repeat;
-  border-radius: ${props => props.theme.utilities.borderRadius};
+  border-radius: ${({ theme }: StyledSelectProps) => theme.utilities.borderRadius};
   border: solid 2px
-    ${props => (props.hasError || props.error ? props.theme.colors.textError : props.theme.colors.inputBorder)};
-  color: ${props => props.theme.colors.textDark};
+    ${({ error, hasError, theme }) => (hasError || error ? theme.colors.textError : theme.colors.inputBorder)};
+  color: ${({ theme }) => theme.colors.textDark};
   display: block;
-  font-size: ${props => props.theme.fontSizes.medium};
-  padding: 7px 24px 5px 10px;
+  font-size: ${({ theme }) => theme.fontSizes.medium};
+  padding: 6px 24px 6px 8px;
   width: 100%;
-  height: 40px;
   transition: border-color 150ms linear;
   &:focus {
-    border-color: ${props => props.theme.colors.tertiary};
+    border-color: ${({ theme }) => theme.colors.tertiary};
     outline: 0;
   }
 `;
 
-type SelectProps = {
-  error: string;
-  hasError: boolean;
-  label: string;
-  onChange: React.ChangeEventHandler<HTMLSelectElement>;
-  placeholder: string;
-  type: 'text' | 'number' | 'email' | 'password';
-  value: string;
-  hintText?: string;
-  required: boolean;
-  theme?: ThemeType;
-};
+type SelectProps = SelectHTMLAttributes<{}> &
+  SpacingProps & {
+    error?: string;
+    hasError?: boolean;
+    onChange: React.ChangeEventHandler<HTMLSelectElement>;
+    required?: boolean;
+    theme: ThemeType;
+    label: string;
+    value: string;
+    hintText?: string;
+  };
 
-const Select: FunctionComponent<SelectProps> = props => {
+const Select: FunctionComponent<SelectProps> = ({
+  error,
+  hasError,
+  onChange,
+  required,
+  theme: propsTheme,
+  value,
+  label,
+  hintText,
+  children,
+  ...props
+}) => {
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...propsTheme,
   };
 
   return (
-    <WithLabel {...props}>
-      <StyledInput {...props} theme={theme}>
-        {props.children}
-      </StyledInput>
-      {!!props.error && <ErrorText>{props.error}</ErrorText>}
+    <WithLabel label={label} hintText={hintText} required={required} {...props}>
+      <StyledSelect
+        error={error}
+        hasError={hasError}
+        onChange={onChange}
+        theme={theme}
+        value={value}
+        aria-invalid={hasError || !!error}
+        children={children}
+        {...props}
+      />
+      {!!error && <ErrorText>{error}</ErrorText>}
     </WithLabel>
   );
 };
