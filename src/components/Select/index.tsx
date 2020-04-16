@@ -7,7 +7,7 @@ import { WithLabel } from '../Label';
 
 import { ThemeType } from '../../themes/types';
 
-type StyledInputProps = {
+type StyledSelectProps = {
   hasError: boolean;
   error: string;
   theme: ThemeType;
@@ -39,17 +39,16 @@ const StyledSelect = styled.select<StyledSelectProps>`
   }
 `;
 
-type SelectProps = SelectHTMLAttributes<{}> &
-  SpacingProps & {
-    error?: string;
-    hasError?: boolean;
-    onChange: React.ChangeEventHandler<HTMLSelectElement>;
-    required?: boolean;
-    theme: ThemeType;
-    label: string;
-    value: string;
-    hintText?: string;
-  };
+type SelectProps = SelectHTMLAttributes<{}> & {
+  error?: string;
+  hasError?: boolean;
+  onChange: React.ChangeEventHandler<HTMLSelectElement>;
+  required?: boolean;
+  theme: ThemeType;
+  label: string;
+  value: string;
+  hintText?: string;
+};
 
 const Select: FunctionComponent<SelectProps> = ({
   error,

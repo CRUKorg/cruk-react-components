@@ -171,7 +171,6 @@ const Button: FunctionComponent<ButtonProps> = props => {
   // button has a fixed width if there is a single icon
   const isIconButton = props.children && childArray.length === 1 && isIcon(childArray[0]);
 
-  console.log(props);
   return (
     <StyledButton as={props.href ? 'a' : 'button'} {...props} iconButton={isIconButton} theme={theme}>
       {props.children && childArray.length

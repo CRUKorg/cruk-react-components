@@ -73,7 +73,6 @@ const components = {
           lineHeight: '1',
           fontSize: '0.875rem',
           marginBottom: '20px',
-          padding: '8px',
         }}
       />
       <LiveError />
