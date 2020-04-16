@@ -3,7 +3,6 @@ import styled, { withTheme, ThemeProvider } from 'styled-components';
 
 import RadioInput from '../Radio';
 import defaultTheme from '../../themes/cruk';
-import spacing, { SpacingProps } from '../Spacing';
 
 import { ThemeType } from '../../themes/types';
 
@@ -18,9 +17,8 @@ const StyledLegend = styled.legend`
   max-width: 20%;
 `;
 
-const StyledFieldSet = styled.fieldset<SpacingProps>`
+const StyledFieldSet = styled.fieldset`
   border: none;
-  ${props => spacing(props)}
 `;
 
 const RadioGroupWrapper = styled.div`
@@ -29,7 +27,7 @@ const RadioGroupWrapper = styled.div`
   flex-flow: row wrap;
 `;
 
-type RadioGroupProps = SpacingProps & {
+type RadioGroupProps = {
   legend: string;
   attributes: Array<{
     value: string;

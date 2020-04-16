@@ -2,7 +2,6 @@ import React, { FunctionComponent, useState } from 'react';
 import styled, { withTheme, ThemeProvider } from 'styled-components';
 
 import { useScrollPosition } from '../../../src/hooks/useScrollPosition';
-import spacing, { SpacingProps } from '../Spacing';
 
 import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
@@ -14,7 +13,7 @@ const HEADER_PADDING = defaultTheme.spacing.small;
 const HEADER_LOGO_HEIGHT_LARGE = '80px';
 const HEADER_LOGO_HEIGHT_SMALL = '40px';
 
-type HeaderStickyContainerProps = SpacingProps & {
+type HeaderStickyContainerProps = {
   isSmall?: boolean;
   isSticky?: boolean;
   fullWidth?: boolean;
@@ -30,7 +29,6 @@ const StyledHeader = styled.header<HeaderStickyContainerProps>`
     },
   }) => headerBackground};
   z-index: 9998;
-  ${props => spacing(props)}
 `;
 
 const HeaderStickyPlaceHolder = styled.div`

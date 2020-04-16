@@ -5,10 +5,9 @@ import defaultTheme from '../../themes/cruk';
 import ErrorText from '../ErrorText';
 import { WithLabel } from '../Label';
 
-import { SpacingProps } from '../Spacing';
 import { ThemeType } from '../../themes/types';
 
-type StyledInputProps = SpacingProps & {
+type StyledInputProps = {
   hasError: boolean;
   error: string;
   label: string;
@@ -49,7 +48,7 @@ const StyledInput = styled.select<StyledInputProps>`
   }
 `;
 
-type SelectProps = SpacingProps & {
+type SelectProps = {
   error: string;
   hasError: boolean;
   label: string;

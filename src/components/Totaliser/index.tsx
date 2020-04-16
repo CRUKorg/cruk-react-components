@@ -4,11 +4,10 @@ import styled, { css, withTheme } from 'styled-components';
 import defaultTheme, { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../themes/cruk';
 import ProgressBar from '../ProgressBar';
 import { calculatePercentRounded, formatMoney } from '../../utils/Helper';
-import spacing, { SpacingProps } from '../Spacing';
 
 import { ThemeType } from '../../themes/types';
 
-type TotaliserProps = SpacingProps & {
+type TotaliserProps = {
   giftAid: number;
   total: number;
   isCompact: boolean;
@@ -47,7 +46,7 @@ const Summary = styled.div`
   margin-bottom: 0;
 `;
 
-type TotaliserWrapperProps = SpacingProps & {
+type TotaliserWrapperProps = {
   isCompact: boolean;
 };
 
@@ -69,7 +68,6 @@ const TotaliserWrapper = styled.div<TotaliserWrapperProps>`
         padding: 0;
       }
     `}
-    ${props => spacing(props)}
 `;
 const CompactWrapper = styled.div`
   justify-content: space-between;

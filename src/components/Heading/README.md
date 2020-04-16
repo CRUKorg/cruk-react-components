@@ -29,3 +29,31 @@ use the corresponding heading class (h1, h2, h3, ....). Write all headings in se
 | textAlign         | 'left'/'right'/'center' | 'left'                  | text alignment                                              |
 | textColor         | string                  | 'theme.colors.textDark' | set the heading text color alignment                        |
 | textSize          | FontSizeType            | depends on h number     | font size of header, this will scale still with breakpoints |
+| margin            | SpaceType               |                         | unset                                                       | margin top, bottom, left and right |
+| marginVertical    | SpaceType               |                         | unset                                                       | margin top and bottom |
+| marginHorizontal  | SpaceType               |                         | unset                                                       | margin left and right |
+| marginTop         | SpaceType               |                         | 'medium' (0 if first child)                                 | margin top |
+| marginRight       | SpaceType               |                         | unset                                                       | margin right right |
+| marginBottom      | SpaceType               |                         | 'small'                                                     | margin bottom bottom |
+| marginLeft        | SpaceType               |                         | unset                                                       | margin left left |
+| padding           | SpaceType               |                         | unset                                                       | padding top, bottom, left and right |
+| paddingVertical   | SpaceType               |                         | unset                                                       | padding top and bottom |
+| paddingHorizontal | SpaceType               |                         | unset                                                       | padding left and right |
+| paddingTop        | SpaceType               |                         | unset                                                       | padding top |
+| paddingRight      | SpaceType               |                         | unset                                                       | padding right right |
+| paddingBottom     | SpaceType               |                         | unset                                                       | padding bottom bottom |
+| paddingLeft       | SpaceType               |                         | unset                                                       | padding left left |
+
+### SpaceType
+
+| Option            | Value    |
+| :---------------- | :------- |
+| "none"            | "0"      |
+| "auto"            | "auto"   |
+| "extraExtraSmall" | "0.5rem" |
+| "extraSmall"      | "1rem"   |
+| "small"           | "1.5rem" |
+| "medium"          | "2rem"   |
+| "large"           | "2.5rem" |
+| "extraLarge"      | "3rem"   |
+| "extraExtraLarge" | "3.5rem" |

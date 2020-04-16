@@ -2,13 +2,11 @@ import React, { FunctionComponent } from 'react';
 import styled, { withTheme, ThemeProvider } from 'styled-components';
 
 import defaultTheme from './../themes/cruk';
-import spacing, { SpacingProps } from './Spacing';
 import { ThemeType } from 'src/themes/types';
 
-const Label = styled.label<SpacingProps>`
+const Label = styled.label`
   display: block;
   width: 100%;
-  ${props => spacing(props)}
 `;
 
 const Hint = styled.span`
@@ -37,7 +35,7 @@ const LabelText = styled.span`
 // TODO split withLabel from label into different files and place withLabel in HOC folder
 // TODO write docs page for label / withLabel
 
-type WithLabelProps = SpacingProps & {
+type WithLabelProps = {
   label: string;
   hintText?: string;
   required?: boolean;

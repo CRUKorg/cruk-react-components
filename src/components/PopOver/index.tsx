@@ -1,6 +1,6 @@
 import React, { useState, FunctionComponent } from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
-import defaultTheme, { BREAKPOINT, COLORS, FONT_SIZES, UTILITIES } from '../../themes/cruk';
+import defaultTheme, { BREAKPOINT, COLORS } from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
 type PopOverProps = {
@@ -22,18 +22,34 @@ const PopOverWrapper = styled.div<PopOverWrapperProps>`
 const PopOverContent = styled.div`
   display: flex;
   justify-content: space-around;
-  padding: ${UTILITIES.spacingUnit}px;
+  padding: ${({
+    theme: {
+      spacing: { extraExtraSmall },
+    },
+  }) => extraExtraSmall};
   position: absolute;
   bottom: 100%;
   left: 0;
   z-index: 9999;
   max-width: 276px;
-  font-size: ${FONT_SIZES.small};
+  font-size: ${({
+    theme: {
+      fontSizes: { small },
+    },
+  }) => small};
   word-wrap: break-word;
-  background-color: ${COLORS.popoverBackground};
+  background-color: ${({
+    theme: {
+      colors: { popoverBackground },
+    },
+  }) => popoverBackground};
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.25);
-  border-radius: ${UTILITIES.borderRadius};
+  border-radius: ${({
+    theme: {
+      utilities: { borderRadius },
+    },
+  }) => borderRadius};
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
 
