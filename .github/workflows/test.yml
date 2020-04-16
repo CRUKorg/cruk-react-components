@@ -18,7 +18,7 @@ jobs:
           restore-keys: |
             node_modules-
       - name: npm install
-        run: docker-compose run npm ci
+        run: docker-compose npm clear cache && docker-compose run npm ci
       - name: Bring up the server
         run: docker-compose up -d server
       - name: Test
