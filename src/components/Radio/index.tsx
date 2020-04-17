@@ -69,6 +69,15 @@ const StyledLabel = styled.label<StyledLabelProps>`
       : css`
           padding: 1rem 1rem 1rem 4rem;
           min-height: 4rem;
+
+          &:hover ${CheckWrapper} ${Check} {
+            border: solid 2px
+              ${({
+                theme: {
+                  colors: { primary },
+                },
+              }) => primary};
+          }
         `}
 `;
 
@@ -86,15 +95,6 @@ const StyledInput = styled.input`
           position: absolute;
           left: 8px;
           opacity: 0;
-
-          :hover ${CheckWrapper} ${Check} {
-            border: ${({
-                theme: {
-                  colors: { primary },
-                },
-              }) => primary}
-              solid #ffffff 3px;
-          }
 
           &:focus ~ ${CheckWrapper} ${Check} {
             outline: -webkit-focus-ring-color auto 5px;
