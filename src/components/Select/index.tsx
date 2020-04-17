@@ -1,5 +1,5 @@
 import React, { FunctionComponent, SelectHTMLAttributes } from 'react';
-import styled, { withTheme } from 'styled-components';
+import styled, { withTheme, css } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 import ErrorText from '../ErrorText';
@@ -33,10 +33,20 @@ const StyledSelect = styled.select<StyledSelectProps>`
   padding: 6px 24px 6px 8px;
   width: 100%;
   transition: border-color 150ms linear;
-  &:focus {
-    border-color: ${({ theme }) => theme.colors.tertiary};
-    outline: 0;
+  &:disabled {
+    border-color: ${({ theme }) => theme.colors.disabled};
+    color: ${({ theme }) => theme.colors.disabled};
   }
+
+  ${({ theme }) =>
+    !theme.utilities.useDefaultFocusRect
+      ? css`
+          &:focus {
+            outline: 0;
+            border-color: ${({ theme }) => theme.colors.tertiary};
+          }
+        `
+      : null};
 `;
 
 type SelectProps = SelectHTMLAttributes<{}> & {

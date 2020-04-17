@@ -43,6 +43,7 @@ export const TOKEN_COLORS: TokenColorsType = {
 export const COLORS: ColorsType = {
   ...defaultTheme.colors,
   textInputBorder: TOKEN_COLORS.grey_900,
+  inputBorder: TOKEN_COLORS.grey_900,
 };
 
 export const SPACING: SpacingType = {
