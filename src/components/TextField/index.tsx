@@ -64,8 +64,6 @@ type StyledInputProps = {
   theme: ThemeType;
 };
 
-// TODO: disabled styles
-
 const StyledInput = styled.input<StyledInputProps>`
   background-color: ${({ theme }) => theme.colors.lightBackground};
   background-image: none;
@@ -78,13 +76,24 @@ const StyledInput = styled.input<StyledInputProps>`
   padding: 6px 8px;
   width: 100%;
   transition: border-color 150ms linear;
-  &:focus {
-    border-color: ${({ theme }) => theme.colors.tertiary};
-    outline: 0;
-    ~ ${ExtraRight} {
-      border-color: ${({ theme }) => theme.colors.tertiary};
-    }
+  &:disabled {
+    border-color: ${({ theme }) => theme.colors.disabled};
+    color: ${({ theme }) => theme.colors.disabled};
   }
+
+  ${({ theme }) =>
+    !theme.utilities.useDefaultFocusRect
+      ? css`
+          &:focus {
+            outline: 0;
+            border-color: ${({ theme }) => theme.colors.tertiary};
+            ~ ${ExtraRight} {
+              border-color: ${({ theme }) => theme.colors.tertiary};
+            }
+          }
+        `
+      : null};
+  
   ${({ extraTop }) =>
     !!extraTop &&
     css`

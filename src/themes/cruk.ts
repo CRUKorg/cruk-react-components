@@ -15,6 +15,7 @@ import {
 export const UTILITIES: UtilitiesType = {
   borderRadius: '3px',
   contentMaxWidth: '1020px',
+  useDefaultFocusRect: false,
 };
 
 export const SITE_CONFIG: SiteConfigType = {

@@ -13,6 +13,7 @@ export type FontSizesType = { [key in FontSizeType]: string };
 export type UtilitiesType = {
   borderRadius: string;
   contentMaxWidth: string;
+  useDefaultFocusRect: boolean;
 };
 
 export type SiteConfigType = {

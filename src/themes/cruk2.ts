@@ -16,6 +16,8 @@ import defaultTheme from './cruk';
 
 export const UTILITIES: UtilitiesType = {
   ...defaultTheme.utilities,
+  borderRadius: 'unset',
+  useDefaultFocusRect: true,
 };
 
 export const SITE_CONFIG: SiteConfigType = {
