@@ -10,13 +10,6 @@ jobs:
     steps:
       - name: Checkout cruk-react-components
         uses: actions/checkout@v1
-      - name: Cache node_modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: node_modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            node_modules-
       - name: npm install
         run: docker-compose run npm ci
       - name: Bring up the server
