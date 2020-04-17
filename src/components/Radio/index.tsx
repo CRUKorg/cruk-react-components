@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import styled, { withTheme } from 'styled-components';
+import styled, { withTheme, css } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 
@@ -9,22 +9,105 @@ type StyledLabelProps = {
   checked: boolean;
 };
 
+const CheckWrapper = styled.div`
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+  position: absolute;
+  top: calc(100% / 2 - 1rem);
+  left: 1rem;
+`;
+
+const Check = styled.span`
+  display: block;
+  display: block;
+  position: relative;
+  border: 2px solid ${({ theme }) => theme.colors.radioBorder};
+  border-radius: 100%;
+  height: 2rem;
+  width: 2rem;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  transition: border 0.25s linear;
+
+  ::before {
+    display: block;
+    position: absolute;
+    content: '';
+    border-radius: 100%;
+    height: 1.5rem;
+    width: 1.5rem;
+    top: calc(50% - 0.75rem);
+    left: calc(50% - 0.75rem);
+    margin: auto;
+    transition: background 0.25s linear;
+  }
+`;
+
 const StyledLabel = styled.label<StyledLabelProps>`
+  position: relative;
   border-radius: ${props => props.theme.utilities.borderRadius};
-  border: solid 2px ${props => (props.checked ? props.theme.colors.primary : props.theme.colors.inputBorder)};
+  border: solid 2px
+    ${({ checked, theme }) =>
+      checked && !theme.utilities.useDefaultFocusRect ? theme.colors.primary : theme.colors.inputBorder};
   cursor: pointer;
   display: inline-block;
   font-weight: ${props => (props.checked ? 'bold' : 'normal')};
-  padding: 5px;
+  padding: 8px;
   vertical-align: center;
+
+  &:focus ~ ${CheckWrapper} ${Check} {
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+
+  ${({ theme }) =>
+    theme.utilities.useDefaultFromControls
+      ? null
+      : css`
+          padding: 1rem 1rem 1rem 4rem;
+          min-height: 4rem;
+        `}
 `;
 
 const VerticalAlign = styled.span`
   vertical-align: middle;
+  line-height: 100%;
 `;
 
 const StyledInput = styled.input`
-  margin-right: 5px;
+  margin-right: 8px;
+  ${({ theme }) =>
+    theme.utilities.useDefaultFromControls
+      ? null
+      : css`
+          position: absolute;
+          left: 8px;
+          opacity: 0;
+
+          :hover ${CheckWrapper} ${Check} {
+            border: ${({
+                theme: {
+                  colors: { primary },
+                },
+              }) => primary}
+              solid #ffffff 3px;
+          }
+
+          &:focus ~ ${CheckWrapper} ${Check} {
+            outline: -webkit-focus-ring-color auto 5px;
+          }
+
+          &:checked ~ ${CheckWrapper} ${Check}::before {
+            background: ${({
+              theme: {
+                colors: { primary },
+              },
+            }) => primary};
+          }
+        `}
 `;
 
 type RadioProps = {
@@ -53,6 +136,11 @@ const RadioInput: FunctionComponent<RadioProps> = props => {
         type="radio"
         value={props.value}
       />
+      {theme.utilities.useDefaultFromControls ? null : (
+        <CheckWrapper>
+          <Check />
+        </CheckWrapper>
+      )}
       <VerticalAlign>{props.children || props.value}</VerticalAlign>
     </StyledLabel>
   );

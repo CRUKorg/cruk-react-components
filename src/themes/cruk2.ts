@@ -18,6 +18,7 @@ export const UTILITIES: UtilitiesType = {
   ...defaultTheme.utilities,
   borderRadius: 'unset',
   useDefaultFocusRect: true,
+  useDefaultFromControls: false,
 };
 
 export const SITE_CONFIG: SiteConfigType = {
