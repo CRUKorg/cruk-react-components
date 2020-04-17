@@ -2,11 +2,10 @@ import React, { FunctionComponent } from 'react';
 import styled, { withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
-import spacing, { SpacingProps } from '../Spacing';
 
 import { ThemeType } from '../../themes/types';
 
-type StyledLabelProps = SpacingProps & {
+type StyledLabelProps = {
   checked: boolean;
 };
 
@@ -18,7 +17,6 @@ const StyledLabel = styled.label<StyledLabelProps>`
   font-weight: ${props => (props.checked ? 'bold' : 'normal')};
   padding: 5px;
   vertical-align: center;
-  ${props => spacing(props)}
 `;
 
 const VerticalAlign = styled.span`
@@ -29,7 +27,7 @@ const StyledInput = styled.input`
   margin-right: 5px;
 `;
 
-type RadioProps = SpacingProps & {
+type RadioProps = {
   checked: boolean;
   name: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;

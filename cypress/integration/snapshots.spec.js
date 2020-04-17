@@ -64,7 +64,10 @@ const selectComponent = (componentName, brand) => {
         .matchImageSnapshot(`${brand}_${componentName}`);
       break;
     default:
-      cy.get('head').invoke('append', '<style type="text/css">header {display: none;}</style>');
+      cy.get('head').invoke(
+        'append',
+        '<style type="text/css"> header {display: none;} [aria-label="Example code preview"] span {animation: none;} </style>',
+      );
       cy.get('[aria-label="Example code preview"]')
         .first()
         .matchImageSnapshot(`${brand}_${componentName}`);

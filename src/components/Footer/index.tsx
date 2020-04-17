@@ -3,7 +3,6 @@ import styled, { withTheme, ThemeProvider } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 import Text from '../Text';
-import spacing, { SpacingProps } from '../Spacing';
 
 import { ThemeType } from '../../themes/types';
 
@@ -17,7 +16,6 @@ const StyledFooter = styled.footer`
       colors: { footerBackground },
     },
   }) => footerBackground};
-  ${props => spacing(props)}
 `;
 
 const FooterContentWrapper = styled.div`
@@ -136,7 +134,7 @@ const StyledAddress = styled.address`
   font-style: normal;
 `;
 
-type FooterPropsType = SpacingProps & {
+type FooterPropsType = {
   theme?: ThemeType;
 };
 

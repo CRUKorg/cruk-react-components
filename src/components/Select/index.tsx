@@ -4,11 +4,10 @@ import styled, { withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import ErrorText from '../ErrorText';
 import { WithLabel } from '../Label';
-import { SpacingProps } from '../Spacing';
 
 import { ThemeType } from '../../themes/types';
 
-type StyledSelectProps = SpacingProps & {
+type StyledSelectProps = {
   hasError: boolean;
   error: string;
   theme: ThemeType;
@@ -40,17 +39,16 @@ const StyledSelect = styled.select<StyledSelectProps>`
   }
 `;
 
-type SelectProps = SelectHTMLAttributes<{}> &
-  SpacingProps & {
-    error?: string;
-    hasError?: boolean;
-    onChange: React.ChangeEventHandler<HTMLSelectElement>;
-    required?: boolean;
-    theme: ThemeType;
-    label: string;
-    value: string;
-    hintText: string;
-  };
+type SelectProps = SelectHTMLAttributes<{}> & {
+  error?: string;
+  hasError?: boolean;
+  onChange: React.ChangeEventHandler<HTMLSelectElement>;
+  required?: boolean;
+  theme: ThemeType;
+  label: string;
+  value: string;
+  hintText?: string;
+};
 
 const Select: FunctionComponent<SelectProps> = ({
   error,

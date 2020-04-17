@@ -12,12 +12,7 @@ export type FontSizesType = { [key in FontSizeType]: string };
 
 export type UtilitiesType = {
   borderRadius: string;
-  rhythmBase: string;
-  rhythmVerticalBase: string;
-  rhythmHorizontalBase: string;
   contentMaxWidth: string;
-  spacingBase: string;
-  spacingUnit: number;
 };
 
 export type SiteConfigType = {

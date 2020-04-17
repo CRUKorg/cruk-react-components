@@ -2,13 +2,12 @@ import React, { useState, useRef, KeyboardEvent, FunctionComponent, ReactNode } 
 import styled, { withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 
-import spacing, { SpacingProps } from '../Spacing';
 import { ThemeType } from '../../themes/types';
 
 import Button from '../Button';
 import { Icon } from '..';
 
-type CollapseProps = SpacingProps & {
+type CollapseProps = {
   active: boolean;
   headerTitleText: string;
   headerComponent?: ReactNode;
@@ -17,9 +16,7 @@ type CollapseProps = SpacingProps & {
   theme?: ThemeType;
 };
 
-const CollapseWrapper = styled.div`
-  ${props => spacing(props)}
-`;
+const CollapseWrapper = styled.div``;
 
 type DefaultHeaderProps = {
   theme: ThemeType;

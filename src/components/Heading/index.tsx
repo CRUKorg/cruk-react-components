@@ -41,7 +41,11 @@ const StyledHeading = (props: HeadingProps) => css`
       typography: { lineHeight },
     },
   }) => lineHeight};
-  margin-top: 0;
+  margin-top: ${({
+    theme: {
+      spacing: { medium },
+    },
+  }) => medium};
   margin-bottom: ${({
     theme: {
       spacing: { small },
@@ -49,6 +53,11 @@ const StyledHeading = (props: HeadingProps) => css`
   }) => small};
   max-width: 100%;
   text-align: ${({ textAlign }: HeadingProps) => (textAlign ? textAlign : 'left')};
+
+  &:first-child {
+    margin-top: 0;
+  }
+
   ${props => spacing(props)}
 `;
 

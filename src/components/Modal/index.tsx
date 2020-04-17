@@ -121,7 +121,7 @@ class Modal extends Component<ModalProps> {
       <FocusLock returnFocus>
         <ThemeProvider theme={theme}>
           <Wrapper>
-            <Content aria-modal="true" backgroundColor="" getBackgroundColor="" css="">
+            <Content aria-modal="true" backgroundColor="" css="">
               {closeButton && (
                 <CloseButton
                   aria-label="close"

@@ -3,12 +3,11 @@ import styled, { withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 import Avatar from '../Avatar';
-import { COLORS, TYPOGRAPHY, UTILITIES, FONT_SIZES } from '../../themes/cruk';
-import spacing, { SpacingProps } from '../Spacing';
+import { COLORS, TYPOGRAPHY, FONT_SIZES } from '../../themes/cruk';
 
 import { ThemeType } from '../../themes/types';
 
-type UserBlockProps = SpacingProps & {
+type UserBlockProps = {
   name: string;
   avatarUrl?: string | null;
   avatarName?: string | null;
@@ -21,16 +20,13 @@ const StyledUserBlock = styled.div<UserBlockProps>`
   display: flex;
   align-items: center;
   justify-content: start;
-  margin-bottom: ${props =>
-    (props.theme.utilities && props.theme.utilities.rhythmVerticalBase) || UTILITIES.rhythmVerticalBase};
+  margin-bottom: ${props => props.theme.spacing.extraSmall};
   flex: 1;
-  ${props => spacing(props)}
 `;
 
 const Details = styled.div`
   flex: 1;
-  margin-left: ${props =>
-    (props.theme.utilities && props.theme.utilities.rhythmHorizontalBase) || UTILITIES.rhythmHorizontalBase};
+  margin-left: ${props => props.theme.spacing.extraSmall};
   text-align: left;
 `;
 

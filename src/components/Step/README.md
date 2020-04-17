@@ -5,7 +5,6 @@ and the width of each step required to fit the progress bar in the parent contai
 
 Step display progress through a sequence by breaking it up into multiple logical steps. They may also be used for navigation.
 
-
 ### Try them out
 
 ```.jsx
@@ -18,7 +17,7 @@ function () {
       <Step current="3" steps={['Account','Details','Activity','Motivation','Page']} />
       <Step current="3" steps={['Step1','Step2','Step3','Step4','Step5','Step6']} />
       <Box>
-        <Heading h2>Create your Giving Page</Heading>
+        <Heading h2 marginTop="medium">Create your Giving Page</Heading>
         <Step current={step} steps={steps} />
         <Heading h1>{steps[step - 1]} Page</Heading>
         <Button onClick={() => setStep(step - 1)}>Prev</Button>
@@ -31,8 +30,8 @@ function () {
 
 ## Props
 
-| Name | Type | Options | Default | Description |
-| :- | :- | :-: | :- | :- |
-| current | Number |  | 1 | Current value of step  |
-| steps | Array | | | Array of data |
-| onClick | Function | |  |  |
+| Name    | Type     | Options | Default | Description           |
+| :------ | :------- | :-----: | :------ | :-------------------- |
+| current | Number   |         | 1       | Current value of step |
+| steps   | Array    |         |         | Array of data         |
+| onClick | Function |         |         |                       |

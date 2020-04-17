@@ -2,11 +2,10 @@ import React, { FunctionComponent } from 'react';
 import styled, { withTheme, ThemeProvider } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
-import spacing, { SpacingProps } from '../Spacing';
 
 import { ThemeType } from '../../themes/types';
 
-type StyledLabelProps = SpacingProps & {
+type StyledLabelProps = {
   checked: boolean;
   theme?: ThemeType;
 };
@@ -18,7 +17,6 @@ const StyledLabel = styled.label<StyledLabelProps>`
   display: block;
   font-weight: ${props => (props.checked ? 'bold' : 'normal')};
   padding: 5px;
-  ${props => spacing(props)}
 `;
 
 // TODO when we get rid of bootstrap remove !important.

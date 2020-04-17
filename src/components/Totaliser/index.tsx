@@ -4,11 +4,10 @@ import styled, { css, withTheme } from 'styled-components';
 import defaultTheme, { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../themes/cruk';
 import ProgressBar from '../ProgressBar';
 import { calculatePercentRounded, formatMoney } from '../../utils/Helper';
-import spacing, { SpacingProps } from '../Spacing';
 
 import { ThemeType } from '../../themes/types';
 
-type TotaliserProps = SpacingProps & {
+type TotaliserProps = {
   giftAid: number;
   total: number;
   isCompact: boolean;
@@ -47,7 +46,7 @@ const Summary = styled.div`
   margin-bottom: 0;
 `;
 
-type TotaliserWrapperProps = SpacingProps & {
+type TotaliserWrapperProps = {
   isCompact: boolean;
 };
 
@@ -69,7 +68,6 @@ const TotaliserWrapper = styled.div<TotaliserWrapperProps>`
         padding: 0;
       }
     `}
-    ${props => spacing(props)}
 `;
 const CompactWrapper = styled.div`
   justify-content: space-between;
@@ -85,32 +83,41 @@ const CompactWrapper = styled.div`
   }
 `;
 
+type StyledProgressBarProps = {
+  theme: ThemeType;
+  isCompact: boolean;
+};
+
+const StyledProgressBar = styled(ProgressBar)<StyledProgressBarProps>`
+  ${props =>
+    !props.isCompact &&
+    css`
+      > div > div:after {
+        content: '\\25bc';
+        color: ${({ theme }) => theme.colors.tertiary};
+        z-index: 11;
+        position: absolute;
+        top: -39px;
+        right: -15px;
+        font-size: 32px;
+      }
+    `}
+`;
+
 const Totaliser: FunctionComponent<TotaliserProps> = props => {
   const theme = {
     ...defaultTheme,
     ...props.theme,
   };
   const result = calculatePercentRounded(+props.total, props.target);
-  const StyledProgressBar = styled(ProgressBar)`
-    ${!props.isCompact &&
-      css`
-        > div > div:after {
-          content: '\\25bc';
-          color: ${theme.colors.tertiary};
-          z-index: 11;
-          position: absolute;
-          top: -39px;
-          right: -15px;
-          font-size: 32px;
-        }
-      `}
-  `;
+  const summaryString = props.summary(formatMoney(props.target), result);
+
   return (
     <TotaliserWrapper {...props} isCompact={props.isCompact} theme={theme}>
       {props.isCompact ? (
         <CompactWrapper theme={theme}>
           <Total>£{formatMoney(props.total)}</Total>
-          {props.target !== null && <Summary as="span">{props.summary(formatMoney(props.target), result)}</Summary>}
+          {props.target !== null && <Summary as="span">{summaryString}</Summary>}
         </CompactWrapper>
       ) : (
         <DetailWrapper theme={theme}>
@@ -121,7 +128,7 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
       )}
       {props.target !== null && (
         <ProgressBarWrapper theme={theme}>
-          <StyledProgressBar percentage={result} />
+          <StyledProgressBar theme={theme} percentage={result} isCompact={props.isCompact} />
           {!props.isCompact && <Summary>{props.summary(formatMoney(props.target), result)}</Summary>}
         </ProgressBarWrapper>
       )}

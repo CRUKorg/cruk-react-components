@@ -4,7 +4,6 @@ import styled, { css, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import ErrorText from '../ErrorText';
 import { WithLabel } from '../Label';
-import { SpacingProps } from '../Spacing';
 
 import { ThemeType } from '../../themes/types';
 
@@ -119,21 +118,20 @@ const StyledInput = styled.input<StyledInputProps>`
     `}
 `;
 
-type TextFieldProps = InputHTMLAttributes<{}> &
-  SpacingProps & {
-    error?: string;
-    extraBottom?: string;
-    extraLeft?: string;
-    extraRight?: string;
-    extraTop?: string;
-    hasError?: boolean;
-    onChange: React.ChangeEventHandler<HTMLInputElement>;
-    required?: boolean;
-    theme: ThemeType;
-    value: string;
-    label: string;
-    hintText?: string;
-  };
+type TextFieldProps = InputHTMLAttributes<{}> & {
+  error?: string;
+  extraBottom?: string;
+  extraLeft?: string;
+  extraRight?: string;
+  extraTop?: string;
+  hasError?: boolean;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  required?: boolean;
+  theme: ThemeType;
+  value: string;
+  label: string;
+  hintText?: string;
+};
 
 const TextField: FunctionComponent<TextFieldProps> = ({
   error,

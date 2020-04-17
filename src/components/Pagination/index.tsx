@@ -2,11 +2,10 @@ import React, { FunctionComponent } from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
-import spacing, { SpacingProps } from '../Spacing';
 
 import { ThemeType } from '../../themes/types';
 
-type PaginationProps = SpacingProps & {
+type PaginationProps = {
   current: number;
   items: number;
   hideLast: boolean;
@@ -16,7 +15,7 @@ type PaginationProps = SpacingProps & {
   theme?: ThemeType;
 };
 
-type PaginationStyledProps = SpacingProps & {
+type PaginationStyledProps = {
   active?: boolean;
   name?: string;
   disabled?: boolean;
@@ -27,7 +26,6 @@ const PagerWrapper = styled.div<PaginationStyledProps>`
   width: 100%;
   clear: both;
   text-align: center;
-  ${props => spacing(props)}
 `;
 
 const PagerList = styled.ul`

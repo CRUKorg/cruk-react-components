@@ -64,7 +64,7 @@ const components = {
         Collapse,
       }}
     >
-      <LivePreview aria-label="Example code preview" style={{ border: '1px solid grey', padding: '5px' }} />
+      <LivePreview aria-label="Example code preview" style={{ border: '1px solid grey', padding: '8px' }} />
       <LiveEditor
         aria-label="Example code editor"
         style={{
@@ -79,11 +79,11 @@ const components = {
     </LiveProvider>
   ),
   h1: (props: HTMLAttributes<{}>) => <Heading h1 marginTop="medium" {...props} />,
-  h2: (props: HTMLAttributes<{}>) => <Heading h2 marginTop="medium" {...props} />,
-  h3: (props: HTMLAttributes<{}>) => <Heading h3 marginTop="medium" {...props} />,
-  h4: (props: HTMLAttributes<{}>) => <Heading h4 marginTop="medium" {...props} />,
-  h5: (props: HTMLAttributes<{}>) => <Heading h5 marginTop="medium" {...props} />,
-  h6: (props: HTMLAttributes<{}>) => <Heading h6 marginTop="medium" {...props} />,
+  h2: (props: HTMLAttributes<{}>) => <Heading h2 {...props} />,
+  h3: (props: HTMLAttributes<{}>) => <Heading h3 {...props} />,
+  h4: (props: HTMLAttributes<{}>) => <Heading h4 {...props} />,
+  h5: (props: HTMLAttributes<{}>) => <Heading h5 {...props} />,
+  h6: (props: HTMLAttributes<{}>) => <Heading h6 {...props} />,
   p: (props: HTMLAttributes<{}>) => <Text {...props} />,
 };
 
