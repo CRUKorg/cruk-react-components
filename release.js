@@ -15,10 +15,12 @@ execSync('npm run build-lib');
 
 console.log(`5/5 publishing package`);
 
+let publishCommand = 'npm publish --registry https://npm.pkg.github.com/CRUKorg';
+
 if (version.includes('alpha')) {
-  execSync('npm publish --tag alpha');
+  publishCommand += ' --tag alpha';
 } else if (version.includes('beta')) {
-  execSync('npm publish --tag beta');
-} else {
-  execSync('npm publish');
+  publishCommand += ' --tag beta';
 }
+
+execSync(publishCommand);
