@@ -1,8 +1,9 @@
 {
   "name": "@crukorg/cruk-react-components",
-  "version": "0.1.0-alpha.22",
+  "version": "0.1.0-alpha.23",
   "description": "React components implementing CRUK and SU2C design tokens",
   "main": "lib/index.js",
+  "sideEffects": false,
   "types": "lib/components/index.d.ts",
   "files": [
     "lib"
