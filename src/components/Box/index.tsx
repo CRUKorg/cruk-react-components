@@ -27,12 +27,6 @@ const StyledBox = styled.div<BoxProps>`
       ? backgroundColor
       : 'transparent'};
 
-  ${(props: BoxProps) =>
-    props.backgroundColor &&
-    css`
-      color: ${({ theme }) => theme.colors.textLight};
-    `}
-
   ${(props: BoxProps) => (css as any)([props.css])}
   ${props => spacing(props)}
 `;
