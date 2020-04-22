@@ -33,13 +33,13 @@ function () {
 
 ## Props
 
-| Name           | Type                  | Options | Default                                               | Description                                                      |
-| :------------- | :-------------------- | :-----: | :---------------------------------------------------- | :--------------------------------------------------------------- |
-| giftAid        | Number                |         | 0                                                     | Gift aid amount in pounds                                        |
-| isCompact      | Boolean               |         | false                                                 | Toggle compact and full view mode.                               |
-| summaryMessage | ReactElement / String |         | Component which shows percentage value of total value | A sting or component that renders at the bottom of the totaliser |
-| target         | Number                |         | null                                                  | Value used to work out percentage of target reached              |
-| total          | Number                |         |                                                       | Total in pounds                                                  |
+| Name           | Type                  | Options | Default                                               | Description                                                       |
+| :------------- | :-------------------- | :-----: | :---------------------------------------------------- | :---------------------------------------------------------------- |
+| giftAid        | Number                |         | 0                                                     | Gift aid amount in pounds                                         |
+| isCompact      | Boolean               |         | false                                                 | Toggle compact and full view mode.                                |
+| summaryMessage | ReactElement / String |         | Component which shows percentage value of total value | A string or component that renders at the bottom of the totaliser |
+| target         | Number                |         | null                                                  | Value used to work out percentage of target reached               |
+| total          | Number                |         |                                                       | Total in pounds                                                   |
 
 ## An over the top example
 
