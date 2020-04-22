@@ -13,16 +13,40 @@ The more specific the the target the higher priority the css will have. For exam
 ```.jsx
 <React.Fragment>
   <Box>This is box</Box>
-  <Box backgroundColor="primary">This is box</Box>
-  <Box backgroundColor="secondary">This is box</Box>
-  <Box backgroundColor="tertiary">This is box</Box>
-  <Box backgroundColor="#fdc02f">This is box</Box>
-  <Box backgroundColor="secondary" >default spacing</Box>
+  <Box backgroundColor="primary">
+    <Text textColor="#fff" margin="none">
+      This is box
+    </Text>
+  </Box>
+  <Box backgroundColor="secondary">
+    <Text textColor="#fff" margin="none">
+      This is box
+    </Text>
+  </Box>
+  <Box backgroundColor="tertiary">
+    <Text textColor="#fff" margin="none">
+      This is box
+    </Text>
+  </Box>
+  <Box backgroundColor="#fdc02f">
+    <Text textColor="#fff" margin="none">
+      This is box
+    </Text>
+  </Box>
+  <Box backgroundColor="secondary" >
+    <Text textColor="#fff" margin="none">
+      default spacing
+    </Text>
+  </Box>
   <Box backgroundColor="secondary" paddingVertical="extraLarge" paddingBottom="extraSmall">
-    paddingVertical="extraLarge" paddingBottom="extraSmall"
+    <Text textColor="#fff" margin="none">
+      paddingVertical="extraLarge" paddingBottom="extraSmall"
+    </Text>
   </Box>
   <Box backgroundColor="primary" marginVertical="large" marginLeft="small">
-    marginVertical="large" marginLeft="small"
+    <Text textColor="#fff" margin="none">
+      marginVertical="large" marginLeft="small"
+    </Text>
   </Box>
 </React.Fragment>
 ```

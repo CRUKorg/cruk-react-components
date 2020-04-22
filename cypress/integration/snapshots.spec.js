@@ -18,7 +18,6 @@ const components = [
   'ProgressBar',
   'Radio',
   'Select',
-  'Spacing',
   'Step',
   'Text',
   'TextField',

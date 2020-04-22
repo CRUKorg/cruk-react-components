@@ -29,22 +29,12 @@ const DefaultHeader = styled(Button)<DefaultHeaderProps>`
       colors: { secondary },
     },
   }) => secondary};
-  font-size: ${({
-    theme: {
-      fontSizes: { small },
-    },
-  }) => small};
   font-weight: normal;
   margin-bottom: 0;
   padding: 0 0 10px;
   text-decoration: none;
 
   & svg {
-    font-size: ${({
-      theme: {
-        fontSizes: { extraSmall },
-      },
-    }) => extraSmall};
     transform: ${({ active }) => (active === true ? 'rotate(90deg)' : 'none')};
     transition-duration: 0.5s;
   }
