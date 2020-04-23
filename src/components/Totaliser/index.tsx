@@ -3,6 +3,7 @@ import styled, { css, withTheme } from 'styled-components';
 
 import defaultTheme, { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../themes/cruk';
 import ProgressBar from '../ProgressBar';
+import Text from '../Text';
 import { calculatePercentRounded, formatMoney } from '../../utils/Helper';
 
 import { ThemeType } from '../../themes/types';
@@ -118,7 +119,11 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
       {props.isCompact ? (
         <CompactWrapper theme={theme}>
           <Total>£{formatMoney(props.total)}</Total>
-          {props.target !== null && <Summary as="span">{summaryString}</Summary>}
+          {props.target !== null && (
+            <Summary>
+              <Text as="span">{summaryString}</Text>
+            </Summary>
+          )}
         </CompactWrapper>
       ) : (
         <DetailWrapper theme={theme}>
@@ -134,7 +139,9 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
             (props.summaryMessage ? (
               <Summary>{props.summaryMessage}</Summary>
             ) : (
-              <Summary as="span">{summaryString}</Summary>
+              <Summary>
+                <Text as="span">{summaryString}</Text>
+              </Summary>
             ))}
         </ProgressBarWrapper>
       )}
