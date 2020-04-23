@@ -1,10 +1,6 @@
-import {
-  useRef,
-  useLayoutEffect,
-  DependencyList,
-  RefObject,
-  MutableRefObject,
-} from 'react';
+import { useRef, DependencyList, RefObject, MutableRefObject } from 'react';
+
+import useLayoutEffectSSR from './useLayoutEffectSSR';
 
 const isBrowser = typeof window !== `undefined`;
 
@@ -18,13 +14,9 @@ function getScrollPosition({
   if (!isBrowser) return { x: 0, y: 0 };
 
   const target = element ? element.current : document.body;
-  const position = target
-    ? target.getBoundingClientRect()
-    : { top: 0, left: 0 };
+  const position = target ? target.getBoundingClientRect() : { top: 0, left: 0 };
 
-  return useWindow
-    ? { x: window.scrollX, y: window.scrollY }
-    : { x: position.left, y: position.top };
+  return useWindow ? { x: window.scrollX, y: window.scrollY } : { x: position.left, y: position.top };
 }
 
 export function useScrollPosition(
@@ -45,7 +37,7 @@ export function useScrollPosition(
     throttleTimeout = null;
   };
 
-  useLayoutEffect(() => {
+  useLayoutEffectSSR(() => {
     const handleScroll = () => {
       if (wait) {
         if (throttleTimeout === null) {
