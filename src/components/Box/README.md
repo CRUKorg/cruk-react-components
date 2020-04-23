@@ -14,37 +14,37 @@ The more specific the the target the higher priority the css will have. For exam
 <React.Fragment>
   <Box>This is box</Box>
   <Box backgroundColor="primary">
-    <Text textColor="textLight" margin="none">
+    <Text textColor="textLight">
       This is box
     </Text>
   </Box>
   <Box backgroundColor="secondary">
-    <Text textColor="textLight" margin="none">
+    <Text textColor="textLight">
       This is box
     </Text>
   </Box>
   <Box backgroundColor="tertiary">
-    <Text textColor="textLight" margin="none">
+    <Text textColor="textLight">
       This is box
     </Text>
   </Box>
   <Box backgroundColor="#fdc02f">
-    <Text textColor="textLight" margin="none">
+    <Text textColor="textLight">
       This is box
     </Text>
   </Box>
   <Box backgroundColor="secondary" >
-    <Text textColor="textLight" margin="none">
+    <Text textColor="textLight">
       default spacing
     </Text>
   </Box>
   <Box backgroundColor="secondary" paddingVertical="extraLarge" paddingBottom="extraSmall">
-    <Text textColor="textLight" margin="none">
+    <Text textColor="textLight">
       paddingVertical="extraLarge" paddingBottom="extraSmall"
     </Text>
   </Box>
   <Box backgroundColor="primary" marginVertical="large" marginLeft="small">
-    <Text textColor="textLight" margin="none">
+    <Text textColor="textLight">
       marginVertical="large" marginLeft="small"
     </Text>
   </Box>

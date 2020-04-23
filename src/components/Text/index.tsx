@@ -50,6 +50,11 @@ export const TextStyled = styled.p<TextProps>`
       spacing: { extraSmall },
     },
   }) => (typeof as === 'undefined' || as === 'p' ? `${extraSmall}` : 0)};
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   ${props => spacing(props)}
 `;
 
