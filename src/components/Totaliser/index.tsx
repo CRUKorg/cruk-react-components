@@ -1,8 +1,9 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactChild } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
 import defaultTheme, { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../themes/cruk';
 import ProgressBar from '../ProgressBar';
+import Text from '../Text';
 import { calculatePercentRounded, formatMoney } from '../../utils/Helper';
 
 import { ThemeType } from '../../themes/types';
@@ -11,7 +12,7 @@ type TotaliserProps = {
   giftAid: number;
   total: number;
   isCompact: boolean;
-  summary?: Function;
+  summaryMessage?: ReactChild;
   target?: number | null;
   theme?: ThemeType;
 };
@@ -110,14 +111,19 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
     ...props.theme,
   };
   const result = calculatePercentRounded(+props.total, props.target);
-  const summaryString = props.summary(formatMoney(props.target), result);
+  const percentageOfTotal = calculatePercentRounded(+props.total, props.target);
+  const summaryString = `${percentageOfTotal}% of the £${formatMoney(props.target)} target`;
 
   return (
     <TotaliserWrapper {...props} isCompact={props.isCompact} theme={theme}>
       {props.isCompact ? (
         <CompactWrapper theme={theme}>
           <Total>£{formatMoney(props.total)}</Total>
-          {props.target !== null && <Summary as="span">{summaryString}</Summary>}
+          {props.target !== null && (
+            <Summary>
+              <Text as="span">{summaryString}</Text>
+            </Summary>
+          )}
         </CompactWrapper>
       ) : (
         <DetailWrapper theme={theme}>
@@ -129,7 +135,14 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
       {props.target !== null && (
         <ProgressBarWrapper theme={theme}>
           <StyledProgressBar theme={theme} percentage={result} isCompact={props.isCompact} />
-          {!props.isCompact && <Summary>{props.summary(formatMoney(props.target), result)}</Summary>}
+          {!props.isCompact &&
+            (props.summaryMessage ? (
+              <Summary>{props.summaryMessage}</Summary>
+            ) : (
+              <Summary>
+                <Text as="span">{summaryString}</Text>
+              </Summary>
+            ))}
         </ProgressBarWrapper>
       )}
       {props.children}
@@ -139,7 +152,8 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
 
 Totaliser.defaultProps = {
   target: null,
-  summary: (target: number, percentage: number) => `${percentage}% of £${target} target`,
+  summaryMessage: null,
+  theme: null,
 };
 
 export default withTheme(Totaliser);
