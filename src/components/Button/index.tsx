@@ -160,6 +160,7 @@ const Button: FunctionComponent<ButtonProps> = props => {
     ...props.theme,
   };
   const childArray = React.Children.toArray(props.children);
+  const buttonRef = createRef<HTMLElement>();
 
   // TODO: find a better way to check if a child is a specific component
   const isIcon = (child: any) =>
@@ -172,7 +173,7 @@ const Button: FunctionComponent<ButtonProps> = props => {
   const isIconButton = props.children && childArray.length === 1 && isIcon(childArray[0]);
 
   return (
-    <StyledButton as={props.href ? 'a' : 'button'} {...props} iconButton={isIconButton} theme={theme}>
+    <StyledButton as={props.href ? 'a' : 'button'} {...props} iconButton={isIconButton} theme={theme} ref={buttonRef}>
       {props.children && childArray.length
         ? childArray.map((child: ReactNode, index: number) => (
             <VerticalAlign theme={theme} key={index}>
