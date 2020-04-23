@@ -167,7 +167,7 @@ const Button: FunctionComponent<ButtonProps> = props => {
     typeof child !== 'number' &&
     child.type !== 'undefined' &&
     child.type.displayName !== undefined &&
-    child.type.displayName === 'WithTheme(Icon)';
+    (child.type.displayName === 'WithTheme(Icon)' || child.type.displayName === 'Icon');
   // button has a fixed width if there is a single icon
   const isIconButton = props.children && childArray.length === 1 && isIcon(childArray[0]);
 
