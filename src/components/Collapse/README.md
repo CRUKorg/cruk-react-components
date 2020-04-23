@@ -12,13 +12,13 @@ Use a collapse component to show and hide content. It has a default view; howeve
 
     <Collapse id="custom" headerTitleText="Custom header components"  headerComponent={
       <Box backgroundColor="primary">
-        <Text textColor="textLight" margin='none'>
+        <Text textColor="textLight">
           This is box header
         </Text>
       </Box>
     }>
       <Box backgroundColor="primary">
-        <Text textColor="textLight" margin='none'>
+        <Text textColor="textLight">
           This is box
         </Text>
       </Box>
