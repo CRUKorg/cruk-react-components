@@ -55,7 +55,7 @@
     "axe-core": "^3.4.2",
     "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.8.0",
-    "cypress": "^4.3.0",
+    "cypress": "^4.4.1",
     "cypress-axe": "^0.8.1",
     "cypress-image-snapshot": "^3.1.1",
     "cypress-plugin-tab": "^1.0.5",
@@ -80,8 +80,5 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "styled-components": "^5.0.0"
-  },
-  "dependencies": {
-    "run": "^1.4.0"
   }
 }
