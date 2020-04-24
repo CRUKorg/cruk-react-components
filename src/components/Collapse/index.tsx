@@ -5,7 +5,7 @@ import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
 import Button from '../Button';
-import { Icon } from '..';
+import Icon from '../Icon';
 
 type CollapseProps = {
   active: boolean;
