@@ -31,29 +31,37 @@ const StyledIcon = styled.svg<IconProps>`
   width: ${props => props.size};
   path {
     fill: ${({ theme: { colors }, color }) =>
-      color && typeof colors[color] !== 'undefined' ? colors[color] : color ? color : 'currentColor'};
+      color && typeof colors[color] !== 'undefined' ? colors[color] : color ? color : 'transparent'};
   }
 `;
 
-const Icon: FunctionComponent<IconProps> = ({ name, theme = defaultTheme, size = '1.1em', color = 'currentColor' }) => {
-  const camelName = name && camelize(name);
-  const icon = (ICONS as any)[camelName] || ICONS.question;
+const Icon: FunctionComponent<IconProps> = props => {
+  const name = props.name && camelize(props.name);
+  const icon = (ICONS as any)[name] || ICONS.question;
+  const theme = {
+    ...defaultTheme,
+    ...props.theme,
+  };
   return (
     <StyledIcon
       theme={theme}
       aria-hidden="true"
       role="presentation"
-      color={color}
       viewBox={`0 0 ${icon.width} ${icon.height}`}
-      size={size}
+      size={props.size}
       transform={icon.transform}
-      name={name}
+      {...props}
     >
       {icon.paths.map((path: string, index: number) => (
         <path key={index} d={path} />
       ))}
     </StyledIcon>
   );
+};
+
+Icon.defaultProps = {
+  color: 'currentColor',
+  size: '1.1em',
 };
 
 export default withTheme(Icon);
