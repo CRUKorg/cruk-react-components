@@ -5,7 +5,7 @@ import defaultTheme from '../../themes/cruk';
 import { ICONS } from './iconList';
 import { camelize } from '../../utils/Helper';
 
-import { ThemeType, ColorsType } from '../../themes/types';
+import { ThemeType } from '../../themes/types';
 
 export type IconNameType = keyof typeof ICONS;
 
@@ -21,7 +21,6 @@ type IconProps = {
   size?: string;
   transform?: string;
   theme?: ThemeType;
-  getColor?: string;
 };
 
 const StyledIcon = styled.svg<IconProps>`
@@ -31,39 +30,30 @@ const StyledIcon = styled.svg<IconProps>`
   vertical-align: middle;
   width: ${props => props.size};
   path {
-    fill: ${props => props.getColor};
+    fill: ${({ theme: { colors }, color }) =>
+      color && typeof colors[color] !== 'undefined' ? colors[color] : color ? color : 'currentColor'};
   }
 `;
 
-const Icon: FunctionComponent<IconProps> = props => {
-  const name = props.name && camelize(props.name);
-  const icon = (ICONS as any)[name] || ICONS.question;
-  const theme = {
-    ...defaultTheme,
-    ...props.theme,
-  };
-  const color = (theme.colors as ColorsType)[props.color] || props.color;
+const Icon: FunctionComponent<IconProps> = ({ name, theme = defaultTheme, size = '1.1em', color = 'currentColor' }) => {
+  const camelName = name && camelize(name);
+  const icon = (ICONS as any)[camelName] || ICONS.question;
   return (
     <StyledIcon
       theme={theme}
       aria-hidden="true"
       role="presentation"
-      getColor={color}
+      color={color}
       viewBox={`0 0 ${icon.width} ${icon.height}`}
-      size={props.size}
+      size={size}
       transform={icon.transform}
-      {...props}
+      name={name}
     >
       {icon.paths.map((path: string, index: number) => (
         <path key={index} d={path} />
       ))}
     </StyledIcon>
   );
-};
-
-Icon.defaultProps = {
-  color: 'currentColor',
-  size: '1.1em',
 };
 
 export default withTheme(Icon);
