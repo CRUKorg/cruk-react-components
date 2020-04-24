@@ -15,7 +15,7 @@ jobs:
       - name: Bring up the server
         run: docker-compose up -d server
       - name: Test
-        run: docker-compose run cypress
+        run: npm run test
       - name: Work around our usage of Github storage
         if: failure()
         run: |
