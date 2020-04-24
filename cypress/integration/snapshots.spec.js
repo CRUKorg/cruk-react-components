@@ -17,6 +17,7 @@ const components = [
   'PopOver',
   'ProgressBar',
   'Radio',
+  'RadioGroup',
   'Select',
   'Step',
   'Text',

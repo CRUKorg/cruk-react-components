@@ -7,24 +7,23 @@ import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
 const StyledRadio = styled(RadioInput)`
-  flex: 2 2 auto;
+  display: inline-block;
+  float: left;
   text-align: center;
   margin-left: 20px;
+  width: ${({ widthPercent }: { widthPercent: number }) => `${widthPercent}%`};
 `;
 
 const StyledLegend = styled.legend`
-  flex: 1 1 auto;
+  display: block;
+  float: left;
   max-width: 20%;
+  width: ${({ widthPercent }: { widthPercent: number }) => `${widthPercent}%`};
 `;
 
 const StyledFieldSet = styled.fieldset`
+  display: block;
   border: none;
-`;
-
-const RadioGroupWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex-flow: row wrap;
 `;
 
 type RadioGroupProps = {
@@ -45,23 +44,25 @@ const RadioGroup: FunctionComponent<RadioGroupProps> = props => {
     ...props.theme,
   };
 
+  const numberOfAttributes = props.attributes.length;
+  const percentage = 100 / (numberOfAttributes + 1);
+
   return (
     <ThemeProvider theme={theme}>
       <StyledFieldSet>
-        <RadioGroupWrapper>
-          <StyledLegend>{props.legend}</StyledLegend>
-          {props.attributes.map(item => (
-            <StyledRadio
-              key={item.value}
-              checked={props.checked === item.value}
-              onChange={props.onChange}
-              name={props.name}
-              value={item.value}
-            >
-              {item.option}
-            </StyledRadio>
-          ))}
-        </RadioGroupWrapper>
+        <StyledLegend widthPercent={percentage}>{props.legend}</StyledLegend>
+        {props.attributes.map(item => (
+          <StyledRadio
+            widthPercent={percentage}
+            key={item.value}
+            checked={props.checked === item.value}
+            onChange={props.onChange}
+            name={props.name}
+            value={item.value}
+          >
+            {item.option}
+          </StyledRadio>
+        ))}
       </StyledFieldSet>
     </ThemeProvider>
   );
