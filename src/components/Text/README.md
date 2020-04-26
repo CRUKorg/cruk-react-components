@@ -52,3 +52,16 @@ For non-header text. The Text component provides a simple API for setting the co
 | "large"           | "2.5rem" |
 | "extraLarge"      | "3rem"   |
 | "extraExtraLarge" | "3.5rem" |
+
+### FontSizeType
+
+| Option                      | Value       |
+| :-------------------------- | :---------- |
+| "extraSmall"                | "0.75rem"   |
+| "small"                     | "0.857rem"  |
+| "medium"                    | "1rem"      |
+| "large"                     | "1.25rem"   |
+| "extraLarge"                | "1.9375rem" |
+| "extraExtraLarge"           | "1.9375rem" |
+| "extraExtraExtraLarge"      | "2.4375rem" |
+| "extraExtraExtraExtraLarge" | "3.0625rem" |

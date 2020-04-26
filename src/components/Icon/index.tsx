@@ -5,7 +5,7 @@ import defaultTheme from '../../themes/cruk';
 import { ICONS } from './iconList';
 import { camelize } from '../../utils/Helper';
 
-import { ThemeType, ColorsType } from '../../themes/types';
+import { ThemeType } from '../../themes/types';
 
 export type IconNameType = keyof typeof ICONS;
 
@@ -21,7 +21,6 @@ type IconProps = {
   size?: string;
   transform?: string;
   theme?: ThemeType;
-  getColor?: string;
 };
 
 const StyledIcon = styled.svg<IconProps>`
@@ -31,7 +30,8 @@ const StyledIcon = styled.svg<IconProps>`
   vertical-align: middle;
   width: ${props => props.size};
   path {
-    fill: ${props => props.getColor};
+    fill: ${({ theme: { colors }, color }) =>
+      color && typeof colors[color] !== 'undefined' ? colors[color] : color ? color : 'transparent'};
   }
 `;
 
@@ -42,13 +42,11 @@ const Icon: FunctionComponent<IconProps> = props => {
     ...defaultTheme,
     ...props.theme,
   };
-  const color = (theme.colors as ColorsType)[props.color] || props.color;
   return (
     <StyledIcon
       theme={theme}
       aria-hidden="true"
       role="presentation"
-      getColor={color}
       viewBox={`0 0 ${icon.width} ${icon.height}`}
       size={props.size}
       transform={icon.transform}

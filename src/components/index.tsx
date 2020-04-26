@@ -1,124 +1,64 @@
-import crukTheme from '../themes/cruk';
-import su2cTheme from '../themes/su2c';
+export { default as crukTheme } from '../themes/cruk';
+export { default as su2cTheme } from '../themes/su2c';
 
-import Avatar from './Avatar';
-import Badge from './Badge';
-import Box from './Box';
-import Button from './Button';
-import Checkbox from './Checkbox';
-import Collapse from './Collapse';
-import Divider from './Divider';
-import ErrorText from './ErrorText';
-import Flex from './Flex';
-import Footer from './Footer';
-import GlobalStyle from './GlobalStyle';
-import Header from './Header';
-import Heading from './Heading';
-import Icon from './Icon';
-import Label from './Label';
-import Link from './Link';
-import Loader from './Loader';
-import Modal from './Modal';
-import Pagination from './Pagination';
-import PopOver from './PopOver';
-import ProgressBar from './ProgressBar';
-import Radio from './Radio';
-import RadioGroup from './RadioGroup';
-import Select from './Select';
-import Step from './Step';
-import Text from './Text';
-import TextField from './TextField';
-import Totaliser from './Totaliser';
-import UserBlock from './UserBlock';
+export { default as Avatar } from './Avatar';
+export { default as Badge } from './Badge';
+export { default as Box } from './Box';
+export { default as Button } from './Button';
+export { default as Checkbox } from './Checkbox';
+export { default as Collapse } from './Collapse';
+export { default as Divider } from './Divider';
+export { default as ErrorText } from './ErrorText';
+export { default as Flex } from './Flex';
+export { default as Footer } from './Footer';
+export { default as GlobalStyle } from './GlobalStyle';
+export { default as Header } from './Header';
+export { default as Heading } from './Heading';
+export { default as Icon } from './Icon';
+export { default as Label } from './Label';
+export { default as Link } from './Link';
+export { default as Loader } from './Loader';
+export { default as Modal } from './Modal';
+export { default as Pagination } from './Pagination';
+export { default as PopOver } from './PopOver';
+export { default as ProgressBar } from './ProgressBar';
+export { default as Radio } from './Radio';
+export { default as RadioGroup } from './RadioGroup';
+export { default as Select } from './Select';
+export { default as Step } from './Step';
+export { default as Text } from './Text';
+export { default as TextField } from './TextField';
+export { default as Totaliser } from './Totaliser';
+export { default as UserBlock } from './UserBlock';
 
 // This is so the design system website can import this
 // all the READMEs and view them in a standardized way
-import MdxProvider from '../hocs/MdxProvider';
+export { default as MdxProvider } from '../hocs/MdxProvider';
 
-import AvatarReadme from './Avatar/README.md';
-import BadgeReadme from './Badge/README.md';
-import BoxReadme from './Box/README.md';
-import ButtonReadme from './Button/README.md';
-import CheckboxReadme from './Checkbox/README.md';
-import CollapseReadme from './Collapse/README.md';
-import ErrorTextReadme from './ErrorText/README.md';
-import FooterReadme from './Footer/README.md';
-import HeadingReadme from './Heading/README.md';
-import HeaderReadme from './Header/README.md';
-import IconReadme from './Icon/README.md';
-import LinkReadme from './Link/README.md';
-import LoaderReadme from './Loader/README.md';
-import ModalReadme from './Modal/README.md';
-import PaginationReadme from './Pagination/README.md';
-import PopOverReadme from './PopOver/README.md';
-import ProgressBarReadme from './ProgressBar/README.md';
-import RadioReadme from './Radio/README.md';
-import RadioGroupReadme from './RadioGroup/README.md';
-import SelectReadme from './Select/README.md';
-import StepReadme from './Step/README.md';
-import TextReadme from './Text/README.md';
-import TextFieldReadme from './TextField/README.md';
-import TotaliserReadme from './Totaliser/README.md';
-import UserBlockReadme from './UserBlock/README.md';
-
-export {
-  crukTheme,
-  su2cTheme,
-  Avatar,
-  Badge,
-  Box,
-  Button,
-  Checkbox,
-  Collapse,
-  Divider,
-  ErrorText,
-  Flex,
-  Footer,
-  GlobalStyle,
-  Header,
-  Heading,
-  Icon,
-  Label,
-  Link,
-  Loader,
-  Modal,
-  Pagination,
-  PopOver,
-  ProgressBar,
-  Radio,
-  RadioGroup,
-  Select,
-  Step,
-  TextField,
-  Text,
-  Totaliser,
-  UserBlock,
-  MdxProvider,
-  AvatarReadme,
-  BadgeReadme,
-  BoxReadme,
-  ButtonReadme,
-  CheckboxReadme,
-  CollapseReadme,
-  ErrorTextReadme,
-  FooterReadme,
-  HeadingReadme,
-  HeaderReadme,
-  IconReadme,
-  LinkReadme,
-  LoaderReadme,
-  ModalReadme,
-  PaginationReadme,
-  PopOverReadme,
-  ProgressBarReadme,
-  RadioReadme,
-  RadioGroupReadme,
-  SelectReadme,
-  StepReadme,
-  TextReadme,
-  TextFieldReadme,
-  TotaliserReadme,
-  UserBlockReadme,
-};
+export { default as AvatarReadme } from './Avatar/README.md';
+export { default as BadgeReadme } from './Badge/README.md';
+export { default as BoxReadme } from './Box/README.md';
+export { default as ButtonReadme } from './Button/README.md';
+export { default as CheckboxReadme } from './Checkbox/README.md';
+export { default as CollapseReadme } from './Collapse/README.md';
+export { default as ErrorTextReadme } from './ErrorText/README.md';
+export { default as FooterReadme } from './Footer/README.md';
+export { default as HeadingReadme } from './Heading/README.md';
+export { default as HeaderReadme } from './Header/README.md';
+export { default as IconReadme } from './Icon/README.md';
+export { default as LinkReadme } from './Link/README.md';
+export { default as LoaderReadme } from './Loader/README.md';
+export { default as ModalReadme } from './Modal/README.md';
+export { default as PaginationReadme } from './Pagination/README.md';
+export { default as PopOverReadme } from './PopOver/README.md';
+export { default as ProgressBarReadme } from './ProgressBar/README.md';
+export { default as RadioReadme } from './Radio/README.md';
+export { default as RadioGroupReadme } from './RadioGroup/README.md';
+export { default as SelectReadme } from './Select/README.md';
+export { default as StepReadme } from './Step/README.md';
+export { default as TextReadme } from './Text/README.md';
+export { default as TextFieldReadme } from './TextField/README.md';
+export { default as TotaliserReadme } from './Totaliser/README.md';
+export { default as UserBlockReadme } from './UserBlock/README.md';
 
 export * from '../themes/types';

@@ -1,6 +1,8 @@
-import React, { FunctionComponent, ReactNode, ButtonHTMLAttributes } from 'react';
+import React, { FunctionComponent, ReactNode, ButtonHTMLAttributes, Ref, forwardRef } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
+
+import Icon from '../Icon';
 
 import { ThemeType } from '../../themes/types';
 
@@ -14,6 +16,7 @@ type ButtonProps = ButtonHTMLAttributes<{}> & {
   size?: string;
   css?: any;
   as?: any;
+  ref?: Ref<HTMLElement>;
 };
 
 const VerticalAlign = styled.span`
@@ -154,27 +157,21 @@ const StyledButton = styled.button`
   ${(props: ButtonProps) => (css as any)([props.css])}
 `;
 
-const Button: FunctionComponent<ButtonProps> = props => {
+const Button: FunctionComponent<ButtonProps> = forwardRef((props: ButtonProps, ref?: Ref<HTMLElement>) => {
   const theme = {
     ...defaultTheme,
     ...props.theme,
   };
   const childArray = React.Children.toArray(props.children);
 
-  // TODO: find a better way to check if a child is a specific component
-  const isIcon = (child: any) =>
-    typeof child !== 'string' &&
-    typeof child !== 'number' &&
-    child.type !== 'undefined' &&
-    child.type.displayName !== undefined &&
-    child.type.displayName === 'WithTheme(Icon)';
   // button has a fixed width if there is a single icon
-  const isIconButton = props.children && childArray.length === 1 && isIcon(childArray[0]);
+  // @ts-ignore typescript doesn't seem to like child.type but it works fine
+  const isIconButton = props.children && childArray.length === 1 && childArray[0] && childArray[0].type === Icon;
 
   return (
-    <StyledButton as={props.href ? 'a' : 'button'} {...props} iconButton={isIconButton} theme={theme}>
+    <StyledButton as={props.href ? 'a' : 'button'} {...props} iconButton={isIconButton} theme={theme} ref={ref}>
       {props.children && childArray.length
-        ? childArray.map((child: ReactNode, index: number) => (
+        ? React.Children.map(props.children, (child: ReactNode, index: number) => (
             <VerticalAlign theme={theme} key={index}>
               {child}
             </VerticalAlign>
@@ -182,6 +179,6 @@ const Button: FunctionComponent<ButtonProps> = props => {
         : null}
     </StyledButton>
   );
-};
+});
 
 export default withTheme(Button);
