@@ -20,7 +20,6 @@ const CheckWrapper = styled.div`
 
 const Check = styled.span`
   display: block;
-  display: block;
   position: relative;
   border: 2px solid ${({ theme }) => theme.colors.radioBorder};
   border-radius: 100%;
@@ -31,7 +30,7 @@ const Check = styled.span`
   left: 0;
   right: 0;
   z-index: 5;
-  transition: border 0.25s linear;
+  transition: border 0.25s linear, box-shadow 0.25s linear;
 
   ::before {
     display: block;
@@ -43,7 +42,7 @@ const Check = styled.span`
     top: calc(50% - 0.75rem);
     left: calc(50% - 0.75rem);
     margin: auto;
-    transition: background 0.25s linear;
+    transition: background-color 0.25s linear;
   }
 `;
 
@@ -57,10 +56,11 @@ const StyledLabel = styled.label<StyledLabelProps>`
   display: inline-block;
   font-weight: ${props => (props.checked ? 'bold' : 'normal')};
   padding: 8px;
-  vertical-align: center;
+  vertical-align: middle;
 
   &:focus ~ ${CheckWrapper} ${Check} {
-    outline: -webkit-focus-ring-color auto 5px;
+    outline: 2px solid #7aacfe; /* for non-webkit browsers */
+    outline: 5px auto -webkit-focus-ring-color;
   }
 
   ${({ theme }) =>
@@ -97,7 +97,9 @@ const StyledInput = styled.input`
           opacity: 0;
 
           &:focus ~ ${CheckWrapper} ${Check} {
-            outline: -webkit-focus-ring-color auto 5px;
+            outline: none !important;
+            box-shadow: 0 0 0 0.2em #7aacfe;
+            box-shadow: 0 0 0 0.2em -webkit-focus-ring-color;
           }
 
           &:checked ~ ${CheckWrapper} ${Check}::before {
