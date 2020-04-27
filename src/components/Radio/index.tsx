@@ -5,17 +5,24 @@ import defaultTheme from '../../themes/cruk';
 
 import { ThemeType } from '../../themes/types';
 
+const RADIO_SIZE = '2rem';
+const RADIO_INNER_SIZE = '1.5rem';
+
 type StyledLabelProps = {
   checked: boolean;
 };
 
 const CheckWrapper = styled.div`
   display: inline-block;
-  height: 2rem;
-  width: 2rem;
+  height: ${RADIO_SIZE};
+  width: ${RADIO_SIZE};
   position: absolute;
-  top: calc(100% / 2 - 1rem);
-  left: 1rem;
+  top: calc(50% - (${RADIO_SIZE} / 2));
+  left: ${({
+    theme: {
+      spacing: { extraSmall },
+    },
+  }) => extraSmall};
 `;
 
 const Check = styled.span`
@@ -23,8 +30,8 @@ const Check = styled.span`
   position: relative;
   border: 2px solid ${({ theme }) => theme.colors.radioBorder};
   border-radius: 100%;
-  height: 2rem;
-  width: 2rem;
+  height: ${RADIO_SIZE};
+  width: ${RADIO_SIZE};
   top: 0;
   bottom: 0;
   left: 0;
@@ -37,10 +44,10 @@ const Check = styled.span`
     position: absolute;
     content: '';
     border-radius: 100%;
-    height: 1.5rem;
-    width: 1.5rem;
-    top: calc(50% - 0.75rem);
-    left: calc(50% - 0.75rem);
+    height: ${RADIO_INNER_SIZE};
+    width: ${RADIO_INNER_SIZE};
+    top: calc(50% - (${RADIO_INNER_SIZE} / 2));
+    left: calc(50% - (${RADIO_INNER_SIZE} / 2));
     margin: auto;
     transition: background-color 0.25s linear;
   }
@@ -57,9 +64,9 @@ const StyledLabel = styled.label<StyledLabelProps>`
   font-weight: ${props => (props.checked ? 'bold' : 'normal')};
   padding: ${({
     theme: {
-      spacing: { extraExtraExtraSmall },
+      spacing: { extraExtraSmall },
     },
-  }) => extraExtraExtraSmall};
+  }) => extraExtraSmall};
   vertical-align: middle;
 
   &:focus ~ ${CheckWrapper} ${Check} {
@@ -93,9 +100,9 @@ const VerticalAlign = styled.span`
 const StyledInput = styled.input`
   margin-right: ${({
     theme: {
-      spacing: { extraExtraExtraSmall },
+      spacing: { extraExtraSmall },
     },
-  }) => extraExtraExtraSmall};
+  }) => extraExtraSmall};
   ${({ theme }) =>
     theme.utilities.useDefaultFromControls
       ? null
@@ -103,9 +110,9 @@ const StyledInput = styled.input`
           position: absolute;
           left: ${({
             theme: {
-              spacing: { extraExtraExtraSmall },
+              spacing: { extraExtraSmall },
             },
-          }) => extraExtraExtraSmall};
+          }) => extraExtraSmall};
           opacity: 0;
 
           &:focus ~ ${CheckWrapper} ${Check} {
