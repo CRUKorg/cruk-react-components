@@ -8,13 +8,12 @@ import Icon, { ICON_NAMES } from '../Icon';
 import { ThemeType } from 'src/themes/types';
 
 const ChevyWithLevee = styled(Icon)`
-  padding-right: ${({
+  margin-right: ${({
     theme: {
       spacing: { extraExtraSmall },
     },
   }) => extraExtraSmall};
 `;
-const Chevron = () => <ChevyWithLevee name={ICON_NAMES.chevronRightBold} />;
 
 type LinkProps = AnchorHTMLAttributes<{}> & {
   theme?: ThemeType;
@@ -72,7 +71,7 @@ const Link: FunctionComponent<LinkProps> = props => {
   return (
     <ThemeProvider theme={theme}>
       <StyledLink {...props} forwardedAs="a" theme={theme} rel={rel}>
-        {props.appearance === 'primary' && <Chevron />}
+        {props.appearance === 'primary' && <ChevyWithLevee name={ICON_NAMES.chevronRightBold} size="0.8em" />}
         {props.children}
       </StyledLink>
     </ThemeProvider>
