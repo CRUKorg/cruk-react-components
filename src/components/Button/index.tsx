@@ -20,7 +20,7 @@ type ButtonProps = ButtonHTMLAttributes<{}> & {
 };
 
 const VerticalAlign = styled.span`
-  line-height: ${BUTTON_HEIGHT};
+  line-height: ${({ isIconButton }: { isIconButton: boolean }) => (isIconButton ? `auto` : `${BUTTON_HEIGHT}`)};
   vertical-align: middle;
   margin-left: ${({
     theme: {
@@ -41,6 +41,7 @@ const StyledButton = styled.button`
   border: 1px solid ${props => props.theme.colors.buttonBorder};
   box-sizing: border-box;
   color: ${props => props.theme.colors.primary};
+  transition: color 0.2s ease, background-color 0.2s ease;
   cursor: pointer;
   font-size: ${({
     theme: {
@@ -59,9 +60,9 @@ const StyledButton = styled.button`
   }) => fontWeightMedium};
   line-height: 1;
   height: ${BUTTON_HEIGHT};
-  padding: ${({ theme, iconButton }: { theme: ThemeType; iconButton: boolean }) =>
-    iconButton ? '0' : `0 ${theme.spacing.medium}`};
-  width: ${({ iconButton }: { iconButton: boolean }) => (iconButton ? `${BUTTON_HEIGHT}` : 'auto')};
+  padding: ${({ theme, isIconButton }: { theme: ThemeType; isIconButton: boolean }) =>
+    isIconButton ? '0' : `0 ${theme.spacing.medium}`};
+  width: ${({ isIconButton }: { isIconButton: boolean }) => (isIconButton ? `${BUTTON_HEIGHT}` : 'auto')};
   text-align: center;
   text-decoration: ${props => props.theme.button.textDecoration};
   text-transform: ${props => props.theme.button.textTransform};
@@ -169,10 +170,10 @@ const Button: FunctionComponent<ButtonProps> = forwardRef((props: ButtonProps, r
   const isIconButton = props.children && childArray.length === 1 && childArray[0] && childArray[0].type === Icon;
 
   return (
-    <StyledButton as={props.href ? 'a' : 'button'} {...props} iconButton={isIconButton} theme={theme} ref={ref}>
+    <StyledButton as={props.href ? 'a' : 'button'} {...props} isIconButton={isIconButton} theme={theme} ref={ref}>
       {props.children && childArray.length
         ? React.Children.map(props.children, (child: ReactNode, index: number) => (
-            <VerticalAlign theme={theme} key={index}>
+            <VerticalAlign theme={theme} key={index} isIconButton={isIconButton}>
               {child}
             </VerticalAlign>
           ))
