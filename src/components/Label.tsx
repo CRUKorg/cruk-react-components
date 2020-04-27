@@ -11,21 +11,27 @@ const Label = styled.label`
 
 const Hint = styled.span`
   display: block;
-  margin: ${({
+  margin-bottom: ${({
     theme: {
-      spacing: { extraExtraSmall },
+      spacing: { extraSmall },
     },
-  }) => `${extraExtraSmall} 0`};
+  }) => extraSmall};
 `;
 
-const LabelText = styled.span`
+type LabelTextProps = {
+  theme: ThemeType;
+  hasHintText: boolean;
+};
+
+const LabelText = styled.span<LabelTextProps>`
   font-weight: bold;
   display: block;
-  margin: ${({
+  margin-bottom: ${({
+    hasHintText,
     theme: {
-      spacing: { extraExtraSmall },
+      spacing: { extraSmall, extraExtraSmall },
     },
-  }) => `${extraExtraSmall} 0`};
+  }) => (hasHintText ? extraExtraSmall : extraSmall)};
 
   & > * {
     font-weight: normal;
@@ -53,7 +59,7 @@ export const WithLabel: FunctionComponent<WithLabelProps> = props => {
     <ThemeProvider theme={theme}>
       {label ? (
         <Label {...props}>
-          <LabelText>
+          <LabelText hasHintText={!!hintText}>
             {label} {!required && <span>(optional)</span>}
           </LabelText>
           {hintText && <Hint>{hintText}</Hint>}

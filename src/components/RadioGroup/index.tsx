@@ -7,7 +7,7 @@ import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
 const StyledRadio = styled(RadioInput)`
-  display: inline-block;
+  display: block;
   float: left;
   text-align: center;
   margin-left: 20px;
@@ -33,7 +33,7 @@ type RadioGroupProps = {
     option: string;
   }>;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
-  checked: string;
+  checkedState: string;
   name: string;
   theme: ThemeType;
 };
@@ -55,7 +55,7 @@ const RadioGroup: FunctionComponent<RadioGroupProps> = props => {
           <StyledRadio
             widthPercent={percentage}
             key={item.value}
-            checked={props.checked === item.value}
+            checked={props.checkedState === item.value}
             onChange={props.onChange}
             name={props.name}
             value={item.value}

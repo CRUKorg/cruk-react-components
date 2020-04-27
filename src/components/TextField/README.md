@@ -8,89 +8,109 @@ Text fields let users enter and edit text.
 <>
   <section>
     <Heading h4>Text field</Heading>
-    <TextField
-      label="First name"
-      type="text"
-      name="firstName"
-    />
+    <Box>
+      <TextField
+        label="First name"
+        type="text"
+        name="firstName"
+      />
+    </Box>
   </section>
   <section>
     <Heading h4 paddingTop="medium">With a placeholder</Heading>
-    <TextField
-      label="Your favourite food"
-      type="text"
-      name="yourFavouriteFood"
-      placeholder="Cookies"
-    />
+    <Box>
+      <TextField
+        label="Your favourite food"
+        type="text"
+        name="yourFavouriteFood"
+        placeholder="Cookies"
+      />
+    </Box>
   </section>
   <section>
     <Heading h4 paddingTop="medium">With hint text</Heading>
-    <TextField
-      label="This is the label"
-      type="text"
-      name="hintText"
-      hintText="This is the hint text"
-    />
+    <Box>
+      <TextField
+        label="This is the label"
+        type="text"
+        name="hintText"
+        hintText="This is the hint text"
+      />
+    </Box>
   </section>
   <section>
     <Heading h4 paddingTop="medium">With extra bits</Heading>
-    <TextField
-      label="Fundraising target"
-      type="text"
-      name="fundraisingTarget"
-      extraLeft="£"
-    />
-    <TextField
-      label="Search"
-      type="text"
-      name="search"
-      extraRight={
-        <Button appearance="text" aria-label="search">
-          <Icon name="search"/>
-        </Button>
-      }
-    />
-    <TextField
-      label="Fundraising page"
-      type="text"
-      name="fundraisingPage"
-      extraTop={`https://fundraise.cancerresearchuk.org/page/`}
-    />
-    <TextField
-      label="Email address"
-      type="text"
-      name="emailAddress"
-      extraBottom="Wash your hands for 20 seconds"
-    />
+    <Box>
+      <TextField
+        label="Fundraising target"
+        type="text"
+        name="fundraisingTarget"
+        extraLeft="£"
+      />
+    </Box>
+    <Box>
+      <TextField
+        label="Search"
+        type="text"
+        name="search"
+        extraRight={
+          <Button appearance="text" aria-label="search">
+            <Icon name="search"/>
+          </Button>
+        }
+      />
+    </Box>
+    <Box>
+      <TextField
+        label="Fundraising page"
+        type="text"
+        name="fundraisingPage"
+        extraTop={`https://fundraise.cancerresearchuk.org/page/`}
+      />
+    </Box>
+    <Box>
+      <TextField
+        label="Email address"
+        type="text"
+        name="emailAddress"
+        extraBottom="Wash your hands for 20 seconds"
+      />
+    </Box>
   </section>
   <section>
     <Heading h4 paddingTop="medium">With error message</Heading>
-    <TextField
-      label="Phone number"
-      type="text"
-      name="phoneNumber"
-      hasError
-      error="You have made more than one daily outing for exercise"
-    />
+    <Box>
+      <TextField
+        label="Phone number"
+        type="text"
+        name="phoneNumber"
+        hasError
+        error="You have made more than one daily outing for exercise"
+      />
+    </Box>
   </section>
   <section>
     <Heading h4 paddingTop="medium">Required</Heading>
-    <TextField
-      label="Number of cats"
-      type="text"
-      name="numberOfCats"
-      required
-    />
+    <Box>
+      <TextField
+        label="Number of cats"
+        type="text"
+        name="numberOfCats"
+        required
+      />
+    </Box>
   </section>
   <section>
     <Heading h4 paddingTop="medium">Disabled</Heading>
-    <TextField
-      label="Favourite pasta type"
-      type="text"
-      name="favouritePastaType"
-      value="Spaghetti"
-      disabled
-    />
+    <Box>
+      <TextField
+        label="Favourite pasta type"
+        type="text"
+        name="favouritePastaType"
+        value="Spaghetti"
+        disabled
+      />
+    </Box>
   </section>
 </>
 ```

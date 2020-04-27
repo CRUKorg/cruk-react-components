@@ -16,6 +16,9 @@ import defaultTheme from './cruk';
 
 export const UTILITIES: UtilitiesType = {
   ...defaultTheme.utilities,
+  borderRadius: 'unset',
+  useDefaultFocusRect: true,
+  useDefaultFromControls: false,
 };
 
 export const SITE_CONFIG: SiteConfigType = {
@@ -41,6 +44,7 @@ export const TOKEN_COLORS: TokenColorsType = {
 export const COLORS: ColorsType = {
   ...defaultTheme.colors,
   textInputBorder: TOKEN_COLORS.grey_900,
+  inputBorder: TOKEN_COLORS.grey_900,
 };
 
 export const SPACING: SpacingType = {

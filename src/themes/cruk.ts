@@ -15,6 +15,8 @@ import {
 export const UTILITIES: UtilitiesType = {
   borderRadius: '3px',
   contentMaxWidth: '1020px',
+  useDefaultFocusRect: false,
+  useDefaultFromControls: true,
 };
 
 export const SITE_CONFIG: SiteConfigType = {
@@ -96,6 +98,7 @@ export const COLORS: ColorsType = {
   circularProgressBackground: TOKEN_COLORS.grey_300,
 
   buttonBorder: TOKEN_COLORS.grey_500,
+  radioBorder: TOKEN_COLORS.grey_500,
   inputBorder: TOKEN_COLORS.grey_300,
 
   headerBackground: TOKEN_COLORS.white,
