@@ -55,7 +55,11 @@ const StyledLabel = styled.label<StyledLabelProps>`
   cursor: pointer;
   display: inline-block;
   font-weight: ${props => (props.checked ? 'bold' : 'normal')};
-  padding: 8px;
+  padding: ${({
+    theme: {
+      spacing: { extraExtraExtraSmall },
+    },
+  }) => extraExtraExtraSmall};
   vertical-align: middle;
 
   &:focus ~ ${CheckWrapper} ${Check} {
@@ -87,13 +91,21 @@ const VerticalAlign = styled.span`
 `;
 
 const StyledInput = styled.input`
-  margin-right: 8px;
+  margin-right: ${({
+    theme: {
+      spacing: { extraExtraExtraSmall },
+    },
+  }) => extraExtraExtraSmall};
   ${({ theme }) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
           position: absolute;
-          left: 8px;
+          left: ${({
+            theme: {
+              spacing: { extraExtraExtraSmall },
+            },
+          }) => extraExtraExtraSmall};
           opacity: 0;
 
           &:focus ~ ${CheckWrapper} ${Check} {
