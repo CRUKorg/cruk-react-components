@@ -31,6 +31,13 @@ const StyledBadge = styled.span`
     },
   }: BadgeProps) => extraExtraSmall};
   display: inline-block;
+  min-width: ${({
+    size,
+    theme: {
+      spacing,
+      spacing: { extraSmall },
+    },
+  }: BadgeProps) => `calc(${spacing[size]} + ${extraSmall})`};
 
   ${(props: BadgeProps) =>
     !props.text &&
