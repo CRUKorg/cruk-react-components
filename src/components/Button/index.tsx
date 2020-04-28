@@ -41,7 +41,7 @@ const StyledButton = styled.button`
   border: 1px solid ${props => props.theme.colors.buttonBorder};
   box-sizing: border-box;
   color: ${props => props.theme.colors.primary};
-  transition: color 0.2s ease, background-color 0.2s ease;
+  transition: color 0.2s ease, background-color 0.2s ease, border 0.2s ease;
   cursor: pointer;
   font-size: ${({
     theme: {
