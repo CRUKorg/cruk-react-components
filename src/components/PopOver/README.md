@@ -11,22 +11,22 @@ commonly used for displaying additional rich content on top of something.
 function () {
   const content = (<>
     <Button appearance="text" size="large">
-      <Icon name="facebookSquare" color="#4267b2" />
+      <Icon name="facebookSquare" color="#4267b2" size='1.5rem'/>
     </Button>
     <Button appearance="text" size="large">
-      <Icon name="twitterSquare" color="#1da1f2" />
+      <Icon name="twitterSquare" color="#1da1f2" size='1.5rem'/>
     </Button>
     <Button  appearance="text" size="large" >
-      <Icon name="whatsappSquare" color="#4dc247" />
+      <Icon name="whatsappSquare" color="#4dc247" size='1.5rem'/>
     </Button>
     <Button  appearance="text" size="large">
-      <Icon name="messengerSquare" color="#288ef8" />
+      <Icon name="messengerSquare" color="#288ef8" size='1.5rem'/>
     </Button>
     <Button appearance="text" size="large">
-      <Icon name="linkedin" color="#0077b5" />
+      <Icon name="linkedin" color="#0077b5" size='1.5rem'/>
     </Button>
     <Button appearance="text" size="large" >
-      <Icon name="envelopeSquare" color="#00b6ed" />
+      <Icon name="envelopeSquare" color="#00b6ed" size='1.5rem'/>
     </Button>
   </>);
 

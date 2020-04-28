@@ -1,5 +1,7 @@
-import React, { useState, FunctionComponent } from 'react';
+import React, { useState, FunctionComponent, useRef } from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
+
+import useLayoutEffectSSR from '../../hooks/useLayoutEffectSSR';
 import defaultTheme, { BREAKPOINT, COLORS } from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
@@ -7,6 +9,11 @@ type PopOverProps = {
   position: string;
   overlay: any;
   css: string;
+  theme?: ThemeType;
+};
+
+type StyledPopOverContentType = {
+  position: string;
   theme?: ThemeType;
 };
 
@@ -19,15 +26,17 @@ const PopOverWrapper = styled.div<PopOverWrapperProps>`
   display: inline-block;
   ${props => (css as any)([props.css])}
 `;
+
 const PopOverContent = styled.div`
+  position: absolute;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  word-wrap: break-word;
   padding: ${({
     theme: {
       spacing: { extraExtraSmall },
     },
   }) => extraExtraSmall};
-  position: absolute;
   bottom: 100%;
   left: 0;
   z-index: 9999;
@@ -37,7 +46,6 @@ const PopOverContent = styled.div`
       fontSizes: { small },
     },
   }) => small};
-  word-wrap: break-word;
   background-color: ${({
     theme: {
       colors: { popoverBackground },
@@ -73,19 +81,15 @@ const PopOverContent = styled.div`
   }
 `;
 
-const PopOver: FunctionComponent<PopOverProps> = props => {
-  const [showPopOver, setPopOver] = useState(false);
-  const toggle = () => setPopOver(!showPopOver);
-  const theme = {
-    ...defaultTheme,
-    ...props.theme,
-  };
-  const StyledPopOverContent = styled(PopOverContent)`
-    ${props.position === 'bottom' &&
+const StyledPopOverContent = styled(PopOverContent)<StyledPopOverContentType>`
+    ${({ position }: StyledPopOverContentType) =>
+      position === 'bottom' &&
       css`
         margin-top: 10px;
       `}
-    ${(props.position === 'bottom' || props.position === 'left' || props.position === 'right') &&
+
+    ${({ theme, position }: StyledPopOverContentType) =>
+      (position === 'bottom' || position === 'left' || position === 'right') &&
       css`
         bottom: unset;
         left: unset;
@@ -100,12 +104,13 @@ const PopOver: FunctionComponent<PopOverProps> = props => {
           border-color: transparent transparent rgba(0, 0, 0, 0.25);
         }
         &:after {
-          border-color: transparent transparent ${COLORS.popoverBackground};
+          border-color: transparent transparent ${theme.colors.popoverBackground};
           margin: 0 0 -1px 0;
         }
       `}
     @media (min-width: ${BREAKPOINT.desktop}) {
-      ${props.position === 'right' &&
+      ${({ theme, position }: StyledPopOverContentType) =>
+        position === 'right' &&
         css`
           bottom: unset;
           left: 100%;
@@ -123,11 +128,12 @@ const PopOver: FunctionComponent<PopOverProps> = props => {
             border-color: transparent rgba(0, 0, 0, 0.25) transparent transparent;
           }
           &:after {
-            border-color: transparent ${COLORS.popoverBackground} transparent transparent;
+            border-color: transparent ${theme.colors.popoverBackground} transparent transparent;
             margin: 0 0 0 1px;
           }
         `}
-      ${props.position === 'left' &&
+      ${({ position, theme }: StyledPopOverContentType) =>
+        position === 'left' &&
         css`
           top: unset;
           bottom: unset;
@@ -146,17 +152,42 @@ const PopOver: FunctionComponent<PopOverProps> = props => {
             border-color: transparent transparent transparent rgba(0, 0, 0, 0.25);
           }
           &:after {
-            border-color: transparent transparent transparent ${COLORS.popoverBackground};
+            border-color: transparent transparent transparent ${theme.colors.popoverBackground};
             margin: 0 0 0 -1px;
           }
         `}
     } 
   `;
+
+const PopOver: FunctionComponent<PopOverProps> = props => {
+  const popRef = useRef(null);
+  const [showPopOver, setPopOver] = useState(false);
+  const toggle = () => setPopOver(!showPopOver);
+  const theme = {
+    ...defaultTheme,
+    ...props.theme,
+  };
+
+  // outside click closes popover
+  const closePopOver = (e: MouseEvent) => {
+    console.log(e.target);
+    const isDescendantOfRoot = popRef && popRef.current && popRef.current.contains(e.target);
+    if (!isDescendantOfRoot) {
+      setPopOver(false);
+    }
+  };
+  useLayoutEffectSSR(() => {
+    document.addEventListener('click', closePopOver, true);
+    return () => {
+      document.removeEventListener('click', closePopOver, true);
+    };
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
-      <PopOverWrapper {...props}>
+      <PopOverWrapper {...props} ref={popRef}>
         {showPopOver && (
-          <StyledPopOverContent role="dialog" aria-modal={showPopOver}>
+          <StyledPopOverContent position={props.position} theme={theme} role="dialog" aria-modal={showPopOver}>
             {props.overlay}
           </StyledPopOverContent>
         )}
