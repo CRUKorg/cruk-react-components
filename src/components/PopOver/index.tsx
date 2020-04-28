@@ -91,14 +91,14 @@ const StyledPopOverContent = styled(PopOverContent)<StyledPopOverContentType>`
     ${({ theme, position }: StyledPopOverContentType) =>
       (position === 'bottom' || position === 'left' || position === 'right') &&
       css`
-        bottom: unset;
-        left: unset;
+        bottom: auto;
+        left: auto;
         top: 100%;
         margin-bottom: 0;
         &:after,
         &:before {
           bottom: 100%;
-          top: unset;
+          top: auto;
         }
         &:before {
           border-color: transparent transparent rgba(0, 0, 0, 0.25);
@@ -112,15 +112,15 @@ const StyledPopOverContent = styled(PopOverContent)<StyledPopOverContentType>`
       ${({ theme, position }: StyledPopOverContentType) =>
         position === 'right' &&
         css`
-          bottom: unset;
+          bottom: auto;
           left: 100%;
-          right: unset;
+          right: auto;
           top: 0;
           margin-bottom: 0;
           margin-left: 10px;
           &:after,
           &:before {
-            bottom: unset;
+            bottom: auto;
             left: -20px;
             top: calc(50% - 10px);
           }
@@ -135,16 +135,16 @@ const StyledPopOverContent = styled(PopOverContent)<StyledPopOverContentType>`
       ${({ position, theme }: StyledPopOverContentType) =>
         position === 'left' &&
         css`
-          top: unset;
-          bottom: unset;
-          left: unset;
+          top: auto;
+          bottom: auto;
+          left: auto;
           right: 100%;
           top: 0;
           margin-bottom: 0;
           margin-right: 10px;
           &:after,
           &:before {
-            bottom: unset;
+            bottom: auto;
             left: 100%;
             top: calc(50% - 10px);
           }
