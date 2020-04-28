@@ -24,7 +24,7 @@ function () {
       <Button appearance="primary" onClick={toggleShowModal}>Show me a modal</Button>
       {showModal &&
         <Modal disableEsc={false} closeButton={toggleShowModal}>
-          <Text as="h2" textSize="extraLarge">Modal title</Text>
+          <Heading h2 marginTop='none' textSize="extraLarge">Modal title</Heading>
           <p>Some really important information</p>
           <Button onClick={toggleShowModal}>Get me out of here</Button>
           <Button appearance="primary" onClick={toggleShowModal}>Go for it 😃</Button>
