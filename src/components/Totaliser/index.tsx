@@ -45,6 +45,7 @@ const Summary = styled.div`
   text-align: right;
   margin-top: 12px;
   margin-bottom: 0;
+  font-family: ${props => props.theme.typography.fontFamilyBase};
 `;
 
 type TotaliserWrapperProps = {
