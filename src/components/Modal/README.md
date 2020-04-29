@@ -1,8 +1,8 @@
 # Modal
 
-Use a modal to display content over top of the rest of the site which must be interatced with before the user can continue.
+Use a modal to display content over top of the rest of the site which must be interacted with before the user can continue.
 
-## Modals are great
+## How modals work
 
 - Modals are positioned over everything else in the document and remove scroll from the "body" tag so that modal content scrolls instead.
 - Modals are unmounted when closed.
@@ -35,8 +35,8 @@ function () {
 }
 ```
 
-| Name        | Type    |  Options   | Default | Description                                                                  |
-| :---------- | :------ | :--------: | :------ | :--------------------------------------------------------------------------- |
-| closeButton | funtion |            | null    | Display an 'X' button on top right to close the modal.                       |
-| cildren     | Any     |            |         | Any renderable content to be displayed in modal                              |
-| disableEsc  | Boolean | True/False | false   | Leaving with default option will allow the modal to close with ESC key press |
+| Name        | Type     |  Options   | Default | Description                                                                  |
+| :---------- | :------- | :--------: | :------ | :--------------------------------------------------------------------------- |
+| closeButton | function |            | null    | Display an 'X' button on top right to close the modal.                       |
+| children    | Any      |            |         | Any content to be displayed in modal                                         |
+| disableEsc  | Boolean  | True/False | false   | Leaving with default option will allow the modal to close with ESC key press |
