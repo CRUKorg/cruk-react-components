@@ -12,7 +12,6 @@ type BadgeProps = {
   children?: any;
 };
 
-// TODO Look at where 15 comes from in the height and width bellow.
 const StyledBadge = styled.span`
   background-color: ${({ theme: { colors }, backgroundColor }) =>
     backgroundColor && typeof colors[backgroundColor] !== 'undefined'
@@ -73,7 +72,7 @@ const StyledBadge = styled.span`
 `;
 
 const Badge: FunctionComponent<BadgeProps> = props => {
-  const { text, theme, size, children, ...rest } = props;
+  const { text, theme, children, ...rest } = props;
   const mergedTheme = {
     ...defaultTheme,
     ...theme,
