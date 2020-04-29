@@ -51,7 +51,7 @@ export const BREAKPOINT: BreakPointType = {
 
 export const TOKEN_COLORS: TokenColorsType = {
   darkBlue_500: '#2e008b',
-  magenta_500: '#ec008c',
+  magenta_500: '#ec0087',
   magenta_800: '#BB0071',
   magenta_900: '#710044',
   cyan_500: '#00b6ed',
