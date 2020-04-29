@@ -17,6 +17,7 @@ export const UTILITIES: UtilitiesType = {
   contentMaxWidth: '1020px',
   useDefaultFocusRect: false,
   useDefaultFromControls: true,
+  inputBorderWidth: '2px',
 };
 
 export const SITE_CONFIG: SiteConfigType = {

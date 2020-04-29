@@ -24,9 +24,9 @@ const StyledSelect = styled.select<StyledSelectProps>`
   background-position: calc(100% - 16px) 50%, calc(100% - 10px) 50%;
   background-size: 6px 6px;
   background-repeat: no-repeat;
-  border-radius: ${({ theme }: StyledSelectProps) => theme.utilities.borderRadius};
-  border: solid 2px
-    ${({ error, hasError, theme }) => (hasError || error ? theme.colors.textError : theme.colors.inputBorder)};
+  border-radius: ${({ theme }) => theme.utilities.borderRadius};
+  border: ${({ theme, hasError }) =>
+    `solid ${theme.utilities.inputBorderWidth} ${hasError ? theme.colors.textError : theme.colors.textInputBorder}`};
   color: ${({ theme }) => theme.colors.textDark};
   display: block;
   font-size: ${({ theme }) => theme.fontSizes.medium};

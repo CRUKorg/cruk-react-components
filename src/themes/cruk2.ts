@@ -19,6 +19,7 @@ export const UTILITIES: UtilitiesType = {
   borderRadius: 'unset',
   useDefaultFocusRect: true,
   useDefaultFromControls: false,
+  inputBorderWidth: '1px',
 };
 
 export const SITE_CONFIG: SiteConfigType = {

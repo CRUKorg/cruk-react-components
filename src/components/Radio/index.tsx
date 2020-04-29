@@ -5,8 +5,8 @@ import defaultTheme from '../../themes/cruk';
 
 import { ThemeType } from '../../themes/types';
 
-const RADIO_SIZE = '2rem';
-const RADIO_INNER_SIZE = '1.5rem';
+const RADIO_SIZE = '1.5rem';
+const RADIO_INNER_SIZE = '1rem';
 
 type StyledLabelProps = {
   checked: boolean;
@@ -20,9 +20,9 @@ const CheckWrapper = styled.div`
   top: calc(50% - (${RADIO_SIZE} / 2));
   left: ${({
     theme: {
-      spacing: { extraSmall },
+      spacing: { extraExtraSmall },
     },
-  }) => extraSmall};
+  }) => extraExtraSmall};
 `;
 
 const Check = styled.span`
@@ -56,9 +56,10 @@ const Check = styled.span`
 const StyledLabel = styled.label<StyledLabelProps>`
   position: relative;
   border-radius: ${props => props.theme.utilities.borderRadius};
-  border: solid 2px
-    ${({ checked, theme }) =>
-      checked && !theme.utilities.useDefaultFocusRect ? theme.colors.primary : theme.colors.inputBorder};
+  border: ${({ theme, checked }) =>
+    `solid ${theme.utilities.inputBorderWidth} ${
+      checked && !theme.utilities.useDefaultFocusRect ? theme.colors.primary : theme.colors.inputBorder
+    }`};
   cursor: pointer;
   display: inline-block;
   font-weight: ${props => (props.checked ? 'bold' : 'normal')};
@@ -78,8 +79,8 @@ const StyledLabel = styled.label<StyledLabelProps>`
     theme.utilities.useDefaultFromControls
       ? null
       : css`
-          padding: 1rem 1rem 1rem 4rem;
-          min-height: 4rem;
+          padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+          min-height: 2rem;
 
           &:hover ${CheckWrapper} ${Check} {
             border: solid 2px

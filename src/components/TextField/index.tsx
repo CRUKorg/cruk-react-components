@@ -43,7 +43,7 @@ const ExtraRight = styled(Extra)`
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   width: initial;
-  border: solid 2px ${({ theme }) => theme.colors.textInputBorder};
+  border: solid ${({ theme }) => theme.utilities.inputBorderWidth} ${({ theme }) => theme.colors.textInputBorder};
   transition: border-color 150ms linear;
   border-left: 0;
   background-color: transparent;
@@ -68,8 +68,8 @@ const StyledInput = styled.input<StyledInputProps>`
   background-color: ${({ theme }) => theme.colors.lightBackground};
   background-image: none;
   border-radius: ${({ theme }) => theme.utilities.borderRadius};
-  border: solid 2px ${({ error, hasError, theme }) =>
-    hasError || error ? theme.colors.textError : theme.colors.textInputBorder};
+  border: solid ${({ theme }) => theme.utilities.inputBorderWidth} ${({ error, hasError, theme }) =>
+  hasError || error ? theme.colors.textError : theme.colors.textInputBorder};
   color: ${({ theme }) => theme.colors.textDark};
   display: block;
   font-size: ${({ theme }) => theme.fontSizes.medium};
