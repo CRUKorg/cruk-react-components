@@ -65,7 +65,7 @@ type StyledInputProps = {
 };
 
 const StyledInput = styled.input<StyledInputProps>`
-  background-color: ${({ theme }) => theme.colors.lightBackground};
+  background-color: ${({ theme }) => theme.colors.backgroundLight};
   background-image: none;
   border-radius: ${({ theme }) => theme.utilities.borderRadius};
   border: solid ${({ theme }) => theme.utilities.inputBorderWidth} ${({ error, hasError, theme }) =>
