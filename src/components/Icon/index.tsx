@@ -45,7 +45,6 @@ const Icon: FunctionComponent<IconProps> = props => {
       role="presentation"
       viewBox={`0 0 ${icon.width} ${icon.height}`}
       size={props.size}
-      transform={(icon as { transform?: string }).transform}
       {...props}
     >
       {icon.paths.map((path: string, index: number) => (
