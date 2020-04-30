@@ -15,6 +15,7 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
     <Icon name="calendar" />
     <Icon name="chevronLeft" />
     <Icon name="chevronRight" />
+    <Icon name="chevronRightBold" />
     <Icon name="clock" />
     <Icon name="close" />
     <Icon name="comment" />
@@ -53,9 +54,9 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
 
 ## Props
 
-| Name      | Type   | Default       | Description                         |
-| :-------- | :----- | :------------ | :---------------------------------- |
-| name      | String |               | One of the above icon names.        |
-| color     | String | textDark      | A theme color name or CSS color.    |
-| size      | String | 1.1rem (18px) | Icon's width and height.            |
-| transform | String |               | A CSS transform like "scale(-1, 1)" |
+| Name      | Type   | Default       | Description                                                                                   |
+| :-------- | :----- | :------------ | :-------------------------------------------------------------------------------------------- |
+| name      | string |               | One of the above icon names.                                                                  |
+| color     | string |               | A theme color name or CSS color. If blank, Icon will match the color of the surrounding text. |
+| size      | string | 1.1rem (18px) | Icon's width and height.                                                                      |
+| transform | string |               | A CSS transform like "scale(-1, 1)"                                                           |

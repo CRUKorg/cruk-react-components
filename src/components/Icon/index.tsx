@@ -3,20 +3,17 @@ import styled, { withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 import { ICONS } from './iconList';
-import { camelize } from '../../utils/Helper';
 
 import { ThemeType } from '../../themes/types';
 
-export type IconNameType = keyof typeof ICONS;
-
 // utility to provide people with a list of icon names
-export const ICON_NAMES = Object.keys(ICONS).reduce((acc: { [key: string]: IconNameType }, item: IconNameType) => {
+export const ICON_NAMES = Object.keys(ICONS).reduce((acc: { [key: string]: string }, item: string) => {
   acc[item] = item;
   return acc;
 }, {});
 
 type IconProps = {
-  name: IconNameType;
+  name: string;
   color?: string;
   size?: string;
   transform?: string;
@@ -31,7 +28,7 @@ const StyledIcon = styled.svg<IconProps>`
   width: ${props => props.size};
   path {
     fill: ${({ theme: { colors }, color }) =>
-      color && typeof colors[color] !== 'undefined' ? colors[color] : color ? color : 'transparent'};
+      color && typeof colors[color] !== 'undefined' ? colors[color] : color ? color : 'currentColor'};
   }
 `;
 
@@ -60,7 +57,6 @@ const Icon: FunctionComponent<IconProps> = props => {
 };
 
 Icon.defaultProps = {
-  color: 'text',
   size: '1.1rem',
 };
 
