@@ -13,10 +13,9 @@ export const ICON_NAMES = Object.keys(ICONS).reduce((acc: { [key: string]: strin
 }, {});
 
 type IconProps = {
-  name: string;
+  name: keyof typeof ICONS;
   color?: string;
   size?: string;
-  transform?: string;
   theme?: ThemeType;
 };
 
@@ -46,7 +45,7 @@ const Icon: FunctionComponent<IconProps> = props => {
       role="presentation"
       viewBox={`0 0 ${icon.width} ${icon.height}`}
       size={props.size}
-      transform={icon.transform}
+      transform={(icon as { transform?: string }).transform}
       {...props}
     >
       {icon.paths.map((path: string, index: number) => (
