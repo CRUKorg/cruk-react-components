@@ -16,7 +16,7 @@ export const ICON_NAMES = Object.keys(ICONS).reduce((acc: { [key: string]: IconN
 }, {});
 
 type IconProps = {
-  name?: IconNameType;
+  name: IconNameType;
   color?: string;
   size?: string;
   transform?: string;
@@ -36,12 +36,12 @@ const StyledIcon = styled.svg<IconProps>`
 `;
 
 const Icon: FunctionComponent<IconProps> = props => {
-  const name = props.name && camelize(props.name);
-  const icon = (ICONS as any)[name] || ICONS.question;
   const theme = {
     ...defaultTheme,
     ...props.theme,
   };
+  const icon = ICONS[props.name];
+
   return (
     <StyledIcon
       theme={theme}
@@ -60,8 +60,8 @@ const Icon: FunctionComponent<IconProps> = props => {
 };
 
 Icon.defaultProps = {
-  color: 'currentColor',
-  size: '1.1em',
+  color: 'text',
+  size: '1.1rem',
 };
 
 export default withTheme(Icon);
