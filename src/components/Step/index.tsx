@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
 
-import defaultTheme, { TYPOGRAPHY, FONT_SIZES } from '../../themes/cruk';
+import defaultTheme from '../../themes/cruk';
 
 import { ThemeType } from '../../themes/types';
 
@@ -14,9 +14,6 @@ type StepProps = {
 const StepWrapper = styled.div`
   text-align: center;
   text-transform: capitalize;
-  font-family: ${TYPOGRAPHY.fontFamilyHeadings};
-  font-size: ${FONT_SIZES.small};
-  font-weight: ${TYPOGRAPHY.fontWeightHeavy};
 `;
 
 type StepListProps = {

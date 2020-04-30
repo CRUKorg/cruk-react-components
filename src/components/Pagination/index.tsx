@@ -50,7 +50,7 @@ const PagerLink = styled.a<PaginationStyledProps>`
   background-color: ${props => props.theme.colors.primary};
   cursor: pointer;
   border-radius: 0;
-  margin: 1px;
+  margin: ${props => props.theme.spacing.extraExtraSmall};
   padding: 7px 11px;
   text-decoration: none;
   &:hover{

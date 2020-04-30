@@ -34,7 +34,7 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled(Box)`
-  background: ${COLORS.lightBackground};
+  background: ${COLORS.backgroundLight};
   border-radius: 4px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
   margin: ${({

@@ -17,6 +17,7 @@ export const UTILITIES: UtilitiesType = {
   contentMaxWidth: '1020px',
   useDefaultFocusRect: false,
   useDefaultFromControls: true,
+  inputBorderWidth: '2px',
 };
 
 export const SITE_CONFIG: SiteConfigType = {
@@ -51,7 +52,7 @@ export const BREAKPOINT: BreakPointType = {
 
 export const TOKEN_COLORS: TokenColorsType = {
   darkBlue_500: '#2e008b',
-  magenta_500: '#ec008c',
+  magenta_500: '#ec0087',
   magenta_800: '#BB0071',
   magenta_900: '#710044',
   cyan_500: '#00b6ed',
@@ -102,8 +103,8 @@ export const COLORS: ColorsType = {
   inputBorder: TOKEN_COLORS.grey_300,
 
   headerBackground: TOKEN_COLORS.white,
-  lightBackground: TOKEN_COLORS.white,
-  midBackground: TOKEN_COLORS.grey_100,
+  backgroundLight: TOKEN_COLORS.white,
+  backgroundMid: TOKEN_COLORS.grey_100,
 
   paginationActive: TOKEN_COLORS.grey_300,
 

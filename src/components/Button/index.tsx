@@ -36,12 +36,12 @@ const VerticalAlign = styled.span`
 const StyledButton = styled.button`
   display: inline-block;
   vertical-align: middle;
-  background-color: ${props => props.theme.colors.lightBackground};
+  background-color: ${props => props.theme.colors.backgroundLight};
   border-radius: ${props => props.theme.button.borderRadius};
   border: 1px solid ${props => props.theme.colors.buttonBorder};
   box-sizing: border-box;
   color: ${props => props.theme.colors.primary};
-  transition: color 0.2s ease, background-color 0.2s ease;
+  transition: color 0.2s ease, background-color 0.2s ease, border 0.2s ease;
   cursor: pointer;
   font-size: ${({
     theme: {

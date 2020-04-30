@@ -12,7 +12,7 @@ type BoxProps = SpacingProps & {
 };
 
 const StyledBox = styled.div<BoxProps>`
-  background-color: ${props => props.theme.colors.lightBackground};
+  background-color: ${props => props.theme.colors.backgroundLight};
   padding: ${({ theme, backgroundColor }) => (backgroundColor ? theme.spacing.small : 0)};
   margin: 0 0 ${props => props.theme.spacing.medium} 0;
 

@@ -15,6 +15,7 @@ export type UtilitiesType = {
   contentMaxWidth: string;
   useDefaultFocusRect: boolean;
   useDefaultFromControls: boolean;
+  inputBorderWidth: string;
 };
 
 export type SiteConfigType = {

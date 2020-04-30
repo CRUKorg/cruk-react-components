@@ -55,7 +55,7 @@ import GlobalStyle from '../components/GlobalStyle';
  */
 const SwitchTheme = styled(Select)`
   float: right;
-  background-color: ${COLORS.lightBackground};
+  background-color: ${COLORS.backgroundLight};
   max-width: 150px;
 
   @media (max-width: ${BREAKPOINT.tablet}) {
@@ -70,7 +70,7 @@ const SideBar = styled(Box)`
   max-width: 265px;
   height: 100vh;
   border: none;
-  background-color: ${COLORS.lightBackground};
+  background-color: ${COLORS.backgroundLight};
 
   @media (max-width: ${BREAKPOINT.tablet}) {
     bottom: 0;
@@ -99,7 +99,7 @@ const Content = styled.div`
   flex-grow: 1;
 
   max-width: 940px;
-  background-color: ${COLORS.lightBackground};
+  background-color: ${COLORS.backgroundLight};
   @media (min-width: ${BREAKPOINT.tablet}) {
     flex: 3;
     margin: 0 auto;
@@ -110,7 +110,7 @@ const StyledFlex = styled(Flex)`
   display: inline-flex;
   flex-direction: row;
   min-width: 100%;
-  background-color: ${COLORS.lightBackground};
+  background-color: ${COLORS.backgroundLight};
 
   .sticky & {
     padding-top: 117px;
@@ -160,7 +160,7 @@ const ToggleIcon = styled.label`
 `;
 
 const StyledToggle = styled.input`
-  background-color: ${COLORS.lightBackground};
+  background-color: ${COLORS.backgroundLight};
   ${BaseToggleStyle}
   opacity: 0;
   z-index: 10000;
