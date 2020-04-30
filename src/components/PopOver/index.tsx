@@ -1,7 +1,7 @@
 import React, { useState, FunctionComponent, useRef } from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
 
-import useLayoutEffectSSR from '../../hooks/useLayoutEffectSSR';
+import useEffectBrowser from '../../hooks/useEffectBrowser';
 import defaultTheme, { BREAKPOINT, COLORS } from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
@@ -170,13 +170,13 @@ const PopOver: FunctionComponent<PopOverProps> = props => {
 
   // outside click closes popover
   const closePopOver = (e: MouseEvent) => {
-    console.log(e.target);
     const isDescendantOfRoot = popRef && popRef.current && popRef.current.contains(e.target);
     if (!isDescendantOfRoot) {
       setPopOver(false);
     }
   };
-  useLayoutEffectSSR(() => {
+
+  useEffectBrowser(() => {
     document.addEventListener('click', closePopOver, true);
     return () => {
       document.removeEventListener('click', closePopOver, true);
