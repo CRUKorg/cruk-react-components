@@ -1,4 +1,4 @@
-import React, { FunctionComponent, SelectHTMLAttributes } from 'react';
+import React, { FunctionComponent, ReactNode, SelectHTMLAttributes } from 'react';
 import styled, { withTheme, css } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -59,7 +59,7 @@ type SelectProps = SelectHTMLAttributes<{}> & {
   theme: ThemeType;
   label: string;
   value: string;
-  hintText?: string;
+  hintText?: ReactNode;
 };
 
 const Select: FunctionComponent<SelectProps> = ({

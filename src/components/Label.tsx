@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import styled, { withTheme, ThemeProvider } from 'styled-components';
-
-import defaultTheme from './../themes/cruk';
+import Text from './Text';
+import defaultTheme from '../themes/cruk';
 import { ThemeType } from 'src/themes/types';
 
 const Label = styled.label`
@@ -9,29 +9,16 @@ const Label = styled.label`
   width: 100%;
 `;
 
-const Hint = styled.span`
-  display: block;
-  margin-bottom: ${({
-    theme: {
-      spacing: { extraSmall },
-    },
-  }) => extraSmall};
-`;
-
 type LabelTextProps = {
-  theme: ThemeType;
   hasHintText: boolean;
+  theme: ThemeType;
 };
 
 const LabelText = styled.span<LabelTextProps>`
   font-weight: bold;
   display: block;
-  margin-bottom: ${({
-    hasHintText,
-    theme: {
-      spacing: { extraSmall, extraExtraSmall },
-    },
-  }) => (hasHintText ? extraExtraSmall : extraSmall)};
+  margin-bottom: ${({ hasHintText, theme }) =>
+    hasHintText ? theme.spacing.extraExtraSmall : theme.spacing.extraSmall};
 
   & > * {
     font-weight: normal;
@@ -43,7 +30,7 @@ const LabelText = styled.span<LabelTextProps>`
 
 type WithLabelProps = {
   label: string;
-  hintText?: string;
+  hintText?: ReactNode;
   required?: boolean;
   theme?: ThemeType;
 };
@@ -55,6 +42,8 @@ export const WithLabel: FunctionComponent<WithLabelProps> = props => {
     ...props.theme,
   };
 
+  const hintTextElement = !!hintText && typeof hintText === 'string' ? <Text>{hintText}</Text> : hintText;
+
   return (
     <ThemeProvider theme={theme}>
       {label ? (
@@ -62,7 +51,7 @@ export const WithLabel: FunctionComponent<WithLabelProps> = props => {
           <LabelText hasHintText={!!hintText}>
             {label} {!required && <span>(optional)</span>}
           </LabelText>
-          {hintText && <Hint>{hintText}</Hint>}
+          {hintTextElement}
           {children}
         </Label>
       ) : (
@@ -73,7 +62,6 @@ export const WithLabel: FunctionComponent<WithLabelProps> = props => {
 };
 
 WithLabel.defaultProps = {
-  hintText: '',
   required: false,
   theme: null,
 };
