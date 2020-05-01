@@ -3,7 +3,7 @@ import styled, { css, withTheme, ThemeProvider } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 
 import Text from '../Text';
-import Icon, { ICON_NAMES } from '../Icon';
+import Icon from '../Icon';
 
 import { ThemeType } from 'src/themes/types';
 
@@ -71,7 +71,7 @@ const Link: FunctionComponent<LinkProps> = props => {
   return (
     <ThemeProvider theme={theme}>
       <StyledLink {...props} forwardedAs="a" theme={theme} rel={rel}>
-        {props.appearance === 'primary' && <ChevyWithLevee name={ICON_NAMES.chevronRightBold} size="0.8em" />}
+        {props.appearance === 'primary' && <ChevyWithLevee name={'chevronRightBold'} size="0.8em" />}
         {props.children}
       </StyledLink>
     </ThemeProvider>
