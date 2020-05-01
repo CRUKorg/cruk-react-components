@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, ReactElement } from 'react';
 import styled, { withTheme, ThemeProvider } from 'styled-components';
 import Text from './Text';
 import defaultTheme from '../themes/cruk';
@@ -30,7 +30,7 @@ const LabelText = styled.span<LabelTextProps>`
 
 type WithLabelProps = {
   label: string;
-  hintText?: ReactNode;
+  hintText?: ReactElement | string;
   required?: boolean;
   theme?: ThemeType;
 };

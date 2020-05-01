@@ -1,4 +1,4 @@
-import React, { FunctionComponent, InputHTMLAttributes, ReactNode } from 'react';
+import React, { FunctionComponent, InputHTMLAttributes, ReactElement } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -139,7 +139,7 @@ type TextFieldProps = InputHTMLAttributes<{}> & {
   theme: ThemeType;
   value: string;
   label: string;
-  hintText?: ReactNode;
+  hintText?: ReactElement | string;
 };
 
 const TextField: FunctionComponent<TextFieldProps> = ({
