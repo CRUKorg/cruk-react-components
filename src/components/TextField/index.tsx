@@ -139,7 +139,7 @@ type TextFieldProps = InputHTMLAttributes<{}> & {
   theme: ThemeType;
   value: string;
   label: string;
-  hintText?: string;
+  hintText?: ReactNode;
 };
 
 const TextField: FunctionComponent<TextFieldProps> = ({
