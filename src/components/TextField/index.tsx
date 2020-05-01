@@ -1,4 +1,4 @@
-import React, { FunctionComponent, InputHTMLAttributes } from 'react';
+import React, { FunctionComponent, InputHTMLAttributes, ReactNode } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
