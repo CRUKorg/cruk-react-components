@@ -6,16 +6,26 @@ Checkboxes allow the user to select one or more items.
 
 ```.jsx
 <>
-  <Checkbox checked value="value" />
-  <Checkbox checked={false}>Checkbox</Checkbox>
-  <Checkbox checked>Checked</Checkbox>
-  <Checkbox checked disabled>Disabled</Checkbox>
-  <Checkbox
-    onChange={e => alert(e.target.value)}
-    value="My value"
-  >
-    Alert my value
+  <Box>
+    <Checkbox checked value="value" />
+  </Box>
+  <Box>
+    <Checkbox checked={false}>Checkbox</Checkbox>
+  </Box>
+  <Box>
+   <Checkbox checked>Checked</Checkbox>
+  </Box>
+  <Box>
+   <Checkbox checked disabled>Disabled</Checkbox>
+  </Box>
+  <Box>
+    <Checkbox
+      onChange={e => alert(e.target.value)}
+      value="My value"
+    >
+      Alert my value
   </Checkbox>
+  </Box>
 </>
 ```
 
@@ -34,28 +44,32 @@ function () {
 
   return (
     <>
-      <Checkbox
-        name="example"
-        onChange={e => handleChange(e.target.value)}
-        value="one"
-        checked={selected.indexOf('one') >= 0}
-      >
-        Option one
-      </Checkbox>
-      
-      <Checkbox
-        name="example"
-        onChange={e => handleChange(e.target.value)}
-        value="two"
-        checked={selected.indexOf('two') >= 0}
-      >
-        Option two
-      </Checkbox>
-      
+      <Box>
+        <Checkbox
+          name="example"
+          onChange={e => handleChange(e.target.value)}
+          value="one"
+          checked={selected.indexOf('one') >= 0}
+        >
+          Option one
+        </Checkbox>
+      </Box>
+      <Box>
+        <Checkbox
+          name="example"
+          onChange={e => handleChange(e.target.value)}
+          value="two"
+          checked={selected.indexOf('two') >= 0}
+        >
+          Option two
+        </Checkbox>
+      </Box>
+
       <Heading h2>Selected values</Heading>
       <ul>
-        {selected.map(value => <li>{value}</li>)}
+        {selected.map(value => <li key={value}>{value}</li>)}
       </ul>
+
     </>
   )
 }
@@ -63,16 +77,16 @@ function () {
 
 ## Props
 
-| Name | Type | Options | Default | Description |
-| :- | :- | :-: | :- | :- |
-| children | String | |  | Used as label text |
-| disabled | boolean | | false | Applies disabled attribute to HTML input |
-| onChange | Function | |  | Callback function called on input change|
-| value | String | | | Value to be returned and used as label if label prop is not supplied |
+| Name     | Type     | Options | Default | Description                                                          |
+| :------- | :------- | :-----: | :------ | :------------------------------------------------------------------- |
+| children | String   |         |         | Used as label text                                                   |
+| disabled | boolean  |         | false   | Applies disabled attribute to HTML input                             |
+| onChange | Function |         |         | Callback function called on input change                             |
+| value    | String   |         |         | Value to be returned and used as label if label prop is not supplied |
 
 ## Notes
 
-* Should the state be managed withing the component?
-* Are we right to use value as label?
-* Do we want to style the input itself?
-* Do we need name?
+- Should the state be managed withing the component?
+- Are we right to use value as label?
+- Do we want to style the input itself?
+- Do we need name?
