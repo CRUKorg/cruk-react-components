@@ -13,7 +13,9 @@ type StyledLabelProps = {
 const StyledLabel = styled.label<StyledLabelProps>`
   border-radius: ${props => props.theme.utilities.borderRadius};
   border: ${({ theme, checked }) =>
-    `solid ${theme.utilities.inputBorderWidth} ${checked ? theme.colors.primary : theme.colors.inputBorder}`};
+    `solid ${theme.utilities.inputBorderWidth} ${
+      checked && !theme.utilities.useDefaultFocusRect ? theme.colors.primary : theme.colors.inputBorder
+    }`};
   cursor: pointer;
   display: block;
   font-weight: ${props => (props.checked ? 'bold' : 'normal')};
