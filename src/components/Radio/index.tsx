@@ -20,9 +20,9 @@ const CheckWrapper = styled.div`
   top: calc(50% - (${RADIO_SIZE} / 2));
   left: ${({
     theme: {
-      spacing: { extraExtraSmall },
+      spacing: { extraSmall },
     },
-  }) => extraExtraSmall};
+  }) => extraSmall};
 `;
 
 const Check = styled.span`
@@ -79,7 +79,7 @@ const StyledLabel = styled.label<StyledLabelProps>`
     theme.utilities.useDefaultFromControls
       ? null
       : css`
-          padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+          padding: 1rem 1rem 1rem 3rem;
           min-height: 2rem;
 
           &:hover ${CheckWrapper} ${Check} {
