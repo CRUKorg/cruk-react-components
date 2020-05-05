@@ -5,7 +5,7 @@ import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
 const CHECK_BOX_SIZE = '1.5rem';
-const CHECK_SIZE = '1rem';
+const CHECK_SIZE = '1.125rem';
 
 type StyledLabelProps = {
   checked: boolean;
@@ -28,7 +28,7 @@ const CheckWrapper = styled.div`
 const Check = styled.span`
   display: block;
   position: relative;
-  border: 1px solid ${({ theme }) => theme.colors.radioBorder};
+  border: 1px solid ${({ theme }) => theme.colors.selectionBorder};
   height: ${CHECK_BOX_SIZE};
   width: ${CHECK_BOX_SIZE};
   top: 0;
@@ -43,15 +43,14 @@ const Check = styled.span`
 const CheckGlyph = styled.svg`
   height: ${CHECK_SIZE};
   width: ${CHECK_SIZE};
-  stroke: ${({ theme }) => theme.colors.primary};
   transition: transform 0.25s ease;
   transform: scale(0);
-  margin: 0.125rem;
+  /* asset is little wonky */
+  margin-top: -0.125rem;
+  margin-left: 0.125rem;
 
   path {
-    stroke-width: 40;
-    fill: none;
-    stroke: ${({ theme }) => theme.colors.primary};
+    fill: ${({ theme }) => theme.colors.primary};
   }
 `;
 
@@ -149,8 +148,8 @@ const Checkbox: FunctionComponent<CheckboxProps> = props => {
         {theme.utilities.useDefaultFromControls ? null : (
           <CheckWrapper>
             <Check>
-              <CheckGlyph viewBox={`0 0 270 270`}>
-                <path d="M 30,180 90,240 240,30" />
+              <CheckGlyph viewBox={`0 0 17.8 17.8`}>
+                <path d="M0 11.314l1.52-1.52 4.95 4.95 9.794-9.794 1.52 1.52L6.482 17.774l-.01-.01-.01.01z" />
               </CheckGlyph>
             </Check>
           </CheckWrapper>

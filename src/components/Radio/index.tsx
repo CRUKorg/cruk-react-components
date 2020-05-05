@@ -28,7 +28,7 @@ const CheckWrapper = styled.div`
 const Check = styled.span`
   display: block;
   position: relative;
-  border: 2px solid ${({ theme }) => theme.colors.radioBorder};
+  border: 2px solid ${({ theme }) => theme.colors.selectionBorder};
   border-radius: 100%;
   height: ${RADIO_SIZE};
   width: ${RADIO_SIZE};
