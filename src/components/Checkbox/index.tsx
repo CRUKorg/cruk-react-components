@@ -44,7 +44,8 @@ const CheckGlyph = styled.svg`
   height: ${CHECK_SIZE};
   width: ${CHECK_SIZE};
   transition: transform 0.25s ease;
-  transform: scale(0);
+  transform: rotateY(90deg);
+  transform-origin: center;
   /* asset is little wonky */
   margin-top: -0.125rem;
   margin-left: 0.125rem;
@@ -113,7 +114,7 @@ const StyledInput = styled.input`
           }
 
           &:checked ~ ${CheckWrapper} ${Check} ${CheckGlyph} {
-            transform: scale(1);
+            transform: rotateY(0deg);
           }
         `}
 `;
