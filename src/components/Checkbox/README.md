@@ -83,10 +83,3 @@ function () {
 | disabled | boolean  |         | false   | Applies disabled attribute to HTML input                             |
 | onChange | Function |         |         | Callback function called on input change                             |
 | value    | String   |         |         | Value to be returned and used as label if label prop is not supplied |
-
-## Notes
-
-- Should the state be managed withing the component?
-- Are we right to use value as label?
-- Do we want to style the input itself?
-- Do we need name?
