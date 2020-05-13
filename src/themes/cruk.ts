@@ -99,7 +99,7 @@ export const COLORS: ColorsType = {
   circularProgressBackground: TOKEN_COLORS.grey_300,
 
   buttonBorder: TOKEN_COLORS.grey_500,
-  radioBorder: TOKEN_COLORS.grey_500,
+  selectionBorder: TOKEN_COLORS.grey_500,
   inputBorder: TOKEN_COLORS.grey_300,
 
   headerBackground: TOKEN_COLORS.white,

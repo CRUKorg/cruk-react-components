@@ -71,7 +71,3 @@ The legend will be red out by screen readers in form input mode, a div span etc 
 | name     | String   |         |         | Used to link radios together. Must be unique per page                |
 | onChange | Function |         |         | Callback function called on input change                             |
 | value    | String   |         |         | Value to be returned and used as label if label prop is not supplied |
-
-## Notes
-
-- Should the state be managed withing the component?
