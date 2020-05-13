@@ -25,5 +25,5 @@ export default {
     // },
   ],
   external: ['prop-types', 'react', 'react-dom', 'styled-components'],
-  plugins: [commonjs(), resolve({ modulesOnly: true }), terser(), typescript()],
+  plugins: [commonjs(), resolve({ modulesOnly: true }), terser(), typescript(), mdx((exclude: 'node_modules/**'))],
 };
