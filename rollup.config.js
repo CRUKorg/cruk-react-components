@@ -2,6 +2,8 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import typescript from '@rollup/plugin-typescript';
+import babel from '@rollup/plugin-babel';
+import md from 'rollup-plugin-md';
 
 export default {
   input: 'src/components/index.tsx',
@@ -25,5 +27,14 @@ export default {
     // },
   ],
   external: ['prop-types', 'react', 'react-dom', 'styled-components'],
-  plugins: [commonjs(), resolve({ modulesOnly: true }), terser(), typescript(), mdx((exclude: 'node_modules/**'))],
+  plugins: [
+    resolve({ modulesOnly: true }),
+    commonjs({ ignoreGlobal: true, include: 'node_modules/**', exclude: 'node_modules/buble/**' }),
+    babel({
+      exclude: 'node_modules/**',
+    }),
+    md(),
+    terser(),
+    typescript(),
+  ],
 };
