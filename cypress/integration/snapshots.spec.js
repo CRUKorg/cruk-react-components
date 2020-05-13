@@ -17,6 +17,7 @@ const components = [
   'PopOver',
   'ProgressBar',
   'Radio',
+  'RadioGroup',
   'Select',
   'Step',
   'Text',
@@ -58,6 +59,16 @@ const selectComponent = (componentName, brand) => {
       cy.get('head').invoke('append', '<style type="text/css">header {display: none;}</style>');
       cy.contains('What is Lorem Ipsum?').click();
       cy.wait(500); // Wait to expand
+      cy.get('[aria-label="Example code preview"]')
+        .first()
+        .matchImageSnapshot(`${brand}_${componentName}`);
+      break;
+    case 'Loader':
+      cy.get('head').invoke(
+        'append',
+        '<style type="text/css"> header {display: none;} [aria-label="Example code preview"] span {animation: none;} </style>',
+      );
+      cy.wait(500); // Wait for fonts to load
       cy.get('[aria-label="Example code preview"]')
         .first()
         .matchImageSnapshot(`${brand}_${componentName}`);

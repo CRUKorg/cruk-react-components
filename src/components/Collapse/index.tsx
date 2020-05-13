@@ -18,12 +18,12 @@ type CollapseProps = {
 
 const CollapseWrapper = styled.div``;
 
-type DefaultHeaderProps = {
-  theme: ThemeType;
-  active: boolean;
-};
+const FlippingIcon = styled(Icon)`
+  transform: ${({ active }: { active: boolean }) => (!!active ? 'rotate(90deg) scaleX(-1)' : 'rotate(90deg)')};
+  transition-duration: 0.5s;
+`;
 
-const DefaultHeader = styled(Button)<DefaultHeaderProps>`
+const DefaultHeader = styled(Button)`
   color: ${({
     theme: {
       colors: { secondary },
@@ -33,11 +33,6 @@ const DefaultHeader = styled(Button)<DefaultHeaderProps>`
   margin-bottom: 0;
   padding: 0 0 10px;
   text-decoration: none;
-
-  & svg {
-    transform: ${({ active }) => (active === true ? 'rotate(90deg)' : 'none')};
-    transition-duration: 0.5s;
-  }
 `;
 
 type CollapseContentProps = {
@@ -100,15 +95,9 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
         {props.headerComponent}
       </CustomHeader>
     ) : (
-      <DefaultHeader
-        {...defaultProps}
-        theme={theme}
-        appearance="text"
-        active={activeStatus}
-        aria-label={props.headerTitleText}
-      >
+      <DefaultHeader {...defaultProps} theme={theme} appearance="text" aria-label={props.headerTitleText}>
         {props.headerTitleText}
-        <Icon name="chevronRight" />
+        <FlippingIcon name="chevronRight" active={activeStatus} />
       </DefaultHeader>
     );
   };

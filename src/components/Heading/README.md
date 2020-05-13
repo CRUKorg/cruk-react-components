@@ -2,7 +2,7 @@
 
 Use headings consistently to create a clear hierarchy throughout your service.
 Markup headings semantically using the appropriate <h#> level HTML element and
-use the corresponding heading class (h1, h2, h3, ....). Write all headings in sentence case.
+use the corresponding heading class (h1, h2, h3, ....). Write all headings in sentence case. Heading differs from the Text component by using a different font-family and it changes the font size according to the screen width breakpoints.
 
 ### Try it out
 

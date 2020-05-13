@@ -1,5 +1,5 @@
-import React, { FunctionComponent, SelectHTMLAttributes } from 'react';
-import styled, { withTheme } from 'styled-components';
+import React, { FunctionComponent, ReactElement, SelectHTMLAttributes } from 'react';
+import styled, { withTheme, css } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 import ErrorText from '../ErrorText';
@@ -24,19 +24,31 @@ const StyledSelect = styled.select<StyledSelectProps>`
   background-position: calc(100% - 16px) 50%, calc(100% - 10px) 50%;
   background-size: 6px 6px;
   background-repeat: no-repeat;
-  border-radius: ${({ theme }: StyledSelectProps) => theme.utilities.borderRadius};
-  border: solid 2px
-    ${({ error, hasError, theme }) => (hasError || error ? theme.colors.textError : theme.colors.inputBorder)};
+  border-radius: ${({ theme }) => theme.utilities.borderRadius};
+  border: ${({ theme, hasError, error }) =>
+    `solid ${theme.utilities.inputBorderWidth} ${
+      hasError || error ? theme.colors.textError : theme.colors.textInputBorder
+    }`};
   color: ${({ theme }) => theme.colors.textDark};
   display: block;
   font-size: ${({ theme }) => theme.fontSizes.medium};
   padding: 6px 24px 6px 8px;
   width: 100%;
   transition: border-color 150ms linear;
-  &:focus {
-    border-color: ${({ theme }) => theme.colors.tertiary};
-    outline: 0;
+  &:disabled {
+    border-color: ${({ theme }) => theme.colors.disabled};
+    color: ${({ theme }) => theme.colors.disabled};
   }
+
+  ${({ theme }) =>
+    !theme.utilities.useDefaultFocusRect
+      ? css`
+          &:focus {
+            outline: 0;
+            border-color: ${({ theme }) => theme.colors.tertiary};
+          }
+        `
+      : null};
 `;
 
 type SelectProps = SelectHTMLAttributes<{}> & {
@@ -47,7 +59,7 @@ type SelectProps = SelectHTMLAttributes<{}> & {
   theme: ThemeType;
   label: string;
   value: string;
-  hintText?: string;
+  hintText?: ReactElement | string;
 };
 
 const Select: FunctionComponent<SelectProps> = ({

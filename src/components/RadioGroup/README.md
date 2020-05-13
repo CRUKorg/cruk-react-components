@@ -17,7 +17,7 @@ function () {
         name="email"
         onChange={e => setSelectedEmail(e.target.value)}
         attributes= {[{option: 'Yes', value: 'yes'},{option: 'No', value: 'no'}]}
-        checked={selectedEmail}
+        checkedState={selectedEmail}
       />
 
       <RadioGroup
@@ -25,7 +25,7 @@ function () {
         name="phone"
         onChange={e => setSelectedPhone(e.target.value)}
         attributes= {[{option: 'Yes', value: 'yes'},{option: 'No', value: 'no'}]}
-        checked={selectedPhone}
+        checkedState={selectedPhone}
       />
     </>
   )

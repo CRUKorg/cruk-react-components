@@ -20,7 +20,7 @@ This has been kept quite open you can place any child elements in here but ideal
 
 ```.jsx
   <React.Fragment>
-    <Header siteSlogan="Header slogan here"></Header>
+    <Header siteSlogan="Header slogan here"><Button>Child component</Button></Header>
   </React.Fragment>
 ```
 

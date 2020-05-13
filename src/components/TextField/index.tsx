@@ -1,4 +1,4 @@
-import React, { FunctionComponent, InputHTMLAttributes } from 'react';
+import React, { FunctionComponent, InputHTMLAttributes, ReactElement } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -43,7 +43,7 @@ const ExtraRight = styled(Extra)`
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   width: initial;
-  border: solid 2px ${({ theme }) => theme.colors.textInputBorder};
+  border: solid ${({ theme }) => theme.utilities.inputBorderWidth} ${({ theme }) => theme.colors.textInputBorder};
   transition: border-color 150ms linear;
   border-left: 0;
   background-color: transparent;
@@ -64,27 +64,36 @@ type StyledInputProps = {
   theme: ThemeType;
 };
 
-// TODO: disabled styles
-
 const StyledInput = styled.input<StyledInputProps>`
-  background-color: ${({ theme }) => theme.colors.lightBackground};
+  background-color: ${({ theme }) => theme.colors.backgroundLight};
   background-image: none;
   border-radius: ${({ theme }) => theme.utilities.borderRadius};
-  border: solid 2px ${({ error, hasError, theme }) =>
-    hasError || error ? theme.colors.textError : theme.colors.textInputBorder};
+  border: solid ${({ theme }) => theme.utilities.inputBorderWidth} ${({ error, hasError, theme }) =>
+  hasError || error ? theme.colors.textError : theme.colors.textInputBorder};
   color: ${({ theme }) => theme.colors.textDark};
   display: block;
   font-size: ${({ theme }) => theme.fontSizes.medium};
   padding: 6px 8px;
   width: 100%;
   transition: border-color 150ms linear;
-  &:focus {
-    border-color: ${({ theme }) => theme.colors.tertiary};
-    outline: 0;
-    ~ ${ExtraRight} {
-      border-color: ${({ theme }) => theme.colors.tertiary};
-    }
+  &:disabled {
+    border-color: ${({ theme }) => theme.colors.disabled};
+    color: ${({ theme }) => theme.colors.disabled};
   }
+
+  ${({ theme }) =>
+    !theme.utilities.useDefaultFocusRect
+      ? css`
+          &:focus {
+            outline: 0;
+            border-color: ${({ theme }) => theme.colors.tertiary};
+            ~ ${ExtraRight} {
+              border-color: ${({ theme }) => theme.colors.tertiary};
+            }
+          }
+        `
+      : null};
+  
   ${({ extraTop }) =>
     !!extraTop &&
     css`
@@ -130,7 +139,7 @@ type TextFieldProps = InputHTMLAttributes<{}> & {
   theme: ThemeType;
   value: string;
   label: string;
-  hintText?: string;
+  hintText?: ReactElement | string;
 };
 
 const TextField: FunctionComponent<TextFieldProps> = ({

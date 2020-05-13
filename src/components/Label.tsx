@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactElement } from 'react';
 import styled, { withTheme, ThemeProvider } from 'styled-components';
-
-import defaultTheme from './../themes/cruk';
+import Text from './Text';
+import defaultTheme from '../themes/cruk';
 import { ThemeType } from 'src/themes/types';
 
 const Label = styled.label`
@@ -9,23 +9,16 @@ const Label = styled.label`
   width: 100%;
 `;
 
-const Hint = styled.span`
-  display: block;
-  margin: ${({
-    theme: {
-      spacing: { extraExtraSmall },
-    },
-  }) => `${extraExtraSmall} 0`};
-`;
+type LabelTextProps = {
+  hasHintText: boolean;
+  theme: ThemeType;
+};
 
-const LabelText = styled.span`
+const LabelText = styled.span<LabelTextProps>`
   font-weight: bold;
   display: block;
-  margin: ${({
-    theme: {
-      spacing: { extraExtraSmall },
-    },
-  }) => `${extraExtraSmall} 0`};
+  margin-bottom: ${({ hasHintText, theme }) =>
+    hasHintText ? theme.spacing.extraExtraSmall : theme.spacing.extraSmall};
 
   & > * {
     font-weight: normal;
@@ -37,7 +30,7 @@ const LabelText = styled.span`
 
 type WithLabelProps = {
   label: string;
-  hintText?: string;
+  hintText?: ReactElement | string;
   required?: boolean;
   theme?: ThemeType;
 };
@@ -49,14 +42,16 @@ export const WithLabel: FunctionComponent<WithLabelProps> = props => {
     ...props.theme,
   };
 
+  const hintTextElement = !!hintText && typeof hintText === 'string' ? <Text>{hintText}</Text> : hintText;
+
   return (
     <ThemeProvider theme={theme}>
       {label ? (
         <Label {...props}>
-          <LabelText>
+          <LabelText hasHintText={!!hintText}>
             {label} {!required && <span>(optional)</span>}
           </LabelText>
-          {hintText && <Hint>{hintText}</Hint>}
+          {hintTextElement}
           {children}
         </Label>
       ) : (
@@ -67,7 +62,6 @@ export const WithLabel: FunctionComponent<WithLabelProps> = props => {
 };
 
 WithLabel.defaultProps = {
-  hintText: '',
   required: false,
   theme: null,
 };
