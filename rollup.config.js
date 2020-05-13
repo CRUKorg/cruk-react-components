@@ -28,7 +28,6 @@ export default {
   ],
   external: ['prop-types', 'react', 'react-dom', 'styled-components'],
   plugins: [
-    resolve({ modulesOnly: true }),
     commonjs({ ignoreGlobal: true, include: 'node_modules/**', exclude: 'node_modules/buble/**' }),
     babel({
       exclude: 'node_modules/**',
