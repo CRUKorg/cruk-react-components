@@ -1,16 +1,18 @@
 {
   "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./lib/types",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "jsx": "react",
     "target": "es5",
     "module": "es6",
-    "jsx": "react",
     "baseUrl": "./",
     "allowJs": false, //Only TS and TSX will be compilied.
-    "moduleResolution": "node",
     "noImplicitAny": true, // Setting to true means if no type given it will not automatically assign ANY.
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true, // This is needed for the React components.
-    "declaration": true,
-    "declarationDir": "./lib/",
     "noErrorTruncation": true
   }
 }

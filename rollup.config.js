@@ -6,7 +6,7 @@ import babel from '@rollup/plugin-babel';
 import md from 'rollup-plugin-md';
 
 export default {
-  input: 'src/components/index.tsx',
+  input: 'src/components/index.ts',
   output: [
     {
       dir: 'lib/',
