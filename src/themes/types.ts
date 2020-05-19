@@ -93,7 +93,7 @@ export type TypographyType = {
   fontWeightVLight: string;
   linkTextDecoration: string;
   lineHeight: string;
-  lineHeightLarge: string;
+  headerLineHeight: string;
 };
 
 export type ThemeType = {

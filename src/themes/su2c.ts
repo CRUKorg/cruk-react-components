@@ -83,6 +83,7 @@ export const TYPOGRAPHY: TypographyType = {
   ],
   fontFamilyHeadings: 'itc_avant_garde_pro_mdbold,Arial,sans-serif',
   linkTextDecoration: 'underline',
+  headerLineHeight: '1.5em',
 };
 
 const theme: ThemeType = {

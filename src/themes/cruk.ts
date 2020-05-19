@@ -149,9 +149,9 @@ export const FONT_SIZES: FontSizesType = {
   medium: '1em', // 16px
   large: '1.25rem', // 20px
   extraLarge: '1.5625rem', // 25px
-  extraExtraLarge: '1.9375rem', // 31px
-  extraExtraExtraLarge: '2.4375rem', // 39px
-  extraExtraExtraExtraLarge: '3.0625rem', // 49px
+  extraExtraLarge: '2rem', // 32px
+  extraExtraExtraLarge: '2.5rem', // 40px
+  extraExtraExtraExtraLarge: '3.125rem', // 45px
 };
 
 export const TYPOGRAPHY: TypographyType = {
@@ -170,8 +170,8 @@ export const TYPOGRAPHY: TypographyType = {
   fontWeightLight: '300',
   fontWeightVLight: '100',
   linkTextDecoration: 'underline',
-  lineHeight: '1.5',
-  lineHeightLarge: '2',
+  lineHeight: '1.5em',
+  headerLineHeight: '1.125em',
 };
 
 const theme: ThemeType = {
