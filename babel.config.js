@@ -2,7 +2,7 @@ module.exports = function(api) {
   var isDev = api.env('development');
   return {
     sourceMaps: true,
-    presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+    presets: [['@babel/preset-env', { modules: false }], '@babel/preset-react', '@babel/preset-typescript'],
     plugins: [
       '@babel/plugin-proposal-class-properties',
       [

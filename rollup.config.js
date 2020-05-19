@@ -3,7 +3,8 @@ import resolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import babel from '@rollup/plugin-babel';
-import md from 'rollup-plugin-md';
+import mdToBase64 from './src/plugins/rollupPluginMdToBase64';
+import path from 'path';
 
 export default {
   input: 'src/components/index.ts',
@@ -28,12 +29,13 @@ export default {
   ],
   external: ['prop-types', 'react', 'react-dom', 'styled-components'],
   plugins: [
-    resolve({ modulesOnly: true }),
-    commonjs({ ignoreGlobal: true, include: 'node_modules/**', exclude: 'node_modules/buble/**' }),
+    mdToBase64(),
     babel({
       exclude: 'node_modules/**',
+      extensions: ['.mjs', '.js', '.jsx'],
     }),
-    md(),
+    resolve({ modulesOnly: true }),
+    commonjs(),
     terser(),
     typescript(),
   ],
