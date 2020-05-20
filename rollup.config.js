@@ -1,10 +1,11 @@
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
-import typescript from '@rollup/plugin-typescript';
+import typescript from 'rollup-plugin-typescript2';
 import babel from '@rollup/plugin-babel';
 import mdToBase64 from './src/plugins/rollupPluginMdToBase64';
 import path from 'path';
+import { DEFAULT_EXTENSIONS } from '@babel/core';
 
 export default {
   input: 'src/components/index.ts',
@@ -32,11 +33,11 @@ export default {
     mdToBase64(),
     babel({
       exclude: 'node_modules/**',
-      extensions: ['.mjs', '.js', '.jsx'],
+      extensions: [...DEFAULT_EXTENSIONS],
     }),
     resolve({ modulesOnly: true }),
     commonjs(),
     terser(),
-    typescript(),
+    typescript({ useTsconfigDeclarationDir: true }),
   ],
 };
