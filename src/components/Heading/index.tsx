@@ -38,9 +38,9 @@ const StyledHeading = (props: HeadingProps) => css`
       : colors['textDark']};
   line-height: ${({
     theme: {
-      typography: { lineHeight },
+      typography: { headerLineHeight },
     },
-  }) => lineHeight};
+  }) => headerLineHeight};
   margin-top: ${({
     theme: {
       spacing: { medium },
@@ -87,7 +87,7 @@ const tabletFontSize = (textSize: FontSizeType, defaultFontSize: FontSizeType, t
     case 'medium':
       return theme.fontSizes.medium;
     case 'large':
-      return theme.fontSizes.medium;
+      return theme.fontSizes.large;
     case 'extraLarge':
       return theme.fontSizes.large;
     case 'extraExtraLarge':
@@ -108,9 +108,9 @@ const mobileFontSize = (textSize: FontSizeType, defaultFontSize: FontSizeType, t
     case 'medium':
       return theme.fontSizes.medium;
     case 'large':
-      return theme.fontSizes.medium;
+      return theme.fontSizes.large;
     case 'extraLarge':
-      return theme.fontSizes.medium;
+      return theme.fontSizes.large;
     case 'extraExtraLarge':
       return theme.fontSizes.large;
     case 'extraExtraExtraLarge':
@@ -158,7 +158,7 @@ const H3 = styled.h3<HeadingProps>`
 
 const H4 = styled.h4<HeadingProps>`
   ${props => StyledHeading(props)}
-  font-size: ${({ theme, textSize }) => mobileFontSize(textSize, theme.fontSizes.medium, theme)};
+  font-size: ${({ theme, textSize }) => mobileFontSize(textSize, theme.fontSizes.large, theme)};
   @media (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
     font-size: ${({ theme, textSize }) => tabletFontSize(textSize, theme.fontSizes.large, theme)};
   }
@@ -170,9 +170,9 @@ const H4 = styled.h4<HeadingProps>`
 const H5 = styled.h5<HeadingProps>`
   ${props => StyledHeading(props)}
 
-  font-size: ${({ theme, textSize }) => mobileFontSize(textSize, theme.fontSizes.medium, theme)};
+  font-size: ${({ theme, textSize }) => mobileFontSize(textSize, theme.fontSizes.large, theme)};
   @media (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
-    font-size: ${({ theme, textSize }) => tabletFontSize(textSize, theme.fontSizes.medium, theme)};
+    font-size: ${({ theme, textSize }) => tabletFontSize(textSize, theme.fontSizes.large, theme)};
   }
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
     font-size: ${({ theme, textSize }) => desktopFontSize(textSize, theme.fontSizes.large, theme)};
@@ -182,12 +182,12 @@ const H5 = styled.h5<HeadingProps>`
 const H6 = styled.h6<HeadingProps>`
   ${props => StyledHeading(props)}
   
-  font-size: ${({ theme, textSize }) => mobileFontSize(textSize, theme.fontSizes.medium, theme)};
+  font-size: ${({ theme, textSize }) => mobileFontSize(textSize, theme.fontSizes.large, theme)};
   @media (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
-    font-size: ${({ theme, textSize }) => tabletFontSize(textSize, theme.fontSizes.medium, theme)};
+    font-size: ${({ theme, textSize }) => tabletFontSize(textSize, theme.fontSizes.large, theme)};
   }
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
-    font-size: ${({ theme, textSize }) => desktopFontSize(textSize, theme.fontSizes.medium, theme)};
+    font-size: ${({ theme, textSize }) => desktopFontSize(textSize, theme.fontSizes.large, theme)};
   }
 `;
 

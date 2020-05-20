@@ -35,7 +35,11 @@ export const TextStyled = styled.p<TextProps>`
     },
     textSize,
   }) => (textSize ? fontSizes[textSize] : medium)};
-  line-height: 1.5em;
+  line-height: ${({
+    theme: {
+      typography: { lineHeight },
+    },
+  }) => lineHeight};
   font-weight: ${({
     textWeight,
     theme: {

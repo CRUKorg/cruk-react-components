@@ -99,7 +99,7 @@ const StyledProgressBar = styled(ProgressBar)<StyledProgressBarProps>`
         color: ${({ theme }) => theme.colors.tertiary};
         z-index: 11;
         position: absolute;
-        top: -39px;
+        top: -30px;
         right: -15px;
         font-size: 32px;
       }
