@@ -1,7 +1,3 @@
-export { default as crukTheme } from '../themes/cruk';
-export { default as crukTheme2 } from '../themes/cruk2';
-export { default as su2cTheme } from '../themes/su2c';
-
 export { default as Avatar } from './Avatar';
 export { default as Badge } from './Badge';
 export { default as Box } from './Box';
@@ -32,9 +28,9 @@ export { default as TextField } from './TextField';
 export { default as Totaliser } from './Totaliser';
 export { default as UserBlock } from './UserBlock';
 
-// This is so the design system website can import this
-// all the READMEs and view them in a standardized way
-export { default as MdxProvider } from '../hocs/MdxProvider';
+export { default as crukTheme } from '../themes/cruk';
+export { default as crukTheme2 } from '../themes/cruk2';
+export { default as su2cTheme } from '../themes/su2c';
 
 export { default as AvatarReadme } from './Avatar/README.md';
 export { default as BadgeReadme } from './Badge/README.md';
