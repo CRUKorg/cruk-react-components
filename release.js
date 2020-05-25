@@ -11,7 +11,7 @@ console.log(`3/5 installing dependencies`);
 execSync('npm ci');
 
 console.log(`4/5 building package`);
-execSync('npm run build-lib');
+execSync('npm run rollup:build-lib');
 
 console.log(`5/5 publishing package`);
 
