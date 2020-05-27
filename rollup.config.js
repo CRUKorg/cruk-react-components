@@ -10,11 +10,23 @@ import mdToBase64 from './src/plugins/rollupPluginMdToBase64';
 export default {
   input: 'src/components/index.ts',
   output: [
+    // {
+    //   dir: 'lib/',
+    //   format: 'es',
+    //   sourcemap: true,
+    // },
     {
-      dir: 'lib/',
-      format: 'es',
-      sourcemap: true,
+      dir: 'lib/cjs/',
+      format: "cjs",
+      exports: "named",
+      sourcemap: true
     },
+    {
+      dir: 'lib/es/',
+      format: "es",
+      exports: "named",
+      sourcemap: true
+    }
     // {
     //   dir: 'lib/',
     //   format: 'umd',
@@ -40,4 +52,5 @@ export default {
     typescript({ useTsconfigDeclarationDir: true }),
     terser(),
   ],
+  preserveModules: true
 };
