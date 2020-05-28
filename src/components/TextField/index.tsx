@@ -134,12 +134,13 @@ type TextFieldProps = InputHTMLAttributes<{}> & {
   extraRight?: string;
   extraTop?: string;
   hasError?: boolean;
+  hintText?: ReactElement | string;
+  id?: string;
+  label: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   required?: boolean;
   theme: ThemeType;
   value: string;
-  label: string;
-  hintText?: ReactElement | string;
 };
 
 const TextField: FunctionComponent<TextFieldProps> = ({
@@ -149,12 +150,13 @@ const TextField: FunctionComponent<TextFieldProps> = ({
   extraRight,
   extraTop,
   hasError,
+  hintText,
+  id,
+  label,
   onChange,
   required,
   theme: propsTheme,
   value,
-  label,
-  hintText,
   ...props
 }) => {
   const theme = {
@@ -166,16 +168,17 @@ const TextField: FunctionComponent<TextFieldProps> = ({
     <>
       {!!extraLeft && <ExtraLeft theme={theme}>{extraLeft}</ExtraLeft>}
       <StyledInput
+        aria-invalid={hasError || !!error}
         error={error}
         extraBottom={extraBottom}
         extraLeft={extraLeft}
         extraRight={extraRight}
         extraTop={extraTop}
         hasError={hasError}
+        id={id}
         onChange={onChange}
         theme={theme}
         value={value}
-        aria-invalid={hasError || !!error}
         {...props}
       />
       {!!extraRight && <ExtraRight theme={theme}>{extraRight}</ExtraRight>}
