@@ -2,10 +2,11 @@
   "name": "@crukorg/cruk-react-components",
   "version": "0.1.0-alpha.30",
   "description": "React components implementing CRUK and SU2C design tokens",
-  "main": "lib/index.js",
-  "module": "lib/index.js",
-  "jsnext:main": "lib/index.js",
+  "main": "lib/cjs/src/components/index.js",
+  "module": "lib/es/src/components/index.js",
+  "jsnext:main": "lib/es/index.js",
   "types": "lib/components/index.d.ts",
+  "sideEffects": false,
   "files": [
     "lib"
   ],
