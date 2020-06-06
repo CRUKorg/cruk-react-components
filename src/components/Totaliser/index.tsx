@@ -56,7 +56,7 @@ type TotaliserWrapperProps = {
 
 const TotaliserWrapper = styled.div<TotaliserWrapperProps>`
   font-family: ${props => props.theme.typography.fontFamilyHeadings};
-  margin: 0 0 20px 0;
+  margin: 0;
   ${props =>
     !props.isCompact &&
     css`

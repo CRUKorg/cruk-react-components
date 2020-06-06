@@ -18,10 +18,10 @@ indicate the importance of the badge to the user.
 
 ## Props
 
-| Name            | Type    | Options | Default   | Description                                 |
-| :-------------- | :------ | :-----: | :-------- | :------------------------------------------ |
-| backgroundColor | String  |         | "primary" | Define the background colour of the Badge   |
-| text            | Boolean |         | true      | Return true when type of children is string |
+| Name            | Type    | Options | Default                  | Description                                            |
+| :-------------- | :------ | :-----: | :----------------------- | :----------------------------------------------------- |
+| backgroundColor | String  |         | "primary"                | Define the background colour of the Badge              |
+| text            | Boolean |         | depends on children type | Optional, returns true when type of children is string |
 
 ## Usage
 
