@@ -6,13 +6,13 @@ import { ThemeType, SpaceType } from '../../themes/types';
 
 type BadgeProps = {
   backgroundColor?: string;
-  text: boolean;
+  text?: boolean;
   theme?: ThemeType;
   size?: SpaceType;
   children?: any;
 };
 
-const StyledBadge = styled.span`
+const StyledBadge = styled.span<BadgeProps>`
   background-color: ${({ theme: { colors }, backgroundColor }) =>
     backgroundColor && typeof colors[backgroundColor] !== 'undefined'
       ? colors[backgroundColor]
@@ -22,7 +22,7 @@ const StyledBadge = styled.span`
   color: ${props => props.theme.colors.textLight};
   text-align: center;
   border-radius: 1.5rem;
-  font-size: ${props => props.theme.fontSizes.small};
+  font-size: ${props => props.theme.fontSizes.medium};
   line-height: 1rem;
   padding: ${({
     theme: {
