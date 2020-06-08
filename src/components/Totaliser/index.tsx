@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactChild } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
-import defaultTheme, { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../themes/cruk';
+import defaultTheme, { BREAKPOINT, COLORS, UTILITIES } from '../../themes/cruk';
 import ProgressBar from '../ProgressBar';
 import Text from '../Text';
 import Badge from '../Badge';
@@ -76,15 +76,6 @@ const TotaliserWrapper = styled.div<TotaliserWrapperProps>`
 const CompactWrapper = styled.div`
   justify-content: space-between;
   display: flex;
-  ${Total} {
-    background-color: ${props => props.theme.colors.primary};
-    border-radius: 20px;
-    color: ${props => props.theme.colors.textLight};
-    font-size: 1rem;
-    line-height: ${TYPOGRAPHY.lineHeight};
-    margin: -5px 0 5px;
-    padding: 5px 12px;
-  }
 `;
 
 type StyledProgressBarProps = {
