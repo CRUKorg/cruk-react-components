@@ -4,6 +4,8 @@ import styled, { css, withTheme } from 'styled-components';
 import defaultTheme, { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../themes/cruk';
 import ProgressBar from '../ProgressBar';
 import Text from '../Text';
+import Badge from '../Badge';
+import Box from '../Box';
 import { calculatePercentRounded, formatMoney } from '../../utils/Helper';
 
 import { ThemeType } from '../../themes/types';
@@ -54,7 +56,7 @@ type TotaliserWrapperProps = {
 
 const TotaliserWrapper = styled.div<TotaliserWrapperProps>`
   font-family: ${props => props.theme.typography.fontFamilyHeadings};
-  margin: 0 0 20px 0;
+  margin: 0;
   ${props =>
     !props.isCompact &&
     css`
@@ -119,7 +121,9 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
     <TotaliserWrapper {...props} isCompact={props.isCompact} theme={theme}>
       {props.isCompact ? (
         <CompactWrapper theme={theme}>
-          <Total>£{formatMoney(props.total)}</Total>
+          <Box marginHorizontal="none" marginRight="extraExtraSmall">
+            <Badge>{`£${formatMoney(props.total)}`}</Badge>
+          </Box>
           {props.target !== null && (
             <Summary>
               <Text as="span">{summaryString}</Text>

@@ -10,22 +10,34 @@ function () {
 
   return (
     <>
-      <Totaliser total="22.5" giftAid="10.55" />
-      <Totaliser total="0.01" target="100" />
-      <Totaliser total="99.99" target="100" giftAid="25" />
-      <Totaliser total="32" target="100" giftAid="6.4" isCompact />
-      <Totaliser
-        total="120"
-        giftAid="27.5"
-        target="100"
-        summaryMessage={<Text>cool</Text>}
-      />
-      <Totaliser
-        total="120"
-        giftAid="27.5"
-        target="100"
-        summaryMessage='cool'
-      />
+      <Box>
+        <Totaliser total="22.5" giftAid="10.55" />
+      </Box>
+      <Box>
+        <Totaliser total="0.01" target="100" />
+      </Box>
+      <Box>
+        <Totaliser total="99.99" target="100" giftAid="25" />
+      </Box>
+      <Box>
+        <Totaliser total="32" target="100" giftAid="6.4" isCompact />
+      </Box>
+      <Box>
+        <Totaliser
+          total="120"
+          giftAid="27.5"
+          target="100"
+          summaryMessage={<Text>cool</Text>}
+        />
+      </Box>
+      <Box>
+        <Totaliser
+          total="120"
+          giftAid="27.5"
+          target="100"
+          summaryMessage='cool'
+        />
+      </Box>
     </>
   )
 }
@@ -76,7 +88,7 @@ function () {
   )};
 
   return (
-    <>
+    <Box>
       <Totaliser
         giftAid="2.5"
         target={target}
@@ -89,7 +101,7 @@ function () {
           <Button appearance="primary" onClick={handleSubmit}>Save</Button>
         </>
       }
-    </>
+    </Box>
   )
 }
 ```
