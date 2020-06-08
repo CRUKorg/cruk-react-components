@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactChild } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
-import defaultTheme, { BREAKPOINT, COLORS, TYPOGRAPHY, UTILITIES } from '../../themes/cruk';
+import defaultTheme, { BREAKPOINT, COLORS, UTILITIES } from '../../themes/cruk';
 import ProgressBar from '../ProgressBar';
 import Text from '../Text';
 import Badge from '../Badge';
