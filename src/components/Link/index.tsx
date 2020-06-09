@@ -1,4 +1,4 @@
-import React, { FunctionComponent, AnchorHTMLAttributes } from 'react';
+import React, { FunctionComponent, AnchorHTMLAttributes, forwardRef, Ref } from 'react';
 import styled, { css, withTheme, ThemeProvider } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 
@@ -19,6 +19,7 @@ type LinkProps = AnchorHTMLAttributes<{}> & {
   theme?: ThemeType;
   textHoverColor?: string;
   appearance?: 'primary' | 'secondary';
+  innerRef?: Ref<any>;
 };
 
 const StyledLink = styled(Text)<LinkProps>`
@@ -60,7 +61,7 @@ const StyledLink = styled(Text)<LinkProps>`
   }
 `;
 
-const Link: FunctionComponent<LinkProps> = props => {
+const Link: FunctionComponent<LinkProps> = forwardRef((props: LinkProps, ref?: Ref<HTMLElement>) => {
   const theme = {
     ...defaultTheme,
     ...props.theme,
@@ -70,12 +71,12 @@ const Link: FunctionComponent<LinkProps> = props => {
 
   return (
     <ThemeProvider theme={theme}>
-      <StyledLink {...props} forwardedAs="a" theme={theme} rel={rel}>
+      <StyledLink {...props} theme={theme} rel={rel} forwardedAs="a" innerRef={ref}>
         {props.appearance === 'primary' && <ChevyWithLevee name={'chevronRightBold'} size="0.8em" />}
         {props.children}
       </StyledLink>
     </ThemeProvider>
   );
-};
+});
 
 export default withTheme(Link);
