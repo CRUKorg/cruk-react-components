@@ -112,7 +112,7 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
     <TotaliserWrapper {...props} isCompact={props.isCompact} theme={theme}>
       {props.isCompact ? (
         <CompactWrapper theme={theme}>
-          <Box marginHorizontal="none" marginRight="extraExtraSmall">
+          <Box marginHorizontal="none" marginRight="extraExtraSmall" marginBottom="none">
             <Badge>{`£${formatMoney(props.total)}`}</Badge>
           </Box>
           {props.target !== null && (
