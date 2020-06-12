@@ -94,38 +94,40 @@ const Modal: FC<ModalProps> = props => {
     };
   }, []);
 
-  if (typeof window === `undefined`) {
-    return;
-  }
-
   const theme = {
     ...defaultTheme,
     ...props.theme,
   };
 
-  return ReactDOM.createPortal(
-    <FocusLock returnFocus>
-      <ThemeProvider theme={theme}>
-        <Wrapper>
-          <Content aria-modal="true" backgroundColor="" css="">
-            {closeButton && (
-              <CloseButton
-                aria-label="close"
-                appearance="text"
-                onClick={() => {
-                  closeButton();
-                }}
-              >
-                <Icon name="close" />
-              </CloseButton>
-            )}
-            {children}
-          </Content>
-          <Background />
-        </Wrapper>
-      </ThemeProvider>
-    </FocusLock>,
-    document.body,
+  return (
+    <>
+      {typeof window !== `undefined`
+        ? ReactDOM.createPortal(
+            <FocusLock returnFocus>
+              <ThemeProvider theme={theme}>
+                <Wrapper>
+                  <Content aria-modal="true" backgroundColor="" css="">
+                    {closeButton && (
+                      <CloseButton
+                        aria-label="close"
+                        appearance="text"
+                        onClick={() => {
+                          closeButton();
+                        }}
+                      >
+                        <Icon name="close" />
+                      </CloseButton>
+                    )}
+                    {children}
+                  </Content>
+                  <Background />
+                </Wrapper>
+              </ThemeProvider>
+            </FocusLock>,
+            document.body,
+          )
+        : null}
+    </>
   );
 };
 
