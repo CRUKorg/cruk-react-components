@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { FC, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import styled, { ThemeProvider, withTheme } from 'styled-components';
 import FocusLock from 'react-focus-lock';
@@ -53,11 +53,7 @@ const Content = styled(Box)`
   z-index: 9999;
 `;
 
-type CloseButtonProps = {
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
-};
-
-const CloseButton = styled(Button)<CloseButtonProps>`
+const CloseButton = styled(Button)`
   float: right;
   margin-left: ${({
     theme: {
@@ -69,80 +65,71 @@ const CloseButton = styled(Button)<CloseButtonProps>`
 `;
 
 type ModalProps = {
-  disableEsc: Boolean;
+  disableEsc?: Boolean;
   closeButton?: Function | null;
   theme?: ThemeType;
 };
 
-class Modal extends Component<ModalProps> {
-  static defaultProps: any;
+const Modal: FC<ModalProps> = props => {
+  const { disableEsc, closeButton, children } = props;
+  const closeByEsc = (event: KeyboardEvent): void => {
+    if (!disableEsc && event.which == 27 && closeButton !== null) {
+      closeButton();
+    }
+  };
 
-  constructor(props: ModalProps) {
-    super(props);
-    this.closeByEsc = this.closeByEsc.bind(this);
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     if (typeof window === `undefined`) {
       return;
     }
-
     document.body.style.overflow = 'hidden';
-    document.addEventListener('keydown', this.closeByEsc);
-  }
+    document.addEventListener('keydown', closeByEsc);
 
-  componentWillUnmount() {
-    if (typeof window === `undefined`) {
-      return;
-    }
-
-    document.body.style.overflow = 'unset';
-    document.removeEventListener('keydown', this.closeByEsc);
-  }
-
-  closeByEsc(event: KeyboardEvent) {
-    if (!this.props.disableEsc && event.which == 27 && this.props.closeButton !== null) {
-      this.props.closeButton();
-    }
-  }
-
-  render() {
-    if (typeof window === `undefined`) {
-      return;
-    }
-
-    const theme = {
-      ...defaultTheme,
-      ...this.props.theme,
+    return () => {
+      if (typeof window === `undefined`) {
+        return;
+      }
+      document.body.style.overflow = 'unset';
+      document.removeEventListener('keydown', closeByEsc);
     };
-    const { children, closeButton } = this.props;
+  }, []);
 
-    return ReactDOM.createPortal(
-      <FocusLock returnFocus>
-        <ThemeProvider theme={theme}>
-          <Wrapper>
-            <Content aria-modal="true" backgroundColor="" css="">
-              {closeButton && (
-                <CloseButton
-                  aria-label="close"
-                  appearance="text"
-                  onClick={() => {
-                    closeButton();
-                  }}
-                >
-                  <Icon name="close" />
-                </CloseButton>
-              )}
-              {children}
-            </Content>
-            <Background />
-          </Wrapper>
-        </ThemeProvider>
-      </FocusLock>,
-      document.body,
-    );
-  }
-}
+  const theme = {
+    ...defaultTheme,
+    ...props.theme,
+  };
+
+  return (
+    <>
+      {typeof window !== `undefined`
+        ? ReactDOM.createPortal(
+            <FocusLock returnFocus>
+              <ThemeProvider theme={theme}>
+                <Wrapper>
+                  <Content aria-modal="true" backgroundColor="" css="">
+                    {closeButton && (
+                      <CloseButton
+                        aria-label="close"
+                        appearance="text"
+                        onClick={() => {
+                          closeButton();
+                        }}
+                      >
+                        <Icon name="close" />
+                      </CloseButton>
+                    )}
+                    {children}
+                  </Content>
+                  <Background />
+                </Wrapper>
+              </ThemeProvider>
+            </FocusLock>,
+            document.body,
+          )
+        : null}
+    </>
+  );
+};
 
 Modal.defaultProps = {
   closeButton: null,
