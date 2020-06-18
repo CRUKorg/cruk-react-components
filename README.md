@@ -1,6 +1,6 @@
 # cruk-react-components
 
-React components implementing CRUK and SU2C design tokens
+React implementation of the CRUK design system.
 
 ## View the docs
 
@@ -11,6 +11,22 @@ cruk-react-component docs site: https://master.d2qmm2ybdxfdzp.amplifyapp.com/
 ## Usage
 
 This repository is private, so to install the library you will need SSH access or a personal access token (PAT) if SSH is not possible.
+
+Here's how to log in and configure your npm to download private packages from [CRUKorg GitHub Packages](https://github.com/orgs/CRUKorg/packages)
+
+1. Go to your GitHub _Account settings > Developer settings > Personal access tokens_ and [create a token with the repo and read:packages scopes](https://github.com/settings/tokens/new?scopes=repo,read:packages&description=npm). Remember to **copy the token to your clipboard!**
+
+2. At the terminal, run `npm login --registry=https://npm.pkg.github.com`. When prompted, enter your GitHub username, paste the token from your clipboard instead of entering your GitHub password (it'll be invisible), then enter your email address.
+
+3. In the root directory of your project you will need to add a .npmrc file with the following contents
+   `registry=https://npm.pkg.github.com/CRUKorg`
+
+4. Now go ahead with `npm install` in this directory. npm will download the private package from our registry and others from the original npm registry.
+
+- [Creating a personal access token for the command line](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
+- [Authenticating to GitHub packages](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages#authenticating-to-github-packages)
+
+---
 
 Add cruk-react-components and its peer dependencies react, react-dom and styled-components to your package.json file.
 
