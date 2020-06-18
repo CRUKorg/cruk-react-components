@@ -1,3 +1,4 @@
+export { default as AddressLookup } from './AddressLookup';
 export { default as Avatar } from './Avatar';
 export { default as Badge } from './Badge';
 export { default as Box } from './Box';
@@ -32,6 +33,7 @@ export { default as crukTheme } from '../themes/cruk';
 export { default as crukTheme2 } from '../themes/cruk2';
 export { default as su2cTheme } from '../themes/su2c';
 
+export { default as AddressLookupReadme } from './AddressLookup/README.md';
 export { default as AvatarReadme } from './Avatar/README.md';
 export { default as BadgeReadme } from './Badge/README.md';
 export { default as BoxReadme } from './Box/README.md';
