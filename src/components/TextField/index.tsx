@@ -140,7 +140,7 @@ type TextFieldProps = InputHTMLAttributes<{}> & {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   required?: boolean;
   theme: ThemeType;
-  value: string;
+  value?: string;
 };
 
 const TextField: FunctionComponent<TextFieldProps> = ({

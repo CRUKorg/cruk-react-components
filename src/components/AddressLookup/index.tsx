@@ -26,6 +26,7 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li<{isActive: boolean}>`
+  align-items: center;
   background-color: ${props => (props.isActive ? COLORS.backgroundMid : COLORS.backgroundLight)};
   cursor: pointer;
   display: flex;
@@ -51,10 +52,19 @@ const ScreenReaderOnly = styled.div`
   width: 1px;
 `;
 
+type AddressData = {
+    Line1: string;
+    Line2: string;
+    Line3: string;
+    City: string;
+    PostalCode: string;
+};
+
 type AddressLookupProps = {
-  error: boolean;
-  onAddressSelected: Function;
-  onChange: Function;
+  hasError: boolean;
+  error: string;
+  onAddressSelected: (address: AddressData) => void;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
   pcaKey: string;
 };
 
@@ -103,7 +113,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({onAddressSelected
     fetch(`https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws?Key=${pcaKey}&Text=${query}&Container=${id}`)
       .then((res: Response) => {
         if (!res.ok) {
-          throw new Error('Log out failed');
+          throw new Error('Something went wrong');
         }
         return res.json();
       })
@@ -115,25 +125,21 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({onAddressSelected
         setAddresses(data.Items || []);
       })
       .catch(err => console.error('Error', err));
-
-    // findAddresses(pcaKey, { Text: query, Container: id })
-    //   .then(data => {
-    //     // TODO occasionally get the error "The query didn't respond fast enough, it may be too complex." 
-    //     // "n17 6t" returns as a 200 with error
-    //     if (data.Items[0].Error) return console.log('Error', data.Items[0])
-    //     setActiveOption(0);
-    //     setAddresses(data.Items || []);
-    //   })
-    //   .catch(err => console.log('Error', err));
   };
 
-  const getAddress = (query: string) => {
-    // retrieveAddress(pcaKey, { Id: query})
-    //   .then(data => {
-    //     clearOptions();
-    //     onAddressSelected(data.Items[0]);
-    //   })
-    //   .catch(err => console.log('Error', err));
+  const getAddress = (id: string) => {
+    fetch(`https://api.addressy.com/Capture/Interactive/Retrieve/v1/json3.ws?Key=${pcaKey}&Id=${id}`)
+      .then((res: Response) => {
+        if (!res.ok) {
+          throw new Error('Something went wrong');
+        }
+        return res.json();
+      })
+      .then(data => {
+        clearOptions();
+        onAddressSelected(data.Items[0]);
+      })
+      .catch(err => console.error('Error', err));
   };
 
   return (
