@@ -61,14 +61,16 @@ type AddressData = {
 };
 
 type AddressLookupProps = {
-  hasError: boolean;
+  apiKey: string;
   error: string;
+  hasError: boolean;
   onAddressSelected: (address: AddressData) => void;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
-  pcaKey: string;
 };
 
-const AddressLookup: FunctionComponent<AddressLookupProps> = ({onAddressSelected, pcaKey, error, ...props}) => {
+const AddressLookup: FunctionComponent<AddressLookupProps> = ({onAddressSelected, apiKey, error, ...props}) => {
+  const FIND_URL = "https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws";
+  const RETRIEVE_URL = "https://api.addressy.com/Capture/Interactive/Retrieve/v1/json3.ws";
   const [addresses, setAddresses] = React.useState([]);
   const [activeOption, setActiveOption] = React.useState(0);
   const wrapperRef = useRef(null);
@@ -110,7 +112,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({onAddressSelected
 
   const search = (query: string, id = '') => {
     if (query.length === 0) return setAddresses([]);
-    fetch(`https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws?Key=${pcaKey}&Text=${query}&Container=${id}`)
+    fetch(`${FIND_URL}?Key=${apiKey}&Text=${query}&Container=${id}`)
       .then((res: Response) => {
         if (!res.ok) {
           throw new Error('Something went wrong');
@@ -128,7 +130,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({onAddressSelected
   };
 
   const getAddress = (id: string) => {
-    fetch(`https://api.addressy.com/Capture/Interactive/Retrieve/v1/json3.ws?Key=${pcaKey}&Id=${id}`)
+    fetch(`${RETRIEVE_URL}?Key=${apiKey}&Id=${id}`)
       .then((res: Response) => {
         if (!res.ok) {
           throw new Error('Something went wrong');

@@ -1,11 +1,19 @@
 # Address lookup
 
-Some info here
+This component creates a combobox for a user to type in a post code or partial address and be presented with a of verified addresses.
+
+We use Loqate (formerly Addressy and Postcode Anywhere) API v3, we have looked at v4 but it is more expensive without many benefits for our use case.
+
+You will need a Loqate api key, the examples below use "MG17-ZD93-FF33-KF13" our development key.
+
+### ### Try them out
+
+- Responds to keyboard events
+- Alert search results for screen reader users
 
 ### Try them out
 
 ```.jsx
-
 function () {
   const [validated, setValidated] = React.useState(false);
   const [line1, setLine1] = React.useState('');
@@ -24,62 +32,74 @@ function () {
     setCity(address.City);
     setPostalCode(address.PostalCode);
   }
-  
 
   return (
     <>
-      <AddressLookup
-        pcaKey="MG17-ZD93-FF33-KF13"
-        onAddressSelected={(address) => alert(JSON.stringify(address, null, 2))}
-        onChange={(e) => console.log('value = ', e.target.value)}
-      />
+      <Box>
+        <AddressLookup
+          apiKey="MG17-ZD93-FF33-KF13"
+          onAddressSelected={(address) => alert(JSON.stringify(address, null, 2))}
+          onChange={(e) => console.log('value = ', e.target.value)}
+        />
+      </Box>
 
       <fieldset>
         <legend>Your Address</legend>
-        Example wired up to a simple form, with controlled inputs.       <AddressLookup
-          pcaKey="MG17-ZD93-FF33-KF13"
-          onAddressSelected={handleAddressSelected}
-          onChange={(e) => {
-            setValidated(false);
-            setLine1(e.target.value)}
-          }
-          value={line1}
-        />
-        <TextField
-          onChange={e => {
-            setValidated(false);
-            setLine2(e.target.value);
-          }}
-          label="Address line 2"
-          value={line2}
-        />
-        <TextField
-          onChange={e => {
-            setValidated(false);
-            setLine3(e.target.value);
-          }}
-          label="Address line 3"
-          value={line3}
-        />
-        <TextField
-          onChange={e => {
-            setValidated(false);
-            setCity(e.target.value);
-          }}
-          label="City"
-          name="address.city"
-          value={city}
-          required
-        />
-        <TextField
-          onChange={e => {
-            setValidated(false);
-            setPostalCode(e.target.value);
-          }}
-          label="Postcode"
-          value={postalCode}
-          required
-        />
+        <p>Example wired up to a simple form, with controlled inputs. For production use we recomend using useing Formic and Yup for form management and validation</p>
+        <Box>
+          <AddressLookup
+            apiKey="MG17-ZD93-FF33-KF13"
+            onAddressSelected={handleAddressSelected}
+            onChange={(e) => {
+              setValidated(false);
+              setLine1(e.target.value)}
+            }
+            value={line1}
+          />
+        </Box>
+        <Box>
+          <TextField
+            onChange={e => {
+              setValidated(false);
+              setLine2(e.target.value);
+            }}
+            label="Address line 2"
+            value={line2}
+          />
+        </Box>
+        <Box>
+          <TextField
+            onChange={e => {
+              setValidated(false);
+              setLine3(e.target.value);
+            }}
+            label="Address line 3"
+            value={line3}
+          />
+        </Box>
+        <Box>
+          <TextField
+            onChange={e => {
+              setValidated(false);
+              setCity(e.target.value);
+            }}
+            label="City"
+            name="address.city"
+            value={city}
+            required
+          />
+        <Box>
+        </Box>
+          <TextField
+            onChange={e => {
+              setValidated(false);
+              setPostalCode(e.target.value);
+            }}
+            label="Postcode"
+            value={postalCode}
+            required
+          />
+        </Box>
         <pre>{JSON.stringify({validated}, null, 2)}</pre>
       </fieldset>
     </>
@@ -91,10 +111,8 @@ function () {
 
 | Name | Type | Options | Default | Description |
 | :- | :- | :-: | :- | :- |
+| apiKey | String |  |  | Loqate API key |
+| error | String |  |  | Error message text |
+| hasError | Boolean |  | false | If true, use error styling for the input |
 | onAddressSelected | Function | | | Returns address object |
 | onChange | Function | |  | Callback function called on input change|
-| pcaKey | String |  |  | Postcode anywhere key |
-
-## Usage
-
-
