@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC, InputHTMLAttributes } from 'react';
 import styled, { css, withTheme, ThemeProvider } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -119,16 +119,11 @@ const StyledInput = styled.input`
         `}
 `;
 
-type CheckboxProps = {
-  checked: boolean;
-  disabled: boolean;
-  name: string; // Adding this because formiK requires name or id.
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
-  value: string;
+type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   theme?: ThemeType;
 };
 
-const Checkbox: FunctionComponent<CheckboxProps> = props => {
+const Checkbox: FC<CheckboxProps> = props => {
   const theme = {
     ...defaultTheme,
     ...props.theme,
@@ -139,7 +134,7 @@ const Checkbox: FunctionComponent<CheckboxProps> = props => {
       <StyledLabel checked={props.checked}>
         <StyledInput
           checked={props.checked}
-          disabled={props.disabled}
+          disabled={props.disabled || false}
           name={props.name}
           onChange={props.onChange}
           type="checkbox"
