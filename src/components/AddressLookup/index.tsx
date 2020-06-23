@@ -25,7 +25,7 @@ const List = styled.ul`
   z-index: 999;
 `;
 
-const ListItem = styled.li<{isActive: boolean}>`
+const ListItem = styled.li<{ isActive: boolean }>`
   align-items: center;
   background-color: ${props => (props.isActive ? COLORS.backgroundMid : COLORS.backgroundLight)};
   cursor: pointer;
@@ -53,24 +53,31 @@ const ScreenReaderOnly = styled.div`
 `;
 
 type AddressData = {
-    Line1: string;
-    Line2: string;
-    Line3: string;
-    City: string;
-    PostalCode: string;
+  Line1: string;
+  Line2: string;
+  Line3: string;
+  City: string;
+  PostalCode: string;
 };
 
 type AddressLookupProps = {
   apiKey: string;
-  error: string;
-  hasError: boolean;
+  error?: string;
+  hasError?: boolean;
   onAddressSelected: (address: AddressData) => void;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-const AddressLookup: FunctionComponent<AddressLookupProps> = ({onAddressSelected, apiKey, error, ...props}) => {
-  const FIND_URL = "https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws";
-  const RETRIEVE_URL = "https://api.addressy.com/Capture/Interactive/Retrieve/v1/json3.ws";
+const AddressLookup: FunctionComponent<AddressLookupProps> = ({
+  apiKey,
+  error,
+  hasError,
+  onAddressSelected,
+  onChange,
+  ...props
+}) => {
+  const FIND_URL = 'https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws';
+  const RETRIEVE_URL = 'https://api.addressy.com/Capture/Interactive/Retrieve/v1/json3.ws';
   const [addresses, setAddresses] = React.useState([]);
   const [activeOption, setActiveOption] = React.useState(0);
   const wrapperRef = useRef(null);
@@ -108,32 +115,35 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({onAddressSelected
     };
   };
 
-  const searchDebounced = useCallback(debounced(500, (query: string) => search(query)), []);
+  const searchDebounced = useCallback(
+    debounced(500, (query: string) => search(query)),
+    [],
+  );
 
   const search = (query: string, id = '') => {
     if (query.length === 0) return setAddresses([]);
     fetch(`${FIND_URL}?Key=${apiKey}&Text=${query}&Container=${id}`)
       .then((res: Response) => {
         if (!res.ok) {
-          throw new Error('Something went wrong');
+          console.log('Error', 'Something went wrong please try again');
         }
         return res.json();
       })
       .then(data => {
-        // TODO occasionally get the error "The query didn't respond fast enough, it may be too complex." 
-        // "n17 6t" returns as a 200 with error
-        if (data.Items[0].Error) return console.log('Error', data.Items[0])
+        // Occasionally get the error "The query didn't respond fast enough, it may be too complex."
+        // returned with a 200 response. Example query "n17 6t"
+        if (data.Items[0].Error) return console.error(data.Items[0]);
         setActiveOption(0);
         setAddresses(data.Items || []);
       })
-      .catch(err => console.error('Error', err));
+      .catch(err => console.error(err));
   };
 
   const getAddress = (id: string) => {
     fetch(`${RETRIEVE_URL}?Key=${apiKey}&Id=${id}`)
       .then((res: Response) => {
         if (!res.ok) {
-          throw new Error('Something went wrong');
+          console.error('Something went wrong please try again');
         }
         return res.json();
       })
@@ -141,21 +151,20 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({onAddressSelected
         clearOptions();
         onAddressSelected(data.Items[0]);
       })
-      .catch(err => console.error('Error', err));
+      .catch(err => console.error(err));
   };
 
   return (
     <React.Fragment>
       <TextField
-        role="combobox"
-        aria-autocomplete="both"
-        label="Home address"
-        name="address.line1"
-        required
-        hintText="Start typing your address or postcode"
         aria-activedescendant={`addressOptions-${activeOption}`}
+        aria-autocomplete="both"
+        hasError={hasError || !!error}
+        hintText="Start typing your address or postcode"
+        label="Home address"
+        required
+        role="combobox"
         {...props}
-        hasError={!!error}
         onKeyDown={e => {
           if (e.keyCode === 13) {
             e.preventDefault();
@@ -173,12 +182,13 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({onAddressSelected
         }}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           searchDebounced(e.target.value);
-          props.onChange(e);
+          onChange(e);
         }}
       />
       <ScreenReaderOnly role="status" aria-live="assertive">
         {!!addresses.length &&
-          `We have found ${addresses.length} result${addresses.length !== 1 && "s"} matching your search. Use up and down arrow keys to navigate`}
+          `We have found ${addresses.length} result${addresses.length !== 1 &&
+            's'} matching your search. Use up and down arrow keys to navigate`}
       </ScreenReaderOnly>
       {!!addresses.length && (
         <ListWrapper ref={wrapperRef}>

@@ -6,12 +6,7 @@ We use Loqate (formerly Addressy and Postcode Anywhere) API v3, we have looked a
 
 You will need a Loqate api key, the examples below use "MG17-ZD93-FF33-KF13" our development key.
 
-### ### Try them out
-
-- Responds to keyboard events
-- Alert search results for screen reader users
-
-### Try them out
+### Try it out
 
 ```.jsx
 function () {
@@ -23,8 +18,6 @@ function () {
   const [postalCode, setPostalCode] = React.useState('');
   
   const handleAddressSelected = (address) => {
-    console.log("address", address);
-    console.log("addressline1", address.Line1);
     setValidated(true);
     setLine1(address.Line1);
     setLine2(address.Line2);
@@ -39,7 +32,7 @@ function () {
         <AddressLookup
           apiKey="MG17-ZD93-FF33-KF13"
           onAddressSelected={(address) => alert(JSON.stringify(address, null, 2))}
-          onChange={(e) => console.log('value = ', e.target.value)}
+          onChange={(e) => console.log('value', e.target.value)}
         />
       </Box>
 
@@ -116,3 +109,9 @@ function () {
 | hasError | Boolean |  | false | If true, use error styling for the input |
 | onAddressSelected | Function | | | Returns address object |
 | onChange | Function | |  | Callback function called on input change|
+
+## Accessibility
+
+- Responds to keyboard events
+- Informs screen reader users of the presence of results returned from search
+
