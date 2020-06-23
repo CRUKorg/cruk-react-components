@@ -78,7 +78,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
 }) => {
   const FIND_URL = 'https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws';
   const RETRIEVE_URL = 'https://api.addressy.com/Capture/Interactive/Retrieve/v1/json3.ws';
-  const [addresses, setAddresses] = React.useState([]);
+  const [addressOptions, setAddressOptions] = React.useState([]);
   const [activeOption, setActiveOption] = React.useState(0);
   const wrapperRef = useRef(null);
 
@@ -99,7 +99,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
 
   const clearOptions = () => {
     setActiveOption(0);
-    setAddresses([]);
+    setAddressOptions([]);
   };
 
   const debounced = (delay: number, callback: Function) => {
@@ -121,7 +121,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
   );
 
   const search = (query: string, id = '') => {
-    if (query.length === 0) return setAddresses([]);
+    if (query.length === 0) return setAddressOptions([]);
     fetch(`${FIND_URL}?Key=${apiKey}&Text=${query}&Container=${id}`)
       .then((res: Response) => {
         if (!res.ok) {
@@ -134,7 +134,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
         // returned with a 200 response. Example query "n17 6t"
         if (data.Items[0].Error) return console.error(data.Items[0]);
         setActiveOption(0);
-        setAddresses(data.Items || []);
+        setAddressOptions(data.Items || []);
       })
       .catch(err => console.error(err));
   };
@@ -168,15 +168,15 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
         onKeyDown={e => {
           if (e.keyCode === 13) {
             e.preventDefault();
-            if (addresses[activeOption].Type === 'Address') return getAddress(addresses[activeOption].Id);
-            search(addresses[activeOption].Text, addresses[activeOption].Id);
+            if (addressOptions[activeOption].Type === 'Address') return getAddress(addressOptions[activeOption].Id);
+            search(addressOptions[activeOption].Text, addressOptions[activeOption].Id);
           } else if (e.keyCode === 38) {
             e.preventDefault();
-            if (activeOption <= 0) return setActiveOption(addresses.length - 1);
+            if (activeOption <= 0) return setActiveOption(addressOptions.length - 1);
             setActiveOption(activeOption - 1);
           } else if (e.keyCode === 40) {
             e.preventDefault();
-            if (activeOption + 1 >= addresses.length) return setActiveOption(0);
+            if (activeOption + 1 >= addressOptions.length) return setActiveOption(0);
             setActiveOption(activeOption + 1);
           }
         }}
@@ -186,14 +186,14 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
         }}
       />
       <ScreenReaderOnly role="status" aria-live="assertive">
-        {!!addresses.length &&
-          `We have found ${addresses.length} result${addresses.length !== 1 &&
+        {!!addressOptions.length &&
+          `We have found ${addressOptions.length} result${addressOptions.length !== 1 &&
             's'} matching your search. Use up and down arrow keys to navigate`}
       </ScreenReaderOnly>
-      {!!addresses.length && (
+      {!!addressOptions.length && (
         <ListWrapper ref={wrapperRef}>
           <List role="listbox">
-            {addresses.map((address, index) => (
+            {addressOptions.map((address, index) => (
               <ListItem
                 id={`addressOptions-${index}`}
                 isActive={index === activeOption}
