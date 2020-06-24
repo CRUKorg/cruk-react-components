@@ -5,9 +5,9 @@ Loaders are used after some user interaction that we assume will take some time 
 ### Try it out
 
 ```.jsx
-<React.Fragment>
+<>
   <Loader />
-</React.Fragment>
+</>
 ```
 
 Behaviour

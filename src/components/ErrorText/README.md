@@ -5,9 +5,9 @@ To be used in forms for inline validation. Applies styling and accessibility att
 ### Try it out
 
 ```.jsx
-<React.Fragment>
+<>
   <ErrorText>This field is required</ErrorText>
-</React.Fragment>
+</>
 ```
 
 ## Props

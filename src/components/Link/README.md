@@ -5,7 +5,7 @@ Links are for wrapping plain text or elements to create clickable link. This is 
 ### Try it out
 
 ```.jsx
-  <React.Fragment>
+  <>
     <div>
       <Link href="http://www.google.com">Default link</Link>
     </div>
@@ -34,7 +34,7 @@ Links are for wrapping plain text or elements to create clickable link. This is 
       <div>
       <Link href="#" onClick={() => {alert("from link");}}>With click handler</Link>
     </div>
-  </React.Fragment>
+  </>
 ```
 
 ## Props

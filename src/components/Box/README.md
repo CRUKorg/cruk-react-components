@@ -11,7 +11,7 @@ The more specific the the target the higher priority the css will have. For exam
 ### Try them out
 
 ```.jsx
-<React.Fragment>
+<>
   <Box>This is box</Box>
   <Box backgroundColor="primary">
     <Text textColor="textLight">
@@ -48,7 +48,7 @@ The more specific the the target the higher priority the css will have. For exam
       marginVertical="large" marginLeft="small"
     </Text>
   </Box>
-</React.Fragment>
+</>
 ```
 
 ## Props

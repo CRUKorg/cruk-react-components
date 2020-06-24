@@ -7,7 +7,7 @@ You can use an avatar to display ownership of an item of content. If you pass a 
 ### Try it out
 
 ```.tsx
-<React.Fragment>
+<>
   <Avatar />
   <Avatar name="Sam" size="small" />
   <Avatar name="Sam" size="medium" />
@@ -17,7 +17,7 @@ You can use an avatar to display ownership of an item of content. If you pass a 
     name="Sam"
     url="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"
   />
-</React.Fragment>
+</>
 ```
 
 ## Props
