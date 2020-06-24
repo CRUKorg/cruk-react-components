@@ -72,13 +72,13 @@ const StyledBadge = styled.span<BadgeProps>`
 `;
 
 const Badge: FunctionComponent<BadgeProps> = props => {
-  const { text, theme, children, ...rest } = props;
-  const mergedTheme = {
+  const { text, children, ...rest } = props;
+  const theme = {
     ...defaultTheme,
-    ...theme,
+    ...props.theme,
   };
   return (
-    <StyledBadge theme={mergedTheme} text={typeof children === 'string'} size="extraSmall" {...rest}>
+    <StyledBadge theme={theme} text={typeof children === 'string'} size="extraSmall" {...rest}>
       {children}
     </StyledBadge>
   );

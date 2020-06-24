@@ -1,17 +1,18 @@
 import React, { FunctionComponent, useCallback, useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 
-import { COLORS } from '../../themes/cruk';
-import Icon from '../Icon';
+import defaultTheme from '../../themes/cruk';
 import ErrorText from '../ErrorText';
+import Icon from '../Icon';
 import TextField from '../TextField';
+import { ThemeType } from '../../themes/types';
 
 const ListWrapper = styled.div`
   position: relative;
 `;
 
 const List = styled.ul`
-  background-color: ${COLORS.backgroundLight};
+  background-color: ${props => (props.theme.colors.backgroundLight)};
   border-radius: 3px;
   border: 2px solid #ccc;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
@@ -27,7 +28,7 @@ const List = styled.ul`
 
 const ListItem = styled.li<{ isActive: boolean }>`
   align-items: center;
-  background-color: ${props => (props.isActive ? COLORS.backgroundMid : COLORS.backgroundLight)};
+  background-color: ${props => (props.isActive ? props.theme.colors.backgroundMid : props.theme.colors.backgroundLight)};
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -65,7 +66,7 @@ type AddressOptions = {
   Type: string;
   Id: string;
   Text: string;
-}
+};
 
 type AddressLookupProps = {
   apiKey: string;
@@ -73,6 +74,7 @@ type AddressLookupProps = {
   hasError?: boolean;
   onAddressSelected: (address: AddressData) => void;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
+  theme?: ThemeType;
 };
 
 const AddressLookup: FunctionComponent<AddressLookupProps> = ({
@@ -88,13 +90,18 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
   const [addressOptions, setAddressOptions] = React.useState<AddressOptions[]>([]);
   const [activeOption, setActiveOption] = React.useState(0);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const theme = {
+    ...defaultTheme,
+    ...props.theme,
+  };
 
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
       if (event.keyCode === 27) clearOptions();
     };
     const handleClickOutside = (event: MouseEvent) => {
-      if (wrapperRef.current &&  event.target instanceof HTMLElement && !wrapperRef.current.contains(event.target)) clearOptions();
+      if (wrapperRef.current && event.target instanceof HTMLElement && !wrapperRef.current.contains(event.target))
+        clearOptions();
     };
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('keydown', handleEsc, false);
@@ -199,17 +206,18 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
       </ScreenReaderOnly>
       {!!addressOptions.length && (
         <ListWrapper ref={wrapperRef}>
-          <List role="listbox">
+          <List role="listbox" theme={theme}>
             {addressOptions.map((address, index) => (
               <ListItem
                 id={`addressOptions-${index}`}
                 isActive={index === activeOption}
                 key={address.Id}
-                role="option"
                 onClick={() => {
                   if (address.Type === 'Address') return getAddress(address.Id);
                   search(address.Text, address.Id);
                 }}
+                role="option"
+                theme={theme}
               >
                 <div>
                   {address.Text} {address.Description}
@@ -225,4 +233,4 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
   );
 };
 
-export default AddressLookup;
+export default withTheme(AddressLookup);

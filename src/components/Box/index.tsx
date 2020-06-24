@@ -32,14 +32,14 @@ const StyledBox = styled.div<BoxProps>`
 `;
 
 const Box: FunctionComponent<BoxProps> = props => {
-  const { children, css, theme, ...rest } = props;
-  const mergedTheme = {
+  const { children, css, ...rest } = props;
+  const theme = {
     ...defaultTheme,
     ...props.theme,
   };
 
   return (
-    <StyledBox theme={mergedTheme} {...rest}>
+    <StyledBox theme={theme} {...rest}>
       {children}
     </StyledBox>
   );
