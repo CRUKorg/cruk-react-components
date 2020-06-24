@@ -7,6 +7,7 @@ import Icon from '../Icon';
 import TextField from '../TextField';
 import Text from '../Text';
 import { ThemeType } from '../../themes/types';
+import debounce from '../../utils/debounce';
 
 const FIND_URL = 'https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws';
 const RETRIEVE_URL = 'https://api.addressy.com/Capture/Interactive/Retrieve/v1/json3.ws';
@@ -117,21 +118,8 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
     setAddressOptions([]);
   };
 
-  const debounced = (delay: number, callback: Function) => {
-    let timerId: number | null;
-    return (...args: any[]) => {
-      if (timerId) {
-        clearTimeout(timerId);
-      }
-      timerId = setTimeout(() => {
-        callback(...args);
-        timerId = null;
-      }, delay);
-    };
-  };
-
   const searchDebounced = useCallback(
-    debounced(500, (query: string) => search(query)),
+    debounce(500, (query: string) => search(query)),
     [],
   );
 
