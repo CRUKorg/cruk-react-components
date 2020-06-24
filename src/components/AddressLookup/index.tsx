@@ -85,8 +85,8 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
   onChange,
   ...props
 }) => {
-  const FIND_URL = 'https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws';
-  const RETRIEVE_URL = 'https://api.addressy.com/Capture/Interactive/Retrieve/v1/json3.ws';
+  const findUrl = 'https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws';
+  const retrieveUrl = 'https://api.addressy.com/Capture/Interactive/Retrieve/v1/json3.ws';
   const [addressOptions, setAddressOptions] = React.useState<AddressOptions[]>([]);
   const [activeOption, setActiveOption] = React.useState(0);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -136,7 +136,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
 
   const search = (query: string, id = '') => {
     if (query.length === 0) return setAddressOptions([]);
-    fetch(`${FIND_URL}?Key=${apiKey}&Text=${query}&Container=${id}`)
+    fetch(`${findUrl}?Key=${apiKey}&Text=${query}&Container=${id}`)
       .then((res: Response) => {
         if (!res.ok) {
           console.log('Error', 'Something went wrong please try again');
@@ -154,7 +154,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
   };
 
   const getAddress = (id: string) => {
-    fetch(`${RETRIEVE_URL}?Key=${apiKey}&Id=${id}`)
+    fetch(`${retrieveUrl}?Key=${apiKey}&Id=${id}`)
       .then((res: Response) => {
         if (!res.ok) {
           console.error('Something went wrong please try again');
