@@ -1,4 +1,5 @@
 const components = [
+  'AddressLookup'
   'Avatar',
   'Badge',
   'Box',
@@ -28,6 +29,18 @@ const components = [
 
 const selectComponent = (componentName, brand) => {
   switch (componentName) {
+    case 'AddressLookup':
+      cy.get('head').invoke(
+        'append',
+        '<style type="text/css"> header {display: none;} [aria-label="Example code preview"] span {animation: none;} </style>',
+      );
+      cy.get('[aria-label="Example code preview"]')
+        .first().within(($list) => {
+          cy.getInputByLabel("Home address").type("N10");
+          cy.contains("li","N10 Logistics Ltd").should("exist");
+          cy.matchImageSnapshot(`${brand}_${componentName}`)
+        })
+      break;
     case 'Avatar':
       cy.get('head').invoke('append', '<style type="text/css">header {display: none;}</style>');
       cy.get('[src="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"]').should($img => {
