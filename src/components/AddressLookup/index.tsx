@@ -60,6 +60,13 @@ type AddressData = {
   PostalCode: string;
 };
 
+type AddressOptions = {
+  Description: string;
+  Type: string;
+  Id: string;
+  Text: string;
+}
+
 type AddressLookupProps = {
   apiKey: string;
   error?: string;
@@ -78,16 +85,16 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
 }) => {
   const FIND_URL = 'https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws';
   const RETRIEVE_URL = 'https://api.addressy.com/Capture/Interactive/Retrieve/v1/json3.ws';
-  const [addressOptions, setAddressOptions] = React.useState([]);
+  const [addressOptions, setAddressOptions] = React.useState<AddressOptions[]>([]);
   const [activeOption, setActiveOption] = React.useState(0);
-  const wrapperRef = useRef(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
       if (event.keyCode === 27) clearOptions();
     };
     const handleClickOutside = (event: MouseEvent) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) clearOptions();
+      if (wrapperRef.current &&  event.target instanceof HTMLElement && !wrapperRef.current.contains(event.target)) clearOptions();
     };
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('keydown', handleEsc, false);
@@ -103,7 +110,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
   };
 
   const debounced = (delay: number, callback: Function) => {
-    let timerId: number;
+    let timerId: number | null;
     return (...args: any[]) => {
       if (timerId) {
         clearTimeout(timerId);
