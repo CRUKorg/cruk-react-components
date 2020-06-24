@@ -10,3 +10,12 @@ addMatchImageSnapshotCommand();
 //   customDiffConfig: { threshold: 0.1 }, // threshold for each pixel
 //   capture: 'viewport', // capture viewport in screenshot
 // });
+
+// Return input or select by label text. Could be called getFormElementByLabel but that very long.
+Cypress.Commands.add('getInputByLabel', (text) =>
+  cy.contains('label', text).then(($label) => {
+    const name = $label.attr('for');
+    if (name) return cy.get(`#${name}`);
+    cy.wrap($label).find('input, select, textarea');
+  })
+);
