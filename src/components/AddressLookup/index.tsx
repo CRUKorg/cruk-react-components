@@ -1,10 +1,11 @@
-import React, { FunctionComponent, useCallback, useEffect, useRef } from 'react';
+import React, { FunctionComponent, InputHTMLAttributes, useCallback, useEffect, useRef } from 'react';
 import styled, { withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 import ErrorText from '../ErrorText';
 import Icon from '../Icon';
 import TextField from '../TextField';
+import Text from '../Text';
 import { ThemeType } from '../../themes/types';
 
 const FIND_URL = 'https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws';
@@ -71,12 +72,11 @@ type AddressOptions = {
   Text: string;
 };
 
-type AddressLookupProps = {
+type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
   apiKey: string;
   error?: string;
   hasError?: boolean;
   onAddressSelected: (address: AddressData) => void;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
   theme?: ThemeType;
 };
 
@@ -172,8 +172,9 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
   return (
     <>
       <TextField
-        aria-activedescendant={`addressOptions-${activeOption}`}
+        aria-activedescendant={addressOptions.length ? `addressOptions-${activeOption}` : ""}
         aria-autocomplete="both"
+        aria-expanded={addressOptions.length ? "true" : "false"}
         hasError={hasError || !!error}
         hintText="Start typing your address or postcode"
         label="Home address"
@@ -220,9 +221,9 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
                 role="option"
                 theme={theme}
               >
-                <div>
+                <Text as="span">
                   {address.Text} {address.Description}
-                </div>
+                </Text>
                 {address.Type !== 'Address' && <Icon name="chevronRight" />}
               </ListItem>
             ))}
