@@ -36,7 +36,8 @@ const selectComponent = (componentName, brand) => {
       );
       cy.get('[aria-label="Example code preview"]')
         .first().within(($list) => {
-          cy.getInputByLabel("Home address").type("N10");
+          // TODO stub address endpoints.
+          cy.getInputByLabel("Home address").type("N10").blur();
           cy.contains("li","N10 Logistics Ltd").should("exist");
           cy.matchImageSnapshot(`${brand}_${componentName}`)
         })
