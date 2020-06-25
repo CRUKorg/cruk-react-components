@@ -7,7 +7,7 @@ use the corresponding heading class (h1, h2, h3, ....). Write all headings in se
 ### Try it out
 
 ```.jsx
-  <React.Fragment>
+  <>
     <Heading>H2 is the default</Heading>
     <Heading h2 textSize="extraExtraExtraExtraLarge" textColor="primary">This is H2 with H1 size</Heading>
     <Heading h1>This is H1 heading</Heading>
@@ -18,7 +18,7 @@ use the corresponding heading class (h1, h2, h3, ....). Write all headings in se
     <Heading h6>This is H6 heading</Heading>
     <Heading textAlign="center">This is center aligned</Heading>
     <Heading textAlign="right">This is right aligned</Heading>
-  </React.Fragment>
+  </>
 ```
 
 ## Props

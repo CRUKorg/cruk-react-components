@@ -8,7 +8,7 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
 ### Try it out
 
 ```.jsx
-  <React.Fragment>
+  <>
     <Icon name="question" />
     <Icon name="question" size="36px" color="primary" hover="primaryHover" />
     <Icon name="question" size="48px" color="secondary" />
@@ -49,7 +49,7 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
     <Icon name="whatsappSquare" />
     <Icon name="zoomIn" />
     <Icon name="zoomOut" />
-   </React.Fragment>
+   </>
 ```
 
 ## Props

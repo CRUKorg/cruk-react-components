@@ -25,7 +25,7 @@ services:
   cypress:
     networks:
       network:
-    image: cypress/included:4.4.1
+    image: cypress/included:4.9.0
     working_dir: /app
     volumes:
       - .:/app:delegated

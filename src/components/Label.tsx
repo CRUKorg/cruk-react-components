@@ -36,7 +36,7 @@ type WithLabelProps = {
 };
 
 export const WithLabel: FunctionComponent<WithLabelProps> = props => {
-  const { label, hintText, required, children } = props;
+  const { label, hintText, required, children, ...otherProps} = props;
   const theme = {
     ...defaultTheme,
     ...props.theme,
@@ -47,7 +47,7 @@ export const WithLabel: FunctionComponent<WithLabelProps> = props => {
   return (
     <ThemeProvider theme={theme}>
       {label ? (
-        <Label {...props}>
+        <Label {...otherProps}>
           <LabelText hasHintText={!!hintText}>
             {label} {!required && <span>(optional)</span>}
           </LabelText>

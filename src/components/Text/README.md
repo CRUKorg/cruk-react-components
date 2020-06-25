@@ -5,13 +5,13 @@ For non-header text. The Text component provides a simple API for setting the co
 ### Try them out
 
 ```.jsx
-  <React.Fragment>
+  <>
     <Text>This is text it defaults to a paragraph tag</Text>
     <Text as='span'>This is text as a span tag</Text>
     <Text textColor='primary'>Color is Primary</Text>
     <Text textColor='#ff0000'>Color is Primary</Text>
     <Text textSize="large">Text size large</Text>
-  </React.Fragment>
+  </>
 ```
 
 ## Props

@@ -127,7 +127,7 @@ const StyledInput = styled.input<StyledInputProps>`
     `}
 `;
 
-type TextFieldProps = InputHTMLAttributes<{}> & {
+type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   error?: string;
   extraBottom?: string;
   extraLeft?: string;
@@ -135,12 +135,8 @@ type TextFieldProps = InputHTMLAttributes<{}> & {
   extraTop?: string;
   hasError?: boolean;
   hintText?: ReactElement | string;
-  id?: string;
   label: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
-  required?: boolean;
   theme: ThemeType;
-  value: string;
 };
 
 const TextField: FunctionComponent<TextFieldProps> = ({
@@ -186,7 +182,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
   );
 
   return (
-    <WithLabel label={label} hintText={hintText} required={required} {...props}>
+    <WithLabel label={label} hintText={hintText} required={required}>
       {!!extraTop && <ExtraTop theme={theme}>{extraTop}</ExtraTop>}
       {!!extraRight || !!extraLeft ? <ExtraWrapper>{renderContent}</ExtraWrapper> : renderContent}
       {!!extraBottom && <ExtraBottom theme={theme}>{extraBottom}</ExtraBottom>}

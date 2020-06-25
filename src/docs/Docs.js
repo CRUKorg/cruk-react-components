@@ -18,6 +18,7 @@ import Heading from '../components/Heading';
 import Select from '../components/Select';
 import ThemeCheatSheet from '../components/ThemeCheatSheet';
 
+import AddressLookupReadme from '../components/AddressLookup/README.md';
 import AvatarReadme from '../components/Avatar/README.md';
 import BadgeReadme from '../components/Badge/README.md';
 import BoxReadme from '../components/Box/README.md';
@@ -277,6 +278,7 @@ class Docs extends React.Component {
           <SideBar padding="extraSmall">
             <Nav>
               <Heading h4>Components</Heading>
+              <RouterLink to="/addresslookup">AddressLookup</RouterLink>
               <RouterLink to="/avatar">Avatar</RouterLink>
               <RouterLink to="/badge">Badge</RouterLink>
               <RouterLink to="/box">Box</RouterLink>
@@ -308,7 +310,8 @@ class Docs extends React.Component {
           <Content>
             <MdxProvider>
               <Router>
-                <AvatarReadme default path="/avatar" />
+                <AddressLookupReadme default path="/addressLookup" />
+                <AvatarReadme path="/avatar" />
                 <BadgeReadme path="/badge" />
                 <BoxReadme path="/box" />
                 <ButtonReadme path="/button" />

@@ -1,4 +1,5 @@
 const components = [
+  'AddressLookup',
   'Avatar',
   'Badge',
   'Box',
@@ -28,6 +29,19 @@ const components = [
 
 const selectComponent = (componentName, brand) => {
   switch (componentName) {
+    case 'AddressLookup':
+      cy.get('head').invoke(
+        'append',
+        '<style type="text/css"> header {display: none;} [aria-label="Example code preview"] span {animation: none;} </style>',
+      );
+      cy.get('[aria-label="Example code preview"]')
+        .first().within(($list) => {
+          // TODO stub address endpoints.
+          cy.getInputByLabel("Home address").type("N10").blur();
+          cy.contains("li","N17 0AB High Road, London - 14 Addresses").should("exist");
+          cy.matchImageSnapshot(`${brand}_${componentName}`)
+        })
+      break;
     case 'Avatar':
       cy.get('head').invoke('append', '<style type="text/css">header {display: none;}</style>');
       cy.get('[src="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"]').should($img => {
@@ -84,25 +98,45 @@ const selectComponent = (componentName, brand) => {
   }
 };
 
-components.forEach(componentName => {
-  it(`CRUK ${componentName} Should match snapshot`, () => {
-    cy.visit(`/${componentName.toLowerCase()}`);
-    selectComponent(componentName, 'cruk');
-  });
-
-  it(`SU2C ${componentName} Should match snapshot`, () => {
-    cy.visit(`/${componentName.toLowerCase()}`);
-    cy.get('select[name="themeSelector"]').select('su2c');
-    selectComponent(componentName, 'su2c');
-  });
-
-  it('has no detectable a11y violations', () => {
-    cy.visit(`/${componentName.toLowerCase()}`);
-    cy.injectAxe();
-    cy.checkA11y('[aria-label="Example code preview"]', {
-      rules: {
-        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
+describe('Snapshots', function () {
+  beforeEach(() => {
+    cy.server();
+    cy.route('**/Find/**', { Items: [
+      {
+        Description: "London"
+        Id: "1"
+        Text: "N10 Logistics"
+        Type: "Address"
       },
+      {
+        Description: "High Road, London - 14 Addresses"
+        Id: "2"
+        Text: "N17 0AB"
+        Type: "Postcode"
+      }
+    ]});
+  });
+
+  components.forEach(componentName => {
+    it(`CRUK ${componentName} Should match snapshot`, () => {
+      cy.visit(`/${componentName.toLowerCase()}`);
+      selectComponent(componentName, 'cruk');
+    });
+
+    it(`SU2C ${componentName} Should match snapshot`, () => {
+      cy.visit(`/${componentName.toLowerCase()}`);
+      cy.get('select[name="themeSelector"]').select('su2c');
+      selectComponent(componentName, 'su2c');
+    });
+
+    it('has no detectable a11y violations', () => {
+      cy.visit(`/${componentName.toLowerCase()}`);
+      cy.injectAxe();
+      cy.checkA11y('[aria-label="Example code preview"]', {
+        rules: {
+          'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
+        },
+      });
     });
   });
 });

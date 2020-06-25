@@ -6,7 +6,7 @@ for multiple sizes, states, and more.
 ### Try them out
 
 ```.jsx
-<React.Fragment>
+<>
   <Button>Button</Button>
   <Button appearance="primary">Primary</Button>
   <Button appearance="secondary">Secondary</Button>
@@ -22,7 +22,7 @@ for multiple sizes, states, and more.
   <Button aria-label="Upload a photo"><Icon name="uploadPhoto"/></Button>
   <Button css="background-color: #4267b2;border-color: #4267b2; color: white; :hover {background-color: #365899; color: white;}"><Icon name="facebookSquare" size="18px" />Continue with facebook</Button>
   <Button full>Full width Button</Button>
-</React.Fragment>
+</>
 ```
 
 ## Props

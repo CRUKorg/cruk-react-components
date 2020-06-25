@@ -30,11 +30,12 @@ const StyledBox = styled.div<BoxProps>`
   ${(props: BoxProps) => (css as any)([props.css])}
   ${props => spacing(props)}
 `;
+
 const Box: FunctionComponent<BoxProps> = props => {
   const { children, css, theme, ...rest } = props;
   const mergedTheme = {
     ...defaultTheme,
-    ...props.theme,
+    ...theme,
   };
 
   return (
