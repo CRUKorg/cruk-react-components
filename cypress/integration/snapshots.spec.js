@@ -38,7 +38,7 @@ const selectComponent = (componentName, brand) => {
         .first().within(($list) => {
           // TODO stub address endpoints.
           cy.getInputByLabel("Home address").type("N10").blur();
-          cy.contains("li","N10 Logistics Ltd").should("exist");
+          cy.contains("li","N17 0AB High Road, London - 14 Addresses").should("exist");
           cy.matchImageSnapshot(`${brand}_${componentName}`)
         })
       break;
@@ -98,25 +98,45 @@ const selectComponent = (componentName, brand) => {
   }
 };
 
-components.forEach(componentName => {
-  it(`CRUK ${componentName} Should match snapshot`, () => {
-    cy.visit(`/${componentName.toLowerCase()}`);
-    selectComponent(componentName, 'cruk');
-  });
-
-  it(`SU2C ${componentName} Should match snapshot`, () => {
-    cy.visit(`/${componentName.toLowerCase()}`);
-    cy.get('select[name="themeSelector"]').select('su2c');
-    selectComponent(componentName, 'su2c');
-  });
-
-  it('has no detectable a11y violations', () => {
-    cy.visit(`/${componentName.toLowerCase()}`);
-    cy.injectAxe();
-    cy.checkA11y('[aria-label="Example code preview"]', {
-      rules: {
-        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
+describe('Snapshots', function () {
+  beforeEach(() => {
+    cy.server();
+    cy.route('**/Find/**', { Items: [
+      {
+        Description: "London"
+        Id: "1"
+        Text: "N10 Logistics"
+        Type: "Address"
       },
+      {
+        Description: "High Road, London - 14 Addresses"
+        Id: "2"
+        Text: "N17 0AB"
+        Type: "Postcode"
+      }
+    ]});
+  });
+
+  components.forEach(componentName => {
+    it(`CRUK ${componentName} Should match snapshot`, () => {
+      cy.visit(`/${componentName.toLowerCase()}`);
+      selectComponent(componentName, 'cruk');
+    });
+
+    it(`SU2C ${componentName} Should match snapshot`, () => {
+      cy.visit(`/${componentName.toLowerCase()}`);
+      cy.get('select[name="themeSelector"]').select('su2c');
+      selectComponent(componentName, 'su2c');
+    });
+
+    it('has no detectable a11y violations', () => {
+      cy.visit(`/${componentName.toLowerCase()}`);
+      cy.injectAxe();
+      cy.checkA11y('[aria-label="Example code preview"]', {
+        rules: {
+          'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
+        },
+      });
     });
   });
 });
