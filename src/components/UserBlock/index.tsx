@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactChild } from 'react';
 import styled, { withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -11,7 +11,7 @@ type UserBlockProps = {
   name: string;
   avatarUrl?: string | null;
   avatarName?: string | null;
-  extra: string | Node;
+  extra: ReactChild;
   size: 'small' | 'medium' | 'large' | 'extraLarge';
   theme?: ThemeType;
 };
