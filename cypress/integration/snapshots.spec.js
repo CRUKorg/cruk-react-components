@@ -1,5 +1,5 @@
 const components = [
-  'AddressLookup'
+  'AddressLookup',
   'Avatar',
   'Badge',
   'Box',
