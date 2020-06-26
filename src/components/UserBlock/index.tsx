@@ -8,7 +8,7 @@ import { COLORS, TYPOGRAPHY, FONT_SIZES } from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
 type UserBlockProps = {
-  name: string;
+  name: ReactNode;
   avatarUrl?: string | null;
   avatarName?: string | null;
   extra: ReactNode;
