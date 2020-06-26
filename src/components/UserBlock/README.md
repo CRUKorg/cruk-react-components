@@ -21,7 +21,7 @@ Display an avatar with title and subtitle
 
 | Name      | Type              |         Options          | Default     | Description                              |
 | :-------- | :---------------- | :----------------------: | :---------- | :--------------------------------------- |
-| name      | String            |                          | "Anonymous" | Title to be displayed as primary text    |
+| name      | String/React node |                          | "Anonymous" | Title to be displayed as primary text    |
 | extra     | String/React node |                          |             | subtitle to be displayed as primary text |
 | size      | String            | "small" "medium" "large" | "medium"    | Define the size of the avatar            |
 | avatarUrl | String            |                          |             | URL of image for avatar                  |
