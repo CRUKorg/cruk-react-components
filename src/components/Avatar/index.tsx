@@ -1,11 +1,11 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import styled, { withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
 type AvatarProps = {
-  name: string;
+  name: ReactNode;
   url: string;
   size?: 'small' | 'medium' | 'large' | 'extraLarge';
   theme?: ThemeType;
