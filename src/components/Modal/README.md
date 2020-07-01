@@ -10,7 +10,7 @@ Use a modal to display content over top of the rest of the site which must be in
 
 ## Accessibility
 
-- Once the Modal is appeared on the screen, the focus must be within the Modal container which will enable the screen readers to be able to navigate within the Modal. You may wish to had the close button so that a user must click on another button to make a choice before the modal is closed. However closing with the 'ESC' key must always work, so the props which contains the function that allows the modal to close itself 'closeFunction' is always required.
+- Once the Modal is appeared on the screen, the focus must be within the Modal container which will enable the screen readers to be able to navigate within the Modal. You may wish to hide the close button so that a user must click on another button to confirm a choice before the modal is closed. However closing with the 'ESC' key must always work, so the props which contains the function that allows the modal to close itself 'closeFunction' is always required.
 
 ### Try it out
 
@@ -35,8 +35,8 @@ function () {
 }
 ```
 
-| Name            | Type     |  Options   | Default | Description                                  |
-| :-------------- | :------- | :--------: | :------ | :------------------------------------------- |
-| closeFunction   | function |            | null    | (Required) function used to close the modal. |
-| children        | Any      |            |         | Any content to be displayed in modal         |
+| Name            | Type     |  Options   | Default | Description                                 |
+| :-------------- | :------- | :--------: | :------ | :------------------------------------------ |
+| closeFunction   | function |            | null    | (Required) function used to close the modal |
+| children        | Any      |            |         | Any content to be displayed in modal        |
 | showCloseButton | Boolean  | true/false | true    |
