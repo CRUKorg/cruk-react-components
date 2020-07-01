@@ -35,8 +35,8 @@ function () {
 }
 ```
 
-| Name            | Type     |  Options   | Default | Description                                 |
-| :-------------- | :------- | :--------: | :------ | :------------------------------------------ |
-| closeFunction   | function |            | null    | (Required) function used to close the modal |
-| children        | Any      |            |         | Any content to be displayed in modal        |
+| Name            | Type     |  Options   | Default | Description                                                                                     |
+| :-------------- | :------- | :--------: | :------ | :---------------------------------------------------------------------------------------------- |
+| closeFunction   | function |            | null    | (Required) function used to close the modal on escape key press and close or close button press |
+| children        | Any      |            |         | Any content to be displayed in modal                                                            |
 | showCloseButton | Boolean  | true/false | true    |
