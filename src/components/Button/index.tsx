@@ -22,11 +22,7 @@ type ButtonProps = ButtonHTMLAttributes<{}> & {
 const VerticalAlign = styled.span`
   line-height: ${({ isIconButton }: { isIconButton: boolean }) => (isIconButton ? `auto` : `${BUTTON_HEIGHT}`)};
   vertical-align: middle;
-  margin-left: ${({
-    theme: {
-      spacing: { extraSmall },
-    },
-  }) => extraSmall};
+  margin-left: ${({ theme }) => theme.spacing.extraExtraSmall};
 
   &:first-of-type {
     margin-left: 0;
@@ -104,6 +100,7 @@ const StyledButton = styled.button`
     props.appearance === 'text' &&
     css`
       display: inline-block;
+      padding: 0;
       border: 0px;
       background-color: none;
       transition: color 0.2s ease;
