@@ -65,16 +65,16 @@ const CloseButton = styled(Button)`
 `;
 
 type ModalProps = {
-  disableEsc?: Boolean;
-  closeButton?: Function | null;
+  showCloseButton?: Boolean;
+  closeFunction: Function;
   theme?: ThemeType;
 };
 
 const Modal: FC<ModalProps> = props => {
-  const { disableEsc, closeButton, children } = props;
+  const { showCloseButton, closeFunction, children } = props;
   const closeByEsc = (event: KeyboardEvent): void => {
-    if (!disableEsc && event.which == 27 && closeButton !== null) {
-      closeButton();
+    if (event.which == 27 && !!closeFunction) {
+      closeFunction();
     }
   };
 
@@ -107,17 +107,17 @@ const Modal: FC<ModalProps> = props => {
               <ThemeProvider theme={theme}>
                 <Wrapper>
                   <Content aria-modal="true" backgroundColor="" css="">
-                    {closeButton && (
+                    {showCloseButton && closeFunction ? (
                       <CloseButton
                         aria-label="close"
                         appearance="text"
                         onClick={() => {
-                          closeButton();
+                          closeFunction();
                         }}
                       >
                         <Icon name="close" />
                       </CloseButton>
-                    )}
+                    ) : null}
                     {children}
                   </Content>
                   <Background />
@@ -132,8 +132,8 @@ const Modal: FC<ModalProps> = props => {
 };
 
 Modal.defaultProps = {
-  closeButton: null,
-  disableEsc: false,
+  showCloseButton: true,
+  closeFunction: null,
   theme: null,
 };
 

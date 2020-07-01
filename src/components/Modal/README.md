@@ -10,7 +10,7 @@ Use a modal to display content over top of the rest of the site which must be in
 
 ## Accessibility
 
-- Once the Modal is appeared on the screen, the focus must be within the Modal container which will enable the screen readers to be able to navigate within the Modal.
+- Once the Modal is appeared on the screen, the focus must be within the Modal container which will enable the screen readers to be able to navigate within the Modal. You may wish to hide the close button so that a user must click on another button to confirm a choice before the modal is closed. However closing with the 'ESC' key must always work, so the props which contains the function that allows the modal to close itself 'closeFunction' is always required.
 
 ### Try it out
 
@@ -23,7 +23,7 @@ function () {
     <>
       <Button appearance="primary" onClick={toggleShowModal}>Show me a modal</Button>
       {showModal &&
-        <Modal disableEsc={false} closeButton={toggleShowModal}>
+        <Modal closeFunction={toggleShowModal}>
           <Heading h2 marginTop='none' textSize="extraLarge">Modal title</Heading>
           <p>Some really important information</p>
           <Button onClick={toggleShowModal}>Get me out of here</Button>
@@ -35,8 +35,8 @@ function () {
 }
 ```
 
-| Name        | Type     |  Options   | Default | Description                                                                  |
-| :---------- | :------- | :--------: | :------ | :--------------------------------------------------------------------------- |
-| closeButton | function |            | null    | Display an 'X' button on top right to close the modal.                       |
-| children    | Any      |            |         | Any content to be displayed in modal                                         |
-| disableEsc  | Boolean  | True/False | false   | Leaving with default option will allow the modal to close with ESC key press |
+| Name            | Type     |  Options   | Default | Description                                                                                     |
+| :-------------- | :------- | :--------: | :------ | :---------------------------------------------------------------------------------------------- |
+| closeFunction   | function |            | null    | (Required) function used to close the modal on escape key press and close or close button press |
+| children        | Any      |            |         | Any content to be displayed in modal                                                            |
+| showCloseButton | Boolean  | true/false | true    |
