@@ -16,6 +16,7 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
     <Icon name="chevronLeft" />
     <Icon name="chevronRight" />
     <Icon name="chevronRightBold" />
+    <Icon name="copy" />
     <Icon name="clock" />
     <Icon name="close" />
     <Icon name="comment" />
