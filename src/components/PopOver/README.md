@@ -59,10 +59,10 @@ function () {
 
 ## Props
 
-| Name     | Type              |            Options            | Default | Description                    |
-| :------- | :---------------- | :---------------------------: | :------ | :----------------------------- |
-| position | String            | "top" "bottom" "left" "right" | "top"   | Where to place the popover     |
-| overlay  | String/React node |                               |         | Content to show in the popover |
+| Name     | Type              |                       Options                        | Default | Description                    |
+| :------- | :---------------- | :--------------------------------------------------: | :------ | :----------------------------- |
+| position | String            | "top" "bottom" "left" "right" "topLeft" "bottomLeft" | "top"   | Where to place the popover     |
+| overlay  | String/React node |                                                      |         | Content to show in the popover |
 
 ## Usage
 

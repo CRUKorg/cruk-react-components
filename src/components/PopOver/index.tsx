@@ -8,7 +8,7 @@ import { ThemeType } from '../../themes/types';
 type PopOverProps = {
   position: string;
   overlay: any;
-  css: string;
+  css?: string;
   theme?: ThemeType;
 };
 
@@ -18,7 +18,7 @@ type StyledPopOverContentType = {
 };
 
 type PopOverWrapperProps = {
-  css: string;
+  css?: string;
 };
 
 const PopOverWrapper = styled.div<PopOverWrapperProps>`
@@ -82,17 +82,46 @@ const PopOverContent = styled.div`
 `;
 
 const StyledPopOverContent = styled(PopOverContent)<StyledPopOverContentType>`
+  ${({ position }: StyledPopOverContentType) =>
+    (position === 'top' || position === 'topLeft') &&
+    css`
+      left: ${() => {
+        switch (position) {
+          case 'topLeft':
+            return 'auto';
+          default:
+            return 0;
+        }
+      }};
+      right: ${() => {
+        switch (position) {
+          case 'topLeft':
+            return 0;
+          default:
+            return 'auto';
+        }
+      }};
+    `}
+
     ${({ position }: StyledPopOverContentType) =>
-      position === 'bottom' &&
+      (position === 'bottom' || position === 'bottomLeft') &&
       css`
         margin-top: 10px;
       `}
 
     ${({ theme, position }: StyledPopOverContentType) =>
-      (position === 'bottom' || position === 'left' || position === 'right') &&
+      (position === 'bottom' || position === 'left' || position === 'right' || position === 'bottomLeft') &&
       css`
         bottom: auto;
         left: auto;
+        right: ${() => {
+          switch (position) {
+            case 'bottomLeft':
+              return 0;
+            default:
+              return 'auto';
+          }
+        }};
         top: 100%;
         margin-bottom: 0;
         &:after,
