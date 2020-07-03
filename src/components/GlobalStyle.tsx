@@ -6,6 +6,7 @@ type CustomFont = {
   url: string;
 };
 
+// font-display fall back to stop font's flickering on SSR rehydration
 const buildCustomFonts = (customFonts: Array<CustomFont>) =>
   customFonts
     .map(
@@ -16,6 +17,7 @@ const buildCustomFonts = (customFonts: Array<CustomFont>) =>
                url("${font.url}.woff") format('woff');
           font-weight: normal;
           font-style: normal;
+          font-display: fallback;
         }
       `,
     )

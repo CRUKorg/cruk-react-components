@@ -1,8 +1,8 @@
 import React, { useState, FunctionComponent, useRef } from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
 
+import defaultTheme from '../../themes/cruk';
 import useEffectBrowser from '../../hooks/useEffectBrowser';
-import defaultTheme, { BREAKPOINT, COLORS } from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
 type PopOverProps = {
@@ -307,7 +307,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
     }};
   }
 
-  @media (min-width: ${BREAKPOINT.desktop}) {
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
     margin-top: ${({ position }) => {
       switch (position) {
         case 'bottom':
@@ -557,11 +557,6 @@ const PopOver: FunctionComponent<PopOverProps> = props => {
   return (
     <ThemeProvider theme={theme}>
       <PopOverWrapper {...props} ref={popRef}>
-        {showPopOver && (
-          <PopOverContent position={props.position} theme={theme} role="dialog" aria-modal={showPopOver}>
-            {props.overlay}
-          </PopOverContent>
-        )}
         {React.Children.map(props.children, (child: React.ReactElement) =>
           React.cloneElement(child, {
             onClick: toggle,
@@ -569,6 +564,11 @@ const PopOver: FunctionComponent<PopOverProps> = props => {
             'aria-haspopup': 'dialog',
           }),
         )}
+        {showPopOver ? (
+          <PopOverContent position={props.position} theme={theme} role="dialog" aria-modal={showPopOver}>
+            {props.overlay}
+          </PopOverContent>
+        ) : null}
       </PopOverWrapper>
     </ThemeProvider>
   );
