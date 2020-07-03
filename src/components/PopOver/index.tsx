@@ -210,7 +210,43 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
           return 'auto';
       }
     }};
-    left: calc(50% - 10px);
+
+    left: ${({ position, theme }) => {
+      switch (position) {
+        case 'top':
+          return `${theme.spacing.small}`;
+        case 'topLeft':
+          return 'auto';
+        case 'left':
+          return `${theme.spacing.small}`;
+        case 'right':
+          return 'auto';
+        case 'bottom':
+          return `${theme.spacing.small}`;
+        case 'bottomLeft':
+          return 'auto';
+        default:
+          return `${theme.spacing.small}`;
+      }
+    }};
+    right: ${({ position, theme }) => {
+      switch (position) {
+        case 'top':
+          return `auto`;
+        case 'topLeft':
+          return `${theme.spacing.small}`;
+        case 'left':
+          return 'auto';
+        case 'right':
+          return `${theme.spacing.small}`;
+        case 'bottom':
+          return `auto`;
+        case 'bottomLeft':
+          return `${theme.spacing.small}`;
+        default:
+          return `auto`;
+      }
+    }};
   }
   &:before {
     border-color: ${({ position }) => {
@@ -359,16 +395,16 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
     &:after,
     &:before {
       content: '';
-      top: ${({ position }) => {
+      top: ${({ position, theme }) => {
         switch (position) {
           case 'top':
             return '100%';
           case 'topLeft':
             return '100%';
           case 'left':
-            return 'calc(50% - 10px)';
+            return `${theme.spacing.extraSmall}`;
           case 'right':
-            return 'calc(50% - 10px)';
+            return `${theme.spacing.extraSmall}`;
           case 'bottom':
             return 'auto';
           case 'bottomLeft':
@@ -396,14 +432,40 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
         }
       }};
 
-      left: ${({ position }) => {
+      left: ${({ position, theme }) => {
         switch (position) {
+          case 'top':
+            return `${theme.spacing.small}`;
+          case 'topLeft':
+            return 'auto';
           case 'left':
             return '100%';
           case 'right':
             return '-20px';
+          case 'bottom':
+            return `${theme.spacing.small}`;
+          case 'bottomLeft':
+            return 'auto';
           default:
-            return 'calc(50% - 10px)';
+            return `${theme.spacing.small}`;
+        }
+      }};
+      right: ${({ position, theme }) => {
+        switch (position) {
+          case 'top':
+            return `auto`;
+          case 'topLeft':
+            return `${theme.spacing.small}`;
+          case 'left':
+            return 'auto';
+          case 'right':
+            return `0`;
+          case 'bottom':
+            return `auto`;
+          case 'bottomLeft':
+            return `${theme.spacing.small}`;
+          default:
+            return `auto`;
         }
       }};
     }
@@ -455,7 +517,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
           case 'left':
             return `transparent transparent transparent ${theme.colors.popoverBackground}`;
           case 'right':
-            return `border-color: transparent ${theme.colors.popoverBackground} transparent transparent`;
+            return `transparent ${theme.colors.popoverBackground} transparent transparent`;
           case 'bottom':
             return `transparent transparent ${theme.colors.popoverBackground}`;
           case 'bottomLeft':
