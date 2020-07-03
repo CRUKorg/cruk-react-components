@@ -33,22 +33,32 @@ function () {
   return (
     <>
       <PopOver overlay={content}>
-        <Button appearance="secondary">
+        <Button>
           <Icon name="share" />Share top
         </Button>
       </PopOver>
+      <PopOver position="topLeft" overlay={content}>
+        <Button>
+          <Icon name="share" />Share topLeft
+        </Button>
+      </PopOver>
       <PopOver position="bottom" overlay={content}>
-        <Button appearance="secondary">
+        <Button>
           <Icon name="share" />Share bottom
         </Button>
       </PopOver>
+      <PopOver position="bottomLeft" overlay={content}>
+        <Button>
+          <Icon name="share" />Share bottomLeft
+        </Button>
+      </PopOver>
       <PopOver position="left" overlay={content}>
-        <Button appearance="text">
+        <Button>
           <Icon name="share" />Share left
         </Button>
       </PopOver>
       <PopOver position="right" overlay={content}>
-        <Button appearance="text">
+        <Button>
           <Icon name="share" />Share right
         </Button>
       </PopOver>
