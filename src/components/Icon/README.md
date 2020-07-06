@@ -22,10 +22,13 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
     <Icon name="comment" />
     <Icon name="delete" />
     <Icon name="edit" />
+    <Icon name="envelope" />
     <Icon name="envelopeSquare" />
     <Icon name="eventName" />
     <Icon name="facebook" />
+    <Icon name="facebookRound" />
     <Icon name="facebookSquare" />
+    <Icon name="linkedinSquare" />
     <Icon name="linkedin" />
     <Icon name="messengerSquare" />
     <Icon name="move" />
