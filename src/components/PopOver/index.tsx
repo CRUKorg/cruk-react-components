@@ -1,14 +1,14 @@
 import React, { useState, FunctionComponent, useRef } from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
 
+import defaultTheme from '../../themes/cruk';
 import useEffectBrowser from '../../hooks/useEffectBrowser';
-import defaultTheme, { BREAKPOINT, COLORS } from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
 type PopOverProps = {
   position: string;
   overlay: any;
-  css: string;
+  css?: string;
   theme?: ThemeType;
 };
 
@@ -18,7 +18,7 @@ type StyledPopOverContentType = {
 };
 
 type PopOverWrapperProps = {
-  css: string;
+  css?: string;
 };
 
 const PopOverWrapper = styled.div<PopOverWrapperProps>`
@@ -27,7 +27,7 @@ const PopOverWrapper = styled.div<PopOverWrapperProps>`
   ${props => (css as any)([props.css])}
 `;
 
-const PopOverContent = styled.div`
+const PopOverContent = styled.div<StyledPopOverContentType>`
   position: absolute;
   display: flex;
   justify-content: center;
@@ -37,8 +37,114 @@ const PopOverContent = styled.div`
       spacing: { extraExtraSmall },
     },
   }) => extraExtraSmall};
-  bottom: 100%;
-  left: 0;
+
+  margin-bottom: ${({ position }) => {
+    switch (position) {
+      case 'top':
+        return '10px';
+      case 'topLeft':
+        return '10px';
+      case 'left':
+        return 0;
+      case 'right':
+        return 0;
+      case 'bottom':
+        return 0;
+      case 'bottomLeft':
+        return '10px';
+      default:
+        return '10px';
+    }
+  }};
+
+  margin-top: ${({ position }) => {
+    switch (position) {
+      case 'bottom':
+        return '10px';
+      case 'bottomLeft':
+        return '10px';
+      case 'left':
+        return '10px';
+      case 'right':
+        return '10px';
+      default:
+        return 0;
+    }
+  }};
+  top: ${({ position }) => {
+    switch (position) {
+      case 'top':
+        return 'auto';
+      case 'topLeft':
+        return 'auto';
+      case 'left':
+        return '100%';
+      case 'right':
+        return '100%';
+      case 'bottom':
+        return '100%';
+      case 'bottomLeft':
+        return '100%';
+      default:
+        return 'auto';
+    }
+  }};
+
+  bottom: ${({ position }) => {
+    switch (position) {
+      case 'top':
+        return '100%';
+      case 'topLeft':
+        return '100%';
+      case 'left':
+        return 'auto';
+      case 'right':
+        return 'auto';
+      case 'bottom':
+        return 'auto';
+      case 'bottomLeft':
+        return 'auto';
+      default:
+        return '100%';
+    }
+  }};
+
+  left: ${({ position }) => {
+    switch (position) {
+      case 'top':
+        return 0;
+      case 'topLeft':
+        return 'auto';
+      case 'left':
+        return 'auto';
+      case 'right':
+        return 'auto';
+      case 'bottom':
+        return 'auto';
+      case 'bottomLeft':
+        return 'auto';
+      default:
+        return 'auto';
+    }
+  }};
+  right: ${({ position }) => {
+    switch (position) {
+      case 'top':
+        return 'auto';
+      case 'topLeft':
+        return 0;
+      case 'left':
+        return 'auto';
+      case 'right':
+        return '0';
+      case 'bottom':
+        return 'auto';
+      case 'bottomLeft':
+        return 0;
+      default:
+        return 'auto';
+    }
+  }};
   z-index: 9999;
   max-width: 276px;
   font-size: ${({
@@ -59,7 +165,6 @@ const PopOverContent = styled.div`
     },
   }) => borderRadius};
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  margin-bottom: 10px;
 
   &:after,
   &:before {
@@ -69,95 +174,361 @@ const PopOverContent = styled.div`
     width: 0;
     height: 0;
     position: absolute;
-    top: 100%;
-    left: calc(50% - 10px);
+    top: ${({ position }) => {
+      switch (position) {
+        case 'top':
+          return '100%';
+        case 'topLeft':
+          return '100%';
+        case 'left':
+          return 'auto';
+        case 'right':
+          return 'auto';
+        case 'bottom':
+          return 'auto';
+        case 'bottomLeft':
+          return 'auto';
+        default:
+          return '100%';
+      }
+    }};
+    bottom: ${({ position }) => {
+      switch (position) {
+        case 'top':
+          return 'auto';
+        case 'topLeft':
+          return 'auto';
+        case 'left':
+          return '100%';
+        case 'right':
+          return '100%';
+        case 'bottom':
+          return '100%';
+        case 'bottomLeft':
+          return '100%';
+        default:
+          return 'auto';
+      }
+    }};
+
+    left: ${({ position, theme }) => {
+      switch (position) {
+        case 'top':
+          return `${theme.spacing.small}`;
+        case 'topLeft':
+          return 'auto';
+        case 'left':
+          return `${theme.spacing.small}`;
+        case 'right':
+          return 'auto';
+        case 'bottom':
+          return `${theme.spacing.small}`;
+        case 'bottomLeft':
+          return 'auto';
+        default:
+          return `${theme.spacing.small}`;
+      }
+    }};
+    right: ${({ position, theme }) => {
+      switch (position) {
+        case 'top':
+          return `auto`;
+        case 'topLeft':
+          return `${theme.spacing.small}`;
+        case 'left':
+          return 'auto';
+        case 'right':
+          return `${theme.spacing.small}`;
+        case 'bottom':
+          return `auto`;
+        case 'bottomLeft':
+          return `${theme.spacing.small}`;
+        default:
+          return `auto`;
+      }
+    }};
   }
   &:before {
-    border-color: rgba(0, 0, 0, 0.25) transparent transparent;
+    border-color: ${({ position }) => {
+      switch (position) {
+        case 'top':
+          return 'rgba(0, 0, 0, 0.25) transparent transparent';
+        case 'topLeft':
+          return 'rgba(0, 0, 0, 0.25) transparent transparent';
+        case 'left':
+          return 'transparent transparent rgba(0, 0, 0, 0.25)';
+        case 'right':
+          return 'transparent transparent rgba(0, 0, 0, 0.25)';
+        case 'bottom':
+          return 'transparent transparent rgba(0, 0, 0, 0.25)';
+        case 'bottomLeft':
+          return 'transparent transparent rgba(0, 0, 0, 0.25)';
+        default:
+          return 'rgba(0, 0, 0, 0.25) transparent transparent';
+      }
+    }};
   }
   &:after {
-    margin-top: -1px;
-    border-color: ${COLORS.popoverBackground} transparent transparent;
+    margin: ${({ position }) => {
+      switch (position) {
+        case 'top':
+          return '-1px 0 0 0';
+        case 'topLeft':
+          return '-1px 0 0 0';
+        case 'left':
+          return '0 0 -1px 0';
+        case 'right':
+          return '0 0 -1px 0';
+        case 'bottom':
+          return '0 0 -1px 0';
+        case 'bottomLeft':
+          return '0 0 -1px 0';
+        default:
+          return '-1px 0 0 0';
+      }
+    }};
+    border-color: ${({ theme, position }) => {
+      switch (position) {
+        case 'top':
+          return `${theme.colors.popoverBackground} transparent transparent`;
+        case 'topLeft':
+          return `${theme.colors.popoverBackground} transparent transparent`;
+        case 'left':
+          return `transparent transparent ${theme.colors.popoverBackground}`;
+        case 'right':
+          return `transparent transparent ${theme.colors.popoverBackground}`;
+        case 'bottom':
+          return `transparent transparent ${theme.colors.popoverBackground}`;
+        case 'bottomLeft':
+          return `transparent transparent ${theme.colors.popoverBackground}`;
+        default:
+          return `${theme.colors.popoverBackground} transparent transparent`;
+      }
+    }};
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
+    margin-top: ${({ position }) => {
+      switch (position) {
+        case 'bottom':
+          return '10px';
+        case 'bottomLeft':
+          return '10px';
+        default:
+          return 0;
+      }
+    }};
+
+    margin-left: ${({ position }) => {
+      switch (position) {
+        case 'right':
+          return '10px';
+        default:
+          return 0;
+      }
+    }};
+    margin-right: ${({ position }) => {
+      switch (position) {
+        case 'left':
+          return '10px';
+        default:
+          return 0;
+      }
+    }};
+
+    top: ${({ position }) => {
+      switch (position) {
+        case 'top':
+          return 'auto';
+        case 'topLeft':
+          return 'auto';
+        case 'left':
+          return 0;
+        case 'right':
+          return 0;
+        case 'bottom':
+          return '100%';
+        case 'bottomLeft':
+          return '100%';
+        default:
+          return 'auto';
+      }
+    }};
+
+    left: ${({ position }) => {
+      switch (position) {
+        case 'top':
+          return 0;
+        case 'topLeft':
+          return 'auto';
+        case 'left':
+          return 'auto';
+        case 'right':
+          return '100%';
+        case 'bottom':
+          return 'auto';
+        case 'bottomLeft':
+          return 'auto';
+        default:
+          return 'auto';
+      }
+    }};
+    right: ${({ position }) => {
+      switch (position) {
+        case 'top':
+          return 'auto';
+        case 'topLeft':
+          return 0;
+        case 'left':
+          return '100%';
+        case 'right':
+          return 'auto';
+        case 'bottom':
+          return 'auto';
+        case 'bottomLeft':
+          return 0;
+        default:
+          return 'auto';
+      }
+    }};
+
+    &:after,
+    &:before {
+      content: '';
+      top: ${({ position, theme }) => {
+        switch (position) {
+          case 'top':
+            return '100%';
+          case 'topLeft':
+            return '100%';
+          case 'left':
+            return `${theme.spacing.extraSmall}`;
+          case 'right':
+            return `${theme.spacing.extraSmall}`;
+          case 'bottom':
+            return 'auto';
+          case 'bottomLeft':
+            return 'auto';
+          default:
+            return '100%';
+        }
+      }};
+      bottom: ${({ position }) => {
+        switch (position) {
+          case 'top':
+            return 'auto';
+          case 'topLeft':
+            return 'auto';
+          case 'left':
+            return 'auto';
+          case 'right':
+            return 'auto';
+          case 'bottom':
+            return '100%';
+          case 'bottomLeft':
+            return '100%';
+          default:
+            return 'auto';
+        }
+      }};
+
+      left: ${({ position, theme }) => {
+        switch (position) {
+          case 'top':
+            return `${theme.spacing.small}`;
+          case 'topLeft':
+            return 'auto';
+          case 'left':
+            return '100%';
+          case 'right':
+            return '-20px';
+          case 'bottom':
+            return `${theme.spacing.small}`;
+          case 'bottomLeft':
+            return 'auto';
+          default:
+            return `${theme.spacing.small}`;
+        }
+      }};
+      right: ${({ position, theme }) => {
+        switch (position) {
+          case 'top':
+            return `auto`;
+          case 'topLeft':
+            return `${theme.spacing.small}`;
+          case 'left':
+            return 'auto';
+          case 'right':
+            return `0`;
+          case 'bottom':
+            return `auto`;
+          case 'bottomLeft':
+            return `${theme.spacing.small}`;
+          default:
+            return `auto`;
+        }
+      }};
+    }
+    &:before {
+      border-color: ${({ position }) => {
+        switch (position) {
+          case 'top':
+            return 'rgba(0, 0, 0, 0.25) transparent transparent';
+          case 'topLeft':
+            return 'rgba(0, 0, 0, 0.25) transparent transparent';
+          case 'left':
+            return 'transparent transparent transparent rgba(0, 0, 0, 0.25)';
+          case 'right':
+            return 'transparent rgba(0, 0, 0, 0.25) transparent transparent';
+          case 'bottom':
+            return 'transparent transparent rgba(0, 0, 0, 0.25)';
+          case 'bottomLeft':
+            return 'transparent transparent rgba(0, 0, 0, 0.25)';
+          default:
+            return 'rgba(0, 0, 0, 0.25) transparent transparent';
+        }
+      }};
+    }
+    &:after {
+      margin: ${({ position }) => {
+        switch (position) {
+          case 'top':
+            return '-1px 0 0 0';
+          case 'topLeft':
+            return '-1px 0 0 0';
+          case 'left':
+            return '0 0 0 -1px';
+          case 'right':
+            return '0 0 0 1px';
+          case 'bottom':
+            return '0 0 -1px 0';
+          case 'bottomLeft':
+            return '0 0 -1px 0';
+          default:
+            return '-1px 0 0 0';
+        }
+      }};
+      border-color: ${({ theme, position }) => {
+        switch (position) {
+          case 'top':
+            return `${theme.colors.popoverBackground} transparent transparent`;
+          case 'topLeft':
+            return `${theme.colors.popoverBackground} transparent transparent`;
+          case 'left':
+            return `transparent transparent transparent ${theme.colors.popoverBackground}`;
+          case 'right':
+            return `transparent ${theme.colors.popoverBackground} transparent transparent`;
+          case 'bottom':
+            return `transparent transparent ${theme.colors.popoverBackground}`;
+          case 'bottomLeft':
+            return `transparent transparent ${theme.colors.popoverBackground}`;
+          default:
+            return `${theme.colors.popoverBackground} transparent transparent`;
+        }
+      }};
+    }
   }
 `;
-
-const StyledPopOverContent = styled(PopOverContent)<StyledPopOverContentType>`
-    ${({ position }: StyledPopOverContentType) =>
-      position === 'bottom' &&
-      css`
-        margin-top: 10px;
-      `}
-
-    ${({ theme, position }: StyledPopOverContentType) =>
-      (position === 'bottom' || position === 'left' || position === 'right') &&
-      css`
-        bottom: auto;
-        left: auto;
-        top: 100%;
-        margin-bottom: 0;
-        &:after,
-        &:before {
-          bottom: 100%;
-          top: auto;
-        }
-        &:before {
-          border-color: transparent transparent rgba(0, 0, 0, 0.25);
-        }
-        &:after {
-          border-color: transparent transparent ${theme.colors.popoverBackground};
-          margin: 0 0 -1px 0;
-        }
-      `}
-    @media (min-width: ${BREAKPOINT.desktop}) {
-      ${({ theme, position }: StyledPopOverContentType) =>
-        position === 'right' &&
-        css`
-          bottom: auto;
-          left: 100%;
-          right: auto;
-          top: 0;
-          margin-bottom: 0;
-          margin-left: 10px;
-          &:after,
-          &:before {
-            bottom: auto;
-            left: -20px;
-            top: calc(50% - 10px);
-          }
-          &:before {
-            border-color: transparent rgba(0, 0, 0, 0.25) transparent transparent;
-          }
-          &:after {
-            border-color: transparent ${theme.colors.popoverBackground} transparent transparent;
-            margin: 0 0 0 1px;
-          }
-        `}
-      ${({ position, theme }: StyledPopOverContentType) =>
-        position === 'left' &&
-        css`
-          top: auto;
-          bottom: auto;
-          left: auto;
-          right: 100%;
-          top: 0;
-          margin-bottom: 0;
-          margin-right: 10px;
-          &:after,
-          &:before {
-            bottom: auto;
-            left: 100%;
-            top: calc(50% - 10px);
-          }
-          &:before {
-            border-color: transparent transparent transparent rgba(0, 0, 0, 0.25);
-          }
-          &:after {
-            border-color: transparent transparent transparent ${theme.colors.popoverBackground};
-            margin: 0 0 0 -1px;
-          }
-        `}
-    } 
-  `;
 
 const PopOver: FunctionComponent<PopOverProps> = props => {
   const popRef = useRef(null);
@@ -186,11 +557,6 @@ const PopOver: FunctionComponent<PopOverProps> = props => {
   return (
     <ThemeProvider theme={theme}>
       <PopOverWrapper {...props} ref={popRef}>
-        {showPopOver && (
-          <StyledPopOverContent position={props.position} theme={theme} role="dialog" aria-modal={showPopOver}>
-            {props.overlay}
-          </StyledPopOverContent>
-        )}
         {React.Children.map(props.children, (child: React.ReactElement) =>
           React.cloneElement(child, {
             onClick: toggle,
@@ -198,6 +564,11 @@ const PopOver: FunctionComponent<PopOverProps> = props => {
             'aria-haspopup': 'dialog',
           }),
         )}
+        {showPopOver ? (
+          <PopOverContent position={props.position} theme={theme} role="dialog" aria-modal={showPopOver}>
+            {props.overlay}
+          </PopOverContent>
+        ) : null}
       </PopOverWrapper>
     </ThemeProvider>
   );
