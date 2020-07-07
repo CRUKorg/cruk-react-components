@@ -25,6 +25,7 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
     <Icon name="envelope" />
     <Icon name="envelopeSquare" />
     <Icon name="eventName" />
+    <Icon name="heartbeat" />
     <Icon name="facebook" />
     <Icon name="facebookRound" />
     <Icon name="facebookSquare" />
