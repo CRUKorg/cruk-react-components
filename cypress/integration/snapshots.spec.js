@@ -36,7 +36,6 @@ const selectComponent = (componentName, brand) => {
       );
       cy.get('[aria-label="Example code preview"]')
         .first().within(($list) => {
-          // TODO stub address endpoints.
           cy.getInputByLabel("Home address").type("N10").blur();
           cy.contains("li","N17 0AB High Road, London - 14 Addresses").should("exist");
           cy.matchImageSnapshot(`${brand}_${componentName}`)
@@ -103,15 +102,15 @@ describe('Snapshots', function () {
     cy.server();
     cy.route('**/Find/**', { Items: [
       {
-        Description: "London"
-        Id: "1"
-        Text: "N10 Logistics"
+        Description: "London",
+        Id: "1",
+        Text: "N10 Logistics",
         Type: "Address"
       },
       {
-        Description: "High Road, London - 14 Addresses"
-        Id: "2"
-        Text: "N17 0AB"
+        Description: "High Road, London - 14 Addresses",
+        Id: "2",
+        Text: "N17 0AB",
         Type: "Postcode"
       }
     ]});
@@ -131,6 +130,12 @@ describe('Snapshots', function () {
 
     it('has no detectable a11y violations', () => {
       cy.visit(`/${componentName.toLowerCase()}`);
+      if (componentName === 'AddressLookup') {
+        cy.get('[aria-label="Example code preview"]')
+          .first().within(($list) => {
+          cy.getInputByLabel("Home address").type("N10").blur();
+          cy.contains("li","N17 0AB High Road, London - 14 Addresses").should("exist");
+        });
       cy.injectAxe();
       cy.checkA11y('[aria-label="Example code preview"]', {
         rules: {
