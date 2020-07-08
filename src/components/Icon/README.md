@@ -29,6 +29,7 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
     <Icon name="facebook" />
     <Icon name="facebookRound" />
     <Icon name="facebookSquare" />
+    <Icon name="flag" />
     <Icon name="linkedinSquare" />
     <Icon name="linkedin" />
     <Icon name="messengerSquare" />
