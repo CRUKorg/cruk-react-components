@@ -163,6 +163,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
       <TextField
         aria-activedescendant={addressOptions.length ? `addressOptions-${activeOption}` : ''}
         aria-autocomplete="both"
+        aria-owns="found_addresses"
         aria-expanded={addressOptions.length ? 'true' : 'false'}
         hasError={hasError || !!error}
         hintText="Start typing your address or postcode"
@@ -197,7 +198,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
       </ScreenReaderOnly>
       {!!addressOptions.length && (
         <ListWrapper ref={wrapperRef}>
-          <List role="listbox" aria-label="found addresses" theme={theme}>
+          <List aria-label="found addresses" id="found_addresses" role="listbox" theme={theme}>
             {addressOptions.map((address, index) => (
               <ListItem
                 id={`addressOptions-${index}`}
