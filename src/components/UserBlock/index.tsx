@@ -3,7 +3,6 @@ import styled, { withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 import Avatar from '../Avatar';
-import { COLORS, TYPOGRAPHY, FONT_SIZES } from '../../themes/cruk';
 
 import { ThemeType } from '../../themes/types';
 
@@ -20,24 +19,23 @@ const StyledUserBlock = styled.div<UserBlockProps>`
   display: flex;
   align-items: center;
   justify-content: start;
-  margin-bottom: ${props => props.theme.spacing.extraSmall};
+  margin-bottom: ${({ theme }) => theme.spacing.extraSmall};
   flex: 1;
 `;
 
 const Details = styled.div`
   flex: 1;
-  margin-left: ${props => props.theme.spacing.extraSmall};
+  margin-left: ${({ theme }) => theme.spacing.extraSmall};
   text-align: left;
 `;
 
 const Name = styled.div`
-  font-weight: ${props =>
-    (props.theme.typography && props.theme.typography.fontWeightHeavy) || TYPOGRAPHY.fontWeightHeavy};
-  font-size: ${({ theme: { fontSizes } }) => (fontSizes && fontSizes.medium ? fontSizes.medium : FONT_SIZES.medium)};
+  font-weight: ${({ theme }) => theme.typography.fontWeightHeavy};
+  font-size: ${({ theme }) => theme.fontSizes.medium};
 `;
 
 const Extra = styled.div`
-  color: ${props => (props.theme.colors && props.theme.colors.userBlockExtraText) || COLORS.userBlockExtraText};
+  color: ${({ theme }) => theme.colors.userBlockExtraText};
   margin-top: 4px;
 `;
 
