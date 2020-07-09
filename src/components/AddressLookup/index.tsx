@@ -17,7 +17,7 @@ const ListWrapper = styled.div`
 `;
 
 const List = styled.ul`
-  background-color: ${props => (props.theme.colors.backgroundLight)};
+  background-color: ${props => props.theme.colors.backgroundLight};
   border-radius: 3px;
   border: 2px solid #ccc;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
@@ -33,7 +33,8 @@ const List = styled.ul`
 
 const ListItem = styled.li<{ isActive: boolean }>`
   align-items: center;
-  background-color: ${props => (props.isActive ? props.theme.colors.backgroundMid : props.theme.colors.backgroundLight)};
+  background-color: ${props =>
+    props.isActive ? props.theme.colors.backgroundMid : props.theme.colors.backgroundLight};
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -160,9 +161,10 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
   return (
     <>
       <TextField
-        aria-activedescendant={addressOptions.length ? `addressOptions-${activeOption}` : ""}
+        aria-activedescendant={addressOptions.length ? `addressOptions-${activeOption}` : ''}
         aria-autocomplete="both"
-        aria-expanded={addressOptions.length ? "true" : "false"}
+        aria-owns="found_addresses"
+        aria-expanded={addressOptions.length ? 'true' : 'false'}
         hasError={hasError || !!error}
         hintText="Start typing your address or postcode"
         label="Home address"
@@ -196,7 +198,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
       </ScreenReaderOnly>
       {!!addressOptions.length && (
         <ListWrapper ref={wrapperRef}>
-          <List role="listbox" theme={theme}>
+          <List aria-label="found addresses" id="found_addresses" role="listbox" theme={theme}>
             {addressOptions.map((address, index) => (
               <ListItem
                 id={`addressOptions-${index}`}
