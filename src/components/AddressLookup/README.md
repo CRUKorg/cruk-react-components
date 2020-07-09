@@ -77,7 +77,6 @@ function () {
               setCity(e.target.value);
             }}
             label="City"
-            name="address.city"
             value={city}
             required
           />
