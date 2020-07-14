@@ -12,8 +12,6 @@ type LoaderProps = {
 const SpinnerWrapper = styled.div<LoaderProps>`
   position: static;
   top: 0;
-  left: 50%;
-  margin-left: -35px;
 `;
 
 const BounceDelay = keyframes`
@@ -26,6 +24,7 @@ const BounceDelay = keyframes`
       transform: scale(1)
   }
 `;
+
 const Spinner = styled.div`
   width: 70px;
   margin: 22px auto;
