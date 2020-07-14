@@ -9,13 +9,6 @@ type LoaderProps = {
   theme?: ThemeType;
 };
 
-const SpinnerWrapper = styled.div<LoaderProps>`
-  position: static;
-  top: 0;
-  left: 50%;
-  margin-left: -35px;
-`;
-
 const BounceDelay = keyframes`
   0%,
   80%,
@@ -26,10 +19,11 @@ const BounceDelay = keyframes`
       transform: scale(1)
   }
 `;
+
 const Spinner = styled.div`
-  width: 70px;
-  margin: 22px auto;
+  width: 100%;
   text-align: center;
+  margin-top: ${({ theme }) => theme.spacing.small};
 
   span {
     display: inline-block;
@@ -75,14 +69,11 @@ const Loader: FunctionComponent<LoaderProps> = props => {
   };
   return (
     <ThemeProvider theme={theme}>
-      <SpinnerWrapper {...props}>
-        <Spinner>
-          <span />
-          <span />
-          <span />
-        </Spinner>
-        {props.children}
-      </SpinnerWrapper>
+      <Spinner>
+        <span />
+        <span />
+        <span />
+      </Spinner>
     </ThemeProvider>
   );
 };
