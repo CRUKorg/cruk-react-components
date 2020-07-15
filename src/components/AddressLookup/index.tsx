@@ -17,7 +17,7 @@ const ListWrapper = styled.div`
 `;
 
 const List = styled.ul`
-  background-color: ${(props) => props.theme.colors.backgroundLight};
+  background-color: ${props => props.theme.colors.backgroundLight};
   border-radius: 3px;
   border: 2px solid #ccc;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
@@ -33,7 +33,7 @@ const List = styled.ul`
 
 const ListItem = styled.li<{ isActive: boolean }>`
   align-items: center;
-  background-color: ${(props) =>
+  background-color: ${props =>
     props.isActive ? props.theme.colors.backgroundMid : props.theme.colors.backgroundLight};
   cursor: pointer;
   display: flex;
@@ -133,14 +133,14 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
         }
         return res.json();
       })
-      .then((data) => {
+      .then(data => {
         // Occasionally get the error "The query didn't respond fast enough, it may be too complex."
         // returned with a 200 response. Example query "n17 6t"
         if (data.Items[0].Error) return console.error(data.Items[0]);
         setActiveOption(0);
         setAddressOptions(data.Items || []);
       })
-      .catch((err) => console.error(err));
+      .catch(err => console.error(err));
   };
 
   const getAddress = (id: string) => {
@@ -151,11 +151,11 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
         }
         return res.json();
       })
-      .then((data) => {
+      .then(data => {
         clearOptions();
         onAddressSelected(data.Items[0]);
       })
-      .catch((err) => console.error(err));
+      .catch(err => console.error(err));
   };
 
   return (
@@ -171,7 +171,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
         required
         role="combobox"
         {...props}
-        onKeyDown={(e) => {
+        onKeyDown={e => {
           if (e.keyCode === 13 && addressOptions[activeOption]) {
             e.preventDefault();
             if (addressOptions[activeOption].Type === 'Address') return getAddress(addressOptions[activeOption].Id);
@@ -193,9 +193,8 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
       />
       <ScreenReaderOnly role="status" aria-live="assertive">
         {!!addressOptions.length &&
-          `We have found ${addressOptions.length} result${
-            addressOptions.length !== 1 && 's'
-          } matching your search. Use up and down arrow keys to navigate`}
+          `We have found ${addressOptions.length} result${addressOptions.length !== 1 &&
+            's'} matching your search. Use up and down arrow keys to navigate`}
       </ScreenReaderOnly>
       {!!addressOptions.length && (
         <ListWrapper ref={wrapperRef}>
