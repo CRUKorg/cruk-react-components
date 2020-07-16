@@ -172,7 +172,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
         role="combobox"
         {...props}
         onKeyDown={e => {
-          if (e.keyCode === 13) {
+          if (e.keyCode === 13 && addressOptions[activeOption]) {
             e.preventDefault();
             if (addressOptions[activeOption].Type === 'Address') return getAddress(addressOptions[activeOption].Id);
             search(addressOptions[activeOption].Text, addressOptions[activeOption].Id);
