@@ -54,11 +54,8 @@ const StyledSelect = styled.select<StyledSelectProps>`
 type SelectProps = SelectHTMLAttributes<{}> & {
   error?: string;
   hasError?: boolean;
-  onChange: React.ChangeEventHandler<HTMLSelectElement>;
-  required?: boolean;
   theme: ThemeType;
   label: string;
-  value: string;
   hintText?: ReactElement | string;
 };
 
