@@ -9,7 +9,7 @@ import { Heading, Box, Icon, Button, crukTheme, crukTheme2, su2cTheme } from '..
 const buttonContent = () => (
   <Box>
     <Box>
-      <Button onClick={action('clicked')}>Standard button</Button>
+      <Button onClick={action('clicked')}>Standard button!</Button>
     </Box>
     <Box>
       <Button disabled={true} onClick={action('clicked')}>
