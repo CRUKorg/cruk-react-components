@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { ThemeProvider } from 'styled-components';
 
 //components
-import { Box, Icon, Button, crukTheme, crukTheme2, su2cTheme } from '../../index';
+import { Heading, Box, Icon, Button, crukTheme, crukTheme2, su2cTheme } from '../../index';
 
 const buttonContent = () => (
   <Box>
@@ -92,7 +92,13 @@ const buttonContent = () => (
   </Box>
 );
 
-storiesOf('Button', module)
-  .add('CRUK buttons', () => <ThemeProvider theme={crukTheme}>{buttonContent()}</ThemeProvider>)
-  .add('CRUK2 buttons', () => <ThemeProvider theme={crukTheme2}>{buttonContent()}</ThemeProvider>)
-  .add('su2c buttons', () => <ThemeProvider theme={su2cTheme}>{buttonContent()}</ThemeProvider>);
+storiesOf('Button', module).add('Buttons', () => (
+  <>
+    <Heading>CRUK Theme</Heading>
+    <ThemeProvider theme={crukTheme}>{buttonContent()}</ThemeProvider>
+    <Heading>CRUK 2 Theme</Heading>
+    <ThemeProvider theme={crukTheme2}>{buttonContent()}</ThemeProvider>
+    <Heading>SU2C Theme</Heading>
+    <ThemeProvider theme={su2cTheme}>{buttonContent()}</ThemeProvider>
+  </>
+));

@@ -28,7 +28,8 @@
     "dev": "NODE_ENV=development npm i && docker-compose up server",
     "rollup:build-lib": "npm run clean-lib && rollup --config",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --project-token c0velc1ond"
   },
   "husky": {
     "hooks": {
@@ -68,6 +69,7 @@
     "axe-core": "^3.4.2",
     "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.8.0",
+    "chromatic": "^5.1.0",
     "cypress": "^4.11.0",
     "cypress-axe": "^0.8.1",
     "cypress-image-snapshot": "^3.1.1",

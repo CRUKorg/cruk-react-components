@@ -11,3 +11,4 @@
 /cypress/snapshots/snapshots.spec.js/__diff_output__
 
 .idea
+build-storybook.log
