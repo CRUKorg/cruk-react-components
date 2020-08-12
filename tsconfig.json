@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
+    "types": ["cypress", "node"], //including any additional types
     "declaration": true,
     "declarationDir": "./lib",
     "esModuleInterop": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "lib": ["dom", "es2015", "es2016"],
     "jsx": "react",
     "target": "es5",
     "module": "es6",

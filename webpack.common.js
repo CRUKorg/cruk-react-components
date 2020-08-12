@@ -31,10 +31,7 @@ function createWebpackConfig(config) {
       ],
     },
     resolve: {
-      modules: [
-        path.resolve(__dirname, 'node_modules'),
-        path.resolve(__dirname, './'),
-      ],
+      modules: [path.resolve(__dirname, 'node_modules'), path.resolve(__dirname, './')],
       extensions: ['.tsx', '.ts', '.js', '.json'],
     },
   };
