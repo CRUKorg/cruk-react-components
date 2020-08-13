@@ -31,6 +31,17 @@ services:
       - server
     volumes:
       - .:/app:delegated
+  cypress_update:
+    environment:
+      - CYPRESS_updateSnapshots=true
+    networks:
+      network:
+    image: cypress/included:4.9.0
+    working_dir: /app
+    depends_on:
+      - server
+    volumes:
+      - .:/app:delegated
 
 networks:
   network:
