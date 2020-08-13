@@ -1,5 +1,5 @@
 module.exports = {
-  testMatch: ['<rootDir>/src/*/__tests__/**/*.ts'],
+  testMatch: ['<rootDir>/src/*/__tests__/**/*.jest.ts'],
   collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!<rootDir>/node_modules/', '!<rootDir>/path/to/dir/'],
   modulePaths: ['<rootDir>'],
   moduleDirectories: ['<rootDir>', 'node_modules'],
