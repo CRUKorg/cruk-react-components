@@ -42,9 +42,6 @@ describe('Badge', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.get('body')
       .first()
-      .matchImageSnapshot({
-        customSnapshotsDir: './cypress/snapshots',
-        customDiffDir: './cypress/snapshots/diff',
-      });
+      .matchImageSnapshot();
   });
 });
