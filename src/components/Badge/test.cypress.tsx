@@ -3,8 +3,8 @@
 import React from 'react';
 import { mount } from 'cypress-react-unit-test';
 
-import TestWrapper from '../../TestWrapper';
-import { Badge, Icon } from '../../';
+import TestWrapper from '../TestWrapper';
+import { Badge, Icon } from '../';
 
 const content = () => {
   return (
