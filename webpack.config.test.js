@@ -1,6 +1,7 @@
 var path = require('path');
+const createWebpackConfig = require('./webpack.common').createWebpackConfig;
 
-module.exports = {
+module.exports = createWebpackConfig({
   module: {
     rules: [
       {
@@ -15,6 +16,10 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.md?$/,
+        use: ['babel-loader', '@mdx-js/loader'],
+      },
     ],
   },
   resolve: {
@@ -26,4 +31,4 @@ module.exports = {
     watchContentBase: true,
     port: 8080,
   },
-};
+});
