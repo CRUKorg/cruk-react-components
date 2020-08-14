@@ -29,6 +29,7 @@ jobs:
           wait-on: 'http://localhost:8080/'
           record: false
           parallel: true
+          command-prefix: 'docker-compose run'
       - name: Test
         run: npm run cypress-ci
       - name: Work around our usage of Github storage
