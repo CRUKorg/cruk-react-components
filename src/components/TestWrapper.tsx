@@ -7,7 +7,7 @@ import su2cTheme from '../themes/su2c';
 import Heading from './Heading';
 
 export const TestWrapper: FC = ({ children }) => (
-  <div style={{ overflow: 'auto' }} tabIndex="0">
+  <div style={{ overflow: 'auto' }} tabIndex={0}>
     <ThemeProvider theme={crukTheme}>
       <GlobalStyle />
       <Heading>CRUK Theme</Heading>
