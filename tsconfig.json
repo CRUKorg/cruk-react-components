@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "types": ["cypress", "node"], //including any additional types
     "declaration": true,
     "declarationDir": "./lib",
     "esModuleInterop": true,
