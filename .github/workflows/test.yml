@@ -18,7 +18,12 @@ jobs:
         containers: [1, 2, 3]
     steps:
       - name: Checkout cruk-react-components
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+          registry-url: 'https://registry.npmjs.org'
       - name: npm install
         run: docker-compose run npm ci
       - name: Bring up the server
