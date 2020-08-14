@@ -15,7 +15,7 @@ jobs:
       - name: Bring up the server
         run: docker-compose up -d server
       - name: Test
-        run: npm run test
+        run: npm run cypress-ci
       - name: Work around our usage of Github storage
         if: failure()
         run: |
@@ -29,3 +29,12 @@ jobs:
         with:
           name: output
           path: output
+  Jest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout cruk-react-components
+        uses: actions/checkout@v1
+      - name: npm install
+        run: docker-compose run npm ci
+      - name: Test
+        run: npm run jest-ci --verbose

@@ -23,7 +23,7 @@
     "cypress": "$(npm bin)/cypress open",
     "jest-ci": "NODE_ENV=test jest --watchAll=false",
     "jest": "NODE_ENV=test jest --watch",
-    "test": "NODE_ENV=test npm run jest-ci && npm run cypress-ci",
+    "test": "npm run jest-ci && npm run cypress-ci",
     "test:update": "NODE_ENV=test npm run cypress-ci:update",
     "clean": "rm -rf node_modules/",
     "release": "node release.js",
