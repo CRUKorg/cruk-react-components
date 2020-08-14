@@ -102,7 +102,7 @@ const StyledButton = styled.button`
       display: inline-block;
       padding: 0;
       border: 0px;
-      background-color: none;
+      background-color: rgba(255, 255, 255, 0);
       transition: color 0.2s ease;
       color: ${props.theme.colors.primary};
       font-family: ${({
