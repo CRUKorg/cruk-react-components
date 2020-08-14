@@ -5,6 +5,6 @@
   "experimentalFetchPolyfill": true,
   "experimentalComponentTesting": true,
   "componentFolder": "src/components",
-  "testFiles": "**/[A-B]*/*.cypress.*",
+  "testFiles": "**/[a-hA-H]*/*.cypress.*",
   "video": false
 }

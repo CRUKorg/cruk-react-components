@@ -21,6 +21,7 @@
     "cypress-headless": "docker-compose stop cypress && docker-compose run cypress",
     "cypress-ci-1": "docker-compose stop cypress && docker-compose run cypress --config-file cypress-test-1.json",
     "cypress-ci-2": "docker-compose stop cypress && docker-compose run cypress --config-file cypress-test-2.json",
+    "cypress-ci-3": "docker-compose stop cypress && docker-compose run cypress --config-file cypress-test-3.json",
     "cypress-headless:update": "docker-compose stop cypress_update && docker-compose run cypress_update",
     "cypress": "$(npm bin)/cypress open",
     "jest-ci": "NODE_ENV=test jest --watchAll=false",
