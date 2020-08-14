@@ -25,6 +25,7 @@ module.exports = createWebpackConfig({
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
+  devtool: false,
   devServer: {
     host: '0.0.0.0',
     contentBase: path.resolve(__dirname, './src'),
