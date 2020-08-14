@@ -6,7 +6,7 @@ import { mount } from 'cypress-react-unit-test';
 import TestWrapper from '../TestWrapper';
 import { AddressLookup, Box, TextField } from '../';
 
-const content = () => {
+const Content = () => {
   const [validated, setValidated] = React.useState(false);
   const [line1, setLine1] = React.useState('');
   const [line2, setLine2] = React.useState('');
@@ -24,74 +24,96 @@ const content = () => {
   };
 
   return (
-    <>
-      <fieldset>
-        <legend>Your Address</legend>
-        <p>
-          Example wired up to a simple form, with controlled inputs. For production use we recomend using useing Formic
-          and Yup for form management and validation
-        </p>
-        <Box>
-          <AddressLookup
-            apiKey="MG17-ZD93-FF33-KF13"
-            onAddressSelected={handleAddressSelected}
-            onChange={e => {
-              setValidated(false);
-              setLine1(e.target.value);
-            }}
-            value={line1}
-          />
-        </Box>
-        <Box>
-          <TextField
-            onChange={e => {
-              setValidated(false);
-              setLine2(e.target.value);
-            }}
-            label="Address line 2"
-            value={line2}
-          />
-        </Box>
-        <Box>
-          <TextField
-            onChange={e => {
-              setValidated(false);
-              setLine3(e.target.value);
-            }}
-            label="Address line 3"
-            value={line3}
-          />
-        </Box>
-        <Box>
-          <TextField
-            onChange={e => {
-              setValidated(false);
-              setCity(e.target.value);
-            }}
-            label="City"
-            value={city}
-            required
-          />
-          <Box></Box>
-          <TextField
-            onChange={e => {
-              setValidated(false);
-              setPostalCode(e.target.value);
-            }}
-            label="Postcode"
-            value={postalCode}
-            required
-          />
-        </Box>
-        <pre>{JSON.stringify({ validated }, null, 2)}</pre>
-      </fieldset>
-    </>
+    <fieldset>
+      <legend>Your Address</legend>
+      <p>
+        Example wired up to a simple form, with controlled inputs. For production use we recomend using useing Formic
+        and Yup for form management and validation
+      </p>
+      <Box>
+        <AddressLookup
+          apiKey="MG17-ZD93-FF33-KF13"
+          onAddressSelected={handleAddressSelected}
+          onChange={e => {
+            setValidated(false);
+            setLine1(e.target.value);
+          }}
+          value={line1}
+        />
+      </Box>
+      <Box>
+        <TextField
+          onChange={e => {
+            setValidated(false);
+            setLine2(e.target.value);
+          }}
+          label="Address line 2"
+          value={line2}
+        />
+      </Box>
+      <Box>
+        <TextField
+          onChange={e => {
+            setValidated(false);
+            setLine3(e.target.value);
+          }}
+          label="Address line 3"
+          value={line3}
+        />
+      </Box>
+      <Box>
+        <TextField
+          onChange={e => {
+            setValidated(false);
+            setCity(e.target.value);
+          }}
+          label="City"
+          value={city}
+          required
+        />
+        <Box></Box>
+        <TextField
+          onChange={e => {
+            setValidated(false);
+            setPostalCode(e.target.value);
+          }}
+          label="Postcode"
+          value={postalCode}
+          required
+        />
+      </Box>
+      <pre>{JSON.stringify({ validated }, null, 2)}</pre>
+    </fieldset>
   );
 };
 
 describe('AddressLookup', () => {
+  beforeEach(() => {
+    cy.server();
+    cy.route('**/Find/**', {
+      Items: [
+        {
+          Description: 'London',
+          Id: '1',
+          Text: 'N10 Logistics',
+          Type: 'Address',
+        },
+        {
+          Description: 'High Road, London - 14 Addresses',
+          Id: '2',
+          Text: 'N17 0AB',
+          Type: 'Postcode',
+        },
+      ],
+    });
+  });
+
   it('is accessible', () => {
-    mount(<TestWrapper>{content()}</TestWrapper>);
+    mount(
+      <TestWrapper>
+        <Content />
+      </TestWrapper>,
+    );
     cy.get('body')
       .first()
       .within($list => {
@@ -109,7 +131,11 @@ describe('AddressLookup', () => {
   });
 
   it('should match snapshot', () => {
-    mount(<TestWrapper>{content()}</TestWrapper>);
+    mount(
+      <TestWrapper>
+        <Content />
+      </TestWrapper>,
+    );
     cy.getInputByLabel('Home address')
       .type('N10')
       .blur();
