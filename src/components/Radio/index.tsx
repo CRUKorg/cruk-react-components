@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react';
-import styled, { withTheme, css } from 'styled-components';
+import React, { FC, InputHTMLAttributes } from 'react';
+import styled, { withTheme, css, ThemeProvider } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 
@@ -98,7 +98,7 @@ const VerticalAlign = styled.span`
   line-height: 100%;
 `;
 
-const StyledInput = styled.input`
+const StyledInput = styled.input<InputHTMLAttributes<HTMLInputElement>>`
   margin-right: ${({
     theme: {
       spacing: { extraExtraSmall },
@@ -132,39 +132,28 @@ const StyledInput = styled.input`
         `}
 `;
 
-type RadioProps = {
-  checked: boolean;
-  name: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
-  value: string;
-  className?: string;
-  disabled?: boolean;
+type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   theme?: ThemeType;
 };
 
-const RadioInput: FunctionComponent<RadioProps> = props => {
+const RadioInput: FC<RadioProps> = props => {
   const theme = {
     ...defaultTheme,
     ...props.theme,
   };
 
   return (
-    <StyledLabel className={props.className} checked={props.checked} theme={theme}>
-      <StyledInput
-        checked={props.checked}
-        disabled={props.disabled}
-        onChange={props.onChange}
-        name={props.name}
-        type="radio"
-        value={props.value}
-      />
-      {theme.utilities.useDefaultFromControls ? null : (
-        <CheckWrapper>
-          <Check />
-        </CheckWrapper>
-      )}
-      <VerticalAlign>{props.children || props.value}</VerticalAlign>
-    </StyledLabel>
+    <ThemeProvider theme={theme}>
+      <StyledLabel className={props.className} checked={props.checked}>
+        <StyledInput {...props} type="radio" children={undefined} />
+        {theme.utilities.useDefaultFromControls ? null : (
+          <CheckWrapper>
+            <Check />
+          </CheckWrapper>
+        )}
+        <VerticalAlign>{props.children || props.value}</VerticalAlign>
+      </StyledLabel>
+    </ThemeProvider>
   );
 };
 
