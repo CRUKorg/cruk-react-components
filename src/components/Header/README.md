@@ -16,6 +16,10 @@ This is a single line of text and the character limit depends on the theme, logo
 
 This has been kept quite open you can place any child elements in here but ideally it is narrow and its height is 50px or smaller.
 
+### Accessability
+
+There is a hidden skip link in the header which will only reveals itself on the first tab and to screen readers. This link helps users skip to the main page content, however this will only work with there is an element with an id of 'main' which the developer should create for every page.
+
 ### Try it out
 
 ```.jsx
