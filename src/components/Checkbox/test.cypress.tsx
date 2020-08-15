@@ -65,6 +65,8 @@ describe('Checkbox', () => {
   });
 
   it('should match snapshot', () => {
+    Cypress.config('waitForAnimations', true);
+    Cypress.config('animationDistanceThreshold', 2);
     mount(
       <TestWrapper>
         <Content />
