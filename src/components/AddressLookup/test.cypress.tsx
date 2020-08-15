@@ -142,9 +142,6 @@ describe('AddressLookup', () => {
     cy.contains('li', 'N17 0AB High Road, London - 14 Addresses').should('exist');
     cy.get('body')
       .first()
-      .matchImageSnapshot({
-        customSnapshotsDir: './cypress/snapshots',
-        customDiffDir: './cypress/snapshots/diff',
-      });
+      .matchImageSnapshot();
   });
 });

@@ -36,6 +36,8 @@ describe('Header', () => {
   });
 
   it('should match snapshot', () => {
+    Cypress.config('waitForAnimations', true);
+    Cypress.config('animationDistanceThreshold', 2);
     cy.viewport(1000, 480);
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.get('body')

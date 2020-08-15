@@ -32,15 +32,14 @@ describe('Avatar', () => {
   });
 
   it('should match snapshot', () => {
+    Cypress.config('waitForAnimations', true);
+    Cypress.config('animationDistanceThreshold', 2);
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.get('[src="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"]').should($img => {
       expect($img[0].naturalWidth).to.be.greaterThan(0);
     });
     cy.get('body')
       .first()
-      .matchImageSnapshot({
-        customSnapshotsDir: './cypress/snapshots',
-        customDiffDir: './cypress/snapshots/diff',
-      });
+      .matchImageSnapshot();
   });
 });
