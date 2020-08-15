@@ -2,7 +2,7 @@ import React, { FunctionComponent, AnchorHTMLAttributes, forwardRef, Ref } from 
 import styled, { css, withTheme, ThemeProvider } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 
-import Text from '../Text';
+import Text, { TextProps } from '../Text';
 import Icon from '../Icon';
 
 import { ThemeType } from 'src/themes/types';
@@ -15,12 +15,13 @@ const ChevyWithLevee = styled(Icon)`
   }) => extraExtraSmall};
 `;
 
-type LinkProps = AnchorHTMLAttributes<{}> & {
-  theme?: ThemeType;
-  textHoverColor?: string;
-  appearance?: 'primary' | 'secondary';
-  innerRef?: Ref<any>;
-};
+type LinkProps = AnchorHTMLAttributes<{}> &
+  TextProps & {
+    theme?: ThemeType;
+    textHoverColor?: string;
+    appearance?: 'primary' | 'secondary';
+    innerRef?: Ref<any>;
+  };
 
 const StyledLink = styled(Text)<LinkProps>`
   transition: color 0.2s ease;
