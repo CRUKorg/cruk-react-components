@@ -1,14 +1,14 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC, HTMLAttributes } from 'react';
 import { withTheme } from 'styled-components';
 import Text from '../Text';
 import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
-type ErrorTextProps = {
+type ErrorTextProps = HTMLAttributes<{}> & {
   theme: ThemeType;
 };
 
-const ErrorText: FunctionComponent<ErrorTextProps> = props => {
+const ErrorText: FC<ErrorTextProps> = props => {
   const theme = {
     ...defaultTheme,
     ...props.theme,
