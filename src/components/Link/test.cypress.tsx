@@ -77,6 +77,8 @@ describe('Link', () => {
   });
 
   it('should match snapshot', () => {
+    Cypress.config('waitForAnimations', true);
+    Cypress.config('animationDistanceThreshold', 2);
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.get('body')
       .first()
