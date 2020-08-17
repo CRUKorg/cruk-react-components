@@ -30,7 +30,7 @@ const content = () => {
   );
 };
 
-describe('Text', () => {
+describe('UserBlock', () => {
   it('is accessible', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.injectAxe();
