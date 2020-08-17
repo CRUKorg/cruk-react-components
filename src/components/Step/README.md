@@ -14,8 +14,8 @@ function () {
 
   return (
     <>
-      <Step current="3" steps={['Account','Details','Activity','Motivation','Page']} />
-      <Step current="3" steps={['Step1','Step2','Step3','Step4','Step5','Step6']} />
+      <Step current={3} steps={['Account','Details','Activity','Motivation','Page']} />
+      <Step current={3} steps={['Step1','Step2','Step3','Step4','Step5','Step6']} />
       <Box>
         <Heading h2 marginTop="medium">Create your Giving Page</Heading>
         <Step current={step} steps={steps} />

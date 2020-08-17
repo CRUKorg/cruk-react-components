@@ -7,7 +7,7 @@ import { ThemeType } from '../../themes/types';
 
 type StepProps = {
   current: number;
-  steps: [];
+  steps: string[];
   theme?: ThemeType;
 };
 
