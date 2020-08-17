@@ -61,7 +61,7 @@ describe('Radio', () => {
         <Content />
       </TestWrapper>,
     );
-    cy.wait(200); //annoying font loading flake on CI
+    cy.wait(300); //annoying font loading flake on CI
     cy.get('body')
       .first()
       .matchImageSnapshot();
