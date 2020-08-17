@@ -60,6 +60,7 @@ describe('RadioGroup', () => {
         <Content />
       </TestWrapper>,
     );
+    cy.wait(200); //annoying font loading flake on CI
     cy.get('body')
       .first()
       .matchImageSnapshot();
