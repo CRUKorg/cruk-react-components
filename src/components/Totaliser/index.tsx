@@ -99,6 +99,7 @@ const StyledProgressBar = styled(ProgressBar)<StyledProgressBarProps>`
     `}
 `;
 
+// TODO figure out how we want to handle AriaAttributes
 const Totaliser: FunctionComponent<TotaliserProps> = props => {
   const theme = {
     ...defaultTheme,
