@@ -4,7 +4,7 @@ import Text from '../Text';
 import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
-type ErrorTextProps = HTMLAttributes<{}> & {
+type ErrorTextProps = HTMLAttributes<HTMLElement> & {
   theme: ThemeType;
 };
 
