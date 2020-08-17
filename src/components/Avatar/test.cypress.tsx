@@ -41,6 +41,7 @@ describe('Avatar', () => {
     ).should($img => {
       expect($img[0].naturalWidth).to.be.greaterThan(0);
     });
+    cy.wait(300); //annoying font loading flake on CI
     cy.get('body')
       .first()
       .matchImageSnapshot();
