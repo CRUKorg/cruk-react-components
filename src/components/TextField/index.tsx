@@ -57,10 +57,10 @@ const ExtraWrapper = styled.span`
 type StyledInputProps = {
   hasError: boolean;
   error: string;
-  extraTop?: string;
-  extraBottom?: string;
-  extraLeft?: string;
-  extraRight?: string;
+  extraTop?: ReactElement | string;
+  extraBottom?: ReactElement | string;
+  extraLeft?: ReactElement | string;
+  extraRight?: ReactElement | string;
   theme: ThemeType;
 };
 
@@ -129,10 +129,10 @@ const StyledInput = styled.input<StyledInputProps>`
 
 type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   error?: string;
-  extraBottom?: string;
-  extraLeft?: string;
-  extraRight?: string;
-  extraTop?: string;
+  extraBottom?: ReactElement | string;
+  extraLeft?: ReactElement | string;
+  extraRight?: ReactElement | string;
+  extraTop?: ReactElement | string;
   hasError?: boolean;
   hintText?: ReactElement | string;
   label: string;
