@@ -5,7 +5,7 @@ on:
       - develop
       - master
 jobs:
-    Cypress-1:
+  Cypress:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout cruk-react-components
