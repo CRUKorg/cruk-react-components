@@ -9,5 +9,6 @@
 /cypress/screenshots
 /cypress/videos
 /cypress/snapshots/**/__diff_output__
+/cypress/snapshots/**/**(failed).snap.png
 
 .idea
