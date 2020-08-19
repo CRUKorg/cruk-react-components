@@ -3,8 +3,32 @@
 import React from 'react';
 import { mount } from 'cypress-react-unit-test';
 
-import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
-import { RadioGroup } from '../';
+import { TestThemeWrapper } from '../TestWrapper';
+import { RadioGroup, crukTheme2, su2cTheme } from '../';
+
+const uncontrolledContent = () => (
+  <div id="radios">
+    <RadioGroup
+      legend="Email"
+      name="email"
+      attributes={[
+        { option: 'Yes', value: 'yes' },
+        { option: 'No', value: 'no' },
+      ]}
+      checkedState={'yes'}
+    />
+
+    <RadioGroup
+      legend="Telephone"
+      name="phone"
+      attributes={[
+        { option: 'Yes', value: 'yes' },
+        { option: 'No', value: 'no' },
+      ]}
+      checkedState={'no'}
+    />
+  </div>
+);
 
 const Content = () => {
   const [selectedEmail, setSelectedEmail] = React.useState('yes');
@@ -52,16 +76,30 @@ describe('RadioGroup', () => {
     });
   });
 
-  it('should match snapshot', () => {
+  it('should match CRUK snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
-    mount(
-      <TestWrapper>
-        <Content />
-      </TestWrapper>,
-    );
+    mount(<TestThemeWrapper>{uncontrolledContent()}</TestThemeWrapper>);
     cy.wait(300); //annoying font loading flake on CI
-    cy.get('body')
+    cy.get('#radios')
+      .first()
+      .matchImageSnapshot();
+  });
+  it('should match CRUK2 snapshot', () => {
+    Cypress.config('waitForAnimations', true);
+    Cypress.config('animationDistanceThreshold', 2);
+    mount(<TestThemeWrapper theme={crukTheme2}>{uncontrolledContent()}</TestThemeWrapper>);
+    cy.wait(300); //annoying font loading flake on CI
+    cy.get('#radios')
+      .first()
+      .matchImageSnapshot();
+  });
+  it('should match SU2C snapshot', () => {
+    Cypress.config('waitForAnimations', true);
+    Cypress.config('animationDistanceThreshold', 2);
+    cy.wait(300); //annoying font loading flake on CI
+    mount(<TestThemeWrapper theme={su2cTheme}>{uncontrolledContent()}</TestThemeWrapper>);
+    cy.get('#radios')
       .first()
       .matchImageSnapshot();
   });
