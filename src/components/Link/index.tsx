@@ -15,7 +15,7 @@ const ChevyWithLevee = styled(Icon)`
   }) => extraExtraSmall};
 `;
 
-type LinkProps = AnchorHTMLAttributes<{}> &
+type LinkProps = AnchorHTMLAttributes<HTMLElement> &
   TextProps & {
     theme?: ThemeType;
     textHoverColor?: string;
