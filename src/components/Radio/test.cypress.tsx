@@ -3,7 +3,7 @@
 import React from 'react';
 import { mount } from 'cypress-react-unit-test';
 
-import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
+import { TestThemeWrapper } from '../TestWrapper';
 import { Radio, Heading, crukTheme2, su2cTheme } from '../';
 
 const uncontrolledRadio = () => (
