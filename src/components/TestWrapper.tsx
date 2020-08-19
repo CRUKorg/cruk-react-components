@@ -5,12 +5,16 @@ import crukTheme from '../themes/cruk';
 import crukTheme2 from '../themes/cruk2';
 import su2cTheme from '../themes/su2c';
 import Heading from './Heading';
+import { ThemeType } from 'src/themes/types';
 
-export const TestCrukWrapper: FC = ({ children }) => (
+type TestThemeWrapperProps = {
+  theme?: ThemeType;
+};
+
+export const TestThemeWrapper: FC<TestThemeWrapperProps> = ({ children, theme }) => (
   <div style={{ overflow: 'auto' }} tabIndex={0}>
-    <ThemeProvider theme={crukTheme}>
+    <ThemeProvider theme={theme || crukTheme}>
       <GlobalStyle />
-      <Heading>CRUK Theme</Heading>
       {children}
     </ThemeProvider>
   </div>

@@ -6,6 +6,20 @@ import { mount } from 'cypress-react-unit-test';
 import TestWrapper from '../TestWrapper';
 import { Box, Checkbox, Heading } from '../';
 
+const unControlledContent = () => (
+  <>
+    <Box>
+      <Checkbox name="example" value="one" checked={true}>
+        Option one
+      </Checkbox>
+    </Box>
+    <Box>
+      <Checkbox name="example" value="two">
+        Option two
+      </Checkbox>
+    </Box>
+  </>
+);
 const Content = () => {
   const [selected, setSelected] = React.useState([]);
   const handleChange = (value: string) => {
@@ -67,11 +81,7 @@ describe('Checkbox', () => {
   it('should match snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
-    mount(
-      <TestWrapper>
-        <Content />
-      </TestWrapper>,
-    );
+    mount(<TestWrapper>{unControlledContent()}</TestWrapper>);
     cy.get('body')
       .first()
       .matchImageSnapshot();

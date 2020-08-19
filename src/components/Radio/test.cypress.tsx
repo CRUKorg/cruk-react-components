@@ -3,8 +3,19 @@
 import React from 'react';
 import { mount } from 'cypress-react-unit-test';
 
-import TestWrapper, { TestCrukWrapper } from '../TestWrapper';
-import { Radio, Heading } from '../';
+import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
+import { Radio, Heading, crukTheme2, su2cTheme } from '../';
+
+const uncontrolledRadio = () => (
+  <div id="radios">
+    <Radio name="example1" value="one" defaultChecked={true}>
+      Option one
+    </Radio>
+    <Radio name="example1" value="two">
+      Option one
+    </Radio>
+  </div>
+);
 
 const Content = () => {
   const [selected, setSelected] = React.useState('one');
@@ -41,9 +52,9 @@ const Content = () => {
 describe('Radio', () => {
   it('is accessible', () => {
     mount(
-      <TestCrukWrapper>
+      <TestThemeWrapper>
         <Content />
-      </TestCrukWrapper>,
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y('body', {
@@ -53,16 +64,30 @@ describe('Radio', () => {
     });
   });
 
-  it('should match snapshot', () => {
+  it('should match CRUK snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
-    mount(
-      <TestWrapper>
-        <Content />
-      </TestWrapper>,
-    );
+    mount(<TestThemeWrapper>{uncontrolledRadio()}</TestThemeWrapper>);
     cy.wait(300); //annoying font loading flake on CI
-    cy.get('body')
+    cy.get('#radios')
+      .first()
+      .matchImageSnapshot();
+  });
+  it('should match CRUK2 snapshot', () => {
+    Cypress.config('waitForAnimations', true);
+    Cypress.config('animationDistanceThreshold', 2);
+    mount(<TestThemeWrapper theme={crukTheme2}>{uncontrolledRadio()}</TestThemeWrapper>);
+    cy.wait(300); //annoying font loading flake on CI
+    cy.get('#radios')
+      .first()
+      .matchImageSnapshot();
+  });
+  it('should match SU2C snapshot', () => {
+    Cypress.config('waitForAnimations', true);
+    Cypress.config('animationDistanceThreshold', 2);
+    cy.wait(300); //annoying font loading flake on CI
+    mount(<TestThemeWrapper theme={su2cTheme}>{uncontrolledRadio()}</TestThemeWrapper>);
+    cy.get('#radios')
       .first()
       .matchImageSnapshot();
   });

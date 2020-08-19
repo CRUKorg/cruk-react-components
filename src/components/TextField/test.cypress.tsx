@@ -103,7 +103,7 @@ const content = () => {
   );
 };
 
-describe('Text', () => {
+describe('TextField', () => {
   it('is accessible', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.injectAxe();

@@ -3,8 +3,21 @@
 import React from 'react';
 import { mount } from 'cypress-react-unit-test';
 
-import TestWrapper from '../TestWrapper';
-import { Modal, Button, Heading } from '../';
+import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
+import { Modal, Button, Heading, crukTheme2, su2cTheme } from '../';
+
+const ModalOnlyContent = () => (
+  <Modal closeFunction={() => {}}>
+    <Heading h2 marginTop="none" textSize="extraLarge">
+      Modal title
+    </Heading>
+    <p>Some really important information</p>
+    <Button onClick={() => {}}>Get me out of here</Button>
+    <Button appearance="primary" onClick={() => {}}>
+      Go for it 😃
+    </Button>
+  </Modal>
+);
 
 const Content = () => {
   const [showModal, setShowModal] = React.useState(false);
@@ -46,15 +59,27 @@ describe('Modal', () => {
     });
   });
 
-  it('should match snapshot', () => {
+  it('should match CRUK snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
-    mount(
-      <TestWrapper>
-        <Content />
-      </TestWrapper>,
-    );
-    cy.get('body')
+    mount(<TestThemeWrapper>{ModalOnlyContent()}</TestThemeWrapper>);
+    cy.get('[aria-modal="true"]')
+      .first()
+      .matchImageSnapshot();
+  });
+  it('should match CRUK2 snapshot', () => {
+    Cypress.config('waitForAnimations', true);
+    Cypress.config('animationDistanceThreshold', 2);
+    mount(<TestThemeWrapper theme={crukTheme2}>{ModalOnlyContent()}</TestThemeWrapper>);
+    cy.get('[aria-modal="true"]')
+      .first()
+      .matchImageSnapshot();
+  });
+  it('should match SU2C snapshot', () => {
+    Cypress.config('waitForAnimations', true);
+    Cypress.config('animationDistanceThreshold', 2);
+    mount(<TestThemeWrapper theme={su2cTheme}>{ModalOnlyContent()}</TestThemeWrapper>);
+    cy.get('[aria-modal="true"]')
       .first()
       .matchImageSnapshot();
   });

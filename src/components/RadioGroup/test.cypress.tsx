@@ -3,7 +3,7 @@
 import React from 'react';
 import { mount } from 'cypress-react-unit-test';
 
-import TestWrapper, { TestCrukWrapper } from '../TestWrapper';
+import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
 import { RadioGroup } from '../';
 
 const Content = () => {
@@ -40,9 +40,9 @@ const Content = () => {
 describe('RadioGroup', () => {
   it('is accessible', () => {
     mount(
-      <TestCrukWrapper>
+      <TestThemeWrapper>
         <Content />
-      </TestCrukWrapper>,
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y('body', {
