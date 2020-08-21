@@ -7,12 +7,6 @@ import { WithLabel } from '../Label';
 
 import { ThemeType } from '../../themes/types';
 
-type StyledSelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
-  hasError: boolean;
-  error: string;
-  theme: ThemeType;
-};
-
 const StyledSelect = styled.select<StyledSelectProps>`
   appearance: none;
   background: linear-gradient(
@@ -59,6 +53,12 @@ type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   hintText?: ReactElement | string;
 };
 
+// in the styled component we want has error to be manadatory and we want to remove label so it can be undefined
+type StyledSelectProps = Omit<SelectProps, 'hasError' | 'label'> & {
+  hasError: boolean;
+  label?: string;
+};
+
 const Select: FunctionComponent<SelectProps> = ({
   error,
   hasError,
@@ -79,8 +79,8 @@ const Select: FunctionComponent<SelectProps> = ({
         {...props}
         theme={theme}
         aria-invalid={hasError || !!error}
-        hasError={undefined}
-        error={undefined}
+        hasError={hasError || !!error}
+        label={undefined}
       />
       {!!error && <ErrorText>{error}</ErrorText>}
     </WithLabel>

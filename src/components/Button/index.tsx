@@ -8,7 +8,7 @@ import { ThemeType } from '../../themes/types';
 
 const BUTTON_HEIGHT = '2.5rem';
 
-type ButtonProps = ButtonHTMLAttributes<{}> & {
+type ButtonProps = ButtonHTMLAttributes<HTMLElement> & {
   appearance?: string;
   full?: boolean;
   theme?: ThemeType;
@@ -19,8 +19,23 @@ type ButtonProps = ButtonHTMLAttributes<{}> & {
   ref?: Ref<HTMLElement>;
 };
 
-const VerticalAlign = styled.span`
-  line-height: ${({ isIconButton }: { isIconButton: boolean }) => (isIconButton ? `auto` : `${BUTTON_HEIGHT}`)};
+type StyledButtonProps = ButtonHTMLAttributes<HTMLElement> & {
+  appearance?: string;
+  full?: boolean;
+  theme: ThemeType;
+  size?: string;
+  css?: any;
+  as?: any;
+  isIconButton: boolean;
+};
+
+type VerticalAlignProps = {
+  theme: ThemeType;
+  isIconButton?: boolean;
+};
+
+const VerticalAlign = styled.span<VerticalAlignProps>`
+  line-height: ${({ isIconButton }) => (!!isIconButton ? `auto` : `${BUTTON_HEIGHT}`)};
   vertical-align: middle;
   margin-left: ${({ theme }) => theme.spacing.extraExtraSmall};
 
@@ -29,7 +44,7 @@ const VerticalAlign = styled.span`
   }
 `;
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<StyledButtonProps>`
   display: inline-block;
   vertical-align: middle;
   background-color: ${props => props.theme.colors.backgroundLight};
@@ -56,9 +71,8 @@ const StyledButton = styled.button`
   }) => fontWeightMedium};
   line-height: 1;
   height: ${BUTTON_HEIGHT};
-  padding: ${({ theme, isIconButton }: { theme: ThemeType; isIconButton: boolean }) =>
-    isIconButton ? '0' : `0 ${theme.spacing.medium}`};
-  width: ${({ isIconButton }: { isIconButton: boolean }) => (isIconButton ? `${BUTTON_HEIGHT}` : 'auto')};
+  padding: ${({ theme, isIconButton }) => (isIconButton ? '0' : `0 ${theme.spacing.medium}`)};
+  width: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT}` : 'auto')};
   text-align: center;
   text-decoration: ${props => props.theme.button.textDecoration};
   text-transform: ${props => props.theme.button.textTransform};
@@ -68,7 +82,7 @@ const StyledButton = styled.button`
     color: ${props => props.theme.colors.linkColorHover}
   }
   
-  ${(props: ButtonProps) =>
+  ${(props: StyledButtonProps) =>
     props.appearance === 'primary' &&
     css`
       background-color: ${props.theme.colors.secondary};
@@ -82,7 +96,7 @@ const StyledButton = styled.button`
       }
     `}
 
-  ${(props: ButtonProps) =>
+  ${(props: StyledButtonProps) =>
     props.appearance === 'secondary' &&
     css`
       background-color: ${props.theme.colors.tertiary};
@@ -96,7 +110,7 @@ const StyledButton = styled.button`
       }
     `}
 
-  ${(props: ButtonProps) =>
+  ${(props: StyledButtonProps) =>
     props.appearance === 'text' &&
     css`
       display: inline-block;
@@ -116,13 +130,13 @@ const StyledButton = styled.button`
       }
     `}
   
-  ${(props: ButtonProps) =>
+  ${(props: StyledButtonProps) =>
     props.size === 'large' &&
     css`
       height: 4em;
     `}
   
-  ${(props: ButtonProps) =>
+  ${(props: StyledButtonProps) =>
     props.disabled &&
     css`
       cursor: not-allowed;
@@ -146,13 +160,13 @@ const StyledButton = styled.button`
       }
     `}
 
-  ${(props: ButtonProps) =>
+  ${(props: StyledButtonProps) =>
     props.full &&
     css`
       width: 100%;
     `}
 
-  ${(props: ButtonProps) => (css as any)([props.css])}
+  ${(props: StyledButtonProps) => (css as any)([props.css])}
 `;
 
 const Button: FunctionComponent<ButtonProps> = forwardRef((props: ButtonProps, ref?: Ref<HTMLElement>) => {
@@ -167,10 +181,16 @@ const Button: FunctionComponent<ButtonProps> = forwardRef((props: ButtonProps, r
   const isIconButton = props.children && childArray.length === 1 && childArray[0] && childArray[0].type === Icon;
 
   return (
-    <StyledButton as={props.href ? 'a' : 'button'} {...props} isIconButton={isIconButton} theme={theme} ref={ref}>
+    <StyledButton
+      as={props.href ? 'a' : 'button'}
+      {...props}
+      isIconButton={isIconButton as boolean}
+      theme={theme}
+      ref={ref}
+    >
       {props.children && childArray.length
         ? React.Children.map(props.children, (child: ReactNode, index: number) => (
-            <VerticalAlign theme={theme} key={index} isIconButton={isIconButton}>
+            <VerticalAlign theme={theme} key={index} isIconButton={isIconButton as boolean}>
               {child}
             </VerticalAlign>
           ))

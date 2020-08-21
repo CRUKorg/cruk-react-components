@@ -129,8 +129,9 @@ type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   theme: ThemeType;
 };
 
-type StyledInputProps = TextFieldProps & {
+type StyledInputProps = Omit<TextFieldProps, 'hasError' | 'label'> & {
   hasError: boolean;
+  label?: string;
 };
 
 const TextField: FunctionComponent<TextFieldProps> = ({
@@ -161,7 +162,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
         extraLeft={extraLeft}
         extraRight={extraRight}
         extraTop={extraTop}
-        hasError={hasError}
+        hasError={hasError || false}
         theme={theme}
         {...props}
       />

@@ -23,7 +23,15 @@ type LinkProps = AnchorHTMLAttributes<HTMLElement> &
     innerRef?: Ref<any>;
   };
 
-const StyledLink = styled(Text)<LinkProps>`
+type StyledLinkProps = AnchorHTMLAttributes<HTMLElement> &
+  TextProps & {
+    theme: ThemeType;
+    textHoverColor?: string;
+    appearance?: 'primary' | 'secondary';
+    innerRef?: Ref<any>;
+  };
+
+const StyledLink = styled(Text)<StyledLinkProps>`
   transition: color 0.2s ease;
   color: ${({ theme: { colors }, textColor, appearance }) =>
     textColor && typeof colors[textColor] !== 'undefined'
@@ -45,7 +53,7 @@ const StyledLink = styled(Text)<LinkProps>`
     theme: {
       typography: { fontWeightHeavy },
     },
-  }: LinkProps) =>
+  }: StyledLinkProps) =>
     (appearance === 'primary' || appearance === 'secondary') &&
     css`
       font-weight: ${fontWeightHeavy};

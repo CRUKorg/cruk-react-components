@@ -1,3 +1,5 @@
+declare module '*.md';
+
 declare namespace Cypress {
   interface Chainable {
     injectAxe(): Chainable;

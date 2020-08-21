@@ -21,12 +21,12 @@ const unControlledContent = () => (
   </>
 );
 const Content = () => {
-  const [selected, setSelected] = React.useState([]);
+  const [selected, setSelected] = React.useState<string[]>([]);
   const handleChange = (value: string) => {
     if (selected.indexOf(value) === -1) {
       setSelected([...selected, value]);
     } else {
-      setSelected(selected.filter(item => item !== value));
+      setSelected(selected.filter((item: string) => item !== value));
     }
   };
 

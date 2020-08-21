@@ -1,11 +1,16 @@
 {
   "compilerOptions": {
+    "strict": true,
     "declaration": true,
     "declarationDir": "./lib",
     "esModuleInterop": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "lib": ["dom", "es2015", "es2016"],
+    "lib": [
+      "dom",
+      "es2015",
+      "es2016"
+    ],
     "jsx": "react",
     "target": "es5",
     "module": "es6",
@@ -14,6 +19,17 @@
     "noImplicitAny": true, // Setting to true means if no type given it will not automatically assign ANY.
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true, // This is needed for the React components.
-    "noErrorTruncation": true
-  }
+    "noErrorTruncation": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "cypress/**/*.d.ts"
+  ],
+  "exclude": [
+    "./node_modules/*",
+    "lib",
+    "typings"
+  ],
 }

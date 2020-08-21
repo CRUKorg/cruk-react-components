@@ -105,9 +105,9 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
     ...defaultTheme,
     ...props.theme,
   };
-  const result = calculatePercentRounded(+props.total, props.target);
-  const percentageOfTotal = calculatePercentRounded(+props.total, props.target);
-  const summaryString = `${percentageOfTotal}% of the £${formatMoney(props.target)} target`;
+  const result = calculatePercentRounded(+props.total, props.target || 0);
+  const percentageOfTotal = calculatePercentRounded(+props.total, props.target || 0);
+  const summaryString = `${percentageOfTotal}% of the £${formatMoney(props.target || 0)} target`;
 
   return (
     <TotaliserWrapper {...props} isCompact={props.isCompact || false} theme={theme}>
@@ -148,9 +148,9 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
 };
 
 Totaliser.defaultProps = {
-  target: null,
-  summaryMessage: null,
-  theme: null,
+  target: 0,
+  summaryMessage: undefined,
+  theme: defaultTheme,
 };
 
 export default withTheme(Totaliser);

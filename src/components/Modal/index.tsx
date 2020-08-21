@@ -133,8 +133,8 @@ const Modal: FC<ModalProps> = props => {
 
 Modal.defaultProps = {
   showCloseButton: true,
-  closeFunction: null,
-  theme: null,
+  closeFunction: undefined,
+  theme: defaultTheme,
 };
 
 export default withTheme(Modal);

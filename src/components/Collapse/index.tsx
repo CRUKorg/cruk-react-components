@@ -61,11 +61,15 @@ const CustomHeader = styled.div`
 const Collapse: FunctionComponent<CollapseProps> = props => {
   const [activeStatus, setActiveStatus] = useState(props.active || false);
   const [contentHeight, setContentHeight] = useState('0');
-  const content = useRef(null);
+  const content = useRef<HTMLDivElement>(null);
 
   const toggleCollapse = () => {
     setActiveStatus(activeStatus === false ? true : false);
-    setContentHeight(activeStatus === true ? '0' : `${content.current.scrollHeight}`);
+    setContentHeight(
+      activeStatus === true
+        ? '0'
+        : `${!!content && !!content.current && !!content.current.scrollHeight ? content.current.scrollHeight : 0}`,
+    );
   };
 
   const triggerToggle = (event: KeyboardEvent) => {

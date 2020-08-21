@@ -118,7 +118,7 @@ const Step: FunctionComponent<StepProps> = props => {
     ...defaultTheme,
     ...props.theme,
   };
-  const totalSteps = Array.isArray(props.steps) && Object.keys(props.steps).length;
+  const totalSteps: number = Array.isArray(props.steps) ? Object.keys(props.steps).length : 0;
   return (
     <ThemeProvider theme={theme}>
       <StepWrapper>
