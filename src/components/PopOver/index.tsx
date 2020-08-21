@@ -540,13 +540,6 @@ const PopOver: FC<PopOverProps> = props => {
   };
 
   // outside click closes popover
-  // const closePopOver = (e: MouseEvent) => {
-  //   const isDescendantOfRoot = popRef && popRef.current && popRef.current.contains(e.target);
-  //   if (!isDescendantOfRoot) {
-  //     setPopOver(false);
-  //   }
-  // };
-
   const closePopOver = useCallback(
     (e: MouseEvent) => {
       if (!(popRef.current! as any).contains(e.target)) {
