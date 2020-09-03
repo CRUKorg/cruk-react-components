@@ -1,4 +1,5 @@
-import 'cypress-plugin-tab'
-import 'cypress-axe'
+import 'cypress-plugin-tab';
+import 'cypress-react-unit-test/support';
+import 'cypress-axe';
 
-import './commands'
+import './commands';

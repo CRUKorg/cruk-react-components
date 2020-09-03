@@ -2,5 +2,10 @@
   "baseUrl": "http://server:8080/",
   "viewportWidth": 900,
   "viewportHeight": 900,
-  "experimentalFetchPolyfill": true
+  "experimentalFetchPolyfill": true,
+  "experimentalComponentTesting": true,
+  "componentFolder": "src/components",
+  "testFiles": "**/*.cypress.*",
+  "video": true,
+  "videoUploadOnPasses": false
 }

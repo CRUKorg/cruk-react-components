@@ -7,11 +7,11 @@ import Avatar from '../Avatar';
 import { ThemeType } from '../../themes/types';
 
 type UserBlockProps = {
-  name: ReactNode;
+  name?: ReactNode;
   avatarUrl?: string | null;
   avatarName?: string | null;
-  extra: ReactNode;
-  size: 'small' | 'medium' | 'large' | 'extraLarge';
+  extra?: ReactNode;
+  size?: 'small' | 'medium' | 'large' | 'extraLarge';
   theme?: ThemeType;
 };
 
@@ -49,7 +49,7 @@ const UserBlock: FunctionComponent<UserBlockProps> = props => {
       <Avatar name={props.avatarName || props.name} url={props.avatarUrl} size={props.size} />
       <Details>
         <Name>{props.name || 'Anonymous'}</Name>
-        {props.extra && <Extra>{props.extra}</Extra>}
+        {!!props.extra && <Extra>{props.extra}</Extra>}
       </Details>
     </StyledUserBlock>
   );

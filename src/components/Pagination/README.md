@@ -28,16 +28,18 @@ function () {
 
 ## Props
 
-| Name | Type | Options | Default | Description |
-| :- | :- | :-: | :- | :- |
-| current | Number |  | 1 | Styles PageItem as active, and renders a `<span>` instead of an `<a>`.  |
-| perPage | Number | | null |  |
-| items | Number | | null |  |
-| pagerCallback | Function | | null |  |
+| Name          | Type     | Options | Default | Description                                                            |
+| :------------ | :------- | :-----: | :------ | :--------------------------------------------------------------------- |
+| current       | Number   |         | 1       | Styles PageItem as active, and renders a `<span>` instead of an `<a>`. |
+| perPage       | Number   |         | null    |                                                                        |
+| items         | Number   |         | null    |                                                                        |
+| pagerCallback | Function |         | null    |                                                                        |
 
 ### Behaviour
+
 When a user clicks ‘next’ or ‘previous’ the view is immediately scrolled to the top element of the listing. When a user is on the first page of the listing the ‘previous’ button is not visible.
 
 ### Simple Pagination
+
 Search pagination is can be found at the bottom of the search results page.
 The previous button will not be visible on the first page of the results and has a .disabled class (second example below).

@@ -8,6 +8,7 @@
 # test
 /cypress/screenshots
 /cypress/videos
-/cypress/snapshots/snapshots.spec.js/__diff_output__
+/cypress/snapshots/**/__diff_output__
+/cypress/snapshots/**/**(failed).snap.png
 
 .idea

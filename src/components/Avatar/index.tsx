@@ -5,8 +5,8 @@ import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
 
 type AvatarProps = {
-  name: ReactNode;
-  url: string;
+  name?: ReactNode;
+  url?: string;
   size?: 'small' | 'medium' | 'large' | 'extraLarge';
   theme?: ThemeType;
 };

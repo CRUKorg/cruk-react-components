@@ -10,7 +10,7 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
 ```.jsx
   <>
     <Icon name="question" />
-    <Icon name="question" size="36px" color="primary" hover="primaryHover" />
+    <Icon name="question" size="36px" color="primary"/>
     <Icon name="question" size="48px" color="secondary" />
     <Icon name="calendar" />
     <Icon name="chevronLeft" />
