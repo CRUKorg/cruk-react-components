@@ -3,86 +3,16 @@
 import React from 'react';
 import { mount } from 'cypress-react-unit-test';
 
-import TestWrapper from '../TestWrapper';
-import { AddressLookup, Box, TextField } from '../';
+import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
+import { AddressLookup, Box, crukTheme2, su2cTheme } from '../';
 
 const Content = () => {
-  const [validated, setValidated] = React.useState(false);
-  const [line1, setLine1] = React.useState('');
-  const [line2, setLine2] = React.useState('');
-  const [line3, setLine3] = React.useState('');
-  const [city, setCity] = React.useState('');
-  const [postalCode, setPostalCode] = React.useState('');
-
-  const handleAddressSelected = (address: any) => {
-    setValidated(true);
-    setLine1(address.Line1);
-    setLine2(address.Line2);
-    setLine3(address.Line3);
-    setCity(address.City);
-    setPostalCode(address.PostalCode);
-  };
-
   return (
     <fieldset>
       <legend>Your Address</legend>
-      <p>
-        Example wired up to a simple form, with controlled inputs. For production use we recomend using useing Formic
-        and Yup for form management and validation
-      </p>
       <Box>
-        <AddressLookup
-          apiKey="MG17-ZD93-FF33-KF13"
-          onAddressSelected={handleAddressSelected}
-          onChange={e => {
-            setValidated(false);
-            setLine1(e.target.value);
-          }}
-          value={line1}
-        />
+        <AddressLookup apiKey="MG17-ZD93-FF33-KF13" onAddressSelected={() => {}} onChange={() => {}} />
       </Box>
-      <Box>
-        <TextField
-          onChange={e => {
-            setValidated(false);
-            setLine2(e.target.value);
-          }}
-          label="Address line 2"
-          value={line2}
-        />
-      </Box>
-      <Box>
-        <TextField
-          onChange={e => {
-            setValidated(false);
-            setLine3(e.target.value);
-          }}
-          label="Address line 3"
-          value={line3}
-        />
-      </Box>
-      <Box>
-        <TextField
-          onChange={e => {
-            setValidated(false);
-            setCity(e.target.value);
-          }}
-          label="City"
-          value={city}
-          required
-        />
-        <Box></Box>
-        <TextField
-          onChange={e => {
-            setValidated(false);
-            setPostalCode(e.target.value);
-          }}
-          label="Postcode"
-          value={postalCode}
-          required
-        />
-      </Box>
-      <pre>{JSON.stringify({ validated }, null, 2)}</pre>
     </fieldset>
   );
 };
@@ -123,18 +53,49 @@ describe('AddressLookup', () => {
         cy.contains('li', 'N17 0AB High Road, London - 14 Addresses').should('exist');
       });
     cy.injectAxe();
-    cy.checkA11y('body', {
-      rules: {
-        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
-      },
-    });
+    cy.checkA11y('body');
   });
 
-  it('should match snapshot', () => {
+  it('should match CRUK snapshot', () => {
+    Cypress.config('waitForAnimations', true);
+    Cypress.config('animationDistanceThreshold', 2);
     mount(
-      <TestWrapper>
+      <TestThemeWrapper>
         <Content />
-      </TestWrapper>,
+      </TestThemeWrapper>,
+    );
+    cy.getInputByLabel('Home address')
+      .type('N10')
+      .blur();
+    cy.contains('li', 'N17 0AB High Road, London - 14 Addresses').should('exist');
+    cy.get('body')
+      .first()
+      .matchImageSnapshot();
+  });
+  it('should match CRUK2 snapshot', () => {
+    Cypress.config('waitForAnimations', true);
+    Cypress.config('animationDistanceThreshold', 2);
+    mount(
+      <TestThemeWrapper theme={crukTheme2}>
+        <Content />
+      </TestThemeWrapper>,
+    );
+    cy.getInputByLabel('Home address')
+      .type('N10')
+      .blur();
+    cy.contains('li', 'N17 0AB High Road, London - 14 Addresses').should('exist');
+    cy.get('body')
+      .first()
+      .matchImageSnapshot();
+  });
+  it('should match SU2C snapshot', () => {
+    Cypress.config('waitForAnimations', true);
+    Cypress.config('animationDistanceThreshold', 2);
+    cy.wait(300); //annoying font loading flake on CI
+    mount(
+      <TestThemeWrapper theme={su2cTheme}>
+        <Content />
+      </TestThemeWrapper>,
     );
     cy.getInputByLabel('Home address')
       .type('N10')

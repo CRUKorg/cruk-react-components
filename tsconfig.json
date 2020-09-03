@@ -20,15 +20,6 @@
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true, // This is needed for the React components.
     "noErrorTruncation": true,
-    "skipLibCheck": true
-  },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx"
-  ],
-  "exclude": [
-    "./node_modules/*",
-    "lib",
-    "typings"
-  ],
+    "skipLibCheck": true,
+  }
 }

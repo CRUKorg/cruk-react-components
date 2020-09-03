@@ -6,5 +6,6 @@
   "experimentalComponentTesting": true,
   "componentFolder": "src/components",
   "testFiles": "**/*.cypress.*",
-  "video": false
+  "video": true,
+  "videoUploadOnPasses": false
 }

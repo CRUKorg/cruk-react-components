@@ -15,7 +15,7 @@ const content = () => {
       </Text>
       <Text as="span">This is text as a span tag</Text>
       <Text textColor="primary">Color is Primary</Text>
-      <Text textColor="#ff0000">Color is Primary</Text>
+      <Text textColor="#ff0000">Color is custom colour</Text>
       <Text textSize="large">Text size large</Text>
     </>
   );
@@ -27,7 +27,7 @@ describe('Text', () => {
     cy.injectAxe();
     cy.checkA11y('body', {
       rules: {
-        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
+        'color-contrast': { enabled: false }, // TODO disabled as we are testing with weird colours and SU2C colours which do not pass WCAG AA.
       },
     });
   });

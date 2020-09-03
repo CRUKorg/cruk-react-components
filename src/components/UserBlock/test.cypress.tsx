@@ -34,11 +34,7 @@ describe('UserBlock', () => {
   it('is accessible', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.injectAxe();
-    cy.checkA11y('body', {
-      rules: {
-        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
-      },
-    });
+    cy.checkA11y('body');
   });
 
   it('should match snapshot', () => {

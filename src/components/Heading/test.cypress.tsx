@@ -33,7 +33,7 @@ describe('Heading', () => {
     cy.injectAxe();
     cy.checkA11y('body', {
       rules: {
-        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
+        'color-contrast': { enabled: false }, // TODO disabled because SU2C brand does not pass WCAG AA.
       },
     });
   });
