@@ -109,7 +109,7 @@ describe('TextField', () => {
     cy.injectAxe();
     cy.checkA11y('body', {
       rules: {
-        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
+        'color-contrast': { enabled: false }, // TODO disabled because error text on grey background doesn't pass WCAG AA currently under discussion.
       },
     });
   });

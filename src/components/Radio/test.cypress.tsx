@@ -8,7 +8,7 @@ import { Radio, Heading, crukTheme2, su2cTheme } from '../';
 
 const uncontrolledRadio = () => (
   <div id="radios">
-    <Radio name="example1" value="one" defaultChecked={true}>
+    <Radio name="example1" value="one" checked={true}>
       Option one
     </Radio>
     <Radio name="example1" value="two">
@@ -57,11 +57,7 @@ describe('Radio', () => {
       </TestThemeWrapper>,
     );
     cy.injectAxe();
-    cy.checkA11y('body', {
-      rules: {
-        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
-      },
-    });
+    cy.checkA11y('body');
   });
 
   it('should match CRUK snapshot', () => {
