@@ -70,7 +70,7 @@ const content = () => (
   </>
 );
 
-describe('Loader', () => {
+describe('Popover', () => {
   it('is accessible', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.contains('Share left').click();
@@ -82,9 +82,44 @@ describe('Loader', () => {
     });
   });
 
-  it('should match snapshot', () => {
+  it('should match snapshot share top', () => {
+    mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.contains('Share top').click();
+    cy.get('body')
+      .first()
+      .matchImageSnapshot();
+  });
+  it('should match snapshot share left', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.contains('Share left').click();
+    cy.get('body')
+      .first()
+      .matchImageSnapshot();
+  });
+  it('should match snapshot share right', () => {
+    mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.contains('Share right').click();
+    cy.get('body')
+      .first()
+      .matchImageSnapshot();
+  });
+  it('should match snapshot share bottom', () => {
+    mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.contains('Share bottom').click();
+    cy.get('body')
+      .first()
+      .matchImageSnapshot();
+  });
+  it('should match snapshot share bottomLeft', () => {
+    mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.contains('Share bottomLeft').click();
+    cy.get('body')
+      .first()
+      .matchImageSnapshot();
+  });
+  it('should match snapshot share topLeft', () => {
+    mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.contains('Share topLeft').click();
     cy.get('body')
       .first()
       .matchImageSnapshot();
