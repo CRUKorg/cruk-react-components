@@ -4,15 +4,15 @@ import React from 'react';
 import { mount } from 'cypress-react-unit-test';
 
 import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
-import { AddressLookup, Box, crukTheme2, su2cTheme } from '../';
+import { AddressLookup, crukTheme2, su2cTheme } from '../';
 
 const Content = () => {
   return (
     <fieldset>
       <legend>Your Address</legend>
-      <Box>
+      <div style={{ height: '300px' }}>
         <AddressLookup apiKey="MG17-ZD93-FF33-KF13" onAddressSelected={() => {}} onChange={() => {}} />
-      </Box>
+      </div>
     </fieldset>
   );
 };
