@@ -7,7 +7,7 @@ import { ThemeType } from '../../themes/types';
 
 type StepProps = {
   current: number;
-  steps: [];
+  steps: string[];
   theme?: ThemeType;
 };
 
@@ -112,6 +112,7 @@ const StepItem = styled.li<StepItemProps>`
     `}
 `;
 
+// TODO think about AriaAttributes and how we want to pass them down
 const Step: FunctionComponent<StepProps> = props => {
   const theme = {
     ...defaultTheme,

@@ -54,16 +54,6 @@ const ExtraWrapper = styled.span`
   display: flex;
 `;
 
-type StyledInputProps = {
-  hasError: boolean;
-  error: string;
-  extraTop?: string;
-  extraBottom?: string;
-  extraLeft?: string;
-  extraRight?: string;
-  theme: ThemeType;
-};
-
 const StyledInput = styled.input<StyledInputProps>`
   background-color: ${({ theme }) => theme.colors.backgroundLight};
   background-image: none;
@@ -129,14 +119,18 @@ const StyledInput = styled.input<StyledInputProps>`
 
 type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   error?: string;
-  extraBottom?: string;
-  extraLeft?: string;
-  extraRight?: string;
-  extraTop?: string;
+  extraBottom?: ReactElement | string;
+  extraLeft?: ReactElement | string;
+  extraRight?: ReactElement | string;
+  extraTop?: ReactElement | string;
   hasError?: boolean;
   hintText?: ReactElement | string;
   label: string;
   theme: ThemeType;
+};
+
+type StyledInputProps = TextFieldProps & {
+  hasError: boolean;
 };
 
 const TextField: FunctionComponent<TextFieldProps> = ({
@@ -147,12 +141,8 @@ const TextField: FunctionComponent<TextFieldProps> = ({
   extraTop,
   hasError,
   hintText,
-  id,
   label,
-  onChange,
-  required,
   theme: propsTheme,
-  value,
   ...props
 }) => {
   const theme = {
@@ -164,6 +154,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
     <>
       {!!extraLeft && <ExtraLeft theme={theme}>{extraLeft}</ExtraLeft>}
       <StyledInput
+        label={undefined}
         aria-invalid={hasError || !!error}
         error={error}
         extraBottom={extraBottom}
@@ -171,10 +162,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
         extraRight={extraRight}
         extraTop={extraTop}
         hasError={hasError}
-        id={id}
-        onChange={onChange}
         theme={theme}
-        value={value}
         {...props}
       />
       {!!extraRight && <ExtraRight theme={theme}>{extraRight}</ExtraRight>}
@@ -182,7 +170,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
   );
 
   return (
-    <WithLabel label={label} hintText={hintText} required={required}>
+    <WithLabel label={label} hintText={hintText} required={props.required || false}>
       {!!extraTop && <ExtraTop theme={theme}>{extraTop}</ExtraTop>}
       {!!extraRight || !!extraLeft ? <ExtraWrapper>{renderContent}</ExtraWrapper> : renderContent}
       {!!extraBottom && <ExtraBottom theme={theme}>{extraBottom}</ExtraBottom>}

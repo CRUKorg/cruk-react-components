@@ -11,11 +11,11 @@ import { calculatePercentRounded, formatMoney } from '../../utils/Helper';
 import { ThemeType } from '../../themes/types';
 
 type TotaliserProps = {
-  giftAid: number;
   total: number;
-  isCompact: boolean;
-  summaryMessage?: ReactChild;
+  giftAid?: number;
   target?: number | null;
+  isCompact?: boolean;
+  summaryMessage?: ReactChild;
   theme?: ThemeType;
 };
 
@@ -99,6 +99,7 @@ const StyledProgressBar = styled(ProgressBar)<StyledProgressBarProps>`
     `}
 `;
 
+// TODO figure out how we want to handle AriaAttributes
 const Totaliser: FunctionComponent<TotaliserProps> = props => {
   const theme = {
     ...defaultTheme,
@@ -109,7 +110,7 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
   const summaryString = `${percentageOfTotal}% of the £${formatMoney(props.target)} target`;
 
   return (
-    <TotaliserWrapper {...props} isCompact={props.isCompact} theme={theme}>
+    <TotaliserWrapper {...props} isCompact={props.isCompact || false} theme={theme}>
       {props.isCompact ? (
         <CompactWrapper theme={theme}>
           <Box marginHorizontal="none" marginRight="extraExtraSmall" marginBottom="none">
@@ -125,12 +126,12 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
         <DetailWrapper theme={theme}>
           <p>Total raised</p>
           <Total>£{formatMoney(props.total)}</Total>
-          <p>+ £{formatMoney(props.giftAid)} Gift Aid</p>
+          <p>+ £{formatMoney(props.giftAid || 0)} Gift Aid</p>
         </DetailWrapper>
       )}
       {props.target !== null && (
         <ProgressBarWrapper theme={theme}>
-          <StyledProgressBar theme={theme} percentage={result} isCompact={props.isCompact} />
+          <StyledProgressBar theme={theme} percentage={result} isCompact={props.isCompact || false} />
           {!props.isCompact &&
             (props.summaryMessage ? (
               <Summary>{props.summaryMessage}</Summary>

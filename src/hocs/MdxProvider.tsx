@@ -26,13 +26,13 @@ const components = {
       <LiveError />
     </LiveProvider>
   ),
-  h1: (props: HTMLAttributes<{}>) => <Heading h1 marginTop="medium" {...props} />,
-  h2: (props: HTMLAttributes<{}>) => <Heading h2 {...props} />,
-  h3: (props: HTMLAttributes<{}>) => <Heading h3 {...props} />,
-  h4: (props: HTMLAttributes<{}>) => <Heading h4 {...props} />,
-  h5: (props: HTMLAttributes<{}>) => <Heading h5 {...props} />,
-  h6: (props: HTMLAttributes<{}>) => <Heading h6 {...props} />,
-  p: (props: HTMLAttributes<{}>) => <Text {...props} />,
+  h1: (props: HTMLAttributes<HTMLHeadingElement>) => <Heading h1 marginTop="medium" {...props} />,
+  h2: (props: HTMLAttributes<HTMLHeadingElement>) => <Heading h2 {...props} />,
+  h3: (props: HTMLAttributes<HTMLHeadingElement>) => <Heading h3 {...props} />,
+  h4: (props: HTMLAttributes<HTMLHeadingElement>) => <Heading h4 {...props} />,
+  h5: (props: HTMLAttributes<HTMLHeadingElement>) => <Heading h5 {...props} />,
+  h6: (props: HTMLAttributes<HTMLHeadingElement>) => <Heading h6 {...props} />,
+  p: (props: HTMLAttributes<HTMLHeadingElement>) => <Text {...props} />,
 };
 
 const MdxProvider: FunctionComponent = props => <MDXProvider components={components}>{props.children}</MDXProvider>;

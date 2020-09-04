@@ -8,10 +8,10 @@ import Button from '../Button';
 import Icon from '../Icon';
 
 type CollapseProps = {
-  active: boolean;
   headerTitleText: string;
   headerComponent?: ReactNode;
   contentHeight?: string;
+  active?: boolean;
   id?: string;
   theme?: ThemeType;
 };
@@ -59,7 +59,7 @@ const CustomHeader = styled.div`
 `;
 
 const Collapse: FunctionComponent<CollapseProps> = props => {
-  const [activeStatus, setActiveStatus] = useState(false);
+  const [activeStatus, setActiveStatus] = useState(props.active || false);
   const [contentHeight, setContentHeight] = useState('0');
   const content = useRef(null);
 

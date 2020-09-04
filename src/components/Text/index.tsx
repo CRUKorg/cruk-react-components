@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, HTMLAttributes } from 'react';
 import styled, { withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -9,15 +9,15 @@ import { ThemeType } from '../../themes/types';
 
 // the 'as' prop is for styled component casting
 // text hover color prop is only used in Link which extends Text
-export type TextProps = SpacingProps & {
-  textColor?: string;
-  textAlign?: 'left' | 'right' | 'center';
-  textSize?: FontSizeType;
-  textWeight?: number;
-  as?: any;
-  theme?: ThemeType;
-  role?: string;
-};
+export type TextProps = SpacingProps &
+  HTMLAttributes<HTMLElement> & {
+    textColor?: string;
+    textAlign?: 'left' | 'right' | 'center';
+    textSize?: FontSizeType;
+    textWeight?: number;
+    as?: any;
+    theme?: ThemeType;
+  };
 
 export const TextStyled = styled.p<TextProps>`
   font-family: ${({ theme }) => theme.typography.fontFamilyBase};

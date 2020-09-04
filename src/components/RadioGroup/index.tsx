@@ -32,7 +32,7 @@ type RadioGroupProps = {
     value: string;
     option: string;
   }>;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
   checkedState: string;
   name: string;
   theme: ThemeType;

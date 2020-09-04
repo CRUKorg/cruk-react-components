@@ -7,7 +7,7 @@ import { WithLabel } from '../Label';
 
 import { ThemeType } from '../../themes/types';
 
-type StyledSelectProps = {
+type StyledSelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   hasError: boolean;
   error: string;
   theme: ThemeType;
@@ -51,7 +51,7 @@ const StyledSelect = styled.select<StyledSelectProps>`
       : null};
 `;
 
-type SelectProps = SelectHTMLAttributes<{}> & {
+type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   error?: string;
   hasError?: boolean;
   theme: ThemeType;
@@ -62,13 +62,10 @@ type SelectProps = SelectHTMLAttributes<{}> & {
 const Select: FunctionComponent<SelectProps> = ({
   error,
   hasError,
-  onChange,
   required,
   theme: propsTheme,
-  value,
   label,
   hintText,
-  children,
   ...props
 }) => {
   const theme = {
@@ -79,14 +76,11 @@ const Select: FunctionComponent<SelectProps> = ({
   return (
     <WithLabel label={label} hintText={hintText} required={required} {...props}>
       <StyledSelect
-        error={error}
-        hasError={hasError}
-        onChange={onChange}
-        theme={theme}
-        value={value}
-        aria-invalid={hasError || !!error}
-        children={children}
         {...props}
+        theme={theme}
+        aria-invalid={hasError || !!error}
+        hasError={undefined}
+        error={undefined}
       />
       {!!error && <ErrorText>{error}</ErrorText>}
     </WithLabel>

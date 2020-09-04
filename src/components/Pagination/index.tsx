@@ -8,7 +8,7 @@ import { ThemeType } from '../../themes/types';
 type PaginationProps = {
   current: number;
   items: number;
-  hideLast: boolean;
+  hideLast?: boolean;
   pagerCallback: Function;
   perPage: number;
   searchParam?: string;

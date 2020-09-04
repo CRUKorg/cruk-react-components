@@ -6,7 +6,7 @@ import useEffectBrowser from '../../hooks/useEffectBrowser';
 import { ThemeType } from '../../themes/types';
 
 type PopOverProps = {
-  position: string;
+  position?: string;
   overlay: any;
   css?: string;
   theme?: ThemeType;
