@@ -18,7 +18,7 @@
     "preanalyze": "npm run build-lib",
     "analyze": "source-map-explorer lib/index.js",
     "prettier": "$(npm bin)/prettier --write 'components/**/*.tsx'",
-    "cypress-percy": "percy exec -- $(npm bin)/cypress run",
+    "cypress-percy": "percy exec -- npm run cypress-headless",
     "cypress-headless": "docker-compose stop cypress && docker-compose run cypress $ARGS",
     "cypress-headless:update": "docker-compose stop cypress_update && docker-compose run cypress_update",
     "cypress": "$(npm bin)/cypress open",
