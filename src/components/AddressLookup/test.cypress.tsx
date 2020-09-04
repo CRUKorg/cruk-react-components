@@ -56,7 +56,7 @@ describe('AddressLookup', () => {
     cy.checkA11y('body');
   });
 
-  it('should match CRUK snapshot', () => {
+  it.only('should match CRUK snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
     mount(
@@ -68,9 +68,7 @@ describe('AddressLookup', () => {
       .type('N10')
       .blur();
     cy.contains('li', 'N17 0AB High Road, London - 14 Addresses').should('exist');
-    cy.get('body')
-      .first()
-      .matchImageSnapshot();
+    cy.percySnapshot('AddressLookup CRUK body', { percyCSS: 'body' })
   });
   it('should match CRUK2 snapshot', () => {
     Cypress.config('waitForAnimations', true);
