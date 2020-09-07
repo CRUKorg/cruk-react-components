@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, HTMLAttributes } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -6,29 +6,22 @@ import spacing, { SpacingProps } from '../Spacing';
 
 import { ThemeType, FontSizeType } from '../../themes/types';
 
-type HeadingProps = SpacingProps & {
-  h1?: boolean;
-  h2?: boolean;
-  h3?: boolean;
-  h4?: boolean;
-  h5?: boolean;
-  h6?: boolean;
-  textSize?: FontSizeType;
-  textAlign?: 'left' | 'right' | 'center';
-  textColor?: string;
-  theme?: ThemeType;
-};
+type HeadingProps = SpacingProps &
+  HTMLAttributes<HTMLElement> & {
+    h1?: boolean;
+    h2?: boolean;
+    h3?: boolean;
+    h4?: boolean;
+    h5?: boolean;
+    h6?: boolean;
+    textSize?: FontSizeType;
+    textAlign?: 'left' | 'right' | 'center';
+    textColor?: string;
+    theme?: ThemeType;
+    as?: any;
+  };
 
-type StyledHeadingProps = SpacingProps & {
-  h1?: boolean;
-  h2?: boolean;
-  h3?: boolean;
-  h4?: boolean;
-  h5?: boolean;
-  h6?: boolean;
-  textSize?: FontSizeType;
-  textAlign?: 'left' | 'right' | 'center';
-  textColor?: string;
+type StyledHeadingProps = Omit<HeadingProps, 'theme'> & {
   theme: ThemeType;
 };
 
