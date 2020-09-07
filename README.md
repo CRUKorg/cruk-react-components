@@ -124,6 +124,12 @@ To run a specific test Cypress headlessly
 ARGS="--spec src/components/Modal/test.cypress.tsx" npm run cypress-headless
 ```
 
+To run and update a specific snapshot headlessly
+
+```sh
+ARGS="--spec src/components/Modal/test.cypress.tsx" npm run cypress-headless:update
+```
+
 ## Docker
 
 A docker-compose.yml file is provided to aid development/testing in a consistent environment.

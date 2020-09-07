@@ -19,7 +19,7 @@
     "analyze": "source-map-explorer lib/index.js",
     "prettier": "$(npm bin)/prettier --write 'components/**/*.tsx'",
     "cypress-headless": "docker-compose stop cypress && docker-compose run cypress $ARGS",
-    "cypress-headless:update": "docker-compose stop cypress_update && docker-compose run cypress_update",
+    "cypress-headless:update": "docker-compose stop cypress_update && docker-compose run cypress_update $ARGS",
     "cypress": "$(npm bin)/cypress open",
     "jest-ci": "NODE_ENV=test jest --watchAll=false",
     "jest": "NODE_ENV=test jest --watch",
