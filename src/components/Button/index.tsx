@@ -185,7 +185,7 @@ const Button: FunctionComponent<ButtonProps> = forwardRef((props: ButtonProps, r
     <StyledButton as={props.href ? 'a' : 'button'} {...props} isIconButton={isIconButton} theme={theme} ref={ref}>
       {props.children && childArray.length
         ? React.Children.map(props.children, (child: ReactNode, index: number) => (
-            <VerticalAlign theme={theme} key={index} isIconButton={isIconButton as boolean}>
+            <VerticalAlign theme={theme} key={index} isIconButton={isIconButton}>
               {child}
             </VerticalAlign>
           ))
