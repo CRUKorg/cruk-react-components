@@ -28,14 +28,14 @@ const content = () => {
         </Select>
       </Box>
       <Box>
-        <Select required hasError label="Has error" onChange={event => {}}>
+        <Select required hasError={true} label="Has error" onChange={event => {}}>
           <option value="dog">Dog</option>
           <option value="red_panda">Red panda</option>
           <option value="axolotl">Axolotl</option>
         </Select>
       </Box>
       <Box>
-        <Select required error="This felid is required ☹️" label="Error message" onChange={event => {}}>
+        <Select required errorMessage="This felid is required ☹️" label="Error message" onChange={event => {}}>
           <option value="cat">Cat</option>
         </Select>
       </Box>
