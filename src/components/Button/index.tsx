@@ -31,11 +31,11 @@ type StyledButtonProps = ButtonHTMLAttributes<HTMLElement> & {
 
 type VerticalAlignProps = {
   theme: ThemeType;
-  isIconButton?: boolean;
+  isIconButton: boolean;
 };
 
 const VerticalAlign = styled.span<VerticalAlignProps>`
-  line-height: ${({ isIconButton }) => (!!isIconButton ? `auto` : `${BUTTON_HEIGHT}`)};
+  line-height: ${({ isIconButton }) => (isIconButton ? `auto` : `${BUTTON_HEIGHT}`)};
   vertical-align: middle;
   margin-left: ${({ theme }) => theme.spacing.extraExtraSmall};
 
@@ -177,17 +177,12 @@ const Button: FunctionComponent<ButtonProps> = forwardRef((props: ButtonProps, r
   const childArray = React.Children.toArray(props.children);
 
   // button has a fixed width if there is a single icon
-  // @ts-ignore typescript doesn't seem to like child.type but it works fine
-  const isIconButton = props.children && childArray.length === 1 && childArray[0] && childArray[0].type === Icon;
+  const isIconButton =
+    // @ts-ignore typescript doesn't seem to like child.type but it works fine
+    props.children && childArray.length === 1 && childArray[0] && childArray[0].type === Icon ? true : false;
 
   return (
-    <StyledButton
-      as={props.href ? 'a' : 'button'}
-      {...props}
-      isIconButton={isIconButton as boolean}
-      theme={theme}
-      ref={ref}
-    >
+    <StyledButton as={props.href ? 'a' : 'button'} {...props} isIconButton={isIconButton} theme={theme} ref={ref}>
       {props.children && childArray.length
         ? React.Children.map(props.children, (child: ReactNode, index: number) => (
             <VerticalAlign theme={theme} key={index} isIconButton={isIconButton as boolean}>
