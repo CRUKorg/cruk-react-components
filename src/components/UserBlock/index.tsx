@@ -46,7 +46,11 @@ const UserBlock: FunctionComponent<UserBlockProps> = props => {
   };
   return (
     <StyledUserBlock {...props} theme={theme}>
-      <Avatar name={props.avatarName || props.name} url={props.avatarUrl} size={props.size} />
+      <Avatar
+        name={props.avatarName || props.name}
+        url={props.avatarUrl ? props.avatarUrl : undefined}
+        size={props.size}
+      />
       <Details>
         <Name>{props.name || 'Anonymous'}</Name>
         {!!props.extra && <Extra>{props.extra}</Extra>}
@@ -56,9 +60,9 @@ const UserBlock: FunctionComponent<UserBlockProps> = props => {
 };
 
 UserBlock.defaultProps = {
-  avatarUrl: null,
-  avatarName: null,
-  theme: null,
+  avatarUrl: undefined,
+  avatarName: undefined,
+  theme: defaultTheme,
 };
 
 export default withTheme(UserBlock);

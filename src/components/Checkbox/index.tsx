@@ -9,7 +9,6 @@ const CHECK_SIZE = '1.125rem';
 
 type StyledLabelProps = {
   checked: boolean;
-  theme?: ThemeType;
 };
 
 const CheckWrapper = styled.div`
@@ -131,7 +130,7 @@ const Checkbox: FC<CheckboxProps> = props => {
 
   return (
     <ThemeProvider theme={theme}>
-      <StyledLabel checked={props.checked}>
+      <StyledLabel checked={props.checked || props.defaultChecked || false}>
         <StyledInput
           checked={props.checked}
           disabled={props.disabled || false}

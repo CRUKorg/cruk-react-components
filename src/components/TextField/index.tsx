@@ -58,8 +58,8 @@ const StyledInput = styled.input<StyledInputProps>`
   background-color: ${({ theme }) => theme.colors.backgroundLight};
   background-image: none;
   border-radius: ${({ theme }) => theme.utilities.borderRadius};
-  border: solid ${({ theme }) => theme.utilities.inputBorderWidth} ${({ error, hasError, theme }) =>
-  hasError || error ? theme.colors.textError : theme.colors.textInputBorder};
+  border: solid ${({ theme }) => theme.utilities.inputBorderWidth} ${({ hasError, theme }) =>
+  hasError ? theme.colors.textError : theme.colors.textInputBorder};
   color: ${({ theme }) => theme.colors.textDark};
   display: block;
   font-size: ${({ theme }) => theme.fontSizes.medium};
@@ -108,8 +108,8 @@ const StyledInput = styled.input<StyledInputProps>`
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     `}
-  ${({ error, hasError, theme }: StyledInputProps) =>
-    (error || hasError) &&
+  ${({ hasError, theme }: StyledInputProps) =>
+    hasError &&
     css`
       ~ ${ExtraRight} {
         border-color: ${theme.colors.textError};
@@ -118,7 +118,7 @@ const StyledInput = styled.input<StyledInputProps>`
 `;
 
 type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
-  error?: string;
+  errorMessage?: string;
   extraBottom?: ReactElement | string;
   extraLeft?: ReactElement | string;
   extraRight?: ReactElement | string;
@@ -129,12 +129,13 @@ type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   theme: ThemeType;
 };
 
-type StyledInputProps = TextFieldProps & {
+type StyledInputProps = Omit<TextFieldProps, 'errorMessage' | 'hasError' | 'label'> & {
   hasError: boolean;
+  label?: string;
 };
 
 const TextField: FunctionComponent<TextFieldProps> = ({
-  error,
+  errorMessage,
   extraBottom,
   extraLeft,
   extraRight,
@@ -155,13 +156,12 @@ const TextField: FunctionComponent<TextFieldProps> = ({
       {!!extraLeft && <ExtraLeft theme={theme}>{extraLeft}</ExtraLeft>}
       <StyledInput
         label={undefined}
-        aria-invalid={hasError || !!error}
-        error={error}
+        hasError={hasError || !!errorMessage || false}
+        aria-invalid={hasError || !!errorMessage || false}
         extraBottom={extraBottom}
         extraLeft={extraLeft}
         extraRight={extraRight}
         extraTop={extraTop}
-        hasError={hasError}
         theme={theme}
         {...props}
       />
@@ -174,7 +174,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
       {!!extraTop && <ExtraTop theme={theme}>{extraTop}</ExtraTop>}
       {!!extraRight || !!extraLeft ? <ExtraWrapper>{renderContent}</ExtraWrapper> : renderContent}
       {!!extraBottom && <ExtraBottom theme={theme}>{extraBottom}</ExtraBottom>}
-      {!!error && <ErrorText theme={theme}>{error}</ErrorText>}
+      {!!errorMessage && <ErrorText theme={theme}>{errorMessage}</ErrorText>}
     </WithLabel>
   );
 };

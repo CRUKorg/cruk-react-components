@@ -1,4 +1,4 @@
-import React, { useState, FunctionComponent, useRef } from 'react';
+import React, { useState, FC, useRef, useCallback, MouseEvent, ReactElement } from 'react';
 import styled, { css, ThemeProvider, withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -530,8 +530,8 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
   }
 `;
 
-const PopOver: FunctionComponent<PopOverProps> = props => {
-  const popRef = useRef(null);
+const PopOver: FC<PopOverProps> = props => {
+  const popRef = useRef<HTMLDivElement>(null);
   const [showPopOver, setPopOver] = useState(false);
   const toggle = () => setPopOver(!showPopOver);
   const theme = {
@@ -540,16 +540,20 @@ const PopOver: FunctionComponent<PopOverProps> = props => {
   };
 
   // outside click closes popover
-  const closePopOver = (e: MouseEvent) => {
-    const isDescendantOfRoot = popRef && popRef.current && popRef.current.contains(e.target);
-    if (!isDescendantOfRoot) {
-      setPopOver(false);
-    }
-  };
+  const closePopOver = useCallback(
+    (e: MouseEvent) => {
+      if (!(popRef.current! as any).contains(e.target)) {
+        setPopOver(false);
+      }
+    },
+    [popRef.current],
+  );
 
   useEffectBrowser(() => {
+    // @ts-ignore function signature for listerns on document is slightly weird but this still works so ignore
     document.addEventListener('click', closePopOver, true);
     return () => {
+      // @ts-ignore function signature for listerns on document is slightly weird but this still works so ignore
       document.removeEventListener('click', closePopOver, true);
     };
   }, []);
@@ -557,7 +561,7 @@ const PopOver: FunctionComponent<PopOverProps> = props => {
   return (
     <ThemeProvider theme={theme}>
       <PopOverWrapper {...props} ref={popRef}>
-        {React.Children.map(props.children, (child: React.ReactElement) =>
+        {React.Children.map(props.children as ReactElement, (child: React.ReactElement) =>
           React.cloneElement(child, {
             onClick: toggle,
             'aria-expanded': showPopOver,
@@ -565,7 +569,7 @@ const PopOver: FunctionComponent<PopOverProps> = props => {
           }),
         )}
         {showPopOver ? (
-          <PopOverContent position={props.position} theme={theme} role="dialog" aria-modal={showPopOver}>
+          <PopOverContent position={props.position || 'top'} theme={theme} role="dialog" aria-modal={showPopOver}>
             {props.overlay}
           </PopOverContent>
         ) : null}

@@ -188,7 +188,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
         }}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           searchDebounced(e.target.value);
-          onChange(e);
+          if (onChange) onChange(e);
         }}
       />
       <ScreenReaderOnly role="status" aria-live="assertive">

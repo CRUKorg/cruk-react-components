@@ -36,7 +36,7 @@ type WithLabelProps = {
 };
 
 export const WithLabel: FunctionComponent<WithLabelProps> = props => {
-  const { label, hintText, required, children, ...otherProps} = props;
+  const { label, hintText, required, children, ...otherProps } = props;
   const theme = {
     ...defaultTheme,
     ...props.theme,
@@ -63,7 +63,7 @@ export const WithLabel: FunctionComponent<WithLabelProps> = props => {
 
 WithLabel.defaultProps = {
   required: false,
-  theme: null,
+  theme: defaultTheme,
 };
 
 export default withTheme(Label);

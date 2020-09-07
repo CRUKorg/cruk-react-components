@@ -79,7 +79,7 @@ const content = () => {
             type="text"
             name="phoneNumber"
             hasError
-            error="You have made more than one daily outing for exercise"
+            errorMessage="You have made more than one daily outing for exercise"
           />
         </Box>
       </section>

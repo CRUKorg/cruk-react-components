@@ -7,12 +7,6 @@ import { WithLabel } from '../Label';
 
 import { ThemeType } from '../../themes/types';
 
-type StyledSelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
-  hasError: boolean;
-  error: string;
-  theme: ThemeType;
-};
-
 const StyledSelect = styled.select<StyledSelectProps>`
   appearance: none;
   background: linear-gradient(
@@ -25,9 +19,9 @@ const StyledSelect = styled.select<StyledSelectProps>`
   background-size: 6px 6px;
   background-repeat: no-repeat;
   border-radius: ${({ theme }) => theme.utilities.borderRadius};
-  border: ${({ theme, hasError, error }) =>
+  border: ${({ theme, hasError, errorMessage }) =>
     `solid ${theme.utilities.inputBorderWidth} ${
-      hasError || error ? theme.colors.textError : theme.colors.textInputBorder
+      hasError || errorMessage ? theme.colors.textError : theme.colors.textInputBorder
     }`};
   color: ${({ theme }) => theme.colors.textDark};
   display: block;
@@ -52,15 +46,21 @@ const StyledSelect = styled.select<StyledSelectProps>`
 `;
 
 type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
-  error?: string;
+  errorMessage?: string;
   hasError?: boolean;
   theme: ThemeType;
   label: string;
   hintText?: ReactElement | string;
 };
 
+// in the styled component we want has error to be manadatory and we want to remove label so it can be undefined
+type StyledSelectProps = Omit<SelectProps, 'errorMesage' | 'hasError' | 'label'> & {
+  hasError: boolean;
+  label?: string;
+};
+
 const Select: FunctionComponent<SelectProps> = ({
-  error,
+  errorMessage,
   hasError,
   required,
   theme: propsTheme,
@@ -78,11 +78,11 @@ const Select: FunctionComponent<SelectProps> = ({
       <StyledSelect
         {...props}
         theme={theme}
-        aria-invalid={hasError || !!error}
-        hasError={undefined}
-        error={undefined}
+        aria-invalid={hasError || !!errorMessage || false}
+        hasError={hasError || !!errorMessage || false}
+        label={undefined}
       />
-      {!!error && <ErrorText>{error}</ErrorText>}
+      {!!errorMessage && <ErrorText>{errorMessage}</ErrorText>}
     </WithLabel>
   );
 };

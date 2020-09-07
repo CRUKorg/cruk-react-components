@@ -144,7 +144,7 @@ const RadioInput: FC<RadioProps> = props => {
 
   return (
     <ThemeProvider theme={theme}>
-      <StyledLabel className={props.className} checked={props.checked}>
+      <StyledLabel className={props.className} checked={props.checked || false}>
         <StyledInput {...props} type="radio" children={undefined} />
         {theme.utilities.useDefaultFromControls ? null : (
           <CheckWrapper>

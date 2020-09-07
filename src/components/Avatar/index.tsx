@@ -42,7 +42,7 @@ const Avatar: FunctionComponent<AvatarProps> = props => {
     return theme.avatar.path + fileName;
   };
 
-  return <StyledAvatar theme={theme} size={theme.avatar[props.size]} src={avatarUrl()} alt="avatar" />;
+  return <StyledAvatar theme={theme} size={theme.avatar[props.size || 'medium']} src={avatarUrl()} alt="avatar" />;
 };
 
 Avatar.defaultProps = {

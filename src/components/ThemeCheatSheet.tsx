@@ -15,8 +15,8 @@ const PreStyled = styled.pre`
   word-wrap: break-word;
 `;
 
-const ThemeCheatSheet: FunctionComponent<Props> = props => {
-  const foundTheme = props.theme.colors ? props.theme : defaultTheme;
+const ThemeCheatSheet: FunctionComponent<Props> = ({ theme }) => {
+  const foundTheme = theme && theme.colors ? theme : defaultTheme;
 
   return (
     <>

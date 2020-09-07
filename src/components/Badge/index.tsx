@@ -12,7 +12,14 @@ type BadgeProps = {
   children?: any;
 };
 
-const StyledBadge = styled.span<BadgeProps>`
+type StyleBadgeProps = {
+  backgroundColor?: string;
+  text?: boolean;
+  theme: ThemeType;
+  size: SpaceType;
+};
+
+const StyledBadge = styled.span<StyleBadgeProps>`
   background-color: ${({ theme: { colors }, backgroundColor }) =>
     backgroundColor && typeof colors[backgroundColor] !== 'undefined'
       ? colors[backgroundColor]
@@ -28,7 +35,7 @@ const StyledBadge = styled.span<BadgeProps>`
     theme: {
       spacing: { extraExtraSmall },
     },
-  }: BadgeProps) => extraExtraSmall};
+  }) => extraExtraSmall};
   display: inline-block;
   min-width: ${({
     size,
@@ -36,9 +43,9 @@ const StyledBadge = styled.span<BadgeProps>`
       spacing,
       spacing: { extraSmall },
     },
-  }: BadgeProps) => `calc(${spacing[size]} + ${extraSmall})`};
+  }) => `calc(${spacing[size]} + ${extraSmall})`};
 
-  ${(props: BadgeProps) =>
+  ${(props: StyleBadgeProps) =>
     !props.text &&
     css`
       padding: 0;
@@ -50,23 +57,23 @@ const StyledBadge = styled.span<BadgeProps>`
           spacing,
           spacing: { extraSmall },
         },
-      }: BadgeProps) => `calc(${spacing[size]} + ${extraSmall})`};
+      }: StyleBadgeProps) => `calc(${spacing[size]} + ${extraSmall})`};
       width: ${({
         size,
         theme: {
           spacing,
           spacing: { extraSmall },
         },
-      }: BadgeProps) => `calc(${spacing[size]} + ${extraSmall})`};
+      }: StyleBadgeProps) => `calc(${spacing[size]} + ${extraSmall})`};
       line-height: ${({
         size,
         theme: {
           spacing,
           spacing: { extraSmall },
         },
-      }: BadgeProps) => `calc(${spacing[size]} + ${extraSmall})`};
+      }: StyleBadgeProps) => `calc(${spacing[size]} + ${extraSmall})`};
       svg {
-        height: ${({ size, theme: { spacing } }: BadgeProps) => spacing[size]};
+        height: ${({ size, theme: { spacing } }: StyleBadgeProps) => spacing[size]};
       }
     `}
 `;
