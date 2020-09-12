@@ -10,15 +10,13 @@ const content = () => {
   return (
     <>
       <section>
-        <Heading h3 textSize="large">
-          Text field
-        </Heading>
+        <Heading h3>Text field</Heading>
         <Box>
           <TextField label="First name" type="text" name="firstName" />
         </Box>
       </section>
       <section>
-        <Heading h3 textSize="large" paddingTop="medium">
+        <Heading h3 paddingTop="medium">
           With a placeholder
         </Heading>
         <Box>
@@ -26,7 +24,7 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 textSize="large" paddingTop="medium">
+        <Heading h3 paddingTop="medium">
           With hint text
         </Heading>
         <Box>
@@ -34,7 +32,7 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 textSize="large" paddingTop="medium">
+        <Heading h3 paddingTop="medium">
           With extra bits
         </Heading>
         <Box>
@@ -70,7 +68,7 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 textSize="large" paddingTop="medium">
+        <Heading h3 paddingTop="medium">
           With error message
         </Heading>
         <Box>
@@ -84,7 +82,23 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 textSize="large" paddingTop="medium">
+        <Heading h3 paddingTop="medium">
+          Is Valid Indicator
+        </Heading>
+        <Box>
+          <TextField label="Phone number" type="text" name="phoneNumber" isValid={true} isValidVisible={true} />
+        </Box>
+      </section>
+      <section>
+        <Heading h3 paddingTop="medium">
+          Is Invalid Indicator
+        </Heading>
+        <Box>
+          <TextField label="Phone number" type="text" name="phoneNumber" isValid={false} isInvalidVisible={true} />
+        </Box>
+      </section>
+      <section>
+        <Heading h3 paddingTop="medium">
           Required
         </Heading>
         <Box>
@@ -92,7 +106,7 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 textSize="large" paddingTop="medium">
+        <Heading h3 paddingTop="medium">
           Disabled
         </Heading>
         <Box>

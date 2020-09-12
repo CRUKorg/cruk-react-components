@@ -7,7 +7,7 @@ Text fields let users enter and edit text.
 ```.jsx
 <>
   <section>
-    <Heading h4>Text field</Heading>
+    <Heading h3>Text field</Heading>
     <Box>
       <TextField
         label="First name"
@@ -17,7 +17,7 @@ Text fields let users enter and edit text.
     </Box>
   </section>
   <section>
-    <Heading h4 paddingTop="medium">With a placeholder</Heading>
+    <Heading h3 paddingTop="medium">With a placeholder</Heading>
     <Box>
       <TextField
         label="Your favourite food"
@@ -28,7 +28,7 @@ Text fields let users enter and edit text.
     </Box>
   </section>
   <section>
-    <Heading h4 paddingTop="medium">With hint text</Heading>
+    <Heading h3 paddingTop="medium">With hint text</Heading>
     <Box>
       <TextField
         label="This is the label"
@@ -39,7 +39,7 @@ Text fields let users enter and edit text.
     </Box>
   </section>
   <section>
-    <Heading h4 paddingTop="medium">With extra bits</Heading>
+    <Heading h3 paddingTop="medium">With extra bits</Heading>
     <Box>
       <TextField
         label="Fundraising target"
@@ -78,7 +78,7 @@ Text fields let users enter and edit text.
     </Box>
   </section>
   <section>
-    <Heading h4 paddingTop="medium">With error message</Heading>
+    <Heading h3 paddingTop="medium">With error message</Heading>
     <Box>
       <TextField
         label="Phone number"
@@ -90,7 +90,31 @@ Text fields let users enter and edit text.
     </Box>
   </section>
   <section>
-    <Heading h4 paddingTop="medium">Required</Heading>
+    <Heading h3 paddingTop="medium">Is Valid Indicator</Heading>
+    <Box>
+      <TextField
+        label="Phone number"
+        type="text"
+        name="phoneNumber"
+        isValid={true}
+        isValidVisible={true}
+      />
+    </Box>
+  </section>
+  <section>
+    <Heading h3 paddingTop="medium">Is Invalid Indicator</Heading>
+    <Box>
+      <TextField
+        label="Phone number"
+        type="text"
+        name="phoneNumber"
+        isValid={false}
+        isInvalidVisible={true}
+      />
+    </Box>
+  </section>
+  <section>
+    <Heading h3 paddingTop="medium">Required</Heading>
     <Box>
       <TextField
         label="Number of cats"
@@ -101,7 +125,7 @@ Text fields let users enter and edit text.
     </Box>
   </section>
   <section>
-    <Heading h4 paddingTop="medium">Disabled</Heading>
+    <Heading h3 paddingTop="medium">Disabled</Heading>
     <Box>
       <TextField
         label="Favourite pasta type"
@@ -119,20 +143,23 @@ Text fields let users enter and edit text.
 
 Other props not listed here (disabled, placeholder, etc.) will be passed to the child &lt;input&gt; element.
 
-| Name         | Type                   | Required | Default | Description                                                     |
-| :----------- | :--------------------- | :------- | :------ | :-------------------------------------------------------------- |
-| label        | string                 | Yes      |         | Will wrap input with label and apply text                       |
-| type         | string                 | Yes      |         | HTML input type: text, number, email or password                |
-| onChange     | function               | Yes      |         | Event handler for input change                                  |
-| value        | string                 | Yes      |         | Controlled value of input                                       |
-| required     | boolean                |          | false   | If false, add (optional) to the label text                      |
-| hasError     | boolean                |          | false   | If true, use error styling for the input                        |
-| errorMessage | string                 |          |         | Error message, If defined, use error styling for the input text |
-| hintText     | ReactElement \| string |          |         | Extra help text between the label and input                     |
-| extraTop     | string                 |          |         | Displayed on top of the input                                   |
-| extraRight   | string                 |          |         | Displayed inline after the input                                |
-| extraBottom  | string                 |          |         | Displayed under the input                                       |
-| extraLeft    | string                 |          |         | Displayed inline before the input                               |
+| Name                 | Type                   | Required | Default | Description                                                                       |
+| :------------------- | :--------------------- | :------- | :------ | :-------------------------------------------------------------------------------- |
+| label                | string                 | Yes      |         | Will wrap input with label and apply text                                         |
+| type                 | string                 | Yes      |         | HTML input type: text, number, email or password                                  |
+| onChange             | function               | Yes      |         | Event handler for input change                                                    |
+| value                | string                 | Yes      |         | Controlled value of input                                                         |
+| required             | boolean                |          | false   | If false, add (optional) to the label text                                        |
+| hasError             | boolean                |          | false   | If true, use error styling for the input                                          |
+| errorMessage         | string                 |          |         | Error message, If defined, use error styling for the input text                   |
+| hintText             | ReactElement \| string |          |         | Extra help text between the label and input                                       |
+| isVaild              | Boolean                |          | true    | used with isVaildValidVisible/isVaildValidVisible to show valid/invalid indicator |
+| isVaildValidVisible  | Boolean                |          | false   | show valid indicator when isVaild is true                                         |
+| isVaildValidInisible | Boolean                |          | false   | show invalid indicator when isValid is false                                      |
+| extraTop             | string                 |          |         | Displayed on top of the input                                                     |
+| extraRight           | string                 |          |         | Displayed inline after the input                                                  |
+| extraBottom          | string                 |          |         | Displayed under the input                                                         |
+| extraLeft            | string                 |          |         | Displayed inline before the input                                                 |
 
 ## Accessibility
 

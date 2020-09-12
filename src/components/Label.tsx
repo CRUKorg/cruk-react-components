@@ -5,6 +5,7 @@ import defaultTheme from '../themes/cruk';
 import { ThemeType } from 'src/themes/types';
 
 const Label = styled.label`
+  position: relative;
   display: block;
   width: 100%;
 `;
