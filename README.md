@@ -75,19 +75,7 @@ Start local development environment 💥
 npm run dev
 ```
 
-## Development
-
-Clone this repository
-
-```sh
-git clone git@github.com:CRUKorg/cruk-react-components.git
-```
-
-Start local development environment 💥
-
-```sh
-npm run dev
-```
+Then view the docs site at: http://127.0.0.1:8080/
 
 ## Testing
 
