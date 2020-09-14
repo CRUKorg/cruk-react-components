@@ -75,6 +75,8 @@ Start local development environment 💥
 npm run dev
 ```
 
+Then view the docs site at: http://127.0.0.1:8080/
+
 ## Development
 
 Clone this repository
