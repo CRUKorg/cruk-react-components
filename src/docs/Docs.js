@@ -41,6 +41,7 @@ import RadioGroupReadme from '../components/RadioGroup/README.md';
 import SelectReadme from '../components/Select/README.md';
 import StepReadme from '../components/Step/README.md';
 import TextReadme from '../components/Text/README.md';
+import TextAreaFieldReadme from '../components/TextAreaField/README.md';
 import TextFieldReadme from '../components/TextField/README.md';
 import TotaliserReadme from '../components/Totaliser/README.md';
 import UserBlockReadme from '../components/UserBlock/README.md';
@@ -49,6 +50,7 @@ import crukTheme, { BREAKPOINT, COLORS } from '../themes/cruk';
 import su2cTheme from '../themes/su2c';
 import cruk2Theme from '../themes/cruk2';
 import GlobalStyle from '../components/GlobalStyle';
+import { TextAreaField } from '../components';
 
 /*
  * Doc specific styling
@@ -300,6 +302,7 @@ class Docs extends React.Component {
               <RouterLink to="/radiogroup">Radio Group</RouterLink>
               <RouterLink to="/select">Select</RouterLink>
               <RouterLink to="/step">Step</RouterLink>
+              <RouterLink to="/textareafield">TextAreaField</RouterLink>
               <RouterLink to="/textfield">TextField</RouterLink>
               <RouterLink to="/text">Text</RouterLink>
               <RouterLink to="/totaliser">Totaliser</RouterLink>
@@ -333,6 +336,7 @@ class Docs extends React.Component {
                 <SelectReadme path="/select" />
                 <StepReadme path="/step" />
                 <TextReadme path="/text" />
+                <TextAreaFieldReadme path="/textareafield" />
                 <TextFieldReadme path="/textfield" />
                 <TotaliserReadme path="/totaliser" />
                 <UserBlockReadme path="/userblock" />
