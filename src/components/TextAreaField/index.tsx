@@ -11,8 +11,8 @@ const StyledTextArea = styled.textarea<StyledTextareaProps>`
   background-color: ${({ theme }) => theme.colors.backgroundLight};
   background-image: none;
   border-radius: ${({ theme }) => theme.utilities.borderRadius};
-  border: solid ${({ theme }) => theme.utilities.inputBorderWidth}
-    ${({ hasError, theme }) => (hasError ? theme.colors.textError : theme.colors.textInputBorder)};
+  border: solid ${({ theme }) => theme.utilities.inputBorderWidth};
+  ${({ hasError, theme }) => (hasError ? theme.colors.textError : theme.colors.textInputBorder)};
   color: ${({ theme }) => theme.colors.textDark};
   display: block;
   font-family: ${({ theme }) => theme.typography.fontFamilyBase};
