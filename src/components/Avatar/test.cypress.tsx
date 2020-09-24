@@ -10,11 +10,11 @@ const content = () => {
   return (
     <>
       <Avatar />
-      <Avatar name="Sam" size="small" />
-      <Avatar name="Sam" size="medium" />
-      <Avatar name="Sam" size="large" />
-      <Avatar name="Sam" size="extraLarge" />
-      <Avatar name="Sam" url="https://via.placeholder.com/300/2e008b/d9318a?text=avatar" />
+      <Avatar name="Sam" size="small" aria-label="sam's proifle" />
+      <Avatar name="Sam" size="medium" aria-label="sam's proifle" />
+      <Avatar name="Sam" size="large" aria-label="sam's proifle" />
+      <Avatar name="Sam" size="extraLarge" aria-label="sam's proifle" />
+      <Avatar name="Sam" aria-label="sam's proifle" url="https://via.placeholder.com/300/2e008b/d9318a?text=avatar" />
     </>
   );
 };

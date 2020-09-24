@@ -22,7 +22,7 @@ type AvatarProps = ImgHTMLAttributes<HTMLElement> & {
   theme?: ThemeType;
 };
 
-const Avatar: FC<AvatarProps> = ({ url, name, size, theme: propsTheme, alt = ' ', ...rest }) => {
+const Avatar: FC<AvatarProps> = ({ url, name, size, theme: propsTheme, alt = '', ...rest }) => {
   const theme = {
     ...defaultTheme,
     ...propsTheme,

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FC, ReactNode, HTMLAttributes } from 'react';
 import styled, { withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -6,7 +6,7 @@ import Avatar from '../Avatar';
 
 import { ThemeType } from '../../themes/types';
 
-type UserBlockProps = {
+type UserBlockProps = HTMLAttributes<HTMLElement> & {
   name?: ReactNode;
   avatarUrl?: string | null;
   avatarName?: string | null;
@@ -15,7 +15,7 @@ type UserBlockProps = {
   theme?: ThemeType;
 };
 
-const StyledUserBlock = styled.div<UserBlockProps>`
+const StyledUserBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content: start;
@@ -39,7 +39,7 @@ const Extra = styled.div`
   margin-top: 4px;
 `;
 
-const UserBlock: FunctionComponent<UserBlockProps> = props => {
+const UserBlock: FC<UserBlockProps> = props => {
   const theme = {
     ...defaultTheme,
     ...props.theme,
