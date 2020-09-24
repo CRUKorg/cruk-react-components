@@ -1,15 +1,8 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FC, ReactNode, ImgHTMLAttributes } from 'react';
 import styled, { withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../themes/types';
-
-type AvatarProps = {
-  name?: ReactNode;
-  url?: string;
-  size?: 'small' | 'medium' | 'large' | 'extraLarge';
-  theme?: ThemeType;
-};
 
 type AvatarStyledProps = {
   size?: string;
@@ -17,32 +10,36 @@ type AvatarStyledProps = {
 
 const StyledAvatar = styled.img<AvatarStyledProps>`
   border-radius: 50%;
-  height: ${props => props.size};
+  height: ${({ size }) => size};
   object-fit: cover;
-  width: ${props => props.size};
+  width: ${({ size }) => size};
 `;
 
-const Avatar: FunctionComponent<AvatarProps> = props => {
+type AvatarProps = ImgHTMLAttributes<HTMLElement> & {
+  name?: ReactNode;
+  url?: string;
+  size?: 'small' | 'medium' | 'large' | 'extraLarge';
+  theme?: ThemeType;
+};
+
+const Avatar: FC<AvatarProps> = ({ url, name, size, theme: propsTheme, alt = ' ', ...rest }) => {
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...propsTheme,
   };
+
   const avatarUrl = () => {
-    if (props.url) return props.url;
+    if (url) return url;
+
     let fileName = 'icon-avatar-Anonymous.png';
-    if (
-      props.name &&
-      typeof props.name === 'string' &&
-      props.name !== 'Anonymous' &&
-      props.name[0].trim().match(/[a-z]/i)
-    ) {
-      fileName = `icon-avatar-${props.name[0].trim().toUpperCase()}.png`;
+    if (name && typeof name === 'string' && name !== 'Anonymous' && name[0].trim().match(/[a-z]/i)) {
+      fileName = `icon-avatar-${name[0].trim().toUpperCase()}.png`;
     }
 
     return theme.avatar.path + fileName;
   };
 
-  return <StyledAvatar theme={theme} size={theme.avatar[props.size || 'medium']} src={avatarUrl()} alt="avatar" />;
+  return <StyledAvatar {...rest} size={theme.avatar[size || 'medium']} src={avatarUrl()} alt={alt} />;
 };
 
 Avatar.defaultProps = {
