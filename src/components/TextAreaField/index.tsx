@@ -7,7 +7,7 @@ import { WithLabel } from '../Label';
 
 import { ThemeType } from '../../themes/types';
 
-type StyledTextareaProps = {
+type StyledTextareaProps = Omit<TextFieldProps, 'errorMessage' | 'hasError' | 'label'> & {
   hasError: boolean;
 };
 
