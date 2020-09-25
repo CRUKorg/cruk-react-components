@@ -7,9 +7,8 @@ import { WithLabel } from '../Label';
 
 import { ThemeType } from '../../themes/types';
 
-type StyledTextareaProps = Omit<TextFieldProps, 'errorMessage' | 'hasError' | 'label'> & {
+type StyledTextareaProps = {
   hasError: boolean;
-  label?: string;
 };
 
 const StyledTextArea = styled.textarea<StyledTextareaProps>`
@@ -63,21 +62,13 @@ const TextField: FunctionComponent<TextFieldProps> = ({
     ...propsTheme,
   };
 
-  const renderContent = (
-    <>
+  return (
+    <WithLabel label={label} hintText={hintText} required={props.required || false}>
       <StyledTextArea
-        label={undefined}
         hasError={hasError || !!errorMessage || false}
         aria-invalid={hasError || !!errorMessage || false}
         theme={theme}
-        {...props}
       />
-    </>
-  );
-
-  return (
-    <WithLabel label={label} hintText={hintText} required={props.required || false}>
-      {renderContent}
       {!!errorMessage && <ErrorText theme={theme}>{errorMessage}</ErrorText>}
     </WithLabel>
   );
