@@ -7,12 +7,16 @@ import { WithLabel } from '../Label';
 
 import { ThemeType } from '../../themes/types';
 
+type StyledTextareaProps = Omit<TextFieldProps, 'errorMessage' | 'hasError' | 'label'> & {
+  hasError: boolean;
+};
+
 const StyledTextArea = styled.textarea<StyledTextareaProps>`
   background-color: ${({ theme }) => theme.colors.backgroundLight};
   background-image: none;
   border-radius: ${({ theme }) => theme.utilities.borderRadius};
-  border: solid ${({ theme }) => theme.utilities.inputBorderWidth}
-    ${({ hasError, theme }) => (hasError ? theme.colors.textError : theme.colors.textInputBorder)};
+  border: ${({ theme, hasError }) => `solid ${theme.utilities.inputBorderWidth}
+    ${hasError ? theme.colors.textError : theme.colors.textInputBorder}`};
   color: ${({ theme }) => theme.colors.textDark};
   display: block;
   font-family: ${({ theme }) => theme.typography.fontFamilyBase};
@@ -45,11 +49,6 @@ type TextFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   theme: ThemeType;
 };
 
-type StyledTextareaProps = Omit<TextFieldProps, 'errorMessage' | 'hasError' | 'label'> & {
-  hasError: boolean;
-  label?: string;
-};
-
 const TextField: FunctionComponent<TextFieldProps> = ({
   errorMessage,
   hasError,
@@ -63,21 +62,14 @@ const TextField: FunctionComponent<TextFieldProps> = ({
     ...propsTheme,
   };
 
-  const renderContent = (
-    <>
+  return (
+    <WithLabel label={label} hintText={hintText} required={props.required || false}>
       <StyledTextArea
-        label={undefined}
         hasError={hasError || !!errorMessage || false}
         aria-invalid={hasError || !!errorMessage || false}
         theme={theme}
         {...props}
       />
-    </>
-  );
-
-  return (
-    <WithLabel label={label} hintText={hintText} required={props.required || false}>
-      {renderContent}
       {!!errorMessage && <ErrorText theme={theme}>{errorMessage}</ErrorText>}
     </WithLabel>
   );
