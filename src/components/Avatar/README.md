@@ -9,13 +9,13 @@ You can use an avatar to display ownership of an item of content. If you pass a 
 ```.tsx
 <>
   <Avatar />
-  <Avatar name="Sam" size="small" aria-label="sam's proifle"/>
-  <Avatar name="Sam" size="medium" aria-label="sam's proifle"/>
-  <Avatar name="Sam" size="large" aria-label="sam's proifle"/>
-  <Avatar name="Sam" size="extraLarge" aria-label="sam's proifle"/>
+  <Avatar name="Sam" size="small" aria-label="sam's profile"/>
+  <Avatar name="Sam" size="medium" aria-label="sam's profile"/>
+  <Avatar name="Sam" size="large" aria-label="sam's profile"/>
+  <Avatar name="Sam" size="extraLarge" aria-label="sam's profile"/>
   <Avatar
     name="Sam"
-    aria-label="sam's proifle"
+    aria-label="sam's profile"
     url="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"
   />
 </>
