@@ -68,6 +68,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
         hasError={hasError || !!errorMessage || false}
         aria-invalid={hasError || !!errorMessage || false}
         theme={theme}
+        {...props}
       />
       {!!errorMessage && <ErrorText theme={theme}>{errorMessage}</ErrorText>}
     </WithLabel>
