@@ -27,16 +27,21 @@ const Details = styled.div`
   flex: 1;
   margin-left: ${({ theme }) => theme.spacing.extraSmall};
   text-align: left;
+  min-width: 0;
 `;
 
 const Name = styled.div`
   font-weight: ${({ theme }) => theme.typography.fontWeightHeavy};
   font-size: ${({ theme }) => theme.fontSizes.medium};
+  white-space: normal;
+  word-break: break-word;
 `;
 
 const Extra = styled.div`
   color: ${({ theme }) => theme.colors.userBlockExtraText};
   margin-top: 4px;
+  white-space: normal;
+  word-break: break-word;
 `;
 
 const UserBlock: FC<UserBlockProps> = props => {
