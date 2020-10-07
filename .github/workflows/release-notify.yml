@@ -1,0 +1,15 @@
+name: release-notify
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  slack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: send message by slack incoming webhook
+        run: |
+          curl --location --request POST ${{ secrets.SLACK_INCOMING_WEBHOOK_URL }} \
+            --header 'Content-Type: application/json' \
+            --data-raw "{\"text\": \"cruk-react-components release published: $GITHUB_REF\"}"
