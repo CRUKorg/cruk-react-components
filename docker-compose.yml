@@ -20,6 +20,7 @@ services:
     image: node
     volumes:
       - .:/app:delegated
+    user: root
     working_dir: /app
     entrypoint: '/app/node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config.docs.js --open --hot --mode development --historyApiFallback --host=0.0.0.0 --public server'
   cypress:
@@ -37,6 +38,7 @@ services:
     networks:
       network:
     image: cypress/included:4.12.1
+    user: root
     working_dir: /app
     depends_on:
       - server

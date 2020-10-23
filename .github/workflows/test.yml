@@ -11,8 +11,7 @@ jobs:
       - name: Checkout cruk-react-components
         uses: actions/checkout@v1
       - name: npm install
-        run: docker system prune &&
-          docker-compose run npm ci
+        run: docker-compose run npm ci
       - name: Bring up the server
         run: docker-compose up -d server
       - name: Test
