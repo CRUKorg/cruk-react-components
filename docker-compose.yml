@@ -2,11 +2,11 @@ version: '3.7'
 
 services:
   npm:
-    image: node
+    image: node:14
     volumes:
       - .:/app:delegated
     working_dir: /app
-    entrypoint: '/usr/local/bin/npm install -u root'
+    entrypoint: '/usr/local/bin/npm install'
   server:
     hostname: server
     networks:
