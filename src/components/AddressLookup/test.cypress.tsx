@@ -59,6 +59,9 @@ describe('AddressLookup', () => {
   it('should match CRUK snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     mount(
       <TestThemeWrapper>
         <Content />
@@ -75,6 +78,9 @@ describe('AddressLookup', () => {
   it('should match CRUK2 snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     mount(
       <TestThemeWrapper theme={crukTheme2}>
         <Content />
@@ -91,7 +97,9 @@ describe('AddressLookup', () => {
   it('should match SU2C snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
-    cy.wait(300); //annoying font loading flake on CI
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     mount(
       <TestThemeWrapper theme={su2cTheme}>
         <Content />

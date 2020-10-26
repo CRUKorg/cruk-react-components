@@ -64,7 +64,9 @@ describe('Radio', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
     mount(<TestThemeWrapper>{uncontrolledRadio()}</TestThemeWrapper>);
-    cy.wait(300); //annoying font loading flake on CI
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.get('#radios')
       .first()
       .matchImageSnapshot();
@@ -73,7 +75,9 @@ describe('Radio', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
     mount(<TestThemeWrapper theme={crukTheme2}>{uncontrolledRadio()}</TestThemeWrapper>);
-    cy.wait(300); //annoying font loading flake on CI
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.get('#radios')
       .first()
       .matchImageSnapshot();
@@ -81,8 +85,10 @@ describe('Radio', () => {
   it('should match SU2C snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
-    cy.wait(300); //annoying font loading flake on CI
     mount(<TestThemeWrapper theme={su2cTheme}>{uncontrolledRadio()}</TestThemeWrapper>);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.get('#radios')
       .first()
       .matchImageSnapshot();
