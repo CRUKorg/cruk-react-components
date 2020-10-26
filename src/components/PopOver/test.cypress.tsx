@@ -84,6 +84,9 @@ describe('Popover', () => {
 
   it('should match snapshot share top', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.contains('Share top').click();
     cy.get('body')
       .first()
@@ -91,6 +94,9 @@ describe('Popover', () => {
   });
   it('should match snapshot share left', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.contains('Share left').click();
     cy.get('body')
       .first()
@@ -98,6 +104,9 @@ describe('Popover', () => {
   });
   it('should match snapshot share right', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.contains('Share right').click();
     cy.get('body')
       .first()
@@ -105,6 +114,9 @@ describe('Popover', () => {
   });
   it('should match snapshot share bottom', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.contains('Share bottom').click();
     cy.get('body')
       .first()
@@ -112,6 +124,9 @@ describe('Popover', () => {
   });
   it('should match snapshot share bottomLeft', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.contains('Share bottomLeft').click();
     cy.get('body')
       .first()
@@ -119,6 +134,9 @@ describe('Popover', () => {
   });
   it('should match snapshot share topLeft', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.contains('Share topLeft').click();
     cy.get('body')
       .first()

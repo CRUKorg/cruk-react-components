@@ -62,6 +62,9 @@ describe('Modal', () => {
   it('should match CRUK snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     mount(<TestThemeWrapper>{ModalOnlyContent()}</TestThemeWrapper>);
     cy.get('[aria-modal="true"]')
       .first()
@@ -70,6 +73,9 @@ describe('Modal', () => {
   it('should match CRUK2 snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     mount(<TestThemeWrapper theme={crukTheme2}>{ModalOnlyContent()}</TestThemeWrapper>);
     cy.get('[aria-modal="true"]')
       .first()
@@ -78,6 +84,9 @@ describe('Modal', () => {
   it('should match SU2C snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     mount(<TestThemeWrapper theme={su2cTheme}>{ModalOnlyContent()}</TestThemeWrapper>);
     cy.get('[aria-modal="true"]')
       .first()
