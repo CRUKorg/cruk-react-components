@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   npm:
-    image: node
+    image: node:14
     volumes:
       - .:/app:delegated
     working_dir: /app
