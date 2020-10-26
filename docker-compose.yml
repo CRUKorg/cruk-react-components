@@ -7,9 +7,6 @@ services:
       - .:/app:delegated
     working_dir: /app
     entrypoint: '/usr/local/bin/npm install'
-    user: root
-    command: chown :root /root/.cache/Cypress && chmod g+rwX /root/.cache/Cypress
-
   server:
     hostname: server
     networks:
