@@ -54,6 +54,9 @@ describe('Collapse', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
     mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.contains('What is Lorem Ipsum?').click();
     cy.get('body')
       .first()
