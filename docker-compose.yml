@@ -6,7 +6,7 @@ services:
     volumes:
       - .:/app:delegated
     working_dir: /app
-    entrypoint: '/usr/local/bin/npm install'
+    entrypoint: '/usr/local/bin/npm install -u root'
   server:
     hostname: server
     networks:
