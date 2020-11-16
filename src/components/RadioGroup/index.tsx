@@ -4,7 +4,7 @@ import styled, { withTheme, ThemeProvider } from 'styled-components';
 import RadioInput from '../Radio';
 import defaultTheme from '../../themes/cruk';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 const StyledRadio = styled(RadioInput)`
   display: block;

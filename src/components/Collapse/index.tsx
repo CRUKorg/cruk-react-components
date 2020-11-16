@@ -2,7 +2,7 @@ import React, { useState, useRef, KeyboardEvent, FunctionComponent, ReactNode } 
 import styled, { withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 import Button from '../Button';
 import Icon from '../Icon';

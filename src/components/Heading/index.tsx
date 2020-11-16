@@ -4,7 +4,7 @@ import styled, { css, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import spacing, { SpacingProps } from '../Spacing';
 
-import { ThemeType, FontSizeType } from '../../themes/types';
+import { ThemeType, FontSizeType } from '../../types';
 
 type HeadingProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {

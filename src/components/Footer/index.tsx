@@ -4,7 +4,7 @@ import styled, { withTheme, ThemeProvider } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import Text from '../Text';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 const StyledFooter = styled.footer`
   box-sizing: border-box;

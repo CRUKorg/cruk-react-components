@@ -4,7 +4,7 @@ import styled, { withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import { ICONS } from './iconList';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 // utility to provide people with a list of icon names
 export const ICON_NAMES = Object.keys(ICONS).reduce((acc: { [key: string]: string }, item: string) => {

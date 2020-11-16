@@ -4,7 +4,7 @@ import styled, { withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import Avatar from '../Avatar';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 type UserBlockProps = HTMLAttributes<HTMLElement> & {
   name?: ReactNode;

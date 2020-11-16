@@ -8,7 +8,7 @@ import Badge from '../Badge';
 import Box from '../Box';
 import { calculatePercentRounded, formatMoney } from '../../utils/Helper';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 type TotaliserProps = {
   total: number;

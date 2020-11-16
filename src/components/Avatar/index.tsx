@@ -2,7 +2,7 @@ import React, { FC, ReactNode, ImgHTMLAttributes } from 'react';
 import styled, { withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 type AvatarStyledProps = {
   size?: string;

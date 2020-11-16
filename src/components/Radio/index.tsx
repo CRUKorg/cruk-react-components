@@ -3,7 +3,7 @@ import styled, { withTheme, css, ThemeProvider } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 const RADIO_SIZE = '1.5rem';
 const RADIO_INNER_SIZE = '1rem';

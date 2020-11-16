@@ -3,7 +3,7 @@ import styled, { css, keyframes, ThemeProvider, withTheme } from 'styled-compone
 
 import defaultTheme from '../../themes/cruk';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 type ProgressBarProps = {
   percentage: number;

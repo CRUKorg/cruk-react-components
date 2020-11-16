@@ -2,7 +2,7 @@ import React, { FC, HTMLAttributes } from 'react';
 import { withTheme } from 'styled-components';
 import Text from '../Text';
 import defaultTheme from '../../themes/cruk';
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 type ErrorTextProps = HTMLAttributes<HTMLElement> & {
   theme: ThemeType;

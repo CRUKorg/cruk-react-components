@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactElement } from 'react';
 import styled, { withTheme, ThemeProvider } from 'styled-components';
 import Text from './Text';
 import defaultTheme from '../themes/cruk';
-import { ThemeType } from 'src/themes/types';
+import { ThemeType } from 'src/types';
 
 const Label = styled.label`
   display: block;

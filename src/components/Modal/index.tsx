@@ -9,7 +9,7 @@ import Icon from '../Icon';
 import { COLORS } from '../../themes/cruk';
 
 import defaultTheme from '../../themes/cruk';
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 const Background = styled.div`
   background: ${COLORS.modalBackdrop};

@@ -4,7 +4,7 @@ import styled, { withTheme, ThemeProvider } from 'styled-components';
 import { useScrollPosition } from '../../../src/hooks/useScrollPosition';
 
 import defaultTheme from '../../themes/cruk';
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 const HEADER_HEIGHT_LARGE = '120px';
 const HEADER_HEIGHT_SMALL = '72px';

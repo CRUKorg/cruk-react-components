@@ -3,7 +3,7 @@ import styled, { css, ThemeProvider, withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 import useEffectBrowser from '../../hooks/useEffectBrowser';
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 type PopOverProps = {
   position?: string;
