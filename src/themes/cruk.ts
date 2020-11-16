@@ -171,7 +171,7 @@ export const TYPOGRAPHY: TypographyType = {
   fontWeightVLight: '100',
   linkTextDecoration: 'underline',
   lineHeight: '1.5em',
-  headerLineHeight: '1.125em',
+  headerLineHeight: '1.25em',
 };
 
 const theme: ThemeType = {
