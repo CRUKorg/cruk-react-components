@@ -38,5 +38,7 @@ function () {
 | Name            | Type     |  Options   | Default | Description                                                                                     |
 | :-------------- | :------- | :--------: | :------ | :---------------------------------------------------------------------------------------------- |
 | closeFunction   | function |            | null    | (Required) function used to close the modal on escape key press and close or close button press |
+| maxWidth        | string   |            | 500px   | Max width of modal                                                                              |
+| top             | string   |            | 1rem    | Height from top of container                                                                    |
 | children        | Any      |            |         | Any content to be displayed in modal                                                            |
 | showCloseButton | Boolean  | true/false | true    |
