@@ -6,8 +6,9 @@ import ErrorText from '../ErrorText';
 import Icon from '../Icon';
 import TextField from '../TextField';
 import Text from '../Text';
-import { ThemeType } from '../../themes/types';
 import debounce from '../../utils/debounce';
+
+import { ThemeType, AddressDataType, AddressOptionsType } from '../../types';
 
 const FIND_URL = 'https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws';
 const RETRIEVE_URL = 'https://api.addressy.com/Capture/Interactive/Retrieve/v1/json3.ws';
@@ -59,26 +60,11 @@ const ScreenReaderOnly = styled.div`
   width: 1px;
 `;
 
-type AddressData = {
-  Line1: string;
-  Line2: string;
-  Line3: string;
-  City: string;
-  PostalCode: string;
-};
-
-type AddressOptions = {
-  Description: string;
-  Type: string;
-  Id: string;
-  Text: string;
-};
-
 type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
   apiKey: string;
   error?: string;
   hasError?: boolean;
-  onAddressSelected: (address: AddressData) => void;
+  onAddressSelected: (address: AddressDataType) => void;
   theme?: ThemeType;
 };
 
@@ -90,7 +76,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = ({
   onChange,
   ...props
 }) => {
-  const [addressOptions, setAddressOptions] = React.useState<AddressOptions[]>([]);
+  const [addressOptions, setAddressOptions] = React.useState<AddressOptionsType[]>([]);
   const [activeOption, setActiveOption] = React.useState(0);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const theme = {
