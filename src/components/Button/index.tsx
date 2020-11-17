@@ -4,7 +4,7 @@ import defaultTheme from '../../themes/cruk';
 
 import Icon from '../Icon';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 const BUTTON_HEIGHT = '2.5rem';
 

@@ -5,7 +5,7 @@ import defaultTheme from '../../themes/cruk';
 import ErrorText from '../ErrorText';
 import { WithLabel } from '../Label';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 type StyledTextareaProps = Omit<TextFieldProps, 'errorMessage' | 'hasError' | 'label'> & {
   hasError: boolean;

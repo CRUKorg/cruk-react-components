@@ -10,7 +10,7 @@ import {
   FontSizesType,
   TypographyType,
   ThemeType,
-} from './types';
+} from '../types';
 
 export const UTILITIES: UtilitiesType = {
   borderRadius: '3px',

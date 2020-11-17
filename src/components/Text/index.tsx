@@ -4,8 +4,8 @@ import styled, { withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import spacing, { SpacingProps } from '../Spacing';
 
-import { FontSizeType } from '../../themes/types';
-import { ThemeType } from '../../themes/types';
+import { FontSizeType } from '../../types';
+import { ThemeType } from '../../types';
 
 // the 'as' prop is for styled component casting
 // text hover color prop is only used in Link which extends Text

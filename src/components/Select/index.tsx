@@ -5,7 +5,7 @@ import defaultTheme from '../../themes/cruk';
 import ErrorText from '../ErrorText';
 import { WithLabel } from '../Label';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 const StyledSelect = styled.select<StyledSelectProps>`
   appearance: none;

@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
-import { ThemeType, SpaceType } from '../../themes/types';
+import { ThemeType, SpaceType } from '../../types';
 
 type BadgeProps = {
   backgroundColor?: string;

@@ -62,4 +62,4 @@ export { default as TextFieldReadme } from './TextField/README.md';
 export { default as TotaliserReadme } from './Totaliser/README.md';
 export { default as UserBlockReadme } from './UserBlock/README.md';
 
-export * from '../themes/types';
+export * from '../types';

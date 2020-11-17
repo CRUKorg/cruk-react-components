@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import styled, { withTheme } from 'styled-components';
 
-import { ThemeType } from '../themes/types';
+import { ThemeType } from '../types';
 import defaultTheme from '../themes/cruk';
 import Heading from './Heading';
 

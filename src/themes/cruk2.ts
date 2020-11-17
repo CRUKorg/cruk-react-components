@@ -10,7 +10,7 @@ import {
   FontSizesType,
   TypographyType,
   ThemeType,
-} from './types';
+} from '../types';
 
 import defaultTheme from './cruk';
 

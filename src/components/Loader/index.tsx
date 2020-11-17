@@ -3,7 +3,7 @@ import styled, { keyframes, ThemeProvider, withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 type LoaderProps = {
   theme?: ThemeType;

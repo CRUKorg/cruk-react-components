@@ -108,3 +108,18 @@ export type ThemeType = {
   typography: TypographyType;
   utilities: UtilitiesType;
 };
+
+export type AddressDataType = {
+  Line1: string;
+  Line2: string;
+  Line3: string;
+  City: string;
+  PostalCode: string;
+};
+
+export type AddressOptionsType = {
+  Description: string;
+  Type: string;
+  Id: string;
+  Text: string;
+};

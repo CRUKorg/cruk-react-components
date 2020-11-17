@@ -3,7 +3,7 @@ import styled, { css, withTheme } from 'styled-components';
 
 import spacing, { SpacingProps } from '../Spacing';
 import defaultTheme from '../../themes/cruk';
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 type BoxProps = SpacingProps & {
   backgroundColor?: string;

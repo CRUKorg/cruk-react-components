@@ -5,7 +5,7 @@ import crukTheme from '../themes/cruk';
 import crukTheme2 from '../themes/cruk2';
 import su2cTheme from '../themes/su2c';
 import Heading from './Heading';
-import { ThemeType } from 'src/themes/types';
+import { ThemeType } from 'src/types';
 
 type TestThemeWrapperProps = {
   theme?: ThemeType;
