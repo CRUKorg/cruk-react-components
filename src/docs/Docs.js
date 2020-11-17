@@ -25,6 +25,7 @@ import BoxReadme from '../components/Box/README.md';
 import ButtonReadme from '../components/Button/README.md';
 import CheckboxReadme from '../components/Checkbox/README.md';
 import CollapseReadme from '../components/Collapse/README.md';
+import DateFieldReadme from '../components/DateField/README.md';
 import ErrorTextReadme from '../components/ErrorText/README.md';
 import FooterReadme from '../components/Footer/README.md';
 import HeadingReadme from '../components/Heading/README.md';
@@ -287,6 +288,7 @@ class Docs extends React.Component {
               <RouterLink to="/button">Button</RouterLink>
               <RouterLink to="/checkbox">Checkbox</RouterLink>
               <RouterLink to="/collapse">Collapse</RouterLink>
+              <RouterLink to="/DateField">DateField</RouterLink>
               <RouterLink to="/errortext">ErrorText</RouterLink>
               <RouterLink to="/footer">Footer</RouterLink>
               <RouterLink to="/header">Header</RouterLink>
@@ -320,6 +322,7 @@ class Docs extends React.Component {
                 <ButtonReadme path="/button" />
                 <CheckboxReadme path="/checkbox" />
                 <CollapseReadme path="/collapse" />
+                <DateFieldReadme path="/DateField" />
                 <ErrorTextReadme path="/errortext" />
                 <FooterReadme path="/footer" />
                 <HeadingReadme path="/heading" />

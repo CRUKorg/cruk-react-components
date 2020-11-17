@@ -68,7 +68,9 @@ describe('Icon', () => {
 
   it('should match snapshot', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
-    cy.wait(200); //annoying font loading flake on CI
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.get('body')
       .first()
       .matchImageSnapshot();
