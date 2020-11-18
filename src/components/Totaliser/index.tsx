@@ -6,7 +6,7 @@ import ProgressBar from '../ProgressBar';
 import Text from '../Text';
 import Badge from '../Badge';
 import Box from '../Box';
-import { calculatePercentRounded, formatMoney } from '../../utils/Helper';
+import { calculatePercentRounded, formatMoneyWithCommas } from '../../utils/Helper';
 
 import { ThemeType } from '../../types';
 
@@ -107,26 +107,26 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
   };
   const result = calculatePercentRounded(+props.total, props.target || 0);
   const percentageOfTotal = calculatePercentRounded(+props.total, props.target || 0);
-  const summaryString = `${percentageOfTotal}% of the £${formatMoney(props.target || 0)} target`;
+  const summaryString = `${percentageOfTotal}% of the £${formatMoneyWithCommas(props.target || 0)} target`;
 
   return (
     <TotaliserWrapper {...props} isCompact={props.isCompact || false} theme={theme}>
       {props.isCompact ? (
         <CompactWrapper theme={theme}>
-          <Box marginHorizontal="none" marginRight="extraExtraSmall" marginBottom="none">
-            <Badge>{`£${formatMoney(props.total)}`}</Badge>
+          <Box marginHorizontal='none' marginRight='extraExtraSmall' marginBottom='none'>
+            <Badge>{`£${formatMoneyWithCommas(props.total)}`}</Badge>
           </Box>
           {props.target !== null && (
             <Summary>
-              <Text as="span">{summaryString}</Text>
+              <Text as='span'>{summaryString}</Text>
             </Summary>
           )}
         </CompactWrapper>
       ) : (
         <DetailWrapper theme={theme}>
           <p>Total raised</p>
-          <Total>£{formatMoney(props.total)}</Total>
-          <p>+ £{formatMoney(props.giftAid || 0)} Gift Aid</p>
+          <Total>£{formatMoneyWithCommas(props.total)}</Total>
+          <p>+ £{formatMoneyWithCommas(props.giftAid || 0)} Gift Aid</p>
         </DetailWrapper>
       )}
       {/* We don't want to show the default summaryMessage if there is no target, because the summary is associated with the target progress bar */}
@@ -139,7 +139,7 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
               <Summary>{props.summaryMessage}</Summary>
             ) : (
               <Summary>
-                <Text as="span">{summaryString}</Text>
+                <Text as='span'>{summaryString}</Text>
               </Summary>
             ))}
         </ProgressBarWrapper>
