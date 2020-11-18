@@ -17,7 +17,6 @@
     "build-docs": "webpack --config webpack.config.docs.js --mode production",
     "preanalyze": "npm run build-lib",
     "analyze": "source-map-explorer lib/index.js",
-    "prettier": "$(npm bin)/prettier --write 'components/**/*.tsx'",
     "cypress-headless": "docker-compose stop cypress && docker-compose run cypress $ARGS",
     "cypress-headless:update": "docker-compose stop cypress_update && docker-compose run cypress_update $ARGS",
     "cypress": "$(npm bin)/cypress open",
@@ -28,7 +27,9 @@
     "clean": "rm -rf node_modules/",
     "release": "node release.js",
     "dev": "NODE_ENV=development npm i && docker-compose up server",
-    "rollup:build-lib": "npm run clean-lib && rollup --config"
+    "rollup:build-lib": "npm run clean-lib && rollup --config",
+    "prettier": "prettier --write 'src/**/*.{ts,tsx}'",
+    "prettier:test": "prettier --check 'src/**/*.{ts,tsx}'"
   },
   "husky": {
     "hooks": {
