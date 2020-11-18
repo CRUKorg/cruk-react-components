@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Fieldset = styled.fieldset`
   margin: 0;
@@ -23,4 +23,3 @@ export const LargeDateTextFieldWrapper = styled(DateTextFieldWrapper)`
 export const ErrorTextWrapper = styled.div`
   clear: left;
 `;
-
