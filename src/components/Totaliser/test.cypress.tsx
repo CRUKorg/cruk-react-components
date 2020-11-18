@@ -12,7 +12,7 @@ const content = () => (
       <Totaliser total={22.5} giftAid={10.55} />
     </Box>
     <Box>
-      <Totaliser total={0.01} target={100} />
+      <Totaliser total={0.01} target={100000} />
     </Box>
     <Box>
       <Totaliser total={99.99} target={100} giftAid={25} />
