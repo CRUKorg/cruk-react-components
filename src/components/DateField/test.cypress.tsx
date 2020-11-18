@@ -22,6 +22,16 @@ const unControlledContent = () => (
         onFocus={() => {}}
         errorMessage={'invalid birthday'}
       />
+      <DateField
+        day={'01'}
+        month={'07'}
+        year={'1990'}
+        label="Date with all fields with errors"
+        dayHasError={true}
+        monthHasError={true}
+        yearHasError={true}
+        errorMessage={'Day month and year invalid'}
+      />
     </Box>
   </>
 );
