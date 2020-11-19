@@ -10,5 +10,6 @@
 /cypress/videos
 /cypress/snapshots/**/__diff_output__
 /cypress/snapshots/**/**(failed).snap.png
+/cypress/fixtures/example.json 
 
 .idea
