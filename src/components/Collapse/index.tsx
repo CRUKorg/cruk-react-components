@@ -47,9 +47,11 @@ const CollapseContent = styled.div<CollapseContentProps>`
       fontSizes: { small },
     },
   }) => small};
-  transition: height 0.5s ease;
-  overflow: auto;
+  transition: height 0.5s ease, transform 0.5s ease;
   height: ${({ contentHeight }) => `${contentHeight}px`};
+  transform: ${({ contentHeight }) => (parseInt(contentHeight, 10) > 0 ? `scaleY(1)` : `scaleY(0)`)};
+  transform-origin: top;
+  overflow: visible;
   & > p {
     margin-top: 0;
   }
