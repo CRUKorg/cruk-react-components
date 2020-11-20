@@ -2,24 +2,25 @@ import React, { useState, useRef, KeyboardEvent, FunctionComponent, ReactNode } 
 import styled, { withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 
-import { ThemeType } from '../../types';
-
 import Button from '../Button';
 import Icon from '../Icon';
 
+import { ThemeType } from '../../types';
+
 type CollapseProps = {
+  id: string;
   headerTitleText: string;
   headerComponent?: ReactNode;
   contentHeight?: string;
-  active?: boolean;
-  id?: string;
+  startOpen?: boolean;
+  onOpenChange?: (isOpen: boolean) => void;
   theme?: ThemeType;
 };
 
 const CollapseWrapper = styled.div``;
 
 const FlippingIcon = styled(Icon)`
-  transform: ${({ active }: { active: boolean }) => (!!active ? 'rotate(90deg) scaleX(-1)' : 'rotate(90deg)')};
+  transform: ${({ open }: { open: boolean }) => (!!open ? 'rotate(90deg) scaleX(-1)' : 'rotate(90deg)')};
   transition-duration: 0.5s;
 `;
 
@@ -59,17 +60,19 @@ const CustomHeader = styled.div`
 `;
 
 const Collapse: FunctionComponent<CollapseProps> = props => {
-  const [activeStatus, setActiveStatus] = useState(props.active || false);
+  const [openStatus, setOpenStatus] = useState(props.startOpen || false);
   const [contentHeight, setContentHeight] = useState('0');
   const content = useRef<HTMLDivElement>(null);
 
   const toggleCollapse = () => {
-    setActiveStatus(activeStatus === false ? true : false);
+    const newOpenState = !openStatus;
+    setOpenStatus(newOpenState);
     setContentHeight(
-      activeStatus === true
-        ? '0'
-        : `${!!content && !!content.current && !!content.current.scrollHeight ? content.current.scrollHeight : 0}`,
+      newOpenState
+        ? `${!!content && !!content.current && !!content.current.scrollHeight ? content.current.scrollHeight : 0}`
+        : '0',
     );
+    !!props.onOpenChange && props.onOpenChange(newOpenState);
   };
 
   const triggerToggle = (event: KeyboardEvent) => {
@@ -82,7 +85,7 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
   const renderHeader = (theme: ThemeType) => {
     const defaultProps = {
       'aria-controls': `${props.id}-header`,
-      'aria-expanded': activeStatus,
+      'aria-expanded': openStatus,
       id: `${props.id}-header`,
       onClick: toggleCollapse,
     };
@@ -101,7 +104,7 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
     ) : (
       <DefaultHeader {...defaultProps} theme={theme} appearance="text" type="button" aria-label={props.headerTitleText}>
         {props.headerTitleText}
-        <FlippingIcon name="chevronRight" active={activeStatus} />
+        <FlippingIcon name="chevronRight" open={openStatus} />
       </DefaultHeader>
     );
   };
@@ -116,12 +119,12 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
       {renderHeader(theme)}
       <CollapseContent
         theme={theme}
-        role="region"
-        aria-hidden={activeStatus === false ? true : false}
-        aria-labelledby={`${props.id}-header`}
-        ref={content}
-        contentHeight={contentHeight}
         id={`${props.id}-content`}
+        ref={content}
+        role="region"
+        aria-hidden={!openStatus}
+        aria-labelledby={`${props.id}-header`}
+        contentHeight={contentHeight}
       >
         {props.children}
       </CollapseContent>
