@@ -28,8 +28,10 @@ Use a collapse component to show and hide content. It has a default view; howeve
 
 ## Props
 
-| Name            | Type      | Options | Default | Description                                                                                                          |
-| :-------------- | :-------- | :-----: | :------ | :------------------------------------------------------------------------------------------------------------------- |
-| headerTitleText | String    |         |         | Header text. If you pass a custom component this text is still need as it will be used for the aria-label            |
-| headerComponent | ReactNode |         |         | Custom header component                                                                                              |
-| id              | String    |         |         | This is mandatory and this id will be used to reference aria attributes between the collapse header and the content. |
+| Name            | Type                    | Options | Default   | Description                                                                                                          |
+| :-------------- | :---------------------- | :-----: | :-------- | :------------------------------------------------------------------------------------------------------------------- |
+| id              | String                  |         |           | This is mandatory and this id will be used to reference aria attributes between the collapse header and the content. |
+| headerTitleText | String                  |         |           | Header text. If you pass a custom component this text is still need as it will be used for the aria-label            |
+| headerComponent | ReactNode               |         | undefined | (optinal) Custom header component                                                                                    |
+| startOpen       | boolean                 |         | false     | (optional) starting value for collapse open state                                                                    |
+| onOpenChange    | (isOpen: boolean) => {} |         |           | (optional) open changed callback                                                                                     |
