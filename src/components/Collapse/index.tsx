@@ -48,8 +48,8 @@ const CollapseContent = styled.div<CollapseContentProps>`
     },
   }) => small};
   transition: height 0.5s ease;
+  overflow: auto;
   height: ${({ contentHeight }) => `${contentHeight}px`};
-  overflow: hidden;
   & > p {
     margin-top: 0;
   }
