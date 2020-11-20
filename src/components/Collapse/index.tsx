@@ -7,6 +7,8 @@ import Icon from '../Icon';
 
 import { FontSizeType, ThemeType } from '../../types';
 
+const transitionDurationSeconds = 0.5;
+
 type CollapseProps = {
   id: string;
   headerTitleText: string;
@@ -23,7 +25,7 @@ const CollapseWrapper = styled.div``;
 
 const FlippingIcon = styled(Icon)`
   transform: ${({ open }: { open: boolean }) => (!!open ? 'rotate(90deg) scaleX(-1)' : 'rotate(90deg)')};
-  transition-duration: 0.5s;
+  transition-duration: ${transitionDurationSeconds}s;
 `;
 
 type StyledProgressBarProps = {
@@ -83,13 +85,24 @@ const CollapseContent = styled.div<CollapseContentProps>`
       fontSizes: { small },
     },
   }) => small};
-  transition: height 0.5s ease;
-  height: ${({ contentHeight }) => `${contentHeight}px`};
+  transition: ${transitionDurationSeconds}s ease;
+  height: ${({ contentHeight }) => contentHeight};
   overflow: hidden;
   & > p {
     margin-top: 0;
   }
 `;
+
+// const CollapseContent = styled.div`
+//   margin: 0;
+//   height: ${props => props.contentHeight};
+//   overflow: hidden;
+//   transition: ${transitionDurationSeconds}s ease;
+//   & > p {
+//     margin-top: 0;
+//   }
+// `;
+
 
 const CustomHeader = styled.div`
   cursor: pointer;
@@ -99,15 +112,32 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
   const [openStatus, setOpenStatus] = useState(props.startOpen || false);
   const [contentHeight, setContentHeight] = useState('0');
   const content = useRef<HTMLDivElement>(null);
+  const transitionTimer = useRef(0);
+
+  // const toggleCollapse = () => {
+  //   clearTimeout(transitionTimer.current);
+  //   const newOpenState = !openStatus;
+  //   setOpenStatus(newOpenState);
+  //   setContentHeight(
+  //     newOpenState
+  //       ? `${!!content && !!content.current && !!content.current.scrollHeight ? content.current.scrollHeight : 0}`
+  //       : '0',
+  //   );
+  //   !!props.onOpenChange && props.onOpenChange(newOpenState);
+  // };
 
   const toggleCollapse = () => {
+    clearTimeout(transitionTimer.current);
     const newOpenState = !openStatus;
     setOpenStatus(newOpenState);
-    setContentHeight(
-      newOpenState
-        ? `${!!content && !!content.current && !!content.current.scrollHeight ? content.current.scrollHeight : 0}`
-        : '0',
-    );
+    setContentHeight(content?.current?.scrollHeight + 'px');
+    if (newOpenState === false) {
+      // Allow height to be rendered before setting to 0 for animation.
+      setTimeout(() => setContentHeight('0'), 10);
+    } else {
+      // After animation set height to initial for responsive layout.
+      transitionTimer.current = setTimeout(() => setContentHeight('initial'), transitionDurationSeconds * 1000);
+    }
     !!props.onOpenChange && props.onOpenChange(newOpenState);
   };
 
