@@ -102,7 +102,7 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
         {props.headerComponent}
       </CustomHeader>
     ) : (
-      <DefaultHeader {...defaultProps} theme={theme} appearance="text" type="button" aria-label={props.headerTitleText}>
+      <DefaultHeader {...defaultProps} theme={theme} appearance="text" type="button">
         {props.headerTitleText}
         <FlippingIcon name="chevronRight" open={openStatus} />
       </DefaultHeader>
