@@ -5,11 +5,13 @@ import defaultTheme from '../../themes/cruk';
 import Button from '../Button';
 import Icon from '../Icon';
 
-import { ThemeType } from '../../types';
+import { FontSizeType, ThemeType } from '../../types';
 
 type CollapseProps = {
   id: string;
   headerTitleText: string;
+  headerTitleTextColor?: string;
+  headerTitleTextSize?: FontSizeType;
   headerComponent?: ReactNode;
   contentHeight?: string;
   startOpen?: boolean;
@@ -24,16 +26,50 @@ const FlippingIcon = styled(Icon)`
   transition-duration: 0.5s;
 `;
 
-const DefaultHeader = styled(Button)`
-  color: ${({
+type StyledProgressBarProps = {
+  theme: ThemeType;
+  textColor?: string;
+  textSize?: FontSizeType;
+};
+
+const DefaultHeader = styled(Button)<StyledProgressBarProps>`
+  display: flex;
+  color: ${({ theme: { colors }, textColor }) =>
+    textColor && typeof colors[textColor] !== 'undefined'
+      ? colors[textColor]
+      : textColor
+      ? textColor
+      : colors['secondary']};
+  font-size: ${({
     theme: {
-      colors: { secondary },
+      fontSizes,
+      fontSizes: { medium },
     },
-  }) => secondary};
+    textSize,
+  }) => (textSize ? fontSizes[textSize] : medium)};
   font-weight: normal;
   margin-bottom: 0;
+  height: initial;
   padding: 0 0 10px;
   text-decoration: none;
+  text-align: left;
+  :hover,
+  :focus {
+    color: ${({ theme: { colors }, textColor }) =>
+    textColor && typeof colors[textColor] !== 'undefined'
+      ? colors[textColor]
+      : textColor
+      ? textColor
+      : colors['secondary']};
+  }
+
+  span {
+    line-height: ${({
+      theme: {
+        typography: { lineHeight },
+      },
+    }) => lineHeight};
+  }
 `;
 
 type CollapseContentProps = {
@@ -102,7 +138,14 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
         {props.headerComponent}
       </CustomHeader>
     ) : (
-      <DefaultHeader {...defaultProps} theme={theme} appearance="text" type="button">
+      <DefaultHeader
+        {...defaultProps}
+        theme={theme}
+        appearance="text"
+        type="button"
+        textColor={props.headerTitleTextColor}
+        textSize={props.headerTitleTextSize}
+      >
         {props.headerTitleText}
         <FlippingIcon name="chevronRight" open={openStatus} />
       </DefaultHeader>
