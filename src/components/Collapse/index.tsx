@@ -93,17 +93,6 @@ const CollapseContent = styled.div<CollapseContentProps>`
   }
 `;
 
-// const CollapseContent = styled.div`
-//   margin: 0;
-//   height: ${props => props.contentHeight};
-//   overflow: hidden;
-//   transition: ${transitionDurationSeconds}s ease;
-//   & > p {
-//     margin-top: 0;
-//   }
-// `;
-
-
 const CustomHeader = styled.div`
   cursor: pointer;
 `;
@@ -113,18 +102,6 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
   const [contentHeight, setContentHeight] = useState('0');
   const content = useRef<HTMLDivElement>(null);
   const transitionTimer = useRef(0);
-
-  // const toggleCollapse = () => {
-  //   clearTimeout(transitionTimer.current);
-  //   const newOpenState = !openStatus;
-  //   setOpenStatus(newOpenState);
-  //   setContentHeight(
-  //     newOpenState
-  //       ? `${!!content && !!content.current && !!content.current.scrollHeight ? content.current.scrollHeight : 0}`
-  //       : '0',
-  //   );
-  //   !!props.onOpenChange && props.onOpenChange(newOpenState);
-  // };
 
   const toggleCollapse = () => {
     clearTimeout(transitionTimer.current);
