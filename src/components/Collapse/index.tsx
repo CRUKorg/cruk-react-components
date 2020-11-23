@@ -5,11 +5,15 @@ import defaultTheme from '../../themes/cruk';
 import Button from '../Button';
 import Icon from '../Icon';
 
-import { ThemeType } from '../../types';
+import { FontSizeType, ThemeType } from '../../types';
+
+const transitionDurationSeconds = 0.5;
 
 type CollapseProps = {
   id: string;
   headerTitleText: string;
+  headerTitleTextColor?: string;
+  headerTitleTextSize?: FontSizeType;
   headerComponent?: ReactNode;
   contentHeight?: string;
   startOpen?: boolean;
@@ -21,19 +25,53 @@ const CollapseWrapper = styled.div``;
 
 const FlippingIcon = styled(Icon)`
   transform: ${({ open }: { open: boolean }) => (!!open ? 'rotate(90deg) scaleX(-1)' : 'rotate(90deg)')};
-  transition-duration: 0.5s;
+  transition-duration: ${transitionDurationSeconds}s;
 `;
 
-const DefaultHeader = styled(Button)`
-  color: ${({
+type StyledProgressBarProps = {
+  theme: ThemeType;
+  textColor?: string;
+  textSize?: FontSizeType;
+};
+
+const DefaultHeader = styled(Button)<StyledProgressBarProps>`
+  display: flex;
+  color: ${({ theme: { colors }, textColor }) =>
+    textColor && typeof colors[textColor] !== 'undefined'
+      ? colors[textColor]
+      : textColor
+      ? textColor
+      : colors['secondary']};
+  font-size: ${({
     theme: {
-      colors: { secondary },
+      fontSizes,
+      fontSizes: { medium },
     },
-  }) => secondary};
+    textSize,
+  }) => (textSize ? fontSizes[textSize] : medium)};
   font-weight: normal;
   margin-bottom: 0;
+  height: initial;
   padding: 0 0 10px;
   text-decoration: none;
+  text-align: left;
+  :hover,
+  :focus {
+    color: ${({ theme: { colors }, textColor }) =>
+    textColor && typeof colors[textColor] !== 'undefined'
+      ? colors[textColor]
+      : textColor
+      ? textColor
+      : colors['secondary']};
+  }
+
+  span {
+    line-height: ${({
+      theme: {
+        typography: { lineHeight },
+      },
+    }) => lineHeight};
+  }
 `;
 
 type CollapseContentProps = {
@@ -47,8 +85,8 @@ const CollapseContent = styled.div<CollapseContentProps>`
       fontSizes: { small },
     },
   }) => small};
-  transition: height 0.5s ease;
-  height: ${({ contentHeight }) => `${contentHeight}px`};
+  transition: ${transitionDurationSeconds}s ease;
+  height: ${({ contentHeight }) => contentHeight};
   overflow: hidden;
   & > p {
     margin-top: 0;
@@ -63,15 +101,20 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
   const [openStatus, setOpenStatus] = useState(props.startOpen || false);
   const [contentHeight, setContentHeight] = useState('0');
   const content = useRef<HTMLDivElement>(null);
+  const transitionTimer = useRef(0);
 
   const toggleCollapse = () => {
+    clearTimeout(transitionTimer.current);
     const newOpenState = !openStatus;
     setOpenStatus(newOpenState);
-    setContentHeight(
-      newOpenState
-        ? `${!!content && !!content.current && !!content.current.scrollHeight ? content.current.scrollHeight : 0}`
-        : '0',
-    );
+    setContentHeight(content?.current?.scrollHeight + 'px');
+    if (newOpenState === false) {
+      // Allow height to be rendered before setting to 0 for animation.
+      setTimeout(() => setContentHeight('0'), 10);
+    } else {
+      // After animation set height to initial for responsive layout.
+      transitionTimer.current = setTimeout(() => setContentHeight('initial'), transitionDurationSeconds * 1000);
+    }
     !!props.onOpenChange && props.onOpenChange(newOpenState);
   };
 
@@ -102,7 +145,14 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
         {props.headerComponent}
       </CustomHeader>
     ) : (
-      <DefaultHeader {...defaultProps} theme={theme} appearance="text" type="button" aria-label={props.headerTitleText}>
+      <DefaultHeader
+        {...defaultProps}
+        theme={theme}
+        appearance="text"
+        type="button"
+        textColor={props.headerTitleTextColor}
+        textSize={props.headerTitleTextSize}
+      >
         {props.headerTitleText}
         <FlippingIcon name="chevronRight" open={openStatus} />
       </DefaultHeader>
