@@ -17,8 +17,7 @@ type LabelTextProps = {
 const LabelText = styled.span<LabelTextProps>`
   font-weight: bold;
   display: block;
-  margin-bottom: ${({ hasHintText, theme }) =>
-    hasHintText ? theme.spacing.extraExtraSmall : theme.spacing.extraSmall};
+  margin-bottom: ${({ hasHintText, theme }) => (hasHintText ? theme.spacing.xxs : theme.spacing.xs)};
 
   & > * {
     font-weight: normal;

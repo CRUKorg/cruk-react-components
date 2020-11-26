@@ -13,7 +13,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLElement> & {
   full?: boolean;
   theme?: ThemeType;
   href?: string;
-  size?: string;
+  size?: 'm' | 'l';
   css?: any;
   as?: any;
   ref?: Ref<HTMLElement>;
@@ -23,7 +23,7 @@ type StyledButtonProps = ButtonHTMLAttributes<HTMLElement> & {
   appearance?: string;
   full?: boolean;
   theme: ThemeType;
-  size?: string;
+  size?: 'm' | 'l';
   css?: any;
   as?: any;
   isIconButton: boolean;
@@ -37,7 +37,7 @@ type VerticalAlignProps = {
 const VerticalAlign = styled.span<VerticalAlignProps>`
   line-height: ${({ isIconButton }) => (isIconButton ? `auto` : `${BUTTON_HEIGHT}`)};
   vertical-align: middle;
-  margin-left: ${({ theme }) => theme.spacing.extraExtraSmall};
+  margin-left: ${({ theme }) => theme.spacing.xxs};
 
   &:first-of-type {
     margin-left: 0;
@@ -56,9 +56,9 @@ const StyledButton = styled.button<StyledButtonProps>`
   cursor: pointer;
   font-size: ${({
     theme: {
-      fontSizes: { medium },
+      fontSizes: { m },
     },
-  }) => medium};
+  }) => m};
   font-family: ${({
     theme: {
       typography: { fontFamilyHeadings },
@@ -71,7 +71,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   }) => fontWeightMedium};
   line-height: 1;
   height: ${BUTTON_HEIGHT};
-  padding: ${({ theme, isIconButton }) => (isIconButton ? '0' : `0 ${theme.spacing.medium}`)};
+  padding: ${({ theme, isIconButton }) => (isIconButton ? '0' : `0 ${theme.spacing.m}`)};
   width: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT}` : 'auto')};
   text-align: center;
   text-decoration: ${props => props.theme.button.textDecoration};
@@ -131,7 +131,7 @@ const StyledButton = styled.button<StyledButtonProps>`
     `}
   
   ${(props: StyledButtonProps) =>
-    props.size === 'large' &&
+    props.size === 'l' &&
     css`
       height: 4em;
     `}

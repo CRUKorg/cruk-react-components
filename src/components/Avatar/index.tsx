@@ -18,7 +18,7 @@ const StyledAvatar = styled.img<AvatarStyledProps>`
 type AvatarProps = ImgHTMLAttributes<HTMLElement> & {
   name?: ReactNode;
   url?: string;
-  size?: 'small' | 'medium' | 'large' | 'extraLarge';
+  size?: 's' | 'm' | 'l' | 'xl';
   theme?: ThemeType;
 };
 
@@ -39,11 +39,11 @@ const Avatar: FC<AvatarProps> = ({ url, name, size, theme: propsTheme, alt = '',
     return theme.avatar.path + fileName;
   };
 
-  return <StyledAvatar {...rest} size={theme.avatar[size || 'medium']} src={avatarUrl()} alt={alt} />;
+  return <StyledAvatar {...rest} size={theme.avatar[size || 'm']} src={avatarUrl()} alt={alt} />;
 };
 
 Avatar.defaultProps = {
-  size: 'medium',
+  size: 'm',
 };
 
 export default withTheme(Avatar);

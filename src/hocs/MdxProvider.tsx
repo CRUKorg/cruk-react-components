@@ -26,7 +26,7 @@ const components = {
       <LiveError />
     </LiveProvider>
   ),
-  h1: (props: HTMLAttributes<HTMLHeadingElement>) => <Heading h1 marginTop="medium" {...props} />,
+  h1: (props: HTMLAttributes<HTMLHeadingElement>) => <Heading h1 marginTop="m" {...props} />,
   h2: (props: HTMLAttributes<HTMLHeadingElement>) => <Heading h2 {...props} />,
   h3: (props: HTMLAttributes<HTMLHeadingElement>) => <Heading h3 {...props} />,
   h4: (props: HTMLAttributes<HTMLHeadingElement>) => <Heading h4 {...props} />,

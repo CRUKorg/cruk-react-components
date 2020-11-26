@@ -1,12 +1,12 @@
 export type FontSizeType =
-  | 'extraSmall'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'extraLarge'
-  | 'extraExtraLarge'
-  | 'extraExtraExtraLarge'
-  | 'extraExtraExtraExtraLarge';
+  | 'xs'
+  | 's'
+  | 'm'
+  | 'l'
+  | 'xl'
+  | 'xxl'
+  | 'xxxl'
+  | 'xxxxl';
 
 export type FontSizesType = { [key in FontSizeType]: string };
 
@@ -28,10 +28,10 @@ export type SiteConfigType = {
 };
 
 export type AvatarType = {
-  small: string;
-  medium: string;
-  large: string;
-  extraLarge: string;
+  s: string;
+  m: string;
+  l: string;
+  xl: string;
   path: string;
 };
 
@@ -55,24 +55,24 @@ export type ColorsType = { [key: string]: string };
 
 export type SpaceType =
   | 'auto'
-  | 'extraExtraSmall'
-  | 'extraSmall'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'extraLarge'
-  | 'extraExtraLarge'
+  | 'xxs'
+  | 'xs'
+  | 's'
+  | 'm'
+  | 'l'
+  | 'xl'
+  | 'xxl'
   | 'none';
 
 export type SpacingType = {
   auto: string;
-  extraExtraSmall: string;
-  extraSmall: string;
-  small: string;
-  medium: string;
-  large: string;
-  extraLarge: string;
-  extraExtraLarge: string;
+  xxs: string;
+  xs: string;
+  s: string;
+  m: string;
+  l: string;
+  xl: string;
+  xxl: string;
   none: string;
 };
 

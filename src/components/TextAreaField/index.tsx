@@ -20,7 +20,7 @@ const StyledTextArea = styled.textarea<StyledTextareaProps>`
   color: ${({ theme }) => theme.colors.textDark};
   display: block;
   font-family: ${({ theme }) => theme.typography.fontFamilyBase};
-  font-size: ${({ theme }) => theme.fontSizes.medium};
+  font-size: ${({ theme }) => theme.fontSizes.m};
   padding: 6px 8px;
   width: 100%;
 

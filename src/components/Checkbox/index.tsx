@@ -19,9 +19,9 @@ const CheckWrapper = styled.div`
   top: calc(50% - (${CHECK_BOX_SIZE} / 2));
   left: ${({
     theme: {
-      spacing: { extraSmall },
+      spacing: { xs },
     },
-  }) => extraSmall};
+  }) => xs};
 `;
 
 const Check = styled.span`
@@ -102,9 +102,9 @@ const StyledInput = styled.input`
           position: absolute;
           left: ${({
             theme: {
-              spacing: { extraExtraSmall },
+              spacing: { xxs },
             },
-          }) => extraExtraSmall};
+          }) => xxs};
           opacity: 0;
 
           &:focus ~ ${CheckWrapper} ${Check} {

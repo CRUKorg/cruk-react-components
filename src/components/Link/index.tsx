@@ -10,9 +10,9 @@ import { ThemeType } from 'src/types';
 const ChevyWithLevee = styled(Icon)`
   margin-right: ${({
     theme: {
-      spacing: { extraExtraSmall },
+      spacing: { xxs },
     },
-  }) => extraExtraSmall};
+  }) => xxs};
 `;
 
 type LinkProps = AnchorHTMLAttributes<HTMLElement> &

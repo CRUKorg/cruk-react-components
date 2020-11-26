@@ -45,10 +45,10 @@ const DefaultHeader = styled(Button)<StyledProgressBarProps>`
   font-size: ${({
     theme: {
       fontSizes,
-      fontSizes: { medium },
+      fontSizes: { m },
     },
     textSize,
-  }) => (textSize ? fontSizes[textSize] : medium)};
+  }) => (textSize ? fontSizes[textSize] : m)};
   font-weight: normal;
   margin-bottom: 0;
   height: initial;
@@ -58,11 +58,11 @@ const DefaultHeader = styled(Button)<StyledProgressBarProps>`
   :hover,
   :focus {
     color: ${({ theme: { colors }, textColor }) =>
-    textColor && typeof colors[textColor] !== 'undefined'
-      ? colors[textColor]
-      : textColor
-      ? textColor
-      : colors['secondary']};
+      textColor && typeof colors[textColor] !== 'undefined'
+        ? colors[textColor]
+        : textColor
+        ? textColor
+        : colors['secondary']};
   }
 
   span {
@@ -82,9 +82,9 @@ const CollapseContent = styled.div<CollapseContentProps>`
   margin: 0;
   font-size: ${({
     theme: {
-      fontSizes: { small },
+      fontSizes: { s },
     },
-  }) => small};
+  }) => s};
   transition: ${transitionDurationSeconds}s ease;
   height: ${({ contentHeight }) => contentHeight};
   overflow: hidden;

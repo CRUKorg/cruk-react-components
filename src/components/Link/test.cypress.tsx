@@ -38,7 +38,7 @@ const content = () => {
         </Link>
       </div>
       <div>
-        <Link href="http://www.google.com" textSize="extraLarge">
+        <Link href="http://www.google.com" textSize="xl">
           Link with extra large text
         </Link>
       </div>
