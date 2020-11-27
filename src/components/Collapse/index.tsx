@@ -24,7 +24,8 @@ type CollapseProps = {
 const CollapseWrapper = styled.div``;
 
 const FlippingIcon = styled(Icon)`
-  transform: ${({ open }: { open: boolean }) => (!!open ? 'rotate(90deg) scaleX(-1)' : 'rotate(90deg)')};
+  transform: ${({ open }: { open: boolean }) =>
+    !!open ? 'rotate(90deg) translateX(0.1em) scaleX(-1) ' : 'rotate(90deg)'};
   transition-duration: ${transitionDurationSeconds}s;
 `;
 

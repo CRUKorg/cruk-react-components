@@ -39,6 +39,7 @@ export const AVATAR: AvatarType = {
 
 export const BUTTON: ButtonType = {
   borderRadius: UTILITIES.borderRadius,
+  buttonBorderThickness: '1px',
   textDecoration: 'none',
   textTransform: 'none',
 };

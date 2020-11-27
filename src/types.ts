@@ -37,6 +37,7 @@ export type AvatarType = {
 
 export type ButtonType = {
   borderRadius: string;
+  buttonBorderThickness: string;
   textDecoration: string;
   textTransform: string;
 };
