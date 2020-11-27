@@ -42,9 +42,9 @@ const FooterSection = styled.div`
   display: inline-block;
   padding: ${({
     theme: {
-      spacing: { extraSmall },
+      spacing: { xs },
     },
-  }) => extraSmall};
+  }) => xs};
   position: relative;
   width: 100%;
   flex: 0 1 auto;
@@ -90,9 +90,9 @@ const StyledNav = styled.nav`
   a {
     font-size: ${({
       theme: {
-        fontSizes: { small },
+        fontSizes: { s },
       },
-    }) => small};
+    }) => s};
     font-weight: ${({
       theme: {
         typography: { fontWeightHeavy },
@@ -114,9 +114,9 @@ const StyledLI = styled.li`
   line-height: 1;
   padding-bottom: ${({
     theme: {
-      spacing: { extraExtraSmall },
+      spacing: { xxs },
     },
-  }) => extraExtraSmall};
+  }) => xxs};
 `;
 
 const FooterSectionAddress = styled(FooterSection)`
@@ -165,7 +165,7 @@ export const Footer: FunctionComponent<FooterPropsType> = props => {
           </FooterSectionLinks>
 
           <FooterSection>
-            <Text textSize="small">
+            <Text textSize="s">
               Cancer Research UK is a registered charity in England and Wales (1089464), Scotland (SC041666), the Isle
               of Man (1103) and Jersey (247). Registered as a company limited by guarantee in England and Wales No.
               4325234.
@@ -174,13 +174,13 @@ export const Footer: FunctionComponent<FooterPropsType> = props => {
 
           <FooterSectionAddress>
             <StyledAddress>
-              <Text as="span" textSize="small">
+              <Text as="span" textSize="s">
                 2 Redman Place
               </Text>
-              <Text as="span" textSize="small">
+              <Text as="span" textSize="s">
                 London
               </Text>
-              <Text as="span" textSize="small">
+              <Text as="span" textSize="s">
                 E20 1JQ
               </Text>
             </StyledAddress>

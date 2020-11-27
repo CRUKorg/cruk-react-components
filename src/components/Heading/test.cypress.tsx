@@ -10,7 +10,7 @@ const content = () => {
   return (
     <>
       <Heading>H2 is the default</Heading>
-      <Heading h2 textSize="extraExtraExtraExtraLarge" textColor="primary">
+      <Heading h2 textSize="xxxxl" textColor="primary">
         This is H2 with H1 size
       </Heading>
       <Heading h1>This is H1 heading</Heading>

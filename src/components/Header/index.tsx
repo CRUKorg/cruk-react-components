@@ -9,7 +9,7 @@ import { ThemeType } from '../../types';
 const HEADER_HEIGHT_LARGE = '120px';
 const HEADER_HEIGHT_SMALL = '72px';
 const HEADER_SCROLL_THRESHOLD = 66;
-const HEADER_PADDING = defaultTheme.spacing.small;
+const HEADER_PADDING = defaultTheme.spacing.s;
 const HEADER_LOGO_HEIGHT_LARGE = '80px';
 const HEADER_LOGO_HEIGHT_SMALL = '40px';
 
@@ -137,9 +137,9 @@ const SkipToMain = styled.a`
     margin: 10px 35%;
     padding: ${({
       theme: {
-        spacing: { extraSmall },
+        spacing: { xs },
       },
-    }) => extraSmall};
+    }) => xs};
     border-radius: 15px;
     border: 4px solid yellow;
     text-align: center;
@@ -158,9 +158,9 @@ const Tagline = styled.p<HeaderStickyContainerProps>`
   }) => fontWeightLight};
   font-size: ${({
     theme: {
-      fontSizes: { extraLarge },
+      fontSizes: { xl },
     },
-  }) => extraLarge};
+  }) => xl};
   color: ${({ theme }) => theme.colors.primary};
   text-align: center;
 

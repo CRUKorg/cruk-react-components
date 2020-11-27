@@ -26,9 +26,9 @@ const ProgressBarSharedStyling = css`
   height: 100%;
   font-size: ${({
     theme: {
-      fontSizes: { small },
+      fontSizes: { s },
     },
-  }) => small};
+  }) => s};
   line-height: ${({
     theme: {
       typography: { lineHeight },
@@ -224,14 +224,14 @@ const CircularValue = styled.div`
   border-radius: 50%;
   font-size: ${({
     theme: {
-      fontSizes: { large },
+      fontSizes: { l },
     },
-  }) => large};
+  }) => l};
   line-height: ${({
     theme: {
-      fontSizes: { large },
+      fontSizes: { l },
     },
-  }) => large};
+  }) => l};
   text-align: center;
   height: 100%;
   text-transform: uppercase;

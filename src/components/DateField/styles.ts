@@ -9,9 +9,9 @@ export const Fieldset = styled.fieldset`
 export const DateTextFieldWrapper = styled.div`
   display: inline-block;
   width: 60px;
-  margin-right: ${({ theme }) => theme.spacing.extraSmall};
+  margin-right: ${({ theme }) => theme.spacing.xs};
   span {
-    margin-bottom: 0.25rem; // this is smaller than extraExtraSmall spacing
+    margin-bottom: 0.25rem; // this is smaller than xxs spacing
     font-weight: ${({ theme }) => theme.typography.fontWeightMedium};
   }
 `;

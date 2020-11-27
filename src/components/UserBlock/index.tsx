@@ -11,7 +11,7 @@ type UserBlockProps = HTMLAttributes<HTMLElement> & {
   avatarUrl?: string | null;
   avatarName?: string | null;
   extra?: ReactNode;
-  size?: 'small' | 'medium' | 'large' | 'extraLarge';
+  size?: 's' | 'm' | 'l' | 'xl';
   theme?: ThemeType;
 };
 
@@ -19,20 +19,20 @@ const StyledUserBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content: start;
-  margin-bottom: ${({ theme }) => theme.spacing.extraSmall};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
   flex: 1;
 `;
 
 const Details = styled.div`
   flex: 1;
-  margin-left: ${({ theme }) => theme.spacing.extraSmall};
+  margin-left: ${({ theme }) => theme.spacing.xs};
   text-align: left;
   min-width: 0;
 `;
 
 const Name = styled.div`
   font-weight: ${({ theme }) => theme.typography.fontWeightHeavy};
-  font-size: ${({ theme }) => theme.fontSizes.medium};
+  font-size: ${({ theme }) => theme.fontSizes.m};
   white-space: normal;
   word-break: break-word;
 `;

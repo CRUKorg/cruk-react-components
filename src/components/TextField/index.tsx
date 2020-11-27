@@ -16,7 +16,7 @@ const Extra = styled.span<ExtraProps>`
   background-color: ${({ theme }) => theme.colors.textInputExtraInfo};
   border-radius: ${({ theme }) => theme.utilities.borderRadius};
   color: ${({ theme }) => theme.colors.textDark};
-  font-size: ${({ theme }) => theme.typography.medium};
+  font-size: ${({ theme }) => theme.fontSizes.m};
   font-weight: ${({ theme }) => theme.typography.fontWeightLight};
   padding: 7px 6px 5px;
   line-height: 1rem;
@@ -62,7 +62,7 @@ const StyledInput = styled.input<StyledInputProps>`
   hasError ? theme.colors.textError : theme.colors.textInputBorder};
   color: ${({ theme }) => theme.colors.textDark};
   display: block;
-  font-size: ${({ theme }) => theme.fontSizes.medium};
+  font-size: ${({ theme }) => theme.fontSizes.m};
   padding: 6px 8px;
   width: 100%;
   transition: border-color 150ms linear;

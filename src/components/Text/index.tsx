@@ -31,10 +31,10 @@ export const TextStyled = styled.p<TextProps>`
   font-size: ${({
     theme: {
       fontSizes,
-      fontSizes: { medium },
+      fontSizes: { m },
     },
     textSize,
-  }) => (textSize ? fontSizes[textSize] : medium)};
+  }) => (textSize ? fontSizes[textSize] : m)};
   line-height: ${({
     theme: {
       typography: { lineHeight },
@@ -51,9 +51,9 @@ export const TextStyled = styled.p<TextProps>`
   margin-bottom: ${({
     as,
     theme: {
-      spacing: { extraSmall },
+      spacing: { xs },
     },
-  }) => (typeof as === 'undefined' || as === 'p' ? `${extraSmall}` : 0)};
+  }) => (typeof as === 'undefined' || as === 'p' ? `${xs}` : 0)};
 
   &:last-child {
     margin-bottom: 0;

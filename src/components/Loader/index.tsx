@@ -23,7 +23,7 @@ const BounceDelay = keyframes`
 const Spinner = styled.div`
   width: 100%;
   text-align: center;
-  margin-top: ${({ theme }) => theme.spacing.small};
+  margin-top: ${({ theme }) => theme.spacing.s};
 
   span {
     display: inline-block;

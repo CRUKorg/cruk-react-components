@@ -113,12 +113,12 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
     <TotaliserWrapper {...props} isCompact={props.isCompact || false} theme={theme}>
       {props.isCompact ? (
         <CompactWrapper theme={theme}>
-          <Box marginHorizontal='none' marginRight='extraExtraSmall' marginBottom='none'>
+          <Box marginHorizontal="none" marginRight="xxs" marginBottom="none">
             <Badge>{`£${formatMoneyWithCommas(props.total)}`}</Badge>
           </Box>
           {props.target !== null && (
             <Summary>
-              <Text as='span'>{summaryString}</Text>
+              <Text as="span">{summaryString}</Text>
             </Summary>
           )}
         </CompactWrapper>
@@ -139,7 +139,7 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
               <Summary>{props.summaryMessage}</Summary>
             ) : (
               <Summary>
-                <Text as='span'>{summaryString}</Text>
+                <Text as="span">{summaryString}</Text>
               </Summary>
             ))}
         </ProgressBarWrapper>

@@ -10,10 +10,10 @@ const content = () => {
   return (
     <>
       <UserBlock />
-      <UserBlock name="Sam Smith" size="small" />
+      <UserBlock name="Sam Smith" size="s" />
       <UserBlock
         name="Sam Smith"
-        size="large"
+        size="l"
         extra={
           <>
             <Icon name="clock" />

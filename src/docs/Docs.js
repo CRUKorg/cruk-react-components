@@ -278,7 +278,7 @@ class Docs extends React.Component {
         <StyledFlex>
           <Toggle />
           <ToggleIcon />
-          <SideBar padding="extraSmall">
+          <SideBar padding="xs">
             <Nav>
               <Heading h4>Components</Heading>
               <RouterLink to="/addresslookup">AddressLookup</RouterLink>

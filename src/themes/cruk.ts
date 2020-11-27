@@ -30,10 +30,10 @@ export const SITE_CONFIG: SiteConfigType = {
 };
 
 export const AVATAR: AvatarType = {
-  small: '35px',
-  medium: '50px',
-  large: '60px',
-  extraLarge: '90px',
+  s: '35px',
+  m: '50px',
+  l: '60px',
+  xl: '90px',
   path: `${SITE_CONFIG.assetPath}images/icon-avatars/`,
 };
 
@@ -134,24 +134,24 @@ export const COLORS: ColorsType = {
 export const SPACING: SpacingType = {
   none: '0',
   auto: 'auto',
-  extraExtraSmall: '0.5rem', // 8px
-  extraSmall: '1rem', // 16px
-  small: '1.5rem', // 24px
-  medium: '2rem', // 32px
-  large: '2.5rem', // 40px
-  extraLarge: '3rem', // 48px
-  extraExtraLarge: '3.5rem', // 56px
+  xxs: '0.5rem', // 8px
+  xs: '1rem', // 16px
+  s: '1.5rem', // 24px
+  m: '2rem', // 32px
+  l: '2.5rem', // 40px
+  xl: '3rem', // 48px
+  xxl: '3.5rem', // 56px
 };
 
 export const FONT_SIZES: FontSizesType = {
-  extraSmall: '0.75rem', // 12px
-  small: '0.857rem', // 14px
-  medium: '1rem', // 16px
-  large: '1.25rem', // 20px
-  extraLarge: '1.5625rem', // 25px
-  extraExtraLarge: '2rem', // 32px
-  extraExtraExtraLarge: '2.5rem', // 40px
-  extraExtraExtraExtraLarge: '3.125rem', // 45px
+  xs: '0.75rem', // 12px
+  s: '0.857rem', // 14px
+  m: '1rem', // 16px
+  l: '1.25rem', // 20px
+  xl: '1.5625rem', // 25px
+  xxl: '2rem', // 32px
+  xxxl: '2.5rem', // 40px
+  xxxxl: '3.125rem', // 45px
 };
 
 export const TYPOGRAPHY: TypographyType = {

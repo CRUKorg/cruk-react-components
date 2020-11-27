@@ -13,7 +13,7 @@ for multiple sizes, states, and more.
   <Button disabled>Disabled</Button>
   <Button disabled appearance="primary">Disabled primary</Button>
   <Button disabled appearance="secondary">Disabled secondary</Button>
-  <Button size="large">Large button</Button>
+  <Button size="l">Large button</Button>
   <Button><Icon name="view"/>Icon with text</Button>
   <Button>Icon right<Icon name="edit"/></Button>
   <Button><Icon name="view"/>Icon either side<Icon name="view"/></Button>
@@ -30,7 +30,7 @@ for multiple sizes, states, and more.
 | Name       | Type    |           Options            | Default | Description                                                                                                                                                                                 |
 | :--------- | :------ | :--------------------------: | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | appearance | String  | "primary" "secondary" "text" | outline | The `appearance` prop defines the overall visual style of the Button. You can use this prop to indicate to the user the purpose or importance of the button, or call their attention to it. |
-| size       | String  |           "large"            |         | Define the size of the button. Add "large" for additional sizes.                                                                                                                            |
+| size       | String  |             "l"              | unset   | Define the size of the button.                                                                                                                                                              |
 | aria-label | String  |                              | null    | To improve accessibility of a button add an aria label if the button contains no text                                                                                                       |
 | css        | String  |                              | null    | Override the styling of the button                                                                                                                                                          |
 | disabled   | Boolean |                              | false   | Make buttons look inactive by adding the disabled prop to.                                                                                                                                  |

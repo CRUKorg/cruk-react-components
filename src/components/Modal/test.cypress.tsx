@@ -8,7 +8,7 @@ import { Modal, Button, Heading, crukTheme2, su2cTheme } from '../';
 
 const ModalOnlyContent = () => (
   <Modal closeFunction={() => {}}>
-    <Heading h2 marginTop="none" textSize="extraLarge">
+    <Heading h2 marginTop="none" textSize="xl">
       Modal title
     </Heading>
     <p>Some really important information</p>
@@ -30,7 +30,7 @@ const Content = () => {
       </Button>
       {showModal && (
         <Modal closeFunction={toggleShowModal}>
-          <Heading h2 marginTop="none" textSize="extraLarge">
+          <Heading h2 marginTop="none" textSize="xl">
             Modal title
           </Heading>
           <p>Some really important information</p>

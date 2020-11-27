@@ -10,7 +10,7 @@ const content = () => {
   return (
     <>
       <section>
-        <Heading h3 textSize="large">
+        <Heading h3 textSize="l">
           Text field
         </Heading>
         <Box>
@@ -18,7 +18,7 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 textSize="large" paddingTop="medium">
+        <Heading h3 textSize="l" paddingTop="m">
           With a placeholder
         </Heading>
         <Box>
@@ -26,7 +26,7 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 textSize="large" paddingTop="medium">
+        <Heading h3 textSize="l" paddingTop="m">
           With hint text
         </Heading>
         <Box>
@@ -34,7 +34,7 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 textSize="large" paddingTop="medium">
+        <Heading h3 textSize="l" paddingTop="m">
           With extra bits
         </Heading>
         <Box>
@@ -70,7 +70,7 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 textSize="large" paddingTop="medium">
+        <Heading h3 textSize="l" paddingTop="m">
           With error message
         </Heading>
         <Box>
@@ -84,7 +84,7 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 textSize="large" paddingTop="medium">
+        <Heading h3 textSize="l" paddingTop="m">
           Required
         </Heading>
         <Box>
@@ -92,7 +92,7 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 textSize="large" paddingTop="medium">
+        <Heading h3 textSize="l" paddingTop="m">
           Disabled
         </Heading>
         <Box>

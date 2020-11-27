@@ -19,7 +19,7 @@ const content = () => {
       <Button disabled appearance="secondary">
         Disabled secondary
       </Button>
-      <Button size="large">Large button</Button>
+      <Button size="l">Large button</Button>
       <Button>
         <Icon name="view" />
         Icon with text

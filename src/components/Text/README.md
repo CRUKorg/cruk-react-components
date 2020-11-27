@@ -10,7 +10,7 @@ For non-header text. The Text component provides a simple API for setting the co
     <Text as='span'>This is text as a span tag</Text>
     <Text textColor='primary'>Color is Primary</Text>
     <Text textColor='#ff0000'>Color is Primary</Text>
-    <Text textSize="large">Text size large</Text>
+    <Text textSize="l">Text size large</Text>
   </>
 ```
 
@@ -20,7 +20,7 @@ For non-header text. The Text component provides a simple API for setting the co
 | :---------------- | :------------------------- | :-----: | :------------- | :------------------------------------------------------------------------------ |
 | textColor         | string                     |         | 'currentColor' | Color of text                                                                   |
 | textAlign         | 'left' /'right' / 'center' |         | 'left'         | Horizontal text alignment                                                       |
-| textSize          | FontSizeType               |         | 'medium'       | Font size uses t-shirt sizes of small medium large etc                          |
+| textSize          | FontSizeType               |         | 'm'            | Font size uses t-shirt sizes of s/m/l etc                                       |
 | as                | element as string          |         | 'p'            | Takes the font styling and applies it to an element such as 'label' or 'span'   |
 | gutterBottom      | boolean                    |         | true           | Adds bottom gutter to the text element only works when 'as' is undefined or 'p' |
 | gutterTop         | boolean                    |         | false          | Adds top gutter to the text element only works when 'as' is undefined or 'p'    |
@@ -29,7 +29,7 @@ For non-header text. The Text component provides a simple API for setting the co
 | marginHorizontal  | SpaceType                  |         | unset          | margin left and right                                                           |
 | marginTop         | SpaceType                  |         | unset          | margin top                                                                      |
 | marginRight       | SpaceType                  |         | unset          | margin right right                                                              |
-| marginBottom      | SpaceType                  |         | 'extraSmall'   | margin bottom bottom                                                            |
+| marginBottom      | SpaceType                  |         | 'xs'           | margin bottom bottom                                                            |
 | marginLeft        | SpaceType                  |         | unset          | margin left left                                                                |
 | padding           | SpaceType                  |         | unset          | padding top, bottom, left and right                                             |
 | paddingVertical   | SpaceType                  |         | unset          | padding top and bottom                                                          |
@@ -41,27 +41,27 @@ For non-header text. The Text component provides a simple API for setting the co
 
 ### SpaceType
 
-| Option            | Value    |
-| :---------------- | :------- |
-| "none"            | "0"      |
-| "auto"            | "auto"   |
-| "extraExtraSmall" | "0.5rem" |
-| "extraSmall"      | "1rem"   |
-| "small"           | "1.5rem" |
-| "medium"          | "2rem"   |
-| "large"           | "2.5rem" |
-| "extraLarge"      | "3rem"   |
-| "extraExtraLarge" | "3.5rem" |
+| Option | Value    |
+| :----- | :------- |
+| "none" | "0"      |
+| "auto" | "auto"   |
+| "xxs"  | "0.5rem" |
+| "xs"   | "1rem"   |
+| "s"    | "1.5rem" |
+| "m"    | "2rem"   |
+| "l"    | "2.5rem" |
+| "xl"   | "3rem"   |
+| "xxl"  | "3.5rem" |
 
 ### FontSizeType
 
-| Option                      | Value       |
-| :-------------------------- | :---------- |
-| "extraSmall"                | "0.75rem"   |
-| "small"                     | "0.857rem"  |
-| "medium"                    | "1rem"      |
-| "large"                     | "1.25rem"   |
-| "extraLarge"                | "1.5625rem" |
-| "extraExtraLarge"           | "2rem"      |
-| "extraExtraExtraLarge"      | "2.5rem"    |
-| "extraExtraExtraExtraLarge" | "3.125rem"  |
+| Option  | Value       |
+| :------ | :---------- |
+| "xs"    | "0.75rem"   |
+| "s"     | "0.857rem"  |
+| "m"     | "1rem"      |
+| "l"     | "1.25rem"   |
+| "xl"    | "1.5625rem" |
+| "xxl"   | "2rem"      |
+| "xxxl"  | "2.5rem"    |
+| "xxxxl" | "3.125rem"  |

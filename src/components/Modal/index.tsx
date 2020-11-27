@@ -48,9 +48,9 @@ const Content = styled(Box)<ContentProps>`
   min-height: 10rem;
   padding: ${({
     theme: {
-      spacing: { extraSmall },
+      spacing: { xs },
     },
-  }) => extraSmall};
+  }) => xs};
   max-width: ${({ maxWidth }) => maxWidth};
   z-index: 9999;
 `;
@@ -59,9 +59,9 @@ const CloseButton = styled(Button)`
   float: right;
   margin-left: ${({
     theme: {
-      spacing: { extraSmall },
+      spacing: { xs },
     },
-  }) => extraSmall};
+  }) => xs};
   font-size: 1.2rem;
   padding: 0;
 `;
