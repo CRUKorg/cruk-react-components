@@ -6,7 +6,8 @@ import Icon from '../Icon';
 
 import { ThemeType } from '../../types';
 
-const BUTTON_HEIGHT = '2.5rem';
+const BUTTON_HEIGHT = '3rem';
+const BUTTON_HEIGHT_LARGE = '4rem';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLElement> & {
   appearance?: string;
@@ -35,7 +36,8 @@ type VerticalAlignProps = {
 };
 
 const VerticalAlign = styled.span<VerticalAlignProps>`
-  line-height: ${({ isIconButton }) => (isIconButton ? `auto` : `${BUTTON_HEIGHT}`)};
+  line-height: ${({ theme, isIconButton }) =>
+    isIconButton ? `unset` : `calc(${BUTTON_HEIGHT} - ( ${theme.button.buttonBorderThickness} * 2 ) )`};
   vertical-align: middle;
   margin-left: ${({ theme }) => theme.spacing.xxs};
 
@@ -45,12 +47,13 @@ const VerticalAlign = styled.span<VerticalAlignProps>`
 `;
 
 const StyledButton = styled.button<StyledButtonProps>`
+  box-sizing: border-box;
+  min-height: ${BUTTON_HEIGHT};
   display: inline-block;
   vertical-align: middle;
   background-color: ${props => props.theme.colors.backgroundLight};
   border-radius: ${props => props.theme.button.borderRadius};
-  border: 1px solid ${props => props.theme.colors.buttonBorder};
-  box-sizing: border-box;
+  border:  ${({ theme }) => `${theme.button.buttonBorderThickness} solid ${theme.colors.buttonBorder}`};
   color: ${props => props.theme.colors.primary};
   transition: color 0.2s ease, background-color 0.2s ease, border 0.2s ease;
   cursor: pointer;
@@ -69,8 +72,6 @@ const StyledButton = styled.button<StyledButtonProps>`
       typography: { fontWeightMedium },
     },
   }) => fontWeightMedium};
-  line-height: 1;
-  height: ${BUTTON_HEIGHT};
   padding: ${({ theme, isIconButton }) => (isIconButton ? '0' : `0 ${theme.spacing.m}`)};
   width: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT}` : 'auto')};
   text-align: center;
@@ -133,7 +134,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   ${(props: StyledButtonProps) =>
     props.size === 'l' &&
     css`
-      height: 4em;
+      min-height: ${BUTTON_HEIGHT_LARGE};
     `}
   
   ${(props: StyledButtonProps) =>
