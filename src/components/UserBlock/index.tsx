@@ -31,8 +31,8 @@ const Details = styled.div`
 `;
 
 const Name = styled.div`
-  font-weight: ${({ theme }) => theme.typography.fontWeightHeavy};
-  font-size: ${({ theme }) => theme.fontSizes.m};
+  font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
+  font-size: ${({ theme }) => theme.fontSizes.l};
   white-space: normal;
   word-break: break-word;
 `;
