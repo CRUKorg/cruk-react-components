@@ -8,7 +8,7 @@ Display an avatar with title and subtitle
 <>
   <UserBlock />
   <UserBlock name="Sam Smith" size="s" />
-  <UserBlock name="Sam Smith" size="l" extra={<><Icon name="clock"/>Just now</>} />
+  <UserBlock name="Sam Smith" size="l" extra={<><Icon name="clock"/> Just now</>} />
   <UserBlock
     name="Sam Smith"
     avatarUrl="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"
