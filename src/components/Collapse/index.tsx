@@ -53,7 +53,6 @@ const DefaultHeader = styled(Button)<StyledProgressBarProps>`
   font-weight: normal;
   margin-bottom: 0;
   height: initial;
-  padding: 0 0 10px;
   text-decoration: none;
   text-align: left;
   :hover,
@@ -64,14 +63,6 @@ const DefaultHeader = styled(Button)<StyledProgressBarProps>`
         : textColor
         ? textColor
         : colors['secondary']};
-  }
-
-  span {
-    line-height: ${({
-      theme: {
-        typography: { lineHeight },
-      },
-    }) => lineHeight};
   }
 `;
 
