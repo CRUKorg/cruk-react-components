@@ -2,33 +2,6 @@
 
 Checkboxes allow the user to select one or more items.
 
-### Examples
-
-```.jsx
-<>
-  <Box>
-    <Checkbox checked value="value" />
-  </Box>
-  <Box>
-    <Checkbox checked={false}>Checkbox</Checkbox>
-  </Box>
-  <Box>
-   <Checkbox checked>Checked</Checkbox>
-  </Box>
-  <Box>
-   <Checkbox checked disabled>Disabled</Checkbox>
-  </Box>
-  <Box>
-    <Checkbox
-      onChange={e => alert(e.target.value)}
-      value="My value"
-    >
-      Alert my value
-  </Checkbox>
-  </Box>
-</>
-```
-
 ### Try it out
 
 ```.jsx
