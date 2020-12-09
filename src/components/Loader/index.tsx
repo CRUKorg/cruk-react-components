@@ -20,6 +20,15 @@ const BounceDelay = keyframes`
   }
 `;
 
+const ScreenReaderOnly = styled.p`
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+`;
+
 const Spinner = styled.div`
   width: 100%;
   text-align: center;
@@ -69,11 +78,14 @@ const Loader: FunctionComponent<LoaderProps> = props => {
   };
   return (
     <ThemeProvider theme={theme}>
-      <Spinner>
-        <span />
-        <span />
-        <span />
-      </Spinner>
+      <>
+        <ScreenReaderOnly role="alert">Loading</ScreenReaderOnly>
+        <Spinner>
+          <span />
+          <span />
+          <span />
+        </Spinner>
+      </>
     </ThemeProvider>
   );
 };
