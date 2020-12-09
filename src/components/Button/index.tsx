@@ -77,11 +77,16 @@ const StyledButton = styled.button<StyledButtonProps>`
   text-align: center;
   text-decoration: ${props => props.theme.button.textDecoration};
   text-transform: ${props => props.theme.button.textTransform};
-  
-  :focus,
-  :hover {
-    color: ${props => props.theme.colors.linkColorHover}
-  }
+
+
+  ${(props: StyledButtonProps) =>
+    !props.css &&
+    css`
+      :focus,
+      :hover {
+        color: ${props => props.theme.colors.linkColorHover};
+      }
+    `}
   
   ${(props: StyledButtonProps) =>
     props.appearance === 'primary' &&
