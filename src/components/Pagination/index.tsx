@@ -161,7 +161,7 @@ const Pagination: FunctionComponent<PaginationProps> = props => {
     for (let number = 1; number <= total; number++) {
       list.push(
         <PagerItem key={number}>
-          <PagerLink active={number === active} {...linkProps(number)}>
+          <PagerLink active={number === active} {...linkProps(number)} aria-label={`page ${number} of ${total}`}>
             {number}
           </PagerLink>
         </PagerItem>,
