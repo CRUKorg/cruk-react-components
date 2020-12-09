@@ -18,8 +18,8 @@ The more specific the the target the higher priority the css will have. For exam
       This is box
     </Text>
   </Box>
-  <Box backgroundColor="secondary">
-    <Text textColor="textLight">
+  <Box backgroundColor="backgroundLight">
+    <Text textColor="textDark">
       This is box
     </Text>
   </Box>
@@ -28,18 +28,13 @@ The more specific the the target the higher priority the css will have. For exam
       This is box
     </Text>
   </Box>
-  <Box backgroundColor="#fdc02f">
-    <Text textColor="textLight">
-      This is box
-    </Text>
-  </Box>
-  <Box backgroundColor="secondary" >
-    <Text textColor="textLight">
+  <Box backgroundColor="backgroundMid" >
+    <Text textColor="textDark">
       default spacing
     </Text>
   </Box>
-  <Box backgroundColor="secondary" paddingVertical="xl" paddingBottom="xs">
-    <Text textColor="textLight">
+  <Box backgroundColor="backgroundMid" paddingVertical="xl" paddingBottom="xs">
+    <Text textColor="textDark">
       paddingVertical="xl" paddingBottom="xs"
     </Text>
   </Box>
@@ -53,23 +48,23 @@ The more specific the the target the higher priority the css will have. For exam
 
 ## Props
 
-| Name              | Type      | Options | Default | Description                                   |
-| :---------------- | :-------- | :-----: | :------ | :-------------------------------------------- |
-| backgroundColor   | String    |         |         | Define the background colour of the container |
-| margin            | SpaceType |         | 'xs'    | margin top, bottom, left and right            |
-| marginVertical    | SpaceType |         | unset   | margin top and bottom                         |
-| marginHorizontal  | SpaceType |         | unset   | margin left and right                         |
-| marginTop         | SpaceType |         | unset   | margin top                                    |
-| marginRight       | SpaceType |         | unset   | margin right right                            |
-| marginBottom      | SpaceType |         | unset   | margin bottom bottom                          |
-| marginLeft        | SpaceType |         | unset   | margin left left                              |
-| padding           | SpaceType |         | unset   | padding top, bottom, left and right           |
-| paddingVertical   | SpaceType |         | unset   | padding top and bottom                        |
-| paddingHorizontal | SpaceType |         | unset   | padding left and right                        |
-| paddingTop        | SpaceType |         | unset   | padding top                                   |
-| paddingRight      | SpaceType |         | unset   | padding right right                           |
-| paddingBottom     | SpaceType |         | unset   | padding bottom bottom                         |
-| paddingLeft       | SpaceType |         | unset   | padding left left                             |
+| Name              | Type      | Options | Default | Description                                                                                       |
+| :---------------- | :-------- | :-----: | :------ | :------------------------------------------------------------------------------------------------ |
+| backgroundColor   | String    |         |         | Define the background colour of the container, can use theme color names (preferable) or hexcodes |
+| margin            | SpaceType |         | 'xs'    | margin top, bottom, left and right                                                                |
+| marginVertical    | SpaceType |         | unset   | margin top and bottom                                                                             |
+| marginHorizontal  | SpaceType |         | unset   | margin left and right                                                                             |
+| marginTop         | SpaceType |         | unset   | margin top                                                                                        |
+| marginRight       | SpaceType |         | unset   | margin right right                                                                                |
+| marginBottom      | SpaceType |         | unset   | margin bottom bottom                                                                              |
+| marginLeft        | SpaceType |         | unset   | margin left left                                                                                  |
+| padding           | SpaceType |         | unset   | padding top, bottom, left and right                                                               |
+| paddingVertical   | SpaceType |         | unset   | padding top and bottom                                                                            |
+| paddingHorizontal | SpaceType |         | unset   | padding left and right                                                                            |
+| paddingTop        | SpaceType |         | unset   | padding top                                                                                       |
+| paddingRight      | SpaceType |         | unset   | padding right right                                                                               |
+| paddingBottom     | SpaceType |         | unset   | padding bottom bottom                                                                             |
+| paddingLeft       | SpaceType |         | unset   | padding left left                                                                                 |
 
 ### SpaceType
 
