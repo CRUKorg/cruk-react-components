@@ -41,7 +41,7 @@ const DateField: FC<DateFieldProps> = ({
 }) => {
   return (
     <Fieldset>
-      <Text as="legend" textWeight={700}>
+      <Text as="legend" textWeight={700} marginBottom="xxs">
         {label}
       </Text>
       {hintText && <Text>{hintText}</Text>}
