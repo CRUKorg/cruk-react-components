@@ -66,3 +66,7 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
 | color     | string |               | A theme color name or CSS color. If blank, Icon will match the color of the surrounding text. |
 | size      | string | 1.1rem (18px) | Icon's width and height.                                                                      |
 | transform | string |               | A CSS transform like "scale(-1, 1)"                                                           |
+
+## Accessibility
+
+Icons are always invisible to screen reads please on use them for decorative purposes or when in a button accompanied by descriptive text or an aria-label.

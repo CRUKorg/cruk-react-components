@@ -26,8 +26,7 @@ function () {
         <Modal closeFunction={toggleShowModal}>
           <Heading h2 marginTop='none' textSize="xl">Modal title</Heading>
           <p>Some really important information</p>
-          <Button onClick={toggleShowModal}>Get me out of here</Button>
-          <Button appearance="primary" onClick={toggleShowModal}>Go for it 😃</Button>
+          <Button appearance="primary" onClick={toggleShowModal}>OK</Button>
         </Modal>
       }
     </>
@@ -42,3 +41,12 @@ function () {
 | top             | string   |            | 1rem    | Height from top of container                                                                    |
 | children        | Any      |            |         | Any content to be displayed in modal                                                            |
 | showCloseButton | Boolean  | true/false | true    |
+
+## Accessibility
+
+When it comes to modal dialogs, consider this: no one likes to be interrupted, but if you must, make sure it’s worth the cost.
+
+Use modal dialogs for important warnings, as a way to prevent or correct critical errors.
+Use modal dialogs to request the user to enter information critical to continuing the current process.
+Modal dialogs can be used to fragment a complex workflow into simpler steps.
+Do not use modal dialogs for nonessential information that is not related to the current user flow.

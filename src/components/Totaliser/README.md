@@ -27,7 +27,7 @@ function () {
           total={120}
           giftAid={27.5}
           target={100}
-          summaryMessage={<Text>cool</Text>}
+          summaryMessage={<Text>Custom summary message</Text>}
         />
       </Box>
       <Box>
@@ -35,7 +35,7 @@ function () {
           total={120}
           giftAid={27.5}
           target={100}
-          summaryMessage='cool'
+          summaryMessage='Custom summary message'
         />
       </Box>
     </>

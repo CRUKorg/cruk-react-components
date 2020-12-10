@@ -7,28 +7,28 @@ Select components are used for collecting user provided information from a list 
 ```.jsx
 <>
   <Box>
-    <Select value="" label="Disabled option" onChange={(event) => {}}>
+    <Select label="Disabled option" onChange={(event) => {}}>
       <option disabled value="">--Please choose an option--</option>
       <option value="dog">Dog</option>
       <option value="cat">Cat</option>
     </Select>
   </Box>
   <Box>
-    <Select value="" label="Disabled control" onChange={(event) => {}} disabled>
+    <Select label="Disabled control" onChange={(event) => {}} disabled>
       <option disabled value="">--Please choose an option--</option>
       <option value="dog">Dog</option>
       <option value="cat">Cat</option>
     </Select>
   </Box>
   <Box>
-    <Select required errorMessage="You must select an option" label="Has error" onChange={(event) => {}}>
+    <Select required hasError label="Has error" onChange={(event) => {}}>
       <option value="dog">Dog</option>
       <option value="red_panda">Red panda</option>
       <option value="axolotl">Axolotl</option>
     </Select>
   </Box>
   <Box>
-    <Select required error="This felid is required ☹️" label="Error message" onChange={(event) => {}}>
+    <Select required errorMessage="This field is required" label="Error message" onChange={(event) => {}}>
       <option value="cat">Cat</option>
     </Select>
   </Box>

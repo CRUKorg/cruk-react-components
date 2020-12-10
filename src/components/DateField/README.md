@@ -63,6 +63,7 @@ function () {
           dayName='birthDay'
           monthName='birthMonth'
           yearName='birthYear'
+          hintText="Enter day month and year as numbers below"
           day={dateState.birthDay || ''}
           month={dateState.birthMonth || ''}
           year={dateState.birthYear || ''}

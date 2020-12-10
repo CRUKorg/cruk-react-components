@@ -41,7 +41,7 @@ const Icon: FunctionComponent<IconProps> = props => {
   return (
     <StyledIcon
       theme={theme}
-      aria-hidden="true"
+      alt-text=""
       role="presentation"
       viewBox={`0 0 ${icon.width} ${icon.height}`}
       size={props.size}
