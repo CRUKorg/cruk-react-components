@@ -51,8 +51,65 @@ export type BreakPointType = {
 
 export type TokenColorsType = { [key: string]: string };
 
-// TODO make this much more explicit once we know what they should be
-export type ColorsType = { [key: string]: string };
+export type ColorsType = { 
+
+  primary: string;
+  primaryHover: string;
+  secondary: string;
+  secondaryHover: string;
+  tertiary: string;
+  tertiaryHover: string;
+
+  disabled: string;
+  danger: string;
+  warning: string;
+  success: string;
+  info: string;
+  textError: string;
+
+  linkColor: string;
+  linkColorHover: string;
+  textDark: string;
+  textLight: string;
+
+  progressBar: string;
+  progressBarBackground: string;
+  circularProgress: string;
+  circularProgressBackground: string;
+
+  buttonBorder: string;
+  selectionBorder: string;
+  inputBorder: string;
+
+  headerBackground: string;
+  backgroundLight: string;
+  backgroundMid: string;
+
+  paginationActive: string;
+
+  footerBackground: string;
+
+  headerBorder: string;
+
+  stepBorder: string;
+  stepBackground: string;
+
+  popoverBackground: string;
+
+  textInputExtraInfo: string;
+
+  totaliserBorder: string;
+
+  textInputBorder: string;
+
+  selectBackground: string;
+
+  modalBackdrop: string;
+
+  userBlockExtraText: string;
+};
+
+export type ColorKeyType = keyof ColorsType;
 
 export type SpaceType =
   | 'auto'
