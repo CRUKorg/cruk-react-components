@@ -39,7 +39,7 @@ export const AVATAR: AvatarType = {
 
 export const BUTTON: ButtonType = {
   borderRadius: UTILITIES.borderRadius,
-  buttonBorderThickness: '1px',
+  buttonBorderThickness: '2px',
   textDecoration: 'none',
   textTransform: 'none',
 };
@@ -53,6 +53,7 @@ export const BREAKPOINT: BreakPointType = {
 
 export const TOKEN_COLORS: TokenColorsType = {
   darkBlue_500: '#2e008b',
+  magenta_100: '#fdeaf5',
   magenta_500: '#e40074',
   magenta_800: '#BB0071',
   magenta_900: '#710044',
@@ -76,11 +77,8 @@ export const TOKEN_COLORS: TokenColorsType = {
 
 export const COLORS: ColorsType = {
   primary: TOKEN_COLORS.darkBlue_500,
-  primaryHover: TOKEN_COLORS.magenta_500,
   secondary: TOKEN_COLORS.magenta_500,
-  secondaryHover: TOKEN_COLORS.magenta_900,
   tertiary: TOKEN_COLORS.cyan_500,
-  tertiaryHover: TOKEN_COLORS.cyan_900,
 
   disabled: TOKEN_COLORS.grey_300,
   danger: TOKEN_COLORS.red,
@@ -99,7 +97,38 @@ export const COLORS: ColorsType = {
   circularProgress: TOKEN_COLORS.cyan_500,
   circularProgressBackground: TOKEN_COLORS.grey_300,
 
-  buttonBorder: TOKEN_COLORS.grey_500,
+
+  buttonPrimaryBackground: TOKEN_COLORS.magenta_500,
+  buttonPrimaryText: TOKEN_COLORS.white,
+  buttonPrimaryBorder: TOKEN_COLORS.magenta_500,
+  buttonPrimaryBackgroundHover: TOKEN_COLORS.magenta_800,
+  buttonPrimaryTextHover: TOKEN_COLORS.white,
+  buttonPrimaryBorderHover: TOKEN_COLORS.magenta_800,
+  buttonPrimaryDisabledBackground: TOKEN_COLORS.grey_100,
+  buttonPrimaryDisabledText: TOKEN_COLORS.grey_500,
+  buttonPrimaryDisabledBorder: TOKEN_COLORS.grey_100,
+
+  buttonSecondaryBackground: TOKEN_COLORS.white,
+  buttonSecondaryText: TOKEN_COLORS.magenta_500,
+  buttonSecondaryBorder: TOKEN_COLORS.magenta_500,
+  buttonSecondaryBackgroundHover: TOKEN_COLORS.magenta_100,
+  buttonSecondaryTextHover: TOKEN_COLORS.magenta_500,
+  buttonSecondaryBorderHover: TOKEN_COLORS.magenta_500,
+  buttonSecondaryDisabledBackground: TOKEN_COLORS.grey_100,
+  buttonSecondaryDisabledText: TOKEN_COLORS.grey_500,
+  buttonSecondaryDisabledBorder: TOKEN_COLORS.grey_100,
+
+  buttonTertiaryBackground: TOKEN_COLORS.white,
+  buttonTertiaryText: TOKEN_COLORS.magenta_500,
+  buttonTertiaryBorder: TOKEN_COLORS.grey_500,
+  buttonTertiaryBackgroundHover: TOKEN_COLORS.magenta_100,
+  buttonTertiaryTextHover: TOKEN_COLORS.magenta_500,
+  buttonTertiaryBorderHover: TOKEN_COLORS.grey_500,
+  buttonTertiaryDisabledBackground: TOKEN_COLORS.grey_100,
+  buttonTertiaryDisabledText: TOKEN_COLORS.grey_500,
+  buttonTertiaryDisabledBorder: TOKEN_COLORS.grey_100,
+
+
   selectionBorder: TOKEN_COLORS.grey_500,
   inputBorder: TOKEN_COLORS.grey_300,
 

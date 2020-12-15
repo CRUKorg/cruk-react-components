@@ -54,11 +54,8 @@ export type TokenColorsType = { [key: string]: string };
 export type ColorsType = { 
 
   primary: string;
-  primaryHover: string;
   secondary: string;
-  secondaryHover: string;
   tertiary: string;
-  tertiaryHover: string;
 
   disabled: string;
   danger: string;
@@ -77,7 +74,37 @@ export type ColorsType = {
   circularProgress: string;
   circularProgressBackground: string;
 
-  buttonBorder: string;
+  buttonPrimaryBackground: string;
+  buttonPrimaryText: string;
+  buttonPrimaryBorder: string;
+  buttonPrimaryBackgroundHover: string;
+  buttonPrimaryTextHover: string;
+  buttonPrimaryBorderHover: string;
+  buttonPrimaryDisabledBackground: string
+  buttonPrimaryDisabledText: string
+  buttonPrimaryDisabledBorder: string
+
+  buttonSecondaryBackground: string;
+  buttonSecondaryText: string;
+  buttonSecondaryBorder: string;
+  buttonSecondaryBackgroundHover: string;
+  buttonSecondaryTextHover: string;
+  buttonSecondaryBorderHover: string;
+  buttonSecondaryDisabledBackground: string;
+  buttonSecondaryDisabledText: string;
+  buttonSecondaryDisabledBorder: string;
+
+  buttonTertiaryBackground: string;
+  buttonTertiaryText: string;
+  buttonTertiaryBorder: string;
+  buttonTertiaryBackgroundHover: string;
+  buttonTertiaryTextHover: string;
+  buttonTertiaryBorderHover: string;
+  buttonTertiaryDisabledBackground: string;
+  buttonTertiaryDisabledText: string;
+  buttonTertiaryDisabledBorder: string;
+
+
   selectionBorder: string;
   inputBorder: string;
 

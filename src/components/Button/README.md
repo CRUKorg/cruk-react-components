@@ -3,24 +3,70 @@
 Custom button styles for actions in forms, dialogs, and more with support
 for multiple sizes, states, and more.
 
-### Try them out
+## Try them out
+
+### Primary Button
 
 ```.jsx
 <>
-  <Button>Button</Button>
   <Button appearance="primary">Primary</Button>
+  <Button  appearance="primary" disabled appearance="primary">
+    Disabled primary
+  </Button>
+  <Button size="l">Large primary button</Button>
+</>
+```
+
+### Secondary Button
+
+```.jsx
+<>
   <Button appearance="secondary">Secondary</Button>
-  <Button disabled>Disabled</Button>
-  <Button disabled appearance="primary">Disabled primary</Button>
-  <Button disabled appearance="secondary">Disabled secondary</Button>
-  <Button size="l">Large button</Button>
-  <Button><Icon name="view"/>Icon with text</Button>
-  <Button>Icon right<Icon name="edit"/></Button>
-  <Button><Icon name="view"/>Icon either side<Icon name="view"/></Button>
+  <Button disabled appearance="secondary">
+    Disabled secondary
+  </Button>
+  <Button appearance="secondary" size="l">Large secondary button</Button>
+</>
+```
+
+### Tertiary Button
+
+```.jsx
+<>
+  <Button appearance="tertiary">Tertiary</Button>
+  <Button disabled appearance="tertiary">
+    Disabled tertiary
+  </Button>
+  <Button appearance="tertiary" size="l">Large tertiary button</Button>
+</>
+```
+
+### Other Buttons
+
+```.jsx
+<>
+  <Button>
+    <Icon name="view" />
+    Icon with text
+  </Button>
+  <Button>
+    Icon right
+    <Icon name="edit" />
+  </Button>
+  <Button>
+    <Icon name="view" />
+    Icon either side
+    <Icon name="view" />
+  </Button>
   <Button href="https://www.styled-components.com/">Link as Button</Button>
   <Button appearance="text">Text style button</Button>
-  <Button aria-label="Upload a photo"><Icon name="uploadPhoto"/></Button>
-  <Button css="background-color: #4267b2;border-color: #4267b2; color: white; :hover {background-color: #365899; color: white;}"><Icon name="facebookSquare" size="18px" />Continue with facebook</Button>
+  <Button aria-label="Upload a photo">
+    <Icon name="uploadPhoto" />
+  </Button>
+  <Button css="background-color: #4267b2;border-color: #4267b2; color: white !important; :hover {background-color: #365899; border-color:  #365899; color: white !important;}">
+    <Icon name="facebookSquare" size="18px" />
+    Continue with facebook
+  </Button>
   <Button full>Full width Button</Button>
 </>
 ```

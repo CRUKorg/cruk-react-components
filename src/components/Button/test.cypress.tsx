@@ -9,14 +9,16 @@ import { Button, Icon } from '../';
 const content = () => {
   return (
     <>
-      <Button>Button</Button>
       <Button appearance="primary">Primary</Button>
       <Button appearance="secondary">Secondary</Button>
-      <Button disabled>Disabled</Button>
+      <Button appearance="tertiary">Tertiary</Button>
       <Button disabled appearance="primary">
         Disabled primary
       </Button>
       <Button disabled appearance="secondary">
+        Disabled secondary
+      </Button>
+      <Button disabled appearance="tertiary">
         Disabled secondary
       </Button>
       <Button size="l">Large button</Button>
@@ -38,7 +40,7 @@ const content = () => {
       <Button aria-label="Upload a photo">
         <Icon name="uploadPhoto" />
       </Button>
-      <Button css="background-color: #4267b2;border-color: #4267b2; color: white; :hover {background-color: #365899; color: white;}">
+      <Button css="background-color: #4267b2;border-color: #4267b2; color: white !important; :hover {background-color: #365899; border-color:  #365899; color: white !important;}">
         <Icon name="facebookSquare" size="18px" />
         Continue with facebook
       </Button>

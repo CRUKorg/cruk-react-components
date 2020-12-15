@@ -9,8 +9,10 @@ import { ThemeType } from '../../types';
 const BUTTON_HEIGHT = '3rem';
 const BUTTON_HEIGHT_LARGE = '4rem';
 
+type AppearanceType = 'primary' | 'secondary' | 'tertiary' | 'text';
+
 type ButtonProps = ButtonHTMLAttributes<HTMLElement> & {
-  appearance?: string;
+  appearance?: AppearanceType;
   full?: boolean;
   theme?: ThemeType;
   href?: string;
@@ -21,7 +23,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLElement> & {
 };
 
 type StyledButtonProps = ButtonHTMLAttributes<HTMLElement> & {
-  appearance?: string;
+  appearance?: AppearanceType;
   full?: boolean;
   theme: ThemeType;
   size?: 'm' | 'l';
@@ -51,11 +53,15 @@ const StyledButton = styled.button<StyledButtonProps>`
   min-height: ${BUTTON_HEIGHT};
   display: inline-block;
   vertical-align: middle;
-  background-color: ${props => props.theme.colors.backgroundLight};
+  padding: ${({ theme, isIconButton }) => (isIconButton ? '0' : `0 ${theme.spacing.m}`)};
+  width: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT}` : 'auto')};
+
   border-radius: ${props => props.theme.button.borderRadius};
-  border:  ${({ theme }) => `${theme.button.buttonBorderThickness} solid ${theme.colors.buttonBorder}`};
-  color: ${props => props.theme.colors.primary};
-  transition: color 0.2s ease, background-color 0.2s ease, border 0.2s ease;
+  border-style: solid;
+  border-width:  ${({ theme }) => theme.button.buttonBorderThickness};
+
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+
   cursor: pointer;
   font-size: ${({
     theme: {
@@ -72,47 +78,67 @@ const StyledButton = styled.button<StyledButtonProps>`
       typography: { fontWeightMedium },
     },
   }) => fontWeightMedium};
-  padding: ${({ theme, isIconButton }) => (isIconButton ? '0' : `0 ${theme.spacing.m}`)};
-  width: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT}` : 'auto')};
   text-align: center;
-  text-decoration: ${props => props.theme.button.textDecoration};
   text-transform: ${props => props.theme.button.textTransform};
-
-
-  ${(props: StyledButtonProps) =>
-    !props.css &&
-    css`
-      :focus,
-      :hover {
-        color: ${props => props.theme.colors.linkColorHover};
-      }
-    `}
+  text-decoration: ${props => props.theme.button.textDecoration};
   
   ${(props: StyledButtonProps) =>
     props.appearance === 'primary' &&
     css`
-      background-color: ${props.theme.colors.secondary};
-      border-color: ${props.theme.colors.secondary};
-      color: ${props.theme.colors.textLight} !important;
+      background-color: ${props.theme.colors.buttonPrimaryBackground};
+      border-color: ${props.theme.colors.buttonPrimaryBorder};
+      color: ${props.theme.colors.buttonPrimaryText} !important;
       :focus,
       :hover {
-        background-color: ${props.theme.colors.secondaryHover};
-        border-color: ${props.theme.colors.secondaryHover};
-        color: ${props.theme.colors.textLight} !important;
+        background-color: ${props.theme.colors.buttonPrimaryBackgroundHover};
+        border-color: ${props.theme.colors.buttonPrimaryBorderHover};
+        color: ${props.theme.colors.buttonPrimaryTextHover} !important;
+      }
+      :disabled {
+        cursor: not-allowed;
+        background-color: ${props.theme.colors.buttonPrimaryDisabledBackground};
+        color: ${props.theme.colors.buttonPrimaryDisabledText} !important;
+        border-color: ${props.theme.colors.buttonPrimaryDisabledBorder};
       }
     `}
 
   ${(props: StyledButtonProps) =>
     props.appearance === 'secondary' &&
     css`
-      background-color: ${props.theme.colors.tertiary};
-      border-color: ${props.theme.colors.tertiary};
-      color: ${props.theme.colors.textLight};
+      background-color: ${props.theme.colors.buttonSecondaryBackground};
+      border-color: ${props.theme.colors.buttonSecondaryBorder};
+      color: ${props.theme.colors.buttonSecondaryText} !important;
       :focus,
       :hover {
-        background-color: ${props.theme.colors.tertiaryHover};
-        border-color: ${props.theme.colors.tertiaryHover};
-        color: ${props.theme.colors.textLight};
+        background-color: ${props.theme.colors.buttonSecondaryBackgroundHover};
+        border-color: ${props.theme.colors.buttonSecondaryBorderHover};
+        color: ${props.theme.colors.buttonSecondaryTextHover} !important;
+      }
+      :disabled {
+        cursor: not-allowed;
+        background-color: ${props.theme.colors.buttonSecondaryDisabledBackground};
+        color: ${props.theme.colors.buttonSecondaryDisabledText} !important;
+        border-color: ${props.theme.colors.buttonSecondaryDisabledBorder};
+      }
+    `}
+
+  ${(props: StyledButtonProps) =>
+    props.appearance === 'tertiary' &&
+    css`
+      background-color: ${props.theme.colors.buttonTertiaryBackground};
+      border-color: ${props.theme.colors.buttonTertiaryBorder};
+      color: ${props.theme.colors.buttonTertiaryText} !important;
+      :focus,
+      :hover {
+        background-color: ${props.theme.colors.buttonTertiaryBackgroundHover};
+        border-color: ${props.theme.colors.buttonTertiaryBorderHover};
+        color: ${props.theme.colors.buttonTertiaryTextHover} !important;
+      }
+      :disabled {
+        cursor: not-allowed;
+        background-color: ${props.theme.colors.buttonTertiaryDisabledBackground};
+        color: ${props.theme.colors.buttonTertiaryDisabledText} !important;
+        border-color: ${props.theme.colors.buttonTertiaryDisabledBorder};
       }
     `}
 
@@ -134,36 +160,18 @@ const StyledButton = styled.button<StyledButtonProps>`
       :hover {
         color: ${props.theme.colors.linkColorHover};
       }
+      :disabled {
+        cursor: not-allowed;
+        background-color: transparent;
+        color: ${props.theme.colors.disabled} !important;
+        border-color: transparent;
+      }
     `}
   
   ${(props: StyledButtonProps) =>
     props.size === 'l' &&
     css`
       min-height: ${BUTTON_HEIGHT_LARGE};
-    `}
-  
-  ${(props: StyledButtonProps) =>
-    props.disabled &&
-    css`
-      cursor: not-allowed;
-      background-color: ${props.appearance === 'primary' || props.appearance === 'secondary'
-        ? props.theme.colors.disabled
-        : 'transparent'};
-      color: ${props.appearance === 'primary' || props.appearance === 'secondary'
-        ? props.theme.colors.textLight
-        : props.theme.colors.disabled};
-      border-color: ${props.theme.colors.disabled};
-
-      &:focus,
-      &:hover {
-        background-color: ${props.appearance === 'primary' || props.appearance === 'secondary'
-          ? props.theme.colors.disabled
-          : 'transparent'};
-        color: ${props.appearance === 'primary' || props.appearance === 'secondary'
-          ? props.theme.colors.textLight
-          : props.theme.colors.disabled};
-        border-color: ${props.theme.colors.disabled};
-      }
     `}
 
   ${(props: StyledButtonProps) =>
@@ -180,6 +188,7 @@ const Button: FunctionComponent<ButtonProps> = forwardRef((props: ButtonProps, r
     ...defaultTheme,
     ...props.theme,
   };
+  const { appearance = 'primary' } = props;
   const childArray = React.Children.toArray(props.children);
 
   // button has a fixed width if there is a single icon
@@ -188,7 +197,14 @@ const Button: FunctionComponent<ButtonProps> = forwardRef((props: ButtonProps, r
     props.children && childArray.length === 1 && childArray[0] && childArray[0].type === Icon ? true : false;
 
   return (
-    <StyledButton as={props.href ? 'a' : 'button'} {...props} isIconButton={isIconButton} theme={theme} ref={ref}>
+    <StyledButton
+      as={props.href ? 'a' : 'button'}
+      {...props}
+      appearance={appearance}
+      isIconButton={isIconButton}
+      theme={theme}
+      ref={ref}
+    >
       {props.children && childArray.length
         ? React.Children.map(props.children, (child: ReactNode, index: number) => (
             <VerticalAlign theme={theme} key={index} isIconButton={isIconButton}>
