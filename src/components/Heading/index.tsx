@@ -25,7 +25,7 @@ type StyledHeadingProps = Omit<HeadingProps, 'theme'> & {
   theme: ThemeType;
 };
 
-const StyledHeading = (props: StyledHeadingProps) => css`
+const StyledHeading = () => css`
   font-family: ${({
     theme: {
       typography: { fontFamilyHeadings },

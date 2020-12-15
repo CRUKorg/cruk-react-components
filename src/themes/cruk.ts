@@ -13,7 +13,7 @@ import {
 } from '../types';
 
 export const UTILITIES: UtilitiesType = {
-  borderRadius: '3px',
+  borderRadius: '4px',
   contentMaxWidth: '1020px',
   useDefaultFocusRect: false,
   useDefaultFromControls: true,
@@ -53,7 +53,7 @@ export const BREAKPOINT: BreakPointType = {
 
 export const TOKEN_COLORS: TokenColorsType = {
   darkBlue_500: '#2e008b',
-  magenta_500: '#ec0087',
+  magenta_500: '#e40074',
   magenta_800: '#BB0071',
   magenta_900: '#710044',
   cyan_500: '#00b6ed',
