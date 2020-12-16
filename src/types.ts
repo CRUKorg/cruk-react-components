@@ -51,8 +51,92 @@ export type BreakPointType = {
 
 export type TokenColorsType = { [key: string]: string };
 
-// TODO make this much more explicit once we know what they should be
-export type ColorsType = { [key: string]: string };
+export type ColorsType = { 
+
+  primary: string;
+  secondary: string;
+  tertiary: string;
+
+  disabled: string;
+  danger: string;
+  warning: string;
+  success: string;
+  info: string;
+  textError: string;
+
+  linkColor: string;
+  linkColorHover: string;
+  textDark: string;
+  textLight: string;
+
+  progressBar: string;
+  progressBarBackground: string;
+  circularProgress: string;
+  circularProgressBackground: string;
+
+  buttonPrimaryBackground: string;
+  buttonPrimaryText: string;
+  buttonPrimaryBorder: string;
+  buttonPrimaryBackgroundHover: string;
+  buttonPrimaryTextHover: string;
+  buttonPrimaryBorderHover: string;
+  buttonPrimaryDisabledBackground: string
+  buttonPrimaryDisabledText: string
+  buttonPrimaryDisabledBorder: string
+
+  buttonSecondaryBackground: string;
+  buttonSecondaryText: string;
+  buttonSecondaryBorder: string;
+  buttonSecondaryBackgroundHover: string;
+  buttonSecondaryTextHover: string;
+  buttonSecondaryBorderHover: string;
+  buttonSecondaryDisabledBackground: string;
+  buttonSecondaryDisabledText: string;
+  buttonSecondaryDisabledBorder: string;
+
+  buttonTertiaryBackground: string;
+  buttonTertiaryText: string;
+  buttonTertiaryBorder: string;
+  buttonTertiaryBackgroundHover: string;
+  buttonTertiaryTextHover: string;
+  buttonTertiaryBorderHover: string;
+  buttonTertiaryDisabledBackground: string;
+  buttonTertiaryDisabledText: string;
+  buttonTertiaryDisabledBorder: string;
+
+
+  selectionBorder: string;
+  inputBorder: string;
+
+  headerBackground: string;
+  backgroundLight: string;
+  backgroundMid: string;
+
+  paginationActive: string;
+
+  footerBackground: string;
+
+  headerBorder: string;
+
+  stepBorder: string;
+  stepBackground: string;
+
+  popoverBackground: string;
+
+  textInputExtraInfo: string;
+
+  totaliserBorder: string;
+
+  textInputBorder: string;
+
+  selectBackground: string;
+
+  modalBackdrop: string;
+
+  userBlockExtraText: string;
+};
+
+export type ColorKeyType = keyof ColorsType;
 
 export type SpaceType =
   | 'auto'

@@ -4,7 +4,7 @@ import styled, { css, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import spacing, { SpacingProps } from '../Spacing';
 
-import { ThemeType, FontSizeType } from '../../types';
+import { ThemeType, FontSizeType, ColorKeyType } from '../../types';
 
 type HeadingProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
@@ -37,8 +37,8 @@ const StyledHeading = (props: StyledHeadingProps) => css`
     },
   }) => fontWeightMedium};
   color: ${({ theme: { colors }, textColor }: StyledHeadingProps) =>
-    textColor && typeof colors[textColor] !== 'undefined'
-      ? colors[textColor]
+    textColor && typeof colors[textColor as ColorKeyType] !== 'undefined'
+      ? colors[textColor as ColorKeyType]
       : textColor
       ? textColor
       : colors['textDark']};

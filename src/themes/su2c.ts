@@ -53,15 +53,43 @@ export const TOKEN_COLORS: TokenColorsType = {
 export const COLORS: ColorsType = {
   ...defaultTheme.colors,
   primary: TOKEN_COLORS.su2cOrange,
-  primaryHover: TOKEN_COLORS.su2cOrangeLight,
   secondary: TOKEN_COLORS.su2cOrange,
-  secondaryHover: TOKEN_COLORS.su2cOrangeLight,
   tertiary: TOKEN_COLORS.su2cBlack,
-  tertiaryHover: TOKEN_COLORS.su2cRed,
+
   progressBar: TOKEN_COLORS.su2cOrange,
   circularProgress: TOKEN_COLORS.su2cOrangeLight,
   linkColor: TOKEN_COLORS.su2cOrange,
   linkColorHover: TOKEN_COLORS.su2cOrange,
+
+  buttonPrimaryBackground: TOKEN_COLORS.white,
+  buttonPrimaryText: TOKEN_COLORS.su2cOrange,
+  buttonPrimaryBorder: TOKEN_COLORS.grey_500,
+  buttonPrimaryBackgroundHover: TOKEN_COLORS.white,
+  buttonPrimaryTextHover: TOKEN_COLORS.su2cOrange,
+  buttonPrimaryBorderHover: TOKEN_COLORS.grey_500,
+  buttonPrimaryDisabledBackground: TOKEN_COLORS.white,
+  buttonPrimaryDisabledText: TOKEN_COLORS.grey_300,
+  buttonPrimaryDisabledBorder: TOKEN_COLORS.grey_300,
+
+  buttonSecondaryBackground: TOKEN_COLORS.su2cOrange,
+  buttonSecondaryText: TOKEN_COLORS.white,
+  buttonSecondaryBorder: TOKEN_COLORS.su2cOrange,
+  buttonSecondaryBackgroundHover: TOKEN_COLORS.su2cOrangeLight,
+  buttonSecondaryTextHover: TOKEN_COLORS.white,
+  buttonSecondaryBorderHover: TOKEN_COLORS.su2cOrangeLight,
+  buttonSecondaryDisabledBackground: TOKEN_COLORS.grey_300,
+  buttonSecondaryDisabledText: TOKEN_COLORS.white,
+  buttonSecondaryDisabledBorder: TOKEN_COLORS.grey_300,
+
+  buttonTertiaryBackground: TOKEN_COLORS.su2cBlack,
+  buttonTertiaryText: TOKEN_COLORS.white,
+  buttonTertiaryBorder: TOKEN_COLORS.grey_500,
+  buttonTertiaryBackgroundHover: TOKEN_COLORS.su2cRed,
+  buttonTertiaryTextHover: TOKEN_COLORS.white,
+  buttonTertiaryBorderHover: TOKEN_COLORS.su2cRed,
+  buttonTertiaryDisabledBackground: TOKEN_COLORS.grey_300,
+  buttonTertiaryDisabledText: TOKEN_COLORS.white,
+  buttonTertiaryDisabledBorder: TOKEN_COLORS.grey_300,
 };
 
 export const SPACING: SpacingType = {
