@@ -45,7 +45,7 @@ for multiple sizes, states, and more.
 
 ```.jsx
 <>
-  <Button>
+  <Button appearance="secondary">
     <Icon name="view" />
     Icon with text
   </Button>
@@ -53,7 +53,7 @@ for multiple sizes, states, and more.
     Icon right
     <Icon name="edit" />
   </Button>
-  <Button>
+  <Button appearance="tertiary">
     <Icon name="view" />
     Icon either side
     <Icon name="view" />
