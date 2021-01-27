@@ -88,6 +88,9 @@ describe('Popover', () => {
       .its('fonts.status')
       .should('equal', 'loaded');
     cy.contains('Share top').click();
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.get('body')
       .first()
       .matchImageSnapshot();
