@@ -23,15 +23,16 @@ TextAreaField lets users enter and edit text over multiple lines.
 
 Other props not listed here (disabled, placeholder, etc.) will be passed to the child &lt;textarea&gt; element.
 
-| Name         | Type                   | Required | Default | Description                                                     |
-| :----------- | :--------------------- | :------- | :------ | :-------------------------------------------------------------- |
-| label        | string                 | Yes      |         | Will wrap input with label and apply text                       |
-| onChange     | function               | Yes      |         | Event handler for input change                                  |
-| value        | string                 | Yes      |         | Controlled value of input                                       |
-| required     | boolean                |          | false   | If false, add (optional) to the label text                      |
-| hasError     | boolean                |          | false   | If true, use error styling for the input                        |
-| errorMessage | string                 |          |         | Error message, If defined, use error styling for the input text |
-| hintText     | ReactElement \| string |          |         | Extra help text between the label and input                     |
+| Name         | Type                                      | Required | Default    | Description                                                     |
+| :----------- | :---------------------------------------- | :------- | :--------- | :-------------------------------------------------------------- |
+| label        | string                                    | Yes      |            | Will wrap input with label and apply text                       |
+| onChange     | function                                  | Yes      |            | Event handler for input change                                  |
+| value        | string                                    | Yes      |            | Controlled value of input                                       |
+| required     | boolean                                   |          | false      | If false, add (optional) to the label text                      |
+| hasError     | boolean                                   |          | false      | If true, use error styling for the input                        |
+| errorMessage | string                                    |          |            | Error message, If defined, use error styling for the input text |
+| hintText     | ReactElement \| string                    |          |            | Extra help text between the label and input                     |
+| resize       | 'both', 'vertical', 'horizontal', 'none'; |          | 'vertical' | Resize behaviour of textArea                                    |
 
 ## Accessibility
 

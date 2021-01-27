@@ -9,9 +9,11 @@ import { ThemeType } from '../../types';
 
 type StyledTextareaProps = Omit<TextFieldProps, 'errorMessage' | 'hasError' | 'label'> & {
   hasError: boolean;
+  resize?: 'both' | 'vertical' | 'horizontal' | 'none';
 };
 
 const StyledTextArea = styled.textarea<StyledTextareaProps>`
+  resize: ${({ resize }) => resize};
   background-color: ${({ theme }) => theme.colors.backgroundLight};
   background-image: none;
   border-radius: ${({ theme }) => theme.utilities.borderRadius};
@@ -46,6 +48,7 @@ type TextFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   hasError?: boolean;
   hintText?: ReactElement | string;
   label: string;
+  resize?: 'both' | 'vertical' | 'horizontal' | 'none';
   theme: ThemeType;
 };
 
@@ -54,6 +57,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
   hasError,
   hintText,
   label,
+  resize = 'vertical',
   theme: propsTheme,
   ...props
 }) => {
@@ -67,6 +71,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
       <StyledTextArea
         hasError={hasError || !!errorMessage || false}
         aria-invalid={hasError || !!errorMessage || false}
+        resize={resize}
         theme={theme}
         {...props}
       />
