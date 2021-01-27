@@ -88,7 +88,7 @@ const content = () => {
           Is Valid Indicator
         </Heading>
         <Box>
-          <TextField label="Phone number" type="text" name="phoneNumber" hasError={false} isValidVisible={true} />
+          <TextField label="Phone number" type="text" name="phoneNumber" isValid={true} isValidVisible={true} />
         </Box>
       </section>
       <section>
@@ -96,7 +96,7 @@ const content = () => {
           Is Invalid Indicator
         </Heading>
         <Box>
-          <TextField label="Phone number" type="text" name="phoneNumber" hasError={true} isInvalidVisible={true} />
+          <TextField label="Phone number" type="text" name="phoneNumber" isValid={false} isInvalidVisible={true} />
         </Box>
       </section>
       <section>
