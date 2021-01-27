@@ -143,23 +143,23 @@ Text fields let users enter and edit text.
 
 Other props not listed here (disabled, placeholder, etc.) will be passed to the child &lt;input&gt; element.
 
-| Name                 | Type                   | Required | Default | Description                                                                       |
-| :------------------- | :--------------------- | :------- | :------ | :-------------------------------------------------------------------------------- |
-| label                | string                 | Yes      |         | Will wrap input with label and apply text                                         |
-| type                 | string                 | Yes      |         | HTML input type: text, number, email or password                                  |
-| onChange             | function               | Yes      |         | Event handler for input change                                                    |
-| value                | string                 | Yes      |         | Controlled value of input                                                         |
-| required             | boolean                |          | false   | If false, add (optional) to the label text                                        |
-| hasError             | boolean                |          | false   | If true, use error styling for the input                                          |
-| errorMessage         | string                 |          |         | Error message, If defined, use error styling for the input text                   |
-| hintText             | ReactElement \| string |          |         | Extra help text between the label and input                                       |
-| isVaild              | Boolean                |          | true    | used with isVaildValidVisible/isVaildValidVisible to show valid/invalid indicator |
-| isVaildValidVisible  | Boolean                |          | false   | show valid indicator when isVaild is true                                         |
-| isVaildValidInisible | Boolean                |          | false   | show invalid indicator when isValid is false                                      |
-| extraTop             | string                 |          |         | Displayed on top of the input                                                     |
-| extraRight           | string                 |          |         | Displayed inline after the input                                                  |
-| extraBottom          | string                 |          |         | Displayed under the input                                                         |
-| extraLeft            | string                 |          |         | Displayed inline before the input                                                 |
+| Name             | Type                   | Required | Default | Description                                                               |
+| :--------------- | :--------------------- | :------- | :------ | :------------------------------------------------------------------------ |
+| label            | string                 | Yes      |         | Will wrap input with label and apply text                                 |
+| type             | string                 | Yes      |         | HTML input type: text, number, email or password                          |
+| onChange         | function               | Yes      |         | Event handler for input change                                            |
+| value            | string                 | Yes      |         | Controlled value of input                                                 |
+| required         | boolean                |          | false   | If false, add (optional) to the label text                                |
+| hasError         | boolean                |          | false   | If true, use error styling for the input                                  |
+| errorMessage     | string                 |          |         | Error message, If defined, use error styling for the input text           |
+| hintText         | ReactElement \| string |          |         | Extra help text between the label and input                               |
+| isVaild          | Boolean                |          | true    | used with isValidVisible/isValidInvisible to show valid/invalid indicator |
+| isValidVisible   | Boolean                |          | false   | show valid indicator when isVaild is true or no error exists              |
+| isValidInvisible | Boolean                |          | false   | show invalid indicator when isValid is false or if error exists           |
+| extraTop         | string                 |          |         | Displayed on top of the input                                             |
+| extraRight       | string                 |          |         | Displayed inline after the input                                          |
+| extraBottom      | string                 |          |         | Displayed under the input                                                 |
+| extraLeft        | string                 |          |         | Displayed inline before the input                                         |
 
 ## Accessibility
 
