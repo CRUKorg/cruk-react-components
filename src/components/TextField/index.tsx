@@ -26,6 +26,7 @@ type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   extraRight?: ReactElement | string;
   extraTop?: ReactElement | string;
   hasError?: boolean;
+  isValid?: boolean;
   hintText?: ReactElement | string;
   isValidVisible?: boolean;
   isInvalidVisible?: boolean;
@@ -35,6 +36,7 @@ type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
 
 type StyledInputProps = Omit<TextFieldProps, 'errorMessage' | 'hasError' | 'label'> & {
   hasError: boolean;
+  isValid: boolean;
 };
 
 const Extra = styled.span<ExtraProps>`
@@ -159,14 +161,14 @@ const StyledInput = styled.input<StyledInputProps>`
   background-position: ${({ theme }) => `calc( 100% - ${theme.spacing.xxs}) 50% `};
 
 
-  ${({ hasError, isInvalidVisible }: StyledInputProps) =>
-    hasError &&
+  ${({ isValid, isInvalidVisible }: StyledInputProps) =>
+    !isValid &&
     isInvalidVisible &&
     css`
         background-image: url('data:image/png;base64,${crossBase64}');
     `}
-  ${({ hasError, isValidVisible }: StyledInputProps) =>
-    !hasError &&
+  ${({ isValid, isValidVisible }: StyledInputProps) =>
+    isValid &&
     isValidVisible &&
     css`
         background-image: url('data:image/png;base64,${checkBase64}');
@@ -181,6 +183,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
   extraTop,
   hasError,
   hintText,
+  isValid,
   isValidVisible,
   isInvalidVisible,
   label,
@@ -197,6 +200,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
       {!!extraLeft && <ExtraLeft theme={theme}>{extraLeft}</ExtraLeft>}
       <StyledInput
         hasError={hasError || !!errorMessage || false}
+        isValid={typeof isValid !== 'undefined' ? isValid : !hasError && !errorMessage}
         aria-invalid={hasError || !!errorMessage || false}
         isValidVisible={isValidVisible || false}
         isInvalidVisible={isInvalidVisible || false}
