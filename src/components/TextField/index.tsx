@@ -5,7 +5,7 @@ import defaultTheme from '../../themes/cruk';
 import ErrorText from '../ErrorText';
 import { WithLabel } from '../Label';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 type ExtraProps = {
   theme: ThemeType;
@@ -57,7 +57,7 @@ const Extra = styled.span<ExtraProps>`
   background-color: ${({ theme }) => theme.colors.textInputExtraInfo};
   border-radius: ${({ theme }) => theme.utilities.borderRadius};
   color: ${({ theme }) => theme.colors.textDark};
-  font-size: ${({ theme }) => theme.typography.medium};
+  font-size: ${({ theme }) => theme.typography.m};
   line-height: ${({ theme }) => theme.typography.lineHeight};
   font-weight: ${({ theme }) => theme.typography.fontWeightLight};
   padding: ${({ theme }) => `calc(${theme.spacing.small} / 2)`};
@@ -104,8 +104,8 @@ const StyledInput = styled.input<StyledInputProps>`
   hasError ? theme.colors.textError : theme.colors.textInputBorder};
   color: ${({ theme }) => theme.colors.textDark};
   display: block;
-  font-size: ${({ theme }) => theme.fontSizes.medium};
-  padding: ${({ theme }) => `calc(${theme.spacing.small} / 2)`};
+  font-size: ${({ theme }) => theme.fontSizes.m};
+  padding: ${({ theme }) => `calc(${theme.spacing.m} / 2)`};
 
   /* Make sure text doesn't go behind the valid indicatior icon */
   ${({ isValidVisible, isInvalidVisible }) =>

@@ -64,9 +64,11 @@ const Content = () => {
 describe('RadioGroup', () => {
   it('is accessible', () => {
     mount(
-      <TestThemeWrapper>
-        <Content />
-      </TestThemeWrapper>,
+      <main>
+        <TestThemeWrapper>
+          <Content />
+        </TestThemeWrapper>
+      </main>,
     );
     cy.injectAxe();
     cy.checkA11y('body');
@@ -76,7 +78,9 @@ describe('RadioGroup', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
     mount(<TestThemeWrapper>{uncontrolledContent()}</TestThemeWrapper>);
-    cy.wait(300); //annoying font loading flake on CI
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.get('#radios')
       .first()
       .matchImageSnapshot();
@@ -85,7 +89,9 @@ describe('RadioGroup', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
     mount(<TestThemeWrapper theme={crukTheme2}>{uncontrolledContent()}</TestThemeWrapper>);
-    cy.wait(300); //annoying font loading flake on CI
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.get('#radios')
       .first()
       .matchImageSnapshot();
@@ -93,8 +99,10 @@ describe('RadioGroup', () => {
   it('should match SU2C snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
-    cy.wait(300); //annoying font loading flake on CI
     mount(<TestThemeWrapper theme={su2cTheme}>{uncontrolledContent()}</TestThemeWrapper>);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.get('#radios')
       .first()
       .matchImageSnapshot();

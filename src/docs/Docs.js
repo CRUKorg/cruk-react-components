@@ -25,6 +25,7 @@ import BoxReadme from '../components/Box/README.md';
 import ButtonReadme from '../components/Button/README.md';
 import CheckboxReadme from '../components/Checkbox/README.md';
 import CollapseReadme from '../components/Collapse/README.md';
+import DateFieldReadme from '../components/DateField/README.md';
 import ErrorTextReadme from '../components/ErrorText/README.md';
 import FooterReadme from '../components/Footer/README.md';
 import HeadingReadme from '../components/Heading/README.md';
@@ -41,6 +42,7 @@ import RadioGroupReadme from '../components/RadioGroup/README.md';
 import SelectReadme from '../components/Select/README.md';
 import StepReadme from '../components/Step/README.md';
 import TextReadme from '../components/Text/README.md';
+import TextAreaFieldReadme from '../components/TextAreaField/README.md';
 import TextFieldReadme from '../components/TextField/README.md';
 import TotaliserReadme from '../components/Totaliser/README.md';
 import UserBlockReadme from '../components/UserBlock/README.md';
@@ -49,6 +51,7 @@ import crukTheme, { BREAKPOINT, COLORS } from '../themes/cruk';
 import su2cTheme from '../themes/su2c';
 import cruk2Theme from '../themes/cruk2';
 import GlobalStyle from '../components/GlobalStyle';
+import { TextAreaField } from '../components';
 
 /*
  * Doc specific styling
@@ -275,7 +278,7 @@ class Docs extends React.Component {
         <StyledFlex>
           <Toggle />
           <ToggleIcon />
-          <SideBar padding="extraSmall">
+          <SideBar padding="xs">
             <Nav>
               <Heading h4>Components</Heading>
               <RouterLink to="/addresslookup">AddressLookup</RouterLink>
@@ -285,6 +288,7 @@ class Docs extends React.Component {
               <RouterLink to="/button">Button</RouterLink>
               <RouterLink to="/checkbox">Checkbox</RouterLink>
               <RouterLink to="/collapse">Collapse</RouterLink>
+              <RouterLink to="/DateField">DateField</RouterLink>
               <RouterLink to="/errortext">ErrorText</RouterLink>
               <RouterLink to="/footer">Footer</RouterLink>
               <RouterLink to="/header">Header</RouterLink>
@@ -300,6 +304,7 @@ class Docs extends React.Component {
               <RouterLink to="/radiogroup">Radio Group</RouterLink>
               <RouterLink to="/select">Select</RouterLink>
               <RouterLink to="/step">Step</RouterLink>
+              <RouterLink to="/textareafield">TextAreaField</RouterLink>
               <RouterLink to="/textfield">TextField</RouterLink>
               <RouterLink to="/text">Text</RouterLink>
               <RouterLink to="/totaliser">Totaliser</RouterLink>
@@ -317,6 +322,7 @@ class Docs extends React.Component {
                 <ButtonReadme path="/button" />
                 <CheckboxReadme path="/checkbox" />
                 <CollapseReadme path="/collapse" />
+                <DateFieldReadme path="/DateField" />
                 <ErrorTextReadme path="/errortext" />
                 <FooterReadme path="/footer" />
                 <HeadingReadme path="/heading" />
@@ -333,6 +339,7 @@ class Docs extends React.Component {
                 <SelectReadme path="/select" />
                 <StepReadme path="/step" />
                 <TextReadme path="/text" />
+                <TextAreaFieldReadme path="/textareafield" />
                 <TextFieldReadme path="/textfield" />
                 <TotaliserReadme path="/totaliser" />
                 <UserBlockReadme path="/userblock" />

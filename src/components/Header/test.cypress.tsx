@@ -40,9 +40,9 @@ describe('Header', () => {
     Cypress.config('animationDistanceThreshold', 2);
     cy.viewport(1000, 480);
     mount(<TestWrapper>{content()}</TestWrapper>);
-    // local only flake with snap happening before text has rendered hence the wait
-    // this is probably caused be styled components and how it loads text from theme
-    cy.wait(200);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.get('body')
       .first()
       .matchImageSnapshot();

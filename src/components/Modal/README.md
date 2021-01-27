@@ -24,10 +24,9 @@ function () {
       <Button appearance="primary" onClick={toggleShowModal}>Show me a modal</Button>
       {showModal &&
         <Modal closeFunction={toggleShowModal}>
-          <Heading h2 marginTop='none' textSize="extraLarge">Modal title</Heading>
+          <Heading h2 marginTop='none' textSize="xl">Modal title</Heading>
           <p>Some really important information</p>
-          <Button onClick={toggleShowModal}>Get me out of here</Button>
-          <Button appearance="primary" onClick={toggleShowModal}>Go for it 😃</Button>
+          <Button appearance="primary" onClick={toggleShowModal}>OK</Button>
         </Modal>
       }
     </>
@@ -38,5 +37,16 @@ function () {
 | Name            | Type     |  Options   | Default | Description                                                                                     |
 | :-------------- | :------- | :--------: | :------ | :---------------------------------------------------------------------------------------------- |
 | closeFunction   | function |            | null    | (Required) function used to close the modal on escape key press and close or close button press |
+| maxWidth        | string   |            | 500px   | Max width of modal                                                                              |
+| top             | string   |            | 1rem    | Height from top of container                                                                    |
 | children        | Any      |            |         | Any content to be displayed in modal                                                            |
 | showCloseButton | Boolean  | true/false | true    |
+
+## Accessibility
+
+When it comes to modal dialogs, consider this: no one likes to be interrupted, but if you must, make sure it’s worth the cost.
+
+Use modal dialogs for important warnings, as a way to prevent or correct critical errors.
+Use modal dialogs to request the user to enter information critical to continuing the current process.
+Modal dialogs can be used to fragment a complex workflow into simpler steps.
+Do not use modal dialogs for nonessential information that is not related to the current user flow.

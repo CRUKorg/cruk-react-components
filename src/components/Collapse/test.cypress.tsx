@@ -21,6 +21,18 @@ const content = () => {
       </Collapse>
 
       <Collapse
+        headerTitleTextColor="primary"
+        headerTitleTextSize="xl"
+        headerTitleText="A long title with headerTitleTextColor and headerTitleTextSize"
+        id="1"
+      >
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+          standard dummy text ever since the 1500s
+        </p>
+      </Collapse>
+
+      <Collapse
         id="custom"
         headerTitleText="Custom header components"
         headerComponent={
@@ -54,6 +66,9 @@ describe('Collapse', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
     mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.contains('What is Lorem Ipsum?').click();
     cy.get('body')
       .first()

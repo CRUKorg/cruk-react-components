@@ -9,12 +9,13 @@ You can use an avatar to display ownership of an item of content. If you pass a 
 ```.tsx
 <>
   <Avatar />
-  <Avatar name="Sam" size="small" />
-  <Avatar name="Sam" size="medium" />
-  <Avatar name="Sam" size="large" />
-  <Avatar name="Sam" size="extraLarge" />
+  <Avatar name="Sam" size="s" aria-label="sam's profile"/>
+  <Avatar name="Sam" size="m" aria-label="sam's profile"/>
+  <Avatar name="Sam" size="l" aria-label="sam's profile"/>
+  <Avatar name="Sam" size="xl" aria-label="sam's profile"/>
   <Avatar
     name="Sam"
+    aria-label="sam's profile"
     url="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"
   />
 </>
@@ -22,8 +23,8 @@ You can use an avatar to display ownership of an item of content. If you pass a 
 
 ## Props
 
-| Name | Type              |                Options                | Default   | Description                           |
-| :--- | :---------------- | :-----------------------------------: | :-------- | :------------------------------------ |
-| name | String/React node |                                       | Anonymous | Title to be displayed as primary text |
-| size | String            | "small" "medium" "large" "extraLarge" | "medium"  | Define the size of the avatar         |
-| url  | String            |                                       |           | URL of image for avatar               |
+| Name | Type              |     Options      | Default   | Description                           |
+| :--- | :---------------- | :--------------: | :-------- | :------------------------------------ |
+| name | String/React node |                  | Anonymous | Title to be displayed as primary text |
+| size | String            | "s" "m" "l" "xl" | "m"       | Define the size of the avatar         |
+| url  | String            |                  |           | URL of image for avatar               |

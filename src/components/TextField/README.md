@@ -17,7 +17,7 @@ Text fields let users enter and edit text.
     </Box>
   </section>
   <section>
-    <Heading h3 paddingTop="medium">With a placeholder</Heading>
+    <Heading h4 paddingTop="m">With a placeholder</Heading>
     <Box>
       <TextField
         label="Your favourite food"
@@ -28,7 +28,7 @@ Text fields let users enter and edit text.
     </Box>
   </section>
   <section>
-    <Heading h3 paddingTop="medium">With hint text</Heading>
+    <Heading h4 paddingTop="m">With hint text</Heading>
     <Box>
       <TextField
         label="This is the label"
@@ -39,7 +39,7 @@ Text fields let users enter and edit text.
     </Box>
   </section>
   <section>
-    <Heading h3 paddingTop="medium">With extra bits</Heading>
+    <Heading h4 paddingTop="m">With extra bits</Heading>
     <Box>
       <TextField
         label="Fundraising target"
@@ -78,7 +78,7 @@ Text fields let users enter and edit text.
     </Box>
   </section>
   <section>
-    <Heading h3 paddingTop="medium">With error message</Heading>
+    <Heading h4 paddingTop="m">With error message</Heading>
     <Box>
       <TextField
         label="Phone number"
@@ -90,7 +90,7 @@ Text fields let users enter and edit text.
     </Box>
   </section>
   <section>
-    <Heading h3 paddingTop="medium">Is Valid Indicator</Heading>
+    <Heading h3 paddingTop="m">Is Valid Indicator</Heading>
     <Box>
       <TextField
         label="Phone number"
@@ -102,7 +102,7 @@ Text fields let users enter and edit text.
     </Box>
   </section>
   <section>
-    <Heading h3 paddingTop="medium">Is Invalid Indicator</Heading>
+    <Heading h3 paddingTop="m">Is Invalid Indicator</Heading>
     <Box>
       <TextField
         label="Phone number"
@@ -114,7 +114,7 @@ Text fields let users enter and edit text.
     </Box>
   </section>
   <section>
-    <Heading h3 paddingTop="medium">Required</Heading>
+    <Heading h3 paddingTop="m">Required</Heading>
     <Box>
       <TextField
         label="Number of cats"
@@ -125,7 +125,7 @@ Text fields let users enter and edit text.
     </Box>
   </section>
   <section>
-    <Heading h3 paddingTop="medium">Disabled</Heading>
+    <Heading h4 paddingTop="m">Disabled</Heading>
     <Box>
       <TextField
         label="Favourite pasta type"

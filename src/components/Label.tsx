@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactElement } from 'react';
 import styled, { withTheme, ThemeProvider } from 'styled-components';
 import Text from './Text';
 import defaultTheme from '../themes/cruk';
-import { ThemeType } from 'src/themes/types';
+import { ThemeType } from 'src/types';
 
 const Label = styled.label`
   position: relative;
@@ -18,8 +18,7 @@ type LabelTextProps = {
 const LabelText = styled.span<LabelTextProps>`
   font-weight: bold;
   display: block;
-  margin-bottom: ${({ hasHintText, theme }) =>
-    hasHintText ? theme.spacing.extraExtraSmall : theme.spacing.extraSmall};
+  margin-bottom: ${({ hasHintText, theme }) => (hasHintText ? theme.spacing.xxs : theme.spacing.xs)};
 
   & > * {
     font-weight: normal;

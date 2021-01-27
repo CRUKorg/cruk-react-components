@@ -25,11 +25,11 @@ const content = () => {
       <Box backgroundColor="secondary">
         <Text textColor="textLight">default spacing</Text>
       </Box>
-      <Box backgroundColor="secondary" paddingVertical="extraLarge" paddingBottom="extraSmall">
-        <Text textColor="textLight">paddingVertical="extraLarge" paddingBottom="extraSmall"</Text>
+      <Box backgroundColor="secondary" paddingVertical="xl" paddingBottom="xs">
+        <Text textColor="textLight">paddingVertical="xl" paddingBottom="xs"</Text>
       </Box>
-      <Box backgroundColor="primary" marginVertical="large" marginLeft="small">
-        <Text textColor="textLight">marginVertical="large" marginLeft="small"</Text>
+      <Box backgroundColor="primary" marginVertical="l" marginLeft="s">
+        <Text textColor="textLight">marginVertical="l" marginLeft="s"</Text>
       </Box>
     </>
   );

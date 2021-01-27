@@ -10,13 +10,13 @@ const content = () => {
   return (
     <>
       <Text>This is text it defaults to a paragraph tag</Text>
-      <Text marginBottom="large" paddingHorizontal="small">
-        This is text with spacing props "marginBottom="large" paddingHorizontal="small"
+      <Text marginBottom="l" paddingHorizontal="s">
+        This is text with spacing props "marginBottom="l" paddingHorizontal="s"
       </Text>
       <Text as="span">This is text as a span tag</Text>
       <Text textColor="primary">Color is Primary</Text>
       <Text textColor="#ff0000">Color is custom colour</Text>
-      <Text textSize="large">Text size large</Text>
+      <Text textSize="l">Text size l</Text>
     </>
   );
 };
@@ -34,7 +34,9 @@ describe('Text', () => {
 
   it('should match snapshot', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
-    cy.wait(200); //annoying font loading flake on CI
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.get('body')
       .first()
       .matchImageSnapshot();

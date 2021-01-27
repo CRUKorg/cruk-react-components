@@ -14,6 +14,23 @@ export const formatMoney = (value: number): string => {
   return parsed;
 };
 
+export const numberWithCommas = (n?: number | string): string => {
+  if (!n) {
+    return '';
+  }
+  var parts = n.toString().split('.');
+
+  return `${parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')}${parts[1] ? '.' + parts[1] : ''}`;
+};
+
+export const formatMoneyWithCommas = (value: number): string => {
+  const parsed = Number.parseFloat((Math.round(value * 100) / 100).toString()).toFixed(2);
+  if (Number.isNaN(parseFloat(parsed)) || isNaN(value)) {
+    return '0';
+  }
+  return numberWithCommas(parsed);
+};
+
 export const camelize = (str: string): string =>
   str
     .toString()

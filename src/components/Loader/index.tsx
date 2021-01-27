@@ -3,7 +3,7 @@ import styled, { keyframes, ThemeProvider, withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 type LoaderProps = {
   theme?: ThemeType;
@@ -20,10 +20,19 @@ const BounceDelay = keyframes`
   }
 `;
 
+const ScreenReaderOnly = styled.p`
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+`;
+
 const Spinner = styled.div`
   width: 100%;
   text-align: center;
-  margin-top: ${({ theme }) => theme.spacing.small};
+  margin-top: ${({ theme }) => theme.spacing.s};
 
   span {
     display: inline-block;
@@ -69,11 +78,14 @@ const Loader: FunctionComponent<LoaderProps> = props => {
   };
   return (
     <ThemeProvider theme={theme}>
-      <Spinner>
-        <span />
-        <span />
-        <span />
-      </Spinner>
+      <>
+        <ScreenReaderOnly role="alert">Loading</ScreenReaderOnly>
+        <Spinner>
+          <span />
+          <span />
+          <span />
+        </Spinner>
+      </>
     </ThemeProvider>
   );
 };

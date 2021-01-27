@@ -16,23 +16,7 @@ Links are for wrapping plain text or elements to create clickable link. This is 
       <Link href="http://www.google.com" appearance="secondary">secondary link</Link>
     </div>
     <div>
-      <Link href="http://www.google.com" target='_blank'>Link opens new page</Link>
-    </div>
-    <div>
-    <Link href="http://www.google.com" rel='noopener noreferrer nofollow'>External link that that want web
-    crawlers wont follow</Link>
-    </div>
-    <div>
-    <Link href="http://www.google.com" textColor="secondary" textHoverColor="#004400">Link using different colours</Link>
-    </div>
-    <div>
-    <Link href="http://www.google.com" textSize="extraLarge" >Link with extra large text</Link>
-    </div>
-    <div>
     <Link href="http://www.google.com" aria-label="google homepage"><img style={{width: '80px', height: '30px'}} alt="" src='https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png'/></Link>
-    </div>
-      <div>
-      <Link href="#" onClick={() => {alert("from link");}}>With click handler</Link>
     </div>
   </>
 ```
@@ -47,8 +31,8 @@ Links are for wrapping plain text or elements to create clickable link. This is 
 | rel            | string                     |         | "noopener noreferrer" | Relationship with the link and the current page                                     |
 | appearance     | null / primary / secondary |         | null                  | Default, primary or secondary link appearance                                       |
 | onClick        | function                   |         |                       | On click handler function                                                           |
-| textColor      | string                     |         | 'currentColor'        | Color of text                                                                       |
+| textColor      | string                     |         | 'currentColor'        | Color of text, will work with theme colour names and hex strings                    |
 | textHoverColor | string                     |         | 'currentColor'        | Hover color of text                                                                 |
 | textAlign      | 'left' /'right' / 'center' |         | 'left'                | Horizontal text alignment                                                           |
-| textSize       | FontSizeType               |         | 'medium'              | Font size uses t-shirt sizes of small medium large etc                              |
+| textSize       | FontSizeType               |         | 'm'                   | Font size uses t-shirt sizes of s/m/l etc                                           |
 | textWeight     | number                     |         | '500'                 | Font weight                                                                         |

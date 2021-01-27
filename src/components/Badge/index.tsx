@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
-import { ThemeType, SpaceType } from '../../themes/types';
+import { ThemeType, SpaceType } from '../../types';
 
 type BadgeProps = {
   backgroundColor?: string;
@@ -29,21 +29,21 @@ const StyledBadge = styled.span<StyleBadgeProps>`
   color: ${props => props.theme.colors.textLight};
   text-align: center;
   border-radius: 1.5rem;
-  font-size: ${props => props.theme.fontSizes.medium};
+  font-size: ${props => props.theme.fontSizes.m};
   line-height: 1rem;
   padding: ${({
     theme: {
-      spacing: { extraExtraSmall },
+      spacing: { xxs },
     },
-  }) => extraExtraSmall};
+  }) => xxs};
   display: inline-block;
   min-width: ${({
     size,
     theme: {
       spacing,
-      spacing: { extraSmall },
+      spacing: { xs },
     },
-  }) => `calc(${spacing[size]} + ${extraSmall})`};
+  }) => `calc(${spacing[size]} + ${xs})`};
 
   ${(props: StyleBadgeProps) =>
     !props.text &&
@@ -55,23 +55,23 @@ const StyledBadge = styled.span<StyleBadgeProps>`
         size,
         theme: {
           spacing,
-          spacing: { extraSmall },
+          spacing: { xs },
         },
-      }: StyleBadgeProps) => `calc(${spacing[size]} + ${extraSmall})`};
+      }: StyleBadgeProps) => `calc(${spacing[size]} + ${xs})`};
       width: ${({
         size,
         theme: {
           spacing,
-          spacing: { extraSmall },
+          spacing: { xs },
         },
-      }: StyleBadgeProps) => `calc(${spacing[size]} + ${extraSmall})`};
+      }: StyleBadgeProps) => `calc(${spacing[size]} + ${xs})`};
       line-height: ${({
         size,
         theme: {
           spacing,
-          spacing: { extraSmall },
+          spacing: { xs },
         },
-      }: StyleBadgeProps) => `calc(${spacing[size]} + ${extraSmall})`};
+      }: StyleBadgeProps) => `calc(${spacing[size]} + ${xs})`};
       svg {
         height: ${({ size, theme: { spacing } }: StyleBadgeProps) => spacing[size]};
       }
@@ -85,7 +85,7 @@ const Badge: FunctionComponent<BadgeProps> = props => {
     ...theme,
   };
   return (
-    <StyledBadge theme={mergedTheme} text={typeof children === 'string'} size="extraSmall" {...rest}>
+    <StyledBadge theme={mergedTheme} text={typeof children === 'string'} size="xs" {...rest}>
       {children}
     </StyledBadge>
   );

@@ -2,37 +2,68 @@ import React, { useState, useRef, KeyboardEvent, FunctionComponent, ReactNode } 
 import styled, { withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 
-import { ThemeType } from '../../themes/types';
-
 import Button from '../Button';
 import Icon from '../Icon';
 
+import { FontSizeType, ThemeType } from '../../types';
+
+const transitionDurationSeconds = 0.5;
+
 type CollapseProps = {
+  id: string;
   headerTitleText: string;
+  headerTitleTextColor?: string;
+  headerTitleTextSize?: FontSizeType;
   headerComponent?: ReactNode;
   contentHeight?: string;
-  active?: boolean;
-  id?: string;
+  startOpen?: boolean;
+  onOpenChange?: (isOpen: boolean) => void;
   theme?: ThemeType;
 };
 
 const CollapseWrapper = styled.div``;
 
 const FlippingIcon = styled(Icon)`
-  transform: ${({ active }: { active: boolean }) => (!!active ? 'rotate(90deg) scaleX(-1)' : 'rotate(90deg)')};
-  transition-duration: 0.5s;
+  transform: ${({ open }: { open: boolean }) =>
+    !!open ? 'rotate(90deg) translateX(0.1em) scaleX(-1) ' : 'rotate(90deg)'};
+  transition-duration: ${transitionDurationSeconds}s;
 `;
 
-const DefaultHeader = styled(Button)`
-  color: ${({
+type StyledProgressBarProps = {
+  theme: ThemeType;
+  textColor?: string;
+  textSize?: FontSizeType;
+};
+
+const DefaultHeader = styled(Button)<StyledProgressBarProps>`
+  display: flex;
+  color: ${({ theme: { colors }, textColor }) =>
+    textColor && typeof colors[textColor] !== 'undefined'
+      ? colors[textColor]
+      : textColor
+      ? textColor
+      : colors['secondary']};
+  font-size: ${({
     theme: {
-      colors: { secondary },
+      fontSizes,
+      fontSizes: { m },
     },
-  }) => secondary};
+    textSize,
+  }) => (textSize ? fontSizes[textSize] : m)};
   font-weight: normal;
   margin-bottom: 0;
-  padding: 0 0 10px;
+  height: initial;
   text-decoration: none;
+  text-align: left;
+  :hover,
+  :focus {
+    color: ${({ theme: { colors }, textColor }) =>
+      textColor && typeof colors[textColor] !== 'undefined'
+        ? colors[textColor]
+        : textColor
+        ? textColor
+        : colors['secondary']};
+  }
 `;
 
 type CollapseContentProps = {
@@ -43,12 +74,12 @@ const CollapseContent = styled.div<CollapseContentProps>`
   margin: 0;
   font-size: ${({
     theme: {
-      fontSizes: { small },
+      fontSizes: { s },
     },
-  }) => small};
+  }) => s};
+  transition: ${transitionDurationSeconds}s ease;
   height: ${({ contentHeight }) => contentHeight};
   overflow: hidden;
-  transition: 0.5s ease;
   & > p {
     margin-top: 0;
   }
@@ -59,17 +90,24 @@ const CustomHeader = styled.div`
 `;
 
 const Collapse: FunctionComponent<CollapseProps> = props => {
-  const [activeStatus, setActiveStatus] = useState(props.active || false);
+  const [openStatus, setOpenStatus] = useState(props.startOpen || false);
   const [contentHeight, setContentHeight] = useState('0');
   const content = useRef<HTMLDivElement>(null);
+  const transitionTimer = useRef(0);
 
   const toggleCollapse = () => {
-    setActiveStatus(activeStatus === false ? true : false);
-    setContentHeight(
-      activeStatus === true
-        ? '0'
-        : `${!!content && !!content.current && !!content.current.scrollHeight ? content.current.scrollHeight : 0}`,
-    );
+    clearTimeout(transitionTimer.current);
+    const newOpenState = !openStatus;
+    setOpenStatus(newOpenState);
+    setContentHeight(content?.current?.scrollHeight + 'px');
+    if (newOpenState === false) {
+      // Allow height to be rendered before setting to 0 for animation.
+      setTimeout(() => setContentHeight('0'), 10);
+    } else {
+      // After animation set height to initial for responsive layout.
+      transitionTimer.current = setTimeout(() => setContentHeight('initial'), transitionDurationSeconds * 1000);
+    }
+    !!props.onOpenChange && props.onOpenChange(newOpenState);
   };
 
   const triggerToggle = (event: KeyboardEvent) => {
@@ -82,7 +120,7 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
   const renderHeader = (theme: ThemeType) => {
     const defaultProps = {
       'aria-controls': `${props.id}-header`,
-      'aria-expanded': activeStatus,
+      'aria-expanded': openStatus,
       id: `${props.id}-header`,
       onClick: toggleCollapse,
     };
@@ -99,9 +137,16 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
         {props.headerComponent}
       </CustomHeader>
     ) : (
-      <DefaultHeader {...defaultProps} theme={theme} appearance="text" aria-label={props.headerTitleText}>
+      <DefaultHeader
+        {...defaultProps}
+        theme={theme}
+        appearance="text"
+        type="button"
+        textColor={props.headerTitleTextColor}
+        textSize={props.headerTitleTextSize}
+      >
         {props.headerTitleText}
-        <FlippingIcon name="chevronRight" active={activeStatus} />
+        <FlippingIcon name="chevronRight" open={openStatus} />
       </DefaultHeader>
     );
   };
@@ -116,12 +161,12 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
       {renderHeader(theme)}
       <CollapseContent
         theme={theme}
-        role="region"
-        aria-hidden={activeStatus === false ? true : false}
-        aria-labelledby={`${props.id}-header`}
-        ref={content}
-        contentHeight={contentHeight}
         id={`${props.id}-content`}
+        ref={content}
+        role="region"
+        aria-hidden={!openStatus}
+        aria-labelledby={`${props.id}-header`}
+        contentHeight={contentHeight}
       >
         {props.children}
       </CollapseContent>

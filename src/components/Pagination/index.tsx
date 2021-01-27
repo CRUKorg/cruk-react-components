@@ -3,7 +3,7 @@ import styled, { css, ThemeProvider, withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 type PaginationProps = {
   current: number;
@@ -43,14 +43,14 @@ const PagerLink = styled.a<PaginationStyledProps>`
   }) => fontFamilyBase};
   font-size: ${({
     theme: {
-      fontSizes: { small },
+      fontSizes: { s },
     },
-  }) => small};
+  }) => s};
   color: ${props => props.theme.colors.textLight};
   background-color: ${props => props.theme.colors.primary};
   cursor: pointer;
   border-radius: 0;
-  margin: ${props => props.theme.spacing.extraExtraSmall};
+  margin: ${props => props.theme.spacing.xxs};
   padding: 7px 11px;
   text-decoration: none;
   &:hover{
@@ -161,7 +161,7 @@ const Pagination: FunctionComponent<PaginationProps> = props => {
     for (let number = 1; number <= total; number++) {
       list.push(
         <PagerItem key={number}>
-          <PagerLink active={number === active} {...linkProps(number)}>
+          <PagerLink active={number === active} {...linkProps(number)} aria-label={`page ${number} of ${total}`}>
             {number}
           </PagerLink>
         </PagerItem>,

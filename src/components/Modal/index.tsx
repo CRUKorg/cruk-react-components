@@ -9,7 +9,7 @@ import Icon from '../Icon';
 import { COLORS } from '../../themes/cruk';
 
 import defaultTheme from '../../themes/cruk';
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 const Background = styled.div`
   background: ${COLORS.modalBackdrop};
@@ -33,23 +33,25 @@ const Wrapper = styled.div`
   z-index: 9999;
 `;
 
-const Content = styled(Box)`
+type ContentProps = {
+  maxWidth: string;
+  top: string;
+};
+
+const Content = styled(Box)<ContentProps>`
   background: ${COLORS.backgroundLight};
+  position: relative;
   border-radius: 4px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-  margin: ${({
-    theme: {
-      spacing: { small, extraExtraLarge },
-    },
-  }) => `calc(${extraExtraLarge} * 2) auto ${small}`};
+  margin: ${({ top }) => `${top} auto auto auto`};
   width: 90%;
+  min-height: 10rem;
   padding: ${({
     theme: {
-      spacing: { extraSmall },
+      spacing: { xs },
     },
-  }) => extraSmall};
-  position: relative;
-  max-width: 500px;
+  }) => xs};
+  max-width: ${({ maxWidth }) => maxWidth};
   z-index: 9999;
 `;
 
@@ -57,9 +59,9 @@ const CloseButton = styled(Button)`
   float: right;
   margin-left: ${({
     theme: {
-      spacing: { extraSmall },
+      spacing: { xs },
     },
-  }) => extraSmall};
+  }) => xs};
   font-size: 1.2rem;
   padding: 0;
 `;
@@ -67,11 +69,13 @@ const CloseButton = styled(Button)`
 type ModalProps = {
   showCloseButton?: Boolean;
   closeFunction: Function;
+  maxWidth?: string;
+  top?: string;
   theme?: ThemeType;
 };
 
 const Modal: FC<ModalProps> = props => {
-  const { showCloseButton, closeFunction, children } = props;
+  const { showCloseButton, closeFunction, maxWidth = '500px', top = '1rem', children } = props;
   const closeByEsc = (event: KeyboardEvent): void => {
     if (event.which == 27 && !!closeFunction) {
       closeFunction();
@@ -106,7 +110,7 @@ const Modal: FC<ModalProps> = props => {
             <FocusLock returnFocus>
               <ThemeProvider theme={theme}>
                 <Wrapper>
-                  <Content aria-modal="true" backgroundColor="" css="">
+                  <Content aria-modal="true" backgroundColor="" maxWidth={maxWidth} top={top}>
                     {showCloseButton && closeFunction ? (
                       <CloseButton
                         aria-label="close"

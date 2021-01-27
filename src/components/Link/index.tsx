@@ -5,14 +5,14 @@ import defaultTheme from '../../themes/cruk';
 import Text, { TextProps } from '../Text';
 import Icon from '../Icon';
 
-import { ThemeType } from 'src/themes/types';
+import { ThemeType } from 'src/types';
 
 const ChevyWithLevee = styled(Icon)`
   margin-right: ${({
     theme: {
-      spacing: { extraExtraSmall },
+      spacing: { xxs },
     },
-  }) => extraExtraSmall};
+  }) => xxs};
 `;
 
 type LinkProps = AnchorHTMLAttributes<HTMLElement> &

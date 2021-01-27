@@ -10,13 +10,15 @@ const content = () => {
   return (
     <>
       <section>
-        <Heading h3>Text field</Heading>
+        <Heading h3 textSize="l">
+          Text field
+        </Heading>
         <Box>
           <TextField label="First name" type="text" name="firstName" />
         </Box>
       </section>
       <section>
-        <Heading h3 paddingTop="medium">
+        <Heading h3 textSize="l" paddingTop="m">
           With a placeholder
         </Heading>
         <Box>
@@ -24,7 +26,7 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 paddingTop="medium">
+        <Heading h3 textSize="l" paddingTop="m">
           With hint text
         </Heading>
         <Box>
@@ -32,7 +34,7 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 paddingTop="medium">
+        <Heading h3 textSize="l" paddingTop="m">
           With extra bits
         </Heading>
         <Box>
@@ -68,7 +70,7 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 paddingTop="medium">
+        <Heading h3 textSize="l" paddingTop="m">
           With error message
         </Heading>
         <Box>
@@ -82,7 +84,7 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 paddingTop="medium">
+        <Heading h3 paddingTop="m">
           Is Valid Indicator
         </Heading>
         <Box>
@@ -90,7 +92,7 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 paddingTop="medium">
+        <Heading h3 paddingTop="m">
           Is Invalid Indicator
         </Heading>
         <Box>
@@ -98,7 +100,7 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 paddingTop="medium">
+        <Heading h3 paddingTop="m">
           Required
         </Heading>
         <Box>
@@ -106,7 +108,7 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 paddingTop="medium">
+        <Heading h3 textSize="l" paddingTop="m">
           Disabled
         </Heading>
         <Box>

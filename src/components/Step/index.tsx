@@ -3,7 +3,7 @@ import styled, { css, ThemeProvider, withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 type StepProps = {
   current: number;

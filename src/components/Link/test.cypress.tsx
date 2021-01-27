@@ -38,7 +38,7 @@ const content = () => {
         </Link>
       </div>
       <div>
-        <Link href="http://www.google.com" textSize="extraLarge">
+        <Link href="http://www.google.com" textSize="xl">
           Link with extra large text
         </Link>
       </div>
@@ -80,7 +80,9 @@ describe('Link', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
     mount(<TestWrapper>{content()}</TestWrapper>);
-    cy.wait(200); //annoying font loading flake on CI
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.get('body')
       .first()
       .matchImageSnapshot();

@@ -3,7 +3,7 @@ import styled, { withTheme, css, ThemeProvider } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 const RADIO_SIZE = '1.5rem';
 const RADIO_INNER_SIZE = '1rem';
@@ -20,9 +20,9 @@ const CheckWrapper = styled.div`
   top: calc(50% - (${RADIO_SIZE} / 2));
   left: ${({
     theme: {
-      spacing: { extraSmall },
+      spacing: { xs },
     },
-  }) => extraSmall};
+  }) => xs};
 `;
 
 const Check = styled.span`
@@ -65,9 +65,9 @@ const StyledLabel = styled.label<StyledLabelProps>`
   font-weight: ${props => (props.checked ? 'bold' : 'normal')};
   padding: ${({
     theme: {
-      spacing: { extraExtraSmall },
+      spacing: { xxs },
     },
-  }) => extraExtraSmall};
+  }) => xxs};
   vertical-align: middle;
 
   &:focus ~ ${CheckWrapper} ${Check} {
@@ -101,9 +101,9 @@ const VerticalAlign = styled.span`
 const StyledInput = styled.input<InputHTMLAttributes<HTMLInputElement>>`
   margin-right: ${({
     theme: {
-      spacing: { extraExtraSmall },
+      spacing: { xxs },
     },
-  }) => extraExtraSmall};
+  }) => xxs};
   ${({ theme }) =>
     theme.utilities.useDefaultFromControls
       ? null
@@ -111,9 +111,9 @@ const StyledInput = styled.input<InputHTMLAttributes<HTMLInputElement>>`
           position: absolute;
           left: ${({
             theme: {
-              spacing: { extraExtraSmall },
+              spacing: { xxs },
             },
-          }) => extraExtraSmall};
+          }) => xxs};
           opacity: 0;
 
           &:focus ~ ${CheckWrapper} ${Check} {

@@ -6,9 +6,9 @@ import ProgressBar from '../ProgressBar';
 import Text from '../Text';
 import Badge from '../Badge';
 import Box from '../Box';
-import { calculatePercentRounded, formatMoney } from '../../utils/Helper';
+import { calculatePercentRounded, formatMoneyWithCommas } from '../../utils/Helper';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 type TotaliserProps = {
   total: number;
@@ -107,14 +107,14 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
   };
   const result = calculatePercentRounded(+props.total, props.target || 0);
   const percentageOfTotal = calculatePercentRounded(+props.total, props.target || 0);
-  const summaryString = `${percentageOfTotal}% of the £${formatMoney(props.target || 0)} target`;
+  const summaryString = `${percentageOfTotal}% of the £${formatMoneyWithCommas(props.target || 0)} target`;
 
   return (
     <TotaliserWrapper {...props} isCompact={props.isCompact || false} theme={theme}>
       {props.isCompact ? (
         <CompactWrapper theme={theme}>
-          <Box marginHorizontal="none" marginRight="extraExtraSmall" marginBottom="none">
-            <Badge>{`£${formatMoney(props.total)}`}</Badge>
+          <Box marginHorizontal="none" marginRight="xxs" marginBottom="none">
+            <Badge>{`£${formatMoneyWithCommas(props.total)}`}</Badge>
           </Box>
           {props.target !== null && (
             <Summary>
@@ -125,11 +125,13 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
       ) : (
         <DetailWrapper theme={theme}>
           <p>Total raised</p>
-          <Total>£{formatMoney(props.total)}</Total>
-          <p>+ £{formatMoney(props.giftAid || 0)} Gift Aid</p>
+          <Total>£{formatMoneyWithCommas(props.total)}</Total>
+          <p>+ £{formatMoneyWithCommas(props.giftAid || 0)} Gift Aid</p>
         </DetailWrapper>
       )}
-      {props.target !== null && (
+      {/* We don't want to show the default summaryMessage if there is no target, because the summary is associated with the target progress bar */}
+      {/* However, if we explicitly pass a summaryMessage string/compononent, then we want to always display it even if the target is zero*/}
+      {(!!props.target || !!props.summaryMessage) && (
         <ProgressBarWrapper theme={theme}>
           <StyledProgressBar theme={theme} percentage={result} isCompact={props.isCompact || false} />
           {!props.isCompact &&

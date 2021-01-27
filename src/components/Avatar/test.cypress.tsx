@@ -10,11 +10,11 @@ const content = () => {
   return (
     <>
       <Avatar />
-      <Avatar name="Sam" size="small" />
-      <Avatar name="Sam" size="medium" />
-      <Avatar name="Sam" size="large" />
-      <Avatar name="Sam" size="extraLarge" />
-      <Avatar name="Sam" url="https://via.placeholder.com/300/2e008b/d9318a?text=avatar" />
+      <Avatar name="Sam" size="s" aria-label="sam's profile" />
+      <Avatar name="Sam" size="m" aria-label="sam's profile" />
+      <Avatar name="Sam" size="l" aria-label="sam's profile" />
+      <Avatar name="Sam" size="xl" aria-label="sam's profile" />
+      <Avatar name="Sam" aria-label="sam's profile" url="https://via.placeholder.com/300/2e008b/d9318a?text=avatar" />
     </>
   );
 };
@@ -36,7 +36,9 @@ describe('Avatar', () => {
     ).should($img => {
       expect($img[0].naturalWidth).to.be.greaterThan(0);
     });
-    cy.wait(300); //annoying font loading flake on CI
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.get('body')
       .first()
       .matchImageSnapshot();

@@ -8,7 +8,7 @@ import { Modal, Button, Heading, crukTheme2, su2cTheme } from '../';
 
 const ModalOnlyContent = () => (
   <Modal closeFunction={() => {}}>
-    <Heading h2 marginTop="none" textSize="extraLarge">
+    <Heading h2 marginTop="none" textSize="xl">
       Modal title
     </Heading>
     <p>Some really important information</p>
@@ -30,7 +30,7 @@ const Content = () => {
       </Button>
       {showModal && (
         <Modal closeFunction={toggleShowModal}>
-          <Heading h2 marginTop="none" textSize="extraLarge">
+          <Heading h2 marginTop="none" textSize="xl">
             Modal title
           </Heading>
           <p>Some really important information</p>
@@ -62,6 +62,9 @@ describe('Modal', () => {
   it('should match CRUK snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     mount(<TestThemeWrapper>{ModalOnlyContent()}</TestThemeWrapper>);
     cy.get('[aria-modal="true"]')
       .first()
@@ -70,6 +73,9 @@ describe('Modal', () => {
   it('should match CRUK2 snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     mount(<TestThemeWrapper theme={crukTheme2}>{ModalOnlyContent()}</TestThemeWrapper>);
     cy.get('[aria-modal="true"]')
       .first()
@@ -78,6 +84,9 @@ describe('Modal', () => {
   it('should match SU2C snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     mount(<TestThemeWrapper theme={su2cTheme}>{ModalOnlyContent()}</TestThemeWrapper>);
     cy.get('[aria-modal="true"]')
       .first()

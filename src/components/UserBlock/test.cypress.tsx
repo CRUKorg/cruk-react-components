@@ -10,10 +10,10 @@ const content = () => {
   return (
     <>
       <UserBlock />
-      <UserBlock name="Sam Smith" size="small" />
+      <UserBlock name="Sam Smith" size="s" />
       <UserBlock
         name="Sam Smith"
-        size="large"
+        size="l"
         extra={
           <>
             <Icon name="clock" />
@@ -39,6 +39,9 @@ describe('UserBlock', () => {
 
   it('should match snapshot', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.get('body')
       .first()
       .matchImageSnapshot();

@@ -10,10 +10,10 @@ import {
   FontSizesType,
   TypographyType,
   ThemeType,
-} from './types';
+} from '../types';
 
 export const UTILITIES: UtilitiesType = {
-  borderRadius: '3px',
+  borderRadius: '4px',
   contentMaxWidth: '1020px',
   useDefaultFocusRect: false,
   useDefaultFromControls: true,
@@ -30,15 +30,16 @@ export const SITE_CONFIG: SiteConfigType = {
 };
 
 export const AVATAR: AvatarType = {
-  small: '35px',
-  medium: '50px',
-  large: '60px',
-  extraLarge: '90px',
+  s: '35px',
+  m: '50px',
+  l: '60px',
+  xl: '90px',
   path: `${SITE_CONFIG.assetPath}images/icon-avatars/`,
 };
 
 export const BUTTON: ButtonType = {
   borderRadius: UTILITIES.borderRadius,
+  buttonBorderThickness: '2px',
   textDecoration: 'none',
   textTransform: 'none',
 };
@@ -52,7 +53,8 @@ export const BREAKPOINT: BreakPointType = {
 
 export const TOKEN_COLORS: TokenColorsType = {
   darkBlue_500: '#2e008b',
-  magenta_500: '#ec0087',
+  magenta_100: '#fdeaf5',
+  magenta_500: '#e40074',
   magenta_800: '#BB0071',
   magenta_900: '#710044',
   cyan_500: '#00b6ed',
@@ -75,11 +77,8 @@ export const TOKEN_COLORS: TokenColorsType = {
 
 export const COLORS: ColorsType = {
   primary: TOKEN_COLORS.darkBlue_500,
-  primaryHover: TOKEN_COLORS.magenta_500,
   secondary: TOKEN_COLORS.magenta_500,
-  secondaryHover: TOKEN_COLORS.magenta_900,
   tertiary: TOKEN_COLORS.cyan_500,
-  tertiaryHover: TOKEN_COLORS.cyan_900,
 
   disabled: TOKEN_COLORS.grey_300,
   danger: TOKEN_COLORS.red,
@@ -98,7 +97,38 @@ export const COLORS: ColorsType = {
   circularProgress: TOKEN_COLORS.cyan_500,
   circularProgressBackground: TOKEN_COLORS.grey_300,
 
-  buttonBorder: TOKEN_COLORS.grey_500,
+
+  buttonPrimaryBackground: TOKEN_COLORS.magenta_500,
+  buttonPrimaryText: TOKEN_COLORS.white,
+  buttonPrimaryBorder: TOKEN_COLORS.magenta_500,
+  buttonPrimaryBackgroundHover: TOKEN_COLORS.magenta_800,
+  buttonPrimaryTextHover: TOKEN_COLORS.white,
+  buttonPrimaryBorderHover: TOKEN_COLORS.magenta_800,
+  buttonPrimaryDisabledBackground: TOKEN_COLORS.grey_100,
+  buttonPrimaryDisabledText: TOKEN_COLORS.grey_500,
+  buttonPrimaryDisabledBorder: TOKEN_COLORS.grey_100,
+
+  buttonSecondaryBackground: TOKEN_COLORS.white,
+  buttonSecondaryText: TOKEN_COLORS.magenta_500,
+  buttonSecondaryBorder: TOKEN_COLORS.magenta_500,
+  buttonSecondaryBackgroundHover: TOKEN_COLORS.magenta_100,
+  buttonSecondaryTextHover: TOKEN_COLORS.magenta_500,
+  buttonSecondaryBorderHover: TOKEN_COLORS.magenta_500,
+  buttonSecondaryDisabledBackground: TOKEN_COLORS.grey_100,
+  buttonSecondaryDisabledText: TOKEN_COLORS.grey_500,
+  buttonSecondaryDisabledBorder: TOKEN_COLORS.grey_100,
+
+  buttonTertiaryBackground: TOKEN_COLORS.white,
+  buttonTertiaryText: TOKEN_COLORS.magenta_500,
+  buttonTertiaryBorder: TOKEN_COLORS.grey_500,
+  buttonTertiaryBackgroundHover: TOKEN_COLORS.magenta_100,
+  buttonTertiaryTextHover: TOKEN_COLORS.magenta_500,
+  buttonTertiaryBorderHover: TOKEN_COLORS.grey_500,
+  buttonTertiaryDisabledBackground: TOKEN_COLORS.grey_100,
+  buttonTertiaryDisabledText: TOKEN_COLORS.grey_500,
+  buttonTertiaryDisabledBorder: TOKEN_COLORS.grey_100,
+
+
   selectionBorder: TOKEN_COLORS.grey_500,
   inputBorder: TOKEN_COLORS.grey_300,
 
@@ -134,24 +164,24 @@ export const COLORS: ColorsType = {
 export const SPACING: SpacingType = {
   none: '0',
   auto: 'auto',
-  extraExtraSmall: '0.5rem', // 8px
-  extraSmall: '1rem', // 16px
-  small: '1.5rem', // 24px
-  medium: '2rem', // 32px
-  large: '2.5rem', // 40px
-  extraLarge: '3rem', // 48px
-  extraExtraLarge: '3.5rem', // 56px
+  xxs: '0.5rem', // 8px
+  xs: '1rem', // 16px
+  s: '1.5rem', // 24px
+  m: '2rem', // 32px
+  l: '2.5rem', // 40px
+  xl: '3rem', // 48px
+  xxl: '3.5rem', // 56px
 };
 
 export const FONT_SIZES: FontSizesType = {
-  extraSmall: '0.75rem', // 12px
-  small: '0.857rem', // 14px
-  medium: '1rem', // 16px
-  large: '1.25rem', // 20px
-  extraLarge: '1.5625rem', // 25px
-  extraExtraLarge: '2rem', // 32px
-  extraExtraExtraLarge: '2.5rem', // 40px
-  extraExtraExtraExtraLarge: '3.125rem', // 45px
+  xs: '0.75rem', // 12px
+  s: '0.857rem', // 14px
+  m: '1rem', // 16px
+  l: '1.25rem', // 20px
+  xl: '1.5625rem', // 25px
+  xxl: '2rem', // 32px
+  xxxl: '2.5rem', // 40px
+  xxxxl: '3.125rem', // 45px
 };
 
 export const TYPOGRAPHY: TypographyType = {
@@ -171,7 +201,7 @@ export const TYPOGRAPHY: TypographyType = {
   fontWeightVLight: '100',
   linkTextDecoration: 'underline',
   lineHeight: '1.5em',
-  headerLineHeight: '1.125em',
+  headerLineHeight: '1.25em',
 };
 
 const theme: ThemeType = {

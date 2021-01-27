@@ -7,8 +7,8 @@ Display an avatar with title and subtitle
 ```.jsx
 <>
   <UserBlock />
-  <UserBlock name="Sam Smith" size="small" />
-  <UserBlock name="Sam Smith" size="large" extra={<><Icon name="clock"/>Just now</>} />
+  <UserBlock name="Sam Smith" size="s" />
+  <UserBlock name="Sam Smith" size="l" extra={<><Icon name="clock"/> Just now</>} />
   <UserBlock
     name="Sam Smith"
     avatarUrl="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"
@@ -19,9 +19,9 @@ Display an avatar with title and subtitle
 
 ## Props
 
-| Name      | Type              |         Options          | Default     | Description                              |
-| :-------- | :---------------- | :----------------------: | :---------- | :--------------------------------------- |
-| name      | String/React node |                          | "Anonymous" | Title to be displayed as primary text    |
-| extra     | String/React node |                          |             | subtitle to be displayed as primary text |
-| size      | String            | "small" "medium" "large" | "medium"    | Define the size of the avatar            |
-| avatarUrl | String            |                          |             | URL of image for avatar                  |
+| Name      | Type              |   Options   | Default     | Description                              |
+| :-------- | :---------------- | :---------: | :---------- | :--------------------------------------- |
+| name      | String/React node |             | "Anonymous" | Title to be displayed as primary text    |
+| extra     | String/React node |             |             | subtitle to be displayed as primary text |
+| size      | String            | "s" "m" "l" | "m"         | Define the size of the avatar            |
+| avatarUrl | String            |             |             | URL of image for avatar                  |

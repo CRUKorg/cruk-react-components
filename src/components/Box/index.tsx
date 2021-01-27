@@ -3,7 +3,7 @@ import styled, { css, withTheme } from 'styled-components';
 
 import spacing, { SpacingProps } from '../Spacing';
 import defaultTheme from '../../themes/cruk';
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 type BoxProps = SpacingProps & {
   backgroundColor?: string;
@@ -13,8 +13,8 @@ type BoxProps = SpacingProps & {
 
 const StyledBox = styled.div<BoxProps>`
   background-color: ${props => props.theme.colors.backgroundLight};
-  padding: ${({ theme, backgroundColor }) => (backgroundColor ? theme.spacing.small : 0)};
-  margin: 0 0 ${props => props.theme.spacing.medium} 0;
+  padding: ${({ theme, backgroundColor }) => (backgroundColor ? theme.spacing.s : 0)};
+  margin: 0 0 ${props => props.theme.spacing.m} 0;
 
   &:last-child {
     margin-bottom: 0;

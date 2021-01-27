@@ -1,7 +1,8 @@
 {
   "name": "@crukorg/cruk-react-components",
-  "version": "0.1.0-alpha.44",
+  "version": "0.1.0-alpha.59",
   "description": "React components implementing CRUK and SU2C design tokens",
+  "license": "UNLICENSED",
   "main": "lib/cjs/src/components/index.js",
   "module": "lib/es/src/components/index.js",
   "jsnext:main": "lib/es/index.js",
@@ -17,7 +18,6 @@
     "build-docs": "webpack --config webpack.config.docs.js --mode production",
     "preanalyze": "npm run build-lib",
     "analyze": "source-map-explorer lib/index.js",
-    "prettier": "$(npm bin)/prettier --write 'components/**/*.tsx'",
     "cypress-headless": "docker-compose stop cypress && docker-compose run cypress $ARGS",
     "cypress-headless:update": "docker-compose stop cypress_update && docker-compose run cypress_update $ARGS",
     "cypress": "$(npm bin)/cypress open",
@@ -28,7 +28,9 @@
     "clean": "rm -rf node_modules/",
     "release": "node release.js",
     "dev": "NODE_ENV=development npm i && docker-compose up server",
-    "rollup:build-lib": "npm run clean-lib && rollup --config"
+    "rollup:build-lib": "npm run clean-lib && rollup --config",
+    "prettier": "prettier --write 'src/**/*.{ts,tsx}'",
+    "prettier:test": "prettier --check 'src/**/*.{ts,tsx}'"
   },
   "husky": {
     "hooks": {
@@ -66,11 +68,11 @@
     "axe-core": "^3.4.2",
     "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.8.0",
-    "cypress": "^4.12.1",
-    "cypress-axe": "^0.8.1",
-    "cypress-image-snapshot": "^3.1.1",
+    "cypress": "6.3.0",
+    "cypress-axe": "0.12.0",
+    "cypress-image-snapshot": "4.0.1",
     "cypress-plugin-tab": "^1.0.5",
-    "cypress-react-unit-test": "^4.11.2",
+    "cypress-react-unit-test": "^4.16.5",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^4.2.1",
@@ -79,7 +81,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-focus-lock": "^2.2.1",
-    "react-live": "^2.2.2",
+    "react-live": "^2.2.3",
     "rollup": "^2.7.2",
     "rollup-plugin-terser": "^7.0.0",
     "rollup-plugin-typescript2": "^0.27.1",

@@ -5,7 +5,7 @@ import defaultTheme from '../../themes/cruk';
 import ErrorText from '../ErrorText';
 import { WithLabel } from '../Label';
 
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 const StyledSelect = styled.select<StyledSelectProps>`
   appearance: none;
@@ -25,7 +25,7 @@ const StyledSelect = styled.select<StyledSelectProps>`
     }`};
   color: ${({ theme }) => theme.colors.textDark};
   display: block;
-  font-size: ${({ theme }) => theme.fontSizes.medium};
+  font-size: ${({ theme }) => theme.fontSizes.m};
   padding: 6px 24px 6px 8px;
   width: 100%;
   transition: border-color 150ms linear;

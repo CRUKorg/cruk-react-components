@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   npm:
-    image: node
+    image: node:14
     volumes:
       - .:/app:delegated
     working_dir: /app
@@ -25,7 +25,7 @@ services:
   cypress:
     networks:
       network:
-    image: cypress/included:4.12.1
+    image: cypress/included:5.4.0
     working_dir: /app
     depends_on:
       - server
@@ -36,7 +36,7 @@ services:
       - CYPRESS_updateSnapshots=true
     networks:
       network:
-    image: cypress/included:4.12.1
+    image: cypress/included:5.4.0
     working_dir: /app
     depends_on:
       - server

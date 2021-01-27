@@ -2,15 +2,6 @@
 
 A single radio button which should be part of a field set of radio buttons
 
-### Example
-
-```.jsx
-<>
-  <Radio checked name="example" value="First option" />
-  <Radio checked={false} name="example" value="Second option" />
-</>
-```
-
 ### Try it out
 
 ```.jsx

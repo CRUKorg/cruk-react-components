@@ -3,7 +3,7 @@ import styled, { css, ThemeProvider, withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 import useEffectBrowser from '../../hooks/useEffectBrowser';
-import { ThemeType } from '../../themes/types';
+import { ThemeType } from '../../types';
 
 type PopOverProps = {
   position?: string;
@@ -34,9 +34,9 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
   word-wrap: break-word;
   padding: ${({
     theme: {
-      spacing: { extraExtraSmall },
+      spacing: { xxs },
     },
-  }) => extraExtraSmall};
+  }) => xxs};
 
   margin-bottom: ${({ position }) => {
     switch (position) {
@@ -149,9 +149,9 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
   max-width: 276px;
   font-size: ${({
     theme: {
-      fontSizes: { small },
+      fontSizes: { s },
     },
-  }) => small};
+  }) => s};
   background-color: ${({
     theme: {
       colors: { popoverBackground },
@@ -214,19 +214,19 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
     left: ${({ position, theme }) => {
       switch (position) {
         case 'top':
-          return `${theme.spacing.small}`;
+          return `${theme.spacing.s}`;
         case 'topLeft':
           return 'auto';
         case 'left':
-          return `${theme.spacing.small}`;
+          return `${theme.spacing.s}`;
         case 'right':
           return 'auto';
         case 'bottom':
-          return `${theme.spacing.small}`;
+          return `${theme.spacing.s}`;
         case 'bottomLeft':
           return 'auto';
         default:
-          return `${theme.spacing.small}`;
+          return `${theme.spacing.s}`;
       }
     }};
     right: ${({ position, theme }) => {
@@ -234,15 +234,15 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
         case 'top':
           return `auto`;
         case 'topLeft':
-          return `${theme.spacing.small}`;
+          return `${theme.spacing.s}`;
         case 'left':
           return 'auto';
         case 'right':
-          return `${theme.spacing.small}`;
+          return `${theme.spacing.s}`;
         case 'bottom':
           return `auto`;
         case 'bottomLeft':
-          return `${theme.spacing.small}`;
+          return `${theme.spacing.s}`;
         default:
           return `auto`;
       }
@@ -402,9 +402,9 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
           case 'topLeft':
             return '100%';
           case 'left':
-            return `${theme.spacing.extraSmall}`;
+            return `${theme.spacing.xs}`;
           case 'right':
-            return `${theme.spacing.extraSmall}`;
+            return `${theme.spacing.xs}`;
           case 'bottom':
             return 'auto';
           case 'bottomLeft':
@@ -435,7 +435,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
       left: ${({ position, theme }) => {
         switch (position) {
           case 'top':
-            return `${theme.spacing.small}`;
+            return `${theme.spacing.s}`;
           case 'topLeft':
             return 'auto';
           case 'left':
@@ -443,11 +443,11 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
           case 'right':
             return '-20px';
           case 'bottom':
-            return `${theme.spacing.small}`;
+            return `${theme.spacing.s}`;
           case 'bottomLeft':
             return 'auto';
           default:
-            return `${theme.spacing.small}`;
+            return `${theme.spacing.s}`;
         }
       }};
       right: ${({ position, theme }) => {
@@ -455,7 +455,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
           case 'top':
             return `auto`;
           case 'topLeft':
-            return `${theme.spacing.small}`;
+            return `${theme.spacing.s}`;
           case 'left':
             return 'auto';
           case 'right':
@@ -463,7 +463,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
           case 'bottom':
             return `auto`;
           case 'bottomLeft':
-            return `${theme.spacing.small}`;
+            return `${theme.spacing.s}`;
           default:
             return `auto`;
         }
