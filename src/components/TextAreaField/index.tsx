@@ -9,7 +9,7 @@ import { ThemeType } from '../../types';
 
 type StyledTextareaProps = Omit<TextFieldProps, 'errorMessage' | 'hasError' | 'label'> & {
   hasError: boolean;
-  resize?: 'both' | 'vertical' | 'horizontal' | 'none';
+  resize: 'both' | 'vertical' | 'horizontal' | 'none';
 };
 
 const StyledTextArea = styled.textarea<StyledTextareaProps>`
