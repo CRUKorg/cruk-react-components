@@ -1,6 +1,6 @@
 {
   "name": "@crukorg/cruk-react-components",
-  "version": "0.1.0-alpha.59",
+  "version": "0.1.0-alpha.60",
   "description": "React components implementing CRUK and SU2C design tokens",
   "license": "UNLICENSED",
   "main": "lib/cjs/src/components/index.js",
@@ -52,7 +52,7 @@
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.9.0",
-    "@cypress/webpack-preprocessor": "^5.4.3",
+    "@cypress/webpack-preprocessor": "^5.5.0",
     "@mdx-js/loader": "^1.5.5",
     "@mdx-js/mdx": "^0.20.3",
     "@reach/router": "^1.2.1",
