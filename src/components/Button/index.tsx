@@ -32,17 +32,8 @@ type StyledButtonProps = ButtonHTMLAttributes<HTMLElement> & {
   isIconButton: boolean;
 };
 
-type VerticalAlignProps = {
-  theme: ThemeType;
-  isIconButton: boolean;
-};
-
-const VerticalAlign = styled.span<VerticalAlignProps>`
-  line-height: ${({ theme, isIconButton }) =>
-    isIconButton ? `unset` : `calc(${BUTTON_HEIGHT} - ( ${theme.button.buttonBorderThickness} * 2 ) )`};
-  vertical-align: middle;
+const Spacer = styled.span`
   margin-left: ${({ theme }) => theme.spacing.xxs};
-
   &:first-of-type {
     margin-left: 0;
   }
@@ -53,7 +44,10 @@ const StyledButton = styled.button<StyledButtonProps>`
   min-height: ${BUTTON_HEIGHT};
   display: inline-block;
   vertical-align: middle;
-  padding: ${({ theme, isIconButton }) => (isIconButton ? '0' : `0 ${theme.spacing.m}`)};
+  padding: ${({ theme, isIconButton }) =>
+    isIconButton
+      ? '0'
+      : `calc( (${BUTTON_HEIGHT} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m}`};
   width: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT}` : 'auto')};
 
   border-radius: ${props => props.theme.button.borderRadius};
@@ -207,9 +201,9 @@ const Button: FunctionComponent<ButtonProps> = forwardRef((props: ButtonProps, r
     >
       {props.children && childArray.length
         ? React.Children.map(props.children, (child: ReactNode, index: number) => (
-            <VerticalAlign theme={theme} key={index} isIconButton={isIconButton}>
+            <Spacer theme={theme} key={index}>
               {child}
-            </VerticalAlign>
+            </Spacer>
           ))
         : null}
     </StyledButton>

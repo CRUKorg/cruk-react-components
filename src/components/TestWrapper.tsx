@@ -21,23 +21,25 @@ export const TestThemeWrapper: FC<TestThemeWrapperProps> = ({ children, theme })
 );
 
 export const TestWrapper: FC = ({ children }) => (
-  <div style={{ overflow: 'auto' }} tabIndex={0}>
-    <ThemeProvider theme={crukTheme}>
-      <GlobalStyle />
-      <Heading>CRUK Theme</Heading>
-      {children}
-    </ThemeProvider>
-    <ThemeProvider theme={crukTheme2}>
-      <GlobalStyle />
-      <Heading>CRUK 2 Theme</Heading>
-      {children}
-    </ThemeProvider>
-    <ThemeProvider theme={su2cTheme}>
-      <GlobalStyle />
-      <Heading>SU2C Theme</Heading>
-      {children}
-    </ThemeProvider>
-  </div>
+  <main>
+    <div style={{ overflow: 'auto' }} tabIndex={0}>
+      <ThemeProvider theme={crukTheme}>
+        <GlobalStyle />
+        <Heading>CRUK Theme</Heading>
+        {children}
+      </ThemeProvider>
+      <ThemeProvider theme={crukTheme2}>
+        <GlobalStyle />
+        <Heading>CRUK 2 Theme</Heading>
+        {children}
+      </ThemeProvider>
+      <ThemeProvider theme={su2cTheme}>
+        <GlobalStyle />
+        <Heading>SU2C Theme</Heading>
+        {children}
+      </ThemeProvider>
+    </div>
+  </main>
 );
 
 export default TestWrapper;
