@@ -52,9 +52,11 @@ const Content = () => {
 describe('Radio', () => {
   it('is accessible', () => {
     mount(
-      <TestThemeWrapper>
-        <Content />
-      </TestThemeWrapper>,
+      <main>
+        <TestThemeWrapper>
+          <Content />
+        </TestThemeWrapper>
+      </main>,
     );
     cy.injectAxe();
     cy.checkA11y('body');
