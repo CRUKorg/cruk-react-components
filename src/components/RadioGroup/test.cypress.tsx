@@ -99,7 +99,6 @@ describe('RadioGroup', () => {
   it('should match SU2C snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
-    cy.wait(300); //annoying font loading flake on CI
     mount(<TestThemeWrapper theme={su2cTheme}>{uncontrolledContent()}</TestThemeWrapper>);
     cy.document()
       .its('fonts.status')
