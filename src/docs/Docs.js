@@ -4,13 +4,11 @@ import { Router, Link as RouterLink } from '@reach/router';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import styled, { css, ThemeProvider } from 'styled-components';
 
-import defaultTheme from '../themes/cruk';
 import MdxProvider from '../hocs/MdxProvider';
 
 // /////////////////////////////////////////////////////////
 // HAVE YOU ADDED YOUR COMPONENT TO THE MDX PROVIDER HOC? //
 // /////////////////////////////////////////////////////////
-import Button from '../components/Button';
 import Box from '../components/Box';
 import Flex from '../components/Flex';
 import Header from '../components/Header';
@@ -49,9 +47,7 @@ import UserBlockReadme from '../components/UserBlock/README.md';
 
 import crukTheme, { BREAKPOINT, COLORS } from '../themes/cruk';
 import su2cTheme from '../themes/su2c';
-import cruk2Theme from '../themes/cruk2';
 import GlobalStyle from '../components/GlobalStyle';
-import { TextAreaField } from '../components';
 
 /*
  * Doc specific styling
@@ -250,8 +246,6 @@ class Docs extends React.Component {
       switch (this.state.theme) {
         case 'su2c':
           return su2cTheme;
-        case 'cruk2':
-          return cruk2Theme;
         default:
           return crukTheme;
       }
@@ -271,7 +265,6 @@ class Docs extends React.Component {
             }}
           >
             <option value="cruk">CRUK theme</option>
-            <option value="cruk2">CRUK 2 theme</option>
             <option value="su2c">SU2C theme</option>
           </SwitchTheme>
         </Header>
