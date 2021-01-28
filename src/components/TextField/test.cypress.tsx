@@ -84,7 +84,23 @@ const content = () => {
         </Box>
       </section>
       <section>
-        <Heading h3 textSize="l" paddingTop="m">
+        <Heading h3 paddingTop="m">
+          Is Valid Indicator
+        </Heading>
+        <Box>
+          <TextField label="Phone number" type="text" name="phoneNumber" isValid={true} isValidVisible={true} />
+        </Box>
+      </section>
+      <section>
+        <Heading h3 paddingTop="m">
+          Is Invalid Indicator
+        </Heading>
+        <Box>
+          <TextField label="Phone number" type="text" name="phoneNumber" isValid={false} isInvalidVisible={true} />
+        </Box>
+      </section>
+      <section>
+        <Heading h3 paddingTop="m">
           Required
         </Heading>
         <Box>
