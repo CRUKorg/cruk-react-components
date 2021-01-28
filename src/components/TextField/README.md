@@ -153,8 +153,8 @@ Other props not listed here (disabled, placeholder, etc.) will be passed to the 
 | hasError         | boolean                |          | false   | If true, use error styling for the input                                  |
 | errorMessage     | string                 |          |         | Error message, If defined, use error styling for the input text           |
 | hintText         | ReactElement \| string |          |         | Extra help text between the label and input                               |
-| isVaild          | Boolean                |          | true    | used with isValidVisible/isValidInvisible to show valid/invalid indicator |
-| isValidVisible   | Boolean                |          | false   | show valid indicator when isVaild is true or no error exists              |
+| isValid          | Boolean                |          | true    | used with isValidVisible/isValidInvisible to show valid/invalid indicator |
+| isValidVisible   | Boolean                |          | false   | show valid indicator when isValid is true or no error exists              |
 | isValidInvisible | Boolean                |          | false   | show invalid indicator when isValid is false or if error exists           |
 | extraTop         | string                 |          |         | Displayed on top of the input                                             |
 | extraRight       | string                 |          |         | Displayed inline after the input                                          |
