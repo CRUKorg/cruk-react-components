@@ -4,7 +4,7 @@ import React from 'react';
 import { mount } from 'cypress-react-unit-test';
 
 import { TestThemeWrapper } from '../TestWrapper';
-import { Radio, Heading, crukTheme2, su2cTheme } from '../';
+import { Radio, Heading, su2cTheme } from '../';
 
 const uncontrolledRadio = () => (
   <div id="radios">
@@ -66,17 +66,6 @@ describe('Radio', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
     mount(<TestThemeWrapper>{uncontrolledRadio()}</TestThemeWrapper>);
-    cy.document()
-      .its('fonts.status')
-      .should('equal', 'loaded');
-    cy.get('#radios')
-      .first()
-      .matchImageSnapshot();
-  });
-  it('should match CRUK2 snapshot', () => {
-    Cypress.config('waitForAnimations', true);
-    Cypress.config('animationDistanceThreshold', 2);
-    mount(<TestThemeWrapper theme={crukTheme2}>{uncontrolledRadio()}</TestThemeWrapper>);
     cy.document()
       .its('fonts.status')
       .should('equal', 'loaded');

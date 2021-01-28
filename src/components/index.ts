@@ -32,7 +32,6 @@ export { default as Totaliser } from './Totaliser';
 export { default as UserBlock } from './UserBlock';
 
 export { default as crukTheme } from '../themes/cruk';
-export { default as crukTheme2 } from '../themes/cruk2';
 export { default as su2cTheme } from '../themes/su2c';
 
 export { default as AddressLookupReadme } from './AddressLookup/README.md';

@@ -13,11 +13,11 @@ import {
 } from '../types';
 
 export const UTILITIES: UtilitiesType = {
-  borderRadius: '4px',
   contentMaxWidth: '1020px',
-  useDefaultFocusRect: false,
-  useDefaultFromControls: true,
-  inputBorderWidth: '2px',
+  borderRadius: 'unset',
+  useDefaultFocusRect: true,
+  useDefaultFromControls: false,
+  inputBorderWidth: '1px',
 };
 
 export const SITE_CONFIG: SiteConfigType = {
@@ -52,6 +52,9 @@ export const BREAKPOINT: BreakPointType = {
 };
 
 export const TOKEN_COLORS: TokenColorsType = {
+  darkBlue_100: '#edeaf5',
+  darkBlue_200: '#dad2ea',
+  darkBlue_300: "#a896cf",
   darkBlue_500: '#2e008b',
   magenta_100: '#fdeaf5',
   magenta_500: '#e40074',
@@ -130,7 +133,9 @@ export const COLORS: ColorsType = {
 
 
   selectionBorder: TOKEN_COLORS.grey_500,
-  inputBorder: TOKEN_COLORS.grey_300,
+ 
+  textInputBorder: TOKEN_COLORS.grey_900, 
+  inputBorder: TOKEN_COLORS.grey_900,
 
   headerBackground: TOKEN_COLORS.white,
   backgroundLight: TOKEN_COLORS.white,
@@ -150,8 +155,6 @@ export const COLORS: ColorsType = {
   textInputExtraInfo: TOKEN_COLORS.grey_200,
 
   totaliserBorder: TOKEN_COLORS.grey_300,
-
-  textInputBorder: TOKEN_COLORS.grey_300,
 
   selectBackground: TOKEN_COLORS.grey_900,
 
@@ -205,6 +208,7 @@ export const TYPOGRAPHY: TypographyType = {
 };
 
 const theme: ThemeType = {
+  name: 'cruk',
   avatar: AVATAR,
   breakpoint: BREAKPOINT,
   button: BUTTON,

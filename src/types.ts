@@ -182,6 +182,7 @@ export type TypographyType = {
 };
 
 export type ThemeType = {
+  name: string;
   avatar: AvatarType;
   breakpoint: BreakPointType;
   button: ButtonType;

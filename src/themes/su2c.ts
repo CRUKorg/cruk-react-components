@@ -17,6 +17,9 @@ import defaultTheme from './cruk';
 export const UTILITIES: UtilitiesType = {
   ...defaultTheme.utilities,
   borderRadius: 'unset',
+  useDefaultFocusRect: false,
+  useDefaultFromControls: true,
+  inputBorderWidth: '2px',
 };
 
 export const SITE_CONFIG: SiteConfigType = {
@@ -60,6 +63,9 @@ export const COLORS: ColorsType = {
   circularProgress: TOKEN_COLORS.su2cOrangeLight,
   linkColor: TOKEN_COLORS.su2cOrange,
   linkColorHover: TOKEN_COLORS.su2cOrange,
+
+  inputBorder: TOKEN_COLORS.grey_300,
+  textInputBorder: TOKEN_COLORS.grey_300,
 
   buttonPrimaryBackground: TOKEN_COLORS.white,
   buttonPrimaryText: TOKEN_COLORS.su2cOrange,
@@ -115,6 +121,7 @@ export const TYPOGRAPHY: TypographyType = {
 };
 
 const theme: ThemeType = {
+  name: 'su2c',
   avatar: AVATAR,
   breakpoint: BREAKPOINT,
   button: BUTTON,
