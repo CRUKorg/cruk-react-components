@@ -54,6 +54,7 @@ const Check = styled.span`
 `;
 
 const StyledLabel = styled.label<StyledLabelProps>`
+  width: 100%;
   position: relative;
   border-radius: ${props => props.theme.utilities.borderRadius};
   border: ${({ theme, checked }) =>
