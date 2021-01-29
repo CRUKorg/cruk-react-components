@@ -4,7 +4,7 @@ import React from 'react';
 import { mount } from 'cypress-react-unit-test';
 
 import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
-import { Modal, Button, Heading, crukTheme2, su2cTheme } from '../';
+import { Modal, Button, Heading, su2cTheme } from '../';
 
 const ModalOnlyContent = () => (
   <Modal closeFunction={() => {}}>
@@ -66,17 +66,6 @@ describe('Modal', () => {
       .its('fonts.status')
       .should('equal', 'loaded');
     mount(<TestThemeWrapper>{ModalOnlyContent()}</TestThemeWrapper>);
-    cy.get('[aria-modal="true"]')
-      .first()
-      .matchImageSnapshot();
-  });
-  it('should match CRUK2 snapshot', () => {
-    Cypress.config('waitForAnimations', true);
-    Cypress.config('animationDistanceThreshold', 2);
-    cy.document()
-      .its('fonts.status')
-      .should('equal', 'loaded');
-    mount(<TestThemeWrapper theme={crukTheme2}>{ModalOnlyContent()}</TestThemeWrapper>);
     cy.get('[aria-modal="true"]')
       .first()
       .matchImageSnapshot();

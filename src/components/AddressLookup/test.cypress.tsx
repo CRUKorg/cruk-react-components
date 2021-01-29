@@ -4,7 +4,7 @@ import React from 'react';
 import { mount } from 'cypress-react-unit-test';
 
 import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
-import { AddressLookup, crukTheme2, su2cTheme } from '../';
+import { AddressLookup, su2cTheme } from '../';
 
 const Content = () => {
   return (
@@ -64,25 +64,6 @@ describe('AddressLookup', () => {
       .should('equal', 'loaded');
     mount(
       <TestThemeWrapper>
-        <Content />
-      </TestThemeWrapper>,
-    );
-    cy.getInputByLabel('Home address')
-      .type('N10')
-      .blur();
-    cy.contains('li', 'N17 0AB High Road, London - 14 Addresses').should('exist');
-    cy.get('body')
-      .first()
-      .matchImageSnapshot();
-  });
-  it('should match CRUK2 snapshot', () => {
-    Cypress.config('waitForAnimations', true);
-    Cypress.config('animationDistanceThreshold', 2);
-    cy.document()
-      .its('fonts.status')
-      .should('equal', 'loaded');
-    mount(
-      <TestThemeWrapper theme={crukTheme2}>
         <Content />
       </TestThemeWrapper>,
     );
