@@ -1,5 +1,7 @@
 import React, { ChangeEventHandler, FocusEventHandler, FC, InputHTMLAttributes } from 'react';
-import { ErrorText, Text, TextField } from '../';
+import ErrorText from '../ErrorText';
+import Text from '../Text';
+import TextField from '../TextField';
 
 type DateFieldProps = InputHTMLAttributes<{}> & {
   label: string;
