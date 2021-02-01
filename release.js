@@ -15,7 +15,7 @@ execSync('npm run rollup:build-lib');
 
 console.log(`5/5 publishing package`);
 
-let publishCommand = 'npm publish --registry https://npm.pkg.github.com/CRUKorg';
+let publishCommand = 'npm publish --scope "cruk"';
 
 if (version.includes('alpha')) {
   publishCommand += ' --tag alpha';
