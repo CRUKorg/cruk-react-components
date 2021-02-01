@@ -1,8 +1,11 @@
 {
-  "name": "@crukorg/cruk-react-components",
+  "name": "@cruk/cruk-react-components",
   "version": "0.1.0-alpha.64",
   "description": "React components implementing CRUK and SU2C designs",
   "license": "UNLICENSED",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "lib/cjs/src/components/index.js",
   "module": "lib/es/src/components/index.js",
   "jsnext:main": "lib/es/index.js",
