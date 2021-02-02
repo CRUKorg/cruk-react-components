@@ -47,6 +47,11 @@ const StyledHeading = (props: StyledHeadingProps) => css`
       typography: { headerLineHeight },
     },
   }) => headerLineHeight};
+  text-transform: ${({
+    theme: {
+      typography: { headerTextTransform },
+    },
+  }) => headerTextTransform};
   margin-top: ${({
     theme: {
       spacing: { m },
