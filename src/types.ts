@@ -179,6 +179,7 @@ export type TypographyType = {
   linkTextDecoration: string;
   lineHeight: string;
   headerLineHeight: string;
+  headerTextTransform: string;
 };
 
 export type ThemeType = {

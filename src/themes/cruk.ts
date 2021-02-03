@@ -205,6 +205,7 @@ export const TYPOGRAPHY: TypographyType = {
   linkTextDecoration: 'underline',
   lineHeight: '1.5em',
   headerLineHeight: '1.25em',
+  headerTextTransform: 'none',
 };
 
 const theme: ThemeType = {
