@@ -72,11 +72,6 @@ type CollapseContentProps = {
 
 const CollapseContent = styled.div<CollapseContentProps>`
   margin: 0;
-  font-size: ${({
-    theme: {
-      fontSizes: { s },
-    },
-  }) => s};
   transition: ${transitionDurationSeconds}s ease;
   height: ${({ contentHeight }) => contentHeight};
   overflow: hidden;
