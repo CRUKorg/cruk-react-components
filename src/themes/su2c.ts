@@ -37,6 +37,7 @@ export const AVATAR: AvatarType = {
 export const BUTTON: ButtonType = {
   ...defaultTheme.button,
   borderRadius: '1.5rem',
+  borderRadiusLarge: '2rem',
   textDecoration: 'underline',
   textTransform: 'uppercase',
 };
