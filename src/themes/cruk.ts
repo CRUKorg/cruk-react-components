@@ -39,6 +39,7 @@ export const AVATAR: AvatarType = {
 
 export const BUTTON: ButtonType = {
   borderRadius:'4px',
+  borderRadiusLarge:'4px',
   buttonBorderThickness: '2px',
   textDecoration: 'none',
   textTransform: 'none',
@@ -205,6 +206,7 @@ export const TYPOGRAPHY: TypographyType = {
   linkTextDecoration: 'underline',
   lineHeight: '1.5em',
   headerLineHeight: '1.25em',
+  headerTextTransform: 'none',
 };
 
 const theme: ThemeType = {

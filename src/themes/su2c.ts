@@ -37,6 +37,7 @@ export const AVATAR: AvatarType = {
 export const BUTTON: ButtonType = {
   ...defaultTheme.button,
   borderRadius: '1.5rem',
+  borderRadiusLarge: '2rem',
   textDecoration: 'underline',
   textTransform: 'uppercase',
 };
@@ -118,6 +119,7 @@ export const TYPOGRAPHY: TypographyType = {
   fontFamilyHeadings: 'itc_avant_garde_pro_mdbold,Arial,sans-serif',
   linkTextDecoration: 'underline',
   headerLineHeight: '1.5em',
+  headerTextTransform: 'uppercase',
 };
 
 const theme: ThemeType = {

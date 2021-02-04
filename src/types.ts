@@ -37,6 +37,7 @@ export type AvatarType = {
 
 export type ButtonType = {
   borderRadius: string;
+  borderRadiusLarge: string;
   buttonBorderThickness: string;
   textDecoration: string;
   textTransform: string;
@@ -179,6 +180,7 @@ export type TypographyType = {
   linkTextDecoration: string;
   lineHeight: string;
   headerLineHeight: string;
+  headerTextTransform: string;
 };
 
 export type ThemeType = {
