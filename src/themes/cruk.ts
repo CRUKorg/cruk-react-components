@@ -23,7 +23,6 @@ export const UTILITIES: UtilitiesType = {
 export const SITE_CONFIG: SiteConfigType = {
   cdnPath: 'https://ccp-s3.int.cruk.org/',
   assetPath: 'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/',
-  siteUrl: 'https://fundraise.cancerresearchuk.org/',
   logoUrl: '/',
   logoAlt: 'Cancer Research UK Giving Page',
   logoSrc: 'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png',
