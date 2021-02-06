@@ -13,12 +13,16 @@ simple yet flexible progress bars.
   <ProgressBar percentage={0} isCircular />
   <ProgressBar percentage={20} isCircular />
   <ProgressBar percentage={150} isCircular />
+  <ProgressBar percentage={60} isCircular circleSize="10em" circleContents={<Button>Button</Button>} />
 </>
 ```
 
 ## Props
 
-| Name       | Type    |     Options     | Default | Description                |
-| :--------- | :------ | :-------------: | :------ | :------------------------- |
-| percentage | Number  | between 0 - 100 | 0       | Current value of progress  |
-| isCircular | Boolean |                 | false   | Default to linear progress |
+| Name           | Type      |     Options     | Default               | Description                          |
+| :------------- | :-------- | :-------------: | :-------------------- | :----------------------------------- |
+| percentage     | Number    | between 0 - 100 | 0                     | (required) Current value of progress |
+| isCircular     | Boolean   |                 | false                 | Default to linear progress           |
+| circleContents | ReactNode |                 | undefined             | Inner contents of circular graph     |
+| circleSize     | string    |                 | '90px'                | size of circular graph               |
+| barColor       | string    |                 | theme.colors.textDark | Color of graph bar/circle            |
