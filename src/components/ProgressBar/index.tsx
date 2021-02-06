@@ -11,7 +11,6 @@ const DEFAULT_CIRCLE_SIZE = '90px';
 type ProgressBarProps = {
   percentage: number;
   isCircular?: boolean;
-  showIndicator?: boolean;
   theme?: ThemeType;
   circleContents?: ReactNode;
   circleSize?: string;
