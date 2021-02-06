@@ -190,6 +190,7 @@ const CircularWrapper = styled.div<CircularWrapperProps>`
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 0;
   }
   > span {
     width: 50%;
@@ -230,10 +231,16 @@ const CircularWrapper = styled.div<CircularWrapperProps>`
 `;
 
 const CircularValue = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  z-index: 2;
   font-size: ${({
     theme: {
       fontSizes: { l },
