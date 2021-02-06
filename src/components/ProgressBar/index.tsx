@@ -1,15 +1,21 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import styled, { css, keyframes, ThemeProvider, withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
 
 import { ThemeType } from '../../types';
 
+const CIRCLE_THICKENESS = '4px';
+const DEFAULT_CIRCLE_SIZE = '90px';
+
 type ProgressBarProps = {
   percentage: number;
   isCircular?: boolean;
   showIndicator?: boolean;
   theme?: ThemeType;
+  circleContents?: ReactNode;
+  circleSize?: string;
+  barColor?: string;
 };
 
 type PercentageProps = {
@@ -20,7 +26,27 @@ const ProgressBarWrapper = styled.div`
   margin-top: 15px;
 `;
 
-const ProgressBarSharedStyling = css`
+const ProgressSharedStyling = css`
+  height: 15px;
+  margin-bottom: 0;
+  background-color: ${({
+    theme: {
+      colors: { progressBarBackground },
+    },
+  }) => progressBarBackground};
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+`;
+
+const LineProgressBarWrapper = styled.div`
+  ${ProgressSharedStyling};
+`;
+
+type LineProgressBarProps = {
+  percentage: number;
+  barColor?: string;
+};
+
+const LineProgressBar = styled.div<LineProgressBarProps>`
   float: left;
   width: 1%;
   height: 100%;
@@ -41,10 +67,11 @@ const ProgressBarSharedStyling = css`
   }) => textLight};
   text-align: center;
   background-color: ${({
+    barColor,
     theme: {
       colors: { progressBar },
     },
-  }) => progressBar};
+  }) => (barColor ? barColor : progressBar)};
   border-radius: ${({
     theme: {
       utilities: { borderRadius },
@@ -52,27 +79,6 @@ const ProgressBarSharedStyling = css`
   }) => borderRadius};
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   transition: width 0.6s ease;
-`;
-
-const ProgressSharedStyling = css`
-  height: 15px;
-  margin-bottom: 0;
-  background-color: ${({
-    theme: {
-      colors: { progressBarBackground },
-    },
-  }) => progressBarBackground};
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-`;
-
-const LineProgressBarWrapper = styled.div`
-  ${ProgressSharedStyling};
-`;
-
-type LineProgressBarProps = PercentageProps;
-
-const LineProgressBar = styled.div<LineProgressBarProps>`
-  ${ProgressBarSharedStyling}
   position: relative;
 
   ${props =>
@@ -93,19 +99,24 @@ const SROnly = styled.span`
   border: 0;
 `;
 
-const CircularColorFill = styled.span`
+type CircularColorFillProps = {
+  barColor?: string;
+};
+
+const CircularColorFill = styled.span<CircularColorFillProps>`
   width: 100%;
   height: 100%;
   background: none;
-  border-width: 4px;
+  border-width: ${CIRCLE_THICKENESS};
   border-style: solid;
   position: absolute;
   top: 0;
   border-color: ${({
+    barColor,
     theme: {
       colors: { circularProgress },
     },
-  }) => circularProgress};
+  }) => (barColor ? barColor : circularProgress)};
 `;
 
 const CircularLeft = styled.span`
@@ -113,8 +124,8 @@ const CircularLeft = styled.span`
 
   ${CircularColorFill} {
     left: 100%;
-    border-top-right-radius: 45px;
-    border-bottom-right-radius: 45px;
+    border-top-right-radius: 100vw;
+    border-bottom-right-radius: 100vw;
     border-left: 0;
     -webkit-transform-origin: center left;
     transform-origin: center left;
@@ -126,8 +137,8 @@ const CircularRight = styled.span`
 
   ${CircularColorFill} {
     left: -100%;
-    border-top-left-radius: 45px;
-    border-bottom-left-radius: 45px;
+    border-top-left-radius: 100vw;
+    border-bottom-left-radius: 100vw;
     border-right: 0;
     -webkit-transform-origin: center right;
     transform-origin: center right;
@@ -152,14 +163,16 @@ const AnimationLeft = (props: AnimationLeftProps) => keyframes`
   }
 `;
 
-type CircularWrapperProps = PercentageProps;
+type CircularWrapperProps = {
+  percentage: number;
+  circleSize: string;
+};
 
 const CircularWrapper = styled.div<CircularWrapperProps>`
   ${ProgressSharedStyling};
 
-  width: 90px;
-  height: 90px;
-  line-height: 90px;
+  width: ${({ circleSize }) => circleSize};
+  height: ${({ circleSize }) => circleSize};
   background: none;
   margin: 0 auto;
   box-shadow: none;
@@ -174,7 +187,7 @@ const CircularWrapper = styled.div<CircularWrapperProps>`
       theme: {
         colors: { circularProgressBackground },
       },
-    }) => `4px solid ${circularProgressBackground}`};
+    }) => `${CIRCLE_THICKENESS} solid ${circularProgressBackground}`};
     position: absolute;
     top: 0;
     left: 0;
@@ -234,12 +247,11 @@ const CircularValue = styled.div`
   }) => l};
   text-align: center;
   height: 100%;
-  text-transform: uppercase;
   color: ${({
     theme: {
-      colors: { circularProgress },
+      colors: { textDark },
     },
-  }) => circularProgress};
+  }) => textDark};
 `;
 
 const ProgressBar: FunctionComponent<ProgressBarProps> = props => {
@@ -248,24 +260,28 @@ const ProgressBar: FunctionComponent<ProgressBarProps> = props => {
     ...props.theme,
   };
   const number = props.percentage;
-  const text = `${!Number.isNaN(number) ? number : '0'}%`;
+  const percentString = `${!Number.isNaN(number) ? number : '0'}%`;
+  const descriptivePercentageString = `${
+    typeof props.circleContents === 'string' ? props.circleContents : null
+  } ${percentString}% Complete`;
+  const textOrPercentString = props.circleContents || percentString;
   return (
     <ThemeProvider theme={theme}>
       <ProgressBarWrapper {...props}>
         {props.isCircular ? (
-          <CircularWrapper percentage={number}>
+          <CircularWrapper percentage={number} circleSize={props.circleSize || DEFAULT_CIRCLE_SIZE}>
             <CircularLeft className="Left">
-              <CircularColorFill />
+              <CircularColorFill barColor={props.barColor} />
             </CircularLeft>
             <CircularRight className="Right">
-              <CircularColorFill />
+              <CircularColorFill barColor={props.barColor} />
             </CircularRight>
-            <CircularValue>{text}</CircularValue>
+            <CircularValue>{textOrPercentString}</CircularValue>
           </CircularWrapper>
         ) : (
           <LineProgressBarWrapper>
-            <LineProgressBar percentage={number > 100 ? 100 : number} />
-            <SROnly>{`${text} Complete`}</SROnly>
+            <LineProgressBar percentage={number > 100 ? 100 : number} barColor={props.barColor} />
+            <SROnly>{descriptivePercentageString}</SROnly>
           </LineProgressBarWrapper>
         )}
         {props.children}
