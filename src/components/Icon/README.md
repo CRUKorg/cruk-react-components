@@ -16,6 +16,7 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
     <Icon name="chevronLeft" />
     <Icon name="chevronRight" />
     <Icon name="chevronRightBold" />
+    <Icon name="cog" />
     <Icon name="copy" />
     <Icon name="clock" />
     <Icon name="close" />
@@ -30,6 +31,7 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
     <Icon name="facebookRound" />
     <Icon name="facebookSquare" />
     <Icon name="flag" />
+    <Icon name="link" />
     <Icon name="linkedinSquare" />
     <Icon name="linkedin" />
     <Icon name="messengerSquare" />
@@ -51,6 +53,7 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
     <Icon name="twitter" />
     <Icon name="twitterSquare" />
     <Icon name="uploadPhoto" />
+    <Icon name="userLock" />
     <Icon name="view" />
     <Icon name="whatsappSquare" />
     <Icon name="zoomIn" />
