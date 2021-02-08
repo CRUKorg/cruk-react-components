@@ -6,6 +6,7 @@ import { ThemeType } from '../../types';
 
 const CHECK_BOX_SIZE = '1.5rem';
 const CHECK_SIZE = '1.125rem';
+const BUTTON_HEIGHT = '3em';
 
 type StyledLabelProps = {
   checked: boolean;
@@ -64,7 +65,8 @@ const StyledLabel = styled.label<StyledLabelProps>`
   cursor: pointer;
   display: block;
   font-weight: ${({ theme, checked }) => (checked || !theme.utilities.useDefaultFocusRec ? 'bold' : 'normal')};
-  padding: 5px;
+  padding: ${({ theme }) =>
+    `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
 
   &:focus ~ ${CheckWrapper} ${Check} {
     outline: 2px solid #7aacfe; /* for non-webkit browsers */
@@ -75,7 +77,6 @@ const StyledLabel = styled.label<StyledLabelProps>`
     theme.utilities.useDefaultFromControls
       ? null
       : css`
-          padding: 1rem 1rem 1rem 3rem;
           min-height: 2rem;
           font-weight: ${({ theme }) => theme.typography.fontWeightHeavy};
 
@@ -96,7 +97,19 @@ const StyledInput = styled.input`
 
   ${({ theme }) =>
     theme.utilities.useDefaultFromControls
-      ? null
+      ? css`
+          position: absolute;
+          display: inline-block;
+          transform: translate(-50%, -50%);
+          top: 50%;
+          margin: 0;
+          padding: 0;
+          left: ${({
+            theme: {
+              spacing: { s },
+            },
+          }) => s};
+        `
       : css`
           /* This hides the original input */
           position: absolute;
