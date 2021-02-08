@@ -7,6 +7,8 @@ import { WithLabel } from '../Label';
 
 import { ThemeType } from '../../types';
 
+const BUTTON_HEIGHT = '3rem';
+
 const StyledSelect = styled.select<StyledSelectProps>`
   appearance: none;
   background: linear-gradient(
@@ -26,7 +28,9 @@ const StyledSelect = styled.select<StyledSelectProps>`
   color: ${({ theme }) => theme.colors.textDark};
   display: block;
   font-size: ${({ theme }) => theme.fontSizes.m};
-  padding: 6px 24px 6px 8px;
+  min-height: ${BUTTON_HEIGHT};
+  padding: ${({ theme }) =>
+    `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xs}`};
   width: 100%;
   transition: border-color 150ms linear;
   &:disabled {

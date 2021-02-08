@@ -7,6 +7,7 @@ import { ThemeType } from '../../types';
 
 const RADIO_SIZE = '1.5rem';
 const RADIO_INNER_SIZE = '1rem';
+const BUTTON_HEIGHT = '3em';
 
 type StyledLabelProps = {
   checked: boolean;
@@ -64,11 +65,8 @@ const StyledLabel = styled.label<StyledLabelProps>`
   cursor: pointer;
   display: inline-block;
   font-weight: ${props => (props.checked ? 'bold' : 'normal')};
-  padding: ${({
-    theme: {
-      spacing: { xxs },
-    },
-  }) => xxs};
+  padding: ${({ theme }) =>
+    `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
   vertical-align: middle;
 
   &:focus ~ ${CheckWrapper} ${Check} {
@@ -80,7 +78,6 @@ const StyledLabel = styled.label<StyledLabelProps>`
     theme.utilities.useDefaultFromControls
       ? null
       : css`
-          padding: 1rem 1rem 1rem 3rem;
           min-height: 2rem;
 
           &:hover ${CheckWrapper} ${Check} {
@@ -105,9 +102,22 @@ const StyledInput = styled.input<InputHTMLAttributes<HTMLInputElement>>`
       spacing: { xxs },
     },
   }) => xxs};
+
   ${({ theme }) =>
     theme.utilities.useDefaultFromControls
-      ? null
+      ? css`
+          position: absolute;
+          display: inline-block;
+          transform: translate(-50%, -50%);
+          top: 50%;
+          margin: 0;
+          padding: 0;
+          left: ${({
+            theme: {
+              spacing: { s },
+            },
+          }) => s};
+        `
       : css`
           position: absolute;
           left: ${({
