@@ -21,7 +21,6 @@ export type UtilitiesType = {
 export type SiteConfigType = {
   cdnPath: string;
   assetPath: string;
-  siteUrl: string;
   logoUrl: string;
   logoAlt: string;
   logoSrc: string;

@@ -4,7 +4,7 @@ import React from 'react';
 import { mount } from 'cypress-react-unit-test';
 
 import TestWrapper from '../TestWrapper';
-import { ProgressBar } from '../';
+import { ProgressBar, Text } from '../';
 
 const content = () => {
   return (
@@ -15,6 +15,7 @@ const content = () => {
       <ProgressBar percentage={0} isCircular />
       <ProgressBar percentage={20} isCircular />
       <ProgressBar percentage={150} isCircular />
+      <ProgressBar percentage={60} isCircular circleSize="10em" circleContents={<Text>60 / 100 miles</Text>} />
     </>
   );
 };
