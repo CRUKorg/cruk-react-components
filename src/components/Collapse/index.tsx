@@ -15,7 +15,6 @@ type CollapseProps = {
   headerTitleTextColor?: string;
   headerTitleTextSize?: FontSizeType;
   headerComponent?: ReactNode;
-  contentHeight?: string;
   startOpen?: boolean;
   onOpenChange?: (isOpen: boolean) => void;
   theme?: ThemeType;
@@ -85,8 +84,20 @@ const CustomHeader = styled.div`
 `;
 
 const Collapse: FunctionComponent<CollapseProps> = props => {
-  const [openStatus, setOpenStatus] = useState(props.startOpen || false);
-  const [contentHeight, setContentHeight] = useState('0');
+  const {
+    id,
+    headerTitleText,
+    headerTitleTextColor,
+    headerTitleTextSize,
+    headerComponent,
+    startOpen,
+    onOpenChange,
+    children,
+    theme,
+  } = props;
+
+  const [openStatus, setOpenStatus] = useState(startOpen || false);
+  const [contentHeight, setContentHeight] = useState(startOpen ? 'initial' : '0');
   const content = useRef<HTMLDivElement>(null);
   const transitionTimer = useRef(0);
 
@@ -102,68 +113,67 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
       // After animation set height to initial for responsive layout.
       transitionTimer.current = setTimeout(() => setContentHeight('initial'), transitionDurationSeconds * 1000);
     }
-    !!props.onOpenChange && props.onOpenChange(newOpenState);
+    !!onOpenChange && onOpenChange(newOpenState);
   };
 
-  const triggerToggle = (event: KeyboardEvent) => {
-    if (event.which == 32 || event.which == 13) {
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
       event.preventDefault();
       toggleCollapse();
     }
   };
 
   const renderHeader = (theme: ThemeType) => {
-    const defaultProps = {
-      'aria-controls': `${props.id}-header`,
-      'aria-expanded': openStatus,
-      id: `${props.id}-header`,
-      onClick: toggleCollapse,
-    };
-
-    return props.headerComponent ? (
+    return headerComponent ? (
       <CustomHeader
-        {...defaultProps}
+        aria-controls={`${id}-header`}
+        aria-expanded={openStatus}
+        id={`${id}-header`}
+        onClick={toggleCollapse}
         aria-disabled={false}
-        aria-label={props.headerTitleText}
-        onKeyDown={triggerToggle}
+        aria-label={headerTitleText}
+        onKeyDown={handleKeyDown}
         role="button"
         tabIndex={0}
       >
-        {props.headerComponent}
+        {headerComponent}
       </CustomHeader>
     ) : (
       <DefaultHeader
-        {...defaultProps}
+        aria-controls={`${id}-header`}
+        aria-expanded={openStatus}
+        id={`${id}-header`}
+        onClick={toggleCollapse}
         theme={theme}
         appearance="text"
         type="button"
-        textColor={props.headerTitleTextColor}
-        textSize={props.headerTitleTextSize}
+        textColor={headerTitleTextColor}
+        textSize={headerTitleTextSize}
       >
-        {props.headerTitleText}
+        {headerTitleText}
         <FlippingIcon name="chevronRight" open={openStatus} />
       </DefaultHeader>
     );
   };
 
-  const theme = {
+  const themeDefault = {
     ...defaultTheme,
-    ...props.theme,
+    theme,
   };
 
   return (
     <CollapseWrapper>
-      {renderHeader(theme)}
+      {renderHeader(themeDefault)}
       <CollapseContent
-        theme={theme}
-        id={`${props.id}-content`}
+        theme={themeDefault}
+        id={`${id}-content`}
         ref={content}
         role="region"
         aria-hidden={!openStatus}
-        aria-labelledby={`${props.id}-header`}
+        aria-labelledby={`${id}-header`}
         contentHeight={contentHeight}
       >
-        {props.children}
+        {children}
       </CollapseContent>
     </CollapseWrapper>
   );
