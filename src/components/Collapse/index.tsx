@@ -29,7 +29,6 @@ const FlippingIcon = styled(Icon)`
 `;
 
 type StyledProgressBarProps = {
-  theme: ThemeType;
   textColor?: string;
   textSize?: FontSizeType;
 };
@@ -93,7 +92,6 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
     startOpen,
     onOpenChange,
     children,
-    theme,
   } = props;
 
   const [openStatus, setOpenStatus] = useState(startOpen || false);
@@ -156,16 +154,16 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
     );
   };
 
-  const themeDefault = {
+  const theme: ThemeType = {
     ...defaultTheme,
-    theme,
+    ...props.theme,
   };
 
   return (
     <CollapseWrapper>
-      {renderHeader(themeDefault)}
+      {renderHeader(theme)}
       <CollapseContent
-        theme={themeDefault}
+        theme={theme}
         id={`${id}-content`}
         ref={content}
         role="region"
