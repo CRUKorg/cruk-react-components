@@ -37,8 +37,8 @@ export const AVATAR: AvatarType = {
 };
 
 export const BUTTON: ButtonType = {
-  borderRadius:'4px',
-  borderRadiusLarge:'4px',
+  borderRadius: '4px',
+  borderRadiusLarge: '4px',
   buttonBorderThickness: '2px',
   textDecoration: 'none',
   textTransform: 'none',
@@ -54,7 +54,7 @@ export const BREAKPOINT: BreakPointType = {
 export const TOKEN_COLORS: TokenColorsType = {
   darkBlue_100: '#edeaf5',
   darkBlue_200: '#dad2ea',
-  darkBlue_300: "#a896cf",
+  darkBlue_300: '#a896cf',
   darkBlue_500: '#2e008b',
   magenta_100: '#fdeaf5',
   magenta_500: '#e40074',
@@ -100,7 +100,6 @@ export const COLORS: ColorsType = {
   circularProgress: TOKEN_COLORS.cyan_500,
   circularProgressBackground: TOKEN_COLORS.grey_300,
 
-
   buttonPrimaryBackground: TOKEN_COLORS.magenta_500,
   buttonPrimaryText: TOKEN_COLORS.white,
   buttonPrimaryBorder: TOKEN_COLORS.magenta_500,
@@ -131,10 +130,9 @@ export const COLORS: ColorsType = {
   buttonTertiaryDisabledText: TOKEN_COLORS.grey_500,
   buttonTertiaryDisabledBorder: TOKEN_COLORS.grey_100,
 
-
   selectionBorder: TOKEN_COLORS.grey_500,
- 
-  textInputBorder: TOKEN_COLORS.grey_900, 
+
+  textInputBorder: TOKEN_COLORS.grey_900,
   inputBorder: TOKEN_COLORS.grey_900,
 
   headerBackground: TOKEN_COLORS.white,

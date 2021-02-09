@@ -8,15 +8,15 @@ import { Box, DateField } from '../';
 
 const unControlledContent = () => (
   <>
-    <Box backgroundColor='backgroundLight'>
+    <Box backgroundColor="backgroundLight">
       <DateField
-        dayName='birthDay'
-        monthName='birthMonth'
-        yearName='birthYear'
+        dayName="birthDay"
+        monthName="birthMonth"
+        yearName="birthYear"
         day={'01'}
         month={'07'}
         year={'1990'}
-        label='When were they born?'
+        label="When were they born?"
         onChange={() => {}}
         onBlur={() => {}}
         onFocus={() => {}}
@@ -26,7 +26,7 @@ const unControlledContent = () => (
         day={'01'}
         month={'07'}
         year={'1990'}
-        label='Date with all fields with errors'
+        label="Date with all fields with errors"
         dayHasError={true}
         monthHasError={true}
         yearHasError={true}

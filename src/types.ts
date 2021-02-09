@@ -1,12 +1,4 @@
-export type FontSizeType =
-  | 'xs'
-  | 's'
-  | 'm'
-  | 'l'
-  | 'xl'
-  | 'xxl'
-  | 'xxxl'
-  | 'xxxxl';
+export type FontSizeType = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl' | 'xxxxl';
 
 export type FontSizesType = { [key in FontSizeType]: string };
 
@@ -51,8 +43,7 @@ export type BreakPointType = {
 
 export type TokenColorsType = { [key: string]: string };
 
-export type ColorsType = { 
-
+export type ColorsType = {
   primary: string;
   secondary: string;
   tertiary: string;
@@ -80,9 +71,9 @@ export type ColorsType = {
   buttonPrimaryBackgroundHover: string;
   buttonPrimaryTextHover: string;
   buttonPrimaryBorderHover: string;
-  buttonPrimaryDisabledBackground: string
-  buttonPrimaryDisabledText: string
-  buttonPrimaryDisabledBorder: string
+  buttonPrimaryDisabledBackground: string;
+  buttonPrimaryDisabledText: string;
+  buttonPrimaryDisabledBorder: string;
 
   buttonSecondaryBackground: string;
   buttonSecondaryText: string;
@@ -103,7 +94,6 @@ export type ColorsType = {
   buttonTertiaryDisabledBackground: string;
   buttonTertiaryDisabledText: string;
   buttonTertiaryDisabledBorder: string;
-
 
   selectionBorder: string;
   inputBorder: string;
@@ -138,16 +128,7 @@ export type ColorsType = {
 
 export type ColorKeyType = keyof ColorsType;
 
-export type SpaceType =
-  | 'auto'
-  | 'xxs'
-  | 'xs'
-  | 's'
-  | 'm'
-  | 'l'
-  | 'xl'
-  | 'xxl'
-  | 'none';
+export type SpaceType = 'auto' | 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'none';
 
 export type SpacingType = {
   auto: string;
