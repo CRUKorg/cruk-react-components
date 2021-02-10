@@ -17,6 +17,14 @@ const content = () => {
           Privacy
         </Link>
       </Footer>
+      <Footer alignCopyText="right">
+        <Link appearance="secondary" href="https://www.cancerresearchuk.org/about-us/contact-us">
+          Contact us
+        </Link>
+        <Link appearance="secondary" href="https://www.cancerresearchuk.org/privacy-statement">
+          Privacy
+        </Link>
+      </Footer>
     </>
   );
 };
