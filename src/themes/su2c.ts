@@ -113,7 +113,7 @@ export const TYPOGRAPHY: TypographyType = {
     {
       family: 'itc_avant_garde_pro_mdbold',
       // TODO push this to cdn.
-      url: 'http://crukorg.github.io/SU2C-drupal/assets/fonts/su2c/itc_-_itcavantgardepro-bold-webfont',
+      url: 'https://crukorg.github.io/SU2C-drupal/assets/fonts/su2c/itc_-_itcavantgardepro-bold-webfont',
     },
   ],
   fontFamilyHeadings: 'itc_avant_garde_pro_mdbold,Arial,sans-serif',
