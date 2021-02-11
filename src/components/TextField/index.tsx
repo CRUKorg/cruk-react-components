@@ -1,4 +1,4 @@
-import React, { FunctionComponent, InputHTMLAttributes, ReactElement } from 'react';
+import React, { FunctionComponent, InputHTMLAttributes, ReactElement, Ref, forwardRef } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -175,54 +175,58 @@ const StyledInput = styled.input<StyledInputProps>`
     `}
 `;
 
-const TextField: FunctionComponent<TextFieldProps> = ({
-  errorMessage,
-  extraBottom,
-  extraLeft,
-  extraRight,
-  extraTop,
-  hasError,
-  hintText,
-  isValid,
-  isValidVisible,
-  isInvalidVisible,
-  label,
-  theme: propsTheme,
-  ...props
-}) => {
-  const theme = {
-    ...defaultTheme,
-    ...propsTheme,
-  };
+const TextField: FunctionComponent<TextFieldProps> = forwardRef(
+  (props: TextFieldProps, ref?: Ref<HTMLInputElement>) => {
+    const {
+      errorMessage,
+      extraBottom,
+      extraLeft,
+      extraRight,
+      extraTop,
+      hasError,
+      hintText,
+      isValid,
+      isValidVisible,
+      isInvalidVisible,
+      label,
+      theme,
+    } = props;
 
-  const renderContent = (
-    <>
-      {!!extraLeft && <ExtraLeft theme={theme}>{extraLeft}</ExtraLeft>}
-      <StyledInput
-        hasError={hasError || !!errorMessage || false}
-        isValid={typeof isValid !== 'undefined' ? isValid : !hasError && !errorMessage}
-        aria-invalid={hasError || !!errorMessage || false}
-        isValidVisible={isValidVisible || false}
-        isInvalidVisible={isInvalidVisible || false}
-        extraBottom={extraBottom}
-        extraLeft={extraLeft}
-        extraRight={extraRight}
-        extraTop={extraTop}
-        theme={theme}
-        {...props}
-      />
-      {!!extraRight && <ExtraRight theme={theme}>{extraRight}</ExtraRight>}
-    </>
-  );
+    const themeDefault = {
+      ...defaultTheme,
+      ...theme,
+    };
 
-  return (
-    <WithLabel label={label} hintText={hintText} required={props.required || false}>
-      {!!extraTop && <ExtraTop theme={theme}>{extraTop}</ExtraTop>}
-      {!!extraRight || !!extraLeft ? <ExtraWrapper>{renderContent}</ExtraWrapper> : renderContent}
-      {!!extraBottom && <ExtraBottom theme={theme}>{extraBottom}</ExtraBottom>}
-      {!!errorMessage && <ErrorText theme={theme}>{errorMessage}</ErrorText>}
-    </WithLabel>
-  );
-};
+    const renderContent = (
+      <>
+        {!!extraLeft && <ExtraLeft theme={themeDefault}>{extraLeft}</ExtraLeft>}
+        <StyledInput
+          hasError={hasError || !!errorMessage || false}
+          isValid={typeof isValid !== 'undefined' ? isValid : !hasError && !errorMessage}
+          aria-invalid={hasError || !!errorMessage || false}
+          isValidVisible={isValidVisible || false}
+          isInvalidVisible={isInvalidVisible || false}
+          extraBottom={extraBottom}
+          extraLeft={extraLeft}
+          extraRight={extraRight}
+          extraTop={extraTop}
+          {...props}
+          theme={themeDefault}
+          ref={ref}
+        />
+        {!!extraRight && <ExtraRight theme={themeDefault}>{extraRight}</ExtraRight>}
+      </>
+    );
+
+    return (
+      <WithLabel label={label} hintText={hintText} required={props.required || false}>
+        {!!extraTop && <ExtraTop theme={themeDefault}>{extraTop}</ExtraTop>}
+        {!!extraRight || !!extraLeft ? <ExtraWrapper>{renderContent}</ExtraWrapper> : renderContent}
+        {!!extraBottom && <ExtraBottom theme={themeDefault}>{extraBottom}</ExtraBottom>}
+        {!!errorMessage && <ErrorText theme={themeDefault}>{errorMessage}</ErrorText>}
+      </WithLabel>
+    );
+  },
+);
 
 export default withTheme(TextField);
