@@ -177,12 +177,26 @@ const Tagline = styled.p<HeaderStickyContainerProps>`
 
 type HeaderProps = {
   isSticky?: boolean;
-  fullWidth?: boolean;
   siteSlogan?: string;
+  logoAltText? : string;
+  logoImageSrc? : string;
+  logoLinkTitle? : string;
+  logoLinkUrl? : string;
+  fullWidth?: boolean;
   theme?: ThemeType;
 };
 
-export const Header: FunctionComponent<HeaderProps> = props => {
+export const Header: FunctionComponent<HeaderProps> = ({
+  isSticky,
+  siteSlogan,
+  logoAltText,
+  logoImageSrc,
+  logoLinkTitle,
+  logoLinkUrl,
+  fullWidth,
+  children,
+  ...props
+}) => {
   const [isSmall, setIsSmall] = useState(false);
   const isBrowser = typeof window !== `undefined`;
 
@@ -200,12 +214,10 @@ export const Header: FunctionComponent<HeaderProps> = props => {
     100,
   );
 
-  const { isSticky, siteSlogan, fullWidth, children } = props;
   const theme = {
     ...defaultTheme,
     ...props.theme,
   };
-  const { logoUrl, logoSrc, logoAlt } = theme.siteConfig;
 
   return (
     <ThemeProvider theme={theme}>
@@ -216,9 +228,9 @@ export const Header: FunctionComponent<HeaderProps> = props => {
               Skip to main content
             </SkipToMain>
             <HeaderMainContent fullWidth={fullWidth}>
-              <StyledLink href={logoUrl} title="Home">
+              <StyledLink href={logoLinkUrl ?? theme.siteConfig.logoUrl} title={logoLinkTitle ?? "Home"}>
                 <LogoWrapper isSmall={isSmall} isSticky={isSticky}>
-                  <Logo src={logoSrc} alt={logoAlt} />
+                  <Logo src={logoImageSrc ?? theme.siteConfig.logoSrc} alt={logoAltText ?? theme.siteConfig.logoAlt} />
                 </LogoWrapper>
               </StyledLink>
               {siteSlogan ? (
