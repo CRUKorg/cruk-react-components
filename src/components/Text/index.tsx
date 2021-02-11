@@ -12,7 +12,7 @@ import { ThemeType } from '../../types';
 export type TextProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
     textColor?: string;
-    textAlign?: 'left' | 'right' | 'center';
+    textAlign?: 'left' | 'right' | 'center' | 'justify';
     textSize?: FontSizeType;
     textWeight?: number;
     as?: any;
