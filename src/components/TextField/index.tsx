@@ -176,8 +176,8 @@ const StyledInput = styled.input<StyledInputProps>`
 `;
 
 const TextField: FunctionComponent<TextFieldProps> = forwardRef(
-  (props: TextFieldProps, ref?: Ref<HTMLInputElement>) => {
-    const {
+  (
+    {
       errorMessage,
       extraBottom,
       extraLeft,
@@ -188,9 +188,13 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
       isValid,
       isValidVisible,
       isInvalidVisible,
+      required,
       label,
       theme,
-    } = props;
+      ...props
+    }: TextFieldProps,
+    ref?: Ref<HTMLInputElement>
+  ) => {
 
     const themeDefault = {
       ...defaultTheme,
@@ -203,6 +207,7 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
         <StyledInput
           hasError={hasError || !!errorMessage || false}
           isValid={typeof isValid !== 'undefined' ? isValid : !hasError && !errorMessage}
+          aria-required={required}
           aria-invalid={hasError || !!errorMessage || false}
           isValidVisible={isValidVisible || false}
           isInvalidVisible={isInvalidVisible || false}
@@ -219,7 +224,7 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
     );
 
     return (
-      <WithLabel label={label} hintText={hintText} required={props.required || false}>
+      <WithLabel label={label} hintText={hintText} required={required || false}>
         {!!extraTop && <ExtraTop theme={themeDefault}>{extraTop}</ExtraTop>}
         {!!extraRight || !!extraLeft ? <ExtraWrapper>{renderContent}</ExtraWrapper> : renderContent}
         {!!extraBottom && <ExtraBottom theme={themeDefault}>{extraBottom}</ExtraBottom>}
