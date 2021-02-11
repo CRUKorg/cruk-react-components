@@ -8,7 +8,7 @@ It is recommended that logo images are at least 80px high if they are not SVGs a
 
 It is also recommended that the logo width doesn't exceed 350px. If you need a wide logo that is shorter than 80px to keep the aspect ratio please make sure that the logo is centered with transparent space at the top and bottom and still 80px high.
 
-### Header Text (optional)
+### Site Slogan Text (optional)
 
 This is a single line of text and the character limit depends on the theme, logo and children width. This is only visible on desktop at the top of the page
 
