@@ -64,19 +64,10 @@ type StyledSelectProps = Omit<SelectProps, 'errorMesage' | 'hasError' | 'label'>
 };
 
 const Select: FunctionComponent<SelectProps> = forwardRef(
-    (
-      {
-        errorMessage,
-        hasError,
-        required,
-        theme: propsTheme,
-        label,
-        hintText,
-        ...props
-      }: SelectProps,
-      ref?: Ref<HTMLInputElement>
-    ) => {
-      
+  (
+    { errorMessage, hasError, required, theme: propsTheme, label, hintText, ...props }: SelectProps,
+    ref?: Ref<HTMLSelectElement>,
+  ) => {
     const theme = {
       ...defaultTheme,
       ...propsTheme,
@@ -86,6 +77,7 @@ const Select: FunctionComponent<SelectProps> = forwardRef(
       <WithLabel label={label} hintText={hintText} required={required} {...props}>
         <StyledSelect
           {...props}
+          ref={ref}
           theme={theme}
           aria-required={required}
           aria-invalid={hasError || !!errorMessage || false}
@@ -95,7 +87,7 @@ const Select: FunctionComponent<SelectProps> = forwardRef(
         {!!errorMessage && <ErrorText>{errorMessage}</ErrorText>}
       </WithLabel>
     );
-  }
+  },
 );
 
 export default withTheme(Select);
