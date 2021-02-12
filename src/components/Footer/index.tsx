@@ -173,7 +173,7 @@ export const Footer: FunctionComponent<FooterPropsType> = props => {
                 <>{props.middleSection}</>
               )
             ) : (
-              <Text textSize="s">{props.theme.siteConfig.footerCopyText}</Text>
+              <Text textSize="s">{theme.siteConfig.footerCopyText}</Text>
             )}
           </FooterSection>
 
