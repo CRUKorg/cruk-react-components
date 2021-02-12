@@ -176,8 +176,8 @@ const StyledInput = styled.input<StyledInputProps>`
 `;
 
 const TextField: FunctionComponent<TextFieldProps> = forwardRef(
-  (props: TextFieldProps, ref?: Ref<HTMLInputElement>) => {
-    const {
+  (
+    {
       errorMessage,
       extraBottom,
       extraLeft,
@@ -190,8 +190,10 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
       isInvalidVisible,
       label,
       theme,
-    } = props;
-
+      ...props
+    }: TextFieldProps,
+    ref?: Ref<HTMLInputElement>,
+  ) => {
     const themeDefault = {
       ...defaultTheme,
       ...theme,

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactElement, SelectHTMLAttributes } from 'react';
+import React, { FunctionComponent, ReactElement, SelectHTMLAttributes, Ref, forwardRef } from 'react';
 import styled, { withTheme, css } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -63,32 +63,31 @@ type StyledSelectProps = Omit<SelectProps, 'errorMesage' | 'hasError' | 'label'>
   label?: string;
 };
 
-const Select: FunctionComponent<SelectProps> = ({
-  errorMessage,
-  hasError,
-  required,
-  theme: propsTheme,
-  label,
-  hintText,
-  ...props
-}) => {
-  const theme = {
-    ...defaultTheme,
-    ...propsTheme,
-  };
+const Select: FunctionComponent<SelectProps> = forwardRef(
+  (
+    { errorMessage, hasError, required, theme: propsTheme, label, hintText, ...props }: SelectProps,
+    ref?: Ref<HTMLSelectElement>,
+  ) => {
+    const theme = {
+      ...defaultTheme,
+      ...propsTheme,
+    };
 
-  return (
-    <WithLabel label={label} hintText={hintText} required={required} {...props}>
-      <StyledSelect
-        {...props}
-        theme={theme}
-        aria-invalid={hasError || !!errorMessage || false}
-        hasError={hasError || !!errorMessage || false}
-        label={undefined}
-      />
-      {!!errorMessage && <ErrorText>{errorMessage}</ErrorText>}
-    </WithLabel>
-  );
-};
+    return (
+      <WithLabel label={label} hintText={hintText} required={required} {...props}>
+        <StyledSelect
+          {...props}
+          ref={ref}
+          theme={theme}
+          aria-required={required}
+          aria-invalid={hasError || !!errorMessage || false}
+          hasError={hasError || !!errorMessage || false}
+          label={undefined}
+        />
+        {!!errorMessage && <ErrorText>{errorMessage}</ErrorText>}
+      </WithLabel>
+    );
+  },
+);
 
 export default withTheme(Select);
