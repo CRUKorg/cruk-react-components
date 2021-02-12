@@ -166,12 +166,14 @@ export const Footer: FunctionComponent<FooterPropsType> = props => {
           </FooterSectionLinks>
 
           <FooterSection>
-            {typeof props.middleSection === 'string' ? (
-              <Text textSize="s">{props.middleSection}</Text>
-            ) : props.theme?.siteConfig.footerCopyText ? (
-              <Text textSize="s">{props.theme.siteConfig.footerCopyText}</Text>
+            {!!props.middleSection ? (
+              typeof props.middleSection === 'string' ? (
+                <Text textSize="s">{props.middleSection}</Text>
+              ) : (
+                <>{props.middleSection}</>
+              )
             ) : (
-              <>{props.middleSection}</>
+              <Text textSize="s">{props.theme.siteConfig.footerCopyText}</Text>
             )}
           </FooterSection>
 
