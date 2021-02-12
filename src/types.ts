@@ -16,6 +16,7 @@ export type SiteConfigType = {
   logoUrl: string;
   logoAlt: string;
   logoSrc: string;
+  footerCopyText: string;
 };
 
 export type AvatarType = {

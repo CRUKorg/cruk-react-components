@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import styled, { withTheme, ThemeProvider } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -136,7 +136,7 @@ const StyledAddress = styled.address`
 
 type FooterPropsType = {
   theme?: ThemeType;
-  copyText?: string;
+  middleSection?: ReactNode;
 };
 
 export const Footer: FunctionComponent<FooterPropsType> = props => {
@@ -166,22 +166,12 @@ export const Footer: FunctionComponent<FooterPropsType> = props => {
           </FooterSectionLinks>
 
           <FooterSection>
-            {props.copyText ? (
-              <Text textSize="s">{props.copyText}</Text>
-            ) : props.theme?.name === 'su2c' ? (
-              <Text textSize="s">
-                Stand Up To Cancer and Stand Up To Cancer Brand Marks are registered trademarks of the Entertainment
-                Industry Foundation. Cancer Research UK is a registered charity in England and Wales (1089464), Scotland
-                (SC041666), the Isle of Man (1103) and Jersey (247). A company limited by guarantee. Registered company
-                in England and Wales (4325234) and the Isle of Man (5713F). Registered address: 2 Redman Place, London,
-                E20 1JQ. Donations will be made to Cancer Research UK in support of the Stand Up To Cancer campaign.
-              </Text>
+            {typeof props.middleSection === 'string' ? (
+              <Text textSize="s">{props.middleSection}</Text>
+            ) : props.theme?.siteConfig.footerCopyText ? (
+              <Text textSize="s">{props.theme.siteConfig.footerCopyText}</Text>
             ) : (
-              <Text textSize="s">
-                Cancer Research UK is a registered charity in England and Wales (1089464), Scotland (SC041666), the Isle
-                of Man (1103) and Jersey (247). A company limited by guarantee. Registered company in England and Wales
-                (4325234) and the Isle of Man (5713F).
-              </Text>
+              <>{props.middleSection}</>
             )}
           </FooterSection>
 
