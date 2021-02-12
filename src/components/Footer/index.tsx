@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import styled, { withTheme, ThemeProvider } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -136,6 +136,7 @@ const StyledAddress = styled.address`
 
 type FooterPropsType = {
   theme?: ThemeType;
+  middleSection?: ReactNode;
 };
 
 export const Footer: FunctionComponent<FooterPropsType> = props => {
@@ -165,11 +166,15 @@ export const Footer: FunctionComponent<FooterPropsType> = props => {
           </FooterSectionLinks>
 
           <FooterSection>
-            <Text textSize="s">
-              Cancer Research UK is a registered charity in England and Wales (1089464), Scotland (SC041666), the Isle
-              of Man (1103) and Jersey (247). Registered as a company limited by guarantee in England and Wales No.
-              4325234.
-            </Text>
+            {!!props.middleSection ? (
+              typeof props.middleSection === 'string' ? (
+                <Text textSize="s">{props.middleSection}</Text>
+              ) : (
+                <>{props.middleSection}</>
+              )
+            ) : (
+              <Text textSize="s">{props.theme.siteConfig.footerCopyText}</Text>
+            )}
           </FooterSection>
 
           <FooterSectionAddress>
