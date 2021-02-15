@@ -55,6 +55,7 @@ type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   theme: ThemeType;
   label: string;
   hintText?: ReactElement | string;
+  ref?: Ref<HTMLSelectElement>;
 };
 
 // in the styled component we want has error to be manadatory and we want to remove label so it can be undefined

@@ -155,7 +155,7 @@ Other props not listed here (disabled, placeholder, etc.) will be passed to the 
 | hintText         | ReactElement \| string |          |         | Extra help text between the label and input                               |
 | isValid          | Boolean                |          | true    | used with isValidVisible/isValidInvisible to show valid/invalid indicator |
 | isValidVisible   | Boolean                |          | false   | show valid indicator when isValid is true or no error exists              |
-| isValidInvisible | Boolean                |          | false   | show invalid indicator when isValid is false or if error exists           |
+| isInvalidVisible | Boolean                |          | false   | show invalid indicator when isValid is false or if error exists           |
 | extraTop         | string                 |          |         | Displayed on top of the input                                             |
 | extraRight       | string                 |          |         | Displayed inline after the input                                          |
 | extraBottom      | string                 |          |         | Displayed under the input                                                 |

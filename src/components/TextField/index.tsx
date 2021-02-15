@@ -32,6 +32,7 @@ type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   isInvalidVisible?: boolean;
   label: string;
   theme: ThemeType;
+  ref?: Ref<HTMLInputElement>;
 };
 
 type StyledInputProps = Omit<TextFieldProps, 'errorMessage' | 'hasError' | 'label'> & {
