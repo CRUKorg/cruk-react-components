@@ -222,7 +222,7 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
     );
 
     return (
-      <WithLabel label={label} hintText={hintText} required={props.required || false}>
+      <WithLabel theme={theme} label={label} hintText={hintText} required={props.required || false}>
         {!!extraTop && <ExtraTop theme={themeDefault}>{extraTop}</ExtraTop>}
         {!!extraRight || !!extraLeft ? <ExtraWrapper>{renderContent}</ExtraWrapper> : renderContent}
         {!!extraBottom && <ExtraBottom theme={themeDefault}>{extraBottom}</ExtraBottom>}

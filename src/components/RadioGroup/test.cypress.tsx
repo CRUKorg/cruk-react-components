@@ -15,7 +15,7 @@ const uncontrolledContent = () => (
         { option: 'Yes', value: 'yes' },
         { option: 'No', value: 'no' },
       ]}
-      checkedState={'yes'}
+      selectedValue={'yes'}
     />
 
     <RadioGroup
@@ -25,7 +25,7 @@ const uncontrolledContent = () => (
         { option: 'Yes', value: 'yes' },
         { option: 'No', value: 'no' },
       ]}
-      checkedState={'no'}
+      selectedValue={'no'}
     />
   </div>
 );
@@ -44,7 +44,7 @@ const Content = () => {
           { option: 'Yes', value: 'yes' },
           { option: 'No', value: 'no' },
         ]}
-        checkedState={selectedEmail}
+        selectedValue={selectedEmail}
       />
 
       <RadioGroup
@@ -55,7 +55,7 @@ const Content = () => {
           { option: 'Yes', value: 'yes' },
           { option: 'No', value: 'no' },
         ]}
-        checkedState={selectedPhone}
+        selectedValue={selectedPhone}
       />
     </>
   );

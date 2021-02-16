@@ -22,8 +22,9 @@ const StyledLegend = styled.legend`
 `;
 
 const StyledFieldSet = styled.fieldset`
-  display: block;
+  display: inline-flex;
   border: none;
+  width: 100%;
 `;
 
 type RadioGroupProps = {
@@ -33,12 +34,12 @@ type RadioGroupProps = {
     option: string;
   }>;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  checkedState: string;
+  selectedValue?: string;
   name: string;
   theme: ThemeType;
 };
 
-const RadioGroup: FunctionComponent<RadioGroupProps> = props => {
+const RadioGroup: FunctionComponent<RadioGroupProps> = ({ selectedValue = "", ...props }) => {
   const theme = {
     ...defaultTheme,
     ...props.theme,
@@ -55,7 +56,7 @@ const RadioGroup: FunctionComponent<RadioGroupProps> = props => {
           <StyledRadio
             widthPercent={percentage}
             key={item.value}
-            checked={props.checkedState === item.value}
+            checked={selectedValue === item.value}
             onChange={props.onChange}
             name={props.name}
             value={item.value}

@@ -67,7 +67,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
   };
 
   return (
-    <WithLabel label={label} hintText={hintText} required={props.required || false}>
+    <WithLabel theme={theme} label={label} hintText={hintText} required={props.required || false}>
       <StyledTextArea
         hasError={hasError || !!errorMessage || false}
         aria-invalid={hasError || !!errorMessage || false}
