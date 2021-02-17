@@ -10,7 +10,6 @@ const BUTTON_HEIGHT = '3em';
 
 type StyledLabelProps = {
   checked: boolean;
-  ref?: Ref<HTMLInputElement>;
 };
 
 const CheckWrapper = styled.div`
@@ -134,6 +133,7 @@ const StyledInput = styled.input`
 
 type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   theme?: ThemeType;
+  ref?: Ref<HTMLInputElement>;
 };
 
 const Checkbox: FC<CheckboxProps> = forwardRef((props: CheckboxProps, ref?: Ref<HTMLInputElement>) => {
