@@ -10,8 +10,8 @@ const StyledRadio = styled(RadioInput)`
   display: block;
   float: left;
   text-align: center;
-  margin-left: 20px;
-  width: ${({ widthPercent }: { widthPercent: number }) => `${widthPercent}%`};
+  margin-left: ${({ theme }) => theme.spacing.s};
+  width: ${({ widthPercent, theme }: { widthPercent: number, theme: ThemeType }) => `calc(${widthPercent}% - ${theme.spacing.s})`};
 `;
 
 const StyledLegend = styled.legend`
@@ -22,7 +22,7 @@ const StyledLegend = styled.legend`
 `;
 
 const StyledFieldSet = styled.fieldset`
-  display: inline-flex;
+  display: block;
   border: none;
   width: 100%;
 `;
