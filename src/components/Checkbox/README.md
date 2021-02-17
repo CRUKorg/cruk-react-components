@@ -50,9 +50,10 @@ function () {
 
 ## Props
 
-| Name     | Type     | Options | Default | Description                                                          |
-| :------- | :------- | :-----: | :------ | :------------------------------------------------------------------- |
-| children | String   |         |         | Used as label text                                                   |
-| disabled | boolean  |         | false   | Applies disabled attribute to HTML input                             |
-| onChange | Function |         |         | Callback function called on input change                             |
-| value    | String   |         |         | Value to be returned and used as label if label prop is not supplied |
+| Name     | Type       | Options | Default | Description                                                                 |
+| :------- | :--------- | :-----: | :------ | :-------------------------------------------------------------------------- |
+| children | String     |         |         | Used as label text                                                          |
+| disabled | boolean    |         | false   | Applies disabled attribute to HTML input                                    |
+| onChange | Function   |         |         | Callback function called on input change                                    |
+| value    | String     |         |         | Value to be returned and used as label if label prop is not supplied        |
+| children | ReactChild |         |         | React node or text to be used as a label, the value is displayed as default |
