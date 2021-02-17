@@ -10,20 +10,23 @@ const StyledRadio = styled(RadioInput)`
   display: block;
   float: left;
   text-align: center;
-  margin-left: 20px;
-  width: ${({ widthPercent }: { widthPercent: number }) => `${widthPercent}%`};
+  margin-left: ${({ theme }) => theme.spacing.s};
+  width: ${({ widthPercent, theme }: { widthPercent: number; theme: ThemeType }) =>
+    `calc(${widthPercent}% - ${theme.spacing.s})`};
 `;
 
 const StyledLegend = styled.legend`
   display: block;
   float: left;
-  max-width: 20%;
   width: ${({ widthPercent }: { widthPercent: number }) => `${widthPercent}%`};
 `;
 
 const StyledFieldSet = styled.fieldset`
   display: block;
   border: none;
+  padding: 0;
+  margin: 0 0 ${({ theme }) => theme.spacing.s} 0;
+  width: 100%;
 `;
 
 type RadioGroupProps = {
@@ -33,12 +36,12 @@ type RadioGroupProps = {
     option: string;
   }>;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  checkedState: string;
+  selectedValue?: string;
   name: string;
   theme: ThemeType;
 };
 
-const RadioGroup: FunctionComponent<RadioGroupProps> = props => {
+const RadioGroup: FunctionComponent<RadioGroupProps> = ({ selectedValue = '', ...props }) => {
   const theme = {
     ...defaultTheme,
     ...props.theme,
@@ -55,7 +58,7 @@ const RadioGroup: FunctionComponent<RadioGroupProps> = props => {
           <StyledRadio
             widthPercent={percentage}
             key={item.value}
-            checked={props.checkedState === item.value}
+            checked={selectedValue === item.value}
             onChange={props.onChange}
             name={props.name}
             value={item.value}
