@@ -1,4 +1,4 @@
-import React, { FC, InputHTMLAttributes } from 'react';
+import React, { FC, InputHTMLAttributes, Ref, forwardRef } from 'react';
 import styled, { css, withTheme, ThemeProvider } from 'styled-components';
 
 import defaultTheme from '../../themes/cruk';
@@ -10,6 +10,7 @@ const BUTTON_HEIGHT = '3em';
 
 type StyledLabelProps = {
   checked: boolean;
+  ref?: Ref<HTMLInputElement>;
 };
 
 const CheckWrapper = styled.div`
@@ -135,7 +136,7 @@ type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   theme?: ThemeType;
 };
 
-const Checkbox: FC<CheckboxProps> = props => {
+const Checkbox: FC<CheckboxProps> = forwardRef((props: CheckboxProps, ref?: Ref<HTMLInputElement>) => {
   const theme = {
     ...defaultTheme,
     ...props.theme,
@@ -151,6 +152,7 @@ const Checkbox: FC<CheckboxProps> = props => {
           onChange={props.onChange}
           type="checkbox"
           value={props.value}
+          ref={ref}
         />
         {props.children || props.value}
         {theme.utilities.useDefaultFromControls ? null : (
@@ -165,6 +167,6 @@ const Checkbox: FC<CheckboxProps> = props => {
       </StyledLabel>
     </ThemeProvider>
   );
-};
+});
 
 export default withTheme(Checkbox);
