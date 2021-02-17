@@ -11,19 +11,21 @@ const StyledRadio = styled(RadioInput)`
   float: left;
   text-align: center;
   margin-left: ${({ theme }) => theme.spacing.s};
-  width: ${({ widthPercent, theme }: { widthPercent: number, theme: ThemeType }) => `calc(${widthPercent}% - ${theme.spacing.s})`};
+  width: ${({ widthPercent, theme }: { widthPercent: number; theme: ThemeType }) =>
+    `calc(${widthPercent}% - ${theme.spacing.s})`};
 `;
 
 const StyledLegend = styled.legend`
   display: block;
   float: left;
-  max-width: 20%;
   width: ${({ widthPercent }: { widthPercent: number }) => `${widthPercent}%`};
 `;
 
 const StyledFieldSet = styled.fieldset`
   display: block;
   border: none;
+  padding: 0;
+  margin: 0 0 ${({ theme }) => theme.spacing.s} 0;
   width: 100%;
 `;
 
@@ -39,7 +41,7 @@ type RadioGroupProps = {
   theme: ThemeType;
 };
 
-const RadioGroup: FunctionComponent<RadioGroupProps> = ({ selectedValue = "", ...props }) => {
+const RadioGroup: FunctionComponent<RadioGroupProps> = ({ selectedValue = '', ...props }) => {
   const theme = {
     ...defaultTheme,
     ...props.theme,
