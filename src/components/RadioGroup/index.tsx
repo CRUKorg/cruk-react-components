@@ -51,7 +51,6 @@ const RadioGroup: FunctionComponent<RadioGroupProps> = ({ selectedValue = '', ..
   };
 
   const numberOfAttributes = props.attributes.length;
-  const percentage = 100 / numberOfAttributes;
 
   return (
     <ThemeProvider theme={theme}>
