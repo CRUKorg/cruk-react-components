@@ -6,23 +6,26 @@ import defaultTheme from '../../themes/cruk';
 
 import { ThemeType } from '../../types';
 
+const LEGEND_WIDTH = '20%';
+
 const StyledRadio = styled(RadioInput)`
   display: block;
   float: left;
   text-align: center;
   margin-left: ${({ theme }) => theme.spacing.s};
-  width: ${({ widthPercent, theme }: { widthPercent: number; theme: ThemeType }) =>
-    `calc(${widthPercent}% - ${theme.spacing.s})`};
+  width: ${({ numberOfAttributes, theme }: { numberOfAttributes: number; theme: ThemeType }) =>
+    `calc(((100% - ${LEGEND_WIDTH}) / ${numberOfAttributes}) - ${theme.spacing.s})`};
 `;
 
 const StyledLegend = styled.legend`
+  width: ${LEGEND_WIDTH};
   display: block;
   float: left;
-  width: ${({ widthPercent }: { widthPercent: number }) => `${widthPercent}%`};
 `;
 
 const StyledFieldSet = styled.fieldset`
   display: block;
+  position: relative;
   border: none;
   padding: 0;
   margin: 0 0 ${({ theme }) => theme.spacing.s} 0;
@@ -48,15 +51,15 @@ const RadioGroup: FunctionComponent<RadioGroupProps> = ({ selectedValue = '', ..
   };
 
   const numberOfAttributes = props.attributes.length;
-  const percentage = 100 / (numberOfAttributes + 1);
+  const percentage = 100 / numberOfAttributes;
 
   return (
     <ThemeProvider theme={theme}>
       <StyledFieldSet>
-        <StyledLegend widthPercent={percentage}>{props.legend}</StyledLegend>
+        <StyledLegend>{props.legend}</StyledLegend>
         {props.attributes.map(item => (
           <StyledRadio
-            widthPercent={percentage}
+            numberOfAttributes={numberOfAttributes}
             key={item.value}
             checked={selectedValue === item.value}
             onChange={props.onChange}
