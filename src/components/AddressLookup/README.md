@@ -6,6 +6,8 @@ We use Loqate (formerly Addressy and Postcode Anywhere) API v3, we have looked a
 
 You will need a Loqate api key, the examples below use "MG17-ZD93-FF33-KF13" our development key.
 
+This component is generally only used for country codes including "GBR", "GGY", "IMN", "JEY". An example of this behavior is included bellow.
+
 ### Try it out
 
 ```.jsx
@@ -16,6 +18,7 @@ function () {
   const [line3, setLine3] = React.useState('');
   const [city, setCity] = React.useState('');
   const [postalCode, setPostalCode] = React.useState('');
+  const [country, setCountry] = React.useState('GBR');
   
   const handleAddressSelected = (address) => {
     setValidated(true);
@@ -38,17 +41,47 @@ function () {
 
       <fieldset>
         <legend>Your Address</legend>
-        <p>Example wired up to a simple form, with controlled inputs. For production use we recomend using useing Formic and Yup for form management and validation</p>
+        <p>
+          Example wired up to a simple form, with controlled inputs. For production use we recommend using using Formic and Yup for form management and validation
+        </p>
         <Box>
-          <AddressLookup
-            apiKey="MG17-ZD93-FF33-KF13"
-            onAddressSelected={handleAddressSelected}
-            onChange={(e) => {
-              setValidated(false);
-              setLine1(e.target.value)}
-            }
-            value={line1}
-          />
+          <Select
+            label="Country"
+            required
+            value={country}
+            onChange={(e) => setCountry(e.target.value)
+          }>
+            <option value="GBR">United Kingdom</option>
+            <option value="ALA">Afghanistan</option>
+            <option value="ALB">Albania</option>
+            <option value="DZA">Algeria</option>
+            {/* ... */}
+            <option value="GGY">Guernsey</option>
+          </Select>
+        </Box>
+        <Box>
+          {["GBR", "GGY", "IMN", "JEY"].includes(country) ? (
+            <AddressLookup
+              apiKey="MG17-ZD93-FF33-KF13"
+              countries={[country]}
+              onAddressSelected={handleAddressSelected}
+              onChange={(e) => {
+                setValidated(false);
+                setLine1(e.target.value)}
+              }
+              value={line1}
+            />
+          ) : (
+            <TextField
+              onChange={e => {
+                setValidated(false);
+                setLine2(e.target.value);
+              }}
+              required
+              label="Home address"
+              value={line1}
+            />
+          )}
         </Box>
         <Box>
           <TextField
@@ -104,8 +137,13 @@ function () {
 | Name | Type | Options | Default | Description |
 | :- | :- | :-: | :- | :- |
 | apiKey | String |  |  | Loqate API key |
+| countries | String[] | A comma separated list of ISO 2 or 3 character country codes to limit the search within. |  | See https://www.loqate.com/resources/support/apis/Capture/Interactive/Find/1.1/ - CRUK typically uses "GBR", "GGY", "IMN", "JEY" |
 | error | String |  |  | Error message text |
 | hasError | Boolean |  | false | If true, use error styling for the input |
+| isValid | Boolean |  | true | used with isValidVisible to show valid indicator |
+| isValidVisible | Boolean |  | false | show valid indicator when isValid is true or no error exists |
+| label | String | "Home address" |  | Label text for field |
+| onAddressError | Function | | err => console.error(err) | Handler for if there is an error thrown back by Loqate |
 | onAddressSelected | Function | | | Returns address object |
 | onChange | Function | |  | Callback function called on input change|
 
