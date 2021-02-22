@@ -138,6 +138,7 @@ export const COLORS: ColorsType = {
 
   headerBackground: TOKEN_COLORS.white,
   backgroundLight: TOKEN_COLORS.white,
+  backgroundLightColor: TOKEN_COLORS.darkBlue_200,
   backgroundMid: TOKEN_COLORS.grey_100,
 
   paginationActive: TOKEN_COLORS.grey_300,

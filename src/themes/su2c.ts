@@ -72,6 +72,7 @@ export const COLORS: ColorsType = {
 
   inputBorder: TOKEN_COLORS.grey_300,
   textInputBorder: TOKEN_COLORS.grey_300,
+  backgroundLightColor: TOKEN_COLORS.su2cOrange2,
 
   paginationBackground: TOKEN_COLORS.su2cBlack,
 
@@ -87,22 +88,22 @@ export const COLORS: ColorsType = {
 
   buttonSecondaryBackground: TOKEN_COLORS.white,
   buttonSecondaryText: TOKEN_COLORS.su2cOrange5,
-  buttonSecondaryBorder: TOKEN_COLORS.su2cGrey2,
+  buttonSecondaryBorder: TOKEN_COLORS.su2cOrange5,
   buttonSecondaryBackgroundHover: TOKEN_COLORS.su2cOrange1,
   buttonSecondaryTextHover: TOKEN_COLORS.su2cOrange5,
-  buttonSecondaryBorderHover: TOKEN_COLORS.su2cOrange3,
+  buttonSecondaryBorderHover: TOKEN_COLORS.su2cOrange5,
   buttonSecondaryDisabledBackground: TOKEN_COLORS.white,
   buttonSecondaryDisabledText: TOKEN_COLORS.grey_300,
   buttonSecondaryDisabledBorder: TOKEN_COLORS.grey_300,
 
-  buttonTertiaryBackground: TOKEN_COLORS.su2cBlack,
-  buttonTertiaryText: TOKEN_COLORS.white,
-  buttonTertiaryBorder: TOKEN_COLORS.su2cBlack,
-  buttonTertiaryBackgroundHover: TOKEN_COLORS.su2cRed,
-  buttonTertiaryTextHover: TOKEN_COLORS.white,
-  buttonTertiaryBorderHover: TOKEN_COLORS.su2cRed,
-  buttonTertiaryDisabledBackground: TOKEN_COLORS.grey_300,
-  buttonTertiaryDisabledText: TOKEN_COLORS.white,
+  buttonTertiaryBackground: TOKEN_COLORS.white,
+  buttonTertiaryText: TOKEN_COLORS.su2cOrange5,
+  buttonTertiaryBorder: TOKEN_COLORS.su2cGrey2,
+  buttonTertiaryBackgroundHover: TOKEN_COLORS.su2cOrange1,
+  buttonTertiaryTextHover: TOKEN_COLORS.su2cOrange5,
+  buttonTertiaryBorderHover: TOKEN_COLORS.su2cGrey2,
+  buttonTertiaryDisabledBackground: TOKEN_COLORS.white,
+  buttonTertiaryDisabledText: TOKEN_COLORS.grey_300,
   buttonTertiaryDisabledBorder: TOKEN_COLORS.grey_300,
 };
 

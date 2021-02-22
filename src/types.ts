@@ -101,6 +101,7 @@ export type ColorsType = {
 
   headerBackground: string;
   backgroundLight: string;
+  backgroundLightColor: string;
   backgroundMid: string;
 
   paginationBackground: string
