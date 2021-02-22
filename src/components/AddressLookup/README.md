@@ -46,7 +46,8 @@ function () {
         </p>
         <Box>
           <Select
-            required label="Country"
+            label="Country"
+            required
             value={country}
             onChange={(e) => setCountry(e.target.value)
           }>

@@ -165,8 +165,9 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
         <TextField
           aria-activedescendant={addressOptions.length ? `addressOptions-${activeOption}` : ''}
           aria-owns="found_addresses"
+          aria-autocomplete="both"
           aria-expanded={addressOptions.length ? 'true' : 'false'}
-          autoComplete="none"
+          autoComplete="off"
           hasError={hasError || !!error}
           hintText="Start typing your address or postcode"
           isValid={isValid}
@@ -175,6 +176,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
           ref={ref}
           required
           role="combobox"
+          type="search"
           {...props}
           onKeyDown={e => {
             if (e.keyCode === 13 && addressOptions[activeOption]) {
