@@ -6,6 +6,8 @@ We use Loqate (formerly Addressy and Postcode Anywhere) API v3, we have looked a
 
 You will need a Loqate api key, the examples below use "MG17-ZD93-FF33-KF13" our development key.
 
+This component is generally only used for country codes including "GBR", "GGY", "IMN", "JEY". An example of this behavior is included bellow.
+
 ### Try it out
 
 ```.jsx
@@ -16,6 +18,7 @@ function () {
   const [line3, setLine3] = React.useState('');
   const [city, setCity] = React.useState('');
   const [postalCode, setPostalCode] = React.useState('');
+  const [country, setCountry] = React.useState('GBR');
   
   const handleAddressSelected = (address) => {
     setValidated(true);
@@ -38,17 +41,46 @@ function () {
 
       <fieldset>
         <legend>Your Address</legend>
-        <p>Example wired up to a simple form, with controlled inputs. For production use we recomend using useing Formic and Yup for form management and validation</p>
+        <p>
+          Example wired up to a simple form, with controlled inputs. For production use we recommend using using Formic and Yup for form management and validation
+        </p>
         <Box>
-          <AddressLookup
-            apiKey="MG17-ZD93-FF33-KF13"
-            onAddressSelected={handleAddressSelected}
-            onChange={(e) => {
-              setValidated(false);
-              setLine1(e.target.value)}
-            }
-            value={line1}
-          />
+          <Select
+            required label="Country"
+            value={country}
+            onChange={(e) => setCountry(e.target.value)
+          }>
+            <option value="GBR">United Kingdom</option>
+            <option value="ALA">Afghanistan</option>
+            <option value="ALB">Albania</option>
+            <option value="DZA">Algeria</option>
+            {/* ... */}
+            <option value="GGY">Guernsey</option>
+          </Select>
+        </Box>
+        <Box>
+          {["GBR", "GGY", "IMN", "JEY"].includes(country) ? (
+            <AddressLookup
+              apiKey="MG17-ZD93-FF33-KF13"
+              countries={[country]}
+              onAddressSelected={handleAddressSelected}
+              onChange={(e) => {
+                setValidated(false);
+                setLine1(e.target.value)}
+              }
+              value={line1}
+            />
+          ) : (
+            <TextField
+              onChange={e => {
+                setValidated(false);
+                setLine2(e.target.value);
+              }}
+              required
+              label="Home address"
+              value={line1}
+            />
+          )}
         </Box>
         <Box>
           <TextField
