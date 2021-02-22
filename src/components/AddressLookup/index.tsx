@@ -68,7 +68,7 @@ type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
   isValid?: boolean;
   isValidVisible?: boolean;
   label?: string;
-  onAddressError?: (error: any) => void;
+  onAddressError?: (error: Error) => void;
   onAddressSelected: (address: AddressDataType) => void;
   theme?: ThemeType;
   ref?: Ref<HTMLInputElement>;
@@ -84,7 +84,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
       isValid,
       isValidVisible,
       label,
-      onAddressError = err => console.error(err),
+      onAddressError = err => {},
       onAddressSelected,
       onChange,
       ...props
@@ -134,34 +134,30 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
       }
       fetch(searchUrl)
         .then((res: Response) => {
-          if (!res.ok) {
-            console.log('Error', 'Something went wrong please try again');
-          }
+          if (!res.ok) throw new Error('Something went wrong please try again');
           return res.json();
         })
         .then(data => {
           // Occasionally get the error "The query didn't respond fast enough, it may be too complex."
           // returned with a 200 response. Example query "n17 6t"
-          if (data.Items[0].Error) return console.error(data.Items[0]);
+          if (data.Items[0].Error) throw new Error('Something went wrong please try again');
           setActiveOption(0);
           setAddressOptions(data.Items || []);
         })
-        .catch(onAddressError);
+        .catch(err => onAddressError(err));
     };
 
     const getAddress = (id: string) => {
       fetch(`${RETRIEVE_URL}?Key=${apiKey}&Id=${id}`)
         .then((res: Response) => {
-          if (!res.ok) {
-            console.error('Something went wrong please try again');
-          }
+          if (!res.ok) throw new Error('Something went wrong please try again');
           return res.json();
         })
         .then(data => {
           clearOptions();
           onAddressSelected(data.Items[0]);
         })
-        .catch(onAddressError);
+        .catch(err => onAddressError(err));
     };
 
     return (
