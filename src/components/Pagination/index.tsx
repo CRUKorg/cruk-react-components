@@ -47,7 +47,7 @@ const PagerLink = styled.a<PaginationStyledProps>`
     },
   }) => s};
   color: ${props => props.theme.colors.textLight};
-  background-color: ${props => props.theme.colors.primary};
+  background-color: ${props => props.theme.colors.paginationBackground};
   cursor: pointer;
   border-radius: 0;
   margin: ${props => props.theme.spacing.xxs};
@@ -86,7 +86,7 @@ const PagerLink = styled.a<PaginationStyledProps>`
   ${(itemProps: PaginationStyledProps) =>
     (itemProps.name === 'Prev' || itemProps.name === 'Next') &&
     css`
-      color: ${props => props.theme.colors.primary};
+      color: ${props => props.theme.colors.paginationBackground};
       background-color: transparent;
       font-weight: bold;
       padding: 8px 6px;
