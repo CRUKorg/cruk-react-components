@@ -11,7 +11,12 @@ const Content = () => {
     <fieldset>
       <legend>Your Address</legend>
       <div style={{ height: '300px' }}>
-        <AddressLookup apiKey="MG17-ZD93-FF33-KF13" onAddressSelected={() => {}} onChange={() => {}} />
+        <AddressLookup
+          countries={['GBR']}
+          apiKey="MG17-ZD93-FF33-KF13"
+          onAddressSelected={() => {}}
+          onChange={() => {}}
+        />
       </div>
     </fieldset>
   );
@@ -35,10 +40,10 @@ describe('AddressLookup', () => {
           Type: 'Postcode',
         },
       ],
-    });
+    }).as('find');
   });
 
-  it('is accessible', () => {
+  it('can find address and is accessible', () => {
     mount(
       <TestWrapper>
         <Content />
@@ -52,6 +57,9 @@ describe('AddressLookup', () => {
           .blur();
         cy.contains('li', 'N17 0AB High Road, London - 14 Addresses').should('exist');
       });
+    cy.get('@find')
+      .should('have.property', 'url')
+      .and('contain', 'Countries=GBR');
     cy.injectAxe();
     cy.checkA11y('body');
   });
