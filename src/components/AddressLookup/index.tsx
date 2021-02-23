@@ -63,13 +63,13 @@ const ScreenReaderOnly = styled.div`
 type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
   apiKey: string;
   countries?: string[];
+  onAddressSelected: (address: AddressDataType) => void;
   error?: string;
   hasError?: boolean;
   isValid?: boolean;
   isValidVisible?: boolean;
   label?: string;
   onAddressError?: (error: Error) => void;
-  onAddressSelected: (address: AddressDataType) => void;
   theme?: ThemeType;
   ref?: Ref<HTMLInputElement>;
 };
