@@ -5,15 +5,17 @@ import defaultTheme from '../../themes/cruk';
 import useEffectBrowser from '../../hooks/useEffectBrowser';
 import { ThemeType } from '../../types';
 
+type PopOverPositionType = 'top' | 'topLeft' | 'left' | 'right' | 'bottom' | 'bottomLeft';
+
 type PopOverProps = {
-  position?: string;
+  position?: PopOverPositionType;
   overlay: any;
   css?: string;
   theme?: ThemeType;
 };
 
 type StyledPopOverContentType = {
-  position: string;
+  position: PopOverPositionType;
   theme?: ThemeType;
 };
 
@@ -38,7 +40,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
     },
   }) => xxs};
 
-  margin-bottom: ${({ position }) => {
+  margin-bottom: ${({ position }: { position?: PopOverPositionType }) => {
     switch (position) {
       case 'top':
         return '10px';
@@ -57,7 +59,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
     }
   }};
 
-  margin-top: ${({ position }) => {
+  margin-top: ${({ position }: { position?: PopOverPositionType }) => {
     switch (position) {
       case 'bottom':
         return '10px';
@@ -71,7 +73,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
         return 0;
     }
   }};
-  top: ${({ position }) => {
+  top: ${({ position }: { position?: PopOverPositionType }) => {
     switch (position) {
       case 'top':
         return 'auto';
@@ -90,7 +92,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
     }
   }};
 
-  bottom: ${({ position }) => {
+  bottom: ${({ position }: { position?: PopOverPositionType }) => {
     switch (position) {
       case 'top':
         return '100%';
@@ -109,7 +111,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
     }
   }};
 
-  left: ${({ position }) => {
+  left: ${({ position }: { position?: PopOverPositionType }) => {
     switch (position) {
       case 'top':
         return 0;
@@ -127,7 +129,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
         return 'auto';
     }
   }};
-  right: ${({ position }) => {
+  right: ${({ position }: { position?: PopOverPositionType }) => {
     switch (position) {
       case 'top':
         return 'auto';
@@ -174,7 +176,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
     width: 0;
     height: 0;
     position: absolute;
-    top: ${({ position }) => {
+    top: ${({ position }: { position?: PopOverPositionType }) => {
       switch (position) {
         case 'top':
           return '100%';
@@ -192,7 +194,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
           return '100%';
       }
     }};
-    bottom: ${({ position }) => {
+    bottom: ${({ position }: { position?: PopOverPositionType }) => {
       switch (position) {
         case 'top':
           return 'auto';
@@ -211,7 +213,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
       }
     }};
 
-    left: ${({ position, theme }) => {
+    left: ${({ position, theme }: { position?: PopOverPositionType; theme: ThemeType }) => {
       switch (position) {
         case 'top':
           return `${theme.spacing.s}`;
@@ -229,7 +231,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
           return `${theme.spacing.s}`;
       }
     }};
-    right: ${({ position, theme }) => {
+    right: ${({ position, theme }: { position?: PopOverPositionType; theme: ThemeType }) => {
       switch (position) {
         case 'top':
           return `auto`;
@@ -249,7 +251,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
     }};
   }
   &:before {
-    border-color: ${({ position }) => {
+    border-color: ${({ position }: { position?: PopOverPositionType }) => {
       switch (position) {
         case 'top':
           return 'rgba(0, 0, 0, 0.25) transparent transparent';
@@ -269,7 +271,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
     }};
   }
   &:after {
-    margin: ${({ position }) => {
+    margin: ${({ position }: { position?: PopOverPositionType }) => {
       switch (position) {
         case 'top':
           return '-1px 0 0 0';
@@ -287,7 +289,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
           return '-1px 0 0 0';
       }
     }};
-    border-color: ${({ theme, position }) => {
+    border-color: ${({ theme, position }: { position?: PopOverPositionType; theme: ThemeType }) => {
       switch (position) {
         case 'top':
           return `${theme.colors.popoverBackground} transparent transparent`;
@@ -308,7 +310,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
-    margin-top: ${({ position }) => {
+    margin-top: ${({ position }: { position?: PopOverPositionType }) => {
       switch (position) {
         case 'bottom':
           return '10px';
@@ -319,7 +321,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
       }
     }};
 
-    margin-left: ${({ position }) => {
+    margin-left: ${({ position }: { position?: PopOverPositionType }) => {
       switch (position) {
         case 'right':
           return '10px';
@@ -327,7 +329,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
           return 0;
       }
     }};
-    margin-right: ${({ position }) => {
+    margin-right: ${({ position }: { position?: PopOverPositionType }) => {
       switch (position) {
         case 'left':
           return '10px';
@@ -336,7 +338,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
       }
     }};
 
-    top: ${({ position }) => {
+    top: ${({ position }: { position?: PopOverPositionType }) => {
       switch (position) {
         case 'top':
           return 'auto';
@@ -355,7 +357,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
       }
     }};
 
-    left: ${({ position }) => {
+    left: ${({ position }: { position?: PopOverPositionType }) => {
       switch (position) {
         case 'top':
           return 0;
@@ -373,7 +375,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
           return 'auto';
       }
     }};
-    right: ${({ position }) => {
+    right: ${({ position }: { position?: PopOverPositionType }) => {
       switch (position) {
         case 'top':
           return 'auto';
@@ -395,7 +397,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
     &:after,
     &:before {
       content: '';
-      top: ${({ position, theme }) => {
+      top: ${({ position, theme }: { position?: PopOverPositionType; theme: ThemeType }) => {
         switch (position) {
           case 'top':
             return '100%';
@@ -413,7 +415,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
             return '100%';
         }
       }};
-      bottom: ${({ position }) => {
+      bottom: ${({ position }: { position?: PopOverPositionType }) => {
         switch (position) {
           case 'top':
             return 'auto';
@@ -432,7 +434,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
         }
       }};
 
-      left: ${({ position, theme }) => {
+      left: ${({ position, theme }: { position?: PopOverPositionType; theme: ThemeType }) => {
         switch (position) {
           case 'top':
             return `${theme.spacing.s}`;
@@ -450,7 +452,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
             return `${theme.spacing.s}`;
         }
       }};
-      right: ${({ position, theme }) => {
+      right: ${({ position, theme }: { position?: PopOverPositionType; theme: ThemeType }) => {
         switch (position) {
           case 'top':
             return `auto`;
@@ -470,7 +472,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
       }};
     }
     &:before {
-      border-color: ${({ position }) => {
+      border-color: ${({ position }: { position?: PopOverPositionType }) => {
         switch (position) {
           case 'top':
             return 'rgba(0, 0, 0, 0.25) transparent transparent';
@@ -490,7 +492,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
       }};
     }
     &:after {
-      margin: ${({ position }) => {
+      margin: ${({ position }: { position?: PopOverPositionType }) => {
         switch (position) {
           case 'top':
             return '-1px 0 0 0';
@@ -508,7 +510,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
             return '-1px 0 0 0';
         }
       }};
-      border-color: ${({ theme, position }) => {
+      border-color: ${({ theme, position }: { position?: PopOverPositionType; theme: ThemeType }) => {
         switch (position) {
           case 'top':
             return `${theme.colors.popoverBackground} transparent transparent`;
