@@ -13,6 +13,7 @@ const content = () => {
       <Icon name="question" size="36px" color="primary" />
       <Icon name="question" size="48px" color="secondary" />
       <Icon name="calendar" />
+      <Icon name="checkCircle" />
       <Icon name="chevronLeft" />
       <Icon name="chevronRight" />
       <Icon name="chevronRightBold" />
@@ -34,6 +35,7 @@ const content = () => {
       <Icon name="link" />
       <Icon name="linkedinSquare" />
       <Icon name="linkedin" />
+      <Icon name="mapMarker" />
       <Icon name="messengerSquare" />
       <Icon name="move" />
       <Icon name="moveDown" />
@@ -49,6 +51,7 @@ const content = () => {
       <Icon name="settings" />
       <Icon name="share" />
       <Icon name="shareSquare" />
+      <Icon name="steps" />
       <Icon name="team" />
       <Icon name="twitter" />
       <Icon name="twitterSquare" />
