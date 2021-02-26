@@ -13,6 +13,7 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
     <Icon name="question" size="36px" color="primary"/>
     <Icon name="question" size="48px" color="secondary" />
     <Icon name="calendar" />
+    <Icon name="check" />
     <Icon name="checkCircle" />
     <Icon name="chevronLeft" />
     <Icon name="chevronRight" />
@@ -52,12 +53,14 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
     <Icon name="share" />
     <Icon name="shareSquare" />
     <Icon name="steps" />
+    <Icon name="sync" />
     <Icon name="team" />
     <Icon name="twitter" />
     <Icon name="twitterSquare" />
     <Icon name="uploadPhoto" />
     <Icon name="userLock" />
     <Icon name="view" />
+    <Icon name="walk" />
     <Icon name="whatsappSquare" />
     <Icon name="zoomIn" />
     <Icon name="zoomOut" />
