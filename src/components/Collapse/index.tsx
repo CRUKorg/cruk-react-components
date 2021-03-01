@@ -66,12 +66,14 @@ const DefaultHeader = styled(Button)<StyledProgressBarProps>`
 
 type CollapseContentProps = {
   contentHeight: string;
+  openStatus: boolean;
 };
 
 const CollapseContent = styled.div<CollapseContentProps>`
   margin: 0;
   transition: ${transitionDurationSeconds}s ease;
   height: ${({ contentHeight }) => contentHeight};
+  visibility: ${({ openStatus }) => openStatus ? 'visible' : 'hidden'};
   overflow: hidden;
   & > p {
     margin-top: 0;
@@ -170,6 +172,7 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
         aria-hidden={!openStatus}
         aria-labelledby={`${id}-header`}
         contentHeight={contentHeight}
+        openStatus={openStatus}
       >
         {children}
       </CollapseContent>
