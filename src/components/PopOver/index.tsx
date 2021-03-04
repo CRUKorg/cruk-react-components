@@ -12,11 +12,13 @@ type PopOverProps = {
   overlay: any;
   css?: string;
   theme?: ThemeType;
+  maxWidth?: string;
 };
 
 type StyledPopOverContentType = {
   position: PopOverPositionType;
   theme?: ThemeType;
+  maxWidth: string;
 };
 
 type PopOverWrapperProps = {
@@ -148,7 +150,7 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
     }
   }};
   z-index: 9999;
-  max-width: 276px;
+  max-width: ${({ maxWidth }: { maxWidth: string }) => maxWidth};
   font-size: ${({
     theme: {
       fontSizes: { s },
@@ -540,6 +542,7 @@ const PopOver: FC<PopOverProps> = props => {
     ...defaultTheme,
     ...props.theme,
   };
+  const maxWidth = props.maxWidth || 'auto';
 
   // outside click closes popover
   const closePopOver = useCallback(
@@ -571,7 +574,13 @@ const PopOver: FC<PopOverProps> = props => {
           }),
         )}
         {showPopOver ? (
-          <PopOverContent position={props.position || 'top'} theme={theme} role="dialog" aria-modal={showPopOver}>
+          <PopOverContent
+            maxWidth={maxWidth}
+            position={props.position || 'top'}
+            theme={theme}
+            role="dialog"
+            aria-modal={showPopOver}
+          >
             {props.overlay}
           </PopOverContent>
         ) : null}

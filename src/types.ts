@@ -104,7 +104,7 @@ export type ColorsType = {
   backgroundLightColor: string;
   backgroundMid: string;
 
-  paginationBackground: string
+  paginationBackground: string;
   paginationActive: string;
 
   footerBackground: string;
@@ -127,7 +127,6 @@ export type ColorsType = {
   modalBackdrop: string;
 
   userBlockExtraText: string;
-
 };
 
 export type ColorKeyType = keyof ColorsType;

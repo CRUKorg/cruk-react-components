@@ -73,7 +73,7 @@ const Select: FunctionComponent<SelectProps> = forwardRef(
       ...defaultTheme,
       ...propsTheme,
     };
-    
+
     return (
       <WithLabel theme={theme} label={label} hintText={hintText} required={required || false}>
         <StyledSelect
