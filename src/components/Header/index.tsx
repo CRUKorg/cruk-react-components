@@ -178,10 +178,10 @@ const Tagline = styled.p<HeaderStickyContainerProps>`
 type HeaderProps = {
   isSticky?: boolean;
   siteSlogan?: string;
-  logoAltText? : string;
-  logoImageSrc? : string;
-  logoLinkTitle? : string;
-  logoLinkUrl? : string;
+  logoAltText?: string;
+  logoImageSrc?: string;
+  logoLinkTitle?: string;
+  logoLinkUrl?: string;
   fullWidth?: boolean;
   theme?: ThemeType;
 };
@@ -228,7 +228,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
               Skip to main content
             </SkipToMain>
             <HeaderMainContent fullWidth={fullWidth}>
-              <StyledLink href={logoLinkUrl ?? theme.siteConfig.logoUrl} title={logoLinkTitle ?? "Home"}>
+              <StyledLink href={logoLinkUrl ?? theme.siteConfig.logoUrl} title={logoLinkTitle ?? 'Home'}>
                 <LogoWrapper isSmall={isSmall} isSticky={isSticky}>
                   <Logo src={logoImageSrc ?? theme.siteConfig.logoSrc} alt={logoAltText ?? theme.siteConfig.logoAlt} />
                 </LogoWrapper>

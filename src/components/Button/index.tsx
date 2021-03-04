@@ -49,6 +49,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       ? '0'
       : `calc( (${BUTTON_HEIGHT} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m}`};
   width: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT}` : 'auto')};
+  min-width: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT}` : 'auto')};
 
   border-radius: ${props => props.theme.button.borderRadius};
   border-style: solid;
@@ -167,6 +168,12 @@ const StyledButton = styled.button<StyledButtonProps>`
     css`
       min-height: ${BUTTON_HEIGHT_LARGE};
       border-radius: ${({ theme }) => theme.button.borderRadiusLarge};
+      padding: ${({ theme, isIconButton }) =>
+        isIconButton
+          ? '0'
+          : `calc( (${BUTTON_HEIGHT_LARGE} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m}`};
+      min-width: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT_LARGE}` : 'auto')};
+      height: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT_LARGE}` : 'auto')};
     `}
 
   ${(props: StyledButtonProps) =>
