@@ -165,8 +165,11 @@ const StyledButton = styled.button<StyledButtonProps>`
   ${(props: StyledButtonProps) =>
     props.size === 'l' &&
     css`
-      min-height: ${BUTTON_HEIGHT_LARGE};
       border-radius: ${({ theme }) => theme.button.borderRadiusLarge};
+      padding: ${({ theme, isIconButton }) =>
+        isIconButton
+          ? '0'
+          : `calc( (${BUTTON_HEIGHT_LARGE} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m}`};
     `}
 
   ${(props: StyledButtonProps) =>
