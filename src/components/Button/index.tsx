@@ -170,6 +170,8 @@ const StyledButton = styled.button<StyledButtonProps>`
         isIconButton
           ? '0'
           : `calc( (${BUTTON_HEIGHT_LARGE} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m}`};
+      min-width: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT_LARGE}` : 'auto')};
+      height: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT_LARGE}` : 'auto')};
     `}
 
   ${(props: StyledButtonProps) =>

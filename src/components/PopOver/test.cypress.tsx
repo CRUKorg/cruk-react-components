@@ -8,22 +8,22 @@ import { PopOver, Button, Icon } from '../';
 
 const internalContent = () => (
   <>
-    <Button appearance="text" size="l" aria-label="Facebook">
+    <Button appearance="text" aria-label="Facebook">
       <Icon name="facebookSquare" color="#4267b2" size="1.5rem" />
     </Button>
-    <Button appearance="text" size="l" aria-label="Twitter">
+    <Button appearance="text" aria-label="Twitter">
       <Icon name="twitterSquare" color="#1da1f2" size="1.5rem" />
     </Button>
-    <Button appearance="text" size="l" aria-label="WhatsApp">
+    <Button appearance="text" aria-label="WhatsApp">
       <Icon name="whatsappSquare" color="#4dc247" size="1.5rem" />
     </Button>
-    <Button appearance="text" size="l" aria-label="Facebook Messenger">
+    <Button appearance="text" aria-label="Facebook Messenger">
       <Icon name="messengerSquare" color="#288ef8" size="1.5rem" />
     </Button>
-    <Button appearance="text" size="l" aria-label="LinkedIn">
+    <Button appearance="text" aria-label="LinkedIn">
       <Icon name="linkedin" color="#0077b5" size="1.5rem" />
     </Button>
-    <Button appearance="text" size="l" aria-label="Email">
+    <Button appearance="text" aria-label="Email">
       <Icon name="envelopeSquare" color="#00b6ed" size="1.5rem" />
     </Button>
   </>
