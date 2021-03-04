@@ -73,7 +73,7 @@ const CollapseContent = styled.div<CollapseContentProps>`
   margin: 0;
   transition: ${transitionDurationSeconds}s ease;
   height: ${({ contentHeight }) => contentHeight};
-  visibility: ${({ openStatus }) => openStatus ? 'visible' : 'hidden'};
+  visibility: ${({ openStatus }) => (openStatus ? 'visible' : 'hidden')};
   overflow: hidden;
   & > p {
     margin-top: 0;
