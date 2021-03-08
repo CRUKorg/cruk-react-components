@@ -1,4 +1,4 @@
-import React, { useState, useRef, KeyboardEvent, FunctionComponent, ReactNode } from 'react';
+import React, { useState, useRef, KeyboardEvent, FunctionComponent, ReactNode, useEffect } from 'react';
 import styled, { withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 
@@ -122,6 +122,10 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
       toggleCollapse();
     }
   };
+
+  useEffect(() => {
+    setOpenStatus(startOpen || false);
+  }, [startOpen]);
 
   const renderHeader = (theme: ThemeType) => {
     return headerComponent ? (
