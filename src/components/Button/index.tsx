@@ -146,11 +146,6 @@ const StyledButton = styled.button<StyledButtonProps>`
       background-color: rgba(255, 255, 255, 0);
       transition: color 0.2s ease;
       color: ${props.theme.colors.primary};
-      font-family: ${({
-        theme: {
-          typography: { fontFamilyBase },
-        },
-      }) => fontFamilyBase};
       :focus,
       :hover {
         color: ${props.theme.colors.linkColorHover};

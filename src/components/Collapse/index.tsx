@@ -130,6 +130,7 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
   const renderHeader = (theme: ThemeType) => {
     return headerComponent ? (
       <CustomHeader
+        theme={theme}
         aria-controls={`${id}-header`}
         aria-expanded={openStatus}
         id={`${id}-header`}
