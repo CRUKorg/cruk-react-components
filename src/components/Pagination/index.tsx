@@ -198,30 +198,32 @@ const Pagination: FunctionComponent<PaginationProps> = props => {
 
   return (
     <ThemeProvider theme={theme}>
-      <PagerWrapper>
-        <PagerList>
-          <PagerItem key="Prev">
-            <PagerLink
-              name="Prev"
-              disabled={props.current === 1}
-              {...(props.current !== 1 && linkProps(props.current - 1))}
-            >
-              Prev
-            </PagerLink>
-          </PagerItem>
-          {renderPager(props.current, totalPages)}
-          <PagerItem key="Next">
-            <PagerLink
-              name="Next"
-              disabled={props.current === totalPages}
-              {...(props.current !== totalPages && linkProps(props.current + 1))}
-            >
-              Next
-            </PagerLink>
-          </PagerItem>
-        </PagerList>
-        {props.children}
-      </PagerWrapper>
+      {props.items > props.perPage && (
+        <PagerWrapper>
+          <PagerList>
+            <PagerItem key="Prev">
+              <PagerLink
+                name="Prev"
+                disabled={props.current === 1}
+                {...(props.current !== 1 && linkProps(props.current - 1))}
+              >
+                Prev
+              </PagerLink>
+            </PagerItem>
+            {renderPager(props.current, totalPages)}
+            <PagerItem key="Next">
+              <PagerLink
+                name="Next"
+                disabled={props.current === totalPages}
+                {...(props.current !== totalPages && linkProps(props.current + 1))}
+              >
+                Next
+              </PagerLink>
+            </PagerItem>
+          </PagerList>
+          {props.children}
+        </PagerWrapper>
+      )}
     </ThemeProvider>
   );
 };
