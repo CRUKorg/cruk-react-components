@@ -69,6 +69,12 @@ const ExtraLeft = styled(Extra)`
   border-bottom-right-radius: 0;
   width: initial;
   vertical-align: middle;
+  height: ${MIN_HEIGHT};
+  margin: auto;
+
+  button {
+    min-height: ${({ theme }) => `calc(${MIN_HEIGHT} - (2 * ${theme.utilities.inputBorderWidth}))`} !important;
+  }
 `;
 
 const ExtraRight = styled(Extra)`
@@ -80,6 +86,13 @@ const ExtraRight = styled(Extra)`
   border-left: 0;
   background-color: transparent;
   padding: 0;
+  height: ${MIN_HEIGHT};
+  margin: auto;
+  vertical-align: middle;
+
+  button {
+    min-height: ${({ theme }) => `calc(${MIN_HEIGHT} - (2 * ${theme.utilities.inputBorderWidth}))`} !important;
+  }
 `;
 
 const ExtraWrapper = styled.span`
@@ -96,6 +109,7 @@ const StyledInput = styled.input<StyledInputProps>`
   display: block;
   font-size: ${({ theme }) => theme.fontSizes.m};
   line-height: ${({ theme }) => theme.typography.lineHeight};
+  min-width: 3em;
   padding: ${({ theme }) =>
     `calc((${MIN_HEIGHT} - (${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xs}`};
 

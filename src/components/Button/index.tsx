@@ -145,7 +145,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       border: 0px;
       background-color: rgba(255, 255, 255, 0);
       transition: color 0.2s ease;
-      color: ${props.theme.colors.primary};
+      color: ${props.theme.colors.buttonTertiaryText};
       :focus,
       :hover {
         color: ${props.theme.colors.linkColorHover};
@@ -153,7 +153,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       :disabled {
         cursor: not-allowed;
         background-color: transparent;
-        color: ${props.theme.colors.disabled} !important;
+        color: ${props.theme.colors.buttonTertiaryDisabledText} !important;
         border-color: transparent;
       }
     `}

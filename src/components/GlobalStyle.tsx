@@ -63,6 +63,9 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: auto;
   }
+  section {
+    width: 100%;
+  }
 `;
 
 export default withTheme(GlobalStyle);
