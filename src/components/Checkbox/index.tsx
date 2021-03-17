@@ -91,6 +91,14 @@ const StyledLabel = styled.label<StyledLabelProps>`
         `}
 `;
 
+const SelectedBorder = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
 // TODO when we get rid of bootstrap remove !important.
 const StyledInput = styled.input`
   margin-right: 5px !important;
@@ -120,9 +128,10 @@ const StyledInput = styled.input`
           }) => xxs};
           opacity: 0;
 
-          &:focus ~ ${CheckWrapper} ${Check} {
-            outline: 2px solid #7aacfe; /* for non-webkit browsers */
-            outline: 5px auto -webkit-focus-ring-color;
+          &:focus ~ ${SelectedBorder} {
+            outline: none !important;
+            box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.inputBorderColour};
+            box-shadow: 0 0 0 2px -webkit-focus-ring-color;
           }
 
           &:checked ~ ${CheckWrapper} ${Check} ${CheckGlyph} {
@@ -154,6 +163,7 @@ const Checkbox: FC<CheckboxProps> = forwardRef((props: CheckboxProps, ref?: Ref<
           value={props.value}
           ref={ref}
         />
+        <SelectedBorder></SelectedBorder>
         {props.children || props.value}
         {theme.utilities.useDefaultFromControls ? null : (
           <CheckWrapper>

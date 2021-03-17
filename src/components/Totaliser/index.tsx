@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactChild } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
-import defaultTheme, { BREAKPOINT, COLORS, UTILITIES } from '../../themes/cruk';
+import defaultTheme from '../../themes/cruk';
 import ProgressBar from '../ProgressBar';
 import Text from '../Text';
 import Badge from '../Badge';
@@ -35,8 +35,7 @@ const DetailWrapper = styled.div`
 const ProgressBarWrapper = styled.div`
   padding: 0 46px 12px;
   margin-top: 7px;
-  border: solid 1px ${COLORS.totaliserBorder};
-  border-radius: ${UTILITIES.borderRadius};
+  border: solid 1px ${props => props.theme.colors.totaliserBorder};
   position: relative;
 `;
 const Total = styled.p`
@@ -60,7 +59,7 @@ const TotaliserWrapper = styled.div<TotaliserWrapperProps>`
   ${props =>
     !props.isCompact &&
     css`
-      @media (min-width: ${BREAKPOINT.desktop}) {
+      @media (min-width: ${props.theme.breakpoint.desktop}) {
         max-width: 335px;
       }
     `}

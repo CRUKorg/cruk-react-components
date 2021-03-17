@@ -16,10 +16,6 @@ import defaultTheme from './cruk';
 
 export const UTILITIES: UtilitiesType = {
   ...defaultTheme.utilities,
-  borderRadius: 'unset',
-  useDefaultFocusRect: false,
-  useDefaultFromControls: true,
-  inputBorderWidth: '2px',
 };
 
 export const SITE_CONFIG: SiteConfigType = {
@@ -71,8 +67,8 @@ export const COLORS: ColorsType = {
   linkColor: TOKEN_COLORS.su2cOrange5,
   linkColorHover: TOKEN_COLORS.su2cRed,
 
-  inputBorder: TOKEN_COLORS.grey_300,
-  textInputBorder: TOKEN_COLORS.grey_300,
+  // inputBorder: TOKEN_COLORS.grey_300,
+  // textInputBorder: TOKEN_COLORS.grey_300,
   backgroundLightColor: TOKEN_COLORS.su2cOrange2,
 
   paginationBackground: TOKEN_COLORS.su2cBlack,
