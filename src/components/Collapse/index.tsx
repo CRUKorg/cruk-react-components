@@ -48,6 +48,7 @@ const DefaultHeader = styled(Button)<StyledProgressBarProps>`
     },
     textSize,
   }) => (textSize ? fontSizes[textSize] : m)};
+  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
   font-weight: normal;
   margin-bottom: 0;
   height: initial;
