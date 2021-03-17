@@ -14,7 +14,6 @@ import {
 
 export const UTILITIES: UtilitiesType = {
   contentMaxWidth: '1020px',
-  borderRadius: 'unset',
   useDefaultFocusRect: true,
   useDefaultFromControls: false,
   inputBorderWidth: '1px',

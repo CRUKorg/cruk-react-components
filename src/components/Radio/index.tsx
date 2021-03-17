@@ -96,6 +96,14 @@ const VerticalAlign = styled.span`
   line-height: 100%;
 `;
 
+const SelectedBorder = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
 const StyledInput = styled.input<InputHTMLAttributes<HTMLInputElement>>`
   margin-right: ${({
     theme: {
@@ -127,18 +135,14 @@ const StyledInput = styled.input<InputHTMLAttributes<HTMLInputElement>>`
           }) => xxs};
           opacity: 0;
 
-          &:focus ~ ${CheckWrapper} ${Check} {
+          &:focus ~ ${SelectedBorder} {
             outline: none !important;
-            box-shadow: 0 0 0 0.2em #7aacfe;
-            box-shadow: 0 0 0 0.2em -webkit-focus-ring-color;
+            box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.inputBorderColour};
+            box-shadow: 0 0 0 2px -webkit-focus-ring-color;
           }
 
           &:checked ~ ${CheckWrapper} ${Check}::before {
-            background: ${({
-              theme: {
-                colors: { primary },
-              },
-            }) => primary};
+            background: ${({ theme }) => theme.colors.primary};
           }
         `}
 `;
@@ -157,6 +161,7 @@ const RadioInput: FC<RadioProps> = props => {
     <ThemeProvider theme={theme}>
       <StyledLabel className={props.className} checked={props.checked || false}>
         <StyledInput {...props} type="radio" children={undefined} />
+        <SelectedBorder></SelectedBorder>
         {theme.utilities.useDefaultFromControls ? null : (
           <CheckWrapper>
             <Check />
