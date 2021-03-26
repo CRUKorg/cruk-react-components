@@ -20,9 +20,9 @@ indicate the importance of the badge to the user.
 
 | Name            | Type    | Options | Default                  | Description                                            |
 | :-------------- | :------ | :-----: | :----------------------- | :----------------------------------------------------- |
-| backgroundColor | String  |         | "primary"                | Define the background colour of the Badge background   |
-| textColor       | String  |         | "textLight"              | Define the background colour of the Badge text         |
-| borderColor     | String  |         | "primary"                | Define the background colour of the Badge border       |
+| backgroundColor | String  |         | "primary"                | The background colour of the Badge                     |
+| textColor       | String  |         | "textLight"              | The text colour of the Badge                           |
+| borderColor     | String  |         | "primary"                | The border colour of the Badge                         |
 | text            | Boolean |         | depends on children type | Optional, returns true when type of children is string |
 
 ## Usage
