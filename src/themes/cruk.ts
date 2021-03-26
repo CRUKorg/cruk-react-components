@@ -84,6 +84,10 @@ export const COLORS: ColorsType = {
   secondary: TOKEN_COLORS.magenta_500,
   tertiary: TOKEN_COLORS.cyan_500,
 
+  textOnPrimary: TOKEN_COLORS.white,
+  textOnSecondary: TOKEN_COLORS.white,
+  textOnTertiary: TOKEN_COLORS.white,
+
   disabled: TOKEN_COLORS.grey_300,
   danger: TOKEN_COLORS.red,
   warning: TOKEN_COLORS.yellow,

@@ -62,13 +62,13 @@ export const COLORS: ColorsType = {
   secondary: TOKEN_COLORS.su2cRed,
   tertiary: TOKEN_COLORS.su2cBlack,
 
+  textOnPrimary: TOKEN_COLORS.su2cBlack,
+
   progressBar: TOKEN_COLORS.su2cOrange5,
   circularProgress: TOKEN_COLORS.su2cOrange3,
   linkColor: TOKEN_COLORS.su2cOrange5,
   linkColorHover: TOKEN_COLORS.su2cRed,
 
-  // inputBorder: TOKEN_COLORS.grey_300,
-  // textInputBorder: TOKEN_COLORS.grey_300,
   backgroundLightColor: TOKEN_COLORS.su2cOrange2,
 
   paginationBackground: TOKEN_COLORS.su2cBlack,
