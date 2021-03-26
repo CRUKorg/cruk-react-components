@@ -19,8 +19,8 @@ const content = () => {
         <Icon name="eventName" />
       </Badge>
       <Badge backgroundColor="#8bc34a">2</Badge>
-      <Badge backgroundColor="tertiary">
-        <Icon name="comment" size="23px" />
+      <Badge backgroundColor="textLight" textColor="tertiary" borderColor="tertiary">
+        <Icon name="comment" />
       </Badge>
       <Badge>This is text</Badge>
     </>

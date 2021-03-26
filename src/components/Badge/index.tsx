@@ -6,6 +6,8 @@ import { ThemeType, SpaceType } from '../../types';
 
 type BadgeProps = {
   backgroundColor?: string;
+  borderColor?: string;
+  textColor?: string;
   text?: boolean;
   theme?: ThemeType;
   size?: SpaceType;
@@ -14,19 +16,38 @@ type BadgeProps = {
 
 type StyleBadgeProps = {
   backgroundColor?: string;
+  borderColor?: string;
+  textColor?: string;
   text?: boolean;
   theme: ThemeType;
   size: SpaceType;
 };
 
 const StyledBadge = styled.span<StyleBadgeProps>`
+  border-width: 1px;
+  border-style: solid;
   background-color: ${({ theme: { colors }, backgroundColor }) =>
     backgroundColor && typeof colors[backgroundColor] !== 'undefined'
       ? colors[backgroundColor]
       : backgroundColor
       ? backgroundColor
       : colors['primary']};
-  color: ${props => props.theme.colors.textLight};
+  color: ${({ theme: { colors }, textColor }) =>
+    textColor && typeof colors[textColor] !== 'undefined'
+      ? colors[textColor]
+      : textColor
+      ? textColor
+      : colors['textLight']};
+  border-color: ${({ theme: { colors }, borderColor, backgroundColor }) =>
+    borderColor && typeof colors[borderColor] !== 'undefined'
+      ? colors[borderColor]
+      : borderColor
+      ? borderColor
+      : backgroundColor && typeof colors[backgroundColor] !== 'undefined'
+      ? colors[backgroundColor]
+      : backgroundColor
+      ? backgroundColor
+      : colors['primary']};
   text-align: center;
   border-radius: 1.5rem;
   font-size: ${props => props.theme.fontSizes.m};
