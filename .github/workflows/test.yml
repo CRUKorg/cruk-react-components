@@ -38,3 +38,12 @@ jobs:
         run: docker-compose run npm ci
       - name: Test
         run: npm run jest-ci --verbose
+  Prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout cruk-react-components
+        uses: actions/checkout@v1
+      - name: npm install
+        run: docker-compose run npm ci
+      - name: Test
+        run: npm run prettier:test
