@@ -47,6 +47,9 @@ export type ColorsType = {
   primary: string;
   secondary: string;
   tertiary: string;
+  textOnPrimary: string;
+  textOnSecondary: string;
+  textOnTertiary: string;
 
   disabled: string;
   danger: string;
