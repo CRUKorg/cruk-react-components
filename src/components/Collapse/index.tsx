@@ -126,6 +126,8 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
 
   useEffect(() => {
     setOpenStatus(startOpen || false);
+    // if start open changes then we want to set the height without animation
+    !!startOpen ? setContentHeight('initial') : setContentHeight('0');
   }, [startOpen]);
 
   const renderHeader = (theme: ThemeType) => {
