@@ -57,13 +57,6 @@ const TotaliserWrapper = styled.div<TotaliserWrapperProps>`
   font-family: ${props => props.theme.typography.fontFamilyHeadings};
   margin: 0;
   ${props =>
-    !props.isCompact &&
-    css`
-      @media (min-width: ${props.theme.breakpoint.desktop}) {
-        max-width: 335px;
-      }
-    `}
-  ${props =>
     props.isCompact &&
     css`
       ${ProgressBarWrapper} {
