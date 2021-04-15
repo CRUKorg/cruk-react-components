@@ -31,6 +31,7 @@ services:
       - server
     volumes:
       - .:/app:delegated
+    entrypoint: npx cypress run-ct
   cypress_update:
     environment:
       - CYPRESS_updateSnapshots=true

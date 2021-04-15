@@ -4,7 +4,7 @@ import React from 'react';
 import { mount } from '@cypress/react';
 
 import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
-import { AddressLookup, su2cTheme } from '../';
+import { AddressLookup, su2cTheme } from '..';
 
 const Content = () => {
   return (
