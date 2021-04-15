@@ -9,18 +9,17 @@ import { FontSizeType, ThemeType } from '../../types';
 
 const transitionDurationSeconds = 0.5;
 
-type CollapseProps = {
+type Props = {
   id: string;
   headerTitleText: string;
   headerTitleTextColor?: string;
   headerTitleTextSize?: FontSizeType;
+  headerTitleTextFontFamily?: string;
   headerComponent?: ReactNode;
   startOpen?: boolean;
   onOpenChange?: (isOpen: boolean) => void;
   theme?: ThemeType;
 };
-
-const CollapseWrapper = styled.div``;
 
 const FlippingIcon = styled(Icon)`
   transform: ${({ open }: { open: boolean }) =>
@@ -28,12 +27,13 @@ const FlippingIcon = styled(Icon)`
   transition-duration: ${transitionDurationSeconds}s;
 `;
 
-type StyledProgressBarProps = {
+type DefaultHeaderProps = {
   textColor?: string;
   textSize?: FontSizeType;
+  textFontFamily?: string;
 };
 
-const DefaultHeader = styled(Button)<StyledProgressBarProps>`
+const DefaultHeader = styled(Button)<DefaultHeaderProps>`
   display: flex;
   color: ${({ theme: { colors }, textColor }) =>
     textColor && typeof colors[textColor] !== 'undefined'
@@ -48,7 +48,7 @@ const DefaultHeader = styled(Button)<StyledProgressBarProps>`
     },
     textSize,
   }) => (textSize ? fontSizes[textSize] : m)};
-  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
+  font-family: ${({ theme, textFontFamily }) => (textFontFamily ? textFontFamily : theme.typography.fontFamilyBase)};
   font-weight: normal;
   margin-bottom: 0;
   height: initial;
@@ -85,12 +85,13 @@ const CustomHeader = styled.div`
   cursor: pointer;
 `;
 
-const Collapse: FunctionComponent<CollapseProps> = props => {
+const Collapse: FunctionComponent<Props> = props => {
   const {
     id,
     headerTitleText,
     headerTitleTextColor,
     headerTitleTextSize,
+    headerTitleTextFontFamily,
     headerComponent,
     startOpen,
     onOpenChange,
@@ -157,6 +158,7 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
         type="button"
         textColor={headerTitleTextColor}
         textSize={headerTitleTextSize}
+        textFontFamily={headerTitleTextFontFamily}
       >
         {headerTitleText}
         <FlippingIcon name="chevronRight" open={openStatus} />
@@ -170,7 +172,7 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
   };
 
   return (
-    <CollapseWrapper>
+    <div>
       {renderHeader(theme)}
       <CollapseContent
         theme={theme}
@@ -184,7 +186,7 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
       >
         {children}
       </CollapseContent>
-    </CollapseWrapper>
+    </div>
   );
 };
 

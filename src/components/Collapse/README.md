@@ -37,12 +37,13 @@ Use a collapse component to show and hide content. It has a default view; howeve
 
 ## Props
 
-| Name                 | Type                    | Options | Default     | Description                                                                                                          |
-| :------------------- | :---------------------- | :-----: | :---------- | :------------------------------------------------------------------------------------------------------------------- |
-| id                   | string                  |         |             | This is mandatory and this id will be used to reference aria attributes between the collapse header and the content. |
-| headerTitleText      | string                  |         |             | Header text. If you pass a custom component this text is still need as it will be used for the aria-label            |
-| headerTitleTextColor | String                  |         | 'secondary' | Header text colour                                                                                                   |
-| headerTitleTextSize  | FontSizeType            |         | 'm'         | Header text font size uses t-shirt sizes of s/m/l etc                                                                |
-| headerComponent      | ReactNode               |         | undefined   | (optional) Custom header component                                                                                   |
-| startOpen            | boolean                 |         | false       | (optional) starting value for collapse open state                                                                    |
-| onOpenChange         | (isOpen: boolean) => {} |         |             | (optional) open changed callback                                                                                     |
+| Name                      | Type                    | Options | Default          | Description                                                                                                          |
+| :------------------------ | :---------------------- | :-----: | :--------------- | :------------------------------------------------------------------------------------------------------------------- |
+| id                        | string                  |         |                  | This is mandatory and this id will be used to reference aria attributes between the collapse header and the content. |
+| headerTitleText           | string                  |         |                  | Header text. If you pass a custom component this text is still need as it will be used for the aria-label            |
+| headerTitleTextColor      | String                  |         | 'secondary'      | Header text colour                                                                                                   |
+| headerTitleTextSize       | FontSizeType            |         | 'm'              | Header text font size uses t-shirt sizes of s/m/l etc                                                                |
+| headerTitleTextFontFamily | string                  |         | 'fontFamilyBase' | Header text font family                                                                                              |
+| headerComponent           | ReactNode               |         | undefined        | (optional) Custom header component                                                                                   |
+| startOpen                 | boolean                 |         | false            | (optional) starting value for collapse open state                                                                    |
+| onOpenChange              | (isOpen: boolean) => {} |         |                  | (optional) open changed callback                                                                                     |
