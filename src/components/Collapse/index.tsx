@@ -113,6 +113,7 @@ const Collapse: FunctionComponent<Props> = props => {
       setTimeout(() => setContentHeight('0'), 10);
     } else {
       // After animation set height to initial for responsive layout.
+      // @ts-ignore
       transitionTimer.current = setTimeout(() => setContentHeight('initial'), transitionDurationSeconds * 1000);
     }
     !!onOpenChange && onOpenChange(newOpenState);

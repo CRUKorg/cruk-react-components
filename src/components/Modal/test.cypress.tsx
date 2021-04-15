@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import React from 'react';
-import { mount } from 'cypress-react-unit-test';
+import { mount } from '@cypress/react';
 
 import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
 import { Modal, Button, Heading, su2cTheme } from '../';
