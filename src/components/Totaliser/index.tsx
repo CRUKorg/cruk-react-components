@@ -41,6 +41,20 @@ const ProgressBarWrapper = styled.div`
 const Total = styled.p`
   font-size: 2.625rem;
   line-height: 3rem;
+  font-family: ${props => props.theme.typography.fontFamilyHeadings};
+  text-transform: ${({
+    theme: {
+      typography: { headerTextTransform },
+    },
+  }) => headerTextTransform};
+`;
+const BubbleText = styled.p`
+  font-family: ${props => props.theme.typography.fontFamilyHeadings};
+  text-transform: ${({
+    theme: {
+      typography: { headerTextTransform },
+    },
+  }) => headerTextTransform};
 `;
 const Summary = styled.div`
   text-align: right;
@@ -116,9 +130,9 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
         </CompactWrapper>
       ) : (
         <DetailWrapper theme={theme}>
-          <p>Total raised</p>
+          <BubbleText>Total raised</BubbleText>
           <Total>£{formatMoneyWithCommas(props.total)}</Total>
-          <p>+ £{formatMoneyWithCommas(props.giftAid || 0)} Gift Aid</p>
+          <BubbleText>+ £{formatMoneyWithCommas(props.giftAid || 0)} Gift Aid</BubbleText>
         </DetailWrapper>
       )}
       {/* We don't want to show the default summaryMessage if there is no target, because the summary is associated with the target progress bar */}

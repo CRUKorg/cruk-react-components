@@ -61,6 +61,7 @@ Each icon is reduced to its minimal form, expressing essential characteristics.
     <Icon name="userLock" />
     <Icon name="view" />
     <Icon name="walk" />
+    <Icon name="whatsapp" />
     <Icon name="whatsappSquare" />
     <Icon name="zoomIn" />
     <Icon name="zoomOut" />
