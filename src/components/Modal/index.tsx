@@ -53,6 +53,7 @@ const Content = styled(Box)<ContentProps>`
   }) => xs};
   max-width: ${({ maxWidth }) => maxWidth};
   z-index: 9999;
+  margin-bottom: ${({ theme }) => theme.spacing.xxl};
 `;
 
 const CloseButton = styled(Button)`

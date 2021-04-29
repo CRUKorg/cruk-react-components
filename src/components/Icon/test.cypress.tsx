@@ -61,6 +61,7 @@ const content = () => {
       <Icon name="userLock" />
       <Icon name="view" />
       <Icon name="walk" />
+      <Icon name="whatsapp" />
       <Icon name="whatsappSquare" />
       <Icon name="zoomIn" />
       <Icon name="zoomOut" />
