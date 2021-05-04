@@ -4,6 +4,7 @@ export default (delay: number, callback: Function) => {
     if (timerId) {
       clearTimeout(timerId);
     }
+    // @ts-ignore
     timerId = setTimeout(() => {
       callback(...args);
       timerId = null;

@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import React from 'react';
-import { mount } from 'cypress-react-unit-test';
+import { mount } from '@cypress/react';
 
 import TestWrapper from '../TestWrapper';
 import { ErrorText } from '../';
@@ -27,6 +27,9 @@ describe('ErrorText', () => {
 
   it('should match snapshot', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.get('body')
       .first()
       .matchImageSnapshot();

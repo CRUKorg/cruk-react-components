@@ -3,7 +3,6 @@
   "viewportWidth": 900,
   "viewportHeight": 900,
   "experimentalFetchPolyfill": true,
-  "experimentalComponentTesting": true,
   "componentFolder": "src/components",
   "testFiles": "**/*.cypress.*",
   "video": true,

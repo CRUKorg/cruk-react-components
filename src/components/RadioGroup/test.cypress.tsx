@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import React from 'react';
-import { mount } from 'cypress-react-unit-test';
+import { mount } from '@cypress/react';
 
 import { TestThemeWrapper } from '../TestWrapper';
 import { RadioGroup, su2cTheme } from '../';

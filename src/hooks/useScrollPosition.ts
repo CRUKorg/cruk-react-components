@@ -41,7 +41,7 @@ export function useScrollPosition(
     const handleScroll = () => {
       if (wait) {
         if (throttleTimeout === null) {
-          // eslint-disable-next-line
+          // @ts-ignore: Unreachable code error
           throttleTimeout = setTimeout(callBack, wait);
         }
       } else {

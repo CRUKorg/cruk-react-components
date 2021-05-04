@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import React from 'react';
-import { mount } from 'cypress-react-unit-test';
+import { mount } from '@cypress/react';
 
 import TestWrapper from '../TestWrapper';
 import { Avatar } from '../';
@@ -29,12 +29,14 @@ describe('Avatar', () => {
   it('should match snapshot', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.get('[src="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"]').should($img => {
-      expect($img[0].naturalWidth).to.be.greaterThan(0);
+      const img = $img[0] as HTMLImageElement;
+      expect(img.naturalWidth).to.be.greaterThan(0);
     });
     cy.get(
       '[src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/icon-avatars/icon-avatar-S.png"]',
     ).should($img => {
-      expect($img[0].naturalWidth).to.be.greaterThan(0);
+      const img = $img[0] as HTMLImageElement;
+      expect(img.naturalWidth).to.be.greaterThan(0);
     });
     cy.document()
       .its('fonts.status')
