@@ -42,44 +42,45 @@ const StepList = styled.ul<StepListProps>`
 const StepBar = styled.span`
   border-radius: 50%;
   background-clip: padding-box;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   background-color: ${props => props.theme.colors.stepBackground};
   display: block;
   margin: 0 auto 0.5em auto;
-  border: 3px solid ${props => props.theme.colors.stepBorder};
+  border: 2px solid ${props => props.theme.colors.stepBorder};
   text-indent: -999px;
 
   &:after {
     display: block;
     position: absolute;
-    top: 8px;
     width: 100%;
-    height: 3px;
+    height: 2px;
     content: '';
     background-color: transparent;
-    border-bottom: 3px solid ${props => props.theme.colors.stepBorder};
+    border-bottom: 2px solid ${props => props.theme.colors.stepBorder};
     left: 50%;
-    margin-left: 10px;
+    top: 11px;
+    margin-left: 12px;
   }
 `;
 const StepTick = styled.span`
   display: block;
   transform: rotate(45deg);
-  height: 11px;
-  width: 7px;
+  transform-origin: center center;
+  height: 14px;
+  width: 8px;
   border-bottom: ${({
     theme: {
       colors: { textLight },
     },
-  }) => `2.5px solid ${textLight}`};
+  }) => `2px solid ${textLight}`};
   border-right: ${({
     theme: {
       colors: { textLight },
     },
-  }) => `2.5px solid ${textLight}`};
-  margin-top: 3.5px;
-  margin-left: 6.5px;
+  }) => `2px solid ${textLight}`};
+  margin-top: 4px;
+  margin-left: 8px;
 `;
 
 type StepItemProps = {
@@ -106,7 +107,7 @@ const StepItem = styled.li<StepItemProps>`
         border: none;
         background-color: ${props => props.theme.colors.tertiary};
         &:after {
-          border-bottom: 3px solid ${props => props.theme.colors.tertiary};
+          border-bottom: 2px solid ${props => props.theme.colors.tertiary};
         }
       }
     `}
