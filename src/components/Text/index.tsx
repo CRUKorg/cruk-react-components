@@ -5,7 +5,7 @@ import defaultTheme from '../../themes/cruk';
 import spacing, { SpacingProps } from '../Spacing';
 
 import { FontSizeType } from '../../types';
-import { ThemeType } from '../../types';
+import { ThemeType, WordBreakType } from '../../types';
 
 // the 'as' prop is for styled component casting
 // text hover color prop is only used in Link which extends Text
@@ -17,10 +17,12 @@ export type TextProps = SpacingProps &
     textWeight?: number;
     as?: any;
     theme?: ThemeType;
+    wordBreak?: WordBreakType;
   };
 
 export const TextStyled = styled.p<TextProps>`
   font-family: ${({ theme }) => theme.typography.fontFamilyBase};
+  word-break: ${({ wordBreak }) => wordBreak || 'normal'};
   color: ${({ theme: { colors }, textColor }) =>
     textColor && typeof colors[textColor] !== 'undefined'
       ? colors[textColor]
