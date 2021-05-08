@@ -35,9 +35,6 @@ describe('Checkbox', () => {
     cy.document()
       .its('fonts.status')
       .should('equal', 'loaded');
-    cy.document()
-      .its('fonts.status')
-      .should('equal', 'loaded');
     cy.get('body')
       .first()
       .matchImageSnapshot();
