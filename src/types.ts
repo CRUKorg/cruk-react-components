@@ -106,6 +106,10 @@ export type ColorsType = {
   backgroundLightColor: string;
   backgroundMid: string;
 
+  loaderColor1: string;
+  loaderColor2: string;
+  loaderColor3: string;
+
   paginationBackground: string;
   paginationActive: string;
 

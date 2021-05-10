@@ -71,6 +71,10 @@ export const COLORS: ColorsType = {
 
   backgroundLightColor: TOKEN_COLORS.su2cOrange2,
 
+  loaderColor1: TOKEN_COLORS.su2cOrange5,
+  loaderColor2: TOKEN_COLORS.su2cRed,
+  loaderColor3: TOKEN_COLORS.su2cBlack,
+
   paginationBackground: TOKEN_COLORS.su2cBlack,
 
   buttonPrimaryBackground: TOKEN_COLORS.su2cOrange5,

@@ -145,6 +145,10 @@ export const COLORS: ColorsType = {
   backgroundLightColor: TOKEN_COLORS.darkBlue_200,
   backgroundMid: TOKEN_COLORS.grey_100,
 
+  loaderColor1: TOKEN_COLORS.darkBlue_500,
+  loaderColor2: TOKEN_COLORS.magenta_500,
+  loaderColor3: TOKEN_COLORS.cyan_500,
+
   paginationActive: TOKEN_COLORS.grey_300,
   paginationBackground: TOKEN_COLORS.darkBlue_500,
 
