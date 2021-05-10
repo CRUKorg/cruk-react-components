@@ -15,28 +15,29 @@ For non-header text. The Text component provides a simple API for setting the co
 
 ## Props
 
-| Name              | Type                                   | Options | Default        | Description                                                                     |
-| :---------------- | :------------------------------------- | :-----: | :------------- | :------------------------------------------------------------------------------ |
-| textColor         | string                                 |         | 'currentColor' | Color of text can use theme colour names (preferable) or hex code strings       |
-| textAlign         | 'left' /'right' / 'center' / 'justify' |         | 'left'         | Horizontal text alignment                                                       |
-| textSize          | FontSizeType                           |         | 'm'            | Font size uses t-shirt sizes of s/m/l etc                                       |
-| as                | element as string                      |         | 'p'            | Takes the font styling and applies it to an element such as 'label' or 'span'   |
-| gutterBottom      | boolean                                |         | true           | Adds bottom gutter to the text element only works when 'as' is undefined or 'p' |
-| gutterTop         | boolean                                |         | false          | Adds top gutter to the text element only works when 'as' is undefined or 'p'    |
-| margin            | SpaceType                              |         | unset          | margin top, bottom, left and right                                              |
-| marginVertical    | SpaceType                              |         | unset          | margin top and bottom                                                           |
-| marginHorizontal  | SpaceType                              |         | unset          | margin left and right                                                           |
-| marginTop         | SpaceType                              |         | unset          | margin top                                                                      |
-| marginRight       | SpaceType                              |         | unset          | margin right right                                                              |
-| marginBottom      | SpaceType                              |         | 'xs'           | margin bottom bottom                                                            |
-| marginLeft        | SpaceType                              |         | unset          | margin left left                                                                |
-| padding           | SpaceType                              |         | unset          | padding top, bottom, left and right                                             |
-| paddingVertical   | SpaceType                              |         | unset          | padding top and bottom                                                          |
-| paddingHorizontal | SpaceType                              |         | unset          | padding left and right                                                          |
-| paddingTop        | SpaceType                              |         | unset          | padding top                                                                     |
-| paddingRight      | SpaceType                              |         | unset          | padding right right                                                             |
-| paddingBottom     | SpaceType                              |         | unset          | padding bottom bottom                                                           |
-| paddingLeft       | SpaceType                              |         | unset          | padding left left                                                               |
+| Name              | Type                                               | Default        | Description                                                                                |
+| :---------------- | :------------------------------------------------- | :------------- | :----------------------------------------------------------------------------------------- |
+| textColor         | string                                             | 'currentColor' | Color of text can use theme colour names (preferable) or hex code strings                  |
+| textAlign         | 'left' /'right' / 'center' / 'justify'             | 'left'         | Horizontal text alignment                                                                  |
+| textSize          | FontSizeType                                       | 'm'            | Font size uses t-shirt sizes of s/m/l etc                                                  |
+| wordBreak         | 'normal' / 'break-all' / 'keep-all' / 'break-word' | 'normal'       | Sets whether line breaks appear wherever the text would otherwise overflow its content box |
+| as                | element as string                                  | 'p'            | Takes the font styling and applies it to an element such as 'label' or 'span'              |
+| gutterBottom      | boolean                                            | true           | Adds bottom gutter to the text element only works when 'as' is undefined or 'p'            |
+| gutterTop         | boolean                                            | false          | Adds top gutter to the text element only works when 'as' is undefined or 'p'               |
+| margin            | SpaceType                                          | unset          | margin top, bottom, left and right                                                         |
+| marginVertical    | SpaceType                                          | unset          | margin top and bottom                                                                      |
+| marginHorizontal  | SpaceType                                          | unset          | margin left and right                                                                      |
+| marginTop         | SpaceType                                          | unset          | margin top                                                                                 |
+| marginRight       | SpaceType                                          | unset          | margin right right                                                                         |
+| marginBottom      | SpaceType                                          | 'xs'           | margin bottom bottom                                                                       |
+| marginLeft        | SpaceType                                          | unset          | margin left left                                                                           |
+| padding           | SpaceType                                          | unset          | padding top, bottom, left and right                                                        |
+| paddingVertical   | SpaceType                                          | unset          | padding top and bottom                                                                     |
+| paddingHorizontal | SpaceType                                          | unset          | padding left and right                                                                     |
+| paddingTop        | SpaceType                                          | unset          | padding top                                                                                |
+| paddingRight      | SpaceType                                          | unset          | padding right right                                                                        |
+| paddingBottom     | SpaceType                                          | unset          | padding bottom bottom                                                                      |
+| paddingLeft       | SpaceType                                          | unset          | padding left left                                                                          |
 
 ### SpaceType
 
