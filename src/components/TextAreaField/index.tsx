@@ -10,6 +10,7 @@ import { ThemeType } from '../../types';
 type StyledTextareaProps = Omit<TextFieldProps, 'errorMessage' | 'hasError' | 'label'> & {
   hasError: boolean;
   resize: 'both' | 'vertical' | 'horizontal' | 'none';
+  lineCount: number;
 };
 
 const StyledTextArea = styled.textarea<StyledTextareaProps>`
@@ -25,6 +26,7 @@ const StyledTextArea = styled.textarea<StyledTextareaProps>`
   font-size: ${({ theme }) => theme.fontSizes.m};
   padding: 6px 8px;
   width: 100%;
+  height: ${({ lineCount, theme }) => `calc(${theme.typography.lineHeight} * ${lineCount})`};
 
   transition: border-color 150ms linear;
   &:disabled {
@@ -49,6 +51,7 @@ type TextFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   hintText?: ReactElement | string;
   label: string;
   resize?: 'both' | 'vertical' | 'horizontal' | 'none';
+  lineCount?: number;
   theme: ThemeType;
 };
 
@@ -58,6 +61,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
   hintText,
   label,
   resize = 'vertical',
+  lineCount = 3,
   theme: propsTheme,
   ...props
 }) => {
@@ -72,6 +76,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
         hasError={hasError || !!errorMessage || false}
         aria-invalid={hasError || !!errorMessage || false}
         resize={resize}
+        lineCount={lineCount}
         theme={theme}
         {...props}
       />

@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import styled, { keyframes, ThemeProvider, withTheme } from 'styled-components';
+import theme from '../../themes/cruk';
 
 import defaultTheme from '../../themes/cruk';
 
@@ -41,9 +42,9 @@ const Spinner = styled.div`
     margin: 0 2px;
     background-color: ${({
       theme: {
-        colors: { primary },
+        colors: { loaderColor1 },
       },
-    }) => primary};
+    }) => loaderColor1};
     border-radius: 100%;
     animation: ${BounceDelay} 1.2s infinite ease-in-out both;
   }
@@ -56,18 +57,18 @@ const Spinner = styled.div`
   span:nth-child(2) {
     background-color: ${({
       theme: {
-        colors: { secondary },
+        colors: { loaderColor2 },
       },
-    }) => secondary};
+    }) => loaderColor2};
     animation-delay: -0.16s;
   }
 
   span:nth-child(3) {
     background-color: ${({
       theme: {
-        colors: { tertiary },
+        colors: { loaderColor3 },
       },
-    }) => tertiary};
+    }) => loaderColor3};
   }
 `;
 

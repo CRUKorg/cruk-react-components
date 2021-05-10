@@ -1,15 +1,16 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, HTMLAttributes } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
 import spacing, { SpacingProps } from '../Spacing';
 import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../types';
 
-type BoxProps = SpacingProps & {
-  backgroundColor?: string;
-  css?: any;
-  theme: ThemeType;
-};
+type BoxProps = SpacingProps &
+  HTMLAttributes<HTMLElement> & {
+    backgroundColor?: string;
+    css?: any;
+    theme: ThemeType;
+  };
 
 const StyledBox = styled.div<BoxProps>`
   background-color: ${props => props.theme.colors.backgroundLight};

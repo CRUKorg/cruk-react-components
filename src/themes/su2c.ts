@@ -59,7 +59,7 @@ export const TOKEN_COLORS: TokenColorsType = {
 export const COLORS: ColorsType = {
   ...defaultTheme.colors,
   primary: TOKEN_COLORS.su2cOrange5,
-  secondary: TOKEN_COLORS.su2cRed,
+  secondary: TOKEN_COLORS.su2cOrange5,
   tertiary: TOKEN_COLORS.su2cBlack,
 
   textOnPrimary: TOKEN_COLORS.su2cBlack,
@@ -70,6 +70,10 @@ export const COLORS: ColorsType = {
   linkColorHover: TOKEN_COLORS.su2cRed,
 
   backgroundLightColor: TOKEN_COLORS.su2cOrange2,
+
+  loaderColor1: TOKEN_COLORS.su2cOrange5,
+  loaderColor2: TOKEN_COLORS.su2cRed,
+  loaderColor3: TOKEN_COLORS.su2cBlack,
 
   paginationBackground: TOKEN_COLORS.su2cBlack,
 
