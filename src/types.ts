@@ -200,3 +200,5 @@ export type AddressOptionsType = {
   Id: string;
   Text: string;
 };
+
+export type WordBreakType = 'normal' | 'break-all' | 'keep-all' | 'break-word' | 'inherit' | 'initial' | 'unset';

@@ -4,7 +4,7 @@ import styled, { css, withTheme } from 'styled-components';
 import defaultTheme from '../../themes/cruk';
 import spacing, { SpacingProps } from '../Spacing';
 
-import { ThemeType, FontSizeType, ColorKeyType } from '../../types';
+import { ThemeType, FontSizeType, ColorKeyType, WordBreakType } from '../../types';
 
 type HeadingProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
@@ -19,10 +19,12 @@ type HeadingProps = SpacingProps &
     textColor?: string;
     theme?: ThemeType;
     as?: any;
+    wordBreak?: WordBreakType;
   };
 
 type StyledHeadingProps = Omit<HeadingProps, 'theme'> & {
   theme: ThemeType;
+  wordBreak?: WordBreakType;
 };
 
 const StyledHeading = (props: StyledHeadingProps) => css`
@@ -31,6 +33,7 @@ const StyledHeading = (props: StyledHeadingProps) => css`
       typography: { fontFamilyHeadings },
     },
   }) => fontFamilyHeadings};
+  word-break: ${() => props.wordBreak || 'normal'};
   font-weight: ${({
     theme: {
       typography: { fontWeightMedium },
