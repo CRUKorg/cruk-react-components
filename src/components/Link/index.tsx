@@ -33,9 +33,6 @@ type StyledLinkProps = AnchorHTMLAttributes<HTMLElement> &
 
 const StyledLink = styled(Text)<StyledLinkProps>`
   transition: color 0.2s ease;
-  background-color: rgba(255, 255, 255, 0);
-  border: none;
-  padding: 0;
   color: ${({ theme: { colors }, textColor, appearance }) =>
     textColor && typeof colors[textColor] !== 'undefined'
       ? colors[textColor]
