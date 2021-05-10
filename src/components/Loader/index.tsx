@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import styled, { keyframes, ThemeProvider, withTheme } from 'styled-components';
-import theme from '../../themes/cruk';
 
 import defaultTheme from '../../themes/cruk';
 
