@@ -22,26 +22,27 @@ use the corresponding heading class (h1, h2, h3, ....). Write all headings in se
 
 ## Props
 
-| Name              | Type                    | Default                 | Description                                                                               |
-| :---------------- | :---------------------- | :---------------------- | :---------------------------------------------------------------------------------------- |
-| h1 h2 h3 h4 h5 h6 |                         | h2                      | Choose the heading level                                                                  |
-| textAlign         | 'left'/'right'/'center' | 'left'                  | text alignment                                                                            |
-| textColor         | string                  | 'theme.colors.textDark' | set the heading text color alignment accepts theme colour names (preferred) or hex string |
-| textSize          | FontSizeType            | depends on h number     | font size of header, this will scale still with breakpoints                               |
-| margin            | SpaceType               | unset                   | margin top, bottom, left and right                                                        |
-| marginVertical    | SpaceType               | unset                   | margin top and bottom                                                                     |
-| marginHorizontal  | SpaceType               | unset                   | margin left and right                                                                     |
-| marginTop         | SpaceType               | 'm' (0 if first child)  | margin top                                                                                |
-| marginRight       | SpaceType               | unset                   | margin right right                                                                        |
-| marginBottom      | SpaceType               | 's'                     | margin bottom bottom                                                                      |
-| marginLeft        | SpaceType               | unset                   | margin left left                                                                          |
-| padding           | SpaceType               | unset                   | padding top, bottom, left and right                                                       |
-| paddingVertical   | SpaceType               | unset                   | padding top and bottom                                                                    |
-| paddingHorizontal | SpaceType               | unset                   | padding left and right                                                                    |
-| paddingTop        | SpaceType               | unset                   | padding top                                                                               |
-| paddingRight      | SpaceType               | unset                   | padding right right                                                                       |
-| paddingBottom     | SpaceType               | unset                   | padding bottom bottom                                                                     |
-| paddingLeft       | SpaceType               | unset                   | padding left left                                                                         |
+| Name              | Type                                               | Default                 | Description                                                                                |
+| :---------------- | :------------------------------------------------- | :---------------------- | :----------------------------------------------------------------------------------------- |
+| h1 h2 h3 h4 h5 h6 |                                                    | h2                      | Choose the heading level                                                                   |
+| textAlign         | 'left'/'right'/'center'                            | 'left'                  | text alignment                                                                             |
+| textColor         | string                                             | 'theme.colors.textDark' | set the heading text color alignment accepts theme colour names (preferred) or hex string  |
+| textSize          | FontSizeType                                       | depends on h number     | font size of header, this will scale still with breakpoints                                |
+| wordBreak         | 'normal' / 'break-all' / 'keep-all' / 'break-word' | 'normal'                | Sets whether line breaks appear wherever the text would otherwise overflow its content box |
+| margin            | SpaceType                                          | unset                   | margin top, bottom, left and right                                                         |
+| marginVertical    | SpaceType                                          | unset                   | margin top and bottom                                                                      |
+| marginHorizontal  | SpaceType                                          | unset                   | margin left and right                                                                      |
+| marginTop         | SpaceType                                          | 'm' (0 if first child)  | margin top                                                                                 |
+| marginRight       | SpaceType                                          | unset                   | margin right right                                                                         |
+| marginBottom      | SpaceType                                          | 's'                     | margin bottom bottom                                                                       |
+| marginLeft        | SpaceType                                          | unset                   | margin left left                                                                           |
+| padding           | SpaceType                                          | unset                   | padding top, bottom, left and right                                                        |
+| paddingVertical   | SpaceType                                          | unset                   | padding top and bottom                                                                     |
+| paddingHorizontal | SpaceType                                          | unset                   | padding left and right                                                                     |
+| paddingTop        | SpaceType                                          | unset                   | padding top                                                                                |
+| paddingRight      | SpaceType                                          | unset                   | padding right right                                                                        |
+| paddingBottom     | SpaceType                                          | unset                   | padding bottom bottom                                                                      |
+| paddingLeft       | SpaceType                                          | unset                   | padding left left                                                                          |
 
 ### SpaceType
 
