@@ -65,8 +65,8 @@ const UserBlock: FC<UserBlockProps> = props => {
 };
 
 UserBlock.defaultProps = {
-  avatarUrl: undefined,
   avatarName: undefined,
+  avatarUrl: undefined,
   theme: defaultTheme,
 };
 

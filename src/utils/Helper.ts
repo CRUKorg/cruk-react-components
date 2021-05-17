@@ -1,3 +1,5 @@
+export const isBrowser = typeof window !== 'undefined';
+
 export const calculatePercentRounded = (value: number, target: number): number => {
   const percent = (value / target) * 100;
   if (percent === Number.POSITIVE_INFINITY || Number.isNaN(percent)) {

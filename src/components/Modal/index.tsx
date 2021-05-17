@@ -137,8 +137,8 @@ const Modal: FC<ModalProps> = props => {
 };
 
 Modal.defaultProps = {
-  showCloseButton: true,
   closeFunction: undefined,
+  showCloseButton: true,
   theme: defaultTheme,
 };
 
