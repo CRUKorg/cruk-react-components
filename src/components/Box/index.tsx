@@ -1,4 +1,4 @@
-import React, { FunctionComponent, HTMLAttributes } from 'react';
+import React, { FunctionComponent, HTMLAttributes, Ref, forwardRef } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
 import spacing, { SpacingProps } from '../Spacing';
@@ -10,6 +10,7 @@ type BoxProps = SpacingProps &
     backgroundColor?: string;
     css?: any;
     theme: ThemeType;
+    ref?: Ref<HTMLDivElement>;
   };
 
 const StyledBox = styled.div<BoxProps>`
@@ -32,7 +33,7 @@ const StyledBox = styled.div<BoxProps>`
   ${props => spacing(props)}
 `;
 
-const Box: FunctionComponent<BoxProps> = props => {
+const Box: FunctionComponent<BoxProps> = forwardRef(({ ...props }: BoxProps, ref?: Ref<HTMLDivElement>) => {
   const { children, css, theme, ...rest } = props;
   const mergedTheme = {
     ...defaultTheme,
@@ -40,10 +41,10 @@ const Box: FunctionComponent<BoxProps> = props => {
   };
 
   return (
-    <StyledBox theme={mergedTheme} {...rest}>
+    <StyledBox theme={mergedTheme} {...rest} ref={ref}>
       {children}
     </StyledBox>
   );
-};
+});
 
 export default withTheme(Box);
