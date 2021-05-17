@@ -66,6 +66,9 @@ const GlobalStyle = createGlobalStyle`
   section {
     width: 100%;
   }
+    button {
+    font-size: 1em;
+  }
 `;
 
 export default withTheme(GlobalStyle);
