@@ -3,8 +3,8 @@
 import React from 'react';
 import { mount } from '@cypress/react';
 
-import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
-import { Modal, Button, Heading, su2cTheme } from '../';
+import { TestThemeWrapper } from '../TestWrapper';
+import { Modal, Button, Heading, su2cTheme, crukTheme } from '../';
 
 const ModalOnlyContent = () => (
   <Modal closeFunction={() => {}}>
@@ -45,11 +45,25 @@ const Content = () => {
 };
 
 describe('Modal', () => {
-  it('is accessible', () => {
+  it('is accessible CRUK theme', () => {
     mount(
-      <TestWrapper>
+      <TestThemeWrapper theme={crukTheme}>
         <Content />
-      </TestWrapper>,
+      </TestThemeWrapper>,
+    );
+    cy.injectAxe();
+    cy.contains('Show me a modal').click();
+    cy.checkA11y('body', {
+      rules: {
+        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
+      },
+    });
+  });
+  it('is accessible SU2C theme', () => {
+    mount(
+      <TestThemeWrapper theme={su2cTheme}>
+        <Content />
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y('body', {
