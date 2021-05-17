@@ -23,6 +23,7 @@ module.exports = createWebpackConfig({
     ],
   },
   resolve: {
+    modules: [path.resolve(__dirname, 'node_modules'), path.resolve(__dirname, './')],
     extensions: ['.tsx', '.ts', '.js'],
   },
   devtool: false,
