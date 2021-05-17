@@ -22,9 +22,9 @@ describe('Header', () => {
         <Header siteSlogan="Header slogan here">
           <Button>Child component</Button>
         </Header>
-        <main id="main" tabIndex={-1}>
+        <div id="main" tabIndex={-1}>
           blah
-        </main>
+        </div>
       </>,
     );
     cy.injectAxe();
