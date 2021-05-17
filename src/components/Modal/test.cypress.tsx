@@ -55,6 +55,7 @@ describe('Modal', () => {
     cy.contains('Show me a modal').click();
     cy.checkA11y('body');
   });
+
   it('is accessible SU2C theme', () => {
     mount(
       <TestThemeWrapper theme={su2cTheme}>
@@ -62,6 +63,7 @@ describe('Modal', () => {
       </TestThemeWrapper>,
     );
     cy.injectAxe();
+    cy.contains('Show me a modal').click();
     cy.checkA11y('body', {
       rules: {
         'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
@@ -80,6 +82,7 @@ describe('Modal', () => {
       .first()
       .matchImageSnapshot();
   });
+
   it('should match SU2C snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);

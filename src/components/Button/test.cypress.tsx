@@ -53,9 +53,9 @@ describe('Button', () => {
   it('is accessible CRUK theme', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
     cy.injectAxe();
-    cy.contains('Show me a modal').click();
     cy.checkA11y('body');
   });
+
   it('is accessible SU2C theme', () => {
     mount(<TestThemeWrapper theme={su2cTheme}>{content()}</TestThemeWrapper>);
     cy.injectAxe();
