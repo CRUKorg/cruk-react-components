@@ -1,7 +1,7 @@
 import React, { FunctionComponent, HTMLAttributes, Ref, forwardRef } from 'react';
 import styled, { css, withTheme } from 'styled-components';
 
-import spacing, { SpacingProps } from '../Spacing';
+import Spacing, { SpacingProps } from 'src/components/Spacing';
 import defaultTheme from '../../themes/cruk';
 import { ThemeType } from '../../types';
 
@@ -30,7 +30,7 @@ const StyledBox = styled.div<BoxProps>`
       : 'transparent'};
 
   ${(props: BoxProps) => (css as any)([props.css])}
-  ${props => spacing(props)}
+  ${props => Spacing(props)}
 `;
 
 const Box: FunctionComponent<BoxProps> = forwardRef(({ ...props }: BoxProps, ref?: Ref<HTMLDivElement>) => {

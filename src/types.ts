@@ -34,6 +34,8 @@ export type ButtonType = {
   textTransform: string;
 };
 
+export type ButtonAppearanceType = 'primary' | 'secondary' | 'tertiary' | 'text';
+
 export type BreakPointType = {
   mobile: string;
   tablet: string;
