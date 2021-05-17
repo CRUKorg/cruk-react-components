@@ -53,11 +53,7 @@ describe('Modal', () => {
     );
     cy.injectAxe();
     cy.contains('Show me a modal').click();
-    cy.checkA11y('body', {
-      rules: {
-        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
-      },
-    });
+    cy.checkA11y('body');
   });
   it('is accessible SU2C theme', () => {
     mount(
