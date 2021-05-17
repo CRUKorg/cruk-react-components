@@ -55,4 +55,4 @@ jobs:
       - name: npm install
         run: docker-compose run npm ci
       - name: Test
-        run: eslint:test
+        run: npm run eslint:test
