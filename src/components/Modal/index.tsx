@@ -108,11 +108,11 @@ const Modal: FC<ModalProps> = props => {
     <>
       {typeof window !== `undefined`
         ? ReactDOM.createPortal(
-            <section>
+            <section role="dialog" aria-modal="true">
               <FocusLock returnFocus>
                 <ThemeProvider theme={theme}>
                   <Wrapper>
-                    <Content aria-modal="true" backgroundColor="" maxWidth={maxWidth} top={top}>
+                    <Content backgroundColor="" maxWidth={maxWidth} top={top}>
                       {showCloseButton && closeFunction ? (
                         <CloseButton
                           aria-label="close"

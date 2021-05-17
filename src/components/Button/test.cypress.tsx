@@ -4,11 +4,11 @@ import React from 'react';
 import { mount } from '@cypress/react';
 
 import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
-import { Button, Icon, su2cTheme, crukTheme } from '../';
+import { Button, Box, Icon, su2cTheme, crukTheme } from '../';
 
 const content = () => {
   return (
-    <>
+    <Box backgroundColor="backgroundLight" padding="none">
       <Button appearance="primary">Primary</Button>
       <Button appearance="secondary">Secondary</Button>
       <Button appearance="tertiary">Tertiary</Button>
@@ -45,7 +45,7 @@ const content = () => {
         Continue with facebook
       </Button>
       <Button full>Full width Button</Button>
-    </>
+    </Box>
   );
 };
 
