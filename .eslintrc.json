@@ -74,7 +74,8 @@
   },
   "ignorePatterns": [
     "cypress",
-    "*.config.js"
+    "*.config.js",
+    "webpack.*.js"
   ],
   "env": {
     "browser": true,
