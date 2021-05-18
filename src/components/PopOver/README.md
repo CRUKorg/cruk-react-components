@@ -34,32 +34,32 @@ function () {
 
   return (
     <>
-      <PopOver overlay={content}>
+      <PopOver overlay={content} minWidth="23em">
         <Button>
           <Icon name="share" />Share top
         </Button>
       </PopOver>
-      <PopOver position="topLeft" overlay={content}>
+      <PopOver position="topLeft" overlay={content} minWidth="23em">
         <Button>
           <Icon name="share" />Share topLeft
         </Button>
       </PopOver>
-      <PopOver position="bottom" overlay={content}>
+      <PopOver position="bottom" overlay={content} minWidth="23em">
         <Button>
           <Icon name="share" />Share bottom
         </Button>
       </PopOver>
-      <PopOver position="bottomLeft" overlay={content}>
+      <PopOver position="bottomLeft" overlay={content} minWidth="23em">
         <Button>
           <Icon name="share" />Share bottomLeft
         </Button>
       </PopOver>
-      <PopOver position="left" overlay={content}>
+      <PopOver position="left" overlay={content} minWidth="23em">
         <Button>
           <Icon name="share" />Share left
         </Button>
       </PopOver>
-      <PopOver position="right" overlay={content}>
+      <PopOver position="right" overlay={content} minWidth="23em">
         <Button>
           <Icon name="share" />Share right
         </Button>
@@ -76,6 +76,7 @@ function () {
 | position | String            | "top" "bottom" "left" "right" "topLeft" "bottomLeft" | "top"   | Where to place the popover     |
 | overlay  | String/React node |                                                      |         | Content to show in the popover |
 | maxWidth | String            |                                                      | "auto"  | Max width for popover content  |
+| minWidth | String            |                                                      | "auto"  | Min width for popover content  |
 
 ## Usage
 

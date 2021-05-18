@@ -13,12 +13,14 @@ type PopOverProps = {
   css?: string;
   theme?: ThemeType;
   maxWidth?: string;
+  minWidth?: string;
 };
 
-type StyledPopOverContentType = {
+type StyledPopOverContentProps = {
   position: PopOverPositionType;
   theme?: ThemeType;
   maxWidth: string;
+  minWidth: string;
 };
 
 type PopOverWrapperProps = {
@@ -31,11 +33,32 @@ const PopOverWrapper = styled.div<PopOverWrapperProps>`
   ${props => (css as any)([props.css])}
 `;
 
-const PopOverContent = styled.div<StyledPopOverContentType>`
+const PopOverContent = styled.div<StyledPopOverContentProps>`
   position: absolute;
   display: flex;
   justify-content: center;
   word-wrap: break-word;
+  z-index: 9999;
+  max-width: ${({ maxWidth }: { maxWidth: string }) => maxWidth};
+  min-width: ${({ minWidth }: { minWidth: string }) => minWidth};
+  font-size: ${({
+    theme: {
+      fontSizes: { s },
+    },
+  }) => s};
+  background-color: ${({
+    theme: {
+      colors: { popoverBackground },
+    },
+  }) => popoverBackground};
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: ${({
+    theme: {
+      utilities: { borderRadius },
+    },
+  }) => borderRadius};
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 
   margin-bottom: ${({ position }: { position?: PopOverPositionType }) => {
     switch (position) {
@@ -144,26 +167,6 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
         return 'auto';
     }
   }};
-  z-index: 9999;
-  max-width: ${({ maxWidth }: { maxWidth: string }) => maxWidth};
-  font-size: ${({
-    theme: {
-      fontSizes: { s },
-    },
-  }) => s};
-  background-color: ${({
-    theme: {
-      colors: { popoverBackground },
-    },
-  }) => popoverBackground};
-  background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  border-radius: ${({
-    theme: {
-      utilities: { borderRadius },
-    },
-  }) => borderRadius};
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 
   &:after,
   &:before {
@@ -537,8 +540,8 @@ const PopOver: FC<PopOverProps> = props => {
     ...defaultTheme,
     ...props.theme,
   };
-  const maxWidth = props.maxWidth || 'auto';
 
+  console.log({ props });
   // outside click closes popover
   const closePopOver = useCallback(
     (e: MouseEvent) => {
@@ -570,7 +573,8 @@ const PopOver: FC<PopOverProps> = props => {
         )}
         {showPopOver ? (
           <PopOverContent
-            maxWidth={maxWidth}
+            maxWidth={props.maxWidth || 'none'}
+            minWidth={props.minWidth || 'auto'}
             position={props.position || 'top'}
             theme={theme}
             role="dialog"

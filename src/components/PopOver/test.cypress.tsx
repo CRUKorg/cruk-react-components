@@ -31,37 +31,37 @@ const internalContent = () => (
 
 const content = () => (
   <>
-    <PopOver overlay={internalContent()}>
+    <PopOver overlay={internalContent()} minWidth="23em">
       <Button>
         <Icon name="share" />
         Share top
       </Button>
     </PopOver>
-    <PopOver position="topLeft" overlay={internalContent()}>
+    <PopOver position="topLeft" overlay={internalContent()} minWidth="23em">
       <Button>
         <Icon name="share" />
         Share topLeft
       </Button>
     </PopOver>
-    <PopOver position="bottom" overlay={internalContent()}>
+    <PopOver position="bottom" overlay={internalContent()} minWidth="23em">
       <Button>
         <Icon name="share" />
         Share bottom
       </Button>
     </PopOver>
-    <PopOver position="bottomLeft" overlay={internalContent()}>
+    <PopOver position="bottomLeft" overlay={internalContent()} minWidth="23em">
       <Button>
         <Icon name="share" />
         Share bottomLeft
       </Button>
     </PopOver>
-    <PopOver position="left" overlay={internalContent()}>
+    <PopOver position="left" overlay={internalContent()} minWidth="23em">
       <Button>
         <Icon name="share" />
         Share left
       </Button>
     </PopOver>
-    <PopOver position="right" overlay={internalContent()}>
+    <PopOver position="right" overlay={internalContent()} minWidth="23em">
       <Button>
         <Icon name="share" />
         Share right
