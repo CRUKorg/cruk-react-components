@@ -1,7 +1,4 @@
 import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
-import { register } from 'cypress-match-screenshot';
-
-register();
 
 if (Cypress.config('isInteractive')) {
   Cypress.Commands.add('matchImageSnapshot', () => {
