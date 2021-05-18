@@ -36,11 +36,6 @@ const PopOverContent = styled.div<StyledPopOverContentType>`
   display: flex;
   justify-content: center;
   word-wrap: break-word;
-  padding: ${({
-    theme: {
-      spacing: { xxs },
-    },
-  }) => xxs};
 
   margin-bottom: ${({ position }: { position?: PopOverPositionType }) => {
     switch (position) {

@@ -4,10 +4,10 @@ import React from 'react';
 import { mount } from '@cypress/react';
 
 import TestWrapper from '../TestWrapper';
-import { PopOver, Button, Icon } from '../';
+import { PopOver, Box, Button, Icon } from '../';
 
 const internalContent = () => (
-  <>
+  <Box padding="xxs">
     <Button appearance="text" aria-label="Facebook">
       <Icon name="facebookSquare" color="#4267b2" size="1.5rem" />
     </Button>
@@ -26,7 +26,7 @@ const internalContent = () => (
     <Button appearance="text" aria-label="Email">
       <Icon name="envelopeSquare" color="#00b6ed" size="1.5rem" />
     </Button>
-  </>
+  </Box>
 );
 
 const content = () => (

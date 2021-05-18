@@ -10,24 +10,26 @@ commonly used for displaying additional rich content on top of something.
 ```.jsx
 function () {
   const content = (<>
-    <Button appearance="text">
-      <Icon name="facebookSquare" color="#4267b2" size='1.5rem'/>
+   <Box padding="xxs">
+    <Button appearance="text" aria-label="Facebook">
+      <Icon name="facebookSquare" color="#4267b2" size="1.5rem" />
     </Button>
-    <Button appearance="text">
-      <Icon name="twitterSquare" color="#1da1f2" size='1.5rem'/>
+    <Button appearance="text" aria-label="Twitter">
+      <Icon name="twitterSquare" color="#1da1f2" size="1.5rem" />
     </Button>
-    <Button  appearance="text" >
-      <Icon name="whatsappSquare" color="#4dc247" size='1.5rem'/>
+    <Button appearance="text" aria-label="WhatsApp">
+      <Icon name="whatsappSquare" color="#4dc247" size="1.5rem" />
     </Button>
-    <Button  appearance="text">
-      <Icon name="messengerSquare" color="#288ef8" size='1.5rem'/>
+    <Button appearance="text" aria-label="Facebook Messenger">
+      <Icon name="messengerSquare" color="#288ef8" size="1.5rem" />
     </Button>
-    <Button appearance="text">
-      <Icon name="linkedin" color="#0077b5" size='1.5rem'/>
+    <Button appearance="text" aria-label="LinkedIn">
+      <Icon name="linkedin" color="#0077b5" size="1.5rem" />
     </Button>
-    <Button appearance="text">
-      <Icon name="envelopeSquare" color="#00b6ed" size='1.5rem'/>
+    <Button appearance="text" aria-label="Email">
+      <Icon name="envelopeSquare" color="#00b6ed" size="1.5rem" />
     </Button>
+  </Box>
   </>);
 
   return (
