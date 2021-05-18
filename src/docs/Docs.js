@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { render } from 'react-dom';
+import React, { useState } from 'react';
 import { Router, Link as RouterLink } from '@reach/router';
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import styled, { css, ThemeProvider } from 'styled-components';
 
 import { useKey } from '../hooks/useKey';

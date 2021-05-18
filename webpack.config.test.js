@@ -2,6 +2,7 @@ var path = require('path');
 const createWebpackConfig = require('./webpack.common').createWebpackConfig;
 
 module.exports = createWebpackConfig({
+  mode: 'development',
   module: {
     rules: [
       {
