@@ -25,7 +25,7 @@ services:
   cypress:
     networks:
       network:
-    image: cypress/included:7.2.0
+    image: cypress/included:7.3.0
     working_dir: /app
     depends_on:
       - server
@@ -37,7 +37,7 @@ services:
       - CYPRESS_updateSnapshots=true
     networks:
       network:
-    image: cypress/included:7.2.0
+    image: cypress/included:7.3.0
     working_dir: /app
     depends_on:
       - server
