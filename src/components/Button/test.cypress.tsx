@@ -3,8 +3,9 @@
 import React from 'react';
 import { mount } from '@cypress/react';
 
-import TestWrapper from '../TestWrapper';
-import { Button, Icon } from '../';
+import TestWrapper from 'src/components/TestWrapper';
+import Button from 'src/components/Button';
+import Icon from 'src/components/Icon';
 
 const content = () => {
   return (
