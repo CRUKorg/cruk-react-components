@@ -2,6 +2,7 @@ const path = require('path');
 const createWebpackConfig = require('./webpack.common').createWebpackConfig;
 
 module.exports = createWebpackConfig({
+  mode: 'production',
   entry: './src/components',
   output: {
     path: path.join(__dirname, 'lib'),

@@ -2,6 +2,7 @@ var path = require('path');
 const createWebpackConfig = require('./webpack.common').createWebpackConfig;
 
 module.exports = createWebpackConfig({
+  mode: 'development',
   module: {
     rules: [
       {
@@ -23,6 +24,7 @@ module.exports = createWebpackConfig({
     ],
   },
   resolve: {
+    modules: [path.resolve(__dirname, 'node_modules'), path.resolve(__dirname, './')],
     extensions: ['.tsx', '.ts', '.js'],
   },
   devtool: false,

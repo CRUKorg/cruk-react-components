@@ -3,8 +3,8 @@
 import React from 'react';
 import { mount } from '@cypress/react';
 
-import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
-import { Button, Box, Icon, su2cTheme, crukTheme } from '../';
+import TestWrapper, { TestThemeWrapper } from 'src/components/TestWrapper';
+import { su2cTheme, crukTheme, Icon, Button, Box } from '../';
 
 const content = () => {
   return (

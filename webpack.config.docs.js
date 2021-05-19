@@ -3,6 +3,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const createWebpackConfig = require('./webpack.common').createWebpackConfig;
 
 module.exports = createWebpackConfig({
+  mode: 'development',
   entry: './src/docs',
   output: {
     path: path.join(__dirname, 'public'),
@@ -19,5 +20,8 @@ module.exports = createWebpackConfig({
     contentBase: path.resolve(__dirname, './src'),
     watchContentBase: true,
     port: 8080,
+    hot: true,
+    historyApiFallback: true,
+    open: true,
   },
 });

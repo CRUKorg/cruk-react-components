@@ -1,18 +1,15 @@
 import React, { FunctionComponent, ReactNode, ButtonHTMLAttributes, Ref, forwardRef } from 'react';
-import styled, { css, withTheme } from 'styled-components';
-import defaultTheme from '../../themes/cruk';
+import { withTheme } from 'styled-components';
 
-import Icon from '../Icon';
+import defaultTheme from 'src/themes/cruk';
+import Icon from 'src/components/Icon';
 
-import { ThemeType } from '../../types';
+import { Spacer, StyledButton } from './styles';
 
-const BUTTON_HEIGHT = '3rem';
-const BUTTON_HEIGHT_LARGE = '4rem';
+import { ThemeType, ButtonAppearanceType } from 'src/types';
 
-type AppearanceType = 'primary' | 'secondary' | 'tertiary' | 'text';
-
-type ButtonProps = ButtonHTMLAttributes<HTMLElement> & {
-  appearance?: AppearanceType;
+export type Props = ButtonHTMLAttributes<HTMLElement> & {
+  appearance?: ButtonAppearanceType;
   full?: boolean;
   theme?: ThemeType;
   href?: string;
@@ -22,165 +19,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLElement> & {
   ref?: Ref<HTMLElement>;
 };
 
-type StyledButtonProps = ButtonHTMLAttributes<HTMLElement> & {
-  appearance?: AppearanceType;
-  full?: boolean;
-  theme: ThemeType;
-  size?: 'm' | 'l';
-  css?: any;
-  as?: any;
-  isIconButton: boolean;
-};
-
-const Spacer = styled.span`
-  margin-left: ${({ theme }) => theme.spacing.xxs};
-  &:first-of-type {
-    margin-left: 0;
-  }
-`;
-
-const StyledButton = styled.button<StyledButtonProps>`
-  box-sizing: border-box;
-  min-height: ${BUTTON_HEIGHT};
-  display: inline-block;
-  vertical-align: middle;
-  padding: ${({ theme, isIconButton }) =>
-    isIconButton
-      ? '0'
-      : `calc( (${BUTTON_HEIGHT} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m}`};
-  width: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT}` : 'auto')};
-  min-width: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT}` : 'auto')};
-
-  border-radius: ${props => props.theme.button.borderRadius};
-  border-style: solid;
-  border-width:  ${({ theme }) => theme.button.buttonBorderThickness};
-
-  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
-
-  cursor: pointer;
-  font-size: ${({
-    theme: {
-      fontSizes: { m },
-    },
-  }) => m};
-  font-family: ${({
-    theme: {
-      typography: { fontFamilyHeadings },
-    },
-  }) => fontFamilyHeadings};
-  font-weight: ${({
-    theme: {
-      typography: { fontWeightMedium },
-    },
-  }) => fontWeightMedium};
-  text-align: center;
-  text-transform: ${props => props.theme.button.textTransform};
-  text-decoration: ${props => props.theme.button.textDecoration};
-  
-  ${(props: StyledButtonProps) =>
-    props.appearance === 'primary' &&
-    css`
-      background-color: ${props.theme.colors.buttonPrimaryBackground};
-      border-color: ${props.theme.colors.buttonPrimaryBorder};
-      color: ${props.theme.colors.buttonPrimaryText} !important;
-      :focus,
-      :hover {
-        background-color: ${props.theme.colors.buttonPrimaryBackgroundHover};
-        border-color: ${props.theme.colors.buttonPrimaryBorderHover};
-        color: ${props.theme.colors.buttonPrimaryTextHover} !important;
-      }
-      :disabled {
-        cursor: not-allowed;
-        background-color: ${props.theme.colors.buttonPrimaryDisabledBackground};
-        color: ${props.theme.colors.buttonPrimaryDisabledText} !important;
-        border-color: ${props.theme.colors.buttonPrimaryDisabledBorder};
-      }
-    `}
-
-  ${(props: StyledButtonProps) =>
-    props.appearance === 'secondary' &&
-    css`
-      background-color: ${props.theme.colors.buttonSecondaryBackground};
-      border-color: ${props.theme.colors.buttonSecondaryBorder};
-      color: ${props.theme.colors.buttonSecondaryText} !important;
-      :focus,
-      :hover {
-        background-color: ${props.theme.colors.buttonSecondaryBackgroundHover};
-        border-color: ${props.theme.colors.buttonSecondaryBorderHover};
-        color: ${props.theme.colors.buttonSecondaryTextHover} !important;
-      }
-      :disabled {
-        cursor: not-allowed;
-        background-color: ${props.theme.colors.buttonSecondaryDisabledBackground};
-        color: ${props.theme.colors.buttonSecondaryDisabledText} !important;
-        border-color: ${props.theme.colors.buttonSecondaryDisabledBorder};
-      }
-    `}
-
-  ${(props: StyledButtonProps) =>
-    props.appearance === 'tertiary' &&
-    css`
-      background-color: ${props.theme.colors.buttonTertiaryBackground};
-      border-color: ${props.theme.colors.buttonTertiaryBorder};
-      color: ${props.theme.colors.buttonTertiaryText} !important;
-      :focus,
-      :hover {
-        background-color: ${props.theme.colors.buttonTertiaryBackgroundHover};
-        border-color: ${props.theme.colors.buttonTertiaryBorderHover};
-        color: ${props.theme.colors.buttonTertiaryTextHover} !important;
-      }
-      :disabled {
-        cursor: not-allowed;
-        background-color: ${props.theme.colors.buttonTertiaryDisabledBackground};
-        color: ${props.theme.colors.buttonTertiaryDisabledText} !important;
-        border-color: ${props.theme.colors.buttonTertiaryDisabledBorder};
-      }
-    `}
-
-  ${(props: StyledButtonProps) =>
-    props.appearance === 'text' &&
-    css`
-      display: inline-block;
-      padding: 0;
-      border: 0px;
-      background-color: rgba(255, 255, 255, 0);
-      transition: color 0.2s ease;
-      color: ${props.theme.colors.buttonTertiaryText};
-      :focus,
-      :hover {
-        color: ${props.theme.colors.linkColorHover};
-      }
-      :disabled {
-        cursor: not-allowed;
-        background-color: transparent;
-        color: ${props.theme.colors.buttonTertiaryDisabledText} !important;
-        border-color: transparent;
-      }
-    `}
-  
-  ${(props: StyledButtonProps) =>
-    props.size === 'l' &&
-    css`
-      min-height: ${BUTTON_HEIGHT_LARGE};
-      border-radius: ${({ theme }) => theme.button.borderRadiusLarge};
-      padding: ${({ theme, isIconButton }) =>
-        isIconButton
-          ? '0'
-          : `calc( (${BUTTON_HEIGHT_LARGE} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m}`};
-      min-width: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT_LARGE}` : 'auto')};
-      height: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT_LARGE}` : 'auto')};
-    `}
-
-  ${(props: StyledButtonProps) =>
-    props.full &&
-    css`
-      width: 100%;
-    `}
-
-  ${(props: StyledButtonProps) => (css as any)([props.css])}
-`;
-
-const Button: FunctionComponent<ButtonProps> = forwardRef((props: ButtonProps, ref?: Ref<HTMLElement>) => {
+const Button: FunctionComponent<Props> = forwardRef((props: Props, ref?: Ref<HTMLElement>) => {
   const theme = {
     ...defaultTheme,
     ...props.theme,

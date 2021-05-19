@@ -156,8 +156,8 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
 };
 
 Totaliser.defaultProps = {
-  target: null,
   summaryMessage: undefined,
+  target: null,
   theme: defaultTheme,
 };
 
