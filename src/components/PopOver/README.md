@@ -10,54 +10,56 @@ commonly used for displaying additional rich content on top of something.
 ```.jsx
 function () {
   const content = (<>
-    <Button appearance="text">
-      <Icon name="facebookSquare" color="#4267b2" size='1.5rem'/>
+   <Box padding="xxs">
+    <Button appearance="text" aria-label="Facebook">
+      <Icon name="facebookSquare" color="#4267b2" size="1.5rem" />
     </Button>
-    <Button appearance="text">
-      <Icon name="twitterSquare" color="#1da1f2" size='1.5rem'/>
+    <Button appearance="text" aria-label="Twitter">
+      <Icon name="twitterSquare" color="#1da1f2" size="1.5rem" />
     </Button>
-    <Button  appearance="text" >
-      <Icon name="whatsappSquare" color="#4dc247" size='1.5rem'/>
+    <Button appearance="text" aria-label="WhatsApp">
+      <Icon name="whatsappSquare" color="#4dc247" size="1.5rem" />
     </Button>
-    <Button  appearance="text">
-      <Icon name="messengerSquare" color="#288ef8" size='1.5rem'/>
+    <Button appearance="text" aria-label="Facebook Messenger">
+      <Icon name="messengerSquare" color="#288ef8" size="1.5rem" />
     </Button>
-    <Button appearance="text">
-      <Icon name="linkedin" color="#0077b5" size='1.5rem'/>
+    <Button appearance="text" aria-label="LinkedIn">
+      <Icon name="linkedin" color="#0077b5" size="1.5rem" />
     </Button>
-    <Button appearance="text">
-      <Icon name="envelopeSquare" color="#00b6ed" size='1.5rem'/>
+    <Button appearance="text" aria-label="Email">
+      <Icon name="envelopeSquare" color="#00b6ed" size="1.5rem" />
     </Button>
+  </Box>
   </>);
 
   return (
     <>
-      <PopOver overlay={content}>
+      <PopOver overlay={content} minWidth="23em">
         <Button>
           <Icon name="share" />Share top
         </Button>
       </PopOver>
-      <PopOver position="topLeft" overlay={content}>
+      <PopOver position="topLeft" overlay={content} minWidth="23em">
         <Button>
           <Icon name="share" />Share topLeft
         </Button>
       </PopOver>
-      <PopOver position="bottom" overlay={content}>
+      <PopOver position="bottom" overlay={content} minWidth="23em">
         <Button>
           <Icon name="share" />Share bottom
         </Button>
       </PopOver>
-      <PopOver position="bottomLeft" overlay={content}>
+      <PopOver position="bottomLeft" overlay={content} minWidth="23em">
         <Button>
           <Icon name="share" />Share bottomLeft
         </Button>
       </PopOver>
-      <PopOver position="left" overlay={content}>
+      <PopOver position="left" overlay={content} minWidth="23em">
         <Button>
           <Icon name="share" />Share left
         </Button>
       </PopOver>
-      <PopOver position="right" overlay={content}>
+      <PopOver position="right" overlay={content} minWidth="23em">
         <Button>
           <Icon name="share" />Share right
         </Button>
@@ -74,6 +76,7 @@ function () {
 | position | String            | "top" "bottom" "left" "right" "topLeft" "bottomLeft" | "top"   | Where to place the popover     |
 | overlay  | String/React node |                                                      |         | Content to show in the popover |
 | maxWidth | String            |                                                      | "auto"  | Max width for popover content  |
+| minWidth | String            |                                                      | "auto"  | Min width for popover content  |
 
 ## Usage
 
