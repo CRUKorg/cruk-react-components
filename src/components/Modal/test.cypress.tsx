@@ -7,7 +7,7 @@ import { TestThemeWrapper } from '../TestWrapper';
 import { Modal, Button, Heading, su2cTheme, crukTheme } from '../';
 
 const ModalOnlyContent = () => (
-  <Modal closeFunction={() => {}}>
+  <Modal closeFunction={() => {}} modalName="test">
     <Heading h2 marginTop="none" textSize="xl">
       Modal title
     </Heading>
@@ -29,7 +29,7 @@ const Content = () => {
         Show me a modal
       </Button>
       {showModal && (
-        <Modal closeFunction={toggleShowModal}>
+        <Modal closeFunction={toggleShowModal} modalName="test">
           <Heading h2 marginTop="none" textSize="xl">
             Modal title
           </Heading>

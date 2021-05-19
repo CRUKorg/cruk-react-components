@@ -23,7 +23,7 @@ function () {
     <>
       <Button appearance="primary" onClick={toggleShowModal}>Show me a modal</Button>
       {showModal &&
-        <Modal closeFunction={toggleShowModal}>
+        <Modal closeFunction={toggleShowModal} modalName="test">
           <Heading h2 marginTop='none' textSize="xl">Modal title</Heading>
           <p>Some really important information</p>
           <Button appearance="primary" onClick={toggleShowModal}>OK</Button>

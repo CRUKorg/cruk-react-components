@@ -1,84 +1,35 @@
 import React, { FC, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import styled, { ThemeProvider, withTheme } from 'styled-components';
+import { ThemeProvider, withTheme } from 'styled-components';
 import FocusLock from 'react-focus-lock';
 
-import Box from '../Box';
-import Button from '../Button';
-import Icon from '../Icon';
-import { COLORS } from '../../themes/cruk';
+import Icon from 'src/components/Icon';
+import defaultTheme from 'src/themes/cruk';
 
-import defaultTheme from '../../themes/cruk';
-import { ThemeType } from '../../types';
+import { CloseButton, Wrapper, Content, Background } from './styles';
 
-const Background = styled.div`
-  background: ${COLORS.modalBackdrop};
-  bottom: 0;
-  left: 0;
-  opacity: 0.5;
-  position: fixed;
-  right: 0;
-  top: 0;
-  transition: opacity 0.3s, bottom 0s 0.3s;
-  z-index: 100;
-`;
+import { ThemeType } from 'src/types';
 
-const Wrapper = styled.div`
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-`;
-
-type ContentProps = {
-  maxWidth: string;
-  top: string;
-};
-
-const Content = styled(Box)<ContentProps>`
-  background: ${COLORS.backgroundLight};
-  position: relative;
-  border-radius: 4px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-  margin: ${({ top }) => `${top} auto auto auto`};
-  width: 90%;
-  min-height: 10rem;
-  padding: ${({
-    theme: {
-      spacing: { xs },
-    },
-  }) => xs};
-  max-width: ${({ maxWidth }) => maxWidth};
-  z-index: 9999;
-  margin-bottom: ${({ theme }) => theme.spacing.xxl};
-`;
-
-const CloseButton = styled(Button)`
-  float: right;
-  margin-left: ${({
-    theme: {
-      spacing: { xs },
-    },
-  }) => xs};
-  font-size: 1.2rem;
-  padding: 0;
-`;
-
-type ModalProps = {
-  showCloseButton?: Boolean;
+type Props = {
+  modalName: string;
   closeFunction: Function;
+  showCloseButton?: Boolean;
   maxWidth?: string;
   top?: string;
   theme?: ThemeType;
 };
 
-const Modal: FC<ModalProps> = props => {
-  const { showCloseButton, closeFunction, maxWidth = '500px', top = '1rem', children } = props;
+const Modal: FC<Props> = ({
+  modalName,
+  closeFunction,
+  showCloseButton,
+  maxWidth = '500px',
+  top = '1rem',
+  theme = { ...defaultTheme },
+  children,
+}) => {
   const closeByEsc = (event: KeyboardEvent): void => {
-    if (event.which == 27 && !!closeFunction) {
+    if (event.key === 'Escape' && !!closeFunction) {
       closeFunction();
     }
   };
@@ -99,19 +50,14 @@ const Modal: FC<ModalProps> = props => {
     };
   }, []);
 
-  const theme = {
-    ...defaultTheme,
-    ...props.theme,
-  };
-
   return (
     <>
       {typeof window !== `undefined`
         ? ReactDOM.createPortal(
-            <section role="dialog">
+            <section>
               <FocusLock returnFocus>
                 <ThemeProvider theme={theme}>
-                  <Wrapper aria-modal="true">
+                  <Wrapper role="dialog" aria-modal="true" aria-label={modalName}>
                     <Content backgroundColor="" maxWidth={maxWidth} top={top}>
                       {showCloseButton && closeFunction ? (
                         <CloseButton
