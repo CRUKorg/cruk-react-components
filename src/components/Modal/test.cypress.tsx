@@ -3,8 +3,8 @@
 import React from 'react';
 import { mount } from '@cypress/react';
 
-import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
-import { Modal, Button, Heading, su2cTheme } from '../';
+import { TestThemeWrapper } from '../TestWrapper';
+import { Modal, Button, Heading, su2cTheme, crukTheme } from '../';
 
 const ModalOnlyContent = () => (
   <Modal closeFunction={() => {}}>
@@ -45,15 +45,32 @@ const Content = () => {
 };
 
 describe('Modal', () => {
-  it('is accessible', () => {
+  it('is accessible CRUK theme', () => {
     mount(
-      <TestWrapper>
+      <TestThemeWrapper theme={crukTheme}>
         <Content />
-      </TestWrapper>,
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
+    cy.contains('Show me a modal').click();
     cy.checkA11y('body', {
       rules: {
+        tabindex: { enabled: false }, // TODO this is disabled because this is how focus lock works and this IS what we want for a11y.
+      },
+    });
+  });
+
+  it('is accessible SU2C theme', () => {
+    mount(
+      <TestThemeWrapper theme={su2cTheme}>
+        <Content />
+      </TestThemeWrapper>,
+    );
+    cy.injectAxe();
+    cy.contains('Show me a modal').click();
+    cy.checkA11y('body', {
+      rules: {
+        tabindex: { enabled: false }, // TODO this is disabled because this is how focus lock works and this IS what we want for a11y.
         'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
       },
     });
@@ -70,6 +87,7 @@ describe('Modal', () => {
       .first()
       .matchImageSnapshot();
   });
+
   it('should match SU2C snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);

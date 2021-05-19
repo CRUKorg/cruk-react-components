@@ -11,12 +11,14 @@ type TestThemeWrapperProps = {
 };
 
 export const TestThemeWrapper: FC<TestThemeWrapperProps> = ({ children, theme }) => (
-  <div style={{ overflow: 'auto' }} tabIndex={0}>
-    <ThemeProvider theme={theme || crukTheme}>
-      <GlobalStyle />
-      {children}
-    </ThemeProvider>
-  </div>
+  <main>
+    <div style={{ overflow: 'auto' }} tabIndex={0}>
+      <ThemeProvider theme={theme || crukTheme}>
+        <GlobalStyle />
+        {children}
+      </ThemeProvider>
+    </div>
+  </main>
 );
 
 export const TestWrapper: FC = ({ children }) => (
