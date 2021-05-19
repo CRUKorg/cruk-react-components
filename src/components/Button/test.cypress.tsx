@@ -3,12 +3,12 @@
 import React from 'react';
 import { mount } from '@cypress/react';
 
-import TestWrapper from '../TestWrapper';
-import { Button, Icon } from '../';
+import TestWrapper, { TestThemeWrapper } from 'src/components/TestWrapper';
+import { su2cTheme, crukTheme, Icon, Button, Box } from '../';
 
 const content = () => {
   return (
-    <>
+    <Box backgroundColor="backgroundLight" padding="none">
       <Button appearance="primary">Primary</Button>
       <Button appearance="secondary">Secondary</Button>
       <Button appearance="tertiary">Tertiary</Button>
@@ -45,13 +45,19 @@ const content = () => {
         Continue with facebook
       </Button>
       <Button full>Full width Button</Button>
-    </>
+    </Box>
   );
 };
 
 describe('Button', () => {
-  it('is accessible', () => {
-    mount(<TestWrapper>{content()}</TestWrapper>);
+  it('is accessible CRUK theme', () => {
+    mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
+    cy.injectAxe();
+    cy.checkA11y('body');
+  });
+
+  it('is accessible SU2C theme', () => {
+    mount(<TestThemeWrapper theme={su2cTheme}>{content()}</TestThemeWrapper>);
     cy.injectAxe();
     cy.checkA11y('body', {
       rules: {

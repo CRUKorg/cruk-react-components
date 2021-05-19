@@ -21,7 +21,7 @@ services:
     volumes:
       - .:/app:delegated
     working_dir: /app
-    entrypoint: '/app/node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config.docs.js --open --hot --mode development --historyApiFallback --host=0.0.0.0 --public server'
+    entrypoint: '/app/node_modules/webpack/bin/webpack.js server --config webpack.config.docs.js --mode development'
   cypress:
     networks:
       network:

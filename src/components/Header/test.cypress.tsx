@@ -3,8 +3,8 @@
 import React from 'react';
 import { mount } from '@cypress/react';
 
-import TestWrapper from '../TestWrapper';
-import { Header, Button } from '../';
+import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
+import { Header, Button, crukTheme, su2cTheme } from '../';
 
 const content = () => {
   return (
@@ -15,17 +15,33 @@ const content = () => {
 };
 
 describe('Header', () => {
-  it('is accessible', () => {
+  it('is accessible cruk', () => {
     cy.viewport(1000, 480); // desktop breakpoint for full size header
     mount(
-      <>
+      <TestThemeWrapper theme={crukTheme}>
         <Header siteSlogan="Header slogan here">
           <Button>Child component</Button>
         </Header>
-        <main id="main" tabIndex={-1}>
+        <div id="main" tabIndex={-1}>
           blah
-        </main>
-      </>,
+        </div>
+      </TestThemeWrapper>,
+    );
+    cy.injectAxe();
+    cy.checkA11y('body');
+  });
+
+  it('is accessible su2c', () => {
+    cy.viewport(1000, 480); // desktop breakpoint for full size header
+    mount(
+      <TestThemeWrapper theme={su2cTheme}>
+        <Header siteSlogan="Header slogan here">
+          <Button>Child component</Button>
+        </Header>
+        <div id="main" tabIndex={-1}>
+          blah
+        </div>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y('body', {

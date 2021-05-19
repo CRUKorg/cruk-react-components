@@ -1,9 +1,8 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React, { useState } from 'react';
 import { Router, Link as RouterLink } from '@reach/router';
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import styled, { css, ThemeProvider } from 'styled-components';
 
+import { useKey } from '../hooks/useKey';
 import MdxProvider from '../hocs/MdxProvider';
 
 // /////////////////////////////////////////////////////////
@@ -218,132 +217,129 @@ const Nav = styled.nav`
   }
 `;
 
-class Docs extends React.Component {
-  state = {
-    theme: 'cruk',
-  };
+const Docs = () => {
+  const [theme, setTheme] = useState('cruk');
 
-  componentDidMount() {
-    window.addEventListener('keyup', this.handleOutline);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('keyup', this.handleOutline);
-  }
+  useKey(
+    () => {
+      handleOutline();
+    },
+    {
+      detectKeys: ['keyup'],
+    },
+    [],
+  );
 
   /*
    * outline when user start tabbing
    * https://jmperezperez.com/outline-focus-ring-a11y/
    */
-  handleOutline = e => {
+  const handleOutline = e => {
     if (e.key === 9) {
-      document.documentElement.classList.remove('no-focus-outline');
+      if (typeof document !== 'undefined') {
+        document.documentElement.classList.remove('no-focus-outline');
+      }
     }
   };
 
-  render() {
-    const theme = () => {
-      switch (this.state.theme) {
-        case 'su2c':
-          return su2cTheme;
-        default:
-          return crukTheme;
-      }
-    };
+  const themeFile = () => {
+    switch (theme) {
+      case 'su2c':
+        return su2cTheme;
+      default:
+        return crukTheme;
+    }
+  };
 
-    return (
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Header isSticky fullWidth>
-          <SwitchTheme
-            name="themeSelector"
-            onChange={e => {
-              console.log(e.target.value);
-              this.setState({
-                theme: e.target.value,
-              });
-            }}
-          >
-            <option value="cruk">CRUK theme</option>
-            <option value="su2c">SU2C theme</option>
-          </SwitchTheme>
-        </Header>
-        <StyledFlex>
-          <Toggle />
-          <ToggleIcon />
-          <SideBar padding="xs">
-            <Nav>
-              <Heading h4>Components</Heading>
-              <RouterLink to="/addresslookup">AddressLookup</RouterLink>
-              <RouterLink to="/avatar">Avatar</RouterLink>
-              <RouterLink to="/badge">Badge</RouterLink>
-              <RouterLink to="/box">Box</RouterLink>
-              <RouterLink to="/button">Button</RouterLink>
-              <RouterLink to="/checkbox">Checkbox</RouterLink>
-              <RouterLink to="/collapse">Collapse</RouterLink>
-              <RouterLink to="/DateField">DateField</RouterLink>
-              <RouterLink to="/errortext">ErrorText</RouterLink>
-              <RouterLink to="/footer">Footer</RouterLink>
-              <RouterLink to="/header">Header</RouterLink>
-              <RouterLink to="/heading">Heading</RouterLink>
-              <RouterLink to="/icon">Icon</RouterLink>
-              <RouterLink to="/link">Link</RouterLink>
-              <RouterLink to="/loader">Loader</RouterLink>
-              <RouterLink to="/modal">Modal</RouterLink>
-              <RouterLink to="/pagination">Pagination</RouterLink>
-              <RouterLink to="/popover">PopOver</RouterLink>
-              <RouterLink to="/progressbar">ProgressBar</RouterLink>
-              <RouterLink to="/radio">Radio</RouterLink>
-              <RouterLink to="/radiogroup">Radio Group</RouterLink>
-              <RouterLink to="/select">Select</RouterLink>
-              <RouterLink to="/step">Step</RouterLink>
-              <RouterLink to="/textareafield">TextAreaField</RouterLink>
-              <RouterLink to="/textfield">TextField</RouterLink>
-              <RouterLink to="/text">Text</RouterLink>
-              <RouterLink to="/totaliser">Totaliser</RouterLink>
-              <RouterLink to="/userblock">UserBlock</RouterLink>
-              <RouterLink to="/theme">Theme cheatsheet</RouterLink>
-            </Nav>
-          </SideBar>
-          <Content>
-            <MdxProvider>
-              <Router>
-                <AddressLookupReadme default path="/addressLookup" />
-                <AvatarReadme path="/avatar" />
-                <BadgeReadme path="/badge" />
-                <BoxReadme path="/box" />
-                <ButtonReadme path="/button" />
-                <CheckboxReadme path="/checkbox" />
-                <CollapseReadme path="/collapse" />
-                <DateFieldReadme path="/DateField" />
-                <ErrorTextReadme path="/errortext" />
-                <FooterReadme path="/footer" />
-                <HeadingReadme path="/heading" />
-                <HeaderReadme path="/header" />
-                <IconReadme path="/icon" />
-                <LinkReadme path="/link" />
-                <LoaderReadme path="/loader" />
-                <ModalReadme path="/modal" />
-                <PaginationReadme path="/pagination" />
-                <PopOverReadme path="/popover" />
-                <ProgressBarReadme path="/progressbar" />
-                <RadioReadme path="/radio" />
-                <RadioGroupReadme path="/radiogroup" />
-                <SelectReadme path="/select" />
-                <StepReadme path="/step" />
-                <TextReadme path="/text" />
-                <TextAreaFieldReadme path="/textareafield" />
-                <TextFieldReadme path="/textfield" />
-                <TotaliserReadme path="/totaliser" />
-                <UserBlockReadme path="/userblock" />
-                <ThemeCheatSheet path="/theme" />
-              </Router>
-            </MdxProvider>
-          </Content>
-        </StyledFlex>
-      </ThemeProvider>
-    );
-  }
-}
+  return (
+    <ThemeProvider theme={themeFile}>
+      <GlobalStyle />
+      <Header isSticky fullWidth>
+        <SwitchTheme
+          name="themeSelector"
+          onChange={e => {
+            setTheme(e.target.value);
+          }}
+        >
+          <option value="cruk">CRUK theme</option>
+          <option value="su2c">SU2C theme</option>
+        </SwitchTheme>
+      </Header>
+      <StyledFlex>
+        <Toggle />
+        <ToggleIcon />
+        <SideBar padding="xs">
+          <Nav>
+            <Heading h4>Components</Heading>
+            <RouterLink to="/addresslookup">AddressLookup</RouterLink>
+            <RouterLink to="/avatar">Avatar</RouterLink>
+            <RouterLink to="/badge">Badge</RouterLink>
+            <RouterLink to="/box">Box</RouterLink>
+            <RouterLink to="/button">Button</RouterLink>
+            <RouterLink to="/checkbox">Checkbox</RouterLink>
+            <RouterLink to="/collapse">Collapse</RouterLink>
+            <RouterLink to="/DateField">DateField</RouterLink>
+            <RouterLink to="/errortext">ErrorText</RouterLink>
+            <RouterLink to="/footer">Footer</RouterLink>
+            <RouterLink to="/header">Header</RouterLink>
+            <RouterLink to="/heading">Heading</RouterLink>
+            <RouterLink to="/icon">Icon</RouterLink>
+            <RouterLink to="/link">Link</RouterLink>
+            <RouterLink to="/loader">Loader</RouterLink>
+            <RouterLink to="/modal">Modal</RouterLink>
+            <RouterLink to="/pagination">Pagination</RouterLink>
+            <RouterLink to="/popover">PopOver</RouterLink>
+            <RouterLink to="/progressbar">ProgressBar</RouterLink>
+            <RouterLink to="/radio">Radio</RouterLink>
+            <RouterLink to="/radiogroup">Radio Group</RouterLink>
+            <RouterLink to="/select">Select</RouterLink>
+            <RouterLink to="/step">Step</RouterLink>
+            <RouterLink to="/textareafield">TextAreaField</RouterLink>
+            <RouterLink to="/textfield">TextField</RouterLink>
+            <RouterLink to="/text">Text</RouterLink>
+            <RouterLink to="/totaliser">Totaliser</RouterLink>
+            <RouterLink to="/userblock">UserBlock</RouterLink>
+            <RouterLink to="/theme">Theme cheatsheet</RouterLink>
+          </Nav>
+        </SideBar>
+        <Content>
+          <MdxProvider>
+            <Router>
+              <AddressLookupReadme default path="/addressLookup" />
+              <AvatarReadme path="/avatar" />
+              <BadgeReadme path="/badge" />
+              <BoxReadme path="/box" />
+              <ButtonReadme path="/button" />
+              <CheckboxReadme path="/checkbox" />
+              <CollapseReadme path="/collapse" />
+              <DateFieldReadme path="/DateField" />
+              <ErrorTextReadme path="/errortext" />
+              <FooterReadme path="/footer" />
+              <HeadingReadme path="/heading" />
+              <HeaderReadme path="/header" />
+              <IconReadme path="/icon" />
+              <LinkReadme path="/link" />
+              <LoaderReadme path="/loader" />
+              <ModalReadme path="/modal" />
+              <PaginationReadme path="/pagination" />
+              <PopOverReadme path="/popover" />
+              <ProgressBarReadme path="/progressbar" />
+              <RadioReadme path="/radio" />
+              <RadioGroupReadme path="/radiogroup" />
+              <SelectReadme path="/select" />
+              <StepReadme path="/step" />
+              <TextReadme path="/text" />
+              <TextAreaFieldReadme path="/textareafield" />
+              <TextFieldReadme path="/textfield" />
+              <TotaliserReadme path="/totaliser" />
+              <UserBlockReadme path="/userblock" />
+              <ThemeCheatSheet path="/theme" />
+            </Router>
+          </MdxProvider>
+        </Content>
+      </StyledFlex>
+    </ThemeProvider>
+  );
+};
 
 export default Docs;

@@ -64,11 +64,9 @@ const Content = () => {
 describe('RadioGroup', () => {
   it('is accessible', () => {
     mount(
-      <main>
-        <TestThemeWrapper>
-          <Content />
-        </TestThemeWrapper>
-      </main>,
+      <TestThemeWrapper>
+        <Content />
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y('body');

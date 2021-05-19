@@ -545,7 +545,7 @@ const PopOver: FC<PopOverProps> = props => {
   // outside click closes popover
   const closePopOver = useCallback(
     (e: MouseEvent) => {
-      if (!(popRef.current! as any).contains(e.target)) {
+      if (!(popRef.current as any).contains(e.target)) {
         setPopOver(false);
       }
     },

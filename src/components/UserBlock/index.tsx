@@ -49,8 +49,12 @@ const UserBlock: FC<UserBlockProps> = props => {
     ...defaultTheme,
     ...props.theme,
   };
+
+  // name is a reserved html prop so we make sure we don't pass it into the styled component
+  // or it will end up in the markup
+  const { name, ...propsWithoutName } = props;
   return (
-    <StyledUserBlock {...props} theme={theme}>
+    <StyledUserBlock {...propsWithoutName} theme={theme}>
       <Avatar
         name={props.avatarName || props.name}
         url={props.avatarUrl ? props.avatarUrl : undefined}
@@ -65,8 +69,8 @@ const UserBlock: FC<UserBlockProps> = props => {
 };
 
 UserBlock.defaultProps = {
-  avatarUrl: undefined,
   avatarName: undefined,
+  avatarUrl: undefined,
   theme: defaultTheme,
 };
 

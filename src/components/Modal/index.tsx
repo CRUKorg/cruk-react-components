@@ -108,27 +108,29 @@ const Modal: FC<ModalProps> = props => {
     <>
       {typeof window !== `undefined`
         ? ReactDOM.createPortal(
-            <FocusLock returnFocus>
-              <ThemeProvider theme={theme}>
-                <Wrapper>
-                  <Content aria-modal="true" backgroundColor="" maxWidth={maxWidth} top={top}>
-                    {showCloseButton && closeFunction ? (
-                      <CloseButton
-                        aria-label="close"
-                        appearance="text"
-                        onClick={() => {
-                          closeFunction();
-                        }}
-                      >
-                        <Icon name="close" />
-                      </CloseButton>
-                    ) : null}
-                    {children}
-                  </Content>
-                  <Background />
-                </Wrapper>
-              </ThemeProvider>
-            </FocusLock>,
+            <section role="dialog">
+              <FocusLock returnFocus>
+                <ThemeProvider theme={theme}>
+                  <Wrapper aria-modal="true">
+                    <Content backgroundColor="" maxWidth={maxWidth} top={top}>
+                      {showCloseButton && closeFunction ? (
+                        <CloseButton
+                          aria-label="close"
+                          appearance="text"
+                          onClick={() => {
+                            closeFunction();
+                          }}
+                        >
+                          <Icon name="close" />
+                        </CloseButton>
+                      ) : null}
+                      {children}
+                    </Content>
+                    <Background />
+                  </Wrapper>
+                </ThemeProvider>
+              </FocusLock>
+            </section>,
             document.body,
           )
         : null}
@@ -137,8 +139,8 @@ const Modal: FC<ModalProps> = props => {
 };
 
 Modal.defaultProps = {
-  showCloseButton: true,
   closeFunction: undefined,
+  showCloseButton: true,
   theme: defaultTheme,
 };
 
