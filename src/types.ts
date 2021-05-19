@@ -36,6 +36,8 @@ export type ButtonType = {
 
 export type ButtonAppearanceType = 'primary' | 'secondary' | 'tertiary' | 'text';
 
+export type PopOverPositionType = 'top' | 'topLeft' | 'left' | 'right' | 'bottom' | 'bottomLeft';
+
 export type BreakPointType = {
   mobile: string;
   tablet: string;
