@@ -1,4 +1,5 @@
 import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
+import '@percy/cypress'
 
 if (Cypress.config('isInteractive')) {
   Cypress.Commands.add('matchImageSnapshot', () => {

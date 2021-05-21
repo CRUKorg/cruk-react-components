@@ -21,5 +21,6 @@
     "allowSyntheticDefaultImports": true, // This is needed for the React components.
     "noErrorTruncation": true,
     "skipLibCheck": true,
+    "types": ["cypress", "@percy/cypress"]
   }
 }

@@ -7,5 +7,6 @@ declare namespace Cypress {
     matchImageSnapshot(nameOrOptions?: string | Object): Chainable;
     getInputByLabel(input: string): Chainable;
     tab(options?: Partial<{ shift: Boolean }>): Chainable;
+    percySnapshot(name?: string): Chainable;
   }
 }

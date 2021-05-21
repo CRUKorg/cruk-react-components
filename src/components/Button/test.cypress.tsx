@@ -72,4 +72,10 @@ describe('Button', () => {
       .first()
       .matchImageSnapshot();
   });
+
+  it.only('should match percy snapshot', () => {
+    mount(<TestWrapper>{content()}</TestWrapper>);
+        // Take a snapshot for visual diffing
+    cy.percySnapshot('Button');
+  });
 });
