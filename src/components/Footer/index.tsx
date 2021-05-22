@@ -142,7 +142,7 @@ export const Footer: FunctionComponent<FooterPropsType> = props => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    foundTheme,
+    ...foundTheme,
   };
 
   return (
