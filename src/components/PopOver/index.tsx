@@ -1,16 +1,17 @@
-import React, { useState, FC, useRef, useCallback, MouseEvent, ReactElement } from 'react';
+import React, { useState, FC, useRef, useCallback, MouseEvent, ReactElement, ReactNode } from 'react';
 import { ThemeProvider, useTheme } from 'styled-components';
 
 import defaultTheme from 'src/themes/cruk';
 import useEffectBrowser from 'src/hooks/useEffectBrowser';
 
-import { PopOverWrapper, PopOverContent } from './styles';
+import { PopOverWrapper, PopOverModal } from './styles';
 
 import { PopOverPositionType } from 'src/types';
 
 type Props = {
+  modalLabel: string;
+  modalContent: ReactNode;
   position?: PopOverPositionType;
-  overlay: any;
   css?: string;
   maxWidth?: string;
   minWidth?: string;
@@ -57,16 +58,17 @@ const PopOver: FC<Props> = props => {
           }),
         )}
         {showPopOver ? (
-          <PopOverContent
+          <PopOverModal
             maxWidth={props.maxWidth || 'none'}
             minWidth={props.minWidth || 'auto'}
             position={props.position || 'top'}
             theme={theme}
             role="dialog"
+            aria-label={props.modalLabel}
             aria-modal={showPopOver}
           >
-            {props.overlay}
-          </PopOverContent>
+            {props.modalContent}
+          </PopOverModal>
         ) : null}
       </PopOverWrapper>
     </ThemeProvider>
