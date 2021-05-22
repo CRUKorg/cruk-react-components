@@ -1,10 +1,8 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import styled, { withTheme, ThemeProvider } from 'styled-components';
+import styled, { useTheme, ThemeProvider } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-import Text from '../Text';
-
-import { ThemeType } from '../../types';
+import defaultTheme from 'src/themes/cruk';
+import Text from 'src/components/Text';
 
 const StyledFooter = styled.footer`
   box-sizing: border-box;
@@ -135,16 +133,16 @@ const StyledAddress = styled.address`
 `;
 
 type FooterPropsType = {
-  theme?: ThemeType;
   middleSection?: ReactNode;
 };
 
 export const Footer: FunctionComponent<FooterPropsType> = props => {
   const childArray = React.Children.toArray(props.children);
 
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    foundTheme,
   };
 
   return (
@@ -196,4 +194,4 @@ export const Footer: FunctionComponent<FooterPropsType> = props => {
   );
 };
 
-export default withTheme(Footer);
+export default Footer;

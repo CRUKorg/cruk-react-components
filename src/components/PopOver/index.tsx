@@ -1,18 +1,17 @@
 import React, { useState, FC, useRef, useCallback, MouseEvent, ReactElement } from 'react';
-import { ThemeProvider, withTheme } from 'styled-components';
+import { ThemeProvider, useTheme } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-import useEffectBrowser from '../../hooks/useEffectBrowser';
+import defaultTheme from 'src/themes/cruk';
+import useEffectBrowser from 'src/hooks/useEffectBrowser';
 
 import { PopOverWrapper, PopOverContent } from './styles';
 
-import { ThemeType, PopOverPositionType } from 'src/types';
+import { PopOverPositionType } from 'src/types';
 
 type Props = {
   position?: PopOverPositionType;
   overlay: any;
   css?: string;
-  theme?: ThemeType;
   maxWidth?: string;
   minWidth?: string;
 };
@@ -20,11 +19,13 @@ type Props = {
 const PopOver: FC<Props> = props => {
   const popRef = useRef<HTMLDivElement>(null);
   const [showPopOver, setPopOver] = useState(false);
-  const toggle = () => setPopOver(!showPopOver);
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...foundTheme,
   };
+
+  const toggle = () => setPopOver(!showPopOver);
 
   // outside click closes popover
   const closePopOver = useCallback(
@@ -72,4 +73,4 @@ const PopOver: FC<Props> = props => {
   );
 };
 
-export default withTheme(PopOver);
+export default PopOver;

@@ -1,11 +1,9 @@
 import React, { FunctionComponent, ReactElement, TextareaHTMLAttributes } from 'react';
-import styled, { css, withTheme } from 'styled-components';
+import styled, { css, useTheme } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-import ErrorText from '../ErrorText';
-import { WithLabel } from '../Label';
-
-import { ThemeType } from '../../types';
+import defaultTheme from 'src/themes/cruk';
+import ErrorText from 'src/components/ErrorText';
+import LabelWrapper from 'src/components/LabelWrapper';
 
 type StyledTextareaProps = Omit<TextFieldProps, 'errorMessage' | 'hasError' | 'label'> & {
   hasError: boolean;
@@ -52,7 +50,6 @@ type TextFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   label: string;
   resize?: 'both' | 'vertical' | 'horizontal' | 'none';
   lineCount?: number;
-  theme: ThemeType;
 };
 
 const TextField: FunctionComponent<TextFieldProps> = ({
@@ -62,16 +59,16 @@ const TextField: FunctionComponent<TextFieldProps> = ({
   label,
   resize = 'vertical',
   lineCount = 3,
-  theme: propsTheme,
   ...props
 }) => {
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...propsTheme,
+    ...foundTheme,
   };
 
   return (
-    <WithLabel theme={theme} label={label} hintText={hintText} required={props.required || false}>
+    <LabelWrapper label={label} hintText={hintText} required={props.required || false}>
       <StyledTextArea
         hasError={hasError || !!errorMessage || false}
         aria-invalid={hasError || !!errorMessage || false}
@@ -80,9 +77,9 @@ const TextField: FunctionComponent<TextFieldProps> = ({
         theme={theme}
         {...props}
       />
-      {!!errorMessage && <ErrorText theme={theme}>{errorMessage}</ErrorText>}
-    </WithLabel>
+      {!!errorMessage && <ErrorText>{errorMessage}</ErrorText>}
+    </LabelWrapper>
   );
 };
 
-export default withTheme(TextField);
+export default TextField;

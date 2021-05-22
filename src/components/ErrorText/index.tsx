@@ -1,17 +1,15 @@
 import React, { FC, HTMLAttributes } from 'react';
-import { withTheme } from 'styled-components';
-import Text from '../Text';
-import defaultTheme from '../../themes/cruk';
-import { ThemeType } from '../../types';
+import { useTheme } from 'styled-components';
+import Text from 'src/components/Text';
+import defaultTheme from 'src/themes/cruk';
 
-type ErrorTextProps = HTMLAttributes<HTMLElement> & {
-  theme: ThemeType;
-};
+type ErrorTextProps = HTMLAttributes<HTMLElement>;
 
 const ErrorText: FC<ErrorTextProps> = props => {
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...foundTheme,
   };
   return (
     <Text as="span" textColor="textError" theme={theme} role="alert">
@@ -20,4 +18,4 @@ const ErrorText: FC<ErrorTextProps> = props => {
   );
 };
 
-export default withTheme(ErrorText);
+export default ErrorText;

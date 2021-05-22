@@ -1,10 +1,8 @@
 import React, { FunctionComponent, useState } from 'react';
-import styled, { withTheme, ThemeProvider } from 'styled-components';
+import styled, { useTheme, ThemeProvider } from 'styled-components';
 
-import { useScrollPosition } from '../../../src/hooks/useScrollPosition';
-
-import defaultTheme from '../../themes/cruk';
-import { ThemeType } from '../../types';
+import { useScrollPosition } from 'src/hooks/useScrollPosition';
+import defaultTheme from 'src/themes/cruk';
 
 const HEADER_HEIGHT_LARGE = '120px';
 const HEADER_HEIGHT_SMALL = '72px';
@@ -183,7 +181,6 @@ type HeaderProps = {
   logoLinkTitle?: string;
   logoLinkUrl?: string;
   fullWidth?: boolean;
-  theme?: ThemeType;
 };
 
 export const Header: FunctionComponent<HeaderProps> = ({
@@ -195,15 +192,18 @@ export const Header: FunctionComponent<HeaderProps> = ({
   logoLinkUrl,
   fullWidth,
   children,
-  ...props
 }) => {
   const [isSmall, setIsSmall] = useState(false);
   const isBrowser = typeof window !== `undefined`;
+  const foundTheme = useTheme();
+  const theme = {
+    ...defaultTheme,
+    ...foundTheme,
+  };
 
   useScrollPosition(
     ({ currPos }: { prevPos: { x: number; y: number }; currPos: { x: number; y: number } }) => {
       const shouldShrink = isBrowser ? currPos.y > HEADER_SCROLL_THRESHOLD : false;
-
       if (shouldShrink !== isSmall) {
         setIsSmall(shouldShrink);
       }
@@ -213,11 +213,6 @@ export const Header: FunctionComponent<HeaderProps> = ({
     true,
     100,
   );
-
-  const theme = {
-    ...defaultTheme,
-    ...props.theme,
-  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -247,4 +242,4 @@ export const Header: FunctionComponent<HeaderProps> = ({
   );
 };
 
-export default withTheme(Header);
+export default Header;

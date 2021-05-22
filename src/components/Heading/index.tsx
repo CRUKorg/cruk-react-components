@@ -1,10 +1,10 @@
 import React, { FunctionComponent, HTMLAttributes } from 'react';
-import styled, { css, withTheme } from 'styled-components';
+import styled, { css, useTheme } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-import spacing, { SpacingProps } from '../Spacing';
+import defaultTheme from 'src/themes/cruk';
+import spacing, { SpacingProps } from 'src/components/Spacing';
 
-import { ThemeType, FontSizeType, ColorKeyType, WordBreakType } from '../../types';
+import { ThemeType, FontSizeType, ColorKeyType, WordBreakType } from 'src/types';
 
 type HeadingProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
@@ -17,7 +17,6 @@ type HeadingProps = SpacingProps &
     textSize?: FontSizeType;
     textAlign?: 'left' | 'right' | 'center';
     textColor?: string;
-    theme?: ThemeType;
     as?: any;
     wordBreak?: WordBreakType;
   };
@@ -206,9 +205,10 @@ const H6 = styled.h6<HeadingProps>`
 `;
 
 const Heading: FunctionComponent<HeadingProps> = ({ h1, h2, h3, h4, h5, h6, ...props }) => {
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...foundTheme,
   };
 
   const propsWithTheme = {
@@ -225,4 +225,4 @@ const Heading: FunctionComponent<HeadingProps> = ({ h1, h2, h3, h4, h5, h6, ...p
   return <H2 {...propsWithTheme} />;
 };
 
-export default withTheme(Heading);
+export default Heading;

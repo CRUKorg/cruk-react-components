@@ -1,11 +1,11 @@
 import React, { FunctionComponent, ReactElement, SelectHTMLAttributes, Ref, forwardRef } from 'react';
-import styled, { withTheme, css } from 'styled-components';
+import styled, { useTheme, css } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-import ErrorText from '../ErrorText';
-import { WithLabel } from '../Label';
+import defaultTheme from 'src/themes/cruk';
+import ErrorText from 'src/components/ErrorText';
+import LabelWrapper from 'src/components/LabelWrapper';
 
-import { ThemeType } from '../../types';
+import { ThemeType } from 'src/types';
 
 const BUTTON_HEIGHT = '3rem';
 
@@ -52,7 +52,6 @@ const StyledSelect = styled.select<StyledSelectProps>`
 type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   errorMessage?: string;
   hasError?: boolean;
-  theme: ThemeType;
   label: string;
   hintText?: ReactElement | string;
   ref?: Ref<HTMLSelectElement>;
@@ -62,20 +61,19 @@ type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
 type StyledSelectProps = Omit<SelectProps, 'errorMesage' | 'hasError' | 'label'> & {
   hasError: boolean;
   label?: string;
+  theme: ThemeType;
 };
 
 const Select: FunctionComponent<SelectProps> = forwardRef(
-  (
-    { errorMessage, hasError, required, theme: propsTheme, label, hintText, ...props }: SelectProps,
-    ref?: Ref<HTMLSelectElement>,
-  ) => {
+  ({ errorMessage, hasError, required, label, hintText, ...props }: SelectProps, ref?: Ref<HTMLSelectElement>) => {
+    const foundTheme = useTheme();
     const theme = {
       ...defaultTheme,
-      ...propsTheme,
+      ...foundTheme,
     };
 
     return (
-      <WithLabel theme={theme} label={label} hintText={hintText} required={required || false}>
+      <LabelWrapper label={label} hintText={hintText} required={required || false}>
         <StyledSelect
           {...props}
           ref={ref}
@@ -86,9 +84,9 @@ const Select: FunctionComponent<SelectProps> = forwardRef(
           label={undefined}
         />
         {!!errorMessage && <ErrorText>{errorMessage}</ErrorText>}
-      </WithLabel>
+      </LabelWrapper>
     );
   },
 );
 
-export default withTheme(Select);
+export default Select;

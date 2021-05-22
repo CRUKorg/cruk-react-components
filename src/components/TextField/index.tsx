@@ -1,11 +1,11 @@
 import React, { FunctionComponent, InputHTMLAttributes, ReactElement, Ref, forwardRef } from 'react';
-import styled, { css, withTheme } from 'styled-components';
+import styled, { css, useTheme } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-import ErrorText from '../ErrorText';
-import { WithLabel } from '../Label';
+import defaultTheme from 'src/themes/cruk';
+import ErrorText from 'src/components/ErrorText';
+import LabelWrapper from 'src/components/LabelWrapper';
 
-import { ThemeType } from '../../types';
+import { ThemeType } from 'src/types';
 
 const MIN_HEIGHT = '48px';
 
@@ -31,13 +31,13 @@ type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   isValidVisible?: boolean;
   isInvalidVisible?: boolean;
   label: string;
-  theme: ThemeType;
   ref?: Ref<HTMLInputElement>;
 };
 
 type StyledInputProps = Omit<TextFieldProps, 'errorMessage' | 'hasError' | 'label'> & {
   hasError: boolean;
   isValid: boolean;
+  theme: ThemeType;
 };
 
 const Extra = styled.span<ExtraProps>`
@@ -204,19 +204,19 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
       isValidVisible,
       isInvalidVisible,
       label,
-      theme,
       ...props
     }: TextFieldProps,
     ref?: Ref<HTMLInputElement>,
   ) => {
-    const themeDefault = {
+    const foundTheme = useTheme();
+    const theme = {
       ...defaultTheme,
-      ...theme,
+      ...foundTheme,
     };
 
     const renderContent = (
       <>
-        {!!extraLeft && <ExtraLeft theme={themeDefault}>{extraLeft}</ExtraLeft>}
+        {!!extraLeft && <ExtraLeft theme={theme}>{extraLeft}</ExtraLeft>}
         <StyledInput
           hasError={hasError || !!errorMessage || false}
           isValid={typeof isValid !== 'undefined' ? isValid : !hasError && !errorMessage}
@@ -228,22 +228,22 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
           extraRight={extraRight}
           extraTop={extraTop}
           {...props}
-          theme={themeDefault}
+          theme={theme}
           ref={ref}
         />
-        {!!extraRight && <ExtraRight theme={themeDefault}>{extraRight}</ExtraRight>}
+        {!!extraRight && <ExtraRight theme={theme}>{extraRight}</ExtraRight>}
       </>
     );
 
     return (
-      <WithLabel theme={theme} label={label} hintText={hintText} required={props.required || false}>
-        {!!extraTop && <ExtraTop theme={themeDefault}>{extraTop}</ExtraTop>}
+      <LabelWrapper label={label} hintText={hintText} required={props.required || false}>
+        {!!extraTop && <ExtraTop theme={theme}>{extraTop}</ExtraTop>}
         {!!extraRight || !!extraLeft ? <ExtraWrapper>{renderContent}</ExtraWrapper> : renderContent}
-        {!!extraBottom && <ExtraBottom theme={themeDefault}>{extraBottom}</ExtraBottom>}
-        {!!errorMessage && <ErrorText theme={themeDefault}>{errorMessage}</ErrorText>}
-      </WithLabel>
+        {!!extraBottom && <ExtraBottom theme={theme}>{extraBottom}</ExtraBottom>}
+        {!!errorMessage && <ErrorText>{errorMessage}</ErrorText>}
+      </LabelWrapper>
     );
   },
 );
 
-export default withTheme(TextField);
+export default TextField;

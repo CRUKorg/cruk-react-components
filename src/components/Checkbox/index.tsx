@@ -1,8 +1,7 @@
 import React, { FC, InputHTMLAttributes, Ref, forwardRef } from 'react';
-import styled, { css, withTheme, ThemeProvider } from 'styled-components';
+import styled, { css, useTheme, ThemeProvider } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-import { ThemeType } from '../../types';
+import defaultTheme from 'src/themes/cruk';
 
 const CHECK_BOX_SIZE = '1.5rem';
 const CHECK_SIZE = '1.125rem';
@@ -141,14 +140,14 @@ const StyledInput = styled.input`
 `;
 
 type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
-  theme?: ThemeType;
   ref?: Ref<HTMLInputElement>;
 };
 
 const Checkbox: FC<CheckboxProps> = forwardRef((props: CheckboxProps, ref?: Ref<HTMLInputElement>) => {
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...foundTheme,
   };
 
   return (
@@ -179,4 +178,4 @@ const Checkbox: FC<CheckboxProps> = forwardRef((props: CheckboxProps, ref?: Ref<
   );
 });
 
-export default withTheme(Checkbox);
+export default Checkbox;

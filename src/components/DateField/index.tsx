@@ -1,7 +1,10 @@
 import React, { ChangeEventHandler, FocusEventHandler, FC, InputHTMLAttributes } from 'react';
-import ErrorText from '../ErrorText';
-import Text from '../Text';
-import TextField from '../TextField';
+
+import ErrorText from 'src/components/ErrorText';
+import Text from 'src/components/Text';
+import TextField from 'src/components/TextField';
+
+import { Fieldset, DateTextFieldWrapper, LargeDateTextFieldWrapper, ErrorTextWrapper } from './styles';
 
 type DateFieldProps = InputHTMLAttributes<{}> & {
   label: string;
@@ -20,8 +23,6 @@ type DateFieldProps = InputHTMLAttributes<{}> & {
   onBlur?: FocusEventHandler<HTMLInputElement>;
   onFocus?: FocusEventHandler<HTMLInputElement>;
 };
-
-import { Fieldset, DateTextFieldWrapper, LargeDateTextFieldWrapper, ErrorTextWrapper } from './styles';
 
 const DateField: FC<DateFieldProps> = ({
   label,

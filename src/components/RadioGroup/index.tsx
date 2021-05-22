@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
-import styled, { withTheme, ThemeProvider } from 'styled-components';
+import styled, { useTheme, ThemeProvider } from 'styled-components';
 
-import RadioInput from '../Radio';
-import defaultTheme from '../../themes/cruk';
+import RadioInput from 'src/components/Radio';
+import defaultTheme from 'src/themes/cruk';
 
-import { ThemeType } from '../../types';
+import { ThemeType } from 'src/types';
 
 const LEGEND_WIDTH = '20%';
 
@@ -41,13 +41,13 @@ type RadioGroupProps = {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   selectedValue?: string;
   name: string;
-  theme: ThemeType;
 };
 
 const RadioGroup: FunctionComponent<RadioGroupProps> = ({ selectedValue = '', ...props }) => {
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...foundTheme,
   };
 
   const numberOfAttributes = props.attributes.length;
@@ -73,4 +73,4 @@ const RadioGroup: FunctionComponent<RadioGroupProps> = ({ selectedValue = '', ..
   );
 };
 
-export default withTheme(RadioGroup);
+export default RadioGroup;

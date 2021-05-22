@@ -1,13 +1,7 @@
-import React, { FunctionComponent } from 'react';
-import styled, { keyframes, ThemeProvider, withTheme } from 'styled-components';
+import React, { FC } from 'react';
+import styled, { keyframes, ThemeProvider, useTheme } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-
-import { ThemeType } from '../../types';
-
-type LoaderProps = {
-  theme?: ThemeType;
-};
+import defaultTheme from 'src/themes/cruk';
 
 const BounceDelay = keyframes`
   0%,
@@ -71,11 +65,13 @@ const Spinner = styled.div`
   }
 `;
 
-const Loader: FunctionComponent<LoaderProps> = props => {
+const Loader: FC<{}> = () => {
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...foundTheme,
   };
+
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -90,4 +86,4 @@ const Loader: FunctionComponent<LoaderProps> = props => {
   );
 };
 
-export default withTheme(Loader);
+export default Loader;
