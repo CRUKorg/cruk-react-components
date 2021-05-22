@@ -1,5 +1,5 @@
-import { createGlobalStyle, useTheme } from 'styled-components';
-import defaultTheme from 'src/themes/cruk';
+import { createGlobalStyle, withTheme } from 'styled-components';
+import defaultTheme from '../themes/cruk';
 
 type CustomFont = {
   family: string;
@@ -24,11 +24,10 @@ const buildCustomFonts = (customFonts: Array<CustomFont>) =>
     .join('');
 
 const GlobalStyle = createGlobalStyle`
-  ${() => {
-    const foundTheme = useTheme();
+  ${props => {
     const theme = {
       ...defaultTheme,
-      ...foundTheme,
+      ...props.theme,
     };
     return `
       ${buildCustomFonts(theme.typography.customFonts)}
@@ -72,4 +71,8 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default GlobalStyle;
+GlobalStyle.defaultProps = {
+  theme: defaultTheme,
+};
+
+export default withTheme(GlobalStyle);
