@@ -1,11 +1,11 @@
 import React, { useState, useRef, KeyboardEvent, FunctionComponent, ReactNode, useEffect } from 'react';
-import styled, { withTheme } from 'styled-components';
-import defaultTheme from '../../themes/cruk';
+import styled, { useTheme } from 'styled-components';
+import defaultTheme from 'src/themes/cruk';
 
-import Button from '../Button';
-import Icon from '../Icon';
+import Button from 'src/components/Button';
+import Icon from 'src/components/Icon';
 
-import { FontSizeType, ThemeType } from '../../types';
+import { FontSizeType, ThemeType } from 'src/types';
 
 const transitionDurationSeconds = 0.5;
 
@@ -18,7 +18,6 @@ type Props = {
   headerComponent?: ReactNode;
   startOpen?: boolean;
   onOpenChange?: (isOpen: boolean) => void;
-  theme?: ThemeType;
 };
 
 const FlippingIcon = styled(Icon)`
@@ -102,6 +101,7 @@ const Collapse: FunctionComponent<Props> = props => {
   const [contentHeight, setContentHeight] = useState(startOpen ? 'initial' : '0');
   const content = useRef<HTMLDivElement>(null);
   const transitionTimer = useRef(0);
+  const foundTheme = useTheme();
 
   const toggleCollapse = () => {
     clearTimeout(transitionTimer.current);
@@ -169,7 +169,7 @@ const Collapse: FunctionComponent<Props> = props => {
 
   const theme: ThemeType = {
     ...defaultTheme,
-    ...props.theme,
+    ...foundTheme,
   };
 
   return (
@@ -191,4 +191,4 @@ const Collapse: FunctionComponent<Props> = props => {
   );
 };
 
-export default withTheme(Collapse);
+export default Collapse;

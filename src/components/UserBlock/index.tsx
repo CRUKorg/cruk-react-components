@@ -1,10 +1,8 @@
 import React, { FC, ReactNode, HTMLAttributes } from 'react';
-import styled, { withTheme } from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-import Avatar from '../Avatar';
-
-import { ThemeType } from '../../types';
+import defaultTheme from 'src/themes/cruk';
+import Avatar from 'src/components/Avatar';
 
 type UserBlockProps = HTMLAttributes<HTMLElement> & {
   name?: ReactNode;
@@ -12,7 +10,6 @@ type UserBlockProps = HTMLAttributes<HTMLElement> & {
   avatarName?: string | null;
   extra?: ReactNode;
   size?: 's' | 'm' | 'l' | 'xl';
-  theme?: ThemeType;
 };
 
 const StyledUserBlock = styled.div`
@@ -45,9 +42,10 @@ const Extra = styled.div`
 `;
 
 const UserBlock: FC<UserBlockProps> = props => {
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...foundTheme,
   };
 
   // name is a reserved html prop so we make sure we don't pass it into the styled component
@@ -71,7 +69,6 @@ const UserBlock: FC<UserBlockProps> = props => {
 UserBlock.defaultProps = {
   avatarName: undefined,
   avatarUrl: undefined,
-  theme: defaultTheme,
 };
 
-export default withTheme(UserBlock);
+export default UserBlock;

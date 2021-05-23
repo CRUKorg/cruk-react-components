@@ -1,9 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import styled, { css, keyframes, ThemeProvider, withTheme } from 'styled-components';
+import styled, { css, keyframes, ThemeProvider, useTheme } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-
-import { ThemeType } from '../../types';
+import defaultTheme from 'src/themes/cruk';
 
 const CIRCLE_THICKENESS = '4px';
 const DEFAULT_CIRCLE_SIZE = '90px';
@@ -11,7 +9,6 @@ const DEFAULT_CIRCLE_SIZE = '90px';
 type ProgressBarProps = {
   percentage: number;
   isCircular?: boolean;
-  theme?: ThemeType;
   circleContents?: ReactNode;
   circleSize?: string;
   barColor?: string;
@@ -261,9 +258,10 @@ const CircularValue = styled.div`
 `;
 
 const ProgressBar: FunctionComponent<ProgressBarProps> = props => {
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...foundTheme,
   };
   const number = props.percentage;
   const percentString = `${!Number.isNaN(number) ? number : '0'}%`;
@@ -271,6 +269,7 @@ const ProgressBar: FunctionComponent<ProgressBarProps> = props => {
     typeof props.circleContents === 'string' ? props.circleContents : null
   } ${percentString}% Complete`;
   const textOrPercentString = props.circleContents || percentString;
+
   return (
     <ThemeProvider theme={theme}>
       <ProgressBarWrapper {...props}>
@@ -300,4 +299,4 @@ ProgressBar.defaultProps = {
   percentage: 0,
 };
 
-export default withTheme(ProgressBar);
+export default ProgressBar;

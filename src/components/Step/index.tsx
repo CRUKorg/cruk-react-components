@@ -1,14 +1,11 @@
 import React, { FunctionComponent } from 'react';
-import styled, { css, ThemeProvider, withTheme } from 'styled-components';
+import styled, { css, ThemeProvider, useTheme } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-
-import { ThemeType } from '../../types';
+import defaultTheme from 'src/themes/cruk';
 
 type StepProps = {
   current: number;
   steps: string[];
-  theme?: ThemeType;
 };
 
 const StepWrapper = styled.div`
@@ -115,11 +112,13 @@ const StepItem = styled.li<StepItemProps>`
 
 // TODO think about AriaAttributes and how we want to pass them down
 const Step: FunctionComponent<StepProps> = props => {
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...foundTheme,
   };
   const totalSteps: number = Array.isArray(props.steps) ? Object.keys(props.steps).length : 0;
+
   return (
     <ThemeProvider theme={theme}>
       <StepWrapper>
@@ -142,4 +141,4 @@ Step.defaultProps = {
   current: 1,
 };
 
-export default withTheme(Step);
+export default Step;

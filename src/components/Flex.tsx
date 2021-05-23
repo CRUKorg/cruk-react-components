@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
-import defaultTheme from './../themes/cruk';
 
-import spacing, { SpacingProps } from './Spacing';
+import spacing, { SpacingProps } from 'src/components/Spacing';
 
 type FlexProps = SpacingProps & {
   css: string;
@@ -9,7 +8,7 @@ type FlexProps = SpacingProps & {
 
 const Flex = styled.div<FlexProps>`
   display: block;
-  @media (min-width: ${defaultTheme.breakpoint.tablet}) {
+  @media (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
     display: flex;
   }
   ${props => (css as any)([props.css])}

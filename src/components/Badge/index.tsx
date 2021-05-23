@@ -1,15 +1,14 @@
 import React, { FunctionComponent } from 'react';
-import styled, { css, withTheme } from 'styled-components';
+import styled, { css, useTheme } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-import { ThemeType, SpaceType } from '../../types';
+import defaultTheme from 'src/themes/cruk';
+import { SpaceType, ThemeType } from 'src/types';
 
 type BadgeProps = {
   backgroundColor?: string;
   borderColor?: string;
   textColor?: string;
   text?: boolean;
-  theme?: ThemeType;
   size?: SpaceType;
   children?: any;
 };
@@ -19,8 +18,8 @@ type StyleBadgeProps = {
   borderColor?: string;
   textColor?: string;
   text?: boolean;
-  theme: ThemeType;
   size: SpaceType;
+  theme: ThemeType;
 };
 
 const StyledBadge = styled.span<StyleBadgeProps>`
@@ -100,16 +99,17 @@ const StyledBadge = styled.span<StyleBadgeProps>`
 `;
 
 const Badge: FunctionComponent<BadgeProps> = props => {
-  const { text, children, theme, ...rest } = props;
-  const mergedTheme = {
+  const { text, children, ...rest } = props;
+  const foundTheme = useTheme();
+  const theme = {
     ...defaultTheme,
-    ...theme,
+    ...foundTheme,
   };
   return (
-    <StyledBadge theme={mergedTheme} text={typeof children === 'string'} size="xs" {...rest}>
+    <StyledBadge theme={theme} text={typeof children === 'string'} size="xs" {...rest}>
       {children}
     </StyledBadge>
   );
 };
 
-export default withTheme(Badge);
+export default Badge;

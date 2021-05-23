@@ -1,9 +1,7 @@
 import React, { FC, InputHTMLAttributes } from 'react';
-import styled, { withTheme, css, ThemeProvider } from 'styled-components';
+import styled, { useTheme, css, ThemeProvider } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-
-import { ThemeType } from '../../types';
+import defaultTheme from 'src/themes/cruk';
 
 const RADIO_SIZE = '1.5rem';
 const RADIO_INNER_SIZE = '1rem';
@@ -147,14 +145,13 @@ const StyledInput = styled.input<InputHTMLAttributes<HTMLInputElement>>`
         `}
 `;
 
-type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
-  theme?: ThemeType;
-};
+type RadioProps = InputHTMLAttributes<HTMLInputElement>;
 
 const RadioInput: FC<RadioProps> = props => {
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...foundTheme,
   };
 
   return (
@@ -173,4 +170,4 @@ const RadioInput: FC<RadioProps> = props => {
   );
 };
 
-export default withTheme(RadioInput);
+export default RadioInput;

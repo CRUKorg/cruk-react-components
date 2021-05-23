@@ -1,9 +1,7 @@
 import React, { FunctionComponent } from 'react';
-import styled, { css, ThemeProvider, withTheme } from 'styled-components';
+import styled, { css, ThemeProvider, useTheme } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-
-import { ThemeType } from '../../types';
+import defaultTheme from 'src/themes/cruk';
 
 type PaginationProps = {
   current: number;
@@ -12,7 +10,6 @@ type PaginationProps = {
   pagerCallback: Function;
   perPage: number;
   searchParam?: string;
-  theme?: ThemeType;
 };
 
 type PaginationStyledProps = {
@@ -141,12 +138,14 @@ const PagerItem = styled.li`
 `;
 
 const Pagination: FunctionComponent<PaginationProps> = props => {
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...foundTheme,
   };
   const perPage = props.perPage > 0 ? props.perPage : 1;
   const totalPages = Math.ceil(props.items / perPage) || 1;
+
   const linkProps = (number: number) => ({
     href: `${typeof window !== 'undefined' ? window.location.pathname : ''}?${props.searchParam}=${number}`,
     onClick: (e: any) => {
@@ -154,6 +153,7 @@ const Pagination: FunctionComponent<PaginationProps> = props => {
       props.pagerCallback(number);
     },
   });
+
   const renderPager = (active: number, total: number) => {
     const list = [];
     let pager = [];
@@ -232,4 +232,4 @@ Pagination.defaultProps = {
   searchParam: 'page',
 };
 
-export default withTheme(Pagination);
+export default Pagination;

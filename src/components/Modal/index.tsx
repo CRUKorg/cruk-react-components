@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { ThemeProvider, withTheme } from 'styled-components';
+import { ThemeProvider, useTheme } from 'styled-components';
 import FocusLock from 'react-focus-lock';
 
 import Icon from 'src/components/Icon';
@@ -8,15 +8,12 @@ import defaultTheme from 'src/themes/cruk';
 
 import { CloseButton, Wrapper, Content, Background } from './styles';
 
-import { ThemeType } from 'src/types';
-
 type Props = {
   modalName: string;
   closeFunction: Function;
   showCloseButton?: Boolean;
   maxWidth?: string;
   top?: string;
-  theme?: ThemeType;
 };
 
 const Modal: FC<Props> = ({
@@ -25,9 +22,13 @@ const Modal: FC<Props> = ({
   showCloseButton,
   maxWidth = '500px',
   top = '1rem',
-  theme = { ...defaultTheme },
   children,
 }) => {
+  const foundTheme = useTheme();
+  const theme = {
+    ...defaultTheme,
+    ...foundTheme,
+  };
   const closeByEsc = (event: KeyboardEvent): void => {
     if (event.key === 'Escape' && !!closeFunction) {
       closeFunction();
@@ -87,7 +88,6 @@ const Modal: FC<Props> = ({
 Modal.defaultProps = {
   closeFunction: undefined,
   showCloseButton: true,
-  theme: defaultTheme,
 };
 
-export default withTheme(Modal);
+export default Modal;

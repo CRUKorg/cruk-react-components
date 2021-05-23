@@ -1,9 +1,9 @@
 import React, { FunctionComponent, AnchorHTMLAttributes, forwardRef, Ref } from 'react';
-import styled, { css, withTheme, ThemeProvider } from 'styled-components';
-import defaultTheme from '../../themes/cruk';
+import styled, { css, useTheme, ThemeProvider } from 'styled-components';
+import defaultTheme from 'src/themes/cruk';
 
-import Text, { TextProps } from '../Text';
-import Icon from '../Icon';
+import Text, { TextProps } from 'src/components/Text';
+import Icon from 'src/components/Icon';
 
 import { ThemeType } from 'src/types';
 
@@ -17,7 +17,6 @@ const ChevyWithLevee = styled(Icon)`
 
 type LinkProps = AnchorHTMLAttributes<HTMLElement> &
   TextProps & {
-    theme?: ThemeType;
     textHoverColor?: string;
     appearance?: 'primary' | 'secondary';
     innerRef?: Ref<any>;
@@ -74,9 +73,10 @@ const StyledLink = styled(Text)<StyledLinkProps>`
 `;
 
 const Link: FunctionComponent<LinkProps> = forwardRef((props: LinkProps, ref?: Ref<HTMLElement>) => {
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...foundTheme,
   };
   // security by default
   const rel = props.rel ? props.rel : 'noopener noreferrer';
@@ -91,4 +91,4 @@ const Link: FunctionComponent<LinkProps> = forwardRef((props: LinkProps, ref?: R
   );
 });
 
-export default withTheme(Link);
+export default Link;
