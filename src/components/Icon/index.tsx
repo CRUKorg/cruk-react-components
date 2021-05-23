@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
-import styled, { withTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
+import defaultTheme from 'src/themes/cruk';
 import { ICONS } from './iconList';
 
-import { ThemeType } from '../../types';
+import { StyledIcon } from './styles';
 
 // utility to provide people with a list of icon names
 export const ICON_NAMES = Object.keys(ICONS).reduce((acc: { [key: string]: string }, item: string) => {
@@ -16,25 +16,13 @@ type IconProps = {
   name: keyof typeof ICONS;
   color?: string;
   size?: string;
-  theme?: ThemeType;
 };
 
-const StyledIcon = styled.svg<IconProps>`
-  display: inline-block;
-  height: ${props => props.size};
-  margin-top: -0.2em;
-  vertical-align: middle;
-  width: ${props => props.size};
-  path {
-    fill: ${({ theme: { colors }, color }) =>
-      color && typeof colors[color] !== 'undefined' ? colors[color] : color ? color : 'currentColor'};
-  }
-`;
-
 const Icon: FunctionComponent<IconProps> = props => {
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...foundTheme,
   };
   const icon = ICONS[props.name];
 
@@ -58,4 +46,4 @@ Icon.defaultProps = {
   size: '1.1rem',
 };
 
-export default withTheme(Icon);
+export default Icon;

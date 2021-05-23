@@ -1,10 +1,10 @@
 import React, { FC, ReactNode, HTMLAttributes } from 'react';
-import styled, { withTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-import Avatar from '../Avatar';
+import defaultTheme from 'src/themes/cruk';
+import Avatar from 'src/components/Avatar';
 
-import { ThemeType } from '../../types';
+import { StyledUserBlock, Details, Name, Extra } from './styles';
 
 type UserBlockProps = HTMLAttributes<HTMLElement> & {
   name?: ReactNode;
@@ -12,42 +12,13 @@ type UserBlockProps = HTMLAttributes<HTMLElement> & {
   avatarName?: string | null;
   extra?: ReactNode;
   size?: 's' | 'm' | 'l' | 'xl';
-  theme?: ThemeType;
 };
 
-const StyledUserBlock = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  margin-bottom: ${({ theme }) => theme.spacing.xs};
-  flex: 1;
-`;
-
-const Details = styled.div`
-  flex: 1;
-  margin-left: ${({ theme }) => theme.spacing.xs};
-  text-align: left;
-  min-width: 0;
-`;
-
-const Name = styled.div`
-  font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
-  font-size: ${({ theme }) => theme.fontSizes.l};
-  white-space: normal;
-  word-break: break-word;
-`;
-
-const Extra = styled.div`
-  color: ${({ theme }) => theme.colors.userBlockExtraText};
-  margin-top: 4px;
-  white-space: normal;
-  word-break: break-word;
-`;
-
 const UserBlock: FC<UserBlockProps> = props => {
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...foundTheme,
   };
 
   // name is a reserved html prop so we make sure we don't pass it into the styled component
@@ -71,7 +42,6 @@ const UserBlock: FC<UserBlockProps> = props => {
 UserBlock.defaultProps = {
   avatarName: undefined,
   avatarUrl: undefined,
-  theme: defaultTheme,
 };
 
-export default withTheme(UserBlock);
+export default UserBlock;

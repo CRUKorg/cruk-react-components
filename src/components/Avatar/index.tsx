@@ -1,31 +1,21 @@
 import React, { FC, ReactNode, ImgHTMLAttributes } from 'react';
-import styled, { withTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-import { ThemeType } from '../../types';
+import defaultTheme from 'src/themes/cruk';
 
-type AvatarStyledProps = {
-  size?: string;
-};
-
-const StyledAvatar = styled.img<AvatarStyledProps>`
-  border-radius: 50%;
-  height: ${({ size }) => size};
-  object-fit: cover;
-  width: ${({ size }) => size};
-`;
+import { StyledAvatar } from './styles';
 
 type AvatarProps = ImgHTMLAttributes<HTMLElement> & {
   name?: ReactNode;
   url?: string;
   size?: 's' | 'm' | 'l' | 'xl';
-  theme?: ThemeType;
 };
 
-const Avatar: FC<AvatarProps> = ({ url, name, size, theme: propsTheme, alt = '', ...rest }) => {
+const Avatar: FC<AvatarProps> = ({ url, name, size, alt = '', ...rest }) => {
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...propsTheme,
+    ...foundTheme,
   };
 
   const avatarUrl = () => {
@@ -46,4 +36,4 @@ Avatar.defaultProps = {
   size: 'm',
 };
 
-export default withTheme(Avatar);
+export default Avatar;

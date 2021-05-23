@@ -1,94 +1,42 @@
 import React, { FunctionComponent, ReactElement, SelectHTMLAttributes, Ref, forwardRef } from 'react';
-import styled, { withTheme, css } from 'styled-components';
+import { useTheme } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-import ErrorText from '../ErrorText';
-import { WithLabel } from '../Label';
+import defaultTheme from 'src/themes/cruk';
+import ErrorText from 'src/components/ErrorText';
+import LabelWrapper from 'src/components/LabelWrapper';
 
-import { ThemeType } from '../../types';
-
-const BUTTON_HEIGHT = '3rem';
-
-const StyledSelect = styled.select<StyledSelectProps>`
-  appearance: none;
-  background: linear-gradient(
-      45deg,
-      transparent 50%,
-      ${({ theme }: StyledSelectProps) => theme.colors.selectBackground} 50%
-    ),
-    linear-gradient(135deg, ${({ theme }: StyledSelectProps) => theme.colors.selectBackground} 50%, transparent 50%);
-  background-position: calc(100% - 16px) 50%, calc(100% - 10px) 50%;
-  background-size: 6px 6px;
-  background-repeat: no-repeat;
-  border-radius: ${({ theme }) => theme.utilities.borderRadius};
-  border: ${({ theme, hasError, errorMessage }) =>
-    `solid ${theme.utilities.inputBorderWidth} ${
-      hasError || errorMessage ? theme.colors.textError : theme.colors.textInputBorder
-    }`};
-  color: ${({ theme }) => theme.colors.textDark};
-  display: block;
-  font-size: ${({ theme }) => theme.fontSizes.m};
-  min-height: ${BUTTON_HEIGHT};
-  padding: ${({ theme }) =>
-    `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xs}`};
-  width: 100%;
-  transition: border-color 150ms linear;
-  &:disabled {
-    border-color: ${({ theme }) => theme.colors.disabled};
-    color: ${({ theme }) => theme.colors.disabled};
-  }
-
-  ${({ theme }) =>
-    !theme.utilities.useDefaultFocusRect
-      ? css`
-          &:focus {
-            outline: 0;
-            border-color: ${({ theme }) => theme.colors.tertiary};
-          }
-        `
-      : null};
-`;
+import { StyledSelect } from './styles';
 
 type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   errorMessage?: string;
   hasError?: boolean;
-  theme: ThemeType;
   label: string;
   hintText?: ReactElement | string;
   ref?: Ref<HTMLSelectElement>;
 };
 
-// in the styled component we want has error to be manadatory and we want to remove label so it can be undefined
-type StyledSelectProps = Omit<SelectProps, 'errorMesage' | 'hasError' | 'label'> & {
-  hasError: boolean;
-  label?: string;
-};
-
 const Select: FunctionComponent<SelectProps> = forwardRef(
-  (
-    { errorMessage, hasError, required, theme: propsTheme, label, hintText, ...props }: SelectProps,
-    ref?: Ref<HTMLSelectElement>,
-  ) => {
+  ({ errorMessage, hasError, required, label, hintText, ...props }: SelectProps, ref?: Ref<HTMLSelectElement>) => {
+    const foundTheme = useTheme();
     const theme = {
       ...defaultTheme,
-      ...propsTheme,
+      ...foundTheme,
     };
 
     return (
-      <WithLabel theme={theme} label={label} hintText={hintText} required={required || false}>
+      <LabelWrapper label={label} hintText={hintText} required={required || false}>
         <StyledSelect
           {...props}
           ref={ref}
           theme={theme}
-          aria-required={required}
+          required={required}
           aria-invalid={hasError || !!errorMessage || false}
           hasError={hasError || !!errorMessage || false}
-          label={undefined}
         />
         {!!errorMessage && <ErrorText>{errorMessage}</ErrorText>}
-      </WithLabel>
+      </LabelWrapper>
     );
   },
 );
 
-export default withTheme(Select);
+export default Select;

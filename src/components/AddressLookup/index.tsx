@@ -1,64 +1,19 @@
 import React, { FunctionComponent, InputHTMLAttributes, useCallback, useEffect, Ref, useRef, forwardRef } from 'react';
-import styled, { withTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-import ErrorText from '../ErrorText';
-import Icon from '../Icon';
-import TextField from '../TextField';
-import Text from '../Text';
-import debounce from '../../utils/debounce';
+import defaultTheme from 'src/themes/cruk';
+import ErrorText from 'src/components/ErrorText';
+import Icon from 'src/components/Icon';
+import TextField from 'src/components/TextField';
+import Text from 'src/components/Text';
+import debounce from 'src/utils/debounce';
 
-import { ThemeType, AddressDataType, AddressOptionsType } from '../../types';
+import { ListWrapper, ListItem, ScreenReaderOnly, List } from './styles';
+
+import { AddressDataType, AddressOptionsType } from 'src/types';
 
 const FIND_URL = 'https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws';
 const RETRIEVE_URL = 'https://api.addressy.com/Capture/Interactive/Retrieve/v1/json3.ws';
-
-const ListWrapper = styled.div`
-  position: relative;
-`;
-
-const List = styled.ul`
-  background-color: ${props => props.theme.colors.backgroundLight};
-  border-radius: 3px;
-  border: 2px solid #ccc;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-  list-style: none;
-  margin-top: 0;
-  max-height: 400px;
-  overflow-y: auto;
-  padding: 0;
-  position: absolute;
-  width: 100%;
-  z-index: 999;
-`;
-
-const ListItem = styled.li<{ isActive: boolean }>`
-  align-items: center;
-  background-color: ${props =>
-    props.isActive ? props.theme.colors.backgroundMid : props.theme.colors.backgroundLight};
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  padding: 5px;
-  &:hover,
-  &:focus {
-    background-color: #ddd;
-  }
-`;
-
-// TODO move to its own component
-const ScreenReaderOnly = styled.div`
-  border: 0px;
-  clip: rect(0px, 0px, 0px, 0px);
-  height: 1px;
-  margin-bottom: -1px;
-  margin-right: -1px;
-  overflow: hidden;
-  padding: 0px;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-`;
 
 type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
   apiKey: string;
@@ -70,7 +25,6 @@ type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
   isValidVisible?: boolean;
   label?: string;
   onAddressError?: (error: Error) => void;
-  theme?: ThemeType;
   ref?: Ref<HTMLInputElement>;
 };
 
@@ -94,11 +48,11 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
     const [addressOptions, setAddressOptions] = React.useState<AddressOptionsType[]>([]);
     const [activeOption, setActiveOption] = React.useState(0);
     const wrapperRef = useRef<HTMLDivElement>(null);
+    const foundTheme = useTheme();
     const theme = {
       ...defaultTheme,
-      ...props.theme,
+      ...foundTheme,
     };
-    console;
 
     useEffect(() => {
       const handleEsc = (event: KeyboardEvent) => {
@@ -233,4 +187,4 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
   },
 );
 
-export default withTheme(AddressLookup);
+export default AddressLookup;

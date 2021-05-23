@@ -1,125 +1,24 @@
 import React, { FunctionComponent } from 'react';
-import styled, { css, ThemeProvider, withTheme } from 'styled-components';
+import { ThemeProvider, useTheme } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
+import defaultTheme from 'src/themes/cruk';
 
-import { ThemeType } from '../../types';
+import { StepBar, StepItem, StepList, StepTick, StepWrapper } from './styles';
 
 type StepProps = {
   current: number;
   steps: string[];
-  theme?: ThemeType;
 };
-
-const StepWrapper = styled.div`
-  text-align: center;
-  text-transform: capitalize;
-`;
-
-type StepListProps = {
-  total: number;
-};
-
-const StepList = styled.ul<StepListProps>`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-
-  ${props =>
-    props.total &&
-    css`
-      li {
-        width: ${100 / props.total}%;
-      }
-      li:last-child span:after {
-        display: none;
-      }
-    `}
-`;
-const StepBar = styled.span`
-  border-radius: 50%;
-  background-clip: padding-box;
-  width: 24px;
-  height: 24px;
-  background-color: ${props => props.theme.colors.stepBackground};
-  display: block;
-  margin: 0 auto 0.5em auto;
-  border: 2px solid ${props => props.theme.colors.stepBorder};
-  text-indent: -999px;
-
-  &:after {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    content: '';
-    background-color: transparent;
-    border-bottom: 2px solid ${props => props.theme.colors.stepBorder};
-    left: 50%;
-    top: 11px;
-    margin-left: 12px;
-  }
-`;
-const StepTick = styled.span`
-  display: block;
-  transform: rotate(45deg);
-  transform-origin: center center;
-  height: 14px;
-  width: 8px;
-  border-bottom: ${({
-    theme: {
-      colors: { textLight },
-    },
-  }) => `2px solid ${textLight}`};
-  border-right: ${({
-    theme: {
-      colors: { textLight },
-    },
-  }) => `2px solid ${textLight}`};
-  margin-top: 4px;
-  margin-left: 8px;
-`;
-
-type StepItemProps = {
-  active: boolean;
-  done: boolean;
-};
-
-const StepItem = styled.li<StepItemProps>`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-
-  ${props =>
-    props.active &&
-    css`
-      ${StepBar} {
-        border-color: ${props => props.theme.colors.tertiary};
-      }
-    `}
-  ${props =>
-    props.done &&
-    css`
-      ${StepBar} {
-        border: none;
-        background-color: ${props => props.theme.colors.tertiary};
-        &:after {
-          border-bottom: 2px solid ${props => props.theme.colors.tertiary};
-        }
-      }
-    `}
-`;
 
 // TODO think about AriaAttributes and how we want to pass them down
 const Step: FunctionComponent<StepProps> = props => {
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...foundTheme,
   };
   const totalSteps: number = Array.isArray(props.steps) ? Object.keys(props.steps).length : 0;
+
   return (
     <ThemeProvider theme={theme}>
       <StepWrapper>
@@ -142,4 +41,4 @@ Step.defaultProps = {
   current: 1,
 };
 
-export default withTheme(Step);
+export default Step;
