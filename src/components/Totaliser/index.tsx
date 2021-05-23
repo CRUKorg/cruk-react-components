@@ -1,14 +1,23 @@
 import React, { FunctionComponent, ReactChild } from 'react';
-import styled, { css, useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
+
+import { calculatePercentRounded, formatMoneyWithCommas } from 'src/utils/Helper';
 
 import defaultTheme from 'src/themes/cruk';
-import ProgressBar from 'src/components/ProgressBar';
 import Text from 'src/components/Text';
 import Badge from 'src/components/Badge';
 import Box from 'src/components/Box';
-import { calculatePercentRounded, formatMoneyWithCommas } from 'src/utils/Helper';
 
-import { ThemeType } from 'src/types';
+import {
+  TotaliserWrapper,
+  CompactWrapper,
+  Summary,
+  DetailWrapper,
+  BubbleText,
+  Total,
+  ProgressBarWrapper,
+  StyledProgressBar,
+} from './styles';
 
 type TotaliserProps = {
   total: number;
@@ -17,97 +26,6 @@ type TotaliserProps = {
   isCompact?: boolean;
   summaryMessage?: ReactChild;
 };
-
-const DetailWrapper = styled.div`
-  color: ${({ theme }) => theme.colors.textLight};
-  text-align: center;
-  background-color: ${({ theme }) => theme.colors.tertiary};
-  border-radius: 3.2rem;
-  padding: 5px;
-  position: relative;
-  z-index: 10;
-
-  p {
-    margin: 0;
-  }
-`;
-
-const ProgressBarWrapper = styled.div`
-  padding: 0 46px 12px;
-  margin-top: 7px;
-  border: solid 1px ${({ theme }) => theme.colors.totaliserBorder};
-  position: relative;
-`;
-
-const Total = styled.p`
-  font-size: 2.625rem;
-  line-height: 3rem;
-  font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
-  text-transform: ${({
-    theme: {
-      typography: { headerTextTransform },
-    },
-  }) => headerTextTransform};
-`;
-
-const BubbleText = styled.p`
-  font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
-  text-transform: ${({
-    theme: {
-      typography: { headerTextTransform },
-    },
-  }) => headerTextTransform};
-`;
-
-const Summary = styled.div`
-  text-align: right;
-  margin-top: 12px;
-  margin-bottom: 0;
-  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
-`;
-
-type TotaliserWrapperProps = {
-  isCompact: boolean;
-};
-
-const TotaliserWrapper = styled.div<TotaliserWrapperProps>`
-  font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
-  margin: 0;
-  ${props =>
-    props.isCompact &&
-    css`
-      ${ProgressBarWrapper} {
-        border: none;
-        padding: 0;
-      }
-    `}
-`;
-
-const CompactWrapper = styled.div`
-  justify-content: space-between;
-  display: flex;
-`;
-
-type StyledProgressBarProps = {
-  theme: ThemeType;
-  isCompact: boolean;
-};
-
-const StyledProgressBar = styled(ProgressBar)<StyledProgressBarProps>`
-  ${props =>
-    !props.isCompact &&
-    css`
-      > div > div:after {
-        content: '\\25bc';
-        color: ${({ theme }) => theme.colors.tertiary};
-        z-index: 11;
-        position: absolute;
-        top: -30px;
-        right: -15px;
-        font-size: 32px;
-      }
-    `}
-`;
 
 // TODO figure out how we want to handle AriaAttributes
 const Totaliser: FunctionComponent<TotaliserProps> = props => {

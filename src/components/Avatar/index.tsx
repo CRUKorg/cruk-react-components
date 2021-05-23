@@ -1,18 +1,9 @@
 import React, { FC, ReactNode, ImgHTMLAttributes } from 'react';
-import styled, { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 
 import defaultTheme from 'src/themes/cruk';
 
-type AvatarStyledProps = {
-  size?: string;
-};
-
-const StyledAvatar = styled.img<AvatarStyledProps>`
-  border-radius: 50%;
-  height: ${({ size }) => size};
-  object-fit: cover;
-  width: ${({ size }) => size};
-`;
+import { StyledAvatar } from './styles';
 
 type AvatarProps = ImgHTMLAttributes<HTMLElement> & {
   name?: ReactNode;

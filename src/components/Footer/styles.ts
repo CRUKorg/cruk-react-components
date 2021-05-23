@@ -1,0 +1,129 @@
+import styled from 'styled-components';
+
+export const StyledFooter = styled.footer`
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  width: 100%;
+  background-color: ${({
+    theme: {
+      colors: { footerBackground },
+    },
+  }) => footerBackground};
+`;
+
+export const FooterContentWrapper = styled.div`
+  max-width: ${({
+    theme: {
+      utilities: { contentMaxWidth },
+    },
+  }) => contentMaxWidth};
+  display: block;
+  margin: 0 auto;
+
+  @media (min-width: ${({
+      theme: {
+        breakpoint: { desktop },
+      },
+    }) => desktop}) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
+
+export const FooterSection = styled.div`
+  display: inline-block;
+  padding: ${({
+    theme: {
+      spacing: { xs },
+    },
+  }) => xs};
+  position: relative;
+  width: 100%;
+  flex: 0 1 auto;
+`;
+
+export const FooterSectionLogo = styled(FooterSection)`
+  width: 50%;
+  display: block;
+  float: left;
+
+  @media (min-width: ${({
+      theme: {
+        breakpoint: { desktop },
+      },
+    }) => desktop}) {
+    flex: 0 0 140px;
+    width: auto;
+  }
+`;
+
+// TODO: I'm assuming here that the links have fixed width here with a flex basis
+// and the company info expands to fill the gap but it could be the other way round
+export const FooterSectionLinks = styled(FooterSection)`
+  width: 50%;
+  display: block;
+  float: left;
+
+  @media (min-width: ${({
+      theme: {
+        breakpoint: { desktop },
+      },
+    }) => desktop}) {
+    flex: 0 0 170px;
+    width: auto;
+  }
+`;
+
+export const StyledNav = styled.nav`
+  display: flex;
+  flex-direction: column;
+
+  /* TODO: make this work with themes currently there is no difference, will fix when themes are strongly typed */
+  a {
+    font-size: ${({
+      theme: {
+        fontSizes: { s },
+      },
+    }) => s};
+    font-weight: ${({
+      theme: {
+        typography: { fontWeightHeavy },
+      },
+    }) => fontWeightHeavy};
+  }
+`;
+
+export const StyledUL = styled.ul`
+  padding: 0;
+  margin: 0;
+`;
+
+export const StyledLI = styled.li`
+  list-style-type: none;
+  display: block;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  padding-bottom: ${({
+    theme: {
+      spacing: { xxs },
+    },
+  }) => xxs};
+`;
+
+export const FooterSectionAddress = styled(FooterSection)`
+  flex: 0 0 150px;
+`;
+
+export const StyledRegulatorLogo = styled.img`
+  height: 40px;
+  width: auto;
+`;
+
+export const StyledAddress = styled.address`
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+`;

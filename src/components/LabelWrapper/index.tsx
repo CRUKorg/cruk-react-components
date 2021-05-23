@@ -1,29 +1,10 @@
 import React, { FunctionComponent, ReactElement } from 'react';
-import styled, { useTheme, ThemeProvider } from 'styled-components';
+import { useTheme, ThemeProvider } from 'styled-components';
+
 import Text from 'src/components/Text';
 import defaultTheme from 'src/themes/cruk';
-import { ThemeType } from 'src/types';
 
-const Label = styled.label`
-  position: relative;
-  display: block;
-  width: 100%;
-`;
-
-type LabelTextProps = {
-  hasHintText: boolean;
-  theme: ThemeType;
-};
-
-const LabelText = styled.span<LabelTextProps>`
-  font-weight: bold;
-  display: block;
-  margin-bottom: ${({ hasHintText, theme }) => (hasHintText ? theme.spacing.xxs : theme.spacing.xs)};
-
-  & > * {
-    font-weight: normal;
-  }
-`;
+import { LabelText, Label } from './styles';
 
 type LabelWrapperProps = {
   label: string;
