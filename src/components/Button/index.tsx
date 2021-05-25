@@ -1,17 +1,16 @@
 import React, { FunctionComponent, ReactNode, ButtonHTMLAttributes, Ref, forwardRef } from 'react';
-import { withTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 
 import defaultTheme from 'src/themes/cruk';
 import Icon from 'src/components/Icon';
 
 import { Spacer, StyledButton } from './styles';
 
-import { ThemeType, ButtonAppearanceType } from 'src/types';
+import { ButtonAppearanceType } from 'src/types';
 
 export type Props = ButtonHTMLAttributes<HTMLElement> & {
   appearance?: ButtonAppearanceType;
   full?: boolean;
-  theme?: ThemeType;
   href?: string;
   size?: 'm' | 'l';
   css?: any;
@@ -19,10 +18,12 @@ export type Props = ButtonHTMLAttributes<HTMLElement> & {
   ref?: Ref<HTMLElement>;
 };
 
-const Button: FunctionComponent<Props> = forwardRef((props: Props, ref?: Ref<HTMLElement>) => {
+export const Button: FunctionComponent<Props> = forwardRef((props: Props, ref?: Ref<HTMLElement>) => {
+  const foundTheme = useTheme();
+
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...foundTheme,
   };
   const { appearance = 'primary' } = props;
   const childArray = React.Children.toArray(props.children);
@@ -52,4 +53,10 @@ const Button: FunctionComponent<Props> = forwardRef((props: Props, ref?: Ref<HTM
   );
 });
 
-export default withTheme(Button);
+Button.defaultProps = {
+  appearance: 'primary',
+  full: false,
+  size: 'm',
+};
+
+export default Button;

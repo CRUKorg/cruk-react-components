@@ -10,7 +10,7 @@ export const PopOverWrapper = styled.div<{
   ${props => (css as any)([props.css])}
 `;
 
-export const PopOverContent = styled.div<{
+export const PopOverModal = styled.div<{
   position: PopOverPositionType;
   theme?: ThemeType;
   maxWidth: string;

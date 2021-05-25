@@ -1,18 +1,18 @@
-import React, { useState, FC, useRef, useCallback, MouseEvent, ReactElement } from 'react';
-import { ThemeProvider, withTheme } from 'styled-components';
+import React, { useState, FC, useRef, useCallback, MouseEvent, ReactElement, ReactNode } from 'react';
+import { ThemeProvider, useTheme } from 'styled-components';
 
-import defaultTheme from '../../themes/cruk';
-import useEffectBrowser from '../../hooks/useEffectBrowser';
+import defaultTheme from 'src/themes/cruk';
+import useEffectBrowser from 'src/hooks/useEffectBrowser';
 
-import { PopOverWrapper, PopOverContent } from './styles';
+import { PopOverWrapper, PopOverModal } from './styles';
 
-import { ThemeType, PopOverPositionType } from 'src/types';
+import { PopOverPositionType } from 'src/types';
 
 type Props = {
+  modalLabel: string;
+  modalContent: ReactNode;
   position?: PopOverPositionType;
-  overlay: any;
   css?: string;
-  theme?: ThemeType;
   maxWidth?: string;
   minWidth?: string;
 };
@@ -20,11 +20,13 @@ type Props = {
 const PopOver: FC<Props> = props => {
   const popRef = useRef<HTMLDivElement>(null);
   const [showPopOver, setPopOver] = useState(false);
-  const toggle = () => setPopOver(!showPopOver);
+  const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
-    ...props.theme,
+    ...foundTheme,
   };
+
+  const toggle = () => setPopOver(!showPopOver);
 
   // outside click closes popover
   const closePopOver = useCallback(
@@ -56,20 +58,21 @@ const PopOver: FC<Props> = props => {
           }),
         )}
         {showPopOver ? (
-          <PopOverContent
+          <PopOverModal
             maxWidth={props.maxWidth || 'none'}
             minWidth={props.minWidth || 'auto'}
             position={props.position || 'top'}
             theme={theme}
             role="dialog"
+            aria-label={props.modalLabel}
             aria-modal={showPopOver}
           >
-            {props.overlay}
-          </PopOverContent>
+            {props.modalContent}
+          </PopOverModal>
         ) : null}
       </PopOverWrapper>
     </ThemeProvider>
   );
 };
 
-export default withTheme(PopOver);
+export default PopOver;

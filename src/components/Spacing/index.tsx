@@ -1,5 +1,5 @@
-import { SpaceType, ThemeType } from '../../types';
-import defaultTheme from '../../themes/cruk';
+import { SpaceType, ThemeType } from 'src/types';
+import defaultTheme from 'src/themes/cruk';
 
 export type SpacingProps = {
   theme?: ThemeType;
