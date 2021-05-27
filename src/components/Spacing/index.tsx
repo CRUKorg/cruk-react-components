@@ -1,8 +1,6 @@
 import { SpaceType, ThemeType } from 'src/types';
-import defaultTheme from 'src/themes/cruk';
 
 export type SpacingProps = {
-  theme?: ThemeType;
   margin?: SpaceType;
   marginTop?: SpaceType;
   marginRight?: SpaceType;
@@ -19,8 +17,7 @@ export type SpacingProps = {
   paddingHorizontal?: SpaceType;
 };
 
-export const Spacing = (props: SpacingProps) => {
-  const theme = props.theme || defaultTheme;
+export const Spacing = (props: SpacingProps, theme: ThemeType) => {
   const {
     margin,
     marginHorizontal,

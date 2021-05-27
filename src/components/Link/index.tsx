@@ -7,21 +7,21 @@ import { StyledLink, ChevyWithLevee } from './styles';
 
 import { TextProps } from 'src/components/Text';
 
-type LinkProps = AnchorHTMLAttributes<HTMLElement> &
+export type Props = AnchorHTMLAttributes<HTMLElement> &
   TextProps & {
     textHoverColor?: string;
     appearance?: 'primary' | 'secondary';
     ref?: Ref<HTMLElement>;
   };
 
-const Link: FC<LinkProps> = forwardRef((props: LinkProps, ref?: Ref<HTMLElement>) => {
+const Link: FC<Props> = forwardRef((props: Props, ref?: Ref<HTMLElement>) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
     ...foundTheme,
   };
   // security by default
-  const rel = props.rel || props.target === '_blank' ? 'noopener noreferrer' : '';
+  const rel = props.rel ? props.rel : props.target === '_blank' ? 'noopener noreferrer' : '';
 
   return (
     <ThemeProvider theme={theme}>
