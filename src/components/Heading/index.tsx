@@ -8,7 +8,7 @@ import { H1, H2, H3, H4, H5, H6 } from './styles';
 
 import { FontSizeType, WordBreakType } from 'src/types';
 
-type HeadingProps = SpacingProps &
+export type HeadingProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
     h1?: boolean;
     h2?: boolean;

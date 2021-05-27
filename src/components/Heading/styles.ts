@@ -57,7 +57,10 @@ const StyledHeading = (props: StyledHeadingProps) => css`
     margin-top: 0;
   }
 
-  ${props => spacing(props)}
+  ${props => {
+    const { theme, ...propsWithoutTheme } = props;
+    return spacing(propsWithoutTheme, props.theme);
+  }}
 `;
 
 const desktopFontSize = (textSize: FontSizeType | null, defaultFontSize: FontSizeType, theme: ThemeType) => {

@@ -4,6 +4,7 @@
 # production
 /lib
 /public
+/storybook-static
 
 # test
 /cypress/screenshots

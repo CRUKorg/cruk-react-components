@@ -24,5 +24,5 @@ export const StyledBox = styled.div<StyledBoxProps>`
       : 'transparent'};
 
   ${(props: StyledBoxProps) => (css as any)([props.css])}
-  ${props => Spacing(props)}
+  ${props => Spacing(props, props.theme)}
 `;
