@@ -16,12 +16,6 @@ const content = () => {
       <Box backgroundColor="secondary">
         <Text textColor="textLight">This is box</Text>
       </Box>
-      <Box backgroundColor="tertiary">
-        <Text textColor="textLight">This is box</Text>
-      </Box>
-      <Box backgroundColor="#fdc02f">
-        <Text textColor="textLight">This is box</Text>
-      </Box>
       <Box backgroundColor="secondary">
         <Text textColor="textLight">default spacing</Text>
       </Box>

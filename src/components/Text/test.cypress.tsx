@@ -15,7 +15,7 @@ const content = () => {
       </Text>
       <Text as="span">This is text as a span tag</Text>
       <Text textColor="primary">Color is Primary</Text>
-      <Text textColor="#ff0000">Color is custom colour</Text>
+      <Text textColor="#aa0000">Color is custom colour</Text>
       <Text textSize="l">Text size l</Text>
     </>
   );
