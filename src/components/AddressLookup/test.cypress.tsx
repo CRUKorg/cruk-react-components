@@ -4,7 +4,7 @@ import React from 'react';
 import { mount } from '@cypress/react';
 
 import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
-import { AddressLookup, su2cTheme } from '..';
+import { AddressLookup, crukTheme, su2cTheme } from '..';
 
 const Content = () => {
   return (
@@ -43,7 +43,31 @@ describe('AddressLookup', () => {
     }).as('find');
   });
 
-  it('can find address and is accessible', () => {
+  it('is accessible CRUK theme', () => {
+    mount(
+      <TestThemeWrapper theme={crukTheme}>
+        <Content />
+      </TestThemeWrapper>,
+    );
+    cy.injectAxe();
+    cy.checkA11y('body');
+  });
+
+  it('is accessible SU2C theme', () => {
+    mount(
+      <TestThemeWrapper theme={su2cTheme}>
+        <Content />
+      </TestThemeWrapper>,
+    );
+    cy.injectAxe();
+    cy.checkA11y('body', {
+      rules: {
+        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
+      },
+    });
+  });
+
+  it('can find address', () => {
     mount(
       <TestWrapper>
         <Content />
@@ -60,8 +84,6 @@ describe('AddressLookup', () => {
     cy.get('@find')
       .should('have.property', 'url')
       .and('contain', 'Countries=GBR');
-    cy.injectAxe();
-    cy.checkA11y('body');
   });
 
   it('should match CRUK snapshot', () => {

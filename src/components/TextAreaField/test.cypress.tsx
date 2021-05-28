@@ -3,8 +3,8 @@
 import React from 'react';
 import { mount } from '@cypress/react';
 
-import TestWrapper from '../TestWrapper';
-import { Box, Heading, TextAreaField } from '../';
+import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
+import { Box, Heading, TextAreaField, su2cTheme, crukTheme } from '../';
 
 const content = () => {
   return (
@@ -24,12 +24,18 @@ const content = () => {
 };
 
 describe('TextAreaField', () => {
-  it('is accessible', () => {
-    mount(<TestWrapper>{content()}</TestWrapper>);
+  it('is accessible CRUK theme', () => {
+    mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
+    cy.injectAxe();
+    cy.checkA11y('body');
+  });
+
+  it('is accessible SU2C theme', () => {
+    mount(<TestThemeWrapper theme={su2cTheme}>{content()}</TestThemeWrapper>);
     cy.injectAxe();
     cy.checkA11y('body', {
       rules: {
-        'color-contrast': { enabled: false }, // TODO disabled because error text on grey background doesn't pass WCAG AA currently under discussion.
+        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
       },
     });
   });

@@ -4,7 +4,7 @@ import React from 'react';
 import { mount } from '@cypress/react';
 
 import { TestThemeWrapper } from '../TestWrapper';
-import { Radio, Heading, su2cTheme } from '../';
+import { Radio, Heading, su2cTheme, crukTheme } from '../';
 
 const uncontrolledRadio = () => (
   <div id="radios">
@@ -50,14 +50,28 @@ const Content = () => {
 };
 
 describe('Radio', () => {
-  it('is accessible', () => {
+  it('is accessible CRUK theme', () => {
     mount(
-      <TestThemeWrapper>
+      <TestThemeWrapper theme={crukTheme}>
         <Content />
       </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y('body');
+  });
+
+  it('is accessible SU2C theme', () => {
+    mount(
+      <TestThemeWrapper theme={su2cTheme}>
+        <Content />
+      </TestThemeWrapper>,
+    );
+    cy.injectAxe();
+    cy.checkA11y('body', {
+      rules: {
+        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
+      },
+    });
   });
 
   it('should match CRUK snapshot', () => {
@@ -71,6 +85,7 @@ describe('Radio', () => {
       .first()
       .matchImageSnapshot();
   });
+
   it('should match SU2C snapshot', () => {
     Cypress.config('waitForAnimations', true);
     Cypress.config('animationDistanceThreshold', 2);
