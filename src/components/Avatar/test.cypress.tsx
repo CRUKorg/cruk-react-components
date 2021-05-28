@@ -48,6 +48,24 @@ describe('Avatar', () => {
       const img = $img[0] as HTMLImageElement;
       expect(img.naturalWidth).to.be.greaterThan(0);
     });
+    cy.get(
+      '[src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/icon-avatars/su2c/icon-avatar-S.png"]',
+    ).should($img => {
+      const img = $img[0] as HTMLImageElement;
+      expect(img.naturalWidth).to.be.greaterThan(0);
+    });
+    cy.get(
+      '[src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/icon-avatars/icon-avatar-Anonymous.png"]',
+    ).should($img => {
+      const img = $img[0] as HTMLImageElement;
+      expect(img.naturalWidth).to.be.greaterThan(0);
+    });
+    cy.get(
+      '[src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/icon-avatars/su2c/icon-avatar-Anonymous.png"]',
+    ).should($img => {
+      const img = $img[0] as HTMLImageElement;
+      expect(img.naturalWidth).to.be.greaterThan(0);
+    });
     cy.document()
       .its('fonts.status')
       .should('equal', 'loaded');
