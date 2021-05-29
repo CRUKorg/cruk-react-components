@@ -12,6 +12,7 @@ const Template: Story = args => <Heading {...args} />;
 export const DefaultHeading: Story = Template.bind({});
 DefaultHeading.args = {
   children: 'H2 is the default',
+  textColor: 'textDark',
 };
 
 export const HeadingSize: Story = Template.bind({});
