@@ -21,6 +21,23 @@ addDecorator(withThemes(ThemeProvider, [crukTheme, su2cTheme]));
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
+  backgrounds: {
+    default: 'light',
+    values: [
+      {
+        name: 'light',
+        value: '#ffffff',
+      },
+      {
+        name: 'mid',
+        value: '#ededed',
+      },
+      {
+        name: 'dark',
+        value: '#2e2d2c',
+      },
+    ],
+  },
   controls: {
     matchers: {
       color: /(background|color)$/i,
