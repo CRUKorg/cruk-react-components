@@ -15,9 +15,19 @@ import {
 
 import crukTheme from '../src/themes/cruk';
 import su2cTheme from '../src/themes/su2c';
-import { Text } from '../';
+import { Text, GlobalStyle } from '../';
 
 addDecorator(withThemes(ThemeProvider, [crukTheme, su2cTheme]));
+
+// Global decorator to apply the styles to all stories
+export const decorators = [
+  Story => (
+    <>
+      <GlobalStyle />
+      <Story />
+    </>
+  ),
+];
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -57,19 +67,21 @@ export const parameters = {
         <Heading>Theming</Heading>
         <Text>
           Our component library is built on styled components, the different themes can be imported from the component
-          library and implemented using ThemeProvider
+          library and implemented using ThemeProvider, GlobalStyle is a bit like a css reset
           <pre>
             {`
             import { ThemeProvider } from 'styled-components';
             import {
               Button,
               crukTheme,
-              su2cTheme
+              su2cTheme,
+              GlobalStyle
             } from '@cruk/cruk-react-components';
             
             const component = () => {
               return (
                 <ThemeProvider theme={crukTheme}>
+                  <GlobalStyle/>
                   <Button>A button</Button>
                 <ThemeProvider>
               )
