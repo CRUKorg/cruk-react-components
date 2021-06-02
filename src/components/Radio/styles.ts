@@ -47,6 +47,7 @@ export const Check = styled.span`
 
 type StyledLabelProps = {
   checked: boolean;
+  disabled: boolean;
 };
 
 export const StyledLabel = styled.label<StyledLabelProps>`
@@ -60,6 +61,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
   cursor: pointer;
   display: inline-block;
   font-weight: ${({ checked }) => (checked ? 'bold' : 'normal')};
+  color: ${({ theme, disabled }) => (disabled ? theme.colors.disabled : theme.colors.textDark)};
   padding: ${({ theme }) =>
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
   vertical-align: middle;

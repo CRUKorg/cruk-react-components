@@ -24,7 +24,7 @@ const Checkbox: FC<CheckBoxProps> = forwardRef((props: CheckBoxProps, ref?: Ref<
 
   return (
     <ThemeProvider theme={theme}>
-      <StyledLabel checked={props.checked || props.defaultChecked || false}>
+      <StyledLabel checked={props.checked || props.defaultChecked || false} disabled={props.disabled || false}>
         <StyledInput {...propsWithoutChildren} type="checkbox" ref={ref} />
         <SelectedBorder></SelectedBorder>
         {children || props.value}

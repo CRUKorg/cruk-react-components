@@ -40,6 +40,7 @@ const DateField: FC<DateFieldProps> = ({
   onChange = () => {},
   onBlur = () => {},
   onFocus = () => {},
+  disabled,
   ...props
 }) => {
   return (
@@ -63,6 +64,7 @@ const DateField: FC<DateFieldProps> = ({
           onBlur={onBlur}
           onFocus={onFocus}
           hasError={dayHasError}
+          disabled={disabled}
         />
       </DateTextFieldWrapper>
       <DateTextFieldWrapper>
@@ -80,6 +82,7 @@ const DateField: FC<DateFieldProps> = ({
           onBlur={onBlur}
           onFocus={onFocus}
           hasError={monthHasError}
+          disabled={disabled}
         />
       </DateTextFieldWrapper>
       <LargeDateTextFieldWrapper>
@@ -97,6 +100,7 @@ const DateField: FC<DateFieldProps> = ({
           onBlur={onBlur}
           onFocus={onFocus}
           hasError={yearHasError}
+          disabled={disabled}
         />
       </LargeDateTextFieldWrapper>
       {errorMessage && (

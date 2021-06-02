@@ -16,6 +16,7 @@ export const CheckboxDefault: Story = Template.bind({});
 CheckboxDefault.storyName = 'CheckBox';
 CheckboxDefault.args = {
   value: 'value',
+  disabled: false,
 };
 
 const TemplateWithSU2C: Story = args => (
@@ -28,4 +29,5 @@ export const SU2CCheckbox: Story = TemplateWithSU2C.bind({});
 SU2CCheckbox.storyName = 'SU2C CheckBox';
 SU2CCheckbox.args = {
   value: 'value',
+  disabled: false,
 };

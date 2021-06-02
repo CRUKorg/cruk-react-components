@@ -14,7 +14,7 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
  *
  * The value or children becomes the label, if you want an outer label for a radio or group of radios please use a legend element
  */
-const RadioInput: FC<RadioProps> = forwardRef((props: RadioProps, ref?: Ref<HTMLInputElement>) => {
+const Radio: FC<RadioProps> = forwardRef((props: RadioProps, ref?: Ref<HTMLInputElement>) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -24,7 +24,7 @@ const RadioInput: FC<RadioProps> = forwardRef((props: RadioProps, ref?: Ref<HTML
 
   return (
     <ThemeProvider theme={theme}>
-      <StyledLabel className={props.className} checked={props.checked || false}>
+      <StyledLabel className={props.className} checked={props.checked || false} disabled={props.disabled || false}>
         <StyledInput {...propsWithoutChildren} type="radio" ref={ref} />
         <SelectedBorder></SelectedBorder>
         {theme.utilities.useDefaultFromControls ? null : (
@@ -38,4 +38,4 @@ const RadioInput: FC<RadioProps> = forwardRef((props: RadioProps, ref?: Ref<HTML
   );
 });
 
-export default RadioInput;
+export default Radio;

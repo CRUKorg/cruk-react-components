@@ -22,6 +22,7 @@ DateFieldWithLabel.args = {
   onChange: () => {},
   onBlur: () => {},
   onFocus: () => {},
+  disabled: false,
 };
 
 export const DateFieldWithError: Story<DateFieldProps> = Template.bind({});
@@ -35,6 +36,7 @@ DateFieldWithError.args = {
   monthHasError: true,
   yearHasError: true,
   errorMessage: 'Day month and year invalid',
+  disabled: false,
 };
 
 const TemplateWithSU2C: Story<DateFieldProps> = args => (
@@ -54,6 +56,7 @@ SU2CDateFieldWithLabel.args = {
   onChange: () => {},
   onBlur: () => {},
   onFocus: () => {},
+  disabled: false,
 };
 
 export const SU2CDateFieldWithError: Story<DateFieldProps> = TemplateWithSU2C.bind({});
@@ -68,4 +71,5 @@ SU2CDateFieldWithError.args = {
   monthHasError: true,
   yearHasError: true,
   errorMessage: 'Day month and year invalid',
+  disabled: false,
 };

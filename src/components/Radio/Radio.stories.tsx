@@ -29,6 +29,7 @@ export const RadioDefault: Story<RadioProps> = Template.bind({});
 RadioDefault.storyName = 'Radio';
 RadioDefault.args = {
   value: 'value',
+  disabled: false,
 };
 
 const TemplateWithSU2C: Story<RadioProps> = args => (
@@ -52,4 +53,5 @@ export const SU2CRadio: Story<RadioProps> = TemplateWithSU2C.bind({});
 SU2CRadio.storyName = 'SU2C SU2CRadio';
 SU2CRadio.args = {
   value: 'value',
+  disabled: false,
 };

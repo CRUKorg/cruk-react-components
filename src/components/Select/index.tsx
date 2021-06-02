@@ -7,7 +7,7 @@ import LabelWrapper from 'src/components/LabelWrapper';
 
 import { StyledSelect } from './styles';
 
-type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
+export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   errorMessage?: string;
   hasError?: boolean;
   label: string;
