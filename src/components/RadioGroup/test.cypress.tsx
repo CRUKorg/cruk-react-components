@@ -4,7 +4,7 @@ import React from 'react';
 import { mount } from '@cypress/react';
 
 import { TestThemeWrapper } from '../TestWrapper';
-import { RadioGroup, su2cTheme } from '../';
+import { RadioGroup, su2cTheme, crukTheme } from '../';
 
 const uncontrolledContent = () => (
   <div id="radios">
@@ -62,14 +62,28 @@ const Content = () => {
 };
 
 describe('RadioGroup', () => {
-  it('is accessible', () => {
+  it('is accessible CRUK theme', () => {
     mount(
-      <TestThemeWrapper>
+      <TestThemeWrapper theme={crukTheme}>
         <Content />
       </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y('body');
+  });
+
+  it('is accessible SU2C theme', () => {
+    mount(
+      <TestThemeWrapper theme={su2cTheme}>
+        <Content />
+      </TestThemeWrapper>,
+    );
+    cy.injectAxe();
+    cy.checkA11y('body', {
+      rules: {
+        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
+      },
+    });
   });
 
   it('should match CRUK snapshot', () => {

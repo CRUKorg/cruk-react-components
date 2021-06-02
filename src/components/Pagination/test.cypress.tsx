@@ -3,8 +3,8 @@
 import React from 'react';
 import { mount } from '@cypress/react';
 
-import TestWrapper from '../TestWrapper';
-import { Pagination, Box, Heading } from '../';
+import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
+import { Pagination, Box, Heading, crukTheme, su2cTheme } from '../';
 
 const Content = () => {
   const [page, setPage] = React.useState(1);
@@ -25,16 +25,30 @@ const Content = () => {
 };
 
 describe('Pagination', () => {
-  it('is accessible', () => {
+  it('is accessible CRUK theme', () => {
     mount(
-      <TestWrapper>
+      <TestThemeWrapper theme={crukTheme}>
         <Content />
-      </TestWrapper>,
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y('body', {
       rules: {
-        'color-contrast': { enabled: false }, // TODO disabled SU2C links not pass WCAG AA.
+        'color-contrast': { enabled: false }, // disabled next and prev button don't pass colour contrast, axe isn't smart enough to know that they are disabled
+      },
+    });
+  });
+
+  it('is accessible SU2C theme', () => {
+    mount(
+      <TestThemeWrapper theme={su2cTheme}>
+        <Content />
+      </TestThemeWrapper>,
+    );
+    cy.injectAxe();
+    cy.checkA11y('body', {
+      rules: {
+        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
       },
     });
   });
