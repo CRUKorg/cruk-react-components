@@ -1,12 +1,15 @@
-import React, { FC, InputHTMLAttributes } from 'react';
+import React, { FC, InputHTMLAttributes, Ref, forwardRef } from 'react';
 import { useTheme, ThemeProvider } from 'styled-components';
 
 import defaultTheme from 'src/themes/cruk';
+
 import { StyledLabel, StyledInput, SelectedBorder, CheckWrapper, Check, VerticalAlign } from './styles';
 
-type RadioProps = InputHTMLAttributes<HTMLInputElement>;
+type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
+  ref?: Ref<HTMLInputElement>;
+};
 
-const RadioInput: FC<RadioProps> = props => {
+const RadioInput: FC<RadioProps> = forwardRef((props: RadioProps, ref?: Ref<HTMLInputElement>) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -17,7 +20,7 @@ const RadioInput: FC<RadioProps> = props => {
   return (
     <ThemeProvider theme={theme}>
       <StyledLabel className={props.className} checked={props.checked || false}>
-        <StyledInput {...propsWithoutChildren} type="radio" />
+        <StyledInput {...propsWithoutChildren} type="radio" ref={ref} />
         <SelectedBorder></SelectedBorder>
         {theme.utilities.useDefaultFromControls ? null : (
           <CheckWrapper>
@@ -28,6 +31,6 @@ const RadioInput: FC<RadioProps> = props => {
       </StyledLabel>
     </ThemeProvider>
   );
-};
+});
 
 export default RadioInput;
