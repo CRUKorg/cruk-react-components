@@ -5,11 +5,16 @@ import defaultTheme from 'src/themes/cruk';
 
 import { StyledLabel, StyledInput, CheckWrapper, CheckGlyph, Check, SelectedBorder } from './styles';
 
-type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
+export type CheckBoxProps = InputHTMLAttributes<HTMLInputElement> & {
   ref?: Ref<HTMLInputElement>;
 };
 
-const Checkbox: FC<CheckboxProps> = forwardRef((props: CheckboxProps, ref?: Ref<HTMLInputElement>) => {
+/**
+ * Checkboxes allow the user to select one or more items.
+ *
+ * The value or children becomes the label, if you want an outer label for a checkbox or group of checkboxes please use a legend element
+ */
+const Checkbox: FC<CheckBoxProps> = forwardRef((props: CheckBoxProps, ref?: Ref<HTMLInputElement>) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
