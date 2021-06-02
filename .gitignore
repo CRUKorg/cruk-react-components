@@ -12,4 +12,6 @@
 /cypress/snapshots/**/**(failed).snap.png
 /cypress/fixtures/example.json 
 
+/storybook-static/
+
 .idea
