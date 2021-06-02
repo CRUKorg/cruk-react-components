@@ -15,7 +15,8 @@ import {
 
 import crukTheme from '../src/themes/cruk';
 import su2cTheme from '../src/themes/su2c';
-import { Text, GlobalStyle } from '../';
+import Text from '../src/components/Text';
+import GlobalStyle from '../src/components/GlobalStyle';
 
 addDecorator(withThemes(ThemeProvider, [crukTheme, su2cTheme]));
 
