@@ -12,8 +12,9 @@ export default {
 
 const Template: Story = args => <CheckBox {...args} />;
 
-export const Checkbox: Story = Template.bind({});
-Checkbox.args = {
+export const CheckboxDefault: Story = Template.bind({});
+CheckboxDefault.storyName = 'CheckBox';
+CheckboxDefault.args = {
   value: 'value',
 };
 

@@ -10,15 +10,17 @@ export default {
   component: Header,
 } as Meta<HeaderProps>;
 
-const Template: Story = args => <Header {...args} />;
+const Template: Story<HeaderProps> = args => <Header {...args} />;
 
-export const HeaderDefault: Story = Template.bind({});
+export const HeaderDefault: Story<HeaderProps> = Template.bind({});
 HeaderDefault.args = {
   siteSlogan: 'Header slogan here',
   children: <Button>Child component</Button>,
+  isSticky: false,
+  fullWidth: false,
 };
 
-const TemplateWithSU2C: Story = args => (
+const TemplateWithSU2C: Story<HeaderProps> = args => (
   <ThemeProvider theme={su2cTheme}>
     <Header {...args} />
   </ThemeProvider>
@@ -29,4 +31,6 @@ SU2CHeader.storyName = 'SU2C Header';
 SU2CHeader.args = {
   siteSlogan: 'Header slogan here',
   children: <Button>Child component</Button>,
+  isSticky: false,
+  fullWidth: false,
 };

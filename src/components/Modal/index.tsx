@@ -8,7 +8,7 @@ import defaultTheme from 'src/themes/cruk';
 
 import { CloseButton, Wrapper, Content, Background } from './styles';
 
-type Props = {
+export type ModalProps = {
   modalName: string;
   closeFunction: Function;
   showCloseButton?: Boolean;
@@ -16,7 +16,17 @@ type Props = {
   top?: string;
 };
 
-const Modal: FC<Props> = ({
+/**
+ *
+ * Use a modal to display content over top of the rest of the site which must be interacted with before the user can continue.
+ * ## How modals work
+ * - Modals are positioned over everything else in the document and remove scroll from the "body" tag so that modal content scrolls instead.
+ * - Modals are unmounted when closed.
+ * - Modal's "trap" focus in them, ensuring the keyboard navigation cycles through the modal, and not the rest of the page.
+ * ## Accessibility
+ * - Once the Modal is appeared on the screen, the focus must be within the Modal container which will enable the screen readers to be able to navigate within the Modal. You may wish to hide the close button so that a user must click on another button to confirm a choice before the modal is closed. However closing with the 'ESC' key must always work, so the props which contains the function that allows the modal to close itself 'closeFunction' is always required.
+ */
+const Modal: FC<ModalProps> = ({
   modalName,
   closeFunction,
   showCloseButton,

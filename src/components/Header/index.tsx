@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState, HTMLAttributes } from 'react';
 import { useTheme, ThemeProvider } from 'styled-components';
 
 import { useScrollPosition } from 'src/hooks/useScrollPosition';
@@ -18,7 +18,7 @@ import {
 
 const HEADER_SCROLL_THRESHOLD = 66;
 
-export type HeaderProps = {
+export type HeaderProps = HTMLAttributes<HTMLElement> & {
   isSticky?: boolean;
   siteSlogan?: string;
   logoAltText?: string;

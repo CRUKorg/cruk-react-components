@@ -4,8 +4,13 @@ import { useTheme, ThemeProvider } from 'styled-components';
 import defaultTheme from 'src/themes/cruk';
 import { StyledLabel, StyledInput, SelectedBorder, CheckWrapper, Check, VerticalAlign } from './styles';
 
-type RadioProps = InputHTMLAttributes<HTMLInputElement>;
+export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {};
 
+/**
+ * Checkboxes allow the user to select one or more items.
+ *
+ * The value or children becomes the label, if you want an outer label for a checkbox or group of checkboxes please use a legend element
+ */
 const RadioInput: FC<RadioProps> = props => {
   const foundTheme = useTheme();
   const theme = {
