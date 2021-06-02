@@ -23,8 +23,8 @@ const TemplateWithSU2C: Story = args => (
   </ThemeProvider>
 );
 
-export const SU2Checkbox: Story = TemplateWithSU2C.bind({});
-SU2Checkbox.storyName = 'SU2C CheckBox';
-SU2Checkbox.args = {
+export const SU2CCheckbox: Story = TemplateWithSU2C.bind({});
+SU2CCheckbox.storyName = 'SU2C CheckBox';
+SU2CCheckbox.args = {
   value: 'value',
 };

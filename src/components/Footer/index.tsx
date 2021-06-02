@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode, HTMLAttributes } from 'react';
 import { useTheme, ThemeProvider } from 'styled-components';
 
 import defaultTheme from 'src/themes/cruk';
@@ -18,11 +18,14 @@ import {
   StyledLI,
 } from './styles';
 
-type Props = {
+export type FooterProps = HTMLAttributes<HTMLElement> & {
   middleSection?: ReactNode;
 };
 
-export const Footer: FC<Props> = props => {
+/**
+ * There should be only one footer component at the bottom of the body of each page. Links can be passed as children
+ * */
+export const Footer: FC<FooterProps> = props => {
   const childArray = React.Children.toArray(props.children);
 
   const foundTheme = useTheme();
