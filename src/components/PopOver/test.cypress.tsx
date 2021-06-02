@@ -3,8 +3,8 @@
 import React from 'react';
 import { mount } from '@cypress/react';
 
-import TestWrapper from '../TestWrapper';
-import { PopOver, Box, Button, Icon } from '../';
+import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
+import { PopOver, Box, Button, Icon, su2cTheme, crukTheme } from '../';
 
 const internalContent = () => (
   <Box padding="xxs">
@@ -31,37 +31,37 @@ const internalContent = () => (
 
 const content = () => (
   <>
-    <PopOver overlay={internalContent()} minWidth="23em">
+    <PopOver modalLabel="sharing options" modalContent={internalContent()} minWidth="23em">
       <Button>
         <Icon name="share" />
         Share top
       </Button>
     </PopOver>
-    <PopOver position="topLeft" overlay={internalContent()} minWidth="23em">
+    <PopOver modalLabel="sharing options" position="topLeft" modalContent={internalContent()} minWidth="23em">
       <Button>
         <Icon name="share" />
         Share topLeft
       </Button>
     </PopOver>
-    <PopOver position="bottom" overlay={internalContent()} minWidth="23em">
+    <PopOver modalLabel="sharing options" position="bottom" modalContent={internalContent()} minWidth="23em">
       <Button>
         <Icon name="share" />
         Share bottom
       </Button>
     </PopOver>
-    <PopOver position="bottomLeft" overlay={internalContent()} minWidth="23em">
+    <PopOver modalLabel="sharing options" position="bottomLeft" modalContent={internalContent()} minWidth="23em">
       <Button>
         <Icon name="share" />
         Share bottomLeft
       </Button>
     </PopOver>
-    <PopOver position="left" overlay={internalContent()} minWidth="23em">
+    <PopOver modalLabel="sharing options" position="left" modalContent={internalContent()} minWidth="23em">
       <Button>
         <Icon name="share" />
         Share left
       </Button>
     </PopOver>
-    <PopOver position="right" overlay={internalContent()} minWidth="23em">
+    <PopOver modalLabel="sharing options" position="right" modalContent={internalContent()} minWidth="23em">
       <Button>
         <Icon name="share" />
         Share right
@@ -71,8 +71,15 @@ const content = () => (
 );
 
 describe('Popover', () => {
-  it('is accessible', () => {
-    mount(<TestWrapper>{content()}</TestWrapper>);
+  it('is accessible CRUK theme', () => {
+    mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
+    cy.contains('Share left').click();
+    cy.injectAxe();
+    cy.checkA11y('body');
+  });
+
+  it('is accessible SU2C theme', () => {
+    mount(<TestThemeWrapper theme={su2cTheme}>{content()}</TestThemeWrapper>);
     cy.contains('Share left').click();
     cy.injectAxe();
     cy.checkA11y('body', {

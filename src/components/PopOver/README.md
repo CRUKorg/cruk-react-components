@@ -34,32 +34,32 @@ function () {
 
   return (
     <>
-      <PopOver overlay={content} minWidth="23em">
+      <PopOver modalLabel="sharing options" modalContent={content} minWidth="23em">
         <Button>
           <Icon name="share" />Share top
         </Button>
       </PopOver>
-      <PopOver position="topLeft" overlay={content} minWidth="23em">
+      <PopOver modalLabel="sharing options" position="topLeft" modalContent={content} minWidth="23em">
         <Button>
           <Icon name="share" />Share topLeft
         </Button>
       </PopOver>
-      <PopOver position="bottom" overlay={content} minWidth="23em">
+      <PopOver modalLabel="sharing options" position="bottom" modalContent={content} minWidth="23em">
         <Button>
           <Icon name="share" />Share bottom
         </Button>
       </PopOver>
-      <PopOver position="bottomLeft" overlay={content} minWidth="23em">
+      <PopOver modalLabel="sharing options" position="bottomLeft" modalContent={content} minWidth="23em">
         <Button>
           <Icon name="share" />Share bottomLeft
         </Button>
       </PopOver>
-      <PopOver position="left" overlay={content} minWidth="23em">
+      <PopOver modalLabel="sharing options" position="left" modalContent={content} minWidth="23em">
         <Button>
           <Icon name="share" />Share left
         </Button>
       </PopOver>
-      <PopOver position="right" overlay={content} minWidth="23em">
+      <PopOver modalLabel="sharing options" position="right" modalContent={content} minWidth="23em">
         <Button>
           <Icon name="share" />Share right
         </Button>
@@ -71,12 +71,13 @@ function () {
 
 ## Props
 
-| Name     | Type              |                       Options                        | Default | Description                    |
-| :------- | :---------------- | :--------------------------------------------------: | :------ | :----------------------------- |
-| position | String            | "top" "bottom" "left" "right" "topLeft" "bottomLeft" | "top"   | Where to place the popover     |
-| overlay  | String/React node |                                                      |         | Content to show in the popover |
-| maxWidth | String            |                                                      | "auto"  | Max width for popover content  |
-| minWidth | String            |                                                      | "auto"  | Min width for popover content  |
+| Name         | Type              |                       Options                        | Default | Description                    |
+| :----------- | :---------------- | :--------------------------------------------------: | :------ | :----------------------------- |
+| position     | String            | "top" "bottom" "left" "right" "topLeft" "bottomLeft" | "top"   | Where to place the popover     |
+| modalContent | String/React node |                                                      |         | Content to show in the popover |
+| maxWidth     | String            |                                                      | "auto"  | Max width for popover content  |
+| minWidth     | String            |                                                      | "auto"  | Min width for popover content  |
+| modalLabel   | String            |                                                      |         | aria-label for modal           |
 
 ## Usage
 

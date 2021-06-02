@@ -71,4 +71,8 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+GlobalStyle.defaultProps = {
+  theme: defaultTheme,
+};
+
 export default withTheme(GlobalStyle);

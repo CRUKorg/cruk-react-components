@@ -7,9 +7,9 @@ frontend:
         - npm ci
     build:
       commands:
-        - npm run build-docs
+        - npm run build-storybook
   artifacts:
-    baseDirectory: public
+    baseDirectory: storybook-static
     files:
       - '**/*'
   cache:

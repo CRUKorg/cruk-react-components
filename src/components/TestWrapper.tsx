@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
 import { ThemeProvider } from 'styled-components';
-import GlobalStyle from './GlobalStyle';
-import crukTheme from '../themes/cruk';
-import su2cTheme from '../themes/su2c';
-import Heading from './Heading';
+import GlobalStyle from 'src/components/GlobalStyle';
+import crukTheme from 'src/themes/cruk';
+import su2cTheme from 'src/themes/su2c';
+import Heading from 'src/components/Heading';
+import Box from 'src/components/Box';
 import { ThemeType } from 'src/types';
 
 type TestThemeWrapperProps = {
@@ -14,8 +15,10 @@ export const TestThemeWrapper: FC<TestThemeWrapperProps> = ({ children, theme })
   <main>
     <div style={{ overflow: 'auto' }} tabIndex={0}>
       <ThemeProvider theme={theme || crukTheme}>
-        <GlobalStyle />
-        {children}
+        <Box backgroundColor="backgroundLight">
+          <GlobalStyle />
+          {children}
+        </Box>
       </ThemeProvider>
     </div>
   </main>
