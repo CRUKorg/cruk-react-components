@@ -7,7 +7,7 @@ import LabelWrapper from 'src/components/LabelWrapper';
 
 import { StyledTextArea } from './styles';
 
-type Props = TextareaHTMLAttributes<HTMLTextAreaElement> & {
+export type TextAreaFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   errorMessage?: string;
   hasError?: boolean;
   hintText?: ReactElement | string;
@@ -17,9 +17,12 @@ type Props = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   ref?: Ref<HTMLTextAreaElement>;
 };
 
-const TextField: FunctionComponent<Props> = forwardRef(
+/**
+ * TextAreaField lets users enter and edit text over multiple lines.
+ */
+const TextField: FunctionComponent<TextAreaFieldProps> = forwardRef(
   (
-    { errorMessage, hasError, hintText, label, resize = 'vertical', lineCount = 3, ...props }: Props,
+    { errorMessage, hasError, hintText, label, resize = 'vertical', lineCount = 3, ...props }: TextAreaFieldProps,
     ref?: Ref<HTMLTextAreaElement>,
   ) => {
     const foundTheme = useTheme();
