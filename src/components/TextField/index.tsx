@@ -7,7 +7,7 @@ import LabelWrapper from 'src/components/LabelWrapper';
 
 import { ExtraLeft, ExtraRight, ExtraTop, ExtraBottom, ExtraWrapper, StyledInput } from './styles';
 
-type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
+export type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   errorMessage?: string;
   extraBottom?: ReactElement | string;
   extraLeft?: ReactElement | string;
@@ -22,6 +22,9 @@ type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   ref?: Ref<HTMLInputElement>;
 };
 
+/**
+ * Text fields let users enter and edit text.
+ * */
 const TextField: FunctionComponent<TextFieldProps> = forwardRef(
   (
     {

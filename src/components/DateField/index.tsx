@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, FocusEventHandler, FC, InputHTMLAttributes } from 'react';
+import React, { FC, InputHTMLAttributes } from 'react';
 
 import ErrorText from 'src/components/ErrorText';
 import Text from 'src/components/Text';
@@ -6,7 +6,7 @@ import TextField from 'src/components/TextField';
 
 import { Fieldset, DateTextFieldWrapper, LargeDateTextFieldWrapper, ErrorTextWrapper } from './styles';
 
-type DateFieldProps = InputHTMLAttributes<{}> & {
+export type DateFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   label: string;
   hintText?: string;
   day: string;
@@ -19,11 +19,11 @@ type DateFieldProps = InputHTMLAttributes<{}> & {
   monthHasError?: boolean;
   yearHasError?: boolean;
   errorMessage?: string;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
-  onBlur?: FocusEventHandler<HTMLInputElement>;
-  onFocus?: FocusEventHandler<HTMLInputElement>;
 };
 
+/**
+ * To be used in forms entering dates like date of birth which are known dates and would take too long to get to with a date picker
+ * */
 const DateField: FC<DateFieldProps> = ({
   label,
   hintText,
@@ -40,6 +40,7 @@ const DateField: FC<DateFieldProps> = ({
   onChange = () => {},
   onBlur = () => {},
   onFocus = () => {},
+  disabled,
   ...props
 }) => {
   return (
@@ -63,6 +64,7 @@ const DateField: FC<DateFieldProps> = ({
           onBlur={onBlur}
           onFocus={onFocus}
           hasError={dayHasError}
+          disabled={disabled}
         />
       </DateTextFieldWrapper>
       <DateTextFieldWrapper>
@@ -80,6 +82,7 @@ const DateField: FC<DateFieldProps> = ({
           onBlur={onBlur}
           onFocus={onFocus}
           hasError={monthHasError}
+          disabled={disabled}
         />
       </DateTextFieldWrapper>
       <LargeDateTextFieldWrapper>
@@ -97,6 +100,7 @@ const DateField: FC<DateFieldProps> = ({
           onBlur={onBlur}
           onFocus={onFocus}
           hasError={yearHasError}
+          disabled={disabled}
         />
       </LargeDateTextFieldWrapper>
       {errorMessage && (

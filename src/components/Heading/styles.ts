@@ -8,7 +8,7 @@ type StyledHeadingProps = SpacingProps & {
   theme: ThemeType;
   textSize?: FontSizeType;
   textAlign?: 'left' | 'right' | 'center';
-  textColor?: string;
+  textColor?: ColorKeyType | string;
   wordBreak?: WordBreakType;
 };
 

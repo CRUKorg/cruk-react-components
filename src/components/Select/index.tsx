@@ -7,7 +7,7 @@ import LabelWrapper from 'src/components/LabelWrapper';
 
 import { StyledSelect } from './styles';
 
-type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
+export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   errorMessage?: string;
   hasError?: boolean;
   label: string;
@@ -15,6 +15,9 @@ type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   ref?: Ref<HTMLSelectElement>;
 };
 
+/**
+ * Select components are used for collecting user provided information from a list of options.
+ */
 const Select: FunctionComponent<SelectProps> = forwardRef(
   ({ errorMessage, hasError, required, label, hintText, ...props }: SelectProps, ref?: Ref<HTMLSelectElement>) => {
     const foundTheme = useTheme();

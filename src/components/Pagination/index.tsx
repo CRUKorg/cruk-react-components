@@ -5,7 +5,7 @@ import defaultTheme from 'src/themes/cruk';
 
 import { PagerItem, PagerLink, PagerList, PagerWrapper } from './styles';
 
-type PaginationProps = {
+export type PaginationProps = {
   current: number;
   items: number;
   hideLast?: boolean;
@@ -14,6 +14,12 @@ type PaginationProps = {
   searchParam?: string;
 };
 
+/**
+ * 
+ * Pagination is used when we are viewing large amounts of data.
+Data is split into multiple pages and pagination is used to
+easily navigate through these pages.
+ */
 const Pagination: FunctionComponent<PaginationProps> = props => {
   const foundTheme = useTheme();
   const theme = {

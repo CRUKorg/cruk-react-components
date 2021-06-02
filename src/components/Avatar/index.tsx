@@ -5,12 +5,16 @@ import defaultTheme from 'src/themes/cruk';
 
 import { StyledAvatar } from './styles';
 
-type AvatarProps = ImgHTMLAttributes<HTMLElement> & {
+export type AvatarProps = ImgHTMLAttributes<HTMLElement> & {
   name?: ReactNode;
   url?: string;
   size?: 's' | 'm' | 'l' | 'xl';
 };
 
+/**
+ *
+ * You can use an avatar to display ownership of an item of content. If you pass a URL of an image that will be displayed otherwise the first letter of the name will be used to display a branded avatar.
+ */
 const Avatar: FC<AvatarProps> = ({ url, name, size, alt = '', ...rest }) => {
   const foundTheme = useTheme();
   const theme = {

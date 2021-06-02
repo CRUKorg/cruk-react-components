@@ -5,7 +5,7 @@ import defaultTheme from 'src/themes/cruk';
 
 import { StyledFieldSet, StyledLegend, StyledRadio } from './styles';
 
-type RadioGroupProps = {
+export type RadioGroupProps = {
   legend: string;
   attributes: Array<{
     value: string;
@@ -16,6 +16,12 @@ type RadioGroupProps = {
   name: string;
 };
 
+/**
+ *
+ * Radio group is a component for showing a bunch of yes/no radios predominantly used for notification selections where a unselected state is usefull for analytics.
+ *
+ * This is always a controlled component that will only change state with the selectedValue prop
+ */
 const RadioGroup: FunctionComponent<RadioGroupProps> = ({ selectedValue = '', ...props }) => {
   const foundTheme = useTheme();
   const theme = {

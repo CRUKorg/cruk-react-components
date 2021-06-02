@@ -17,7 +17,7 @@ import {
 
 const DEFAULT_CIRCLE_SIZE = '90px';
 
-type ProgressBarProps = {
+export type ProgressBarProps = {
   percentage: number;
   isCircular?: boolean;
   circleContents?: ReactNode;
@@ -25,6 +25,10 @@ type ProgressBarProps = {
   barColor?: string;
 };
 
+/**
+ * Provide up-to-date feedback on the progress of a workflow or action with
+simple yet flexible progress bars.
+*/
 const ProgressBar: FC<ProgressBarProps> = props => {
   const foundTheme = useTheme();
   const theme = {

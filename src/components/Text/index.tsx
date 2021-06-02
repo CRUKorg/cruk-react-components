@@ -6,13 +6,13 @@ import defaultTheme from 'src/themes/cruk';
 import { TextStyled } from './styles';
 
 import { SpacingProps } from 'src/components/Spacing';
-import { WordBreakType, FontSizeType } from 'src/types';
+import { WordBreakType, FontSizeType, ColorKeyType } from 'src/types';
 
 // the 'as' prop is for styled component casting
 // text hover color prop is only used in Link which extends Text
 export type TextProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
-    textColor?: string;
+    textColor?: ColorKeyType | string;
     textAlign?: 'left' | 'right' | 'center' | 'justify';
     textSize?: FontSizeType;
     textWeight?: number;
