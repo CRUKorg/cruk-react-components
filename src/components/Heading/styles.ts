@@ -132,7 +132,7 @@ export const H1 = styled.h1<StyledHeadingProps>`
     font-size: ${({ theme, textSize }) => tabletFontSize(textSize || null, theme.fontSizes.xxxl, theme)};
   }
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
-    font-size: ${({ theme, textSize }) => desktopFontSize(textSize || null, theme.fontSizes.xxxl, theme)};
+    font-size: ${({ theme, textSize }) => desktopFontSize(textSize || null, theme.fontSizes.xxxxl, theme)};
   };
 `;
 
