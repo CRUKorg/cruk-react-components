@@ -12,9 +12,9 @@ export default {
 
 const Template: Story<IconProps> = args => <Icon {...args} />;
 
-export const CheckboxDefault: Story<IconProps> = Template.bind({});
-CheckboxDefault.storyName = 'CheckBox';
-CheckboxDefault.args = {
+export const IconDefault: Story<IconProps> = Template.bind({});
+IconDefault.storyName = 'Icon';
+IconDefault.args = {
   name: 'comment',
 };
 
@@ -24,8 +24,8 @@ const TemplateWithSU2C: Story<IconProps> = args => (
   </ThemeProvider>
 );
 
-export const SU2CCheckbox: Story<IconProps> = TemplateWithSU2C.bind({});
-SU2CCheckbox.storyName = 'SU2C CheckBox';
-SU2CCheckbox.args = {
+export const SU2CIcon: Story<IconProps> = TemplateWithSU2C.bind({});
+SU2CIcon.storyName = 'SU2C Icon';
+SU2CIcon.args = {
   name: 'comment',
 };
