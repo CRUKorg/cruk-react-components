@@ -10,61 +10,50 @@ export default {
   component: RadioGroup,
 } as Meta<RadioGroupProps>;
 
-const Template: Story<RadioGroupProps> = args => (
-  <fieldset style={{ border: 'none' }}>
-    <RadioGroup
-      {...args}
-      legend="Email"
-      name="email"
-      attributes={[
-        { option: 'Yes', value: 'yes' },
-        { option: 'No', value: 'no' },
-      ]}
-      selectedValue={'yes'}
-    />
-
-    <RadioGroup
-      legend="Telephone"
-      name="phone"
-      attributes={[
-        { option: 'Yes', value: 'yes' },
-        { option: 'No', value: 'no' },
-      ]}
-      selectedValue={'no'}
-    />
-  </fieldset>
-);
-
-export const RadioDefault: Story<RadioGroupProps> = Template.bind({});
-RadioDefault.storyName = 'RadioGroup';
-RadioDefault.args = {};
-
-const TemplateWithSU2C: Story<RadioGroupProps> = args => (
-  <ThemeProvider theme={su2cTheme}>
+const Template: Story<RadioGroupProps> = args => {
+  const [selectedEmail, setSelectedEmail] = React.useState('yes');
+  return (
     <fieldset style={{ border: 'none' }}>
       <RadioGroup
         {...args}
         legend="Email"
         name="email"
+        onChange={e => setSelectedEmail(e.target.value)}
         attributes={[
           { option: 'Yes', value: 'yes' },
           { option: 'No', value: 'no' },
         ]}
-        selectedValue={'yes'}
-      />
-
-      <RadioGroup
-        legend="Telephone"
-        name="phone"
-        attributes={[
-          { option: 'Yes', value: 'yes' },
-          { option: 'No', value: 'no' },
-        ]}
-        selectedValue={'no'}
+        selectedValue={selectedEmail}
       />
     </fieldset>
-  </ThemeProvider>
-);
+  );
+};
+
+export const RadioDefault: Story<RadioGroupProps> = Template.bind({});
+RadioDefault.storyName = 'RadioGroup';
+RadioDefault.args = {};
+
+const TemplateWithSU2C: Story<RadioGroupProps> = args => {
+  const [selectedEmail, setSelectedEmail] = React.useState('yes');
+
+  return (
+    <ThemeProvider theme={su2cTheme}>
+      <fieldset style={{ border: 'none' }}>
+        <RadioGroup
+          {...args}
+          legend="Email"
+          name="email"
+          onChange={e => setSelectedEmail(e.target.value)}
+          attributes={[
+            { option: 'Yes', value: 'yes' },
+            { option: 'No', value: 'no' },
+          ]}
+          selectedValue={selectedEmail}
+        />
+      </fieldset>
+    </ThemeProvider>
+  );
+};
 
 export const SU2CRadio: Story<RadioGroupProps> = TemplateWithSU2C.bind({});
 SU2CRadio.storyName = 'SU2C SU2CRadio';
