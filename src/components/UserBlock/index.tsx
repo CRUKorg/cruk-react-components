@@ -6,7 +6,7 @@ import Avatar from 'src/components/Avatar';
 
 import { StyledUserBlock, Details, Name, Extra } from './styles';
 
-type UserBlockProps = HTMLAttributes<HTMLElement> & {
+export type UserBlockProps = HTMLAttributes<HTMLElement> & {
   name?: ReactNode;
   avatarUrl?: string | null;
   avatarName?: string | null;
@@ -14,6 +14,9 @@ type UserBlockProps = HTMLAttributes<HTMLElement> & {
   size?: 's' | 'm' | 'l' | 'xl';
 };
 
+/**
+ * Display an avatar with title and subtitle
+ */
 const UserBlock: FC<UserBlockProps> = props => {
   const foundTheme = useTheme();
   const theme = {
