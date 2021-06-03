@@ -10,10 +10,11 @@ type LabelWrapperProps = {
   label: string;
   hintText?: ReactElement | string;
   required?: boolean;
+  hideRequiredInLabel?: boolean;
 };
 
 export const LabelWrapper: FunctionComponent<LabelWrapperProps> = props => {
-  const { label, hintText, required, children, ...otherProps } = props;
+  const { label, hintText, required, hideRequiredInLabel = false, children, ...otherProps } = props;
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -27,7 +28,7 @@ export const LabelWrapper: FunctionComponent<LabelWrapperProps> = props => {
       {label ? (
         <Label {...otherProps}>
           <LabelText hasHintText={!!hintText}>
-            {label} {!required && <span>(optional)</span>}
+            {label} {required && !hideRequiredInLabel && <span>(required)</span>}
           </LabelText>
           {hintTextElement}
           {children}

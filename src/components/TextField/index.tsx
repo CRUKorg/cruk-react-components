@@ -19,6 +19,7 @@ export type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   isValidVisible?: boolean;
   isInvalidVisible?: boolean;
   label: string;
+  hideRequiredInLabel?: boolean;
   ref?: Ref<HTMLInputElement>;
 };
 
@@ -39,6 +40,7 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
       isValidVisible,
       isInvalidVisible,
       label,
+      hideRequiredInLabel,
       ...props
     }: TextFieldProps,
     ref?: Ref<HTMLInputElement>,
@@ -71,7 +73,12 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
     );
 
     return (
-      <LabelWrapper label={label} hintText={hintText} required={props.required || false}>
+      <LabelWrapper
+        label={label}
+        hintText={hintText}
+        required={props.required || false}
+        hideRequiredInLabel={hideRequiredInLabel}
+      >
         {!!extraTop && <ExtraTop theme={theme}>{extraTop}</ExtraTop>}
         {!!extraRight || !!extraLeft ? <ExtraWrapper>{renderContent}</ExtraWrapper> : renderContent}
         {!!extraBottom && <ExtraBottom theme={theme}>{extraBottom}</ExtraBottom>}
