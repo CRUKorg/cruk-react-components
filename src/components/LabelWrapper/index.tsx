@@ -27,7 +27,7 @@ export const LabelWrapper: FunctionComponent<LabelWrapperProps> = props => {
       {label ? (
         <Label {...otherProps}>
           <LabelText hasHintText={!!hintText}>
-            {label} {!required && <span>(optional)</span>}
+            {label} {required && <span>(required)</span>}
           </LabelText>
           {hintTextElement}
           {children}
