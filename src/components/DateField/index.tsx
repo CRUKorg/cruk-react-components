@@ -55,6 +55,7 @@ const DateField: FC<DateFieldProps> = ({
           type="text"
           name={dayName}
           required
+          hideRequiredInLabel
           maxLength={2}
           autoComplete="bday-day"
           pattern="[0-9]*"
@@ -73,6 +74,7 @@ const DateField: FC<DateFieldProps> = ({
           type="text"
           name={monthName}
           required
+          hideRequiredInLabel
           maxLength={2}
           autoComplete="bday-month"
           pattern="[0-9]*"
@@ -90,7 +92,7 @@ const DateField: FC<DateFieldProps> = ({
           label="Year"
           type="text"
           name={yearName}
-          required
+          hideRequiredInLabel
           maxLength={4}
           autoComplete="bday-year"
           pattern="[0-9]*"
