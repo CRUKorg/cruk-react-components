@@ -85,7 +85,7 @@ SU2CPrimary.args = {
 };
 
 export const SU2CSecondary: Story<LinkProps> = TemplateWithSU2C.bind({});
-SU2CSecondary.storyName = 'SU2CS econdary';
+SU2CSecondary.storyName = 'SU2C Secondary';
 SU2CSecondary.args = {
   appearance: 'secondary',
   href: 'http://www.google.com',

@@ -10,15 +10,18 @@ export default {
   component: Select,
 } as Meta<SelectProps>;
 
-const Template: Story<SelectProps> = args => (
-  <Select {...args}>
-    <option disabled value="">
-      --Please choose an option--
-    </option>
-    <option value="dog">Dog</option>
-    <option value="cat">Cat</option>
-  </Select>
-);
+const Template: Story<SelectProps> = args => {
+  const [selectedPet, setSelectedPet] = React.useState('');
+  return (
+    <Select {...args} onChange={e => setSelectedPet(e.target.value)} value={selectedPet}>
+      <option disabled value="">
+        --Please choose an option--
+      </option>
+      <option value="dog">Dog</option>
+      <option value="cat">Cat</option>
+    </Select>
+  );
+};
 
 export const SelectWithLabel: Story<SelectProps> = Template.bind({});
 SelectWithLabel.args = {
@@ -36,11 +39,20 @@ SelectWithError.args = {
   disabled: false,
 };
 
-const TemplateWithSU2C: Story<SelectProps> = args => (
-  <ThemeProvider theme={su2cTheme}>
-    <Select {...args} />
-  </ThemeProvider>
-);
+const TemplateWithSU2C: Story<SelectProps> = args => {
+  const [selectedPet, setSelectedPet] = React.useState('');
+  return (
+    <ThemeProvider theme={su2cTheme}>
+      <Select {...args} onChange={e => setSelectedPet(e.target.value)} value={selectedPet}>
+        <option disabled value="">
+          --Please choose an option--
+        </option>
+        <option value="dog">Dog</option>
+        <option value="cat">Cat</option>
+      </Select>
+    </ThemeProvider>
+  );
+};
 
 export const SU2CSelectWithLabel: Story<SelectProps> = TemplateWithSU2C.bind({});
 SU2CSelectWithLabel.storyName = 'SU2C Select With Label';
