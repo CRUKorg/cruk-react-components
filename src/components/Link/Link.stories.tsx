@@ -3,37 +3,43 @@ import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
 import { su2cTheme } from '../';
-import Link, { Props } from '.';
+import Link, { LinkProps } from '.';
 
 export default {
   title: 'Link',
   component: Link,
-} as Meta<Props>;
+} as Meta<LinkProps>;
 
-const Template: Story = args => <Link {...args} />;
+const Template: Story<LinkProps> = args => <Link {...args} />;
 
-export const Default: Story = Template.bind({});
+export const Default: Story<LinkProps> = Template.bind({});
 Default.args = {
   appearance: undefined,
   href: 'http://www.google.com',
   children: 'Default link',
+  rel: undefined,
+  target: undefined,
 };
 
-export const Primary: Story = Template.bind({});
+export const Primary: Story<LinkProps> = Template.bind({});
 Primary.args = {
   appearance: 'primary',
   href: 'http://www.google.com',
   children: 'Primary link',
+  rel: undefined,
+  target: undefined,
 };
 
-export const Secondary: Story = Template.bind({});
+export const Secondary: Story<LinkProps> = Template.bind({});
 Secondary.args = {
   appearance: 'secondary',
   href: 'http://www.google.com',
   children: 'Secondary link',
+  rel: undefined,
+  target: undefined,
 };
 
-const TemplateWithImage: Story = args => (
+const TemplateWithImage: Story<LinkProps> = args => (
   <Link {...args}>
     <img
       style={{ width: '80px', height: '30px' }}
@@ -43,39 +49,47 @@ const TemplateWithImage: Story = args => (
   </Link>
 );
 
-export const WithImage: Story = TemplateWithImage.bind({});
+export const WithImage: Story<LinkProps> = TemplateWithImage.bind({});
 WithImage.args = {
   appearance: undefined,
   href: 'http://www.google.com',
   'aria-label': 'google homepage',
+  rel: undefined,
+  target: undefined,
 };
 
-const TemplateWithSU2C: Story = args => (
+const TemplateWithSU2C: Story<LinkProps> = args => (
   <ThemeProvider theme={su2cTheme}>
     <Link {...args} />
   </ThemeProvider>
 );
 
-export const SU2CDefault: Story = TemplateWithSU2C.bind({});
+export const SU2CDefault: Story<LinkProps> = TemplateWithSU2C.bind({});
 SU2CDefault.storyName = 'SU2C Default';
 SU2CDefault.args = {
   appearance: undefined,
   href: 'http://www.google.com',
   children: 'Default link',
+  rel: undefined,
+  target: undefined,
 };
 
-export const SU2CPrimary: Story = TemplateWithSU2C.bind({});
+export const SU2CPrimary: Story<LinkProps> = TemplateWithSU2C.bind({});
 SU2CPrimary.storyName = 'SU2C Primary';
 SU2CPrimary.args = {
   appearance: 'primary',
   href: 'http://www.google.com',
   children: 'Primary link',
+  rel: undefined,
+  target: undefined,
 };
 
-export const SU2CSecondary: Story = TemplateWithSU2C.bind({});
+export const SU2CSecondary: Story<LinkProps> = TemplateWithSU2C.bind({});
 SU2CSecondary.storyName = 'SU2CS econdary';
 SU2CSecondary.args = {
   appearance: 'secondary',
   href: 'http://www.google.com',
   children: 'Secondary link',
+  rel: undefined,
+  target: undefined,
 };
