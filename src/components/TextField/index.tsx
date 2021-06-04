@@ -7,7 +7,7 @@ import LabelWrapper from 'src/components/LabelWrapper';
 
 import { ExtraLeft, ExtraRight, ExtraTop, ExtraBottom, ExtraWrapper, StyledInput } from './styles';
 
-type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
+export type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   errorMessage?: string;
   extraBottom?: ReactElement | string;
   extraLeft?: ReactElement | string;
@@ -19,9 +19,13 @@ type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   isValidVisible?: boolean;
   isInvalidVisible?: boolean;
   label: string;
+  hideRequiredInLabel?: boolean;
   ref?: Ref<HTMLInputElement>;
 };
 
+/**
+ * Text fields let users enter and edit text.
+ * */
 const TextField: FunctionComponent<TextFieldProps> = forwardRef(
   (
     {
@@ -36,6 +40,7 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
       isValidVisible,
       isInvalidVisible,
       label,
+      hideRequiredInLabel,
       ...props
     }: TextFieldProps,
     ref?: Ref<HTMLInputElement>,
@@ -68,7 +73,12 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
     );
 
     return (
-      <LabelWrapper label={label} hintText={hintText} required={props.required || false}>
+      <LabelWrapper
+        label={label}
+        hintText={hintText}
+        required={props.required || false}
+        hideRequiredInLabel={hideRequiredInLabel}
+      >
         {!!extraTop && <ExtraTop theme={theme}>{extraTop}</ExtraTop>}
         {!!extraRight || !!extraLeft ? <ExtraWrapper>{renderContent}</ExtraWrapper> : renderContent}
         {!!extraBottom && <ExtraBottom theme={theme}>{extraBottom}</ExtraBottom>}

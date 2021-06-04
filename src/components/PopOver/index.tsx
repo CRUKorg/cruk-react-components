@@ -8,7 +8,7 @@ import { PopOverWrapper, PopOverModal } from './styles';
 
 import { PopOverPositionType } from 'src/types';
 
-type Props = {
+export type PopOverProps = {
   modalLabel: string;
   modalContent: ReactNode;
   position?: PopOverPositionType;
@@ -17,7 +17,11 @@ type Props = {
   minWidth?: string;
 };
 
-const PopOver: FC<Props> = props => {
+/**
+ * Popover is a non-modal dialog that floats around its disclosure. It's
+commonly used for displaying additional rich content on top of something.
+*/
+const PopOver: FC<PopOverProps> = props => {
   const popRef = useRef<HTMLDivElement>(null);
   const [showPopOver, setPopOver] = useState(false);
   const foundTheme = useTheme();

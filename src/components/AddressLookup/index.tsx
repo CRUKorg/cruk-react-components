@@ -15,7 +15,7 @@ import { AddressDataType, AddressOptionsType } from 'src/types';
 const FIND_URL = 'https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws';
 const RETRIEVE_URL = 'https://api.addressy.com/Capture/Interactive/Retrieve/v1/json3.ws';
 
-type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
+export type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
   apiKey: string;
   countries?: string[];
   onAddressSelected: (address: AddressDataType) => void;
@@ -28,6 +28,15 @@ type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
   ref?: Ref<HTMLInputElement>;
 };
 
+/**
+ * This component creates a combobox for a user to type in a post code or partial address and be presented with a of verified addresses.
+
+We use Loqate (formerly Addressy and Postcode Anywhere) API v3, we have looked at v4 but it is more expensive without many benefits for our use case.
+
+You will need a Loqate api key, the examples below use "MG17-ZD93-FF33-KF13" our development key.
+
+This component is generally only used for country codes including "GBR", "GGY", "IMN", "JEY". An example of this behavior is included bellow.
+ */
 const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
   (
     {

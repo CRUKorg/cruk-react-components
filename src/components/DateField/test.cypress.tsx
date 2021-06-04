@@ -3,8 +3,8 @@
 import React from 'react';
 import { mount } from '@cypress/react';
 
-import TestWrapper from '../TestWrapper';
-import { Box, DateField } from '../';
+import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
+import { Box, DateField, su2cTheme, crukTheme } from '../';
 
 const unControlledContent = () => (
   <>
@@ -37,10 +37,20 @@ const unControlledContent = () => (
 );
 
 describe('DateField', () => {
-  it('is accessible', () => {
-    mount(<TestWrapper>{unControlledContent()}</TestWrapper>);
+  it('is accessible CRUK theme', () => {
+    mount(<TestThemeWrapper theme={crukTheme}>{unControlledContent()}</TestThemeWrapper>);
     cy.injectAxe();
     cy.checkA11y('body');
+  });
+
+  it('is accessible SU2C theme', () => {
+    mount(<TestThemeWrapper theme={su2cTheme}>{unControlledContent()}</TestThemeWrapper>);
+    cy.injectAxe();
+    cy.checkA11y('body', {
+      rules: {
+        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
+      },
+    });
   });
 
   it('should match snapshot', () => {

@@ -8,7 +8,7 @@ type StyledHeadingProps = SpacingProps & {
   theme: ThemeType;
   textSize?: FontSizeType;
   textAlign?: 'left' | 'right' | 'center';
-  textColor?: string;
+  textColor?: ColorKeyType | string;
   wordBreak?: WordBreakType;
 };
 
@@ -57,7 +57,10 @@ const StyledHeading = (props: StyledHeadingProps) => css`
     margin-top: 0;
   }
 
-  ${props => spacing(props)}
+  ${props => {
+    const { theme, ...propsWithoutTheme } = props;
+    return spacing(propsWithoutTheme, props.theme);
+  }}
 `;
 
 const desktopFontSize = (textSize: FontSizeType | null, defaultFontSize: FontSizeType, theme: ThemeType) => {
@@ -129,7 +132,7 @@ export const H1 = styled.h1<StyledHeadingProps>`
     font-size: ${({ theme, textSize }) => tabletFontSize(textSize || null, theme.fontSizes.xxxl, theme)};
   }
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
-    font-size: ${({ theme, textSize }) => desktopFontSize(textSize || null, theme.fontSizes.xxxl, theme)};
+    font-size: ${({ theme, textSize }) => desktopFontSize(textSize || null, theme.fontSizes.xxxxl, theme)};
   };
 `;
 

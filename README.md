@@ -6,8 +6,6 @@ React implementation of the CRUK design system.
 
 cruk-react-component docs site: https://master.d2qmm2ybdxfdzp.amplifyapp.com/
 
-**Username**: cruk **Password**: jvku2cgl4n
-
 ## Usage
 
 ---
@@ -115,15 +113,3 @@ Run Cypress tests
 ```bash
 docker-compose run cypress
 ```
-
-Roadmap
-
-## Roadmap
-
-- Sort out folder structure
-- Migrate tests from OF
-- Write more tests
-- CI/CD pipeline
-  - Build docs to github pages until CRUK Design system takes over
-  - Build components
-- Look at value that [Lerna](https://lerna.js.org/) could give us

@@ -1,4 +1,9 @@
 {
-  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "eslint.validate": [
+    "typescript",
+    "typescriptreact"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }

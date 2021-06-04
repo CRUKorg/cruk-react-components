@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-
 import spacing, { SpacingProps } from 'src/components/Spacing';
 
 type FlexProps = SpacingProps & {
@@ -12,7 +11,7 @@ const Flex = styled.div<FlexProps>`
     display: flex;
   }
   ${props => (css as any)([props.css])}
-  ${props => spacing(props)}
+  ${props => spacing(props, props.theme)}
 `;
 
 export default Flex;

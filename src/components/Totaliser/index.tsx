@@ -19,7 +19,7 @@ import {
   StyledProgressBar,
 } from './styles';
 
-type TotaliserProps = {
+export type TotaliserProps = {
   total: number;
   giftAid?: number;
   target?: number | null;
@@ -28,6 +28,10 @@ type TotaliserProps = {
 };
 
 // TODO figure out how we want to handle AriaAttributes
+
+/**
+ * Think Blue Peter, used to display total raised and if target prop is passed will display tercentage of target reached.
+ * */
 const Totaliser: FunctionComponent<TotaliserProps> = props => {
   const foundTheme = useTheme();
   const theme = {

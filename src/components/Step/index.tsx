@@ -5,12 +5,18 @@ import defaultTheme from 'src/themes/cruk';
 
 import { StepBar, StepItem, StepList, StepTick, StepWrapper } from './styles';
 
-type StepProps = {
+export type StepProps = {
   current: number;
   steps: string[];
 };
 
 // TODO think about AriaAttributes and how we want to pass them down
+
+/**
+ *
+ * Visually show where a user is in a multi-step process. Calculate the number of steps and the width of each step required to fit the progress bar in the parent container.
+ * Step display progress through a sequence by breaking it up into multiple logical steps. They may also be used for navigation.
+ */
 const Step: FunctionComponent<StepProps> = props => {
   const foundTheme = useTheme();
   const theme = {

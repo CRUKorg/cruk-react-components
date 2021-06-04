@@ -12,12 +12,20 @@ export const ICON_NAMES = Object.keys(ICONS).reduce((acc: { [key: string]: strin
   return acc;
 }, {});
 
-type IconProps = {
+export type IconProps = {
   name: keyof typeof ICONS;
   color?: string;
   size?: string;
 };
 
+/**
+ * The Icon component displays an icon glyph as an `<svg>` element.
+ *
+ * System icons are designed to be simple, modern, friendly, and sometimes quirky.
+ * Each icon is reduced to its minimal form, expressing essential characteristics.
+ *
+ * This component is likely to change in the future to make it more tree-shakable
+ * */
 const Icon: FunctionComponent<IconProps> = props => {
   const foundTheme = useTheme();
   const theme = {

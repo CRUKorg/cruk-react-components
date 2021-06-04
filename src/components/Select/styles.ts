@@ -14,10 +14,15 @@ export const StyledSelect = styled.select<StyledSelectProps>`
   appearance: none;
   background: linear-gradient(
       45deg,
-      transparent 50%,
-      ${({ theme }: StyledSelectProps) => theme.colors.selectBackground} 50%
+      ${({ theme }) => theme.colors.backgroundLight} 50%,
+      ${({ theme }) => theme.colors.selectBackground} 50%
     ),
-    linear-gradient(135deg, ${({ theme }: StyledSelectProps) => theme.colors.selectBackground} 50%, transparent 50%);
+    linear-gradient(
+      135deg,
+      ${({ theme }) => theme.colors.selectBackground} 50%,
+      ${({ theme }) => theme.colors.backgroundLight} 50%
+    );
+  background-color: ${({ theme }) => theme.colors.backgroundLight};
   background-position: calc(100% - 16px) 50%, calc(100% - 10px) 50%;
   background-size: 6px 6px;
   background-repeat: no-repeat;

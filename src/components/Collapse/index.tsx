@@ -1,4 +1,4 @@
-import React, { useState, useRef, KeyboardEvent, FunctionComponent, ReactNode, useEffect } from 'react';
+import React, { useState, useRef, KeyboardEvent, FunctionComponent, ReactNode, useEffect, HTMLAttributes } from 'react';
 import { useTheme } from 'styled-components';
 import defaultTheme from 'src/themes/cruk';
 
@@ -6,7 +6,7 @@ import { CustomHeader, DefaultHeader, FlippingIcon, CollapseContent, transitionD
 
 import { FontSizeType, ThemeType } from 'src/types';
 
-type Props = {
+export type CollapseProps = HTMLAttributes<HTMLElement> & {
   id: string;
   headerTitleText: string;
   headerTitleTextColor?: string;
@@ -17,7 +17,12 @@ type Props = {
   onOpenChange?: (isOpen: boolean) => void;
 };
 
-const Collapse: FunctionComponent<Props> = props => {
+/**
+ *
+ * Use a collapse component to show and hide content. It has a default view; however, it can be overwritten by passing a custom component as a prop.
+ *
+ */
+const Collapse: FunctionComponent<CollapseProps> = props => {
   const {
     id,
     headerTitleText,

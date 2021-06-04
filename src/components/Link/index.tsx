@@ -7,21 +7,31 @@ import { StyledLink, ChevyWithLevee } from './styles';
 
 import { TextProps } from 'src/components/Text';
 
-type LinkProps = AnchorHTMLAttributes<HTMLElement> &
+export type Props = AnchorHTMLAttributes<HTMLElement> &
   TextProps & {
     textHoverColor?: string;
     appearance?: 'primary' | 'secondary';
     ref?: Ref<HTMLElement>;
   };
 
-const Link: FC<LinkProps> = forwardRef((props: LinkProps, ref?: Ref<HTMLElement>) => {
+/**Links are for wrapping plain text or elements to create clickable link.
+ * This is to be treated as an anchor tag with the addition of the Text component API.
+ * This component contains standard Anchor tag props like 'href' and 'target', but it also contains Text component props like 'textColor' and 'textAlign'.
+ *
+ * A link should really only be used for navigation to take a user to as new location.
+ * The onClick handler can be use for more complicated scenarios.
+ *
+ * If you want something that looks like a link but behaves like a button ie. nothing to do with navigation, please consider using Link with as='button'
+ *
+ * If you want something that looks like a button but behaves like a link ie. it takes the user to a new location, please consider using Button with as='a'*/
+const Link: FC<Props> = forwardRef((props: Props, ref?: Ref<HTMLElement>) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
     ...foundTheme,
   };
   // security by default
-  const rel = props.rel || props.target === '_blank' ? 'noopener noreferrer' : '';
+  const rel = props.rel ? props.rel : props.target === '_blank' ? 'noopener noreferrer' : '';
 
   return (
     <ThemeProvider theme={theme}>
