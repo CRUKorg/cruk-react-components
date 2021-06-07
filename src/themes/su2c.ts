@@ -16,7 +16,7 @@ import defaultTheme from './cruk';
 
 export const UTILITIES: UtilitiesType = {
   ...defaultTheme.utilities,
-  useBackgroundStylelinks: true,
+  useBackgroundStyleLinks: true,
 };
 
 export const SITE_CONFIG: SiteConfigType = {
