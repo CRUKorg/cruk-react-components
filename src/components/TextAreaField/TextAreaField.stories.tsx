@@ -15,7 +15,7 @@ const Template: Story<TextAreaFieldProps> = args => <TextAreaField {...args} />;
 export const TextAreaFieldDefault: Story<TextAreaFieldProps> = Template.bind({});
 TextAreaFieldDefault.storyName = 'TextAreaField';
 TextAreaFieldDefault.args = {
-  value: 'value',
+  value: undefined,
   disabled: false,
   label: 'TextAreaField',
   resize: 'horizontal',
@@ -25,7 +25,7 @@ TextAreaFieldDefault.args = {
 export const TextAreaFieldWithError: Story<TextAreaFieldProps> = Template.bind({});
 TextAreaFieldWithError.storyName = 'TextAreaField With Error';
 TextAreaFieldWithError.args = {
-  value: 'value',
+  value: undefined,
   disabled: false,
   label: 'TextAreaField',
   hasError: true,
@@ -43,7 +43,7 @@ const TemplateWithSU2C: Story<TextAreaFieldProps> = args => (
 export const SU2CTextAreaField: Story<TextAreaFieldProps> = TemplateWithSU2C.bind({});
 SU2CTextAreaField.storyName = 'SU2C TextAreaField';
 SU2CTextAreaField.args = {
-  value: 'value',
+  value: undefined,
   disabled: false,
   label: 'TextAreaField',
   resize: 'horizontal',
@@ -53,7 +53,7 @@ SU2CTextAreaField.args = {
 export const SU2CTextAreaFieldWithError: Story<TextAreaFieldProps> = TemplateWithSU2C.bind({});
 SU2CTextAreaFieldWithError.storyName = 'SU2C TextAreaField With Error';
 SU2CTextAreaFieldWithError.args = {
-  value: 'value',
+  value: undefined,
   disabled: false,
   label: 'TextAreaField',
   hasError: true,
