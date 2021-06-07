@@ -1,6 +1,7 @@
 import React, { useState, FC, useRef, useCallback, MouseEvent, ReactElement, ReactNode } from 'react';
 import { ThemeProvider, useTheme } from 'styled-components';
 
+import { useKey } from 'src/hooks/useKey';
 import defaultTheme from 'src/themes/cruk';
 import useEffectBrowser from 'src/hooks/useEffectBrowser';
 
@@ -23,23 +24,33 @@ commonly used for displaying additional rich content on top of something.
 */
 const PopOver: FC<PopOverProps> = props => {
   const popRef = useRef<HTMLDivElement>(null);
-  const [showPopOver, setPopOver] = useState(false);
+  const [showPopOver, setShowPopOver] = useState(false);
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
     ...foundTheme,
   };
 
-  const toggle = () => setPopOver(!showPopOver);
+  const toggle = () => setShowPopOver(!showPopOver);
 
   // outside click closes popover
   const closePopOver = useCallback(
     (e: MouseEvent) => {
       if (!(popRef.current as any).contains(e.target)) {
-        setPopOver(false);
+        setShowPopOver(false);
       }
     },
     [popRef.current],
+  );
+
+  useKey(
+    () => {
+      setShowPopOver(false);
+    },
+    {
+      detectKeys: ['Escape'],
+    },
+    [],
   );
 
   useEffectBrowser(() => {
