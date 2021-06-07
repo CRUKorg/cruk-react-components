@@ -6,6 +6,7 @@ export type UtilitiesType = {
   contentMaxWidth: string;
   useDefaultFocusRect: boolean;
   useDefaultFromControls: boolean;
+  useBackgroundStyleLinks: boolean;
   inputBorderWidth: string;
 };
 
