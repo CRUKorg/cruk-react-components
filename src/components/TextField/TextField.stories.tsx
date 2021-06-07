@@ -15,7 +15,7 @@ const Template: Story<TextFieldProps> = args => <TextField {...args} />;
 export const TextFieldDefault: Story<TextFieldProps> = Template.bind({});
 TextFieldDefault.storyName = 'TextField';
 TextFieldDefault.args = {
-  value: 'value',
+  value: undefined,
   disabled: false,
   label: 'TextField',
 };
@@ -23,7 +23,7 @@ TextFieldDefault.args = {
 export const TextFieldWithError: Story<TextFieldProps> = Template.bind({});
 TextFieldWithError.storyName = 'TextField With Error';
 TextFieldWithError.args = {
-  value: 'value',
+  value: undefined,
   disabled: false,
   label: 'TextField',
   hasError: true,
@@ -39,7 +39,7 @@ const TemplateWithSU2C: Story<TextFieldProps> = args => (
 export const SU2CTextField: Story<TextFieldProps> = TemplateWithSU2C.bind({});
 SU2CTextField.storyName = 'SU2C TextField';
 SU2CTextField.args = {
-  value: 'value',
+  value: undefined,
   disabled: false,
   label: 'TextField',
 };
@@ -47,7 +47,7 @@ SU2CTextField.args = {
 export const SU2CTextFieldWithError: Story<TextFieldProps> = TemplateWithSU2C.bind({});
 SU2CTextFieldWithError.storyName = 'SU2C TextField With Error';
 SU2CTextFieldWithError.args = {
-  value: 'value',
+  value: undefined,
   disabled: false,
   label: 'TextField',
   hasError: true,
