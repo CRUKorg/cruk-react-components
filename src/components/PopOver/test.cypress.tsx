@@ -89,6 +89,17 @@ describe('Popover', () => {
     });
   });
 
+  it.only('should match snapshot share top', () => {
+    mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
+    cy.contains('Share top').click();
+    cy.get('button[aria-label="Facebook"]').should('be.visible');
+    cy.get('body').type('{esc}');
+    cy.get('button[aria-label="Facebook"]').should('not.exist');
+  });
+
   it('should match snapshot share top', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.document()
@@ -102,6 +113,7 @@ describe('Popover', () => {
       .first()
       .matchImageSnapshot();
   });
+
   it('should match snapshot share left', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.document()
@@ -112,6 +124,7 @@ describe('Popover', () => {
       .first()
       .matchImageSnapshot();
   });
+
   it('should match snapshot share right', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.document()
@@ -122,6 +135,7 @@ describe('Popover', () => {
       .first()
       .matchImageSnapshot();
   });
+
   it('should match snapshot share bottom', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.document()
@@ -132,6 +146,7 @@ describe('Popover', () => {
       .first()
       .matchImageSnapshot();
   });
+
   it('should match snapshot share bottomLeft', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.document()
@@ -142,6 +157,7 @@ describe('Popover', () => {
       .first()
       .matchImageSnapshot();
   });
+
   it('should match snapshot share topLeft', () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.document()
