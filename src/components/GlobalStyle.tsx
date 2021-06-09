@@ -50,6 +50,14 @@ const GlobalStyle = createGlobalStyle`
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
+  @media (prefers-reduced-motion: reduce) {
+    *, *:after, *:before {
+      animation-play-state: paused !important;
+      animation-direction: reverse !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
   table, td, th {
     border-spacing: 0;
     border: 1px solid #ccc;
