@@ -29,8 +29,7 @@ at the end of a sentence, link, or button. Unless the context is clear,
 consider including additional context with a visually hidden piece of
 additional text.
  */
-const Badge: FunctionComponent<BadgeProps> = props => {
-  const { text, children, ...rest } = props;
+const Badge: FunctionComponent<BadgeProps> = ({ text, children, ...rest }) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
