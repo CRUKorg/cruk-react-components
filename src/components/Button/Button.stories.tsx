@@ -2,6 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import Icon from 'src/components/Icon';
 import Button, { Props } from './';
+import { Box } from '../';
 
 export default {
   title: 'Button',
@@ -9,6 +10,7 @@ export default {
 } as Meta<Props>;
 
 const Template: Story = args => <Button {...args} />;
+Template.parameters = { percy: { skip: true } };
 
 export const Primary: Story = Template.bind({});
 Primary.args = {
@@ -44,6 +46,7 @@ const TemplateWithIcon: Story = args => (
     <Icon name="clock" />
   </Button>
 );
+TemplateWithIcon.parameters = { percy: { skip: true } };
 
 export const WithIcons: Story = TemplateWithIcon.bind({});
 WithIcons.args = {
@@ -52,3 +55,17 @@ WithIcons.args = {
   full: false,
   size: 'm',
 };
+
+const PercyTemplate: Story = () => (
+  <Box>
+    <Button appearance="primary">Primary</Button>
+    <Button appearance="secondary">Primary</Button>
+    <Button>
+      <Icon name="clock" />A button
+      <Icon name="clock" />
+    </Button>
+  </Box>
+);
+
+export const PercyStory: Story = PercyTemplate.bind({});
+WithIcons.args = {};
