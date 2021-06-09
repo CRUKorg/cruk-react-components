@@ -11,7 +11,6 @@ export type BadgeProps = {
   backgroundColor?: string;
   borderColor?: string;
   textColor?: string;
-  text?: boolean;
   size?: SpaceType;
   children?: any;
 };
@@ -29,7 +28,7 @@ at the end of a sentence, link, or button. Unless the context is clear,
 consider including additional context with a visually hidden piece of
 additional text.
  */
-const Badge: FunctionComponent<BadgeProps> = ({ text, children, ...rest }) => {
+const Badge: FunctionComponent<BadgeProps> = ({ children, ...rest }) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
