@@ -16,6 +16,7 @@ export const UTILITIES: UtilitiesType = {
   contentMaxWidth: '1020px',
   useDefaultFocusRect: true,
   useDefaultFromControls: false,
+  useBackgroundStyleLinks: false,
   inputBorderWidth: '1px',
 };
 

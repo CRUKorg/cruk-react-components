@@ -19,16 +19,12 @@ import Text from '../src/components/Text';
 import GlobalStyle from '../src/components/GlobalStyle';
 
 addDecorator(withThemes(ThemeProvider, [crukTheme, su2cTheme]));
-
-// Global decorator to apply the styles to all stories
-export const decorators = [
-  Story => (
-    <>
-      <GlobalStyle />
-      <Story />
-    </>
-  ),
-];
+addDecorator(story => (
+  <>
+    <GlobalStyle />
+    {story()}
+  </>
+));
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
