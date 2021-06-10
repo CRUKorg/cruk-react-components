@@ -23,7 +23,7 @@ export type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
   /** callback function which is passed the selected address data */
   onAddressSelected: (address: AddressDataType) => void;
   /** error message */
-  error?: string;
+  errorMessage?: string;
   /** when true a input has a red border */
   hasError?: boolean;
   /** flag which effects the check or cross icons to the right of the input */
@@ -51,7 +51,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
     {
       apiKey,
       countries,
-      error,
+      errorMessage,
       hasError,
       isValid,
       isValidVisible,
@@ -140,7 +140,8 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
           aria-autocomplete="both"
           aria-expanded={addressOptions.length ? 'true' : 'false'}
           autoComplete="off"
-          hasError={hasError || !!error}
+          hasError={hasError || !!errorMessage}
+          errorMessage={errorMessage}
           hintText="Start typing your address or postcode"
           isValid={isValid}
           isValidVisible={isValidVisible}
@@ -210,7 +211,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
             </ListWrapper>
           </>
         )}
-        {error && <ErrorText>{error}</ErrorText>}
+        {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
       </>
     );
   },
