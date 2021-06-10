@@ -12,11 +12,17 @@ import { WordBreakType, FontSizeType, ColorKeyType } from 'src/types';
 // text hover color prop is only used in Link which extends Text
 export type TextProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
+    /** text colour  */
     textColor?: ColorKeyType | string;
+    /** text horizontal alignment  */
     textAlign?: 'left' | 'right' | 'center' | 'justify';
+    /** font size FontSizeType t-shirt sizes  */
     textSize?: FontSizeType;
+    /** font weight theme.typography{fontWeightHeavy/fontWeightMedium/fontWeightLight/fontWeightVLight} is better than a random number */
     textWeight?: number;
+    /** styled-components polymorphism where you can set this to "span", "p" or "h2" it default to "p" */
     as?: any;
+    /** word break behaviour */
     wordBreak?: WordBreakType;
   };
 

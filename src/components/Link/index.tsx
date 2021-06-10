@@ -9,8 +9,11 @@ import { TextProps } from 'src/components/Text';
 
 export type LinkProps = AnchorHTMLAttributes<HTMLElement> &
   TextProps & {
+    /** link text hover colour */
     textHoverColor?: string;
+    /** link appearance varient, undefined is a standarding link withing a text block */
     appearance?: 'primary' | 'secondary';
+    /** styled-components polymorphism where you can use the styling of a link but convert to another element like a button */
     ref?: Ref<HTMLElement>;
   };
 

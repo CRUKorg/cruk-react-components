@@ -20,10 +20,15 @@ import {
 } from './styles';
 
 export type TotaliserProps = {
+  /** financial total as a number */
   total: number;
+  /** git aid total as a number */
   giftAid?: number;
+  /** money target as a number */
   target?: number | null;
+  /** flag for low height compact appearance */
   isCompact?: boolean;
+  /** component for custom summary message underneath total graph only visible if there is a target */
   summaryMessage?: ReactChild;
 };
 

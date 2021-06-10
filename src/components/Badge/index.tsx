@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import { useTheme } from 'styled-components';
 
 import defaultTheme from 'src/themes/cruk';
@@ -8,11 +8,16 @@ import { StyledBadge } from './styles';
 import { SpaceType } from 'src/types';
 
 export type BadgeProps = {
+  /** background colour of badge */
   backgroundColor?: string;
+  /** border colour of badge */
   borderColor?: string;
+  /** text colour of badge */
   textColor?: string;
+  /** size of badge */
   size?: SpaceType;
-  children?: any;
+  /** contents of badge */
+  children?: ReactNode;
 };
 
 /**

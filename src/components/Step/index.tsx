@@ -6,7 +6,9 @@ import defaultTheme from 'src/themes/cruk';
 import { StepBar, StepItem, StepList, StepTick, StepWrapper } from './styles';
 
 export type StepProps = {
+  /** current step number */
   current: number;
+  /** list of step  */
   steps: string[];
 };
 

@@ -13,8 +13,11 @@ export const ICON_NAMES = Object.keys(ICONS).reduce((acc: { [key: string]: strin
 }, {});
 
 export type IconProps = {
+  /** name defines the visible icon */
   name: keyof typeof ICONS;
+  /** color of icon, inherits current text colour by default */
   color?: string;
+  /** size of ion 1.1em by default */
   size?: string;
 };
 

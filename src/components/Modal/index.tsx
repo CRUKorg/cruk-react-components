@@ -9,10 +9,15 @@ import defaultTheme from 'src/themes/cruk';
 import { CloseButton, Wrapper, Content, Background } from './styles';
 
 export type ModalProps = {
+  /** modal name used for aria-label */
   modalName: string;
+  /** callback function called on modal close */
   closeFunction: Function;
+  /** flag to reveal close button with cross in the top right of modal */
   showCloseButton?: Boolean;
+  /** set max width of modal */
   maxWidth?: string;
+  /** set space from top of view port that modal appears */
   top?: string;
 };
 

@@ -8,12 +8,19 @@ import LabelWrapper from 'src/components/LabelWrapper';
 import { StyledTextArea } from './styles';
 
 export type TextAreaFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
+  /** error message text */
   errorMessage?: string;
+  /** flag for error styling */
   hasError?: boolean;
+  /** hint text */
   hintText?: ReactElement | string;
+  /** label text */
   label: string;
+  /** resize behaviour using the resize button on the bottom right of the component */
   resize?: 'both' | 'vertical' | 'horizontal' | 'none';
+  /** number of visible lines of text before scroll is required this affect the height of the input field*/
   lineCount?: number;
+  /** react reference to the DOM element sometime used to scroll to or set focus after an error */
   ref?: Ref<HTMLTextAreaElement>;
 };
 

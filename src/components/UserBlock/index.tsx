@@ -7,10 +7,15 @@ import Avatar from 'src/components/Avatar';
 import { StyledUserBlock, Details, Name, Extra } from './styles';
 
 export type UserBlockProps = HTMLAttributes<HTMLElement> & {
+  /** name component or text */
   name?: ReactNode;
-  avatarUrl?: string | null;
+  /** string name used in avatar component */
   avatarName?: string | null;
+  /** avatar image url */
+  avatarUrl?: string | null;
+  /** extra content component appears underneath name */
   extra?: ReactNode;
+  /** size of avatar component */
   size?: 's' | 'm' | 'l' | 'xl';
 };
 
@@ -30,7 +35,7 @@ const UserBlock: FC<UserBlockProps> = props => {
   return (
     <StyledUserBlock {...propsWithoutName} theme={theme}>
       <Avatar
-        name={props.avatarName || props.name}
+        name={props.avatarName || typeof props.name === 'string' ? props.name : 'Anonymous'}
         url={props.avatarUrl ? props.avatarUrl : undefined}
         size={props.size}
       />
