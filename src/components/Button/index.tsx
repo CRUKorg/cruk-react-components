@@ -9,11 +9,16 @@ import { Spacer, StyledButton } from './styles';
 import { ButtonAppearanceType } from 'src/types';
 
 export type Props = ButtonHTMLAttributes<HTMLElement> & {
+  /** the look and feel of the button */
   appearance?: ButtonAppearanceType;
+  /** flag to streatch but to 100% width */
   full?: boolean;
+  /** this is a url which will convert the button to an anchor tag */
   href?: string;
+  /** the height of the button, this will add padding not increase text size */
   size?: 'm' | 'l';
   css?: any;
+  /** styled-components polymorphism where you can use the styling of a button but convert to another element like an anchor tag */
   as?: any;
   ref?: Ref<HTMLElement>;
 };

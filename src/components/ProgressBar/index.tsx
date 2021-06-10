@@ -18,10 +18,15 @@ import {
 const DEFAULT_CIRCLE_SIZE = '90px';
 
 export type ProgressBarProps = {
+  /** percentage value of the progressbar */
   percentage: number;
+  /** flag which converts line bar to donut chart */
   isCircular?: boolean;
+  /** contents inside the donut chart */
   circleContents?: ReactNode;
+  /** diameter of the donut chart */
   circleSize?: string;
+  /** foreground colour of chart */
   barColor?: string;
 };
 

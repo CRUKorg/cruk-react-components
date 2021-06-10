@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import { useTheme } from 'styled-components';
 
 import defaultTheme from 'src/themes/cruk';
@@ -8,12 +8,16 @@ import { StyledBadge } from './styles';
 import { SpaceType } from 'src/types';
 
 export type BadgeProps = {
+  /** background colour of badge */
   backgroundColor?: string;
+  /** border colour of badge */
   borderColor?: string;
+  /** text colour of badge */
   textColor?: string;
-  text?: boolean;
+  /** size of badge */
   size?: SpaceType;
-  children?: any;
+  /** contents of badge */
+  children?: ReactNode;
 };
 
 /**
@@ -29,8 +33,7 @@ at the end of a sentence, link, or button. Unless the context is clear,
 consider including additional context with a visually hidden piece of
 additional text.
  */
-const Badge: FunctionComponent<BadgeProps> = props => {
-  const { text, children, ...rest } = props;
+const Badge: FunctionComponent<BadgeProps> = ({ children, ...rest }) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,

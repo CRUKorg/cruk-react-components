@@ -8,18 +8,31 @@ import LabelWrapper from 'src/components/LabelWrapper';
 import { ExtraLeft, ExtraRight, ExtraTop, ExtraBottom, ExtraWrapper, StyledInput } from './styles';
 
 export type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
+  /** error message text  */
   errorMessage?: string;
+  /** custom component/text that appears underneath the input field */
   extraBottom?: ReactElement | string;
+  /** custom component/text that appears to the left of the input field for example prefixes like "£" */
   extraLeft?: ReactElement | string;
+  /** custom component/text that appears to the right of the input field for example a search button */
   extraRight?: ReactElement | string;
+  /** custom component/text that appears above the input field for example a url domain */
   extraTop?: ReactElement | string;
+  /** flag for error styling */
   hasError?: boolean;
+  /** flag which controls the whether a cross icon or check icon is displayed to the right of the input field */
   isValid?: boolean;
-  hintText?: ReactElement | string;
+  /** flag to hide or show the check icon when valid */
   isValidVisible?: boolean;
+  /** flag to hide or show the cross icon when invalid */
   isInvalidVisible?: boolean;
+  /** hint text */
+  hintText?: ReactElement | string;
+  /** label text */
   label: string;
+  /** flag to stop (required) appearing in label, useful for compound form components like DateInput */
   hideRequiredInLabel?: boolean;
+  /** react reference to the DOM element sometime used to scroll to or set focus after an error */
   ref?: Ref<HTMLInputElement>;
 };
 

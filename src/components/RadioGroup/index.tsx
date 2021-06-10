@@ -6,13 +6,18 @@ import defaultTheme from 'src/themes/cruk';
 import { StyledFieldSet, StyledLegend, StyledRadio } from './styles';
 
 export type RadioGroupProps = {
+  /** because each radio has its own label this is the group label text */
   legend: string;
+  /** array of option for radio group where option is the option name and value is the option value  */
   attributes: Array<{
     value: string;
     option: string;
   }>;
+  /** on change handler callback passed change event */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  /** set the value of selected option */
   selectedValue?: string;
+  /** name of field this is what groups all the options together */
   name: string;
 };
 

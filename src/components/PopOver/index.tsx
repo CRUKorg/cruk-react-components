@@ -10,11 +10,16 @@ import { PopOverWrapper, PopOverModal } from './styles';
 import { PopOverPositionType } from 'src/types';
 
 export type PopOverProps = {
+  /** used for aria-label of modal */
   modalLabel: string;
+  /** contents in side the popover modal */
   modalContent: ReactNode;
+  /**  position that the popover opens relative to the triggering element, the trigger element is the child of the component */
   position?: PopOverPositionType;
   css?: string;
+  /**  popover modal max width */
   maxWidth?: string;
+  /**  popover modal min width */
   minWidth?: string;
 };
 
