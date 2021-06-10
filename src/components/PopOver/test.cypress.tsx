@@ -3,8 +3,8 @@
 import React from 'react';
 import { mount } from '@cypress/react';
 
-import TestWrapper from '../TestWrapper';
-import { PopOver, Box, Button, Icon } from '../';
+import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
+import { PopOver, Box, Button, Icon, su2cTheme, crukTheme } from '../';
 
 const internalContent = () => (
   <Box padding="xxs">
@@ -71,8 +71,15 @@ const content = () => (
 );
 
 describe('Popover', () => {
-  it('is accessible', () => {
-    mount(<TestWrapper>{content()}</TestWrapper>);
+  it('is accessible CRUK theme', () => {
+    mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
+    cy.contains('Share left').click();
+    cy.injectAxe();
+    cy.checkA11y('body');
+  });
+
+  it('is accessible SU2C theme', () => {
+    mount(<TestThemeWrapper theme={su2cTheme}>{content()}</TestThemeWrapper>);
     cy.contains('Share left').click();
     cy.injectAxe();
     cy.checkA11y('body', {
