@@ -16,6 +16,7 @@ import defaultTheme from './cruk';
 
 export const UTILITIES: UtilitiesType = {
   ...defaultTheme.utilities,
+  useBackgroundStyleLinks: true,
 };
 
 export const SITE_CONFIG: SiteConfigType = {
@@ -126,7 +127,7 @@ export const TYPOGRAPHY: TypographyType = {
     },
   ],
   fontFamilyHeadings: 'itc_avant_garde_pro_mdbold,Arial,sans-serif',
-  linkTextDecoration: 'underline',
+  linkTextDecoration: 'none',
   headerLineHeight: '1.5em',
   headerTextTransform: 'uppercase',
 };
