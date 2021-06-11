@@ -19,12 +19,19 @@ import {
 const HEADER_SCROLL_THRESHOLD = 66;
 
 export type HeaderProps = HTMLAttributes<HTMLElement> & {
+  /** flag which make header fixed to the top even when scrolling */
   isSticky?: boolean;
+  /** text in the middle of the header */
   siteSlogan?: string;
+  /** text to explain the content of the icon for a11y usually a description of where the link will take you */
   logoAltText?: string;
+  /** header logo image url */
   logoImageSrc?: string;
+  /** title of the header image component, this is mainly for the tooltip text on hover */
   logoLinkTitle?: string;
+  /** the url of the logo link */
   logoLinkUrl?: string;
+  /** instead of the contents of the header being centered to max width as defined in theme it is 100% width fo viewport*/
   fullWidth?: boolean;
 };
 

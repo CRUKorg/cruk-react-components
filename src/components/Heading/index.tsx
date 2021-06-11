@@ -19,6 +19,7 @@ export type HeadingProps = SpacingProps &
     textSize?: FontSizeType;
     textAlign?: 'left' | 'right' | 'center';
     textColor?: string;
+    /** styled-component polymorphic feature so you take the styling of a header and cast the component to be a "span" for example */
     as?: any;
     wordBreak?: WordBreakType;
   };

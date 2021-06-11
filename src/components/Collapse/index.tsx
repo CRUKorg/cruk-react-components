@@ -7,13 +7,21 @@ import { CustomHeader, DefaultHeader, FlippingIcon, CollapseContent, transitionD
 import { FontSizeType, ThemeType } from 'src/types';
 
 export type CollapseProps = HTMLAttributes<HTMLElement> & {
+  /** id is required for a11y reasons as we use aria attributes which depends on an id  */
   id: string;
+  /** text of collapse header, even if there is a custom header component this prop is still used for aria attributes */
   headerTitleText: string;
+  /** collapse header text colour */
   headerTitleTextColor?: string;
+  /** collapse header text size */
   headerTitleTextSize?: FontSizeType;
+  /** collapse header font family */
   headerTitleTextFontFamily?: string;
+  /** custom collapse header component */
   headerComponent?: ReactNode;
+  /** flag to indicate  */
   startOpen?: boolean;
+  /** callback function that is passed isOpen flag  */
   onOpenChange?: (isOpen: boolean) => void;
 };
 

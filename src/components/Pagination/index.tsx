@@ -6,11 +6,17 @@ import defaultTheme from 'src/themes/cruk';
 import { PagerItem, PagerLink, PagerList, PagerWrapper } from './styles';
 
 export type PaginationProps = {
+  /** set current page number */
   current: number;
+  /** total number of pages */
   items: number;
+  /** don't show an ellipsise and then the last page link, usefull for search results where the last page isn't important */
   hideLast?: boolean;
+  /** callback function which is passed the selected page number on click*/
   pagerCallback: Function;
+  /** number of items per page*/
   perPage: number;
+  /** the name of the search param in the url that is modified on page click, defaults to 'page' */
   searchParam?: string;
 };
 

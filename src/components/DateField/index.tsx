@@ -7,17 +7,29 @@ import TextField from 'src/components/TextField';
 import { Fieldset, DateTextFieldWrapper, LargeDateTextFieldWrapper, ErrorTextWrapper } from './styles';
 
 export type DateFieldProps = InputHTMLAttributes<HTMLInputElement> & {
+  /**label text */
   label: string;
+  /** hind text */
   hintText?: string;
+  /** day field text value  */
   day: string;
+  /** month field text value  */
   month: string;
+  /** year field text value  */
   year: string;
+  /** name passed to day field input element */
   dayName?: string;
+  /** name passed to month field input element */
   monthName?: string;
+  /** name passed to year field input element */
   yearName?: string;
+  /** flag of error styling on day field */
   dayHasError?: boolean;
+  /** flag of error styling on month field */
   monthHasError?: boolean;
+  /** flag of error styling on year field */
   yearHasError?: boolean;
+  /** error message text */
   errorMessage?: string;
 };
 

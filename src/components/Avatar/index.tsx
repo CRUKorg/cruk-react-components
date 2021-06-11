@@ -6,8 +6,11 @@ import defaultTheme from 'src/themes/cruk';
 import { StyledAvatar } from './styles';
 
 export type AvatarProps = ImgHTMLAttributes<HTMLElement> & {
+  /** name of user/entity */
   name?: ReactNode;
+  /** image url */
   url?: string;
+  /** image size */
   size?: 's' | 'm' | 'l' | 'xl';
 };
 

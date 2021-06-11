@@ -19,6 +19,7 @@ import {
 } from './styles';
 
 export type FooterProps = HTMLAttributes<HTMLElement> & {
+  /** used to customise text in middle section, it could also be react element, this is not to be confused with the component children which is primarily for the links in the footer */
   middleSection?: ReactNode;
 };
 

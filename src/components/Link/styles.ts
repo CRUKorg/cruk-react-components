@@ -22,15 +22,24 @@ type StyledLinkProps = AnchorHTMLAttributes<HTMLElement> &
   };
 
 export const StyledLink = styled(Text)<StyledLinkProps>`
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, background-size 0.3s ease;
   background-color: rgba(255, 255, 255, 0);
   border: none;
   padding: 0;
-  color: ${({ theme: { colors }, textColor, appearance }) =>
+  color: ${({
+    theme: {
+      colors,
+      utilities: { useBackgroundStyleLinks },
+    },
+    textColor,
+    appearance,
+  }) =>
     textColor && typeof colors[textColor] !== 'undefined'
       ? colors[textColor]
       : textColor
       ? textColor
+      : !appearance && useBackgroundStyleLinks
+      ? 'currentColor'
       : appearance && appearance === 'primary'
       ? colors['secondary']
       : colors['linkColor']};
@@ -40,6 +49,21 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
       typography: { linkTextDecoration },
     },
   }) => (appearance === 'primary' || appearance === 'secondary' ? 'none' : linkTextDecoration)};
+  font-weight: ${({ theme }) =>
+    theme.utilities.useBackgroundStyleLinks ? theme.typography.fontWeightHeavy : theme.typography.fontWeightMedium};
+  background: ${({
+    appearance,
+    theme,
+    theme: {
+      utilities: { useBackgroundStyleLinks },
+    },
+  }) =>
+    useBackgroundStyleLinks && !appearance
+      ? `linear-gradient(180deg, rgba(255, 255, 255, 0) 0px, ${theme.colors.primary} -4px);`
+      : undefined};
+  background-repeat: no-repeat;
+  background-position-y: calc(100%);
+  background-size: 100% 2px;
 
   ${({
     appearance,
@@ -54,8 +78,17 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
 
   &:hover {
     cursor: pointer;
-    color: ${({ theme: { colors }, textHoverColor }) =>
-      textHoverColor && typeof colors[textHoverColor] !== 'undefined'
+    background-size: 100% 100%;
+    color: ${({
+      theme: {
+        colors,
+        utilities: { useBackgroundStyleLinks },
+      },
+      textHoverColor,
+    }) =>
+      !textHoverColor && useBackgroundStyleLinks
+        ? colors['textDark']
+        : textHoverColor && typeof colors[textHoverColor] !== 'undefined'
         ? colors[textHoverColor]
         : textHoverColor
         ? textHoverColor

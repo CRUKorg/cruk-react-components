@@ -9,6 +9,7 @@ import { SpacingProps } from 'src/components/Spacing';
 
 export type BoxProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
+    /** background color of badge, this will add defualt padding */
     backgroundColor?: string;
     css?: any;
     ref?: Ref<HTMLDivElement>;

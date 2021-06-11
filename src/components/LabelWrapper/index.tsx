@@ -7,9 +7,13 @@ import defaultTheme from 'src/themes/cruk';
 import { LabelText, Label } from './styles';
 
 type LabelWrapperProps = {
+  /** label text */
   label: string;
+  /** hint text or react element in it's place */
   hintText?: ReactElement | string;
+  /** when required (required) appears in label */
   required?: boolean;
+  /** flag to stop (required) appearing in label, useful for compound form components like DateInput */
   hideRequiredInLabel?: boolean;
 };
 

@@ -8,10 +8,15 @@ import LabelWrapper from 'src/components/LabelWrapper';
 import { StyledSelect } from './styles';
 
 export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
+  /** error message text */
   errorMessage?: string;
+  /** flag for error styling of component */
   hasError?: boolean;
+  /** label text */
   label: string;
+  /** hind text or custom component */
   hintText?: ReactElement | string;
+  /** react DOM reference of object used scrolling to it with errors etc */
   ref?: Ref<HTMLSelectElement>;
 };
 

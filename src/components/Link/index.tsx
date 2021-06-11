@@ -7,10 +7,13 @@ import { StyledLink, ChevyWithLevee } from './styles';
 
 import { TextProps } from 'src/components/Text';
 
-export type Props = AnchorHTMLAttributes<HTMLElement> &
+export type LinkProps = AnchorHTMLAttributes<HTMLElement> &
   TextProps & {
+    /** link text hover colour */
     textHoverColor?: string;
+    /** link appearance varient, undefined is a standarding link withing a text block */
     appearance?: 'primary' | 'secondary';
+    /** styled-components polymorphism where you can use the styling of a link but convert to another element like a button */
     ref?: Ref<HTMLElement>;
   };
 
@@ -24,7 +27,7 @@ export type Props = AnchorHTMLAttributes<HTMLElement> &
  * If you want something that looks like a link but behaves like a button ie. nothing to do with navigation, please consider using Link with as='button'
  *
  * If you want something that looks like a button but behaves like a link ie. it takes the user to a new location, please consider using Button with as='a'*/
-const Link: FC<Props> = forwardRef((props: Props, ref?: Ref<HTMLElement>) => {
+export const Link: FC<LinkProps> = forwardRef((props: LinkProps, ref?: Ref<HTMLElement>) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
