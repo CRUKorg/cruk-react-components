@@ -20,6 +20,7 @@ TextAreaFieldDefault.args = {
   label: 'TextAreaField',
   resize: 'horizontal',
   lineCount: 5,
+  required: false,
 };
 
 export const TextAreaFieldWithError: Story<TextAreaFieldProps> = Template.bind({});
@@ -32,6 +33,7 @@ TextAreaFieldWithError.args = {
   errorMessage: 'error message',
   resize: 'horizontal',
   lineCount: 5,
+  required: false,
 };
 
 const TemplateWithSU2C: Story<TextAreaFieldProps> = args => (
@@ -48,6 +50,7 @@ SU2CTextAreaField.args = {
   label: 'TextAreaField',
   resize: 'horizontal',
   lineCount: 5,
+  required: false,
 };
 
 export const SU2CTextAreaFieldWithError: Story<TextAreaFieldProps> = TemplateWithSU2C.bind({});
@@ -60,4 +63,5 @@ SU2CTextAreaFieldWithError.args = {
   errorMessage: 'error message',
   resize: 'horizontal',
   lineCount: 5,
+  required: false,
 };
