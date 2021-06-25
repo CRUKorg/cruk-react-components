@@ -15,6 +15,7 @@ export { default as Header } from './Header';
 export { default as Heading } from './Heading';
 export { default as Icon } from './Icon';
 export { default as LabelWrapper } from './LabelWrapper';
+export { default as LegendWrapper } from './LegendWrapper';
 export { default as Link } from './Link';
 export { default as Loader } from './Loader';
 export { default as Modal } from './Modal';
