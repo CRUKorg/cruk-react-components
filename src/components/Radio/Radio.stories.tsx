@@ -49,6 +49,15 @@ const TemplateWithSU2C: Story<RadioProps> = args => (
   </ThemeProvider>
 );
 
+export const RadioDefaultError: Story<RadioProps> = Template.bind({});
+RadioDefaultError.storyName = 'Radio Error';
+RadioDefaultError.args = {
+  value: 'value',
+  disabled: false,
+  hasError: true,
+  errorMessage: 'Error Message'
+};
+
 export const SU2CRadio: Story<RadioProps> = TemplateWithSU2C.bind({});
 SU2CRadio.storyName = 'SU2C SU2CRadio';
 SU2CRadio.args = {
