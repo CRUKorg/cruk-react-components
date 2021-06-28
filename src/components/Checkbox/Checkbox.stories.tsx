@@ -19,6 +19,15 @@ CheckboxDefault.args = {
   disabled: false,
 };
 
+export const CheckboxDefaultError: Story = Template.bind({});
+CheckboxDefaultError.storyName = 'CheckBox Error';
+CheckboxDefaultError.args = {
+  value: 'value',
+  disabled: false,
+  hasError: true,
+  errorMessage: 'Error Message'
+};
+
 const TemplateWithSU2C: Story = args => (
   <ThemeProvider theme={su2cTheme}>
     <CheckBox {...args} />

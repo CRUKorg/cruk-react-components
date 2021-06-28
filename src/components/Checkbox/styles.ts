@@ -7,6 +7,7 @@ const BUTTON_HEIGHT = '3em';
 type StyledLabelProps = {
   checked: boolean;
   disabled: boolean;
+  hasError: boolean;
 };
 
 export const CheckWrapper = styled.div`
@@ -59,6 +60,10 @@ export const StyledLabel = styled.label<StyledLabelProps>`
     `solid ${theme.utilities.inputBorderWidth} ${
       checked && !theme.utilities.useDefaultFocusRect ? theme.colors.primary : theme.colors.inputBorder
     }`};
+  ${({ hasError }) => hasError && css`
+    border: solid ${({ theme }) => theme.utilities.inputBorderWidth} ${({ hasError, theme }) =>
+    hasError ? theme.colors.textError : theme.colors.inputBorder};
+  `}
   cursor: pointer;
   display: block;
   font-weight: ${({ theme, checked }) => (checked || !theme.utilities.useDefaultFocusRec ? 'bold' : 'normal')};
