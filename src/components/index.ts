@@ -1,3 +1,4 @@
+import { LegendWrapper } from './LegendWrapper/index';
 export { default as AddressLookup } from './AddressLookup';
 export { default as Avatar } from './Avatar';
 export { default as Badge } from './Badge';
@@ -49,6 +50,7 @@ export { default as HeadingReadme } from './Heading/README.md';
 export { default as HeaderReadme } from './Header/README.md';
 export { default as IconReadme } from './Icon/README.md';
 export { default as LinkReadme } from './Link/README.md';
+export { default as LegendWrapperReadme } from './LegendWrapper/README.md';
 export { default as LoaderReadme } from './Loader/README.md';
 export { default as ModalReadme } from './Modal/README.md';
 export { default as PaginationReadme } from './Pagination/README.md';
