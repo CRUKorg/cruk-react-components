@@ -1,4 +1,3 @@
-import { LegendWrapper } from './LegendWrapper/index';
 export { default as AddressLookup } from './AddressLookup';
 export { default as Avatar } from './Avatar';
 export { default as Badge } from './Badge';
