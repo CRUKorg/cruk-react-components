@@ -25,7 +25,7 @@ CheckboxDefaultError.args = {
   value: 'value',
   disabled: false,
   hasError: true,
-  errorMessage: 'Error Message'
+  errorMessage: 'Error Message',
 };
 
 const TemplateWithSU2C: Story = args => (

@@ -55,7 +55,7 @@ RadioDefaultError.args = {
   value: 'value',
   disabled: false,
   hasError: true,
-  errorMessage: 'Error Message'
+  errorMessage: 'Error Message',
 };
 
 export const SU2CRadio: Story<RadioProps> = TemplateWithSU2C.bind({});

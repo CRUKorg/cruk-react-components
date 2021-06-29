@@ -19,10 +19,7 @@ export type CheckBoxProps = InputHTMLAttributes<HTMLInputElement> & {
  *
  * The value or children becomes the label, if you want an outer label for a checkbox or group of checkboxes please use a legend element
  */
-const Checkbox: FC<CheckBoxProps> = forwardRef((
-  props: CheckBoxProps,
-  ref?: Ref<HTMLInputElement>,
-) => {
+const Checkbox: FC<CheckBoxProps> = forwardRef((props: CheckBoxProps, ref?: Ref<HTMLInputElement>) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -37,11 +34,7 @@ const Checkbox: FC<CheckBoxProps> = forwardRef((
         checked={props.checked || props.defaultChecked || false}
         disabled={props.disabled || false}
       >
-        <StyledInput
-          {...propsWithoutChildren}
-          type="checkbox"
-          ref={ref}
-        />
+        <StyledInput {...propsWithoutChildren} type="checkbox" ref={ref} />
         <SelectedBorder></SelectedBorder>
         {children || props.value}
         {theme.utilities.useDefaultFromControls ? null : (
