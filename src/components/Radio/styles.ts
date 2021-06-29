@@ -55,16 +55,13 @@ export const StyledLabel = styled.label<StyledLabelProps>`
   width: 100%;
   position: relative;
   border-radius: ${({ theme }) => theme.utilities.borderRadius};
-  border: ${({ theme, checked }) =>
-    `solid ${theme.utilities.inputBorderWidth} ${
-      checked && !theme.utilities.useDefaultFocusRect ? theme.colors.primary : theme.colors.inputBorder
-    }`};
-  ${({ hasError }) =>
-    hasError &&
-    css`
-      border: solid ${({ theme }) => theme.utilities.inputBorderWidth}
-        ${({ hasError, theme }) => (hasError ? theme.colors.textError : theme.colors.inputBorder)};
-    `}
+
+  ${({ hasError, theme, checked }) =>
+    hasError
+      ? `border: solid ${theme.utilities.inputBorderWidth} ${theme.colors.textError};`
+      : `border: solid ${theme.utilities.inputBorderWidth} ${
+          checked && !theme.utilities.useDefaultFocusRect ? theme.colors.primary : theme.colors.inputBorder
+        }`};
 
   cursor: pointer;
   display: inline-block;
