@@ -10,7 +10,7 @@ import { StyledFieldset } from './styles';
 export type LegendWrapperProps = {
   children?: ReactNode;
   /** legend text */
-  legend: string;
+  legendText: string;
   /** error message text  */
   errorMessage?: string;
   /** flag for error styling */
@@ -23,7 +23,7 @@ export type LegendWrapperProps = {
 
 export const LegendWrapper: FC<LegendWrapperProps> = ({
   children,
-  legend,
+  legendText,
   required,
   errorMessage,
   hasError,
@@ -38,10 +38,10 @@ export const LegendWrapper: FC<LegendWrapperProps> = ({
   return (
     <ThemeProvider theme={theme}>
       <StyledFieldset hasError={hasError || !!errorMessage || false} hasHintText={!!hintText}>
-        {legend && (
+        {legendText && (
           <legend>
             <span>
-              {legend} {required && <span>(required)</span>}
+              {legendText} {required && <span>(required)</span>}
             </span>
           </legend>
         )}

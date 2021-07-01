@@ -13,7 +13,7 @@ To be used in forms wrapping form elements with a fieldset with a legend.
         </Heading>
         <Box marginBottom="m">
             <LegendWrapper
-                legend="Legend Example"
+               legendText="Legend Example"
             />
         </Box>
     </section>
@@ -23,7 +23,7 @@ To be used in forms wrapping form elements with a fieldset with a legend.
         </Heading>
         <Box marginBottom="m">
             <LegendWrapper
-                legend="Legend Example"
+               legendText="Legend Example"
                 required
             />
         </Box>
@@ -34,7 +34,7 @@ To be used in forms wrapping form elements with a fieldset with a legend.
         </Heading>
         <Box marginBottom="m">
             <LegendWrapper
-                legend="Legend Example"
+               legendText="Legend Example"
             >
                 <Radio name="example1" value="one">
                     Option one
@@ -49,7 +49,7 @@ To be used in forms wrapping form elements with a fieldset with a legend.
         </Heading>
         <Box marginBottom="m">
             <LegendWrapper
-                legend="Legend Example"
+               legendText="Legend Example"
                 hasError
                 errorMessage="Error Message"
             >
@@ -63,7 +63,7 @@ To be used in forms wrapping form elements with a fieldset with a legend.
         <Heading h3>Checkbox</Heading>
         <Box marginBottom="m">
             <LegendWrapper
-                legend="Legend Example"
+               legendText="Legend Example"
             >
                 <Checkbox disabled={false} value="value" />
             </LegendWrapper>
@@ -74,7 +74,7 @@ To be used in forms wrapping form elements with a fieldset with a legend.
         <Heading h3>Checkbox Error</Heading>
         <Box marginBottom="m">
             <LegendWrapper
-                legend="Legend Example"
+               legendText="Legend Example"
                 hasError
                 errorMessage="Error Message"
             >
@@ -91,7 +91,7 @@ To be used in forms wrapping form elements with a fieldset with a legend.
 
 | Name             | Type                   | Required | Default | Description                                                                                                         |
 | :------------ | :------------------- | :-----: | :-------- | :---------------------------------------------------------------------------------------------------------------- |
-| Legend            | string                 | Yes      |         | Fieldset with legend
+| legendText            | string                 | Yes      |         | Fieldset with legend
 | required         | boolean                |          | false   | If false, add (optional) to the legend                                      |
 | hasError         | boolean                |          | false   | If true, use error styling for the input                                  |
 | errorMessage     | string                 |          |         | Error message, If defined, use error styling for the children    |

@@ -18,7 +18,7 @@ const Template: Story<LegendWrapperProps> = args => <LegendWrapper {...args} />;
 export const LegendWrapperDefault: Story<LegendWrapperProps> = Template.bind({});
 LegendWrapperDefault.storyName = 'LegendWrapper';
 LegendWrapperDefault.args = {
-  legend: 'Legend Example',
+  legendText: 'Legend Example',
 };
 
 const TemplateWithRadio: Story<LegendWrapperProps> = args => (
@@ -34,13 +34,13 @@ const TemplateWithRadio: Story<LegendWrapperProps> = args => (
 export const LegendWrapperRadio: Story<LegendWrapperProps> = TemplateWithRadio.bind({});
 LegendWrapperRadio.storyName = 'LegendWrapper with Radio Button';
 LegendWrapperRadio.args = {
-  legend: 'Legend Example',
+  legendText: 'Legend Example',
 };
 
 export const LegendWrapperRadioError: Story<LegendWrapperProps> = TemplateWithRadio.bind({});
 LegendWrapperRadioError.storyName = 'LegendWrapper with Error and Radio Button';
 LegendWrapperRadioError.args = {
-  legend: 'Legend Example',
+  legendText: 'Legend Example',
   hasError: true,
   errorMessage: 'Error message',
 };

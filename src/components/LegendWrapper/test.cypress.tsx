@@ -14,7 +14,7 @@ const content = () => {
           Legend Wrapper
         </Heading>
         <Box marginBottom="m">
-          <LegendWrapper legend="Legend Example" />
+          <LegendWrapper legendText="Legend Example" />
         </Box>
       </section>
       <section>
@@ -22,7 +22,7 @@ const content = () => {
           Required
         </Heading>
         <Box marginBottom="m">
-          <LegendWrapper legend="Legend Example" required />
+          <LegendWrapper legendText="Legend Example" required />
         </Box>
       </section>
       <section>
@@ -30,7 +30,7 @@ const content = () => {
           Radio
         </Heading>
         <Box marginBottom="m">
-          <LegendWrapper legend="Legend Example">
+          <LegendWrapper legendText="Legend Example">
             <Radio name="example1" value="one">
               Option one
             </Radio>
@@ -43,7 +43,7 @@ const content = () => {
           Radio Error
         </Heading>
         <Box marginBottom="m">
-          <LegendWrapper legend="Legend Example" hasError errorMessage="Error Message">
+          <LegendWrapper legendText="Legend Example" hasError errorMessage="Error Message">
             <Radio name="example1" value="one">
               Option one
             </Radio>
@@ -55,7 +55,7 @@ const content = () => {
           Checkbox
         </Heading>
         <Box marginBottom="m">
-          <LegendWrapper legend="Legend Example">
+          <LegendWrapper legendText="Legend Example">
             <Checkbox disabled={false} value="value" />
           </LegendWrapper>
         </Box>
@@ -66,7 +66,7 @@ const content = () => {
           Checkbox Error
         </Heading>
         <Box marginBottom="m">
-          <LegendWrapper legend="Legend Example" hasError errorMessage="Error Message">
+          <LegendWrapper legendText="Legend Example" hasError errorMessage="Error Message">
             <Checkbox disabled={false} value="value" />
           </LegendWrapper>
         </Box>
