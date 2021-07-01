@@ -17,9 +17,10 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
       color: ${({ theme }) => theme.colors.textDark};
       font-size: ${({ theme }) => theme.fontSizes.m};
       line-height: ${({ theme }) => theme.typography.lineHeight};
+      font-weight: ${({ theme }) => theme.typography.fontWeightHeavy};
       min-width: 3em;
       & > * {
-        font-weight: normal;
+        font-weight: ${({ theme }) => theme.typography.fontWeightMedium};
       }
     }
   }
