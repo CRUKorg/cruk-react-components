@@ -48,16 +48,21 @@ export const Check = styled.span`
 type StyledLabelProps = {
   checked: boolean;
   disabled: boolean;
+  hasError: boolean;
 };
 
 export const StyledLabel = styled.label<StyledLabelProps>`
   width: 100%;
   position: relative;
   border-radius: ${({ theme }) => theme.utilities.borderRadius};
-  border: ${({ theme, checked }) =>
-    `solid ${theme.utilities.inputBorderWidth} ${
-      checked && !theme.utilities.useDefaultFocusRect ? theme.colors.primary : theme.colors.inputBorder
-    }`};
+  border-width: ${({ theme }) => theme.utilities.inputBorderWidth};
+  border-style: solid;
+  border-color: ${({ hasError, theme, checked }) =>
+    hasError
+      ? theme.colors.textError
+      : checked && !theme.utilities.useDefaultFocusRect
+      ? theme.colors.primary
+      : theme.colors.inputBorder};
   cursor: pointer;
   display: inline-block;
   font-weight: ${({ checked }) => (checked ? 'bold' : 'normal')};

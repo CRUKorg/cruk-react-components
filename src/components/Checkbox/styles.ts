@@ -7,6 +7,7 @@ const BUTTON_HEIGHT = '3em';
 type StyledLabelProps = {
   checked: boolean;
   disabled: boolean;
+  hasError: boolean;
 };
 
 export const CheckWrapper = styled.div`
@@ -55,10 +56,14 @@ export const CheckGlyph = styled.svg`
 export const StyledLabel = styled.label<StyledLabelProps>`
   position: relative;
   border-radius: ${props => props.theme.utilities.borderRadius};
-  border: ${({ theme, checked }) =>
-    `solid ${theme.utilities.inputBorderWidth} ${
-      checked && !theme.utilities.useDefaultFocusRect ? theme.colors.primary : theme.colors.inputBorder
-    }`};
+  border-width: ${({ theme }) => theme.utilities.inputBorderWidth};
+  border-style: solid;
+  border-color: ${({ hasError, theme, checked }) =>
+    hasError
+      ? theme.colors.textError
+      : checked && !theme.utilities.useDefaultFocusRect
+      ? theme.colors.primary
+      : theme.colors.inputBorder};
   cursor: pointer;
   display: block;
   font-weight: ${({ theme, checked }) => (checked || !theme.utilities.useDefaultFocusRec ? 'bold' : 'normal')};

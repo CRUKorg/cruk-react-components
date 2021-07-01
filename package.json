@@ -1,6 +1,6 @@
 {
   "name": "@cruk/cruk-react-components",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "React components implementing CRUK and SU2C designs",
   "license": "UNLICENSED",
   "publishConfig": {
@@ -32,8 +32,8 @@
     "release": "node release.js",
     "dev": "NODE_ENV=development npm i && docker-compose up server",
     "rollup:build-lib": "npm run clean-lib && rollup --config",
-    "prettier": "prettier --write 'src/**/*.{ts,tsx}'",
-    "prettier:test": "prettier --check 'src/**/*.{ts,tsx}'",
+    "prettier": "prettier --write src/**/*.{ts,tsx}",
+    "prettier:test": "prettier --check src/**/*.{ts,tsx}",
     "eslint:test": "eslint src --format=compact",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"

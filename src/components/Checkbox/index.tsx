@@ -2,11 +2,16 @@ import React, { FC, InputHTMLAttributes, Ref, forwardRef } from 'react';
 import { useTheme, ThemeProvider } from 'styled-components';
 
 import defaultTheme from 'src/themes/cruk';
+import ErrorText from '../ErrorText';
 
 import { StyledLabel, StyledInput, CheckWrapper, CheckGlyph, Check, SelectedBorder } from './styles';
 
 export type CheckBoxProps = InputHTMLAttributes<HTMLInputElement> & {
   ref?: Ref<HTMLInputElement>;
+  /** flag for error styling */
+  hasError?: boolean;
+  /** error message text  */
+  errorMessage?: string;
 };
 
 /**
@@ -24,7 +29,11 @@ const Checkbox: FC<CheckBoxProps> = forwardRef((props: CheckBoxProps, ref?: Ref<
 
   return (
     <ThemeProvider theme={theme}>
-      <StyledLabel checked={props.checked || props.defaultChecked || false} disabled={props.disabled || false}>
+      <StyledLabel
+        hasError={props.hasError || !!props.errorMessage || false}
+        checked={props.checked || props.defaultChecked || false}
+        disabled={props.disabled || false}
+      >
         <StyledInput {...propsWithoutChildren} type="checkbox" ref={ref} />
         <SelectedBorder></SelectedBorder>
         {children || props.value}
@@ -38,6 +47,7 @@ const Checkbox: FC<CheckBoxProps> = forwardRef((props: CheckBoxProps, ref?: Ref<
           </CheckWrapper>
         )}
       </StyledLabel>
+      {!!props.errorMessage && <ErrorText>{props.errorMessage}</ErrorText>}
     </ThemeProvider>
   );
 });

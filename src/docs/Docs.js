@@ -29,6 +29,7 @@ import HeadingReadme from '../components/Heading/README.md';
 import HeaderReadme from '../components/Header/README.md';
 import IconReadme from '../components/Icon/README.md';
 import LinkReadme from '../components/Link/README.md';
+import LegendWrapperReadme from '../components/LegendWrapperReadme/README.md';
 import LoaderReadme from '../components/Loader/README.md';
 import ModalReadme from '../components/Modal/README.md';
 import PaginationReadme from '../components/Pagination/README.md';
