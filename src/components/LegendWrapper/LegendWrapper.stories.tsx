@@ -19,7 +19,7 @@ export const LegendWrapperDefault: Story<LegendWrapperProps> = Template.bind({})
 LegendWrapperDefault.storyName = 'LegendWrapper';
 LegendWrapperDefault.args = {
   legendText: 'Legend Example',
-  hintText: 'This is hint text'
+  hintText: 'This is hint text',
 };
 
 const TemplateWithRadio: Story<LegendWrapperProps> = args => (
@@ -41,7 +41,7 @@ export const LegendWrapperRadio: Story<LegendWrapperProps> = TemplateWithRadio.b
 LegendWrapperRadio.storyName = 'LegendWrapper with Radio Button';
 LegendWrapperRadio.args = {
   legendText: 'Legend Example',
-  hintText: 'This is hint text'
+  hintText: 'This is hint text',
 };
 
 export const LegendWrapperRadioError: Story<LegendWrapperProps> = TemplateWithRadio.bind({});
@@ -50,7 +50,7 @@ LegendWrapperRadioError.args = {
   legendText: 'Legend Example',
   hasError: true,
   errorMessage: 'Error message',
-  hintText: 'This is hint text'
+  hintText: 'This is hint text',
 };
 
 const TemplateWithCheckbox: Story<LegendWrapperProps> = args => (
@@ -68,7 +68,7 @@ export const LegendWrapperCheckbox: Story<LegendWrapperProps> = TemplateWithChec
 LegendWrapperCheckbox.storyName = 'LegendWrapper with Checkbox';
 LegendWrapperCheckbox.args = {
   legendText: 'Legend Example',
-  hintText: 'This is hint text'
+  hintText: 'This is hint text',
 };
 
 export const LegendWrapperCheckboxError: Story<LegendWrapperProps> = TemplateWithCheckbox.bind({});
@@ -77,7 +77,7 @@ LegendWrapperCheckboxError.args = {
   legendText: 'Legend Example',
   hasError: true,
   errorMessage: 'Error message',
-  hintText: 'This is hint text'
+  hintText: 'This is hint text',
 };
 
 const TemplateWithSU2C: Story<LegendWrapperProps> = args => (
@@ -103,5 +103,5 @@ SU2CLegendWrapperRadioError.args = {
   legendText: 'Legend Example',
   hasError: true,
   errorMessage: 'Error message',
-  hintText: 'This is hint text'
+  hintText: 'This is hint text',
 };
