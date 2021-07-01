@@ -75,7 +75,7 @@ const content = () => {
   );
 };
 
-describe('TextField', () => {
+describe('LegendWrapper', () => {
   it('is accessible CRUK theme', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
     cy.injectAxe();
