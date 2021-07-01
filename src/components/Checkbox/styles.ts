@@ -56,14 +56,14 @@ export const CheckGlyph = styled.svg`
 export const StyledLabel = styled.label<StyledLabelProps>`
   position: relative;
   border-radius: ${props => props.theme.utilities.borderRadius};
-
-  ${({ hasError, theme, checked }) =>
+  border-width: ${({ theme }) => theme.utilities.inputBorderWidth};
+  border-style: solid;
+  border-color: ${({ hasError, theme, checked }) =>
     hasError
-      ? `border: solid ${theme.utilities.inputBorderWidth} ${theme.colors.textError};`
-      : `border: solid ${theme.utilities.inputBorderWidth} ${
-          checked && !theme.utilities.useDefaultFocusRect ? theme.colors.primary : theme.colors.inputBorder
-        }`};
-
+      ? theme.colors.textError
+      : checked && !theme.utilities.useDefaultFocusRect
+      ? theme.colors.primary
+      : theme.colors.inputBorder};
   cursor: pointer;
   display: block;
   font-weight: ${({ theme, checked }) => (checked || !theme.utilities.useDefaultFocusRec ? 'bold' : 'normal')};
