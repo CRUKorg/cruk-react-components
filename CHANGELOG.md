@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added hasError and errorMessage prop to Radio and Checkbox components
 - Updated styles for the Radio and Checkbox components to reflect hasError
-- Updated JS doc comment for Text, Link, TextField and TextAreaField compent
+- Updated JS doc comment for Text, Link, TextField and TextAreaField components
 
 ### Removed
 
