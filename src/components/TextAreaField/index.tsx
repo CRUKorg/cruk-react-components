@@ -25,7 +25,7 @@ export type TextAreaFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
 };
 
 /**
- * TextAreaField lets users enter and edit text over multiple lines.
+ * TextAreaField lets users enter and edit multiline text.
  */
 const TextField: FunctionComponent<TextAreaFieldProps> = forwardRef(
   (

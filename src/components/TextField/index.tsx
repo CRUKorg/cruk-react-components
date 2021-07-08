@@ -37,7 +37,7 @@ export type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
 };
 
 /**
- * Text fields let users enter and edit text.
+ * TextFields let users enter and edit text. For multiline text entry please consider using the TextAreaFieldComponent.
  * */
 const TextField: FunctionComponent<TextFieldProps> = forwardRef(
   (
