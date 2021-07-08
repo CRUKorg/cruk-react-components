@@ -10,6 +10,10 @@ import { WordBreakType, FontSizeType, ColorKeyType } from 'src/types';
 
 // the 'as' prop is for styled component casting
 // text hover color prop is only used in Link which extends Text
+
+/**
+ * Text is to be used as the main paragraph component (or span using as="span"). Using the Text component is preferred to simply adding text to a div and styling that div, this will guarantee we are always using the correct font and default text colour.
+ */
 export type TextProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
     /** text colour  */
