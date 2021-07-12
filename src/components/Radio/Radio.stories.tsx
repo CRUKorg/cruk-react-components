@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
@@ -10,25 +10,37 @@ export default {
   component: Radio,
 } as Meta<RadioProps>;
 
-const Template: Story<RadioProps> = args => (
-  <fieldset style={{ border: 'none' }}>
-    <Box>
-      <Radio name="example1" value="one" {...args}>
-        Option one
-      </Radio>
-    </Box>
-    <Box>
-      <Radio name="example1" value="two">
-        Option two
-      </Radio>
-    </Box>
-  </fieldset>
-);
+const Template: Story<RadioProps> = args => {
+  const [selected, setSelected] = useState('one');
+  const handleChange = (value: string) => {
+    setSelected(value);
+  };
+
+  return (
+    <fieldset style={{ border: 'none' }}>
+      <Box>
+        <Radio
+          onChange={e => handleChange(e.target.value)}
+          checked={selected === 'one'}
+          name="example1"
+          value="one"
+          {...args}
+        >
+          Option one
+        </Radio>
+      </Box>
+      <Box>
+        <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'two'} name="example1" value="two">
+          Option two
+        </Radio>
+      </Box>
+    </fieldset>
+  );
+};
 
 export const RadioDefault: Story<RadioProps> = Template.bind({});
 RadioDefault.storyName = 'Radio';
 RadioDefault.args = {
-  value: 'value',
   disabled: false,
 };
 
