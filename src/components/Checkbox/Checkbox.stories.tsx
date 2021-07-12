@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme } from '..';
+import { su2cTheme, Box } from '..';
 import CheckBox, { CheckBoxProps } from '.';
 
 export default {
@@ -10,12 +10,37 @@ export default {
   component: CheckBox,
 } as Meta<CheckBoxProps>;
 
-const Template: Story = args => <CheckBox {...args} />;
+const Template: Story = args => {
+  const [selected, setSelected] = React.useState<Array<string>>([]);
+  const handleChange = (value: string) => {
+    if (selected.indexOf(value) === -1) {
+      setSelected([...selected, value]);
+    } else {
+      setSelected(selected.filter(item => item !== value));
+    }
+  };
+  return (
+    <Box>
+      <CheckBox
+        onChange={e => handleChange(e.target.value)}
+        checked={selected.indexOf('one') >= 0}
+        value="one"
+        {...args}
+      />
+
+      <CheckBox
+        onChange={e => handleChange(e.target.value)}
+        checked={selected.indexOf('two') >= 0}
+        value="two"
+        {...args}
+      />
+    </Box>
+  );
+};
 
 export const CheckboxDefault: Story = Template.bind({});
 CheckboxDefault.storyName = 'CheckBox';
 CheckboxDefault.args = {
-  value: 'value',
   disabled: false,
 };
 
