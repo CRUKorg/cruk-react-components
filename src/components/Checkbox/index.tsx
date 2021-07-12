@@ -1,4 +1,4 @@
-import React, { FC, InputHTMLAttributes, Ref, forwardRef, useState } from 'react';
+import React, { FC, InputHTMLAttributes, Ref, forwardRef } from 'react';
 import { useTheme, ThemeProvider } from 'styled-components';
 
 import defaultTheme from 'src/themes/cruk';
@@ -26,20 +26,15 @@ const Checkbox: FC<CheckBoxProps> = forwardRef((props: CheckBoxProps, ref?: Ref<
     ...foundTheme,
   };
   const { children, ...propsWithoutChildren } = props;
-  const [isChecked, setIsChecked] = useState(false);
+
   return (
     <ThemeProvider theme={theme}>
       <StyledLabel
         hasError={props.hasError || !!props.errorMessage || false}
-        checked={props.checked || props.defaultChecked || isChecked || false}
+        checked={props.checked || props.defaultChecked || false}
         disabled={props.disabled || false}
       >
-        <StyledInput
-          onChange={e => setIsChecked(e.target.checked)}
-          {...propsWithoutChildren}
-          type="checkbox"
-          ref={ref}
-        />
+        <StyledInput {...propsWithoutChildren} type="checkbox" ref={ref} />
         <SelectedBorder></SelectedBorder>
         {children || props.value}
         {theme.utilities.useDefaultFromControls ? null : (
