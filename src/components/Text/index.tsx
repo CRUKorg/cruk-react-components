@@ -1,4 +1,4 @@
-import React, { FunctionComponent, HTMLAttributes } from 'react';
+import React, { FunctionComponent, HTMLAttributes, Ref, forwardRef } from 'react';
 import { useTheme } from 'styled-components';
 
 import defaultTheme from 'src/themes/cruk';
@@ -28,16 +28,18 @@ export type TextProps = SpacingProps &
     as?: any;
     /** word break behaviour */
     wordBreak?: WordBreakType;
+    /** react reference to the DOM element sometime used to scroll to or set focus after an error */
+    ref?: Ref<HTMLElement>;
   };
 
-export const Text: FunctionComponent<TextProps> = props => {
+export const Text: FunctionComponent<TextProps> = forwardRef((props: TextProps, ref?: Ref<HTMLElement>) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
     ...foundTheme,
   };
 
-  return <TextStyled {...props} theme={theme} />;
-};
+  return <TextStyled {...props} ref={ref} theme={theme} />;
+});
 
 export default Text;
