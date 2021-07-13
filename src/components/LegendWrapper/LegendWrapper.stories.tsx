@@ -59,16 +59,36 @@ LegendWrapperRadioError.args = {
   hintText: 'This is hint text',
 };
 
-const TemplateWithCheckbox: Story<LegendWrapperProps> = args => (
-  <LegendWrapper {...args}>
-    <Box>
-      <CheckBox disabled={false} value="value" />
-    </Box>
-    <Box marginBottom="none">
-      <CheckBox disabled={false} value="value" />
-    </Box>
-  </LegendWrapper>
-);
+const TemplateWithCheckbox: Story<LegendWrapperProps> = args => {
+  const [selected, setSelected] = React.useState<Array<string>>([]);
+  const handleChange = (value: string) => {
+    if (selected.indexOf(value) === -1) {
+      setSelected([...selected, value]);
+    } else {
+      setSelected(selected.filter(item => item !== value));
+    }
+  };
+  return (
+    <LegendWrapper {...args}>
+      <Box>
+        <CheckBox
+          onChange={e => handleChange(e.target.value)}
+          checked={selected.indexOf('one') >= 0}
+          disabled={false}
+          value="one"
+        />
+      </Box>
+      <Box marginBottom="none">
+        <CheckBox
+          onChange={e => handleChange(e.target.value)}
+          checked={selected.indexOf('two') >= 0}
+          disabled={false}
+          value="two"
+        />
+      </Box>
+    </LegendWrapper>
+  );
+};
 
 export const LegendWrapperCheckbox: Story<LegendWrapperProps> = TemplateWithCheckbox.bind({});
 LegendWrapperCheckbox.storyName = 'LegendWrapper with Checkbox';

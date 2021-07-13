@@ -67,7 +67,10 @@ export const StyledLabel = styled.label<StyledLabelProps>`
       : theme.colors.inputBorder};
   cursor: pointer;
   display: block;
-  font-weight: ${({ theme, checked }) => (checked || !theme.utilities.useDefaultFocusRec ? 'bold' : 'normal')};
+  font-weight: ${({ theme, checked }) =>
+    checked || !theme.utilities.useDefaultFocusRect
+      ? theme.typography.fontWeightHeavy
+      : theme.typography.fontWeightMedium};
   color: ${({ theme, disabled }) => (disabled ? theme.colors.disabled : theme.colors.textDark)};
   padding: ${({ theme }) =>
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
@@ -82,8 +85,6 @@ export const StyledLabel = styled.label<StyledLabelProps>`
       ? null
       : css`
           min-height: 2rem;
-          font-weight: ${({ theme }) => theme.typography.fontWeightHeavy};
-
           &:hover ${CheckWrapper} ${Check} {
             border: solid 1px
               ${({
