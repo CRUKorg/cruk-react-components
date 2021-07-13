@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
@@ -10,38 +10,44 @@ export default {
   component: Radio,
 } as Meta<RadioProps>;
 
-const Template: Story<RadioProps> = args => (
-  <fieldset style={{ border: 'none' }}>
-    <Box>
-      <Radio name="example1" value="one" {...args}>
-        Option one
-      </Radio>
-    </Box>
-    <Box>
-      <Radio name="example1" value="two">
-        Option two
-      </Radio>
-    </Box>
-  </fieldset>
-);
+const Template: Story<RadioProps> = args => {
+  const [selected, setSelected] = useState(args.value);
+  const handleChange = (value: string) => {
+    setSelected(value);
+  };
+
+  return (
+    <fieldset style={{ border: 'none' }}>
+      <Box>
+        <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'one'} {...args}>
+          Option one
+        </Radio>
+      </Box>
+      <Box>
+        <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'two'} name="example2" value="two">
+          Option two
+        </Radio>
+      </Box>
+    </fieldset>
+  );
+};
 
 export const RadioDefault: Story<RadioProps> = Template.bind({});
 RadioDefault.storyName = 'Radio';
 RadioDefault.args = {
-  value: 'value',
   disabled: false,
+  name: 'example1',
+  value: 'one',
 };
 
 const TemplateWithSU2C: Story<RadioProps> = args => (
   <ThemeProvider theme={su2cTheme}>
     <fieldset style={{ border: 'none' }}>
       <Box>
-        <Radio name="example1" value="one" {...args}>
-          Option one
-        </Radio>
+        <Radio {...args}>Option one</Radio>
       </Box>
       <Box>
-        <Radio name="example1" value="two">
+        <Radio name="example2" value="two">
           Option two
         </Radio>
       </Box>
