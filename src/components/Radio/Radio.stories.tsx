@@ -11,7 +11,7 @@ export default {
 } as Meta<RadioProps>;
 
 const Template: Story<RadioProps> = args => {
-  const [selected, setSelected] = useState('one');
+  const [selected, setSelected] = useState(args.value);
   const handleChange = (value: string) => {
     setSelected(value);
   };
@@ -19,18 +19,12 @@ const Template: Story<RadioProps> = args => {
   return (
     <fieldset style={{ border: 'none' }}>
       <Box>
-        <Radio
-          onChange={e => handleChange(e.target.value)}
-          checked={selected === 'one'}
-          name="example1"
-          value="one"
-          {...args}
-        >
+        <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'one'} {...args}>
           Option one
         </Radio>
       </Box>
       <Box>
-        <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'two'} name="example1" value="two">
+        <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'two'} name="example2" value="two">
           Option two
         </Radio>
       </Box>
@@ -42,18 +36,18 @@ export const RadioDefault: Story<RadioProps> = Template.bind({});
 RadioDefault.storyName = 'Radio';
 RadioDefault.args = {
   disabled: false,
+  name: 'example1',
+  value: 'one',
 };
 
 const TemplateWithSU2C: Story<RadioProps> = args => (
   <ThemeProvider theme={su2cTheme}>
     <fieldset style={{ border: 'none' }}>
       <Box>
-        <Radio name="example1" value="one" {...args}>
-          Option one
-        </Radio>
+        <Radio {...args}>Option one</Radio>
       </Box>
       <Box>
-        <Radio name="example1" value="two">
+        <Radio name="example2" value="two">
           Option two
         </Radio>
       </Box>
