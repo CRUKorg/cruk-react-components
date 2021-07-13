@@ -24,7 +24,6 @@ const Template: Story = args => {
       <CheckBox
         onChange={e => handleChange(e.target.value)}
         checked={selected.indexOf('one') >= 0}
-        value="one"
         {...args}
       />
 
@@ -42,6 +41,7 @@ export const CheckboxDefault: Story = Template.bind({});
 CheckboxDefault.storyName = 'CheckBox';
 CheckboxDefault.args = {
   disabled: false,
+  value: 'one',
 };
 
 export const CheckboxDefaultError: Story = Template.bind({});
