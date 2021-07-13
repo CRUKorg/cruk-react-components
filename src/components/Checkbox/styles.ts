@@ -54,6 +54,7 @@ export const CheckGlyph = styled.svg`
 `;
 
 export const StyledLabel = styled.label<StyledLabelProps>`
+  background-color: ${({ theme }) => theme.colors.backgroundLight};
   position: relative;
   border-radius: ${props => props.theme.utilities.borderRadius};
   border-width: ${({ theme }) => theme.utilities.inputBorderWidth};

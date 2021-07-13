@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
@@ -22,20 +22,26 @@ LegendWrapperDefault.args = {
   hintText: 'This is hint text',
 };
 
-const TemplateWithRadio: Story<LegendWrapperProps> = args => (
-  <LegendWrapper {...args}>
-    <Box>
-      <Radio name="example1" value="one">
-        Option one
-      </Radio>
-    </Box>
-    <Box marginBottom="none">
-      <Radio name="example1" value="two">
-        Option two
-      </Radio>
-    </Box>
-  </LegendWrapper>
-);
+const TemplateWithRadio: Story<LegendWrapperProps> = args => {
+  const [selected, setSelected] = useState('one');
+  const handleChange = (value: string) => {
+    setSelected(value);
+  };
+  return (
+    <LegendWrapper {...args}>
+      <Box>
+        <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'one'} name="example1" value="one">
+          Option one
+        </Radio>
+      </Box>
+      <Box marginBottom="none">
+        <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'two'} name="example1" value="two">
+          Option two
+        </Radio>
+      </Box>
+    </LegendWrapper>
+  );
+};
 
 export const LegendWrapperRadio: Story<LegendWrapperProps> = TemplateWithRadio.bind({});
 LegendWrapperRadio.storyName = 'LegendWrapper with Radio Button';
@@ -100,22 +106,38 @@ LegendWrapperCheckboxError.args = {
   hintText: 'This is hint text',
 };
 
-const TemplateWithSU2C: Story<LegendWrapperProps> = args => (
-  <ThemeProvider theme={su2cTheme}>
-    <LegendWrapper {...args}>
-      <Box>
-        <Radio name="example2" value="one">
-          Option one
-        </Radio>
-      </Box>
-      <Box marginBottom="none">
-        <Radio name="example2" value="two">
-          Option two
-        </Radio>
-      </Box>
-    </LegendWrapper>
-  </ThemeProvider>
-);
+const TemplateWithSU2C: Story<LegendWrapperProps> = args => {
+  const [selected, setSelected] = useState('one');
+  const handleChange = (value: string) => {
+    setSelected(value);
+  };
+  return (
+    <ThemeProvider theme={su2cTheme}>
+      <LegendWrapper {...args}>
+        <Box>
+          <Radio
+            onChange={e => handleChange(e.target.value)}
+            checked={selected === 'one'}
+            name="example2One"
+            value="one"
+          >
+            Option one
+          </Radio>
+        </Box>
+        <Box marginBottom="none">
+          <Radio
+            onChange={e => handleChange(e.target.value)}
+            checked={selected === 'two'}
+            name="example2Two"
+            value="two"
+          >
+            Option two
+          </Radio>
+        </Box>
+      </LegendWrapper>
+    </ThemeProvider>
+  );
+};
 
 export const SU2CLegendWrapperRadioError: Story<LegendWrapperProps> = TemplateWithSU2C.bind({});
 SU2CLegendWrapperRadioError.storyName = 'SU2C LegendWrapper with Error and Radio Button';
