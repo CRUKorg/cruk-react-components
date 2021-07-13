@@ -52,6 +52,7 @@ type StyledLabelProps = {
 };
 
 export const StyledLabel = styled.label<StyledLabelProps>`
+  background-color: ${({ theme }) => theme.colors.backgroundLight};
   width: 100%;
   position: relative;
   border-radius: ${({ theme }) => theme.utilities.borderRadius};
@@ -96,6 +97,8 @@ export const StyledLabel = styled.label<StyledLabelProps>`
 export const VerticalAlign = styled.span`
   vertical-align: middle;
   line-height: 100%;
+  background-color: ${({ theme }) => theme.colors.backgroundLight};
+  z-index: 1;
 `;
 
 export const SelectedBorder = styled.div`
@@ -104,6 +107,8 @@ export const SelectedBorder = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  z-index: 0;
 `;
 
 export const StyledInput = styled.input`
