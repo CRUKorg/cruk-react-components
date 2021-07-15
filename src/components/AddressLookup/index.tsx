@@ -139,6 +139,10 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
         .catch(err => onAddressError(err));
     };
 
+    const selectAddress = (address: AddressOptionsType) => {
+      if (address.Type === 'Address') return getAddress(address.Id);
+      search(address.Text, address.Id);
+    };
     return (
       <>
         <TextField
@@ -197,8 +201,12 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
                     isActive={index === activeOption}
                     key={address.Id}
                     onClick={() => {
-                      if (address.Type === 'Address') return getAddress(address.Id);
-                      search(address.Text, address.Id);
+                      selectAddress(address);
+                    }}
+                    onKeyDown={e => {
+                      if (e.key === 'Enter') {
+                        selectAddress(address);
+                      }
                     }}
                     role="option"
                     theme={theme}
