@@ -18,12 +18,16 @@ const Template: Story<RadioProps> = args => {
 
   return (
     <fieldset style={{ border: 'none' }}>
-      <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'one'} {...args}>
-        Option one
-      </Radio>
-      <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'two'} name="example2" value="two">
-        Option two
-      </Radio>
+      <Box>
+        <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'one'} {...args}>
+          Option one
+        </Radio>
+      </Box>
+      <Box>
+        <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'two'} name="example2" value="two">
+          Option two
+        </Radio>
+      </Box>
     </fieldset>
   );
 };
