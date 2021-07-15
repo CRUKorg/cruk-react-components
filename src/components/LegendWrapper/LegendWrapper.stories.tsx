@@ -135,10 +135,22 @@ const TemplateWithSU2C: Story<LegendWrapperProps> = args => {
   return (
     <ThemeProvider theme={su2cTheme}>
       <LegendWrapper {...args}>
-        <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'one'} name="example2One" value="one">
+        <Radio
+          onChange={e => handleChange(e.target.value)}
+          checked={selected === 'one'}
+          hasError={true}
+          name="example2One"
+          value="one"
+        >
           Option one
         </Radio>
-        <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'two'} name="example2Two" value="two">
+        <Radio
+          onChange={e => handleChange(e.target.value)}
+          checked={selected === 'two'}
+          hasError={true}
+          name="example2Two"
+          value="two"
+        >
           Option two
         </Radio>
       </LegendWrapper>
