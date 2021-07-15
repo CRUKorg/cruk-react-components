@@ -39,6 +39,35 @@ const TemplateWithRadio: Story<LegendWrapperProps> = args => {
   );
 };
 
+const TemplateErrorWithRadio: Story<LegendWrapperProps> = args => {
+  const [selected, setSelected] = useState('one');
+  const handleChange = (value: string) => {
+    setSelected(value);
+  };
+  return (
+    <LegendWrapper {...args}>
+      <Radio
+        onChange={e => handleChange(e.target.value)}
+        checked={selected === 'one'}
+        hasError={true}
+        name="example1"
+        value="one"
+      >
+        Option one
+      </Radio>
+      <Radio
+        onChange={e => handleChange(e.target.value)}
+        checked={selected === 'two'}
+        hasError={true}
+        name="example1"
+        value="two"
+      >
+        Option two
+      </Radio>
+    </LegendWrapper>
+  );
+};
+
 export const LegendWrapperRadio: Story<LegendWrapperProps> = TemplateWithRadio.bind({});
 LegendWrapperRadio.storyName = 'LegendWrapper with Radio Button';
 LegendWrapperRadio.args = {
@@ -46,8 +75,8 @@ LegendWrapperRadio.args = {
   hintText: 'This is hint text',
 };
 
-export const LegendWrapperRadioError: Story<LegendWrapperProps> = TemplateWithRadio.bind({});
-LegendWrapperRadioError.storyName = 'LegendWrapper with Error and Radio Button';
+export const LegendWrapperRadioError: Story<LegendWrapperProps> = TemplateErrorWithRadio.bind({});
+LegendWrapperRadioError.storyName = 'LegendWrapper with Error and Radio Buttons';
 LegendWrapperRadioError.args = {
   legendText: 'Legend Example',
   hasError: true,
