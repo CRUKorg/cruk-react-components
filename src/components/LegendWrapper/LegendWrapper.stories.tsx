@@ -39,7 +39,7 @@ const TemplateWithRadio: Story<LegendWrapperProps> = args => {
   );
 };
 
-const TemplateErrorWithRadio: Story<LegendWrapperProps> = args => {
+const TemplateLegendErrorWithRadio: Story<LegendWrapperProps> = args => {
   const [selected, setSelected] = useState('one');
   const handleChange = (value: string) => {
     setSelected(value);
@@ -75,7 +75,7 @@ LegendWrapperRadio.args = {
   hintText: 'This is hint text',
 };
 
-export const LegendWrapperRadioError: Story<LegendWrapperProps> = TemplateErrorWithRadio.bind({});
+export const LegendWrapperRadioError: Story<LegendWrapperProps> = TemplateLegendErrorWithRadio.bind({});
 LegendWrapperRadioError.storyName = 'LegendWrapper with Error and Radio Buttons';
 LegendWrapperRadioError.args = {
   legendText: 'Legend Example',
