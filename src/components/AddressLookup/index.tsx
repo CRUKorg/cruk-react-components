@@ -66,8 +66,6 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
     const [addressOptions, setAddressOptions] = React.useState<AddressOptionsType[]>([]);
     const [activeOption, setActiveOption] = React.useState(-1);
     const wrapperRef = useRef<HTMLDivElement>(null);
-    const listRef = useRef<HTMLUListElement>(null);
-    const listItemRef = useRef<HTMLLIElement>(null);
     const foundTheme = useTheme();
     const theme = {
       ...defaultTheme,
@@ -192,10 +190,9 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
                   's'} matching your search. Use up and down arrow keys to navigate`}
             </ScreenReaderOnly>
             <ListWrapper tabIndex={!!addressOptions.length ? 0 : undefined} ref={wrapperRef}>
-              <List ref={listRef} aria-label="found addresses" id="found_addresses" role="listbox" theme={theme}>
+              <List aria-label="found addresses" id="found_addresses" role="listbox" theme={theme}>
                 {addressOptions.map((address, index) => (
                   <ListItem
-                    ref={listItemRef}
                     id={`addressOptions-${index}`}
                     isActive={index === activeOption}
                     key={address.Id}
