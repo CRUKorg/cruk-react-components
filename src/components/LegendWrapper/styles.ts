@@ -25,7 +25,12 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
     }
   }
   label {
-    border: solid ${({ theme }) => theme.utilities.inputBorderWidth}
-      ${({ hasError, theme }) => (hasError ? theme.colors.textError : theme.colors.textInputBorder)};
+    border-style: solid;
+    border-width: ${({ theme }) => theme.utilities.inputBorderWidth};
+    border-color: ${({ hasError, theme }) => hasError && theme.colors.textError};
+    margin-bottom: ${({ theme }) => theme.spacing.s};
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 `;
