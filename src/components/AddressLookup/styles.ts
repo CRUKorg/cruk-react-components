@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const ListWrapper = styled.div`
+interface ListWrapperProps extends React.HTMLProps<HTMLDivElement> {
+  tabIndex?: number;
+}
+
+export const ListWrapper = styled.div<ListWrapperProps>`
   position: relative;
 `;
 
