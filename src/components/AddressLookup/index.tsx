@@ -2,7 +2,6 @@ import React, { FunctionComponent, InputHTMLAttributes, useCallback, useEffect, 
 import { useTheme } from 'styled-components';
 
 import defaultTheme from 'src/themes/cruk';
-import ErrorText from 'src/components/ErrorText';
 import Icon from 'src/components/Icon';
 import TextField from 'src/components/TextField';
 import Text from 'src/components/Text';
@@ -211,7 +210,6 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
             </ListWrapper>
           </>
         )}
-        {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
       </>
     );
   },
