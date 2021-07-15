@@ -86,37 +86,6 @@ const TemplateWithCheckbox: Story<LegendWrapperProps> = args => {
   );
 };
 
-const TemplateWithCheckboxError: Story<LegendWrapperProps> = args => {
-  const [selected, setSelected] = React.useState<Array<string>>([]);
-  const handleChange = (value: string) => {
-    if (selected.indexOf(value) === -1) {
-      setSelected([...selected, value]);
-    } else {
-      setSelected(selected.filter(item => item !== value));
-    }
-  };
-  return (
-    <LegendWrapper {...args}>
-      <CheckBox
-        onChange={e => handleChange(e.target.value)}
-        checked={selected.indexOf('one') >= 0}
-        disabled={false}
-        value="one"
-        hasError={true}
-        errorMessage="Error message"
-      />
-      <CheckBox
-        onChange={e => handleChange(e.target.value)}
-        checked={selected.indexOf('two') >= 0}
-        disabled={false}
-        value="two"
-        hasError={true}
-        errorMessage="Error message"
-      />
-    </LegendWrapper>
-  );
-};
-
 const TemplateWithErrorAndCheckbox: Story<LegendWrapperProps> = args => {
   const [selected, setSelected] = React.useState<Array<string>>([]);
   const handleChange = (value: string) => {
@@ -160,13 +129,6 @@ LegendWrapperErrorWithCheckbox.args = {
   hintText: 'This is hint text',
   hasError: true,
   errorMessage: 'Error message',
-};
-
-export const LegendWrapperCheckboxError: Story<LegendWrapperProps> = TemplateWithCheckboxError.bind({});
-LegendWrapperCheckboxError.storyName = 'LegendWrapper with Checkbox Error';
-LegendWrapperCheckboxError.args = {
-  legendText: 'Legend Example',
-  hintText: 'This is hint text',
 };
 
 const TemplateWithSU2C: Story<LegendWrapperProps> = args => {
