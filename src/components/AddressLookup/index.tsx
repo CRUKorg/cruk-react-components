@@ -73,18 +73,20 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
     };
 
     useEffect(() => {
-      const handleEsc = (event: KeyboardEvent) => {
-        if (event.keyCode === 27) clearOptions();
+      const handleKeyBoardEventsToClearOptions = (event: KeyboardEvent) => {
+        // keyCode 27 = Esc
+        // keyCode 9 = Tab
+        if ([9, 27].includes(event.keyCode)) clearOptions();
       };
       const handleClickOutside = (event: MouseEvent) => {
         if (wrapperRef.current && event.target instanceof HTMLElement && !wrapperRef.current.contains(event.target))
           clearOptions();
       };
       document.addEventListener('mousedown', handleClickOutside);
-      document.addEventListener('keydown', handleEsc, false);
+      document.addEventListener('keydown', handleKeyBoardEventsToClearOptions, false);
       return () => {
         document.removeEventListener('mousedown', handleClickOutside);
-        document.removeEventListener('keydown', handleEsc, false);
+        document.removeEventListener('keydown', handleKeyBoardEventsToClearOptions, false);
       };
     });
 
