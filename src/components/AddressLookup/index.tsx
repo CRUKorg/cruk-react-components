@@ -76,18 +76,10 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
 
     useEffect(() => {
       const handleTab = (event: KeyboardEvent) => {
-        const currentTarget = event.currentTarget;
-        if (
-          currentTarget instanceof HTMLDivElement ||
-          currentTarget instanceof HTMLUListElement ||
-          currentTarget instanceof HTMLLIElement
-        ) {
-          const AddressElements = [wrapperRef.current, listRef.current, listItemRef.current];
-          const isAddressElements = AddressElements.includes(currentTarget);
-          console.log('wrapperRef: ', isAddressElements);
-          // keyCode 9 = Tab
-          if (event.keyCode === 9 && !isAddressElements) clearOptions();
-        }
+        setTimeout(() => {
+          const elId = 'addressOptions-';
+          if (event.keyCode === 9 && !document.activeElement?.id.startsWith(elId)) clearOptions();
+        }, 0);
       };
       const handleEsc = (event: KeyboardEvent) => {
         if (event.keyCode === 27) clearOptions();
