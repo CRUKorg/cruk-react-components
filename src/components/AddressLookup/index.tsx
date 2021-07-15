@@ -66,6 +66,8 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
     const [addressOptions, setAddressOptions] = React.useState<AddressOptionsType[]>([]);
     const [activeOption, setActiveOption] = React.useState(-1);
     const wrapperRef = useRef<HTMLDivElement>(null);
+    const listRef = useRef<HTMLUListElement>(null);
+    const listItemRef = useRef<HTMLLIElement>(null);
     const foundTheme = useTheme();
     const theme = {
       ...defaultTheme,
@@ -74,9 +76,18 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
 
     useEffect(() => {
       const handleTab = (event: KeyboardEvent) => {
-        // keyCode 9 = Tab
-        console.log('wrapperRef: ', wrapperRef.current, !wrapperRef.current);
-        if (event.keyCode === 9 && !wrapperRef.current) clearOptions();
+        const currentTarget = event.currentTarget;
+        if (
+          currentTarget instanceof HTMLDivElement ||
+          currentTarget instanceof HTMLUListElement ||
+          currentTarget instanceof HTMLLIElement
+        ) {
+          const AddressElements = [wrapperRef.current, listRef.current, listItemRef.current];
+          const isAddressElements = AddressElements.includes(currentTarget);
+          console.log('wrapperRef: ', isAddressElements);
+          // keyCode 9 = Tab
+          if (event.keyCode === 9 && !isAddressElements) clearOptions();
+        }
       };
       const handleEsc = (event: KeyboardEvent) => {
         if (event.keyCode === 27) clearOptions();
@@ -189,9 +200,10 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
                   's'} matching your search. Use up and down arrow keys to navigate`}
             </ScreenReaderOnly>
             <ListWrapper tabIndex={!!addressOptions.length ? 0 : undefined} ref={wrapperRef}>
-              <List aria-label="found addresses" id="found_addresses" role="listbox" theme={theme}>
+              <List ref={listRef} aria-label="found addresses" id="found_addresses" role="listbox" theme={theme}>
                 {addressOptions.map((address, index) => (
                   <ListItem
+                    ref={listItemRef}
                     id={`addressOptions-${index}`}
                     isActive={index === activeOption}
                     key={address.Id}
