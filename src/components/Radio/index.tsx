@@ -17,7 +17,7 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
 /**
  * A single radio button which should be part of a field set of radio buttons
  *
- * The value or children becomes the label, if you want an outer label for a radio or group of radios please use a legend element
+ * The value or children becomes the label, if you want an outer label for a radio or group of radios please use a LegendWrapper component
  */
 const Radio: FC<RadioProps> = forwardRef((props: RadioProps, ref?: Ref<HTMLInputElement>) => {
   const foundTheme = useTheme();
