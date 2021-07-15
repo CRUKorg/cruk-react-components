@@ -193,7 +193,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
                 `We have found ${addressOptions.length} result${addressOptions.length !== 1 &&
                   's'} matching your search. Use up and down arrow keys to navigate`}
             </ScreenReaderOnly>
-            <ListWrapper tabIndex={!!addressOptions.length ? 0 : undefined} ref={wrapperRef}>
+            <ListWrapper ref={wrapperRef}>
               <List aria-label="found addresses" id="found_addresses" role="listbox" theme={theme}>
                 {addressOptions.map((address, index) => (
                   <ListItem
