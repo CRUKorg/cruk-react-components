@@ -197,6 +197,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
               <List aria-label="found addresses" id="found_addresses" role="listbox" theme={theme}>
                 {addressOptions.map((address, index) => (
                   <ListItem
+                    tabIndex={!!addressOptions.length ? 0 : undefined}
                     id={`addressOptions-${index}`}
                     isActive={index === activeOption}
                     key={address.Id}
