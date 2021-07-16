@@ -1,4 +1,16 @@
-import React, { FunctionComponent, InputHTMLAttributes, useCallback, useEffect, Ref, useRef, forwardRef } from 'react';
+import React, {
+  FunctionComponent,
+  InputHTMLAttributes,
+  useCallback,
+  useEffect,
+  Ref,
+  useRef,
+  forwardRef,
+  FocusEvent,
+  ChangeEvent,
+  KeyboardEvent,
+  useState,
+} from 'react';
 import { useTheme } from 'styled-components';
 
 import defaultTheme from 'src/themes/cruk';
@@ -6,6 +18,7 @@ import Icon from 'src/components/Icon';
 import TextField from 'src/components/TextField';
 import Text from 'src/components/Text';
 import debounce from 'src/utils/debounce';
+import { useKey } from 'src/hooks/useKey';
 
 import { ListWrapper, ListItem, ScreenReaderOnly, List } from './styles';
 
@@ -35,6 +48,8 @@ export type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
   label?: string;
   /** callback function which is passed the error */
   onAddressError?: (error: Error) => void;
+  /** onBlur handler */
+  onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
   /** attach a DOM reference variable to your component */
   ref?: Ref<HTMLInputElement>;
 };
@@ -59,42 +74,19 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
       onAddressError = err => {},
       onAddressSelected,
       onChange,
+      onBlur,
       ...props
     }: AddressLookupProps,
     ref?: Ref<HTMLInputElement>,
   ) => {
-    const [addressOptions, setAddressOptions] = React.useState<AddressOptionsType[]>([]);
-    const [activeOption, setActiveOption] = React.useState(-1);
+    const [addressOptions, setAddressOptions] = useState<AddressOptionsType[]>([]);
+    const [activeOption, setActiveOption] = useState(-1);
     const wrapperRef = useRef<HTMLDivElement>(null);
     const foundTheme = useTheme();
     const theme = {
       ...defaultTheme,
       ...foundTheme,
     };
-
-    useEffect(() => {
-      const handleTab = (event: KeyboardEvent) => {
-        setTimeout(() => {
-          const elId = 'addressOptions-';
-          if (event.keyCode === 9 && !document.activeElement?.id.startsWith(elId)) clearOptions();
-        }, 0);
-      };
-      const handleEsc = (event: KeyboardEvent) => {
-        if (event.keyCode === 27) clearOptions();
-      };
-      const handleClickOutside = (event: MouseEvent) => {
-        if (wrapperRef.current && event.target instanceof HTMLElement && !wrapperRef.current.contains(event.target))
-          clearOptions();
-      };
-      document.addEventListener('mousedown', handleClickOutside);
-      document.addEventListener('keydown', handleEsc, false);
-      document.addEventListener('keydown', handleTab, false);
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-        document.removeEventListener('keydown', handleEsc, false);
-        document.removeEventListener('keydown', handleTab, false);
-      };
-    });
 
     const clearOptions = () => {
       setActiveOption(-1);
@@ -143,6 +135,58 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
       if (address.Type === 'Address') return getAddress(address.Id);
       search(address.Text, address.Id);
     };
+
+    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter' && addressOptions[activeOption]) {
+        e.preventDefault();
+        if (addressOptions[activeOption].Type === 'Address') return getAddress(addressOptions[activeOption].Id);
+        search(addressOptions[activeOption].Text, addressOptions[activeOption].Id);
+        setActiveOption(-1);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (activeOption <= -1) return setActiveOption(addressOptions.length - 1);
+        setActiveOption(activeOption - 1);
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (activeOption + 1 >= addressOptions.length) return setActiveOption(0);
+        setActiveOption(activeOption + 1);
+      } else {
+        setActiveOption(-1);
+      }
+    };
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      searchDebounced(e.target.value);
+      if (onChange) onChange(e);
+    };
+
+    const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
+      const isOptionsOpen = setAddressOptions.length;
+      if (onBlur && !isOptionsOpen) onBlur(e);
+    };
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (wrapperRef.current && event.target instanceof HTMLElement && !wrapperRef.current.contains(event.target))
+        clearOptions();
+    };
+
+    useEffect(() => {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    });
+
+    useKey(
+      () => {
+        clearOptions();
+      },
+      {
+        detectKeys: ['Escape', 'Tab'],
+      },
+      [],
+    );
+
     return (
       <>
         <TextField
@@ -163,29 +207,11 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
           role="combobox"
           type="search"
           {...props}
-          onKeyDown={e => {
-            if (e.key === 'Enter' && addressOptions[activeOption]) {
-              e.preventDefault();
-              if (addressOptions[activeOption].Type === 'Address') return getAddress(addressOptions[activeOption].Id);
-              search(addressOptions[activeOption].Text, addressOptions[activeOption].Id);
-              setActiveOption(-1);
-            } else if (e.key === 'ArrowUp') {
-              e.preventDefault();
-              if (activeOption <= -1) return setActiveOption(addressOptions.length - 1);
-              setActiveOption(activeOption - 1);
-            } else if (e.key === 'ArrowDown') {
-              e.preventDefault();
-              if (activeOption + 1 >= addressOptions.length) return setActiveOption(0);
-              setActiveOption(activeOption + 1);
-            } else {
-              setActiveOption(-1);
-            }
-          }}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            searchDebounced(e.target.value);
-            if (onChange) onChange(e);
-          }}
+          onKeyDown={handleKeyDown}
+          onChange={handleChange}
+          onBlur={handleBlur}
         />
+
         {!!addressOptions.length && (
           <>
             <ScreenReaderOnly role="status" aria-live="assertive">
@@ -197,7 +223,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
               <List aria-label="found addresses" id="found_addresses" role="listbox" theme={theme}>
                 {addressOptions.map((address, index) => (
                   <ListItem
-                    tabIndex={!!addressOptions.length ? 0 : undefined}
+                    tabIndex={0}
                     id={`addressOptions-${index}`}
                     isActive={index === activeOption}
                     key={address.Id}
