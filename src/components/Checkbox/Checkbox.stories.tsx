@@ -20,11 +20,12 @@ const Template: Story = args => {
     }
   };
   return (
-    <Box>
+    <>
       <CheckBox onChange={e => handleChange(e.target.value)} checked={selected.indexOf('one') >= 0} {...args} />
-
-      <CheckBox onChange={e => handleChange(e.target.value)} checked={selected.indexOf('two') >= 0} value="two" />
-    </Box>
+      <Box paddingTop="xs">
+        <CheckBox onChange={e => handleChange(e.target.value)} checked={selected.indexOf('two') >= 0} value="two" />
+      </Box>
+    </>
   );
 };
 
@@ -44,16 +45,18 @@ const TemplateError: Story = args => {
     }
   };
   return (
-    <Box>
+    <>
       <CheckBox onChange={e => handleChange(e.target.value)} checked={selected.indexOf('one') >= 0} {...args} />
-      <CheckBox
-        onChange={e => handleChange(e.target.value)}
-        checked={selected.indexOf('two') >= 0}
-        value="two"
-        hasError={true}
-        errorMessage="Error Message"
-      />
-    </Box>
+      <Box paddingTop="xs">
+        <CheckBox
+          onChange={e => handleChange(e.target.value)}
+          checked={selected.indexOf('two') >= 0}
+          value="two"
+          hasError={true}
+          errorMessage="Error Message"
+        />
+      </Box>
+    </>
   );
 };
 
