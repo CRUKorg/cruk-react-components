@@ -21,7 +21,7 @@ const Template: Story<RadioProps> = args => {
       <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'one'} {...args}>
         Option one
       </Radio>
-      <Box paddingTop="xs">
+      <Box paddingTop="xxs">
         <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'two'} name="example2" value="two">
           Option two
         </Radio>
