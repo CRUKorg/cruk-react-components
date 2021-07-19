@@ -67,7 +67,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
       : theme.colors.inputBorder};
   cursor: pointer;
   display: block;
-  margin-bottom: ${({ theme }) => theme.spacing.xxs};
+  margin-bottom: ${({ theme, hasError }) => hasError && theme.spacing.xxs};
   font-weight: ${({ theme, checked }) =>
     checked || !theme.utilities.useDefaultFocusRect
       ? theme.typography.fontWeightHeavy
