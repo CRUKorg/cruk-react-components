@@ -161,7 +161,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
     };
 
     const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
-      const isOptionsOpen = setAddressOptions.length;
+      const isOptionsOpen = !!addressOptions.length;
       if (onBlur && !isOptionsOpen) onBlur(e);
     };
 
