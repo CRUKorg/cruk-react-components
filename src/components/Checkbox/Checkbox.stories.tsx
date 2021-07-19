@@ -47,7 +47,7 @@ const TemplateError: Story = args => {
   return (
     <>
       <CheckBox onChange={e => handleChange(e.target.value)} checked={selected.indexOf('one') >= 0} {...args} />
-      <Box paddingTop="xs">
+      <Box paddingTop="xxs">
         <CheckBox
           onChange={e => handleChange(e.target.value)}
           checked={selected.indexOf('two') >= 0}

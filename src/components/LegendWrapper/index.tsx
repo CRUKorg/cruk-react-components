@@ -54,7 +54,7 @@ export const LegendWrapper: FC<LegendWrapperProps> = ({
         {!!hintText && hintTextElement}
         {children}
         {!!errorMessage && (
-          <Box paddingTop="xs">
+          <Box paddingTop="xxs">
             <ErrorText>{errorMessage}</ErrorText>
           </Box>
         )}
