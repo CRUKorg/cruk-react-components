@@ -2,6 +2,7 @@ import React, { FC, ReactNode } from 'react';
 import { useTheme, ThemeProvider } from 'styled-components';
 
 import defaultTheme from 'src/themes/cruk';
+import Box from 'src/components/Box';
 import ErrorText from 'src/components/ErrorText';
 import Text from 'src/components/Text';
 
@@ -52,7 +53,11 @@ export const LegendWrapper: FC<LegendWrapperProps> = ({
         )}
         {!!hintText && hintTextElement}
         {children}
-        {!!errorMessage && <ErrorText>{errorMessage}</ErrorText>}
+        {!!errorMessage && (
+          <Box paddingTop="xs">
+            <ErrorText>{errorMessage}</ErrorText>
+          </Box>
+        )}
       </StyledFieldset>
     </ThemeProvider>
   );
