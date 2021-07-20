@@ -103,14 +103,13 @@ const TemplateWithCheckbox: Story<LegendWrapperProps> = args => {
         disabled={false}
         value="one"
       />
-      <Box marginTop="xxs" marginBottom="none">
-        <CheckBox
-          onChange={e => handleChange(e.target.value)}
-          checked={selected.indexOf('two') >= 0}
-          disabled={false}
-          value="two"
-        />
-      </Box>
+
+      <CheckBox
+        onChange={e => handleChange(e.target.value)}
+        checked={selected.indexOf('two') >= 0}
+        disabled={false}
+        value="two"
+      />
     </LegendWrapper>
   );
 };
@@ -133,15 +132,13 @@ const TemplateWithErrorAndCheckbox: Story<LegendWrapperProps> = args => {
         value="one"
         hasError={true}
       />
-      <Box marginTop="xxs" marginBottom="none">
-        <CheckBox
-          onChange={e => handleChange(e.target.value)}
-          checked={selected.indexOf('two') >= 0}
-          disabled={false}
-          value="two"
-          hasError={true}
-        />
-      </Box>
+      <CheckBox
+        onChange={e => handleChange(e.target.value)}
+        checked={selected.indexOf('two') >= 0}
+        disabled={false}
+        value="two"
+        hasError={true}
+      />
     </LegendWrapper>
   );
 };
