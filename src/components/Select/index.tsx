@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactElement, SelectHTMLAttributes, Ref, forwardRef } from 'react';
+import React, { FunctionComponent, ReactNode, SelectHTMLAttributes, Ref, forwardRef } from 'react';
 import { useTheme } from 'styled-components';
 
 import defaultTheme from 'src/themes/cruk';
@@ -15,7 +15,7 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   /** label text */
   label: string;
   /** hind text or custom component */
-  hintText?: ReactElement | string;
+  hintText?: ReactNode;
   /** react DOM reference of object used scrolling to it with errors etc */
   ref?: Ref<HTMLSelectElement>;
 };

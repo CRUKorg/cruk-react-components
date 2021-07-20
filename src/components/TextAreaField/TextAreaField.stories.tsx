@@ -17,10 +17,13 @@ TextAreaFieldDefault.storyName = 'TextAreaField';
 TextAreaFieldDefault.args = {
   value: undefined,
   disabled: false,
+  required: false,
   label: 'TextAreaField',
+  hintText: undefined,
   resize: 'horizontal',
   lineCount: 5,
-  required: false,
+  hasError: false,
+  errorMessage: undefined,
 };
 
 export const TextAreaFieldWithError: Story<TextAreaFieldProps> = Template.bind({});
@@ -29,11 +32,12 @@ TextAreaFieldWithError.args = {
   value: undefined,
   disabled: false,
   label: 'TextAreaField',
-  hasError: true,
-  errorMessage: 'error message',
+  hintText: undefined,
   resize: 'horizontal',
   lineCount: 5,
   required: false,
+  hasError: true,
+  errorMessage: 'error message',
 };
 
 const TemplateWithSU2C: Story<TextAreaFieldProps> = args => (
@@ -47,10 +51,13 @@ SU2CTextAreaField.storyName = 'SU2C TextAreaField';
 SU2CTextAreaField.args = {
   value: undefined,
   disabled: false,
+  required: false,
   label: 'TextAreaField',
+  hintText: undefined,
   resize: 'horizontal',
   lineCount: 5,
-  required: false,
+  hasError: false,
+  errorMessage: undefined,
 };
 
 export const SU2CTextAreaFieldWithError: Story<TextAreaFieldProps> = TemplateWithSU2C.bind({});
@@ -58,10 +65,11 @@ SU2CTextAreaFieldWithError.storyName = 'SU2C TextAreaField With Error';
 SU2CTextAreaFieldWithError.args = {
   value: undefined,
   disabled: false,
+  required: false,
   label: 'TextAreaField',
-  hasError: true,
-  errorMessage: 'error message',
+  hintText: undefined,
   resize: 'horizontal',
   lineCount: 5,
-  required: false,
+  hasError: true,
+  errorMessage: 'error message',
 };

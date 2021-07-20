@@ -8,21 +8,28 @@ type StyledFieldsetProps = {
   hasHintText: boolean;
 };
 
+export const LegendSpan = styled.span<{
+  hasHintText: boolean;
+  theme: ThemeType;
+}>`
+  display: block;
+  color: ${({ theme }) => theme.colors.textDark};
+  font-size: ${({ theme }) => theme.fontSizes.m};
+  line-height: ${({ theme }) => theme.typography.lineHeight};
+  font-weight: ${({ theme }) => theme.typography.fontWeightHeavy};
+  min-width: 3em;
+  margin-bottom: ${({ hasHintText, theme }) => (hasHintText ? theme.spacing.xxs : 0)};
+
+  & > * {
+    font-weight: ${({ theme }) => theme.typography.fontWeightMedium};
+  }
+`;
+
 export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
   border: none;
   padding: 0;
   legend {
-    margin-bottom: ${({ hasHintText, theme }) => (hasHintText ? theme.spacing.xxs : theme.spacing.xs)};
-    span {
-      color: ${({ theme }) => theme.colors.textDark};
-      font-size: ${({ theme }) => theme.fontSizes.m};
-      line-height: ${({ theme }) => theme.typography.lineHeight};
-      font-weight: ${({ theme }) => theme.typography.fontWeightHeavy};
-      min-width: 3em;
-      & > * {
-        font-weight: ${({ theme }) => theme.typography.fontWeightMedium};
-      }
-    }
+    margin-bottom: ${({ theme }) => theme.spacing.xs};
   }
   label {
     border-style: solid;
