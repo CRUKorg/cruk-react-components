@@ -103,6 +103,7 @@ const TemplateWithCheckbox: Story<LegendWrapperProps> = args => {
         disabled={false}
         value="one"
       />
+
       <CheckBox
         onChange={e => handleChange(e.target.value)}
         checked={selected.indexOf('two') >= 0}
