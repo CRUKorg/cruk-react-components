@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme } from '..';
+import { su2cTheme, Box } from '..';
 import Radio from '../Radio';
 import CheckBox from '../Checkbox';
 
@@ -32,6 +32,7 @@ const TemplateWithRadio: Story<LegendWrapperProps> = args => {
       <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'one'} name="example1" value="one">
         Option one
       </Radio>
+
       <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'two'} name="example1" value="two">
         Option two
       </Radio>
@@ -55,6 +56,7 @@ const TemplateLegendErrorWithRadio: Story<LegendWrapperProps> = args => {
       >
         Option one
       </Radio>
+
       <Radio
         onChange={e => handleChange(e.target.value)}
         checked={selected === 'two'}
