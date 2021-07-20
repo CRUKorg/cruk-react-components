@@ -57,11 +57,7 @@ export const LegendWrapper: FC<LegendWrapperProps> = ({
           </legend>
         )}
         {children}
-        {!!errorMessage && (
-          <ErrorText style={{ display: 'inline-block' }} marginTop="xxs">
-            {errorMessage}
-          </ErrorText>
-        )}
+        {!!errorMessage && <ErrorText marginTop="xxs">{errorMessage}</ErrorText>}
       </StyledFieldset>
     </ThemeProvider>
   );
