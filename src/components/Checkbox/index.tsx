@@ -17,7 +17,7 @@ export type CheckBoxProps = InputHTMLAttributes<HTMLInputElement> & {
 /**
  * Checkboxes allow the user to select one or more items.
  *
- * The value or children becomes the label, if you want an outer label for a checkbox or group of checkboxes please use a legend element
+ * The value or children becomes the label, if you want an outer label for a checkbox or group of checkboxes please use a LegendWrapper component
  */
 const Checkbox: FC<CheckBoxProps> = forwardRef((props: CheckBoxProps, ref?: Ref<HTMLInputElement>) => {
   const foundTheme = useTheme();
@@ -47,7 +47,7 @@ const Checkbox: FC<CheckBoxProps> = forwardRef((props: CheckBoxProps, ref?: Ref<
           </CheckWrapper>
         )}
       </StyledLabel>
-      {!!props.errorMessage && <ErrorText>{props.errorMessage}</ErrorText>}
+      {!!props.errorMessage && <ErrorText marginTop="xxs">{props.errorMessage}</ErrorText>}
     </ThemeProvider>
   );
 });

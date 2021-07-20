@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactElement, TextareaHTMLAttributes, Ref, forwardRef } from 'react';
+import React, { FunctionComponent, ReactNode, TextareaHTMLAttributes, Ref, forwardRef } from 'react';
 import { useTheme } from 'styled-components';
 
 import defaultTheme from 'src/themes/cruk';
@@ -13,7 +13,7 @@ export type TextAreaFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   /** flag for error styling */
   hasError?: boolean;
   /** hint text */
-  hintText?: ReactElement | string;
+  hintText?: ReactNode;
   /** label text */
   label: string;
   /** resize behaviour using the resize button on the bottom right of the component */
@@ -49,7 +49,7 @@ const TextField: FunctionComponent<TextAreaFieldProps> = forwardRef(
           theme={theme}
           ref={ref}
         />
-        {!!errorMessage && <ErrorText>{errorMessage}</ErrorText>}
+        {!!errorMessage && <ErrorText marginTop="xxs">{errorMessage}</ErrorText>}
       </LabelWrapper>
     );
   },

@@ -15,7 +15,7 @@
     "lib"
   ],
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.docs.js --open --hot --mode development --historyApiFallback",
+    "start": "webpack server --config webpack.config.docs.js --mode development",
     "clean-lib": "rm -rf ./lib",
     "build-lib": "npm run clean-lib && webpack --config webpack.config.lib.js --mode production",
     "build-docs": "webpack --config webpack.config.docs.js --mode production",
