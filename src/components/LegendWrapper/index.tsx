@@ -18,7 +18,7 @@ export type LegendWrapperProps = {
   /** when required (required) appears in legend */
   required?: boolean;
   /** hint text */
-  hintText?: ReactNode | string;
+  hintText?: ReactNode;
 };
 /**
  * LegendWrapper allows the user to add an outer label for a checkbox / group of checkboxes / radio buttons or a group of radio buttons.

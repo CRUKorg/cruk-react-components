@@ -72,10 +72,6 @@ export const StyledLabel = styled.label<StyledLabelProps>`
       ? theme.typography.fontWeightHeavy
       : theme.typography.fontWeightMedium};
   color: ${({ theme, disabled }) => (disabled ? theme.colors.disabled : theme.colors.textDark)};
-  margin-bottom: ${({ theme }) => theme.spacing.xxs};
-  &:last-of-type {
-    margin-bottom: 0;
-  }
   padding: ${({ theme }) =>
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
   &:focus ~ ${CheckWrapper} ${Check} {
