@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactElement } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import { useTheme, ThemeProvider } from 'styled-components';
 
 import Text from 'src/components/Text';
@@ -10,7 +10,7 @@ type LabelWrapperProps = {
   /** label text */
   label: string;
   /** hint text or react element in it's place */
-  hintText?: ReactElement | string;
+  hintText?: ReactNode;
   /** when required (required) appears in label */
   required?: boolean;
   /** flag to stop (required) appearing in label, useful for compound form components like DateInput */

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, InputHTMLAttributes, ReactElement, Ref, forwardRef } from 'react';
+import React, { FunctionComponent, InputHTMLAttributes, ReactNode, Ref, forwardRef } from 'react';
 import { useTheme } from 'styled-components';
 
 import defaultTheme from 'src/themes/cruk';
@@ -11,13 +11,13 @@ export type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   /** error message text  */
   errorMessage?: string;
   /** custom component/text that appears underneath the input field */
-  extraBottom?: ReactElement | string;
+  extraBottom?: ReactNode;
   /** custom component/text that appears to the left of the input field for example prefixes like "£" */
-  extraLeft?: ReactElement | string;
+  extraLeft?: ReactNode;
   /** custom component/text that appears to the right of the input field for example a search button */
-  extraRight?: ReactElement | string;
+  extraRight?: ReactNode;
   /** custom component/text that appears above the input field for example a url domain */
-  extraTop?: ReactElement | string;
+  extraTop?: ReactNode;
   /** flag for error styling */
   hasError?: boolean;
   /** flag which controls the whether a cross icon or check icon is displayed to the right of the input field */
@@ -27,7 +27,7 @@ export type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   /** flag to hide or show the cross icon when invalid */
   isInvalidVisible?: boolean;
   /** hint text */
-  hintText?: ReactElement | string;
+  hintText?: ReactNode;
   /** label text */
   label: string;
   /** flag to stop (required) appearing in label, useful for compound form components like DateInput */
