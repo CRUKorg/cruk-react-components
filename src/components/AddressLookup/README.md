@@ -19,7 +19,7 @@ function () {
   const [city, setCity] = React.useState('');
   const [postalCode, setPostalCode] = React.useState('');
   const [country, setCountry] = React.useState('GBR');
-  
+
   const handleAddressSelected = (address) => {
     setValidated(true);
     setLine1(address.Line1);
@@ -36,6 +36,7 @@ function () {
           apiKey="MG17-ZD93-FF33-KF13"
           onAddressSelected={(address) => alert(JSON.stringify(address, null, 2))}
           onChange={(e) => console.log('value', e.target.value)}
+          onBlur={(e) => console.log('blur')}
         />
       </Box>
 
@@ -134,21 +135,20 @@ function () {
 
 ## Props
 
-| Name | Type | Options | Default | Description |
-| :- | :- | :-: | :- | :- |
-| apiKey | String |  |  | Loqate API key |
-| countries | String[] | A comma separated list of ISO 2 or 3 character country codes to limit the search within. |  | See https://www.loqate.com/resources/support/apis/Capture/Interactive/Find/1.1/ - CRUK typically uses "GBR", "GGY", "IMN", "JEY" |
-| error | String |  |  | Error message text |
-| hasError | Boolean |  | false | If true, use error styling for the input |
-| isValid | Boolean |  | true | used with isValidVisible to show valid indicator |
-| isValidVisible | Boolean |  | false | show valid indicator when isValid is true or no error exists |
-| label | String | "Home address" |  | Label text for field |
-| onAddressError | Function | | err => console.error(err) | Handler for if there is an error thrown back by Loqate |
-| onAddressSelected | Function | | | Returns address object |
-| onChange | Function | |  | Callback function called on input change|
+| Name              | Type     |                                         Options                                          | Default                   | Description                                                                                                                      |
+| :---------------- | :------- | :--------------------------------------------------------------------------------------: | :------------------------ | :------------------------------------------------------------------------------------------------------------------------------- |
+| apiKey            | String   |                                                                                          |                           | Loqate API key                                                                                                                   |
+| countries         | String[] | A comma separated list of ISO 2 or 3 character country codes to limit the search within. |                           | See https://www.loqate.com/resources/support/apis/Capture/Interactive/Find/1.1/ - CRUK typically uses "GBR", "GGY", "IMN", "JEY" |
+| error             | String   |                                                                                          |                           | Error message text                                                                                                               |
+| hasError          | Boolean  |                                                                                          | false                     | If true, use error styling for the input                                                                                         |
+| isValid           | Boolean  |                                                                                          | true                      | used with isValidVisible to show valid indicator                                                                                 |
+| isValidVisible    | Boolean  |                                                                                          | false                     | show valid indicator when isValid is true or no error exists                                                                     |
+| label             | String   |                                      "Home address"                                      |                           | Label text for field                                                                                                             |
+| onAddressError    | Function |                                                                                          | err => console.error(err) | Handler for if there is an error thrown back by Loqate                                                                           |
+| onAddressSelected | Function |                                                                                          |                           | Returns address object                                                                                                           |
+| onChange          | Function |                                                                                          |                           | Callback function called on input change                                                                                         |
 
 ## Accessibility
 
 - Responds to keyboard events
 - Informs screen reader users of the presence of results returned from search
-
