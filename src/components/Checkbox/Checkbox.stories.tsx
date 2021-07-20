@@ -22,9 +22,7 @@ const Template: Story = args => {
   return (
     <>
       <CheckBox onChange={e => handleChange(e.target.value)} checked={selected.indexOf('one') >= 0} {...args} />
-      <Box paddingTop="xs">
-        <CheckBox onChange={e => handleChange(e.target.value)} checked={selected.indexOf('two') >= 0} value="two" />
-      </Box>
+      <CheckBox onChange={e => handleChange(e.target.value)} checked={selected.indexOf('two') >= 0} value="two" />
     </>
   );
 };
