@@ -25,7 +25,8 @@ export const LabelWrapper: FunctionComponent<LabelWrapperProps> = props => {
     ...foundTheme,
   };
 
-  const hintTextElement = !!hintText && typeof hintText === 'string' ? <Text>{hintText}</Text> : hintText;
+  const hintTextElement =
+    !!hintText && (typeof hintText === 'string' || typeof hintText === 'number') ? <Text>{hintText}</Text> : hintText;
 
   return (
     <ThemeProvider theme={theme}>

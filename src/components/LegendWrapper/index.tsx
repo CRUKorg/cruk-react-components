@@ -39,7 +39,12 @@ export const LegendWrapper: FC<LegendWrapperProps> = ({
     ...defaultTheme,
     ...foundTheme,
   };
-  const hintTextElement = !!hintText && typeof hintText === 'string' ? <Text as="span">{hintText}</Text> : hintText;
+  const hintTextElement =
+    !!hintText && (typeof hintText === 'string' || typeof hintText === 'number') ? (
+      <Text as="span">{hintText}</Text>
+    ) : (
+      hintText
+    );
   return (
     <ThemeProvider theme={theme}>
       <StyledFieldset hasError={hasError || !!errorMessage || false} hasHintText={!!hintText}>
