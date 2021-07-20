@@ -32,6 +32,31 @@ const Template: Story<RadioProps> = args => {
   );
 };
 
+const TemplateError: Story<RadioProps> = args => {
+  const [selected, setSelected] = useState(args.value);
+  const handleChange = (value: string) => {
+    setSelected(value);
+  };
+
+  return (
+    <fieldset style={{ border: 'none' }}>
+      <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'one'} {...args}>
+        Option one
+      </Radio>
+      <Radio
+        errorMessage="Error Message"
+        hasError={true}
+        onChange={e => handleChange(e.target.value)}
+        checked={selected === 'two'}
+        name="example2"
+        value="two"
+      >
+        Option two
+      </Radio>
+    </fieldset>
+  );
+};
+
 export const RadioDefault: Story<RadioProps> = Template.bind({});
 RadioDefault.storyName = 'Radio';
 RadioDefault.args = {
@@ -40,25 +65,29 @@ RadioDefault.args = {
   value: 'one',
 };
 
-const TemplateWithSU2C: Story<RadioProps> = args => (
-  <ThemeProvider theme={su2cTheme}>
-    <fieldset style={{ border: 'none' }}>
-      <Box>
-        <Radio {...args}>Option one</Radio>
-      </Box>
-      <Box>
-        <Radio name="example2" value="two">
+const TemplateWithSU2C: Story<RadioProps> = args => {
+  const [selected, setSelected] = useState(args.value);
+  const handleChange = (value: string) => {
+    setSelected(value);
+  };
+  return (
+    <ThemeProvider theme={su2cTheme}>
+      <fieldset style={{ border: 'none' }}>
+        <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'one'} {...args}>
+          Option one
+        </Radio>
+        <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'two'} name="example2" value="two">
           Option two
         </Radio>
-      </Box>
-    </fieldset>
-  </ThemeProvider>
-);
+      </fieldset>
+    </ThemeProvider>
+  );
+};
 
-export const RadioDefaultError: Story<RadioProps> = Template.bind({});
+export const RadioDefaultError: Story<RadioProps> = TemplateError.bind({});
 RadioDefaultError.storyName = 'Radio Error';
 RadioDefaultError.args = {
-  value: 'value',
+  value: 'one',
   disabled: false,
   hasError: true,
   errorMessage: 'Error Message',
@@ -67,6 +96,6 @@ RadioDefaultError.args = {
 export const SU2CRadio: Story<RadioProps> = TemplateWithSU2C.bind({});
 SU2CRadio.storyName = 'SU2C SU2CRadio';
 SU2CRadio.args = {
-  value: 'value',
+  value: 'one',
   disabled: false,
 };

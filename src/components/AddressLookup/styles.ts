@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
-export const ListWrapper = styled.div`
+interface ListWrapperProps extends React.HTMLProps<HTMLDivElement> {
+  tabIndex?: number;
+}
+
+export const ListWrapper = styled.div<ListWrapperProps>`
   position: relative;
 `;
 
-export const List = styled.ul`
+export const List = styled.ul<{ ref?: React.Ref<HTMLUListElement> }>`
   background-color: ${({ theme }) => theme.colors.backgroundLight};
   border-radius: 3px;
   border: 2px solid #ccc;
@@ -19,7 +23,7 @@ export const List = styled.ul`
   z-index: 999;
 `;
 
-export const ListItem = styled.li<{ isActive: boolean }>`
+export const ListItem = styled.li<{ isActive: boolean; ref?: React.Ref<HTMLLIElement> }>`
   align-items: center;
   background-color: ${({ theme, isActive }) => (isActive ? theme.colors.backgroundMid : theme.colors.backgroundLight)};
   cursor: pointer;

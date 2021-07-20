@@ -29,7 +29,7 @@ import HeadingReadme from '../components/Heading/README.md';
 import HeaderReadme from '../components/Header/README.md';
 import IconReadme from '../components/Icon/README.md';
 import LinkReadme from '../components/Link/README.md';
-import LegendWrapperReadme from '../components/LegendWrapperReadme/README.md';
+import LegendWrapperReadme from '../components/LegendWrapper/README.md';
 import LoaderReadme from '../components/Loader/README.md';
 import ModalReadme from '../components/Modal/README.md';
 import PaginationReadme from '../components/Pagination/README.md';
@@ -287,6 +287,7 @@ const Docs = () => {
             <RouterLink to="/icon">Icon</RouterLink>
             <RouterLink to="/link">Link</RouterLink>
             <RouterLink to="/loader">Loader</RouterLink>
+            <RouterLink to="/legendwrapper">LegendWrapper</RouterLink>
             <RouterLink to="/modal">Modal</RouterLink>
             <RouterLink to="/pagination">Pagination</RouterLink>
             <RouterLink to="/popover">PopOver</RouterLink>
@@ -320,6 +321,7 @@ const Docs = () => {
               <HeaderReadme path="/header" />
               <IconReadme path="/icon" />
               <LinkReadme path="/link" />
+              <LegendWrapperReadme path="/legendwrapper" />
               <LoaderReadme path="/loader" />
               <ModalReadme path="/modal" />
               <PaginationReadme path="/pagination" />
