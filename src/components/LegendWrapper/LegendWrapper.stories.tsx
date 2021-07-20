@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme } from '..';
+import { su2cTheme, Box } from '..';
 import Radio from '../Radio';
 import CheckBox from '../Checkbox';
 
@@ -101,12 +101,14 @@ const TemplateWithCheckbox: Story<LegendWrapperProps> = args => {
         disabled={false}
         value="one"
       />
-      <CheckBox
-        onChange={e => handleChange(e.target.value)}
-        checked={selected.indexOf('two') >= 0}
-        disabled={false}
-        value="two"
-      />
+      <Box marginTop="xxs" marginBottom="none">
+        <CheckBox
+          onChange={e => handleChange(e.target.value)}
+          checked={selected.indexOf('two') >= 0}
+          disabled={false}
+          value="two"
+        />
+      </Box>
     </LegendWrapper>
   );
 };
@@ -129,13 +131,15 @@ const TemplateWithErrorAndCheckbox: Story<LegendWrapperProps> = args => {
         value="one"
         hasError={true}
       />
-      <CheckBox
-        onChange={e => handleChange(e.target.value)}
-        checked={selected.indexOf('two') >= 0}
-        disabled={false}
-        value="two"
-        hasError={true}
-      />
+      <Box marginTop="xxs" marginBottom="none">
+        <CheckBox
+          onChange={e => handleChange(e.target.value)}
+          checked={selected.indexOf('two') >= 0}
+          disabled={false}
+          value="two"
+          hasError={true}
+        />
+      </Box>
     </LegendWrapper>
   );
 };
