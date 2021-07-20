@@ -43,7 +43,7 @@ const Radio: FC<RadioProps> = forwardRef((props: RadioProps, ref?: Ref<HTMLInput
         )}
         <VerticalAlign>{props.children || props.value}</VerticalAlign>
       </StyledLabel>
-      {!!props.errorMessage && <ErrorText>{props.errorMessage}</ErrorText>}
+      {!!props.errorMessage && <ErrorText marginTop="xxs">{props.errorMessage}</ErrorText>}
     </ThemeProvider>
   );
 });

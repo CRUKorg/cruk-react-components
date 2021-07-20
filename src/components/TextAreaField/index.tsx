@@ -49,7 +49,7 @@ const TextField: FunctionComponent<TextAreaFieldProps> = forwardRef(
           theme={theme}
           ref={ref}
         />
-        {!!errorMessage && <ErrorText>{errorMessage}</ErrorText>}
+        {!!errorMessage && <ErrorText marginTop="xxs">{errorMessage}</ErrorText>}
       </LabelWrapper>
     );
   },

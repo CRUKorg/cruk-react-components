@@ -41,7 +41,7 @@ const Select: FunctionComponent<SelectProps> = forwardRef(
           aria-invalid={hasError || !!errorMessage || false}
           hasError={hasError || !!errorMessage || false}
         />
-        {!!errorMessage && <ErrorText>{errorMessage}</ErrorText>}
+        {!!errorMessage && <ErrorText marginTop="xxs">{errorMessage}</ErrorText>}
       </LabelWrapper>
     );
   },
