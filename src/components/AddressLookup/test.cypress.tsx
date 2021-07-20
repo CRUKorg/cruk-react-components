@@ -124,4 +124,17 @@ describe('AddressLookup', () => {
       .first()
       .matchImageSnapshot();
   });
+
+  it('can focus address dropdown', () => {
+    mount(
+      <TestWrapper>
+        <Content />
+      </TestWrapper>,
+    );
+    cy.getInputByLabel('Home address').type('N10');
+    cy.contains('li', 'N17 0AB High Road, London - 14 Addresses')
+      .should('exist')
+      .focus();
+    cy.focused().should('have.text', 'N17 0AB High Road, London - 14 Addressespress enter for these addresses');
+  });
 });

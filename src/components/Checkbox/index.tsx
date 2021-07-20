@@ -47,7 +47,7 @@ const Checkbox: FC<CheckBoxProps> = forwardRef((props: CheckBoxProps, ref?: Ref<
           </CheckWrapper>
         )}
       </StyledLabel>
-      {!!props.errorMessage && <ErrorText>{props.errorMessage}</ErrorText>}
+      {!!props.errorMessage && <ErrorText marginTop="xxs">{props.errorMessage}</ErrorText>}
     </ThemeProvider>
   );
 });

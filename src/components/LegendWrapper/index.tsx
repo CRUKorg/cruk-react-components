@@ -2,11 +2,10 @@ import React, { FC, ReactNode } from 'react';
 import { useTheme, ThemeProvider } from 'styled-components';
 
 import defaultTheme from 'src/themes/cruk';
-import Box from 'src/components/Box';
 import ErrorText from 'src/components/ErrorText';
 import Text from 'src/components/Text';
 
-import { StyledFieldset } from './styles';
+import { StyledFieldset, LegendSpan } from './styles';
 
 export type LegendWrapperProps = {
   children?: ReactNode;
@@ -40,24 +39,25 @@ export const LegendWrapper: FC<LegendWrapperProps> = ({
     ...defaultTheme,
     ...foundTheme,
   };
-  const hintTextElement = !!hintText && typeof hintText === 'string' ? <Text>{hintText}</Text> : hintText;
+  const hintTextElement =
+    !!hintText && (typeof hintText === 'string' || typeof hintText === 'number') ? (
+      <Text as="span">{hintText}</Text>
+    ) : (
+      hintText
+    );
   return (
     <ThemeProvider theme={theme}>
       <StyledFieldset hasError={hasError || !!errorMessage || false} hasHintText={!!hintText}>
         {legendText && (
           <legend>
-            <span>
+            <LegendSpan hasHintText={!!hintText}>
               {legendText} {required && <span>(required)</span>}
-            </span>
+            </LegendSpan>
+            {hintTextElement}
           </legend>
         )}
-        {!!hintText && hintTextElement}
         {children}
-        {!!errorMessage && (
-          <Box paddingTop="xxs">
-            <ErrorText>{errorMessage}</ErrorText>
-          </Box>
-        )}
+        {!!errorMessage && <ErrorText marginTop="xxs">{errorMessage}</ErrorText>}
       </StyledFieldset>
     </ThemeProvider>
   );
