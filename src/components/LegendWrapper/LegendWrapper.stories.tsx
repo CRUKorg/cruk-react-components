@@ -32,11 +32,10 @@ const TemplateWithRadio: Story<LegendWrapperProps> = args => {
       <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'one'} name="example1" value="one">
         Option one
       </Radio>
-      <Box paddingTop="xxs" marginBottom="none">
-        <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'two'} name="example1" value="two">
-          Option two
-        </Radio>
-      </Box>
+
+      <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'two'} name="example1" value="two">
+        Option two
+      </Radio>
     </LegendWrapper>
   );
 };
@@ -57,17 +56,16 @@ const TemplateLegendErrorWithRadio: Story<LegendWrapperProps> = args => {
       >
         Option one
       </Radio>
-      <Box paddingTop="xxs" marginBottom="none">
-        <Radio
-          onChange={e => handleChange(e.target.value)}
-          checked={selected === 'two'}
-          hasError={true}
-          name="example1"
-          value="two"
-        >
-          Option two
-        </Radio>
-      </Box>
+
+      <Radio
+        onChange={e => handleChange(e.target.value)}
+        checked={selected === 'two'}
+        hasError={true}
+        name="example1"
+        value="two"
+      >
+        Option two
+      </Radio>
     </LegendWrapper>
   );
 };
@@ -177,17 +175,15 @@ const TemplateWithSU2C: Story<LegendWrapperProps> = args => {
         >
           Option one
         </Radio>
-        <Box paddingTop="xxs" marginBottom="none">
-          <Radio
-            onChange={e => handleChange(e.target.value)}
-            checked={selected === 'two'}
-            hasError={true}
-            name="example2Two"
-            value="two"
-          >
-            Option two
-          </Radio>
-        </Box>
+        <Radio
+          onChange={e => handleChange(e.target.value)}
+          checked={selected === 'two'}
+          hasError={true}
+          name="example2Two"
+          value="two"
+        >
+          Option two
+        </Radio>
       </LegendWrapper>
     </ThemeProvider>
   );

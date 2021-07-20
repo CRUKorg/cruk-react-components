@@ -21,7 +21,7 @@ const Template: Story<RadioProps> = args => {
       <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'one'} {...args}>
         Option one
       </Radio>
-      <Box paddingTop="xxs">
+      <Box paddingTop="xs">
         <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'two'} name="example2" value="two">
           Option two
         </Radio>
@@ -42,14 +42,7 @@ const TemplateError: Story<RadioProps> = args => {
         Option one
       </Radio>
       <Box paddingTop="xs">
-        <Radio
-          errorMessage="Error Message"
-          hasError={true}
-          onChange={e => handleChange(e.target.value)}
-          checked={selected === 'two'}
-          name="example2"
-          value="two"
-        >
+        <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'two'} name="example2" value="two">
           Option two
         </Radio>
       </Box>

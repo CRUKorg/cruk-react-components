@@ -66,7 +66,6 @@ export const StyledLabel = styled.label<StyledLabelProps>`
       : theme.colors.inputBorder};
   cursor: pointer;
   display: inline-block;
-  margin-bottom: ${({ theme, hasError }) => hasError && theme.spacing.xxs};
   font-weight: ${({ checked }) => (checked ? 'bold' : 'normal')};
   color: ${({ theme, disabled }) => (disabled ? theme.colors.disabled : theme.colors.textDark)};
   padding: ${({ theme }) =>
