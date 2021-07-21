@@ -101,6 +101,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-focus-lock": "^2.5.0",
+    "react-intersection-observer": "^8.32.0",
     "react-live": "^2.2.3",
     "rollup": "^2.7.2",
     "rollup-plugin-terser": "^7.0.0",
