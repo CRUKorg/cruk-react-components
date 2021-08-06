@@ -36,7 +36,8 @@
     "prettier:test": "prettier --check src/**/*.{ts,tsx}",
     "eslint:test": "eslint src --format=compact",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "eyes": "npx eyes-storybook "
   },
   "husky": {
     "hooks": {
@@ -52,6 +53,7 @@
   },
   "homepage": "https://github.com/CRUKorg/cruk-react-components#readme",
   "devDependencies": {
+    "@applitools/eyes-storybook": "^3.22.6",
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
