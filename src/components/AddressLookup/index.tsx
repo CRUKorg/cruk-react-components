@@ -206,7 +206,6 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
           required
           role="combobox"
           type="search"
-          data-hj-suppress={true}
           {...props}
           onKeyDown={handleKeyDown}
           onChange={handleChange}
