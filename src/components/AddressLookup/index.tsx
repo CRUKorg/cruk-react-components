@@ -236,9 +236,10 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
                       }
                     }}
                     role="option"
+                    data-hj-suppress={true}
                     theme={theme}
                   >
-                    <Text as="span">
+                    <Text as="span" data-hj-suppress={true}>
                       {address.Text} {address.Description}
                     </Text>
                     {address.Type !== 'Address' && (

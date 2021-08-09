@@ -79,6 +79,7 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
           extraTop={extraTop}
           {...props}
           theme={theme}
+          data-hj-suppress={true}
           ref={ref}
         />
         {!!extraRight && <ExtraRight theme={theme}>{extraRight}</ExtraRight>}

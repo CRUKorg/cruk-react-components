@@ -48,6 +48,7 @@ const TextField: FunctionComponent<TextAreaFieldProps> = forwardRef(
           lineCount={lineCount}
           theme={theme}
           ref={ref}
+          data-hj-suppress={true}
         />
         {!!errorMessage && <ErrorText marginTop="xxs">{errorMessage}</ErrorText>}
       </LabelWrapper>
