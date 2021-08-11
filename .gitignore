@@ -14,3 +14,4 @@
 /cypress/fixtures/example.json 
 
 .idea
+.env

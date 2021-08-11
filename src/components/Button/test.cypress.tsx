@@ -76,3 +76,11 @@ describe('Button', () => {
       .matchImageSnapshot();
   });
 });
+
+it('should match default Button Styles', () => {
+  mount(<TestWrapper>{content()}</TestWrapper>);
+  cy.eyesOpen({appName: 'Design Rudimentary Components', testName: 'Button'});
+  cy.eyesCheckWindow();
+  cy.eyesClose();
+});
+

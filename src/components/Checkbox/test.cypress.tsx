@@ -21,6 +21,16 @@ const unControlledContent = () => (
   </>
 );
 
+const errorCheckbox = () => (
+  <>
+    <Box>
+      <Checkbox name="example" value="one" checked={true} hasError={true}>
+        Option one
+      </Checkbox>
+    </Box>
+  </>
+);
+
 describe('Checkbox', () => {
   it('is accessible CRUK theme', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{unControlledContent()}</TestThemeWrapper>);
@@ -50,3 +60,19 @@ describe('Checkbox', () => {
       .matchImageSnapshot();
   });
 });
+
+it('should be visually perfect for checkbox', () => {
+  mount(<TestThemeWrapper theme={crukTheme}>{unControlledContent()}</TestThemeWrapper>);
+  cy.eyesOpen({appName: 'Design Rudimentary Components', testName: 'Checkbox'});
+  cy.eyesCheckWindow();
+  cy.eyesClose();
+});
+
+it('should be visually perfect for checkbox with error', () => {
+  mount(<TestThemeWrapper theme={crukTheme}>{errorCheckbox()}</TestThemeWrapper>);
+  cy.eyesOpen({appName: 'Design Rudimentary Components', testName: 'ErrorCheckbox'});
+  cy.eyesCheckWindow();
+  cy.eyesClose();
+});
+
+

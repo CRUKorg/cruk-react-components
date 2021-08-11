@@ -9,10 +9,10 @@ import { Radio, Heading, su2cTheme, crukTheme } from '../';
 const uncontrolledRadio = () => (
   <div id="radios">
     <Radio name="example1" value="one" checked={true}>
-      Option one
+      Option One
     </Radio>
     <Radio name="example1" value="two">
-      Option one
+      Option two
     </Radio>
   </div>
 );
@@ -97,4 +97,11 @@ describe('Radio', () => {
       .first()
       .matchImageSnapshot();
   });
+});
+
+it('should match eyes snapshot', () => {
+  mount(<TestThemeWrapper>{uncontrolledRadio()}</TestThemeWrapper>);
+  cy.eyesOpen({appName: 'Design Rudimentary Components', testName: 'Radio'});
+  cy.eyesCheckWindow();
+  cy.eyesClose();
 });

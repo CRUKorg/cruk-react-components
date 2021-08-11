@@ -36,8 +36,7 @@
     "prettier:test": "prettier --check src/**/*.{ts,tsx}",
     "eslint:test": "eslint src --format=compact",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "eyes": "npx eyes-storybook "
+    "build-storybook": "build-storybook"
   },
   "husky": {
     "hooks": {
@@ -53,7 +52,8 @@
   },
   "homepage": "https://github.com/CRUKorg/cruk-react-components#readme",
   "devDependencies": {
-    "@applitools/eyes-storybook": "^3.22.6",
+    "@applitools/eyes-cypress": "^3.22.2",
+    "@applitools/eyes-storybook": "^3.22.8",
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -119,5 +119,8 @@
     "react": "^16.12.0 || ^17.0.1 ",
     "react-dom": "^16.12.0 || ^17.0.1 ",
     "styled-components": "^5.1.1"
+  },
+  "dependencies": {
+    "env-cmd": "^10.1.0"
   }
 }
