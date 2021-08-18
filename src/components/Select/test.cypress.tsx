@@ -46,7 +46,7 @@ const content = () => {
 const selectSection = () => {
   return (
     <Select label="Test Select Option">
-      <option disabled value="">
+      <option disabled value="dog">
         Please select one of the below
       </option>
       <option value="dog">Dog</option>
@@ -83,44 +83,26 @@ describe('Select', () => {
   });
 });
 
-describe('Select Behavior', () => {
-  it('should be able to select an option from select list', () => {
-    mount(<TestThemeWrapper theme={crukTheme}>{selectSection()}</TestThemeWrapper>);
-    cy.get('.sc-dkQUaI.bxnKRO')
-      .select('Cat')
-      .should('have.value', 'cat');
-  });
-});
-
 describe('Arrow Keys', () => {
-  it('expands the listbox and selects the next option.', () => {
+  it('can change selection with keyboard controls', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{selectSection()}</TestThemeWrapper>);
-    cy.get('.sc-dkQUaI')
-      .type('{enter}')
+    cy.getInputByLabel('Test Select Option')
+      .trigger('keydown', { key: 'Space Bar' })
       .type('{downarrow}')
       .select('Cat')
       .should('have.value', 'cat');
   });
-
-  it('expands the listbox and selects the previous option.', () => {
-    mount(<TestThemeWrapper theme={crukTheme}>{selectSection()}</TestThemeWrapper>);
-    cy.get('.sc-dkQUaI')
-      .find('option')
-      .then($elm => $elm.get(2).setAttribute('selected', 'selected'));
-    cy.get('.sc-dkQUaI')
-      .type('{enter}')
-      .type('{uparrow}')
-      .select('Dog')
-      .should('have.value', 'dog');
-  });
 });
 
 describe('Tab', () => {
-  it('Tab should move the focus to the next focusable element.', () => {
+  it('main element is tabable', () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>
         {
           <>
+            <Box>
+              <Button>Click me</Button>
+            </Box>
             <Box>
               <Select label="Test Select Option">
                 <option disabled value="">
@@ -130,22 +112,15 @@ describe('Tab', () => {
                 <option value="cat">Cat</option>
               </Select>
             </Box>
-            <Box>
-              <Button>Click me</Button>
-            </Box>
-            <Box>
-              <Button>Click</Button>
-            </Box>
           </>
         }
       </TestThemeWrapper>,
     );
-    cy.get('.sc-dkQUaI').tab();
+    cy.contains('Click me')
+      .focus()
+      .tab();
     cy.focused()
-      .should('have.text', 'Click me')
-      .tab({ shift: true });
-    cy.focused()
-      .should('have.descendants', 'option')
-      .and('include.text', 'Please select one of the below');
+      .contains('select')
+      .should('exist');
   });
 });
