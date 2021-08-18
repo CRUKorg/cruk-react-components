@@ -43,15 +43,17 @@ const content = () => {
   );
 };
 
-const selectSection = () =>{
+const selectSection = () => {
   return (
     <Select label="Test Select Option">
-      <option disabled value="">Please select one of the below</option>
+      <option disabled value="">
+        Please select one of the below
+      </option>
       <option value="dog">Dog</option>
       <option value="cat">Cat</option>
     </Select>
-  )
-}
+  );
+};
 
 describe('Select', () => {
   it('is accessible CRUK theme', () => {
@@ -81,46 +83,69 @@ describe('Select', () => {
   });
 });
 
-
 describe('Select Behavior', () => {
   it('should be able to select an option from select list', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{selectSection()}</TestThemeWrapper>);
-    cy.get('.sc-dkQUaI.bxnKRO').select('Cat').should('have.value','cat')
+    cy.get('.sc-dkQUaI.bxnKRO')
+      .select('Cat')
+      .should('have.value', 'cat');
   });
 });
 
-describe('Arrow Keys', ()=>{
+describe('Arrow Keys', () => {
   it('expands the listbox and selects the next option.', () => {
-    mount(<TestThemeWrapper theme={crukTheme}>{selectSection()}</TestThemeWrapper>)
-    cy.get('.sc-dkQUaI').type("{enter}").type("{downarrow}").select("Cat").should('have.value','cat');
+    mount(<TestThemeWrapper theme={crukTheme}>{selectSection()}</TestThemeWrapper>);
+    cy.get('.sc-dkQUaI')
+      .type('{enter}')
+      .type('{downarrow}')
+      .select('Cat')
+      .should('have.value', 'cat');
+  });
+
+  it('expands the listbox and selects the previous option.', () => {
+    mount(<TestThemeWrapper theme={crukTheme}>{selectSection()}</TestThemeWrapper>);
+    cy.get('.sc-dkQUaI')
+      .find('option')
+      .then($elm => $elm.get(2).setAttribute('selected', 'selected'));
+    cy.get('.sc-dkQUaI')
+      .type('{enter}')
+      .type('{uparrow}')
+      .select('Dog')
+      .should('have.value', 'dog');
+  });
 });
 
-it('expands the listbox and selects the previous option.', () => {
-  mount(<TestThemeWrapper theme={crukTheme}>{selectSection()}</TestThemeWrapper>)
-  cy.get('.sc-dkQUaI').find('option').then($elm => $elm.get(2).setAttribute('selected',"selected"))
-  cy.get('.sc-dkQUaI').type("{enter}").type("{uparrow}").select("Dog").should('have.value','dog');
-});
-})
-
-describe('Tab', ()=>{
+describe('Tab', () => {
   it('Tab should move the focus to the next focusable element.', () => {
-    mount(<TestThemeWrapper theme={crukTheme}>{
-      <><Box>
-        <Select label="Test Select Option">
-          <option disabled value="">Please select one of the below</option>
-          <option value="dog">Dog</option>
-          <option value="cat">Cat</option>
-        </Select>
-      </Box><Box>
-          <Button>Click me</Button>
-        </Box><Box>
-          <Button>Click</Button>
-        </Box></>
-
-      }</TestThemeWrapper>);
+    mount(
+      <TestThemeWrapper theme={crukTheme}>
+        {
+          <>
+            <Box>
+              <Select label="Test Select Option">
+                <option disabled value="">
+                  Please select one of the below
+                </option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+              </Select>
+            </Box>
+            <Box>
+              <Button>Click me</Button>
+            </Box>
+            <Box>
+              <Button>Click</Button>
+            </Box>
+          </>
+        }
+      </TestThemeWrapper>,
+    );
     cy.get('.sc-dkQUaI').tab();
-    cy.focused().should('have.text','Click me').tab({shift:true});
-    cy.focused().should('have.descendants','option').and('include.text','Please select one of the below')
-  })
+    cy.focused()
+      .should('have.text', 'Click me')
+      .tab({ shift: true });
+    cy.focused()
+      .should('have.descendants', 'option')
+      .and('include.text', 'Please select one of the below');
+  });
 });
-
