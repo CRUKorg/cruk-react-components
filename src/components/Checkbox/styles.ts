@@ -134,8 +134,8 @@ export const StyledInput = styled.input`
 
           &:focus ~ ${SelectedBorder} {
             outline: none !important;
-            box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.inputBorderColour};
-            box-shadow: 0 0 0 2px -webkit-focus-ring-color;
+            box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.inputBorderColour};
+            box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
           }
 
           &:checked ~ ${CheckWrapper} ${Check} ${CheckGlyph} {

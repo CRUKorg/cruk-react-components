@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.3] - 2021-08-27
+
+### Changed
+
+- improved select cypress tests
+- Checkbox and Radio focus rect box shaddow is now inset for visual fix where it appears cropped in some scenarios
+
+### Added
+
+- Added onPopOverIsOpenChange prop to PopOver component
+- Added backgroundColor prop to Modal component
+
 ## [0.1.3] - 2021-08-09
 
 ### Changed
