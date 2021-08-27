@@ -29,7 +29,12 @@ export const Content = styled(Box)<{
   maxWidth: string;
   top: string;
 }>`
-  background: ${({ theme }) => theme.colors.backgroundLight};
+  background-color: ${({ theme: { colors }, backgroundColor }) =>
+    backgroundColor && typeof colors[backgroundColor] !== 'undefined'
+      ? colors[backgroundColor]
+      : backgroundColor
+      ? backgroundColor
+      : 'backgroundLight'};
   position: relative;
   border-radius: 4px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
