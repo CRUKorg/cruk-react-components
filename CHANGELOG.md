@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - improved select cypress tests
+- Checkbox and Radio focus rect box shaddow is now inset for visual fix where it appears cropped in some scenarios
 
 ### Added
 
