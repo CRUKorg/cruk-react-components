@@ -56,7 +56,7 @@ Cypress: Component function, accessibility and image snapshot tests (Image snaps
 Run all tests Jest and Cypress including image snapshots
 
 ```sh
-npm run test
+ npm run test
 ```
 
 Update Cypress image snapshots
@@ -112,4 +112,16 @@ Run Cypress tests
 
 ```bash
 docker-compose run cypress
+```
+
+## Run Percy Test
+
+To override the default baseline for certain builds , you will need to set PERCY_TARGET_BRANCH environment variable. The value of PERCY_TARGET_BRANCH will be the branch that has a Percy build which you want to use as a baseline.
+
+For example, if you want to compare your current checked out branch to the develop branch, you would set to PERCY_TARGET_BRANCH=develop. That will use the last Percy build on develop as the baseline to generate comparisons.
+
+To run percy test locally:  
+
+```bash
+npm run percy-test
 ```
