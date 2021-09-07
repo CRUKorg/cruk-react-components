@@ -5,7 +5,7 @@ import spacing from 'src/components/Spacing';
 import { SpacingProps } from 'src/components/Spacing';
 import { WordBreakType, FontSizeType, ThemeType } from 'src/types';
 
-type TextStyledProps = SpacingProps & {
+export type TextStyledProps = SpacingProps & {
   textColor?: string;
   textAlign?: 'left' | 'right' | 'center' | 'justify';
   textSize?: FontSizeType;

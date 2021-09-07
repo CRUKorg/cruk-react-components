@@ -25,18 +25,24 @@ const Template: Story<SelectProps> = args => {
 
 export const SelectWithLabel: Story<SelectProps> = Template.bind({});
 SelectWithLabel.args = {
+  disabled: false,
+  required: false,
   value: '',
   label: 'Disabled option',
-  disabled: false,
+  hintText: undefined,
+  hasError: false,
+  errorMessage: undefined,
 };
 
 export const SelectWithError: Story<SelectProps> = Template.bind({});
 SelectWithError.args = {
+  disabled: false,
+  required: false,
   value: '',
   label: 'Disabled option',
+  hintText: undefined,
   hasError: true,
   errorMessage: 'error message',
-  disabled: false,
 };
 
 const TemplateWithSU2C: Story<SelectProps> = args => {
@@ -57,17 +63,23 @@ const TemplateWithSU2C: Story<SelectProps> = args => {
 export const SU2CSelectWithLabel: Story<SelectProps> = TemplateWithSU2C.bind({});
 SU2CSelectWithLabel.storyName = 'SU2C Select With Label';
 SU2CSelectWithLabel.args = {
+  disabled: false,
+  required: false,
   value: '',
   label: 'Disabled option',
-  disabled: false,
+  hintText: undefined,
+  hasError: false,
+  errorMessage: undefined,
 };
 
 export const SU2CSelectWithError: Story<SelectProps> = Template.bind({});
 SU2CSelectWithError.storyName = 'SU2C Select With Error';
 SU2CSelectWithError.args = {
+  disabled: false,
+  required: false,
   value: '',
   label: 'Disabled option',
+  hintText: undefined,
   hasError: true,
   errorMessage: 'error message',
-  disabled: false,
 };

@@ -7,6 +7,7 @@ const BUTTON_HEIGHT = '3em';
 type StyledLabelProps = {
   checked: boolean;
   disabled: boolean;
+  hasError: boolean;
 };
 
 export const CheckWrapper = styled.div`
@@ -53,19 +54,26 @@ export const CheckGlyph = styled.svg`
 `;
 
 export const StyledLabel = styled.label<StyledLabelProps>`
+  background-color: ${({ theme }) => theme.colors.backgroundLight};
   position: relative;
   border-radius: ${props => props.theme.utilities.borderRadius};
-  border: ${({ theme, checked }) =>
-    `solid ${theme.utilities.inputBorderWidth} ${
-      checked && !theme.utilities.useDefaultFocusRect ? theme.colors.primary : theme.colors.inputBorder
-    }`};
+  border-width: ${({ theme }) => theme.utilities.inputBorderWidth};
+  border-style: solid;
+  border-color: ${({ hasError, theme, checked }) =>
+    hasError
+      ? theme.colors.textError
+      : checked && !theme.utilities.useDefaultFocusRect
+      ? theme.colors.primary
+      : theme.colors.inputBorder};
   cursor: pointer;
   display: block;
-  font-weight: ${({ theme, checked }) => (checked || !theme.utilities.useDefaultFocusRec ? 'bold' : 'normal')};
+  font-weight: ${({ theme, checked }) =>
+    checked || !theme.utilities.useDefaultFocusRect
+      ? theme.typography.fontWeightHeavy
+      : theme.typography.fontWeightMedium};
   color: ${({ theme, disabled }) => (disabled ? theme.colors.disabled : theme.colors.textDark)};
   padding: ${({ theme }) =>
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
-
   &:focus ~ ${CheckWrapper} ${Check} {
     outline: 2px solid #7aacfe; /* for non-webkit browsers */
     outline: 5px auto -webkit-focus-ring-color;
@@ -76,8 +84,6 @@ export const StyledLabel = styled.label<StyledLabelProps>`
       ? null
       : css`
           min-height: 2rem;
-          font-weight: ${({ theme }) => theme.typography.fontWeightHeavy};
-
           &:hover ${CheckWrapper} ${Check} {
             border: solid 1px
               ${({
@@ -128,8 +134,8 @@ export const StyledInput = styled.input`
 
           &:focus ~ ${SelectedBorder} {
             outline: none !important;
-            box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.inputBorderColour};
-            box-shadow: 0 0 0 2px -webkit-focus-ring-color;
+            box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.inputBorderColour};
+            box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
           }
 
           &:checked ~ ${CheckWrapper} ${Check} ${CheckGlyph} {

@@ -75,7 +75,7 @@ export const TOKEN_COLORS: TokenColorsType = {
   white: '#fff',
   black: '#000',
 
-  red: '#e61616',
+  red: '#D51311',
   yellow: '#fdc02f',
   green: '#3d854d',
 };

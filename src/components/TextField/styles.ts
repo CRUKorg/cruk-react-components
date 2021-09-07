@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 import { ThemeType } from 'src/types';
@@ -19,10 +19,10 @@ type StyledInputProps = {
   hasError: boolean;
   isValid: boolean;
   theme: ThemeType;
-  extraBottom?: ReactElement | string;
-  extraLeft?: ReactElement | string;
-  extraRight?: ReactElement | string;
-  extraTop?: ReactElement | string;
+  extraBottom?: ReactNode;
+  extraLeft?: ReactNode;
+  extraRight?: ReactNode;
+  extraTop?: ReactNode;
   isValidVisible?: boolean;
   isInvalidVisible?: boolean;
 };

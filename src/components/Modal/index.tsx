@@ -19,6 +19,8 @@ export type ModalProps = {
   maxWidth?: string;
   /** set space from top of view port that modal appears */
   top?: string;
+  /** background color of dialogue */
+  backgroundColor?: string;
 };
 
 /**
@@ -37,6 +39,7 @@ const Modal: FC<ModalProps> = ({
   showCloseButton,
   maxWidth = '500px',
   top = '1rem',
+  backgroundColor = 'backgroundLight',
   children,
 }) => {
   const foundTheme = useTheme();
@@ -74,7 +77,7 @@ const Modal: FC<ModalProps> = ({
               <FocusLock returnFocus>
                 <ThemeProvider theme={theme}>
                   <Wrapper role="dialog" aria-modal="true" aria-label={modalName}>
-                    <Content backgroundColor="" maxWidth={maxWidth} top={top}>
+                    <Content backgroundColor={backgroundColor} maxWidth={maxWidth} top={top}>
                       {showCloseButton && closeFunction ? (
                         <CloseButton
                           aria-label="close"

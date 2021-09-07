@@ -119,7 +119,7 @@ const DateField: FC<DateFieldProps> = ({
       </LargeDateTextFieldWrapper>
       {errorMessage && (
         <ErrorTextWrapper>
-          <ErrorText>{errorMessage}</ErrorText>
+          <ErrorText marginTop="xxs">{errorMessage}</ErrorText>
         </ErrorTextWrapper>
       )}
     </Fieldset>

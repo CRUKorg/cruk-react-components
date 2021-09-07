@@ -59,6 +59,9 @@ describe('Pagination', () => {
         <Content />
       </TestWrapper>,
     );
+    cy.document()
+      .its('fonts.status')
+      .should('equal', 'loaded');
     cy.get('body')
       .first()
       .matchImageSnapshot();

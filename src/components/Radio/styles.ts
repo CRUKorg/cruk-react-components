@@ -48,16 +48,22 @@ export const Check = styled.span`
 type StyledLabelProps = {
   checked: boolean;
   disabled: boolean;
+  hasError: boolean;
 };
 
 export const StyledLabel = styled.label<StyledLabelProps>`
+  background-color: ${({ theme }) => theme.colors.backgroundLight};
   width: 100%;
   position: relative;
   border-radius: ${({ theme }) => theme.utilities.borderRadius};
-  border: ${({ theme, checked }) =>
-    `solid ${theme.utilities.inputBorderWidth} ${
-      checked && !theme.utilities.useDefaultFocusRect ? theme.colors.primary : theme.colors.inputBorder
-    }`};
+  border-width: ${({ theme }) => theme.utilities.inputBorderWidth};
+  border-style: solid;
+  border-color: ${({ hasError, theme, checked }) =>
+    hasError
+      ? theme.colors.textError
+      : checked && !theme.utilities.useDefaultFocusRect
+      ? theme.colors.primary
+      : theme.colors.inputBorder};
   cursor: pointer;
   display: inline-block;
   font-weight: ${({ checked }) => (checked ? 'bold' : 'normal')};
@@ -91,6 +97,8 @@ export const StyledLabel = styled.label<StyledLabelProps>`
 export const VerticalAlign = styled.span`
   vertical-align: middle;
   line-height: 100%;
+  background-color: ${({ theme }) => theme.colors.backgroundLight};
+  z-index: 1;
 `;
 
 export const SelectedBorder = styled.div`
@@ -99,6 +107,8 @@ export const SelectedBorder = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  z-index: 0;
 `;
 
 export const StyledInput = styled.input`
@@ -134,8 +144,8 @@ export const StyledInput = styled.input`
 
           &:focus ~ ${SelectedBorder} {
             outline: none !important;
-            box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.inputBorderColour};
-            box-shadow: 0 0 0 2px -webkit-focus-ring-color;
+            box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.inputBorderColour};
+            box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
           }
 
           &:checked ~ ${CheckWrapper} ${Check}::before {
