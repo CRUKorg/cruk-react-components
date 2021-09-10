@@ -6,5 +6,6 @@
   "componentFolder": "src/components",
   "testFiles": "**/*.cypress.*",
   "video": true,
-  "videoUploadOnPasses": false
+  "videoUploadOnPasses": false,
+  "scrollBehavior": "center"
 }
