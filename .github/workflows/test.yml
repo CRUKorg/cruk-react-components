@@ -64,7 +64,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Run Percy tests
-        run: npm run percy-test
+        run: npm run percy
         env:
           PERCY_TOKEN:  ${{ secrets.PERCY_TOKEN }}
 
