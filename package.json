@@ -37,7 +37,7 @@
     "eslint:test": "eslint src --format=compact",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "percy-test": "percy storybook:start"
+    "percy": "percy storybook:start"
   },
   "husky": {
     "hooks": {
