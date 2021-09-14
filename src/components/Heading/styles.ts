@@ -184,11 +184,11 @@ export const H5 = styled.h5<StyledHeadingProps>`
 export const H6 = styled.h6<StyledHeadingProps>`
   ${props => StyledHeading(props)}
   
-  font-size: ${({ theme, textSize }) => mobileFontSize(textSize || null, theme.fontSizes.l, theme)};
+  font-size: ${({ theme, textSize }) => mobileFontSize(textSize || null, theme.fontSizes.m, theme)};
   @media (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
-    font-size: ${({ theme, textSize }) => tabletFontSize(textSize || null, theme.fontSizes.l, theme)};
+    font-size: ${({ theme, textSize }) => tabletFontSize(textSize || null, theme.fontSizes.m, theme)};
   }
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
-    font-size: ${({ theme, textSize }) => desktopFontSize(textSize || null, theme.fontSizes.l, theme)};
+    font-size: ${({ theme, textSize }) => desktopFontSize(textSize || null, theme.fontSizes.m, theme)};
   }
 `;

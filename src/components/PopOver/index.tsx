@@ -1,4 +1,4 @@
-import React, { useState, FC, useRef, useCallback, MouseEvent, ReactElement, ReactNode } from 'react';
+import React, { useState, useEffect, FC, useRef, useCallback, MouseEvent, ReactElement, ReactNode } from 'react';
 import { ThemeProvider, useTheme } from 'styled-components';
 
 import { useKey } from 'src/hooks/useKey';
@@ -21,13 +21,24 @@ export type PopOverProps = {
   maxWidth?: string;
   /**  popover modal min width */
   minWidth?: string;
+  /**  popover isOpen changed handler */
+  onPopOverIsOpenChange?: (isOpen: boolean) => void;
 };
 
 /**
  * Popover is a non-modal dialog that floats around its disclosure. It's
 commonly used for displaying additional rich content on top of something.
 */
-const PopOver: FC<PopOverProps> = props => {
+const PopOver: FC<PopOverProps> = ({
+  onPopOverIsOpenChange,
+  children,
+  minWidth,
+  maxWidth,
+  position,
+  modalLabel,
+  modalContent,
+  css,
+}) => {
   const popRef = useRef<HTMLDivElement>(null);
   const [showPopOver, setShowPopOver] = useState(false);
   const foundTheme = useTheme();
@@ -37,12 +48,13 @@ const PopOver: FC<PopOverProps> = props => {
   };
 
   const toggle = () => setShowPopOver(!showPopOver);
+  const closePopOver = () => setShowPopOver(false);
 
   // outside click closes popover
-  const closePopOver = useCallback(
+  const handleDocumentClick = useCallback(
     (e: MouseEvent) => {
       if (!(popRef.current as any).contains(e.target)) {
-        setShowPopOver(false);
+        closePopOver();
       }
     },
     [popRef.current],
@@ -50,7 +62,7 @@ const PopOver: FC<PopOverProps> = props => {
 
   useKey(
     () => {
-      setShowPopOver(false);
+      closePopOver();
     },
     {
       detectKeys: ['Escape'],
@@ -58,19 +70,25 @@ const PopOver: FC<PopOverProps> = props => {
     [],
   );
 
+  useEffect(() => {
+    if (onPopOverIsOpenChange) {
+      onPopOverIsOpenChange(showPopOver);
+    }
+  }, [showPopOver]);
+
   useEffectBrowser(() => {
     // @ts-ignore function signature for listerns on document is slightly weird but this still works so ignore
-    document.addEventListener('click', closePopOver, true);
+    document.addEventListener('click', handleDocumentClick, true);
     return () => {
       // @ts-ignore function signature for listerns on document is slightly weird but this still works so ignore
-      document.removeEventListener('click', closePopOver, true);
+      document.removeEventListener('click', handleDocumentClick, true);
     };
   }, []);
 
   return (
     <ThemeProvider theme={theme}>
-      <PopOverWrapper {...props} ref={popRef}>
-        {React.Children.map(props.children as ReactElement, (child: React.ReactElement) =>
+      <PopOverWrapper css={css} ref={popRef}>
+        {React.Children.map(children as ReactElement, (child: React.ReactElement) =>
           React.cloneElement(child, {
             onClick: toggle,
             'aria-expanded': showPopOver,
@@ -79,15 +97,15 @@ const PopOver: FC<PopOverProps> = props => {
         )}
         {showPopOver ? (
           <PopOverModal
-            maxWidth={props.maxWidth || 'none'}
-            minWidth={props.minWidth || 'auto'}
-            position={props.position || 'top'}
+            maxWidth={maxWidth || 'none'}
+            minWidth={minWidth || 'auto'}
+            position={position || 'top'}
             theme={theme}
             role="dialog"
-            aria-label={props.modalLabel}
+            aria-label={modalLabel}
             aria-modal={showPopOver}
           >
-            {props.modalContent}
+            {modalContent}
           </PopOverModal>
         ) : null}
       </PopOverWrapper>

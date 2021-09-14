@@ -4,7 +4,7 @@ import React from 'react';
 import { mount } from '@cypress/react';
 
 import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
-import { Select, Box, su2cTheme, crukTheme } from '../';
+import { Select, Box, Button, su2cTheme, crukTheme } from '../';
 
 const content = () => {
   return (
@@ -43,6 +43,18 @@ const content = () => {
   );
 };
 
+const selectSection = () => {
+  return (
+    <Select label="Test Select Option">
+      <option disabled value="dog">
+        Please select one of the below
+      </option>
+      <option value="dog">Dog</option>
+      <option value="cat">Cat</option>
+    </Select>
+  );
+};
+
 describe('Select', () => {
   it('is accessible CRUK theme', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
@@ -68,5 +80,47 @@ describe('Select', () => {
     cy.get('body')
       .first()
       .matchImageSnapshot();
+  });
+});
+
+describe('Arrow Keys', () => {
+  it('can change selection with keyboard controls', () => {
+    mount(<TestThemeWrapper theme={crukTheme}>{selectSection()}</TestThemeWrapper>);
+    cy.getInputByLabel('Test Select Option')
+      .trigger('keydown', { key: 'Space Bar' })
+      .type('{downarrow}')
+      .select('Cat')
+      .should('have.value', 'cat');
+  });
+});
+
+describe('Tab', () => {
+  it('main element is tabable', () => {
+    mount(
+      <TestThemeWrapper theme={crukTheme}>
+        {
+          <>
+            <Box>
+              <Button>Click me</Button>
+            </Box>
+            <Box>
+              <Select label="Test Select Option">
+                <option disabled value="">
+                  Please select one of the below
+                </option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+              </Select>
+            </Box>
+          </>
+        }
+      </TestThemeWrapper>,
+    );
+    cy.contains('Click me')
+      .focus()
+      .tab();
+    cy.focused()
+      .contains('select')
+      .should('exist');
   });
 });
