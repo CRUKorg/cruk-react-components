@@ -36,7 +36,8 @@
     "prettier:test": "prettier --check src/**/*.{ts,tsx}",
     "eslint:test": "eslint src --format=compact",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "percy": "percy storybook:start"
   },
   "husky": {
     "hooks": {
@@ -64,6 +65,8 @@
     "@mdx-js/loader": "^1.6.22",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
+    "@percy/cli": "^1.0.0-beta.65",
+    "@percy/storybook": "^4.0.1",
     "@reach/router": "^1.3.4",
     "@react-theming/storybook-addon": "^1.1.1",
     "@rollup/plugin-babel": "^5.0.0",
