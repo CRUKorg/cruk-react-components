@@ -116,16 +116,16 @@ docker-compose run cypress
 
 ## Run Percy Test
 
-To run percy test locally , create an [.env](.env.example) file with PERCY_TOKEN:  
+To run percy test locally , create an [.env](.env.example) file with PERCY_TOKEN:
 
 ```bash
 npm run percy
 ```
 
-To test specific component , go to .percy.yml and add the regex to match story . Example
+To test specific component , go to .percy.yml and add the regex to match story to the include attribute. Example
 
 ```
-#.percy.yml 
+#.percy.yml
 
 storybook:
 include: [UserBlock]
