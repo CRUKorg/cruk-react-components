@@ -5,7 +5,7 @@ import defaultTheme from 'src/themes/cruk';
 import ErrorText from 'src/components/ErrorText';
 import LabelWrapper from 'src/components/LabelWrapper';
 
-import { ExtraLeft, ExtraRight, ExtraTop, ExtraBottom, ExtraWrapper, StyledInput } from './styles';
+import { ExtraLeft, ExtraRight, ExtraTop, ExtraBottom, ExtraWrapper, StyledInput, StyledInputWrapper } from './styles';
 
 export type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   /** error message text  */
@@ -67,21 +67,30 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
     const renderContent = (
       <>
         {!!extraLeft && <ExtraLeft theme={theme}>{extraLeft}</ExtraLeft>}
-        <StyledInput
+        <StyledInputWrapper
           hasError={hasError || !!errorMessage || false}
           isValid={typeof isValid !== 'undefined' ? isValid : !hasError && !errorMessage}
           aria-invalid={hasError || !!errorMessage || false}
           isValidVisible={isValidVisible || false}
           isInvalidVisible={isInvalidVisible || false}
-          extraBottom={extraBottom}
-          extraLeft={extraLeft}
-          extraRight={extraRight}
-          extraTop={extraTop}
-          {...props}
           theme={theme}
-          data-hj-suppress={true}
-          ref={ref}
-        />
+        >
+          <StyledInput
+            hasError={hasError || !!errorMessage || false}
+            isValid={typeof isValid !== 'undefined' ? isValid : !hasError && !errorMessage}
+            aria-invalid={hasError || !!errorMessage || false}
+            isValidVisible={isValidVisible || false}
+            isInvalidVisible={isInvalidVisible || false}
+            extraBottom={extraBottom}
+            extraLeft={extraLeft}
+            extraRight={extraRight}
+            extraTop={extraTop}
+            {...props}
+            theme={theme}
+            data-hj-suppress={true}
+            ref={ref}
+            />
+        </StyledInputWrapper>
         {!!extraRight && <ExtraRight theme={theme}>{extraRight}</ExtraRight>}
       </>
     );
