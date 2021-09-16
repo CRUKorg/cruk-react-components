@@ -4,13 +4,13 @@ import React from 'react';
 import { mount } from '@cypress/react';
 
 import { TestThemeWrapper } from '../TestWrapper';
-import {Button, Radio, Heading, su2cTheme, crukTheme } from '../';
+import { Button, Radio, Heading, su2cTheme, crukTheme } from '../';
 import { Label } from '../LabelWrapper/styles';
 import { Fieldset } from '../DateField/styles';
 
 const uncontrolledRadio = () => (
   <div id="radios">
-    <Radio name="example1"  label="Choose an option" value="one" >
+    <Radio name="example1" label="Choose an option" value="one">
       Option one
     </Radio>
     <Radio name="example2" label="Choose an option" value="two">
