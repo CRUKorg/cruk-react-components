@@ -101,16 +101,12 @@ describe('Radio', () => {
 
 describe('Tab', () => {
   it('Radio is tabable', () => {
-    mount(
-      <TestThemeWrapper theme={crukTheme}>
-        {uncontrolledRadio()}
-      </TestThemeWrapper>,
-    );
+    mount(<TestThemeWrapper theme={crukTheme}>{uncontrolledRadio()}</TestThemeWrapper>);
     cy.get('input[value=one]')
       .focus()
       .tab()
-      .should('have.attr','value','two')
+      .should('have.attr', 'value', 'two')
       .type('{downarrow}')
-      .invoke('attr','checked','true')
+      .invoke('attr', 'checked', 'true');
   });
 });

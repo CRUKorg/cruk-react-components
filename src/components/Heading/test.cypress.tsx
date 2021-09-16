@@ -52,213 +52,172 @@ describe('Heading', () => {
   });
 });
 
-describe('H1 Styles', ()=>{
-  it('should have Font size 32px for mobile and tablets devices',()=>{
+describe('H1 Styles', () => {
+  it('should have Font size 32px for mobile and tablets devices', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(576,750)
-    cy.contains('This is H1 heading')
-    .should('have.css','font-size','32px')
-    cy.viewport(767,1028)
-    cy.contains('This is H1 heading')
-    .should('have.css','font-size','32px')
-  })
+    cy.viewport(576, 750);
+    cy.contains('This is H1 heading').should('have.css', 'font-size', '32px');
+    cy.viewport(767, 1028);
+    cy.contains('This is H1 heading').should('have.css', 'font-size', '32px');
+  });
 
-  it('should have Font size 40px for desktops',()=>{
+  it('should have Font size 40px for desktops', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(768,1000)
-    cy.contains('This is H1 heading')
-    .should('have.css','font-size','40px')
-    cy.viewport(991,1028)
-    cy.contains('This is H1 heading')
-    .should('have.css','font-size','40px')
-  })
+    cy.viewport(768, 1000);
+    cy.contains('This is H1 heading').should('have.css', 'font-size', '40px');
+    cy.viewport(991, 1028);
+    cy.contains('This is H1 heading').should('have.css', 'font-size', '40px');
+  });
 
-  it('should have Font size 50px for large desktops',()=>{
+  it('should have Font size 50px for large desktops', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(992,1000)
-    cy.contains('This is H1 heading')
-    .should('have.css','font-size','50px')
-    cy.viewport(1200,1028)
-    cy.contains('This is H1 heading')
-    .should('have.css','font-size','50px')
-  })
+    cy.viewport(992, 1000);
+    cy.contains('This is H1 heading').should('have.css', 'font-size', '50px');
+    cy.viewport(1200, 1028);
+    cy.contains('This is H1 heading').should('have.css', 'font-size', '50px');
+  });
 
-  it('should have Font weight 500 ',()=>{
+  it('should have Font weight 500 ', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(576,1000)
-    cy.contains('This is H1 heading')
-    .should('have.css','font-weight','500')
-    cy.viewport(1200,1028)
-    cy.contains('This is H1 heading')
-    .should('have.css','font-weight','500')
-  })
-})
+    cy.viewport(576, 1000);
+    cy.contains('This is H1 heading').should('have.css', 'font-weight', '500');
+    cy.viewport(1200, 1028);
+    cy.contains('This is H1 heading').should('have.css', 'font-weight', '500');
+  });
+});
 
-describe('H2 Styles', ()=>{
-  it('should have Font size 25px for mobile  devices',()=>{
+describe('H2 Styles', () => {
+  it('should have Font size 25px for mobile  devices', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(576,750)
-    cy.contains('This is H2 heading')
-    .should('have.css','font-size','25px')
-    cy.viewport(767,1028)
-    cy.contains('This is H2 heading')
-    .should('have.css','font-size','25px')
-  })
+    cy.viewport(576, 750);
+    cy.contains('This is H2 heading').should('have.css', 'font-size', '25px');
+    cy.viewport(767, 1028);
+    cy.contains('This is H2 heading').should('have.css', 'font-size', '25px');
+  });
 
-  it('should have Font size 32px for tablets and desktops',()=>{
+  it('should have Font size 32px for tablets and desktops', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(768,1028)
-    cy.contains('This is H2 heading')
-    .should('have.css','font-size','32px')
-    cy.viewport(991,1028)
-    cy.contains('This is H2 heading')
-    .should('have.css','font-size','32px')
-  })
+    cy.viewport(768, 1028);
+    cy.contains('This is H2 heading').should('have.css', 'font-size', '32px');
+    cy.viewport(991, 1028);
+    cy.contains('This is H2 heading').should('have.css', 'font-size', '32px');
+  });
 
-  it('should have Font size 40px for large desktops',()=>{
+  it('should have Font size 40px for large desktops', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(992,1000)
-    cy.contains('This is H2 heading')
-    .should('have.css','font-size','40px')
-    cy.viewport(1200,1028)
-    cy.contains('This is H2 heading')
-    .should('have.css','font-size','40px')
-  })
+    cy.viewport(992, 1000);
+    cy.contains('This is H2 heading').should('have.css', 'font-size', '40px');
+    cy.viewport(1200, 1028);
+    cy.contains('This is H2 heading').should('have.css', 'font-size', '40px');
+  });
 
-  it('should have Font weight 500 ',()=>{
+  it('should have Font weight 500 ', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(576,1000)
-    cy.contains('This is H2 heading')
-    .should('have.css','font-weight','500')
-    cy.viewport(1200,1028)
-    cy.contains('This is H2 heading')
-    .should('have.css','font-weight','500')
-  })
-})
+    cy.viewport(576, 1000);
+    cy.contains('This is H2 heading').should('have.css', 'font-weight', '500');
+    cy.viewport(1200, 1028);
+    cy.contains('This is H2 heading').should('have.css', 'font-weight', '500');
+  });
+});
 
-describe('H3 Styles', ()=>{
-  it('should have Font size 20px for mobile and tablets',()=>{
+describe('H3 Styles', () => {
+  it('should have Font size 20px for mobile and tablets', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(576,750)
-    cy.contains('This is H3 heading')
-    .should('have.css','font-size','20px')
-    cy.viewport(767,1028)
-    cy.contains('This is H3 heading')
-    .should('have.css','font-size','20px')
-  })
+    cy.viewport(576, 750);
+    cy.contains('This is H3 heading').should('have.css', 'font-size', '20px');
+    cy.viewport(767, 1028);
+    cy.contains('This is H3 heading').should('have.css', 'font-size', '20px');
+  });
 
-  it('should have Font size 25px for desktops',()=>{
+  it('should have Font size 25px for desktops', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(768,1028)
-    cy.contains('This is H3 heading')
-    .should('have.css','font-size','25px')
-    cy.viewport(991,1028)
-    cy.contains('This is H3 heading')
-    .should('have.css','font-size','25px')
-  })
+    cy.viewport(768, 1028);
+    cy.contains('This is H3 heading').should('have.css', 'font-size', '25px');
+    cy.viewport(991, 1028);
+    cy.contains('This is H3 heading').should('have.css', 'font-size', '25px');
+  });
 
-  it('should have Font size 32px for large desktops',()=>{
+  it('should have Font size 32px for large desktops', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(992,1000)
-    cy.contains('This is H3 heading')
-    .should('have.css','font-size','32px')
-    cy.viewport(1200,1028)
-    cy.contains('This is H3 heading')
-    .should('have.css','font-size','32px')
-  })
+    cy.viewport(992, 1000);
+    cy.contains('This is H3 heading').should('have.css', 'font-size', '32px');
+    cy.viewport(1200, 1028);
+    cy.contains('This is H3 heading').should('have.css', 'font-size', '32px');
+  });
 
-  it('should have Font weight 500 ',()=>{
+  it('should have Font weight 500 ', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(576,1000)
-    cy.contains('This is H3 heading')
-    .should('have.css','font-weight','500')
-    cy.viewport(1200,1028)
-    cy.contains('This is H3 heading')
-    .should('have.css','font-weight','500')
-  })
-})
+    cy.viewport(576, 1000);
+    cy.contains('This is H3 heading').should('have.css', 'font-weight', '500');
+    cy.viewport(1200, 1028);
+    cy.contains('This is H3 heading').should('have.css', 'font-weight', '500');
+  });
+});
 
-describe('H4 Styles', ()=>{
-  it('should have Font size 20px for mobile, tablets and desktops',()=>{
+describe('H4 Styles', () => {
+  it('should have Font size 20px for mobile, tablets and desktops', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(576,750)
-    cy.contains('This is H4 heading')
-    .should('have.css','font-size','20px')
-    cy.viewport(767,1028)
-    cy.contains('This is H4 heading')
-    .should('have.css','font-size','20px')
-    cy.viewport(991,1028)
-    cy.contains('This is H4 heading')
-    .should('have.css','font-size','20px')
-  })
+    cy.viewport(576, 750);
+    cy.contains('This is H4 heading').should('have.css', 'font-size', '20px');
+    cy.viewport(767, 1028);
+    cy.contains('This is H4 heading').should('have.css', 'font-size', '20px');
+    cy.viewport(991, 1028);
+    cy.contains('This is H4 heading').should('have.css', 'font-size', '20px');
+  });
 
-  it('should have Font size 25px for large desktops',()=>{
+  it('should have Font size 25px for large desktops', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(992,1028)
-    cy.contains('This is H4 heading')
-    .should('have.css','font-size','25px')
-    cy.viewport(1200,1028)
-    cy.contains('This is H4 heading')
-    .should('have.css','font-size','25px')
-  })
+    cy.viewport(992, 1028);
+    cy.contains('This is H4 heading').should('have.css', 'font-size', '25px');
+    cy.viewport(1200, 1028);
+    cy.contains('This is H4 heading').should('have.css', 'font-size', '25px');
+  });
 
-  it('should have Font weight 500 ',()=>{
+  it('should have Font weight 500 ', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(576,1000)
-    cy.contains('This is H4 heading')
-    .should('have.css','font-weight','500')
-    cy.viewport(1200,1028)
-    cy.contains('This is H4 heading')
-    .should('have.css','font-weight','500')
-  })
-})
+    cy.viewport(576, 1000);
+    cy.contains('This is H4 heading').should('have.css', 'font-weight', '500');
+    cy.viewport(1200, 1028);
+    cy.contains('This is H4 heading').should('have.css', 'font-weight', '500');
+  });
+});
 
-describe('H5 Styles', ()=>{
-  it('should have Font size 20px for mobile, tablets ,desktops and large desktops',()=>{
+describe('H5 Styles', () => {
+  it('should have Font size 20px for mobile, tablets ,desktops and large desktops', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(576,750)
-    cy.contains('This is H5 heading')
-    .should('have.css','font-size','20px')
-    cy.viewport(687,1028)
-    cy.contains('This is H5 heading')
-    .should('have.css','font-size','20px')
-    cy.viewport(992,1028)
-    cy.contains('This is H5 heading')
-    .should('have.css','font-size','20px')
-  })
+    cy.viewport(576, 750);
+    cy.contains('This is H5 heading').should('have.css', 'font-size', '20px');
+    cy.viewport(687, 1028);
+    cy.contains('This is H5 heading').should('have.css', 'font-size', '20px');
+    cy.viewport(992, 1028);
+    cy.contains('This is H5 heading').should('have.css', 'font-size', '20px');
+  });
 
-  it('should have Font weight 500 ',()=>{
+  it('should have Font weight 500 ', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(576,1000)
-    cy.contains('This is H5 heading')
-    .should('have.css','font-weight','500')
-    cy.viewport(1200,1028)
-    cy.contains('This is H5 heading')
-    .should('have.css','font-weight','500')
-  })
-})
+    cy.viewport(576, 1000);
+    cy.contains('This is H5 heading').should('have.css', 'font-weight', '500');
+    cy.viewport(1200, 1028);
+    cy.contains('This is H5 heading').should('have.css', 'font-weight', '500');
+  });
+});
 
-describe('H6 Styles', ()=>{
-  it('should have Font size 16px for mobile, tablets ,desktops and large desktops',()=>{
+describe('H6 Styles', () => {
+  it('should have Font size 16px for mobile, tablets ,desktops and large desktops', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(576,750)
-    cy.contains('This is H6 heading')
-    .should('have.css','font-size','16px')
-    cy.viewport(687,1028)
-    cy.contains('This is H6 heading')
-    .should('have.css','font-size','16px')
-    cy.viewport(992,1028)
-    cy.contains('This is H6 heading')
-    .should('have.css','font-size','16px')
-  })
+    cy.viewport(576, 750);
+    cy.contains('This is H6 heading').should('have.css', 'font-size', '16px');
+    cy.viewport(687, 1028);
+    cy.contains('This is H6 heading').should('have.css', 'font-size', '16px');
+    cy.viewport(992, 1028);
+    cy.contains('This is H6 heading').should('have.css', 'font-size', '16px');
+  });
 
-  it('should have Font weight 500 ',()=>{
+  it('should have Font weight 500 ', () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.viewport(576,1000)
-    cy.contains('This is H6 heading')
-    .should('have.css','font-weight','500')
-    cy.viewport(1200,1028)
-    cy.contains('This is H6 heading')
-    .should('have.css','font-weight','500')
-  })
-})
+    cy.viewport(576, 1000);
+    cy.contains('This is H6 heading').should('have.css', 'font-weight', '500');
+    cy.viewport(1200, 1028);
+    cy.contains('This is H6 heading').should('have.css', 'font-weight', '500');
+  });
+});
