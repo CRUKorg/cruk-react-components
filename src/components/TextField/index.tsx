@@ -89,7 +89,7 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
             theme={theme}
             data-hj-suppress={true}
             ref={ref}
-            />
+          />
         </StyledInputWrapper>
         {!!extraRight && <ExtraRight theme={theme}>{extraRight}</ExtraRight>}
       </>

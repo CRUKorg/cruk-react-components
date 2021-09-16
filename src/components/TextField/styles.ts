@@ -95,22 +95,22 @@ export const StyledInputWrapper = styled.span<StyledInputProps>`
     z-index: 1;
     bottom: 0;
     right: 0;
-    content: "";
+    content: '';
     top: 0;
     background-repeat: no-repeat;
     background-position: ${({ theme }) => `calc( 100% - ${theme.spacing.xxs}) 50% `};
     ${({ isValid, isInvalidVisible }: StyledInputProps) =>
-    !isValid &&
-    isInvalidVisible &&
-    css`
+      !isValid &&
+      isInvalidVisible &&
+      css`
         background-image: url('data:image/png;base64,${crossBase64}');
-    `}
+      `}
     ${({ isValid, isValidVisible }: StyledInputProps) =>
-    isValid &&
-    isValidVisible &&
-    css`
+      isValid &&
+      isValidVisible &&
+      css`
         background-image: url('data:image/png;base64,${checkBase64}');
-    `}
+      `}
   }
 `;
 
@@ -118,8 +118,8 @@ export const StyledInput = styled.input<StyledInputProps>`
   background-color: ${({ theme }) => theme.colors.backgroundLight};
   background-image: none;
   border-radius: ${({ theme }) => theme.utilities.borderRadius};
-  border: solid ${({ theme }) => theme.utilities.inputBorderWidth} ${({ hasError, theme }) =>
-  hasError ? theme.colors.textError : theme.colors.textInputBorder};
+  border: solid ${({ theme }) => theme.utilities.inputBorderWidth}
+    ${({ hasError, theme }) => (hasError ? theme.colors.textError : theme.colors.textInputBorder)};
   color: ${({ theme }) => theme.colors.textDark};
   display: block;
   font-size: ${({ theme }) => theme.fontSizes.m};
@@ -154,7 +154,7 @@ export const StyledInput = styled.input<StyledInputProps>`
           }
         `
       : null};
-  
+
   ${({ extraTop }) =>
     !!extraTop &&
     css`
@@ -186,9 +186,8 @@ export const StyledInput = styled.input<StyledInputProps>`
         border-color: ${theme.colors.textError};
       }
     `}
-
     &:-webkit-autofill,
     &:-webkit-autofill:focus {
-      box-shadow: 0 0 0 3em white inset !important;
-    }
+    box-shadow: 0 0 0 3em white inset !important;
+  }
 `;
