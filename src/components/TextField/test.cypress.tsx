@@ -143,30 +143,3 @@ describe('TextField', () => {
       .matchImageSnapshot();
   });
 });
-
-describe('Text Field with Error', () => {
-  it('should display a red border on input box if has error', () => {
-    mount(
-      <TestThemeWrapper theme={crukTheme}>
-        {
-          <Box>
-            <TextField label="Phone number" type="text" hasError={true} name="phoneNumber" />
-          </Box>
-        }
-      </TestThemeWrapper>,
-    );
-    cy.getInputByLabel('Phone number')
-      .focus()
-      .should('have.css', 'border-color', 'rgb(213, 19, 17)');
-  });
-});
-
-describe.only('Tab', () => {
-  it('Text Field is tabable', () => {
-    mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.getInputByLabel('First name')
-      .tab()
-      .should('have.attr', 'name', 'yourFavouriteFood')
-      .type('Tab successful to next text field');
-  });
-});

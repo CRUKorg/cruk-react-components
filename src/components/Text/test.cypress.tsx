@@ -48,20 +48,3 @@ describe('Text', () => {
       .matchImageSnapshot();
   });
 });
-
-describe('Text Format - CRUK', () => {
-  it('should have font family Arial', () => {
-    mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.contains('This is text it defaults to a paragraph')
-      .should('have.css', 'font-family')
-      .and('contain', 'Arial');
-  });
-  it('should have font size 16px', () => {
-    mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.contains('This is text it defaults to a paragraph').should('have.css', 'font-size', '16px');
-  });
-  it('should have font weight 500', () => {
-    mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
-    cy.contains('Color').should('have.css', 'font-weight', '500');
-  });
-});
