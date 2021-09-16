@@ -186,4 +186,9 @@ export const StyledInput = styled.input<StyledInputProps>`
         border-color: ${theme.colors.textError};
       }
     `}
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:focus {
+      box-shadow: 0 0 0 3em white inset !important;
+    }
 `;
