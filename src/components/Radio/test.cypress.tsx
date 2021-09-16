@@ -12,7 +12,7 @@ const uncontrolledRadio = () => (
       Option one
     </Radio>
     <Radio name="example1" value="two">
-      Option one
+      Option two
     </Radio>
   </div>
 );
@@ -96,5 +96,21 @@ describe('Radio', () => {
     cy.get('#radios')
       .first()
       .matchImageSnapshot();
+  });
+});
+
+describe('Tab', () => {
+  it('Radio is tabable', () => {
+    mount(
+      <TestThemeWrapper theme={crukTheme}>
+        {uncontrolledRadio()}
+      </TestThemeWrapper>,
+    );
+    cy.get('input[value=one]')
+      .focus()
+      .tab()
+      .should('have.attr','value','two')
+      .type('{downarrow}')
+      .invoke('attr','checked','true')
   });
 });

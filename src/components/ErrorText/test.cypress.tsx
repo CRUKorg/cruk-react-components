@@ -41,3 +41,21 @@ describe('ErrorText', () => {
       .matchImageSnapshot();
   });
 });
+
+describe('Error Styles', ()=>{
+  it('should have Font size 16px on all devices',()=>{
+    mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
+    cy.viewport(576,750)
+    cy.contains('This field is required')
+    .should('have.css','font-size','16px')
+    cy.viewport(992,1028)
+    cy.contains('This field is required')
+    .should('have.css','font-size','16px')
+  })
+  it('should belong to Arial Font Family',()=>{
+    mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
+    cy.contains('This field is required')
+    .should('have.css','font-family')
+    .and('contain','Arial')
+  })
+})

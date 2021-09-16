@@ -50,3 +50,11 @@ describe('Checkbox', () => {
       .matchImageSnapshot();
   });
 });
+
+  it('should be able to select a checkbox', ()=>{
+    mount(<TestThemeWrapper theme={crukTheme}>{unControlledContent()}</TestThemeWrapper>);
+    cy.get('input[value=two]')
+      .check({force:true})
+      .should('be.checked') 
+  })
+
