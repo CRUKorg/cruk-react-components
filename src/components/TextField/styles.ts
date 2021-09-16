@@ -86,6 +86,34 @@ export const ExtraWrapper = styled.span`
   display: flex;
 `;
 
+export const StyledInputWrapper = styled.span<StyledInputProps>`
+  position: relative;
+  display: block;
+  &:after {
+    position: absolute;
+    width: 2em;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    content: "";
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: ${({ theme }) => `calc( 100% - ${theme.spacing.xxs}) 50% `};
+    ${({ isValid, isInvalidVisible }: StyledInputProps) =>
+    !isValid &&
+    isInvalidVisible &&
+    css`
+        background-image: url('data:image/png;base64,${crossBase64}');
+    `}
+    ${({ isValid, isValidVisible }: StyledInputProps) =>
+    isValid &&
+    isValidVisible &&
+    css`
+        background-image: url('data:image/png;base64,${checkBase64}');
+    `}
+  }
+`;
+
 export const StyledInput = styled.input<StyledInputProps>`
   background-color: ${({ theme }) => theme.colors.backgroundLight};
   background-image: none;
@@ -157,22 +185,5 @@ export const StyledInput = styled.input<StyledInputProps>`
       ~ ${ExtraRight} {
         border-color: ${theme.colors.textError};
       }
-    `}
-
-  background-repeat: no-repeat;
-  background-position: ${({ theme }) => `calc( 100% - ${theme.spacing.xxs}) 50% `};
-
-
-  ${({ isValid, isInvalidVisible }: StyledInputProps) =>
-    !isValid &&
-    isInvalidVisible &&
-    css`
-        background-image: url('data:image/png;base64,${crossBase64}');
-    `}
-  ${({ isValid, isValidVisible }: StyledInputProps) =>
-    isValid &&
-    isValidVisible &&
-    css`
-        background-image: url('data:image/png;base64,${checkBase64}');
     `}
 `;
