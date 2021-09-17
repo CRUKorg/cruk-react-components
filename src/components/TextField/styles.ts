@@ -14,14 +14,6 @@ type ExtraProps = {
   theme: ThemeType;
 };
 
-type StyledInputWrapperProps = {
-  hasError: boolean;
-  isValid: boolean;
-  theme: ThemeType;
-  isValidVisible?: boolean;
-  isInvalidVisible?: boolean;
-};
-
 type StyledInputProps = {
   hasError: boolean;
   isValid: boolean;
@@ -72,7 +64,7 @@ export const ExtraWrapper = styled.span`
   display: flex;
 `;
 
-export const StyledInputWrapper = styled.span<StyledInputWrapperProps>`
+export const StyledInputWrapper = styled.span<StyledInputProps>`
   position: relative;
   display: block;
   flex: 1 1;
