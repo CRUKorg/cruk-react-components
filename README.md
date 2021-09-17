@@ -56,7 +56,7 @@ Cypress: Component function, accessibility and image snapshot tests (Image snaps
 Run all tests Jest and Cypress including image snapshots
 
 ```sh
-npm run test
+ npm run test
 ```
 
 Update Cypress image snapshots
@@ -112,4 +112,21 @@ Run Cypress tests
 
 ```bash
 docker-compose run cypress
+```
+
+## Run Percy Test
+
+To run percy test locally , create an [.env](.env.example) file with PERCY_TOKEN:
+
+```bash
+npm run percy
+```
+
+To test specific component , go to .percy.yml and add the regex to match story to the include attribute. Example
+
+```
+#.percy.yml
+
+storybook:
+include: [UserBlock]
 ```
