@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 import { ThemeType } from 'src/types';
@@ -15,14 +14,18 @@ type ExtraProps = {
   theme: ThemeType;
 };
 
+type StyledInputWrapperProps = {
+  hasError: boolean;
+  isValid: boolean;
+  theme: ThemeType;
+  isValidVisible?: boolean;
+  isInvalidVisible?: boolean;
+};
+
 type StyledInputProps = {
   hasError: boolean;
   isValid: boolean;
   theme: ThemeType;
-  extraBottom?: ReactNode;
-  extraLeft?: ReactNode;
-  extraRight?: ReactNode;
-  extraTop?: ReactNode;
   isValidVisible?: boolean;
   isInvalidVisible?: boolean;
 };
@@ -30,7 +33,6 @@ type StyledInputProps = {
 export const Extra = styled.span<ExtraProps>`
   display: block;
   background-color: ${({ theme }) => theme.colors.textInputExtraInfo};
-  border-radius: ${({ theme }) => theme.utilities.borderRadius};
   color: ${({ theme }) => theme.colors.textDark};
   font-size: ${({ theme }) => theme.typography.m};
   line-height: ${({ theme }) => theme.typography.lineHeight};
@@ -41,23 +43,10 @@ export const Extra = styled.span<ExtraProps>`
   width: 100%;
 `;
 
-export const ExtraTop = styled(Extra)`
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-`;
-
-export const ExtraBottom = styled(Extra)`
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-`;
-
 export const ExtraLeft = styled(Extra)`
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
   width: initial;
   vertical-align: middle;
   height: ${MIN_HEIGHT};
-  margin: auto;
 
   button {
     min-height: ${({ theme }) => `calc(${MIN_HEIGHT} - (2 * ${theme.utilities.inputBorderWidth}))`} !important;
@@ -65,8 +54,6 @@ export const ExtraLeft = styled(Extra)`
 `;
 
 export const ExtraRight = styled(Extra)`
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
   width: initial;
   border: solid ${({ theme }) => theme.utilities.inputBorderWidth} ${({ theme }) => theme.colors.textInputBorder};
   transition: border-color 150ms linear;
@@ -74,7 +61,6 @@ export const ExtraRight = styled(Extra)`
   background-color: transparent;
   padding: 0;
   height: ${MIN_HEIGHT};
-  margin: auto;
   vertical-align: middle;
 
   button {
@@ -86,9 +72,10 @@ export const ExtraWrapper = styled.span`
   display: flex;
 `;
 
-export const StyledInputWrapper = styled.span<StyledInputProps>`
+export const StyledInputWrapper = styled.span<StyledInputWrapperProps>`
   position: relative;
   display: block;
+  flex: 1 1;
   &:after {
     position: absolute;
     width: 2em;
@@ -115,11 +102,11 @@ export const StyledInputWrapper = styled.span<StyledInputProps>`
 `;
 
 export const StyledInput = styled.input<StyledInputProps>`
+  display: block;
   background-color: ${({ theme }) => theme.colors.backgroundLight};
   background-image: none;
-  border-radius: ${({ theme }) => theme.utilities.borderRadius};
-  border: solid ${({ theme }) => theme.utilities.inputBorderWidth}
-    ${({ hasError, theme }) => (hasError ? theme.colors.textError : theme.colors.textInputBorder)};
+  border: ${({ theme, hasError }) =>
+    `solid ${theme.utilities.inputBorderWidth} ${hasError ? theme.colors.textError : theme.colors.textInputBorder}`};
   color: ${({ theme }) => theme.colors.textDark};
   display: block;
   font-size: ${({ theme }) => theme.fontSizes.m};
@@ -155,30 +142,6 @@ export const StyledInput = styled.input<StyledInputProps>`
         `
       : null};
 
-  ${({ extraTop }) =>
-    !!extraTop &&
-    css`
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    `}
-  ${({ extraBottom }) =>
-    !!extraBottom &&
-    css`
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    `}
-  ${({ extraLeft }) =>
-    !!extraLeft &&
-    css`
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    `}
-  ${({ extraRight }) =>
-    !!extraRight &&
-    css`
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    `}
   ${({ hasError, theme }: StyledInputProps) =>
     hasError &&
     css`
@@ -186,7 +149,7 @@ export const StyledInput = styled.input<StyledInputProps>`
         border-color: ${theme.colors.textError};
       }
     `}
-    &:-webkit-autofill,
+  &:-webkit-autofill,
     &:-webkit-autofill:focus {
     box-shadow: 0 0 0 3em white inset !important;
   }
