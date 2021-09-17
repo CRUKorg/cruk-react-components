@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Heading H6 tags are always 1em
 
+### Fixed
+
+- TextField isValid and isInvalid checks and crosses disappear when focused because of Chrome browser default styling [#298](https://github.com/CRUKorg/cruk-react-components/issues/298)
+
 ## [0.1.4] - 2021-08-27
 
 ### Changed
