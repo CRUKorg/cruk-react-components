@@ -2,6 +2,9 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
+import Button from 'src/components/Button';
+import Icon from 'src/components/Icon';
+
 import { su2cTheme } from '..';
 import TextField, { TextFieldProps } from '.';
 
@@ -11,6 +14,16 @@ export default {
 } as Meta<TextFieldProps>;
 
 const Template: Story<TextFieldProps> = args => <TextField {...args} />;
+const TemplateExtraRight: Story<TextFieldProps> = args => (
+  <TextField
+    {...args}
+    extraRight={
+      <Button appearance="text" aria-label="search">
+        <Icon name="search" />
+      </Button>
+    }
+  />
+);
 
 export const TextFieldDefault: Story<TextFieldProps> = Template.bind({});
 TextFieldDefault.storyName = 'TextField';
@@ -34,6 +47,31 @@ TextFieldWithError.args = {
   hintText: undefined,
   hasError: true,
   errorMessage: 'error message',
+};
+
+export const TextFieldWithExtraLeft: Story<TextFieldProps> = Template.bind({});
+TextFieldWithExtraLeft.storyName = 'TextField extra left';
+TextFieldWithExtraLeft.args = {
+  value: undefined,
+  disabled: false,
+  required: false,
+  label: 'Fundrasing Target',
+  hintText: undefined,
+  hasError: false,
+  errorMessage: undefined,
+  extraLeft: '£',
+};
+
+export const TextFieldWithExtraRight: Story<TextFieldProps> = TemplateExtraRight.bind({});
+TextFieldWithExtraRight.storyName = 'TextField extra right';
+TextFieldWithExtraRight.args = {
+  value: undefined,
+  disabled: false,
+  required: false,
+  label: 'Search',
+  hintText: undefined,
+  hasError: false,
+  errorMessage: undefined,
 };
 
 const TemplateWithSU2C: Story<TextFieldProps> = args => (
