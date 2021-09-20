@@ -13,7 +13,7 @@ const uncontrolledRadio = () => (
     <Radio name="example1" label="Choose an option" value="one">
       Option one
     </Radio>
-    <Radio name="example2" label="Choose an option" value="two">
+    <Radio name="example1" label="Choose an option" value="two">
       Option two
     </Radio>
     <Button>Click me</Button>
