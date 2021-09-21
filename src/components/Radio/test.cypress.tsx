@@ -12,7 +12,7 @@ const uncontrolledRadio = () => (
       Option one
     </Radio>
     <Radio name="example1" value="two">
-      Option one
+      Option two
     </Radio>
   </div>
 );
