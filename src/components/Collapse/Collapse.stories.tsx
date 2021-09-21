@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme, Text, Box } from '..';
+import { su2cTheme, Text, Box, GlobalStyle } from '..';
 import Collapse, { CollapseProps } from '.';
 
 export default {
@@ -59,6 +59,7 @@ CollapseWitCustomHeader.args = {
 
 const TemplateWithSU2C: Story<CollapseProps> = args => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <Collapse {...args} />
   </ThemeProvider>
 );

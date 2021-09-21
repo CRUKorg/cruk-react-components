@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme } from '..';
+import { GlobalStyle, su2cTheme } from '..';
 import ProgressBar, { ProgressBarProps } from '.';
 
 export default {
@@ -27,6 +27,7 @@ ProgressBarCircular.args = {
 
 const TemplateWithSU2C: Story<ProgressBarProps> = args => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <ProgressBar {...args} />
   </ThemeProvider>
 );

@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme, Button, Heading, Text } from '..';
+import { su2cTheme, Button, Heading, Text, GlobalStyle } from '..';
 import Modal, { ModalProps } from '.';
 
 export default {
@@ -45,6 +45,7 @@ const TemplateWithSU2C: Story<ModalProps> = args => {
   return (
     <>
       <ThemeProvider theme={su2cTheme}>
+        <GlobalStyle />
         <Button appearance="primary" onClick={toggleShowModal}>
           Show me a modal
         </Button>

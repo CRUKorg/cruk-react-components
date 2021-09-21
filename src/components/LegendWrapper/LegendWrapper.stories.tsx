@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme, Box } from '..';
+import { su2cTheme, Box, GlobalStyle } from '..';
 import Radio from '../Radio';
 import CheckBox from '../Checkbox';
 
@@ -166,6 +166,7 @@ const TemplateWithSU2C: Story<LegendWrapperProps> = args => {
   };
   return (
     <ThemeProvider theme={su2cTheme}>
+      <GlobalStyle />
       <LegendWrapper {...args}>
         <Radio
           onChange={e => handleChange(e.target.value)}

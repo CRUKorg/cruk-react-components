@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import Button from 'src/components/Button';
 import Icon from 'src/components/Icon';
 
-import { su2cTheme } from '..';
+import { GlobalStyle, su2cTheme } from '..';
 import TextField, { TextFieldProps } from '.';
 
 export default {
@@ -76,6 +76,7 @@ TextFieldWithExtraRight.args = {
 
 const TemplateWithSU2C: Story<TextFieldProps> = args => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <TextField {...args} />
   </ThemeProvider>
 );

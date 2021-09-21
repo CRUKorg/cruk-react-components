@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme } from '..';
+import { GlobalStyle, su2cTheme } from '..';
 import DateField, { DateFieldProps } from '.';
 
 export default {
@@ -43,6 +43,7 @@ DateFieldWithError.args = {
 
 const TemplateWithSU2C: Story<DateFieldProps> = args => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <DateField {...args} />
   </ThemeProvider>
 );

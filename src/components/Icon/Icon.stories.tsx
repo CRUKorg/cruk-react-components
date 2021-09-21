@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme } from '..';
+import { GlobalStyle, su2cTheme } from '..';
 import Icon, { IconProps } from '.';
 
 export default {
@@ -20,6 +20,7 @@ IconDefault.args = {
 
 const TemplateWithSU2C: Story<IconProps> = args => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <Icon {...args} />
   </ThemeProvider>
 );

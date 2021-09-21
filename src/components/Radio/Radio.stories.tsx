@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme, Box } from '..';
+import { su2cTheme, Box, GlobalStyle } from '..';
 import Radio, { RadioProps } from '.';
 
 export default {
@@ -72,6 +72,7 @@ const TemplateWithSU2C: Story<RadioProps> = args => {
   };
   return (
     <ThemeProvider theme={su2cTheme}>
+      <GlobalStyle />
       <fieldset style={{ border: 'none' }}>
         <Radio onChange={e => handleChange(e.target.value)} checked={selected === 'one'} {...args}>
           Option one
