@@ -50,3 +50,9 @@ describe('Checkbox', () => {
       .matchImageSnapshot();
   });
 });
+
+it('should be able to select a checkbox', () => {
+  mount(<TestThemeWrapper theme={crukTheme}>{unControlledContent()}</TestThemeWrapper>);
+  cy.contains('Option two').click();
+  cy.getInputByLabel('Option two').should('be.checked');
+});
