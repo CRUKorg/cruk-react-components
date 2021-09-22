@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme, Link } from '..';
+import { su2cTheme, Link, GlobalStyle } from '..';
 import Footer, { FooterProps } from '.';
 
 export default {
@@ -26,6 +26,7 @@ FooterDefault.args = {};
 
 const TemplateWithSU2C: Story = args => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <Footer {...args}>
       <Link appearance="secondary" href="https://www.cancerresearchuk.org/about-us/contact-us">
         Contact us

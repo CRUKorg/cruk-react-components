@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 
 import { su2cTheme } from '../';
 import Link, { LinkProps } from '.';
+import GlobalStyle from '../GlobalStyle';
 
 export default {
   title: 'Link',
@@ -60,6 +61,7 @@ WithImage.args = {
 
 const TemplateWithSU2C: Story<LinkProps> = args => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <Link {...args} />
   </ThemeProvider>
 );

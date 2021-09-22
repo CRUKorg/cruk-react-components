@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme } from '..';
+import { GlobalStyle, su2cTheme } from '..';
 import Step, { StepProps } from '.';
 
 export default {
@@ -21,6 +21,7 @@ StepsDefault.args = {
 
 const TemplateWithSU2C: Story<StepProps> = args => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <Step {...args} />
   </ThemeProvider>
 );

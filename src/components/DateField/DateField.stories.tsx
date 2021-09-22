@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme } from '..';
+import { GlobalStyle, su2cTheme } from '..';
 import DateField, { DateFieldProps } from '.';
 
 export default {
@@ -23,6 +23,7 @@ DateFieldWithLabel.args = {
   onBlur: () => {},
   onFocus: () => {},
   disabled: false,
+  required: true,
 };
 
 export const DateFieldWithError: Story<DateFieldProps> = Template.bind({});
@@ -37,10 +38,12 @@ DateFieldWithError.args = {
   yearHasError: true,
   errorMessage: 'Day month and year invalid',
   disabled: false,
+  required: true,
 };
 
 const TemplateWithSU2C: Story<DateFieldProps> = args => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <DateField {...args} />
   </ThemeProvider>
 );
@@ -57,6 +60,7 @@ SU2CDateFieldWithLabel.args = {
   onBlur: () => {},
   onFocus: () => {},
   disabled: false,
+  required: true,
 };
 
 export const SU2CDateFieldWithError: Story<DateFieldProps> = TemplateWithSU2C.bind({});
@@ -72,4 +76,5 @@ SU2CDateFieldWithError.args = {
   yearHasError: true,
   errorMessage: 'Day month and year invalid',
   disabled: false,
+  required: true,
 };

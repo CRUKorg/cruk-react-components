@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme } from '..';
+import { GlobalStyle, su2cTheme } from '..';
 import ErrorText, { ErrorTextProps } from '.';
 
 export default {
@@ -20,6 +20,7 @@ ErrorTextDefault.args = {
 
 const TemplateWithSU2C: Story = args => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <ErrorText {...args} />
   </ThemeProvider>
 );
