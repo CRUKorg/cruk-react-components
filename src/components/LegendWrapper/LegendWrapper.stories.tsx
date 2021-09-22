@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme, Box } from '..';
+import { su2cTheme } from '..';
 import Radio from '../Radio';
 import CheckBox from '../Checkbox';
 

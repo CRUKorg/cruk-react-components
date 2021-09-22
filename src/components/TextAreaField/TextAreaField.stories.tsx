@@ -29,6 +29,7 @@ TextAreaFieldDefault.args = {
 export const TextAreaFieldWithError: Story<TextAreaFieldProps> = Template.bind({});
 TextAreaFieldWithError.storyName = 'TextAreaField With Error';
 TextAreaFieldWithError.args = {
+  id: 'textarea',
   value: undefined,
   disabled: false,
   label: 'TextAreaField',
