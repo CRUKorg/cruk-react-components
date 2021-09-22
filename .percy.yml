@@ -2,7 +2,7 @@
 version: 2
 snapshot:
   widths:
-    - 576 ##small mobile
+    - 320 ##small mobile
     - 992 ##large desktop
 storybook:
   waitForTimeout: 3
