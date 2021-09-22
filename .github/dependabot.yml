@@ -13,7 +13,6 @@ updates:
     schedule:
       interval: 'weekly'
       day: 'monday'
-  - package-ecosystem: 'npm'
 
   # Docker
   - package-ecosystem: 'docker'
