@@ -40,7 +40,7 @@ const Badge: FunctionComponent<BadgeProps> = ({ children, ...rest }) => {
     ...foundTheme,
   };
   return (
-    <StyledBadge theme={theme} text={typeof children === 'string'} size="xs" {...rest}>
+    <StyledBadge theme={theme} isText={typeof children === 'string'} size="xs" {...rest}>
       {children}
     </StyledBadge>
   );

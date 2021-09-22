@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme } from '..';
+import { GlobalStyle, su2cTheme } from '..';
 import RadioGroup, { RadioGroupProps } from '.';
 
 export default {
@@ -38,6 +38,7 @@ const TemplateWithSU2C: Story<RadioGroupProps> = args => {
 
   return (
     <ThemeProvider theme={su2cTheme}>
+      <GlobalStyle />
       <fieldset style={{ border: 'none' }}>
         <RadioGroup
           {...args}

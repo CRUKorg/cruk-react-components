@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { Text, su2cTheme } from '..';
+import { Text, su2cTheme, GlobalStyle } from '..';
 import Box, { BoxProps } from '.';
 
 export default {
@@ -33,6 +33,7 @@ BoxWithColourWithCustomSpacing.args = {
 
 const TemplateWithSU2C: Story = args => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <Box {...args} />
   </ThemeProvider>
 );

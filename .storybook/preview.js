@@ -18,13 +18,16 @@ import su2cTheme from '../src/themes/su2c';
 import Text from '../src/components/Text';
 import GlobalStyle from '../src/components/GlobalStyle';
 
-addDecorator(withThemes(ThemeProvider, [crukTheme, su2cTheme]));
-addDecorator(story => (
-  <>
-    <GlobalStyle />
-    {story()}
-  </>
-));
+const providerFn = ({ theme, children }) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      {children}
+    </ThemeProvider>
+  );
+};
+
+addDecorator(withThemes(null, [crukTheme, su2cTheme], { providerFn }));
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

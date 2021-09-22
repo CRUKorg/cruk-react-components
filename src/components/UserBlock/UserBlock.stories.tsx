@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme, Text, Icon } from '..';
+import { su2cTheme, Text, Icon, GlobalStyle } from '..';
 import UserBlock, { UserBlockProps } from '.';
 
 export default {
@@ -45,6 +45,7 @@ UserBlockWithExtra.args = {
 
 const TemplateWithSU2C: Story = args => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <UserBlock {...args} />
   </ThemeProvider>
 );

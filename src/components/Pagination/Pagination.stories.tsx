@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme } from '..';
+import { GlobalStyle, su2cTheme } from '..';
 import Pagination, { PaginationProps } from '.';
 
 export default {
@@ -23,6 +23,7 @@ PaginationDefault.args = {
 
 const TemplateWithSU2C: Story<PaginationProps> = args => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <Pagination {...args} />
   </ThemeProvider>
 );

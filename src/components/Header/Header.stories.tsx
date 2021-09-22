@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme, Button } from '..';
+import { su2cTheme, Button, GlobalStyle } from '..';
 import Header, { HeaderProps } from '.';
 
 export default {
@@ -22,6 +22,7 @@ HeaderDefault.args = {
 
 const TemplateWithSU2C: Story<HeaderProps> = args => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <Header {...args} />
   </ThemeProvider>
 );

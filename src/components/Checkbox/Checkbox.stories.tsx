@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme, Box } from '..';
+import { su2cTheme, Box, GlobalStyle } from '..';
 import CheckBox, { CheckBoxProps } from '.';
 
 export default {
@@ -74,6 +74,7 @@ const TemplateWithSU2C: Story = args => {
   };
   return (
     <ThemeProvider theme={su2cTheme}>
+      <GlobalStyle />
       <CheckBox onChange={e => handleChange(e.target.value)} checked={selected.indexOf('one') >= 0} {...args} />
     </ThemeProvider>
   );
