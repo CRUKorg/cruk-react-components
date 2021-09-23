@@ -107,7 +107,7 @@
     "react-live": "^2.2.3",
     "rollup": "^2.7.2",
     "rollup-plugin-terser": "^7.0.0",
-    "rollup-plugin-typescript2": "^0.27.1",
+    "rollup-plugin-typescript2": "^0.30.0",
     "source-map-explorer": "^2.2.2",
     "styled-components": "^5.1.1",
     "ts-loader": "^8.1.0",
