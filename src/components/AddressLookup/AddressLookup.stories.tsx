@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme } from '..';
+import { GlobalStyle, su2cTheme } from '..';
 import AddressLookup, { AddressLookupProps } from '.';
 
 export default {
@@ -31,6 +31,7 @@ AddressLookUp.args = {
 
 const TemplateWithSU2C: Story<AddressLookupProps> = args => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <AddressLookupWithState {...args} />
   </ThemeProvider>
 );

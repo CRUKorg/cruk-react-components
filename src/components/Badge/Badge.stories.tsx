@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme, Icon } from '..';
+import { su2cTheme, Icon, GlobalStyle } from '..';
 import Badge, { BadgeProps } from '.';
 
 export default {
@@ -39,6 +39,7 @@ BadgeWithInverseColours.args = {
 
 const TemplateWithSU2C: Story = args => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <Badge {...args} />
   </ThemeProvider>
 );

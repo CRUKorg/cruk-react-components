@@ -6,7 +6,7 @@ type StyleBadgeProps = {
   backgroundColor?: string;
   borderColor?: string;
   textColor?: string;
-  text?: boolean;
+  isText?: boolean;
   size: SpaceType;
   theme: ThemeType;
 };
@@ -55,7 +55,7 @@ export const StyledBadge = styled.span<StyleBadgeProps>`
   }) => `calc(${spacing[size]} + ${xs})`};
 
   ${(props: StyleBadgeProps) =>
-    !props.text &&
+    !props.isText &&
     css`
       padding: 0;
       border-radius: 50%;

@@ -53,6 +53,7 @@
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
     "react/self-closing-comp": "off",
+    "react/default-props-match-prop-types": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",

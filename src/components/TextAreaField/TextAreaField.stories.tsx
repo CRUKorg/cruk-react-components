@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme } from '..';
+import { GlobalStyle, su2cTheme } from '..';
 import TextAreaField, { TextAreaFieldProps } from '.';
 
 export default {
@@ -43,6 +43,7 @@ TextAreaFieldWithError.args = {
 
 const TemplateWithSU2C: Story<TextAreaFieldProps> = args => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <TextAreaField {...args} />
   </ThemeProvider>
 );

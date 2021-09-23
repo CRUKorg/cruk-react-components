@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme, Text, Icon } from '..';
+import { su2cTheme, Text, Icon, GlobalStyle } from '..';
 import Totaliser, { TotaliserProps } from '.';
 
 export default {
@@ -55,6 +55,7 @@ TotaliserCompact.args = {
 
 const TemplateWithSU2C: Story<TotaliserProps> = args => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <Totaliser {...args} />
   </ThemeProvider>
 );

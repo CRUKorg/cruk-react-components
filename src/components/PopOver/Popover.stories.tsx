@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
-import { su2cTheme, Box, Button, Icon } from '..';
+import { su2cTheme, Box, Button, Icon, GlobalStyle } from '..';
 import PopOver, { PopOverProps } from '.';
 
 export default {
@@ -58,6 +58,7 @@ const TemplateWithSU2C: Story<PopOverProps> = args => {
   return (
     <>
       <ThemeProvider theme={su2cTheme}>
+        <GlobalStyle />
         <Box margin="xxl">
           <PopOver {...args} modalLabel="sharing options" modalContent={content} minWidth="23em">
             <Button>
