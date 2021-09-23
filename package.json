@@ -88,7 +88,7 @@
     "axe-core": "^4.2.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.8.0",
-    "cypress": "7.3.0",
+    "cypress": "8.4.1",
     "cypress-axe": "0.13.0",
     "cypress-image-snapshot": "^4.0.1",
     "cypress-plugin-tab": "^1.0.5",
