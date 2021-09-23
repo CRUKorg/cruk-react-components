@@ -36,6 +36,7 @@ SelectWithLabel.args = {
 
 export const SelectWithError: Story<SelectProps> = Template.bind({});
 SelectWithError.args = {
+  id: 'select',
   disabled: false,
   required: false,
   value: '',
