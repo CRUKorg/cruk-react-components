@@ -29,7 +29,6 @@ Cypress.Commands.add(
   },
 );
 
-// @ts-ignore isInteractive does exit in config, cypress must have screwed up their types
 if (Cypress.config('isInteractive')) {
   Cypress.Commands.add('matchImageSnapshot', () => {
     cy.log('Skipping snapshot');
