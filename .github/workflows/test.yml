@@ -46,7 +46,7 @@ jobs:
       - name: npm install
         run: docker-compose run npm ci
       - name: Test
-        run: npm run prettier:test --verbose
+        run: npm run prettier:debug
   ESLint:
     runs-on: ubuntu-latest
     steps:

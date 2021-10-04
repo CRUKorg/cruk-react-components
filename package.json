@@ -39,6 +39,7 @@
     "rollup:build-lib": "npm run clean-lib && rollup --config",
     "prettier": "prettier --write src/**/*.{ts,tsx}",
     "prettier:test": "prettier --check src/**/*.{ts,tsx}",
+    "prettier:debug": "prettier --debug-check src/**/*.{ts,tsx}",
     "prettier:test-staged": "npx pretty-quick --pattern 'src/**/*.{js,ts,tsx}' 'cypress/{integration,plugins,support}/**/*.{js,ts,tsx}' --staged",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
