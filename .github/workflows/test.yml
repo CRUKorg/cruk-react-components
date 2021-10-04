@@ -1,4 +1,4 @@
-name: 'Test'
+name: "Test"
 on:
   pull_request:
     branches:
@@ -46,7 +46,7 @@ jobs:
       - name: npm install
         run: docker-compose run npm ci
       - name: Test
-        run: npm run prettier:test
+        run: npm run prettier:test --verbose
   ESLint:
     runs-on: ubuntu-latest
     steps:
@@ -59,13 +59,11 @@ jobs:
   Percy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 
+      - name: Checkout
         uses: actions/checkout@v2.3.4
       - name: Install dependencies
         run: npm install
       - name: Run Percy tests
         run: npm run percy
         env:
-          PERCY_TOKEN:  ${{ secrets.PERCY_TOKEN }}
-
-
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
