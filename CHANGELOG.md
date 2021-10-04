@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- CRUK secondary button hover colours no accessible [#299](https://github.com/CRUKorg/cruk-react-components/issues/299)
+- CRUK secondary button hover colours not accessible [#299](https://github.com/CRUKorg/cruk-react-components/issues/299)
+- CRUK totaliser colours not accessible [#324](https://github.com/CRUKorg/cruk-react-components/issues/324)
 
 ## [0.1.5] - 2021-09-23
 
