@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import spacing, { SpacingProps } from 'src/components/Spacing';
+import styled, { css } from "styled-components";
+import spacing, { SpacingProps } from "src/components/Spacing";
 
 type FlexProps = SpacingProps & {
   css: string;
