@@ -4,11 +4,11 @@ import React from 'react';
 import { mount } from '@cypress/react';
 
 import { TestThemeWrapper } from '../TestWrapper';
-import { RadioGroup, su2cTheme, crukTheme } from '../';
+import { RadioConsent, su2cTheme, crukTheme } from '..';
 
 const uncontrolledContent = () => (
   <div id="radios">
-    <RadioGroup
+    <RadioConsent
       legend="Email"
       name="email"
       attributes={[
@@ -18,7 +18,7 @@ const uncontrolledContent = () => (
       selectedValue={'yes'}
     />
 
-    <RadioGroup
+    <RadioConsent
       legend="Telephone"
       name="phone"
       attributes={[
@@ -36,7 +36,7 @@ const Content = () => {
 
   return (
     <>
-      <RadioGroup
+      <RadioConsent
         legend="Email"
         name="email"
         onChange={e => setSelectedEmail(e.target.value)}
@@ -47,7 +47,7 @@ const Content = () => {
         selectedValue={selectedEmail}
       />
 
-      <RadioGroup
+      <RadioConsent
         legend="Telephone"
         name="phone"
         onChange={e => setSelectedPhone(e.target.value)}
@@ -61,7 +61,7 @@ const Content = () => {
   );
 };
 
-describe('RadioGroup', () => {
+describe('RadioConsent', () => {
   it('is accessible CRUK theme', () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>

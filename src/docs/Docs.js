@@ -36,7 +36,7 @@ import PaginationReadme from '../components/Pagination/README.md';
 import PopOverReadme from '../components/PopOver/README.md';
 import ProgressBarReadme from '../components/ProgressBar/README.md';
 import RadioReadme from '../components/Radio/README.md';
-import RadioGroupReadme from '../components/RadioGroup/README.md';
+import RadioConsentReadme from '../components/RadioConsent/README.md';
 import SelectReadme from '../components/Select/README.md';
 import StepReadme from '../components/Step/README.md';
 import TextReadme from '../components/Text/README.md';
@@ -293,7 +293,7 @@ const Docs = () => {
             <RouterLink to="/popover">PopOver</RouterLink>
             <RouterLink to="/progressbar">ProgressBar</RouterLink>
             <RouterLink to="/radio">Radio</RouterLink>
-            <RouterLink to="/radiogroup">Radio Group</RouterLink>
+            <RouterLink to="/radioconsent">RadioConsent</RouterLink>
             <RouterLink to="/select">Select</RouterLink>
             <RouterLink to="/step">Step</RouterLink>
             <RouterLink to="/textareafield">TextAreaField</RouterLink>
@@ -328,7 +328,7 @@ const Docs = () => {
               <PopOverReadme path="/popover" />
               <ProgressBarReadme path="/progressbar" />
               <RadioReadme path="/radio" />
-              <RadioGroupReadme path="/radiogroup" />
+              <RadioConsentReadme path="/radioconsent" />
               <SelectReadme path="/select" />
               <StepReadme path="/step" />
               <TextReadme path="/text" />

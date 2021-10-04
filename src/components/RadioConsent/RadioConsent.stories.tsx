@@ -3,18 +3,18 @@ import { Story, Meta } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
 import { GlobalStyle, su2cTheme } from '..';
-import RadioGroup, { RadioGroupProps } from '.';
+import RadioConsent, { RadioConsentProps } from '.';
 
 export default {
-  title: 'RadioGroup',
-  component: RadioGroup,
-} as Meta<RadioGroupProps>;
+  title: 'RadioConsent (experiemental)',
+  component: RadioConsent,
+} as Meta<RadioConsentProps>;
 
-const Template: Story<RadioGroupProps> = args => {
+const Template: Story<RadioConsentProps> = args => {
   const [selectedEmail, setSelectedEmail] = React.useState('yes');
   return (
     <fieldset style={{ border: 'none' }}>
-      <RadioGroup
+      <RadioConsent
         {...args}
         legend="Email"
         name="email"
@@ -29,21 +29,21 @@ const Template: Story<RadioGroupProps> = args => {
   );
 };
 
-export const RadioDefault: Story<RadioGroupProps> = Template.bind({});
-RadioDefault.storyName = 'RadioGroup';
+export const RadioDefault: Story<RadioConsentProps> = Template.bind({});
+RadioDefault.storyName = 'RadioConsent';
 RadioDefault.args = {};
 
-const TemplateWithSU2C: Story<RadioGroupProps> = args => {
+const TemplateWithSU2C: Story<RadioConsentProps> = args => {
   const [selectedEmail, setSelectedEmail] = React.useState('yes');
 
   return (
     <ThemeProvider theme={su2cTheme}>
       <GlobalStyle />
       <fieldset style={{ border: 'none' }}>
-        <RadioGroup
+        <RadioConsent
           {...args}
-          legend="Email"
-          name="email"
+          legend="Telephone"
+          name="telephone"
           onChange={e => setSelectedEmail(e.target.value)}
           attributes={[
             { option: 'Yes', value: 'yes' },
@@ -56,6 +56,6 @@ const TemplateWithSU2C: Story<RadioGroupProps> = args => {
   );
 };
 
-export const SU2CRadio: Story<RadioGroupProps> = TemplateWithSU2C.bind({});
-SU2CRadio.storyName = 'SU2C SU2CRadio';
+export const SU2CRadio: Story<RadioConsentProps> = TemplateWithSU2C.bind({});
+SU2CRadio.storyName = 'SU2C RadioConsent';
 SU2CRadio.args = {};
