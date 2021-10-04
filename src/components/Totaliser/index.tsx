@@ -12,8 +12,9 @@ import {
   TotaliserWrapper,
   CompactWrapper,
   Summary,
-  DetailWrapper,
+  BubbleWrapper,
   BubbleText,
+  GiftAid,
   Total,
   ProgressBarWrapper,
   StyledProgressBar,
@@ -61,11 +62,11 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
           )}
         </CompactWrapper>
       ) : (
-        <DetailWrapper theme={theme}>
+        <BubbleWrapper theme={theme}>
           <BubbleText>Total raised</BubbleText>
           <Total>£{formatMoneyWithCommas(props.total)}</Total>
-          <BubbleText>+ £{formatMoneyWithCommas(props.giftAid || 0)} Gift Aid</BubbleText>
-        </DetailWrapper>
+          <GiftAid>+ £{formatMoneyWithCommas(props.giftAid || 0)} Gift Aid</GiftAid>
+        </BubbleWrapper>
       )}
       {/* We don't want to show the default summaryMessage if there is no target, because the summary is associated with the target progress bar */}
       {/* However, if we explicitly pass a summaryMessage string/compononent, then we want to always display it even if the target is zero*/}

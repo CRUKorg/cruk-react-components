@@ -101,7 +101,7 @@ export const COLORS: ColorsType = {
   textDark: TOKEN_COLORS.grey_900,
   textLight: TOKEN_COLORS.white,
 
-  progressBar: TOKEN_COLORS.magenta_500,
+  progressBar: TOKEN_COLORS.darkBlue_500,
   progressBarBackground: TOKEN_COLORS.grey_200,
   circularProgress: TOKEN_COLORS.cyan_500,
   circularProgressBackground: TOKEN_COLORS.grey_300,
@@ -164,7 +164,9 @@ export const COLORS: ColorsType = {
 
   textInputExtraInfo: TOKEN_COLORS.grey_200,
 
-  totaliserBorder: TOKEN_COLORS.grey_300,
+  totaliserBubbleColor: TOKEN_COLORS.grey_200,
+  totaliserBubbleTextColor: TOKEN_COLORS.grey_900,
+  totaliserBubbleTotalColor: TOKEN_COLORS.darkBlue_500,
 
   selectBackground: TOKEN_COLORS.grey_900,
 

@@ -129,7 +129,9 @@ export type ColorsType = {
 
   textInputExtraInfo: string;
 
-  totaliserBorder: string;
+  totaliserBubbleColor: string;
+  totaliserBubbleTextColor: string;
+  totaliserBubbleTotalColor: string;
 
   textInputBorder: string;
 
