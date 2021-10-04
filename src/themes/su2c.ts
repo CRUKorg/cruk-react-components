@@ -29,8 +29,7 @@ export const SITE_CONFIG: SiteConfigType = {
 
 export const AVATAR: AvatarType = {
   ...defaultTheme.avatar,
-  path:
-    'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/icon-avatars/su2c/',
+  path: 'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/icon-avatars/su2c/',
 };
 
 export const BUTTON: ButtonType = {

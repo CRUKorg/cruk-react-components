@@ -19,6 +19,6 @@ const StyledDivider = styled.div`
   }
 `;
 
-export const Divider: FunctionComponent = props => <StyledDivider>{props.children}</StyledDivider>;
+export const Divider: FunctionComponent = (props) => <StyledDivider>{props.children}</StyledDivider>;
 
 export default Divider;

@@ -35,6 +35,6 @@ const components = {
   p: (props: HTMLAttributes<HTMLHeadingElement>) => <Text {...props} />,
 };
 
-const MdxProvider: FunctionComponent = props => <MDXProvider components={components}>{props.children}</MDXProvider>;
+const MdxProvider: FunctionComponent = (props) => <MDXProvider components={components}>{props.children}</MDXProvider>;
 
 export default MdxProvider;

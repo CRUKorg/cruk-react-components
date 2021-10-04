@@ -10,7 +10,7 @@ type CustomFont = {
 const buildCustomFonts = (customFonts: Array<CustomFont>) =>
   customFonts
     .map(
-      font => `
+      (font) => `
         @font-face {
           font-family: ${font.family};
           src: url("${font.url}.woff2") format('woff2'),
@@ -24,7 +24,7 @@ const buildCustomFonts = (customFonts: Array<CustomFont>) =>
     .join('');
 
 const GlobalStyle = createGlobalStyle`
-  ${props => {
+  ${(props) => {
     const theme = {
       ...defaultTheme,
       ...props.theme,
