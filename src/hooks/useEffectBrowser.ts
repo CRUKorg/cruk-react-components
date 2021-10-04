@@ -1,4 +1,4 @@
-import { useEffect, EffectCallback, DependencyList } from 'react';
+import { useEffect, EffectCallback, DependencyList } from "react";
 
 const isBrowser = typeof window !== `undefined`;
 
