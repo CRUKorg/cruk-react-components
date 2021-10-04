@@ -1,5 +1,5 @@
-import { createGlobalStyle, withTheme } from 'styled-components';
-import defaultTheme from '../themes/cruk';
+import { createGlobalStyle, withTheme } from "styled-components";
+import defaultTheme from "../themes/cruk";
 
 type CustomFont = {
   family: string;
@@ -10,7 +10,7 @@ type CustomFont = {
 const buildCustomFonts = (customFonts: Array<CustomFont>) =>
   customFonts
     .map(
-      font => `
+      (font) => `
         @font-face {
           font-family: ${font.family};
           src: url("${font.url}.woff2") format('woff2'),
@@ -19,12 +19,12 @@ const buildCustomFonts = (customFonts: Array<CustomFont>) =>
           font-style: normal;
           font-display: fallback;
         }
-      `,
+      `
     )
-    .join('');
+    .join("");
 
 const GlobalStyle = createGlobalStyle`
-  ${props => {
+  ${(props) => {
     const theme = {
       ...defaultTheme,
       ...props.theme,

@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react';
-import styled, { withTheme } from 'styled-components';
+import React, { FunctionComponent } from "react";
+import styled, { withTheme } from "styled-components";
 
-import { ThemeType } from '../types';
-import defaultTheme from '../themes/cruk';
-import Heading from './Heading';
+import { ThemeType } from "../types";
+import defaultTheme from "../themes/cruk";
+import Heading from "./Heading";
 
 type Props = {
   theme?: ThemeType;
