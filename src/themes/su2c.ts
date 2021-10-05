@@ -77,6 +77,10 @@ export const COLORS: ColorsType = {
 
   paginationBackground: TOKEN_COLORS.su2cBlack,
 
+  totaliserBubbleColor: TOKEN_COLORS.su2cBlack,
+  totaliserBubbleTextColor: TOKEN_COLORS.white,
+  totaliserBubbleTotalColor: TOKEN_COLORS.white,
+
   buttonPrimaryBackground: TOKEN_COLORS.su2cOrange5,
   buttonPrimaryText: TOKEN_COLORS.su2cBlack,
   buttonPrimaryBorder: TOKEN_COLORS.su2cOrange5,

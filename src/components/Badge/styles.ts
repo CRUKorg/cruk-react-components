@@ -25,7 +25,7 @@ export const StyledBadge = styled.span<StyleBadgeProps>`
       ? colors[textColor]
       : textColor
       ? textColor
-      : colors['textLight']};
+      : colors['textOnPrimary']};
   border-color: ${({ theme: { colors }, borderColor, backgroundColor }) =>
     borderColor && typeof colors[borderColor] !== 'undefined'
       ? colors[borderColor]
