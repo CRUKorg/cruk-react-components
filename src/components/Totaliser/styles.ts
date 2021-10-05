@@ -1,13 +1,12 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
-import ProgressBar from 'src/components/ProgressBar';
+import ProgressBar from "src/components/ProgressBar";
 
-import { ThemeType } from 'src/types';
+import { ThemeType } from "src/types";
 
-export const DetailWrapper = styled.div`
-  color: ${({ theme }) => theme.colors.textLight};
+export const BubbleWrapper = styled.div`
   text-align: center;
-  background-color: ${({ theme }) => theme.colors.tertiary};
+  background-color: ${({ theme }) => theme.colors.totaliserBubbleColor};
   border-radius: 3.2rem;
   padding: 5px;
   position: relative;
@@ -20,12 +19,12 @@ export const DetailWrapper = styled.div`
 
 export const ProgressBarWrapper = styled.div`
   padding: 0 46px 12px;
-  margin-top: 7px;
-  border: solid 1px ${({ theme }) => theme.colors.totaliserBorder};
+  margin-top: ${({ theme }) => theme.spacing.s};
   position: relative;
 `;
 
 export const Total = styled.p`
+  color: ${({ theme }) => theme.colors.totaliserBubbleTotalColor};
   font-size: 2.625rem;
   line-height: 3rem;
   font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
@@ -37,6 +36,17 @@ export const Total = styled.p`
 `;
 
 export const BubbleText = styled.p`
+  color: ${({ theme }) => theme.colors.totaliserBubbleTextColor};
+  font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
+  text-transform: ${({
+    theme: {
+      typography: { headerTextTransform },
+    },
+  }) => headerTextTransform};
+`;
+
+export const GiftAid = styled.p`
+  color: ${({ theme }) => theme.colors.totaliserBubbleTotalColor};
   font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
   text-transform: ${({
     theme: {
@@ -59,7 +69,7 @@ type TotaliserWrapperProps = {
 export const TotaliserWrapper = styled.div<TotaliserWrapperProps>`
   font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
   margin: 0;
-  ${props =>
+  ${(props) =>
     props.isCompact &&
     css`
       ${ProgressBarWrapper} {
@@ -80,12 +90,12 @@ type StyledProgressBarProps = {
 };
 
 export const StyledProgressBar = styled(ProgressBar)<StyledProgressBarProps>`
-  ${props =>
+  ${(props) =>
     !props.isCompact &&
     css`
       > div > div:after {
-        content: '\\25bc';
-        color: ${({ theme }) => theme.colors.tertiary};
+        content: "\\25bc";
+        color: ${({ theme }) => theme.colors.totaliserBubbleColor};
         z-index: 11;
         position: absolute;
         top: -30px;

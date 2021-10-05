@@ -10,9 +10,9 @@ import {
   FontSizesType,
   TypographyType,
   ThemeType,
-} from '../types';
+} from "../types";
 
-import defaultTheme from './cruk';
+import defaultTheme from "./cruk";
 
 export const UTILITIES: UtilitiesType = {
   ...defaultTheme.utilities,
@@ -22,22 +22,21 @@ export const UTILITIES: UtilitiesType = {
 export const SITE_CONFIG: SiteConfigType = {
   ...defaultTheme.siteConfig,
   logoSrc:
-    'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/su2c-logo.png',
+    "https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/su2c-logo.png",
   footerCopyText:
-    'Stand Up To Cancer and Stand Up To Cancer Brand Marks are registered trademarks of the Entertainment Industry Foundation. Cancer Research UK is a registered charity in England and Wales (1089464), Scotland(SC041666), the Isle of Man (1103) and Jersey (247). A company limited by guarantee. Registered company in England and Wales (4325234) and the Isle of Man (5713F). Registered address: 2 Redman Place, London, E20 1JQ. Donations will be made to Cancer Research UK in support of the Stand Up To Cancer campaign.',
+    "Stand Up To Cancer and Stand Up To Cancer Brand Marks are registered trademarks of the Entertainment Industry Foundation. Cancer Research UK is a registered charity in England and Wales (1089464), Scotland(SC041666), the Isle of Man (1103) and Jersey (247). A company limited by guarantee. Registered company in England and Wales (4325234) and the Isle of Man (5713F). Registered address: 2 Redman Place, London, E20 1JQ. Donations will be made to Cancer Research UK in support of the Stand Up To Cancer campaign.",
 };
 
 export const AVATAR: AvatarType = {
   ...defaultTheme.avatar,
-  path:
-    'https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/icon-avatars/su2c/',
+  path: "https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/icon-avatars/su2c/",
 };
 
 export const BUTTON: ButtonType = {
   ...defaultTheme.button,
-  borderRadius: '1.5rem',
-  borderRadiusLarge: '2rem',
-  textTransform: 'uppercase',
+  borderRadius: "1.5rem",
+  borderRadiusLarge: "2rem",
+  textTransform: "uppercase",
 };
 
 export const BREAKPOINT: BreakPointType = {
@@ -46,15 +45,15 @@ export const BREAKPOINT: BreakPointType = {
 
 export const TOKEN_COLORS: TokenColorsType = {
   ...defaultTheme.tokenColors,
-  su2cOrange5: '#FF8E00',
-  su2cOrange3: '#FFB04D',
-  su2cOrange2: '#FFDAAD',
-  su2cOrange1: '#FFF6EB',
-  su2cBlack: '#231F20',
-  su2cGrey1: '#555759',
-  su2cGrey2: '#A5A5A9',
-  su2cRed: '#EF4135',
-  su2cYellow: '#FFC325',
+  su2cOrange5: "#FF8E00",
+  su2cOrange3: "#FFB04D",
+  su2cOrange2: "#FFDAAD",
+  su2cOrange1: "#FFF6EB",
+  su2cBlack: "#231F20",
+  su2cGrey1: "#555759",
+  su2cGrey2: "#A5A5A9",
+  su2cRed: "#EF4135",
+  su2cYellow: "#FFC325",
 };
 
 export const COLORS: ColorsType = {
@@ -77,6 +76,10 @@ export const COLORS: ColorsType = {
   loaderColor3: TOKEN_COLORS.su2cBlack,
 
   paginationBackground: TOKEN_COLORS.su2cBlack,
+
+  totaliserBubbleColor: TOKEN_COLORS.su2cBlack,
+  totaliserBubbleTextColor: TOKEN_COLORS.white,
+  totaliserBubbleTotalColor: TOKEN_COLORS.white,
 
   buttonPrimaryBackground: TOKEN_COLORS.su2cOrange5,
   buttonPrimaryText: TOKEN_COLORS.su2cBlack,
@@ -121,19 +124,19 @@ export const TYPOGRAPHY: TypographyType = {
   ...defaultTheme.typography,
   customFonts: [
     {
-      family: 'itc_avant_garde_pro_mdbold',
+      family: "itc_avant_garde_pro_mdbold",
       // TODO push this to cdn.
-      url: 'https://crukorg.github.io/SU2C-drupal/assets/fonts/su2c/itc_-_itcavantgardepro-bold-webfont',
+      url: "https://crukorg.github.io/SU2C-drupal/assets/fonts/su2c/itc_-_itcavantgardepro-bold-webfont",
     },
   ],
-  fontFamilyHeadings: 'itc_avant_garde_pro_mdbold,Arial,sans-serif',
-  linkTextDecoration: 'none',
-  headerLineHeight: '1.5em',
-  headerTextTransform: 'uppercase',
+  fontFamilyHeadings: "itc_avant_garde_pro_mdbold,Arial,sans-serif",
+  linkTextDecoration: "none",
+  headerLineHeight: "1.5em",
+  headerTextTransform: "uppercase",
 };
 
 const theme: ThemeType = {
-  name: 'su2c',
+  name: "su2c",
   avatar: AVATAR,
   breakpoint: BREAKPOINT,
   button: BUTTON,

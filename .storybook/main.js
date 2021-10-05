@@ -8,6 +8,9 @@ module.exports = {
     '@react-theming/storybook-addon',
     '@storybook/addon-a11y',
   ],
+  core: {
+    builder: 'webpack5',
+  },
   webpackFinal: async config => {
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
