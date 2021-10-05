@@ -51,7 +51,11 @@ const TextField: FunctionComponent<TextAreaFieldProps> = forwardRef(
           ref={ref}
           data-hj-suppress={true}
         />
-        {!!errorMessage && <ErrorText marginTop="xxs" id={!!props.id ? `${props.id}-error` : undefined}>{errorMessage}</ErrorText>}
+        {!!errorMessage && (
+          <ErrorText marginTop="xxs" id={!!props.id ? `${props.id}-error` : undefined}>
+            {errorMessage}
+          </ErrorText>
+        )}
       </LabelWrapper>
     );
   },

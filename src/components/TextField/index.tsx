@@ -102,7 +102,11 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
         {!!extraTop && <Extra theme={theme}>{extraTop}</Extra>}
         {!!extraRight || !!extraLeft ? <ExtraWrapper>{renderContent}</ExtraWrapper> : renderContent}
         {!!extraBottom && <Extra theme={theme}>{extraBottom}</Extra>}
-        {!!errorMessage && <ErrorText marginTop="xxs" id={!!props.id ? `${props.id}-error` : undefined}>{errorMessage}</ErrorText>}
+        {!!errorMessage && (
+          <ErrorText marginTop="xxs" id={!!props.id ? `${props.id}-error` : undefined}>
+            {errorMessage}
+          </ErrorText>
+        )}
       </LabelWrapper>
     );
   },

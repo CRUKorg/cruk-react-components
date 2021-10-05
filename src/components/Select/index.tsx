@@ -42,7 +42,11 @@ const Select: FunctionComponent<SelectProps> = forwardRef(
           aria-describedby={!!props.id && !!errorMessage ? `${props.id}-error` : undefined}
           hasError={hasError || !!errorMessage || false}
         />
-        {!!errorMessage && <ErrorText marginTop="xxs" id={!!props.id ? `${props.id}-error` : undefined}>{errorMessage}</ErrorText>}
+        {!!errorMessage && (
+          <ErrorText marginTop="xxs" id={!!props.id ? `${props.id}-error` : undefined}>
+            {errorMessage}
+          </ErrorText>
+        )}
       </LabelWrapper>
     );
   },
