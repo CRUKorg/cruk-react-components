@@ -1,88 +1,109 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import { ThemeProvider } from 'styled-components';
+import React from "react";
+import { Story, Meta } from "@storybook/react";
+import { ThemeProvider } from "styled-components";
 
-import { su2cTheme, Box, GlobalStyle } from '..';
-import CheckBox, { CheckBoxProps } from '.';
+import { su2cTheme, Box, GlobalStyle } from "..";
+import CheckBox, { CheckBoxProps } from ".";
 
 export default {
-  title: 'CheckBox',
+  title: "CheckBox",
   component: CheckBox,
 } as Meta<CheckBoxProps>;
 
-const Template: Story = args => {
+const Template: Story = (args) => {
   const [selected, setSelected] = React.useState<Array<string>>([]);
   const handleChange = (value: string) => {
     if (selected.indexOf(value) === -1) {
       setSelected([...selected, value]);
     } else {
-      setSelected(selected.filter(item => item !== value));
+      setSelected(selected.filter((item) => item !== value));
     }
   };
   return (
-    <fieldset style={{ border: 'none' }}>
-      <CheckBox onChange={e => handleChange(e.target.value)} checked={selected.indexOf('one') >= 0} {...args} />
+    <fieldset style={{ border: "none" }}>
+      <CheckBox
+        onChange={(e) => handleChange(e.target.value)}
+        checked={selected.indexOf("one") >= 0}
+        {...args}
+      />
       <Box marginTop="s">
-        <CheckBox onChange={e => handleChange(e.target.value)} checked={selected.indexOf('two') >= 0} value="two" />
+        <CheckBox
+          onChange={(e) => handleChange(e.target.value)}
+          checked={selected.indexOf("two") >= 0}
+          value="two"
+        />
       </Box>
     </fieldset>
   );
 };
 
 export const CheckboxDefault: Story = Template.bind({});
-CheckboxDefault.storyName = 'CheckBox';
+CheckboxDefault.storyName = "CheckBox";
 CheckboxDefault.args = {
   disabled: false,
-  value: 'one',
+  value: "one",
 };
-const TemplateError: Story = args => {
+const TemplateError: Story = (args) => {
   const [selected, setSelected] = React.useState<Array<string>>([]);
   const handleChange = (value: string) => {
     if (selected.indexOf(value) === -1) {
       setSelected([...selected, value]);
     } else {
-      setSelected(selected.filter(item => item !== value));
+      setSelected(selected.filter((item) => item !== value));
     }
   };
   return (
-    <fieldset style={{ border: 'none' }}>
-      <CheckBox onChange={e => handleChange(e.target.value)} checked={selected.indexOf('one') >= 0} {...args} />
+    <fieldset style={{ border: "none" }}>
+      <CheckBox
+        onChange={(e) => handleChange(e.target.value)}
+        checked={selected.indexOf("one") >= 0}
+        {...args}
+      />
       <Box marginTop="s">
-        <CheckBox onChange={e => handleChange(e.target.value)} checked={selected.indexOf('two') >= 0} value="two" />
+        <CheckBox
+          onChange={(e) => handleChange(e.target.value)}
+          checked={selected.indexOf("two") >= 0}
+          value="two"
+        />
       </Box>
     </fieldset>
   );
 };
 
 export const CheckboxDefaultError: Story = TemplateError.bind({});
-CheckboxDefaultError.storyName = 'CheckBox Error';
+CheckboxDefaultError.storyName = "CheckBox Error";
 CheckboxDefaultError.args = {
-  value: 'one',
+  id: "check",
+  value: "one",
   disabled: false,
   hasError: true,
-  errorMessage: 'Error Message',
+  errorMessage: "Error Message",
 };
 
-const TemplateWithSU2C: Story = args => {
+const TemplateWithSU2C: Story = (args) => {
   const [selected, setSelected] = React.useState<Array<string>>([]);
   const handleChange = (value: string) => {
     if (selected.indexOf(value) === -1) {
       setSelected([...selected, value]);
     } else {
-      setSelected(selected.filter(item => item !== value));
+      setSelected(selected.filter((item) => item !== value));
     }
   };
   return (
     <ThemeProvider theme={su2cTheme}>
       <GlobalStyle />
-      <CheckBox onChange={e => handleChange(e.target.value)} checked={selected.indexOf('one') >= 0} {...args} />
+      <CheckBox
+        onChange={(e) => handleChange(e.target.value)}
+        checked={selected.indexOf("one") >= 0}
+        {...args}
+      />
     </ThemeProvider>
   );
 };
 
 export const SU2CCheckbox: Story = TemplateWithSU2C.bind({});
-SU2CCheckbox.storyName = 'SU2C CheckBox';
+SU2CCheckbox.storyName = "SU2C CheckBox";
 SU2CCheckbox.args = {
-  value: 'one',
+  value: "one",
   disabled: false,
 };
