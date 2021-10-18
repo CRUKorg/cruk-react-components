@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
-import ProgressBar from 'src/components/ProgressBar';
+import ProgressBar from "src/components/ProgressBar";
 
-import { ThemeType } from 'src/types';
+import { ThemeType } from "src/types";
 
 export const BubbleWrapper = styled.div`
   text-align: center;
@@ -69,7 +69,7 @@ type TotaliserWrapperProps = {
 export const TotaliserWrapper = styled.div<TotaliserWrapperProps>`
   font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
   margin: 0;
-  ${props =>
+  ${(props) =>
     props.isCompact &&
     css`
       ${ProgressBarWrapper} {
@@ -90,11 +90,11 @@ type StyledProgressBarProps = {
 };
 
 export const StyledProgressBar = styled(ProgressBar)<StyledProgressBarProps>`
-  ${props =>
+  ${(props) =>
     !props.isCompact &&
     css`
       > div > div:after {
-        content: '\\25bc';
+        content: "\\25bc";
         color: ${({ theme }) => theme.colors.totaliserBubbleColor};
         z-index: 11;
         position: absolute;

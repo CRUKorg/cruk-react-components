@@ -1,20 +1,20 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import { ThemeProvider } from 'styled-components';
+import React from "react";
+import { Story, Meta } from "@storybook/react";
+import { ThemeProvider } from "styled-components";
 
-import Button from 'src/components/Button';
-import Icon from 'src/components/Icon';
+import Button from "src/components/Button";
+import Icon from "src/components/Icon";
 
-import { GlobalStyle, su2cTheme } from '..';
-import TextField, { TextFieldProps } from '.';
+import { GlobalStyle, su2cTheme } from "..";
+import TextField, { TextFieldProps } from ".";
 
 export default {
-  title: 'TextField',
+  title: "TextField",
   component: TextField,
 } as Meta<TextFieldProps>;
 
-const Template: Story<TextFieldProps> = args => <TextField {...args} />;
-const TemplateExtraRight: Story<TextFieldProps> = args => (
+const Template: Story<TextFieldProps> = (args) => <TextField {...args} />;
+const TemplateExtraRight: Story<TextFieldProps> = (args) => (
   <TextField
     {...args}
     extraRight={
@@ -26,55 +26,57 @@ const TemplateExtraRight: Story<TextFieldProps> = args => (
 );
 
 export const TextFieldDefault: Story<TextFieldProps> = Template.bind({});
-TextFieldDefault.storyName = 'TextField';
+TextFieldDefault.storyName = "TextField";
 TextFieldDefault.args = {
   value: undefined,
   disabled: false,
   required: false,
-  label: 'TextField',
+  label: "TextField",
   hintText: undefined,
   hasError: false,
   errorMessage: undefined,
 };
 
 export const TextFieldWithError: Story<TextFieldProps> = Template.bind({});
-TextFieldWithError.storyName = 'TextField With Error';
+TextFieldWithError.storyName = "TextField With Error";
 TextFieldWithError.args = {
+  id: "textfield",
   value: undefined,
   disabled: false,
   required: false,
-  label: 'TextField',
+  label: "TextField",
   hintText: undefined,
   hasError: true,
-  errorMessage: 'error message',
+  errorMessage: "error message",
 };
 
 export const TextFieldWithExtraLeft: Story<TextFieldProps> = Template.bind({});
-TextFieldWithExtraLeft.storyName = 'TextField extra left';
+TextFieldWithExtraLeft.storyName = "TextField extra left";
 TextFieldWithExtraLeft.args = {
   value: undefined,
   disabled: false,
   required: false,
-  label: 'Fundrasing Target',
+  label: "Fundrasing Target",
   hintText: undefined,
   hasError: false,
   errorMessage: undefined,
-  extraLeft: '£',
+  extraLeft: "£",
 };
 
-export const TextFieldWithExtraRight: Story<TextFieldProps> = TemplateExtraRight.bind({});
-TextFieldWithExtraRight.storyName = 'TextField extra right';
+export const TextFieldWithExtraRight: Story<TextFieldProps> =
+  TemplateExtraRight.bind({});
+TextFieldWithExtraRight.storyName = "TextField extra right";
 TextFieldWithExtraRight.args = {
   value: undefined,
   disabled: false,
   required: false,
-  label: 'Search',
+  label: "Search",
   hintText: undefined,
   hasError: false,
   errorMessage: undefined,
 };
 
-const TemplateWithSU2C: Story<TextFieldProps> = args => (
+const TemplateWithSU2C: Story<TextFieldProps> = (args) => (
   <ThemeProvider theme={su2cTheme}>
     <GlobalStyle />
     <TextField {...args} />
@@ -82,25 +84,26 @@ const TemplateWithSU2C: Story<TextFieldProps> = args => (
 );
 
 export const SU2CTextField: Story<TextFieldProps> = TemplateWithSU2C.bind({});
-SU2CTextField.storyName = 'SU2C TextField';
+SU2CTextField.storyName = "SU2C TextField";
 SU2CTextField.args = {
   value: undefined,
   disabled: false,
   required: false,
-  label: 'TextField',
+  label: "TextField",
   hintText: undefined,
   hasError: false,
   errorMessage: undefined,
 };
 
-export const SU2CTextFieldWithError: Story<TextFieldProps> = TemplateWithSU2C.bind({});
-SU2CTextFieldWithError.storyName = 'SU2C TextField With Error';
+export const SU2CTextFieldWithError: Story<TextFieldProps> =
+  TemplateWithSU2C.bind({});
+SU2CTextFieldWithError.storyName = "SU2C TextField With Error";
 SU2CTextFieldWithError.args = {
   value: undefined,
   disabled: false,
   required: false,
-  label: 'TextField',
+  label: "TextField",
   hintText: undefined,
   hasError: true,
-  errorMessage: 'error message',
+  errorMessage: "error message",
 };

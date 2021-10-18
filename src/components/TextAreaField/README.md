@@ -37,6 +37,8 @@ Other props not listed here (disabled, placeholder, etc.) will be passed to the 
 
 ## Accessibility
 
-Error text has the role="alert" attribute so that it is automaticaly read out by a screen reader. For more info see ErrorText component
+Error text has the role="alert" attribute so that it is automatically read out by a screen reader. For more info see ErrorText component.
 
 Only label text will be read out by a screen reader in form mode. Text in the extra props could be preppended to the label text and added as an aria-label to help accessibility.
+
+If the TextAreaField component is passed an id, this is used to generate an id for the error container and relationship with the input using aria-describedby.

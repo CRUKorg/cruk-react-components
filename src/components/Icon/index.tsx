@@ -1,16 +1,19 @@
-import React, { FunctionComponent } from 'react';
-import { useTheme } from 'styled-components';
+import React, { FunctionComponent } from "react";
+import { useTheme } from "styled-components";
 
-import defaultTheme from 'src/themes/cruk';
-import { ICONS } from './iconList';
+import defaultTheme from "src/themes/cruk";
+import { ICONS } from "./iconList";
 
-import { StyledIcon } from './styles';
+import { StyledIcon } from "./styles";
 
 // utility to provide people with a list of icon names
-export const ICON_NAMES = Object.keys(ICONS).reduce((acc: { [key: string]: string }, item: string) => {
-  acc[item] = item;
-  return acc;
-}, {});
+export const ICON_NAMES = Object.keys(ICONS).reduce(
+  (acc: { [key: string]: string }, item: string) => {
+    acc[item] = item;
+    return acc;
+  },
+  {}
+);
 
 export type IconProps = {
   /** name defines the visible icon */
@@ -29,7 +32,7 @@ export type IconProps = {
  *
  * This component is likely to change in the future to make it more tree-shakable
  * */
-const Icon: FunctionComponent<IconProps> = props => {
+const Icon: FunctionComponent<IconProps> = (props) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -54,7 +57,7 @@ const Icon: FunctionComponent<IconProps> = props => {
 };
 
 Icon.defaultProps = {
-  size: '1.1rem',
+  size: "1.1rem",
 };
 
 export default Icon;

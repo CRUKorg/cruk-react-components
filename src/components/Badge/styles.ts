@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
-import { SpaceType, ThemeType } from 'src/types';
+import { SpaceType, ThemeType } from "src/types";
 
 type StyleBadgeProps = {
   backgroundColor?: string;
@@ -15,30 +15,30 @@ export const StyledBadge = styled.span<StyleBadgeProps>`
   border-width: 1px;
   border-style: solid;
   background-color: ${({ theme: { colors }, backgroundColor }) =>
-    backgroundColor && typeof colors[backgroundColor] !== 'undefined'
+    backgroundColor && typeof colors[backgroundColor] !== "undefined"
       ? colors[backgroundColor]
       : backgroundColor
       ? backgroundColor
-      : colors['primary']};
+      : colors["primary"]};
   color: ${({ theme: { colors }, textColor }) =>
-    textColor && typeof colors[textColor] !== 'undefined'
+    textColor && typeof colors[textColor] !== "undefined"
       ? colors[textColor]
       : textColor
       ? textColor
-      : colors['textOnPrimary']};
+      : colors["textOnPrimary"]};
   border-color: ${({ theme: { colors }, borderColor, backgroundColor }) =>
-    borderColor && typeof colors[borderColor] !== 'undefined'
+    borderColor && typeof colors[borderColor] !== "undefined"
       ? colors[borderColor]
       : borderColor
       ? borderColor
-      : backgroundColor && typeof colors[backgroundColor] !== 'undefined'
+      : backgroundColor && typeof colors[backgroundColor] !== "undefined"
       ? colors[backgroundColor]
       : backgroundColor
       ? backgroundColor
-      : colors['primary']};
+      : colors["primary"]};
   text-align: center;
   border-radius: 1.5rem;
-  font-size: ${props => props.theme.fontSizes.m};
+  font-size: ${(props) => props.theme.fontSizes.m};
   line-height: 1rem;
   padding: ${({
     theme: {
@@ -82,7 +82,8 @@ export const StyledBadge = styled.span<StyleBadgeProps>`
         },
       }: StyleBadgeProps) => `calc(${spacing[size]} + ${xs})`};
       svg {
-        height: ${({ size, theme: { spacing } }: StyleBadgeProps) => spacing[size]};
+        height: ${({ size, theme: { spacing } }: StyleBadgeProps) =>
+          spacing[size]};
       }
     `}
 `;

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 type PaginationStyledProps = {
   active?: boolean;
@@ -31,27 +31,27 @@ export const PagerLink = styled.a<PaginationStyledProps>`
       fontSizes: { s },
     },
   }) => s};
-  color: ${props => props.theme.colors.textLight};
-  background-color: ${props => props.theme.colors.paginationBackground};
+  color: ${(props) => props.theme.colors.textLight};
+  background-color: ${(props) => props.theme.colors.paginationBackground};
   cursor: pointer;
   border-radius: 0;
-  margin: ${props => props.theme.spacing.xxs};
+  margin: ${(props) => props.theme.spacing.xxs};
   padding: 7px 11px;
   text-decoration: none;
-  &:hover{
+  &:hover {
     opacity: 0.88;
     text-decoration: underline;
   }
   &:focus,
-  &:active, 
+  &:active,
   &:visited {
     text-decoration: none;
   }
-  
+
   ${(itemProps: PaginationStyledProps) =>
     itemProps.active &&
     css`
-      color: ${props => props.theme.colors.textDark};
+      color: ${(props) => props.theme.colors.textDark};
       background-color: ${({
         theme: {
           colors: { paginationActive },
@@ -69,9 +69,9 @@ export const PagerLink = styled.a<PaginationStyledProps>`
     `}
 
   ${(itemProps: PaginationStyledProps) =>
-    (itemProps.name === 'Prev' || itemProps.name === 'Next') &&
+    (itemProps.name === "Prev" || itemProps.name === "Next") &&
     css`
-      color: ${props => props.theme.colors.paginationBackground};
+      color: ${(props) => props.theme.colors.paginationBackground};
       background-color: transparent;
       font-weight: bold;
       padding: 8px 6px;
@@ -90,14 +90,14 @@ export const PagerLink = styled.a<PaginationStyledProps>`
   ${(itemProps: PaginationStyledProps) =>
     itemProps.disabled &&
     css`
-      color: ${props => props.theme.colors.disabled};
+      color: ${(props) => props.theme.colors.disabled};
       cursor: not-allowed;
       text-decoration: none;
       &:hover,
       &:focus,
       &:active,
       &:visited {
-        color: ${props => props.theme.colors.disabled};
+        color: ${(props) => props.theme.colors.disabled};
         text-decoration: none;
       }
     `}

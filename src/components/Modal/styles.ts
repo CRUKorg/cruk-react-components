@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import Box from '../Box';
-import Button from '../Button';
+import Box from "../Box";
+import Button from "../Button";
 
 export const Background = styled.div`
   background: ${({ theme }) => theme.colors.modalBackdrop};
@@ -30,11 +30,11 @@ export const Content = styled(Box)<{
   top: string;
 }>`
   background-color: ${({ theme: { colors }, backgroundColor }) =>
-    backgroundColor && typeof colors[backgroundColor] !== 'undefined'
+    backgroundColor && typeof colors[backgroundColor] !== "undefined"
       ? colors[backgroundColor]
       : backgroundColor
       ? backgroundColor
-      : 'backgroundLight'};
+      : "backgroundLight"};
   position: relative;
   border-radius: 4px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);

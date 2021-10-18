@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 
-import React from 'react';
-import { mount } from '@cypress/react';
+import React from "react";
+import { mount } from "@cypress/react";
 
-import { TestThemeWrapper } from '../TestWrapper';
-import { Radio, Heading, su2cTheme, crukTheme } from '../';
+import { TestThemeWrapper } from "../TestWrapper";
+import { Radio, Heading, su2cTheme, crukTheme } from "../";
 
 const uncontrolledRadio = () => (
   <div id="radios">
@@ -18,16 +18,16 @@ const uncontrolledRadio = () => (
 );
 
 const Content = () => {
-  const [selected, setSelected] = React.useState('one');
+  const [selected, setSelected] = React.useState("one");
 
   return (
     <>
       <Radio
         name="example1"
         value="one"
-        checked={selected === 'one'}
+        checked={selected === "one"}
         onClick={() => {
-          setSelected('one');
+          setSelected("one");
         }}
       >
         Option one
@@ -36,9 +36,9 @@ const Content = () => {
       <Radio
         name="example1"
         value="two"
-        checked={selected === 'two'}
+        checked={selected === "two"}
         onClick={() => {
-          setSelected('two');
+          setSelected("two");
         }}
       >
         Option two
@@ -49,52 +49,48 @@ const Content = () => {
   );
 };
 
-describe('Radio', () => {
-  it('is accessible CRUK theme', () => {
+describe("Radio", () => {
+  it("is accessible CRUK theme", () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>
         <Content />
-      </TestThemeWrapper>,
+      </TestThemeWrapper>
     );
     cy.injectAxe();
-    cy.checkA11y('body');
+    cy.checkA11y("body");
   });
 
-  it('is accessible SU2C theme', () => {
+  it("is accessible SU2C theme", () => {
     mount(
       <TestThemeWrapper theme={su2cTheme}>
         <Content />
-      </TestThemeWrapper>,
+      </TestThemeWrapper>
     );
     cy.injectAxe();
-    cy.checkA11y('body', {
+    cy.checkA11y("body", {
       rules: {
-        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
+        "color-contrast": { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
       },
     });
   });
 
-  it('should match CRUK snapshot', () => {
-    Cypress.config('waitForAnimations', true);
-    Cypress.config('animationDistanceThreshold', 2);
+  it("should match CRUK snapshot", () => {
+    Cypress.config("waitForAnimations", true);
+    Cypress.config("animationDistanceThreshold", 2);
     mount(<TestThemeWrapper>{uncontrolledRadio()}</TestThemeWrapper>);
-    cy.document()
-      .its('fonts.status')
-      .should('equal', 'loaded');
-    cy.get('#radios')
-      .first()
-      .matchImageSnapshot();
+    cy.document().its("fonts.status").should("equal", "loaded");
+    cy.get("#radios").first().matchImageSnapshot();
   });
 
-  it('should match SU2C snapshot', () => {
-    Cypress.config('waitForAnimations', true);
-    Cypress.config('animationDistanceThreshold', 2);
-    mount(<TestThemeWrapper theme={su2cTheme}>{uncontrolledRadio()}</TestThemeWrapper>);
-    cy.document()
-      .its('fonts.status')
-      .should('equal', 'loaded');
-    cy.get('#radios')
-      .first()
-      .matchImageSnapshot();
+  it("should match SU2C snapshot", () => {
+    Cypress.config("waitForAnimations", true);
+    Cypress.config("animationDistanceThreshold", 2);
+    mount(
+      <TestThemeWrapper theme={su2cTheme}>
+        {uncontrolledRadio()}
+      </TestThemeWrapper>
+    );
+    cy.document().its("fonts.status").should("equal", "loaded");
+    cy.get("#radios").first().matchImageSnapshot();
   });
 });

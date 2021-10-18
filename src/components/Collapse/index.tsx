@@ -1,10 +1,24 @@
-import React, { useState, useRef, KeyboardEvent, FunctionComponent, ReactNode, useEffect, HTMLAttributes } from 'react';
-import { useTheme } from 'styled-components';
-import defaultTheme from 'src/themes/cruk';
+import React, {
+  useState,
+  useRef,
+  KeyboardEvent,
+  FunctionComponent,
+  ReactNode,
+  useEffect,
+  HTMLAttributes,
+} from "react";
+import { useTheme } from "styled-components";
+import defaultTheme from "src/themes/cruk";
 
-import { CustomHeader, DefaultHeader, FlippingIcon, CollapseContent, transitionDurationSeconds } from './styles';
+import {
+  CustomHeader,
+  DefaultHeader,
+  FlippingIcon,
+  CollapseContent,
+  transitionDurationSeconds,
+} from "./styles";
 
-import { FontSizeType, ThemeType } from 'src/types';
+import { FontSizeType, ThemeType } from "src/types";
 
 export type CollapseProps = HTMLAttributes<HTMLElement> & {
   /** id is required for a11y reasons as we use aria attributes which depends on an id  */
@@ -30,7 +44,7 @@ export type CollapseProps = HTMLAttributes<HTMLElement> & {
  * Use a collapse component to show and hide content. It has a default view; however, it can be overwritten by passing a custom component as a prop.
  *
  */
-const Collapse: FunctionComponent<CollapseProps> = props => {
+const Collapse: FunctionComponent<CollapseProps> = (props) => {
   const {
     id,
     headerTitleText,
@@ -44,7 +58,9 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
   } = props;
 
   const [openStatus, setOpenStatus] = useState(startOpen || false);
-  const [contentHeight, setContentHeight] = useState(startOpen ? 'initial' : '0');
+  const [contentHeight, setContentHeight] = useState(
+    startOpen ? "initial" : "0"
+  );
   const content = useRef<HTMLDivElement>(null);
   const transitionTimer = useRef(0);
   const foundTheme = useTheme();
@@ -57,20 +73,27 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
     clearTimeout(transitionTimer.current);
     const newOpenState = !openStatus;
     setOpenStatus(newOpenState);
-    setContentHeight(content?.current?.scrollHeight + 'px');
+    setContentHeight(content?.current?.scrollHeight + "px");
     if (newOpenState === false) {
       // Allow height to be rendered before setting to 0 for animation.
-      setTimeout(() => setContentHeight('0'), 10);
+      setTimeout(() => setContentHeight("0"), 10);
     } else {
       // After animation set height to initial for responsive layout.
       // @ts-ignore
-      transitionTimer.current = setTimeout(() => setContentHeight('initial'), transitionDurationSeconds * 1000);
+      transitionTimer.current = setTimeout(
+        () => setContentHeight("initial"),
+        transitionDurationSeconds * 1000
+      );
     }
     !!onOpenChange && onOpenChange(newOpenState);
   };
 
   const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar') {
+    if (
+      event.key === "Enter" ||
+      event.key === " " ||
+      event.key === "Spacebar"
+    ) {
       event.preventDefault();
       toggleCollapse();
     }
@@ -79,7 +102,7 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
   useEffect(() => {
     setOpenStatus(startOpen || false);
     // if start open changes then we want to set the height without animation
-    !!startOpen ? setContentHeight('initial') : setContentHeight('0');
+    !!startOpen ? setContentHeight("initial") : setContentHeight("0");
   }, [startOpen]);
 
   return (

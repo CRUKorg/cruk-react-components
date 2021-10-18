@@ -1,10 +1,15 @@
-import React, { FC, InputHTMLAttributes } from 'react';
+import React, { FC, InputHTMLAttributes } from "react";
 
-import ErrorText from 'src/components/ErrorText';
-import Text from 'src/components/Text';
-import TextField from 'src/components/TextField';
+import ErrorText from "src/components/ErrorText";
+import Text from "src/components/Text";
+import TextField from "src/components/TextField";
 
-import { Fieldset, DateTextFieldWrapper, LargeDateTextFieldWrapper, ErrorTextWrapper } from './styles';
+import {
+  Fieldset,
+  DateTextFieldWrapper,
+  LargeDateTextFieldWrapper,
+  ErrorTextWrapper,
+} from "./styles";
 
 export type DateFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   /**label text */
@@ -42,9 +47,9 @@ const DateField: FC<DateFieldProps> = ({
   day,
   month,
   year,
-  dayName = 'day',
-  monthName = 'month',
-  yearName = 'year',
+  dayName = "day",
+  monthName = "month",
+  yearName = "year",
   dayHasError,
   monthHasError,
   yearHasError,

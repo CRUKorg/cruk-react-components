@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { ThemeType } from 'src/types';
+import styled from "styled-components";
+import { ThemeType } from "src/types";
 
 export const Label = styled.label`
   position: relative;
@@ -13,7 +13,8 @@ export const LabelText = styled.span<{
 }>`
   font-weight: bold;
   display: block;
-  margin-bottom: ${({ hasHintText, theme }) => (hasHintText ? theme.spacing.xxs : theme.spacing.xs)};
+  margin-bottom: ${({ hasHintText, theme }) =>
+    hasHintText ? theme.spacing.xxs : theme.spacing.xs};
 
   & > * {
     font-weight: normal;
