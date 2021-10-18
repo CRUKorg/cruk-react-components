@@ -1,12 +1,12 @@
-import React, { FC, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { ThemeProvider, useTheme } from 'styled-components';
-import FocusLock from 'react-focus-lock';
+import React, { FC, useEffect } from "react";
+import ReactDOM from "react-dom";
+import { ThemeProvider, useTheme } from "styled-components";
+import FocusLock from "react-focus-lock";
 
-import Icon from 'src/components/Icon';
-import defaultTheme from 'src/themes/cruk';
+import Icon from "src/components/Icon";
+import defaultTheme from "src/themes/cruk";
 
-import { CloseButton, Wrapper, Content, Background } from './styles';
+import { CloseButton, Wrapper, Content, Background } from "./styles";
 
 export type ModalProps = {
   /** modal name used for aria-label */
@@ -37,9 +37,9 @@ const Modal: FC<ModalProps> = ({
   modalName,
   closeFunction,
   showCloseButton,
-  maxWidth = '500px',
-  top = '1rem',
-  backgroundColor = 'backgroundLight',
+  maxWidth = "500px",
+  top = "1rem",
+  backgroundColor = "backgroundLight",
   children,
 }) => {
   const foundTheme = useTheme();
@@ -48,7 +48,7 @@ const Modal: FC<ModalProps> = ({
     ...foundTheme,
   };
   const closeByEsc = (event: KeyboardEvent): void => {
-    if (event.key === 'Escape' && !!closeFunction) {
+    if (event.key === "Escape" && !!closeFunction) {
       closeFunction();
     }
   };
@@ -57,15 +57,15 @@ const Modal: FC<ModalProps> = ({
     if (typeof window === `undefined`) {
       return;
     }
-    document.body.style.overflow = 'hidden';
-    document.addEventListener('keydown', closeByEsc);
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", closeByEsc);
 
     return () => {
       if (typeof window === `undefined`) {
         return;
       }
-      document.body.style.overflow = 'unset';
-      document.removeEventListener('keydown', closeByEsc);
+      document.body.style.overflow = "unset";
+      document.removeEventListener("keydown", closeByEsc);
     };
   }, []);
 
@@ -76,8 +76,16 @@ const Modal: FC<ModalProps> = ({
             <section>
               <FocusLock returnFocus>
                 <ThemeProvider theme={theme}>
-                  <Wrapper role="dialog" aria-modal="true" aria-label={modalName}>
-                    <Content backgroundColor={backgroundColor} maxWidth={maxWidth} top={top}>
+                  <Wrapper
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label={modalName}
+                  >
+                    <Content
+                      backgroundColor={backgroundColor}
+                      maxWidth={maxWidth}
+                      top={top}
+                    >
                       {showCloseButton && closeFunction ? (
                         <CloseButton
                           aria-label="close"
@@ -96,7 +104,7 @@ const Modal: FC<ModalProps> = ({
                 </ThemeProvider>
               </FocusLock>
             </section>,
-            document.body,
+            document.body
           )
         : null}
     </>

@@ -1,16 +1,16 @@
 /// <reference types="cypress" />
 
-import React from 'react';
-import { mount } from '@cypress/react';
+import React from "react";
+import { mount } from "@cypress/react";
 
-import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
-import { Select, Box, Button, su2cTheme, crukTheme } from '../';
+import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
+import { Select, Box, Button, su2cTheme, crukTheme } from "../";
 
 const content = () => {
   return (
     <>
       <Box>
-        <Select value="" label="Disabled option" onChange={event => {}}>
+        <Select value="" label="Disabled option" onChange={(event) => {}}>
           <option disabled value="">
             --Please choose an option--
           </option>
@@ -19,7 +19,12 @@ const content = () => {
         </Select>
       </Box>
       <Box>
-        <Select value="" label="Disabled control" onChange={event => {}} disabled>
+        <Select
+          value=""
+          label="Disabled control"
+          onChange={(event) => {}}
+          disabled
+        >
           <option disabled value="">
             --Please choose an option--
           </option>
@@ -28,14 +33,24 @@ const content = () => {
         </Select>
       </Box>
       <Box>
-        <Select required hasError={true} label="Has error" onChange={event => {}}>
+        <Select
+          required
+          hasError={true}
+          label="Has error"
+          onChange={(event) => {}}
+        >
           <option value="dog">Dog</option>
           <option value="red_panda">Red panda</option>
           <option value="axolotl">Axolotl</option>
         </Select>
       </Box>
       <Box>
-        <Select required errorMessage="This felid is required ☹️" label="Error message" onChange={event => {}}>
+        <Select
+          required
+          errorMessage="This felid is required ☹️"
+          label="Error message"
+          onChange={(event) => {}}
+        >
           <option value="cat">Cat</option>
         </Select>
       </Box>
@@ -55,47 +70,45 @@ const selectSection = () => {
   );
 };
 
-describe('Select', () => {
-  it('is accessible CRUK theme', () => {
+describe("Select", () => {
+  it("is accessible CRUK theme", () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
     cy.injectAxe();
-    cy.checkA11y('body');
+    cy.checkA11y("body");
   });
 
-  it('is accessible SU2C theme', () => {
+  it("is accessible SU2C theme", () => {
     mount(<TestThemeWrapper theme={su2cTheme}>{content()}</TestThemeWrapper>);
     cy.injectAxe();
-    cy.checkA11y('body', {
+    cy.checkA11y("body", {
       rules: {
-        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
+        "color-contrast": { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
       },
     });
   });
 
-  it('should match snapshot', () => {
+  it("should match snapshot", () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
-    cy.document()
-      .its('fonts.status')
-      .should('equal', 'loaded');
-    cy.get('body')
-      .first()
-      .matchImageSnapshot();
+    cy.document().its("fonts.status").should("equal", "loaded");
+    cy.get("body").first().matchImageSnapshot();
   });
 });
 
-describe('Arrow Keys', () => {
-  it('can change selection with keyboard controls', () => {
-    mount(<TestThemeWrapper theme={crukTheme}>{selectSection()}</TestThemeWrapper>);
-    cy.getInputByLabel('Test Select Option')
-      .trigger('keydown', { key: 'Space Bar' })
-      .type('{downarrow}')
-      .select('Cat')
-      .should('have.value', 'cat');
+describe("Arrow Keys", () => {
+  it("can change selection with keyboard controls", () => {
+    mount(
+      <TestThemeWrapper theme={crukTheme}>{selectSection()}</TestThemeWrapper>
+    );
+    cy.getInputByLabel("Test Select Option")
+      .trigger("keydown", { key: "Space Bar" })
+      .type("{downarrow}")
+      .select("Cat")
+      .should("have.value", "cat");
   });
 });
 
-describe('Tab', () => {
-  it('main element is tabable', () => {
+describe("Tab", () => {
+  it("main element is tabable", () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>
         {
@@ -114,13 +127,9 @@ describe('Tab', () => {
             </Box>
           </>
         }
-      </TestThemeWrapper>,
+      </TestThemeWrapper>
     );
-    cy.contains('Click me')
-      .focus()
-      .tab();
-    cy.focused()
-      .contains('select')
-      .should('exist');
+    cy.contains("Click me").focus().tab();
+    cy.focused().contains("select").should("exist");
   });
 });

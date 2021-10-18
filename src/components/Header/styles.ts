@@ -1,12 +1,12 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import defaultTheme from 'src/themes/cruk';
+import defaultTheme from "src/themes/cruk";
 
-const HEADER_HEIGHT_LARGE = '120px';
-const HEADER_HEIGHT_SMALL = '72px';
+const HEADER_HEIGHT_LARGE = "120px";
+const HEADER_HEIGHT_SMALL = "72px";
 const HEADER_PADDING = defaultTheme.spacing.s;
-const HEADER_LOGO_HEIGHT_LARGE = '80px';
-const HEADER_LOGO_HEIGHT_SMALL = '40px';
+const HEADER_LOGO_HEIGHT_LARGE = "80px";
+const HEADER_LOGO_HEIGHT_SMALL = "40px";
 
 export const StyledHeader = styled.header<{
   isSmall?: boolean;
@@ -38,7 +38,10 @@ export const HeaderStickyPlaceHolder = styled.div`
   }
 `;
 
-export const HeaderStickyContainer = styled.div<{ isSmall?: boolean; isSticky?: boolean }>`
+export const HeaderStickyContainer = styled.div<{
+  isSmall?: boolean;
+  isSticky?: boolean;
+}>`
   width: 100%;
   padding: 0;
   background-color: ${({
@@ -55,16 +58,18 @@ export const HeaderStickyContainer = styled.div<{ isSmall?: boolean; isSticky?: 
   padding: 0 ${HEADER_PADDING};
   height: ${HEADER_HEIGHT_SMALL};
 
-  top: ${({ isSticky }) => (isSticky ? 0 : 'auto')};
-  position: ${({ isSticky }) => (isSticky ? 'fixed' : 'relative')};
+  top: ${({ isSticky }) => (isSticky ? 0 : "auto")};
+  position: ${({ isSticky }) => (isSticky ? "fixed" : "relative")};
 
   @media (min-width: ${({
       theme: {
         breakpoint: { desktop },
       },
     }) => desktop}) {
-    position: ${({ isSticky, isSmall }) => (isSticky && isSmall ? 'fixed' : 'relative')};
-    height: ${({ isSmall, isSticky }) => (isSmall && isSticky ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE)};
+    position: ${({ isSticky, isSmall }) =>
+      isSticky && isSmall ? "fixed" : "relative"};
+    height: ${({ isSmall, isSticky }) =>
+      isSmall && isSticky ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE};
   }
 `;
 
@@ -90,7 +95,10 @@ export const Logo = styled.img`
   max-height: 100%;
 `;
 
-export const LogoWrapper = styled.div<{ isSmall?: boolean; isSticky?: boolean }>`
+export const LogoWrapper = styled.div<{
+  isSmall?: boolean;
+  isSticky?: boolean;
+}>`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -103,7 +111,10 @@ export const LogoWrapper = styled.div<{ isSmall?: boolean; isSticky?: boolean }>
         breakpoint: { desktop },
       },
     }) => desktop}) {
-    height: ${({ isSmall, isSticky }) => (isSmall && isSticky ? HEADER_LOGO_HEIGHT_SMALL : HEADER_LOGO_HEIGHT_LARGE)};
+    height: ${({ isSmall, isSticky }) =>
+      isSmall && isSticky
+        ? HEADER_LOGO_HEIGHT_SMALL
+        : HEADER_LOGO_HEIGHT_LARGE};
   }
 `;
 
@@ -164,6 +175,7 @@ export const Tagline = styled.p<{ isSmall?: boolean; isSticky?: boolean }>`
         breakpoint: { desktop },
       },
     }) => desktop}) {
-    display: ${({ isSmall, isSticky }) => (isSmall && isSticky ? `none` : `block`)};
+    display: ${({ isSmall, isSticky }) =>
+      isSmall && isSticky ? `none` : `block`};
   }
 `;

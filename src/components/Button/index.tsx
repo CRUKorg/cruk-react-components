@@ -1,12 +1,18 @@
-import React, { FunctionComponent, ReactNode, ButtonHTMLAttributes, Ref, forwardRef } from 'react';
-import { useTheme } from 'styled-components';
+import React, {
+  FunctionComponent,
+  ReactNode,
+  ButtonHTMLAttributes,
+  Ref,
+  forwardRef,
+} from "react";
+import { useTheme } from "styled-components";
 
-import defaultTheme from 'src/themes/cruk';
-import Icon from 'src/components/Icon';
+import defaultTheme from "src/themes/cruk";
+import Icon from "src/components/Icon";
 
-import { Spacer, StyledButton } from './styles';
+import { Spacer, StyledButton } from "./styles";
 
-import { ButtonAppearanceType } from 'src/types';
+import { ButtonAppearanceType } from "src/types";
 
 export type Props = ButtonHTMLAttributes<HTMLElement> & {
   /** the look and feel of the button */
@@ -16,7 +22,7 @@ export type Props = ButtonHTMLAttributes<HTMLElement> & {
   /** this is a url which will convert the button to an anchor tag */
   href?: string;
   /** the height of the button, this will add padding not increase text size */
-  size?: 'm' | 'l';
+  size?: "m" | "l";
   css?: any;
   /** styled-components polymorphism where you can use the styling of a button but convert to another element like an anchor tag */
   as?: any;
@@ -28,45 +34,55 @@ export type Props = ButtonHTMLAttributes<HTMLElement> & {
  *
  * Design system documentation SU2C https://zeroheight.com/79db39f7e/p/22ff0e-button/b/32e1a2
  */
-export const Button: FunctionComponent<Props> = forwardRef((props: Props, ref?: Ref<HTMLElement>) => {
-  const foundTheme = useTheme();
+export const Button: FunctionComponent<Props> = forwardRef(
+  (props: Props, ref?: Ref<HTMLElement>) => {
+    const foundTheme = useTheme();
 
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-  const { appearance = 'primary' } = props;
-  const childArray = React.Children.toArray(props.children);
+    const theme = {
+      ...defaultTheme,
+      ...foundTheme,
+    };
+    const { appearance = "primary" } = props;
+    const childArray = React.Children.toArray(props.children);
 
-  // button has a fixed width if there is a single icon
-  const isIconButton =
-    // @ts-ignore typescript doesn't seem to like child.type but it works fine
-    props.children && childArray.length === 1 && childArray[0] && childArray[0].type === Icon ? true : false;
+    // button has a fixed width if there is a single icon
+    const isIconButton =
+      // @ts-ignore typescript doesn't seem to like child.type but it works fine
+      props.children &&
+      childArray.length === 1 &&
+      childArray[0] &&
+      childArray[0].type === Icon
+        ? true
+        : false;
 
-  return (
-    <StyledButton
-      as={props.href ? 'a' : 'button'}
-      {...props}
-      appearance={appearance}
-      isIconButton={isIconButton}
-      theme={theme}
-      ref={ref}
-    >
-      {props.children && childArray.length
-        ? React.Children.map(props.children, (child: ReactNode, index: number) => (
-            <Spacer theme={theme} key={index}>
-              {child}
-            </Spacer>
-          ))
-        : null}
-    </StyledButton>
-  );
-});
+    return (
+      <StyledButton
+        as={props.href ? "a" : "button"}
+        {...props}
+        appearance={appearance}
+        isIconButton={isIconButton}
+        theme={theme}
+        ref={ref}
+      >
+        {props.children && childArray.length
+          ? React.Children.map(
+              props.children,
+              (child: ReactNode, index: number) => (
+                <Spacer theme={theme} key={index}>
+                  {child}
+                </Spacer>
+              )
+            )
+          : null}
+      </StyledButton>
+    );
+  }
+);
 
 Button.defaultProps = {
-  appearance: 'primary',
+  appearance: "primary",
   full: false,
-  size: 'm',
+  size: "m",
 };
 
 export default Button;

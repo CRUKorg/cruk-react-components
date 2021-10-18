@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
-import { ThemeType } from 'src/types';
+import { ThemeType } from "src/types";
 
-const BUTTON_HEIGHT = '3rem';
+const BUTTON_HEIGHT = "3rem";
 
 type StyledSelectProps = {
   hasError: boolean;
@@ -29,7 +29,9 @@ export const StyledSelect = styled.select<StyledSelectProps>`
   border-radius: ${({ theme }) => theme.utilities.borderRadius};
   border: ${({ theme, hasError, errorMessage }) =>
     `solid ${theme.utilities.inputBorderWidth} ${
-      hasError || errorMessage ? theme.colors.textError : theme.colors.textInputBorder
+      hasError || errorMessage
+        ? theme.colors.textError
+        : theme.colors.textInputBorder
     }`};
   color: ${({ theme }) => theme.colors.textDark};
   display: block;

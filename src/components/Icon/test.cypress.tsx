@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 
-import React from 'react';
-import { mount } from '@cypress/react';
+import React from "react";
+import { mount } from "@cypress/react";
 
-import TestWrapper from '../TestWrapper';
-import { Icon } from '../';
+import TestWrapper from "../TestWrapper";
+import { Icon } from "../";
 
 const content = () => {
   return (
@@ -69,20 +69,16 @@ const content = () => {
   );
 };
 
-describe('Icon', () => {
-  it('is accessible', () => {
+describe("Icon", () => {
+  it("is accessible", () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.injectAxe();
-    cy.checkA11y('body');
+    cy.checkA11y("body");
   });
 
-  it('should match snapshot', () => {
+  it("should match snapshot", () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
-    cy.document()
-      .its('fonts.status')
-      .should('equal', 'loaded');
-    cy.get('body')
-      .first()
-      .matchImageSnapshot();
+    cy.document().its("fonts.status").should("equal", "loaded");
+    cy.get("body").first().matchImageSnapshot();
   });
 });

@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react';
-import { useTheme, ThemeProvider } from 'styled-components';
+import React, { FunctionComponent } from "react";
+import { useTheme, ThemeProvider } from "styled-components";
 
-import defaultTheme from 'src/themes/cruk';
+import defaultTheme from "src/themes/cruk";
 
-import { StyledFieldSet, StyledLegend, StyledRadio } from './styles';
+import { StyledFieldSet, StyledLegend, StyledRadio } from "./styles";
 
 export type RadioGroupProps = {
   /** because each radio has its own label this is the group label text */
@@ -27,7 +27,10 @@ export type RadioGroupProps = {
  *
  * This is always a controlled component that will only change state with the selectedValue prop
  */
-const RadioGroup: FunctionComponent<RadioGroupProps> = ({ selectedValue = '', ...props }) => {
+const RadioGroup: FunctionComponent<RadioGroupProps> = ({
+  selectedValue = "",
+  ...props
+}) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -40,7 +43,7 @@ const RadioGroup: FunctionComponent<RadioGroupProps> = ({ selectedValue = '', ..
     <ThemeProvider theme={theme}>
       <StyledFieldSet>
         <StyledLegend>{props.legend}</StyledLegend>
-        {props.attributes.map(item => (
+        {props.attributes.map((item) => (
           <StyledRadio
             numberOfAttributes={numberOfAttributes}
             key={item.value}
