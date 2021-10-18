@@ -23,7 +23,7 @@ Add cruk-react-components and its peer dependencies react, react-dom and styled-
 After an `npm i @cruk/cruk-react-components --save`, you can start importing components from the library:
 
 ```js
-import { Button } from 'cruk-react-components';
+import { Button } from "cruk-react-components";
 
 const MyComponent = () => (
   <div>
@@ -31,6 +31,13 @@ const MyComponent = () => (
   </div>
 );
 ```
+
+## Migration from V0 to V1
+
+1.  Find all instances of RadioGroup and change it to the new component name of RadioConsent
+2.  The old Button appearance="tertiary" has been removed and replaced with what was Button the old variant of appearance="text"
+
+The suggested solution is to find all instance of appearance="tertiary" and replace it with appearance="secondary" and find all instances of appearance="text" and replace them with appearance="tertiary"
 
 ## Development
 

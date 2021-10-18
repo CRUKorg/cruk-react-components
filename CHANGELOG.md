@@ -12,8 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 (BREAKING CHANGES)
 
 - Renamed RadioGroup to RadioConsent to discorage people to use this pattern in other scenarios
-
-## [0.1.8] - 2021-10-18
+- The old Button variant 'tertiary' has been removed and old Button variant 'text' is now Button variant 'teriary'
+- Changed avatar name prop type from ReactNode to string
 
 ### Added
 
