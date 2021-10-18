@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, ImgHTMLAttributes } from "react";
+import React, { FC, ImgHTMLAttributes } from "react";
 import { useTheme } from "styled-components";
 
 import defaultTheme from "src/themes/cruk";
@@ -7,7 +7,7 @@ import { StyledAvatar } from "./styles";
 
 export type AvatarProps = ImgHTMLAttributes<HTMLElement> & {
   /** name of user/entity */
-  name?: ReactNode;
+  name?: string;
   /** image url */
   url?: string;
   /** image size */
@@ -27,16 +27,13 @@ const Avatar: FC<AvatarProps> = ({ url, name, size, alt = "", ...rest }) => {
 
   const avatarUrl = () => {
     if (url) return url;
-
-    let fileName = "icon-avatar-Anonymous.png";
-    if (
+    const fileName =
       name &&
       typeof name === "string" &&
       name !== "Anonymous" &&
       name[0].trim().match(/[a-z]/i)
-    ) {
-      fileName = `icon-avatar-${name[0].trim().toUpperCase()}.png`;
-    }
+        ? `icon-avatar-${name[0].trim().toUpperCase()}.png`
+        : "icon-avatar-Anonymous.png";
 
     return theme.avatar.path + fileName;
   };

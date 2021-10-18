@@ -36,7 +36,9 @@ const UserBlock: FC<UserBlockProps> = (props) => {
     <StyledUserBlock {...propsWithoutName} theme={theme}>
       <Avatar
         name={
-          props.avatarName || typeof props.name === "string"
+          props.avatarName
+            ? props.avatarName
+            : typeof props.name === "string"
             ? props.name
             : "Anonymous"
         }
