@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added aria-described by support for controlls with error messages for TextField, TextAreaField, Select, Checkbox, Radio
 - Added isIconButton prop to Button sets the button into a round or square shape when it only contains and icon, is happening in order to depricate Icon and use another tree shakeable icon library in its stead.
+- Added hideRequiredInLabel prop to select to hide required in label when it is used to filter lists etc.
 
 ## [0.1.7] - 2021-10-06
 
