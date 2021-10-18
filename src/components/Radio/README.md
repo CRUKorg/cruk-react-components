@@ -42,6 +42,8 @@ function () {
 Use a field set with legend (think lable for multiple inputs) to group together multiple radio buttons under one heading.
 The legend will be red out by screen readers in form input mode, a div span etc would not.
 
+If the Radio component is passed an id, this is used to generate an id for the error container and relationship with the input using aria-describedby.
+
 ```.jsx
 <>
   <fieldset>
