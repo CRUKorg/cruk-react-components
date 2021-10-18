@@ -1,11 +1,17 @@
-import React, { FunctionComponent, ReactNode, SelectHTMLAttributes, Ref, forwardRef } from 'react';
-import { useTheme } from 'styled-components';
+import React, {
+  FunctionComponent,
+  ReactNode,
+  SelectHTMLAttributes,
+  Ref,
+  forwardRef,
+} from "react";
+import { useTheme } from "styled-components";
 
-import defaultTheme from 'src/themes/cruk';
-import ErrorText from 'src/components/ErrorText';
-import LabelWrapper from 'src/components/LabelWrapper';
+import defaultTheme from "src/themes/cruk";
+import ErrorText from "src/components/ErrorText";
+import LabelWrapper from "src/components/LabelWrapper";
 
-import { StyledSelect } from './styles';
+import { StyledSelect } from "./styles";
 
 export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   /** error message text */
@@ -22,9 +28,20 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
 
 /**
  * Select components are used for collecting user provided information from a list of options.
+ *
  */
 const Select: FunctionComponent<SelectProps> = forwardRef(
-  ({ errorMessage, hasError, required, label, hintText, ...props }: SelectProps, ref?: Ref<HTMLSelectElement>) => {
+  (
+    {
+      errorMessage,
+      hasError,
+      required,
+      label,
+      hintText,
+      ...props
+    }: SelectProps,
+    ref?: Ref<HTMLSelectElement>
+  ) => {
     const foundTheme = useTheme();
     const theme = {
       ...defaultTheme,
@@ -32,24 +49,33 @@ const Select: FunctionComponent<SelectProps> = forwardRef(
     };
 
     return (
-      <LabelWrapper label={label} hintText={hintText} required={required || false}>
+      <LabelWrapper
+        label={label}
+        hintText={hintText}
+        required={required || false}
+      >
         <StyledSelect
           {...props}
           ref={ref}
           theme={theme}
           required={required}
           aria-invalid={hasError || !!errorMessage || false}
-          aria-describedby={!!props.id && !!errorMessage ? `${props.id}-error` : undefined}
+          aria-describedby={
+            !!props.id && !!errorMessage ? `${props.id}-error` : undefined
+          }
           hasError={hasError || !!errorMessage || false}
         />
         {!!errorMessage && (
-          <ErrorText marginTop="xxs" id={!!props.id ? `${props.id}-error` : undefined}>
+          <ErrorText
+            marginTop="xxs"
+            id={!!props.id ? `${props.id}-error` : undefined}
+          >
             {errorMessage}
           </ErrorText>
         )}
       </LabelWrapper>
     );
-  },
+  }
 );
 
 export default Select;

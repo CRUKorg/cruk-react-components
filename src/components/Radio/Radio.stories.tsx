@@ -78,6 +78,16 @@ RadioDefault.args = {
   value: "one",
 };
 
+export const RadioDefaultError: Story<RadioProps> = TemplateError.bind({});
+RadioDefaultError.storyName = "Radio Error";
+RadioDefaultError.args = {
+  id: "radio",
+  value: "one",
+  disabled: false,
+  hasError: true,
+  errorMessage: "Error Message",
+};
+
 const TemplateWithSU2C: Story<RadioProps> = (args) => {
   const [selected, setSelected] = useState(args.value);
   const handleChange = (value: string) => {
@@ -107,16 +117,6 @@ const TemplateWithSU2C: Story<RadioProps> = (args) => {
       </fieldset>
     </ThemeProvider>
   );
-};
-
-export const RadioDefaultError: Story<RadioProps> = TemplateError.bind({});
-RadioDefaultError.storyName = "Radio Error";
-RadioDefaultError.args = {
-  id: "radio",
-  value: "one",
-  disabled: false,
-  hasError: true,
-  errorMessage: "Error Message",
 };
 
 export const SU2CRadio: Story<RadioProps> = TemplateWithSU2C.bind({});
