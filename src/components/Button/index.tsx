@@ -26,6 +26,8 @@ export type Props = ButtonHTMLAttributes<HTMLElement> & {
   css?: any;
   /** styled-components polymorphism where you can use the styling of a button but convert to another element like an anchor tag */
   as?: any;
+  /** flag to force button into an icon button shape which is square or round */
+  isIconButton?: boolean;
   ref?: Ref<HTMLElement>;
 };
 
@@ -42,16 +44,17 @@ export const Button: FunctionComponent<Props> = forwardRef(
       ...defaultTheme,
       ...foundTheme,
     };
-    const { appearance = "primary" } = props;
+    const { appearance = "primary", isIconButton = false } = props;
     const childArray = React.Children.toArray(props.children);
 
     // button has a fixed width if there is a single icon
-    const isIconButton =
-      // @ts-ignore typescript doesn't seem to like child.type but it works fine
-      props.children &&
-      childArray.length === 1 &&
-      childArray[0] &&
-      childArray[0].type === Icon
+    const setIconButton =
+      isIconButton ||
+      (props.children &&
+        childArray.length === 1 &&
+        childArray[0] &&
+        // @ts-ignore typescript doesn't seem to like child.type but it works fine
+        childArray[0].type === Icon)
         ? true
         : false;
 
@@ -60,7 +63,7 @@ export const Button: FunctionComponent<Props> = forwardRef(
         as={props.href ? "a" : "button"}
         {...props}
         appearance={appearance}
-        isIconButton={isIconButton}
+        isIconButton={setIconButton}
         theme={theme}
         ref={ref}
       >
