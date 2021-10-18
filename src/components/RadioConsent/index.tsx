@@ -5,10 +5,10 @@ import defaultTheme from "src/themes/cruk";
 
 import { StyledFieldSet, StyledLegend, StyledRadio } from "./styles";
 
-export type RadioGroupProps = {
-  /** because each radio has its own label this is the group label text */
+export type RadioConsentProps = {
+  /** because each radio has its own label this is the consent group label text */
   legend: string;
-  /** array of option for radio group where option is the option name and value is the option value  */
+  /** array of option for radio constent group where option is the option name and value is the option value  */
   attributes: Array<{
     value: string;
     option: string;
@@ -23,11 +23,11 @@ export type RadioGroupProps = {
 
 /**
  *
- * Radio group is a component for showing a bunch of yes/no radios predominantly used for notification selections where a unselected state is usefull for analytics.
+ * RadioConsent is a component for showing a bunch of yes/no radios predominantly used for notification selections where a unselected state is usefull for analytics.
  *
  * This is always a controlled component that will only change state with the selectedValue prop
  */
-const RadioGroup: FunctionComponent<RadioGroupProps> = ({
+const RadioConsent: FunctionComponent<RadioConsentProps> = ({
   selectedValue = "",
   ...props
 }) => {
@@ -60,4 +60,4 @@ const RadioGroup: FunctionComponent<RadioGroupProps> = ({
   );
 };
 
-export default RadioGroup;
+export default RadioConsent;
