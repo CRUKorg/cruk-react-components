@@ -3,14 +3,14 @@ import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
 import { GlobalStyle, su2cTheme } from "..";
-import RadioGroup, { RadioGroupProps } from ".";
+import RadioGroup, { RadioConsentProps } from ".";
 
 export default {
-  title: "RadioGroup",
+  title: "RadioGroup (experimental)",
   component: RadioGroup,
-} as Meta<RadioGroupProps>;
+} as Meta<RadioConsentProps>;
 
-const Template: Story<RadioGroupProps> = (args) => {
+const Template: Story<RadioConsentProps> = (args) => {
   const [selectedEmail, setSelectedEmail] = React.useState("yes");
   return (
     <fieldset style={{ border: "none" }}>
@@ -29,11 +29,11 @@ const Template: Story<RadioGroupProps> = (args) => {
   );
 };
 
-export const RadioDefault: Story<RadioGroupProps> = Template.bind({});
+export const RadioDefault: Story<RadioConsentProps> = Template.bind({});
 RadioDefault.storyName = "RadioGroup";
 RadioDefault.args = {};
 
-const TemplateWithSU2C: Story<RadioGroupProps> = (args) => {
+const TemplateWithSU2C: Story<RadioConsentProps> = (args) => {
   const [selectedEmail, setSelectedEmail] = React.useState("yes");
 
   return (
@@ -56,6 +56,6 @@ const TemplateWithSU2C: Story<RadioGroupProps> = (args) => {
   );
 };
 
-export const SU2CRadio: Story<RadioGroupProps> = TemplateWithSU2C.bind({});
+export const SU2CRadio: Story<RadioConsentProps> = TemplateWithSU2C.bind({});
 SU2CRadio.storyName = "SU2C SU2CRadio";
 SU2CRadio.args = {};
