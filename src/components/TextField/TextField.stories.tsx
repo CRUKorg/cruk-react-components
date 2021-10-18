@@ -18,7 +18,7 @@ const TemplateExtraRight: Story<TextFieldProps> = (args) => (
   <TextField
     {...args}
     extraRight={
-      <Button appearance="text" aria-label="search">
+      <Button appearance="tertiary" aria-label="search">
         <Icon name="search" />
       </Button>
     }

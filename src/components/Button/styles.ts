@@ -106,27 +106,6 @@ export const StyledButton = styled.button<StyledButtonProps>`
   ${(props: StyledButtonProps) =>
     props.appearance === "tertiary" &&
     css`
-      background-color: ${props.theme.colors.buttonTertiaryBackground};
-      border-color: ${props.theme.colors.buttonTertiaryBorder};
-      color: ${props.theme.colors.buttonTertiaryText} !important;
-      :focus,
-      :hover {
-        background-color: ${props.theme.colors.buttonTertiaryBackgroundHover};
-        border-color: ${props.theme.colors.buttonTertiaryBorderHover};
-        color: ${props.theme.colors.buttonTertiaryTextHover} !important;
-      }
-      :disabled {
-        cursor: not-allowed;
-        background-color: ${props.theme.colors
-          .buttonTertiaryDisabledBackground};
-        color: ${props.theme.colors.buttonTertiaryDisabledText} !important;
-        border-color: ${props.theme.colors.buttonTertiaryDisabledBorder};
-      }
-    `}
-
-  ${(props: StyledButtonProps) =>
-    props.appearance === "text" &&
-    css`
       display: inline-block;
       padding: 0;
       border: 0px;
@@ -135,7 +114,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
       color: ${props.theme.colors.buttonTertiaryText};
       :focus,
       :hover {
-        color: ${props.theme.colors.linkColorHover};
+        color: ${props.theme.colors.buttonTertiaryTextHover};
       }
       :disabled {
         cursor: not-allowed;

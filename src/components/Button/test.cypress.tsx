@@ -36,7 +36,6 @@ const content = () => {
         <Icon name="view" />
       </Button>
       <Button href="https://www.styled-components.com/">Link as Button</Button>
-      <Button appearance="text">Text style button</Button>
       <Button aria-label="Upload a photo">
         <Icon name="uploadPhoto" />
       </Button>

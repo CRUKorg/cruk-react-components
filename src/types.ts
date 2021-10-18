@@ -43,11 +43,7 @@ export type ButtonType = {
   textTransform: string;
 };
 
-export type ButtonAppearanceType =
-  | "primary"
-  | "secondary"
-  | "tertiary"
-  | "text";
+export type ButtonAppearanceType = "primary" | "secondary" | "tertiary";
 
 export type PopOverPositionType =
   | "top"
@@ -111,15 +107,9 @@ export type ColorsType = {
   buttonSecondaryDisabledText: string;
   buttonSecondaryDisabledBorder: string;
 
-  buttonTertiaryBackground: string;
   buttonTertiaryText: string;
-  buttonTertiaryBorder: string;
-  buttonTertiaryBackgroundHover: string;
   buttonTertiaryTextHover: string;
-  buttonTertiaryBorderHover: string;
-  buttonTertiaryDisabledBackground: string;
   buttonTertiaryDisabledText: string;
-  buttonTertiaryDisabledBorder: string;
 
   selectionBorder: string;
   inputBorder: string;

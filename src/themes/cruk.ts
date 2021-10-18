@@ -128,15 +128,9 @@ export const COLORS: ColorsType = {
   buttonSecondaryDisabledText: TOKEN_COLORS.grey_500,
   buttonSecondaryDisabledBorder: TOKEN_COLORS.grey_100,
 
-  buttonTertiaryBackground: TOKEN_COLORS.white,
   buttonTertiaryText: TOKEN_COLORS.magenta_500,
-  buttonTertiaryBorder: TOKEN_COLORS.grey_500,
-  buttonTertiaryBackgroundHover: TOKEN_COLORS.magenta_100,
   buttonTertiaryTextHover: TOKEN_COLORS.magenta_800,
-  buttonTertiaryBorderHover: TOKEN_COLORS.grey_500,
-  buttonTertiaryDisabledBackground: TOKEN_COLORS.grey_100,
   buttonTertiaryDisabledText: TOKEN_COLORS.grey_500,
-  buttonTertiaryDisabledBorder: TOKEN_COLORS.grey_100,
 
   selectionBorder: TOKEN_COLORS.grey_500,
 
