@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
-const CHECK_BOX_SIZE = '1.5rem';
-const CHECK_SIZE = '1.125rem';
-const BUTTON_HEIGHT = '3em';
+const CHECK_BOX_SIZE = "1.5rem";
+const CHECK_SIZE = "1.125rem";
+const BUTTON_HEIGHT = "3em";
 
 type StyledLabelProps = {
   checked: boolean;
@@ -56,7 +56,7 @@ export const CheckGlyph = styled.svg`
 export const StyledLabel = styled.label<StyledLabelProps>`
   background-color: ${({ theme }) => theme.colors.backgroundLight};
   position: relative;
-  border-radius: ${props => props.theme.utilities.borderRadius};
+  border-radius: ${(props) => props.theme.utilities.borderRadius};
   border-width: ${({ theme }) => theme.utilities.inputBorderWidth};
   border-style: solid;
   border-color: ${({ hasError, theme, checked }) =>
@@ -71,7 +71,8 @@ export const StyledLabel = styled.label<StyledLabelProps>`
     checked || !theme.utilities.useDefaultFocusRect
       ? theme.typography.fontWeightHeavy
       : theme.typography.fontWeightMedium};
-  color: ${({ theme, disabled }) => (disabled ? theme.colors.disabled : theme.colors.textDark)};
+  color: ${({ theme, disabled }) =>
+    disabled ? theme.colors.disabled : theme.colors.textDark};
   padding: ${({ theme }) =>
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
   &:focus ~ ${CheckWrapper} ${Check} {
@@ -134,7 +135,8 @@ export const StyledInput = styled.input`
 
           &:focus ~ ${SelectedBorder} {
             outline: none !important;
-            box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.inputBorderColour};
+            box-shadow: inset 0 0 0 2px
+              ${({ theme }) => theme.colors.inputBorderColour};
             box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
           }
 

@@ -1,9 +1,9 @@
-import { ThemeType } from 'src/types';
-import styled, { css } from 'styled-components';
+import { ThemeType } from "src/types";
+import styled, { css } from "styled-components";
 
 type StyledTextareaProps = {
   hasError: boolean;
-  resize: 'both' | 'vertical' | 'horizontal' | 'none';
+  resize: "both" | "vertical" | "horizontal" | "none";
   lineCount: number;
   theme: ThemeType;
 };
@@ -21,7 +21,8 @@ export const StyledTextArea = styled.textarea<StyledTextareaProps>`
   font-size: ${({ theme }) => theme.fontSizes.m};
   padding: 6px 8px;
   width: 100%;
-  height: ${({ lineCount, theme }) => `calc(${theme.typography.lineHeight} * ${lineCount})`};
+  height: ${({ lineCount, theme }) =>
+    `calc(${theme.typography.lineHeight} * ${lineCount})`};
 
   transition: border-color 150ms linear;
   &:disabled {

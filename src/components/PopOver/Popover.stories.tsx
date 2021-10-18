@@ -1,12 +1,12 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import { ThemeProvider } from 'styled-components';
+import React from "react";
+import { Story, Meta } from "@storybook/react";
+import { ThemeProvider } from "styled-components";
 
-import { su2cTheme, Box, Button, Icon, GlobalStyle } from '..';
-import PopOver, { PopOverProps } from '.';
+import { su2cTheme, Box, Button, Icon, GlobalStyle } from "..";
+import PopOver, { PopOverProps } from ".";
 
 export default {
-  title: 'PopOver (experimental)',
+  title: "PopOver (experimental)",
   component: PopOver,
 } as Meta<PopOverProps>;
 
@@ -35,11 +35,16 @@ const content = (
   </>
 );
 
-const Template: Story<PopOverProps> = args => {
+const Template: Story<PopOverProps> = (args) => {
   return (
     <>
       <Box margin="xxl">
-        <PopOver {...args} modalLabel="sharing options" modalContent={content} minWidth="23em">
+        <PopOver
+          {...args}
+          modalLabel="sharing options"
+          modalContent={content}
+          minWidth="23em"
+        >
           <Button>
             <Icon name="share" />
             Share top
@@ -51,16 +56,21 @@ const Template: Story<PopOverProps> = args => {
 };
 
 export const PopOverDefault: Story<PopOverProps> = Template.bind({});
-PopOverDefault.storyName = 'PopOver';
+PopOverDefault.storyName = "PopOver";
 PopOverDefault.args = {};
 
-const TemplateWithSU2C: Story<PopOverProps> = args => {
+const TemplateWithSU2C: Story<PopOverProps> = (args) => {
   return (
     <>
       <ThemeProvider theme={su2cTheme}>
         <GlobalStyle />
         <Box margin="xxl">
-          <PopOver {...args} modalLabel="sharing options" modalContent={content} minWidth="23em">
+          <PopOver
+            {...args}
+            modalLabel="sharing options"
+            modalContent={content}
+            minWidth="23em"
+          >
             <Button>
               <Icon name="share" />
               Share top
@@ -73,5 +83,5 @@ const TemplateWithSU2C: Story<PopOverProps> = args => {
 };
 
 export const SU2CCheckbox: Story<PopOverProps> = TemplateWithSU2C.bind({});
-SU2CCheckbox.storyName = 'SU2C PopOver';
+SU2CCheckbox.storyName = "SU2C PopOver";
 SU2CCheckbox.args = {};

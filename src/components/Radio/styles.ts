@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
-const RADIO_SIZE = '1.5rem';
-const RADIO_INNER_SIZE = '1rem';
-const BUTTON_HEIGHT = '3em';
+const RADIO_SIZE = "1.5rem";
+const RADIO_INNER_SIZE = "1rem";
+const BUTTON_HEIGHT = "3em";
 
 export const CheckWrapper = styled.div`
   display: inline-block;
@@ -34,7 +34,7 @@ export const Check = styled.span`
   ::before {
     display: block;
     position: absolute;
-    content: '';
+    content: "";
     border-radius: 100%;
     height: ${RADIO_INNER_SIZE};
     width: ${RADIO_INNER_SIZE};
@@ -66,8 +66,9 @@ export const StyledLabel = styled.label<StyledLabelProps>`
       : theme.colors.inputBorder};
   cursor: pointer;
   display: inline-block;
-  font-weight: ${({ checked }) => (checked ? 'bold' : 'normal')};
-  color: ${({ theme, disabled }) => (disabled ? theme.colors.disabled : theme.colors.textDark)};
+  font-weight: ${({ checked }) => (checked ? "bold" : "normal")};
+  color: ${({ theme, disabled }) =>
+    disabled ? theme.colors.disabled : theme.colors.textDark};
   padding: ${({ theme }) =>
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
   vertical-align: middle;
@@ -144,7 +145,8 @@ export const StyledInput = styled.input`
 
           &:focus ~ ${SelectedBorder} {
             outline: none !important;
-            box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.inputBorderColour};
+            box-shadow: inset 0 0 0 2px
+              ${({ theme }) => theme.colors.inputBorderColour};
             box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
           }
 

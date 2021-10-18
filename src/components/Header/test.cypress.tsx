@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 
-import React from 'react';
-import { mount } from '@cypress/react';
+import React from "react";
+import { mount } from "@cypress/react";
 
-import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
-import { Header, Button, crukTheme, su2cTheme } from '../';
+import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
+import { Header, Button, crukTheme, su2cTheme } from "../";
 
 const content = () => {
   return (
@@ -14,8 +14,8 @@ const content = () => {
   );
 };
 
-describe('Header', () => {
-  it('is accessible cruk', () => {
+describe("Header", () => {
+  it("is accessible cruk", () => {
     cy.viewport(1000, 480); // desktop breakpoint for full size header
     mount(
       <TestThemeWrapper theme={crukTheme}>
@@ -25,13 +25,13 @@ describe('Header', () => {
         <div id="main" tabIndex={-1}>
           blah
         </div>
-      </TestThemeWrapper>,
+      </TestThemeWrapper>
     );
     cy.injectAxe();
-    cy.checkA11y('body');
+    cy.checkA11y("body");
   });
 
-  it('is accessible su2c', () => {
+  it("is accessible su2c", () => {
     cy.viewport(1000, 480); // desktop breakpoint for full size header
     mount(
       <TestThemeWrapper theme={su2cTheme}>
@@ -41,81 +41,77 @@ describe('Header', () => {
         <div id="main" tabIndex={-1}>
           blah
         </div>
-      </TestThemeWrapper>,
+      </TestThemeWrapper>
     );
     cy.injectAxe();
-    cy.checkA11y('body', {
+    cy.checkA11y("body", {
       rules: {
-        'color-contrast': { enabled: false }, // TODO disabled because SU2C links do not pass WCAG AA.
+        "color-contrast": { enabled: false }, // TODO disabled because SU2C links do not pass WCAG AA.
       },
     });
   });
 
-  it('should match snapshot', () => {
-    Cypress.config('waitForAnimations', true);
-    Cypress.config('animationDistanceThreshold', 2);
+  it("should match snapshot", () => {
+    Cypress.config("waitForAnimations", true);
+    Cypress.config("animationDistanceThreshold", 2);
     cy.viewport(1000, 480);
     mount(<TestWrapper>{content()}</TestWrapper>);
-    cy.document()
-      .its('fonts.status')
-      .should('equal', 'loaded');
+    cy.document().its("fonts.status").should("equal", "loaded");
     cy.get(
-      '[src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png"]',
-    ).should($img => {
+      '[src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png"]'
+    ).should(($img) => {
       const img = $img[0] as HTMLImageElement;
       expect(img.naturalWidth).to.be.greaterThan(0);
     });
     cy.get(
-      '[src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/su2c-logo.png"]',
-    ).should($img => {
+      '[src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/su2c-logo.png"]'
+    ).should(($img) => {
       const img = $img[0] as HTMLImageElement;
       expect(img.naturalWidth).to.be.greaterThan(0);
     });
-    cy.get('body')
-      .first()
-      .matchImageSnapshot();
+    cy.get("body").first().matchImageSnapshot();
   });
 });
 
-describe('Header Behaviour', () => {
+describe("Header Behaviour", () => {
   beforeEach(() => {
     cy.viewport(2000, 200);
     mount(
       <Header siteSlogan="Header slogan here">
         <Button>Child component</Button>
-      </Header>,
+      </Header>
     );
   });
 
-  it('should scroll to main content', () => {
+  it("should scroll to main content", () => {
     cy.tab();
-    cy.focused().should('have.text', 'Skip to main content');
+    cy.focused().should("have.text", "Skip to main content");
     // can't test further than this without a page with some junk above main content
   });
 
-  it('should alt text in link in logo image', () => {
+  it("should alt text in link in logo image", () => {
     cy.tab();
     cy.tab();
     cy.focused()
-      .find('img')
-      .should('have.attr', 'alt', 'Cancer Research UK Giving Page');
+      .find("img")
+      .should("have.attr", "alt", "Cancer Research UK Giving Page");
   });
 
-  it('should go to link in logo', () => {
+  it("should go to link in logo", () => {
     cy.tab();
     cy.tab();
-    cy.focused().should('have.attr', 'href', '/');
+    cy.focused().should("have.attr", "href", "/");
   });
 
-  it('should stick to the top of the page', () => {
-    cy.get('header')
+  it("should stick to the top of the page", () => {
+    cy.get("header")
       .find('[data-cy="header-sticky-container"]')
-      .should('have.css', 'height', '120px')
-      .should('have.css', 'position', 'relative');
+      .should("have.css", "height", "120px")
+      .should("have.css", "position", "relative");
   });
 });
 
-describe('Header Sticky Behaviour', () => {
+describe("Header Sticky Behaviour", () => {
   beforeEach(() => {
     cy.viewport(2000, 200);
     mount(
@@ -123,17 +119,20 @@ describe('Header Sticky Behaviour', () => {
         <Header siteSlogan="Header slogan here" isSticky={true}>
           <Button>Child component</Button>
         </Header>
-        <div className="making-a-tall-scroll-able-page" style={{ height: 2000 }}></div>
-      </>,
+        <div
+          className="making-a-tall-scroll-able-page"
+          style={{ height: 2000 }}
+        ></div>
+      </>
     );
   });
 
-  it('should reduce to smaller height when not at top of page', () => {
+  it("should reduce to smaller height when not at top of page", () => {
     cy.window().scrollTo(0, 800);
-    cy.get('header')
+    cy.get("header")
       .find('[data-cy="header-sticky-container"]')
-      .should('have.css', 'height', '72px')
-      .should('have.css', 'position', 'fixed')
-      .should('have.css', 'top', '0px');
+      .should("have.css", "height", "72px")
+      .should("have.css", "position", "fixed")
+      .should("have.css", "top", "0px");
   });
 });

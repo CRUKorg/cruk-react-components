@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 
-import React from 'react';
-import { mount } from '@cypress/react';
+import React from "react";
+import { mount } from "@cypress/react";
 
-import { TestThemeWrapper } from '../TestWrapper';
-import { RadioGroup, su2cTheme, crukTheme } from '../';
+import { TestThemeWrapper } from "../TestWrapper";
+import { RadioGroup, su2cTheme, crukTheme } from "../";
 
 const uncontrolledContent = () => (
   <div id="radios">
@@ -12,37 +12,37 @@ const uncontrolledContent = () => (
       legend="Email"
       name="email"
       attributes={[
-        { option: 'Yes', value: 'yes' },
-        { option: 'No', value: 'no' },
+        { option: "Yes", value: "yes" },
+        { option: "No", value: "no" },
       ]}
-      selectedValue={'yes'}
+      selectedValue={"yes"}
     />
 
     <RadioGroup
       legend="Telephone"
       name="phone"
       attributes={[
-        { option: 'Yes', value: 'yes' },
-        { option: 'No', value: 'no' },
+        { option: "Yes", value: "yes" },
+        { option: "No", value: "no" },
       ]}
-      selectedValue={'no'}
+      selectedValue={"no"}
     />
   </div>
 );
 
 const Content = () => {
-  const [selectedEmail, setSelectedEmail] = React.useState('yes');
-  const [selectedPhone, setSelectedPhone] = React.useState('no');
+  const [selectedEmail, setSelectedEmail] = React.useState("yes");
+  const [selectedPhone, setSelectedPhone] = React.useState("no");
 
   return (
     <>
       <RadioGroup
         legend="Email"
         name="email"
-        onChange={e => setSelectedEmail(e.target.value)}
+        onChange={(e) => setSelectedEmail(e.target.value)}
         attributes={[
-          { option: 'Yes', value: 'yes' },
-          { option: 'No', value: 'no' },
+          { option: "Yes", value: "yes" },
+          { option: "No", value: "no" },
         ]}
         selectedValue={selectedEmail}
       />
@@ -50,10 +50,10 @@ const Content = () => {
       <RadioGroup
         legend="Telephone"
         name="phone"
-        onChange={e => setSelectedPhone(e.target.value)}
+        onChange={(e) => setSelectedPhone(e.target.value)}
         attributes={[
-          { option: 'Yes', value: 'yes' },
-          { option: 'No', value: 'no' },
+          { option: "Yes", value: "yes" },
+          { option: "No", value: "no" },
         ]}
         selectedValue={selectedPhone}
       />
@@ -61,51 +61,47 @@ const Content = () => {
   );
 };
 
-describe('RadioGroup', () => {
-  it('is accessible CRUK theme', () => {
+describe("RadioGroup", () => {
+  it("is accessible CRUK theme", () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>
         <Content />
-      </TestThemeWrapper>,
+      </TestThemeWrapper>
     );
     cy.injectAxe();
-    cy.checkA11y('body');
+    cy.checkA11y("body");
   });
 
-  it('is accessible SU2C theme', () => {
+  it("is accessible SU2C theme", () => {
     mount(
       <TestThemeWrapper theme={su2cTheme}>
         <Content />
-      </TestThemeWrapper>,
+      </TestThemeWrapper>
     );
     cy.injectAxe();
-    cy.checkA11y('body', {
+    cy.checkA11y("body", {
       rules: {
-        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
+        "color-contrast": { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
       },
     });
   });
 
-  it('should match CRUK snapshot', () => {
-    Cypress.config('waitForAnimations', true);
-    Cypress.config('animationDistanceThreshold', 2);
+  it("should match CRUK snapshot", () => {
+    Cypress.config("waitForAnimations", true);
+    Cypress.config("animationDistanceThreshold", 2);
     mount(<TestThemeWrapper>{uncontrolledContent()}</TestThemeWrapper>);
-    cy.document()
-      .its('fonts.status')
-      .should('equal', 'loaded');
-    cy.get('#radios')
-      .first()
-      .matchImageSnapshot();
+    cy.document().its("fonts.status").should("equal", "loaded");
+    cy.get("#radios").first().matchImageSnapshot();
   });
-  it('should match SU2C snapshot', () => {
-    Cypress.config('waitForAnimations', true);
-    Cypress.config('animationDistanceThreshold', 2);
-    mount(<TestThemeWrapper theme={su2cTheme}>{uncontrolledContent()}</TestThemeWrapper>);
-    cy.document()
-      .its('fonts.status')
-      .should('equal', 'loaded');
-    cy.get('#radios')
-      .first()
-      .matchImageSnapshot();
+  it("should match SU2C snapshot", () => {
+    Cypress.config("waitForAnimations", true);
+    Cypress.config("animationDistanceThreshold", 2);
+    mount(
+      <TestThemeWrapper theme={su2cTheme}>
+        {uncontrolledContent()}
+      </TestThemeWrapper>
+    );
+    cy.document().its("fonts.status").should("equal", "loaded");
+    cy.get("#radios").first().matchImageSnapshot();
   });
 });

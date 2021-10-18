@@ -1,17 +1,23 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import RadioInput from 'src/components/Radio';
+import RadioInput from "src/components/Radio";
 
-import { ThemeType } from 'src/types';
+import { ThemeType } from "src/types";
 
-const LEGEND_WIDTH = '20%';
+const LEGEND_WIDTH = "20%";
 
 export const StyledRadio = styled(RadioInput)`
   display: block;
   float: left;
   text-align: center;
   margin-left: ${({ theme }) => theme.spacing.s};
-  width: ${({ numberOfAttributes, theme }: { numberOfAttributes: number; theme: ThemeType }) =>
+  width: ${({
+    numberOfAttributes,
+    theme,
+  }: {
+    numberOfAttributes: number;
+    theme: ThemeType;
+  }) =>
     `calc(((100% - ${LEGEND_WIDTH}) / ${numberOfAttributes}) - ${theme.spacing.s})`};
 `;
 

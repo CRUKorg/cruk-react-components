@@ -1,11 +1,24 @@
-import React, { FunctionComponent, InputHTMLAttributes, ReactNode, Ref, forwardRef } from 'react';
-import { useTheme } from 'styled-components';
+import React, {
+  FunctionComponent,
+  InputHTMLAttributes,
+  ReactNode,
+  Ref,
+  forwardRef,
+} from "react";
+import { useTheme } from "styled-components";
 
-import defaultTheme from 'src/themes/cruk';
-import ErrorText from 'src/components/ErrorText';
-import LabelWrapper from 'src/components/LabelWrapper';
+import defaultTheme from "src/themes/cruk";
+import ErrorText from "src/components/ErrorText";
+import LabelWrapper from "src/components/LabelWrapper";
 
-import { ExtraLeft, ExtraRight, Extra, ExtraWrapper, StyledInput, StyledInputWrapper } from './styles';
+import {
+  ExtraLeft,
+  ExtraRight,
+  Extra,
+  ExtraWrapper,
+  StyledInput,
+  StyledInputWrapper,
+} from "./styles";
 
 export type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   /** error message text  */
@@ -56,7 +69,7 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
       hideRequiredInLabel,
       ...props
     }: TextFieldProps,
-    ref?: Ref<HTMLInputElement>,
+    ref?: Ref<HTMLInputElement>
   ) => {
     const foundTheme = useTheme();
     const theme = {
@@ -69,7 +82,11 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
         {!!extraLeft && <ExtraLeft theme={theme}>{extraLeft}</ExtraLeft>}
         <StyledInputWrapper
           hasError={hasError || !!errorMessage || false}
-          isValid={typeof isValid !== 'undefined' ? isValid : !hasError && !errorMessage}
+          isValid={
+            typeof isValid !== "undefined"
+              ? isValid
+              : !hasError && !errorMessage
+          }
           aria-invalid={hasError || !!errorMessage || false}
           isValidVisible={isValidVisible || false}
           isInvalidVisible={isInvalidVisible || false}
@@ -77,8 +94,15 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
         >
           <StyledInput
             hasError={hasError || !!errorMessage || false}
-            isValid={typeof isValid !== 'undefined' ? isValid : !hasError && !errorMessage}
+            isValid={
+              typeof isValid !== "undefined"
+                ? isValid
+                : !hasError && !errorMessage
+            }
             aria-invalid={hasError || !!errorMessage || false}
+            aria-describedby={
+              !!props.id && !!errorMessage ? `${props.id}-error` : undefined
+            }
             isValidVisible={isValidVisible || false}
             isInvalidVisible={isInvalidVisible || false}
             {...props}
@@ -99,12 +123,23 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
         hideRequiredInLabel={hideRequiredInLabel}
       >
         {!!extraTop && <Extra theme={theme}>{extraTop}</Extra>}
-        {!!extraRight || !!extraLeft ? <ExtraWrapper>{renderContent}</ExtraWrapper> : renderContent}
+        {!!extraRight || !!extraLeft ? (
+          <ExtraWrapper>{renderContent}</ExtraWrapper>
+        ) : (
+          renderContent
+        )}
         {!!extraBottom && <Extra theme={theme}>{extraBottom}</Extra>}
-        {!!errorMessage && <ErrorText marginTop="xxs">{errorMessage}</ErrorText>}
+        {!!errorMessage && (
+          <ErrorText
+            marginTop="xxs"
+            id={!!props.id ? `${props.id}-error` : undefined}
+          >
+            {errorMessage}
+          </ErrorText>
+        )}
       </LabelWrapper>
     );
-  },
+  }
 );
 
 export default TextField;

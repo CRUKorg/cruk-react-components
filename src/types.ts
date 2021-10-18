@@ -1,4 +1,12 @@
-export type FontSizeType = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl' | 'xxxxl';
+export type FontSizeType =
+  | "xs"
+  | "s"
+  | "m"
+  | "l"
+  | "xl"
+  | "xxl"
+  | "xxxl"
+  | "xxxxl";
 
 export type FontSizesType = { [key in FontSizeType]: string };
 
@@ -35,9 +43,19 @@ export type ButtonType = {
   textTransform: string;
 };
 
-export type ButtonAppearanceType = 'primary' | 'secondary' | 'tertiary' | 'text';
+export type ButtonAppearanceType =
+  | "primary"
+  | "secondary"
+  | "tertiary"
+  | "text";
 
-export type PopOverPositionType = 'top' | 'topLeft' | 'left' | 'right' | 'bottom' | 'bottomLeft';
+export type PopOverPositionType =
+  | "top"
+  | "topLeft"
+  | "left"
+  | "right"
+  | "bottom"
+  | "bottomLeft";
 
 export type BreakPointType = {
   mobile: string;
@@ -144,7 +162,16 @@ export type ColorsType = {
 
 export type ColorKeyType = keyof ColorsType;
 
-export type SpaceType = 'auto' | 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'none';
+export type SpaceType =
+  | "auto"
+  | "xxs"
+  | "xs"
+  | "s"
+  | "m"
+  | "l"
+  | "xl"
+  | "xxl"
+  | "none";
 
 export type SpacingType = {
   auto: string;
@@ -259,4 +286,11 @@ export type AddressOptionsType = {
   Text: string;
 };
 
-export type WordBreakType = 'normal' | 'break-all' | 'keep-all' | 'break-word' | 'inherit' | 'initial' | 'unset';
+export type WordBreakType =
+  | "normal"
+  | "break-all"
+  | "keep-all"
+  | "break-word"
+  | "inherit"
+  | "initial"
+  | "unset";
