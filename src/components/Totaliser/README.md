@@ -76,7 +76,7 @@ function () {
     const  percentage = (total / target) * 100;
     return (<div>
       {!isEditing &&
-        <Button appearance="text" aria-label="edit" onClick={toggleIsEditing}>
+        <Button appearance="tertiary" aria-label="edit" onClick={toggleIsEditing}>
           <Icon name="edit"/>
         </Button>
       }

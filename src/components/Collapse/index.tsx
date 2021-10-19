@@ -129,7 +129,7 @@ const Collapse: FunctionComponent<CollapseProps> = (props) => {
           id={`${id}-header`}
           onClick={toggleCollapse}
           theme={theme}
-          appearance="text"
+          appearance="tertiary"
           type="button"
           textColor={headerTitleTextColor}
           textSize={headerTitleTextSize}

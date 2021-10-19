@@ -13,22 +13,22 @@ export default {
 const content = (
   <>
     <Box padding="xxs">
-      <Button appearance="text" aria-label="Facebook">
+      <Button appearance="tertiary" aria-label="Facebook">
         <Icon name="facebookSquare" color="#4267b2" size="1.5rem" />
       </Button>
-      <Button appearance="text" aria-label="Twitter">
+      <Button appearance="tertiary" aria-label="Twitter">
         <Icon name="twitterSquare" color="#1da1f2" size="1.5rem" />
       </Button>
-      <Button appearance="text" aria-label="WhatsApp">
+      <Button appearance="tertiary" aria-label="WhatsApp">
         <Icon name="whatsappSquare" color="#4dc247" size="1.5rem" />
       </Button>
-      <Button appearance="text" aria-label="Facebook Messenger">
+      <Button appearance="tertiary" aria-label="Facebook Messenger">
         <Icon name="messengerSquare" color="#288ef8" size="1.5rem" />
       </Button>
-      <Button appearance="text" aria-label="LinkedIn">
+      <Button appearance="tertiary" aria-label="LinkedIn">
         <Icon name="linkedin" color="#0077b5" size="1.5rem" />
       </Button>
-      <Button appearance="text" aria-label="Email">
+      <Button appearance="tertiary" aria-label="Email">
         <Icon name="envelopeSquare" color="#00b6ed" size="1.5rem" />
       </Button>
     </Box>

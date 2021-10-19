@@ -89,7 +89,7 @@ const Modal: FC<ModalProps> = ({
                       {showCloseButton && closeFunction ? (
                         <CloseButton
                           aria-label="close"
-                          appearance="text"
+                          appearance="tertiary"
                           onClick={() => {
                             closeFunction();
                           }}
