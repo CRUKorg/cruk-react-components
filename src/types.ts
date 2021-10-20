@@ -156,13 +156,13 @@ export type SpacingType = {
   none: string;
 };
 
-export type customFontType = {
+export type CustomFontType = {
   family: string;
   url: string;
 };
 
 export type TypographyType = {
-  customFonts: [customFontType];
+  customFonts: [CustomFontType];
   fontUrl: string;
   fontFamilyBase: string;
   fontFamilyHeadings: string;
