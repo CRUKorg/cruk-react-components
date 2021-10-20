@@ -27,7 +27,7 @@ export const numberWithCommas = (n?: number | string): string => {
 
 export const formatMoneyWithCommas = (value: number): string => {
   const parsed = Number.parseFloat((Math.round(value * 100) / 100).toString()).toFixed(2);
-  if (Number.isNaN(parseFloat(parsed)) || isNaN(value)) {
+  if (Number.isNaN(parseFloat(parsed)) || Number.isNaN(value)) {
     return '0';
   }
   return numberWithCommas(parsed);
