@@ -1,4 +1,9 @@
 import styled, { keyframes } from 'styled-components';
+import { ThemeType } from 'src/types';
+
+type Props = {
+  theme: ThemeType
+}
 
 const BounceDelay = keyframes`
   0%,
@@ -23,7 +28,7 @@ export const ScreenReaderOnly = styled.p`
 export const Spinner = styled.div`
   width: 100%;
   text-align: center;
-  margin-top: ${({ theme }) => theme.spacing.s};
+  margin-top: ${({ theme }: Props) => theme.spacing.s};
 
   span {
     display: inline-block;
