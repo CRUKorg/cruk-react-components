@@ -51,10 +51,6 @@ export const Spinner = styled.div`
   }
 
   span:nth-child(3) {
-    background-color: ${({
-      theme: {
-        colors: { loaderColor3 },
-      },
-    }) => loaderColor3};
+    background-color: ${({ theme }: Props) => theme.colors.loaderColor3};
   }
 `;
