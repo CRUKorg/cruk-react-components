@@ -35,11 +35,7 @@ export const Spinner = styled.div`
     width: 16px;
     height: 16px;
     margin: 0 2px;
-    background-color: ${({
-      theme: {
-        colors: { loaderColor1 },
-      },
-    }) => loaderColor1};
+    background-color: ${({ theme }: Props) => theme.colors.loaderColor1};
     border-radius: 100%;
     animation: ${BounceDelay} 1.2s infinite ease-in-out both;
   }
