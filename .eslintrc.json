@@ -5,6 +5,7 @@
     "useJSXTextNode": true
   },
   "extends": [
+    "@cruk",
     "eslint:recommended", // eslint:all is quite anal, use this for now.
     "plugin:react/all", // Lets aim to meet the React standard.
     "plugin:@typescript-eslint/recommended",
