@@ -19,7 +19,7 @@ function getScrollPosition({
   return useWindow ? { x: window.scrollX, y: window.scrollY } : { x: position.left, y: position.top };
 }
 
-export function useScrollPosition(
+function useScrollPosition(
   effect: any,
   deps: DependencyList,
   element: RefObject<HTMLElement> | MutableRefObject<undefined> | null,
@@ -59,3 +59,6 @@ export function useScrollPosition(
     };
   }, deps);
 }
+
+export default useScrollPosition;
+export { useScrollPosition };
