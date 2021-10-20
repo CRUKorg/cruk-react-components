@@ -13,4 +13,7 @@
 /cypress/snapshots/**/**(failed).snap.png
 /cypress/fixtures/example.json 
 
+#jest
+*.jest.ts
+
 .idea
