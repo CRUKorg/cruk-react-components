@@ -46,11 +46,7 @@ export const Spinner = styled.div`
   }
 
   span:nth-child(2) {
-    background-color: ${({
-      theme: {
-        colors: { loaderColor2 },
-      },
-    }) => loaderColor2};
+    background-color: ${({ theme }: Props) => theme.colors.loaderColor2};
     animation-delay: -0.16s;
   }
 
