@@ -53,7 +53,7 @@ const PopOver: FC<PopOverProps> = ({
   // outside click closes popover
   const handleDocumentClick = useCallback(
     (e: MouseEvent) => {
-      if (!(popRef.current as any).contains(e.target)) {
+      if (!!popRef.current && !(popRef.current).contains(e.target as Node)) {
         closePopOver();
       }
     },
