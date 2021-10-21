@@ -16,4 +16,7 @@
 #jest
 *.jest.ts
 
+#docs
+/src/docs/*.js
+
 .idea
