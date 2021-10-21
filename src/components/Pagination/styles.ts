@@ -1,10 +1,15 @@
 import styled, { css } from 'styled-components';
+import { ThemeType } from 'src/types';
 
 type PaginationStyledProps = {
   active?: boolean;
   name?: string;
   disabled?: boolean;
 };
+
+type ThemeProp = {
+  theme: ThemeType
+}
 
 export const PagerWrapper = styled.div<PaginationStyledProps>`
   display: table;
@@ -25,17 +30,17 @@ export const PagerLink = styled.a<PaginationStyledProps>`
     theme: {
       typography: { fontFamilyBase },
     },
-  }) => fontFamilyBase};
+  }: ThemeProp) => fontFamilyBase};
   font-size: ${({
     theme: {
       fontSizes: { s },
     },
-  }) => s};
-  color: ${props => props.theme.colors.textLight};
-  background-color: ${props => props.theme.colors.paginationBackground};
+  }: ThemeProp) => s};
+  color: ${({ theme }: ThemeProp ) => theme.colors.textLight};
+  background-color: ${({ theme }: ThemeProp ) => theme.colors.paginationBackground};
   cursor: pointer;
   border-radius: 0;
-  margin: ${props => props.theme.spacing.xxs};
+  margin: ${({ theme }: ThemeProp ) => theme.spacing.xxs};
   padding: 7px 11px;
   text-decoration: none;
   &:hover{
@@ -51,19 +56,19 @@ export const PagerLink = styled.a<PaginationStyledProps>`
   ${(itemProps: PaginationStyledProps) =>
     itemProps.active &&
     css`
-      color: ${props => props.theme.colors.textDark};
+      color: ${({ theme }: ThemeProp ) => theme.colors.textDark};
       background-color: ${({
         theme: {
           colors: { paginationActive },
         },
-      }) => paginationActive};
+      }: ThemeProp) => paginationActive};
       cursor: default;
       &:hover {
         background-color: ${({
           theme: {
             colors: { paginationActive },
           },
-        }) => paginationActive};
+        }: ThemeProp) => paginationActive};
         text-decoration: none;
       }
     `}
@@ -71,7 +76,7 @@ export const PagerLink = styled.a<PaginationStyledProps>`
   ${(itemProps: PaginationStyledProps) =>
     (itemProps.name === 'Prev' || itemProps.name === 'Next') &&
     css`
-      color: ${props => props.theme.colors.paginationBackground};
+      color: ${({ theme }: ThemeProp ) => theme.colors.paginationBackground};
       background-color: transparent;
       font-weight: bold;
       padding: 8px 6px;
@@ -90,14 +95,14 @@ export const PagerLink = styled.a<PaginationStyledProps>`
   ${(itemProps: PaginationStyledProps) =>
     itemProps.disabled &&
     css`
-      color: ${props => props.theme.colors.disabled};
+      color: $${({ theme }: ThemeProp ) => theme.colors.disabled};
       cursor: not-allowed;
       text-decoration: none;
       &:hover,
       &:focus,
       &:active,
       &:visited {
-        color: ${props => props.theme.colors.disabled};
+        color: ${({ theme }: ThemeProp ) => theme.colors.disabled};
         text-decoration: none;
       }
     `}
@@ -113,7 +118,7 @@ export const PagerItem = styled.li`
       theme: {
         breakpoint: { mobile },
       },
-    }) => mobile}) {
+    }: ThemeProp) => mobile}) {
     display: inline;
   }
   span {
