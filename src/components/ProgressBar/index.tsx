@@ -30,11 +30,15 @@ export type ProgressBarProps = {
   barColor?: string;
 };
 
+const DefaultProps = {
+  percentage: 0,
+};
+
 /**
  * Provide up-to-date feedback on the progress of a workflow or action with
 simple yet flexible progress bars.
 */
-const ProgressBar: FC<ProgressBarProps> = props => {
+const ProgressBar: FC<ProgressBarProps> = (props = DefaultProps) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -43,7 +47,7 @@ const ProgressBar: FC<ProgressBarProps> = props => {
   const number = props.percentage;
   const percentString = `${!Number.isNaN(number) ? number : '0'}%`;
   const descriptivePercentageString = `${
-    typeof props.circleContents === 'string' ? props.circleContents : null
+    typeof props.circleContents === 'string' ? props.circleContents : ''
   } ${percentString}% Complete`;
   const textOrPercentString = props.circleContents || percentString;
 
@@ -70,10 +74,6 @@ const ProgressBar: FC<ProgressBarProps> = props => {
       </ProgressBarWrapper>
     </ThemeProvider>
   );
-};
-
-ProgressBar.defaultProps = {
-  percentage: 0,
 };
 
 export default ProgressBar;
