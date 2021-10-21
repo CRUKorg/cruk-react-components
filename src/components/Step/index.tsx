@@ -12,6 +12,11 @@ export type StepProps = {
   steps: string[];
 };
 
+const defaultProps: StepProps = {
+  current: 1,
+  steps: []
+}
+
 // TODO think about AriaAttributes and how we want to pass them down
 
 /**
@@ -19,7 +24,7 @@ export type StepProps = {
  * Visually show where a user is in a multi-step process. Calculate the number of steps and the width of each step required to fit the progress bar in the parent container.
  * Step display progress through a sequence by breaking it up into multiple logical steps. They may also be used for navigation.
  */
-const Step: FunctionComponent<StepProps> = props => {
+const Step: FunctionComponent<StepProps> = (props = defaultProps) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -44,9 +49,4 @@ const Step: FunctionComponent<StepProps> = props => {
     </ThemeProvider>
   );
 };
-
-Step.defaultProps = {
-  current: 1,
-};
-
 export default Step;
