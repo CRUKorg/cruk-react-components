@@ -24,4 +24,10 @@
 #storybook
 /src/**/**/*.stories.tsx
 
+#plugins
+src/plugins/**
+
+#HOC
+src/hocs/MdxProvider.tsx
+
 .idea
