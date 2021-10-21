@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, MouseEvent } from 'react';
 import { ThemeProvider, useTheme } from 'styled-components';
 
 import defaultTheme from 'src/themes/cruk';
@@ -37,7 +37,7 @@ const Pagination: FunctionComponent<PaginationProps> = props => {
 
   const linkProps = (number: number) => ({
     href: `${typeof window !== 'undefined' ? window.location.pathname : ''}?${props.searchParam}=${number}`,
-    onClick: (e: any) => {
+    onClick: (e: MouseEvent) => {
       e.preventDefault();
       props.pagerCallback(number);
     },
