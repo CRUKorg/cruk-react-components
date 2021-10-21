@@ -47,7 +47,7 @@ const Pagination: FunctionComponent<PaginationProps> = props => {
     const list = [];
     let pager = [];
     // get the list of items
-    for (let number = 1; number <= total; number++) {
+    for (let number = 1; number <= total; number+=1) {
       list.push(
         <PagerItem key={number}>
           <PagerLink active={number === active} {...linkProps(number)} aria-label={`page ${number} of ${total}`}>
