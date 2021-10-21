@@ -20,6 +20,7 @@ export type PaginationProps = {
   searchParam?: string;
 };
 
+
 /**
  * 
  * Pagination is used when we are viewing large amounts of data.
@@ -115,10 +116,6 @@ const Pagination: FunctionComponent<PaginationProps> = props => {
       )}
     </ThemeProvider>
   );
-};
-
-Pagination.defaultProps = {
-  searchParam: 'page',
 };
 
 export default Pagination;
