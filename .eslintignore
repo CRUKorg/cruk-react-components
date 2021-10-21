@@ -13,6 +13,7 @@
 /cypress/snapshots/**/**(failed).snap.png
 /cypress/fixtures/example.json 
 /src/**/**/*.cypress.tsx
+/src/components/TestWrapper.tsx
 
 #jest
 *.jest.ts
