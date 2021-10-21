@@ -68,7 +68,7 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
         </DetailWrapper>
       )}
       {/* We don't want to show the default summaryMessage if there is no target, because the summary is associated with the target progress bar */}
-      {/* However, if we explicitly pass a summaryMessage string/compononent, then we want to always display it even if the target is zero*/}
+      {/* However, if we explicitly pass a summaryMessage string/compononent, then we want to always display it even if the target is zero */}
       {(!!props.target || !!props.summaryMessage) && (
         <ProgressBarWrapper theme={theme}>
           <StyledProgressBar theme={theme} percentage={result} isCompact={props.isCompact || false} />
@@ -85,11 +85,6 @@ const Totaliser: FunctionComponent<TotaliserProps> = props => {
       {props.children}
     </TotaliserWrapper>
   );
-};
-
-Totaliser.defaultProps = {
-  summaryMessage: undefined,
-  target: null,
 };
 
 export default Totaliser;
