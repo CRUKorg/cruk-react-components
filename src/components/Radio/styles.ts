@@ -1,8 +1,13 @@
 import styled, { css } from 'styled-components';
+import { ThemeType } from 'src/types';
 
 const RADIO_SIZE = '1.5rem';
 const RADIO_INNER_SIZE = '1rem';
 const BUTTON_HEIGHT = '3em';
+
+type ThemeProp = {
+  theme: ThemeType
+}
 
 export const CheckWrapper = styled.div`
   display: inline-block;
@@ -14,13 +19,13 @@ export const CheckWrapper = styled.div`
     theme: {
       spacing: { xs },
     },
-  }) => xs};
+  }: ThemeProp) => xs};
 `;
 
 export const Check = styled.span`
   display: block;
   position: relative;
-  border: 2px solid ${({ theme }) => theme.colors.selectionBorder};
+  border: 2px solid ${({ theme }: ThemeProp) => theme.colors.selectionBorder};
   border-radius: 100%;
   height: ${RADIO_SIZE};
   width: ${RADIO_SIZE};
@@ -45,20 +50,30 @@ export const Check = styled.span`
   }
 `;
 
-type StyledLabelProps = {
+type CheckedProp = {
   checked: boolean;
+}
+
+type DisabledProp = {
   disabled: boolean;
-  hasError: boolean;
-};
+}
+
+type StyledLabelProps =
+  { 
+    hasError: boolean;
+  }
+  & ThemeProp
+  & CheckedProp
+  & DisabledProp;
 
 export const StyledLabel = styled.label<StyledLabelProps>`
-  background-color: ${({ theme }) => theme.colors.backgroundLight};
+  background-color: ${({ theme }: ThemeProp) => theme.colors.backgroundLight};
   width: 100%;
   position: relative;
-  border-radius: ${({ theme }) => theme.utilities.borderRadius};
-  border-width: ${({ theme }) => theme.utilities.inputBorderWidth};
+  border-radius: ${({ theme }: ThemeProp) => theme.button.borderRadius};
+  border-width: ${({ theme }: ThemeProp) => theme.utilities.inputBorderWidth};
   border-style: solid;
-  border-color: ${({ hasError, theme, checked }) =>
+  border-color: ${({ hasError, theme, checked }: StyledLabelProps) =>
     hasError
       ? theme.colors.textError
       : checked && !theme.utilities.useDefaultFocusRect
@@ -66,9 +81,9 @@ export const StyledLabel = styled.label<StyledLabelProps>`
       : theme.colors.inputBorder};
   cursor: pointer;
   display: inline-block;
-  font-weight: ${({ checked }) => (checked ? 'bold' : 'normal')};
-  color: ${({ theme, disabled }) => (disabled ? theme.colors.disabled : theme.colors.textDark)};
-  padding: ${({ theme }) =>
+  font-weight: ${({ checked }: CheckedProp) => (checked ? 'bold' : 'normal')};
+  color: ${({ theme, disabled }: ThemeProp & DisabledProp ) => (disabled ? theme.colors.disabled : theme.colors.textDark)};
+  padding: ${({ theme }: ThemeProp) =>
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
   vertical-align: middle;
 
@@ -77,7 +92,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
     outline: 5px auto -webkit-focus-ring-color;
   }
 
-  ${({ theme }) =>
+  ${({ theme }: ThemeProp) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
@@ -89,7 +104,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
                 theme: {
                   colors: { primary },
                 },
-              }) => primary};
+              }: ThemeProp) => primary};
           }
         `}
 `;
@@ -97,7 +112,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
 export const VerticalAlign = styled.span`
   vertical-align: middle;
   line-height: 100%;
-  background-color: ${({ theme }) => theme.colors.backgroundLight};
+  background-color: ${({ theme }: ThemeProp) => theme.colors.backgroundLight};
   z-index: 1;
 `;
 
@@ -116,9 +131,9 @@ export const StyledInput = styled.input`
     theme: {
       spacing: { xxs },
     },
-  }) => xxs};
+  }: ThemeProp) => xxs};
 
-  ${({ theme }) =>
+  ${({ theme }: ThemeProp) =>
     theme.utilities.useDefaultFromControls
       ? css`
           position: absolute;
@@ -131,7 +146,7 @@ export const StyledInput = styled.input`
             theme: {
               spacing: { s },
             },
-          }) => s};
+          }: ThemeProp) => s};
         `
       : css`
           position: absolute;
@@ -139,17 +154,17 @@ export const StyledInput = styled.input`
             theme: {
               spacing: { xxs },
             },
-          }) => xxs};
+          }: ThemeProp) => xxs};
           opacity: 0;
 
           &:focus ~ ${SelectedBorder} {
             outline: none !important;
-            box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.inputBorderColour};
+            box-shadow: inset 0 0 0 2px ${theme.colors.inputBorder};
             box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
           }
 
           &:checked ~ ${CheckWrapper} ${Check}::before {
-            background: ${({ theme }) => theme.colors.primary};
+            background: ${theme.colors.primary};
           }
         `}
 `;
