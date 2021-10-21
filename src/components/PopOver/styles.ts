@@ -11,7 +11,10 @@ export const PopOverWrapper = styled.div<{
 }>`
   position: relative;
   display: inline-block;
-  ${props => (css as any)([props.css])}
+
+  ${(props: {css?: string}) => props.css && css`
+    ${props.css}
+  `}
 `;
 
 export const PopOverModal = styled.div<{
