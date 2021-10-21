@@ -20,7 +20,7 @@ function getScrollPosition({
 }
 
 function useScrollPosition(
-  effect: any,
+  effect: ({ currPos }: { prevPos: { x: number; y: number }; currPos: { x: number; y: number } }) => void,
   deps: DependencyList,
   element: RefObject<HTMLElement> | MutableRefObject<undefined> | null,
   useWindow: boolean,
