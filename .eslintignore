@@ -12,6 +12,7 @@
 /cypress/snapshots/**/__diff_output__
 /cypress/snapshots/**/**(failed).snap.png
 /cypress/fixtures/example.json 
+/src/**/**/*.cypress.tsx
 
 #jest
 *.jest.ts
