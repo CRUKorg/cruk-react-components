@@ -26,7 +26,7 @@ export const useKey = (
 
   useEffect(() => {
     if (!isBrowser) {
-      return;
+      return undefined;
     }
     // @ts-ignore expected function signature for listerns on window is slightly weird but this still works so ignore
     window.document.addEventListener(keyevent || 'keydown', handleEvent);
