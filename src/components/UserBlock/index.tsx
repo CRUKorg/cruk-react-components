@@ -47,9 +47,4 @@ const UserBlock: FC<UserBlockProps> = props => {
   );
 };
 
-UserBlock.defaultProps = {
-  avatarName: undefined,
-  avatarUrl: undefined,
-};
-
 export default UserBlock;
