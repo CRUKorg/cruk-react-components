@@ -36,7 +36,7 @@ const Pagination: FunctionComponent<PaginationProps> = props => {
   const totalPages = Math.ceil(props.items / perPage) || 1;
 
   const linkProps = (number: number) => ({
-    href: `${typeof window !== 'undefined' ? window.location.pathname : ''}?${props.searchParam}=${number}`,
+    href: `${typeof window !== 'undefined' ? window.location.pathname : ''}?${!!props.searchParam ? `${props.searchParam}=${number}` : '' }`,
     onClick: (e: MouseEvent) => {
       e.preventDefault();
       props.pagerCallback(number);
