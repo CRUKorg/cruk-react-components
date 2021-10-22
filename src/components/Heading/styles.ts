@@ -63,7 +63,7 @@ const StyledHeading = (props: StyledHeadingProps) => css`
   }}
 `;
 
-const desktopFontSize = (textSize: FontSizeType | null, defaultFontSize: FontSizeType, theme: ThemeType) => {
+const desktopFontSize = (textSize: FontSizeType | null, defaultFontSize: string, theme: ThemeType) => {
   switch (textSize) {
     case 'm':
       return theme.fontSizes.m;
@@ -84,7 +84,7 @@ const desktopFontSize = (textSize: FontSizeType | null, defaultFontSize: FontSiz
 };
 
 // everything drops down a size on the typography scale
-const tabletFontSize = (textSize: FontSizeType | null, defaultFontSize: FontSizeType, theme: ThemeType) => {
+const tabletFontSize = (textSize: FontSizeType | null, defaultFontSize: string, theme: ThemeType) => {
   switch (textSize) {
     case 'm':
       return theme.fontSizes.m;
@@ -105,7 +105,7 @@ const tabletFontSize = (textSize: FontSizeType | null, defaultFontSize: FontSize
 };
 
 // everything drops down two sizes on the typography scale
-const mobileFontSize = (textSize: FontSizeType | null, defaultFontSize: FontSizeType, theme: ThemeType) => {
+const mobileFontSize = (textSize: FontSizeType | null, defaultFontSize: string, theme: ThemeType) => {
   switch (textSize) {
     case 'm':
       return theme.fontSizes.m;
