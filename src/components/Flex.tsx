@@ -7,7 +7,7 @@ type FlexProps = SpacingProps & {
 };
 
 type ThemeProps = {
-  theme: ThemeType
+  theme: ThemeType;
 };
 
 const Flex = styled.div<FlexProps>`
@@ -15,9 +15,11 @@ const Flex = styled.div<FlexProps>`
   @media (min-width: ${({ theme }: ThemeProps) => theme.breakpoint.tablet}) {
     display: flex;
   }
-  ${(props) => props.css && css`
-    ${props.css}
-  `}};
+  ${(props) =>
+    props.css &&
+    css`
+      ${props.css}
+    `}};
   ${(props) => spacing(props, props.theme)}
 `;
 
