@@ -10,3 +10,5 @@ export const StyledAvatar = styled.img<AvatarStyledProps>`
   object-fit: cover;
   width: ${({ size }) => size};
 `;
+
+export default StyledAvatar;
