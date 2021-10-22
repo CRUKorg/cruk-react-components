@@ -55,7 +55,7 @@ const Modal: FC<ModalProps> = ({
 
   useEffect(() => {
     if (typeof window === `undefined`) {
-      return;
+      return undefined;
     }
     document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', closeByEsc);
