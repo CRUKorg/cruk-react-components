@@ -53,7 +53,7 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
       typography: { linkTextDecoration },
     },
   }: ThemeProp) => (appearance === 'primary' || appearance === 'secondary' ? 'none' : linkTextDecoration)};
-  font-weight: ${({ theme }) =>
+  font-weight: ${({ theme }: ThemeProp) =>
     theme.utilities.useBackgroundStyleLinks ? theme.typography.fontWeightHeavy : theme.typography.fontWeightMedium};
   background: ${({
     appearance,
