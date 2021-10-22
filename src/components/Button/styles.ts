@@ -27,16 +27,16 @@ export const StyledButton = styled.button<StyledButtonProps>`
   min-height: ${BUTTON_HEIGHT};
   display: inline-block;
   vertical-align: middle;
-  padding: ${({ theme, isIconButton }) =>
+  padding: ${({ theme, isIconButton }: StyledButtonProps) =>
     isIconButton
       ? '0'
       : `calc( (${BUTTON_HEIGHT} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m}`};
-  width: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT}` : 'auto')};
-  min-width: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT}` : 'auto')};
+  width: ${({ isIconButton }: StyledButtonProps) => (isIconButton ? `${BUTTON_HEIGHT}` : 'auto')};
+  min-width: ${({ isIconButton }: StyledButtonProps) => (isIconButton ? `${BUTTON_HEIGHT}` : 'auto')};
 
-  border-radius: ${props => props.theme.button.borderRadius};
+  border-radius: ${({ theme }: StyledButtonProps) => theme.button.borderRadius};
   border-style: solid;
-  border-width:  ${({ theme }) => theme.button.buttonBorderThickness};
+  border-width:  ${({ theme }: StyledButtonProps) => theme.button.buttonBorderThickness};
 
   transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 
@@ -50,15 +50,15 @@ export const StyledButton = styled.button<StyledButtonProps>`
     theme: {
       typography: { fontFamilyHeadings },
     },
-  }) => fontFamilyHeadings};
+  }: StyledButtonProps) => fontFamilyHeadings};
   font-weight: ${({
     theme: {
       typography: { fontWeightMedium },
     },
-  }) => fontWeightMedium};
+  }: StyledButtonProps) => fontWeightMedium};
   text-align: center;
-  text-transform: ${props => props.theme.button.textTransform};
-  text-decoration: ${props => props.theme.button.textDecoration};
+  text-transform: ${({theme}: StyledButtonProps) => theme.button.textTransform};
+  text-decoration: ${({theme}: StyledButtonProps) => theme.button.textDecoration};
   
   ${(props: StyledButtonProps) =>
     props.appearance === 'primary' &&
@@ -145,13 +145,13 @@ export const StyledButton = styled.button<StyledButtonProps>`
     props.size === 'l' &&
     css`
       min-height: ${BUTTON_HEIGHT_LARGE};
-      border-radius: ${({ theme }) => theme.button.borderRadiusLarge};
-      padding: ${({ theme, isIconButton }) =>
+      border-radius: ${({ theme }: StyledButtonProps) => theme.button.borderRadiusLarge};
+      padding: ${({ theme, isIconButton }: StyledButtonProps) =>
         isIconButton
           ? '0'
           : `calc( (${BUTTON_HEIGHT_LARGE} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m}`};
-      min-width: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT_LARGE}` : 'auto')};
-      height: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT_LARGE}` : 'auto')};
+      min-width: ${({ isIconButton }: StyledButtonProps) => (isIconButton ? `${BUTTON_HEIGHT_LARGE}` : 'auto')};
+      height: ${({ isIconButton }: StyledButtonProps) => (isIconButton ? `${BUTTON_HEIGHT_LARGE}` : 'auto')};
     `}
 
   ${(props: StyledButtonProps) =>
