@@ -92,8 +92,8 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
     }: StyledLinkProps) =>
       !textHoverColor && useBackgroundStyleLinks
         ? colors['textDark']
-        : textHoverColor && typeof colors[textHoverColor] !== 'undefined'
-        ? colors[textHoverColor]
+        : textHoverColor && typeof colors[textHoverColor as ColorKeyType] !== 'undefined'
+        ? colors[textHoverColor as ColorKeyType]
         : textHoverColor
         ? textHoverColor
         : colors['linkColorHover']};
