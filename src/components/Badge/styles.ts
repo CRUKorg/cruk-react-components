@@ -86,3 +86,5 @@ export const StyledBadge = styled.span<StyleBadgeProps>`
       }
     `}
 `;
+
+export default StyledBadge;
