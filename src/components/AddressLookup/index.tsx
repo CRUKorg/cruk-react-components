@@ -102,7 +102,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
       if (query.length === 0) return setAddressOptions([]);
       let searchUrl = `${FIND_URL}?Key=${apiKey}&Text=${query}&Container=${id}`;
       if (countries !== undefined) {
-        searchUrl = `${searchUrl}&Countries=${countries}`;
+        searchUrl = `${searchUrl}&Countries=${countries.join(",")}`;
       }
       fetch(searchUrl)
         .then((res: Response) => {
