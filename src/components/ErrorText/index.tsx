@@ -8,7 +8,7 @@ import { SpacingProps } from 'src/components/Spacing';
 
 export type ErrorTextProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
-    as?: any;
+    as?: string;
   };
 
 /**
