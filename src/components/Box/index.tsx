@@ -11,7 +11,7 @@ export type BoxProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
     /** background color of box, this will add default padding */
     backgroundColor?: string;
-    css?: any;
+    css?: string;
     ref?: Ref<HTMLDivElement>;
   };
 
