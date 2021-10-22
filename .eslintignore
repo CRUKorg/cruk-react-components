@@ -25,9 +25,10 @@
 /src/**/**/*.stories.tsx
 
 #plugins
-src/plugins/**
+/src/plugins/**
 
 #HOC
-src/hocs/MdxProvider.tsx
+/src/hocs/MdxProvider.tsx
 
 .idea
+release.js
