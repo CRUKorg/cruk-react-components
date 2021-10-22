@@ -101,7 +101,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
     const search = (query: string, id = '') => {
       if (query.length === 0) return setAddressOptions([]);
       let searchUrl = `${FIND_URL}?Key=${apiKey}&Text=${query}&Container=${id}`;
-      if (countries) {
+      if (countries !== undefined) {
         searchUrl = `${searchUrl}&Countries=${countries}`;
       }
       fetch(searchUrl)
@@ -109,7 +109,8 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
           if (!res.ok) throw new Error('Something went wrong please try again');
           return res.json();
         })
-        .then(data => {
+        .catch(err => onAddressError(err))
+        .then((data: { Items: AddressOptionsType[]}) => {
           // Occasionally get the error "The query didn't respond fast enough, it may be too complex."
           // returned with a 200 response. Example query "n17 6t"
           if (data.Items[0].Error) throw new Error('Something went wrong please try again');
