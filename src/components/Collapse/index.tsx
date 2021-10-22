@@ -54,10 +54,15 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
   };
 
   const toggleCollapse = () => {
+    const { current } = content;
     clearTimeout(transitionTimer.current);
     const newOpenState = !openStatus;
     setOpenStatus(newOpenState);
-    setContentHeight(content?.current?.scrollHeight + 'px');
+
+    if (current !== null) {
+      setContentHeight(current.scrollHeight + 'px');
+    }
+
     if (newOpenState === false) {
       // Allow height to be rendered before setting to 0 for animation.
       setTimeout(() => setContentHeight('0'), 10);
@@ -66,7 +71,10 @@ const Collapse: FunctionComponent<CollapseProps> = props => {
       // @ts-ignore
       transitionTimer.current = setTimeout(() => setContentHeight('initial'), transitionDurationSeconds * 1000);
     }
-    !!onOpenChange && onOpenChange(newOpenState);
+    if(onOpenChange !== undefined) {
+      onOpenChange(newOpenState);
+    }
+
   };
 
   const handleKeyDown = (event: KeyboardEvent) => {
