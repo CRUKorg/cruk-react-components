@@ -6,7 +6,7 @@ const BUTTON_HEIGHT = '3rem';
 const BUTTON_HEIGHT_LARGE = '4rem';
 
 export const Spacer = styled.span`
-  margin-left: ${({ theme }) => theme.spacing.xxs};
+  margin-left: ${({ theme }: { theme: ThemeType}) => theme.spacing.xxs};
   &:first-of-type {
     margin-left: 0;
   }
@@ -45,7 +45,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
     theme: {
       fontSizes: { m },
     },
-  }) => m};
+  }: StyledButtonProps) => m};
   font-family: ${({
     theme: {
       typography: { fontFamilyHeadings },
@@ -160,5 +160,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
       width: 100%;
     `}
 
-  ${(props: StyledButtonProps) => (css as any)([props.css])}
+  ${(props: StyledButtonProps) => props.css && css`
+    ${props.css}
+  `}
 `;
