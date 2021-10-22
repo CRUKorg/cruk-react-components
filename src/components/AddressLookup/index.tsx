@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return, @typescript-eslint/no-floating-promises, promise/always-return*/
 import React, {
   FunctionComponent,
   InputHTMLAttributes,
@@ -104,7 +105,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
       if (countries !== undefined) {
         searchUrl = `${searchUrl}&Countries=${countries.join(",")}`;
       }
-      return fetch(searchUrl)
+      fetch(searchUrl)
         .then((res: Response) => {
           if (!res.ok) throw new Error('Something went wrong please try again');
           return res.json();
@@ -114,13 +115,12 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
           // returned with a 200 response. Example query "n17 6t"
           if (data.Items[0].Error) throw new Error('Something went wrong please try again');
           setAddressOptions(data.Items || []);
-          return data.Items || [];
         })
         .catch(err => onAddressError(err));
     };
 
     const getAddress = (id: string) => {
-      fetch(`${RETRIEVE_URL}?Key=${apiKey}&Id=${id}`)
+     fetch(`${RETRIEVE_URL}?Key=${apiKey}&Id=${id}`)
         .then((res: Response) => {
           if (!res.ok) throw new Error('Something went wrong please try again');
           return res.json();
@@ -128,7 +128,6 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
         .then((data: { Items: AddressDataType[]}) => {
           clearOptions();
           onAddressSelected(data.Items[0]);
-          return data.Items[0];
         })
         .catch(err => onAddressError(err));
     };
@@ -137,7 +136,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
       if (address.Type === 'Address') return getAddress(address.Id);
       return search(address.Text, address.Id);
     };
-
+    
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
       if (e.key === 'Enter' && addressOptions[activeOption]) {
         e.preventDefault();
@@ -262,3 +261,4 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
 );
 
 export default AddressLookup;
+/* eslint-enable */
