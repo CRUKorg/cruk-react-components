@@ -104,17 +104,17 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
       if (countries !== undefined) {
         searchUrl = `${searchUrl}&Countries=${countries.join(",")}`;
       }
-      fetch(searchUrl)
+      return fetch(searchUrl)
         .then((res: Response) => {
           if (!res.ok) throw new Error('Something went wrong please try again');
           return res.json();
         })
-        .catch(err => onAddressError(err))
         .then((data: { Items: AddressOptionsType[]}) => {
           // Occasionally get the error "The query didn't respond fast enough, it may be too complex."
           // returned with a 200 response. Example query "n17 6t"
           if (data.Items[0].Error) throw new Error('Something went wrong please try again');
           setAddressOptions(data.Items || []);
+          return data.Items || [];
         })
         .catch(err => onAddressError(err));
     };
@@ -125,16 +125,17 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
           if (!res.ok) throw new Error('Something went wrong please try again');
           return res.json();
         })
-        .then(data => {
+        .then((data: { Items: AddressDataType[]}) => {
           clearOptions();
           onAddressSelected(data.Items[0]);
+          return data.Items[0];
         })
         .catch(err => onAddressError(err));
     };
 
     const selectAddress = (address: AddressOptionsType) => {
       if (address.Type === 'Address') return getAddress(address.Id);
-      search(address.Text, address.Id);
+      return search(address.Text, address.Id);
     };
 
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
