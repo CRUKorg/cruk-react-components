@@ -3,7 +3,14 @@ import styled from 'styled-components';
 import Button from 'src/components/Button';
 import Icon from 'src/components/Icon';
 
-import { FontSizeType } from 'src/types';
+import { FontSizeType, ThemeType, ColorKeyType } from 'src/types';
+
+type DefaultHeaderProps = {
+  theme: ThemeType;
+  textColor?: string;
+  textSize?: FontSizeType;
+  textFontFamily?: string;
+};
 
 export const transitionDurationSeconds = 0.5;
 
@@ -19,9 +26,9 @@ export const DefaultHeader = styled(Button)<{
   textFontFamily?: string;
 }>`
   display: flex;
-  color: ${({ theme: { colors }, textColor }) =>
-    textColor && typeof colors[textColor] !== 'undefined'
-      ? colors[textColor]
+  color: ${({ theme: { colors }, textColor }: DefaultHeaderProps) =>
+    textColor && typeof colors[textColor as ColorKeyType] !== 'undefined'
+      ? colors[textColor as ColorKeyType]
       : textColor
       ? textColor
       : colors['secondary']};
@@ -31,8 +38,8 @@ export const DefaultHeader = styled(Button)<{
       fontSizes: { m },
     },
     textSize,
-  }) => (textSize ? fontSizes[textSize] : m)};
-  font-family: ${({ theme, textFontFamily }) => (textFontFamily ? textFontFamily : theme.typography.fontFamilyBase)};
+  }: DefaultHeaderProps) => (textSize ? fontSizes[textSize] : m)};
+  font-family: ${({ theme, textFontFamily }: DefaultHeaderProps) => (textFontFamily ? textFontFamily : theme.typography.fontFamilyBase)};
   font-weight: normal;
   margin-bottom: 0;
   height: initial;
@@ -40,9 +47,9 @@ export const DefaultHeader = styled(Button)<{
   text-align: left;
   :hover,
   :focus {
-    color: ${({ theme: { colors }, textColor }) =>
-      textColor && typeof colors[textColor] !== 'undefined'
-        ? colors[textColor]
+    color: ${({ theme: { colors }, textColor }: DefaultHeaderProps) =>
+      textColor && typeof colors[textColor as ColorKeyType] !== 'undefined'
+        ? colors[textColor as ColorKeyType]
         : textColor
         ? textColor
         : colors['secondary']};
@@ -55,8 +62,8 @@ export const CollapseContent = styled.div<{
 }>`
   margin: 0;
   transition: ${transitionDurationSeconds}s ease;
-  height: ${({ contentHeight }) => contentHeight};
-  visibility: ${({ openStatus }) => (openStatus ? 'visible' : 'hidden')};
+  height: ${({ contentHeight }: { contentHeight: string; }) => contentHeight};
+  visibility: ${({ openStatus }: {   openStatus: boolean; }) => (openStatus ? 'visible' : 'hidden')};
   overflow: hidden;
   & > p {
     margin-top: 0;
