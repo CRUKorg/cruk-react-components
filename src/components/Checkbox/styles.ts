@@ -61,7 +61,7 @@ export const CheckGlyph = styled.svg`
 export const StyledLabel = styled.label<StyledLabelProps>`
   background-color: ${({ theme }: ThemeProps) => theme.colors.backgroundLight};
   position: relative;
-  border-radius: ${props => props.theme.utilities.borderRadius};
+  border-radius: ${({ theme }: ThemeProps) => theme.button.borderRadius};
   border-width: ${({ theme }: ThemeProps) => theme.utilities.inputBorderWidth};
   border-style: solid;
   border-color: ${({ hasError, theme, checked }: StyledLabelProps) =>
@@ -84,7 +84,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
     outline: 5px auto -webkit-focus-ring-color;
   }
 
-  ${({ theme }) =>
+  ${({ theme }: ThemeProps) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
@@ -139,7 +139,7 @@ export const StyledInput = styled.input`
 
           &:focus ~ ${SelectedBorder} {
             outline: none !important;
-            box-shadow: inset 0 0 0 2px ${({ theme }: ThemeProps) => theme.colors.inputBorderColour};
+            box-shadow: inset 0 0 0 2px ${theme.colors.inputBorder};
             box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
           }
 
