@@ -35,8 +35,8 @@ export type ModalProps = {
  */
 const Modal: FC<ModalProps> = ({
   modalName,
-  closeFunction,
-  showCloseButton,
+  closeFunction = undefined,
+  showCloseButton = true,
   maxWidth = '500px',
   top = '1rem',
   backgroundColor = 'backgroundLight',
@@ -101,11 +101,6 @@ const Modal: FC<ModalProps> = ({
         : null}
     </>
   );
-};
-
-Modal.defaultProps = {
-  closeFunction: undefined,
-  showCloseButton: true,
 };
 
 export default Modal;
