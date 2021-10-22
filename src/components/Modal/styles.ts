@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ColorKeyType, ThemeType } from 'src/types';
 
 import Box from '../Box';
-import Button from '../Button';
+import {Button} from '../Button';
 
 
 type ThemeProp = {
