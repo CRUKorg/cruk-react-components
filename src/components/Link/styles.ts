@@ -6,12 +6,16 @@ import Icon from 'src/components/Icon';
 
 import { ThemeType } from 'src/types';
 
+type ThemeProp = {
+  theme: ThemeType
+}
+
 export const ChevyWithLevee = styled(Icon)`
   margin-right: ${({
     theme: {
       spacing: { xxs },
     },
-  }) => xxs};
+  }: ThemeProp) => xxs};
 `;
 
 type StyledLinkProps = AnchorHTMLAttributes<HTMLElement> &
@@ -33,7 +37,7 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
     },
     textColor,
     appearance,
-  }) =>
+  }: StyledLinkProps) =>
     textColor && typeof colors[textColor] !== 'undefined'
       ? colors[textColor]
       : textColor
@@ -48,7 +52,7 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
     theme: {
       typography: { linkTextDecoration },
     },
-  }) => (appearance === 'primary' || appearance === 'secondary' ? 'none' : linkTextDecoration)};
+  }: ThemeProp) => (appearance === 'primary' || appearance === 'secondary' ? 'none' : linkTextDecoration)};
   font-weight: ${({ theme }) =>
     theme.utilities.useBackgroundStyleLinks ? theme.typography.fontWeightHeavy : theme.typography.fontWeightMedium};
   background: ${({
@@ -85,7 +89,7 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
         utilities: { useBackgroundStyleLinks },
       },
       textHoverColor,
-    }) =>
+    }: StyledLinkProps) =>
       !textHoverColor && useBackgroundStyleLinks
         ? colors['textDark']
         : textHoverColor && typeof colors[textHoverColor] !== 'undefined'
