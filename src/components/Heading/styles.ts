@@ -44,7 +44,7 @@ const StyledHeading = (props: StyledHeadingProps) => css`
     theme: {
       spacing: { m },
     },
-  }) => m};
+  }: StyledHeadingProps) => m};
   margin-bottom: ${({
     theme: {
       spacing: { s },
@@ -57,7 +57,7 @@ const StyledHeading = (props: StyledHeadingProps) => css`
     margin-top: 0;
   }
 
-  ${props => {
+  ${() => {
     const { theme, ...propsWithoutTheme } = props;
     return spacing(propsWithoutTheme, props.theme);
   }}
