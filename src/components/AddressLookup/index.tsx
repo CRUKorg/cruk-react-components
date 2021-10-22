@@ -216,8 +216,8 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
           <>
             <ScreenReaderOnly role="status" aria-live="assertive">
               {!!addressOptions.length &&
-                `We have found ${addressOptions.length} result${addressOptions.length !== 1 &&
-                  's'} matching your search. Use up and down arrow keys to navigate`}
+                `We have found ${addressOptions.length} result${addressOptions.length !== 1 ? 
+                  's' : ''} matching your search. Use up and down arrow keys to navigate`}
             </ScreenReaderOnly>
             <ListWrapper ref={wrapperRef}>
               <List aria-label="found addresses" id="found_addresses" role="listbox" theme={theme}>
