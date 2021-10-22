@@ -19,7 +19,7 @@ type StyledButtonProps = {
   theme: ThemeType;
   href?: string;
   size?: 'm' | 'l';
-  css?: any;
+  css?: string;
 };
 
 export const StyledButton = styled.button<StyledButtonProps>`
