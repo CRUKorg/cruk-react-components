@@ -85,7 +85,7 @@ export const StyledInputWrapper = styled.span<StyledInputProps>`
     content: "";
     top: 0;
     background-repeat: no-repeat;
-    background-position: ${({ theme }) =>
+    background-position: ${({ theme }: StyledInputProps) =>
       `calc( 100% - ${theme.spacing.xxs}) 50% `};
     ${({ isValid, isInvalidVisible }: StyledInputProps) =>
       !isValid &&
