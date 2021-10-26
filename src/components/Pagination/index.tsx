@@ -13,7 +13,7 @@ export type PaginationProps = {
   /** don't show an ellipsise and then the last page link, usefull for search results where the last page isn't important */
   hideLast?: boolean;
   /** callback function which is passed the selected page number on click */
-  pagerCallback: Function;
+  pagerCallback: (n: number) => void;
   /** number of items per page */
   perPage: number;
   /** the name of the search param in the url that is modified on page click, defaults to 'page' */
