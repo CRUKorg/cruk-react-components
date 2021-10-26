@@ -84,6 +84,7 @@ const Collapse: FunctionComponent<CollapseProps> = (props) => {
       setTimeout(() => setContentHeight("0"), 10);
     } else {
       // After animation set height to initial for responsive layout.
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       transitionTimer.current = setTimeout(
         () => setContentHeight("initial"),
