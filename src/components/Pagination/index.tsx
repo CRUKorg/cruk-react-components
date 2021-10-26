@@ -32,7 +32,7 @@ const Pagination: FunctionComponent<PaginationProps> = ({
   hideLast,
   pagerCallback,
   perPage,
-  searchParam,
+  searchParam = "page",
   children,
 }) => {
   const foundTheme = useTheme();
@@ -129,10 +129,6 @@ const Pagination: FunctionComponent<PaginationProps> = ({
       )}
     </ThemeProvider>
   );
-};
-
-Pagination.defaultProps = {
-  searchParam: "page",
 };
 
 export default Pagination;
