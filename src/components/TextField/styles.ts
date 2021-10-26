@@ -105,7 +105,6 @@ export const StyledInputWrapper = styled.span<StyledInputProps>`
 export const StyledInput = styled.input<StyledInputProps>`
   background-color: ${({ theme }: ExtraProps) => theme.colors.backgroundLight};
   background-image: none;
-  border-radius: ${({ theme }: ExtraProps) => theme.button.borderRadius};
   border: solid ${({ theme }: ExtraProps) => theme.utilities.inputBorderWidth}
     ${({ hasError, theme }: StyledInputProps) =>
       hasError ? theme.colors.textError : theme.colors.textInputBorder};
