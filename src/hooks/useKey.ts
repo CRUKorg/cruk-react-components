@@ -9,7 +9,7 @@ import { isBrowser } from "../utils/Helper";
 // });
 
 export const useKey = (
-  callback: (event: KeyboardEvent<{}>) => void,
+  callback: (event: KeyboardEvent) => void,
   options: {
     detectKeys?: string[];
     keyevent?: "keydown" | "keyup" | "keypress";
@@ -18,7 +18,7 @@ export const useKey = (
 ) => {
   const { detectKeys = [], keyevent } = options;
 
-  const handleEvent = (event: KeyboardEvent<{}>) => {
+  const handleEvent = (event: KeyboardEvent) => {
     if (detectKeys.includes(event.key) || detectKeys.length === 0) {
       callback(event);
     }
