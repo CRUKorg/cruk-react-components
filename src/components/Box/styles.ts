@@ -21,9 +21,7 @@ export const StyledBox = styled.div<StyledBoxProps>`
   background-color: ${({ theme: { colors }, backgroundColor }: StyledBoxProps) =>
     backgroundColor && typeof colors[backgroundColor as ColorKeyType] !== 'undefined'
       ? colors[backgroundColor as ColorKeyType]
-      : backgroundColor
-        ? backgroundColor
-        : 'transparent'};
+      : backgroundColor || 'transparent'};
 
   ${(props: StyledBoxProps) => props.css && css`
     ${props.css}

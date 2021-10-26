@@ -3,9 +3,9 @@ import { useTheme } from "styled-components";
 
 import defaultTheme from "src/themes/cruk";
 
+import { SpaceType } from "src/types";
 import { StyledBadge } from "./styles";
 
-import { SpaceType } from "src/types";
 
 export type BadgeProps = {
   /** background colour of badge */

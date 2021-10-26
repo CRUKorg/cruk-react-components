@@ -17,25 +17,17 @@ export const StyledBadge = styled.span<StyleBadgeProps>`
   background-color: ${({ theme: { colors }, backgroundColor }: StyleBadgeProps) =>
     backgroundColor && typeof colors[backgroundColor as ColorKeyType] !== 'undefined'
       ? colors[backgroundColor as ColorKeyType]
-      : backgroundColor
-      ? backgroundColor
-      : colors['primary']};
+      : backgroundColor || colors.primary};
   color: ${({ theme: { colors }, textColor }: StyleBadgeProps) =>
     textColor && typeof colors[textColor as ColorKeyType] !== 'undefined'
       ? colors[textColor as ColorKeyType]
-      : textColor
-      ? textColor
-      : colors['textLight']};
+      : textColor || colors.textLight};
   border-color: ${({ theme: { colors }, borderColor, backgroundColor }: StyleBadgeProps) =>
     borderColor && typeof colors[borderColor as ColorKeyType] !== 'undefined'
       ? colors[borderColor as ColorKeyType]
-      : borderColor
-      ? borderColor
-      : backgroundColor && typeof colors[backgroundColor as ColorKeyType] !== 'undefined'
+      : borderColor || (backgroundColor && typeof colors[backgroundColor as ColorKeyType] !== 'undefined'
       ? colors[backgroundColor as ColorKeyType]
-      : backgroundColor
-      ? backgroundColor
-      : colors["primary"]};
+      : backgroundColor || colors.primary)};
   text-align: center;
   border-radius: 1.5rem;
   font-size: ${({ theme }: StyleBadgeProps) => theme.fontSizes.m};

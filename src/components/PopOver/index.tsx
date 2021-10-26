@@ -14,9 +14,9 @@ import { useKey } from "src/hooks/useKey";
 import defaultTheme from "src/themes/cruk";
 import useEffectBrowser from "src/hooks/useEffectBrowser";
 
+import { PopOverPositionType } from "src/types";
 import { PopOverWrapper, PopOverModal } from "./styles";
 
-import { PopOverPositionType } from "src/types";
 
 export type PopOverProps = {
   /** used for aria-label of modal */

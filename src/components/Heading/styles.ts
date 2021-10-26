@@ -32,9 +32,7 @@ const StyledHeading = (props: StyledHeadingProps) => css`
   color: ${({ theme: { colors }, textColor }: StyledHeadingProps) =>
     textColor && typeof colors[textColor as ColorKeyType] !== "undefined"
       ? colors[textColor as ColorKeyType]
-      : textColor
-      ? textColor
-      : colors["textDark"]};
+      : textColor || colors.textDark};
   line-height: ${({
     theme: {
       typography: { headerLineHeight },
@@ -57,7 +55,7 @@ const StyledHeading = (props: StyledHeadingProps) => css`
   }: StyledHeadingProps) => s};
   max-width: 100%;
   text-align: ${({ textAlign }: StyledHeadingProps) =>
-    textAlign ? textAlign : "left"};
+    textAlign || "left"};
 
   &:first-child {
     margin-top: 0;

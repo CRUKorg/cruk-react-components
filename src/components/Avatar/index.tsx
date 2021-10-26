@@ -31,7 +31,7 @@ const Avatar: FC<AvatarProps> = ({ url, name, size = 'm', alt = '', ...rest }) =
       name &&
       typeof name === "string" &&
       name !== "Anonymous" &&
-      name[0].trim().match(/[a-z]/i)
+      (/[a-z]/i.exec(name[0].trim()))
         ? `icon-avatar-${name[0].trim().toUpperCase()}.png`
         : "icon-avatar-Anonymous.png";
 

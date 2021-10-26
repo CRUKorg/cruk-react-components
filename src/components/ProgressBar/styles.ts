@@ -61,7 +61,7 @@ export const LineProgressBar = styled.div<LineProgressBarProps>`
     theme: {
       colors: { progressBar },
     },
-  }: CircularColorFillProps & ThemeProp) => (barColor ? barColor : progressBar)};
+  }: CircularColorFillProps & ThemeProp) => (barColor || progressBar)};
   border-radius: ${({
     theme: {
       button: { borderRadius },
@@ -103,7 +103,7 @@ export const CircularColorFill = styled.span<CircularColorFillProps>`
     theme: {
       colors: { circularProgress },
     },
-  }: CircularColorFillProps & ThemeProp) => (barColor ? barColor : circularProgress)};
+  }: CircularColorFillProps & ThemeProp) => (barColor || circularProgress)};
 `;
 
 export const CircularLeft = styled.span`

@@ -40,13 +40,11 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
   }: StyledLinkProps) =>
     textColor && typeof colors[textColor as ColorKeyType] !== 'undefined'
       ? colors[textColor as ColorKeyType]
-      : textColor
-      ? textColor
-      : !appearance && useBackgroundStyleLinks
+      : textColor || (!appearance && useBackgroundStyleLinks
       ? "currentColor"
       : appearance && appearance === "primary"
-      ? colors["secondary"]
-      : colors["linkColor"]};
+      ? colors.secondary
+      : colors.linkColor)};
   text-decoration: ${({
     appearance,
     theme: {
@@ -91,11 +89,9 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
       textHoverColor,
     }: StyledLinkProps) =>
       !textHoverColor && useBackgroundStyleLinks
-        ? colors['textDark']
+        ? colors.textDark
         : textHoverColor && typeof colors[textHoverColor as ColorKeyType] !== 'undefined'
         ? colors[textHoverColor as ColorKeyType]
-        : textHoverColor
-        ? textHoverColor
-        : colors["linkColorHover"]};
+        : textHoverColor || colors.linkColorHover};
   }
 `;

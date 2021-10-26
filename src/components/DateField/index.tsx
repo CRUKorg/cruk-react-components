@@ -12,7 +12,7 @@ import {
 } from "./styles";
 
 export type DateFieldProps = InputHTMLAttributes<HTMLInputElement> & {
-  /**label text */
+  /** label text */
   label: string;
   /** hind text */
   hintText?: string;
@@ -59,8 +59,7 @@ const DateField: FC<DateFieldProps> = ({
   onFocus = () => {},
   disabled,
   required,
-}) => {
-  return (
+}) => (
     <Fieldset>
       <Text as="legend" textWeight={700} marginBottom="xxs">
         {label} {!!required && ` (required)`}
@@ -130,6 +129,5 @@ const DateField: FC<DateFieldProps> = ({
       )}
     </Fieldset>
   );
-};
 
 export default DateField;

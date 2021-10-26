@@ -52,7 +52,7 @@ const Radio: FC<RadioProps> = forwardRef(
                 : undefined
             }
           />
-          <SelectedBorder></SelectedBorder>
+          <SelectedBorder />
           {theme.utilities.useDefaultFromControls ? null : (
             <CheckWrapper>
               <Check />
@@ -63,7 +63,7 @@ const Radio: FC<RadioProps> = forwardRef(
         {!!props.errorMessage && (
           <ErrorText
             marginTop="xxs"
-            id={!!props.id ? `${props.id}-error` : undefined}
+            id={props.id ? `${props.id}-error` : undefined}
           >
             {props.errorMessage}
           </ErrorText>

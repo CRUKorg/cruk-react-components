@@ -10,9 +10,9 @@ import { useTheme } from "styled-components";
 import defaultTheme from "src/themes/cruk";
 import Icon from "src/components/Icon";
 
+import { ButtonAppearanceType } from "src/types";
 import { Spacer, StyledButton } from "./styles";
 
-import { ButtonAppearanceType } from "src/types";
 
 export type Props = ButtonHTMLAttributes<HTMLElement> & {
   /** the look and feel of the button */
@@ -49,14 +49,13 @@ export const Button: FunctionComponent<Props> = forwardRef(
 
     // button has a fixed width if there is a single icon
     const setIconButton =
-      isIconButton ||
+      !!(isIconButton ||
       (props.children &&
         childArray.length === 1 &&
         childArray[0] &&
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore typescript doesn't seem to like child.type but it works fine
-        childArray[0].type === Icon)
-        ? true
-        : false;
+        childArray[0].type === Icon));
 
     return (
       <StyledButton

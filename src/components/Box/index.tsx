@@ -8,9 +8,9 @@ import { useTheme } from "styled-components";
 
 import defaultTheme from "src/themes/cruk";
 
+import { SpacingProps } from "src/components/Spacing";
 import { StyledBox } from "./styles";
 
-import { SpacingProps } from "src/components/Spacing";
 
 export type BoxProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {

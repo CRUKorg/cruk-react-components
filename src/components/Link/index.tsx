@@ -3,9 +3,9 @@ import React, { FC, AnchorHTMLAttributes, forwardRef, Ref } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 import defaultTheme from "src/themes/cruk";
 
+import { TextProps } from "src/components/Text";
 import { StyledLink, ChevyWithLevee } from "./styles";
 
-import { TextProps } from "src/components/Text";
 
 export type LinkProps = AnchorHTMLAttributes<HTMLElement> &
   TextProps & {
@@ -17,7 +17,7 @@ export type LinkProps = AnchorHTMLAttributes<HTMLElement> &
     ref?: Ref<HTMLElement>;
   };
 
-/**Links are for wrapping plain text or elements to create clickable link.
+/** Links are for wrapping plain text or elements to create clickable link.
  * This is to be treated as an anchor tag with the addition of the Text component API.
  * This component contains standard Anchor tag props like 'href' and 'target', but it also contains Text component props like 'textColor' and 'textAlign'.
  *
@@ -51,7 +51,7 @@ export const Link: FC<LinkProps> = forwardRef(
           ref={ref}
         >
           {props.appearance === "primary" && (
-            <ChevyWithLevee name={"chevronRightBold"} size="0.8em" />
+            <ChevyWithLevee name="chevronRightBold" size="0.8em" />
           )}
           {props.children}
         </StyledLink>

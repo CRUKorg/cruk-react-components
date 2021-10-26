@@ -1,10 +1,10 @@
 import React, { FC, HTMLAttributes } from "react";
 import { useTheme } from "styled-components";
 
-import { StyledErrorText } from "./styles";
 
 import defaultTheme from "src/themes/cruk";
 import { SpacingProps } from "src/components/Spacing";
+import { StyledErrorText } from "./styles";
 
 export type ErrorTextProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {

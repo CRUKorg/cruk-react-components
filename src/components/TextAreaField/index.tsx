@@ -24,7 +24,7 @@ export type TextAreaFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   label: string;
   /** resize behaviour using the resize button on the bottom right of the component */
   resize?: "both" | "vertical" | "horizontal" | "none";
-  /** number of visible lines of text before scroll is required this affect the height of the input field*/
+  /** number of visible lines of text before scroll is required this affect the height of the input field */
   lineCount?: number;
   /** react reference to the DOM element sometime used to scroll to or set focus after an error */
   ref?: Ref<HTMLTextAreaElement>;
@@ -69,12 +69,12 @@ const TextField: FunctionComponent<TextAreaFieldProps> = forwardRef(
           lineCount={lineCount}
           theme={theme}
           ref={ref}
-          data-hj-suppress={true}
+          data-hj-suppress
         />
         {!!errorMessage && (
           <ErrorText
             marginTop="xxs"
-            id={!!props.id ? `${props.id}-error` : undefined}
+            id={props.id ? `${props.id}-error` : undefined}
           >
             {errorMessage}
           </ErrorText>

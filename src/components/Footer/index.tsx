@@ -58,7 +58,7 @@ export const Footer: FC<FooterProps> = (props) => {
           </FooterSectionLinks>
 
           <FooterSection>
-            {!!props.middleSection ? (
+            {props.middleSection ? (
               typeof props.middleSection === "string" ? (
                 <Text textSize="s">{props.middleSection}</Text>
               ) : (

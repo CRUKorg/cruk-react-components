@@ -14,7 +14,7 @@ export type ModalProps = {
   /** callback function called on modal close */
   closeFunction: Function;
   /** flag to reveal close button with cross in the top right of modal */
-  showCloseButton?: Boolean;
+  showCloseButton?: boolean;
   /** set max width of modal */
   maxWidth?: string;
   /** set space from top of view port that modal appears */

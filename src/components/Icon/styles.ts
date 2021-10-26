@@ -14,7 +14,7 @@ export const StyledIcon = styled.svg<{ color?: string; size?: string }>`
   width: ${(props) => props.size};
   path {
     fill: ${({ theme: { colors }, color }: StyledIconProp) =>
-      color && typeof colors[color as ColorKeyType] !== 'undefined' ? colors[color as ColorKeyType] : color ? color : 'currentColor'};
+      color && typeof colors[color as ColorKeyType] !== 'undefined' ? colors[color as ColorKeyType] : color || 'currentColor'};
   }
 `;
 

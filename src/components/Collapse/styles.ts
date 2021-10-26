@@ -16,7 +16,7 @@ export const transitionDurationSeconds = 0.5;
 
 export const FlippingIcon = styled(Icon)`
   transform: ${({ open }: { open: boolean }) =>
-    !!open ? "rotate(90deg) translateX(0.1em) scaleX(-1) " : "rotate(90deg)"};
+    open ? "rotate(90deg) translateX(0.1em) scaleX(-1) " : "rotate(90deg)"};
   transition-duration: ${transitionDurationSeconds}s;
 `;
 
@@ -29,9 +29,7 @@ export const DefaultHeader = styled(Button)<{
   color: ${({ theme: { colors }, textColor }: DefaultHeaderProps) =>
     textColor && typeof colors[textColor as ColorKeyType] !== 'undefined'
       ? colors[textColor as ColorKeyType]
-      : textColor
-      ? textColor
-      : colors["secondary"]};
+      : textColor || colors.secondary};
   font-size: ${({
     theme: {
       fontSizes,
@@ -39,7 +37,7 @@ export const DefaultHeader = styled(Button)<{
     },
     textSize,
   }: DefaultHeaderProps) => (textSize ? fontSizes[textSize] : m)};
-  font-family: ${({ theme, textFontFamily }: DefaultHeaderProps) => (textFontFamily ? textFontFamily : theme.typography.fontFamilyBase)};
+  font-family: ${({ theme, textFontFamily }: DefaultHeaderProps) => (textFontFamily || theme.typography.fontFamilyBase)};
   font-weight: normal;
   margin-bottom: 0;
   height: initial;
@@ -50,9 +48,7 @@ export const DefaultHeader = styled(Button)<{
     color: ${({ theme: { colors }, textColor }: DefaultHeaderProps) =>
       textColor && typeof colors[textColor as ColorKeyType] !== 'undefined'
         ? colors[textColor as ColorKeyType]
-        : textColor
-        ? textColor
-        : colors["secondary"]};
+        : textColor || colors.secondary};
   }
 `;
 

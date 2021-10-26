@@ -10,6 +10,7 @@ import React, {
 import { useTheme } from "styled-components";
 import defaultTheme from "src/themes/cruk";
 
+import { FontSizeType, ThemeType } from "src/types";
 import {
   CustomHeader,
   DefaultHeader,
@@ -18,7 +19,6 @@ import {
   transitionDurationSeconds,
 } from "./styles";
 
-import { FontSizeType, ThemeType } from "src/types";
 
 export type CollapseProps = HTMLAttributes<HTMLElement> & {
   /** id is required for a11y reasons as we use aria attributes which depends on an id  */
@@ -76,7 +76,7 @@ const Collapse: FunctionComponent<CollapseProps> = (props) => {
     setOpenStatus(newOpenState);
 
     if (current !== null) {
-      setContentHeight(current.scrollHeight + 'px');
+      setContentHeight(`${current.scrollHeight  }px`);
     }
 
     if (newOpenState === false) {
@@ -110,7 +110,7 @@ const Collapse: FunctionComponent<CollapseProps> = (props) => {
   useEffect(() => {
     setOpenStatus(startOpen || false);
     // if start open changes then we want to set the height without animation
-    !!startOpen ? setContentHeight("initial") : setContentHeight("0");
+    startOpen ? setContentHeight("initial") : setContentHeight("0");
   }, [startOpen]);
 
   return (

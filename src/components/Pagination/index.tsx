@@ -12,9 +12,9 @@ export type PaginationProps = {
   items: number;
   /** don't show an ellipsise and then the last page link, usefull for search results where the last page isn't important */
   hideLast?: boolean;
-  /** callback function which is passed the selected page number on click*/
+  /** callback function which is passed the selected page number on click */
   pagerCallback: Function;
-  /** number of items per page*/
+  /** number of items per page */
   perPage: number;
   /** the name of the search param in the url that is modified on page click, defaults to 'page' */
   searchParam?: string;
@@ -37,7 +37,7 @@ const Pagination: FunctionComponent<PaginationProps> = (props) => {
   const totalPages = Math.ceil(props.items / perPage) || 1;
 
   const linkProps = (number: number) => ({
-    href: `${typeof window !== 'undefined' ? window.location.pathname : ''}?${!!props.searchParam ? `${props.searchParam}=${number}` : '' }`,
+    href: `${typeof window !== 'undefined' ? window.location.pathname : ''}?${props.searchParam ? `${props.searchParam}=${number}` : '' }`,
     onClick: (e: MouseEvent) => {
       e.preventDefault();
       props.pagerCallback(number);

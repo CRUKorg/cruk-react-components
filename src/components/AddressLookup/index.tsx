@@ -1,4 +1,4 @@
-/* eslint-disable consistent-return, @typescript-eslint/no-floating-promises, promise/always-return*/
+/* eslint-disable consistent-return, @typescript-eslint/no-floating-promises, promise/always-return */
 import React, {
   FunctionComponent,
   InputHTMLAttributes,
@@ -21,9 +21,9 @@ import Text from "src/components/Text";
 import debounce from "src/utils/debounce";
 import { useKey } from "src/hooks/useKey";
 
+import { AddressDataType, AddressOptionsType } from "src/types";
 import { ListWrapper, ListItem, ScreenReaderOnly, List } from "./styles";
 
-import { AddressDataType, AddressOptionsType } from "src/types";
 
 const FIND_URL =
   "https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws";
@@ -47,7 +47,7 @@ export type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
   isValidVisible?: boolean;
   /** flag to hide or show the cross icon when invalid */
   isInvalidVisible?: boolean;
-  /** label text*/
+  /** label text */
   label?: string;
   /** callback function which is passed the error */
   onAddressError?: (error: Error) => void;
@@ -260,15 +260,15 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
                       }
                     }}
                     role="option"
-                    data-hj-suppress={true}
+                    data-hj-suppress
                     theme={theme}
                   >
-                    <Text as="span" data-hj-suppress={true}>
+                    <Text as="span" data-hj-suppress>
                       {address.Text} {address.Description}
                     </Text>
                     {address.Type !== "Address" && (
                       <>
-                        <ScreenReaderOnly>{`press enter for these addresses`}</ScreenReaderOnly>
+                        <ScreenReaderOnly>press enter for these addresses</ScreenReaderOnly>
                         <Icon name="chevronRight" />
                       </>
                     )}

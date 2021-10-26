@@ -52,12 +52,12 @@ const Checkbox: FC<CheckBoxProps> = forwardRef(
                 : undefined
             }
           />
-          <SelectedBorder></SelectedBorder>
+          <SelectedBorder />
           {children || props.value}
           {theme.utilities.useDefaultFromControls ? null : (
             <CheckWrapper>
               <Check>
-                <CheckGlyph viewBox={`0 0 17.8 17.8`}>
+                <CheckGlyph viewBox="0 0 17.8 17.8">
                   <path d="M0 11.314l1.52-1.52 4.95 4.95 9.794-9.794 1.52 1.52L6.482 17.774l-.01-.01-.01.01z" />
                 </CheckGlyph>
               </Check>
@@ -67,7 +67,7 @@ const Checkbox: FC<CheckBoxProps> = forwardRef(
         {!!props.errorMessage && (
           <ErrorText
             marginTop="xxs"
-            id={!!props.id ? `${props.id}-error` : undefined}
+            id={props.id ? `${props.id}-error` : undefined}
           >
             {props.errorMessage}
           </ErrorText>
