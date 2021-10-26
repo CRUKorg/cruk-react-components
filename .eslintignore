@@ -23,6 +23,7 @@
 
 #storybook
 /src/**/**/*.stories.tsx
+/src/stories
 
 #plugins
 /src/plugins/**
