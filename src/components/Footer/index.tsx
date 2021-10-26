@@ -1,8 +1,8 @@
-import React, { FC, ReactNode, HTMLAttributes } from 'react';
-import { useTheme, ThemeProvider } from 'styled-components';
+import React, { FC, ReactNode, HTMLAttributes } from "react";
+import { useTheme, ThemeProvider } from "styled-components";
 
-import defaultTheme from 'src/themes/cruk';
-import Text from 'src/components/Text';
+import defaultTheme from "src/themes/cruk";
+import Text from "src/components/Text";
 
 import {
   StyledFooter,
@@ -16,7 +16,7 @@ import {
   StyledNav,
   StyledUL,
   StyledLI,
-} from './styles';
+} from "./styles";
 
 export type FooterProps = HTMLAttributes<HTMLElement> & {
   /** used to customise text in middle section, it could also be react element, this is not to be confused with the component children which is primarily for the links in the footer */
@@ -26,7 +26,7 @@ export type FooterProps = HTMLAttributes<HTMLElement> & {
 /**
  * There should be only one footer component at the bottom of the body of each page. Links can be passed as children
  * */
-export const Footer: FC<FooterProps> = props => {
+export const Footer: FC<FooterProps> = (props) => {
   const childArray = React.Children.toArray(props.children);
 
   const foundTheme = useTheme();
@@ -48,14 +48,18 @@ export const Footer: FC<FooterProps> = props => {
           <FooterSectionLinks>
             <StyledNav aria-label="footer links">
               <StyledUL>
-                {childArray.length ? childArray.map((child, index) => <StyledLI key={index}>{child}</StyledLI>) : null}
+                {childArray.length
+                  ? childArray.map((child, index) => (
+                      <StyledLI key={index}>{child}</StyledLI>
+                    ))
+                  : null}
               </StyledUL>
             </StyledNav>
           </FooterSectionLinks>
 
           <FooterSection>
             {!!props.middleSection ? (
-              typeof props.middleSection === 'string' ? (
+              typeof props.middleSection === "string" ? (
                 <Text textSize="s">{props.middleSection}</Text>
               ) : (
                 <>{props.middleSection}</>

@@ -1,9 +1,9 @@
-import { ThemeType } from 'src/types';
-import styled, { css } from 'styled-components';
+import { ThemeType } from "src/types";
+import styled, { css } from "styled-components";
 
 type StyledTextareaProps = {
   hasError: boolean;
-  resize: 'both' | 'vertical' | 'horizontal' | 'none';
+  resize: "both" | "vertical" | "horizontal" | "none";
   lineCount: number;
   theme: ThemeType;
 };

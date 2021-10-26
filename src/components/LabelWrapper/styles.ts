@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { ThemeType } from 'src/types';
+import styled from "styled-components";
+import { ThemeType } from "src/types";
 
 type LabelTextProp = {
   hasHintText: boolean;

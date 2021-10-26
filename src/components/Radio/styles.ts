@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import { ThemeType } from 'src/types';
 
-const RADIO_SIZE = '1.5rem';
-const RADIO_INNER_SIZE = '1rem';
-const BUTTON_HEIGHT = '3em';
+const RADIO_SIZE = "1.5rem";
+const RADIO_INNER_SIZE = "1rem";
+const BUTTON_HEIGHT = "3em";
 
 type ThemeProp = {
   theme: ThemeType
@@ -39,7 +39,7 @@ export const Check = styled.span`
   ::before {
     display: block;
     position: absolute;
-    content: '';
+    content: "";
     border-radius: 100%;
     height: ${RADIO_INNER_SIZE};
     width: ${RADIO_INNER_SIZE};

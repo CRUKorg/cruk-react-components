@@ -1,9 +1,9 @@
 import React, { FunctionComponent, MouseEvent } from 'react';
 import { ThemeProvider, useTheme } from 'styled-components';
 
-import defaultTheme from 'src/themes/cruk';
+import defaultTheme from "src/themes/cruk";
 
-import { PagerItem, PagerLink, PagerList, PagerWrapper } from './styles';
+import { PagerItem, PagerLink, PagerList, PagerWrapper } from "./styles";
 
 export type PaginationProps = {
   /** set current page number */
@@ -27,7 +27,7 @@ export type PaginationProps = {
 Data is split into multiple pages and pagination is used to
 easily navigate through these pages.
  */
-const Pagination: FunctionComponent<PaginationProps> = props => {
+const Pagination: FunctionComponent<PaginationProps> = (props) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -51,29 +51,35 @@ const Pagination: FunctionComponent<PaginationProps> = props => {
     for (let number = 1; number <= total; number+=1) {
       list.push(
         <PagerItem key={number}>
-          <PagerLink active={number === active} {...linkProps(number)} aria-label={`page ${number} of ${total}`}>
+          <PagerLink
+            active={number === active}
+            {...linkProps(number)}
+            aria-label={`page ${number} of ${total}`}
+          >
             {number}
           </PagerLink>
-        </PagerItem>,
+        </PagerItem>
       );
     }
     const first = list.slice(0, 1).concat(
       <PagerItem key="first">
         <span>...</span>
-      </PagerItem>,
+      </PagerItem>
     );
     const last = list
       .slice(list.length - 1)
       .concat(
         <PagerItem key="last">
           <span>...</span>
-        </PagerItem>,
+        </PagerItem>
       )
       .reverse();
     pager = list.slice(0, total);
     if (total > 7) {
       if (active <= 4) {
-        pager = props.hideLast ? list.slice(0, 7) : list.slice(0, 5).concat(last);
+        pager = props.hideLast
+          ? list.slice(0, 7)
+          : list.slice(0, 5).concat(last);
       } else {
         pager =
           active > total - 4
@@ -105,7 +111,8 @@ const Pagination: FunctionComponent<PaginationProps> = props => {
               <PagerLink
                 name="Next"
                 disabled={props.current === totalPages}
-                {...(props.current !== totalPages && linkProps(props.current + 1))}
+                {...(props.current !== totalPages &&
+                  linkProps(props.current + 1))}
               >
                 Next
               </PagerLink>
@@ -116,6 +123,10 @@ const Pagination: FunctionComponent<PaginationProps> = props => {
       )}
     </ThemeProvider>
   );
+};
+
+Pagination.defaultProps = {
+  searchParam: "page",
 };
 
 export default Pagination;

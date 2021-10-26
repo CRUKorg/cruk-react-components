@@ -2,6 +2,8 @@
 
 Checkboxes allow the user to select one or more items.
 
+If the Checkbox component is passed an id, this is used to generate an id for the error container and relationship with the input using aria-describedby.
+
 ### Try it out
 
 ```.jsx

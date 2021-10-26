@@ -22,7 +22,7 @@ export const StepList = styled.ul<StepListProps>`
   justify-content: space-between;
   width: 100%;
 
-  ${props =>
+  ${(props) =>
     props.total &&
     css`
       li {
@@ -50,7 +50,7 @@ export const StepBar = styled.span`
     position: absolute;
     width: 100%;
     height: 2px;
-    content: '';
+    content: "";
     background-color: transparent;
     border-bottom: 2px solid ${({theme}: ThemeProps) => theme.colors.stepBorder};
     left: 50%;
@@ -89,14 +89,14 @@ export const StepItem = styled.li<StepItemProps>`
   flex-direction: column;
   position: relative;
 
-  ${props =>
+  ${(props) =>
     props.active &&
     css`
       ${StepBar} {
         border-color: ${({theme}: ThemeProps) => theme.colors.tertiary};
       }
     `}
-  ${props =>
+  ${(props) =>
     props.done &&
     css`
       ${StepBar} {

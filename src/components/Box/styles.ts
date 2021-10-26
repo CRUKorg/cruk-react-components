@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 import Spacing, { SpacingProps } from 'src/components/Spacing';
 import { ColorKeyType, ThemeType } from 'src/types';

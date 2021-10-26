@@ -1,53 +1,53 @@
-import React, { useState } from 'react';
-import { Router, Link as RouterLink } from '@reach/router';
-import styled, { css, ThemeProvider } from 'styled-components';
+import React, { useState } from "react";
+import { Router, Link as RouterLink } from "@reach/router";
+import styled, { css, ThemeProvider } from "styled-components";
 
-import { useKey } from '../hooks/useKey';
-import MdxProvider from '../hocs/MdxProvider';
+import { useKey } from "../hooks/useKey";
+import MdxProvider from "../hocs/MdxProvider";
 
 // /////////////////////////////////////////////////////////
 // HAVE YOU ADDED YOUR COMPONENT TO THE MDX PROVIDER HOC? //
 // /////////////////////////////////////////////////////////
-import Box from '../components/Box';
-import Flex from '../components/Flex';
-import Header from '../components/Header';
-import Heading from '../components/Heading';
-import Select from '../components/Select';
-import ThemeCheatSheet from '../components/ThemeCheatSheet';
+import Box from "../components/Box";
+import Flex from "../components/Flex";
+import Header from "../components/Header";
+import Heading from "../components/Heading";
+import Select from "../components/Select";
+import ThemeCheatSheet from "../components/ThemeCheatSheet";
 
-import AddressLookupReadme from '../components/AddressLookup/README.md';
-import AvatarReadme from '../components/Avatar/README.md';
-import BadgeReadme from '../components/Badge/README.md';
-import BoxReadme from '../components/Box/README.md';
-import ButtonReadme from '../components/Button/README.md';
-import CheckboxReadme from '../components/Checkbox/README.md';
-import CollapseReadme from '../components/Collapse/README.md';
-import DateFieldReadme from '../components/DateField/README.md';
-import ErrorTextReadme from '../components/ErrorText/README.md';
-import FooterReadme from '../components/Footer/README.md';
-import HeadingReadme from '../components/Heading/README.md';
-import HeaderReadme from '../components/Header/README.md';
-import IconReadme from '../components/Icon/README.md';
-import LinkReadme from '../components/Link/README.md';
-import LegendWrapperReadme from '../components/LegendWrapper/README.md';
-import LoaderReadme from '../components/Loader/README.md';
-import ModalReadme from '../components/Modal/README.md';
-import PaginationReadme from '../components/Pagination/README.md';
-import PopOverReadme from '../components/PopOver/README.md';
-import ProgressBarReadme from '../components/ProgressBar/README.md';
-import RadioReadme from '../components/Radio/README.md';
-import RadioGroupReadme from '../components/RadioGroup/README.md';
-import SelectReadme from '../components/Select/README.md';
-import StepReadme from '../components/Step/README.md';
-import TextReadme from '../components/Text/README.md';
-import TextAreaFieldReadme from '../components/TextAreaField/README.md';
-import TextFieldReadme from '../components/TextField/README.md';
-import TotaliserReadme from '../components/Totaliser/README.md';
-import UserBlockReadme from '../components/UserBlock/README.md';
+import AddressLookupReadme from "../components/AddressLookup/README.md";
+import AvatarReadme from "../components/Avatar/README.md";
+import BadgeReadme from "../components/Badge/README.md";
+import BoxReadme from "../components/Box/README.md";
+import ButtonReadme from "../components/Button/README.md";
+import CheckboxReadme from "../components/Checkbox/README.md";
+import CollapseReadme from "../components/Collapse/README.md";
+import DateFieldReadme from "../components/DateField/README.md";
+import ErrorTextReadme from "../components/ErrorText/README.md";
+import FooterReadme from "../components/Footer/README.md";
+import HeadingReadme from "../components/Heading/README.md";
+import HeaderReadme from "../components/Header/README.md";
+import IconReadme from "../components/Icon/README.md";
+import LinkReadme from "../components/Link/README.md";
+import LegendWrapperReadme from "../components/LegendWrapper/README.md";
+import LoaderReadme from "../components/Loader/README.md";
+import ModalReadme from "../components/Modal/README.md";
+import PaginationReadme from "../components/Pagination/README.md";
+import PopOverReadme from "../components/PopOver/README.md";
+import ProgressBarReadme from "../components/ProgressBar/README.md";
+import RadioReadme from "../components/Radio/README.md";
+import RadioConsentReadme from "../components/RadioConsent/README.md";
+import SelectReadme from "../components/Select/README.md";
+import StepReadme from "../components/Step/README.md";
+import TextReadme from "../components/Text/README.md";
+import TextAreaFieldReadme from "../components/TextAreaField/README.md";
+import TextFieldReadme from "../components/TextField/README.md";
+import TotaliserReadme from "../components/Totaliser/README.md";
+import UserBlockReadme from "../components/UserBlock/README.md";
 
-import crukTheme, { BREAKPOINT, COLORS } from '../themes/cruk';
-import su2cTheme from '../themes/su2c';
-import GlobalStyle from '../components/GlobalStyle';
+import crukTheme, { BREAKPOINT, COLORS } from "../themes/cruk";
+import su2cTheme from "../themes/su2c";
+import GlobalStyle from "../components/GlobalStyle";
 
 /*
  * Doc specific styling
@@ -141,7 +141,7 @@ const ToggleIcon = styled.label`
   &:after {
     position: absolute;
     background-color: ${COLORS.textDark};
-    content: '';
+    content: "";
   }
 
   &:before {
@@ -202,7 +202,7 @@ const StyledToggle = styled.input`
   }
 `;
 
-const Toggle = props => <StyledToggle type="checkbox" {...props} />;
+const Toggle = (props) => <StyledToggle type="checkbox" {...props} />;
 
 const Nav = styled.nav`
   a {
@@ -219,33 +219,33 @@ const Nav = styled.nav`
 `;
 
 const Docs = () => {
-  const [theme, setTheme] = useState('cruk');
+  const [theme, setTheme] = useState("cruk");
 
   useKey(
     () => {
       handleOutline();
     },
     {
-      detectKeys: ['keyup'],
+      detectKeys: ["keyup"],
     },
-    [],
+    []
   );
 
   /*
    * outline when user start tabbing
    * https://jmperezperez.com/outline-focus-ring-a11y/
    */
-  const handleOutline = e => {
+  const handleOutline = (e) => {
     if (e.key === 9) {
-      if (typeof document !== 'undefined') {
-        document.documentElement.classList.remove('no-focus-outline');
+      if (typeof document !== "undefined") {
+        document.documentElement.classList.remove("no-focus-outline");
       }
     }
   };
 
   const themeFile = () => {
     switch (theme) {
-      case 'su2c':
+      case "su2c":
         return su2cTheme;
       default:
         return crukTheme;
@@ -258,7 +258,7 @@ const Docs = () => {
       <Header isSticky fullWidth>
         <SwitchTheme
           name="themeSelector"
-          onChange={e => {
+          onChange={(e) => {
             setTheme(e.target.value);
           }}
         >
@@ -293,7 +293,7 @@ const Docs = () => {
             <RouterLink to="/popover">PopOver</RouterLink>
             <RouterLink to="/progressbar">ProgressBar</RouterLink>
             <RouterLink to="/radio">Radio</RouterLink>
-            <RouterLink to="/radiogroup">Radio Group</RouterLink>
+            <RouterLink to="/radioconsent">RadioConsent</RouterLink>
             <RouterLink to="/select">Select</RouterLink>
             <RouterLink to="/step">Step</RouterLink>
             <RouterLink to="/textareafield">TextAreaField</RouterLink>
@@ -328,7 +328,7 @@ const Docs = () => {
               <PopOverReadme path="/popover" />
               <ProgressBarReadme path="/progressbar" />
               <RadioReadme path="/radio" />
-              <RadioGroupReadme path="/radiogroup" />
+              <RadioConsentReadme path="/radioconsent" />
               <SelectReadme path="/select" />
               <StepReadme path="/step" />
               <TextReadme path="/text" />

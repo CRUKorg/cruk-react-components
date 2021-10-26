@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react';
-import styled from 'styled-components';
+import React, { FunctionComponent } from "react";
+import styled from "styled-components";
 
 const StyledDivider = styled.div`
   align-items: center;
@@ -12,13 +12,15 @@ const StyledDivider = styled.div`
   :before,
   :after {
     background-color: #333;
-    content: '';
+    content: "";
     display: inline-block;
     flex-grow: 1;
     height: 1px;
   }
 `;
 
-export const Divider: FunctionComponent = props => <StyledDivider>{props.children}</StyledDivider>;
+export const Divider: FunctionComponent = (props) => (
+  <StyledDivider>{props.children}</StyledDivider>
+);
 
 export default Divider;

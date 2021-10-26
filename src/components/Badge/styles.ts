@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 import { ColorKeyType, SpaceType, ThemeType } from 'src/types';
 
@@ -6,7 +6,7 @@ type StyleBadgeProps = {
   backgroundColor?: string;
   borderColor?: string;
   textColor?: string;
-  text?: boolean;
+  isText?: boolean;
   size: SpaceType;
   theme: ThemeType;
 };
@@ -35,7 +35,7 @@ export const StyledBadge = styled.span<StyleBadgeProps>`
       ? colors[backgroundColor as ColorKeyType]
       : backgroundColor
       ? backgroundColor
-      : colors['primary']};
+      : colors["primary"]};
   text-align: center;
   border-radius: 1.5rem;
   font-size: ${({ theme }: StyleBadgeProps) => theme.fontSizes.m};
@@ -55,7 +55,7 @@ export const StyledBadge = styled.span<StyleBadgeProps>`
   }: StyleBadgeProps) => `calc(${spacing[size]} + ${xs})`};
 
   ${(props: StyleBadgeProps) =>
-    !props.text &&
+    !props.isText &&
     css`
       padding: 0;
       border-radius: 50%;
@@ -82,7 +82,8 @@ export const StyledBadge = styled.span<StyleBadgeProps>`
         },
       }: StyleBadgeProps) => `calc(${spacing[size]} + ${xs})`};
       svg {
-        height: ${({ size, theme: { spacing } }: StyleBadgeProps) => spacing[size]};
+        height: ${({ size, theme: { spacing } }: StyleBadgeProps) =>
+          spacing[size]};
       }
     `}
 `;

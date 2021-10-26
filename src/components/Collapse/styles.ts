@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import Button from 'src/components/Button';
-import Icon from 'src/components/Icon';
+import Button from "src/components/Button";
+import Icon from "src/components/Icon";
 
 import { FontSizeType, ThemeType, ColorKeyType } from 'src/types';
 
@@ -16,7 +16,7 @@ export const transitionDurationSeconds = 0.5;
 
 export const FlippingIcon = styled(Icon)`
   transform: ${({ open }: { open: boolean }) =>
-    !!open ? 'rotate(90deg) translateX(0.1em) scaleX(-1) ' : 'rotate(90deg)'};
+    !!open ? "rotate(90deg) translateX(0.1em) scaleX(-1) " : "rotate(90deg)"};
   transition-duration: ${transitionDurationSeconds}s;
 `;
 
@@ -31,7 +31,7 @@ export const DefaultHeader = styled(Button)<{
       ? colors[textColor as ColorKeyType]
       : textColor
       ? textColor
-      : colors['secondary']};
+      : colors["secondary"]};
   font-size: ${({
     theme: {
       fontSizes,
@@ -52,7 +52,7 @@ export const DefaultHeader = styled(Button)<{
         ? colors[textColor as ColorKeyType]
         : textColor
         ? textColor
-        : colors['secondary']};
+        : colors["secondary"]};
   }
 `;
 

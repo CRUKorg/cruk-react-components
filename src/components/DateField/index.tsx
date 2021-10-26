@@ -1,10 +1,15 @@
-import React, { FC, InputHTMLAttributes } from 'react';
+import React, { FC, InputHTMLAttributes } from "react";
 
-import ErrorText from 'src/components/ErrorText';
-import Text from 'src/components/Text';
-import TextField from 'src/components/TextField';
+import ErrorText from "src/components/ErrorText";
+import Text from "src/components/Text";
+import TextField from "src/components/TextField";
 
-import { Fieldset, DateTextFieldWrapper, LargeDateTextFieldWrapper, ErrorTextWrapper } from './styles';
+import {
+  Fieldset,
+  DateTextFieldWrapper,
+  LargeDateTextFieldWrapper,
+  ErrorTextWrapper,
+} from "./styles";
 
 export type DateFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   /**label text */
@@ -42,9 +47,9 @@ const DateField: FC<DateFieldProps> = ({
   day,
   month,
   year,
-  dayName = 'day',
-  monthName = 'month',
-  yearName = 'year',
+  dayName = "day",
+  monthName = "month",
+  yearName = "year",
   dayHasError,
   monthHasError,
   yearHasError,
@@ -53,12 +58,12 @@ const DateField: FC<DateFieldProps> = ({
   onBlur = () => {},
   onFocus = () => {},
   disabled,
-  ...props
+  required,
 }) => {
   return (
     <Fieldset>
       <Text as="legend" textWeight={700} marginBottom="xxs">
-        {label}
+        {label} {!!required && ` (required)`}
       </Text>
       {hintText && <Text>{hintText}</Text>}
       <DateTextFieldWrapper>
@@ -66,7 +71,7 @@ const DateField: FC<DateFieldProps> = ({
           label="Day"
           type="text"
           name={dayName}
-          required
+          required={!!required}
           hideRequiredInLabel
           maxLength={2}
           autoComplete="bday-day"
@@ -85,7 +90,7 @@ const DateField: FC<DateFieldProps> = ({
           label="Month"
           type="text"
           name={monthName}
-          required
+          required={!!required}
           hideRequiredInLabel
           maxLength={2}
           autoComplete="bday-month"
@@ -104,6 +109,7 @@ const DateField: FC<DateFieldProps> = ({
           label="Year"
           type="text"
           name={yearName}
+          required={!!required}
           hideRequiredInLabel
           maxLength={4}
           autoComplete="bday-year"

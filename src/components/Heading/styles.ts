@@ -1,13 +1,18 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
-import spacing, { SpacingProps } from 'src/components/Spacing';
+import spacing, { SpacingProps } from "src/components/Spacing";
 
-import { ThemeType, FontSizeType, ColorKeyType, WordBreakType } from 'src/types';
+import {
+  ThemeType,
+  FontSizeType,
+  ColorKeyType,
+  WordBreakType,
+} from "src/types";
 
 type StyledHeadingProps = SpacingProps & {
   theme: ThemeType;
   textSize?: FontSizeType;
-  textAlign?: 'left' | 'right' | 'center';
+  textAlign?: "left" | "right" | "center";
   textColor?: ColorKeyType | string;
   wordBreak?: WordBreakType;
 };
@@ -25,11 +30,11 @@ const StyledHeading = (props: StyledHeadingProps) => css`
     },
   }: StyledHeadingProps) => fontWeightMedium};
   color: ${({ theme: { colors }, textColor }: StyledHeadingProps) =>
-    textColor && typeof colors[textColor as ColorKeyType] !== 'undefined'
+    textColor && typeof colors[textColor as ColorKeyType] !== "undefined"
       ? colors[textColor as ColorKeyType]
       : textColor
       ? textColor
-      : colors['textDark']};
+      : colors["textDark"]};
   line-height: ${({
     theme: {
       typography: { headerLineHeight },
@@ -51,7 +56,8 @@ const StyledHeading = (props: StyledHeadingProps) => css`
     },
   }: StyledHeadingProps) => s};
   max-width: 100%;
-  text-align: ${({ textAlign }: StyledHeadingProps) => (textAlign ? textAlign : 'left')};
+  text-align: ${({ textAlign }: StyledHeadingProps) =>
+    textAlign ? textAlign : "left"};
 
   &:first-child {
     margin-top: 0;
@@ -63,19 +69,23 @@ const StyledHeading = (props: StyledHeadingProps) => css`
   }}
 `;
 
-const desktopFontSize = (textSize: FontSizeType | null, defaultFontSize: string, theme: ThemeType) => {
+const desktopFontSize = (
+  textSize: FontSizeType | null,
+  defaultFontSize: FontSizeType,
+  theme: ThemeType
+) => {
   switch (textSize) {
-    case 'm':
+    case "m":
       return theme.fontSizes.m;
-    case 'l':
+    case "l":
       return theme.fontSizes.l;
-    case 'xl':
+    case "xl":
       return theme.fontSizes.xl;
-    case 'xxl':
+    case "xxl":
       return theme.fontSizes.xxl;
-    case 'xxxl':
+    case "xxxl":
       return theme.fontSizes.xxxl;
-    case 'xxxxl':
+    case "xxxxl":
       return theme.fontSizes.xxxxl;
 
     default:
@@ -84,19 +94,23 @@ const desktopFontSize = (textSize: FontSizeType | null, defaultFontSize: string,
 };
 
 // everything drops down a size on the typography scale
-const tabletFontSize = (textSize: FontSizeType | null, defaultFontSize: string, theme: ThemeType) => {
+const tabletFontSize = (
+  textSize: FontSizeType | null,
+  defaultFontSize: FontSizeType,
+  theme: ThemeType
+) => {
   switch (textSize) {
-    case 'm':
+    case "m":
       return theme.fontSizes.m;
-    case 'l':
+    case "l":
       return theme.fontSizes.l;
-    case 'xl':
+    case "xl":
       return theme.fontSizes.l;
-    case 'xxl':
+    case "xxl":
       return theme.fontSizes.xl;
-    case 'xxxl':
+    case "xxxl":
       return theme.fontSizes.xxl;
-    case 'xxxxl':
+    case "xxxxl":
       return theme.fontSizes.xxxl;
 
     default:
@@ -105,19 +119,23 @@ const tabletFontSize = (textSize: FontSizeType | null, defaultFontSize: string, 
 };
 
 // everything drops down two sizes on the typography scale
-const mobileFontSize = (textSize: FontSizeType | null, defaultFontSize: string, theme: ThemeType) => {
+const mobileFontSize = (
+  textSize: FontSizeType | null,
+  defaultFontSize: FontSizeType,
+  theme: ThemeType
+) => {
   switch (textSize) {
-    case 'm':
+    case "m":
       return theme.fontSizes.m;
-    case 'l':
+    case "l":
       return theme.fontSizes.l;
-    case 'xl':
+    case "xl":
       return theme.fontSizes.l;
-    case 'xxl':
+    case "xxl":
       return theme.fontSizes.l;
-    case 'xxxl':
+    case "xxxl":
       return theme.fontSizes.xl;
-    case 'xxxxl':
+    case "xxxxl":
       return theme.fontSizes.xxl;
 
     default:
@@ -170,7 +188,7 @@ export const H4 = styled.h4<StyledHeadingProps>`
 `;
 
 export const H5 = styled.h5<StyledHeadingProps>`
-  ${props => StyledHeading(props)}
+  ${(props) => StyledHeading(props)}
 
   font-size: ${({ theme, textSize }: StyledHeadingProps) => mobileFontSize(textSize || null, theme.fontSizes.l, theme)};
   @media (min-width: ${({ theme }: StyledHeadingProps) => theme.breakpoint.tablet}) {

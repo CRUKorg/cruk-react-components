@@ -1,8 +1,8 @@
-import { AnchorHTMLAttributes } from 'react';
-import styled, { css } from 'styled-components';
+import { AnchorHTMLAttributes } from "react";
+import styled, { css } from "styled-components";
 
-import Text, { TextProps } from 'src/components/Text';
-import Icon from 'src/components/Icon';
+import Text, { TextProps } from "src/components/Text";
+import Icon from "src/components/Icon";
 
 import { ThemeType, ColorKeyType } from 'src/types';
 
@@ -21,7 +21,7 @@ export const ChevyWithLevee = styled(Icon)`
 type StyledLinkProps = AnchorHTMLAttributes<HTMLElement> &
   TextProps & {
     theme: ThemeType;
-    appearance?: 'primary' | 'secondary';
+    appearance?: "primary" | "secondary";
     textHoverColor?: string;
   };
 
@@ -43,10 +43,10 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
       : textColor
       ? textColor
       : !appearance && useBackgroundStyleLinks
-      ? 'currentColor'
-      : appearance && appearance === 'primary'
-      ? colors['secondary']
-      : colors['linkColor']};
+      ? "currentColor"
+      : appearance && appearance === "primary"
+      ? colors["secondary"]
+      : colors["linkColor"]};
   text-decoration: ${({
     appearance,
     theme: {
@@ -75,7 +75,7 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
       typography: { fontWeightHeavy },
     },
   }: StyledLinkProps) =>
-    (appearance === 'primary' || appearance === 'secondary') &&
+    (appearance === "primary" || appearance === "secondary") &&
     css`
       font-weight: ${fontWeightHeavy};
     `}
@@ -96,6 +96,6 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
         ? colors[textHoverColor as ColorKeyType]
         : textHoverColor
         ? textHoverColor
-        : colors['linkColorHover']};
+        : colors["linkColorHover"]};
   }
 `;

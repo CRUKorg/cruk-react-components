@@ -1,10 +1,10 @@
-import React, { FunctionComponent, ReactNode } from 'react';
-import { useTheme, ThemeProvider } from 'styled-components';
+import React, { FunctionComponent, ReactNode } from "react";
+import { useTheme, ThemeProvider } from "styled-components";
 
-import Text from 'src/components/Text';
-import defaultTheme from 'src/themes/cruk';
+import Text from "src/components/Text";
+import defaultTheme from "src/themes/cruk";
 
-import { LabelText, Label } from './styles';
+import { LabelText, Label } from "./styles";
 
 type LabelWrapperProps = {
   /** label text */
@@ -17,8 +17,15 @@ type LabelWrapperProps = {
   hideRequiredInLabel?: boolean;
 };
 
-export const LabelWrapper: FunctionComponent<LabelWrapperProps> = props => {
-  const { label, hintText, required, hideRequiredInLabel = false, children, ...otherProps } = props;
+export const LabelWrapper: FunctionComponent<LabelWrapperProps> = (props) => {
+  const {
+    label,
+    hintText,
+    required,
+    hideRequiredInLabel = false,
+    children,
+    ...otherProps
+  } = props;
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -26,14 +33,20 @@ export const LabelWrapper: FunctionComponent<LabelWrapperProps> = props => {
   };
 
   const hintTextElement =
-    !!hintText && (typeof hintText === 'string' || typeof hintText === 'number') ? <Text>{hintText}</Text> : hintText;
+    !!hintText &&
+    (typeof hintText === "string" || typeof hintText === "number") ? (
+      <Text>{hintText}</Text>
+    ) : (
+      hintText
+    );
 
   return (
     <ThemeProvider theme={theme}>
       {label ? (
         <Label {...otherProps}>
           <LabelText hasHintText={!!hintText}>
-            {label} {required && !hideRequiredInLabel && <span>(required)</span>}
+            {label}{" "}
+            {required && !hideRequiredInLabel && <span>(required)</span>}
           </LabelText>
           {hintTextElement}
           {children}

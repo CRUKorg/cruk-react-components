@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 import spacing, { SpacingProps } from 'src/components/Spacing';
 
@@ -47,5 +47,5 @@ export const TextStyled = styled.p<TextStyledProps>`
     margin-bottom: 0;
   }
 
-  ${props => spacing(props, props.theme)}
+  ${(props) => spacing(props, props.theme)}
 `;

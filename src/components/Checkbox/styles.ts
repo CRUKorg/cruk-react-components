@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import { ThemeType } from 'src/types';
 
-const CHECK_BOX_SIZE = '1.5rem';
-const CHECK_SIZE = '1.125rem';
-const BUTTON_HEIGHT = '3em';
+const CHECK_BOX_SIZE = "1.5rem";
+const CHECK_SIZE = "1.125rem";
+const BUTTON_HEIGHT = "3em";
 
 type StyledLabelProps = {
   checked: boolean;
@@ -61,7 +61,6 @@ export const CheckGlyph = styled.svg`
 export const StyledLabel = styled.label<StyledLabelProps>`
   background-color: ${({ theme }: ThemeProps) => theme.colors.backgroundLight};
   position: relative;
-  border-radius: ${({ theme }: ThemeProps) => theme.button.borderRadius};
   border-width: ${({ theme }: ThemeProps) => theme.utilities.inputBorderWidth};
   border-style: solid;
   border-color: ${({ hasError, theme, checked }: StyledLabelProps) =>

@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from 'styled-components';
 import { ThemeType } from 'src/types';
 
-const CIRCLE_THICKENESS = '4px';
+const CIRCLE_THICKENESS = "4px";
 
 type ThemeProp = {
   theme: ThemeType
@@ -71,7 +71,7 @@ export const LineProgressBar = styled.div<LineProgressBarProps>`
   transition: width 0.6s ease;
   position: relative;
 
-  ${props =>
+  ${(props) =>
     props.percentage &&
     css`
       width: ${props.percentage}%;
@@ -135,14 +135,14 @@ export const CircularRight = styled.span`
 const AnimationRight = ({ percentage }: { percentage: number }) => keyframes`
   0% { transform: rotate(0deg); }
   100% {
-    transform: rotate(${percentage > 50 ? '180' : percentage * 3.6}deg);
+    transform: rotate(${percentage > 50 ? "180" : percentage * 3.6}deg);
   }
 `;
 
 const AnimationLeft = ({ percentage }: { percentage: number }) => keyframes`
   0% { transform: rotate(0deg); }
   100% {
-    transform: rotate(${percentage > 100 ? '180' : percentage * 3.6 - 180}deg);
+    transform: rotate(${percentage > 100 ? "180" : percentage * 3.6 - 180}deg);
   }
 `;
 
@@ -160,7 +160,7 @@ export const CircularWrapper = styled.div<{
   position: relative;
 
   &:after {
-    content: '';
+    content: "";
     width: 100%;
     height: 100%;
     border-radius: 50%;
@@ -183,14 +183,14 @@ export const CircularWrapper = styled.div<{
     z-index: 1;
   }
 
-  ${props =>
+  ${(props) =>
     props.percentage < 51 &&
     css`
       ${CircularRight} ${CircularColorFill} {
         animation: ${AnimationRight as any} 0.5s linear forwards;
       }
     `};
-  ${props =>
+  ${(props) =>
     props.percentage > 50 &&
     css`
       ${CircularRight} ${CircularColorFill} {
@@ -200,7 +200,7 @@ export const CircularWrapper = styled.div<{
         animation: ${AnimationLeft as any} 0.5s linear forwards 0.5s;
       }
     `};
-  ${props =>
+  ${(props) =>
     props.percentage >= 100 &&
     css`
       ${CircularRight} ${CircularColorFill} {

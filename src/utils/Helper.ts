@@ -1,6 +1,9 @@
-export const isBrowser = typeof window !== 'undefined';
+export const isBrowser = typeof window !== "undefined";
 
-export const calculatePercentRounded = (value: number, target: number): number => {
+export const calculatePercentRounded = (
+  value: number,
+  target: number
+): number => {
   const percent = (value / target) * 100;
   if (percent === Number.POSITIVE_INFINITY || Number.isNaN(percent)) {
     return 0;
@@ -17,13 +20,14 @@ export const formatMoney = (value: number): string => {
 };
 
 export const numberWithCommas = (n?: number | string): string => {
-  let parts;
   if (!n) {
-    return '';
+    return "";
   }
-  parts = n.toString().split('.');
+  const parts = n.toString().split(".");
 
-  return `${parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')}${parts[1] ? '.' + parts[1] : ''}`;
+  return `${parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")}${
+    parts[1] ? "." + parts[1] : ""
+  }`;
 };
 
 export const formatMoneyWithCommas = (value: number): string => {
@@ -38,6 +42,6 @@ export const camelize = (str: string): string =>
   str
     .toString()
     .replace(/(?:^\w|[A-Z]|\b\w)/g, (word: string, index: number) =>
-      index === 0 ? word.toLowerCase() : word.toUpperCase(),
+      index === 0 ? word.toLowerCase() : word.toUpperCase()
     )
-    .replace(/\s+/g, '');
+    .replace(/\s+/g, "");
