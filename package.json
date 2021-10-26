@@ -44,6 +44,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "eslint:test": "eslint src",
+    "eslint:fix": "eslint src --fix",
     "eslint:test-staged": "npx lint-staged",
     "prepare": "husky install",
     "precommit": "npm run prettier:test-staged && npm run eslint:test-staged"
