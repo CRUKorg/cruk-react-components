@@ -41,13 +41,11 @@ const UserBlock: FC<UserBlockProps> = ({
     <StyledUserBlock theme={theme}>
       <Avatar
         name={
-          avatarName
-            ? avatarName
-            : typeof name === "string"
+          avatarName || (typeof name === "string"
             ? name
-            : "Anonymous"
+            : "Anonymous")
         }
-        url={avatarUrl ? avatarUrl : undefined}
+        url={avatarUrl || undefined}
         size={size}
       />
       <Details>
