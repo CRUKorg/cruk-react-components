@@ -24,7 +24,6 @@ import { useKey } from "src/hooks/useKey";
 import { AddressDataType, AddressOptionsType } from "src/types";
 import { ListWrapper, ListItem, ScreenReaderOnly, List } from "./styles";
 
-
 const FIND_URL =
   "https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws";
 const RETRIEVE_URL =
@@ -114,7 +113,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
           if (!res.ok) throw new Error("Something went wrong please try again");
           return res.json();
         })
-        .then((data: { Items: AddressOptionsType[]}) => {
+        .then((data: { Items: AddressOptionsType[] }) => {
           // Occasionally get the error "The query didn't respond fast enough, it may be too complex."
           // returned with a 200 response. Example query "n17 6t"
           if (data.Items[0].Error)
@@ -125,12 +124,12 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
     };
 
     const getAddress = (id: string) => {
-     fetch(`${RETRIEVE_URL}?Key=${apiKey}&Id=${id}`)
+      fetch(`${RETRIEVE_URL}?Key=${apiKey}&Id=${id}`)
         .then((res: Response) => {
           if (!res.ok) throw new Error("Something went wrong please try again");
           return res.json();
         })
-        .then((data: { Items: AddressDataType[]}) => {
+        .then((data: { Items: AddressDataType[] }) => {
           clearOptions();
           onAddressSelected(data.Items[0]);
         })
@@ -142,7 +141,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
       search(address.Text, address.Id);
       return null;
     };
-    
+
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
       if (e.key === "Enter" && addressOptions[activeOption]) {
         e.preventDefault();
@@ -155,13 +154,11 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
         setActiveOption(-1);
       } else if (e.key === "ArrowUp") {
         e.preventDefault();
-        if (activeOption <= -1)
-          setActiveOption(addressOptions.length - 1);
+        if (activeOption <= -1) setActiveOption(addressOptions.length - 1);
         setActiveOption(activeOption - 1);
       } else if (e.key === "ArrowDown") {
         e.preventDefault();
-        if (activeOption + 1 >= addressOptions.length)
-          setActiveOption(0);
+        if (activeOption + 1 >= addressOptions.length) setActiveOption(0);
         setActiveOption(activeOption + 1);
       } else {
         setActiveOption(-1);
@@ -235,8 +232,9 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
           <>
             <ScreenReaderOnly role="status" aria-live="assertive">
               {!!addressOptions.length &&
-                `We have found ${addressOptions.length} result${addressOptions.length !== 1 ? 
-                  's' : ''} matching your search. Use up and down arrow keys to navigate`}
+                `We have found ${addressOptions.length} result${
+                  addressOptions.length !== 1 ? "s" : ""
+                } matching your search. Use up and down arrow keys to navigate`}
             </ScreenReaderOnly>
             <ListWrapper ref={wrapperRef}>
               <List
@@ -268,7 +266,9 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
                     </Text>
                     {address.Type !== "Address" && (
                       <>
-                        <ScreenReaderOnly>press enter for these addresses</ScreenReaderOnly>
+                        <ScreenReaderOnly>
+                          press enter for these addresses
+                        </ScreenReaderOnly>
                         <Icon name="chevronRight" />
                       </>
                     )}

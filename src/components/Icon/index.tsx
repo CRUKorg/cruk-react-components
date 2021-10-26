@@ -35,7 +35,7 @@ export type IconProps = {
 const Icon: FunctionComponent<IconProps> = ({
   name,
   color,
-  size = "1.1rem"
+  size = "1.1rem",
 }) => {
   const foundTheme = useTheme();
   const theme = {
@@ -50,7 +50,7 @@ const Icon: FunctionComponent<IconProps> = ({
       alt-text=""
       role="presentation"
       viewBox={`0 0 ${icon.width} ${icon.height}`}
-      size={size || '1.1rem'}
+      size={size || "1.1rem"}
       color={color}
     >
       {icon.paths.map((path: string, index: number) => (

@@ -17,7 +17,6 @@ import useEffectBrowser from "src/hooks/useEffectBrowser";
 import { PopOverPositionType } from "src/types";
 import { PopOverWrapper, PopOverModal } from "./styles";
 
-
 export type PopOverProps = {
   /** used for aria-label of modal */
   modalLabel: string;
@@ -62,7 +61,7 @@ const PopOver: FC<PopOverProps> = ({
   // outside click closes popover
   const handleDocumentClick = useCallback(
     (e: MouseEvent) => {
-      if (!!popRef.current && !(popRef.current).contains(e.target as Node)) {
+      if (!!popRef.current && !popRef.current.contains(e.target as Node)) {
         closePopOver();
       }
     },

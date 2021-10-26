@@ -1,5 +1,5 @@
-import React, { FunctionComponent, MouseEvent } from 'react';
-import { ThemeProvider, useTheme } from 'styled-components';
+import React, { FunctionComponent, MouseEvent } from "react";
+import { ThemeProvider, useTheme } from "styled-components";
 
 import defaultTheme from "src/themes/cruk";
 
@@ -20,7 +20,6 @@ export type PaginationProps = {
   searchParam?: string;
 };
 
-
 /**
  * 
  * Pagination is used when we are viewing large amounts of data.
@@ -34,7 +33,7 @@ const Pagination: FunctionComponent<PaginationProps> = ({
   pagerCallback,
   perPage,
   searchParam,
-  children
+  children,
 }) => {
   const foundTheme = useTheme();
   const theme = {
@@ -45,7 +44,9 @@ const Pagination: FunctionComponent<PaginationProps> = ({
   const totalPages = Math.ceil(items / perPageValue) || 1;
 
   const linkProps = (number: number) => ({
-    href: `${typeof window !== 'undefined' ? window.location.pathname : ''}?${searchParam ? `${searchParam}=${number}` : '' }`,
+    href: `${typeof window !== "undefined" ? window.location.pathname : ""}?${
+      searchParam ? `${searchParam}=${number}` : ""
+    }`,
     onClick: (e: MouseEvent) => {
       e.preventDefault();
       pagerCallback(number);
@@ -56,7 +57,7 @@ const Pagination: FunctionComponent<PaginationProps> = ({
     const list = [];
     let pager = [];
     // get the list of items
-    for (let number = 1; number <= total; number+=1) {
+    for (let number = 1; number <= total; number += 1) {
       list.push(
         <PagerItem key={number}>
           <PagerLink
@@ -85,9 +86,7 @@ const Pagination: FunctionComponent<PaginationProps> = ({
     pager = list.slice(0, total);
     if (total > 7) {
       if (active <= 4) {
-        pager = hideLast
-          ? list.slice(0, 7)
-          : list.slice(0, 5).concat(last);
+        pager = hideLast ? list.slice(0, 7) : list.slice(0, 5).concat(last);
       } else {
         pager =
           active > total - 4
@@ -119,8 +118,7 @@ const Pagination: FunctionComponent<PaginationProps> = ({
               <PagerLink
                 name="Next"
                 disabled={current === totalPages}
-                {...(current !== totalPages &&
-                  linkProps(current + 1))}
+                {...(current !== totalPages && linkProps(current + 1))}
               >
                 Next
               </PagerLink>

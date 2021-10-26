@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { ThemeType } from 'src/types';
+import styled, { css } from "styled-components";
+import { ThemeType } from "src/types";
 
 const CHECK_BOX_SIZE = "1.5rem";
 const CHECK_SIZE = "1.125rem";
@@ -13,8 +13,8 @@ type StyledLabelProps = {
 };
 
 type ThemeProps = {
-  theme: ThemeType
-}
+  theme: ThemeType;
+};
 export const CheckWrapper = styled.div`
   display: inline-block;
   height: ${CHECK_BOX_SIZE};
@@ -75,7 +75,8 @@ export const StyledLabel = styled.label<StyledLabelProps>`
     checked || !theme.utilities.useDefaultFocusRect
       ? theme.typography.fontWeightHeavy
       : theme.typography.fontWeightMedium};
-  color: ${({ theme, disabled }: StyledLabelProps) => (disabled ? theme.colors.disabled : theme.colors.textDark)};
+  color: ${({ theme, disabled }: StyledLabelProps) =>
+    disabled ? theme.colors.disabled : theme.colors.textDark};
   padding: ${({ theme }: ThemeProps) =>
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
   &:focus ~ ${CheckWrapper} ${Check} {

@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
-import Spacing, { SpacingProps } from 'src/components/Spacing';
-import { ColorKeyType, ThemeType } from 'src/types';
+import Spacing, { SpacingProps } from "src/components/Spacing";
+import { ColorKeyType, ThemeType } from "src/types";
 
 type StyledBoxProps = SpacingProps & {
   backgroundColor?: string;
@@ -10,23 +10,31 @@ type StyledBoxProps = SpacingProps & {
 };
 
 export const StyledBox = styled.div<StyledBoxProps>`
-  background-color: ${({ theme }: StyledBoxProps) => theme.colors.backgroundLight};
-  padding: ${({ theme, backgroundColor }: StyledBoxProps) => (backgroundColor ? theme.spacing.s : 0)};
-  margin: 0 0 ${({theme}: StyledBoxProps) => theme.spacing.m} 0;
+  background-color: ${({ theme }: StyledBoxProps) =>
+    theme.colors.backgroundLight};
+  padding: ${({ theme, backgroundColor }: StyledBoxProps) =>
+    backgroundColor ? theme.spacing.s : 0};
+  margin: 0 0 ${({ theme }: StyledBoxProps) => theme.spacing.m} 0;
 
   &:last-child {
     margin-bottom: 0;
   }
 
-  background-color: ${({ theme: { colors }, backgroundColor }: StyledBoxProps) =>
-    backgroundColor && typeof colors[backgroundColor as ColorKeyType] !== 'undefined'
+  background-color: ${({
+    theme: { colors },
+    backgroundColor,
+  }: StyledBoxProps) =>
+    backgroundColor &&
+    typeof colors[backgroundColor as ColorKeyType] !== "undefined"
       ? colors[backgroundColor as ColorKeyType]
-      : backgroundColor || 'transparent'};
+      : backgroundColor || "transparent"};
 
-  ${(props: StyledBoxProps) => props.css && css`
-    ${props.css}
-  `}
-  ${props => Spacing(props, props.theme)}
+  ${(props: StyledBoxProps) =>
+    props.css &&
+    css`
+      ${props.css}
+    `}
+  ${(props) => Spacing(props, props.theme)}
 `;
 
 export default StyledBox;

@@ -22,7 +22,8 @@ const StyledSelect = styled.select<StyledSelectProps>`
       ${({ theme }: StyledSelectProps) => theme.colors.selectBackground} 50%,
       ${({ theme }: StyledSelectProps) => theme.colors.backgroundLight} 50%
     );
-  background-color: ${({ theme }: StyledSelectProps) => theme.colors.backgroundLight};
+  background-color: ${({ theme }: StyledSelectProps) =>
+    theme.colors.backgroundLight};
   background-position: calc(100% - 16px) 50%, calc(100% - 10px) 50%;
   background-size: 6px 6px;
   background-repeat: no-repeat;
@@ -57,7 +58,5 @@ const StyledSelect = styled.select<StyledSelectProps>`
       : null};
 `;
 
-export default StyledSelect
-export {
-  StyledSelect
-}
+export default StyledSelect;
+export { StyledSelect };

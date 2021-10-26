@@ -24,13 +24,15 @@ type StyledInputProps = {
 
 export const Extra = styled.span<ExtraProps>`
   display: block;
-  background-color: ${({ theme }: ExtraProps) => theme.colors.textInputExtraInfo};
+  background-color: ${({ theme }: ExtraProps) =>
+    theme.colors.textInputExtraInfo};
   border-radius: ${({ theme }: ExtraProps) => theme.button.borderRadius};
   color: ${({ theme }: ExtraProps) => theme.colors.textDark};
   font-size: ${({ theme }: ExtraProps) => theme.fontSizes.m};
   line-height: ${({ theme }: ExtraProps) => theme.typography.lineHeight};
   font-weight: ${({ theme }: ExtraProps) => theme.typography.fontWeightLight};
-  padding: ${({ theme }: ExtraProps) => `calc((${MIN_HEIGHT} - 1em ) / 2) ${theme.spacing.xs}`};
+  padding: ${({ theme }: ExtraProps) =>
+    `calc((${MIN_HEIGHT} - 1em ) / 2) ${theme.spacing.xs}`};
   margin: 0;
   line-height: 1rem;
   width: 100%;
@@ -42,13 +44,15 @@ export const ExtraLeft = styled(Extra)`
   height: ${MIN_HEIGHT};
 
   button {
-    min-height: ${({ theme }: ExtraProps) => `calc(${MIN_HEIGHT} - (2 * ${theme.utilities.inputBorderWidth}))`} !important;
+    min-height: ${({ theme }: ExtraProps) =>
+      `calc(${MIN_HEIGHT} - (2 * ${theme.utilities.inputBorderWidth}))`} !important;
   }
 `;
 
 export const ExtraRight = styled(Extra)`
   width: initial;
-  border: solid ${({ theme }: ExtraProps) => theme.utilities.inputBorderWidth} ${({ theme }: ExtraProps) => theme.colors.textInputBorder};
+  border: solid ${({ theme }: ExtraProps) => theme.utilities.inputBorderWidth}
+    ${({ theme }: ExtraProps) => theme.colors.textInputBorder};
   transition: border-color 150ms linear;
   border-left: 0;
   background-color: transparent;
@@ -57,7 +61,8 @@ export const ExtraRight = styled(Extra)`
   vertical-align: middle;
 
   button {
-    min-height: ${({ theme }: ExtraProps) => `calc(${MIN_HEIGHT} - (2 * ${theme.utilities.inputBorderWidth}))`} !important;
+    min-height: ${({ theme }: ExtraProps) =>
+      `calc(${MIN_HEIGHT} - (2 * ${theme.utilities.inputBorderWidth}))`} !important;
   }
 `;
 
@@ -98,17 +103,18 @@ export const StyledInputWrapper = styled.span<StyledInputProps>`
 `;
 
 export const StyledInput = styled.input<StyledInputProps>`
-  background-color: ${({ theme } : ExtraProps) => theme.colors.backgroundLight};
+  background-color: ${({ theme }: ExtraProps) => theme.colors.backgroundLight};
   background-image: none;
-  border-radius: ${({ theme } : ExtraProps) => theme.button.borderRadius};
-  border: solid ${({ theme } : ExtraProps) => theme.utilities.inputBorderWidth} ${({ hasError, theme }: StyledInputProps) =>
-  hasError ? theme.colors.textError : theme.colors.textInputBorder};
-  color: ${({ theme } : ExtraProps) => theme.colors.textDark};
+  border-radius: ${({ theme }: ExtraProps) => theme.button.borderRadius};
+  border: solid ${({ theme }: ExtraProps) => theme.utilities.inputBorderWidth}
+    ${({ hasError, theme }: StyledInputProps) =>
+      hasError ? theme.colors.textError : theme.colors.textInputBorder};
+  color: ${({ theme }: ExtraProps) => theme.colors.textDark};
   display: block;
-  font-size: ${({ theme } : ExtraProps) => theme.fontSizes.m};
-  line-height: ${({ theme } : ExtraProps) => theme.typography.lineHeight};
+  font-size: ${({ theme }: ExtraProps) => theme.fontSizes.m};
+  line-height: ${({ theme }: ExtraProps) => theme.typography.lineHeight};
   min-width: 3em;
-  padding: ${({ theme } : ExtraProps) =>
+  padding: ${({ theme }: ExtraProps) =>
     `calc((${MIN_HEIGHT} - (${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xs}`};
 
   /* Make sure text doesn't go behind the valid indicatior icon */
@@ -121,8 +127,8 @@ export const StyledInput = styled.input<StyledInputProps>`
   width: 100%;
   transition: border-color 150ms linear;
   &:disabled {
-    border-color: ${({ theme } : ExtraProps) => theme.colors.disabled};
-    color: ${({ theme } : ExtraProps) => theme.colors.disabled};
+    border-color: ${({ theme }: ExtraProps) => theme.colors.disabled};
+    color: ${({ theme }: ExtraProps) => theme.colors.disabled};
   }
 
   ${({ theme }: ExtraProps) =>

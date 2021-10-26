@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Button from "src/components/Button";
 import Icon from "src/components/Icon";
 
-import { FontSizeType, ThemeType, ColorKeyType } from 'src/types';
+import { FontSizeType, ThemeType, ColorKeyType } from "src/types";
 
 type DefaultHeaderProps = {
   theme: ThemeType;
@@ -27,7 +27,7 @@ export const DefaultHeader = styled(Button)<{
 }>`
   display: flex;
   color: ${({ theme: { colors }, textColor }: DefaultHeaderProps) =>
-    textColor && typeof colors[textColor as ColorKeyType] !== 'undefined'
+    textColor && typeof colors[textColor as ColorKeyType] !== "undefined"
       ? colors[textColor as ColorKeyType]
       : textColor || colors.secondary};
   font-size: ${({
@@ -37,7 +37,8 @@ export const DefaultHeader = styled(Button)<{
     },
     textSize,
   }: DefaultHeaderProps) => (textSize ? fontSizes[textSize] : m)};
-  font-family: ${({ theme, textFontFamily }: DefaultHeaderProps) => (textFontFamily || theme.typography.fontFamilyBase)};
+  font-family: ${({ theme, textFontFamily }: DefaultHeaderProps) =>
+    textFontFamily || theme.typography.fontFamilyBase};
   font-weight: normal;
   margin-bottom: 0;
   height: initial;
@@ -46,7 +47,7 @@ export const DefaultHeader = styled(Button)<{
   :hover,
   :focus {
     color: ${({ theme: { colors }, textColor }: DefaultHeaderProps) =>
-      textColor && typeof colors[textColor as ColorKeyType] !== 'undefined'
+      textColor && typeof colors[textColor as ColorKeyType] !== "undefined"
         ? colors[textColor as ColorKeyType]
         : textColor || colors.secondary};
   }
@@ -58,8 +59,9 @@ export const CollapseContent = styled.div<{
 }>`
   margin: 0;
   transition: ${transitionDurationSeconds}s ease;
-  height: ${({ contentHeight }: { contentHeight: string; }) => contentHeight};
-  visibility: ${({ openStatus }: {   openStatus: boolean; }) => (openStatus ? 'visible' : 'hidden')};
+  height: ${({ contentHeight }: { contentHeight: string }) => contentHeight};
+  visibility: ${({ openStatus }: { openStatus: boolean }) =>
+    openStatus ? "visible" : "hidden"};
   overflow: hidden;
   & > p {
     margin-top: 0;

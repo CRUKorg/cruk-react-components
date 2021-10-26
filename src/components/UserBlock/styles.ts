@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import { ThemeType } from 'src/types';
+import styled from "styled-components";
+import { ThemeType } from "src/types";
 
 type Props = {
-  theme: ThemeType
-}
+  theme: ThemeType;
+};
 
 export const StyledUserBlock = styled.div`
   display: flex;

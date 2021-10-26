@@ -1,12 +1,12 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 import { ThemeType } from "src/types";
 
 import ProgressBar from "src/components/ProgressBar";
 
 type ThemeProps = {
-  theme: ThemeType
-}
+  theme: ThemeType;
+};
 
 export const BubbleWrapper = styled.div`
   text-align: center;
@@ -31,13 +31,16 @@ export const Total = styled.p`
   color: ${({ theme }: ThemeProps) => theme.colors.totaliserBubbleTotalColor};
   font-size: 2.625rem;
   line-height: 3rem;
-  font-family: ${({ theme }: ThemeProps) => theme.typography.fontFamilyHeadings};
-  text-transform: ${({ theme }: ThemeProps) => theme.typography.headerTextTransform};
+  font-family: ${({ theme }: ThemeProps) =>
+    theme.typography.fontFamilyHeadings};
+  text-transform: ${({ theme }: ThemeProps) =>
+    theme.typography.headerTextTransform};
 `;
 
 export const BubbleText = styled.p`
   color: ${({ theme }: ThemeProps) => theme.colors.totaliserBubbleTextColor};
-  font-family: ${({ theme }: ThemeProps) => theme.typography.fontFamilyHeadings};
+  font-family: ${({ theme }: ThemeProps) =>
+    theme.typography.fontFamilyHeadings};
   text-transform: ${({
     theme: {
       typography: { headerTextTransform },
@@ -47,7 +50,8 @@ export const BubbleText = styled.p`
 
 export const GiftAid = styled.p`
   color: ${({ theme }: ThemeProps) => theme.colors.totaliserBubbleTotalColor};
-  font-family: ${({ theme }: ThemeProps) => theme.typography.fontFamilyHeadings};
+  font-family: ${({ theme }: ThemeProps) =>
+    theme.typography.fontFamilyHeadings};
   text-transform: ${({
     theme: {
       typography: { headerTextTransform },
@@ -67,7 +71,8 @@ type TotaliserWrapperProps = {
 };
 
 export const TotaliserWrapper = styled.div<TotaliserWrapperProps>`
-  font-family: ${({ theme }: ThemeProps) => theme.typography.fontFamilyHeadings};
+  font-family: ${({ theme }: ThemeProps) =>
+    theme.typography.fontFamilyHeadings};
   margin: 0;
   ${(props) =>
     props.isCompact &&

@@ -1,11 +1,11 @@
-import styled, { css, keyframes } from 'styled-components';
-import { ThemeType } from 'src/types';
+import styled, { css, keyframes } from "styled-components";
+import { ThemeType } from "src/types";
 
 const CIRCLE_THICKENESS = "4px";
 
 type ThemeProp = {
-  theme: ThemeType
-}
+  theme: ThemeType;
+};
 
 export const ProgressBarWrapper = styled.div`
   margin-top: 15px;
@@ -30,7 +30,6 @@ type LineProgressBarProps = {
   percentage: number;
   barColor?: string;
 };
-
 
 type CircularColorFillProps = {
   barColor?: string;
@@ -61,7 +60,7 @@ export const LineProgressBar = styled.div<LineProgressBarProps>`
     theme: {
       colors: { progressBar },
     },
-  }: CircularColorFillProps & ThemeProp) => (barColor || progressBar)};
+  }: CircularColorFillProps & ThemeProp) => barColor || progressBar};
   border-radius: ${({
     theme: {
       button: { borderRadius },
@@ -89,7 +88,6 @@ export const ScreenReaderOnly = styled.span`
   border: 0;
 `;
 
-
 export const CircularColorFill = styled.span<CircularColorFillProps>`
   width: 100%;
   height: 100%;
@@ -103,7 +101,7 @@ export const CircularColorFill = styled.span<CircularColorFillProps>`
     theme: {
       colors: { circularProgress },
     },
-  }: CircularColorFillProps & ThemeProp) => (barColor || circularProgress)};
+  }: CircularColorFillProps & ThemeProp) => barColor || circularProgress};
 `;
 
 export const CircularLeft = styled.span`
@@ -168,7 +166,8 @@ export const CircularWrapper = styled.div<{
       theme: {
         colors: { circularProgressBackground },
       },
-    }: ThemeProp) => `${CIRCLE_THICKENESS} solid ${circularProgressBackground}`};
+    }: ThemeProp) =>
+      `${CIRCLE_THICKENESS} solid ${circularProgressBackground}`};
     position: absolute;
     top: 0;
     left: 0;

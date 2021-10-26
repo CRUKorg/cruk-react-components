@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import defaultTheme from 'src/themes/cruk';
-import { ThemeType } from 'src/types';
+import defaultTheme from "src/themes/cruk";
+import { ThemeType } from "src/types";
 
 const HEADER_HEIGHT_LARGE = "120px";
 const HEADER_HEIGHT_SMALL = "72px";
@@ -14,8 +14,7 @@ type StyledHeaderProps = {
   isSmall?: boolean;
   isSticky?: boolean;
   fullWidth?: boolean;
-}
-
+};
 
 export const StyledHeader = styled.header<{
   isSmall?: boolean;
@@ -75,8 +74,10 @@ export const HeaderStickyContainer = styled.div<{
         breakpoint: { desktop },
       },
     }: StyledHeaderProps) => desktop}) {
-    position: ${({ isSticky, isSmall }: StyledHeaderProps) => (isSticky && isSmall ? 'fixed' : 'relative')};
-    height: ${({ isSmall, isSticky }: StyledHeaderProps) => (isSmall && isSticky ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE)};
+    position: ${({ isSticky, isSmall }: StyledHeaderProps) =>
+      isSticky && isSmall ? "fixed" : "relative"};
+    height: ${({ isSmall, isSticky }: StyledHeaderProps) =>
+      isSmall && isSticky ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE};
   }
 `;
 
@@ -118,7 +119,10 @@ export const LogoWrapper = styled.div<{
         breakpoint: { desktop },
       },
     }: StyledHeaderProps) => desktop}) {
-    height: ${({ isSmall, isSticky }: StyledHeaderProps) => (isSmall && isSticky ? HEADER_LOGO_HEIGHT_SMALL : HEADER_LOGO_HEIGHT_LARGE)};
+    height: ${({ isSmall, isSticky }: StyledHeaderProps) =>
+      isSmall && isSticky
+        ? HEADER_LOGO_HEIGHT_SMALL
+        : HEADER_LOGO_HEIGHT_LARGE};
   }
 `;
 
@@ -158,7 +162,8 @@ export const SkipToMain = styled.a`
 
 export const Tagline = styled.p<{ isSmall?: boolean; isSticky?: boolean }>`
   flex: 1 1 auto;
-  font-family: ${({ theme }: StyledHeaderProps) => theme.typography.fontFamilyHeadings};
+  font-family: ${({ theme }: StyledHeaderProps) =>
+    theme.typography.fontFamilyHeadings};
   font-weight: ${({
     theme: {
       typography: { fontWeightLight },
@@ -179,6 +184,7 @@ export const Tagline = styled.p<{ isSmall?: boolean; isSticky?: boolean }>`
         breakpoint: { desktop },
       },
     }: StyledHeaderProps) => desktop}) {
-    display: ${({ isSmall, isSticky }: StyledHeaderProps) => (isSmall && isSticky ? `none` : `block`)};
+    display: ${({ isSmall, isSticky }: StyledHeaderProps) =>
+      isSmall && isSticky ? `none` : `block`};
   }
 `;

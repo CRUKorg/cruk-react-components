@@ -7,12 +7,10 @@ import { ThemeType } from "src/types";
 const LEGEND_WIDTH = "20%";
 
 type ThemeProp = {
-  theme: ThemeType
-}
+  theme: ThemeType;
+};
 
-type StyleRadioWidthProp =
-  { numberOfAttributes: number; }
-  & ThemeProp
+type StyleRadioWidthProp = { numberOfAttributes: number } & ThemeProp;
 
 export const StyledRadio = styled(RadioInput)`
   display: block;

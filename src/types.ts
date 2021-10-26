@@ -274,7 +274,7 @@ export type AddressOptionsType = {
   Type: string;
   Id: string;
   Text: string;
-  Error?: Error 
+  Error?: Error;
 };
 
 export type WordBreakType =

@@ -24,7 +24,12 @@ function getScrollPosition({
 }
 
 function useScrollPosition(
-  effect: ({ currPos }: { prevPos: { x: number; y: number }; currPos: { x: number; y: number } }) => void,
+  effect: ({
+    currPos,
+  }: {
+    prevPos: { x: number; y: number };
+    currPos: { x: number; y: number };
+  }) => void,
   deps: DependencyList,
   element: RefObject<HTMLElement> | MutableRefObject<undefined> | null,
   useWindow: boolean,

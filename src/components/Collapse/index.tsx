@@ -19,7 +19,6 @@ import {
   transitionDurationSeconds,
 } from "./styles";
 
-
 export type CollapseProps = HTMLAttributes<HTMLElement> & {
   /** id is required for a11y reasons as we use aria attributes which depends on an id  */
   id: string;
@@ -76,7 +75,7 @@ const Collapse: FunctionComponent<CollapseProps> = (props) => {
     setOpenStatus(newOpenState);
 
     if (current !== null) {
-      setContentHeight(`${current.scrollHeight  }px`);
+      setContentHeight(`${current.scrollHeight}px`);
     }
 
     if (newOpenState === false) {
@@ -91,10 +90,9 @@ const Collapse: FunctionComponent<CollapseProps> = (props) => {
         transitionDurationSeconds * 1000
       );
     }
-    if(onOpenChange !== undefined) {
+    if (onOpenChange !== undefined) {
       onOpenChange(newOpenState);
     }
-
   };
 
   const handleKeyDown = (event: KeyboardEvent) => {

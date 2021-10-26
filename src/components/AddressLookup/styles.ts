@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { ThemeType } from 'src/types';
+import styled from "styled-components";
+import { ThemeType } from "src/types";
 
 interface ListWrapperProps extends React.HTMLProps<HTMLDivElement> {
   tabIndex?: number;
@@ -8,7 +8,7 @@ interface ListWrapperProps extends React.HTMLProps<HTMLDivElement> {
 type ListProps = {
   theme: ThemeType;
   isActive?: boolean;
-}
+};
 
 export const ListWrapper = styled.div<ListWrapperProps>`
   position: relative;
@@ -34,7 +34,8 @@ export const ListItem = styled.li<{
   ref?: React.Ref<HTMLLIElement>;
 }>`
   align-items: center;
-  background-color: ${({ theme, isActive }: ListProps) => (isActive ? theme.colors.backgroundMid : theme.colors.backgroundLight)};
+  background-color: ${({ theme, isActive }: ListProps) =>
+    isActive ? theme.colors.backgroundMid : theme.colors.backgroundLight};
   cursor: pointer;
   display: flex;
   justify-content: space-between;

@@ -8,7 +8,6 @@ import { useTheme } from "styled-components";
 
 import defaultTheme from "src/themes/cruk";
 
-
 import { SpacingProps } from "src/components/Spacing";
 import { WordBreakType, FontSizeType, ColorKeyType } from "src/types";
 import { TextStyled } from "./styles";

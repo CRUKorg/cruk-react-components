@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { ThemeType } from 'src/types';
+import { ThemeType } from "src/types";
 
 type StyledFieldsetProps = {
   hasError?: boolean;
@@ -15,13 +15,17 @@ export const LegendSpan = styled.span<{
   display: block;
   color: ${({ theme }: StyledFieldsetProps) => theme.colors.textDark};
   font-size: ${({ theme }: StyledFieldsetProps) => theme.fontSizes.m};
-  line-height: ${({ theme }: StyledFieldsetProps) => theme.typography.lineHeight};
-  font-weight: ${({ theme }: StyledFieldsetProps) => theme.typography.fontWeightHeavy};
+  line-height: ${({ theme }: StyledFieldsetProps) =>
+    theme.typography.lineHeight};
+  font-weight: ${({ theme }: StyledFieldsetProps) =>
+    theme.typography.fontWeightHeavy};
   min-width: 3em;
-  margin-bottom: ${({ hasHintText, theme }: StyledFieldsetProps) => (hasHintText ? theme.spacing.xxs : 0)};
+  margin-bottom: ${({ hasHintText, theme }: StyledFieldsetProps) =>
+    hasHintText ? theme.spacing.xxs : 0};
 
   & > * {
-    font-weight: ${({ theme }: StyledFieldsetProps) => theme.typography.fontWeightMedium};
+    font-weight: ${({ theme }: StyledFieldsetProps) =>
+      theme.typography.fontWeightMedium};
   }
 `;
 
@@ -33,8 +37,10 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
   }
   label {
     border-style: solid;
-    border-width: ${({ theme }: StyledFieldsetProps) => theme.utilities.inputBorderWidth};
-    border-color: ${({ hasError, theme }: StyledFieldsetProps) => hasError && theme.colors.textError};
+    border-width: ${({ theme }: StyledFieldsetProps) =>
+      theme.utilities.inputBorderWidth};
+    border-color: ${({ hasError, theme }: StyledFieldsetProps) =>
+      hasError && theme.colors.textError};
     margin-bottom: ${({ theme }: StyledFieldsetProps) => theme.spacing.s};
     &:last-of-type {
       margin-bottom: 0;

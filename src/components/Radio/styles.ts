@@ -1,13 +1,13 @@
-import styled, { css } from 'styled-components';
-import { ThemeType } from 'src/types';
+import styled, { css } from "styled-components";
+import { ThemeType } from "src/types";
 
 const RADIO_SIZE = "1.5rem";
 const RADIO_INNER_SIZE = "1rem";
 const BUTTON_HEIGHT = "3em";
 
 type ThemeProp = {
-  theme: ThemeType
-}
+  theme: ThemeType;
+};
 
 export const CheckWrapper = styled.div`
   display: inline-block;
@@ -52,19 +52,17 @@ export const Check = styled.span`
 
 type CheckedProp = {
   checked: boolean;
-}
+};
 
 type DisabledProp = {
   disabled: boolean;
-}
+};
 
-type StyledLabelProps =
-  { 
-    hasError: boolean;
-  }
-  & ThemeProp
-  & CheckedProp
-  & DisabledProp;
+type StyledLabelProps = {
+  hasError: boolean;
+} & ThemeProp &
+  CheckedProp &
+  DisabledProp;
 
 export const StyledLabel = styled.label<StyledLabelProps>`
   background-color: ${({ theme }: ThemeProp) => theme.colors.backgroundLight};
@@ -81,8 +79,9 @@ export const StyledLabel = styled.label<StyledLabelProps>`
       : theme.colors.inputBorder};
   cursor: pointer;
   display: inline-block;
-  font-weight: ${({ checked }: CheckedProp) => (checked ? 'bold' : 'normal')};
-  color: ${({ theme, disabled }: ThemeProp & DisabledProp ) => (disabled ? theme.colors.disabled : theme.colors.textDark)};
+  font-weight: ${({ checked }: CheckedProp) => (checked ? "bold" : "normal")};
+  color: ${({ theme, disabled }: ThemeProp & DisabledProp) =>
+    disabled ? theme.colors.disabled : theme.colors.textDark};
   padding: ${({ theme }: ThemeProp) =>
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
   vertical-align: middle;

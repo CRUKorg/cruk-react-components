@@ -3,8 +3,8 @@ import styled, { css } from "styled-components";
 import { ThemeType, PopOverPositionType } from "src/types";
 
 type ThemeProp = {
-  theme: ThemeType,
-}
+  theme: ThemeType;
+};
 
 export const PopOverWrapper = styled.div<{
   css?: string;
@@ -12,9 +12,11 @@ export const PopOverWrapper = styled.div<{
   position: relative;
   display: inline-block;
 
-  ${(props: {css?: string}) => props.css && css`
-    ${props.css}
-  `}
+  ${(props: { css?: string }) =>
+    props.css &&
+    css`
+      ${props.css}
+    `}
 `;
 
 export const PopOverModal = styled.div<{

@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { ThemeType } from 'src/types';
+import styled, { css } from "styled-components";
+import { ThemeType } from "src/types";
 
 export const StepWrapper = styled.div`
   text-align: center;
@@ -12,7 +12,7 @@ type StepListProps = {
 
 type ThemeProps = {
   theme: ThemeType;
-}
+};
 
 export const StepList = styled.ul<StepListProps>`
   list-style: none;
@@ -39,10 +39,10 @@ export const StepBar = styled.span`
   background-clip: padding-box;
   width: 24px;
   height: 24px;
-  background-color: ${({theme}: ThemeProps) => theme.colors.stepBackground};
+  background-color: ${({ theme }: ThemeProps) => theme.colors.stepBackground};
   display: block;
   margin: 0 auto 0.5em auto;
-  border: 2px solid ${({theme}: ThemeProps) => theme.colors.stepBorder};
+  border: 2px solid ${({ theme }: ThemeProps) => theme.colors.stepBorder};
   text-indent: -999px;
 
   &:after {
@@ -52,7 +52,8 @@ export const StepBar = styled.span`
     height: 2px;
     content: "";
     background-color: transparent;
-    border-bottom: 2px solid ${({theme}: ThemeProps) => theme.colors.stepBorder};
+    border-bottom: 2px solid
+      ${({ theme }: ThemeProps) => theme.colors.stepBorder};
     left: 50%;
     top: 11px;
     margin-left: 12px;
@@ -93,7 +94,7 @@ export const StepItem = styled.li<StepItemProps>`
     props.active &&
     css`
       ${StepBar} {
-        border-color: ${({theme}: ThemeProps) => theme.colors.tertiary};
+        border-color: ${({ theme }: ThemeProps) => theme.colors.tertiary};
       }
     `}
   ${(props) =>
@@ -103,7 +104,8 @@ export const StepItem = styled.li<StepItemProps>`
         border: none;
         background-color: ${({ theme }: ThemeProps) => theme.colors.tertiary};
         &:after {
-          border-bottom: 2px solid ${({theme}: ThemeProps) => theme.colors.tertiary};
+          border-bottom: 2px solid
+            ${({ theme }: ThemeProps) => theme.colors.tertiary};
         }
       }
     `}

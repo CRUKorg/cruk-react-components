@@ -13,7 +13,6 @@ import Icon from "src/components/Icon";
 import { ButtonAppearanceType } from "src/types";
 import { Spacer, StyledButton } from "./styles";
 
-
 export type Props = ButtonHTMLAttributes<HTMLElement> & {
   /** the look and feel of the button */
   appearance?: ButtonAppearanceType;
@@ -48,14 +47,15 @@ export const Button: FunctionComponent<Props> = forwardRef(
     const childArray = React.Children.toArray(props.children);
 
     // button has a fixed width if there is a single icon
-    const setIconButton =
-      !!(isIconButton ||
+    const setIconButton = !!(
+      isIconButton ||
       (props.children &&
         childArray.length === 1 &&
         childArray[0] &&
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore typescript doesn't seem to like child.type but it works fine
-        childArray[0].type === Icon));
+        childArray[0].type === Icon)
+    );
 
     return (
       <StyledButton

@@ -1,18 +1,17 @@
-import styled from 'styled-components';
-import { ColorKeyType, ThemeType } from 'src/types';
+import styled from "styled-components";
+import { ColorKeyType, ThemeType } from "src/types";
 
-import Box from '../Box';
-import {Button} from '../Button';
-
+import Box from "../Box";
+import { Button } from "../Button";
 
 type ThemeProp = {
-  theme: ThemeType
-}
+  theme: ThemeType;
+};
 
 type ContentProp = {
-  backgroundColor?: string; 
-  theme: ThemeType,
-}
+  backgroundColor?: string;
+  theme: ThemeType;
+};
 
 export const Background = styled.div`
   background: ${({ theme }: ThemeProp) => theme.colors.modalBackdrop};
@@ -36,7 +35,7 @@ export const Wrapper = styled.div`
   z-index: 9999;
 `;
 
-export const Content = styled(Box) <{
+export const Content = styled(Box)<{
   maxWidth: string;
   top: string;
 }>`
@@ -44,11 +43,12 @@ export const Content = styled(Box) <{
     backgroundColor !== undefined && typeof backgroundColor !== undefined
       ? colors[backgroundColor as ColorKeyType] !== undefined
         ? colors[backgroundColor as ColorKeyType]
-        : backgroundColor : colors.backgroundLight};
+        : backgroundColor
+      : colors.backgroundLight};
   position: relative;
   border-radius: 4px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-  margin: ${({ top }: { top: string}) => `${top} auto auto auto`};
+  margin: ${({ top }: { top: string }) => `${top} auto auto auto`};
   width: 90%;
   min-height: 10rem;
   padding: ${({
@@ -56,7 +56,7 @@ export const Content = styled(Box) <{
       spacing: { xs },
     },
   }: ThemeProp) => xs};
-  max-width: ${({ maxWidth }: { maxWidth: string}) => maxWidth};
+  max-width: ${({ maxWidth }: { maxWidth: string }) => maxWidth};
   z-index: 9999;
   margin-bottom: ${({ theme }: ThemeProp) => theme.spacing.xxl};
 `;

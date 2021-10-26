@@ -1,9 +1,9 @@
-import styled, { keyframes } from 'styled-components';
-import { ThemeType } from 'src/types';
+import styled, { keyframes } from "styled-components";
+import { ThemeType } from "src/types";
 
 type SpinnerProps = {
-  theme: ThemeType
-}
+  theme: ThemeType;
+};
 
 const BounceDelay = keyframes`
   0%,

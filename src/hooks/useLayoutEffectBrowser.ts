@@ -11,6 +11,6 @@ export const useLayoutEffectBrowser = (
 ) => {
   if (!isBrowser) return null;
   return useLayoutEffect(action, deps);
-}
+};
 
 export default useLayoutEffectBrowser;

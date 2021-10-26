@@ -12,9 +12,11 @@ export const calculatePercentRounded = (
 };
 
 export const formatMoney = (value: number): string => {
-  const parsed = Number.parseFloat((Math.round(value * 100) / 100).toString()).toFixed(2);
+  const parsed = Number.parseFloat(
+    (Math.round(value * 100) / 100).toString()
+  ).toFixed(2);
   if (Number.isNaN(parseFloat(parsed)) || Number.isNaN(value)) {
-    return '0';
+    return "0";
   }
   return parsed;
 };
@@ -26,14 +28,16 @@ export const numberWithCommas = (n?: number | string): string => {
   const parts = n.toString().split(".");
 
   return `${parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")}${
-    parts[1] ? `.${  parts[1]}` : ""
+    parts[1] ? `.${parts[1]}` : ""
   }`;
 };
 
 export const formatMoneyWithCommas = (value: number): string => {
-  const parsed = Number.parseFloat((Math.round(value * 100) / 100).toString()).toFixed(2);
+  const parsed = Number.parseFloat(
+    (Math.round(value * 100) / 100).toString()
+  ).toFixed(2);
   if (Number.isNaN(parseFloat(parsed)) || Number.isNaN(value)) {
-    return '0';
+    return "0";
   }
   return numberWithCommas(parsed);
 };

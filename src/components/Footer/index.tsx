@@ -26,10 +26,7 @@ export type FooterProps = HTMLAttributes<HTMLElement> & {
 /**
  * There should be only one footer component at the bottom of the body of each page. Links can be passed as children
  * */
-export const Footer: FC<FooterProps> = ({
-  children,
-  middleSection
-}) => {
+export const Footer: FC<FooterProps> = ({ children, middleSection }) => {
   const childArray = React.Children.toArray(children);
 
   const foundTheme = useTheme();

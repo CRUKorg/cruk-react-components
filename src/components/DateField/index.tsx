@@ -60,74 +60,74 @@ const DateField: FC<DateFieldProps> = ({
   disabled,
   required,
 }) => (
-    <Fieldset>
-      <Text as="legend" textWeight={700} marginBottom="xxs">
-        {label} {!!required && ` (required)`}
-      </Text>
-      {hintText && <Text>{hintText}</Text>}
-      <DateTextFieldWrapper>
-        <TextField
-          label="Day"
-          type="text"
-          name={dayName}
-          required={!!required}
-          hideRequiredInLabel
-          maxLength={2}
-          autoComplete="bday-day"
-          pattern="[0-9]*"
-          inputMode="numeric"
-          value={day}
-          onChange={onChange}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          hasError={dayHasError}
-          disabled={disabled}
-        />
-      </DateTextFieldWrapper>
-      <DateTextFieldWrapper>
-        <TextField
-          label="Month"
-          type="text"
-          name={monthName}
-          required={!!required}
-          hideRequiredInLabel
-          maxLength={2}
-          autoComplete="bday-month"
-          pattern="[0-9]*"
-          inputMode="numeric"
-          value={month}
-          onChange={onChange}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          hasError={monthHasError}
-          disabled={disabled}
-        />
-      </DateTextFieldWrapper>
-      <LargeDateTextFieldWrapper>
-        <TextField
-          label="Year"
-          type="text"
-          name={yearName}
-          required={!!required}
-          hideRequiredInLabel
-          maxLength={4}
-          autoComplete="bday-year"
-          pattern="[0-9]*"
-          inputMode="numeric"
-          value={year}
-          onChange={onChange}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          hasError={yearHasError}
-          disabled={disabled}
-        />
-      </LargeDateTextFieldWrapper>
-      {errorMessage && (
-        <ErrorTextWrapper>
-          <ErrorText marginTop="xxs">{errorMessage}</ErrorText>
-        </ErrorTextWrapper>
-      )}
-    </Fieldset>
-  );
+  <Fieldset>
+    <Text as="legend" textWeight={700} marginBottom="xxs">
+      {label} {!!required && ` (required)`}
+    </Text>
+    {hintText && <Text>{hintText}</Text>}
+    <DateTextFieldWrapper>
+      <TextField
+        label="Day"
+        type="text"
+        name={dayName}
+        required={!!required}
+        hideRequiredInLabel
+        maxLength={2}
+        autoComplete="bday-day"
+        pattern="[0-9]*"
+        inputMode="numeric"
+        value={day}
+        onChange={onChange}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        hasError={dayHasError}
+        disabled={disabled}
+      />
+    </DateTextFieldWrapper>
+    <DateTextFieldWrapper>
+      <TextField
+        label="Month"
+        type="text"
+        name={monthName}
+        required={!!required}
+        hideRequiredInLabel
+        maxLength={2}
+        autoComplete="bday-month"
+        pattern="[0-9]*"
+        inputMode="numeric"
+        value={month}
+        onChange={onChange}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        hasError={monthHasError}
+        disabled={disabled}
+      />
+    </DateTextFieldWrapper>
+    <LargeDateTextFieldWrapper>
+      <TextField
+        label="Year"
+        type="text"
+        name={yearName}
+        required={!!required}
+        hideRequiredInLabel
+        maxLength={4}
+        autoComplete="bday-year"
+        pattern="[0-9]*"
+        inputMode="numeric"
+        value={year}
+        onChange={onChange}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        hasError={yearHasError}
+        disabled={disabled}
+      />
+    </LargeDateTextFieldWrapper>
+    {errorMessage && (
+      <ErrorTextWrapper>
+        <ErrorText marginTop="xxs">{errorMessage}</ErrorText>
+      </ErrorTextWrapper>
+    )}
+  </Fieldset>
+);
 
 export default DateField;

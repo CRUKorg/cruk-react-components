@@ -47,7 +47,7 @@ const ProgressBar: FC<ProgressBarProps> = (props = DefaultProps) => {
   const number = props.percentage;
   const percentString = `${!Number.isNaN(number) ? number : "0"}%`;
   const descriptivePercentageString = `${
-    typeof props.circleContents === 'string' ? props.circleContents : ''
+    typeof props.circleContents === "string" ? props.circleContents : ""
   } ${percentString}% Complete`;
   const textOrPercentString = props.circleContents || percentString;
 

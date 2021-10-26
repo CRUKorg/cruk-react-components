@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import Text from 'src/components/Text';
-import { ThemeType } from 'src/types';
+import styled from "styled-components";
+import Text from "src/components/Text";
+import { ThemeType } from "src/types";
 
 type ThemeProps = {
-  theme: ThemeType
-}
+  theme: ThemeType;
+};
 export const StyledErrorText = styled(Text)`
   display: inline-block;
   color: ${({ theme }: ThemeProps) => theme.colors.textError};

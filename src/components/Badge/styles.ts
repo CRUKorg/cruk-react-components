@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-import { ColorKeyType, SpaceType, ThemeType } from 'src/types';
+import { ColorKeyType, SpaceType, ThemeType } from "src/types";
 
 type StyleBadgeProps = {
   backgroundColor?: string;
@@ -14,20 +14,30 @@ type StyleBadgeProps = {
 export const StyledBadge = styled.span<StyleBadgeProps>`
   border-width: 1px;
   border-style: solid;
-  background-color: ${({ theme: { colors }, backgroundColor }: StyleBadgeProps) =>
-    backgroundColor && typeof colors[backgroundColor as ColorKeyType] !== 'undefined'
+  background-color: ${({
+    theme: { colors },
+    backgroundColor,
+  }: StyleBadgeProps) =>
+    backgroundColor &&
+    typeof colors[backgroundColor as ColorKeyType] !== "undefined"
       ? colors[backgroundColor as ColorKeyType]
       : backgroundColor || colors.primary};
   color: ${({ theme: { colors }, textColor }: StyleBadgeProps) =>
-    textColor && typeof colors[textColor as ColorKeyType] !== 'undefined'
+    textColor && typeof colors[textColor as ColorKeyType] !== "undefined"
       ? colors[textColor as ColorKeyType]
       : textColor || colors.textLight};
-  border-color: ${({ theme: { colors }, borderColor, backgroundColor }: StyleBadgeProps) =>
-    borderColor && typeof colors[borderColor as ColorKeyType] !== 'undefined'
+  border-color: ${({
+    theme: { colors },
+    borderColor,
+    backgroundColor,
+  }: StyleBadgeProps) =>
+    borderColor && typeof colors[borderColor as ColorKeyType] !== "undefined"
       ? colors[borderColor as ColorKeyType]
-      : borderColor || (backgroundColor && typeof colors[backgroundColor as ColorKeyType] !== 'undefined'
-      ? colors[backgroundColor as ColorKeyType]
-      : backgroundColor || colors.primary)};
+      : borderColor ||
+        (backgroundColor &&
+        typeof colors[backgroundColor as ColorKeyType] !== "undefined"
+          ? colors[backgroundColor as ColorKeyType]
+          : backgroundColor || colors.primary)};
   text-align: center;
   border-radius: 1.5rem;
   font-size: ${({ theme }: StyleBadgeProps) => theme.fontSizes.m};

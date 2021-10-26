@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { ThemeType } from 'src/types';
+import styled, { css } from "styled-components";
+import { ThemeType } from "src/types";
 
 type PaginationStyledProps = {
   active?: boolean;
@@ -8,8 +8,8 @@ type PaginationStyledProps = {
 };
 
 type ThemeProps = {
-  theme: ThemeType
-}
+  theme: ThemeType;
+};
 
 export const PagerWrapper = styled.div<PaginationStyledProps>`
   display: table;
@@ -36,11 +36,12 @@ export const PagerLink = styled.a<PaginationStyledProps>`
       fontSizes: { s },
     },
   }: ThemeProps) => s};
-  color: ${({ theme }: ThemeProps ) => theme.colors.textLight};
-  background-color: ${({ theme }: ThemeProps ) => theme.colors.paginationBackground};
+  color: ${({ theme }: ThemeProps) => theme.colors.textLight};
+  background-color: ${({ theme }: ThemeProps) =>
+    theme.colors.paginationBackground};
   cursor: pointer;
   border-radius: 0;
-  margin: ${({ theme }: ThemeProps ) => theme.spacing.xxs};
+  margin: ${({ theme }: ThemeProps) => theme.spacing.xxs};
   padding: 7px 11px;
   text-decoration: none;
   &:hover {
@@ -56,7 +57,7 @@ export const PagerLink = styled.a<PaginationStyledProps>`
   ${(itemProps: PaginationStyledProps) =>
     itemProps.active &&
     css`
-      color: ${({ theme }: ThemeProps ) => theme.colors.textDark};
+      color: ${({ theme }: ThemeProps) => theme.colors.textDark};
       background-color: ${({
         theme: {
           colors: { paginationActive },
@@ -76,7 +77,7 @@ export const PagerLink = styled.a<PaginationStyledProps>`
   ${(itemProps: PaginationStyledProps) =>
     (itemProps.name === "Prev" || itemProps.name === "Next") &&
     css`
-      color: ${({ theme }: ThemeProps ) => theme.colors.paginationBackground};
+      color: ${({ theme }: ThemeProps) => theme.colors.paginationBackground};
       background-color: transparent;
       font-weight: bold;
       padding: 8px 6px;
@@ -95,14 +96,14 @@ export const PagerLink = styled.a<PaginationStyledProps>`
   ${(itemProps: PaginationStyledProps) =>
     itemProps.disabled &&
     css`
-      color: $${({ theme }: ThemeProps ) => theme.colors.disabled};
+      color: $ ${({ theme }: ThemeProps) => theme.colors.disabled};
       cursor: not-allowed;
       text-decoration: none;
       &:hover,
       &:focus,
       &:active,
       &:visited {
-        color: ${({ theme }: ThemeProps ) => theme.colors.disabled};
+        color: ${({ theme }: ThemeProps) => theme.colors.disabled};
         text-decoration: none;
       }
     `}

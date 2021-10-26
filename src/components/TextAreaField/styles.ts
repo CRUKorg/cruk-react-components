@@ -10,18 +10,24 @@ type StyledTextareaProps = {
 
 const StyledTextArea = styled.textarea<StyledTextareaProps>`
   resize: ${({ resize }: StyledTextareaProps) => resize};
-  background-color: ${({ theme }: StyledTextareaProps) => theme.colors.backgroundLight};
+  background-color: ${({ theme }: StyledTextareaProps) =>
+    theme.colors.backgroundLight};
   background-image: none;
-  border-radius: ${({ theme }: StyledTextareaProps) => theme.button.borderRadius};
-  border: ${({ theme, hasError }: StyledTextareaProps) => `solid ${theme.utilities.inputBorderWidth}
+  border-radius: ${({ theme }: StyledTextareaProps) =>
+    theme.button.borderRadius};
+  border: ${({ theme, hasError }: StyledTextareaProps) => `solid ${
+    theme.utilities.inputBorderWidth
+  }
     ${hasError ? theme.colors.textError : theme.colors.textInputBorder}`};
   color: ${({ theme }: StyledTextareaProps) => theme.colors.textDark};
   display: block;
-  font-family: ${({ theme }: StyledTextareaProps) => theme.typography.fontFamilyBase};
+  font-family: ${({ theme }: StyledTextareaProps) =>
+    theme.typography.fontFamilyBase};
   font-size: ${({ theme }: StyledTextareaProps) => theme.fontSizes.m};
   padding: 6px 8px;
   width: 100%;
-  height: ${({ lineCount, theme }: StyledTextareaProps) => `calc(${theme.typography.lineHeight} * ${lineCount})`};
+  height: ${({ lineCount, theme }: StyledTextareaProps) =>
+    `calc(${theme.typography.lineHeight} * ${lineCount})`};
 
   transition: border-color 150ms linear;
   &:disabled {
@@ -40,8 +46,5 @@ const StyledTextArea = styled.textarea<StyledTextareaProps>`
       : null};
 `;
 
-
-export default StyledTextArea
-export {
-  StyledTextArea
-}
+export default StyledTextArea;
+export { StyledTextArea };

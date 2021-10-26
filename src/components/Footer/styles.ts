@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import { ThemeType } from 'src/types';
+import styled from "styled-components";
+import { ThemeType } from "src/types";
 
 type ThemeProps = {
-  theme: ThemeType
-}
+  theme: ThemeType;
+};
 export const StyledFooter = styled.footer`
   box-sizing: border-box;
   display: block;
