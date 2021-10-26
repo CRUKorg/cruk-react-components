@@ -26,8 +26,11 @@ export type FooterProps = HTMLAttributes<HTMLElement> & {
 /**
  * There should be only one footer component at the bottom of the body of each page. Links can be passed as children
  * */
-export const Footer: FC<FooterProps> = (props) => {
-  const childArray = React.Children.toArray(props.children);
+export const Footer: FC<FooterProps> = ({
+  children,
+  middleSection
+}) => {
+  const childArray = React.Children.toArray(children);
 
   const foundTheme = useTheme();
   const theme = {
@@ -58,11 +61,11 @@ export const Footer: FC<FooterProps> = (props) => {
           </FooterSectionLinks>
 
           <FooterSection>
-            {props.middleSection ? (
-              typeof props.middleSection === "string" ? (
-                <Text textSize="s">{props.middleSection}</Text>
+            {middleSection ? (
+              typeof middleSection === "string" ? (
+                <Text textSize="s">{middleSection}</Text>
               ) : (
-                <>{props.middleSection}</>
+                <>{middleSection}</>
               )
             ) : (
               <Text textSize="s">{theme.siteConfig.footerCopyText}</Text>
