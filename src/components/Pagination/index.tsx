@@ -27,20 +27,28 @@ export type PaginationProps = {
 Data is split into multiple pages and pagination is used to
 easily navigate through these pages.
  */
-const Pagination: FunctionComponent<PaginationProps> = (props) => {
+const Pagination: FunctionComponent<PaginationProps> = ({
+  current,
+  items,
+  hideLast,
+  pagerCallback,
+  perPage,
+  searchParam,
+  children
+}) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
     ...foundTheme,
   };
-  const perPage = props.perPage > 0 ? props.perPage : 1;
-  const totalPages = Math.ceil(props.items / perPage) || 1;
+  const perPageValue = perPage > 0 ? perPage : 1;
+  const totalPages = Math.ceil(items / perPageValue) || 1;
 
   const linkProps = (number: number) => ({
-    href: `${typeof window !== 'undefined' ? window.location.pathname : ''}?${props.searchParam ? `${props.searchParam}=${number}` : '' }`,
+    href: `${typeof window !== 'undefined' ? window.location.pathname : ''}?${searchParam ? `${searchParam}=${number}` : '' }`,
     onClick: (e: MouseEvent) => {
       e.preventDefault();
-      props.pagerCallback(number);
+      pagerCallback(number);
     },
   });
 
@@ -77,14 +85,14 @@ const Pagination: FunctionComponent<PaginationProps> = (props) => {
     pager = list.slice(0, total);
     if (total > 7) {
       if (active <= 4) {
-        pager = props.hideLast
+        pager = hideLast
           ? list.slice(0, 7)
           : list.slice(0, 5).concat(last);
       } else {
         pager =
           active > total - 4
             ? first.concat(list.slice(-5))
-            : props.hideLast
+            : hideLast
             ? first.concat(list.slice(active - 3, active + 2))
             : first.concat(list.slice(active - 2, active + 1)).concat(last);
       }
@@ -94,31 +102,31 @@ const Pagination: FunctionComponent<PaginationProps> = (props) => {
 
   return (
     <ThemeProvider theme={theme}>
-      {props.items > props.perPage && (
+      {items > perPage && (
         <PagerWrapper>
           <PagerList>
             <PagerItem key="Prev">
               <PagerLink
                 name="Prev"
-                disabled={props.current === 1}
-                {...(props.current !== 1 && linkProps(props.current - 1))}
+                disabled={current === 1}
+                {...(current !== 1 && linkProps(current - 1))}
               >
                 Prev
               </PagerLink>
             </PagerItem>
-            {renderPager(props.current, totalPages)}
+            {renderPager(current, totalPages)}
             <PagerItem key="Next">
               <PagerLink
                 name="Next"
-                disabled={props.current === totalPages}
-                {...(props.current !== totalPages &&
-                  linkProps(props.current + 1))}
+                disabled={current === totalPages}
+                {...(current !== totalPages &&
+                  linkProps(current + 1))}
               >
                 Next
               </PagerLink>
             </PagerItem>
           </PagerList>
-          {props.children}
+          {children}
         </PagerWrapper>
       )}
     </ThemeProvider>
