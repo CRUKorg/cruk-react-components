@@ -10,7 +10,7 @@ type ThemeProps = {
 
 export const BubbleWrapper = styled.div`
   text-align: center;
-  background-color: ${({ theme }) => theme.colors.totaliserBubbleColor};
+  background-color: ${({ theme }: ThemeProps) => theme.colors.totaliserBubbleColor};
   border-radius: 3.2rem;
   padding: 5px;
   position: relative;
@@ -23,7 +23,7 @@ export const BubbleWrapper = styled.div`
 
 export const ProgressBarWrapper = styled.div`
   padding: 0 46px 12px;
-  margin-top: ${({ theme }) => theme.spacing.s};
+  margin-top: ${({ theme }: ThemeProps) => theme.spacing.s};
   position: relative;
 `;
 
