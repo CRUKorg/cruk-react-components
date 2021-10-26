@@ -27,7 +27,7 @@ const UserBlock: FC<UserBlockProps> = ({
   avatarName,
   avatarUrl,
   extra,
-  size
+  size,
 }) => {
   const foundTheme = useTheme();
   const theme = {
@@ -40,11 +40,7 @@ const UserBlock: FC<UserBlockProps> = ({
   return (
     <StyledUserBlock theme={theme}>
       <Avatar
-        name={
-          avatarName || (typeof name === "string"
-            ? name
-            : "Anonymous")
-        }
+        name={avatarName || (typeof name === "string" ? name : "Anonymous")}
         url={avatarUrl || undefined}
         size={size}
       />

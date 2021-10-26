@@ -14,6 +14,4 @@ const useLayoutEffectBrowser = (
 };
 
 export default useLayoutEffectBrowser;
-export {
-  useLayoutEffectBrowser
-}
+export { useLayoutEffectBrowser };

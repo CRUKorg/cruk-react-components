@@ -68,7 +68,7 @@ const useScrollPosition = (
       }
     };
   }, deps);
-}
+};
 
 export default useScrollPosition;
 export { useScrollPosition };

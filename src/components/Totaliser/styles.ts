@@ -10,7 +10,8 @@ type ThemeProps = {
 
 export const BubbleWrapper = styled.div`
   text-align: center;
-  background-color: ${({ theme }: ThemeProps) => theme.colors.totaliserBubbleColor};
+  background-color: ${({ theme }: ThemeProps) =>
+    theme.colors.totaliserBubbleColor};
   border-radius: 3.2rem;
   padding: 5px;
   position: relative;

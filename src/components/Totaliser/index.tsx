@@ -47,7 +47,7 @@ const Totaliser: FunctionComponent<TotaliserProps> = ({
   target,
   isCompact,
   summaryMessage,
-  children
+  children,
 }) => {
   const foundTheme = useTheme();
   const theme = {
@@ -55,19 +55,13 @@ const Totaliser: FunctionComponent<TotaliserProps> = ({
     ...foundTheme,
   };
   const result = calculatePercentRounded(+total, target || 0);
-  const percentageOfTotal = calculatePercentRounded(
-    +total,
-    target || 0
-  );
+  const percentageOfTotal = calculatePercentRounded(+total, target || 0);
   const summaryString = `${percentageOfTotal}% of the £${formatMoneyWithCommas(
     target || 0
   )} target`;
 
   return (
-    <TotaliserWrapper
-      isCompact={isCompact || false}
-      theme={theme}
-    >
+    <TotaliserWrapper isCompact={isCompact || false} theme={theme}>
       {isCompact ? (
         <CompactWrapper theme={theme}>
           <Box marginHorizontal="none" marginRight="xxs" marginBottom="none">
@@ -83,9 +77,7 @@ const Totaliser: FunctionComponent<TotaliserProps> = ({
         <BubbleWrapper theme={theme}>
           <BubbleText>Total raised</BubbleText>
           <Total>£{formatMoneyWithCommas(total)}</Total>
-          <GiftAid>
-            + £{formatMoneyWithCommas(giftAid || 0)} Gift Aid
-          </GiftAid>
+          <GiftAid>+ £{formatMoneyWithCommas(giftAid || 0)} Gift Aid</GiftAid>
         </BubbleWrapper>
       )}
       {/* We don't want to show the default summaryMessage if there is no target, because the summary is associated with the target progress bar */}
