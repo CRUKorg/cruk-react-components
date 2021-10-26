@@ -12,7 +12,7 @@ export type ModalProps = {
   /** modal name used for aria-label */
   modalName: string;
   /** callback function called on modal close */
-  closeFunction: Function;
+  closeFunction: () => void;
   /** flag to reveal close button with cross in the top right of modal */
   showCloseButton?: boolean;
   /** set max width of modal */
