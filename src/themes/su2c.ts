@@ -75,6 +75,7 @@ export const COLORS: ColorsType = {
   loaderColor2: TOKEN_COLORS.su2cRed,
   loaderColor3: TOKEN_COLORS.su2cBlack,
 
+  paginationText: TOKEN_COLORS.su2cBlack,
   paginationBackground: TOKEN_COLORS.su2cBlack,
 
   totaliserBubbleColor: TOKEN_COLORS.su2cBlack,

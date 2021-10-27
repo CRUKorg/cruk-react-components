@@ -123,6 +123,7 @@ export type ColorsType = {
   loaderColor2: string;
   loaderColor3: string;
 
+  paginationText: string;
   paginationBackground: string;
   paginationActive: string;
 

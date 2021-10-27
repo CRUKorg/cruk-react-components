@@ -36,7 +36,7 @@ export const PagerLink = styled.a<PaginationStyledProps>`
       fontSizes: { s },
     },
   }: ThemeProps) => s};
-  color: ${({ theme }: ThemeProps) => theme.colors.textLight};
+  color: ${({ theme }: ThemeProps) => theme.colors.paginationText};
   background-color: ${({ theme }: ThemeProps) =>
     theme.colors.paginationBackground};
   cursor: pointer;
