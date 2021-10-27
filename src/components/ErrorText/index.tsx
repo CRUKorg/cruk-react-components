@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes } from "react";
+import React, { FunctionComponent, HTMLAttributes } from "react";
 import { useTheme } from "styled-components";
 
 import defaultTheme from "src/themes/cruk";
@@ -7,7 +7,7 @@ import { StyledErrorText } from "./styles";
 
 export type ErrorTextProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
-    as?: string;
+    as?: React.ElementType;
   };
 
 /**
@@ -16,7 +16,7 @@ export type ErrorTextProps = SpacingProps &
  *
  * Please be aware that some input components already have this component built in and can be passed an "errorMessage" prop
  */
-const ErrorText: FC<ErrorTextProps> = ({ children, as = "span", ...props }) => {
+const ErrorText: FunctionComponent<ErrorTextProps> = ({ children, as = "span", ...props }) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
