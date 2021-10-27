@@ -36,7 +36,7 @@ export const PagerLink = styled.a<PaginationStyledProps>`
       fontSizes: { s },
     },
   }: ThemeProps) => s};
-  color: ${({ theme }: ThemeProps) => theme.colors.paginationText};
+  color: ${({ theme }: ThemeProps) => theme.colors.textLight};
   background-color: ${({ theme }: ThemeProps) =>
     theme.colors.paginationBackground};
   cursor: pointer;
@@ -77,7 +77,10 @@ export const PagerLink = styled.a<PaginationStyledProps>`
   ${(itemProps: PaginationStyledProps) =>
     (itemProps.name === "Prev" || itemProps.name === "Next") &&
     css`
-      color: ${({ theme }: ThemeProps) => theme.colors.paginationBackground};
+      color: ${({ theme, disabled }: {
+        theme: ThemeType;
+        disabled?: boolean;
+      }) =>  disabled ? theme.colors.disabled : theme.colors.paginationText};
       background-color: transparent;
       font-weight: bold;
       padding: 8px 6px;
