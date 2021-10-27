@@ -36,6 +36,7 @@ const Icon: FunctionComponent<IconProps> = ({
   name,
   color,
   size = "1.1rem",
+  ...rest
 }) => {
   const foundTheme = useTheme();
   const theme = {
@@ -52,6 +53,7 @@ const Icon: FunctionComponent<IconProps> = ({
       viewBox={`0 0 ${icon.width} ${icon.height}`}
       size={size || "1.1rem"}
       color={color}
+      {...rest}
     >
       {icon.paths.map((path: string, index: number) => (
         <path key={index} d={path} />
