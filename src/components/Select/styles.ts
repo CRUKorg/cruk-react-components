@@ -27,7 +27,6 @@ const StyledSelect = styled.select<StyledSelectProps>`
   background-position: calc(100% - 16px) 50%, calc(100% - 10px) 50%;
   background-size: 6px 6px;
   background-repeat: no-repeat;
-  border-radius: ${({ theme }: StyledSelectProps) => theme.button.borderRadius};
   border: ${({ theme, hasError, errorMessage }: StyledSelectProps) =>
     `solid ${theme.utilities.inputBorderWidth} ${
       hasError || errorMessage

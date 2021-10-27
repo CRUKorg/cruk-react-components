@@ -68,7 +68,6 @@ export const StyledLabel = styled.label<StyledLabelProps>`
   background-color: ${({ theme }: ThemeProp) => theme.colors.backgroundLight};
   width: 100%;
   position: relative;
-  border-radius: ${({ theme }: ThemeProp) => theme.button.borderRadius};
   border-width: ${({ theme }: ThemeProp) => theme.utilities.inputBorderWidth};
   border-style: solid;
   border-color: ${({ hasError, theme, checked }: StyledLabelProps) =>

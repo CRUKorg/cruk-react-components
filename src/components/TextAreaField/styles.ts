@@ -13,8 +13,6 @@ const StyledTextArea = styled.textarea<StyledTextareaProps>`
   background-color: ${({ theme }: StyledTextareaProps) =>
     theme.colors.backgroundLight};
   background-image: none;
-  border-radius: ${({ theme }: StyledTextareaProps) =>
-    theme.button.borderRadius};
   border: ${({ theme, hasError }: StyledTextareaProps) => `solid ${
     theme.utilities.inputBorderWidth
   }

@@ -61,11 +61,6 @@ export const LineProgressBar = styled.div<LineProgressBarProps>`
       colors: { progressBar },
     },
   }: CircularColorFillProps & ThemeProp) => barColor || progressBar};
-  border-radius: ${({
-    theme: {
-      button: { borderRadius },
-    },
-  }: ThemeProp) => borderRadius};
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   transition: width 0.6s ease;
   position: relative;

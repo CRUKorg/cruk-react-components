@@ -44,11 +44,6 @@ export const PopOverModal = styled.div<{
   }: ThemeProp) => popoverBackground};
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.25);
-  border-radius: ${({
-    theme: {
-      button: { borderRadius },
-    },
-  }: ThemeProp) => borderRadius};
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 
   margin-bottom: ${({ position }: { position?: PopOverPositionType }) => {
