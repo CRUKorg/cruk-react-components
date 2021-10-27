@@ -24,9 +24,7 @@ type StyledInputProps = {
 
 export const Extra = styled.span<ExtraProps>`
   display: block;
-  background-color: ${({ theme }: ExtraProps) =>
-    theme.colors.textInputExtraInfo};
-  border-radius: ${({ theme }: ExtraProps) => theme.button.borderRadius};
+  background-color: ${({ theme }: ExtraProps) => theme.colors.textInputExtraInfo};
   color: ${({ theme }: ExtraProps) => theme.colors.textDark};
   font-size: ${({ theme }: ExtraProps) => theme.fontSizes.m};
   line-height: ${({ theme }: ExtraProps) => theme.typography.lineHeight};
