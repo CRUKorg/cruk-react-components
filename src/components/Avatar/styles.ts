@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { ThemeType, ColorKeyType } from "src/types";
+import { ThemeType } from "src/types";
 
 type AvatarStyledProps = {
   size?: string;
-  textColor?: string;
   theme: ThemeType;
 };
 
@@ -12,10 +11,7 @@ export const StyledAvatar = styled.img<AvatarStyledProps>`
   height: ${({ size }) => size};
   object-fit: cover;
   width: ${({ size }) => size};
-  color: ${({ theme: { colors }, textColor }: AvatarStyledProps) =>
-    textColor && typeof colors[textColor as ColorKeyType] !== "undefined"
-      ? colors[textColor as ColorKeyType]
-      : textColor || colors.textOnPrimary};
+  background-color: ${({ theme: { colors } }: AvatarStyledProps) => colors.tertiary};
 `;
 
 export default StyledAvatar;
