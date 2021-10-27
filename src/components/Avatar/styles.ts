@@ -11,7 +11,6 @@ export const StyledAvatar = styled.img<AvatarStyledProps>`
   height: ${({ size }) => size};
   object-fit: cover;
   width: ${({ size }) => size};
-  background-color: ${({ theme: { colors } }: AvatarStyledProps) => colors.tertiary};
 `;
 
 export default StyledAvatar;
