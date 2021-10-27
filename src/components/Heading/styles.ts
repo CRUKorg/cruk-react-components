@@ -6,7 +6,7 @@ import {
   ThemeType,
   FontSizeType,
   ColorKeyType,
-  WordBreakType,
+  WordBreakType
 } from "src/types";
 
 type StyledHeadingProps = SpacingProps & {
@@ -68,7 +68,7 @@ const StyledHeading = (props: StyledHeadingProps) => css`
 
 const desktopFontSize = (
   textSize: FontSizeType | null,
-  defaultFontSize: FontSizeType,
+  defaultFontSize: string,
   theme: ThemeType
 ) => {
   switch (textSize) {
@@ -93,7 +93,7 @@ const desktopFontSize = (
 // everything drops down a size on the typography scale
 const tabletFontSize = (
   textSize: FontSizeType | null,
-  defaultFontSize: FontSizeType,
+  defaultFontSize: string,
   theme: ThemeType
 ) => {
   switch (textSize) {
@@ -118,7 +118,7 @@ const tabletFontSize = (
 // everything drops down two sizes on the typography scale
 const mobileFontSize = (
   textSize: FontSizeType | null,
-  defaultFontSize: FontSizeType,
+  defaultFontSize: string,
   theme: ThemeType
 ) => {
   switch (textSize) {
