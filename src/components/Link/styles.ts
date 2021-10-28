@@ -68,7 +68,7 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
   }: StyledLinkProps) =>
     useBackgroundStyleLinks && !appearance
       ? `linear-gradient(180deg, rgba(255, 255, 255, 0) 0px, ${theme.colors.primary} -4px);`
-      : ""};
+      : undefined};
   background-repeat: no-repeat;
   background-position-y: calc(100%);
   background-size: 100% 2px;
