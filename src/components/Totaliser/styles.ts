@@ -22,10 +22,26 @@ export const BubbleWrapper = styled.div`
   }
 `;
 
-export const ProgressBarWrapper = styled.div`
+export const ProgressBarWrapper = styled.div<{
+  isCompact?: boolean;
+}>`
   padding: 0 46px 12px;
   margin-top: ${({ theme }: ThemeProps) => theme.spacing.s};
   position: relative;
+
+  ${({ isCompact }) =>
+    !!isCompact !== true &&
+    css`
+      div > div > div:after {
+        content: "\\25bc";
+        color: ${({ theme }: ThemeProps) => theme.colors.totaliserBubbleColor};
+        z-index: 11;
+        position: absolute;
+        top: -30px;
+        right: -15px;
+        font-size: 32px;
+      }
+    `};
 `;
 
 export const Total = styled.p`
@@ -90,22 +106,4 @@ export const CompactWrapper = styled.div`
   display: flex;
 `;
 
-type StyledProgressBarProps = {
-  isCompact: boolean;
-};
-
-export const StyledProgressBar = styled(ProgressBar)<StyledProgressBarProps>`
-  ${(props) =>
-    !props.isCompact &&
-    css`
-      > div > div:after {
-        content: "\\25bc";
-        color: ${({ theme }: ThemeProps) => theme.colors.totaliserBubbleColor};
-        z-index: 11;
-        position: absolute;
-        top: -30px;
-        right: -15px;
-        font-size: 32px;
-      }
-    `}
-`;
+export const StyledProgressBar = styled(ProgressBar)``;

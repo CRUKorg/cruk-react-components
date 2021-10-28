@@ -44,9 +44,9 @@ export type TotaliserProps = {
 const Totaliser: FunctionComponent<TotaliserProps> = ({
   total,
   giftAid,
-  target,
+  target = null,
   isCompact,
-  summaryMessage,
+  summaryMessage = undefined,
   children,
 }) => {
   const foundTheme = useTheme();
@@ -83,12 +83,8 @@ const Totaliser: FunctionComponent<TotaliserProps> = ({
       {/* We don't want to show the default summaryMessage if there is no target, because the summary is associated with the target progress bar */}
       {/* However, if we explicitly pass a summaryMessage string/compononent, then we want to always display it even if the target is zero */}
       {(!!target || !!summaryMessage) && (
-        <ProgressBarWrapper theme={theme}>
-          <StyledProgressBar
-            theme={theme}
-            percentage={result}
-            isCompact={isCompact || false}
-          />
+        <ProgressBarWrapper isCompact={isCompact || false} theme={theme}>
+          <StyledProgressBar theme={theme} percentage={result} />
           {!isCompact &&
             (summaryMessage ? (
               <Summary>{summaryMessage}</Summary>
