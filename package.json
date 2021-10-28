@@ -76,7 +76,7 @@
     "@babel/preset-typescript": "^7.9.0",
     "@cruk/eslint-config": "^1.0.2",
     "@cypress/react": "^5.10.0",
-    "@cypress/webpack-dev-server": "1.6.0",
+    "@cypress/webpack-dev-server": "1.7.0",
     "@cypress/webpack-preprocessor": "^5.9.1",
     "@mdx-js/loader": "^1.6.22",
     "@mdx-js/mdx": "^1.6.22",
