@@ -4,6 +4,7 @@ import React, {
   ButtonHTMLAttributes,
   Ref,
   forwardRef,
+  ReactElement,
 } from "react";
 import { useTheme } from "styled-components";
 
@@ -45,16 +46,13 @@ export const Button: FunctionComponent<Props> = forwardRef(
     };
     const { appearance = "primary", isIconButton = false } = props;
     const childArray = React.Children.toArray(props.children);
+    const isChildString = typeof childArray[0] === "string";
+    const firstElement = childArray[0] as ReactElement;
 
     // button has a fixed width if there is a single icon
     const setIconButton = !!(
       isIconButton ||
-      (props.children &&
-        childArray.length === 1 &&
-        childArray[0] &&
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore typescript doesn't seem to like child.type but it works fine
-        childArray[0].type === Icon)
+      (childArray.length === 1 && !isChildString && firstElement?.type) === Icon
     );
 
     return (
