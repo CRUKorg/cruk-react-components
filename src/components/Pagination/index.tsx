@@ -1,4 +1,4 @@
-import React, { FunctionComponent, MouseEvent } from "react";
+import React, { FunctionComponent, MouseEvent, TouchEvent } from "react";
 import { ThemeProvider, useTheme } from "styled-components";
 
 import defaultTheme from "src/themes/cruk";
@@ -47,7 +47,7 @@ const Pagination: FunctionComponent<PaginationProps> = ({
     href: `${typeof window !== "undefined" ? window.location.pathname : ""}?${
       searchParam ? `${searchParam}=${number}` : ""
     }`,
-    onClick: (e: MouseEvent) => {
+    onClick: (e: TouchEvent | MouseEvent) => {
       e.preventDefault();
       pagerCallback(number);
     },
