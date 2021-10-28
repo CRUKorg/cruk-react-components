@@ -16,7 +16,11 @@ export type ErrorTextProps = SpacingProps &
  *
  * Please be aware that some input components already have this component built in and can be passed an "errorMessage" prop
  */
-const ErrorText: FunctionComponent<ErrorTextProps> = ({ children, as = "span", ...props }) => {
+const ErrorText: FunctionComponent<ErrorTextProps> = ({
+  children,
+  as = "span",
+  ...props
+}) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,

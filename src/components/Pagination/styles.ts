@@ -77,10 +77,13 @@ export const PagerLink = styled.a<PaginationStyledProps>`
   ${(itemProps: PaginationStyledProps) =>
     (itemProps.name === "Prev" || itemProps.name === "Next") &&
     css`
-      color: ${({ theme, disabled }: {
+      color: ${({
+        theme,
+        disabled,
+      }: {
         theme: ThemeType;
         disabled?: boolean;
-      }) =>  disabled ? theme.colors.disabled : theme.colors.paginationText};
+      }) => (disabled ? theme.colors.disabled : theme.colors.paginationText)};
       background-color: transparent;
       font-weight: bold;
       padding: 8px 6px;

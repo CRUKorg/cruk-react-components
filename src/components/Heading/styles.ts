@@ -6,7 +6,7 @@ import {
   ThemeType,
   FontSizeType,
   ColorKeyType,
-  WordBreakType
+  WordBreakType,
 } from "src/types";
 
 type StyledHeadingProps = SpacingProps & {

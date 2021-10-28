@@ -19,7 +19,11 @@ export type StepProps = {
  * Visually show where a user is in a multi-step process. Calculate the number of steps and the width of each step required to fit the progress bar in the parent container.
  * Step display progress through a sequence by breaking it up into multiple logical steps. They may also be used for navigation.
  */
-const Step: FunctionComponent<StepProps> = ({ steps = [], current = 1, children }) => {
+const Step: FunctionComponent<StepProps> = ({
+  steps = [],
+  current = 1,
+  children,
+}) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,

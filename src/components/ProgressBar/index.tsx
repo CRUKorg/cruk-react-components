@@ -40,7 +40,7 @@ const ProgressBar: FC<ProgressBarProps> = ({
   circleContents,
   circleSize,
   barColor,
-  children
+  children,
 }) => {
   const foundTheme = useTheme();
   const theme = {
