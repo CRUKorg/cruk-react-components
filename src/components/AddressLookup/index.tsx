@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return, @typescript-eslint/no-floating-promises, promise/always-return */
 import React, {
   FunctionComponent,
   InputHTMLAttributes,
@@ -119,8 +118,10 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
           if (data.Items[0].Error)
             throw new Error("Something went wrong please try again");
           setAddressOptions(data.Items || []);
+          return null;
         })
         .catch((err) => onAddressError(err));
+      return null;
     };
 
     const getAddress = (id: string) => {
@@ -132,6 +133,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
         .then((data: { Items: AddressDataType[] }) => {
           clearOptions();
           onAddressSelected(data.Items[0]);
+          return null;
         })
         .catch((err) => onAddressError(err));
     };
@@ -284,4 +286,3 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
 );
 
 export default AddressLookup;
-/* eslint-enable */
