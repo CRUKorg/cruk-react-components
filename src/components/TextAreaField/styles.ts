@@ -8,35 +8,41 @@ type StyledTextareaProps = {
   theme: ThemeType;
 };
 
-export const StyledTextArea = styled.textarea<StyledTextareaProps>`
-  resize: ${({ resize }) => resize};
-  background-color: ${({ theme }) => theme.colors.backgroundLight};
+const StyledTextArea = styled.textarea<StyledTextareaProps>`
+  resize: ${({ resize }: StyledTextareaProps) => resize};
+  background-color: ${({ theme }: StyledTextareaProps) =>
+    theme.colors.backgroundLight};
   background-image: none;
-  border-radius: ${({ theme }) => theme.utilities.borderRadius};
-  border: ${({ theme, hasError }) => `solid ${theme.utilities.inputBorderWidth}
+  border: ${({ theme, hasError }: StyledTextareaProps) => `solid ${
+    theme.utilities.inputBorderWidth
+  }
     ${hasError ? theme.colors.textError : theme.colors.textInputBorder}`};
-  color: ${({ theme }) => theme.colors.textDark};
+  color: ${({ theme }: StyledTextareaProps) => theme.colors.textDark};
   display: block;
-  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
-  font-size: ${({ theme }) => theme.fontSizes.m};
+  font-family: ${({ theme }: StyledTextareaProps) =>
+    theme.typography.fontFamilyBase};
+  font-size: ${({ theme }: StyledTextareaProps) => theme.fontSizes.m};
   padding: 6px 8px;
   width: 100%;
-  height: ${({ lineCount, theme }) =>
+  height: ${({ lineCount, theme }: StyledTextareaProps) =>
     `calc(${theme.typography.lineHeight} * ${lineCount})`};
 
   transition: border-color 150ms linear;
   &:disabled {
-    border-color: ${({ theme }) => theme.colors.disabled};
-    color: ${({ theme }) => theme.colors.disabled};
+    border-color: ${({ theme }: StyledTextareaProps) => theme.colors.disabled};
+    color: ${({ theme }: StyledTextareaProps) => theme.colors.disabled};
   }
 
-  ${({ theme }) =>
+  ${({ theme }: StyledTextareaProps) =>
     !theme.utilities.useDefaultFocusRect
       ? css`
           &:focus {
             outline: 0;
-            border-color: ${({ theme }) => theme.colors.tertiary};
+            border-color: ${theme.colors.tertiary};
           }
         `
       : null};
 `;
+
+export default StyledTextArea;
+export { StyledTextArea };

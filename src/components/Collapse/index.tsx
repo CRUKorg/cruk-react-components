@@ -10,6 +10,7 @@ import React, {
 import { useTheme } from "styled-components";
 import defaultTheme from "src/themes/cruk";
 
+import { FontSizeType, ThemeType } from "src/types";
 import {
   CustomHeader,
   DefaultHeader,
@@ -17,8 +18,6 @@ import {
   CollapseContent,
   transitionDurationSeconds,
 } from "./styles";
-
-import { FontSizeType, ThemeType } from "src/types";
 
 export type CollapseProps = HTMLAttributes<HTMLElement> & {
   /** id is required for a11y reasons as we use aria attributes which depends on an id  */
@@ -62,7 +61,7 @@ const Collapse: FunctionComponent<CollapseProps> = (props) => {
     startOpen ? "initial" : "0"
   );
   const content = useRef<HTMLDivElement>(null);
-  const transitionTimer = useRef(0);
+  const transitionTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const foundTheme = useTheme();
   const theme: ThemeType = {
     ...defaultTheme,
@@ -70,22 +69,27 @@ const Collapse: FunctionComponent<CollapseProps> = (props) => {
   };
 
   const toggleCollapse = () => {
-    clearTimeout(transitionTimer.current);
+    const { current } = content;
+    if (transitionTimer?.current) clearTimeout(transitionTimer?.current);
     const newOpenState = !openStatus;
     setOpenStatus(newOpenState);
-    setContentHeight(content?.current?.scrollHeight + "px");
+
+    if (current !== null) {
+      setContentHeight(`${current.scrollHeight}px`);
+    }
+
     if (newOpenState === false) {
       // Allow height to be rendered before setting to 0 for animation.
       setTimeout(() => setContentHeight("0"), 10);
     } else {
-      // After animation set height to initial for responsive layout.
-      // @ts-ignore
       transitionTimer.current = setTimeout(
         () => setContentHeight("initial"),
         transitionDurationSeconds * 1000
       );
     }
-    !!onOpenChange && onOpenChange(newOpenState);
+    if (onOpenChange !== undefined) {
+      onOpenChange(newOpenState);
+    }
   };
 
   const handleKeyDown = (event: KeyboardEvent) => {
@@ -102,7 +106,7 @@ const Collapse: FunctionComponent<CollapseProps> = (props) => {
   useEffect(() => {
     setOpenStatus(startOpen || false);
     // if start open changes then we want to set the height without animation
-    !!startOpen ? setContentHeight("initial") : setContentHeight("0");
+    startOpen ? setContentHeight("initial") : setContentHeight("0");
   }, [startOpen]);
 
   return (

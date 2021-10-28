@@ -1,5 +1,9 @@
 import styled from "styled-components";
+import { ThemeType } from "src/types";
 
+type ThemeProps = {
+  theme: ThemeType;
+};
 export const Fieldset = styled.fieldset`
   margin: 0;
   padding: 0;
@@ -9,10 +13,11 @@ export const Fieldset = styled.fieldset`
 export const DateTextFieldWrapper = styled.div`
   display: inline-block;
   width: 60px;
-  margin-right: ${({ theme }) => theme.spacing.xs};
+  margin-right: ${({ theme }: ThemeProps) => theme.spacing.xs};
   span {
     margin-bottom: 0.25rem; // this is smaller than xxs spacing
-    font-weight: ${({ theme }) => theme.typography.fontWeightMedium};
+    font-weight: ${({ theme }: ThemeProps) =>
+      theme.typography.fontWeightMedium};
   }
 `;
 

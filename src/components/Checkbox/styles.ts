@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { ThemeType } from "src/types";
 
 const CHECK_BOX_SIZE = "1.5rem";
 const CHECK_SIZE = "1.125rem";
@@ -8,8 +9,12 @@ type StyledLabelProps = {
   checked: boolean;
   disabled: boolean;
   hasError: boolean;
+  theme: ThemeType;
 };
 
+type ThemeProps = {
+  theme: ThemeType;
+};
 export const CheckWrapper = styled.div`
   display: inline-block;
   height: ${CHECK_BOX_SIZE};
@@ -20,13 +25,13 @@ export const CheckWrapper = styled.div`
     theme: {
       spacing: { xs },
     },
-  }) => xs};
+  }: ThemeProps) => xs};
 `;
 
 export const Check = styled.span`
   display: block;
   position: relative;
-  border: 1px solid ${({ theme }) => theme.colors.selectionBorder};
+  border: 1px solid ${({ theme }: ThemeProps) => theme.colors.selectionBorder};
   height: ${CHECK_BOX_SIZE};
   width: ${CHECK_BOX_SIZE};
   top: 0;
@@ -49,17 +54,16 @@ export const CheckGlyph = styled.svg`
   margin-left: 0.125rem;
 
   path {
-    fill: ${({ theme }) => theme.colors.primary};
+    fill: ${({ theme }: ThemeProps) => theme.colors.primary};
   }
 `;
 
 export const StyledLabel = styled.label<StyledLabelProps>`
-  background-color: ${({ theme }) => theme.colors.backgroundLight};
+  background-color: ${({ theme }: ThemeProps) => theme.colors.backgroundLight};
   position: relative;
-  border-radius: ${(props) => props.theme.utilities.borderRadius};
-  border-width: ${({ theme }) => theme.utilities.inputBorderWidth};
+  border-width: ${({ theme }: ThemeProps) => theme.utilities.inputBorderWidth};
   border-style: solid;
-  border-color: ${({ hasError, theme, checked }) =>
+  border-color: ${({ hasError, theme, checked }: StyledLabelProps) =>
     hasError
       ? theme.colors.textError
       : checked && !theme.utilities.useDefaultFocusRect
@@ -67,20 +71,20 @@ export const StyledLabel = styled.label<StyledLabelProps>`
       : theme.colors.inputBorder};
   cursor: pointer;
   display: block;
-  font-weight: ${({ theme, checked }) =>
+  font-weight: ${({ theme, checked }: StyledLabelProps) =>
     checked || !theme.utilities.useDefaultFocusRect
       ? theme.typography.fontWeightHeavy
       : theme.typography.fontWeightMedium};
-  color: ${({ theme, disabled }) =>
+  color: ${({ theme, disabled }: StyledLabelProps) =>
     disabled ? theme.colors.disabled : theme.colors.textDark};
-  padding: ${({ theme }) =>
+  padding: ${({ theme }: ThemeProps) =>
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
   &:focus ~ ${CheckWrapper} ${Check} {
     outline: 2px solid #7aacfe; /* for non-webkit browsers */
     outline: 5px auto -webkit-focus-ring-color;
   }
 
-  ${({ theme }) =>
+  ${({ theme }: ThemeProps) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
@@ -91,7 +95,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
                 theme: {
                   colors: { primary },
                 },
-              }) => primary};
+              }: ThemeProps) => primary};
           }
         `}
 `;
@@ -108,7 +112,7 @@ export const SelectedBorder = styled.div`
 export const StyledInput = styled.input`
   margin-right: 5px !important;
 
-  ${({ theme }) =>
+  ${({ theme }: ThemeProps) =>
     theme.utilities.useDefaultFromControls
       ? css`
           position: absolute;
@@ -121,7 +125,7 @@ export const StyledInput = styled.input`
             theme: {
               spacing: { s },
             },
-          }) => s};
+          }: ThemeProps) => s};
         `
       : css`
           /* This hides the original input */
@@ -130,13 +134,12 @@ export const StyledInput = styled.input`
             theme: {
               spacing: { xxs },
             },
-          }) => xxs};
+          }: ThemeProps) => xxs};
           opacity: 0;
 
           &:focus ~ ${SelectedBorder} {
             outline: none !important;
-            box-shadow: inset 0 0 0 2px
-              ${({ theme }) => theme.colors.inputBorderColour};
+            box-shadow: inset 0 0 0 2px ${theme.colors.inputBorder};
             box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
           }
 

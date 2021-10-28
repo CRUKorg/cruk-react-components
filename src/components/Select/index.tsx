@@ -71,7 +71,7 @@ const Select: FunctionComponent<SelectProps> = forwardRef(
         {!!errorMessage && (
           <ErrorText
             marginTop="xxs"
-            id={!!props.id ? `${props.id}-error` : undefined}
+            id={props.id ? `${props.id}-error` : undefined}
           >
             {errorMessage}
           </ErrorText>

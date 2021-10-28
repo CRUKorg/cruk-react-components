@@ -1,5 +1,9 @@
 import styled from "styled-components";
+import { ThemeType } from "src/types";
 
+type ThemeProps = {
+  theme: ThemeType;
+};
 export const StyledFooter = styled.footer`
   box-sizing: border-box;
   display: block;
@@ -9,7 +13,7 @@ export const StyledFooter = styled.footer`
     theme: {
       colors: { footerBackground },
     },
-  }) => footerBackground};
+  }: ThemeProps) => footerBackground};
 `;
 
 export const FooterContentWrapper = styled.div`
@@ -17,7 +21,7 @@ export const FooterContentWrapper = styled.div`
     theme: {
       utilities: { contentMaxWidth },
     },
-  }) => contentMaxWidth};
+  }: ThemeProps) => contentMaxWidth};
   display: block;
   margin: 0 auto;
 
@@ -25,7 +29,7 @@ export const FooterContentWrapper = styled.div`
       theme: {
         breakpoint: { desktop },
       },
-    }) => desktop}) {
+    }: ThemeProps) => desktop}) {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -38,7 +42,7 @@ export const FooterSection = styled.div`
     theme: {
       spacing: { xs },
     },
-  }) => xs};
+  }: ThemeProps) => xs};
   position: relative;
   width: 100%;
   flex: 0 1 auto;
@@ -53,7 +57,7 @@ export const FooterSectionLogo = styled(FooterSection)`
       theme: {
         breakpoint: { desktop },
       },
-    }) => desktop}) {
+    }: ThemeProps) => desktop}) {
     flex: 0 0 140px;
     width: auto;
   }
@@ -70,7 +74,7 @@ export const FooterSectionLinks = styled(FooterSection)`
       theme: {
         breakpoint: { desktop },
       },
-    }) => desktop}) {
+    }: ThemeProps) => desktop}) {
     flex: 0 0 170px;
     width: auto;
   }
@@ -86,12 +90,12 @@ export const StyledNav = styled.nav`
       theme: {
         fontSizes: { s },
       },
-    }) => s};
+    }: ThemeProps) => s};
     font-weight: ${({
       theme: {
         typography: { fontWeightHeavy },
       },
-    }) => fontWeightHeavy};
+    }: ThemeProps) => fontWeightHeavy};
   }
 `;
 
@@ -110,7 +114,7 @@ export const StyledLI = styled.li`
     theme: {
       spacing: { xxs },
     },
-  }) => xxs};
+  }: ThemeProps) => xxs};
 `;
 
 export const FooterSectionAddress = styled(FooterSection)`

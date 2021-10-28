@@ -18,7 +18,13 @@ export type AvatarProps = ImgHTMLAttributes<HTMLElement> & {
  *
  * You can use an avatar to display ownership of an item of content. If you pass a URL of an image that will be displayed otherwise the first letter of the name will be used to display a branded avatar.
  */
-const Avatar: FC<AvatarProps> = ({ url, name, size, alt = "", ...rest }) => {
+const Avatar: FC<AvatarProps> = ({
+  url,
+  name,
+  size = "m",
+  alt = "",
+  ...rest
+}) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -31,7 +37,7 @@ const Avatar: FC<AvatarProps> = ({ url, name, size, alt = "", ...rest }) => {
       name &&
       typeof name === "string" &&
       name !== "Anonymous" &&
-      name[0].trim().match(/[a-z]/i)
+      /[a-z]/i.exec(name[0].trim())
         ? `icon-avatar-${name[0].trim().toUpperCase()}.png`
         : "icon-avatar-Anonymous.png";
 
@@ -46,10 +52,6 @@ const Avatar: FC<AvatarProps> = ({ url, name, size, alt = "", ...rest }) => {
       alt={alt}
     />
   );
-};
-
-Avatar.defaultProps = {
-  size: "m",
 };
 
 export default Avatar;

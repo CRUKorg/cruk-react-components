@@ -107,7 +107,7 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
             isInvalidVisible={isInvalidVisible || false}
             {...props}
             theme={theme}
-            data-hj-suppress={true}
+            data-hj-suppress
             ref={ref}
           />
         </StyledInputWrapper>
@@ -132,7 +132,7 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
         {!!errorMessage && (
           <ErrorText
             marginTop="xxs"
-            id={!!props.id ? `${props.id}-error` : undefined}
+            id={props.id ? `${props.id}-error` : undefined}
           >
             {errorMessage}
           </ErrorText>

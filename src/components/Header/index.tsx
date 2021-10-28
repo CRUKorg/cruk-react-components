@@ -31,7 +31,7 @@ export type HeaderProps = HTMLAttributes<HTMLElement> & {
   logoLinkTitle?: string;
   /** the url of the logo link */
   logoLinkUrl?: string;
-  /** instead of the contents of the header being centered to max width as defined in theme it is 100% width fo viewport*/
+  /** instead of the contents of the header being centered to max width as defined in theme it is 100% width fo viewport */
   fullWidth?: boolean;
 };
 

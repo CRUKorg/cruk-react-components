@@ -6,18 +6,18 @@ import { ThemeType } from "src/types";
 
 const LEGEND_WIDTH = "20%";
 
+type ThemeProp = {
+  theme: ThemeType;
+};
+
+type StyleRadioWidthProp = { numberOfAttributes: number } & ThemeProp;
+
 export const StyledRadio = styled(RadioInput)`
   display: block;
   float: left;
   text-align: center;
-  margin-left: ${({ theme }) => theme.spacing.s};
-  width: ${({
-    numberOfAttributes,
-    theme,
-  }: {
-    numberOfAttributes: number;
-    theme: ThemeType;
-  }) =>
+  margin-left: ${({ theme }: ThemeProp) => theme.spacing.s};
+  width: ${({ numberOfAttributes, theme }: StyleRadioWidthProp) =>
     `calc(((100% - ${LEGEND_WIDTH}) / ${numberOfAttributes}) - ${theme.spacing.s})`};
 `;
 
@@ -32,6 +32,6 @@ export const StyledFieldSet = styled.fieldset`
   position: relative;
   border: none;
   padding: 0;
-  margin: 0 0 ${({ theme }) => theme.spacing.s} 0;
+  margin: 0 0 ${({ theme }: ThemeProp) => theme.spacing.s} 0;
   width: 100%;
 `;

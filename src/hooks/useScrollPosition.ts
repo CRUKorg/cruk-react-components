@@ -1,6 +1,6 @@
 import { useRef, DependencyList, RefObject, MutableRefObject } from "react";
 
-import useLayoutEffectBrowser from "./useLayoutEffectBrowser";
+import { useLayoutEffectBrowser } from "./useLayoutEffectBrowser";
 
 const isBrowser = typeof window !== `undefined`;
 
@@ -23,16 +23,21 @@ function getScrollPosition({
     : { x: position.left, y: position.top };
 }
 
-export function useScrollPosition(
-  effect: any,
+const useScrollPosition = (
+  effect: ({
+    currPos,
+  }: {
+    prevPos: { x: number; y: number };
+    currPos: { x: number; y: number };
+  }) => void,
   deps: DependencyList,
   element: RefObject<HTMLElement> | MutableRefObject<undefined> | null,
   useWindow: boolean,
   wait: number
-) {
+): void => {
   const position = useRef(getScrollPosition({ useWindow, element }));
 
-  let throttleTimeout: number | null = null;
+  let throttleTimeout: ReturnType<typeof setTimeout> | null = null;
 
   const callBack = () => {
     const currPos = getScrollPosition({ element, useWindow });
@@ -45,7 +50,6 @@ export function useScrollPosition(
     const handleScroll = () => {
       if (wait) {
         if (throttleTimeout === null) {
-          // @ts-ignore: Unreachable code error
           throttleTimeout = setTimeout(callBack, wait);
         }
       } else {
@@ -62,4 +66,7 @@ export function useScrollPosition(
       }
     };
   }, deps);
-}
+};
+
+export default useScrollPosition;
+export { useScrollPosition };

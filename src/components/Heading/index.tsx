@@ -4,9 +4,8 @@ import { useTheme } from "styled-components";
 import defaultTheme from "src/themes/cruk";
 import { SpacingProps } from "src/components/Spacing";
 
-import { H1, H2, H3, H4, H5, H6 } from "./styles";
-
 import { FontSizeType, WordBreakType } from "src/types";
+import { H1, H2, H3, H4, H5, H6 } from "./styles";
 
 export type HeadingProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
@@ -48,7 +47,7 @@ const Heading: FunctionComponent<HeadingProps> = ({
 
   const propsWithTheme = {
     ...props,
-    theme: theme,
+    theme,
   };
 
   if (h1) return <H1 {...propsWithTheme} />;

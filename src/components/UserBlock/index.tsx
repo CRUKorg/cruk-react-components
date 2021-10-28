@@ -22,7 +22,13 @@ export type UserBlockProps = HTMLAttributes<HTMLElement> & {
 /**
  * Display an avatar with title and subtitle
  */
-const UserBlock: FC<UserBlockProps> = (props) => {
+const UserBlock: FC<UserBlockProps> = ({
+  name,
+  avatarName,
+  avatarUrl,
+  extra,
+  size,
+}) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -31,31 +37,19 @@ const UserBlock: FC<UserBlockProps> = (props) => {
 
   // name is a reserved html prop so we make sure we don't pass it into the styled component
   // or it will end up in the markup
-  const { name, ...propsWithoutName } = props;
   return (
-    <StyledUserBlock {...propsWithoutName} theme={theme}>
+    <StyledUserBlock theme={theme}>
       <Avatar
-        name={
-          props.avatarName
-            ? props.avatarName
-            : typeof props.name === "string"
-            ? props.name
-            : "Anonymous"
-        }
-        url={props.avatarUrl ? props.avatarUrl : undefined}
-        size={props.size}
+        name={avatarName || (typeof name === "string" ? name : "Anonymous")}
+        url={avatarUrl || undefined}
+        size={size}
       />
       <Details>
-        <Name>{props.name || "Anonymous"}</Name>
-        {!!props.extra && <Extra>{props.extra}</Extra>}
+        <Name>{name || "Anonymous"}</Name>
+        {!!extra && <Extra>{extra}</Extra>}
       </Details>
     </StyledUserBlock>
   );
-};
-
-UserBlock.defaultProps = {
-  avatarName: undefined,
-  avatarUrl: undefined,
 };
 
 export default UserBlock;

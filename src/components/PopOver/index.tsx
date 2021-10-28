@@ -4,7 +4,6 @@ import React, {
   FC,
   useRef,
   useCallback,
-  MouseEvent,
   ReactElement,
   ReactNode,
 } from "react";
@@ -14,9 +13,8 @@ import { useKey } from "src/hooks/useKey";
 import defaultTheme from "src/themes/cruk";
 import useEffectBrowser from "src/hooks/useEffectBrowser";
 
-import { PopOverWrapper, PopOverModal } from "./styles";
-
 import { PopOverPositionType } from "src/types";
+import { PopOverWrapper, PopOverModal } from "./styles";
 
 export type PopOverProps = {
   /** used for aria-label of modal */
@@ -62,7 +60,7 @@ const PopOver: FC<PopOverProps> = ({
   // outside click closes popover
   const handleDocumentClick = useCallback(
     (e: MouseEvent) => {
-      if (!(popRef.current as any).contains(e.target)) {
+      if (!!popRef.current && !popRef.current.contains(e.target as Node)) {
         closePopOver();
       }
     },
@@ -86,10 +84,8 @@ const PopOver: FC<PopOverProps> = ({
   }, [showPopOver]);
 
   useEffectBrowser(() => {
-    // @ts-ignore function signature for listerns on document is slightly weird but this still works so ignore
     document.addEventListener("click", handleDocumentClick, true);
     return () => {
-      // @ts-ignore function signature for listerns on document is slightly weird but this still works so ignore
       document.removeEventListener("click", handleDocumentClick, true);
     };
   }, []);

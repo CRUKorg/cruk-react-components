@@ -24,12 +24,13 @@ type StyledInputProps = {
 
 export const Extra = styled.span<ExtraProps>`
   display: block;
-  background-color: ${({ theme }) => theme.colors.textInputExtraInfo};
-  color: ${({ theme }) => theme.colors.textDark};
-  font-size: ${({ theme }) => theme.typography.m};
-  line-height: ${({ theme }) => theme.typography.lineHeight};
-  font-weight: ${({ theme }) => theme.typography.fontWeightLight};
-  padding: ${({ theme }) =>
+  background-color: ${({ theme }: ExtraProps) =>
+    theme.colors.textInputExtraInfo};
+  color: ${({ theme }: ExtraProps) => theme.colors.textDark};
+  font-size: ${({ theme }: ExtraProps) => theme.fontSizes.m};
+  line-height: ${({ theme }: ExtraProps) => theme.typography.lineHeight};
+  font-weight: ${({ theme }: ExtraProps) => theme.typography.fontWeightLight};
+  padding: ${({ theme }: ExtraProps) =>
     `calc((${MIN_HEIGHT} - 1em ) / 2) ${theme.spacing.xs}`};
   margin: 0;
   line-height: 1rem;
@@ -42,15 +43,15 @@ export const ExtraLeft = styled(Extra)`
   height: ${MIN_HEIGHT};
 
   button {
-    min-height: ${({ theme }) =>
+    min-height: ${({ theme }: ExtraProps) =>
       `calc(${MIN_HEIGHT} - (2 * ${theme.utilities.inputBorderWidth}))`} !important;
   }
 `;
 
 export const ExtraRight = styled(Extra)`
   width: initial;
-  border: ${({ theme }) =>
-    `solid ${theme.utilities.inputBorderWidth} ${theme.colors.textInputBorder}`};
+  border: solid ${({ theme }: ExtraProps) => theme.utilities.inputBorderWidth}
+    ${({ theme }: ExtraProps) => theme.colors.textInputBorder};
   transition: border-color 150ms linear;
   border-left: 0;
   background-color: transparent;
@@ -59,7 +60,7 @@ export const ExtraRight = styled(Extra)`
   vertical-align: middle;
 
   button {
-    min-height: ${({ theme }) =>
+    min-height: ${({ theme }: ExtraProps) =>
       `calc(${MIN_HEIGHT} - (2 * ${theme.utilities.inputBorderWidth}))`} !important;
   }
 `;
@@ -83,7 +84,7 @@ export const StyledInputWrapper = styled.span<StyledInputProps>`
     content: "";
     top: 0;
     background-repeat: no-repeat;
-    background-position: ${({ theme }) =>
+    background-position: ${({ theme }: StyledInputProps) =>
       `calc( 100% - ${theme.spacing.xxs}) 50% `};
     ${({ isValid, isInvalidVisible }: StyledInputProps) =>
       !isValid &&
@@ -101,19 +102,17 @@ export const StyledInputWrapper = styled.span<StyledInputProps>`
 `;
 
 export const StyledInput = styled.input<StyledInputProps>`
-  display: block;
-  background-color: ${({ theme }) => theme.colors.backgroundLight};
+  background-color: ${({ theme }: ExtraProps) => theme.colors.backgroundLight};
   background-image: none;
-  border: ${({ theme, hasError }) =>
-    `solid ${theme.utilities.inputBorderWidth} ${
-      hasError ? theme.colors.textError : theme.colors.textInputBorder
-    }`};
-  color: ${({ theme }) => theme.colors.textDark};
+  border: solid ${({ theme }: ExtraProps) => theme.utilities.inputBorderWidth}
+    ${({ hasError, theme }: StyledInputProps) =>
+      hasError ? theme.colors.textError : theme.colors.textInputBorder};
+  color: ${({ theme }: ExtraProps) => theme.colors.textDark};
   display: block;
-  font-size: ${({ theme }) => theme.fontSizes.m};
-  line-height: ${({ theme }) => theme.typography.lineHeight};
+  font-size: ${({ theme }: ExtraProps) => theme.fontSizes.m};
+  line-height: ${({ theme }: ExtraProps) => theme.typography.lineHeight};
   min-width: 3em;
-  padding: ${({ theme }) =>
+  padding: ${({ theme }: ExtraProps) =>
     `calc((${MIN_HEIGHT} - (${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xs}`};
 
   /* Make sure text doesn't go behind the valid indicatior icon */
@@ -126,18 +125,18 @@ export const StyledInput = styled.input<StyledInputProps>`
   width: 100%;
   transition: border-color 150ms linear;
   &:disabled {
-    border-color: ${({ theme }) => theme.colors.disabled};
-    color: ${({ theme }) => theme.colors.disabled};
+    border-color: ${({ theme }: ExtraProps) => theme.colors.disabled};
+    color: ${({ theme }: ExtraProps) => theme.colors.disabled};
   }
 
-  ${({ theme }) =>
+  ${({ theme }: ExtraProps) =>
     !theme.utilities.useDefaultFocusRect
       ? css`
           &:focus {
             outline: 0;
-            border-color: ${({ theme }) => theme.colors.tertiary};
+            border-color: ${theme.colors.tertiary};
             ~ ${ExtraRight} {
-              border-color: ${({ theme }) => theme.colors.tertiary};
+              border-color: ${theme.colors.tertiary};
             }
           }
         `

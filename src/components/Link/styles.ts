@@ -4,14 +4,18 @@ import styled, { css } from "styled-components";
 import Text, { TextProps } from "src/components/Text";
 import Icon from "src/components/Icon";
 
-import { ThemeType } from "src/types";
+import { ThemeType, ColorKeyType } from "src/types";
+
+type ThemeProp = {
+  theme: ThemeType;
+};
 
 export const ChevyWithLevee = styled(Icon)`
   margin-right: ${({
     theme: {
       spacing: { xxs },
     },
-  }) => xxs};
+  }: ThemeProp) => xxs};
 `;
 
 type StyledLinkProps = AnchorHTMLAttributes<HTMLElement> &
@@ -33,26 +37,25 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
     },
     textColor,
     appearance,
-  }) =>
-    textColor && typeof colors[textColor] !== "undefined"
-      ? colors[textColor]
-      : textColor
-      ? textColor
-      : !appearance && useBackgroundStyleLinks
-      ? "currentColor"
-      : appearance && appearance === "primary"
-      ? colors["secondary"]
-      : colors["linkColor"]};
+  }: StyledLinkProps) =>
+    textColor && typeof colors[textColor as ColorKeyType] !== "undefined"
+      ? colors[textColor as ColorKeyType]
+      : textColor ||
+        (!appearance && useBackgroundStyleLinks
+          ? "currentColor"
+          : appearance && appearance === "primary"
+          ? colors.secondary
+          : colors.linkColor)};
   text-decoration: ${({
     appearance,
     theme: {
       typography: { linkTextDecoration },
     },
-  }) =>
+  }: StyledLinkProps) =>
     appearance === "primary" || appearance === "secondary"
       ? "none"
       : linkTextDecoration};
-  font-weight: ${({ theme }) =>
+  font-weight: ${({ theme }: ThemeProp) =>
     theme.utilities.useBackgroundStyleLinks
       ? theme.typography.fontWeightHeavy
       : theme.typography.fontWeightMedium};
@@ -62,7 +65,7 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
     theme: {
       utilities: { useBackgroundStyleLinks },
     },
-  }) =>
+  }: StyledLinkProps) =>
     useBackgroundStyleLinks && !appearance
       ? `linear-gradient(180deg, rgba(255, 255, 255, 0) 0px, ${theme.colors.primary} -4px);`
       : undefined};
@@ -90,13 +93,12 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
         utilities: { useBackgroundStyleLinks },
       },
       textHoverColor,
-    }) =>
+    }: StyledLinkProps) =>
       !textHoverColor && useBackgroundStyleLinks
-        ? colors["textDark"]
-        : textHoverColor && typeof colors[textHoverColor] !== "undefined"
-        ? colors[textHoverColor]
-        : textHoverColor
-        ? textHoverColor
-        : colors["linkColorHover"]};
+        ? colors.textDark
+        : textHoverColor &&
+          typeof colors[textHoverColor as ColorKeyType] !== "undefined"
+        ? colors[textHoverColor as ColorKeyType]
+        : textHoverColor || colors.linkColorHover};
   }
 `;

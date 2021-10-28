@@ -19,40 +19,39 @@ export type StepProps = {
  * Visually show where a user is in a multi-step process. Calculate the number of steps and the width of each step required to fit the progress bar in the parent container.
  * Step display progress through a sequence by breaking it up into multiple logical steps. They may also be used for navigation.
  */
-const Step: FunctionComponent<StepProps> = (props) => {
+const Step: FunctionComponent<StepProps> = ({
+  steps = [],
+  current = 1,
+  children,
+}) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
     ...foundTheme,
   };
-  const totalSteps: number = Array.isArray(props.steps)
-    ? Object.keys(props.steps).length
+  const totalSteps: number = Array.isArray(steps)
+    ? Object.keys(steps).length
     : 0;
 
   return (
     <ThemeProvider theme={theme}>
       <StepWrapper>
         <StepList total={totalSteps}>
-          {Array.isArray(props.steps) &&
-            props.steps.map((step, i) => (
+          {Array.isArray(steps) &&
+            steps.map((step, i) => (
               <StepItem
                 key={i}
-                active={i + 1 === props.current}
-                done={i + 1 < props.current}
+                active={i + 1 === current}
+                done={i + 1 < current}
               >
-                <StepBar>{i + 1 < props.current && <StepTick />}</StepBar>
+                <StepBar>{i + 1 < current && <StepTick />}</StepBar>
                 {step}
               </StepItem>
             ))}
         </StepList>
-        {props.children}
+        {children}
       </StepWrapper>
     </ThemeProvider>
   );
 };
-
-Step.defaultProps = {
-  current: 1,
-};
-
 export default Step;

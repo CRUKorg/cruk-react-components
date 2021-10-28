@@ -1,12 +1,20 @@
 import styled from "styled-components";
 
 import defaultTheme from "src/themes/cruk";
+import { ThemeType } from "src/types";
 
 const HEADER_HEIGHT_LARGE = "120px";
 const HEADER_HEIGHT_SMALL = "72px";
 const HEADER_PADDING = defaultTheme.spacing.s;
 const HEADER_LOGO_HEIGHT_LARGE = "80px";
 const HEADER_LOGO_HEIGHT_SMALL = "40px";
+
+type StyledHeaderProps = {
+  theme: ThemeType;
+  isSmall?: boolean;
+  isSticky?: boolean;
+  fullWidth?: boolean;
+};
 
 export const StyledHeader = styled.header<{
   isSmall?: boolean;
@@ -20,7 +28,7 @@ export const StyledHeader = styled.header<{
     theme: {
       colors: { headerBackground },
     },
-  }) => headerBackground};
+  }: StyledHeaderProps) => headerBackground};
   z-index: 9998;
 `;
 
@@ -33,7 +41,7 @@ export const HeaderStickyPlaceHolder = styled.div`
       theme: {
         breakpoint: { desktop },
       },
-    }) => desktop}) {
+    }: StyledHeaderProps) => desktop}) {
     height: ${HEADER_HEIGHT_LARGE};
   }
 `;
@@ -48,13 +56,13 @@ export const HeaderStickyContainer = styled.div<{
     theme: {
       colors: { headerBackground },
     },
-  }) => headerBackground};
+  }: StyledHeaderProps) => headerBackground};
   position: relative;
   border-bottom: ${({
     theme: {
       colors: { headerBorder },
     },
-  }) => `solid 1px ${headerBorder}`};
+  }: StyledHeaderProps) => `solid 1px ${headerBorder}`};
   padding: 0 ${HEADER_PADDING};
   height: ${HEADER_HEIGHT_SMALL};
 
@@ -65,10 +73,10 @@ export const HeaderStickyContainer = styled.div<{
       theme: {
         breakpoint: { desktop },
       },
-    }) => desktop}) {
-    position: ${({ isSticky, isSmall }) =>
+    }: StyledHeaderProps) => desktop}) {
+    position: ${({ isSticky, isSmall }: StyledHeaderProps) =>
       isSticky && isSmall ? "fixed" : "relative"};
-    height: ${({ isSmall, isSticky }) =>
+    height: ${({ isSmall, isSticky }: StyledHeaderProps) =>
       isSmall && isSticky ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE};
   }
 `;
@@ -84,7 +92,7 @@ export const HeaderMainContent = styled.div<{ fullWidth?: boolean }>`
     theme: {
       utilities: { contentMaxWidth },
     },
-  }) => (fullWidth ? `100%` : contentMaxWidth)};
+  }: StyledHeaderProps) => (fullWidth ? `100%` : contentMaxWidth)};
   margin: 0 auto;
 `;
 
@@ -110,8 +118,8 @@ export const LogoWrapper = styled.div<{
       theme: {
         breakpoint: { desktop },
       },
-    }) => desktop}) {
-    height: ${({ isSmall, isSticky }) =>
+    }: StyledHeaderProps) => desktop}) {
+    height: ${({ isSmall, isSticky }: StyledHeaderProps) =>
       isSmall && isSticky
         ? HEADER_LOGO_HEIGHT_SMALL
         : HEADER_LOGO_HEIGHT_LARGE};
@@ -143,7 +151,7 @@ export const SkipToMain = styled.a`
       theme: {
         spacing: { xs },
       },
-    }) => xs};
+    }: StyledHeaderProps) => xs};
     border-radius: 15px;
     border: 4px solid yellow;
     text-align: center;
@@ -154,18 +162,19 @@ export const SkipToMain = styled.a`
 
 export const Tagline = styled.p<{ isSmall?: boolean; isSticky?: boolean }>`
   flex: 1 1 auto;
-  font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
+  font-family: ${({ theme }: StyledHeaderProps) =>
+    theme.typography.fontFamilyHeadings};
   font-weight: ${({
     theme: {
       typography: { fontWeightLight },
     },
-  }) => fontWeightLight};
+  }: StyledHeaderProps) => fontWeightLight};
   font-size: ${({
     theme: {
       fontSizes: { xl },
     },
-  }) => xl};
-  color: ${({ theme }) => theme.colors.primary};
+  }: StyledHeaderProps) => xl};
+  color: ${({ theme }: StyledHeaderProps) => theme.colors.primary};
   text-align: center;
 
   display: none;
@@ -174,8 +183,8 @@ export const Tagline = styled.p<{ isSmall?: boolean; isSticky?: boolean }>`
       theme: {
         breakpoint: { desktop },
       },
-    }) => desktop}) {
-    display: ${({ isSmall, isSticky }) =>
+    }: StyledHeaderProps) => desktop}) {
+    display: ${({ isSmall, isSticky }: StyledHeaderProps) =>
       isSmall && isSticky ? `none` : `block`};
   }
 `;

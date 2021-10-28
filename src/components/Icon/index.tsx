@@ -32,13 +32,18 @@ export type IconProps = {
  *
  * This component is likely to change in the future to make it more tree-shakable
  * */
-const Icon: FunctionComponent<IconProps> = (props) => {
+const Icon: FunctionComponent<IconProps> = ({
+  name,
+  color,
+  size = "1.1rem",
+  ...rest
+}) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
     ...foundTheme,
   };
-  const icon = ICONS[props.name];
+  const icon = ICONS[name];
 
   return (
     <StyledIcon
@@ -46,18 +51,15 @@ const Icon: FunctionComponent<IconProps> = (props) => {
       alt-text=""
       role="presentation"
       viewBox={`0 0 ${icon.width} ${icon.height}`}
-      size={props.size}
-      {...props}
+      size={size || "1.1rem"}
+      color={color}
+      {...rest}
     >
       {icon.paths.map((path: string, index: number) => (
         <path key={index} d={path} />
       ))}
     </StyledIcon>
   );
-};
-
-Icon.defaultProps = {
-  size: "1.1rem",
 };
 
 export default Icon;

@@ -2,12 +2,21 @@ import styled, { css } from "styled-components";
 
 import { ThemeType, PopOverPositionType } from "src/types";
 
+type ThemeProp = {
+  theme: ThemeType;
+};
+
 export const PopOverWrapper = styled.div<{
   css?: string;
 }>`
   position: relative;
   display: inline-block;
-  ${(props) => (css as any)([props.css])}
+
+  ${(props: { css?: string }) =>
+    props.css &&
+    css`
+      ${props.css}
+    `}
 `;
 
 export const PopOverModal = styled.div<{
@@ -27,19 +36,14 @@ export const PopOverModal = styled.div<{
     theme: {
       fontSizes: { s },
     },
-  }) => s};
+  }: ThemeProp) => s};
   background-color: ${({
     theme: {
       colors: { popoverBackground },
     },
-  }) => popoverBackground};
+  }: ThemeProp) => popoverBackground};
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.25);
-  border-radius: ${({
-    theme: {
-      utilities: { borderRadius },
-    },
-  }) => borderRadius};
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 
   margin-bottom: ${({ position }: { position?: PopOverPositionType }) => {
@@ -309,7 +313,7 @@ export const PopOverModal = styled.div<{
     }};
   }
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
+  @media (min-width: ${({ theme }: ThemeProp) => theme.breakpoint.desktop}) {
     margin-top: ${({ position }: { position?: PopOverPositionType }) => {
       switch (position) {
         case "bottom":

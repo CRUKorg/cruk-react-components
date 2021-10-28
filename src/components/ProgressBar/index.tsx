@@ -34,32 +34,39 @@ export type ProgressBarProps = {
  * Provide up-to-date feedback on the progress of a workflow or action with
 simple yet flexible progress bars.
 */
-const ProgressBar: FC<ProgressBarProps> = (props) => {
+const ProgressBar: FC<ProgressBarProps> = ({
+  percentage = 0,
+  isCircular,
+  circleContents,
+  circleSize,
+  barColor,
+  children,
+}) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
     ...foundTheme,
   };
-  const number = props.percentage;
+  const number = percentage;
   const percentString = `${!Number.isNaN(number) ? number : "0"}%`;
   const descriptivePercentageString = `${
-    typeof props.circleContents === "string" ? props.circleContents : null
+    typeof circleContents === "string" ? circleContents : ""
   } ${percentString}% Complete`;
-  const textOrPercentString = props.circleContents || percentString;
+  const textOrPercentString = circleContents || percentString;
 
   return (
     <ThemeProvider theme={theme}>
-      <ProgressBarWrapper {...props}>
-        {props.isCircular ? (
+      <ProgressBarWrapper>
+        {isCircular ? (
           <CircularWrapper
             percentage={number}
-            circleSize={props.circleSize || DEFAULT_CIRCLE_SIZE}
+            circleSize={circleSize || DEFAULT_CIRCLE_SIZE}
           >
             <CircularLeft className="Left">
-              <CircularColorFill barColor={props.barColor} />
+              <CircularColorFill barColor={barColor} />
             </CircularLeft>
             <CircularRight className="Right">
-              <CircularColorFill barColor={props.barColor} />
+              <CircularColorFill barColor={barColor} />
             </CircularRight>
             <CircularValue>{textOrPercentString}</CircularValue>
           </CircularWrapper>
@@ -67,19 +74,15 @@ const ProgressBar: FC<ProgressBarProps> = (props) => {
           <LineProgressBarWrapper>
             <LineProgressBar
               percentage={number > 100 ? 100 : number}
-              barColor={props.barColor}
+              barColor={barColor}
             />
             <ScreenReaderOnly>{descriptivePercentageString}</ScreenReaderOnly>
           </LineProgressBarWrapper>
         )}
-        {props.children}
+        {children}
       </ProgressBarWrapper>
     </ThemeProvider>
   );
-};
-
-ProgressBar.defaultProps = {
-  percentage: 0,
 };
 
 export default ProgressBar;

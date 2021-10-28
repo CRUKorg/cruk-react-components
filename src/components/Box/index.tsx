@@ -8,15 +8,14 @@ import { useTheme } from "styled-components";
 
 import defaultTheme from "src/themes/cruk";
 
-import { StyledBox } from "./styles";
-
 import { SpacingProps } from "src/components/Spacing";
+import { StyledBox } from "./styles";
 
 export type BoxProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
     /** background color of box, this will add default padding */
     backgroundColor?: string;
-    css?: any;
+    css?: string;
     ref?: Ref<HTMLDivElement>;
   };
 

@@ -4,15 +4,15 @@ import React, {
   ButtonHTMLAttributes,
   Ref,
   forwardRef,
+  ReactElement,
 } from "react";
 import { useTheme } from "styled-components";
 
 import defaultTheme from "src/themes/cruk";
 import Icon from "src/components/Icon";
 
-import { Spacer, StyledButton } from "./styles";
-
 import { ButtonAppearanceType } from "src/types";
+import { Spacer, StyledButton } from "./styles";
 
 export type Props = ButtonHTMLAttributes<HTMLElement> & {
   /** the look and feel of the button */
@@ -46,17 +46,14 @@ export const Button: FunctionComponent<Props> = forwardRef(
     };
     const { appearance = "primary", isIconButton = false } = props;
     const childArray = React.Children.toArray(props.children);
+    const isChildString = typeof childArray[0] === "string";
+    const firstElement = childArray[0] as ReactElement;
 
     // button has a fixed width if there is a single icon
-    const setIconButton =
+    const setIconButton = !!(
       isIconButton ||
-      (props.children &&
-        childArray.length === 1 &&
-        childArray[0] &&
-        // @ts-ignore typescript doesn't seem to like child.type but it works fine
-        childArray[0].type === Icon)
-        ? true
-        : false;
+      (childArray.length === 1 && !isChildString && firstElement?.type) === Icon
+    );
 
     return (
       <StyledButton

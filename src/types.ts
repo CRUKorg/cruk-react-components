@@ -123,6 +123,7 @@ export type ColorsType = {
   loaderColor2: string;
   loaderColor3: string;
 
+  paginationText: string;
   paginationBackground: string;
   paginationActive: string;
 
@@ -175,13 +176,13 @@ export type SpacingType = {
   none: string;
 };
 
-export type customFontType = {
+export type CustomFontType = {
   family: string;
   url: string;
 };
 
 export type TypographyType = {
-  customFonts: [customFontType];
+  customFonts: [CustomFontType];
   fontUrl: string;
   fontFamilyBase: string;
   fontFamilyHeadings: string;
@@ -274,6 +275,7 @@ export type AddressOptionsType = {
   Type: string;
   Id: string;
   Text: string;
+  Error?: Error;
 };
 
 export type WordBreakType =

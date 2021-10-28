@@ -1,6 +1,11 @@
 import styled, { css, keyframes } from "styled-components";
+import { ThemeType } from "src/types";
 
 const CIRCLE_THICKENESS = "4px";
+
+type ThemeProp = {
+  theme: ThemeType;
+};
 
 export const ProgressBarWrapper = styled.div`
   margin-top: 15px;
@@ -13,7 +18,7 @@ const ProgressSharedStyling = css`
     theme: {
       colors: { progressBarBackground },
     },
-  }) => progressBarBackground};
+  }: ThemeProp) => progressBarBackground};
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 `;
 
@@ -26,6 +31,10 @@ type LineProgressBarProps = {
   barColor?: string;
 };
 
+type CircularColorFillProps = {
+  barColor?: string;
+};
+
 export const LineProgressBar = styled.div<LineProgressBarProps>`
   float: left;
   width: 1%;
@@ -34,29 +43,24 @@ export const LineProgressBar = styled.div<LineProgressBarProps>`
     theme: {
       fontSizes: { s },
     },
-  }) => s};
+  }: ThemeProp) => s};
   line-height: ${({
     theme: {
       typography: { lineHeight },
     },
-  }) => lineHeight};
+  }: ThemeProp) => lineHeight};
   color: ${({
     theme: {
       colors: { textLight },
     },
-  }) => textLight};
+  }: ThemeProp) => textLight};
   text-align: center;
   background-color: ${({
     barColor,
     theme: {
       colors: { progressBar },
     },
-  }) => (barColor ? barColor : progressBar)};
-  border-radius: ${({
-    theme: {
-      utilities: { borderRadius },
-    },
-  }) => borderRadius};
+  }: CircularColorFillProps & ThemeProp) => barColor || progressBar};
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   transition: width 0.6s ease;
   position: relative;
@@ -79,10 +83,6 @@ export const ScreenReaderOnly = styled.span`
   border: 0;
 `;
 
-type CircularColorFillProps = {
-  barColor?: string;
-};
-
 export const CircularColorFill = styled.span<CircularColorFillProps>`
   width: 100%;
   height: 100%;
@@ -96,7 +96,7 @@ export const CircularColorFill = styled.span<CircularColorFillProps>`
     theme: {
       colors: { circularProgress },
     },
-  }) => (barColor ? barColor : circularProgress)};
+  }: CircularColorFillProps & ThemeProp) => barColor || circularProgress};
 `;
 
 export const CircularLeft = styled.span`
@@ -161,7 +161,8 @@ export const CircularWrapper = styled.div<{
       theme: {
         colors: { circularProgressBackground },
       },
-    }) => `${CIRCLE_THICKENESS} solid ${circularProgressBackground}`};
+    }: ThemeProp) =>
+      `${CIRCLE_THICKENESS} solid ${circularProgressBackground}`};
     position: absolute;
     top: 0;
     left: 0;
@@ -220,17 +221,17 @@ export const CircularValue = styled.div`
     theme: {
       fontSizes: { l },
     },
-  }) => l};
+  }: ThemeProp) => l};
   line-height: ${({
     theme: {
       fontSizes: { l },
     },
-  }) => l};
+  }: ThemeProp) => l};
   text-align: center;
   height: 100%;
   color: ${({
     theme: {
       colors: { textDark },
     },
-  }) => textDark};
+  }: ThemeProp) => textDark};
 `;
