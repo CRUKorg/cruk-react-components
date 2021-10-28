@@ -61,7 +61,7 @@ const Collapse: FunctionComponent<CollapseProps> = (props) => {
     startOpen ? "initial" : "0"
   );
   const content = useRef<HTMLDivElement>(null);
-  const transitionTimer = useRef(0);
+  const transitionTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const foundTheme = useTheme();
   const theme: ThemeType = {
     ...defaultTheme,
@@ -70,7 +70,7 @@ const Collapse: FunctionComponent<CollapseProps> = (props) => {
 
   const toggleCollapse = () => {
     const { current } = content;
-    clearTimeout(transitionTimer.current);
+    if (transitionTimer?.current) clearTimeout(transitionTimer?.current);
     const newOpenState = !openStatus;
     setOpenStatus(newOpenState);
 
@@ -82,9 +82,6 @@ const Collapse: FunctionComponent<CollapseProps> = (props) => {
       // Allow height to be rendered before setting to 0 for animation.
       setTimeout(() => setContentHeight("0"), 10);
     } else {
-      // After animation set height to initial for responsive layout.
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       transitionTimer.current = setTimeout(
         () => setContentHeight("initial"),
         transitionDurationSeconds * 1000

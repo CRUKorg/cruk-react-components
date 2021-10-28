@@ -34,10 +34,10 @@ const useScrollPosition = (
   element: RefObject<HTMLElement> | MutableRefObject<undefined> | null,
   useWindow: boolean,
   wait: number
-) => {
+): void => {
   const position = useRef(getScrollPosition({ useWindow, element }));
 
-  let throttleTimeout: number | null = null;
+  let throttleTimeout: ReturnType<typeof setTimeout> | null = null;
 
   const callBack = () => {
     const currPos = getScrollPosition({ element, useWindow });
@@ -50,8 +50,6 @@ const useScrollPosition = (
     const handleScroll = () => {
       if (wait) {
         if (throttleTimeout === null) {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore: Unreachable code error
           throttleTimeout = setTimeout(callBack, wait);
         }
       } else {

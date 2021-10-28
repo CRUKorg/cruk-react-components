@@ -16,6 +16,7 @@ export const TestThemeWrapper: FC<TestThemeWrapperProps> = ({
   theme,
 }) => (
   <main>
+    {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
     <div style={{ overflow: "auto" }} tabIndex={0}>
       <ThemeProvider theme={theme || crukTheme}>
         <Box backgroundColor="backgroundLight">
@@ -29,6 +30,7 @@ export const TestThemeWrapper: FC<TestThemeWrapperProps> = ({
 
 export const TestWrapper: FC = ({ children }) => (
   <main>
+    {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
     <div style={{ overflow: "auto" }} tabIndex={0}>
       <ThemeProvider theme={crukTheme}>
         <GlobalStyle />

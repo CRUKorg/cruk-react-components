@@ -10,16 +10,14 @@ export default {
   component: AddressLookup,
 } as Meta<AddressLookupProps>;
 
-const AddressLookupWithState: FC<AddressLookupProps> = (args) => {
-  return (
-    <AddressLookup
-      {...args}
-      apiKey="MG17-ZD93-FF33-KF13"
-      onAddressSelected={(address) => alert(JSON.stringify(address, null, 2))}
-      onChange={(e) => console.log("value", e.target.value)}
-    />
-  );
-};
+const AddressLookupWithState: FC<AddressLookupProps> = (args) => (
+  <AddressLookup
+    {...args}
+    apiKey="MG17-ZD93-FF33-KF13"
+    onAddressSelected={(address) => alert(JSON.stringify(address, null, 2))}
+    onChange={(e) => console.log("value", e.target.value)}
+  />
+);
 
 const Template: Story<AddressLookupProps> = (args) => (
   <AddressLookupWithState {...args} />

@@ -1,4 +1,4 @@
-import { useEffect, DependencyList, KeyboardEvent } from "react";
+import { useEffect, DependencyList } from "react";
 import { isBrowser } from "../utils/Helper";
 
 // useKey((pressedKey, event) => {
@@ -15,7 +15,7 @@ export const useKey = (
     keyevent?: "keydown" | "keyup" | "keypress";
   },
   dependencies?: DependencyList
-) => {
+): void => {
   const { detectKeys = [], keyevent } = options;
 
   const handleEvent = (event: KeyboardEvent) => {
@@ -28,12 +28,9 @@ export const useKey = (
     if (!isBrowser) {
       return undefined;
     }
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore expected function signature for listerns on window is slightly weird but this still works so ignore
+
     window.document.addEventListener(keyevent || "keydown", handleEvent);
     return () => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore expected function signature for listerns on window is slightly weird but this still works so ignore
       window.document.removeEventListener(keyevent || "keydown", handleEvent);
     };
   }, dependencies || []);

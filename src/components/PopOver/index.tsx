@@ -4,7 +4,6 @@ import React, {
   FC,
   useRef,
   useCallback,
-  MouseEvent,
   ReactElement,
   ReactNode,
 } from "react";
@@ -85,12 +84,8 @@ const PopOver: FC<PopOverProps> = ({
   }, [showPopOver]);
 
   useEffectBrowser(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore function signature for listerns on document is slightly weird but this still works so ignore
     document.addEventListener("click", handleDocumentClick, true);
     return () => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore function signature for listerns on document is slightly weird but this still works so ignore
       document.removeEventListener("click", handleDocumentClick, true);
     };
   }, []);
