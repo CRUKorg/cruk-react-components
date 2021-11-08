@@ -1,24 +1,24 @@
-module.exports = function(api) {
-  var isDev = api.env('development');
+module.exports = function (api) {
+  var isDev = api.env("development");
 
   return {
     sourceMaps: true,
     presets: [
       [
-        '@babel/preset-env',
+        "@babel/preset-env",
         {
           targets: {
             esmodules: true,
           },
         },
       ],
-      '@babel/preset-react',
-      '@babel/preset-typescript',
+      "@babel/preset-react",
+      "@babel/preset-typescript",
     ],
     plugins: [
-      '@babel/plugin-proposal-class-properties',
+      "@babel/plugin-proposal-class-properties",
       [
-        'styled-components',
+        "styled-components",
         {
           ssr: true,
           displayName: isDev,
