@@ -1,6 +1,7 @@
 const path = require("path");
 
 module.exports = {
+  framework: "@storybook/react",
   stories: [
     "../src/components/*/*.stories.mdx",
     "../src/components/*/*.stories.@(js|jsx|ts|tsx)",
