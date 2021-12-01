@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2021-10-18
+
+### Removed
+
+- "@react-theming/storybook-addon", because it was breaking storybook post 6.4
+
+### Changed
+
+- Replaced all absolute paths with relative paths, not out of choice but because rollup + typescripe + absolute paths leads to broken typescript definition files with absolute paths, this broke intellisence.
+
+### Added
+
+- New theme selector bar in storybook top bar to replace the react-theming addon
+
 ## [1.0.0] - 2021-10-18
 
 ### Changed
