@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Replaced all absolute paths with relative paths, not out of choice but because rollup + typescripe + absolute paths leads to broken typescript definition files with absolute paths, this broke intellisence.
+- Replaced all absolute paths with relative paths, not out of choice but because rollup + typescript + absolute paths leads to broken typescript definition files with absolute paths, this broke intellisence.
 
 ### Added
 
