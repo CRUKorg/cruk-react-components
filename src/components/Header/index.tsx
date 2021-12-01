@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useState, HTMLAttributes } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
-import { useScrollPosition } from "src/hooks/useScrollPosition";
-import defaultTheme from "src/themes/cruk";
+import { useScrollPosition } from "../../hooks/useScrollPosition";
+import defaultTheme from "../../themes/cruk";
 
 import {
   StyledHeader,

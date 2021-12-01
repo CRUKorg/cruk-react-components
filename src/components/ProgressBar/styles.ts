@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
-import { ThemeType } from "src/types";
+import { ThemeType } from "../../types";
 
 const CIRCLE_THICKENESS = "4px";
 

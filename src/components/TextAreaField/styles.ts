@@ -1,5 +1,5 @@
-import { ThemeType } from "src/types";
 import styled, { css } from "styled-components";
+import { ThemeType } from "../../types";
 
 type StyledTextareaProps = {
   hasError: boolean;

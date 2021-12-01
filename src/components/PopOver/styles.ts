@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-import { ThemeType, PopOverPositionType } from "src/types";
+import { ThemeType, PopOverPositionType } from "../../types";
 
 type ThemeProp = {
   theme: ThemeType;

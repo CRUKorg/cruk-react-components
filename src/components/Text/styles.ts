@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
-import spacing, { SpacingProps } from "src/components/Spacing";
-
+import spacing, { SpacingProps } from "../Spacing";
 import {
   WordBreakType,
   FontSizeType,
   ThemeType,
   ColorKeyType,
-} from "src/types";
+} from "../../types";
 
 export type TextStyledProps = SpacingProps & {
   textColor?: ColorKeyType;

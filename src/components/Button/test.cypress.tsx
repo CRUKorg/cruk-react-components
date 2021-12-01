@@ -3,50 +3,48 @@
 import React from "react";
 import { mount } from "@cypress/react";
 
-import TestWrapper, { TestThemeWrapper } from "src/components/TestWrapper";
-import { su2cTheme, crukTheme, Icon, Button, Box } from "../";
+import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
+import { su2cTheme, crukTheme, Icon, Button, Box } from "..";
 
-const content = () => {
-  return (
-    <Box backgroundColor="backgroundLight" padding="none">
-      <Button appearance="primary">Primary</Button>
-      <Button appearance="secondary">Secondary</Button>
-      <Button appearance="tertiary">Tertiary</Button>
-      <Button disabled appearance="primary">
-        Disabled primary
-      </Button>
-      <Button disabled appearance="secondary">
-        Disabled secondary
-      </Button>
-      <Button disabled appearance="tertiary">
-        Disabled secondary
-      </Button>
-      <Button size="l">Large button</Button>
-      <Button>
-        <Icon name="view" />
-        Icon with text
-      </Button>
-      <Button>
-        Icon right
-        <Icon name="edit" />
-      </Button>
-      <Button>
-        <Icon name="view" />
-        Icon either side
-        <Icon name="view" />
-      </Button>
-      <Button href="https://www.styled-components.com/">Link as Button</Button>
-      <Button aria-label="Upload a photo">
-        <Icon name="uploadPhoto" />
-      </Button>
-      <Button css="background-color: #4267b2;border-color: #4267b2; color: white !important; :hover {background-color: #365899; border-color:  #365899; color: white !important;}">
-        <Icon name="facebookSquare" size="18px" />
-        Continue with facebook
-      </Button>
-      <Button full>Full width Button</Button>
-    </Box>
-  );
-};
+const content = () => (
+  <Box backgroundColor="backgroundLight" padding="none">
+    <Button appearance="primary">Primary</Button>
+    <Button appearance="secondary">Secondary</Button>
+    <Button appearance="tertiary">Tertiary</Button>
+    <Button disabled appearance="primary">
+      Disabled primary
+    </Button>
+    <Button disabled appearance="secondary">
+      Disabled secondary
+    </Button>
+    <Button disabled appearance="tertiary">
+      Disabled secondary
+    </Button>
+    <Button size="l">Large button</Button>
+    <Button>
+      <Icon name="view" />
+      Icon with text
+    </Button>
+    <Button>
+      Icon right
+      <Icon name="edit" />
+    </Button>
+    <Button>
+      <Icon name="view" />
+      Icon either side
+      <Icon name="view" />
+    </Button>
+    <Button href="https://www.styled-components.com/">Link as Button</Button>
+    <Button aria-label="Upload a photo">
+      <Icon name="uploadPhoto" />
+    </Button>
+    <Button css="background-color: #4267b2;border-color: #4267b2; color: white !important; :hover {background-color: #365899; border-color:  #365899; color: white !important;}">
+      <Icon name="facebookSquare" size="18px" />
+      Continue with facebook
+    </Button>
+    <Button full>Full width Button</Button>
+  </Box>
+);
 
 describe("Button", () => {
   it("is accessible CRUK theme", () => {

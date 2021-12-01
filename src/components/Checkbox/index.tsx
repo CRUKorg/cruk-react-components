@@ -1,8 +1,8 @@
 import React, { FC, InputHTMLAttributes, Ref, forwardRef } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
-import defaultTheme from "src/themes/cruk";
-import ErrorText from "src/components/ErrorText";
+import defaultTheme from "../../themes/cruk";
+import ErrorText from "../ErrorText";
 
 import {
   StyledLabel,

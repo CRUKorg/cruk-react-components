@@ -6,10 +6,10 @@ import React, {
 } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "src/themes/cruk";
+import defaultTheme from "../../themes/cruk";
 
-import { SpacingProps } from "src/components/Spacing";
-import { WordBreakType, FontSizeType, ColorKeyType } from "src/types";
+import { SpacingProps } from "../Spacing";
+import { WordBreakType, FontSizeType, ColorKeyType } from "../../types";
 import { TextStyled } from "./styles";
 
 // the 'as' prop is for styled component casting

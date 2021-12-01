@@ -1,4 +1,4 @@
-import { SpaceType, ThemeType } from "src/types";
+import { SpaceType, ThemeType } from "../../types";
 
 export type SpacingProps = {
   margin?: SpaceType;

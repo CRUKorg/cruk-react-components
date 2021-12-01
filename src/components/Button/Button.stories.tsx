@@ -1,9 +1,9 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import Icon from "src/components/Icon";
-import Button, { Props } from "./";
-import { GlobalStyle, su2cTheme } from "..";
 import { ThemeProvider } from "styled-components";
+import Icon from "../Icon";
+import Button, { Props } from ".";
+import { GlobalStyle, su2cTheme } from "..";
 
 export default {
   title: "Button",

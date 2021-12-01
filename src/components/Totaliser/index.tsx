@@ -4,12 +4,12 @@ import { useTheme } from "styled-components";
 import {
   calculatePercentRounded,
   formatMoneyWithCommas,
-} from "src/utils/Helper";
+} from "../../utils/Helper";
 
-import defaultTheme from "src/themes/cruk";
-import Text from "src/components/Text";
-import Badge from "src/components/Badge";
-import Box from "src/components/Box";
+import defaultTheme from "../../themes/cruk";
+import Text from "../Text";
+import Badge from "../Badge";
+import Box from "../Box";
 
 import {
   TotaliserWrapper,

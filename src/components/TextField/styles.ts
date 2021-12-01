@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-import { ThemeType } from "src/types";
+import { ThemeType } from "../../types";
 
 const MIN_HEIGHT = "48px";
 
@@ -50,8 +50,8 @@ export const ExtraLeft = styled(Extra)`
 
 export const ExtraRight = styled(Extra)`
   width: initial;
-  border: solid ${({ theme }: ExtraProps) => theme.utilities.inputBorderWidth}
-    ${({ theme }: ExtraProps) => theme.colors.textInputBorder};
+  border: ${({ theme }: ExtraProps) =>
+    `solid ${theme.utilities.inputBorderWidth} ${theme.colors.textInputBorder}`};
   transition: border-color 150ms linear;
   border-left: 0;
   background-color: transparent;
@@ -104,9 +104,10 @@ export const StyledInputWrapper = styled.span<StyledInputProps>`
 export const StyledInput = styled.input<StyledInputProps>`
   background-color: ${({ theme }: ExtraProps) => theme.colors.backgroundLight};
   background-image: none;
-  border: solid ${({ theme }: ExtraProps) => theme.utilities.inputBorderWidth}
-    ${({ hasError, theme }: StyledInputProps) =>
-      hasError ? theme.colors.textError : theme.colors.textInputBorder};
+  border: ${({ hasError, theme }: StyledInputProps) =>
+    `solid ${theme.utilities.inputBorderWidth} ${
+      hasError ? theme.colors.textError : theme.colors.textInputBorder
+    }`};
   color: ${({ theme }: ExtraProps) => theme.colors.textDark};
   display: block;
   font-size: ${({ theme }: ExtraProps) => theme.fontSizes.m};

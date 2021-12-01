@@ -1,8 +1,8 @@
 import React, { FC, ReactNode, HTMLAttributes } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
-import defaultTheme from "src/themes/cruk";
-import Text from "src/components/Text";
+import defaultTheme from "../../themes/cruk";
+import Text from "../Text";
 
 import {
   StyledFooter,

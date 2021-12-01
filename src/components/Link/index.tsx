@@ -1,9 +1,9 @@
 import React, { FC, AnchorHTMLAttributes, forwardRef, Ref } from "react";
 
 import { useTheme, ThemeProvider } from "styled-components";
-import defaultTheme from "src/themes/cruk";
+import defaultTheme from "../../themes/cruk";
 
-import { TextProps } from "src/components/Text";
+import { TextProps } from "../Text";
 import { StyledLink, ChevyWithLevee } from "./styles";
 
 export type LinkProps = AnchorHTMLAttributes<HTMLElement> &

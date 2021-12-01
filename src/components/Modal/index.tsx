@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import { ThemeProvider, useTheme } from "styled-components";
 import FocusLock from "react-focus-lock";
 
-import Icon from "src/components/Icon";
-import defaultTheme from "src/themes/cruk";
+import Icon from "../Icon";
+import defaultTheme from "../../themes/cruk";
 
 import { CloseButton, Wrapper, Content, Background } from "./styles";
 

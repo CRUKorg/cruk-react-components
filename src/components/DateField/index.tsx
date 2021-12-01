@@ -1,8 +1,8 @@
 import React, { FC, InputHTMLAttributes } from "react";
 
-import ErrorText from "src/components/ErrorText";
-import Text from "src/components/Text";
-import TextField from "src/components/TextField";
+import ErrorText from "../ErrorText";
+import Text from "../Text";
+import TextField from "../TextField";
 
 import {
   Fieldset,

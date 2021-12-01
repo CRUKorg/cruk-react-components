@@ -1,9 +1,9 @@
 import React, { FunctionComponent, ReactNode } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "src/themes/cruk";
+import { SpaceType } from "../../types";
+import defaultTheme from "../../themes/cruk";
 
-import { SpaceType } from "src/types";
 import { StyledBadge } from "./styles";
 
 export type BadgeProps = {

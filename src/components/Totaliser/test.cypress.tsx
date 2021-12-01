@@ -4,7 +4,7 @@ import React from "react";
 import { mount } from "@cypress/react";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { Totaliser, Box, Text, su2cTheme, crukTheme } from "../";
+import { Totaliser, Box, Text, su2cTheme, crukTheme } from "..";
 
 const content = () => (
   <>

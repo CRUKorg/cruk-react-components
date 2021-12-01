@@ -9,11 +9,11 @@ import React, {
 } from "react";
 import { ThemeProvider, useTheme } from "styled-components";
 
-import { useKey } from "src/hooks/useKey";
-import defaultTheme from "src/themes/cruk";
-import useEffectBrowser from "src/hooks/useEffectBrowser";
+import { useKey } from "../../hooks/useKey";
+import defaultTheme from "../../themes/cruk";
+import useEffectBrowser from "../../hooks/useEffectBrowser";
 
-import { PopOverPositionType } from "src/types";
+import { PopOverPositionType } from "../../types";
 import { PopOverWrapper, PopOverModal } from "./styles";
 
 export type PopOverProps = {

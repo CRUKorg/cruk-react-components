@@ -1,10 +1,10 @@
 import React, { FunctionComponent, HTMLAttributes } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "src/themes/cruk";
-import { SpacingProps } from "src/components/Spacing";
+import defaultTheme from "../../themes/cruk";
+import { SpacingProps } from "../Spacing";
 
-import { FontSizeType, WordBreakType } from "src/types";
+import { FontSizeType, WordBreakType } from "../../types";
 import { H1, H2, H3, H4, H5, H6 } from "./styles";
 
 export type HeadingProps = SpacingProps &

@@ -6,9 +6,9 @@ import React, {
 } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "src/themes/cruk";
+import defaultTheme from "../../themes/cruk";
 
-import { SpacingProps } from "src/components/Spacing";
+import { SpacingProps } from "../Spacing";
 import { StyledBox } from "./styles";
 
 export type BoxProps = SpacingProps &

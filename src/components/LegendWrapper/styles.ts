@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { ThemeType } from "src/types";
+import { ThemeType } from "../../types";
 
 type StyledFieldsetProps = {
   hasError?: boolean;

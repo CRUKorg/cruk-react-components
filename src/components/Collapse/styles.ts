@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-import Button from "src/components/Button";
-import Icon from "src/components/Icon";
-
-import { FontSizeType, ThemeType, ColorKeyType } from "src/types";
+import { FontSizeType, ThemeType, ColorKeyType } from "../../types";
+import Button from "../Button";
+import Icon from "../Icon";
 
 type DefaultHeaderProps = {
   theme: ThemeType;

@@ -1,10 +1,10 @@
 import { AnchorHTMLAttributes } from "react";
 import styled, { css } from "styled-components";
 
-import Text, { TextProps } from "src/components/Text";
-import Icon from "src/components/Icon";
+import Text, { TextProps } from "../Text";
+import Icon from "../Icon";
 
-import { ThemeType, ColorKeyType } from "src/types";
+import { ThemeType, ColorKeyType } from "../../types";
 
 type ThemeProp = {
   theme: ThemeType;

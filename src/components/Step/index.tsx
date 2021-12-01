@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { ThemeProvider, useTheme } from "styled-components";
 
-import defaultTheme from "src/themes/cruk";
+import defaultTheme from "../../themes/cruk";
 
 import { StepBar, StepItem, StepList, StepTick, StepWrapper } from "./styles";
 

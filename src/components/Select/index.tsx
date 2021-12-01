@@ -7,9 +7,9 @@ import React, {
 } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "src/themes/cruk";
-import ErrorText from "src/components/ErrorText";
-import LabelWrapper from "src/components/LabelWrapper";
+import defaultTheme from "../../themes/cruk";
+import LabelWrapper from "../LabelWrapper";
+import ErrorText from "../ErrorText";
 
 import { StyledSelect } from "./styles";
 

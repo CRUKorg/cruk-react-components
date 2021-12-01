@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 
-import { ThemeType } from "src/types";
+import { ThemeType } from "../../types";
 
-import ProgressBar from "src/components/ProgressBar";
+import ProgressBar from "../ProgressBar";
 
 type ThemeProps = {
   theme: ThemeType;
