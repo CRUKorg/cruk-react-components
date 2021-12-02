@@ -1,13 +1,13 @@
 import styled, { css } from "styled-components";
 
-import spacing, { SpacingProps } from "src/components/Spacing";
+import spacing, { SpacingProps } from "../Spacing";
 
 import {
   ThemeType,
   FontSizeType,
   ColorKeyType,
   WordBreakType,
-} from "src/types";
+} from "../../types";
 
 type StyledHeadingProps = SpacingProps & {
   theme: ThemeType;

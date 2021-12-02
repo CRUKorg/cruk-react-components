@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ThemeType } from "src/types";
+import { ThemeType } from "../../types";
 
 const CHECK_BOX_SIZE = "1.5rem";
 const CHECK_SIZE = "1.125rem";

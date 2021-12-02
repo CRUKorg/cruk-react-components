@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ThemeType } from "src/types";
+import { ThemeType } from "../../types";
 
 type ThemeProps = {
   theme: ThemeType;

@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { ThemeProvider, useTheme } from "styled-components";
 
-import defaultTheme from "src/themes/cruk";
+import defaultTheme from "../../themes/cruk";
 
 import { ScreenReaderOnly, Spinner } from "./styles";
 

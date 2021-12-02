@@ -13,14 +13,14 @@ import React, {
 } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "src/themes/cruk";
-import Icon from "src/components/Icon";
-import TextField from "src/components/TextField";
-import Text from "src/components/Text";
-import debounce from "src/utils/debounce";
-import { useKey } from "src/hooks/useKey";
+import { AddressDataType, AddressOptionsType } from "../../types";
+import { useKey } from "../../hooks/useKey";
 
-import { AddressDataType, AddressOptionsType } from "src/types";
+import debounce from "../../utils/debounce";
+import Text from "../Text";
+import TextField from "../TextField";
+import Icon from "../Icon";
+import defaultTheme from "../../themes/cruk";
 import { ListWrapper, ListItem, ScreenReaderOnly, List } from "./styles";
 
 const FIND_URL =

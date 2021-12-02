@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ThemeType } from "src/types";
+import { ThemeType } from "../../types";
 
 const RADIO_SIZE = "1.5rem";
 const RADIO_INNER_SIZE = "1rem";

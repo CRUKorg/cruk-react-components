@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ColorKeyType, ThemeType } from "src/types";
+import { ColorKeyType, ThemeType } from "../../types";
 
 import Box from "../Box";
 import { Button } from "../Button";

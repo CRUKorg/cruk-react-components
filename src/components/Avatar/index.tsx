@@ -1,7 +1,7 @@
 import React, { FC, ImgHTMLAttributes } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "src/themes/cruk";
+import defaultTheme from "../../themes/cruk";
 
 import { StyledAvatar } from "./styles";
 

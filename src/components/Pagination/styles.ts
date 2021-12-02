@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ThemeType } from "src/types";
+import { ThemeType } from "../../types";
 
 type PaginationStyledProps = {
   active?: boolean;

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, MouseEvent, TouchEvent } from "react";
 import { ThemeProvider, useTheme } from "styled-components";
 
-import defaultTheme from "src/themes/cruk";
+import defaultTheme from "../../themes/cruk";
 
 import { PagerItem, PagerLink, PagerList, PagerWrapper } from "./styles";
 

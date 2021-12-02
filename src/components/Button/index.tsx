@@ -8,11 +8,11 @@ import React, {
 } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "src/themes/cruk";
-import Icon from "src/components/Icon";
+import defaultTheme from "../../themes/cruk";
+import Icon from "../Icon";
 
-import { ButtonAppearanceType } from "src/types";
 import { Spacer, StyledButton } from "./styles";
+import { ButtonAppearanceType } from "../../types";
 
 export type Props = ButtonHTMLAttributes<HTMLElement> & {
   /** the look and feel of the button */

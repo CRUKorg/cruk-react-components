@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "src/themes/cruk";
+import defaultTheme from "../../themes/cruk";
 import { ICONS } from "./iconList";
 
 import { StyledIcon } from "./styles";

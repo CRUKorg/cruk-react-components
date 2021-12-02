@@ -2,8 +2,8 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import Button from "src/components/Button";
-import Icon from "src/components/Icon";
+import Button from "../Button";
+import Icon from "../Icon";
 
 import { GlobalStyle, su2cTheme } from "..";
 import TextField, { TextFieldProps } from ".";

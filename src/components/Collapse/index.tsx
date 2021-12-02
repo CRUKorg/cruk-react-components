@@ -8,9 +8,9 @@ import React, {
   HTMLAttributes,
 } from "react";
 import { useTheme } from "styled-components";
-import defaultTheme from "src/themes/cruk";
+import defaultTheme from "../../themes/cruk";
 
-import { FontSizeType, ThemeType } from "src/types";
+import { FontSizeType, ThemeType } from "../../types";
 import {
   CustomHeader,
   DefaultHeader,

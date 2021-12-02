@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
-import defaultTheme from "src/themes/cruk";
+import defaultTheme from "../../themes/cruk";
 
 import { StyledFieldSet, StyledLegend, StyledRadio } from "./styles";
 

@@ -1,8 +1,8 @@
 import React, { FunctionComponent, ReactNode } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
-import Text from "src/components/Text";
-import defaultTheme from "src/themes/cruk";
+import Text from "../Text";
+import defaultTheme from "../../themes/cruk";
 
 import { LabelText, Label } from "./styles";
 

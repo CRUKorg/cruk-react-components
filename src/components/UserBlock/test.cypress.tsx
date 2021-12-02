@@ -4,31 +4,29 @@ import React from "react";
 import { mount } from "@cypress/react";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { UserBlock, Icon, su2cTheme, crukTheme } from "../";
+import { UserBlock, Icon, su2cTheme, crukTheme } from "..";
 
-const content = () => {
-  return (
-    <>
-      <UserBlock />
-      <UserBlock name="Sam Smith" size="s" />
-      <UserBlock
-        name="Sam Smith"
-        size="l"
-        extra={
-          <>
-            <Icon name="clock" />
-            Just now
-          </>
-        }
-      />
-      <UserBlock
-        name="Sam Smith"
-        avatarUrl="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"
-        extra="(Managed by My Mum)"
-      />
-    </>
-  );
-};
+const content = () => (
+  <>
+    <UserBlock />
+    <UserBlock name="Sam Smith" size="s" />
+    <UserBlock
+      name="Sam Smith"
+      size="l"
+      extra={
+        <>
+          <Icon name="clock" />
+          Just now
+        </>
+      }
+    />
+    <UserBlock
+      name="Sam Smith"
+      avatarUrl="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"
+      extra="(Managed by My Mum)"
+    />
+  </>
+);
 
 describe("UserBlock", () => {
   it("is accessible CRUK theme", () => {

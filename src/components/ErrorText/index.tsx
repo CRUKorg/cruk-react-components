@@ -1,8 +1,8 @@
 import React, { FunctionComponent, HTMLAttributes } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "src/themes/cruk";
-import { SpacingProps } from "src/components/Spacing";
+import defaultTheme from "../../themes/cruk";
+import { SpacingProps } from "../Spacing";
 import { StyledErrorText } from "./styles";
 
 export type ErrorTextProps = SpacingProps &

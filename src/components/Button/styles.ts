@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-import { ThemeType, ButtonAppearanceType } from "src/types";
+import { ThemeType, ButtonAppearanceType } from "../../types";
 
 const BUTTON_HEIGHT = "3rem";
 const BUTTON_HEIGHT_LARGE = "4rem";
