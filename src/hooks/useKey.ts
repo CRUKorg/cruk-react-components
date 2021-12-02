@@ -1,5 +1,5 @@
-import { useEffect, DependencyList, KeyboardEvent } from 'react';
-import { isBrowser } from '../utils/Helper';
+import { useEffect, DependencyList } from "react";
+import { isBrowser } from "../utils/Helper";
 
 // useKey((pressedKey, event) => {
 //   console.log('Detected Key press', pressedKey);
@@ -9,16 +9,16 @@ import { isBrowser } from '../utils/Helper';
 // });
 
 export const useKey = (
-  callback: (event: KeyboardEvent<{}>) => void,
+  callback: (event: KeyboardEvent) => void,
   options: {
     detectKeys?: string[];
-    keyevent?: 'keydown' | 'keyup' | 'keypress';
+    keyevent?: "keydown" | "keyup" | "keypress";
   },
-  dependencies?: DependencyList,
-) => {
+  dependencies?: DependencyList
+): void => {
   const { detectKeys = [], keyevent } = options;
 
-  const handleEvent = (event: KeyboardEvent<{}>) => {
+  const handleEvent = (event: KeyboardEvent) => {
     if (detectKeys.includes(event.key) || detectKeys.length === 0) {
       callback(event);
     }
@@ -26,13 +26,12 @@ export const useKey = (
 
   useEffect(() => {
     if (!isBrowser) {
-      return;
+      return undefined;
     }
-    // @ts-ignore expected function signature for listerns on window is slightly weird but this still works so ignore
-    window.document.addEventListener(keyevent || 'keydown', handleEvent);
+
+    window.document.addEventListener(keyevent || "keydown", handleEvent);
     return () => {
-      // @ts-ignore expected function signature for listerns on window is slightly weird but this still works so ignore
-      window.document.removeEventListener(keyevent || 'keydown', handleEvent);
+      window.document.removeEventListener(keyevent || "keydown", handleEvent);
     };
   }, dependencies || []);
 };

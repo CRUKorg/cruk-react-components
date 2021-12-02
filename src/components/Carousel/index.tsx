@@ -1,10 +1,15 @@
-import React, { FC, useState, useRef, useEffect, memo } from 'react';
-import { InView } from 'react-intersection-observer';
+import React, { FC, useState, useRef, useEffect, memo } from "react";
+import { InView } from "react-intersection-observer";
 
-import { Box } from '../';
-import { Dots } from './Dots';
+import Box from "../Box";
+import { Dots } from "./Dots";
 
-import { CarouselWrapper, CarouselCardInner, CarouselCard, CarouselScrollArea } from './styles';
+import {
+  CarouselWrapper,
+  CarouselCardInner,
+  CarouselCard,
+  CarouselScrollArea,
+} from "./styles";
 
 export type CarouselProps = {
   startPosition?: number;
@@ -93,7 +98,12 @@ export const Carousel: FC<CarouselProps> = ({
     <>
       <Box>
         <CarouselWrapper>
-          <CarouselScrollArea ref={scrollRef} aria-live="assertive" smoothScrolling={smoothScrolling} tabIndex={0}>
+          <CarouselScrollArea
+            ref={scrollRef}
+            aria-live="assertive"
+            smoothScrolling={smoothScrolling}
+            tabIndex={0}
+          >
             {childArray.map((child, index) => {
               const isSelected = index === currentPosition;
               return (
@@ -101,7 +111,7 @@ export const Carousel: FC<CarouselProps> = ({
                   <InView
                     threshold={0.5}
                     as="div"
-                    onChange={inView => {
+                    onChange={(inView) => {
                       if (inView) {
                         setPosition(index);
                       }

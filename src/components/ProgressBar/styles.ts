@@ -1,6 +1,11 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css, keyframes } from "styled-components";
+import { ThemeType } from "../../types";
 
-const CIRCLE_THICKENESS = '4px';
+const CIRCLE_THICKENESS = "4px";
+
+type ThemeProp = {
+  theme: ThemeType;
+};
 
 export const ProgressBarWrapper = styled.div`
   margin-top: 15px;
@@ -13,7 +18,7 @@ const ProgressSharedStyling = css`
     theme: {
       colors: { progressBarBackground },
     },
-  }) => progressBarBackground};
+  }: ThemeProp) => progressBarBackground};
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 `;
 
@@ -26,6 +31,10 @@ type LineProgressBarProps = {
   barColor?: string;
 };
 
+type CircularColorFillProps = {
+  barColor?: string;
+};
+
 export const LineProgressBar = styled.div<LineProgressBarProps>`
   float: left;
   width: 1%;
@@ -34,34 +43,29 @@ export const LineProgressBar = styled.div<LineProgressBarProps>`
     theme: {
       fontSizes: { s },
     },
-  }) => s};
+  }: ThemeProp) => s};
   line-height: ${({
     theme: {
       typography: { lineHeight },
     },
-  }) => lineHeight};
+  }: ThemeProp) => lineHeight};
   color: ${({
     theme: {
       colors: { textLight },
     },
-  }) => textLight};
+  }: ThemeProp) => textLight};
   text-align: center;
   background-color: ${({
     barColor,
     theme: {
       colors: { progressBar },
     },
-  }) => (barColor ? barColor : progressBar)};
-  border-radius: ${({
-    theme: {
-      utilities: { borderRadius },
-    },
-  }) => borderRadius};
+  }: CircularColorFillProps & ThemeProp) => barColor || progressBar};
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   transition: width 0.6s ease;
   position: relative;
 
-  ${props =>
+  ${(props) =>
     props.percentage &&
     css`
       width: ${props.percentage}%;
@@ -79,10 +83,6 @@ export const ScreenReaderOnly = styled.span`
   border: 0;
 `;
 
-type CircularColorFillProps = {
-  barColor?: string;
-};
-
 export const CircularColorFill = styled.span<CircularColorFillProps>`
   width: 100%;
   height: 100%;
@@ -96,7 +96,7 @@ export const CircularColorFill = styled.span<CircularColorFillProps>`
     theme: {
       colors: { circularProgress },
     },
-  }) => (barColor ? barColor : circularProgress)};
+  }: CircularColorFillProps & ThemeProp) => barColor || circularProgress};
 `;
 
 export const CircularLeft = styled.span`
@@ -128,14 +128,14 @@ export const CircularRight = styled.span`
 const AnimationRight = ({ percentage }: { percentage: number }) => keyframes`
   0% { transform: rotate(0deg); }
   100% {
-    transform: rotate(${percentage > 50 ? '180' : percentage * 3.6}deg);
+    transform: rotate(${percentage > 50 ? "180" : percentage * 3.6}deg);
   }
 `;
 
 const AnimationLeft = ({ percentage }: { percentage: number }) => keyframes`
   0% { transform: rotate(0deg); }
   100% {
-    transform: rotate(${percentage > 100 ? '180' : percentage * 3.6 - 180}deg);
+    transform: rotate(${percentage > 100 ? "180" : percentage * 3.6 - 180}deg);
   }
 `;
 
@@ -153,7 +153,7 @@ export const CircularWrapper = styled.div<{
   position: relative;
 
   &:after {
-    content: '';
+    content: "";
     width: 100%;
     height: 100%;
     border-radius: 50%;
@@ -161,7 +161,8 @@ export const CircularWrapper = styled.div<{
       theme: {
         colors: { circularProgressBackground },
       },
-    }) => `${CIRCLE_THICKENESS} solid ${circularProgressBackground}`};
+    }: ThemeProp) =>
+      `${CIRCLE_THICKENESS} solid ${circularProgressBackground}`};
     position: absolute;
     top: 0;
     left: 0;
@@ -176,14 +177,14 @@ export const CircularWrapper = styled.div<{
     z-index: 1;
   }
 
-  ${props =>
+  ${(props) =>
     props.percentage < 51 &&
     css`
       ${CircularRight} ${CircularColorFill} {
         animation: ${AnimationRight as any} 0.5s linear forwards;
       }
     `};
-  ${props =>
+  ${(props) =>
     props.percentage > 50 &&
     css`
       ${CircularRight} ${CircularColorFill} {
@@ -193,7 +194,7 @@ export const CircularWrapper = styled.div<{
         animation: ${AnimationLeft as any} 0.5s linear forwards 0.5s;
       }
     `};
-  ${props =>
+  ${(props) =>
     props.percentage >= 100 &&
     css`
       ${CircularRight} ${CircularColorFill} {
@@ -220,17 +221,17 @@ export const CircularValue = styled.div`
     theme: {
       fontSizes: { l },
     },
-  }) => l};
+  }: ThemeProp) => l};
   line-height: ${({
     theme: {
       fontSizes: { l },
     },
-  }) => l};
+  }: ThemeProp) => l};
   text-align: center;
   height: 100%;
   color: ${({
     theme: {
       colors: { textDark },
     },
-  }) => textDark};
+  }: ThemeProp) => textDark};
 `;

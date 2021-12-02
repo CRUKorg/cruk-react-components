@@ -1,13 +1,18 @@
-import React, { FC, InputHTMLAttributes } from 'react';
+import React, { FC, InputHTMLAttributes } from "react";
 
-import ErrorText from 'src/components/ErrorText';
-import Text from 'src/components/Text';
-import TextField from 'src/components/TextField';
+import ErrorText from "../ErrorText";
+import Text from "../Text";
+import TextField from "../TextField";
 
-import { Fieldset, DateTextFieldWrapper, LargeDateTextFieldWrapper, ErrorTextWrapper } from './styles';
+import {
+  Fieldset,
+  DateTextFieldWrapper,
+  LargeDateTextFieldWrapper,
+  ErrorTextWrapper,
+} from "./styles";
 
 export type DateFieldProps = InputHTMLAttributes<HTMLInputElement> & {
-  /**label text */
+  /** label text */
   label: string;
   /** hind text */
   hintText?: string;
@@ -42,9 +47,9 @@ const DateField: FC<DateFieldProps> = ({
   day,
   month,
   year,
-  dayName = 'day',
-  monthName = 'month',
-  yearName = 'year',
+  dayName = "day",
+  monthName = "month",
+  yearName = "year",
   dayHasError,
   monthHasError,
   yearHasError,
@@ -53,77 +58,76 @@ const DateField: FC<DateFieldProps> = ({
   onBlur = () => {},
   onFocus = () => {},
   disabled,
-  ...props
-}) => {
-  return (
-    <Fieldset>
-      <Text as="legend" textWeight={700} marginBottom="xxs">
-        {label}
-      </Text>
-      {hintText && <Text>{hintText}</Text>}
-      <DateTextFieldWrapper>
-        <TextField
-          label="Day"
-          type="text"
-          name={dayName}
-          required
-          hideRequiredInLabel
-          maxLength={2}
-          autoComplete="bday-day"
-          pattern="[0-9]*"
-          inputMode="numeric"
-          value={day}
-          onChange={onChange}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          hasError={dayHasError}
-          disabled={disabled}
-        />
-      </DateTextFieldWrapper>
-      <DateTextFieldWrapper>
-        <TextField
-          label="Month"
-          type="text"
-          name={monthName}
-          required
-          hideRequiredInLabel
-          maxLength={2}
-          autoComplete="bday-month"
-          pattern="[0-9]*"
-          inputMode="numeric"
-          value={month}
-          onChange={onChange}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          hasError={monthHasError}
-          disabled={disabled}
-        />
-      </DateTextFieldWrapper>
-      <LargeDateTextFieldWrapper>
-        <TextField
-          label="Year"
-          type="text"
-          name={yearName}
-          hideRequiredInLabel
-          maxLength={4}
-          autoComplete="bday-year"
-          pattern="[0-9]*"
-          inputMode="numeric"
-          value={year}
-          onChange={onChange}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          hasError={yearHasError}
-          disabled={disabled}
-        />
-      </LargeDateTextFieldWrapper>
-      {errorMessage && (
-        <ErrorTextWrapper>
-          <ErrorText marginTop="xxs">{errorMessage}</ErrorText>
-        </ErrorTextWrapper>
-      )}
-    </Fieldset>
-  );
-};
+  required,
+}) => (
+  <Fieldset>
+    <Text as="legend" textWeight={700} marginBottom="xxs">
+      {label} {!!required && ` (required)`}
+    </Text>
+    {hintText && <Text>{hintText}</Text>}
+    <DateTextFieldWrapper>
+      <TextField
+        label="Day"
+        type="text"
+        name={dayName}
+        required={!!required}
+        hideRequiredInLabel
+        maxLength={2}
+        autoComplete="bday-day"
+        pattern="[0-9]*"
+        inputMode="numeric"
+        value={day}
+        onChange={onChange}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        hasError={dayHasError}
+        disabled={disabled}
+      />
+    </DateTextFieldWrapper>
+    <DateTextFieldWrapper>
+      <TextField
+        label="Month"
+        type="text"
+        name={monthName}
+        required={!!required}
+        hideRequiredInLabel
+        maxLength={2}
+        autoComplete="bday-month"
+        pattern="[0-9]*"
+        inputMode="numeric"
+        value={month}
+        onChange={onChange}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        hasError={monthHasError}
+        disabled={disabled}
+      />
+    </DateTextFieldWrapper>
+    <LargeDateTextFieldWrapper>
+      <TextField
+        label="Year"
+        type="text"
+        name={yearName}
+        required={!!required}
+        hideRequiredInLabel
+        maxLength={4}
+        autoComplete="bday-year"
+        pattern="[0-9]*"
+        inputMode="numeric"
+        value={year}
+        onChange={onChange}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        hasError={yearHasError}
+        disabled={disabled}
+      />
+    </LargeDateTextFieldWrapper>
+    {errorMessage && (
+      <ErrorTextWrapper>
+        <ErrorText marginTop="xxs">{errorMessage}</ErrorText>
+      </ErrorTextWrapper>
+    )}
+  </Fieldset>
+);
 
 export default DateField;

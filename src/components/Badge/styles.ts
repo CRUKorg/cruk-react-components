@@ -1,12 +1,12 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
-import { SpaceType, ThemeType } from 'src/types';
+import { ColorKeyType, SpaceType, ThemeType } from "../../types";
 
 type StyleBadgeProps = {
   backgroundColor?: string;
   borderColor?: string;
   textColor?: string;
-  text?: boolean;
+  isText?: boolean;
   size: SpaceType;
   theme: ThemeType;
 };
@@ -14,37 +14,39 @@ type StyleBadgeProps = {
 export const StyledBadge = styled.span<StyleBadgeProps>`
   border-width: 1px;
   border-style: solid;
-  background-color: ${({ theme: { colors }, backgroundColor }) =>
-    backgroundColor && typeof colors[backgroundColor] !== 'undefined'
-      ? colors[backgroundColor]
-      : backgroundColor
-      ? backgroundColor
-      : colors['primary']};
-  color: ${({ theme: { colors }, textColor }) =>
-    textColor && typeof colors[textColor] !== 'undefined'
-      ? colors[textColor]
-      : textColor
-      ? textColor
-      : colors['textLight']};
-  border-color: ${({ theme: { colors }, borderColor, backgroundColor }) =>
-    borderColor && typeof colors[borderColor] !== 'undefined'
-      ? colors[borderColor]
-      : borderColor
-      ? borderColor
-      : backgroundColor && typeof colors[backgroundColor] !== 'undefined'
-      ? colors[backgroundColor]
-      : backgroundColor
-      ? backgroundColor
-      : colors['primary']};
+  background-color: ${({
+    theme: { colors },
+    backgroundColor,
+  }: StyleBadgeProps) =>
+    backgroundColor &&
+    typeof colors[backgroundColor as ColorKeyType] !== "undefined"
+      ? colors[backgroundColor as ColorKeyType]
+      : backgroundColor || colors.primary};
+  color: ${({ theme: { colors }, textColor }: StyleBadgeProps) =>
+    textColor && typeof colors[textColor as ColorKeyType] !== "undefined"
+      ? colors[textColor as ColorKeyType]
+      : textColor || colors.textOnPrimary};
+  border-color: ${({
+    theme: { colors },
+    borderColor,
+    backgroundColor,
+  }: StyleBadgeProps) =>
+    borderColor && typeof colors[borderColor as ColorKeyType] !== "undefined"
+      ? colors[borderColor as ColorKeyType]
+      : borderColor ||
+        (backgroundColor &&
+        typeof colors[backgroundColor as ColorKeyType] !== "undefined"
+          ? colors[backgroundColor as ColorKeyType]
+          : backgroundColor || colors.primary)};
   text-align: center;
   border-radius: 1.5rem;
-  font-size: ${props => props.theme.fontSizes.m};
+  font-size: ${({ theme }: StyleBadgeProps) => theme.fontSizes.m};
   line-height: 1rem;
   padding: ${({
     theme: {
       spacing: { xxs },
     },
-  }) => xxs};
+  }: StyleBadgeProps) => xxs};
   display: inline-block;
   min-width: ${({
     size,
@@ -52,10 +54,10 @@ export const StyledBadge = styled.span<StyleBadgeProps>`
       spacing,
       spacing: { xs },
     },
-  }) => `calc(${spacing[size]} + ${xs})`};
+  }: StyleBadgeProps) => `calc(${spacing[size]} + ${xs})`};
 
   ${(props: StyleBadgeProps) =>
-    !props.text &&
+    !props.isText &&
     css`
       padding: 0;
       border-radius: 50%;
@@ -82,7 +84,10 @@ export const StyledBadge = styled.span<StyleBadgeProps>`
         },
       }: StyleBadgeProps) => `calc(${spacing[size]} + ${xs})`};
       svg {
-        height: ${({ size, theme: { spacing } }: StyleBadgeProps) => spacing[size]};
+        height: ${({ size, theme: { spacing } }: StyleBadgeProps) =>
+          spacing[size]};
       }
     `}
 `;
+
+export default StyledBadge;

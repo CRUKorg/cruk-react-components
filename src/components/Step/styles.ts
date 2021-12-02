@@ -1,4 +1,5 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
+import { ThemeType } from "../../types";
 
 export const StepWrapper = styled.div`
   text-align: center;
@@ -9,6 +10,10 @@ type StepListProps = {
   total: number;
 };
 
+type ThemeProps = {
+  theme: ThemeType;
+};
+
 export const StepList = styled.ul<StepListProps>`
   list-style: none;
   padding: 0;
@@ -17,7 +22,7 @@ export const StepList = styled.ul<StepListProps>`
   justify-content: space-between;
   width: 100%;
 
-  ${props =>
+  ${(props) =>
     props.total &&
     css`
       li {
@@ -34,10 +39,10 @@ export const StepBar = styled.span`
   background-clip: padding-box;
   width: 24px;
   height: 24px;
-  background-color: ${props => props.theme.colors.stepBackground};
+  background-color: ${({ theme }: ThemeProps) => theme.colors.stepBackground};
   display: block;
   margin: 0 auto 0.5em auto;
-  border: 2px solid ${props => props.theme.colors.stepBorder};
+  border: 2px solid ${({ theme }: ThemeProps) => theme.colors.stepBorder};
   text-indent: -999px;
 
   &:after {
@@ -45,9 +50,10 @@ export const StepBar = styled.span`
     position: absolute;
     width: 100%;
     height: 2px;
-    content: '';
+    content: "";
     background-color: transparent;
-    border-bottom: 2px solid ${props => props.theme.colors.stepBorder};
+    border-bottom: 2px solid
+      ${({ theme }: ThemeProps) => theme.colors.stepBorder};
     left: 50%;
     top: 11px;
     margin-left: 12px;
@@ -64,12 +70,12 @@ export const StepTick = styled.span`
     theme: {
       colors: { textLight },
     },
-  }) => `2px solid ${textLight}`};
+  }: ThemeProps) => `2px solid ${textLight}`};
   border-right: ${({
     theme: {
       colors: { textLight },
     },
-  }) => `2px solid ${textLight}`};
+  }: ThemeProps) => `2px solid ${textLight}`};
   margin-top: 4px;
   margin-left: 8px;
 `;
@@ -84,21 +90,22 @@ export const StepItem = styled.li<StepItemProps>`
   flex-direction: column;
   position: relative;
 
-  ${props =>
+  ${(props) =>
     props.active &&
     css`
       ${StepBar} {
-        border-color: ${props => props.theme.colors.tertiary};
+        border-color: ${({ theme }: ThemeProps) => theme.colors.tertiary};
       }
     `}
-  ${props =>
+  ${(props) =>
     props.done &&
     css`
       ${StepBar} {
         border: none;
-        background-color: ${props => props.theme.colors.tertiary};
+        background-color: ${({ theme }: ThemeProps) => theme.colors.tertiary};
         &:after {
-          border-bottom: 2px solid ${props => props.theme.colors.tertiary};
+          border-bottom: 2px solid
+            ${({ theme }: ThemeProps) => theme.colors.tertiary};
         }
       }
     `}

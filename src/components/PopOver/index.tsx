@@ -1,13 +1,20 @@
-import React, { useState, useEffect, FC, useRef, useCallback, MouseEvent, ReactElement, ReactNode } from 'react';
-import { ThemeProvider, useTheme } from 'styled-components';
+import React, {
+  useState,
+  useEffect,
+  FC,
+  useRef,
+  useCallback,
+  ReactElement,
+  ReactNode,
+} from "react";
+import { ThemeProvider, useTheme } from "styled-components";
 
-import { useKey } from 'src/hooks/useKey';
-import defaultTheme from 'src/themes/cruk';
-import useEffectBrowser from 'src/hooks/useEffectBrowser';
+import { useKey } from "../../hooks/useKey";
+import defaultTheme from "../../themes/cruk";
+import useEffectBrowser from "../../hooks/useEffectBrowser";
 
-import { PopOverWrapper, PopOverModal } from './styles';
-
-import { PopOverPositionType } from 'src/types';
+import { PopOverPositionType } from "../../types";
+import { PopOverWrapper, PopOverModal } from "./styles";
 
 export type PopOverProps = {
   /** used for aria-label of modal */
@@ -53,11 +60,11 @@ const PopOver: FC<PopOverProps> = ({
   // outside click closes popover
   const handleDocumentClick = useCallback(
     (e: MouseEvent) => {
-      if (!(popRef.current as any).contains(e.target)) {
+      if (!!popRef.current && !popRef.current.contains(e.target as Node)) {
         closePopOver();
       }
     },
-    [popRef.current],
+    [popRef.current]
   );
 
   useKey(
@@ -65,9 +72,9 @@ const PopOver: FC<PopOverProps> = ({
       closePopOver();
     },
     {
-      detectKeys: ['Escape'],
+      detectKeys: ["Escape"],
     },
-    [],
+    []
   );
 
   useEffect(() => {
@@ -77,29 +84,29 @@ const PopOver: FC<PopOverProps> = ({
   }, [showPopOver]);
 
   useEffectBrowser(() => {
-    // @ts-ignore function signature for listerns on document is slightly weird but this still works so ignore
-    document.addEventListener('click', handleDocumentClick, true);
+    document.addEventListener("click", handleDocumentClick, true);
     return () => {
-      // @ts-ignore function signature for listerns on document is slightly weird but this still works so ignore
-      document.removeEventListener('click', handleDocumentClick, true);
+      document.removeEventListener("click", handleDocumentClick, true);
     };
   }, []);
 
   return (
     <ThemeProvider theme={theme}>
       <PopOverWrapper css={css} ref={popRef}>
-        {React.Children.map(children as ReactElement, (child: React.ReactElement) =>
-          React.cloneElement(child, {
-            onClick: toggle,
-            'aria-expanded': showPopOver,
-            'aria-haspopup': 'dialog',
-          }),
+        {React.Children.map(
+          children as ReactElement,
+          (child: React.ReactElement) =>
+            React.cloneElement(child, {
+              onClick: toggle,
+              "aria-expanded": showPopOver,
+              "aria-haspopup": "dialog",
+            })
         )}
         {showPopOver ? (
           <PopOverModal
-            maxWidth={maxWidth || 'none'}
-            minWidth={minWidth || 'auto'}
-            position={position || 'top'}
+            maxWidth={maxWidth || "none"}
+            minWidth={minWidth || "auto"}
+            position={position || "top"}
             theme={theme}
             role="dialog"
             aria-label={modalLabel}

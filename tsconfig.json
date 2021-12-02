@@ -21,5 +21,10 @@
     "allowSyntheticDefaultImports": true, // This is needed for the React components.
     "noErrorTruncation": true,
     "skipLibCheck": true,
-  }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".eslintrc.js",
+  ],
 }

@@ -1,16 +1,16 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import { ThemeProvider } from 'styled-components';
+import React from "react";
+import { Story, Meta } from "@storybook/react";
+import { ThemeProvider } from "styled-components";
 
-import { su2cTheme, Button, Heading, Text } from '..';
-import Modal, { ModalProps } from '.';
+import { su2cTheme, Button, Heading, Text, GlobalStyle } from "..";
+import Modal, { ModalProps } from ".";
 
 export default {
-  title: 'Modal',
+  title: "Modal",
   component: Modal,
 } as Meta<ModalProps>;
 
-const Template: Story<ModalProps> = args => {
+const Template: Story<ModalProps> = (args) => {
   const [showModal, setShowModal] = React.useState(true);
   const toggleShowModal = () => setShowModal(!showModal);
 
@@ -35,16 +35,17 @@ const Template: Story<ModalProps> = args => {
 };
 
 export const ModalDefault: Story<ModalProps> = Template.bind({});
-ModalDefault.storyName = 'Modal';
+ModalDefault.storyName = "Modal";
 ModalDefault.args = {};
 
-const TemplateWithSU2C: Story<ModalProps> = args => {
+const TemplateWithSU2C: Story<ModalProps> = (args) => {
   const [showModal, setShowModal] = React.useState(false);
   const toggleShowModal = () => setShowModal(!showModal);
 
   return (
     <>
       <ThemeProvider theme={su2cTheme}>
+        <GlobalStyle />
         <Button appearance="primary" onClick={toggleShowModal}>
           Show me a modal
         </Button>
@@ -65,5 +66,5 @@ const TemplateWithSU2C: Story<ModalProps> = args => {
 };
 
 export const SU2CModal: Story<ModalProps> = TemplateWithSU2C.bind({});
-SU2CModal.storyName = 'SU2C Modal';
+SU2CModal.storyName = "SU2C Modal";
 SU2CModal.args = {};

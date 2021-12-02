@@ -1,7 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import { ThemeType } from "../../types";
 
 type AvatarStyledProps = {
   size?: string;
+  theme: ThemeType;
 };
 
 export const StyledAvatar = styled.img<AvatarStyledProps>`
@@ -10,3 +12,5 @@ export const StyledAvatar = styled.img<AvatarStyledProps>`
   object-fit: cover;
   width: ${({ size }) => size};
 `;
+
+export default StyledAvatar;

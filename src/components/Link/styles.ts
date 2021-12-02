@@ -1,23 +1,27 @@
-import { AnchorHTMLAttributes } from 'react';
-import styled, { css } from 'styled-components';
+import { AnchorHTMLAttributes } from "react";
+import styled, { css } from "styled-components";
 
-import Text, { TextProps } from 'src/components/Text';
-import Icon from 'src/components/Icon';
+import Text, { TextProps } from "../Text";
+import Icon from "../Icon";
 
-import { ThemeType } from 'src/types';
+import { ThemeType, ColorKeyType } from "../../types";
+
+type ThemeProp = {
+  theme: ThemeType;
+};
 
 export const ChevyWithLevee = styled(Icon)`
   margin-right: ${({
     theme: {
       spacing: { xxs },
     },
-  }) => xxs};
+  }: ThemeProp) => xxs};
 `;
 
 type StyledLinkProps = AnchorHTMLAttributes<HTMLElement> &
   TextProps & {
     theme: ThemeType;
-    appearance?: 'primary' | 'secondary';
+    appearance?: "primary" | "secondary";
     textHoverColor?: string;
   };
 
@@ -33,31 +37,35 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
     },
     textColor,
     appearance,
-  }) =>
-    textColor && typeof colors[textColor] !== 'undefined'
-      ? colors[textColor]
-      : textColor
-      ? textColor
-      : !appearance && useBackgroundStyleLinks
-      ? 'currentColor'
-      : appearance && appearance === 'primary'
-      ? colors['secondary']
-      : colors['linkColor']};
+  }: StyledLinkProps) =>
+    textColor && typeof colors[textColor as ColorKeyType] !== "undefined"
+      ? colors[textColor as ColorKeyType]
+      : textColor ||
+        (!appearance && useBackgroundStyleLinks
+          ? "currentColor"
+          : appearance && appearance === "primary"
+          ? colors.secondary
+          : colors.linkColor)};
   text-decoration: ${({
     appearance,
     theme: {
       typography: { linkTextDecoration },
     },
-  }) => (appearance === 'primary' || appearance === 'secondary' ? 'none' : linkTextDecoration)};
-  font-weight: ${({ theme }) =>
-    theme.utilities.useBackgroundStyleLinks ? theme.typography.fontWeightHeavy : theme.typography.fontWeightMedium};
+  }: StyledLinkProps) =>
+    appearance === "primary" || appearance === "secondary"
+      ? "none"
+      : linkTextDecoration};
+  font-weight: ${({ theme }: ThemeProp) =>
+    theme.utilities.useBackgroundStyleLinks
+      ? theme.typography.fontWeightHeavy
+      : theme.typography.fontWeightMedium};
   background: ${({
     appearance,
     theme,
     theme: {
       utilities: { useBackgroundStyleLinks },
     },
-  }) =>
+  }: StyledLinkProps) =>
     useBackgroundStyleLinks && !appearance
       ? `linear-gradient(180deg, rgba(255, 255, 255, 0) 0px, ${theme.colors.primary} -4px);`
       : undefined};
@@ -71,7 +79,7 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
       typography: { fontWeightHeavy },
     },
   }: StyledLinkProps) =>
-    (appearance === 'primary' || appearance === 'secondary') &&
+    (appearance === "primary" || appearance === "secondary") &&
     css`
       font-weight: ${fontWeightHeavy};
     `}
@@ -85,13 +93,12 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
         utilities: { useBackgroundStyleLinks },
       },
       textHoverColor,
-    }) =>
+    }: StyledLinkProps) =>
       !textHoverColor && useBackgroundStyleLinks
-        ? colors['textDark']
-        : textHoverColor && typeof colors[textHoverColor] !== 'undefined'
-        ? colors[textHoverColor]
-        : textHoverColor
-        ? textHoverColor
-        : colors['linkColorHover']};
+        ? colors.textDark
+        : textHoverColor &&
+          typeof colors[textHoverColor as ColorKeyType] !== "undefined"
+        ? colors[textHoverColor as ColorKeyType]
+        : textHoverColor || colors.linkColorHover};
   }
 `;

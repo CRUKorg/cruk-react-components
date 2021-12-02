@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react';
-import { ThemeProvider, useTheme } from 'styled-components';
+import React, { FunctionComponent, MouseEvent, TouchEvent } from "react";
+import { ThemeProvider, useTheme } from "styled-components";
 
-import defaultTheme from 'src/themes/cruk';
+import defaultTheme from "../../themes/cruk";
 
-import { PagerItem, PagerLink, PagerList, PagerWrapper } from './styles';
+import { PagerItem, PagerLink, PagerList, PagerWrapper } from "./styles";
 
 export type PaginationProps = {
   /** set current page number */
@@ -12,9 +12,9 @@ export type PaginationProps = {
   items: number;
   /** don't show an ellipsise and then the last page link, usefull for search results where the last page isn't important */
   hideLast?: boolean;
-  /** callback function which is passed the selected page number on click*/
-  pagerCallback: Function;
-  /** number of items per page*/
+  /** callback function which is passed the selected page number on click */
+  pagerCallback: (n: number) => void;
+  /** number of items per page */
   perPage: number;
   /** the name of the search param in the url that is modified on page click, defaults to 'page' */
   searchParam?: string;
@@ -26,20 +26,30 @@ export type PaginationProps = {
 Data is split into multiple pages and pagination is used to
 easily navigate through these pages.
  */
-const Pagination: FunctionComponent<PaginationProps> = props => {
+const Pagination: FunctionComponent<PaginationProps> = ({
+  current,
+  items,
+  hideLast,
+  pagerCallback,
+  perPage,
+  searchParam = "page",
+  children,
+}) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
     ...foundTheme,
   };
-  const perPage = props.perPage > 0 ? props.perPage : 1;
-  const totalPages = Math.ceil(props.items / perPage) || 1;
+  const perPageValue = perPage > 0 ? perPage : 1;
+  const totalPages = Math.ceil(items / perPageValue) || 1;
 
   const linkProps = (number: number) => ({
-    href: `${typeof window !== 'undefined' ? window.location.pathname : ''}?${props.searchParam}=${number}`,
-    onClick: (e: any) => {
+    href: `${typeof window !== "undefined" ? window.location.pathname : ""}?${
+      searchParam ? `${searchParam}=${number}` : ""
+    }`,
+    onClick: (e: TouchEvent | MouseEvent) => {
       e.preventDefault();
-      props.pagerCallback(number);
+      pagerCallback(number);
     },
   });
 
@@ -47,37 +57,41 @@ const Pagination: FunctionComponent<PaginationProps> = props => {
     const list = [];
     let pager = [];
     // get the list of items
-    for (let number = 1; number <= total; number++) {
+    for (let number = 1; number <= total; number += 1) {
       list.push(
         <PagerItem key={number}>
-          <PagerLink active={number === active} {...linkProps(number)} aria-label={`page ${number} of ${total}`}>
+          <PagerLink
+            active={number === active}
+            {...linkProps(number)}
+            aria-label={`page ${number} of ${total}`}
+          >
             {number}
           </PagerLink>
-        </PagerItem>,
+        </PagerItem>
       );
     }
     const first = list.slice(0, 1).concat(
       <PagerItem key="first">
         <span>...</span>
-      </PagerItem>,
+      </PagerItem>
     );
     const last = list
       .slice(list.length - 1)
       .concat(
         <PagerItem key="last">
           <span>...</span>
-        </PagerItem>,
+        </PagerItem>
       )
       .reverse();
     pager = list.slice(0, total);
     if (total > 7) {
       if (active <= 4) {
-        pager = props.hideLast ? list.slice(0, 7) : list.slice(0, 5).concat(last);
+        pager = hideLast ? list.slice(0, 7) : list.slice(0, 5).concat(last);
       } else {
         pager =
           active > total - 4
             ? first.concat(list.slice(-5))
-            : props.hideLast
+            : hideLast
             ? first.concat(list.slice(active - 3, active + 2))
             : first.concat(list.slice(active - 2, active + 1)).concat(last);
       }
@@ -87,38 +101,34 @@ const Pagination: FunctionComponent<PaginationProps> = props => {
 
   return (
     <ThemeProvider theme={theme}>
-      {props.items > props.perPage && (
+      {items > perPage && (
         <PagerWrapper>
           <PagerList>
             <PagerItem key="Prev">
               <PagerLink
                 name="Prev"
-                disabled={props.current === 1}
-                {...(props.current !== 1 && linkProps(props.current - 1))}
+                disabled={current === 1}
+                {...(current !== 1 && linkProps(current - 1))}
               >
                 Prev
               </PagerLink>
             </PagerItem>
-            {renderPager(props.current, totalPages)}
+            {renderPager(current, totalPages)}
             <PagerItem key="Next">
               <PagerLink
                 name="Next"
-                disabled={props.current === totalPages}
-                {...(props.current !== totalPages && linkProps(props.current + 1))}
+                disabled={current === totalPages}
+                {...(current !== totalPages && linkProps(current + 1))}
               >
                 Next
               </PagerLink>
             </PagerItem>
           </PagerList>
-          {props.children}
+          {children}
         </PagerWrapper>
       )}
     </ThemeProvider>
   );
-};
-
-Pagination.defaultProps = {
-  searchParam: 'page',
 };
 
 export default Pagination;

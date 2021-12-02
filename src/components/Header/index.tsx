@@ -1,8 +1,8 @@
-import React, { FunctionComponent, useState, HTMLAttributes } from 'react';
-import { useTheme, ThemeProvider } from 'styled-components';
+import React, { FunctionComponent, useState, HTMLAttributes } from "react";
+import { useTheme, ThemeProvider } from "styled-components";
 
-import { useScrollPosition } from 'src/hooks/useScrollPosition';
-import defaultTheme from 'src/themes/cruk';
+import { useScrollPosition } from "../../hooks/useScrollPosition";
+import defaultTheme from "../../themes/cruk";
 
 import {
   StyledHeader,
@@ -14,7 +14,7 @@ import {
   Logo,
   LogoWrapper,
   Tagline,
-} from './styles';
+} from "./styles";
 
 const HEADER_SCROLL_THRESHOLD = 66;
 
@@ -31,7 +31,7 @@ export type HeaderProps = HTMLAttributes<HTMLElement> & {
   logoLinkTitle?: string;
   /** the url of the logo link */
   logoLinkUrl?: string;
-  /** instead of the contents of the header being centered to max width as defined in theme it is 100% width fo viewport*/
+  /** instead of the contents of the header being centered to max width as defined in theme it is 100% width fo viewport */
   fullWidth?: boolean;
 };
 
@@ -71,8 +71,15 @@ export const Header: FunctionComponent<HeaderProps> = ({
   };
 
   useScrollPosition(
-    ({ currPos }: { prevPos: { x: number; y: number }; currPos: { x: number; y: number } }) => {
-      const shouldShrink = isBrowser ? currPos.y > HEADER_SCROLL_THRESHOLD : false;
+    ({
+      currPos,
+    }: {
+      prevPos: { x: number; y: number };
+      currPos: { x: number; y: number };
+    }) => {
+      const shouldShrink = isBrowser
+        ? currPos.y > HEADER_SCROLL_THRESHOLD
+        : false;
       if (shouldShrink !== isSmall) {
         setIsSmall(shouldShrink);
       }
@@ -80,21 +87,31 @@ export const Header: FunctionComponent<HeaderProps> = ({
     [isSmall],
     null,
     true,
-    100,
+    100
   );
 
   return (
     <ThemeProvider theme={theme}>
       <StyledHeader>
         <HeaderStickyPlaceHolder>
-          <HeaderStickyContainer data-cy="header-sticky-container" isSmall={isSmall} isSticky={isSticky}>
+          <HeaderStickyContainer
+            data-cy="header-sticky-container"
+            isSmall={isSmall}
+            isSticky={isSticky}
+          >
             <SkipToMain className="skip-main" href="#main">
               Skip to main content
             </SkipToMain>
             <HeaderMainContent fullWidth={fullWidth}>
-              <StyledLink href={logoLinkUrl ?? theme.siteConfig.logoUrl} title={logoLinkTitle ?? 'Home'}>
+              <StyledLink
+                href={logoLinkUrl ?? theme.siteConfig.logoUrl}
+                title={logoLinkTitle ?? "Home"}
+              >
                 <LogoWrapper isSmall={isSmall} isSticky={isSticky}>
-                  <Logo src={logoImageSrc ?? theme.siteConfig.logoSrc} alt={logoAltText ?? theme.siteConfig.logoAlt} />
+                  <Logo
+                    src={logoImageSrc ?? theme.siteConfig.logoSrc}
+                    alt={logoAltText ?? theme.siteConfig.logoAlt}
+                  />
                 </LogoWrapper>
               </StyledLink>
               {siteSlogan ? (

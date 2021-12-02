@@ -1,8 +1,8 @@
-var path = require('path');
-const createWebpackConfig = require('./webpack.common').createWebpackConfig;
+var path = require("path");
+const createWebpackConfig = require("./webpack.common").createWebpackConfig;
 
 module.exports = createWebpackConfig({
-  mode: 'development',
+  mode: "development",
   module: {
     rules: [
       {
@@ -10,7 +10,7 @@ module.exports = createWebpackConfig({
         exclude: [/node_modules/],
         use: [
           {
-            loader: 'ts-loader',
+            loader: "ts-loader",
             options: {
               transpileOnly: true,
             },
@@ -19,19 +19,26 @@ module.exports = createWebpackConfig({
       },
       {
         test: /\.md?$/,
-        use: ['babel-loader', '@mdx-js/loader'],
+        use: ["babel-loader", "@mdx-js/loader"],
       },
     ],
   },
-  resolve: {
-    modules: [path.resolve(__dirname, 'node_modules'), path.resolve(__dirname, './')],
-    extensions: ['.tsx', '.ts', '.js'],
-  },
   devtool: false,
   devServer: {
-    host: '0.0.0.0',
-    contentBase: path.resolve(__dirname, './src'),
-    watchContentBase: true,
+    host: "0.0.0.0",
     port: 8080,
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false,
+      },
+    },
+    static: {
+      directory: path.resolve(__dirname, "static"),
+      staticOptions: {},
+      publicPath: "/public/",
+      serveIndex: true,
+      watch: true,
+    },
   },
 });

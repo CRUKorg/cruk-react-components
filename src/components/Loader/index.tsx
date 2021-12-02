@@ -1,15 +1,15 @@
-import React, { FC } from 'react';
-import { ThemeProvider, useTheme } from 'styled-components';
+import React, { FC } from "react";
+import { ThemeProvider, useTheme } from "styled-components";
 
-import defaultTheme from 'src/themes/cruk';
+import defaultTheme from "../../themes/cruk";
 
-import { ScreenReaderOnly, Spinner } from './styles';
+import { ScreenReaderOnly, Spinner } from "./styles";
 
 /**
  *
  * Loaders are used after some user interaction that we assume will take some time to complete. They inform the user that their request is beeing processed and that they should wait.
  */
-const Loader: FC<{}> = () => {
+const Loader: FC = () => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,

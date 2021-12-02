@@ -1,11 +1,10 @@
-import React, { FunctionComponent, ReactNode } from 'react';
-import { useTheme } from 'styled-components';
+import React, { FunctionComponent, ReactNode } from "react";
+import { useTheme } from "styled-components";
 
-import defaultTheme from 'src/themes/cruk';
+import { SpaceType } from "../../types";
+import defaultTheme from "../../themes/cruk";
 
-import { StyledBadge } from './styles';
-
-import { SpaceType } from 'src/types';
+import { StyledBadge } from "./styles";
 
 export type BadgeProps = {
   /** background colour of badge */
@@ -40,7 +39,12 @@ const Badge: FunctionComponent<BadgeProps> = ({ children, ...rest }) => {
     ...foundTheme,
   };
   return (
-    <StyledBadge theme={theme} text={typeof children === 'string'} size="xs" {...rest}>
+    <StyledBadge
+      theme={theme}
+      isText={typeof children === "string"}
+      size="xs"
+      {...rest}
+    >
       {children}
     </StyledBadge>
   );

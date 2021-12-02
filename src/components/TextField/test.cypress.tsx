@@ -1,10 +1,18 @@
 /// <reference types="cypress" />
 
-import React from 'react';
-import { mount } from '@cypress/react';
+import React from "react";
+import { mount } from "@cypress/react";
 
-import TestWrapper, { TestThemeWrapper } from '../TestWrapper';
-import { TextField, Box, Heading, Icon, Button, crukTheme, su2cTheme } from '../';
+import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
+import {
+  TextField,
+  Box,
+  Heading,
+  Icon,
+  Button,
+  crukTheme,
+  su2cTheme,
+} from "../";
 
 const content = () => {
   return (
@@ -22,7 +30,12 @@ const content = () => {
           With a placeholder
         </Heading>
         <Box>
-          <TextField label="Your favourite food" type="text" name="yourFavouriteFood" placeholder="Cookies" />
+          <TextField
+            label="Your favourite food"
+            type="text"
+            name="yourFavouriteFood"
+            placeholder="Cookies"
+          />
         </Box>
       </section>
       <section>
@@ -30,7 +43,12 @@ const content = () => {
           With hint text
         </Heading>
         <Box>
-          <TextField label="This is the label" type="text" name="hintText" hintText="This is the hint text" />
+          <TextField
+            label="This is the label"
+            type="text"
+            name="hintText"
+            hintText="This is the hint text"
+          />
         </Box>
       </section>
       <section>
@@ -38,7 +56,12 @@ const content = () => {
           With extra bits
         </Heading>
         <Box>
-          <TextField label="Fundraising target" type="text" name="fundraisingTarget" extraLeft="£" />
+          <TextField
+            label="Fundraising target"
+            type="text"
+            name="fundraisingTarget"
+            extraLeft="£"
+          />
         </Box>
         <Box>
           <TextField
@@ -46,7 +69,7 @@ const content = () => {
             type="text"
             name="search"
             extraRight={
-              <Button appearance="text" aria-label="search">
+              <Button appearance="tertiary" aria-label="search">
                 <Icon name="search" />
               </Button>
             }
@@ -88,7 +111,13 @@ const content = () => {
           Is Valid Indicator
         </Heading>
         <Box>
-          <TextField label="Phone number" type="text" name="phoneNumber" isValid={true} isValidVisible={true} />
+          <TextField
+            label="Phone number"
+            type="text"
+            name="phoneNumber"
+            isValid={true}
+            isValidVisible={true}
+          />
         </Box>
       </section>
       <section>
@@ -96,7 +125,13 @@ const content = () => {
           Is Invalid Indicator
         </Heading>
         <Box>
-          <TextField label="Phone number" type="text" name="phoneNumber" isValid={false} isInvalidVisible={true} />
+          <TextField
+            label="Phone number"
+            type="text"
+            name="phoneNumber"
+            isValid={false}
+            isInvalidVisible={true}
+          />
         </Box>
       </section>
       <section>
@@ -104,7 +139,12 @@ const content = () => {
           Required
         </Heading>
         <Box>
-          <TextField label="Number of cats" type="text" name="numberOfCats" required />
+          <TextField
+            label="Number of cats"
+            type="text"
+            name="numberOfCats"
+            required
+          />
         </Box>
       </section>
       <section>
@@ -112,34 +152,38 @@ const content = () => {
           Disabled
         </Heading>
         <Box>
-          <TextField label="Favourite pasta type" type="text" name="favouritePastaType" value="Spaghetti" disabled />
+          <TextField
+            label="Favourite pasta type"
+            type="text"
+            name="favouritePastaType"
+            value="Spaghetti"
+            disabled
+          />
         </Box>
       </section>
     </>
   );
 };
 
-describe('TextField', () => {
-  it('is accessible CRUK theme', () => {
+describe("TextField", () => {
+  it("is accessible CRUK theme", () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
     cy.injectAxe();
-    cy.checkA11y('body');
+    cy.checkA11y("body");
   });
 
-  it('is accessible SU2C theme', () => {
+  it("is accessible SU2C theme", () => {
     mount(<TestThemeWrapper theme={su2cTheme}>{content()}</TestThemeWrapper>);
     cy.injectAxe();
-    cy.checkA11y('body', {
+    cy.checkA11y("body", {
       rules: {
-        'color-contrast': { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
+        "color-contrast": { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
       },
     });
   });
 
-  it('should match snapshot', () => {
+  it("should match snapshot", () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
-    cy.get('body')
-      .first()
-      .matchImageSnapshot();
+    cy.get("body").first().matchImageSnapshot();
   });
 });

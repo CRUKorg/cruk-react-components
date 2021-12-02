@@ -1,13 +1,16 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import spacing from 'src/components/Spacing';
-
-import { SpacingProps } from 'src/components/Spacing';
-import { WordBreakType, FontSizeType, ThemeType } from 'src/types';
+import spacing, { SpacingProps } from "../Spacing";
+import {
+  WordBreakType,
+  FontSizeType,
+  ThemeType,
+  ColorKeyType,
+} from "../../types";
 
 export type TextStyledProps = SpacingProps & {
-  textColor?: string;
-  textAlign?: 'left' | 'right' | 'center' | 'justify';
+  textColor?: ColorKeyType;
+  textAlign?: "left" | "right" | "center" | "justify";
   textSize?: FontSizeType;
   textWeight?: number;
   as?: any;
@@ -16,33 +19,24 @@ export type TextStyledProps = SpacingProps & {
 };
 
 export const TextStyled = styled.p<TextStyledProps>`
-  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
-  word-break: ${({ wordBreak }) => wordBreak || 'normal'};
-  color: ${({ theme: { colors }, textColor }) =>
-    textColor && typeof colors[textColor] !== 'undefined'
+  font-family: ${({ theme }: TextStyledProps) =>
+    theme.typography.fontFamilyBase};
+  word-break: ${({ wordBreak }: TextStyledProps) => wordBreak || "normal"};
+  color: ${({ theme: { colors }, textColor }: TextStyledProps) =>
+    textColor && typeof colors[textColor] !== "undefined"
       ? colors[textColor]
-      : textColor
-      ? textColor
-      : colors['textDark']};
-  text-align: ${({ textAlign }) => (textAlign ? textAlign : 'left')};
+      : textColor || colors.textDark};
+  text-align: ${({ textAlign }: TextStyledProps) => textAlign || "left"};
   font-size: ${({
     theme: {
       fontSizes,
       fontSizes: { m },
     },
     textSize,
-  }) => (textSize ? fontSizes[textSize] : m)};
-  line-height: ${({
-    theme: {
-      typography: { lineHeight },
-    },
-  }) => lineHeight};
-  font-weight: ${({
-    textWeight,
-    theme: {
-      typography: { fontWeightMedium },
-    },
-  }) => (textWeight ? textWeight : fontWeightMedium)};
+  }: TextStyledProps) => (textSize ? fontSizes[textSize] : m)};
+  line-height: ${({ theme }: TextStyledProps) => theme.typography.lineHeight};
+  font-weight: ${({ textWeight, theme }: TextStyledProps) =>
+    textWeight || theme.typography.fontWeightMedium};
   padding: 0;
   margin: 0;
   margin-bottom: ${({
@@ -50,11 +44,12 @@ export const TextStyled = styled.p<TextStyledProps>`
     theme: {
       spacing: { xs },
     },
-  }) => (typeof as === 'undefined' || as === 'p' ? `${xs}` : 0)};
+  }: TextStyledProps) =>
+    typeof as === "undefined" || as === "p" ? `${xs}` : 0};
 
   &:last-child {
     margin-bottom: 0;
   }
 
-  ${props => spacing(props, props.theme)}
+  ${(props) => spacing(props, props.theme)}
 `;

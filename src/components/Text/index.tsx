@@ -1,12 +1,16 @@
-import React, { FunctionComponent, HTMLAttributes, Ref, forwardRef } from 'react';
-import { useTheme } from 'styled-components';
+import React, {
+  FunctionComponent,
+  HTMLAttributes,
+  Ref,
+  forwardRef,
+} from "react";
+import { useTheme } from "styled-components";
 
-import defaultTheme from 'src/themes/cruk';
+import defaultTheme from "../../themes/cruk";
 
-import { TextStyled } from './styles';
-
-import { SpacingProps } from 'src/components/Spacing';
-import { WordBreakType, FontSizeType, ColorKeyType } from 'src/types';
+import { SpacingProps } from "../Spacing";
+import { WordBreakType, FontSizeType, ColorKeyType } from "../../types";
+import { TextStyled } from "./styles";
 
 // the 'as' prop is for styled component casting
 // text hover color prop is only used in Link which extends Text
@@ -19,7 +23,7 @@ export type TextProps = SpacingProps &
     /** text colour  */
     textColor?: ColorKeyType | string;
     /** text horizontal alignment  */
-    textAlign?: 'left' | 'right' | 'center' | 'justify';
+    textAlign?: "left" | "right" | "center" | "justify";
     /** font size FontSizeType t-shirt sizes  */
     textSize?: FontSizeType;
     /** font weight theme.typography{fontWeightHeavy/fontWeightMedium/fontWeightLight/fontWeightVLight} is better than a random number */
@@ -32,14 +36,16 @@ export type TextProps = SpacingProps &
     ref?: Ref<HTMLElement>;
   };
 
-export const Text: FunctionComponent<TextProps> = forwardRef((props: TextProps, ref?: Ref<HTMLElement>) => {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
+export const Text: FunctionComponent<TextProps> = forwardRef(
+  (props: TextProps, ref?: Ref<HTMLElement>) => {
+    const foundTheme = useTheme();
+    const theme = {
+      ...defaultTheme,
+      ...foundTheme,
+    };
 
-  return <TextStyled {...props} ref={ref} theme={theme} />;
-});
+    return <TextStyled {...props} ref={ref} theme={theme} />;
+  }
+);
 
 export default Text;

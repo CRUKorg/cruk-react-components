@@ -1,4 +1,4 @@
-import { SpaceType, ThemeType } from 'src/types';
+import { SpaceType, ThemeType } from "../../types";
 
 export type SpacingProps = {
   margin?: SpaceType;
@@ -43,11 +43,27 @@ export const Spacing = (props: SpacingProps, theme: ThemeType) => {
   const mb = marginBottom ? theme.spacing[marginBottom] : null;
   const ml = marginLeft ? theme.spacing[marginLeft] : null;
 
-  const maString = ma ? `margin: ${ma} !important;` : '';
-  const mtString = mt ? `margin-top: ${mt} !important;` : mv ? `margin-top: ${mv} !important;` : '';
-  const mrString = mr ? `margin-right: ${mr} !important;` : mh ? `margin-right: ${mh} !important;` : '';
-  const mbString = mb ? `margin-bottom: ${mb} !important;` : mv ? `margin-bottom: ${mv} !important;` : '';
-  const mlString = ml ? `margin-left: ${ml} !important;` : mh ? `margin-left: ${mh} !important;` : '';
+  const maString = ma ? `margin: ${ma} !important;` : "";
+  const mtString = mt
+    ? `margin-top: ${mt} !important;`
+    : mv
+    ? `margin-top: ${mv} !important;`
+    : "";
+  const mrString = mr
+    ? `margin-right: ${mr} !important;`
+    : mh
+    ? `margin-right: ${mh} !important;`
+    : "";
+  const mbString = mb
+    ? `margin-bottom: ${mb} !important;`
+    : mv
+    ? `margin-bottom: ${mv} !important;`
+    : "";
+  const mlString = ml
+    ? `margin-left: ${ml} !important;`
+    : mh
+    ? `margin-left: ${mh} !important;`
+    : "";
 
   const pa = padding ? theme.spacing[padding] : null;
   const pv = paddingVertical ? theme.spacing[paddingVertical] : null;
@@ -57,11 +73,27 @@ export const Spacing = (props: SpacingProps, theme: ThemeType) => {
   const pb = paddingBottom ? theme.spacing[paddingBottom] : null;
   const pl = paddingLeft ? theme.spacing[paddingLeft] : null;
 
-  const paString = pa ? `padding: ${pa} !important;` : '';
-  const ptString = pt ? `padding-top: ${pt} !important;` : pv ? `padding-top: ${pv} !important;` : '';
-  const prString = pr ? `padding-right: ${pr} !important;` : ph ? `padding-right: ${ph} !important;` : '';
-  const pbString = pb ? `padding-bottom: ${pb} !important;` : pv ? `padding-bottom: ${pv} !important;` : '';
-  const plString = pl ? `padding-left: ${pl} !important;` : ph ? `padding-left: ${ph} !important;` : '';
+  const paString = pa ? `padding: ${pa} !important;` : "";
+  const ptString = pt
+    ? `padding-top: ${pt} !important;`
+    : pv
+    ? `padding-top: ${pv} !important;`
+    : "";
+  const prString = pr
+    ? `padding-right: ${pr} !important;`
+    : ph
+    ? `padding-right: ${ph} !important;`
+    : "";
+  const pbString = pb
+    ? `padding-bottom: ${pb} !important;`
+    : pv
+    ? `padding-bottom: ${pv} !important;`
+    : "";
+  const plString = pl
+    ? `padding-left: ${pl} !important;`
+    : ph
+    ? `padding-left: ${ph} !important;`
+    : "";
 
   return `
     ${maString}

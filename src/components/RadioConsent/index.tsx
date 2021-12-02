@@ -1,14 +1,14 @@
-import React, { FunctionComponent } from 'react';
-import { useTheme, ThemeProvider } from 'styled-components';
+import React, { FunctionComponent } from "react";
+import { useTheme, ThemeProvider } from "styled-components";
 
-import defaultTheme from 'src/themes/cruk';
+import defaultTheme from "../../themes/cruk";
 
-import { StyledFieldSet, StyledLegend, StyledRadio } from './styles';
+import { StyledFieldSet, StyledLegend, StyledRadio } from "./styles";
 
-export type RadioGroupProps = {
-  /** because each radio has its own label this is the group label text */
+export type RadioConsentProps = {
+  /** because each radio has its own label this is the consent group label text */
   legend: string;
-  /** array of option for radio group where option is the option name and value is the option value  */
+  /** array of option for radio constent group where option is the option name and value is the option value  */
   attributes: Array<{
     value: string;
     option: string;
@@ -23,11 +23,14 @@ export type RadioGroupProps = {
 
 /**
  *
- * Radio group is a component for showing a bunch of yes/no radios predominantly used for notification selections where a unselected state is usefull for analytics.
+ * RadioConsent is a component for showing a bunch of yes/no radios predominantly used for notification selections where a unselected state is usefull for analytics.
  *
  * This is always a controlled component that will only change state with the selectedValue prop
  */
-const RadioGroup: FunctionComponent<RadioGroupProps> = ({ selectedValue = '', ...props }) => {
+const RadioConsent: FunctionComponent<RadioConsentProps> = ({
+  selectedValue = "",
+  ...props
+}) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -40,7 +43,7 @@ const RadioGroup: FunctionComponent<RadioGroupProps> = ({ selectedValue = '', ..
     <ThemeProvider theme={theme}>
       <StyledFieldSet>
         <StyledLegend>{props.legend}</StyledLegend>
-        {props.attributes.map(item => (
+        {props.attributes.map((item) => (
           <StyledRadio
             numberOfAttributes={numberOfAttributes}
             key={item.value}
@@ -57,4 +60,4 @@ const RadioGroup: FunctionComponent<RadioGroupProps> = ({ selectedValue = '', ..
   );
 };
 
-export default RadioGroup;
+export default RadioConsent;

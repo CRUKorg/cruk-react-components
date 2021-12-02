@@ -1,0 +1,35 @@
+# dependencies
+/node_modules
+
+# production
+/lib
+/public
+/storybook-static
+
+# test
+/cypress/screenshots
+/cypress/videos
+/cypress/snapshots/**/__diff_output__
+/cypress/snapshots/**/**(failed).snap.png
+/cypress/fixtures/example.json 
+/src/**/**/*.cypress.tsx
+/src/components/TestWrapper.tsx
+
+#jest
+*.jest.ts
+
+#docs
+/src/docs/*.js
+
+#storybook
+/src/**/**/*.stories.tsx
+/src/stories
+
+#plugins
+/src/plugins/**
+
+#HOC
+/src/hocs/MdxProvider.tsx
+
+.idea
+release.js

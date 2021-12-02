@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 
 services:
   npm:
@@ -6,7 +6,7 @@ services:
     volumes:
       - .:/app:delegated
     working_dir: /app
-    entrypoint: '/usr/local/bin/npm install'
+    entrypoint: "/usr/local/bin/npm install"
   server:
     hostname: server
     networks:
@@ -14,18 +14,18 @@ services:
         aliases:
           - cruk-react-components
     expose:
-      - '8080'
+      - "8080"
     ports:
       - 8080:8080
-    image: node
+    image: node:14
     volumes:
       - .:/app:delegated
     working_dir: /app
-    entrypoint: '/app/node_modules/webpack/bin/webpack.js server --config webpack.config.docs.js --mode development'
+    entrypoint: "/app/node_modules/webpack/bin/webpack.js server --config webpack.config.docs.js --mode development"
   cypress:
     networks:
       network:
-    image: cypress/included:7.3.0
+    image: cypress/included:8.5.0
     working_dir: /app
     volumes:
       - .:/app:delegated

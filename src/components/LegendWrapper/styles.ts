@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { ThemeType } from 'src/types';
+import { ThemeType } from "../../types";
 
 type StyledFieldsetProps = {
-  hasError: boolean;
+  hasError?: boolean;
   theme: ThemeType;
-  hasHintText: boolean;
+  hasHintText?: boolean;
 };
 
 export const LegendSpan = styled.span<{
@@ -13,15 +13,19 @@ export const LegendSpan = styled.span<{
   theme: ThemeType;
 }>`
   display: block;
-  color: ${({ theme }) => theme.colors.textDark};
-  font-size: ${({ theme }) => theme.fontSizes.m};
-  line-height: ${({ theme }) => theme.typography.lineHeight};
-  font-weight: ${({ theme }) => theme.typography.fontWeightHeavy};
+  color: ${({ theme }: StyledFieldsetProps) => theme.colors.textDark};
+  font-size: ${({ theme }: StyledFieldsetProps) => theme.fontSizes.m};
+  line-height: ${({ theme }: StyledFieldsetProps) =>
+    theme.typography.lineHeight};
+  font-weight: ${({ theme }: StyledFieldsetProps) =>
+    theme.typography.fontWeightHeavy};
   min-width: 3em;
-  margin-bottom: ${({ hasHintText, theme }) => (hasHintText ? theme.spacing.xxs : 0)};
+  margin-bottom: ${({ hasHintText, theme }: StyledFieldsetProps) =>
+    hasHintText ? theme.spacing.xxs : 0};
 
   & > * {
-    font-weight: ${({ theme }) => theme.typography.fontWeightMedium};
+    font-weight: ${({ theme }: StyledFieldsetProps) =>
+      theme.typography.fontWeightMedium};
   }
 `;
 
@@ -29,13 +33,15 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
   border: none;
   padding: 0;
   legend {
-    margin-bottom: ${({ theme }) => theme.spacing.xs};
+    margin-bottom: ${({ theme }: StyledFieldsetProps) => theme.spacing.xs};
   }
   label {
     border-style: solid;
-    border-width: ${({ theme }) => theme.utilities.inputBorderWidth};
-    border-color: ${({ hasError, theme }) => hasError && theme.colors.textError};
-    margin-bottom: ${({ theme }) => theme.spacing.s};
+    border-width: ${({ theme }: StyledFieldsetProps) =>
+      theme.utilities.inputBorderWidth};
+    border-color: ${({ hasError, theme }: StyledFieldsetProps) =>
+      hasError && theme.colors.textError};
+    margin-bottom: ${({ theme }: StyledFieldsetProps) => theme.spacing.s};
     &:last-of-type {
       margin-bottom: 0;
     }

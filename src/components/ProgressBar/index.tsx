@@ -1,7 +1,7 @@
-import React, { FC, ReactNode } from 'react';
-import { ThemeProvider, useTheme } from 'styled-components';
+import React, { FC, ReactNode } from "react";
+import { ThemeProvider, useTheme } from "styled-components";
 
-import defaultTheme from 'src/themes/cruk';
+import defaultTheme from "../../themes/cruk";
 
 import {
   ProgressBarWrapper,
@@ -13,9 +13,9 @@ import {
   LineProgressBarWrapper,
   LineProgressBar,
   ScreenReaderOnly,
-} from './styles';
+} from "./styles";
 
-const DEFAULT_CIRCLE_SIZE = '90px';
+const DEFAULT_CIRCLE_SIZE = "90px";
 
 export type ProgressBarProps = {
   /** percentage value of the progressbar */
@@ -34,46 +34,55 @@ export type ProgressBarProps = {
  * Provide up-to-date feedback on the progress of a workflow or action with
 simple yet flexible progress bars.
 */
-const ProgressBar: FC<ProgressBarProps> = props => {
+const ProgressBar: FC<ProgressBarProps> = ({
+  percentage = 0,
+  isCircular,
+  circleContents,
+  circleSize,
+  barColor,
+  children,
+}) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
     ...foundTheme,
   };
-  const number = props.percentage;
-  const percentString = `${!Number.isNaN(number) ? number : '0'}%`;
+  const number = percentage;
+  const percentString = `${!Number.isNaN(number) ? number : "0"}%`;
   const descriptivePercentageString = `${
-    typeof props.circleContents === 'string' ? props.circleContents : null
+    typeof circleContents === "string" ? circleContents : ""
   } ${percentString}% Complete`;
-  const textOrPercentString = props.circleContents || percentString;
+  const textOrPercentString = circleContents || percentString;
 
   return (
     <ThemeProvider theme={theme}>
-      <ProgressBarWrapper {...props}>
-        {props.isCircular ? (
-          <CircularWrapper percentage={number} circleSize={props.circleSize || DEFAULT_CIRCLE_SIZE}>
+      <ProgressBarWrapper>
+        {isCircular ? (
+          <CircularWrapper
+            percentage={number}
+            circleSize={circleSize || DEFAULT_CIRCLE_SIZE}
+          >
             <CircularLeft className="Left">
-              <CircularColorFill barColor={props.barColor} />
+              <CircularColorFill barColor={barColor} />
             </CircularLeft>
             <CircularRight className="Right">
-              <CircularColorFill barColor={props.barColor} />
+              <CircularColorFill barColor={barColor} />
             </CircularRight>
             <CircularValue>{textOrPercentString}</CircularValue>
           </CircularWrapper>
         ) : (
           <LineProgressBarWrapper>
-            <LineProgressBar percentage={number > 100 ? 100 : number} barColor={props.barColor} />
+            <LineProgressBar
+              percentage={number > 100 ? 100 : number}
+              barColor={barColor}
+            />
             <ScreenReaderOnly>{descriptivePercentageString}</ScreenReaderOnly>
           </LineProgressBarWrapper>
         )}
-        {props.children}
+        {children}
       </ProgressBarWrapper>
     </ThemeProvider>
   );
-};
-
-ProgressBar.defaultProps = {
-  percentage: 0,
 };
 
 export default ProgressBar;
