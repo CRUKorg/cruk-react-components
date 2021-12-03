@@ -50,8 +50,7 @@ export const Dots: FC<DotProps> = ({
 }) => {
   const moreOnRight = currentPosition !== count - 1;
   const moreOnLeft = currentPosition !== 0;
-  const numberArray = Array(count) as [];
-  const countArray = [...numberArray];
+  const countArray = Array.from({ length: count }, (i) => i);
 
   return (
     <ButtonWrapper>
