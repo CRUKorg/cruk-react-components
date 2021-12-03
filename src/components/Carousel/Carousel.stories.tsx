@@ -1,13 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Story, Meta } from '@storybook/react';
-import { ThemeProvider } from 'styled-components';
+import React from "react";
+import styled, { ThemeProvider } from "styled-components";
+import { Story, Meta } from "@storybook/react";
 
-import { su2cTheme, Text } from '..';
-import Carousel, { CarouselProps } from '.';
+import { su2cTheme, Text } from "..";
+import Carousel, { CarouselProps } from ".";
 
 export default {
-  title: 'Carousel (experimental)',
+  title: "Carousel (experimental)",
   component: Carousel,
 } as Meta<CarouselProps>;
 
@@ -19,7 +18,7 @@ const Item = styled.div`
   justify-content: space-around;
 `;
 
-const Template: Story = args => (
+const Template: Story = (args) => (
   <Carousel {...args}>
     <Item>
       <Text textAlign="center" marginVertical="auto" textSize="l">
@@ -55,10 +54,10 @@ const Template: Story = args => (
 );
 
 export const CarouselDefault: Story = Template.bind({});
-CarouselDefault.storyName = 'Carousel';
+CarouselDefault.storyName = "Carousel";
 CarouselDefault.args = {};
 
-const TemplateWithSU2C: Story = args => (
+const TemplateWithSU2C: Story = (args) => (
   <ThemeProvider theme={su2cTheme}>
     <Carousel {...args}>
       <Item>
@@ -96,5 +95,5 @@ const TemplateWithSU2C: Story = args => (
 );
 
 export const SU2CCarousel: Story = TemplateWithSU2C.bind({});
-SU2CCarousel.storyName = 'SU2C Carousel';
+SU2CCarousel.storyName = "SU2C Carousel";
 SU2CCarousel.args = {};

@@ -1,6 +1,13 @@
-import React, { FC, ButtonHTMLAttributes } from 'react';
+import React, { FC, ButtonHTMLAttributes } from "react";
 
-import { DotContainer, Dot, CarouselButton, ButtonWrapper, VerticalAlign, ScreenReaderOnly } from './styles';
+import {
+  DotContainer,
+  Dot,
+  CarouselButton,
+  ButtonWrapper,
+  VerticalAlign,
+  ScreenReaderOnly,
+} from "./styles";
 
 type DotProps = {
   count: number;
@@ -10,44 +17,60 @@ type DotProps = {
   previous: () => void;
 };
 
-export const CarouselLeftButton: FC<ButtonHTMLAttributes<HTMLElement>> = props => (
+export const CarouselLeftButton: FC<ButtonHTMLAttributes<HTMLElement>> = (
+  props
+) => (
   <div>
     <CarouselButton {...props} aria-label="previous">
       <VerticalAlign>
-        {`◄`}
-        <ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
+        ◄<ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
       </VerticalAlign>
     </CarouselButton>
   </div>
 );
 
-export const CarouselRightButton: FC<ButtonHTMLAttributes<HTMLElement>> = props => (
+export const CarouselRightButton: FC<ButtonHTMLAttributes<HTMLElement>> = (
+  props
+) => (
   <div>
     <CarouselButton {...props} aria-label="next">
       <VerticalAlign>
-        {`►`}
-        <ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
+        ►<ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
       </VerticalAlign>
     </CarouselButton>
   </div>
 );
 
-export const Dots: FC<DotProps> = ({ count, currentPosition = 0, scrollToPosition, next, previous }) => {
+export const Dots: FC<DotProps> = ({
+  count,
+  currentPosition = 0,
+  scrollToPosition,
+  next,
+  previous,
+}) => {
   const moreOnRight = currentPosition !== count - 1;
   const moreOnLeft = currentPosition !== 0;
+  const numberArray = Array(count) as [];
+  const countArray = [...numberArray];
 
   return (
     <ButtonWrapper>
       <CarouselLeftButton disabled={!moreOnLeft} onClick={previous} />
 
       <DotContainer count={count}>
-        {[...Array(count)].map((item, index) => {
+        {countArray.map((item, index) => {
           const isSelected = index === currentPosition;
           const scrollTo = () => {
             scrollToPosition(index);
           };
           return (
-            <Dot key={index} selected={isSelected} role="switch" aria-checked={isSelected} onClick={scrollTo}>
+            <Dot
+              key={index}
+              selected={isSelected}
+              role="switch"
+              aria-checked={isSelected}
+              onClick={scrollTo}
+            >
               <ScreenReaderOnly>{`Scroll carousel to index ${index}`}</ScreenReaderOnly>
             </Dot>
           );
