@@ -50,7 +50,7 @@ export const Dots: FC<DotProps> = ({
 }) => {
   const moreOnRight = currentPosition !== count - 1;
   const moreOnLeft = currentPosition !== 0;
-  const countArray = Array.from({ length: count }, (i) => i);
+  const countArray = Array.from({ length: count }, (e, i) => `arrayIndex${i}`);
 
   return (
     <ButtonWrapper>
@@ -64,7 +64,7 @@ export const Dots: FC<DotProps> = ({
           };
           return (
             <Dot
-              key={index}
+              key={item}
               selected={isSelected}
               role="switch"
               aria-checked={isSelected}
