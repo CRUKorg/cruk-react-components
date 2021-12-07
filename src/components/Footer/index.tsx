@@ -41,8 +41,8 @@ export const Footer: FC<FooterProps> = ({ children, middleSection }) => {
         <FooterContentWrapper>
           <FooterSectionLogo>
             <StyledRegulatorLogo
-              alt="Registered with Fundraising Regulator"
-              src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/fundreg.png"
+              alt={theme.siteConfig.footerLogoAlt}
+              src={theme.siteConfig.footerLogoSrc}
             />
           </FooterSectionLogo>
           <FooterSectionLinks>
