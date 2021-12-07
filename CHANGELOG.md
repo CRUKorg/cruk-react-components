@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Replaced all absolute paths with relative paths, not out of choice but because rollup + typescript + absolute paths leads to broken typescript definition files with absolute paths, this broke intellisence.
+- Replaced all absolute paths with relative paths, not out of choice but because rollup + typescript + absolute paths leads to broken typescript definition files with absolute paths, this broke intellisense.
 - Footer logo src and alt text configurable from theme
 
 ### Added
@@ -33,7 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added aria-described by support for controlls with error messages for TextField, TextAreaField, Select, Checkbox, Radio
-- Added isIconButton prop to Button sets the button into a round or square shape when it only contains and icon, is happening in order to depricate Icon and use another tree shakeable icon library in its stead.
+- Added isIconButton prop to Button sets the button into a round or square shape when it only contains and icon, is happening in order to deprecate Icon and use another tree shakeable icon library in its stead.
 - Added hideRequiredInLabel prop to select to hide required in label when it is used to filter lists etc.
 
 ## [0.1.7] - 2021-10-06
@@ -62,7 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - TextField isValid and isInvalid checks and crosses disappear when focused because of Chrome browser default styling [#298](https://github.com/CRUKorg/cruk-react-components/issues/298)
-- Missing attribures on AddressDataType [#306](https://github.com/CRUKorg/cruk-react-components/issues/306)
+- Missing attributes on AddressDataType [#306](https://github.com/CRUKorg/cruk-react-components/issues/306)
 
 ## [0.1.4] - 2021-08-27
 
