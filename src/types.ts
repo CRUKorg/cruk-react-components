@@ -25,6 +25,8 @@ export type SiteConfigType = {
   logoAlt: string;
   logoSrc: string;
   footerCopyText: string;
+  footerLogoSrc: string;
+  footerLogoAlt: string;
 };
 
 export type AvatarType = {

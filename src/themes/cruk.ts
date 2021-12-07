@@ -30,6 +30,9 @@ export const SITE_CONFIG: SiteConfigType = {
     "https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png",
   footerCopyText:
     "Cancer Research UK is a registered charity in England and Wales (1089464), Scotland (SC041666), the Isle of Man (1103) and Jersey (247). A company limited by guarantee. Registered company in England and Wales(4325234) and the Isle of Man (5713F).",
+  footerLogoAlt: "Registered with Fundraising Regulator",
+  footerLogoSrc:
+    "https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/fundreg.png",
 };
 
 export const AVATAR: AvatarType = {
