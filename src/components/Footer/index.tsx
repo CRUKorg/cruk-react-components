@@ -41,8 +41,8 @@ export const Footer: FC<FooterProps> = ({ children, middleSection }) => {
         <FooterContentWrapper>
           <FooterSectionLogo>
             <StyledRegulatorLogo
-              alt={theme.siteConfig.footerLogoAlt}
-              src={theme.siteConfig.footerLogoSrc}
+              alt={theme.siteConfig.footerLogoAlt || ""}
+              src={theme.siteConfig.footerLogoSrc || ""}
             />
           </FooterSectionLogo>
           <FooterSectionLinks>
