@@ -153,6 +153,7 @@
   },
   "dependencies": {
     "react-focus-lock": "^2.5.2",
+    "react-intersection-observer": "^8.32.0",
     "@storybook/react": "^6.4.3"
   }
 }

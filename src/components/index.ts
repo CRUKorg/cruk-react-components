@@ -3,6 +3,7 @@ export { default as Avatar } from "./Avatar";
 export { default as Badge } from "./Badge";
 export { default as Box } from "./Box";
 export { default as Button } from "./Button";
+export { default as Carousel } from "./Carousel";
 export { default as Checkbox } from "./Checkbox";
 export { default as Collapse } from "./Collapse";
 export { default as DateField } from "./DateField";
