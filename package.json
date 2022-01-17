@@ -97,7 +97,7 @@
     "@storybook/manager-webpack5": "^6.4.3",
     "@types/assert": "^1.5.1",
     "@types/cypress-image-snapshot": "^3.1.6",
-    "@types/jest": "^26.0.9",
+    "@types/jest": "^27.4.0",
     "@types/mdx-js__react": "^1.5.1",
     "@types/node": "^16.11.1",
     "@types/react": "^17.0.34",
