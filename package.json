@@ -1,6 +1,6 @@
 {
   "name": "@cruk/cruk-react-components",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React components implementing CRUK and SU2C designs",
   "license": "UNLICENSED",
   "publishConfig": {
@@ -95,6 +95,7 @@
     "@storybook/addon-links": "^6.4.14",
     "@storybook/builder-webpack5": "^6.4.14",
     "@storybook/manager-webpack5": "^6.4.14",
+    "@storybook/react": "^6.4.14",
     "@types/assert": "^1.5.1",
     "@types/cypress-image-snapshot": "^3.1.6",
     "@types/jest": "^27.4.0",
@@ -152,7 +153,6 @@
     "styled-components": "^5.1.1"
   },
   "dependencies": {
-    "@storybook/react": "^6.4.14",
     "react-focus-lock": "^2.5.2"
   }
 }
