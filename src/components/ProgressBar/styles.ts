@@ -1,11 +1,34 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { css, keyframes, Keyframes } from "styled-components";
 import { ThemeType } from "../../types";
-
-const CIRCLE_THICKENESS = "4px";
 
 type ThemeProp = {
   theme: ThemeType;
 };
+
+type LineProgressBarProps = {
+  percentage: number;
+  barColor?: string;
+};
+
+type CircleProps = ThemeProp & {
+  strokeDashoffsetInit: number;
+  barColor?: string;
+};
+
+const CircleFillKeyFrames = ({
+  strokeDashoffsetInit,
+  strokeDashoffset,
+}: {
+  strokeDashoffsetInit: number;
+  strokeDashoffset: number;
+}) => keyframes`
+  from {
+     stroke-dashoffset: ${strokeDashoffsetInit} ;
+  }
+  to {
+     stroke-dashoffset: ${strokeDashoffset} ;
+  }
+`;
 
 export const ProgressBarWrapper = styled.div`
   margin-top: 15px;
@@ -25,15 +48,6 @@ const ProgressSharedStyling = css`
 export const LineProgressBarWrapper = styled.div`
   ${ProgressSharedStyling};
 `;
-
-type LineProgressBarProps = {
-  percentage: number;
-  barColor?: string;
-};
-
-type CircularColorFillProps = {
-  barColor?: string;
-};
 
 export const LineProgressBar = styled.div<LineProgressBarProps>`
   float: left;
@@ -60,7 +74,7 @@ export const LineProgressBar = styled.div<LineProgressBarProps>`
     theme: {
       colors: { progressBar },
     },
-  }: CircularColorFillProps & ThemeProp) => barColor || progressBar};
+  }: LineProgressBarProps & ThemeProp) => barColor || progressBar};
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   transition: width 0.6s ease;
   position: relative;
@@ -83,62 +97,6 @@ export const ScreenReaderOnly = styled.span`
   border: 0;
 `;
 
-export const CircularColorFill = styled.span<CircularColorFillProps>`
-  width: 100%;
-  height: 100%;
-  background: none;
-  border-width: ${CIRCLE_THICKENESS};
-  border-style: solid;
-  position: absolute;
-  top: 0;
-  border-color: ${({
-    barColor,
-    theme: {
-      colors: { circularProgress },
-    },
-  }: CircularColorFillProps & ThemeProp) => barColor || circularProgress};
-`;
-
-export const CircularLeft = styled.span`
-  left: 0;
-
-  ${CircularColorFill} {
-    left: 100%;
-    border-top-right-radius: 100vw;
-    border-bottom-right-radius: 100vw;
-    border-left: 0;
-    -webkit-transform-origin: center left;
-    transform-origin: center left;
-  }
-`;
-
-export const CircularRight = styled.span`
-  right: 0;
-
-  ${CircularColorFill} {
-    left: -100%;
-    border-top-left-radius: 100vw;
-    border-bottom-left-radius: 100vw;
-    border-right: 0;
-    -webkit-transform-origin: center right;
-    transform-origin: center right;
-  }
-`;
-
-const AnimationRight = ({ percentage }: { percentage: number }) => keyframes`
-  0% { transform: rotate(0deg); }
-  100% {
-    transform: rotate(${percentage > 50 ? "180" : percentage * 3.6}deg);
-  }
-`;
-
-const AnimationLeft = ({ percentage }: { percentage: number }) => keyframes`
-  0% { transform: rotate(0deg); }
-  100% {
-    transform: rotate(${percentage > 100 ? "180" : percentage * 3.6 - 180}deg);
-  }
-`;
-
 export const CircularWrapper = styled.div<{
   percentage: number;
   circleSize: string;
@@ -151,59 +109,30 @@ export const CircularWrapper = styled.div<{
   margin: 0 auto;
   box-shadow: none;
   position: relative;
+`;
 
-  &:after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: ${({
-      theme: {
-        colors: { circularProgressBackground },
-      },
-    }: ThemeProp) =>
-      `${CIRCLE_THICKENESS} solid ${circularProgressBackground}`};
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-  }
-  > span {
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    z-index: 1;
-  }
+export const CircleSvg = styled.svg`
+  position: absolute;
+  transform: rotate(-90deg);
+  fill: none;
+  stroke-linecap: round;
+  width: 100%;
+  height: 100%;
+`;
 
-  ${(props) =>
-    props.percentage < 51 &&
-    css`
-      ${CircularRight} ${CircularColorFill} {
-        animation: ${AnimationRight as any} 0.5s linear forwards;
-      }
-    `};
-  ${(props) =>
-    props.percentage > 50 &&
-    css`
-      ${CircularRight} ${CircularColorFill} {
-        animation: ${AnimationRight as any} 0.5s linear forwards;
-      }
-      ${CircularLeft} ${CircularColorFill} {
-        animation: ${AnimationLeft as any} 0.5s linear forwards 0.5s;
-      }
-    `};
-  ${(props) =>
-    props.percentage >= 100 &&
-    css`
-      ${CircularRight} ${CircularColorFill} {
-        animation: ${AnimationRight as any} 0.5s linear forwards;
-      }
-      ${CircularLeft} ${CircularColorFill} {
-        animation: ${AnimationLeft as any} 0.5s linear forwards 0.5s;
-      }
-    `};
+export const EmptyCircle = styled.circle`
+  stroke: ${({ theme }: { theme: ThemeType }) => theme.tokenColors.grey_200};
+`;
+
+export const FullCircle = styled.circle<CircleProps>`
+  stroke: ${({
+    barColor,
+    theme: {
+      colors: { circularProgress },
+    },
+  }: CircleProps) => barColor || circularProgress};
+  stroke: ${({ theme }: CircleProps) => theme.colors.circularProgress};
+  animation: ${CircleFillKeyFrames as () => Keyframes} 0.5s linear forwards;
 `;
 
 export const CircularValue = styled.div`

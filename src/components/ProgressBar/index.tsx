@@ -6,10 +6,10 @@ import defaultTheme from "../../themes/cruk";
 import {
   ProgressBarWrapper,
   CircularWrapper,
-  CircularLeft,
-  CircularRight,
+  CircleSvg,
+  EmptyCircle,
+  FullCircle,
   CircularValue,
-  CircularColorFill,
   LineProgressBarWrapper,
   LineProgressBar,
   ScreenReaderOnly,
