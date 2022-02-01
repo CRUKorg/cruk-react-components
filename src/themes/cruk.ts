@@ -107,8 +107,10 @@ export const COLORS: ColorsType = {
   textLight: TOKEN_COLORS.white,
 
   progressBar: TOKEN_COLORS.darkBlue_500,
+  progressBarSecondary: TOKEN_COLORS.magenta_500,
   progressBarBackground: TOKEN_COLORS.grey_200,
   circularProgress: TOKEN_COLORS.cyan_500,
+  circularProgressSecondary: TOKEN_COLORS.magenta_500,
   circularProgressBackground: TOKEN_COLORS.grey_300,
 
   buttonPrimaryBackground: TOKEN_COLORS.magenta_500,

@@ -1,6 +1,8 @@
 import styled, { css, keyframes, Keyframes } from "styled-components";
 import { ThemeType } from "../../types";
 
+const BAR_HEIGHT = "16px";
+
 type ThemeProp = {
   theme: ThemeType;
 };
@@ -8,33 +10,57 @@ type ThemeProp = {
 type LineProgressBarProps = {
   percentage: number;
   barColor?: string;
+  isSecondary?: boolean;
 };
 
 type CircleProps = ThemeProp & {
   strokeDashoffsetInit: number;
   barColor?: string;
+  isSecondary?: boolean;
+};
+
+type CircleWrapperProps = {
+  circleSize: string;
+};
+
+type CircleKeyCircleFillKeyFramesProps = {
+  strokeDashoffsetInit: number;
+  strokeDashoffset: number;
 };
 
 const CircleFillKeyFrames = ({
   strokeDashoffsetInit,
   strokeDashoffset,
-}: {
-  strokeDashoffsetInit: number;
-  strokeDashoffset: number;
-}) => keyframes`
-  from {
+}: CircleKeyCircleFillKeyFramesProps) => keyframes`
+  0% {
      stroke-dashoffset: ${strokeDashoffsetInit} ;
   }
-  to {
+  50% {
+     stroke-dashoffset: ${strokeDashoffset} ;
+  }
+  100% {
+     stroke-dashoffset: ${strokeDashoffset} ;
+  }
+`;
+
+const SecondaryCircleFillKeyFrames = ({
+  strokeDashoffsetInit,
+  strokeDashoffset,
+}: CircleKeyCircleFillKeyFramesProps) => keyframes`
+  0% {
+     stroke-dashoffset: ${strokeDashoffsetInit} ;
+  }
+  100% {
      stroke-dashoffset: ${strokeDashoffset} ;
   }
 `;
 
 export const ProgressBarWrapper = styled.div`
-  margin-top: 15px;
+  margin-top: ${BAR_HEIGHT};
 `;
 
-const ProgressSharedStyling = css`
+export const LineProgressBarWrapper = styled.div`
+  position: relative;
   height: 15px;
   margin-bottom: 0;
   background-color: ${({
@@ -45,14 +71,10 @@ const ProgressSharedStyling = css`
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 `;
 
-export const LineProgressBarWrapper = styled.div`
-  ${ProgressSharedStyling};
-`;
-
 export const LineProgressBar = styled.div<LineProgressBarProps>`
-  float: left;
-  width: 1%;
-  height: 100%;
+  position: absolute;
+  left: 0;
+  height: 15px;
   font-size: ${({
     theme: {
       fontSizes: { s },
@@ -71,19 +93,15 @@ export const LineProgressBar = styled.div<LineProgressBarProps>`
   text-align: center;
   background-color: ${({
     barColor,
+    isSecondary,
     theme: {
-      colors: { progressBar },
+      colors: { progressBar, progressBarSecondary },
     },
-  }: LineProgressBarProps & ThemeProp) => barColor || progressBar};
+  }: LineProgressBarProps & ThemeProp) =>
+    barColor || isSecondary ? progressBarSecondary : progressBar};
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   transition: width 0.6s ease;
-  position: relative;
-
-  ${(props) =>
-    props.percentage &&
-    css`
-      width: ${props.percentage}%;
-    `}
+  width: ${({ percentage }) => percentage}%;
 `;
 
 export const ScreenReaderOnly = styled.span`
@@ -97,18 +115,13 @@ export const ScreenReaderOnly = styled.span`
   border: 0;
 `;
 
-export const CircularWrapper = styled.div<{
-  percentage: number;
-  circleSize: string;
-}>`
-  ${ProgressSharedStyling};
-
+export const CircularWrapper = styled.div<CircleWrapperProps>`
+  position: relative;
   width: ${({ circleSize }) => circleSize};
   height: ${({ circleSize }) => circleSize};
   background: none;
   margin: 0 auto;
   box-shadow: none;
-  position: relative;
 `;
 
 export const CircleSvg = styled.svg`
@@ -121,18 +134,23 @@ export const CircleSvg = styled.svg`
 `;
 
 export const EmptyCircle = styled.circle`
-  stroke: ${({ theme }: { theme: ThemeType }) => theme.tokenColors.grey_200};
+  stroke: ${({ theme }: ThemeProp) => theme.tokenColors.grey_200};
 `;
 
 export const FullCircle = styled.circle<CircleProps>`
   stroke: ${({
+    isSecondary,
     barColor,
     theme: {
-      colors: { circularProgress },
+      colors: { circularProgress, circularProgressSecondary },
     },
-  }: CircleProps) => barColor || circularProgress};
-  stroke: ${({ theme }: CircleProps) => theme.colors.circularProgress};
-  animation: ${CircleFillKeyFrames as () => Keyframes} 0.5s linear forwards;
+  }: CircleProps) =>
+    barColor || isSecondary ? circularProgressSecondary : circularProgress};
+  animation: ${({ isSecondary }: CircleProps) =>
+      isSecondary
+        ? (SecondaryCircleFillKeyFrames as () => Keyframes)
+        : (CircleFillKeyFrames as () => Keyframes)}
+    1s linear;
 `;
 
 export const CircularValue = styled.div`

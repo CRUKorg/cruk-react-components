@@ -16,12 +16,14 @@ export const ProgressBarDefault: Story<ProgressBarProps> = Template.bind({});
 ProgressBarDefault.storyName = "ProgressBar";
 ProgressBarDefault.args = {
   percentage: 74,
+  secondaryPercentage: 90,
 };
 
 export const ProgressBarCircular: Story<ProgressBarProps> = Template.bind({});
 ProgressBarCircular.storyName = "ProgressBar Circular";
 ProgressBarCircular.args = {
   percentage: 74,
+  secondaryPercentage: 90,
   isCircular: true,
 };
 
@@ -38,6 +40,7 @@ export const SU2CProgressBar: Story<ProgressBarProps> = TemplateWithSU2C.bind(
 SU2CProgressBar.storyName = "SU2C ProgressBar";
 SU2CProgressBar.args = {
   percentage: 74,
+  secondaryPercentage: 90,
 };
 
 export const SU2CProgressBarCircular: Story<ProgressBarProps> =
@@ -45,5 +48,6 @@ export const SU2CProgressBarCircular: Story<ProgressBarProps> =
 SU2CProgressBarCircular.storyName = "SU2C ProgressBar Circular";
 SU2CProgressBarCircular.args = {
   percentage: 74,
+  secondaryPercentage: 90,
   isCircular: true,
 };

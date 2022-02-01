@@ -20,14 +20,18 @@ const DEFAULT_CIRCLE_SIZE = "90px";
 export type ProgressBarProps = {
   /** percentage value of the progressbar */
   percentage: number;
+  /** percentage value of a secondary (highter) amount of the progressbar */
+  secondaryPercentage?: number;
   /** flag which converts line bar to donut chart */
   isCircular?: boolean;
   /** contents inside the donut chart */
   circleContents?: ReactNode;
   /** diameter of the donut chart */
   circleSize?: string;
-  /** foreground colour of chart */
+  /** foreground colour of chart bar */
   barColor?: string;
+  /** foreground colour of chart secondary bar */
+  secondaryBarColor?: string;
 };
 
 /**
@@ -40,6 +44,8 @@ const ProgressBar: FC<ProgressBarProps> = ({
   circleContents,
   circleSize,
   barColor,
+  secondaryBarColor,
+  secondaryPercentage,
   children,
 }) => {
   const foundTheme = useTheme();
@@ -59,15 +65,13 @@ const ProgressBar: FC<ProgressBarProps> = ({
   const strokeWidth = 6;
   const d = 128;
   const r = d / 2 - strokeWidth;
+  const c = 2 * Math.PI * r;
 
   return (
     <ThemeProvider theme={theme}>
       <ProgressBarWrapper>
         {isCircular ? (
-          <CircularWrapper
-            percentage={percentageNumber}
-            circleSize={circleSize || DEFAULT_CIRCLE_SIZE}
-          >
+          <CircularWrapper circleSize={circleSize || DEFAULT_CIRCLE_SIZE}>
             <CircleSvg viewBox={`0 0 ${d} ${d}`}>
               <EmptyCircle
                 cx={r + strokeWidth}
@@ -75,23 +79,41 @@ const ProgressBar: FC<ProgressBarProps> = ({
                 r={r}
                 strokeWidth={strokeWidth}
               />
+              {secondaryPercentage && (
+                <FullCircle
+                  isSecondary
+                  barColor={secondaryBarColor}
+                  cx={r + strokeWidth}
+                  cy={r + strokeWidth}
+                  r={r}
+                  strokeWidth={strokeWidth}
+                  strokeDasharray={c}
+                  strokeDashoffset={c * (1 - secondaryPercentage / 100)}
+                  strokeDashoffsetInit={c}
+                />
+              )}
               <FullCircle
                 barColor={barColor}
                 cx={r + strokeWidth}
                 cy={r + strokeWidth}
                 r={r}
                 strokeWidth={strokeWidth}
-                strokeDasharray={2 * Math.PI * r}
-                strokeDashoffset={
-                  2 * Math.PI * r * (1 - percentageLimited / 100)
-                }
-                strokeDashoffsetInit={2 * Math.PI * r}
+                strokeDasharray={c}
+                strokeDashoffset={c * (1 - percentageLimited / 100)}
+                strokeDashoffsetInit={c}
               />
             </CircleSvg>
             <CircularValue>{textOrPercentString}</CircularValue>
           </CircularWrapper>
         ) : (
           <LineProgressBarWrapper>
+            {secondaryPercentage && (
+              <LineProgressBar
+                isSecondary
+                percentage={secondaryPercentage}
+                barColor={secondaryBarColor}
+              />
+            )}
             <LineProgressBar
               percentage={percentageLimited}
               barColor={barColor}
