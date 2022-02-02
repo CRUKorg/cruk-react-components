@@ -32,14 +32,17 @@ export const ProgressBarWrapper = styled.div<{
   ${({ isCompact }) =>
     !!isCompact !== true &&
     css`
-      div > div > div:after {
-        content: "\\25bc";
-        color: ${({ theme }: ThemeProps) => theme.colors.totaliserBubbleColor};
-        z-index: 11;
-        position: absolute;
-        top: -30px;
-        right: -15px;
-        font-size: 32px;
+      div > div > div:not(:first-child) {
+        &:after {
+          content: "\\25bc";
+          color: ${({ theme }: ThemeProps) =>
+            theme.colors.totaliserBubbleColor};
+          z-index: 11;
+          position: absolute;
+          top: -30px;
+          right: -15px;
+          font-size: 32px;
+        }
       }
     `};
 `;
