@@ -12,6 +12,10 @@ type LineProgressBarProps = {
   barColor?: string;
   isSecondary?: boolean;
 };
+type LineProgressWrapperProps = {
+  percentage: number;
+  secondaryPercentage: number;
+};
 
 type CircleProps = ThemeProp & {
   strokeDashoffsetInit: number;
@@ -55,13 +59,45 @@ const SecondaryCircleFillKeyFrames = ({
   }
 `;
 
+const TargetBarPulseKeyFrames = () => keyframes`
+    0% {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    width: 64px;
+    height: 64px;
+    right: -32px;
+  }
+`;
+
+const LineBarPulseKeyFrames = () => keyframes`
+  0% {
+    transform: scale(1);
+    border-radius: 0px;
+
+  }
+  50% {
+    transform:scale(1.025);
+  }
+  100% {
+    transform: scale(1);
+     border-radius: 0px;
+  }
+`;
+
 export const ProgressBarWrapper = styled.div`
   margin-top: ${BAR_HEIGHT};
 `;
 
-export const LineProgressBarWrapper = styled.div`
+export const LineProgressBarWrapper = styled.div<LineProgressWrapperProps>`
   position: relative;
-  height: 15px;
+  height: ${BAR_HEIGHT};
   margin-bottom: 0;
   background-color: ${({
     theme: {
@@ -69,28 +105,18 @@ export const LineProgressBarWrapper = styled.div`
     },
   }: ThemeProp) => progressBarBackground};
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+
+  ${({ percentage, secondaryPercentage }: LineProgressWrapperProps) =>
+    (percentage === 100 || secondaryPercentage === 100) &&
+    css`
+      animation: ${LineBarPulseKeyFrames} 0.3s 0.5s 1 ease-out;
+    `}
 `;
 
 export const LineProgressBar = styled.div<LineProgressBarProps>`
   position: absolute;
   left: 0;
-  height: 15px;
-  font-size: ${({
-    theme: {
-      fontSizes: { s },
-    },
-  }: ThemeProp) => s};
-  line-height: ${({
-    theme: {
-      typography: { lineHeight },
-    },
-  }: ThemeProp) => lineHeight};
-  color: ${({
-    theme: {
-      colors: { textLight },
-    },
-  }: ThemeProp) => textLight};
-  text-align: center;
+  height: ${BAR_HEIGHT};
   background-color: ${({
     barColor,
     isSecondary,
@@ -102,6 +128,36 @@ export const LineProgressBar = styled.div<LineProgressBarProps>`
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   transition: width 0.6s ease;
   width: ${({ percentage }) => percentage}%;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 0px;
+    height: 0px;
+    border-radius: 50%;
+    opacity: 0;
+    filter: blur(2px);
+    background-color: ${({
+      barColor,
+      isSecondary,
+      theme: {
+        colors: { progressBar, progressBarSecondary },
+      },
+    }: LineProgressBarProps & ThemeProp) =>
+      barColor || isSecondary ? progressBarSecondary : progressBar};
+
+    ${({ percentage }: LineProgressBarProps) =>
+      percentage === 100 &&
+      css`
+        animation: ${TargetBarPulseKeyFrames} 0.33s 0.75s 3 ease-in;
+      `}
+  }
 `;
 
 export const ScreenReaderOnly = styled.span`
