@@ -54,8 +54,16 @@ const ProgressBar: FC<ProgressBarProps> = ({
     ...foundTheme,
   };
   const percentageNumber = !Number.isNaN(percentage) ? percentage : 0;
-  const percentString = `${percentageNumber}%`;
   const percentageLimited = percentageNumber > 100 ? 100 : percentageNumber;
+  const percentString = `${percentageNumber}%`;
+
+  const secondaryPercentageNumber =
+    secondaryPercentage && !Number.isNaN(secondaryPercentage)
+      ? secondaryPercentage
+      : 0;
+
+  const secondaryPercentageLimited =
+    secondaryPercentageNumber > 100 ? 100 : secondaryPercentageNumber;
 
   const descriptivePercentageString = `${
     typeof circleContents === "string" ? circleContents : ""
@@ -79,19 +87,18 @@ const ProgressBar: FC<ProgressBarProps> = ({
                 r={r}
                 strokeWidth={strokeWidth}
               />
-              {secondaryPercentage && (
-                <FullCircle
-                  isSecondary
-                  barColor={secondaryBarColor}
-                  cx={r + strokeWidth}
-                  cy={r + strokeWidth}
-                  r={r}
-                  strokeWidth={strokeWidth}
-                  strokeDasharray={c}
-                  strokeDashoffset={c * (1 - secondaryPercentage / 100)}
-                  strokeDashoffsetInit={c}
-                />
-              )}
+              <FullCircle
+                isSecondary
+                barColor={secondaryBarColor}
+                cx={r + strokeWidth}
+                cy={r + strokeWidth}
+                r={r}
+                strokeWidth={strokeWidth}
+                strokeDasharray={c}
+                strokeDashoffset={c * (1 - secondaryPercentageLimited / 100)}
+                strokeDashoffsetInit={c}
+              />
+
               <FullCircle
                 barColor={barColor}
                 cx={r + strokeWidth}
@@ -106,14 +113,16 @@ const ProgressBar: FC<ProgressBarProps> = ({
             <CircularValue>{textOrPercentString}</CircularValue>
           </CircularWrapper>
         ) : (
-          <LineProgressBarWrapper>
-            {secondaryPercentage && (
-              <LineProgressBar
-                isSecondary
-                percentage={secondaryPercentage}
-                barColor={secondaryBarColor}
-              />
-            )}
+          <LineProgressBarWrapper
+            percentage={percentageLimited}
+            secondaryPercentage={secondaryPercentageLimited}
+          >
+            <LineProgressBar
+              isSecondary
+              percentage={secondaryPercentageLimited}
+              barColor={secondaryBarColor}
+            />
+
             <LineProgressBar
               percentage={percentageLimited}
               barColor={barColor}
