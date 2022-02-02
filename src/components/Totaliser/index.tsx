@@ -26,6 +26,8 @@ import {
 export type TotaliserProps = {
   /** financial total as a number */
   total: number;
+  /** additional donation amount as a number */
+  additionalAmount?: number;
   /** git aid total as a number */
   giftAid?: number;
   /** money target as a number */
@@ -43,6 +45,7 @@ export type TotaliserProps = {
  * */
 const Totaliser: FunctionComponent<TotaliserProps> = ({
   total,
+  additionalAmount,
   giftAid,
   target = null,
   isCompact,
@@ -54,8 +57,12 @@ const Totaliser: FunctionComponent<TotaliserProps> = ({
     ...defaultTheme,
     ...foundTheme,
   };
-  const result = calculatePercentRounded(+total, target || 0);
   const percentageOfTotal = calculatePercentRounded(+total, target || 0);
+  const withAdditionalPercentageOfTotal = calculatePercentRounded(
+    additionalAmount ? +total + (additionalAmount || 0) : 0,
+    target || 0
+  );
+
   const summaryString = `${percentageOfTotal}% of the £${formatMoneyWithCommas(
     target || 0
   )} target`;
@@ -84,7 +91,11 @@ const Totaliser: FunctionComponent<TotaliserProps> = ({
       {/* However, if we explicitly pass a summaryMessage string/component, then we want to always display it even if the target is zero */}
       {(!!target || !!summaryMessage) && (
         <ProgressBarWrapper isCompact={isCompact || false} theme={theme}>
-          <StyledProgressBar theme={theme} percentage={result} />
+          <StyledProgressBar
+            theme={theme}
+            percentage={percentageOfTotal}
+            secondaryPercentage={withAdditionalPercentageOfTotal}
+          />
           {!isCompact &&
             (summaryMessage ? (
               <Summary>{summaryMessage}</Summary>
