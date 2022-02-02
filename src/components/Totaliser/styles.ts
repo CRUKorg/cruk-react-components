@@ -76,7 +76,9 @@ export const GiftAid = styled.p`
   }: ThemeProps) => headerTextTransform};
 `;
 
-export const Summary = styled.div`
+/* span not a div so that we dont end up with two speech bubble arrows from ProgressBarWrapper */
+export const Summary = styled.span`
+  display: block;
   text-align: right;
   margin-top: 12px;
   margin-bottom: 0;
