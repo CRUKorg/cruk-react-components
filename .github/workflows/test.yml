@@ -4,6 +4,7 @@ on:
     branches:
       - develop
       - master
+
 jobs:
   Cypress:
     runs-on: ubuntu-latest
@@ -35,7 +36,7 @@ jobs:
       - name: Checkout cruk-react-components
         uses: actions/checkout@v2.4.0
       - name: npm install
-        run: docker-compose run npm ci
+        run: npm ci
       - name: Test
         run: npm run jest-ci --verbose
   Prettier:
@@ -44,7 +45,7 @@ jobs:
       - name: Checkout cruk-react-components
         uses: actions/checkout@v2.4.0
       - name: npm install
-        run: docker-compose run npm ci
+        run: npm ci
       - name: Test
         run: npm run prettier:debug
   ESLint:
@@ -53,7 +54,7 @@ jobs:
       - name: Checkout cruk-react-components
         uses: actions/checkout@v2.4.0
       - name: npm install
-        run: docker-compose run npm ci
+        run: npm ci
       - name: Test
         run: npm run eslint:test
   Percy:
