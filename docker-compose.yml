@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   npm:
-    image: node:14
+    image: node:16
     volumes:
       - .:/app:delegated
     working_dir: /app
@@ -17,7 +17,7 @@ services:
       - "8080"
     ports:
       - 8080:8080
-    image: node:14
+    image: node:16
     volumes:
       - .:/app:delegated
     working_dir: /app
