@@ -12,11 +12,13 @@ jobs:
       - name: Checkout cruk-react-components
         uses: actions/checkout@v2.4.0
       - name: npm install
-        run: docker-compose run npm ci
-      - name: Bring up the server
-        run: docker-compose up -d server
+        run: sudo docker-compose run npm ci
+      - name: Set permissions
+        run: |
+          chmod -R 777 /github/home
+          chmod -R 777 cypress
       - name: Test
-        run: docker-compose run cypress
+        run: sudo docker-compose run cypress
       - name: Work around our usage of Github storage
         if: failure()
         run: |
