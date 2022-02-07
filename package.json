@@ -108,7 +108,7 @@
     "@typescript-eslint/parser": "^4.33.0",
     "axe-core": "^4.2.1",
     "babel-loader": "8.2.1",
-    "babel-plugin-styled-components": "^1.8.0",
+    "babel-plugin-styled-components": "^2.0.2",
     "cypress": "8.7.0",
     "cypress-axe": "0.14.0",
     "cypress-image-snapshot": "^4.0.1",
