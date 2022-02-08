@@ -13,8 +13,6 @@ jobs:
         uses: actions/checkout@v2.4.0
       - name: npm install
         run: docker-compose run --entrypoint=npm cypress ci
-      - name: Bring up the server
-        run: docker-compose up -d server
       - name: Test
         run: docker-compose run cypress
       - name: Work around our usage of Github storage
