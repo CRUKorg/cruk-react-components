@@ -14,9 +14,7 @@ jobs:
       - name: npm install
         run: sudo docker-compose run npm ci
       - name: Set permissions
-        run: |
-          chmod -R 777 /github/home
-          chmod -R 777 cypress
+        run: sudo docker-compose exec chown -R root:root /app
       - name: Test
         run: sudo docker-compose run cypress
       - name: Work around our usage of Github storage
