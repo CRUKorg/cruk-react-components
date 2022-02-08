@@ -17,6 +17,8 @@ services:
     working_dir: /app
     entrypoint: "/app/node_modules/webpack/bin/webpack.js server --config webpack.config.docs.js --mode development"
   cypress:
+    environment:
+      - npm_config_unsafe_perm=true
     networks:
       network:
     image: cypress/included:9.4.1
