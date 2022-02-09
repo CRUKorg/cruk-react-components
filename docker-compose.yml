@@ -1,21 +1,6 @@
 version: "3.7"
 
 services:
-  server:
-    hostname: server
-    networks:
-      network:
-        aliases:
-          - cruk-react-components
-    expose:
-      - "8080"
-    ports:
-      - 8080:8080
-    image: node:16.5.0-buster
-    volumes:
-      - .:/app:delegated
-    working_dir: /app
-    entrypoint: "/app/node_modules/webpack/bin/webpack.js server --config webpack.config.docs.js --mode development"
   cypress:
     networks:
       network:
