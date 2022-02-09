@@ -1,6 +1,6 @@
 {
   "name": "@cruk/cruk-react-components",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "React components implementing CRUK and SU2C designs",
   "license": "UNLICENSED",
   "publishConfig": {
@@ -15,8 +15,7 @@
     "lib"
   ],
   "engines": {
-    "node": "^14 || ^16.0.0",
-    "npm": "^7 || ^8"
+    "node": "^14 || ^16"
   },
   "scripts": {
     "dev": "NODE_ENV=development npm i && docker-compose up server",
@@ -74,7 +73,7 @@
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.9.0",
-    "@cruk/eslint-config": "^1.0.3",
+    "@cruk/eslint-config": "^1.0.4",
     "@cypress/react": "^5.10.0",
     "@cypress/webpack-dev-server": "1.7.0",
     "@cypress/webpack-preprocessor": "^5.9.1",
