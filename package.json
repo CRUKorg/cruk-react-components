@@ -106,7 +106,7 @@
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "axe-core": "^4.2.1",
-    "babel-loader": "8.2.1",
+    "babel-loader": "8.2.3",
     "babel-plugin-styled-components": "^2.0.2",
     "cypress": "9.4.1",
     "cypress-axe": "0.14.0",
