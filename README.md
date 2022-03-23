@@ -4,7 +4,7 @@ React implementation of the CRUK design system.
 
 ## View the docs
 
-cruk-react-component docs site: https://master.d2qmm2ybdxfdzp.amplifyapp.com/
+cruk-react-component docs site: https://master.d28a8la187lo73.amplifyapp.com/
 
 ## Usage
 
