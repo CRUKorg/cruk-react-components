@@ -43,6 +43,7 @@ export const DefaultHeader = styled(Button)<{
   height: initial;
   text-decoration: none;
   text-align: left;
+  border-radius: 0;
   :hover,
   :focus {
     color: ${({ theme: { colors }, textColor }: DefaultHeaderProps) =>
