@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout cruk-react-components
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
       - name: npm install
         run: docker-compose run --entrypoint=npm cypress ci
       - name: Test
@@ -24,7 +24,7 @@ jobs:
           tar cvfj output/snapshots.tar.bz2 -C cypress/snapshots .
       - name: Upload Cypress output
         if: failure()
-        uses: actions/upload-artifact@v2.3.1
+        uses: actions/upload-artifact@v3
         with:
           name: output
           path: output
@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout cruk-react-components
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
       - name: npm install
         run: npm ci
       - name: Test
@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout cruk-react-components
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
       - name: npm install
         run: npm ci
       - name: Test
@@ -50,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout cruk-react-components
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
       - name: npm install
         run: npm ci
       - name: Test
@@ -59,7 +59,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
       - name: Install dependencies
         run: npm install
       - name: Run Percy tests
