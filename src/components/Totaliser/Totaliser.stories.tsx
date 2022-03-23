@@ -14,7 +14,8 @@ const Template: Story<TotaliserProps> = (args) => <Totaliser {...args} />;
 
 export const TotaliserWithTarget: Story<TotaliserProps> = Template.bind({});
 TotaliserWithTarget.args = {
-  total: 99.99,
+  total: 50.0,
+  additionalAmount: 20.0,
   target: 100,
   giftAid: 25,
 };
@@ -67,7 +68,8 @@ export const SU2CTotaliserWithTarget: Story<TotaliserProps> =
   TemplateWithSU2C.bind({});
 SU2CTotaliserWithTarget.storyName = "SU2C Totaliser With Target";
 SU2CTotaliserWithTarget.args = {
-  total: 99.99,
+  total: 50.0,
+  additionalAmount: 20.0,
   target: 100,
   giftAid: 25,
 };

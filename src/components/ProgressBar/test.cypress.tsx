@@ -4,26 +4,24 @@ import React from "react";
 import { mount } from "@cypress/react";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { ProgressBar, Text, crukTheme, su2cTheme } from "../";
+import { ProgressBar, Text, crukTheme, su2cTheme } from "..";
 
-const content = () => {
-  return (
-    <>
-      <ProgressBar percentage={0} />
-      <ProgressBar percentage={20} />
-      <ProgressBar percentage={150} />
-      <ProgressBar percentage={0} isCircular />
-      <ProgressBar percentage={20} isCircular />
-      <ProgressBar percentage={150} isCircular />
-      <ProgressBar
-        percentage={60}
-        isCircular
-        circleSize="10em"
-        circleContents={<Text>60 / 100 miles</Text>}
-      />
-    </>
-  );
-};
+const content = () => (
+  <>
+    <ProgressBar percentage={0} />
+    <ProgressBar percentage={20} />
+    <ProgressBar percentage={150} />
+    <ProgressBar percentage={0} isCircular />
+    <ProgressBar percentage={20} isCircular />
+    <ProgressBar percentage={150} isCircular />
+    <ProgressBar
+      percentage={60}
+      isCircular
+      circleSize="10em"
+      circleContents={<Text>60 / 100 miles</Text>}
+    />
+  </>
+);
 
 describe("ProgressBar", () => {
   it("is accessible CRUK theme", () => {
