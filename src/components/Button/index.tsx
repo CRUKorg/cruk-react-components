@@ -58,6 +58,7 @@ export const Button: FunctionComponent<Props> = forwardRef(
     return (
       <StyledButton
         as={props.href ? "a" : "button"}
+        {...(props.href ? { role: "button" } : {})}
         {...props}
         appearance={appearance}
         isIconButton={setIconButton}

@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.6] - 2021-03-23
+
+### Fixed
+
+- Links, Pagination button/links and Buttons that have been cast as an anchor tag all show default focus outline on focus. This wasn't happening in Firefox. [#428](https://github.com/CRUKorg/cruk-react-components/issues/428)
+
+### Added
+
+- Carousel component
+- secondaryPercentage prop for Progress Bar and Totaliser
+
 ## [1.0.5] - 2021-02-09
 
 ### Changed

@@ -66,6 +66,10 @@ export const StyledButton = styled.button<StyledButtonProps>`
   text-decoration: ${({ theme }: StyledButtonProps) =>
     theme.button.textDecoration};
 
+  &:focus {
+    outline: auto;
+  }
+
   ${(props: StyledButtonProps) =>
     props.appearance === "primary" &&
     css`
