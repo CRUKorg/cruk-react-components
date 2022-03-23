@@ -9,7 +9,7 @@ module.exports = {
     "import/no-extraneous-dependencies": [
       2,
       {
-        devDependencies: ["**/*.cypress.tsx"],
+        devDependencies: ["**/*.cypress.tsx", "**/*.stories.tsx"],
       },
     ],
     "jest/expect-expect": [0],
