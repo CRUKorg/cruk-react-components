@@ -84,6 +84,10 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
       font-weight: ${fontWeightHeavy};
     `}
 
+  &:focus {
+    outline: auto;
+  }
+
   &:hover {
     cursor: pointer;
     background-size: 100% 100%;
