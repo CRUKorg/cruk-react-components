@@ -6,10 +6,10 @@ import defaultTheme from "../../themes/cruk";
 import {
   ProgressBarWrapper,
   CircularWrapper,
-  CircularLeft,
-  CircularRight,
+  CircleSvg,
+  EmptyCircle,
+  FullCircle,
   CircularValue,
-  CircularColorFill,
   LineProgressBarWrapper,
   LineProgressBar,
   ScreenReaderOnly,
@@ -20,14 +20,18 @@ const DEFAULT_CIRCLE_SIZE = "90px";
 export type ProgressBarProps = {
   /** percentage value of the progressbar */
   percentage: number;
+  /** percentage value of a secondary (highter) amount of the progressbar */
+  secondaryPercentage?: number;
   /** flag which converts line bar to donut chart */
   isCircular?: boolean;
   /** contents inside the donut chart */
   circleContents?: ReactNode;
   /** diameter of the donut chart */
   circleSize?: string;
-  /** foreground colour of chart */
+  /** foreground colour of chart bar */
   barColor?: string;
+  /** foreground colour of chart secondary bar */
+  secondaryBarColor?: string;
 };
 
 /**
@@ -40,6 +44,8 @@ const ProgressBar: FC<ProgressBarProps> = ({
   circleContents,
   circleSize,
   barColor,
+  secondaryBarColor,
+  secondaryPercentage,
   children,
 }) => {
   const foundTheme = useTheme();
@@ -47,33 +53,78 @@ const ProgressBar: FC<ProgressBarProps> = ({
     ...defaultTheme,
     ...foundTheme,
   };
-  const number = percentage;
-  const percentString = `${!Number.isNaN(number) ? number : "0"}%`;
+  const percentageNumber = !Number.isNaN(percentage) ? percentage : 0;
+  const percentageLimited = percentageNumber > 100 ? 100 : percentageNumber;
+  const percentString = `${percentageNumber}%`;
+
+  const secondaryPercentageNumber =
+    secondaryPercentage && !Number.isNaN(secondaryPercentage)
+      ? secondaryPercentage
+      : 0;
+
+  const secondaryPercentageLimited =
+    secondaryPercentageNumber > 100 ? 100 : secondaryPercentageNumber;
+
   const descriptivePercentageString = `${
     typeof circleContents === "string" ? circleContents : ""
   } ${percentString}% Complete`;
   const textOrPercentString = circleContents || percentString;
 
+  const strokeWidth = 6;
+  const d = 128;
+  const r = d / 2 - strokeWidth;
+  const c = 2 * Math.PI * r;
+
   return (
     <ThemeProvider theme={theme}>
       <ProgressBarWrapper>
         {isCircular ? (
-          <CircularWrapper
-            percentage={number}
-            circleSize={circleSize || DEFAULT_CIRCLE_SIZE}
-          >
-            <CircularLeft className="Left">
-              <CircularColorFill barColor={barColor} />
-            </CircularLeft>
-            <CircularRight className="Right">
-              <CircularColorFill barColor={barColor} />
-            </CircularRight>
+          <CircularWrapper circleSize={circleSize || DEFAULT_CIRCLE_SIZE}>
+            <CircleSvg viewBox={`0 0 ${d} ${d}`}>
+              <EmptyCircle
+                cx={r + strokeWidth}
+                cy={r + strokeWidth}
+                r={r}
+                strokeWidth={strokeWidth}
+              />
+              <FullCircle
+                isSecondary
+                barColor={secondaryBarColor}
+                cx={r + strokeWidth}
+                cy={r + strokeWidth}
+                r={r}
+                strokeWidth={strokeWidth}
+                strokeDasharray={c}
+                strokeDashoffset={c * (1 - secondaryPercentageLimited / 100)}
+                strokeDashoffsetInit={c}
+              />
+
+              <FullCircle
+                barColor={barColor}
+                cx={r + strokeWidth}
+                cy={r + strokeWidth}
+                r={r}
+                strokeWidth={strokeWidth}
+                strokeDasharray={c}
+                strokeDashoffset={c * (1 - percentageLimited / 100)}
+                strokeDashoffsetInit={c}
+              />
+            </CircleSvg>
             <CircularValue>{textOrPercentString}</CircularValue>
           </CircularWrapper>
         ) : (
-          <LineProgressBarWrapper>
+          <LineProgressBarWrapper
+            percentage={percentageLimited}
+            secondaryPercentage={secondaryPercentageLimited}
+          >
             <LineProgressBar
-              percentage={number > 100 ? 100 : number}
+              isSecondary
+              percentage={secondaryPercentageLimited}
+              barColor={secondaryBarColor}
+            />
+
+            <LineProgressBar
+              percentage={percentageLimited}
               barColor={barColor}
             />
             <ScreenReaderOnly>{descriptivePercentageString}</ScreenReaderOnly>

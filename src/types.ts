@@ -85,8 +85,10 @@ export type ColorsType = {
   textLight: string;
 
   progressBar: string;
+  progressBarSecondary: string;
   progressBarBackground: string;
   circularProgress: string;
+  circularProgressSecondary: string;
   circularProgressBackground: string;
 
   buttonPrimaryBackground: string;
