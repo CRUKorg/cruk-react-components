@@ -84,7 +84,7 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
       font-weight: ${fontWeightHeavy};
     `}
 
-  &:focus {
+  &:focus-visible {
     outline: auto;
   }
 

@@ -54,7 +54,7 @@ export const PagerLink = styled.a<PaginationStyledProps>`
     text-decoration: none;
   }
 
-  &:focus {
+  &:focus-visible {
     outline: auto;
   }
 

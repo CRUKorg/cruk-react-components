@@ -66,7 +66,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   text-decoration: ${({ theme }: StyledButtonProps) =>
     theme.button.textDecoration};
 
-  &:focus {
+  &:focus-visible {
     outline: auto;
   }
 
