@@ -1,6 +1,6 @@
 {
   "name": "@cruk/cruk-react-components",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "React components implementing CRUK and SU2C designs",
   "license": "UNLICENSED",
   "publishConfig": {
