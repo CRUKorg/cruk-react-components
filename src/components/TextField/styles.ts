@@ -67,6 +67,7 @@ export const ExtraRight = styled(Extra)`
 
 export const ExtraWrapper = styled.span`
   display: flex;
+  align-items: center;
 `;
 
 export const StyledInputWrapper = styled.span<StyledInputProps>`
@@ -108,6 +109,7 @@ export const StyledInput = styled.input<StyledInputProps>`
     `solid ${theme.utilities.inputBorderWidth} ${
       hasError ? theme.colors.textError : theme.colors.textInputBorder
     }`};
+  border-radius: 0;
   color: ${({ theme }: ExtraProps) => theme.colors.textDark};
   display: block;
   font-size: ${({ theme }: ExtraProps) => theme.fontSizes.m};
