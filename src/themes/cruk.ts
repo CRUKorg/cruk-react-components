@@ -64,7 +64,7 @@ export const TOKEN_COLORS: TokenColorsType = {
   darkBlue_300: "#a896cf",
   darkBlue_500: "#2e008b",
   magenta_100: "#fdeaf5",
-  magenta_500: "#e40074",
+  magenta_500: "#e40087",
   magenta_800: "#BB0071",
   magenta_900: "#710044",
   cyan_500: "#00b6ed",
@@ -192,7 +192,7 @@ export const SPACING: SpacingType = {
 
 export const FONT_SIZES: FontSizesType = {
   xs: "0.75rem", // 12px
-  s: "0.857rem", // 14px
+  s: "0.875rem", // 14px
   m: "1rem", // 16px
   l: "1.25rem", // 20px
   xl: "1.5625rem", // 25px
