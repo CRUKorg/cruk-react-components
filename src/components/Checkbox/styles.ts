@@ -74,7 +74,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
   font-weight: ${({ theme, checked }: StyledLabelProps) =>
     checked || !theme.utilities.useDefaultFocusRect
       ? theme.typography.fontWeightHeavy
-      : theme.typography.fontWeightMedium};
+      : theme.typography.fontWeightNormal};
   color: ${({ theme, disabled }: StyledLabelProps) =>
     disabled ? theme.colors.disabled : theme.colors.textDark};
   padding: ${({ theme }: ThemeProps) =>

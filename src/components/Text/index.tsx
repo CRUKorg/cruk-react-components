@@ -26,7 +26,7 @@ export type TextProps = SpacingProps &
     textAlign?: "left" | "right" | "center" | "justify";
     /** font size FontSizeType t-shirt sizes  */
     textSize?: FontSizeType;
-    /** font weight theme.typography{fontWeightHeavy/fontWeightMedium/fontWeightLight/fontWeightVLight} is better than a random number */
+    /** font weight theme.typography{fontWeightHeavy/fontWeightNormal/fontWeightMedium/fontWeightLight/fontWeightVLight} is better than a random number */
     textWeight?: number;
     /** styled-components polymorphism where you can set this to "span", "p" or "h2" it default to "p" */
     as?: any;
