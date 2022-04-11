@@ -58,7 +58,7 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
   font-weight: ${({ theme }: ThemeProp) =>
     theme.utilities.useBackgroundStyleLinks
       ? theme.typography.fontWeightHeavy
-      : theme.typography.fontWeightMedium};
+      : theme.typography.fontWeightNormal};
   background: ${({
     appearance,
     theme,

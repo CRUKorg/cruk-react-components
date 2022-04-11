@@ -214,7 +214,8 @@ export const TYPOGRAPHY: TypographyType = {
   fontFamilyHeadings: "MuseoSans-500,Calibri,Arial,sans-serif",
   fontSizeBase: "16px",
   fontWeightHeavy: "700",
-  fontWeightMedium: "500", // default
+  fontWeightMedium: "500", // default heading
+  fontWeightNormal: "400", // default body
   fontWeightLight: "300",
   fontWeightVLight: "100",
   linkTextDecoration: "underline",

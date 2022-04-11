@@ -192,6 +192,7 @@ export type TypographyType = {
   fontFamilyHeadings: string;
   fontSizeBase: string;
   fontWeightHeavy: string;
+  fontWeightNormal: string;
   fontWeightMedium: string;
   fontWeightLight: string;
   fontWeightVLight: string;
