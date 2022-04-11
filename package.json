@@ -18,7 +18,7 @@
     "node": "^14 || ^16"
   },
   "scripts": {
-    "dev": "NODE_ENV=development npm i && docker-compose up server",
+    "dev": "NODE_ENV=development npm i && npm run start",
     "start": "webpack server --config webpack.config.docs.js --mode development",
     "clean-lib": "rm -rf ./lib",
     "build-lib": "npm run clean-lib && webpack --config webpack.config.lib.js --mode production",
