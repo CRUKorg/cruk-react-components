@@ -17,7 +17,7 @@ export const DateTextFieldWrapper = styled.div`
   span {
     margin-bottom: 0.25rem; // this is smaller than xxs spacing
     font-weight: ${({ theme }: ThemeProps) =>
-      theme.typography.fontWeightMedium};
+      theme.typography.fontWeightNormal};
   }
 `;
 

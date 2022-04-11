@@ -36,7 +36,7 @@ export const TextStyled = styled.p<TextStyledProps>`
   }: TextStyledProps) => (textSize ? fontSizes[textSize] : m)};
   line-height: ${({ theme }: TextStyledProps) => theme.typography.lineHeight};
   font-weight: ${({ textWeight, theme }: TextStyledProps) =>
-    textWeight || theme.typography.fontWeightMedium};
+    textWeight || theme.typography.fontWeightNormal};
   padding: 0;
   margin: 0;
   margin-bottom: ${({

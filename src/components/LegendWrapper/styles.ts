@@ -25,7 +25,7 @@ export const LegendSpan = styled.span<{
 
   & > * {
     font-weight: ${({ theme }: StyledFieldsetProps) =>
-      theme.typography.fontWeightMedium};
+      theme.typography.fontWeightNormal};
   }
 `;
 
