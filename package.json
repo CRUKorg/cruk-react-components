@@ -87,7 +87,7 @@
     "@rollup/plugin-babel": "^5.0.0",
     "@rollup/plugin-commonjs": "^21.0.0",
     "@rollup/plugin-node-resolve": "^13.0.5",
-    "@storybook/addon-a11y": "6.4.19",
+    "@storybook/addon-a11y": "6.4.21",
     "@storybook/addon-actions": "^6.4.19",
     "@storybook/addon-docs": "^6.4.19",
     "@storybook/addon-essentials": "^6.4.19",
