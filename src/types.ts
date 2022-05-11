@@ -19,7 +19,6 @@ export type UtilitiesType = {
 };
 
 export type SiteConfigType = {
-  cdnPath: string;
   assetPath: string;
   logoUrl: string;
   logoAlt: string;
@@ -187,7 +186,6 @@ export type CustomFontType = {
 
 export type TypographyType = {
   customFonts: [CustomFontType];
-  fontUrl: string;
   fontFamilyBase: string;
   fontFamilyHeadings: string;
   fontSizeBase: string;

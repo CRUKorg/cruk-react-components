@@ -42,6 +42,9 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         overflow-x: hidden;
+        -webkit-text-size-adjust: 100%;
+        -moz-text-size-adjust: none;
+        -ms-text-size-adjust: 100%;
       }
     `;
   }}

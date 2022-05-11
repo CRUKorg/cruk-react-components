@@ -21,7 +21,6 @@ export const UTILITIES: UtilitiesType = {
 };
 
 export const SITE_CONFIG: SiteConfigType = {
-  cdnPath: "https://ccp-s3.int.cruk.org/",
   assetPath:
     "https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/",
   logoUrl: "/",
@@ -208,7 +207,6 @@ export const TYPOGRAPHY: TypographyType = {
       url: "https://ccp-s3.int.cruk.org/fonts/MuseoSansRounded-500",
     },
   ],
-  fontUrl: `${SITE_CONFIG.cdnPath}fonts`,
   fontFamilyBase:
     "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
   fontFamilyHeadings: "MuseoSans-500,Calibri,Arial,sans-serif",
