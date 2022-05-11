@@ -9,7 +9,12 @@ import { useTheme } from "styled-components";
 import defaultTheme from "../../themes/cruk";
 
 import { SpacingProps } from "../Spacing";
-import { WordBreakType, FontSizeType, ColorKeyType } from "../../types";
+import {
+  WordBreakType,
+  FontSizeType,
+  ColorKeyType,
+  OverflowWrapType,
+} from "../../types";
 import { TextStyled } from "./styles";
 
 // the 'as' prop is for styled component casting
@@ -30,8 +35,10 @@ export type TextProps = SpacingProps &
     textWeight?: number;
     /** styled-components polymorphism where you can set this to "span", "p" or "h2" it default to "p" */
     as?: any;
-    /** word break behaviour */
+    /** word-break behaviour */
     wordBreak?: WordBreakType;
+    /** overflow-wrap behaviour */
+    overflowWrap?: OverflowWrapType;
     /** react reference to the DOM element sometime used to scroll to or set focus after an error */
     ref?: Ref<HTMLElement>;
   };

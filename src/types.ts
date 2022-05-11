@@ -289,3 +289,13 @@ export type WordBreakType =
   | "inherit"
   | "initial"
   | "unset";
+
+export type OverflowWrapType =
+  | "normal"
+  | "anywhere"
+  | "revert"
+  | "revert-layer"
+  | "break-word"
+  | "inherit"
+  | "initial"
+  | "unset";
