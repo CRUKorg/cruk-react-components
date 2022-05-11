@@ -4,7 +4,7 @@ import { useTheme } from "styled-components";
 import defaultTheme from "../../themes/cruk";
 import { SpacingProps } from "../Spacing";
 
-import { FontSizeType, WordBreakType } from "../../types";
+import { FontSizeType, WordBreakType, OverflowWrapType } from "../../types";
 import { H1, H2, H3, H4, H5, H6 } from "./styles";
 
 export type HeadingProps = SpacingProps &
@@ -15,12 +15,18 @@ export type HeadingProps = SpacingProps &
     h4?: boolean;
     h5?: boolean;
     h6?: boolean;
+    /** font size FontSizeType t-shirt sizes  */
     textSize?: FontSizeType;
+    /** horizontal alignment of text */
     textAlign?: "left" | "right" | "center";
+    /** color of text */
     textColor?: string;
     /** styled-component polymorphic feature so you take the styling of a header and cast the component to be a "span" for example */
     as?: any;
+    /** word-break behavior */
     wordBreak?: WordBreakType;
+    /** overflow-wrap behavior */
+    overflowWrap?: OverflowWrapType;
   };
 
 /**

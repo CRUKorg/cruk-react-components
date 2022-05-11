@@ -15,6 +15,7 @@ type StyledHeadingProps = SpacingProps & {
   textAlign?: "left" | "right" | "center";
   textColor?: ColorKeyType | string;
   wordBreak?: WordBreakType;
+  overflowWrap?: WordBreakType;
 };
 
 const StyledHeading = (props: StyledHeadingProps) => css`
@@ -24,6 +25,7 @@ const StyledHeading = (props: StyledHeadingProps) => css`
     },
   }: StyledHeadingProps) => fontFamilyHeadings};
   word-break: ${() => props.wordBreak || "normal"};
+  overflow-wrap: ${() => props.overflowWrap || "break-word"};
   font-weight: ${({
     theme: {
       typography: { fontWeightMedium },

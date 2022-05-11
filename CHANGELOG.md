@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 Fix text expanding on ios landscape [#469](https://github.com/CRUKorg/cruk-react-components/issues/#469)
+Fix support for overflow-wrap on heading and text components [#470](https://github.com/CRUKorg/cruk-react-components/issues/#470)
 
 ## [1.0.10] - 2021-04-1
 

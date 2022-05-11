@@ -27,6 +27,7 @@ type StyledLinkProps = AnchorHTMLAttributes<HTMLElement> &
 
 export const StyledLink = styled(Text)<StyledLinkProps>`
   transition: color 0.2s ease, background-size 0.3s ease;
+  overflow-wrap: break-word;
   background-color: rgba(255, 255, 255, 0);
   border: none;
   padding: 0;

@@ -6,6 +6,7 @@ import {
   FontSizeType,
   ThemeType,
   ColorKeyType,
+  OverflowWrapType,
 } from "../../types";
 
 export type TextStyledProps = SpacingProps & {
@@ -15,6 +16,7 @@ export type TextStyledProps = SpacingProps & {
   textWeight?: number;
   as?: any;
   wordBreak?: WordBreakType;
+  overflowWrap?: OverflowWrapType;
   theme: ThemeType;
 };
 
@@ -22,6 +24,8 @@ export const TextStyled = styled.p<TextStyledProps>`
   font-family: ${({ theme }: TextStyledProps) =>
     theme.typography.fontFamilyBase};
   word-break: ${({ wordBreak }: TextStyledProps) => wordBreak || "normal"};
+  overflow-wrap: ${({ overflowWrap }: TextStyledProps) =>
+    overflowWrap || "break-word"};
   color: ${({ theme: { colors }, textColor }: TextStyledProps) =>
     textColor && typeof colors[textColor] !== "undefined"
       ? colors[textColor]
