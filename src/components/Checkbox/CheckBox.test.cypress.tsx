@@ -54,7 +54,7 @@ describe("Checkbox", () => {
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(1000);
     cy.get("body").first().matchImageSnapshot({
-      failureThresholdType: "pixels",
+      failureThresholdType: "pixel",
       failureThreshold: 100,
     });
   });
