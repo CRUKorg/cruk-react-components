@@ -50,7 +50,7 @@ const content = () => (
         <img
           style={{ width: "80px", height: "30px" }}
           alt=""
-          src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png"
+          src="https://ccp-s3.int.cruk.org/images/logos/cruk-160.png"
         />
       </Link>
     </div>

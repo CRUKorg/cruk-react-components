@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { su2cTheme } from "../";
+import { su2cTheme } from "..";
 import Link, { LinkProps } from ".";
 import GlobalStyle from "../GlobalStyle";
 
@@ -45,7 +45,7 @@ const TemplateWithImage: Story<LinkProps> = (args) => (
     <img
       style={{ width: "80px", height: "30px" }}
       alt=""
-      src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png"
+      src="https://ccp-s3.int.cruk.org/images/logos/cruk-160.png"
     />
   </Link>
 );

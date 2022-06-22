@@ -9,7 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-Added IconFa component for a tree-shakable Icon component, removed Icon component from other components [#470](https://github.com/CRUKorg/cruk-react-components/issues/#490)
+Added IconFa component for a tree-shakable Icon component, removed Icon component from other components [#490](https://github.com/CRUKorg/cruk-react-components/issues/#490)
+
+### Fixed
+
+Fix missing images form Avatar, Header and Footer using placeholder cloudfront distribution
 
 ## [1.0.11] - 2021-05-11
 

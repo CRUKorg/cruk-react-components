@@ -21,14 +21,13 @@ export const UTILITIES: UtilitiesType = {
 
 export const SITE_CONFIG: SiteConfigType = {
   ...defaultTheme.siteConfig,
-  logoSrc: "https://https://ccp-s3.int.cruk.org/images/logos/su2c-160.png",
+  logoSrc: "https://ccp-s3.int.cruk.org/images/logos/su2c-160.png",
   footerCopyText:
     "Stand Up To Cancer and Stand Up To Cancer Brand Marks are registered trademarks of the Entertainment Industry Foundation. Cancer Research UK is a registered charity in England and Wales (1089464), Scotland(SC041666), the Isle of Man (1103) and Jersey (247). A company limited by guarantee. Registered company in England and Wales (4325234) and the Isle of Man (5713F). Registered address: 2 Redman Place, London, E20 1JQ. Donations will be made to Cancer Research UK in support of the Stand Up To Cancer campaign.",
 };
 
 export const AVATAR: AvatarType = {
   ...defaultTheme.avatar,
-  path: "https://ccp-s3.int.cruk.org/images/avatar/su2c/",
 };
 
 export const BUTTON: ButtonType = {

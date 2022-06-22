@@ -47,7 +47,12 @@ describe("UserBlock", () => {
   });
 
   it("should match snapshot", () => {
-    mount(<TestWrapper>{content()}</TestWrapper>);
+    mount(
+      <>
+        <TestWrapper>{content()}</TestWrapper>
+        <TestThemeWrapper theme={su2cTheme}>{content()}</TestThemeWrapper>
+      </>
+    );
     cy.get(
       '[src="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"]'
     ).should(($img) => {
@@ -55,25 +60,25 @@ describe("UserBlock", () => {
       expect(img.naturalWidth).to.be.greaterThan(0);
     });
     cy.get(
-      '[src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/icon-avatars/icon-avatar-S.png"]'
+      '[src="https://ccp-s3.int.cruk.org/images/avatar/cruk/icon-avatar-S.png"]'
     ).should(($img) => {
       const img = $img[0] as HTMLImageElement;
       expect(img.naturalWidth).to.be.greaterThan(0);
     });
     cy.get(
-      '[src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/icon-avatars/su2c/icon-avatar-S.png"]'
+      '[src="https://ccp-s3.int.cruk.org/images/avatar/su2c/icon-avatar-S.png"]'
     ).should(($img) => {
       const img = $img[0] as HTMLImageElement;
       expect(img.naturalWidth).to.be.greaterThan(0);
     });
     cy.get(
-      '[src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/icon-avatars/icon-avatar-Anonymous.png"]'
+      '[src="https://ccp-s3.int.cruk.org/images/avatar/cruk/icon-avatar-Anonymous.png"]'
     ).should(($img) => {
       const img = $img[0] as HTMLImageElement;
       expect(img.naturalWidth).to.be.greaterThan(0);
     });
     cy.get(
-      '[src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/icon-avatars/su2c/icon-avatar-Anonymous.png"]'
+      '[src="https://ccp-s3.int.cruk.org/images/avatar/su2c/icon-avatar-Anonymous.png"]'
     ).should(($img) => {
       const img = $img[0] as HTMLImageElement;
       expect(img.naturalWidth).to.be.greaterThan(0);

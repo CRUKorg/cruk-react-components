@@ -47,7 +47,7 @@ describe("Footer", () => {
     cy.document().its("fonts.status").should("equal", "loaded");
 
     cy.get(
-      '[src="https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/images/fundreg.png"]'
+      '[src="https://ccp-s3.int.cruk.org/images/logos/fundreg.png"]'
     ).should(($img) => {
       const img = $img[0] as HTMLImageElement;
       expect(img.naturalWidth).to.be.greaterThan(0);
