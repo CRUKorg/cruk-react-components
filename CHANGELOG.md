@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.1.0] - 2021-05-22
+## [1.1.0] - 202w-05-22
 
 ### Added
 
@@ -15,20 +15,20 @@ Added IconFa component for a tree-shakable Icon component, removed Icon componen
 
 Fix missing images form Avatar, Header and Footer using placeholder cloudfront distribution
 
-## [1.0.11] - 2021-05-11
+## [1.0.11] - 2022-05-11
 
 ### Fixed
 
 Fix text expanding on ios landscape [#469](https://github.com/CRUKorg/cruk-react-components/issues/#469)
 Fix support for overflow-wrap on heading and text components [#470](https://github.com/CRUKorg/cruk-react-components/issues/#470)
 
-## [1.0.10] - 2021-04-1
+## [1.0.10] - 2022-04-1
 
 ### Fixed
 
 Change all body font weight from 500 to 400 to match design system spec [#454](https://github.com/CRUKorg/cruk-react-components/issues/#454)
 
-## [1.0.9] - 2021-04-06
+## [1.0.9] - 2022-04-06
 
 ### Changed
 
@@ -38,19 +38,19 @@ CRUK magenta_500 from #e40074 to #e40087 to match design system
 
 - Text size s is incorrect should be 0.875 em not 0.857 em [#452](https://github.com/CRUKorg/cruk-react-components/issues/#452)
 
-## [1.0.8] - 2021-03-29
+## [1.0.8] - 2022-03-29
 
 ### Fixed
 
 - TextField with extra on left or right looks wonkey on iOS [#445](https://github.com/CRUKorg/cruk-react-components/issues/445)
 
-## [1.0.7] - 2021-03-24
+## [1.0.7] - 2022-03-24
 
 ### Fixed
 
 - Focus rect visible on mouse click and touch events for some items [#438](https://github.com/CRUKorg/cruk-react-components/issues/438)
 
-## [1.0.6] - 2021-03-23
+## [1.0.6] - 2022-03-23
 
 ### Fixed
 
@@ -61,26 +61,26 @@ CRUK magenta_500 from #e40074 to #e40087 to match design system
 - Carousel component
 - secondaryPercentage prop for Progress Bar and Totaliser
 
-## [1.0.5] - 2021-02-09
+## [1.0.5] - 2022-02-09
 
 ### Changed
 
 - Using node 16 and cypress 9.4.1
 
-## [1.0.4] - 2021-02-02
+## [1.0.4] - 2022-02-02
 
 ### Fixed
 
 - Collapse focus rect SU2C needs reduced border radius [#403](https://github.com/CRUKorg/cruk-react-components/issues/403)
 - Totaliser with custom summary has a speech bubble arrow artifact [#404](https://github.com/CRUKorg/cruk-react-components/issues/404)
 
-## [1.0.3] - 2021-01-21
+## [1.0.3] - 2022-01-21
 
 ### Changed
 
 - Moving storybook/react into dev dependencies
 
-## [1.0.2] - 2021-01-21
+## [1.0.2] - 2022-01-21
 
 ### Changed
 
