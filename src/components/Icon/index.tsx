@@ -30,7 +30,7 @@ export type IconProps = {
  * System icons are designed to be simple, modern, friendly, and sometimes quirky.
  * Each icon is reduced to its minimal form, expressing essential characteristics.
  *
- * This component is likely to change in the future to make it more tree-shakable
+ * This component has been deprecated in favour of IconFa which is more tree-shakable
  * */
 const Icon: FunctionComponent<IconProps> = ({
   name,

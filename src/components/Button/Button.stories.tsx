@@ -1,7 +1,9 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
-import Icon from "../Icon";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
+
+import IconFa from "../IconFa";
 import Button, { Props } from ".";
 import { GlobalStyle, su2cTheme } from "..";
 
@@ -41,8 +43,9 @@ Tertiary.args = {
 
 const TemplateWithIcon: Story = (args) => (
   <Button {...args}>
-    <Icon name="clock" />A button
-    <Icon name="clock" />
+    <IconFa faIcon={faClock} />
+    A Button
+    <IconFa faIcon={faClock} />
   </Button>
 );
 

@@ -1,9 +1,10 @@
 import React, { FC, useEffect } from "react";
-import ReactDOM from "react-dom";
+import { createPortal } from "react-dom";
 import { ThemeProvider, useTheme } from "styled-components";
 import FocusLock from "react-focus-lock";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
 
-import Icon from "../Icon";
+import IconFa from "../IconFa";
 import defaultTheme from "../../themes/cruk";
 
 import { CloseButton, Wrapper, Content, Background } from "./styles";
@@ -70,9 +71,10 @@ const Modal: FC<ModalProps> = ({
   }, []);
 
   return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {typeof window !== `undefined`
-        ? ReactDOM.createPortal(
+        ? createPortal(
             <section>
               <FocusLock returnFocus>
                 <ThemeProvider theme={theme}>
@@ -94,7 +96,7 @@ const Modal: FC<ModalProps> = ({
                             closeFunction();
                           }}
                         >
-                          <Icon name="close" />
+                          <IconFa faIcon={faClose} />
                         </CloseButton>
                       ) : null}
                       {children}

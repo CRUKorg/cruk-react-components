@@ -1,9 +1,10 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import Button from "../Button";
-import Icon from "../Icon";
+import IconFa from "../IconFa";
 
 import { GlobalStyle, su2cTheme } from "..";
 import TextField, { TextFieldProps } from ".";
@@ -19,7 +20,7 @@ const TemplateExtraRight: Story<TextFieldProps> = (args) => (
     {...args}
     extraRight={
       <Button appearance="tertiary" aria-label="search">
-        <Icon name="search" />
+        <IconFa faIcon={faSearch} />
       </Button>
     }
   />

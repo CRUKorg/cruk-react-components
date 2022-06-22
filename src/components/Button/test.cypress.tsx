@@ -2,9 +2,15 @@
 
 import React from "react";
 import { mount } from "@cypress/react";
+import {
+  faEye,
+  faPenToSquare,
+  faCamera,
+} from "@fortawesome/free-solid-svg-icons";
+import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { su2cTheme, crukTheme, Icon, Button, Box } from "..";
+import { su2cTheme, crukTheme, IconFa, Button, Box } from "..";
 
 const content = () => (
   <Box backgroundColor="backgroundLight" padding="none">
@@ -22,24 +28,24 @@ const content = () => (
     </Button>
     <Button size="l">Large button</Button>
     <Button>
-      <Icon name="view" />
+      <IconFa faIcon={faEye} />
       Icon with text
     </Button>
     <Button>
       Icon right
-      <Icon name="edit" />
+      <IconFa faIcon={faPenToSquare} />
     </Button>
     <Button>
-      <Icon name="view" />
+      <IconFa faIcon={faEye} />
       Icon either side
-      <Icon name="view" />
+      <IconFa faIcon={faEye} />
     </Button>
     <Button href="https://www.styled-components.com/">Link as Button</Button>
     <Button aria-label="Upload a photo">
-      <Icon name="uploadPhoto" />
+      <IconFa faIcon={faCamera} />
     </Button>
     <Button css="background-color: #4267b2;border-color: #4267b2; color: white !important; :hover {background-color: #365899; border-color:  #365899; color: white !important;}">
-      <Icon name="facebookSquare" size="18px" />
+      <IconFa faIcon={faFacebookSquare} size="18px" />
       Continue with facebook
     </Button>
     <Button full>Full width Button</Button>

@@ -2,9 +2,10 @@
 
 import React from "react";
 import { mount } from "@cypress/react";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { UserBlock, Icon, su2cTheme, crukTheme } from "..";
+import { UserBlock, IconFa, su2cTheme, crukTheme } from "..";
 
 const content = () => (
   <>
@@ -15,7 +16,7 @@ const content = () => (
       size="l"
       extra={
         <>
-          <Icon name="clock" />
+          <IconFa faIcon={faClock} />
           Just now
         </>
       }

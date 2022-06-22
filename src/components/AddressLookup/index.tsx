@@ -12,6 +12,7 @@ import React, {
   useState,
 } from "react";
 import { useTheme } from "styled-components";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 import { AddressDataType, AddressOptionsType } from "../../types";
 import { useKey } from "../../hooks/useKey";
@@ -19,8 +20,9 @@ import { useKey } from "../../hooks/useKey";
 import debounce from "../../utils/debounce";
 import Text from "../Text";
 import TextField from "../TextField";
-import Icon from "../Icon";
+import IconFa from "../IconFa";
 import defaultTheme from "../../themes/cruk";
+
 import { ListWrapper, ListItem, ScreenReaderOnly, List } from "./styles";
 
 const FIND_URL =
@@ -271,7 +273,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
                         <ScreenReaderOnly>
                           press enter for these addresses
                         </ScreenReaderOnly>
-                        <Icon name="chevronRight" />
+                        <IconFa faIcon={faChevronRight} />
                       </>
                     )}
                   </ListItem>

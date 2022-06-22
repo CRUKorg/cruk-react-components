@@ -6,7 +6,7 @@ import { GlobalStyle, su2cTheme } from "..";
 import Icon, { IconProps } from ".";
 
 export default {
-  title: "Icon",
+  title: "Icon (deprecated)",
   component: Icon,
 } as Meta<IconProps>;
 

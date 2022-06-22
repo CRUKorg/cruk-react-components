@@ -1,8 +1,19 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
+import {
+  faShareAlt,
+  faEnvelopeSquare,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebookMessenger,
+  faFacebookSquare,
+  faTwitterSquare,
+  faWhatsappSquare,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
 
-import { su2cTheme, Box, Button, Icon, GlobalStyle } from "..";
+import { su2cTheme, Box, Button, IconFa, GlobalStyle } from "..";
 import PopOver, { PopOverProps } from ".";
 
 export default {
@@ -11,76 +22,66 @@ export default {
 } as Meta<PopOverProps>;
 
 const content = (
-  <>
-    <Box padding="xxs">
-      <Button appearance="tertiary" aria-label="Facebook">
-        <Icon name="facebookSquare" color="#4267b2" size="1.5rem" />
-      </Button>
-      <Button appearance="tertiary" aria-label="Twitter">
-        <Icon name="twitterSquare" color="#1da1f2" size="1.5rem" />
-      </Button>
-      <Button appearance="tertiary" aria-label="WhatsApp">
-        <Icon name="whatsappSquare" color="#4dc247" size="1.5rem" />
-      </Button>
-      <Button appearance="tertiary" aria-label="Facebook Messenger">
-        <Icon name="messengerSquare" color="#288ef8" size="1.5rem" />
-      </Button>
-      <Button appearance="tertiary" aria-label="LinkedIn">
-        <Icon name="linkedin" color="#0077b5" size="1.5rem" />
-      </Button>
-      <Button appearance="tertiary" aria-label="Email">
-        <Icon name="envelopeSquare" color="#00b6ed" size="1.5rem" />
-      </Button>
-    </Box>
-  </>
+  <Box padding="xxs">
+    <Button appearance="tertiary" aria-label="Facebook">
+      <IconFa faIcon={faFacebookSquare} color="#4267b2" size="1.5rem" />
+    </Button>
+    <Button appearance="tertiary" aria-label="Twitter">
+      <IconFa faIcon={faTwitterSquare} color="#1da1f2" size="1.5rem" />
+    </Button>
+    <Button appearance="tertiary" aria-label="WhatsApp">
+      <IconFa faIcon={faWhatsappSquare} color="#4dc247" size="1.5rem" />
+    </Button>
+    <Button appearance="tertiary" aria-label="Facebook Messenger">
+      <IconFa faIcon={faFacebookMessenger} color="#288ef8" size="1.5rem" />
+    </Button>
+    <Button appearance="tertiary" aria-label="LinkedIn">
+      <IconFa faIcon={faLinkedin} color="#0077b5" size="1.5rem" />
+    </Button>
+    <Button appearance="tertiary" aria-label="Email">
+      <IconFa faIcon={faEnvelopeSquare} color="#00b6ed" size="1.5rem" />
+    </Button>
+  </Box>
 );
 
-const Template: Story<PopOverProps> = (args) => {
-  return (
-    <>
-      <Box margin="xxl">
-        <PopOver
-          {...args}
-          modalLabel="sharing options"
-          modalContent={content}
-          minWidth="23em"
-        >
-          <Button>
-            <Icon name="share" />
-            Share top
-          </Button>
-        </PopOver>
-      </Box>
-    </>
-  );
-};
+const Template: Story<PopOverProps> = (args) => (
+  <Box margin="xxl">
+    <PopOver
+      {...args}
+      modalLabel="sharing options"
+      modalContent={content}
+      minWidth="23em"
+    >
+      <Button>
+        <IconFa faIcon={faShareAlt} />
+        Share top
+      </Button>
+    </PopOver>
+  </Box>
+);
 
 export const PopOverDefault: Story<PopOverProps> = Template.bind({});
 PopOverDefault.storyName = "PopOver";
 PopOverDefault.args = {};
 
-const TemplateWithSU2C: Story<PopOverProps> = (args) => {
-  return (
-    <>
-      <ThemeProvider theme={su2cTheme}>
-        <GlobalStyle />
-        <Box margin="xxl">
-          <PopOver
-            {...args}
-            modalLabel="sharing options"
-            modalContent={content}
-            minWidth="23em"
-          >
-            <Button>
-              <Icon name="share" />
-              Share top
-            </Button>
-          </PopOver>
-        </Box>
-      </ThemeProvider>
-    </>
-  );
-};
+const TemplateWithSU2C: Story<PopOverProps> = (args) => (
+  <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
+    <Box margin="xxl">
+      <PopOver
+        {...args}
+        modalLabel="sharing options"
+        modalContent={content}
+        minWidth="23em"
+      >
+        <Button>
+          <IconFa faIcon={faShareAlt} />
+          Share top
+        </Button>
+      </PopOver>
+    </Box>
+  </ThemeProvider>
+);
 
 export const SU2CCheckbox: Story<PopOverProps> = TemplateWithSU2C.bind({});
 SU2CCheckbox.storyName = "SU2C PopOver";

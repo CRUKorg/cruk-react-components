@@ -4,7 +4,7 @@ import React from "react";
 import { mount } from "@cypress/react";
 
 import { TestThemeWrapper } from "../TestWrapper";
-import { Modal, Button, Heading, su2cTheme, crukTheme } from "../";
+import { Modal, Button, Heading, su2cTheme, crukTheme } from "..";
 
 const ModalOnlyContent = () => (
   <Modal closeFunction={() => {}} showCloseButton modalName="test">

@@ -2,7 +2,7 @@ import { AnchorHTMLAttributes } from "react";
 import styled, { css } from "styled-components";
 
 import Text, { TextProps } from "../Text";
-import Icon from "../Icon";
+import IconFa from "../IconFa";
 
 import { ThemeType, ColorKeyType } from "../../types";
 
@@ -10,12 +10,14 @@ type ThemeProp = {
   theme: ThemeType;
 };
 
-export const ChevyWithLevee = styled(Icon)`
+export const ChevyWithLevee = styled(IconFa)`
   margin-right: ${({
     theme: {
       spacing: { xxs },
     },
   }: ThemeProp) => xxs};
+  stroke: currentColor;
+  stroke-width: 70;
 `;
 
 type StyledLinkProps = AnchorHTMLAttributes<HTMLElement> &

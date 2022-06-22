@@ -2,29 +2,40 @@
 
 import React from "react";
 import { mount } from "@cypress/react";
+import {
+  faShareAlt,
+  faEnvelopeSquare,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebookMessenger,
+  faFacebookSquare,
+  faTwitterSquare,
+  faWhatsappSquare,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { PopOver, Box, Button, Icon, su2cTheme, crukTheme } from "../";
+import { PopOver, Box, Button, IconFa, su2cTheme, crukTheme } from "..";
 
 const internalContent = () => (
   <Box padding="xxs">
     <Button appearance="tertiary" aria-label="Facebook">
-      <Icon name="facebookSquare" color="#4267b2" size="1.5rem" />
+      <IconFa faIcon={faFacebookSquare} color="#4267b2" size="1.5rem" />
     </Button>
     <Button appearance="tertiary" aria-label="Twitter">
-      <Icon name="twitterSquare" color="#1da1f2" size="1.5rem" />
+      <IconFa faIcon={faTwitterSquare} color="#1da1f2" size="1.5rem" />
     </Button>
     <Button appearance="tertiary" aria-label="WhatsApp">
-      <Icon name="whatsappSquare" color="#4dc247" size="1.5rem" />
+      <IconFa faIcon={faWhatsappSquare} color="#4dc247" size="1.5rem" />
     </Button>
     <Button appearance="tertiary" aria-label="Facebook Messenger">
-      <Icon name="messengerSquare" color="#288ef8" size="1.5rem" />
+      <IconFa faIcon={faFacebookMessenger} color="#288ef8" size="1.5rem" />
     </Button>
     <Button appearance="tertiary" aria-label="LinkedIn">
-      <Icon name="linkedin" color="#0077b5" size="1.5rem" />
+      <IconFa faIcon={faLinkedin} color="#0077b5" size="1.5rem" />
     </Button>
     <Button appearance="tertiary" aria-label="Email">
-      <Icon name="envelopeSquare" color="#00b6ed" size="1.5rem" />
+      <IconFa faIcon={faEnvelopeSquare} color="#00b6ed" size="1.5rem" />
     </Button>
   </Box>
 );
@@ -37,7 +48,7 @@ const content = () => (
       minWidth="23em"
     >
       <Button>
-        <Icon name="share" />
+        <IconFa faIcon={faShareAlt} />
         Share top
       </Button>
     </PopOver>
@@ -48,7 +59,7 @@ const content = () => (
       minWidth="23em"
     >
       <Button>
-        <Icon name="share" />
+        <IconFa faIcon={faShareAlt} />
         Share topLeft
       </Button>
     </PopOver>
@@ -59,7 +70,7 @@ const content = () => (
       minWidth="23em"
     >
       <Button>
-        <Icon name="share" />
+        <IconFa faIcon={faShareAlt} />
         Share bottom
       </Button>
     </PopOver>
@@ -70,7 +81,7 @@ const content = () => (
       minWidth="23em"
     >
       <Button>
-        <Icon name="share" />
+        <IconFa faIcon={faShareAlt} />
         Share bottomLeft
       </Button>
     </PopOver>
@@ -81,7 +92,7 @@ const content = () => (
       minWidth="23em"
     >
       <Button>
-        <Icon name="share" />
+        <IconFa faIcon={faShareAlt} />
         Share left
       </Button>
     </PopOver>
@@ -92,7 +103,7 @@ const content = () => (
       minWidth="23em"
     >
       <Button>
-        <Icon name="share" />
+        <IconFa faIcon={faShareAlt} />
         Share right
       </Button>
     </PopOver>
@@ -118,7 +129,8 @@ describe("Popover", () => {
     });
   });
 
-  it.only("should match snapshot share top", () => {
+  // eslint-disable-next-line jest/no-focused-tests
+  it.only("should match snapshot share top and open content", () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.document().its("fonts.status").should("equal", "loaded");
     cy.contains("Share top").click();

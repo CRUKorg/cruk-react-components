@@ -2,12 +2,13 @@ import React, {
   useState,
   useRef,
   KeyboardEvent,
-  FunctionComponent,
   ReactNode,
   useEffect,
   HTMLAttributes,
 } from "react";
 import { useTheme } from "styled-components";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+
 import defaultTheme from "../../themes/cruk";
 
 import { FontSizeType, ThemeType } from "../../types";
@@ -36,6 +37,8 @@ export type CollapseProps = HTMLAttributes<HTMLElement> & {
   startOpen?: boolean;
   /** callback function that is passed isOpen flag  */
   onOpenChange?: (isOpen: boolean) => void;
+  /** children */
+  children?: ReactNode;
 };
 
 /**
@@ -43,19 +46,17 @@ export type CollapseProps = HTMLAttributes<HTMLElement> & {
  * Use a collapse component to show and hide content. It has a default view; however, it can be overwritten by passing a custom component as a prop.
  *
  */
-const Collapse: FunctionComponent<CollapseProps> = (props) => {
-  const {
-    id,
-    headerTitleText,
-    headerTitleTextColor,
-    headerTitleTextSize,
-    headerTitleTextFontFamily,
-    headerComponent,
-    startOpen,
-    onOpenChange,
-    children,
-  } = props;
-
+const Collapse = ({
+  id,
+  headerTitleText,
+  headerTitleTextColor,
+  headerTitleTextSize,
+  headerTitleTextFontFamily,
+  headerComponent,
+  startOpen,
+  onOpenChange,
+  children,
+}: CollapseProps): JSX.Element => {
   const [openStatus, setOpenStatus] = useState(startOpen || false);
   const [contentHeight, setContentHeight] = useState(
     startOpen ? "initial" : "0"
@@ -140,7 +141,7 @@ const Collapse: FunctionComponent<CollapseProps> = (props) => {
           textFontFamily={headerTitleTextFontFamily}
         >
           {headerTitleText}
-          <FlippingIcon name="chevronRight" open={openStatus} />
+          <FlippingIcon faIcon={faChevronDown} open={openStatus} />
         </DefaultHeader>
       )}
       <CollapseContent

@@ -1,8 +1,9 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
-import { su2cTheme, Text, Icon, GlobalStyle } from "..";
+import { su2cTheme, Text, IconFa, GlobalStyle } from "..";
 import Totaliser, { TotaliserProps } from ".";
 
 export default {
@@ -44,7 +45,7 @@ TotaliserComponentSummaryMessage.args = {
   giftAid: 25,
   summaryMessage: (
     <Text>
-      Custom component summary message <Icon name="edit" />
+      Custom component summary message <IconFa faIcon={faEdit} />
     </Text>
   ),
 };
@@ -103,7 +104,7 @@ SU2CTotaliserComponentSummaryMessage.args = {
   giftAid: 25,
   summaryMessage: (
     <Text>
-      Custom component summary message <Icon name="edit" />
+      Custom component summary message <IconFa faIcon={faEdit} />
     </Text>
   ),
 };

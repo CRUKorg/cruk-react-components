@@ -1,4 +1,4 @@
-import React, { FC, InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes } from "react";
 
 import ErrorText from "../ErrorText";
 import Text from "../Text";
@@ -41,7 +41,7 @@ export type DateFieldProps = InputHTMLAttributes<HTMLInputElement> & {
 /**
  * To be used in forms entering dates like date of birth which are known dates and would take too long to get to with a date picker
  * */
-const DateField: FC<DateFieldProps> = ({
+const DateField = ({
   label,
   hintText,
   day,
@@ -59,7 +59,7 @@ const DateField: FC<DateFieldProps> = ({
   onFocus = () => {},
   disabled,
   required,
-}) => (
+}: DateFieldProps): JSX.Element => (
   <Fieldset>
     <Text as="legend" textWeight={700} marginBottom="xxs">
       {label} {!!required && ` (required)`}

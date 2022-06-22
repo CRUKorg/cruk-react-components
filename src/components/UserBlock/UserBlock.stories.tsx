@@ -1,8 +1,9 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
 
-import { su2cTheme, Text, Icon, GlobalStyle } from "..";
+import { su2cTheme, Text, IconFa, GlobalStyle } from "..";
 import UserBlock, { UserBlockProps } from ".";
 
 export default {
@@ -38,7 +39,7 @@ UserBlockWithExtra.args = {
   size: "s",
   extra: (
     <Text>
-      <Icon name="clock" /> Just now
+      <IconFa faIcon={faClock} /> Just now
     </Text>
   ),
 };
@@ -76,7 +77,7 @@ SU2CUserBlockWithExtra.args = {
   size: "s",
   extra: (
     <Text>
-      <Icon name="clock" /> Just now
+      <IconFa faIcon={faClock} /> Just now
     </Text>
   ),
 };

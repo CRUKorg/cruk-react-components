@@ -4,15 +4,9 @@ import React from "react";
 import { mount } from "@cypress/react";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { ErrorText, crukTheme, su2cTheme } from "../";
+import { ErrorText, crukTheme, su2cTheme } from "..";
 
-const content = () => {
-  return (
-    <>
-      <ErrorText>This field is required</ErrorText>
-    </>
-  );
-};
+const content = () => <ErrorText>This field is required</ErrorText>;
 
 describe("ErrorText", () => {
   it("is accessible CRUK theme", () => {

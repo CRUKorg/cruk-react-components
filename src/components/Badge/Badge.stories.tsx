@@ -1,8 +1,13 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
+import {
+  faPoundSign,
+  faSearch,
+  faComment,
+} from "@fortawesome/free-solid-svg-icons";
 
-import { su2cTheme, Icon, GlobalStyle } from "..";
+import { su2cTheme, IconFa, GlobalStyle } from "..";
 import Badge, { BadgeProps } from ".";
 
 export default {
@@ -20,13 +25,13 @@ BadgeWithText.args = {
 
 export const Default: Story = Template.bind({});
 Default.args = {
-  children: <Icon name="poundSign" />,
+  children: <IconFa faIcon={faPoundSign} />,
 };
 
 export const BadgeWithColour: Story = Template.bind({});
 BadgeWithColour.args = {
   backgroundColor: "secondary",
-  children: <Icon name="search" />,
+  children: <IconFa faIcon={faSearch} />,
 };
 
 export const BadgeWithInverseColours: Story = Template.bind({});
@@ -34,7 +39,7 @@ BadgeWithInverseColours.args = {
   backgroundColor: "textLight",
   textColor: "tertiary",
   borderColor: "tertiary",
-  children: <Icon name="comment" />,
+  children: <IconFa faIcon={faComment} />,
 };
 
 const TemplateWithSU2C: Story = (args) => (
@@ -55,14 +60,14 @@ SU2CBadgeWithText.args = {
 export const SU2CDefault: Story = TemplateWithSU2C.bind({});
 SU2CDefault.storyName = "SU2C Default";
 SU2CDefault.args = {
-  children: <Icon name="poundSign" />,
+  children: <IconFa faIcon={faPoundSign} />,
 };
 
 export const SU2CBadgeWithColour: Story = TemplateWithSU2C.bind({});
 SU2CBadgeWithColour.storyName = "SU2C With Colour";
 SU2CBadgeWithColour.args = {
   backgroundColor: "secondary",
-  children: <Icon name="search" />,
+  children: <IconFa faIcon={faSearch} />,
 };
 
 export const SU2CBadgeWithInverseColours: Story = TemplateWithSU2C.bind({});
@@ -71,5 +76,5 @@ SU2CBadgeWithInverseColours.args = {
   backgroundColor: "textLight",
   textColor: "tertiary",
   borderColor: "tertiary",
-  children: <Icon name="comment" />,
+  children: <IconFa faIcon={faComment} />,
 };

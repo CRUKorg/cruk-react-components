@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { FontSizeType, ThemeType, ColorKeyType } from "../../types";
 import Button from "../Button";
-import Icon from "../Icon";
+import IconFa from "../IconFa";
 
 type DefaultHeaderProps = {
   theme: ThemeType;
@@ -13,9 +13,9 @@ type DefaultHeaderProps = {
 
 export const transitionDurationSeconds = 0.5;
 
-export const FlippingIcon = styled(Icon)`
+export const FlippingIcon = styled(IconFa)`
   transform: ${({ open }: { open: boolean }) =>
-    open ? "rotate(90deg) translateX(0.1em) scaleX(-1) " : "rotate(90deg)"};
+    open ? "translateY(0.1em) scaleY(-1)" : "initial"};
   transition-duration: ${transitionDurationSeconds}s;
 `;
 

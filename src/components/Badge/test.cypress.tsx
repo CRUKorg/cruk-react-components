@@ -2,34 +2,38 @@
 
 import React from "react";
 import { mount } from "@cypress/react";
+import {
+  faPoundSign,
+  faSearch,
+  faComment,
+  faBullhorn,
+} from "@fortawesome/free-solid-svg-icons";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { Badge, Icon, su2cTheme, crukTheme } from "../";
+import { Badge, IconFa, su2cTheme, crukTheme } from "..";
 
-const content = () => {
-  return (
-    <>
-      <Badge>
-        <Icon name="poundSign" />
-      </Badge>
-      <Badge backgroundColor="secondary">
-        <Icon name="search" />
-      </Badge>
-      <Badge backgroundColor="tertiary">
-        <Icon name="eventName" />
-      </Badge>
-      <Badge backgroundColor="#8bc34a">2</Badge>
-      <Badge
-        backgroundColor="textLight"
-        textColor="tertiary"
-        borderColor="tertiary"
-      >
-        <Icon name="comment" />
-      </Badge>
-      <Badge>This is text</Badge>
-    </>
-  );
-};
+const content = () => (
+  <>
+    <Badge>
+      <IconFa faIcon={faPoundSign} />
+    </Badge>
+    <Badge backgroundColor="secondary">
+      <IconFa faIcon={faSearch} />
+    </Badge>
+    <Badge backgroundColor="tertiary">
+      <IconFa faIcon={faBullhorn} />
+    </Badge>
+    <Badge backgroundColor="#8bc34a">2</Badge>
+    <Badge
+      backgroundColor="textLight"
+      textColor="tertiary"
+      borderColor="tertiary"
+    >
+      <IconFa faIcon={faComment} />
+    </Badge>
+    <Badge>This is text</Badge>
+  </>
+);
 
 describe("Badge", () => {
   it("is accessible CRUK theme", () => {

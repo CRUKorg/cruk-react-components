@@ -1,6 +1,7 @@
 import React, { FC, AnchorHTMLAttributes, forwardRef, Ref } from "react";
-
 import { useTheme, ThemeProvider } from "styled-components";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+
 import defaultTheme from "../../themes/cruk";
 
 import { TextProps } from "../Text";
@@ -50,7 +51,7 @@ export const Link: FC<LinkProps> = forwardRef(
           ref={ref}
         >
           {props.appearance === "primary" && (
-            <ChevyWithLevee name="chevronRightBold" size="0.8em" />
+            <ChevyWithLevee faIcon={faChevronRight} size="0.8em" />
           )}
           {props.children}
         </StyledLink>
