@@ -34,7 +34,7 @@ jobs:
       - name: Checkout cruk-react-components
         uses: actions/checkout@v3
       - name: npm install
-        run: npm ci -f
+        run: npm ci
       - name: Test
         run: npm run jest-ci --verbose
   Prettier:
@@ -43,7 +43,7 @@ jobs:
       - name: Checkout cruk-react-components
         uses: actions/checkout@v3
       - name: npm install
-        run: npm ci -f
+        run: npm ci
       - name: Test
         run: npm run prettier:debug
   ESLint:
@@ -52,7 +52,7 @@ jobs:
       - name: Checkout cruk-react-components
         uses: actions/checkout@v3
       - name: npm install
-        run: npm ci -f
+        run: npm ci
       - name: Test
         run: npm run eslint:test
   Percy:
@@ -61,7 +61,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install dependencies
-        run: npm i -f
+        run: npm i
       - name: Run Percy tests
         run: npm run percy
         env:
