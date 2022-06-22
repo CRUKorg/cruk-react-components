@@ -53,7 +53,10 @@ describe("Checkbox", () => {
     cy.document().its("fonts.status").should("equal", "loaded");
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(1000);
-    cy.get("body").first().matchImageSnapshot();
+    cy.get("body").first().matchImageSnapshot({
+      failureThresholdType: "pixels",
+      failureThreshold: 100,
+    });
   });
 });
 
