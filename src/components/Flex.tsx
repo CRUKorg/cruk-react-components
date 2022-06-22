@@ -11,7 +11,7 @@ const Flex = styled.div<SpacingProps>`
   @media (min-width: ${({ theme }: ThemeProps) => theme.breakpoint.tablet}) {
     display: flex;
   }
-  ${(props) => spacing(props, props.theme)}
+  ${(props) => spacing(props, props.theme as ThemeType)}
 `;
 
 export default Flex;

@@ -55,5 +55,5 @@ export const TextStyled = styled.p<TextStyledProps>`
     margin-bottom: 0;
   }
 
-  ${(props) => spacing(props, props.theme)}
+  ${(props) => spacing(props, props.theme as ThemeType)}
 `;
