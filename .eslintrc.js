@@ -14,6 +14,12 @@ module.exports = {
         devDependencies: ["**/*.cypress.tsx", "**/*.stories.tsx"],
       },
     ],
+    "react/function-component-definition": [
+      2,
+      {
+        namedComponents: ["arrow-function"],
+      },
+    ],
     "jest/expect-expect": [0],
     "jest/valid-expect": [0],
     "import/no-named-as-default": [0],
