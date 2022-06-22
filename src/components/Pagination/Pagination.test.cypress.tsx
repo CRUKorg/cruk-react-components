@@ -4,7 +4,7 @@ import React from "react";
 import { mount } from "@cypress/react";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { Pagination, Box, Heading, crukTheme, su2cTheme } from "../";
+import { Pagination, Box, Heading, crukTheme, su2cTheme } from "..";
 
 const Content = () => {
   const [page, setPage] = React.useState(1);

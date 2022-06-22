@@ -4,28 +4,20 @@ import React from "react";
 import { mount } from "@cypress/react";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { Box, Checkbox, crukTheme, su2cTheme } from "../";
+import { Step, crukTheme, su2cTheme } from "..";
 
-const unControlledContent = () => (
-  <>
-    <Box>
-      <Checkbox name="example" value="one" checked={true}>
-        Option one
-      </Checkbox>
-    </Box>
-    <Box>
-      <Checkbox name="example" value="two">
-        Option two
-      </Checkbox>
-    </Box>
-  </>
+const BasicContent = () => (
+  <Step
+    current={3}
+    steps={["Account", "Details", "Activity", "Motivation", "Page"]}
+  />
 );
 
-describe("Checkbox", () => {
+describe("Step", () => {
   it("is accessible CRUK theme", () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>
-        {unControlledContent()}
+        <BasicContent />
       </TestThemeWrapper>
     );
     cy.injectAxe();
@@ -35,7 +27,7 @@ describe("Checkbox", () => {
   it("is accessible SU2C theme", () => {
     mount(
       <TestThemeWrapper theme={su2cTheme}>
-        {unControlledContent()}
+        <BasicContent />
       </TestThemeWrapper>
     );
     cy.injectAxe();
@@ -45,22 +37,15 @@ describe("Checkbox", () => {
       },
     });
   });
-
   it("should match snapshot", () => {
     Cypress.config("waitForAnimations", true);
     Cypress.config("animationDistanceThreshold", 2);
-    mount(<TestWrapper>{unControlledContent()}</TestWrapper>);
+    mount(
+      <TestWrapper>
+        <BasicContent />
+      </TestWrapper>
+    );
     cy.document().its("fonts.status").should("equal", "loaded");
     cy.get("body").first().matchImageSnapshot();
   });
-});
-
-it("should be able to select a checkbox", () => {
-  mount(
-    <TestThemeWrapper theme={crukTheme}>
-      {unControlledContent()}
-    </TestThemeWrapper>
-  );
-  cy.contains("Option two").click();
-  cy.getInputByLabel("Option two").should("be.checked");
 });

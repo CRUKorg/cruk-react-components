@@ -4,28 +4,26 @@ import React from "react";
 import { mount } from "@cypress/react";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { Footer, Link, crukTheme, su2cTheme } from "../";
+import { Footer, Link, crukTheme, su2cTheme } from "..";
 
-const content = () => {
-  return (
-    <>
-      <Footer middleSection="Cancer Research UK is a registered charity in England and Wales (1089464), Scotland (SC041666), the Isle of Man (1103) and Jersey (247). A company limited by guarantee. Registered company in England and Wales (4325234) and the Isle of Man (5713F).">
-        <Link
-          appearance="secondary"
-          href="https://www.cancerresearchuk.org/about-us/contact-us"
-        >
-          Contact us
-        </Link>
-        <Link
-          appearance="secondary"
-          href="https://www.cancerresearchuk.org/privacy-statement"
-        >
-          Privacy
-        </Link>
-      </Footer>
-    </>
-  );
-};
+const content = () => (
+  <>
+    <Footer middleSection="Cancer Research UK is a registered charity in England and Wales (1089464), Scotland (SC041666), the Isle of Man (1103) and Jersey (247). A company limited by guarantee. Registered company in England and Wales (4325234) and the Isle of Man (5713F).">
+      <Link
+        appearance="secondary"
+        href="https://www.cancerresearchuk.org/about-us/contact-us"
+      >
+        Contact us
+      </Link>
+      <Link
+        appearance="secondary"
+        href="https://www.cancerresearchuk.org/privacy-statement"
+      >
+        Privacy
+      </Link>
+    </Footer>
+  </>
+);
 
 describe("Footer", () => {
   it("is accessible CRUK theme", () => {

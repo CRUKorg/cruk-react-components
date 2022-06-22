@@ -4,24 +4,22 @@ import React from "react";
 import { mount } from "@cypress/react";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { Box, Heading, TextAreaField, su2cTheme, crukTheme } from "../";
+import { Box, Heading, TextAreaField, su2cTheme, crukTheme } from "..";
 
-const content = () => {
-  return (
-    <>
-      <section>
-        <Heading h3>TextAreaField</Heading>
-        <Box>
-          <TextAreaField
-            label="Tell us more about your fundraising"
-            name="firstName"
-            defaultValue="I am baking cakes"
-          />
-        </Box>
-      </section>
-    </>
-  );
-};
+const content = () => (
+  <>
+    <section>
+      <Heading h3>TextAreaField</Heading>
+      <Box>
+        <TextAreaField
+          label="Tell us more about your fundraising"
+          name="firstName"
+          defaultValue="I am baking cakes"
+        />
+      </Box>
+    </section>
+  </>
+);
 
 describe("TextAreaField", () => {
   it("is accessible CRUK theme", () => {

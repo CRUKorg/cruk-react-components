@@ -23,8 +23,7 @@ const Content = () => (
 
 describe("AddressLookup", () => {
   beforeEach(() => {
-    cy.server();
-    cy.route("**/Find/**", {
+    cy.intercept("GET", "**/Find/**", {
       Items: [
         {
           Description: "London",
@@ -74,13 +73,14 @@ describe("AddressLookup", () => {
     );
     cy.get("body")
       .first()
-      .within(($list) => {
+      .within(() => {
         cy.getInputByLabel("Home address").type("N10").blur();
         cy.contains("li", "N17 0AB High Road, London - 14 Addresses").should(
           "exist"
         );
       });
-    cy.get("@find")
+    cy.wait("@find")
+      .its("response")
       .should("have.property", "url")
       .and("contain", "Countries=GBR");
   });

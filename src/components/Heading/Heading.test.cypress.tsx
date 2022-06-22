@@ -4,24 +4,28 @@ import React from "react";
 import { mount } from "@cypress/react";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { Text, su2cTheme, crukTheme } from "../";
+import { Heading, crukTheme, su2cTheme } from "..";
 
-const content = () => {
-  return (
-    <>
-      <Text>This is text it defaults to a paragraph tag</Text>
-      <Text marginBottom="l" paddingHorizontal="s">
-        This is text with spacing props "marginBottom="l" paddingHorizontal="s"
-      </Text>
-      <Text as="span">This is text as a span tag</Text>
-      <Text textColor="primary">Color is Primary</Text>
-      <Text textColor="#aa0000">Color is custom colour</Text>
-      <Text textSize="l">Text size l</Text>
-    </>
-  );
-};
+const content = () => (
+  <>
+    <Heading>H2 is the default</Heading>
+    <Heading h2 textSize="xxxxl" textColor="primary">
+      This is H2 with H1 size
+    </Heading>
+    <Heading h1>This is H1 heading</Heading>
+    <Heading h2>This is H2 heading</Heading>
+    <Heading h3 textColor="#ff00ff">
+      This is H3 heading
+    </Heading>
+    <Heading h4>This is H4 heading</Heading>
+    <Heading h5>This is H5 heading</Heading>
+    <Heading h6>This is H6 heading</Heading>
+    <Heading textAlign="center">This is center aligned</Heading>
+    <Heading textAlign="right">This is right aligned</Heading>
+  </>
+);
 
-describe("Text", () => {
+describe("Heading", () => {
   it("is accessible CRUK theme", () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
     cy.injectAxe();
@@ -40,7 +44,6 @@ describe("Text", () => {
 
   it("should match snapshot", () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
-    cy.document().its("fonts.status").should("equal", "loaded");
     cy.get("body").first().matchImageSnapshot();
   });
 });

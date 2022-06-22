@@ -4,24 +4,22 @@ import React from "react";
 import { mount } from "@cypress/react";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { Avatar, crukTheme, su2cTheme } from "../";
+import { Avatar, crukTheme, su2cTheme } from "..";
 
-const content = () => {
-  return (
-    <>
-      <Avatar />
-      <Avatar name="Sam" size="s" aria-label="sam's profile" />
-      <Avatar name="Sam" size="m" aria-label="sam's profile" />
-      <Avatar name="Sam" size="l" aria-label="sam's profile" />
-      <Avatar name="Sam" size="xl" aria-label="sam's profile" />
-      <Avatar
-        name="Sam"
-        aria-label="sam's profile"
-        url="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"
-      />
-    </>
-  );
-};
+const content = () => (
+  <>
+    <Avatar />
+    <Avatar name="Sam" size="s" aria-label="sam's profile" />
+    <Avatar name="Sam" size="m" aria-label="sam's profile" />
+    <Avatar name="Sam" size="l" aria-label="sam's profile" />
+    <Avatar name="Sam" size="xl" aria-label="sam's profile" />
+    <Avatar
+      name="Sam"
+      aria-label="sam's profile"
+      url="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"
+    />
+  </>
+);
 
 describe("Avatar", () => {
   it("is accessible CRUK theme", () => {

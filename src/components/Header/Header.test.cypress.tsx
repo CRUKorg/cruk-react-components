@@ -4,15 +4,13 @@ import React from "react";
 import { mount } from "@cypress/react";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { Header, Button, crukTheme, su2cTheme } from "../";
+import { Header, Button, crukTheme, su2cTheme } from "..";
 
-const content = () => {
-  return (
-    <Header siteSlogan="Header slogan here">
-      <Button>Child component</Button>
-    </Header>
-  );
-};
+const content = () => (
+  <Header siteSlogan="Header slogan here">
+    <Button>Child component</Button>
+  </Header>
+);
 
 describe("Header", () => {
   it("is accessible cruk", () => {
@@ -116,13 +114,13 @@ describe("Header Sticky Behaviour", () => {
     cy.viewport(2000, 200);
     mount(
       <>
-        <Header siteSlogan="Header slogan here" isSticky={true}>
+        <Header siteSlogan="Header slogan here" isSticky>
           <Button>Child component</Button>
         </Header>
         <div
           className="making-a-tall-scroll-able-page"
           style={{ height: 2000 }}
-        ></div>
+        />
       </>
     );
   });

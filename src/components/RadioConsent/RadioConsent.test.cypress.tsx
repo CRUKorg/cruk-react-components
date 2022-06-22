@@ -15,7 +15,7 @@ const uncontrolledContent = () => (
         { option: "Yes", value: "yes" },
         { option: "No", value: "no" },
       ]}
-      selectedValue={"yes"}
+      selectedValue="yes"
     />
 
     <RadioConsent
@@ -25,7 +25,7 @@ const uncontrolledContent = () => (
         { option: "Yes", value: "yes" },
         { option: "No", value: "no" },
       ]}
-      selectedValue={"no"}
+      selectedValue="no"
     />
   </div>
 );

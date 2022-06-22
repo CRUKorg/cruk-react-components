@@ -19,10 +19,10 @@ const content = () => (
       <Text textColor="textLight">default spacing</Text>
     </Box>
     <Box backgroundColor="secondary" paddingVertical="xl" paddingBottom="xs">
-      <Text textColor="textLight">paddingVertical="xl" paddingBottom="xs"</Text>
+      <Text textColor="textLight">{`paddingVertical="xl" paddingBottom="xs"`}</Text>
     </Box>
     <Box backgroundColor="primary" marginVertical="l" marginLeft="s">
-      <Text textColor="textLight">marginVertical="l" marginLeft="s"</Text>
+      <Text textColor="textLight">{`marginVertical="l" marginLeft="s"`}</Text>
     </Box>
   </>
 );
