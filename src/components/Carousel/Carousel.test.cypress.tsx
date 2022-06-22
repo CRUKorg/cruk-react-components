@@ -50,7 +50,7 @@ const Content = () => (
   </Carousel>
 );
 
-describe("Button", () => {
+describe("Carousel", () => {
   it("is accessible CRUK theme", () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>

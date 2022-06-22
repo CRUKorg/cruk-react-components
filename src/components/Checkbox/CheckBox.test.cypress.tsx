@@ -48,9 +48,11 @@ describe("Checkbox", () => {
 
   it("should match snapshot", () => {
     Cypress.config("waitForAnimations", true);
-    Cypress.config("animationDistanceThreshold", 2);
+    Cypress.config("animationDistanceThreshold", 1);
     mount(<TestWrapper>{unControlledContent()}</TestWrapper>);
     cy.document().its("fonts.status").should("equal", "loaded");
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(1000);
     cy.get("body").first().matchImageSnapshot();
   });
 });
