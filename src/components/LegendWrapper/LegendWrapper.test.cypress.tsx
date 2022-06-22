@@ -108,6 +108,7 @@ describe("LegendWrapper", () => {
 
   it("should match snapshot", () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.document().its("fonts.status").should("equal", "loaded");
     cy.get("body").first().matchImageSnapshot();
   });
 });

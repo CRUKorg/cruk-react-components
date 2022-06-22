@@ -44,6 +44,7 @@ describe("ProgressBar", () => {
     Cypress.config("waitForAnimations", true);
     Cypress.config("animationDistanceThreshold", 2);
     mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.document().its("fonts.status").should("equal", "loaded");
     cy.get("body").first().matchImageSnapshot();
   });
 });
