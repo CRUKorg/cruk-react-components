@@ -151,10 +151,11 @@
     "styled-components": "^5.3.5"
   },
   "dependencies": {
-    "styled-components": "^5.3.5",
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "react-focus-lock": "^2.5.2",
-    "react-intersection-observer": "^9.1.0"
+    "react-intersection-observer": "^9.1.0",
+    "react-is": "^18.2.0",
+    "styled-components": "^5.3.5"
   }
 }
