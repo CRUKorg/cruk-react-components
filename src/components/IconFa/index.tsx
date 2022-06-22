@@ -31,7 +31,7 @@ const IconFa = ({
     ...foundTheme,
   };
 
-  const [width, height, ligatures, unicode, svgPathData] = faIcon.icon;
+  const [width, height, , , svgPathData] = faIcon.icon;
 
   return (
     <StyledIcon
