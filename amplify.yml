@@ -4,14 +4,14 @@ frontend:
     preBuild:
       commands:
         - echo "//npm.pkg.github.com/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
-        - npm ci
+        - npm ci --legacy-peer-deps
     build:
       commands:
         - npm run build-storybook
   artifacts:
     baseDirectory: storybook-static
     files:
-      - '**/*'
+      - "**/*"
   cache:
     paths:
       - node_modules/**/*
