@@ -41,7 +41,7 @@ const Avatar: FC<AvatarProps> = ({
         ? `icon-avatar-${name[0].trim().toUpperCase()}.png`
         : "icon-avatar-Anonymous.png";
 
-    return theme.avatar.path + fileName;
+    return `${theme.avatar.path}${theme.name}/${fileName}`;
   };
 
   return (

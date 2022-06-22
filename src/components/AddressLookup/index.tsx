@@ -74,7 +74,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
       isValidVisible,
       isInvalidVisible,
       label,
-      onAddressError = (err) => {},
+      onAddressError = (err: Error) => {},
       onAddressSelected,
       onChange,
       onBlur,
@@ -122,7 +122,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
           setAddressOptions(data.Items || []);
           return null;
         })
-        .catch((err) => onAddressError(err));
+        .catch((err) => onAddressError(err as Error));
       return null;
     };
 
@@ -137,7 +137,7 @@ const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
           onAddressSelected(data.Items[0]);
           return null;
         })
-        .catch((err) => onAddressError(err));
+        .catch((err) => onAddressError(err as Error));
     };
 
     const selectAddress = (address: AddressOptionsType) => {

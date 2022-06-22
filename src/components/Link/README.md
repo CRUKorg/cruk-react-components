@@ -16,7 +16,7 @@ Links are for wrapping plain text or elements to create clickable link. This is 
       <Link href="http://www.google.com" appearance="secondary">secondary link</Link>
     </div>
     <div>
-    <Link href="http://www.google.com" aria-label="google homepage"><img style={{width: '80px', height: '30px'}} alt="" src='https://fundraise.cancerresearchuk.org/profiles/cruk_fundraising/themes/cruk_of_bootstrap/logo.png'/></Link>
+    <Link href="http://www.google.com" aria-label="google homepage"><img style={{width: '80px', height: '30px'}} alt="" src='https://ccp-s3.int.cruk.org/images/logos/cruk-160.png'/></Link>
     </div>
   </>
 ```

@@ -2,7 +2,6 @@ import styled, { css } from "styled-components";
 import { ThemeType } from "../../types";
 
 const CHECK_BOX_SIZE = "1.5rem";
-const CHECK_SIZE = "1.125rem";
 const BUTTON_HEIGHT = "3em";
 
 type StyledLabelProps = {
@@ -41,20 +40,15 @@ export const Check = styled.span`
   z-index: 5;
   transition: border 0.25s ease;
   overflow: hidden;
-`;
 
-export const CheckGlyph = styled.svg`
-  height: ${CHECK_SIZE};
-  width: ${CHECK_SIZE};
-  transition: transform 0.25s ease;
-  transform: rotateY(90deg);
-  transform-origin: center;
-  /* asset is little wonky */
-  margin-top: -0.125rem;
-  margin-left: 0.125rem;
-
-  path {
-    fill: ${({ theme }: ThemeProps) => theme.colors.primary};
+  svg {
+    /* asset is little wonky */
+    margin-left: 0.05rem;
+    path {
+      transition: transform 0.25s ease;
+      transform: rotateY(90deg);
+      transform-origin: center;
+    }
   }
 `;
 
@@ -143,7 +137,7 @@ export const StyledInput = styled.input`
             box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
           }
 
-          &:checked ~ ${CheckWrapper} ${Check} ${CheckGlyph} {
+          &:checked ~ ${CheckWrapper} svg path {
             transform: rotateY(0deg);
           }
         `}

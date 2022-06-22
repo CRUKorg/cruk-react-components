@@ -34,7 +34,7 @@ export const StyledBox = styled.div<StyledBoxProps>`
     css`
       ${props.css}
     `}
-  ${(props) => Spacing(props, props.theme)}
+  ${(props) => Spacing(props, props.theme as ThemeType)}
 `;
 
 export default StyledBox;

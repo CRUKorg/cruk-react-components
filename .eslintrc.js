@@ -24,6 +24,7 @@ module.exports = {
     "jest/valid-expect": [0],
     "import/no-named-as-default": [0],
     "react/require-default-props": [0],
+    "react/jsx-no-useless-fragment": [0],
   },
   ignorePatterns: ["cypress", "*.config.js", "webpack.*.js", "node_modules"],
 };

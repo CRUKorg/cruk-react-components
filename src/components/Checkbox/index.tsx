@@ -1,14 +1,15 @@
 import React, { FC, InputHTMLAttributes, Ref, forwardRef } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 import defaultTheme from "../../themes/cruk";
 import ErrorText from "../ErrorText";
+import IconFa from "../IconFa";
 
 import {
   StyledLabel,
   StyledInput,
   CheckWrapper,
-  CheckGlyph,
   Check,
   SelectedBorder,
 } from "./styles";
@@ -57,9 +58,7 @@ const Checkbox: FC<CheckBoxProps> = forwardRef(
           {theme.utilities.useDefaultFromControls ? null : (
             <CheckWrapper>
               <Check>
-                <CheckGlyph viewBox="0 0 17.8 17.8">
-                  <path d="M0 11.314l1.52-1.52 4.95 4.95 9.794-9.794 1.52 1.52L6.482 17.774l-.01-.01-.01.01z" />
-                </CheckGlyph>
+                <IconFa faIcon={faCheck} color="primary" size="1.25em" />
               </Check>
             </CheckWrapper>
           )}
