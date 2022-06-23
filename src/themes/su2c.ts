@@ -28,6 +28,7 @@ export const SITE_CONFIG: SiteConfigType = {
 
 export const AVATAR: AvatarType = {
   ...defaultTheme.avatar,
+  path: `${SITE_CONFIG.assetPath}images/avatar/su2c/`,
 };
 
 export const BUTTON: ButtonType = {

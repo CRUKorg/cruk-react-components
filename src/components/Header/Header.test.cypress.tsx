@@ -56,13 +56,13 @@ describe("Header", () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.document().its("fonts.status").should("equal", "loaded");
     cy.get(
-      '[src="https://ccp-s3.int.cruk.org/images/logos/cruk-160.png"]'
+      `[src="${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png"]`
     ).should(($img) => {
       const img = $img[0] as HTMLImageElement;
       expect(img.naturalWidth).to.be.greaterThan(0);
     });
     cy.get(
-      '[src="https://ccp-s3.int.cruk.org/images/logos/su2c-160.png"]'
+      `[src="${crukTheme.siteConfig.assetPath}images/logos/su2c-160.png"]`
     ).should(($img) => {
       const img = $img[0] as HTMLImageElement;
       expect(img.naturalWidth).to.be.greaterThan(0);
