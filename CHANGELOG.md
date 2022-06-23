@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-Fix avatar asset routes to make component more agnostic to theme, remove exclicit mentions of asset paths in tests where possible and replace with a variable on theme.
+Moving Avatar assets path for different themes into the themes and out of the component. Also removing explicit mentions of assets paths in tests where possiblee.
 
 ## [1.1.0] - 2022-05-22
 
