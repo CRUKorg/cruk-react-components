@@ -50,7 +50,7 @@ const content = () => (
         <img
           style={{ width: "80px", height: "30px" }}
           alt=""
-          src="https://ccp-s3.int.cruk.org/images/logos/cruk-160.png"
+          src={`${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`}
         />
       </Link>
     </div>

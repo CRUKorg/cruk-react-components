@@ -3,6 +3,7 @@
 import React from "react";
 import { mount } from "@cypress/react";
 
+import theme from "src/themes/cruk";
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
 import { Avatar, crukTheme, su2cTheme } from "..";
 
@@ -47,25 +48,25 @@ describe("Avatar", () => {
       expect(img.naturalWidth).to.be.greaterThan(0);
     });
     cy.get(
-      '[src="https://ccp-s3.int.cruk.org/images/avatar/cruk/icon-avatar-S.png"]'
+      `[src="${theme.siteConfig.assetPath}images/avatar/cruk/icon-avatar-S.png"]`
     ).should(($img) => {
       const img = $img[0] as HTMLImageElement;
       expect(img.naturalWidth).to.be.greaterThan(0);
     });
     cy.get(
-      '[src="https://ccp-s3.int.cruk.org/images/avatar/su2c/icon-avatar-S.png"]'
+      `[src="${theme.siteConfig.assetPath}images/avatar/su2c/icon-avatar-S.png"]`
     ).should(($img) => {
       const img = $img[0] as HTMLImageElement;
       expect(img.naturalWidth).to.be.greaterThan(0);
     });
     cy.get(
-      '[src="https://ccp-s3.int.cruk.org/images/avatar/cruk/icon-avatar-Anonymous.png"]'
+      `[src="${theme.siteConfig.assetPath}images/avatar/cruk/icon-avatar-Anonymous.png"]`
     ).should(($img) => {
       const img = $img[0] as HTMLImageElement;
       expect(img.naturalWidth).to.be.greaterThan(0);
     });
     cy.get(
-      '[src="https://ccp-s3.int.cruk.org/images/avatar/su2c/icon-avatar-Anonymous.png"]'
+      `[src="${theme.siteConfig.assetPath}images/avatar/su2c/icon-avatar-Anonymous.png"]`
     ).should(($img) => {
       const img = $img[0] as HTMLImageElement;
       expect(img.naturalWidth).to.be.greaterThan(0);

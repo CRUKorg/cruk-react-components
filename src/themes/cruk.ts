@@ -36,7 +36,7 @@ export const AVATAR: AvatarType = {
   m: "50px",
   l: "60px",
   xl: "90px",
-  path: "https://ccp-s3.int.cruk.org/images/avatar/",
+  path: `${SITE_CONFIG.assetPath}images/avatar/cruk/`,
 };
 
 export const BUTTON: ButtonType = {
@@ -201,7 +201,7 @@ export const TYPOGRAPHY: TypographyType = {
   customFonts: [
     {
       family: "MuseoSans-500",
-      url: "https://ccp-s3.int.cruk.org/fonts/MuseoSansRounded-500",
+      url: `${SITE_CONFIG.assetPath}fonts/MuseoSansRounded-500`,
     },
   ],
   fontFamilyBase:
