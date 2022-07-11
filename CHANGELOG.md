@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-Changed asset to to be https://rcl.assets.cancerresearchuk.org/ fixes [#505](https://github.com/CRUKorg/cruk-react-components/issues/#505)
+Changed asset path to to be https://rcl.assets.cancerresearchuk.org/ fixes [#505](https://github.com/CRUKorg/cruk-react-components/issues/#505)
 
 ### Fixed
 
