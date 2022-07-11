@@ -1,5 +1,5 @@
 import { createGlobalStyle, withTheme } from "styled-components";
-import { CustomFontType } from ".";
+import { CustomFontType } from "../types";
 import defaultTheme from "../themes/cruk";
 
 // font-display fall back to stop font's flickering on SSR rehydration
