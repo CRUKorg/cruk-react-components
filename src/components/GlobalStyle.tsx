@@ -10,9 +10,9 @@ const buildCustomFonts = (customFonts: Array<CustomFontType>) =>
         @font-face {
           font-family: ${font.family};
           src: ${
-            font.urlWoff2 ? `url("${font.urlWoff2}") format('woff2'),` : ""
-          }
-          ${font.urlWoff ? ` url("${font.urlWoff}") format('woff')` : ""};
+            font.urlWoff2 ? `url("${font.urlWoff2}") format('woff2')` : ""
+          }${font.urlWoff && font.urlWoff2 ? ", " : ""}
+          ${font.urlWoff ? `url("${font.urlWoff}") format('woff')` : ""};
           font-weight: normal;
           font-style: normal;
           font-display: fallback;
