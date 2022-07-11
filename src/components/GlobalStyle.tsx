@@ -12,7 +12,7 @@ const buildCustomFonts = (customFonts: Array<CustomFontType>) =>
           src: ${
             font.urlWoff2 ? `url("${font.urlWoff2}") format('woff2'),` : ""
           }
-          ${font.urlWoff ? ` url("${font.urlWoff}.woff") format('woff')` : ""};
+          ${font.urlWoff ? ` url("${font.urlWoff}") format('woff')` : ""};
           font-weight: normal;
           font-style: normal;
           font-display: fallback;
