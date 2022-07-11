@@ -21,14 +21,15 @@ export const UTILITIES: UtilitiesType = {
 };
 
 export const SITE_CONFIG: SiteConfigType = {
-  assetPath: "https://ccp-s3.int.cruk.org/",
+  assetPath: "https://rcl.assets.cancerresearchuk.org/",
   logoUrl: "/",
   logoAlt: "Cancer Research UK Giving Page",
-  logoSrc: "https://ccp-s3.int.cruk.org/images/logos/cruk-160.png",
+  logoSrc: "https://rcl.assets.cancerresearchuk.org/images/logos/cruk-160.png",
   footerCopyText:
     "Cancer Research UK is a registered charity in England and Wales (1089464), Scotland (SC041666), the Isle of Man (1103) and Jersey (247). A company limited by guarantee. Registered company in England and Wales(4325234) and the Isle of Man (5713F).",
   footerLogoAlt: "Registered with Fundraising Regulator",
-  footerLogoSrc: "https://ccp-s3.int.cruk.org/images/logos/fundreg.png",
+  footerLogoSrc:
+    "https://rcl.assets.cancerresearchuk.org/images/logos/fundreg.png",
 };
 
 export const AVATAR: AvatarType = {
@@ -201,7 +202,8 @@ export const TYPOGRAPHY: TypographyType = {
   customFonts: [
     {
       family: "MuseoSans-500",
-      url: `${SITE_CONFIG.assetPath}fonts/MuseoSansRounded-500`,
+      urlWoff: `${SITE_CONFIG.assetPath}fonts/MuseoSansRounded-500.woff`,
+      urlWoff2: `${SITE_CONFIG.assetPath}fonts/MuseoSansRounded-500.woff2`,
     },
   ],
   fontFamilyBase:

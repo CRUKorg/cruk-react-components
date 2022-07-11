@@ -181,7 +181,8 @@ export type SpacingType = {
 
 export type CustomFontType = {
   family: string;
-  url: string;
+  urlWoff?: string;
+  urlWoff2?: string;
 };
 
 export type TypographyType = {

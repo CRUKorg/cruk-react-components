@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.2] - 2022-07-11
+
+### Changed
+
+Changed asset path to to be https://rcl.assets.cancerresearchuk.org/ fixes [#505](https://github.com/CRUKorg/cruk-react-components/issues/#505)
+
+### Fixed
+
+Error appearing on SU2C theme pages where only .woff file exists not .woff2 [#506](https://github.com/CRUKorg/cruk-react-components/issues/#506)
+
 ## [1.1.1] - 2022-05-23
 
 ### Fixed

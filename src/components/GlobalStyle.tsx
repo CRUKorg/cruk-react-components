@@ -1,20 +1,18 @@
 import { createGlobalStyle, withTheme } from "styled-components";
+import { CustomFontType } from "../types";
 import defaultTheme from "../themes/cruk";
 
-type CustomFont = {
-  family: string;
-  url: string;
-};
-
 // font-display fall back to stop font's flickering on SSR rehydration
-const buildCustomFonts = (customFonts: Array<CustomFont>) =>
+const buildCustomFonts = (customFonts: Array<CustomFontType>) =>
   customFonts
     .map(
       (font) => `
         @font-face {
           font-family: ${font.family};
-          src: url("${font.url}.woff2") format('woff2'),
-               url("${font.url}.woff") format('woff');
+          src: ${
+            font?.urlWoff2 ? `url("${font.urlWoff2}") format('woff2')` : ""
+          }${!!font.urlWoff && !!font?.urlWoff2 ? ", " : ""}
+          ${font?.urlWoff ? `url("${font.urlWoff}") format('woff')` : ""};
           font-weight: normal;
           font-style: normal;
           font-display: fallback;
