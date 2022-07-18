@@ -15,8 +15,6 @@ export const BubbleWrapper = styled.div`
   border-radius: 3.2rem;
   padding: 5px;
   position: relative;
-  z-index: 10;
-
   p {
     margin: 0;
   }
@@ -37,7 +35,6 @@ export const ProgressBarWrapper = styled.div<{
           content: "\\25bc";
           color: ${({ theme }: ThemeProps) =>
             theme.colors.totaliserBubbleColor};
-          z-index: 11;
           position: absolute;
           top: -30px;
           right: -15px;

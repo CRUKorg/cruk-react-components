@@ -1,5 +1,4 @@
 import React, {
-  FunctionComponent,
   InputHTMLAttributes,
   useCallback,
   useEffect,
@@ -63,7 +62,7 @@ export type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
  * You will need a Loqate api key, the examples below use "MG17-ZD93-FF33-KF13" our development key.
  * This component is generally only used for country codes including "GBR", "GGY", "IMN", "JEY". An example of this behavior is included bellow.
  */
-const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
+const AddressLookup = forwardRef(
   (
     {
       apiKey,
