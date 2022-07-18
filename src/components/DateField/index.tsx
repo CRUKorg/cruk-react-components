@@ -59,7 +59,7 @@ const DateField = ({
   onFocus = () => {},
   disabled,
   required,
-}: DateFieldProps): JSX.Element => (
+}: DateFieldProps) => (
   <Fieldset>
     <Text as="legend" textWeight={700} marginBottom="xxs">
       {label} {!!required && ` (required)`}

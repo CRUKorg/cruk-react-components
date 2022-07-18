@@ -1,4 +1,4 @@
-import React, { FunctionComponent, HTMLAttributes } from "react";
+import React, { HTMLAttributes, ElementType } from "react";
 import { useTheme } from "styled-components";
 
 import defaultTheme from "../../themes/cruk";
@@ -22,7 +22,7 @@ export type HeadingProps = SpacingProps &
     /** color of text */
     textColor?: string;
     /** styled-component polymorphic feature so you take the styling of a header and cast the component to be a "span" for example */
-    as?: any;
+    as?: ElementType;
     /** word-break behavior */
     wordBreak?: WordBreakType;
     /** overflow-wrap behavior */
@@ -36,15 +36,7 @@ Markup headings semantically using the appropriate <h#> level HTML element and
 use the corresponding heading class (h1, h2, h3, ....). Write all headings in sentence case. Heading differs from the Text component by using a different font-family and it changes the font size according to the screen width breakpoints.
  * 
  */
-const Heading: FunctionComponent<HeadingProps> = ({
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  ...props
-}) => {
+const Heading = ({ h1, h2, h3, h4, h5, h6, ...props }: HeadingProps) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,

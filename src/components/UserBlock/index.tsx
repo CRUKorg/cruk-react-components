@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, HTMLAttributes } from "react";
+import React, { ReactNode, HTMLAttributes } from "react";
 import { useTheme } from "styled-components";
 
 import defaultTheme from "../../themes/cruk";
@@ -22,13 +22,13 @@ export type UserBlockProps = HTMLAttributes<HTMLElement> & {
 /**
  * Display an avatar with title and subtitle
  */
-const UserBlock: FC<UserBlockProps> = ({
+const UserBlock = ({
   name,
   avatarName,
   avatarUrl,
   extra,
   size,
-}) => {
+}: UserBlockProps) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,

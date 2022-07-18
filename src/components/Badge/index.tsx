@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { useTheme } from "styled-components";
 
 import { SpaceType } from "../../types";
@@ -32,7 +32,7 @@ at the end of a sentence, link, or button. Unless the context is clear,
 consider including additional context with a visually hidden piece of
 additional text.
  */
-const Badge: FunctionComponent<BadgeProps> = ({ children, ...rest }) => {
+const Badge = ({ children, ...rest }: BadgeProps) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,

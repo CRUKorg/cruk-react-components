@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactChild } from "react";
+import React, { ReactChild, ReactNode } from "react";
 import { useTheme } from "styled-components";
 
 import {
@@ -36,6 +36,8 @@ export type TotaliserProps = {
   isCompact?: boolean;
   /** component for custom summary message underneath total graph only visible if there is a target */
   summaryMessage?: ReactChild;
+  /** component children */
+  children?: ReactNode;
 };
 
 // TODO figure out how we want to handle AriaAttributes
@@ -43,7 +45,7 @@ export type TotaliserProps = {
 /**
  * Think Blue Peter, used to display total raised and if target prop is passed will display tercentage of target reached.
  * */
-const Totaliser: FunctionComponent<TotaliserProps> = ({
+const Totaliser = ({
   total,
   additionalAmount,
   giftAid,
@@ -51,7 +53,7 @@ const Totaliser: FunctionComponent<TotaliserProps> = ({
   isCompact,
   summaryMessage = undefined,
   children,
-}) => {
+}: TotaliserProps) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
