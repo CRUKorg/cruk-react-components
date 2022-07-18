@@ -1,9 +1,4 @@
-import React, {
-  FunctionComponent,
-  useState,
-  HTMLAttributes,
-  ReactNode,
-} from "react";
+import React, { useState, HTMLAttributes, ReactNode } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
 import { useScrollPosition } from "../../hooks/useScrollPosition";
