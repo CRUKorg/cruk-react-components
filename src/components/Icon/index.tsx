@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
 import { useTheme } from "styled-components";
 
 import defaultTheme from "../../themes/cruk";
@@ -32,12 +32,7 @@ export type IconProps = {
  *
  * This component has been deprecated in favour of IconFa which is more tree-shakable
  * */
-const Icon: FunctionComponent<IconProps> = ({
-  name,
-  color,
-  size = "1.1rem",
-  ...rest
-}) => {
+const Icon = ({ name, color, size = "1.1rem", ...rest }: IconProps) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,

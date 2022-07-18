@@ -4,6 +4,7 @@ import React, {
   Ref,
   forwardRef,
   ReactNode,
+  ElementType,
 } from "react";
 import { useTheme } from "styled-components";
 
@@ -19,6 +20,8 @@ export type BoxProps = SpacingProps &
     css?: string;
     ref?: Ref<HTMLDivElement>;
     children?: ReactNode;
+    /** styled-component polymorphic feature so you take the styling of a box and cast the component to be a "span" for example */
+    as?: ElementType;
   };
 
 /**
