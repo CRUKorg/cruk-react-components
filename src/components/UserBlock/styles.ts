@@ -9,7 +9,6 @@ export const StyledUserBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content: start;
-  margin-bottom: ${({ theme }: Props) => theme.spacing.xs};
   flex: 1;
 `;
 
