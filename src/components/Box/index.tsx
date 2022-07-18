@@ -3,6 +3,7 @@ import React, {
   HTMLAttributes,
   Ref,
   forwardRef,
+  ReactNode,
 } from "react";
 import { useTheme } from "styled-components";
 
@@ -17,6 +18,7 @@ export type BoxProps = SpacingProps &
     backgroundColor?: string;
     css?: string;
     ref?: Ref<HTMLDivElement>;
+    children?: ReactNode;
   };
 
 /**

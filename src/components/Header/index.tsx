@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useState, HTMLAttributes } from "react";
+import React, {
+  FunctionComponent,
+  useState,
+  HTMLAttributes,
+  ReactNode,
+} from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
 import { useScrollPosition } from "../../hooks/useScrollPosition";
@@ -33,6 +38,8 @@ export type HeaderProps = HTMLAttributes<HTMLElement> & {
   logoLinkUrl?: string;
   /** instead of the contents of the header being centered to max width as defined in theme it is 100% width fo viewport */
   fullWidth?: boolean;
+
+  children?: ReactNode;
 };
 
 /**
@@ -52,7 +59,7 @@ export type HeaderProps = HTMLAttributes<HTMLElement> & {
  * There is a hidden skip link in the header which will only reveals itself on the first tab and to screen readers. This link helps users skip to the main page content, however this will only work with there is an element with an id of 'main' which the developer should create for every page.
  *
  */
-export const Header: FunctionComponent<HeaderProps> = ({
+export const Header = ({
   isSticky,
   siteSlogan,
   logoAltText,
@@ -61,7 +68,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
   logoLinkUrl,
   fullWidth,
   children,
-}) => {
+}: HeaderProps) => {
   const [isSmall, setIsSmall] = useState(false);
   const isBrowser = typeof window !== `undefined`;
   const foundTheme = useTheme();
