@@ -145,7 +145,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
       min-width: ${({ isIconButton }: StyledButtonProps) =>
         isIconButton ? `${BUTTON_HEIGHT_LARGE}` : "auto"};
       height: ${({ isIconButton }: StyledButtonProps) =>
-        isIconButton ? `${BUTTON_HEIGHT_LARGE}` : "auto"};
+        isIconButton ? `${BUTTON_HEIGHT_LARGE}` : "min-content"};
     `}
 
   ${(props: StyledButtonProps) =>
