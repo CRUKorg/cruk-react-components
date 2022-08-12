@@ -125,7 +125,7 @@ describe("Header", () => {
     cy.get(`[src="${crukTheme.siteConfig.assetPath}images/logos/su2c-160.png"]`)
       .should((img) => {
         const image = img[0] as HTMLImageElement;
-        expect(image.complete).to.greaterThan(0);
+        expect(image.complete).to.be.true;
       })
       .and("have.prop", "naturalWidth")
       .should("be.greaterThan", 0);
