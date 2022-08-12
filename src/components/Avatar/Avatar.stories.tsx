@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { GlobalStyle, su2cTheme } from "..";
+import { GlobalStyle, su2cTheme, crukTheme } from "..";
 import Avatar, { AvatarProps } from ".";
 
 export default {
@@ -48,7 +48,7 @@ CustomImage.args = {
   name: "Sam",
   size: "xl",
   "aria-label": "sam's profile",
-  url: "https://via.placeholder.com/300/2e008b/d9318a?text=avatar",
+  url: `${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`,
 };
 
 const TemplateWithSU2C: Story = (args) => (

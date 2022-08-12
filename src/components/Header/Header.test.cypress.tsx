@@ -12,61 +12,6 @@ const content = () => (
   </Header>
 );
 
-describe("Header", () => {
-  it("is accessible cruk", () => {
-    cy.viewport(1000, 480); // desktop breakpoint for full size header
-    mount(
-      <TestThemeWrapper theme={crukTheme}>
-        <Header siteSlogan="Header slogan here">
-          <Button>Child component</Button>
-        </Header>
-        <div id="main" tabIndex={-1}>
-          blah
-        </div>
-      </TestThemeWrapper>
-    );
-    cy.injectAxe();
-    cy.checkA11y("body");
-  });
-
-  it("is accessible su2c", () => {
-    cy.viewport(1000, 480); // desktop breakpoint for full size header
-    mount(
-      <TestThemeWrapper theme={su2cTheme}>
-        <Header siteSlogan="Header slogan here">
-          <Button>Child component</Button>
-        </Header>
-        <div id="main" tabIndex={-1}>
-          blah
-        </div>
-      </TestThemeWrapper>
-    );
-    cy.injectAxe();
-    cy.checkA11y("body", {
-      rules: {
-        "color-contrast": { enabled: false }, // TODO disabled because SU2C links do not pass WCAG AA.
-      },
-    });
-  });
-
-  it("should match snapshot", () => {
-    Cypress.config("waitForAnimations", true);
-    Cypress.config("animationDistanceThreshold", 2);
-    cy.viewport(1000, 480);
-    mount(<TestWrapper>{content()}</TestWrapper>);
-    cy.document().its("fonts.status").should("equal", "loaded");
-    cy.get(`[src="${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png"]`)
-      .should("be.visible")
-      .and("have.prop", "naturalWidth")
-      .should("be.greaterThan", 0);
-    cy.get(`[src="${crukTheme.siteConfig.assetPath}images/logos/su2c-160.png"]`)
-      .should("be.visible")
-      .and("have.prop", "naturalWidth")
-      .should("be.greaterThan", 0);
-    cy.get("body").first().matchImageSnapshot();
-  });
-});
-
 describe("Header Behaviour", () => {
   beforeEach(() => {
     cy.viewport(2000, 200);
@@ -128,5 +73,60 @@ describe("Header Sticky Behaviour", () => {
       .should("have.css", "height", "72px")
       .should("have.css", "position", "fixed")
       .should("have.css", "top", "0px");
+  });
+});
+
+describe("Header", () => {
+  it("is accessible cruk", () => {
+    cy.viewport(1000, 480); // desktop breakpoint for full size header
+    mount(
+      <TestThemeWrapper theme={crukTheme}>
+        <Header siteSlogan="Header slogan here">
+          <Button>Child component</Button>
+        </Header>
+        <div id="main" tabIndex={-1}>
+          blah
+        </div>
+      </TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
+  it("is accessible su2c", () => {
+    cy.viewport(1000, 480); // desktop breakpoint for full size header
+    mount(
+      <TestThemeWrapper theme={su2cTheme}>
+        <Header siteSlogan="Header slogan here">
+          <Button>Child component</Button>
+        </Header>
+        <div id="main" tabIndex={-1}>
+          blah
+        </div>
+      </TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body", {
+      rules: {
+        "color-contrast": { enabled: false }, // TODO disabled because SU2C links do not pass WCAG AA.
+      },
+    });
+  });
+
+  it("should match snapshot", () => {
+    Cypress.config("waitForAnimations", true);
+    Cypress.config("animationDistanceThreshold", 2);
+    cy.viewport(1000, 480);
+    mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.get(`[src="${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png"]`)
+      .should("be.visible")
+      .and("have.prop", "naturalWidth")
+      .should("be.greaterThan", 0);
+    cy.get(`[src="${crukTheme.siteConfig.assetPath}images/logos/su2c-160.png"]`)
+      .should("be.visible")
+      .and("have.prop", "naturalWidth")
+      .should("be.greaterThan", 0);
+    cy.document().its("fonts.status").should("equal", "loaded");
+    cy.get("body").first().matchImageSnapshot();
   });
 });

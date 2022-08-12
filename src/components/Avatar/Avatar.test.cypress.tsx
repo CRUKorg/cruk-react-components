@@ -17,7 +17,7 @@ const content = () => (
     <Avatar
       name="Sam"
       aria-label="sam's profile"
-      url="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"
+      url={`${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`}
     />
   </>
 );
@@ -42,7 +42,7 @@ describe("Avatar", () => {
   it("should match snapshot", () => {
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.get(
-      '[src="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"]'
+      `[src="${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png"]`
     ).should(($img) => {
       const img = $img[0] as HTMLImageElement;
       expect(img.naturalWidth).to.be.greaterThan(0);

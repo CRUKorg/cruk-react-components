@@ -23,7 +23,7 @@ const content = () => (
     />
     <UserBlock
       name="Sam Smith"
-      avatarUrl="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"
+      avatarUrl={`${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`}
       extra="(Managed by My Mum)"
     />
   </>
@@ -50,10 +50,9 @@ describe("UserBlock", () => {
     mount(
       <>
         <TestWrapper>{content()}</TestWrapper>
-        <TestThemeWrapper theme={su2cTheme}>{content()}</TestThemeWrapper>
       </>
     );
-    cy.get('[src="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"]')
+    cy.get(`[src="${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png"]`)
       .should("be.visible")
       .and("have.prop", "naturalWidth")
       .should("be.greaterThan", 0);
