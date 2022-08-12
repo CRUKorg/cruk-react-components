@@ -53,36 +53,38 @@ describe("UserBlock", () => {
         <TestThemeWrapper theme={su2cTheme}>{content()}</TestThemeWrapper>
       </>
     );
-    cy.get(
-      '[src="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"]'
-    ).should(($img) => {
-      const img = $img[0] as HTMLImageElement;
-      expect(img.naturalWidth).to.be.greaterThan(0);
-    });
+    cy.get('[src="https://via.placeholder.com/300/2e008b/d9318a?text=avatar"]')
+      .should("be.visible")
+      .and("have.prop", "naturalWidth")
+      .should("be.greaterThan", 0);
+
     cy.get(
       `[src="${crukTheme.siteConfig.assetPath}images/avatar/cruk/icon-avatar-S.png"]`
-    ).should(($img) => {
-      const img = $img[0] as HTMLImageElement;
-      expect(img.naturalWidth).to.be.greaterThan(0);
-    });
+    )
+      .should("be.visible")
+      .and("have.prop", "naturalWidth")
+      .should("be.greaterThan", 0);
+
     cy.get(
       `[src="${crukTheme.siteConfig.assetPath}images/avatar/su2c/icon-avatar-S.png"]`
-    ).should(($img) => {
-      const img = $img[0] as HTMLImageElement;
-      expect(img.naturalWidth).to.be.greaterThan(0);
-    });
+    )
+      .should("be.visible")
+      .and("have.prop", "naturalWidth")
+      .should("be.greaterThan", 0);
+
     cy.get(
       `[src="${crukTheme.siteConfig.assetPath}images/avatar/cruk/icon-avatar-Anonymous.png"]`
-    ).should(($img) => {
-      const img = $img[0] as HTMLImageElement;
-      expect(img.naturalWidth).to.be.greaterThan(0);
-    });
+    )
+      .should("be.visible")
+      .and("have.prop", "naturalWidth")
+      .should("be.greaterThan", 0);
+
     cy.get(
       `[src="${crukTheme.siteConfig.assetPath}images/avatar/su2c/icon-avatar-Anonymous.png"]`
-    ).should(($img) => {
-      const img = $img[0] as HTMLImageElement;
-      expect(img.naturalWidth).to.be.greaterThan(0);
-    });
+    )
+      .should("be.visible")
+      .and("have.prop", "naturalWidth")
+      .should("be.greaterThan", 0);
     cy.document().its("fonts.status").should("equal", "loaded");
     cy.get("body").first().matchImageSnapshot();
   });

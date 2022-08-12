@@ -55,18 +55,14 @@ describe("Header", () => {
     cy.viewport(1000, 480);
     mount(<TestWrapper>{content()}</TestWrapper>);
     cy.document().its("fonts.status").should("equal", "loaded");
-    cy.get(
-      `[src="${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png"]`
-    ).should(($img) => {
-      const img = $img[0] as HTMLImageElement;
-      expect(img.naturalWidth).to.be.greaterThan(0);
-    });
-    cy.get(
-      `[src="${crukTheme.siteConfig.assetPath}images/logos/su2c-160.png"]`
-    ).should(($img) => {
-      const img = $img[0] as HTMLImageElement;
-      expect(img.naturalWidth).to.be.greaterThan(0);
-    });
+    cy.get(`[src="${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png"]`)
+      .should("be.visible")
+      .and("have.prop", "naturalWidth")
+      .should("be.greaterThan", 0);
+    cy.get(`[src="${crukTheme.siteConfig.assetPath}images/logos/su2c-160.png"]`)
+      .should("be.visible")
+      .and("have.prop", "naturalWidth")
+      .should("be.greaterThan", 0);
     cy.get("body").first().matchImageSnapshot();
   });
 });
