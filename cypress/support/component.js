@@ -14,8 +14,7 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import { addMatchImageSnapshotCommand } from "cypress-image-snapshot/command";
-import "cypress-plugin-tab";
+import { addMatchImageSnapshotCommand } from "@simonsmith/cypress-image-snapshot/command";
 import "cypress-plugin-tab";
 import "cypress-axe";
 
