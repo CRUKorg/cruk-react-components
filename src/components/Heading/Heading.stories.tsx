@@ -2,7 +2,7 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import { Story, Meta } from "@storybook/react";
 import Heading, { HeadingProps } from ".";
-import { su2cTheme, GlobalStyle } from "../";
+import { su2cTheme, GlobalStyle } from "..";
 
 export default {
   title: "Heading",

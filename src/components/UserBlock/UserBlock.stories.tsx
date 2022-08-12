@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 
-import { su2cTheme, Text, IconFa, GlobalStyle } from "..";
+import { crukTheme, su2cTheme, Text, IconFa, GlobalStyle } from "..";
 import UserBlock, { UserBlockProps } from ".";
 
 export default {
@@ -67,7 +67,7 @@ SU2CUserBlockWithCustomAvatar.storyName = "SU2C UserBlock With Custom Avatar";
 SU2CUserBlockWithCustomAvatar.args = {
   name: "Sam Smith",
   size: "s",
-  avatarUrl: "https://via.placeholder.com/300/2e008b/d9318a?text=avatar",
+  avatarUrl: `${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`,
 };
 
 export const SU2CUserBlockWithExtra: Story = TemplateWithSU2C.bind({});
