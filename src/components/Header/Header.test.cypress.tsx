@@ -123,7 +123,10 @@ describe("Header", () => {
       .and("have.prop", "naturalWidth")
       .should("be.greaterThan", 0);
     cy.get(`[src="${crukTheme.siteConfig.assetPath}images/logos/su2c-160.png"]`)
-      .should("be.visible")
+      .should((img) => {
+        const image = img[0] as HTMLImageElement;
+        expect(image.complete).to.greaterThan(0);
+      })
       .and("have.prop", "naturalWidth")
       .should("be.greaterThan", 0);
     cy.document().its("fonts.status").should("equal", "loaded");
