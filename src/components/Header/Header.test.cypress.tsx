@@ -118,6 +118,7 @@ describe("Header", () => {
     Cypress.config("animationDistanceThreshold", 2);
     cy.viewport(1000, 480);
     mount(<TestWrapper>{content()}</TestWrapper>);
+    cy.document().its("fonts.status").should("equal", "loaded");
     cy.get(`[src="${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png"]`)
       .should("be.visible")
       .and("have.prop", "naturalWidth")
@@ -125,11 +126,11 @@ describe("Header", () => {
     cy.get(`[src="${crukTheme.siteConfig.assetPath}images/logos/su2c-160.png"]`)
       .should((img) => {
         const image = img[0] as HTMLImageElement;
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         expect(image.complete).to.be.true;
       })
       .and("have.prop", "naturalWidth")
       .should("be.greaterThan", 0);
-    cy.document().its("fonts.status").should("equal", "loaded");
     cy.get("body").first().matchImageSnapshot({
       failureThreshold: 2,
       failureThresholdType: "percent",
