@@ -25,6 +25,7 @@ type StyledButtonProps = {
 export const StyledButton = styled.button<StyledButtonProps>`
   box-sizing: border-box;
   min-height: ${BUTTON_HEIGHT};
+  height: "min-content";
   display: inline-block;
   vertical-align: middle;
   padding: ${({ theme, isIconButton }: StyledButtonProps) =>

@@ -14,6 +14,12 @@ export default {
 
 const Template: Story = (args) => <Button {...args} />;
 
+const TemplateWithElement: Story = (args) => (
+  <Button {...args}>
+    <span>A button </span>
+  </Button>
+);
+
 export const Primary: Story = Template.bind({});
 Primary.args = {
   appearance: "primary",
@@ -21,6 +27,15 @@ Primary.args = {
   children: "A button",
   full: false,
   size: "m",
+};
+
+export const PrimaryAnchorButton: Story = TemplateWithElement.bind({});
+PrimaryAnchorButton.args = {
+  appearance: "primary as anchor",
+  disabled: false,
+  full: false,
+  size: "m",
+  href: "https://www.cancerresearchuk.org/",
 };
 
 export const Secondary: Story = Template.bind({});
