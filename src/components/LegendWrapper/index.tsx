@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
 import defaultTheme from "../../themes/cruk";
@@ -26,14 +26,14 @@ export type LegendWrapperProps = {
  * hasError and errorMessage props are just props that can be passed into the component.
  * There is no functionality checking if the children are valid/required etc this functionality will be needed to ne added outside of this component.
  */
-export const LegendWrapper: FC<LegendWrapperProps> = ({
+export const LegendWrapper = ({
   children,
   legendText,
   required,
   errorMessage,
   hasError,
   hintText,
-}) => {
+}: LegendWrapperProps) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,

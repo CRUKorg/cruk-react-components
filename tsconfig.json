@@ -26,5 +26,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".eslintrc.js",
+    "src/docs/index.jsx"
   ],
 }

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
@@ -10,7 +10,7 @@ export default {
   component: AddressLookup,
 } as Meta<AddressLookupProps>;
 
-const AddressLookupWithState: FC<AddressLookupProps> = (args) => (
+const AddressLookupWithState = (args: AddressLookupProps) => (
   <AddressLookup
     {...args}
     apiKey="MG17-ZD93-FF33-KF13"

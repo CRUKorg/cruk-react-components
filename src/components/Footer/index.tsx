@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, HTMLAttributes } from "react";
+import React, { ReactNode, HTMLAttributes } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
 import defaultTheme from "../../themes/cruk";
@@ -21,12 +21,13 @@ import {
 export type FooterProps = HTMLAttributes<HTMLElement> & {
   /** used to customise text in middle section, it could also be react element, this is not to be confused with the component children which is primarily for the links in the footer */
   middleSection?: ReactNode;
+  children?: ReactNode;
 };
 
 /**
  * There should be only one footer component at the bottom of the body of each page. Links can be passed as children
  * */
-export const Footer: FC<FooterProps> = ({ children, middleSection }) => {
+export const Footer = ({ children, middleSection }: FooterProps) => {
   const childArray = React.Children.toArray(children);
 
   const foundTheme = useTheme();
@@ -50,7 +51,9 @@ export const Footer: FC<FooterProps> = ({ children, middleSection }) => {
               <StyledUL>
                 {childArray.length
                   ? childArray.map((child, index) => (
-                      <StyledLI key={index}>{child}</StyledLI>
+                      // not ideal but we don't have anything other than indexes here
+                      // eslint-disable-next-line react/no-array-index-key
+                      <StyledLI key={`footerLink${index}`}>{child}</StyledLI>
                     ))
                   : null}
               </StyledUL>

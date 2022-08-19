@@ -1,4 +1,4 @@
-import React, { FC, useState, useRef, useEffect, memo } from "react";
+import React, { useState, useRef, useEffect, memo, ReactNode } from "react";
 import { InView } from "react-intersection-observer";
 
 import Box from "../Box";
@@ -12,21 +12,26 @@ import {
 } from "./styles";
 
 export type CarouselProps = {
+  /** Index in which the carousel is scrolled to on mount */
   startPosition?: number;
+  /** call back for on position changed first prop is the possition */
   onPositionChanged?: (position: number) => void;
+  /** show item left and right of current smaller than current item */
   shrinkUnselectedPages?: boolean;
+  /** childrent item of the carousel */
+  children?: ReactNode;
 };
 
 /**
  *
  * Light weight carousel component that works with mouse and touch events, will work with divs and much anything you chuck in children
  */
-export const Carousel: FC<CarouselProps> = ({
+export const Carousel = ({
   startPosition = 0,
   children,
   onPositionChanged,
   shrinkUnselectedPages = false,
-}) => {
+}: CarouselProps) => {
   const [currentPosition, setCurrentPosition] = useState(startPosition);
   const [smoothScrolling, setSmoothScrolling] = useState(true);
   const scrollRef = useRef<HTMLUListElement>(null);
@@ -107,7 +112,9 @@ export const Carousel: FC<CarouselProps> = ({
             {childArray.map((child, index) => {
               const isSelected = index === currentPosition;
               return (
-                <CarouselCard key={index} onlyChild={onlyChild}>
+                // not ideal but we only have indexes here
+                // eslint-disable-next-line react/no-array-index-key
+                <CarouselCard key={`card${index}`} onlyChild={onlyChild}>
                   <InView
                     threshold={0.5}
                     as="div"
@@ -146,4 +153,4 @@ export const Carousel: FC<CarouselProps> = ({
   );
 };
 
-export default memo<FC<CarouselProps>>(Carousel);
+export default memo(Carousel);

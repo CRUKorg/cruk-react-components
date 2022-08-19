@@ -1,4 +1,4 @@
-import React, { FC, ButtonHTMLAttributes } from "react";
+import React, { ButtonHTMLAttributes } from "react";
 
 import {
   DotContainer,
@@ -17,8 +17,8 @@ type DotProps = {
   previous: () => void;
 };
 
-export const CarouselLeftButton: FC<ButtonHTMLAttributes<HTMLElement>> = (
-  props
+export const CarouselLeftButton = (
+  props: ButtonHTMLAttributes<HTMLElement>
 ) => (
   <div>
     <CarouselButton {...props} aria-label="previous">
@@ -29,8 +29,8 @@ export const CarouselLeftButton: FC<ButtonHTMLAttributes<HTMLElement>> = (
   </div>
 );
 
-export const CarouselRightButton: FC<ButtonHTMLAttributes<HTMLElement>> = (
-  props
+export const CarouselRightButton = (
+  props: ButtonHTMLAttributes<HTMLElement>
 ) => (
   <div>
     <CarouselButton {...props} aria-label="next">
@@ -41,13 +41,13 @@ export const CarouselRightButton: FC<ButtonHTMLAttributes<HTMLElement>> = (
   </div>
 );
 
-export const Dots: FC<DotProps> = ({
+export const Dots = ({
   count,
   currentPosition = 0,
   scrollToPosition,
   next,
   previous,
-}) => {
+}: DotProps) => {
   const moreOnRight = currentPosition !== count - 1;
   const moreOnLeft = currentPosition !== 0;
   const countArray = Array.from({ length: count }, (e, i) => `arrayIndex${i}`);
