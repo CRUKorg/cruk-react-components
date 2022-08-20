@@ -20,7 +20,7 @@ const StyledDivider = styled.div`
 `;
 
 type DividerProps = {
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 export const Divider = ({ children }: DividerProps) => (
