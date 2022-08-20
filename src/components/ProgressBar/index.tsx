@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { ThemeProvider, useTheme } from "styled-components";
 
 import defaultTheme from "../../themes/cruk";
@@ -32,13 +32,14 @@ export type ProgressBarProps = {
   barColor?: string;
   /** foreground colour of chart secondary bar */
   secondaryBarColor?: string;
+  children?: ReactNode;
 };
 
 /**
  * Provide up-to-date feedback on the progress of a workflow or action with
 simple yet flexible progress bars.
 */
-const ProgressBar: FC<ProgressBarProps> = ({
+const ProgressBar = ({
   percentage = 0,
   isCircular,
   circleContents,
@@ -47,7 +48,7 @@ const ProgressBar: FC<ProgressBarProps> = ({
   secondaryBarColor,
   secondaryPercentage,
   children,
-}) => {
+}: ProgressBarProps) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,

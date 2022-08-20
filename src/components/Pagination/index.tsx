@@ -1,4 +1,9 @@
-import React, { FunctionComponent, MouseEvent, TouchEvent } from "react";
+import React, {
+  FunctionComponent,
+  MouseEvent,
+  ReactNode,
+  TouchEvent,
+} from "react";
 import { ThemeProvider, useTheme } from "styled-components";
 
 import defaultTheme from "../../themes/cruk";
@@ -18,6 +23,7 @@ export type PaginationProps = {
   perPage: number;
   /** the name of the search param in the url that is modified on page click, defaults to 'page' */
   searchParam?: string;
+  children?: ReactNode;
 };
 
 /**
