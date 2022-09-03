@@ -24,6 +24,8 @@ export type ModalProps = {
   backgroundColor?: string;
   /** children components  */
   children?: ReactNode;
+  /** set modal to full screen */
+  fullScreen?: boolean;
 };
 
 /**

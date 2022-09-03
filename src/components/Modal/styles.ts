@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { ColorKeyType, ThemeType } from "../../types";
-
 import Box from "../Box";
 import { Button } from "../Button";
 
@@ -11,6 +10,7 @@ type ThemeProp = {
 type ContentProp = {
   backgroundColor?: string;
   theme: ThemeType;
+  fullScreen?: boolean;
 };
 
 export const Background = styled.div`
@@ -38,6 +38,7 @@ export const Wrapper = styled.div`
 export const Content = styled(Box)<{
   maxWidth: string;
   top: string;
+  fullScreen: boolean;
 }>`
   background-color: ${({ theme: { colors }, backgroundColor }: ContentProp) =>
     backgroundColor !== undefined && typeof backgroundColor !== undefined
@@ -55,7 +56,9 @@ export const Content = styled(Box)<{
     theme: {
       spacing: { xs },
     },
-  }: ThemeProp) => xs};
+    fullScreen,
+  }: ContentProp) => (fullScreen ? "0" : xs)};
+
   max-width: ${({ maxWidth }: { maxWidth: string }) => maxWidth};
   z-index: 9999;
   margin-bottom: ${({ theme }: ThemeProp) => theme.spacing.xxl};
