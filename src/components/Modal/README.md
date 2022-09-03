@@ -41,6 +41,7 @@ function () {
 | top             | string   |            | 1rem    | Height from top of container                                                                    |
 | children        | Any      |            |         | Any content to be displayed in modal                                                            |
 | showCloseButton | Boolean  | true/false | true    |
+| fullScreen      | Boolean  | true/false | false   | optional prop to remove padding from inner modal, making it full screen                         |
 
 ## Accessibility
 
