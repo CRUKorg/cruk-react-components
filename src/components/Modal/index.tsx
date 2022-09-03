@@ -46,6 +46,7 @@ const Modal = ({
   top = "1rem",
   backgroundColor = "backgroundLight",
   children,
+  fullScreen,
 }: ModalProps) => {
   const foundTheme = useTheme();
   const theme = {
@@ -91,6 +92,7 @@ const Modal = ({
                       backgroundColor={backgroundColor}
                       maxWidth={maxWidth}
                       top={top}
+                      fullScreen={fullScreen}
                     >
                       {showCloseButton && closeFunction ? (
                         <CloseButton
