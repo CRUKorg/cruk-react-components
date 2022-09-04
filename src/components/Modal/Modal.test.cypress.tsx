@@ -29,7 +29,12 @@ const Content = () => {
         Show me a modal
       </Button>
       {showModal && (
-        <Modal closeFunction={toggleShowModal} showCloseButton modalName="test">
+        <Modal
+          closeFunction={toggleShowModal}
+          showCloseButton
+          modalName="test"
+          fullScreen={true}
+        >
           <Heading h2 marginTop="none" textSize="xl">
             Modal title
           </Heading>
