@@ -50,15 +50,8 @@ export const Content = styled(Box)<{
   margin: ${({ top }: { top: string }) => `${top} auto auto auto`};
   width: 90%;
   min-height: 10rem;
-  padding: ${({
-    theme: {
-      spacing: { xs },
-    },
-  }: ContentProp) => xs};
-
   max-width: ${({ maxWidth }: { maxWidth: string }) => maxWidth};
   z-index: 9999;
-  margin-bottom: ${({ theme }: ThemeProp) => theme.spacing.xxl};
 `;
 
 export const CloseButton = styled(Button)`
