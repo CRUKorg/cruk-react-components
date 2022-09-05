@@ -9,7 +9,9 @@ import defaultTheme from "../../themes/cruk";
 
 import { CloseButton, Wrapper, Content, Background } from "./styles";
 
-export type ModalProps = {
+import { SpacingProps } from "../Spacing";
+
+export type ModalProps = SpacingProps & {
   /** modal name used for aria-label */
   modalName: string;
   /** callback function called on modal close */
@@ -44,6 +46,20 @@ const Modal = ({
   top = "1rem",
   backgroundColor = "backgroundLight",
   children,
+  margin,
+  marginHorizontal,
+  marginVertical,
+  marginTop,
+  marginRight,
+  marginBottom = "xxl",
+  marginLeft,
+  padding = "xs",
+  paddingHorizontal,
+  paddingVertical,
+  paddingTop,
+  paddingRight,
+  paddingBottom,
+  paddingLeft,
 }: ModalProps) => {
   const foundTheme = useTheme();
   const theme = {
@@ -89,6 +105,20 @@ const Modal = ({
                       backgroundColor={backgroundColor}
                       maxWidth={maxWidth}
                       top={top}
+                      margin={margin}
+                      marginHorizontal={marginHorizontal}
+                      marginVertical={marginVertical}
+                      marginTop={marginTop}
+                      marginRight={marginRight}
+                      marginBottom={marginBottom}
+                      marginLeft={marginLeft}
+                      padding={padding}
+                      paddingHorizontal={paddingHorizontal}
+                      paddingVertical={paddingVertical}
+                      paddingTop={paddingTop}
+                      paddingRight={paddingRight}
+                      paddingBottom={paddingBottom}
+                      paddingLeft={paddingLeft}
                     >
                       {showCloseButton && closeFunction ? (
                         <CloseButton
