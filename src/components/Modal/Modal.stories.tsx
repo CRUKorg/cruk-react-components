@@ -7,11 +7,6 @@ import Modal, { ModalProps } from ".";
 
 export default {
   title: "Modal",
-  argTypes: {
-    fullScreen: {
-      control: { type: "boolean" }, // Automatically inferred when 'options' is defined
-    },
-  },
   component: Modal,
 } as Meta<ModalProps>;
 

@@ -10,7 +10,6 @@ type ThemeProp = {
 type ContentProp = {
   backgroundColor?: string;
   theme: ThemeType;
-  fullScreen?: boolean;
 };
 
 export const Background = styled.div`
@@ -38,7 +37,6 @@ export const Wrapper = styled.div`
 export const Content = styled(Box)<{
   maxWidth: string;
   top: string;
-  fullScreen: boolean;
 }>`
   background-color: ${({ theme: { colors }, backgroundColor }: ContentProp) =>
     backgroundColor !== undefined && typeof backgroundColor !== undefined
@@ -56,8 +54,7 @@ export const Content = styled(Box)<{
     theme: {
       spacing: { xs },
     },
-    fullScreen,
-  }: ContentProp) => (fullScreen ? "0" : xs)};
+  }: ContentProp) => xs};
 
   max-width: ${({ maxWidth }: { maxWidth: string }) => maxWidth};
   z-index: 9999;
