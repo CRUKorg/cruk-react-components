@@ -34,13 +34,28 @@ function () {
 }
 ```
 
-| Name            | Type     |  Options   | Default | Description                                                                                     |
-| :-------------- | :------- | :--------: | :------ | :---------------------------------------------------------------------------------------------- |
-| closeFunction   | function |            | null    | (Required) function used to close the modal on escape key press and close or close button press |
-| maxWidth        | string   |            | 500px   | Max width of modal                                                                              |
-| top             | string   |            | 1rem    | Height from top of container                                                                    |
-| children        | Any      |            |         | Any content to be displayed in modal                                                            |
-| showCloseButton | Boolean  | true/false | true    |
+| Name              | Type      | Default | Description                                                                                     |
+| :---------------- | :-------- | :------ | :---------------------------------------------------------------------------------------------- |
+| closeFunction     | function  | null    | (Required) function used to close the modal on escape key press and close or close button press |
+| maxWidth          | string    | 500px   | Max width of modal                                                                              |
+| width             | string    | 500px   | width of modal                                                                                  |
+| top               | string    | 1rem    | Height from top of container                                                                    |
+| children          | Any       |         | Any content to be displayed in modal                                                            |
+| showCloseButton   | Boolean   | true    | Toggles visibility of modal close button                                                        |
+| margin            | SpaceType | unset   | margin top, bottom, left and right                                                              |
+| marginVertical    | SpaceType | unset   | margin top and bottom                                                                           |
+| marginHorizontal  | SpaceType | unset   | margin left and right                                                                           |
+| marginTop         | SpaceType | unset   | margin top                                                                                      |
+| marginRight       | SpaceType | unset   | margin right right                                                                              |
+| marginBottom      | SpaceType | 'xs'    | margin bottom bottom                                                                            |
+| marginLeft        | SpaceType | unset   | margin left left                                                                                |
+| padding           | SpaceType | unset   | padding top, bottom, left and right                                                             |
+| paddingVertical   | SpaceType | unset   | padding top and bottom                                                                          |
+| paddingHorizontal | SpaceType | unset   | padding left and right                                                                          |
+| paddingTop        | SpaceType | unset   | padding top                                                                                     |
+| paddingRight      | SpaceType | unset   | padding right right                                                                             |
+| paddingBottom     | SpaceType | unset   | padding bottom bottom                                                                           |
+| paddingLeft       | SpaceType | unset   | padding left left                                                                               |
 
 ## Accessibility
 
