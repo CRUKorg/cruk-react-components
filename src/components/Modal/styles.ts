@@ -7,9 +7,12 @@ type ThemeProp = {
   theme: ThemeType;
 };
 
-type ContentProp = {
+type ContentProps = {
   backgroundColor?: string;
   theme: ThemeType;
+  top: string;
+  width: string;
+  maxWidth: string;
 };
 
 export const Background = styled.div`
@@ -34,11 +37,8 @@ export const Wrapper = styled.div`
   z-index: 9999;
 `;
 
-export const Content = styled(Box)<{
-  maxWidth: string;
-  top: string;
-}>`
-  background-color: ${({ theme: { colors }, backgroundColor }: ContentProp) =>
+export const Content = styled(Box)<ContentProps>`
+  background-color: ${({ theme: { colors }, backgroundColor }: ContentProps) =>
     backgroundColor !== undefined && typeof backgroundColor !== undefined
       ? colors[backgroundColor as ColorKeyType] !== undefined
         ? colors[backgroundColor as ColorKeyType]
@@ -47,10 +47,10 @@ export const Content = styled(Box)<{
   position: relative;
   border-radius: 4px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-  margin: ${({ top }: { top: string }) => `${top} auto auto auto`};
-  width: 90%;
+  margin: ${({ top }: ContentProps) => `${top} auto auto auto`};
+  width: ${({ width }: ContentProps) => width};
   min-height: 10rem;
-  max-width: ${({ maxWidth }: { maxWidth: string }) => maxWidth};
+  max-width: ${({ maxWidth }: ContentProps) => maxWidth};
   z-index: 9999;
 `;
 

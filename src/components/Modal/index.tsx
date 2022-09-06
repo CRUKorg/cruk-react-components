@@ -26,6 +26,8 @@ export type ModalProps = SpacingProps & {
   backgroundColor?: string;
   /** children components  */
   children?: ReactNode;
+  /** width of modal */
+  width?: string;
 };
 
 /**
@@ -46,6 +48,7 @@ const Modal = ({
   top = "1rem",
   backgroundColor = "backgroundLight",
   children,
+  width = "90%",
   margin,
   marginHorizontal,
   marginVertical,
@@ -104,6 +107,7 @@ const Modal = ({
                     <Content
                       backgroundColor={backgroundColor}
                       maxWidth={maxWidth}
+                      width={width}
                       top={top}
                       margin={margin}
                       marginHorizontal={marginHorizontal}
