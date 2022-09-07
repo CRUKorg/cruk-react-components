@@ -9,7 +9,9 @@ import defaultTheme from "../../themes/cruk";
 
 import { CloseButton, Wrapper, Content, Background } from "./styles";
 
-export type ModalProps = {
+import { SpacingProps } from "../Spacing";
+
+export type ModalProps = SpacingProps & {
   /** modal name used for aria-label */
   modalName: string;
   /** callback function called on modal close */
@@ -24,6 +26,8 @@ export type ModalProps = {
   backgroundColor?: string;
   /** children components  */
   children?: ReactNode;
+  /** width of modal */
+  width?: string;
 };
 
 /**
@@ -44,6 +48,21 @@ const Modal = ({
   top = "1rem",
   backgroundColor = "backgroundLight",
   children,
+  width = "90%",
+  margin,
+  marginHorizontal,
+  marginVertical,
+  marginTop,
+  marginRight,
+  marginBottom = "xxl",
+  marginLeft,
+  padding = "xs",
+  paddingHorizontal,
+  paddingVertical,
+  paddingTop,
+  paddingRight,
+  paddingBottom,
+  paddingLeft,
 }: ModalProps) => {
   const foundTheme = useTheme();
   const theme = {
@@ -88,7 +107,22 @@ const Modal = ({
                     <Content
                       backgroundColor={backgroundColor}
                       maxWidth={maxWidth}
+                      width={width}
                       top={top}
+                      margin={margin}
+                      marginHorizontal={marginHorizontal}
+                      marginVertical={marginVertical}
+                      marginTop={marginTop}
+                      marginRight={marginRight}
+                      marginBottom={marginBottom}
+                      marginLeft={marginLeft}
+                      padding={padding}
+                      paddingHorizontal={paddingHorizontal}
+                      paddingVertical={paddingVertical}
+                      paddingTop={paddingTop}
+                      paddingRight={paddingRight}
+                      paddingBottom={paddingBottom}
+                      paddingLeft={paddingLeft}
                     >
                       {showCloseButton && closeFunction ? (
                         <CloseButton
