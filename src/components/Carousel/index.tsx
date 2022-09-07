@@ -135,6 +135,7 @@ export const Carousel = ({
                       onlyChild={onlyChild}
                       isSelected={isSelected}
                       shrinkUnselectedPages={shrinkUnselectedPages}
+                      fullWidthChild={fullWidthChild}
                     >
                       {child}
                     </CarouselCardInner>

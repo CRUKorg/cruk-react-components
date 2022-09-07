@@ -18,14 +18,15 @@ type CarouselScrollAreaProps = {
 };
 
 type CarouselCardProps = {
-  fullWidthChild: boolean;
   onlyChild: boolean;
+  fullWidthChild: boolean;
 };
 
 type CarouselCardInnerProps = {
   isSelected: boolean;
   shrinkUnselectedPages: boolean;
   onlyChild: boolean;
+  fullWidthChild: boolean;
 };
 
 export const CarouselScrollArea = styled.ul<CarouselScrollAreaProps>`
@@ -52,8 +53,13 @@ export const CarouselCard = styled.li`
 
 export const CarouselCardInner = styled.div<CarouselCardInnerProps>`
   transition: transform 0.2s linear;
-  transform: ${({ isSelected, shrinkUnselectedPages, onlyChild }) =>
-    onlyChild || (isSelected && shrinkUnselectedPages)
+  transform: ${({
+    isSelected,
+    shrinkUnselectedPages,
+    onlyChild,
+    fullWidthChild,
+  }) =>
+    onlyChild || (isSelected && shrinkUnselectedPages) || fullWidthChild
       ? "scale(1)"
       : "scale(0.9)"};
 `;
