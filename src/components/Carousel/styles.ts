@@ -17,6 +17,17 @@ type CarouselScrollAreaProps = {
   smoothScrolling: boolean;
 };
 
+type CarouselCardProps = {
+  fullWidthChild: boolean;
+  onlyChild: boolean;
+};
+
+type CarouselCardInnerProps = {
+  isSelected: boolean;
+  shrinkUnselectedPages: boolean;
+  onlyChild: boolean;
+};
+
 export const CarouselScrollArea = styled.ul<CarouselScrollAreaProps>`
   position: relative;
   overflow-x: scroll;
@@ -35,15 +46,9 @@ export const CarouselScrollArea = styled.ul<CarouselScrollAreaProps>`
 export const CarouselCard = styled.li`
   scroll-snap-align: center;
   display: inline-block;
-  width: ${({ onlyChild }: { onlyChild: boolean }) =>
-    onlyChild ? "100%" : "80%"};
+  width: ${({ onlyChild, fullWidthChild }: CarouselCardProps) =>
+    onlyChild || fullWidthChild ? "100%" : "80%"};
 `;
-
-type CarouselCardInnerProps = {
-  isSelected: boolean;
-  shrinkUnselectedPages: boolean;
-  onlyChild: boolean;
-};
 
 export const CarouselCardInner = styled.div<CarouselCardInnerProps>`
   transition: transform 0.2s linear;

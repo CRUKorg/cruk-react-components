@@ -20,6 +20,8 @@ export type CarouselProps = {
   shrinkUnselectedPages?: boolean;
   /** childrent item of the carousel */
   children?: ReactNode;
+  /** set carousel image to full width of parent */
+  fullWidthChild?: boolean;
 };
 
 /**
@@ -31,6 +33,7 @@ export const Carousel = ({
   children,
   onPositionChanged,
   shrinkUnselectedPages = false,
+  fullWidthChild = false,
 }: CarouselProps) => {
   const [currentPosition, setCurrentPosition] = useState(startPosition);
   const [smoothScrolling, setSmoothScrolling] = useState(true);
@@ -114,7 +117,11 @@ export const Carousel = ({
               return (
                 // not ideal but we only have indexes here
                 // eslint-disable-next-line react/no-array-index-key
-                <CarouselCard key={`card${index}`} onlyChild={onlyChild}>
+                <CarouselCard
+                  key={`card${index}`}
+                  onlyChild={onlyChild}
+                  fullWidthChild={fullWidthChild}
+                >
                   <InView
                     threshold={0.5}
                     as="div"
