@@ -1,4 +1,7 @@
 import React, { ButtonHTMLAttributes } from "react";
+import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
+
+import IconFa from "../IconFa";
 
 import {
   DotContainer,
@@ -23,7 +26,8 @@ export const CarouselLeftButton = (
   <div>
     <CarouselButton {...props} aria-label="previous">
       <VerticalAlign>
-        ◄<ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
+        <IconFa faIcon={faCaretLeft} size="1.25em" />
+        <ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
       </VerticalAlign>
     </CarouselButton>
   </div>
@@ -35,7 +39,8 @@ export const CarouselRightButton = (
   <div>
     <CarouselButton {...props} aria-label="next">
       <VerticalAlign>
-        ►<ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
+        <IconFa faIcon={faCaretRight} size="1.25em" />
+        <ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
       </VerticalAlign>
     </CarouselButton>
   </div>
