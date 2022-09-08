@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.8] - 2022-08-09
+
+### Changed
+
+Adding fullscreen mode to modal [#548](https://github.com/CRUKorg/cruk-react-components/issues/#548))
+Adding fullwidth item mode to carousel [#549](https://github.com/CRUKorg/cruk-react-components/issues/#549))
+
+### Fixed
+
+Fixed carousel arrow buttons wrong size for safari and firefox osx [#558](https://github.com/CRUKorg/cruk-react-components/issues/#558))
+
 ## [1.1.7] - 2022-08-19
 
 ### Changed

@@ -7,6 +7,7 @@ import Carousel, { CarouselProps } from ".";
 
 export default {
   title: "Carousel (experimental)",
+  argTypes: { fullWidthChild: { control: "boolean" } },
   component: Carousel,
 } as Meta<CarouselProps>;
 
