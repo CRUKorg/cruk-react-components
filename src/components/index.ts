@@ -33,6 +33,7 @@ export { default as TextAreaField } from "./TextAreaField";
 export { default as TextField } from "./TextField";
 export { default as Totaliser } from "./Totaliser";
 export { default as UserBlock } from "./UserBlock";
+export { default as InfoBox } from "./InfoBox";
 
 export { default as crukTheme } from "../themes/cruk";
 export { default as su2cTheme } from "../themes/su2c";
@@ -51,6 +52,7 @@ export { default as HeadingReadme } from "./Heading/README.md";
 export { default as HeaderReadme } from "./Header/README.md";
 export { default as IconReadme } from "./Icon/README.md";
 export { default as IconFaReadme } from "./IconFa/README.md";
+export { default as InfoBoxReadme } from "./InfoBox/README.md";
 export { default as LinkReadme } from "./Link/README.md";
 export { default as LegendWrapperReadme } from "./LegendWrapper/README.md";
 export { default as LoaderReadme } from "./Loader/README.md";
