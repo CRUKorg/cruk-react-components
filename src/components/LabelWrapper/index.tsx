@@ -15,6 +15,7 @@ type LabelWrapperProps = {
   required?: boolean;
   /** flag to stop (required) appearing in label, useful for compound form components like DateInput */
   hideRequiredInLabel?: boolean;
+  children?: ReactNode;
 };
 
 export const LabelWrapper: FunctionComponent<LabelWrapperProps> = (props) => {

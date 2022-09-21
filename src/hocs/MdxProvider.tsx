@@ -1,17 +1,26 @@
-import React, { FunctionComponent, HTMLAttributes } from "react";
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable import/no-extraneous-dependencies */
+import React, { HTMLAttributes } from "react";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import { MDXProvider } from "@mdx-js/react";
 
+import { ReactNode } from "@mdx-js/react/lib";
+import { MDXComponents } from "mdx/types";
 import Heading from "../components/Heading";
 import Text from "../components/Text";
 
 import * as allExports from "../components";
+
 const scope = { ...allExports };
 
-const components = {
+const components: MDXComponents = {
   pre: (props: any) => <div {...props} />,
-  code: ({ children }: any) => (
-    <LiveProvider code={children} aria-label="Example code" scope={scope}>
+  code: ({ children }) => (
+    <LiveProvider
+      code={children as string}
+      aria-label="Example code"
+      scope={scope}
+    >
       <LivePreview
         aria-label="Example code preview"
         style={{ border: "1px solid grey", padding: "8px" }}
@@ -40,8 +49,12 @@ const components = {
   p: (props: HTMLAttributes<HTMLHeadingElement>) => <Text {...props} />,
 };
 
-const MdxProvider: FunctionComponent = (props) => (
-  <MDXProvider components={components}>{props.children}</MDXProvider>
+type MdxProviderProps = {
+  children?: ReactNode;
+};
+
+const MdxProvider = ({ children }: MdxProviderProps) => (
+  <MDXProvider components={components}>{children}</MDXProvider>
 );
 
 export default MdxProvider;

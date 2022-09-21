@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Router, Link as RouterLink } from "@reach/router";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Router, Link as RouterLink, RouteComponentProps } from "@reach/router";
 import styled, { css, ThemeProvider } from "styled-components";
 
+import { CheckBoxProps } from "src/components/Checkbox";
 import { useKey } from "../hooks/useKey";
 import MdxProvider from "../hocs/MdxProvider";
 
@@ -50,7 +52,11 @@ import su2cTheme from "../themes/su2c";
 import GlobalStyle from "../components/GlobalStyle";
 import { InfoBoxReadme } from "../components";
 
-/*
+const ThemeCheatSheetRoute = (props: RouteComponentProps) => (
+  <ThemeCheatSheet />
+);
+
+/* s
  * Doc specific styling
  * layout, toggle, theme switch, code area
  */
@@ -203,7 +209,9 @@ const StyledToggle = styled.input`
   }
 `;
 
-const Toggle = (props) => <StyledToggle type="checkbox" {...props} />;
+const Toggle = (props: CheckBoxProps) => (
+  <StyledToggle type="checkbox" {...props} />
+);
 
 const Nav = styled.nav`
   a {
@@ -223,8 +231,8 @@ const Docs = () => {
   const [theme, setTheme] = useState("cruk");
 
   useKey(
-    () => {
-      handleOutline();
+    (e: KeyboardEvent) => {
+      handleOutline(e);
     },
     {
       detectKeys: ["keyup"],
@@ -236,8 +244,8 @@ const Docs = () => {
    * outline when user start tabbing
    * https://jmperezperez.com/outline-focus-ring-a11y/
    */
-  const handleOutline = (e) => {
-    if (e.key === 9) {
+  const handleOutline = (e: KeyboardEvent) => {
+    if (e.key === "Tab") {
       if (typeof document !== "undefined") {
         document.documentElement.classList.remove("no-focus-outline");
       }
@@ -258,6 +266,7 @@ const Docs = () => {
       <GlobalStyle />
       <Header isSticky fullWidth>
         <SwitchTheme
+          label="switch theme"
           name="themeSelector"
           onChange={(e) => {
             setTheme(e.target.value);
@@ -339,7 +348,7 @@ const Docs = () => {
               <TextFieldReadme path="/textfield" />
               <TotaliserReadme path="/totaliser" />
               <UserBlockReadme path="/userblock" />
-              <ThemeCheatSheet path="/theme" />
+              <ThemeCheatSheetRoute path="/theme" />
             </Router>
           </MdxProvider>
         </Content>

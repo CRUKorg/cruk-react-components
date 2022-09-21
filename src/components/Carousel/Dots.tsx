@@ -1,4 +1,7 @@
-import React, { FC, ButtonHTMLAttributes } from "react";
+import React, { ButtonHTMLAttributes } from "react";
+import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
+
+import IconFa from "../IconFa";
 
 import {
   DotContainer,
@@ -17,37 +20,39 @@ type DotProps = {
   previous: () => void;
 };
 
-export const CarouselLeftButton: FC<ButtonHTMLAttributes<HTMLElement>> = (
-  props
+export const CarouselLeftButton = (
+  props: ButtonHTMLAttributes<HTMLElement>
 ) => (
   <div>
     <CarouselButton {...props} aria-label="previous">
       <VerticalAlign>
-        ◄<ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
+        <IconFa faIcon={faCaretLeft} size="1.25em" />
+        <ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
       </VerticalAlign>
     </CarouselButton>
   </div>
 );
 
-export const CarouselRightButton: FC<ButtonHTMLAttributes<HTMLElement>> = (
-  props
+export const CarouselRightButton = (
+  props: ButtonHTMLAttributes<HTMLElement>
 ) => (
   <div>
     <CarouselButton {...props} aria-label="next">
       <VerticalAlign>
-        ►<ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
+        <IconFa faIcon={faCaretRight} size="1.25em" />
+        <ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
       </VerticalAlign>
     </CarouselButton>
   </div>
 );
 
-export const Dots: FC<DotProps> = ({
+export const Dots = ({
   count,
   currentPosition = 0,
   scrollToPosition,
   next,
   previous,
-}) => {
+}: DotProps) => {
   const moreOnRight = currentPosition !== count - 1;
   const moreOnLeft = currentPosition !== 0;
   const countArray = Array.from({ length: count }, (e, i) => `arrayIndex${i}`);

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, ReactNode } from "react";
 import { ThemeProvider, useTheme } from "styled-components";
 
 import defaultTheme from "../../themes/cruk";
@@ -10,6 +10,7 @@ export type StepProps = {
   current: number;
   /** list of step  */
   steps: string[];
+  children?: ReactNode;
 };
 
 // TODO think about AriaAttributes and how we want to pass them down
@@ -40,6 +41,8 @@ const Step: FunctionComponent<StepProps> = ({
           {Array.isArray(steps) &&
             steps.map((step, i) => (
               <StepItem
+                // less than ideal but we don't have anything other than index to use here
+                // eslint-disable-next-line react/no-array-index-key
                 key={i}
                 active={i + 1 === current}
                 done={i + 1 < current}

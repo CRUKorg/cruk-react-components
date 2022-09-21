@@ -1,7 +1,6 @@
 import React, {
   useState,
   useEffect,
-  FC,
   useRef,
   useCallback,
   ReactElement,
@@ -30,13 +29,14 @@ export type PopOverProps = {
   minWidth?: string;
   /**  popover isOpen changed handler */
   onPopOverIsOpenChange?: (isOpen: boolean) => void;
+  children?: ReactNode;
 };
 
 /**
  * Popover is a non-modal dialog that floats around its disclosure. It's
 commonly used for displaying additional rich content on top of something.
 */
-const PopOver: FC<PopOverProps> = ({
+const PopOver = ({
   onPopOverIsOpenChange,
   children,
   minWidth,
@@ -45,7 +45,7 @@ const PopOver: FC<PopOverProps> = ({
   modalLabel,
   modalContent,
   css,
-}) => {
+}: PopOverProps) => {
   const popRef = useRef<HTMLDivElement>(null);
   const [showPopOver, setShowPopOver] = useState(false);
   const foundTheme = useTheme();
