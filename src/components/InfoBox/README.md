@@ -11,26 +11,19 @@ The InfoBox component displays information box view. It provides a variety of op
 ```.jsx
   <>
     <InfoBox
-      backgroundColor="#F5F5F5"
-      borderColor="black"
-      borderSize="1px"
-      borderStyle="solid"
-      descriptionText="Your Description for info"
-      descriptionTextColor="black"
-      faIcon={faBullseye}
-      headingText="InfoBox Title"
-      headingTextColor="black"
-      iconColor="green"
-      iconSize="20px"
-    >
-    </InfoBox>
+      descriptionText="This is a description block for the infobox default component"
+      headingText="InfoBox Default"
+      iconFa={<IconFa faIcon={faBullseye} size="25px" color="#fff">}
+    />}
    </>
 ```
 
 ## Props
 
-| Name   | Type           | Default       | Description                                                                                               |
-| :----- | :------------- | :------------ | :-------------------------------------------------------------------------------------------------------- |
-| faIcon | IconDefinition |               | imported icon definition from "@fortawesome/free-solid-svg-icons" or "@fortawesome/free-brands-svg-icons" |
-| color  | string         |               | A theme color name or CSS color. If blank, Icon will match the color of the surrounding text.             |
-| size   | string         | 1.1rem (18px) | Icon's width and height.                                                                                  |
+| Name                 | Type      | Default | Description                                     |
+| :------------------- | :-------- | :------ | :---------------------------------------------- |
+| headingText          | string    |         | Your heading text                               |
+| headingTextColor     | string    | #000    | Your heading text color                         |
+| descriptionText      | string    |         | Your description text                           |
+| descriptionTextColor | string    | #000    | Your description text color                     |
+| iconFa               | ReactNode |         | IconFa React Element from @cruk/react-component |
