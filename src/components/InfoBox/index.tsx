@@ -11,7 +11,6 @@ import { useTheme } from "styled-components";
 
 import defaultTheme from "../../themes/cruk";
 import Box from "../Box";
-import IconFa from "../IconFa";
 import Text from "../Text";
 
 import { SpacingProps } from "../Spacing";
@@ -26,15 +25,10 @@ export type InfoBoxProps = SpacingProps &
     descriptionText?: string;
     descriptionTextColor?: string;
     /** imported icon definition from "@fortawesome/free-solid-svg-icons" or "@fortawesome/free-brands-svg-icons" */
-    faIcon?: IconDefinition;
-    iconColor?: string;
-    iconSize?: string;
-    borderColor?: string;
-    borderSize?: string;
-    borderStyle?: string;
     css?: string;
     ref?: Ref<HTMLDivElement>;
     children?: ReactNode;
+    icon?: ReactNode;
     /** styled-component polymorphic feature so you take the styling of a box and cast the component to be a "span" for example */
     as?: ElementType;
   };
@@ -49,13 +43,11 @@ const InfoBox: FunctionComponent<InfoBoxProps> = forwardRef(
     const {
       children,
       css,
-      faIcon,
-      iconColor,
-      iconSize,
       headingText,
       headingTextColor,
       descriptionText,
       descriptionTextColor,
+      icon,
       ...rest
     } = props;
     const foundTheme = useTheme();
@@ -66,15 +58,7 @@ const InfoBox: FunctionComponent<InfoBoxProps> = forwardRef(
 
     return (
       <StyledInfoBox theme={theme} {...rest} ref={ref}>
-        {faIcon && (
-          <Box marginTop="xxs">
-            <IconFa
-              faIcon={faIcon}
-              color={iconColor}
-              size={iconSize || "25px"}
-            />
-          </Box>
-        )}
+        {icon && <Box marginTop="xxs">{icon}</Box>}
         <Box marginTop="xxs">
           {headingText && (
             <Text

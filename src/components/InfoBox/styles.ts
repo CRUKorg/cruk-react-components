@@ -9,19 +9,13 @@ type InfoBoxProps = SpacingProps & {
   headingTextColor?: string;
   descriptionText?: string;
   descriptionTextColor?: string;
-  iconName?: string;
-  iconColor?: string;
-  iconSize?: string;
-  borderColor?: string;
-  borderStyle?: string;
-  borderSize?: string;
   css?: string;
   theme: ThemeType;
 };
 
 export const StyledInfoBox = styled.div<InfoBoxProps>`
   background-color: ${({ backgroundColor, theme }: InfoBoxProps) =>
-    backgroundColor || "#F5F5F5"};
+    backgroundColor || theme.tokenColors.grey_100};
 
   padding: ${({ theme, backgroundColor }: InfoBoxProps) =>
     backgroundColor || theme.colors.backgroundLight ? theme.spacing.xxs : 0};
@@ -39,10 +33,6 @@ export const StyledInfoBox = styled.div<InfoBoxProps>`
     margin-right: ${({ theme }: InfoBoxProps) => theme.spacing.xs};
     margin-top: 3px;
   }
-
-  border: ${({ borderSize }: InfoBoxProps) => borderSize}
-    ${({ borderStyle }: InfoBoxProps) => borderStyle}
-    ${({ borderColor }: InfoBoxProps) => borderColor};
 
   ${(props: InfoBoxProps) =>
     props.css &&
