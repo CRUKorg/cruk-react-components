@@ -37,7 +37,7 @@ TemplateWithCustomBackground.args = {
   descriptionText:
     "This is a description block for the infobox with custom background",
   descriptionTextColor: "#fff",
-  icon: <IconFa faIcon={faCircleInfo} color="#fff" size="25px" />,
+  iconFa: <IconFa faIcon={faCircleInfo} color="#fff" size="25px" />,
 };
 
 export const InfoBoxWithChildren: Story = Template.bind({});
@@ -47,7 +47,7 @@ InfoBoxWithChildren.args = {
   headingTextColor: "#000",
   descriptionText: "This is a description block for the infobox with childrens",
   descriptionTextColor: "#000",
-  icon: <IconFa faIcon={faTriangleExclamation} color="#FF0000" size="25px" />,
+  iconFa: <IconFa faIcon={faTriangleExclamation} color="#FF0000" size="25px" />,
   children: (
     <Text color="#000" marginBottom="xs">
       This is children text block for infobox component
