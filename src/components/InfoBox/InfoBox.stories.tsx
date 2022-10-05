@@ -13,7 +13,9 @@ export default {
   component: InfoBox,
 } as Meta<InfoBoxProps>;
 
-const Template: Story = (args) => <InfoBox {...args} />;
+const Template: Story = (args) => (
+  <InfoBox headingText={""} descriptionText={""} {...args} />
+);
 
 export const InfoBoxDefault: Story = Template.bind({});
 InfoBoxDefault.storyName = "InfoBox";
@@ -23,7 +25,7 @@ InfoBoxDefault.args = {
   descriptionText:
     "This is a description block for the infobox default component",
   descriptionTextColor: "#000",
-  icon: <IconFa faIcon={faCircleCheck} color="#008000" size="25px" />,
+  iconFa: <IconFa faIcon={faCircleCheck} color="#008000" size="25px" />,
 };
 
 export const TemplateWithCustomBackground: Story = Template.bind({});

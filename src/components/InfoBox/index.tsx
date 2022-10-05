@@ -20,15 +20,15 @@ export type InfoBoxProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
     /** background color of box, this will add default padding */
     backgroundColor?: string;
-    headingText?: string;
+    headingText: string;
     headingTextColor?: string;
-    descriptionText?: string;
+    descriptionText: string;
     descriptionTextColor?: string;
     /** imported icon definition from "@fortawesome/free-solid-svg-icons" or "@fortawesome/free-brands-svg-icons" */
     css?: string;
     ref?: Ref<HTMLDivElement>;
     children?: ReactNode;
-    icon?: ReactNode;
+    iconFa?: ReactNode;
     /** styled-component polymorphic feature so you take the styling of a box and cast the component to be a "span" for example */
     as?: ElementType;
   };
@@ -47,7 +47,7 @@ const InfoBox: FunctionComponent<InfoBoxProps> = forwardRef(
       headingTextColor,
       descriptionText,
       descriptionTextColor,
-      icon,
+      iconFa,
       ...rest
     } = props;
     const foundTheme = useTheme();
@@ -58,21 +58,21 @@ const InfoBox: FunctionComponent<InfoBoxProps> = forwardRef(
 
     return (
       <StyledInfoBox theme={theme} {...rest} ref={ref}>
-        {icon && <Box marginTop="xxs">{icon}</Box>}
+        {iconFa && <Box marginTop="xxs">{iconFa}</Box>}
         <Box marginTop="xxs">
           {headingText && (
             <Text
               margin="none"
               textWeight={500}
               textSize="l"
-              textColor={headingTextColor}
+              textColor={headingTextColor || theme.tokenColors.black}
             >
               {headingText}
             </Text>
           )}
           {descriptionText && (
             <Text
-              textColor={descriptionTextColor}
+              textColor={descriptionTextColor || theme.tokenColors.black}
               marginBottom={!children ? "xs" : "none"}
             >
               {descriptionText}
