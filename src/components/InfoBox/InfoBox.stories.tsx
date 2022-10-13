@@ -13,41 +13,41 @@ export default {
   component: InfoBox,
 } as Meta<InfoBoxProps>;
 
-const Template: Story = (args) => (
-  <InfoBox headingText={""} descriptionText={""} {...args} />
+const Template: Story = (args: Partial<InfoBoxProps>) => (
+  <InfoBox titleText={""} descriptionText={""} {...args} />
 );
 
 export const InfoBoxDefault: Story = Template.bind({});
 InfoBoxDefault.storyName = "InfoBox";
 InfoBoxDefault.args = {
-  headingText: "InfoBox Default",
-  headingTextColor: "#000",
+  titleText: "InfoBox Default",
+  titleTextColor: "#000",
   descriptionText:
     "This is a description block for the infobox default component",
   descriptionTextColor: "#000",
-  iconFa: <IconFa faIcon={faCircleCheck} color="#008000" size="25px" />,
+  icon: <IconFa faIcon={faCircleCheck} color="#008000" size="1.5em" />,
 };
 
 export const TemplateWithCustomBackground: Story = Template.bind({});
 TemplateWithCustomBackground.storyName = "InfoBox With Custom Background";
 TemplateWithCustomBackground.args = {
   backgroundColor: "#E40173",
-  headingText: "InfoBox Custom Background",
-  headingTextColor: "#fff",
+  titleText: "InfoBox Custom Background",
+  titleTextColor: "#fff",
   descriptionText:
     "This is a description block for the infobox with custom background",
   descriptionTextColor: "#fff",
-  iconFa: <IconFa faIcon={faCircleInfo} color="#fff" size="25px" />,
+  icon: <IconFa faIcon={faCircleInfo} color="#fff" size="1.5em" />,
 };
 
 export const InfoBoxWithChildren: Story = Template.bind({});
 InfoBoxWithChildren.storyName = "InfoBox With Children";
 InfoBoxWithChildren.args = {
-  headingText: "InfoBox With Children",
-  headingTextColor: "#000",
+  titleText: "InfoBox With Children",
+  titleTextColor: "#000",
   descriptionText: "This is a description block for the infobox with childrens",
   descriptionTextColor: "#000",
-  iconFa: <IconFa faIcon={faTriangleExclamation} color="#FF0000" size="25px" />,
+  icon: <IconFa faIcon={faTriangleExclamation} color="#FF0000" size="2em" />,
   children: (
     <Text color="#000" marginBottom="xs">
       This is children text block for infobox component
