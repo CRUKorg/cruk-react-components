@@ -50,6 +50,7 @@ import UserBlockReadme from "../components/UserBlock/README.md";
 import crukTheme, { BREAKPOINT, COLORS } from "../themes/cruk";
 import su2cTheme from "../themes/su2c";
 import GlobalStyle from "../components/GlobalStyle";
+import { InfoBoxReadme } from "../components";
 
 const ThemeCheatSheetRoute = (props: RouteComponentProps) => (
   <ThemeCheatSheet />
@@ -294,6 +295,7 @@ const Docs = () => {
             <RouterLink to="/header">Header</RouterLink>
             <RouterLink to="/heading">Heading</RouterLink>
             <RouterLink to="/icon">Icon</RouterLink>
+            <RouterLink to="/info-box">InfoBox</RouterLink>
             <RouterLink to="/link">Link</RouterLink>
             <RouterLink to="/loader">Loader</RouterLink>
             <RouterLink to="/legendwrapper">LegendWrapper</RouterLink>
@@ -329,6 +331,7 @@ const Docs = () => {
               <HeadingReadme path="/heading" />
               <HeaderReadme path="/header" />
               <IconReadme path="/icon" />
+              <InfoBoxReadme path="/info-box" />
               <LinkReadme path="/link" />
               <LegendWrapperReadme path="/legendwrapper" />
               <LoaderReadme path="/loader" />
