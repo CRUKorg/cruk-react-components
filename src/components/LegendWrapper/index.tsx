@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { HTMLAttributes, ReactNode } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
 import defaultTheme from "../../themes/cruk";
@@ -7,7 +7,7 @@ import Text from "../Text";
 
 import { StyledFieldset, LegendSpan } from "./styles";
 
-export type LegendWrapperProps = {
+export type LegendWrapperProps = HTMLAttributes<HTMLLegendElement> & {
   children?: ReactNode;
   /** legend text */
   legendText: string;
@@ -33,6 +33,7 @@ export const LegendWrapper = ({
   errorMessage,
   hasError,
   hintText,
+  ...restOfHTMLAttributes
 }: LegendWrapperProps) => {
   const foundTheme = useTheme();
   const theme = {
@@ -53,7 +54,7 @@ export const LegendWrapper = ({
         hasHintText={!!hintText}
       >
         {legendText && (
-          <legend>
+          <legend {...restOfHTMLAttributes}>
             <LegendSpan hasHintText={!!hintText}>
               {legendText} {required && <span>(required)</span>}
             </LegendSpan>

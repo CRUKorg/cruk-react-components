@@ -61,7 +61,6 @@ export const StyledBadge = styled.span<StyleBadgeProps>`
     css`
       padding: 0;
       border-radius: 50%;
-      display: block;
       height: ${({
         size,
         theme: {
