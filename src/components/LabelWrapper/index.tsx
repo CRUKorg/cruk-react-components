@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from "react";
+import React, { LabelHTMLAttributes, ReactNode } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
 import Text from "../Text";
@@ -6,7 +6,7 @@ import defaultTheme from "../../themes/cruk";
 
 import { LabelText, Label } from "./styles";
 
-type LabelWrapperProps = {
+type LabelWrapperProps = LabelHTMLAttributes<HTMLLabelElement> & {
   /** label text */
   label: string;
   /** hint text or react element in it's place */
@@ -18,15 +18,14 @@ type LabelWrapperProps = {
   children?: ReactNode;
 };
 
-export const LabelWrapper: FunctionComponent<LabelWrapperProps> = (props) => {
-  const {
-    label,
-    hintText,
-    required,
-    hideRequiredInLabel = false,
-    children,
-    ...otherProps
-  } = props;
+export const LabelWrapper = ({
+  label,
+  hintText,
+  required,
+  hideRequiredInLabel = false,
+  children,
+  ...otherHTMLLabelProps
+}: LabelWrapperProps) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -44,7 +43,7 @@ export const LabelWrapper: FunctionComponent<LabelWrapperProps> = (props) => {
   return (
     <ThemeProvider theme={theme}>
       {label ? (
-        <Label {...otherProps}>
+        <Label {...otherHTMLLabelProps}>
           <LabelText hasHintText={!!hintText}>
             {label}{" "}
             {required && !hideRequiredInLabel && <span>(required)</span>}
