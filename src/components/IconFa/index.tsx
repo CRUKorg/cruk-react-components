@@ -1,6 +1,6 @@
 import React from "react";
 import { useTheme } from "styled-components";
-import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { IconDefinition } from "@fortawesome/fontawesome-common-types";
 import defaultTheme from "../../themes/cruk";
 
 import { StyledIcon } from "./styles";
