@@ -21,6 +21,15 @@ PaginationDefault.args = {
   pagerCallback: (n: number) => alert(n),
 };
 
+export const PaginationFirstPage: Story<PaginationProps> = Template.bind({});
+PaginationFirstPage.storyName = "Pagination 1st page";
+PaginationFirstPage.args = {
+  current: 1,
+  perPage: 10,
+  items: 101,
+  pagerCallback: (n: number) => alert(n),
+};
+
 const TemplateWithSU2C: Story<PaginationProps> = (args) => (
   <ThemeProvider theme={su2cTheme}>
     <GlobalStyle />
