@@ -137,3 +137,27 @@ To test specific component , go to .percy.yml and add the regex to match story t
 storybook:
 include: [UserBlock]
 ```
+
+### Maintaining
+
+## Releases
+
+Please update the version number in the package.json and follow the semver standards for version numbers.
+
+Make sure that your current node version is Node 16.
+Run `npm i` to make sure that the correct version in the lockfile.
+Update the README it which should list the changes with the release instructions are at the bottom of the file.
+Make sure that you have the correct permissions for the @cruk on NPM
+Run the release script with `npm run release` this should make and push the tag, build the lib and release it on NPM.
+
+## Dependencies
+
+If you update cypress version make sure you update it in the package.json and in the in docker compose file.
+
+It is also advices that if you make change to storybook you try and run it before merging and if you make changes to roll up and it's plug ins you try and run
+
+```bash
+npm run rollup:build-lib
+```
+
+and see if it can successfully build the library before running the release script
