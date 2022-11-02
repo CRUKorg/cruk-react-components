@@ -108,6 +108,7 @@ export const PagerLink = styled.a<PaginationStyledProps>`
     css`
       color: $ ${({ theme }: ThemeProps) => theme.colors.disabled};
       cursor: not-allowed;
+      pointer-events:none
       text-decoration: none;
       &:hover,
       &:focus,
