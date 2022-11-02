@@ -1,9 +1,4 @@
-import React, {
-  FunctionComponent,
-  MouseEvent,
-  ReactNode,
-  TouchEvent,
-} from "react";
+import React, { MouseEvent, ReactNode, TouchEvent } from "react";
 import { ThemeProvider, useTheme } from "styled-components";
 
 import defaultTheme from "../../themes/cruk";
@@ -32,7 +27,7 @@ export type PaginationProps = {
 Data is split into multiple pages and pagination is used to
 easily navigate through these pages.
  */
-const Pagination: FunctionComponent<PaginationProps> = ({
+const Pagination = ({
   current,
   items,
   hideLast,
@@ -40,7 +35,7 @@ const Pagination: FunctionComponent<PaginationProps> = ({
   perPage,
   searchParam = "page",
   children,
-}) => {
+}: PaginationProps) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -114,6 +109,8 @@ const Pagination: FunctionComponent<PaginationProps> = ({
               <PagerLink
                 name="Prev"
                 disabled={current === 1}
+                aria-disabled={current === 1}
+                {...(current === 1 && { tabIndex: -1 })}
                 {...(current !== 1 && linkProps(current - 1))}
               >
                 Prev
@@ -124,6 +121,8 @@ const Pagination: FunctionComponent<PaginationProps> = ({
               <PagerLink
                 name="Next"
                 disabled={current === totalPages}
+                aria-disabled={current === totalPages}
+                {...(current === totalPages && { tabIndex: -1 })}
                 {...(current !== totalPages && linkProps(current + 1))}
               >
                 Next
