@@ -80,8 +80,8 @@ export const HeaderStickyContainer = styled.div<HeaderStickyProps>`
         breakpoint: { desktop },
       },
     }: HeaderStickyProps) => desktop}) {
-    position: ${({ isSticky, isSmall }: HeaderStickyProps) =>
-      isSticky && isSmall ? "fixed" : "relative"};
+    position: ${({ isSticky }: HeaderStickyProps) =>
+      isSticky ? "fixed" : "relative"};
     height: ${({ isSmall, isSticky }: HeaderStickyProps) =>
       isSmall && isSticky ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE};
   }

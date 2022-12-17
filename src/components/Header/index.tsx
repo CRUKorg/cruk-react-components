@@ -18,7 +18,7 @@ import {
   ChildInner,
 } from "./styles";
 
-const HEADER_SCROLL_THRESHOLD = 0;
+const HEADER_SCROLL_THRESHOLD = 240;
 
 export type HeaderProps = HTMLAttributes<HTMLElement> & {
   /** flag which make header fixed to the top even when scrolling */
@@ -91,7 +91,7 @@ export const Header = ({
     [isSmall],
     null,
     true,
-    20
+    50
   );
 
   return (
