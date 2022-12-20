@@ -10,13 +10,13 @@ import { Avatar, crukTheme, su2cTheme } from "..";
 const content = () => (
   <>
     <Avatar />
-    <Avatar name="Sam" size="s" aria-label="sam's profile" />
-    <Avatar name="Sam" size="m" aria-label="sam's profile" />
-    <Avatar name="Sam" size="l" aria-label="sam's profile" />
-    <Avatar name="Sam" size="xl" aria-label="sam's profile" />
+    <Avatar name="Sam" size="s" alt="sam's profile" />
+    <Avatar name="Sam" size="m" alt="sam's profile" />
+    <Avatar name="Sam" size="l" alt="sam's profile" />
+    <Avatar name="Sam" size="xl" alt="sam's profile" />
     <Avatar
       name="Sam"
-      aria-label="sam's profile"
+      alt="sam's profile"
       url={`${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`}
     />
   </>
