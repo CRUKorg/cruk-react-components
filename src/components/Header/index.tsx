@@ -14,9 +14,11 @@ import {
   Logo,
   LogoWrapper,
   Tagline,
+  ChildWrapper,
+  ChildInner,
 } from "./styles";
 
-const HEADER_SCROLL_THRESHOLD = 66;
+const HEADER_SCROLL_THRESHOLD = 240;
 
 export type HeaderProps = HTMLAttributes<HTMLElement> & {
   /** flag which make header fixed to the top even when scrolling */
@@ -89,7 +91,7 @@ export const Header = ({
     [isSmall],
     null,
     true,
-    100
+    50
   );
 
   return (
@@ -121,7 +123,9 @@ export const Header = ({
                   {siteSlogan}
                 </Tagline>
               ) : null}
-              {children}
+              <ChildWrapper>
+                <ChildInner>{children}</ChildInner>
+              </ChildWrapper>
             </HeaderMainContent>
           </HeaderStickyContainer>
         </HeaderStickyPlaceHolder>
