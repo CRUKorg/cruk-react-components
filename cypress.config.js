@@ -4,9 +4,6 @@ const {
 } = require("@simonsmith/cypress-image-snapshot/plugin");
 
 module.exports = defineConfig({
-  e2e: {
-    baseUrl: "http://server:8080/",
-  },
   viewportWidth: 900,
   viewportHeight: 900,
   experimentalFetchPolyfill: true,

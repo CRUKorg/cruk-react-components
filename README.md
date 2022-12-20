@@ -47,13 +47,26 @@ Clone this repository
 git clone git@github.com:CRUKorg/cruk-react-components.git
 ```
 
-Start local development environment 💥
+Development is done through storybook
+
+```sh
+npm run storybook
+```
+
+you may need to run
+
+```sh
+npm run build-storybook
+```
+
+The docsite still works if you run
 
 ```sh
 npm run dev
 ```
 
 Then view the docs site at: http://127.0.0.1:8080/
+However this isn't as well maintained as the storybook stories and will soon be deprecated
 
 ## Testing
 
@@ -61,6 +74,7 @@ Jest: Unit testing,
 Cypress: Component function, accessibility and image snapshot tests (Image snapshot test are run in headless mode only they will be skipped in interactive mode).
 
 Run all tests Jest and Cypress including image snapshots
+Make sure you have the docker desktop app running in the background
 
 ```sh
  npm run test
@@ -75,10 +89,10 @@ npm run test:update
 Run Cypress interactive testing suite (functional and accessibility tests)
 
 ```sh
-npm run cypress
+npx cypress open --component
 ```
 
-Run Cypress headlessly including image snapshots
+Run Cypress headlessly including image snapshots, docker desktop app will need to be running in the background for any headless activities
 
 ```sh
 npm run cypress-headless
