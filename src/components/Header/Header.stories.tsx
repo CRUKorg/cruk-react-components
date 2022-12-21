@@ -10,7 +10,12 @@ export default {
   component: Header,
 } as Meta<HeaderProps>;
 
-const Template: Story<HeaderProps> = (args) => <Header {...args} />;
+const Template: Story<HeaderProps> = (args) => (
+  <div>
+    <Header {...args} />
+    <div style={{ height: "200vh" }}></div>
+  </div>
+);
 
 export const HeaderDefault: Story<HeaderProps> = Template.bind({});
 HeaderDefault.args = {
