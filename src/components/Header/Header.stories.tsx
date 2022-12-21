@@ -4,7 +4,6 @@ import { ThemeProvider } from "styled-components";
 
 import { su2cTheme, Button, GlobalStyle } from "..";
 import Header, { HeaderProps } from ".";
-import { zip } from "cypress/types/lodash";
 
 export default {
   title: "Header (experimental)",
