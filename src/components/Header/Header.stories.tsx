@@ -4,13 +4,19 @@ import { ThemeProvider } from "styled-components";
 
 import { su2cTheme, Button, GlobalStyle } from "..";
 import Header, { HeaderProps } from ".";
+import { zip } from "cypress/types/lodash";
 
 export default {
   title: "Header (experimental)",
   component: Header,
 } as Meta<HeaderProps>;
 
-const Template: Story<HeaderProps> = (args) => <Header {...args} />;
+const Template: Story<HeaderProps> = (args) => (
+  <div>
+    <Header {...args} />
+    <div style={{ height: "200vh" }}></div>
+  </div>
+);
 
 export const HeaderDefault: Story<HeaderProps> = Template.bind({});
 HeaderDefault.args = {

@@ -186,14 +186,15 @@ export const Tagline = styled.p<{ isSmall?: boolean; isSticky?: boolean }>`
   color: ${({ theme }: StyledHeaderProps) => theme.colors.primary};
   text-align: center;
   opacity: 0;
-
   transition: opacity ${ANIMATION_SPEED} ease;
+  display: none;
 
   @media (min-width: ${({
       theme: {
         breakpoint: { desktop },
       },
     }: StyledHeaderProps) => desktop}) {
+    display: block;
     opacity: ${({ isSmall, isSticky }: StyledHeaderProps) =>
       isSmall && isSticky ? 0 : 1};
   }
