@@ -13,8 +13,8 @@ import defaultTheme from "../../themes/cruk";
 import { TextProps } from "../Text";
 import { StyledLink, ChevyWithLevee } from "./styles";
 
-export type LinkProps = AnchorHTMLAttributes<HTMLElement> &
-  TextProps & {
+export type LinkProps = Omit<AnchorHTMLAttributes<HTMLElement>, "nonce"> &
+  Omit<TextProps, "as" | "ref"> & {
     /** link text hover colour */
     textHoverColor?: string;
     /** link appearance variant, undefined is a standarding link withing a text block */

@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import React from "react";
-import { mount } from "@cypress/react";
+import { mount } from "cypress/react";
 import { faBullseye } from "@fortawesome/free-solid-svg-icons";
 
 import TestWrapper from "../TestWrapper";

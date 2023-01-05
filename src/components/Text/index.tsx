@@ -3,6 +3,7 @@ import React, {
   HTMLAttributes,
   Ref,
   forwardRef,
+  ElementType,
 } from "react";
 import { useTheme } from "styled-components";
 
@@ -34,7 +35,7 @@ export type TextProps = SpacingProps &
     /** font weight theme.typography{fontWeightHeavy/fontWeightNormal/fontWeightMedium/fontWeightLight/fontWeightVLight} is better than a random number */
     textWeight?: number;
     /** styled-components polymorphism where you can set this to "span", "p" or "h2" it default to "p" */
-    as?: any;
+    as?: ElementType;
     /** word-break behaviour */
     wordBreak?: WordBreakType;
     /** overflow-wrap behaviour */
