@@ -14,7 +14,7 @@ import { TextProps } from "../Text";
 import { StyledLink, ChevyWithLevee } from "./styles";
 
 export type LinkProps = Omit<AnchorHTMLAttributes<HTMLElement>, "nonce"> &
-  Omit<TextProps, "as" | "ref"> & {
+  Omit<TextProps, "as" | "ref" | "nonce"> & {
     /** link text hover colour */
     textHoverColor?: string;
     /** link appearance variant, undefined is a standarding link withing a text block */
