@@ -112,7 +112,7 @@
     "babel-loader": "8.3.0",
     "babel-plugin-styled-components": "^2.0.2",
     "cypress": "^10.4.0",
-    "cypress-axe": "1.0.0",
+    "cypress-axe": "1.2.0",
     "cypress-plugin-tab": "^1.0.5",
     "eslint": "^8.30.0",
     "eslint-config-airbnb": "^19.0.4",
