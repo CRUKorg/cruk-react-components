@@ -2,7 +2,7 @@
 
 import React from "react";
 import styled from "styled-components";
-import { mount } from "@cypress/react";
+import { mount } from "cypress/react";
 
 import TestWrapper, { TestThemeWrapper } from "src/components/TestWrapper";
 import { su2cTheme, crukTheme, Carousel, Text } from "..";

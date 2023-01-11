@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import React, { ChangeEvent } from "react";
-import { mount } from "@cypress/react";
+import { mount } from "cypress/react";
 
 import { TestThemeWrapper } from "../TestWrapper";
 import { RadioConsent, su2cTheme, crukTheme } from "..";
