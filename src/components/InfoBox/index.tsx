@@ -78,7 +78,7 @@ const InfoBox: FunctionComponent<InfoBoxProps> = forwardRef(
             <Heading
               as="p"
               margin="none"
-              h3
+              h4
               marginBottom="xxs"
               textColor={titleTextColor || theme.colors.textDark}
             >
