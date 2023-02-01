@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2023-02-01
+
+### Added
+
+Attempt to fix font flicker with SSR issue with GlobalStyle and @font-face declarations [#636](https://github.com/CRUKorg/cruk-react-components/issues/#636)) but adding a GlobalStyleNoFontFace, the same as GlobalStyle but without font-face declarations, also added a Fontface module with a string function to add the styles in static location on a SSR server.
+
 ## [1.3.3] - 2023-01-05
 
 ### Change
