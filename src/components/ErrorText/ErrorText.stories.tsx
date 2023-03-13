@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { GlobalStyle, su2cTheme } from "..";
+import { bowelbabeTheme, GlobalStyle, su2cTheme } from "..";
 import ErrorText, { ErrorTextProps } from ".";
 
 export default {
@@ -28,5 +28,18 @@ const TemplateWithSU2C: Story = (args) => (
 export const SU2CErrorText: Story = TemplateWithSU2C.bind({});
 SU2CErrorText.storyName = "SU2C ErrorText";
 SU2CErrorText.args = {
+  children: "this is error text",
+};
+
+const TemplateWithBowelbabe: Story = (args) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
+    <ErrorText {...args} />
+  </ThemeProvider>
+);
+
+export const BowelbabeErrorText: Story = TemplateWithBowelbabe.bind({});
+BowelbabeErrorText.storyName = "Bowelbabe ErrorText";
+BowelbabeErrorText.args = {
   children: "this is error text",
 };
