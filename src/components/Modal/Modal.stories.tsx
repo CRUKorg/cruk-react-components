@@ -104,5 +104,5 @@ const TemplateWithBowelbabe: Story<ModalProps> = (args) => {
 };
 
 export const BowelbabeModal: Story<ModalProps> = TemplateWithBowelbabe.bind({});
-SU2CModal.storyName = "Bowelbabe Modal";
-SU2CModal.args = {};
+BowelbabeModal.storyName = "Bowelbabe Modal";
+BowelbabeModal.args = {};

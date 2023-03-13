@@ -120,13 +120,14 @@ export const FONT_SIZES: FontSizesType = {
 
 export const TYPOGRAPHY: TypographyType = {
   ...defaultTheme.typography,
-  // customFonts: [
-  //   {
-  //     family: "itc_avant_garde_pro_mdbold",
-  //     urlWoff: `${SITE_CONFIG.assetPath}fonts/itc_-_itcavantgardepro-bold-webfont.woff`,
-  //   },
-  // ],
-  // fontFamilyHeadings: "itc_avant_garde_pro_mdbold,Arial,sans-serif",
+  customFonts: [
+    {
+      family: "juana-semibold",
+      urlWoff: `${SITE_CONFIG.assetPath}fonts/juana-semibold-webfont.woff`,
+      urlWoff2: `${SITE_CONFIG.assetPath}fonts/juana-semibold-webfont.woff2`,
+    },
+  ],
+  fontFamilyHeadings: "juana-semibold,Arial,sans-serif",
   // headerLineHeight: "1.5em",
 };
 
