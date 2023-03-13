@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
-import { su2cTheme, Text, IconFa, GlobalStyle } from "..";
+import { su2cTheme, Text, IconFa, GlobalStyle, bowelbabeTheme } from "..";
 import Totaliser, { TotaliserProps } from ".";
 
 export default {
@@ -113,6 +113,68 @@ export const SU2CTotaliserCompact: Story<TotaliserProps> =
   TemplateWithSU2C.bind({});
 SU2CTotaliserCompact.storyName = "SU2C Totaliser Compact";
 SU2CTotaliserCompact.args = {
+  total: 99.99,
+  target: 100,
+  giftAid: 25,
+  isCompact: true,
+};
+
+const TemplateWithBowelbabe: Story<TotaliserProps> = (args) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
+    <Totaliser {...args} />
+  </ThemeProvider>
+);
+
+export const BowelbabeTotaliserWithTarget: Story<TotaliserProps> =
+  TemplateWithBowelbabe.bind({});
+BowelbabeTotaliserWithTarget.storyName = "Bowelbabe Totaliser With Target";
+BowelbabeTotaliserWithTarget.args = {
+  total: 50.0,
+  additionalAmount: 20.0,
+  target: 100,
+  giftAid: 25,
+};
+
+export const BowelbabeTotaliserWithoutTarget: Story<TotaliserProps> =
+  TemplateWithBowelbabe.bind({});
+BowelbabeTotaliserWithoutTarget.storyName =
+  "Bowelbabe Totaliser Without Target";
+BowelbabeTotaliserWithoutTarget.args = {
+  total: 99.99,
+  giftAid: 25,
+};
+
+export const BowelbabeTotaliserTextSummaryMessage: Story<TotaliserProps> =
+  TemplateWithBowelbabe.bind({});
+BowelbabeTotaliserTextSummaryMessage.storyName =
+  "Bowelbabe Totaliser Text Summary Message";
+BowelbabeTotaliserTextSummaryMessage.args = {
+  total: 99.99,
+  target: 100,
+  giftAid: 25,
+  summaryMessage: "Custom text summary message",
+};
+
+export const BowelbabeTotaliserComponentSummaryMessage: Story<TotaliserProps> =
+  TemplateWithBowelbabe.bind({});
+BowelbabeTotaliserComponentSummaryMessage.storyName =
+  "Bowelbabe Totaliser Component Summary Message";
+BowelbabeTotaliserComponentSummaryMessage.args = {
+  total: 99.99,
+  target: 100,
+  giftAid: 25,
+  summaryMessage: (
+    <Text>
+      Custom component summary message <IconFa faIcon={faEdit} />
+    </Text>
+  ),
+};
+
+export const BowelbabeTotaliserCompact: Story<TotaliserProps> =
+  TemplateWithBowelbabe.bind({});
+BowelbabeTotaliserCompact.storyName = "Bowelbabe Totaliser Compact";
+BowelbabeTotaliserCompact.args = {
   total: 99.99,
   target: 100,
   giftAid: 25,

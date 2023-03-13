@@ -3,7 +3,14 @@ import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 
-import { crukTheme, su2cTheme, Text, IconFa, GlobalStyle } from "..";
+import {
+  crukTheme,
+  su2cTheme,
+  Text,
+  IconFa,
+  GlobalStyle,
+  bowelbabeTheme,
+} from "..";
 import UserBlock, { UserBlockProps } from ".";
 
 export default {
@@ -73,6 +80,49 @@ SU2CUserBlockWithCustomAvatar.args = {
 export const SU2CUserBlockWithExtra: Story = TemplateWithSU2C.bind({});
 SU2CUserBlockWithExtra.storyName = "SU2C UserBlock With Extra Component";
 SU2CUserBlockWithExtra.args = {
+  name: "Sam Smith",
+  size: "s",
+  extra: (
+    <Text>
+      <IconFa faIcon={faClock} /> Just now
+    </Text>
+  ),
+};
+
+const TemplateWithBowelbabe: Story = (args) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
+    <UserBlock {...args} />
+  </ThemeProvider>
+);
+
+export const BowelbabeUserBlock: Story = TemplateWithBowelbabe.bind({});
+BowelbabeUserBlock.storyName = "Bowelbabe UserBlock";
+BowelbabeUserBlock.args = {};
+
+export const BowelbabeUserBlockWithName: Story = TemplateWithBowelbabe.bind({});
+BowelbabeUserBlockWithName.storyName = "Bowelbabe UserBlock With Name";
+BowelbabeUserBlockWithName.args = {
+  name: "Sam Smith",
+  size: "s",
+};
+
+export const BowelbabeUserBlockWithCustomAvatar: Story =
+  TemplateWithBowelbabe.bind({});
+BowelbabeUserBlockWithCustomAvatar.storyName =
+  "Bowelbabe UserBlock With Custom Avatar";
+BowelbabeUserBlockWithCustomAvatar.args = {
+  name: "Sam Smith",
+  size: "s",
+  avatarUrl: `${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`,
+};
+
+export const BowelbabeUserBlockWithExtra: Story = TemplateWithBowelbabe.bind(
+  {}
+);
+BowelbabeUserBlockWithExtra.storyName =
+  "Bowelbabe UserBlock With Extra Component";
+BowelbabeUserBlockWithExtra.args = {
   name: "Sam Smith",
   size: "s",
   extra: (

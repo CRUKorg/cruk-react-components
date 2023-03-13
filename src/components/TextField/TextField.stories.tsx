@@ -6,7 +6,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Button from "../Button";
 import IconFa from "../IconFa";
 
-import { GlobalStyle, su2cTheme } from "..";
+import { bowelbabeTheme, GlobalStyle, su2cTheme } from "..";
 import TextField, { TextFieldProps } from ".";
 
 export default {
@@ -100,6 +100,39 @@ export const SU2CTextFieldWithError: Story<TextFieldProps> =
   TemplateWithSU2C.bind({});
 SU2CTextFieldWithError.storyName = "SU2C TextField With Error";
 SU2CTextFieldWithError.args = {
+  value: undefined,
+  disabled: false,
+  required: false,
+  label: "TextField",
+  hintText: undefined,
+  hasError: true,
+  errorMessage: "error message",
+};
+
+const TemplateWithBowelbabe: Story<TextFieldProps> = (args) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
+    <TextField {...args} />
+  </ThemeProvider>
+);
+
+export const BowelbabeTextField: Story<TextFieldProps> =
+  TemplateWithBowelbabe.bind({});
+BowelbabeTextField.storyName = "Bowelbabe TextField";
+BowelbabeTextField.args = {
+  value: undefined,
+  disabled: false,
+  required: false,
+  label: "TextField",
+  hintText: undefined,
+  hasError: false,
+  errorMessage: undefined,
+};
+
+export const BowelbabeTextFieldWithError: Story<TextFieldProps> =
+  TemplateWithBowelbabe.bind({});
+BowelbabeTextFieldWithError.storyName = "Bowelbabe TextField With Error";
+BowelbabeTextFieldWithError.args = {
   value: undefined,
   disabled: false,
   required: false,

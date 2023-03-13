@@ -2,7 +2,7 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import { Story, Meta } from "@storybook/react";
 
-import { GlobalStyle, su2cTheme } from "..";
+import { bowelbabeTheme, GlobalStyle, su2cTheme } from "..";
 import Text, { TextProps } from ".";
 
 export default {
@@ -29,6 +29,20 @@ const TemplateWithSU2C: Story = (args) => (
 export const SU2CText: Story = TemplateWithSU2C.bind({});
 SU2CText.storyName = "SU2C Text";
 SU2CText.args = {
+  children: "This is text it defaults to a paragraph tag",
+  textColor: "textDark",
+};
+
+const TemplateWithBowelbabe: Story = (args) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
+    <Text {...args} />
+  </ThemeProvider>
+);
+
+export const BowelbabeText: Story = TemplateWithBowelbabe.bind({});
+BowelbabeText.storyName = "Bowelbabe Text";
+BowelbabeText.args = {
   children: "This is text it defaults to a paragraph tag",
   textColor: "textDark",
 };
