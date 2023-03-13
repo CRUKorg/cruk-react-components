@@ -69,6 +69,8 @@ export const COLORS: ColorsType = {
   circularProgressSecondary: TOKEN_COLORS.su2cRed,
   linkColor: TOKEN_COLORS.su2cOrange5,
   linkColorHover: TOKEN_COLORS.su2cRed,
+  linkColorSecondary: TOKEN_COLORS.su2cOrange5,
+  linkColorSecondaryHover: TOKEN_COLORS.su2cRed,
 
   backgroundLightColor: TOKEN_COLORS.su2cOrange2,
 

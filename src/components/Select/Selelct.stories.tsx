@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { su2cTheme } from "..";
+import { bowelbabeTheme, su2cTheme } from "..";
 import Select, { SelectProps } from ".";
 
 export default {
@@ -83,9 +83,56 @@ SU2CSelectWithLabel.args = {
   errorMessage: undefined,
 };
 
-export const SU2CSelectWithError: Story<SelectProps> = Template.bind({});
+export const SU2CSelectWithError: Story<SelectProps> = TemplateWithSU2C.bind(
+  {}
+);
 SU2CSelectWithError.storyName = "SU2C Select With Error";
 SU2CSelectWithError.args = {
+  disabled: false,
+  required: false,
+  value: "",
+  label: "Disabled option",
+  hintText: undefined,
+  hasError: true,
+  errorMessage: "error message",
+};
+
+const TemplateWithBowelbabe: Story<SelectProps> = (args) => {
+  const [selectedPet, setSelectedPet] = React.useState("");
+  return (
+    <ThemeProvider theme={bowelbabeTheme}>
+      <Select
+        {...args}
+        onChange={(e) => setSelectedPet(e.target.value)}
+        value={selectedPet}
+      >
+        <option disabled value="">
+          --Please choose an option--
+        </option>
+        <option value="dog">Dog</option>
+        <option value="cat">Cat</option>
+      </Select>
+    </ThemeProvider>
+  );
+};
+
+export const BowelbabeSelectWithLabel: Story<SelectProps> =
+  TemplateWithBowelbabe.bind({});
+BowelbabeSelectWithLabel.storyName = "Bowelbabe Select With Label";
+BowelbabeSelectWithLabel.args = {
+  disabled: false,
+  required: false,
+  value: "",
+  label: "Disabled option",
+  hintText: undefined,
+  hasError: false,
+  errorMessage: undefined,
+};
+
+export const BowelbabeSelectWithError: Story<SelectProps> =
+  TemplateWithBowelbabe.bind({});
+BowelbabeSelectWithError.storyName = "Bowelbabe Select With Error";
+BowelbabeSelectWithError.args = {
   disabled: false,
   required: false,
   value: "",

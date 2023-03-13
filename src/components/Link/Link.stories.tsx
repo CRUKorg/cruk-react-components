@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { su2cTheme, crukTheme } from "..";
+import { su2cTheme, crukTheme, bowelbabeTheme } from "..";
 import Link, { LinkProps } from ".";
 import GlobalStyle from "../GlobalStyle";
 
@@ -89,6 +89,49 @@ SU2CPrimary.args = {
 export const SU2CSecondary: Story<LinkProps> = TemplateWithSU2C.bind({});
 SU2CSecondary.storyName = "SU2C Secondary";
 SU2CSecondary.args = {
+  appearance: "secondary",
+  href: "http://www.google.com",
+  children: "Secondary link",
+  rel: undefined,
+  target: undefined,
+};
+
+const TemplateWithBowelbabe: Story<LinkProps> = (args) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
+    <Link {...args} />
+  </ThemeProvider>
+);
+
+export const BowelbabeDefault: Story<LinkProps> = TemplateWithBowelbabe.bind(
+  {}
+);
+BowelbabeDefault.storyName = "Bowelbabe Default";
+BowelbabeDefault.args = {
+  appearance: undefined,
+  href: "http://www.google.com",
+  children: "Default link",
+  rel: undefined,
+  target: undefined,
+};
+
+export const BowelbabePrimary: Story<LinkProps> = TemplateWithBowelbabe.bind(
+  {}
+);
+BowelbabePrimary.storyName = "Bowelbabe Primary";
+BowelbabePrimary.args = {
+  appearance: "primary",
+  href: "http://www.google.com",
+  children: "Primary link",
+  rel: undefined,
+  target: undefined,
+};
+
+export const BowelbabeSecondary: Story<LinkProps> = TemplateWithBowelbabe.bind(
+  {}
+);
+BowelbabeSecondary.storyName = "Bowelbabe Secondary";
+BowelbabeSecondary.args = {
   appearance: "secondary",
   href: "http://www.google.com",
   children: "Secondary link",

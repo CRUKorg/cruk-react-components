@@ -102,6 +102,8 @@ export const COLORS: ColorsType = {
   linkColorHover: TOKEN_COLORS.magenta_800,
   textDark: TOKEN_COLORS.grey_900,
   textLight: TOKEN_COLORS.white,
+  linkColorSecondary: TOKEN_COLORS.magenta_500,
+  linkColorSecondaryHover: TOKEN_COLORS.magenta_800,
 
   progressBar: TOKEN_COLORS.darkBlue_500,
   progressBarSecondary: TOKEN_COLORS.magenta_500,

@@ -82,6 +82,8 @@ export type ColorsType = {
   linkColorHover: string;
   textDark: string;
   textLight: string;
+  linkColorSecondary: string;
+  linkColorSecondaryHover: string;
 
   progressBar: string;
   progressBarSecondary: string;

@@ -47,7 +47,7 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
         (!appearance && useBackgroundStyleLinks
           ? "currentColor"
           : appearance && appearance === "primary"
-          ? colors.secondary
+          ? colors.linkColorSecondary
           : colors.linkColor)};
   text-decoration: ${({
     appearance,
@@ -100,12 +100,17 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
         utilities: { useBackgroundStyleLinks },
       },
       textHoverColor,
+      appearance,
     }: StyledLinkProps) =>
       !textHoverColor && useBackgroundStyleLinks
         ? colors.textDark
         : textHoverColor &&
           typeof colors[textHoverColor as ColorKeyType] !== "undefined"
         ? colors[textHoverColor as ColorKeyType]
-        : textHoverColor || colors.linkColorHover};
+        : textHoverColor
+        ? appearance && appearance === "primary"
+          ? colors.linkColorHover
+          : colors.linkColorSecondaryHover
+        : colors.linkColorHover};
   }
 `;

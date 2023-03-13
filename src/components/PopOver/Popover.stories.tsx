@@ -13,7 +13,14 @@ import {
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 
-import { su2cTheme, Box, Button, IconFa, GlobalStyle } from "..";
+import {
+  su2cTheme,
+  Box,
+  Button,
+  IconFa,
+  GlobalStyle,
+  bowelbabeTheme,
+} from "..";
 import PopOver, { PopOverProps } from ".";
 
 export default {
@@ -83,6 +90,31 @@ const TemplateWithSU2C: Story<PopOverProps> = (args) => (
   </ThemeProvider>
 );
 
-export const SU2CCheckbox: Story<PopOverProps> = TemplateWithSU2C.bind({});
-SU2CCheckbox.storyName = "SU2C PopOver";
-SU2CCheckbox.args = {};
+export const SU2CPopover: Story<PopOverProps> = TemplateWithSU2C.bind({});
+SU2CPopover.storyName = "SU2C PopOver";
+SU2CPopover.args = {};
+
+const TemplateWithBowelbabe: Story<PopOverProps> = (args) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
+    <Box margin="xxl">
+      <PopOver
+        {...args}
+        modalLabel="sharing options"
+        modalContent={content}
+        minWidth="23em"
+      >
+        <Button>
+          <IconFa faIcon={faShareAlt} />
+          Share top
+        </Button>
+      </PopOver>
+    </Box>
+  </ThemeProvider>
+);
+
+export const BowelbabePopover: Story<PopOverProps> = TemplateWithBowelbabe.bind(
+  {}
+);
+BowelbabePopover.storyName = "Bowelbabe PopOver";
+BowelbabePopover.args = {};

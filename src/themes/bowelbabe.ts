@@ -67,14 +67,16 @@ export const COLORS: ColorsType = {
   circularProgressSecondary: TOKEN_COLORS.bbGreen,
   linkColor: TOKEN_COLORS.bbPurple,
   linkColorHover: TOKEN_COLORS.bbPink,
+  linkColorSecondary: TOKEN_COLORS.bbPurple,
+  linkColorSecondaryHover: TOKEN_COLORS.bbPink,
 
   backgroundLightColor: TOKEN_COLORS.bbPastelGreen,
 
   collapseHeaderColor: TOKEN_COLORS.bbPink,
 
   loaderColor1: TOKEN_COLORS.bbPurple,
-  loaderColor2: TOKEN_COLORS.bbPink,
-  loaderColor3: TOKEN_COLORS.bbLightGreen,
+  loaderColor2: TOKEN_COLORS.bbLightGreen,
+  loaderColor3: TOKEN_COLORS.bbPink,
 
   paginationText: TOKEN_COLORS.bbPurple,
   paginationBackground: TOKEN_COLORS.bbPurple,
