@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { su2cTheme, Box, GlobalStyle } from "..";
+import { su2cTheme, Box, GlobalStyle, bowelbabeTheme } from "..";
 import CheckBox, { CheckBoxProps } from ".";
 
 export default {
@@ -104,6 +104,34 @@ const TemplateWithSU2C: Story = (args) => {
 export const SU2CCheckbox: Story = TemplateWithSU2C.bind({});
 SU2CCheckbox.storyName = "SU2C CheckBox";
 SU2CCheckbox.args = {
+  value: "one",
+  disabled: false,
+};
+
+const TemplateWithBowelbabe: Story = (args) => {
+  const [selected, setSelected] = React.useState<Array<string>>([]);
+  const handleChange = (value: string) => {
+    if (selected.indexOf(value) === -1) {
+      setSelected([...selected, value]);
+    } else {
+      setSelected(selected.filter((item) => item !== value));
+    }
+  };
+  return (
+    <ThemeProvider theme={bowelbabeTheme}>
+      <GlobalStyle />
+      <CheckBox
+        onChange={(e) => handleChange(e.target.value)}
+        checked={selected.indexOf("one") >= 0}
+        {...args}
+      />
+    </ThemeProvider>
+  );
+};
+
+export const BowelbabeCheckbox: Story = TemplateWithBowelbabe.bind({});
+BowelbabeCheckbox.storyName = "Bowelbabe CheckBox";
+BowelbabeCheckbox.args = {
   value: "one",
   disabled: false,
 };

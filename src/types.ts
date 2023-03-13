@@ -114,6 +114,8 @@ export type ColorsType = {
   buttonTertiaryTextHover: string;
   buttonTertiaryDisabledText: string;
 
+  collapseHeaderColor: string;
+
   selectionBorder: string;
   inputBorder: string;
 

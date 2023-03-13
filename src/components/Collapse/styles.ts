@@ -28,7 +28,7 @@ export const DefaultHeader = styled(Button)<{
   color: ${({ theme: { colors }, textColor }: DefaultHeaderProps) =>
     textColor && typeof colors[textColor as ColorKeyType] !== "undefined"
       ? colors[textColor as ColorKeyType]
-      : textColor || colors.secondary};
+      : textColor || colors.collapseHeaderColor};
   font-size: ${({
     theme: {
       fontSizes,
@@ -49,7 +49,7 @@ export const DefaultHeader = styled(Button)<{
     color: ${({ theme: { colors }, textColor }: DefaultHeaderProps) =>
       textColor && typeof colors[textColor as ColorKeyType] !== "undefined"
         ? colors[textColor as ColorKeyType]
-        : textColor || colors.secondary};
+        : textColor || colors.collapseHeaderColor};
   }
 `;
 

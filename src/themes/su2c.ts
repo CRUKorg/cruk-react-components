@@ -83,6 +83,8 @@ export const COLORS: ColorsType = {
   totaliserBubbleTextColor: TOKEN_COLORS.white,
   totaliserBubbleTotalColor: TOKEN_COLORS.white,
 
+  collapseHeaderColor: TOKEN_COLORS.su2cOrange5,
+
   buttonPrimaryBackground: TOKEN_COLORS.su2cOrange5,
   buttonPrimaryText: TOKEN_COLORS.su2cBlack,
   buttonPrimaryBorder: TOKEN_COLORS.su2cOrange5,

@@ -134,6 +134,8 @@ export const COLORS: ColorsType = {
   buttonTertiaryTextHover: TOKEN_COLORS.magenta_800,
   buttonTertiaryDisabledText: TOKEN_COLORS.grey_500,
 
+  collapseHeaderColor: TOKEN_COLORS.magenta_500,
+
   selectionBorder: TOKEN_COLORS.grey_500,
 
   textInputBorder: TOKEN_COLORS.grey_900,

@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { su2cTheme, Text, Box, GlobalStyle } from "..";
+import { su2cTheme, Text, Box, GlobalStyle, bowelbabeTheme } from "..";
 import Collapse, { CollapseProps } from ".";
 
 export default {
@@ -110,6 +110,73 @@ export const SU2CCollapseWitCustomHeader: Story<CollapseProps> =
   TemplateWithSU2C.bind({});
 SU2CCollapseWitCustomHeader.storyName = "SU2C Collapse With Custom Header";
 SU2CCollapseWitCustomHeader.args = {
+  id: "custom",
+  headerComponent: (
+    <Box backgroundColor="primary">
+      <Text textColor="textOnPrimary">This is box header click me</Text>
+    </Box>
+  ),
+  children: (
+    <Box backgroundColor="primary">
+      <Text textColor="textOnPrimary">This is box</Text>
+    </Box>
+  ),
+};
+
+////
+
+const TemplateWithBowelbabe: Story<CollapseProps> = (args) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
+    <Collapse {...args} />
+  </ThemeProvider>
+);
+
+export const BowelbabeCollapseWithTextHeader: Story<CollapseProps> =
+  TemplateWithBowelbabe.bind({});
+BowelbabeCollapseWithTextHeader.storyName =
+  "Bowelbabe Collapse With Text Header";
+BowelbabeCollapseWithTextHeader.args = {
+  id: "default",
+  headerTitleText: "Lorem Ipsum",
+  children: (
+    <Text>
+      {`Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s, when an unknown printer took a galley of type and scrambled it to
+      make a type specimen book. It has survived not only five centuries, but
+      also the leap into electronic typesetting, remaining essentially
+      unchanged. It was popularised in the 1960s with the release of Letraset
+      sheets containing Lorem Ipsum passages, and more recently with desktop
+      publishing software like Aldus PageMaker including versions of`}
+    </Text>
+  ),
+};
+
+export const BowelbabeCollapseWithModifiedText: Story<CollapseProps> =
+  TemplateWithBowelbabe.bind({});
+BowelbabeCollapseWithModifiedText.storyName =
+  "Bowelbabe Collapse With Modified Text";
+BowelbabeCollapseWithModifiedText.args = {
+  id: "default",
+  headerTitleText:
+    "A long title with headerTitleTextColor and headerTitleTextSize",
+  headerTitleTextColor: "primary",
+  headerTitleTextSize: "xl",
+  children: (
+    <Text>
+      {`Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s`}
+    </Text>
+  ),
+};
+
+export const BowelbabeCollapseWitCustomHeader: Story<CollapseProps> =
+  TemplateWithBowelbabe.bind({});
+BowelbabeCollapseWitCustomHeader.storyName =
+  "Bowelbabe Collapse With Custom Header";
+BowelbabeCollapseWitCustomHeader.args = {
   id: "custom",
   headerComponent: (
     <Box backgroundColor="primary">

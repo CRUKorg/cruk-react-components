@@ -29,9 +29,6 @@ export const AVATAR: AvatarType = {
 
 export const BUTTON: ButtonType = {
   ...defaultTheme.button,
-  borderRadius: "1.5rem",
-  borderRadiusLarge: "2rem",
-  textTransform: "uppercase",
 };
 
 export const BREAKPOINT: BreakPointType = {
@@ -72,6 +69,8 @@ export const COLORS: ColorsType = {
   linkColorHover: TOKEN_COLORS.bbPink,
 
   backgroundLightColor: TOKEN_COLORS.bbPastelGreen,
+
+  collapseHeaderColor: TOKEN_COLORS.bbPink,
 
   loaderColor1: TOKEN_COLORS.bbPurple,
   loaderColor2: TOKEN_COLORS.bbPink,
