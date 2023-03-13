@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { GlobalStyle, su2cTheme, crukTheme } from "..";
+import { GlobalStyle, su2cTheme, crukTheme, bowelbabeTheme } from "..";
 import Avatar, { AvatarProps } from ".";
 
 export default {
@@ -89,6 +89,49 @@ SU2CLarge.args = {
 export const SU2CExtraLarge: Story = TemplateWithSU2C.bind({});
 SU2CExtraLarge.storyName = "SU2C Extra Large";
 SU2CExtraLarge.args = {
+  name: "Sam",
+  size: "xl",
+  alt: "sam's profile",
+};
+
+const TemplateWithBowelbabe: Story = (args) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
+    <Avatar {...args} />
+  </ThemeProvider>
+);
+
+export const BowelbabeDefault: Story = TemplateWithBowelbabe.bind({});
+BowelbabeDefault.storyName = "Bowelbabe Default";
+BowelbabeDefault.args = {};
+
+export const BowelbabeSmall: Story = TemplateWithBowelbabe.bind({});
+BowelbabeSmall.storyName = "Bowelbabe Small";
+BowelbabeSmall.args = {
+  name: "Sam",
+  size: "s",
+  alt: "sam's profile",
+};
+
+export const BowelbabeMedium: Story = TemplateWithBowelbabe.bind({});
+BowelbabeMedium.storyName = "Bowelbabe Medium";
+BowelbabeMedium.args = {
+  name: "Sam",
+  size: "m",
+  alt: "sam's profile",
+};
+
+export const BowelbabeLarge: Story = TemplateWithBowelbabe.bind({});
+BowelbabeLarge.storyName = "Bowelbabe large";
+BowelbabeLarge.args = {
+  name: "Sam",
+  size: "l",
+  alt: "sam's profile",
+};
+
+export const BowelbabeExtraLarge: Story = TemplateWithBowelbabe.bind({});
+BowelbabeExtraLarge.storyName = "Bowelbabe Extra Large";
+BowelbabeExtraLarge.args = {
   name: "Sam",
   size: "xl",
   alt: "sam's profile",
