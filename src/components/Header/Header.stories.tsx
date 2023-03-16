@@ -20,7 +20,7 @@ const Template: Story<HeaderProps> = (args) => (
 export const HeaderDefault: Story<HeaderProps> = Template.bind({});
 HeaderDefault.args = {
   siteSlogan: "Header slogan here",
-  children: <Button>Child component</Button>,
+  children: <Button>Log in</Button>,
   isSticky: false,
   fullWidth: false,
 };
@@ -52,7 +52,7 @@ export const BowelbabeHeader: Story = TemplateWithBowelbabe.bind({});
 BowelbabeHeader.storyName = "Bowelbabe Header";
 BowelbabeHeader.args = {
   siteSlogan: "Header slogan here",
-  children: <Button>Child component</Button>,
+  children: <Button>Log in</Button>,
   isSticky: false,
   fullWidth: false,
 };

@@ -20,7 +20,8 @@ export const UTILITIES: UtilitiesType = {
 
 export const SITE_CONFIG: SiteConfigType = {
   ...defaultTheme.siteConfig,
-  // logoSrc: "https://rcl.assets.cancerresearchuk.org/images/logos/su2c-160.png",
+  logoSrc:
+    "https://rcl.assets.cancerresearchuk.org/images/logos/bowelbabe-logo-160.png",
 };
 
 export const AVATAR: AvatarType = {
@@ -29,6 +30,7 @@ export const AVATAR: AvatarType = {
 
 export const BUTTON: ButtonType = {
   ...defaultTheme.button,
+  horizontalPadding: "1rem",
 };
 
 export const BREAKPOINT: BreakPointType = {

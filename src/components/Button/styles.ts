@@ -31,7 +31,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   padding: ${({ theme, isIconButton }: StyledButtonProps) =>
     isIconButton
       ? "0"
-      : `calc( (${BUTTON_HEIGHT} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m}`};
+      : `calc( (${BUTTON_HEIGHT} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.button.horizontalPadding}`};
   width: ${({ isIconButton }: StyledButtonProps) =>
     isIconButton ? `${BUTTON_HEIGHT}` : "auto"};
   min-width: ${({ isIconButton }: StyledButtonProps) =>

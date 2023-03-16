@@ -42,6 +42,7 @@ export type ButtonType = {
   buttonBorderThickness: string;
   textDecoration: string;
   textTransform: string;
+  horizontalPadding: string;
 };
 
 export type ButtonAppearanceType = "primary" | "secondary" | "tertiary";
