@@ -13,10 +13,10 @@ const content = () => (
       <Text textColor="textLight">This is box</Text>
     </Box>
     <Box backgroundColor="secondary">
-      <Text textColor="textLight">This is box</Text>
+      <Text textColor="textOnSecondary">This is box</Text>
     </Box>
     <Box backgroundColor="secondary">
-      <Text textColor="textLight">default spacing</Text>
+      <Text textColor="textOnSecondary">default spacing</Text>
     </Box>
     <Box backgroundColor="secondary" paddingVertical="xl" paddingBottom="xs">
       <Text textColor="textOnSecondary">{`paddingVertical="xl" paddingBottom="xs"`}</Text>
