@@ -107,11 +107,24 @@ describe("RadioConsent", () => {
     cy.document().its("fonts.status").should("equal", "loaded");
     cy.get("#radios").first().matchImageSnapshot();
   });
+
   it("should match SU2C snapshot", () => {
     Cypress.config("waitForAnimations", true);
     Cypress.config("animationDistanceThreshold", 2);
     mount(
       <TestThemeWrapper theme={su2cTheme}>
+        {uncontrolledContent()}
+      </TestThemeWrapper>
+    );
+    cy.document().its("fonts.status").should("equal", "loaded");
+    cy.get("#radios").first().matchImageSnapshot();
+  });
+
+  it("should match Bowelbabe snapshot", () => {
+    Cypress.config("waitForAnimations", true);
+    Cypress.config("animationDistanceThreshold", 2);
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>
         {uncontrolledContent()}
       </TestThemeWrapper>
     );

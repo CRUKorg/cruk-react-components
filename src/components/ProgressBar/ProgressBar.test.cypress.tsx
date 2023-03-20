@@ -4,7 +4,7 @@ import React from "react";
 import { mount } from "cypress/react";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { ProgressBar, Text, crukTheme, su2cTheme } from "..";
+import { ProgressBar, Text, crukTheme, su2cTheme, bowelbabeTheme } from "..";
 
 const content = () => (
   <>
@@ -40,8 +40,10 @@ describe("ProgressBar", () => {
     });
   });
 
-  it("is accessible CRUK theme", () => {
-    mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
+  it("is accessible Bowelbabe theme", () => {
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>{content()}</TestThemeWrapper>
+    );
     cy.injectAxe();
     cy.checkA11y("body");
   });

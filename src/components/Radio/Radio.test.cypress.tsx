@@ -103,4 +103,16 @@ describe("Radio", () => {
     cy.document().its("fonts.status").should("equal", "loaded");
     cy.get("#radios").first().matchImageSnapshot();
   });
+
+  it("should match Bowelbabe snapshot", () => {
+    Cypress.config("waitForAnimations", true);
+    Cypress.config("animationDistanceThreshold", 2);
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>
+        {uncontrolledRadio()}
+      </TestThemeWrapper>
+    );
+    cy.document().its("fonts.status").should("equal", "loaded");
+    cy.get("#radios").first().matchImageSnapshot();
+  });
 });

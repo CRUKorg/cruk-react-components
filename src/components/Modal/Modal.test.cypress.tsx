@@ -117,6 +117,18 @@ describe("Modal", () => {
     );
     cy.get('[aria-modal="true"]').first().matchImageSnapshot();
   });
+
+  it("should match Bowelbabe snapshot", () => {
+    Cypress.config("waitForAnimations", true);
+    Cypress.config("animationDistanceThreshold", 2);
+    cy.document().its("fonts.status").should("equal", "loaded");
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>
+        {ModalOnlyContent()}
+      </TestThemeWrapper>
+    );
+    cy.get('[aria-modal="true"]').first().matchImageSnapshot();
+  });
 });
 
 describe("Modal behviour", () => {
