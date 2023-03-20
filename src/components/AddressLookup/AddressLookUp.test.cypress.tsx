@@ -5,7 +5,7 @@ import { mount } from "cypress/react";
 
 import { TestThemeWrapper, TestWrapper } from "../TestWrapper";
 
-import { AddressLookup, crukTheme, su2cTheme } from "..";
+import { AddressLookup, bowelbabeTheme, crukTheme, su2cTheme } from "..";
 
 const Content = () => (
   <fieldset>
@@ -65,6 +65,16 @@ describe("AddressLookup", () => {
     });
   });
 
+  it("is accessible Bowelbabe theme", () => {
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>
+        <Content />
+      </TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
   it("can find address", () => {
     mount(
       <TestWrapper>
@@ -100,12 +110,29 @@ describe("AddressLookup", () => {
     );
     cy.get("body").first().matchImageSnapshot();
   });
+
   it("should match SU2C snapshot", () => {
     Cypress.config("waitForAnimations", true);
     Cypress.config("animationDistanceThreshold", 2);
     cy.document().its("fonts.status").should("equal", "loaded");
     mount(
       <TestThemeWrapper theme={su2cTheme}>
+        <Content />
+      </TestThemeWrapper>
+    );
+    cy.getInputByLabel("Home address").type("N10").blur();
+    cy.contains("li", "N17 0AB High Road, London - 14 Addresses").should(
+      "exist"
+    );
+    cy.get("body").first().matchImageSnapshot();
+  });
+
+  it("should match Bowelbabe snapshot", () => {
+    Cypress.config("waitForAnimations", true);
+    Cypress.config("animationDistanceThreshold", 2);
+    cy.document().its("fonts.status").should("equal", "loaded");
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>
         <Content />
       </TestThemeWrapper>
     );

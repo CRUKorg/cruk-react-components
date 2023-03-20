@@ -4,7 +4,14 @@ import React from "react";
 import { mount } from "cypress/react";
 
 import { TestThemeWrapper } from "../TestWrapper";
-import { Modal, Button, Heading, su2cTheme, crukTheme } from "..";
+import {
+  Modal,
+  Button,
+  Heading,
+  su2cTheme,
+  crukTheme,
+  bowelbabeTheme,
+} from "..";
 
 const ModalOnlyContent = () => (
   <Modal closeFunction={() => {}} showCloseButton modalName="test">
@@ -73,6 +80,21 @@ describe("Modal", () => {
         tabindex: { enabled: false }, // TODO this is disabled because this is how focus lock works and this IS what we want for a11y.
         "color-contrast": { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
       },
+    });
+
+    it("is accessible Bowelbabe theme", () => {
+      mount(
+        <TestThemeWrapper theme={bowelbabeTheme}>
+          <Content />
+        </TestThemeWrapper>
+      );
+      cy.injectAxe();
+      cy.contains("Show me a modal").click();
+      cy.checkA11y("body", {
+        rules: {
+          tabindex: { enabled: false }, // TODO this is disabled because this is how focus lock works and this IS what we want for a11y.
+        },
+      });
     });
   });
 

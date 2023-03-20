@@ -5,7 +5,7 @@ import { mount } from "cypress/react";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { UserBlock, IconFa, su2cTheme, crukTheme } from "..";
+import { UserBlock, IconFa, su2cTheme, crukTheme, bowelbabeTheme } from "..";
 
 const content = () => (
   <>
@@ -44,6 +44,14 @@ describe("UserBlock", () => {
         "color-contrast": { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
       },
     });
+  });
+
+  it("is accessible Bowelbabe theme", () => {
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>{content()}</TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
   });
 
   it("should match snapshot", () => {

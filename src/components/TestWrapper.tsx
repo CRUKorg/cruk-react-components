@@ -6,6 +6,7 @@ import su2cTheme from "src/themes/su2c";
 import Heading from "src/components/Heading";
 import Box from "src/components/Box";
 import { ThemeType } from "src/types";
+import { bowelbabeTheme } from ".";
 
 type TestThemeWrapperProps = {
   theme?: ThemeType;
@@ -45,6 +46,11 @@ export const TestWrapper = ({ children }: TestWrapperProps) => (
       <ThemeProvider theme={su2cTheme}>
         <GlobalStyle />
         <Heading>SU2C Theme</Heading>
+        {children}
+      </ThemeProvider>
+      <ThemeProvider theme={bowelbabeTheme}>
+        <GlobalStyle />
+        <Heading>Bowelbabe Theme</Heading>
         {children}
       </ThemeProvider>
     </div>

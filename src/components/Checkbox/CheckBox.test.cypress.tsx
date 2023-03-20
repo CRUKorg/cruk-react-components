@@ -4,7 +4,7 @@ import React from "react";
 import { mount } from "cypress/react";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { Box, Checkbox, crukTheme, su2cTheme } from "..";
+import { bowelbabeTheme, Box, Checkbox, crukTheme, su2cTheme } from "..";
 
 const unControlledContent = () => (
   <>
@@ -44,6 +44,16 @@ describe("Checkbox", () => {
         "color-contrast": { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
       },
     });
+  });
+
+  it("is accessible Bowelbabe theme", () => {
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>
+        {unControlledContent()}
+      </TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
   });
 
   it("should match snapshot", () => {

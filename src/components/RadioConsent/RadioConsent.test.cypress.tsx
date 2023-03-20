@@ -4,7 +4,7 @@ import React, { ChangeEvent } from "react";
 import { mount } from "cypress/react";
 
 import { TestThemeWrapper } from "../TestWrapper";
-import { RadioConsent, su2cTheme, crukTheme } from "..";
+import { RadioConsent, su2cTheme, crukTheme, bowelbabeTheme } from "..";
 
 const uncontrolledContent = () => (
   <div id="radios">
@@ -88,6 +88,16 @@ describe("RadioConsent", () => {
         "color-contrast": { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
       },
     });
+  });
+
+  it("is accessible Bowelbabe theme", () => {
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>
+        <Content />
+      </TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
   });
 
   it("should match CRUK snapshot", () => {

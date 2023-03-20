@@ -40,6 +40,12 @@ describe("ProgressBar", () => {
     });
   });
 
+  it("is accessible CRUK theme", () => {
+    mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
   it("should match snapshot", () => {
     Cypress.config("waitForAnimations", true);
     Cypress.config("animationDistanceThreshold", 2);

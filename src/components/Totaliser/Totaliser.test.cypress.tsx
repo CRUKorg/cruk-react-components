@@ -4,7 +4,7 @@ import React from "react";
 import { mount } from "cypress/react";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { Totaliser, Box, Text, su2cTheme, crukTheme } from "..";
+import { Totaliser, Box, Text, su2cTheme, crukTheme, bowelbabeTheme } from "..";
 
 const content = () => (
   <>
@@ -43,11 +43,7 @@ describe("Totaliser", () => {
   it("is accessible CRUK theme", () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
     cy.injectAxe();
-    cy.checkA11y("body", {
-      rules: {
-        "color-contrast": { enabled: false }, // TODO cyan baground white text doesn't pass new designs to come
-      },
-    });
+    cy.checkA11y("body");
   });
 
   it("is accessible SU2C theme", () => {
@@ -58,6 +54,14 @@ describe("Totaliser", () => {
         "color-contrast": { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
       },
     });
+  });
+
+  it("is accessible Bowelbabe theme", () => {
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>{content()}</TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
   });
 
   it("should match snapshot", () => {

@@ -10,7 +10,7 @@ import {
 import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { su2cTheme, crukTheme, IconFa, Button, Box } from "..";
+import { su2cTheme, crukTheme, IconFa, Button, Box, bowelbabeTheme } from "..";
 
 const content = () => (
   <Box backgroundColor="backgroundLight" padding="none">
@@ -67,6 +67,14 @@ describe("Button", () => {
         "color-contrast": { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
       },
     });
+  });
+
+  it("is accessible Bowelbabe theme", () => {
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>{content()}</TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
   });
 
   it("should match snapshot", () => {
