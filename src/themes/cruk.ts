@@ -46,6 +46,7 @@ export const BUTTON: ButtonType = {
   buttonBorderThickness: "2px",
   textDecoration: "none",
   textTransform: "none",
+  horizontalPadding: "2em",
 };
 
 export const BREAKPOINT: BreakPointType = {
