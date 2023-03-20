@@ -1,6 +1,6 @@
 {
   "name": "@cruk/cruk-react-components",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "React components implementing CRUK and SU2C designs",
   "license": "UNLICENSED",
   "publishConfig": {
@@ -15,7 +15,7 @@
     "lib"
   ],
   "engines": {
-    "node": "^14 || ^16"
+    "node": "^14 || ^16 || ^18"
   },
   "scripts": {
     "dev": "NODE_ENV=development npm i && npm run start",
