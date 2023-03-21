@@ -42,8 +42,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "eslint:test": "eslint src",
-    "eslint:fix": "eslint src --fix",
-    "prepare": "husky install"
+    "eslint:fix": "eslint src --fix"
   },
   "repository": {
     "type": "git",
