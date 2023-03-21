@@ -43,8 +43,7 @@
     "build-storybook": "build-storybook",
     "eslint:test": "eslint src",
     "eslint:fix": "eslint src --fix",
-    "prepare": "husky install",
-    "precommit": "npm run prettier:test-staged && npm run eslint:test-staged"
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
