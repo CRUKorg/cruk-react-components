@@ -4,7 +4,7 @@ import React from "react";
 import { mount } from "cypress/react";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { Header, Button, crukTheme, su2cTheme } from "..";
+import { Header, Button, crukTheme, su2cTheme, bowelbabeTheme } from "..";
 
 const content = () => (
   <Header siteSlogan="Header slogan here">
@@ -111,6 +111,22 @@ describe("Header", () => {
         "color-contrast": { enabled: false }, // TODO disabled because SU2C links do not pass WCAG AA.
       },
     });
+  });
+
+  it("is accessible Bowelbabe", () => {
+    cy.viewport(1000, 480); // desktop breakpoint for full size header
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>
+        <Header siteSlogan="Header slogan here">
+          <Button>Child component</Button>
+        </Header>
+        <div id="main" tabIndex={-1}>
+          blah
+        </div>
+      </TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
   });
 
   it("should match snapshot", () => {

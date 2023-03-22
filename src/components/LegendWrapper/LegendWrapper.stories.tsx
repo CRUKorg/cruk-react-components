@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
-import { su2cTheme, GlobalStyle } from "..";
+import { su2cTheme, GlobalStyle, bowelbabeTheme } from "..";
 import Radio from "../Radio";
 import CheckBox from "../Checkbox";
 
@@ -214,6 +214,49 @@ export const SU2CLegendWrapperRadioError: Story<LegendWrapperProps> =
 SU2CLegendWrapperRadioError.storyName =
   "SU2C LegendWrapper with Error and Radio Button";
 SU2CLegendWrapperRadioError.args = {
+  legendText: "Legend Example",
+  hasError: true,
+  errorMessage: "Error message",
+  hintText: "This is hint text",
+};
+
+const TemplateWithBowelbabe: Story<LegendWrapperProps> = (args) => {
+  const [selected, setSelected] = useState("one");
+  const handleChange = (value: string) => {
+    setSelected(value);
+  };
+  return (
+    <ThemeProvider theme={bowelbabeTheme}>
+      <GlobalStyle />
+      <LegendWrapper {...args}>
+        <Radio
+          onChange={(e) => handleChange(e.target.value)}
+          checked={selected === "one"}
+          hasError={true}
+          name="example2One"
+          value="one"
+        >
+          Option one
+        </Radio>
+        <Radio
+          onChange={(e) => handleChange(e.target.value)}
+          checked={selected === "two"}
+          hasError={true}
+          name="example2Two"
+          value="two"
+        >
+          Option two
+        </Radio>
+      </LegendWrapper>
+    </ThemeProvider>
+  );
+};
+
+export const BowelbabeLegendWrapperRadioError: Story<LegendWrapperProps> =
+  TemplateWithBowelbabe.bind({});
+BowelbabeLegendWrapperRadioError.storyName =
+  "Bowelbabe LegendWrapper with Error and Radio Button";
+BowelbabeLegendWrapperRadioError.args = {
   legendText: "Legend Example",
   hasError: true,
   errorMessage: "Error message",

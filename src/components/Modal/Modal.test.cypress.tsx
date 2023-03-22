@@ -4,7 +4,14 @@ import React from "react";
 import { mount } from "cypress/react";
 
 import { TestThemeWrapper } from "../TestWrapper";
-import { Modal, Button, Heading, su2cTheme, crukTheme } from "..";
+import {
+  Modal,
+  Button,
+  Heading,
+  su2cTheme,
+  crukTheme,
+  bowelbabeTheme,
+} from "..";
 
 const ModalOnlyContent = () => (
   <Modal closeFunction={() => {}} showCloseButton modalName="test">
@@ -74,6 +81,21 @@ describe("Modal", () => {
         "color-contrast": { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
       },
     });
+
+    it("is accessible Bowelbabe theme", () => {
+      mount(
+        <TestThemeWrapper theme={bowelbabeTheme}>
+          <Content />
+        </TestThemeWrapper>
+      );
+      cy.injectAxe();
+      cy.contains("Show me a modal").click();
+      cy.checkA11y("body", {
+        rules: {
+          tabindex: { enabled: false }, // TODO this is disabled because this is how focus lock works and this IS what we want for a11y.
+        },
+      });
+    });
   });
 
   it("should match CRUK snapshot", () => {
@@ -90,6 +112,18 @@ describe("Modal", () => {
     cy.document().its("fonts.status").should("equal", "loaded");
     mount(
       <TestThemeWrapper theme={su2cTheme}>
+        {ModalOnlyContent()}
+      </TestThemeWrapper>
+    );
+    cy.get('[aria-modal="true"]').first().matchImageSnapshot();
+  });
+
+  it("should match Bowelbabe snapshot", () => {
+    Cypress.config("waitForAnimations", true);
+    Cypress.config("animationDistanceThreshold", 2);
+    cy.document().its("fonts.status").should("equal", "loaded");
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>
         {ModalOnlyContent()}
       </TestThemeWrapper>
     );

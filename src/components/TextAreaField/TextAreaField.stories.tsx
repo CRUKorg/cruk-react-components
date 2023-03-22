@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { GlobalStyle, su2cTheme } from "..";
+import { bowelbabeTheme, GlobalStyle, su2cTheme } from "..";
 import TextAreaField, { TextAreaFieldProps } from ".";
 
 export default {
@@ -73,6 +73,44 @@ export const SU2CTextAreaFieldWithError: Story<TextAreaFieldProps> =
   TemplateWithSU2C.bind({});
 SU2CTextAreaFieldWithError.storyName = "SU2C TextAreaField With Error";
 SU2CTextAreaFieldWithError.args = {
+  value: undefined,
+  disabled: false,
+  required: false,
+  label: "TextAreaField",
+  hintText: undefined,
+  resize: "horizontal",
+  lineCount: 5,
+  hasError: true,
+  errorMessage: "error message",
+};
+
+const TemplateWithBowelbabe: Story<TextAreaFieldProps> = (args) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
+    <TextAreaField {...args} />
+  </ThemeProvider>
+);
+
+export const BowelbabeTextAreaField: Story<TextAreaFieldProps> =
+  TemplateWithBowelbabe.bind({});
+BowelbabeTextAreaField.storyName = "Bowelbabe TextAreaField";
+BowelbabeTextAreaField.args = {
+  value: undefined,
+  disabled: false,
+  required: false,
+  label: "TextAreaField",
+  hintText: undefined,
+  resize: "horizontal",
+  lineCount: 5,
+  hasError: false,
+  errorMessage: undefined,
+};
+
+export const BowelbabeTextAreaFieldWithError: Story<TextAreaFieldProps> =
+  TemplateWithBowelbabe.bind({});
+BowelbabeTextAreaFieldWithError.storyName =
+  "Bowelbabe TextAreaField With Error";
+BowelbabeTextAreaFieldWithError.args = {
   value: undefined,
   disabled: false,
   required: false,

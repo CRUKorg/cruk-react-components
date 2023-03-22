@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { GlobalStyle, su2cTheme } from "..";
+import { bowelbabeTheme, GlobalStyle, su2cTheme } from "..";
 import Loader from ".";
 
 export default {
@@ -26,3 +26,14 @@ const TemplateWithSU2C: Story = () => (
 export const SU2CLoader: Story = TemplateWithSU2C.bind({});
 SU2CLoader.storyName = "SU2C Loader";
 SU2CLoader.args = {};
+
+const TemplateWithBowelbabe: Story = () => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
+    <Loader />
+  </ThemeProvider>
+);
+
+export const BowelbabeLoader: Story = TemplateWithBowelbabe.bind({});
+BowelbabeLoader.storyName = "Bowelbabe Loader";
+BowelbabeLoader.args = {};

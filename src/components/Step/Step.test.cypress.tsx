@@ -4,7 +4,7 @@ import React from "react";
 import { mount } from "cypress/react";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { Step, crukTheme, su2cTheme } from "..";
+import { Step, crukTheme, su2cTheme, bowelbabeTheme } from "..";
 
 const BasicContent = () => (
   <Step
@@ -37,6 +37,17 @@ describe("Step", () => {
       },
     });
   });
+
+  it("is accessible Bowelbabe theme", () => {
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>
+        <BasicContent />
+      </TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
   it("should match snapshot", () => {
     Cypress.config("waitForAnimations", true);
     Cypress.config("animationDistanceThreshold", 2);

@@ -69,6 +69,8 @@ export const COLORS: ColorsType = {
   circularProgressSecondary: TOKEN_COLORS.su2cRed,
   linkColor: TOKEN_COLORS.su2cOrange5,
   linkColorHover: TOKEN_COLORS.su2cRed,
+  linkColorSecondary: TOKEN_COLORS.su2cOrange5,
+  linkColorSecondaryHover: TOKEN_COLORS.su2cRed,
 
   backgroundLightColor: TOKEN_COLORS.su2cOrange2,
 
@@ -82,6 +84,8 @@ export const COLORS: ColorsType = {
   totaliserBubbleColor: TOKEN_COLORS.su2cBlack,
   totaliserBubbleTextColor: TOKEN_COLORS.white,
   totaliserBubbleTotalColor: TOKEN_COLORS.white,
+
+  collapseHeaderColor: TOKEN_COLORS.su2cOrange5,
 
   buttonPrimaryBackground: TOKEN_COLORS.su2cOrange5,
   buttonPrimaryText: TOKEN_COLORS.su2cBlack,

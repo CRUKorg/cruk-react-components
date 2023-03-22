@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { Text, su2cTheme, GlobalStyle } from "..";
+import { Text, su2cTheme, GlobalStyle, bowelbabeTheme } from "..";
 import Box, { BoxProps } from ".";
 
 export default {
@@ -58,6 +58,39 @@ export const SU2CBoxWithColourWithCustomSpacing: Story = TemplateWithSU2C.bind(
 );
 SU2CBoxWithColourWithCustomSpacing.storyName = "SU2C Box With Custom Spacing";
 SU2CBoxWithColourWithCustomSpacing.args = {
+  backgroundColor: "primary",
+  paddingVertical: "xl",
+  paddingBottom: "xs",
+  children: (
+    <Text textColor="textOnPrimary">this is a box with custom spacing</Text>
+  ),
+};
+
+const TemplateWithBowelbabe: Story = (args) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
+    <Box {...args} />
+  </ThemeProvider>
+);
+
+export const BowelbabeDefault: Story = TemplateWithBowelbabe.bind({});
+BowelbabeDefault.storyName = "Bowelbabe Default";
+BowelbabeDefault.args = {
+  children: <Text textColor="textDark">this is a box</Text>,
+};
+
+export const BowelbabeBoxWithColour: Story = TemplateWithBowelbabe.bind({});
+BowelbabeBoxWithColour.storyName = "Bowelbabe Box With Colour";
+BowelbabeBoxWithColour.args = {
+  backgroundColor: "primary",
+  children: <Text textColor="textOnPrimary">this is a box with colours</Text>,
+};
+
+export const BowelbabeBoxWithColourWithCustomSpacing: Story =
+  TemplateWithBowelbabe.bind({});
+BowelbabeBoxWithColourWithCustomSpacing.storyName =
+  "Bowelbabe Box With Custom Spacing";
+BowelbabeBoxWithColourWithCustomSpacing.args = {
   backgroundColor: "primary",
   paddingVertical: "xl",
   paddingBottom: "xs",

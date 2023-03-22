@@ -44,12 +44,12 @@ export const PagerLink = styled.a<PaginationStyledProps>`
   margin: ${({ theme }: ThemeProps) => theme.spacing.xxs};
   padding: 7px 11px;
   text-decoration: none;
+  &:active,
+  &:focus,
   &:hover {
     opacity: 0.88;
     text-decoration: underline;
   }
-  &:focus,
-  &:active,
   &:visited {
     text-decoration: none;
   }
@@ -92,11 +92,11 @@ export const PagerLink = styled.a<PaginationStyledProps>`
       font-weight: bold;
       padding: 8px 6px;
       background-color: transparent;
+      &:focus,
       &:hover {
         background-color: transparent;
         text-decoration: underline;
       }
-      &:focus,
       &:active,
       &:visited {
         text-decoration: none;

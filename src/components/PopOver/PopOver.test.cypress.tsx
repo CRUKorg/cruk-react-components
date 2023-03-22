@@ -15,7 +15,15 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { PopOver, Box, Button, IconFa, su2cTheme, crukTheme } from "..";
+import {
+  PopOver,
+  Box,
+  Button,
+  IconFa,
+  su2cTheme,
+  crukTheme,
+  bowelbabeTheme,
+} from "..";
 
 const internalContent = () => (
   <Box padding="xxs">
@@ -127,6 +135,15 @@ describe("Popover", () => {
         "color-contrast": { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
       },
     });
+  });
+
+  it("is accessible Bowelbabe theme", () => {
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>{content()}</TestThemeWrapper>
+    );
+    cy.contains("Share left").click();
+    cy.injectAxe();
+    cy.checkA11y("body");
   });
 
   // eslint-disable-next-line jest/no-focused-tests

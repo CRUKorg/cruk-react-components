@@ -42,6 +42,7 @@ export type ButtonType = {
   buttonBorderThickness: string;
   textDecoration: string;
   textTransform: string;
+  horizontalPadding: string;
 };
 
 export type ButtonAppearanceType = "primary" | "secondary" | "tertiary";
@@ -82,6 +83,8 @@ export type ColorsType = {
   linkColorHover: string;
   textDark: string;
   textLight: string;
+  linkColorSecondary: string;
+  linkColorSecondaryHover: string;
 
   progressBar: string;
   progressBarSecondary: string;
@@ -113,6 +116,8 @@ export type ColorsType = {
   buttonTertiaryText: string;
   buttonTertiaryTextHover: string;
   buttonTertiaryDisabledText: string;
+
+  collapseHeaderColor: string;
 
   selectionBorder: string;
   inputBorder: string;

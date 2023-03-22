@@ -4,7 +4,7 @@ import React from "react";
 import { mount } from "cypress/react";
 
 import { TestThemeWrapper } from "../TestWrapper";
-import { Radio, Heading, su2cTheme, crukTheme } from "..";
+import { Radio, Heading, su2cTheme, crukTheme, bowelbabeTheme } from "..";
 
 const uncontrolledRadio = () => (
   <div id="radios">
@@ -74,6 +74,16 @@ describe("Radio", () => {
     });
   });
 
+  it("is accessible Bowelbabe theme", () => {
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>
+        <Content />
+      </TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
   it("should match CRUK snapshot", () => {
     Cypress.config("waitForAnimations", true);
     Cypress.config("animationDistanceThreshold", 2);
@@ -87,6 +97,18 @@ describe("Radio", () => {
     Cypress.config("animationDistanceThreshold", 2);
     mount(
       <TestThemeWrapper theme={su2cTheme}>
+        {uncontrolledRadio()}
+      </TestThemeWrapper>
+    );
+    cy.document().its("fonts.status").should("equal", "loaded");
+    cy.get("#radios").first().matchImageSnapshot();
+  });
+
+  it("should match Bowelbabe snapshot", () => {
+    Cypress.config("waitForAnimations", true);
+    Cypress.config("animationDistanceThreshold", 2);
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>
         {uncontrolledRadio()}
       </TestThemeWrapper>
     );

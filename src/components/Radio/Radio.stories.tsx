@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { su2cTheme, Box, GlobalStyle } from "..";
+import { su2cTheme, Box, GlobalStyle, bowelbabeTheme } from "..";
 import Radio, { RadioProps } from ".";
 
 export default {
@@ -120,8 +120,46 @@ const TemplateWithSU2C: Story<RadioProps> = (args) => {
 };
 
 export const SU2CRadio: Story<RadioProps> = TemplateWithSU2C.bind({});
-SU2CRadio.storyName = "SU2C SU2CRadio";
+SU2CRadio.storyName = "SU2C Radio";
 SU2CRadio.args = {
+  value: "one",
+  disabled: false,
+};
+
+const TemplateWithBowelbabe: Story<RadioProps> = (args) => {
+  const [selected, setSelected] = useState(args.value);
+  const handleChange = (value: string) => {
+    setSelected(value);
+  };
+  return (
+    <ThemeProvider theme={bowelbabeTheme}>
+      <GlobalStyle />
+      <fieldset style={{ border: "none" }}>
+        <Radio
+          onChange={(e) => handleChange(e.target.value)}
+          checked={selected === "one"}
+          {...args}
+        >
+          Option one
+        </Radio>
+        <Box marginTop="s">
+          <Radio
+            onChange={(e) => handleChange(e.target.value)}
+            checked={selected === "two"}
+            name="example2"
+            value="two"
+          >
+            Option two
+          </Radio>
+        </Box>
+      </fieldset>
+    </ThemeProvider>
+  );
+};
+
+export const BowelbabeRadio: Story<RadioProps> = TemplateWithBowelbabe.bind({});
+BowelbabeRadio.storyName = "Bowelbabe Radio";
+BowelbabeRadio.args = {
   value: "one",
   disabled: false,
 };

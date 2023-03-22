@@ -4,7 +4,7 @@ import React from "react";
 import { mount } from "cypress/react";
 
 import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
-import { Box, DateField, su2cTheme, crukTheme } from "..";
+import { Box, DateField, su2cTheme, crukTheme, bowelbabeTheme } from "..";
 
 const unControlledContent = () => (
   <Box backgroundColor="backgroundLight">
@@ -57,6 +57,16 @@ describe("DateField", () => {
         "color-contrast": { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
       },
     });
+  });
+
+  it("is accessible Bowelbabe theme", () => {
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>
+        {unControlledContent()}
+      </TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
   });
 
   it("should match snapshot", () => {

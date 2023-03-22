@@ -13,9 +13,9 @@ export default {
 
 const Template: Story<IconFaProps> = (args) => <IconFa {...args} />;
 
-export const IconDefault: Story<IconFaProps> = Template.bind({});
-IconDefault.storyName = "IconFa";
-IconDefault.args = {
+export const IconFaDefault: Story<IconFaProps> = Template.bind({});
+IconFaDefault.storyName = "IconFa";
+IconFaDefault.args = {
   faIcon: faBullseye,
 };
 
@@ -26,8 +26,23 @@ const TemplateWithSU2C: Story<IconFaProps> = (args) => (
   </ThemeProvider>
 );
 
-export const SU2CIcon: Story<IconFaProps> = TemplateWithSU2C.bind({});
-SU2CIcon.storyName = "SU2C IconFa";
-SU2CIcon.args = {
+export const SU2CIconFa: Story<IconFaProps> = TemplateWithSU2C.bind({});
+SU2CIconFa.storyName = "SU2C IconFa";
+SU2CIconFa.args = {
+  faIcon: faBullseye,
+};
+
+const TemplateWithBowelbabe: Story<IconFaProps> = (args) => (
+  <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
+    <IconFa {...args} />
+  </ThemeProvider>
+);
+
+export const BowelbabeIconFa: Story<IconFaProps> = TemplateWithBowelbabe.bind(
+  {}
+);
+BowelbabeIconFa.storyName = "Bowelbabe IconFa";
+BowelbabeIconFa.args = {
   faIcon: faBullseye,
 };

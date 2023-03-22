@@ -46,6 +46,7 @@ export const BUTTON: ButtonType = {
   buttonBorderThickness: "2px",
   textDecoration: "none",
   textTransform: "none",
+  horizontalPadding: "2em",
 };
 
 export const BREAKPOINT: BreakPointType = {
@@ -102,6 +103,8 @@ export const COLORS: ColorsType = {
   linkColorHover: TOKEN_COLORS.magenta_800,
   textDark: TOKEN_COLORS.grey_900,
   textLight: TOKEN_COLORS.white,
+  linkColorSecondary: TOKEN_COLORS.magenta_500,
+  linkColorSecondaryHover: TOKEN_COLORS.magenta_800,
 
   progressBar: TOKEN_COLORS.darkBlue_500,
   progressBarSecondary: TOKEN_COLORS.magenta_500,
@@ -133,6 +136,8 @@ export const COLORS: ColorsType = {
   buttonTertiaryText: TOKEN_COLORS.magenta_500,
   buttonTertiaryTextHover: TOKEN_COLORS.magenta_800,
   buttonTertiaryDisabledText: TOKEN_COLORS.grey_500,
+
+  collapseHeaderColor: TOKEN_COLORS.magenta_500,
 
   selectionBorder: TOKEN_COLORS.grey_500,
 

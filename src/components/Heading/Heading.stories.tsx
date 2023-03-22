@@ -2,7 +2,7 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import { Story, Meta } from "@storybook/react";
 import Heading, { HeadingProps } from ".";
-import { su2cTheme, GlobalStyle } from "..";
+import { su2cTheme, GlobalStyle, bowelbabeTheme } from "..";
 
 export default {
   title: "Heading",
@@ -116,6 +116,55 @@ SU2C_H5.args = {
 export const SU2C_H6: Story = TemplateWithSU2C.bind({});
 SU2C_H6.storyName = "SU2C H6";
 SU2C_H6.args = {
+  h6: true,
+  children: "This is H6",
+};
+
+const TemplateWithBowelbabe: Story = (args) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
+    <Heading {...args} />
+  </ThemeProvider>
+);
+
+export const Bowelbabe_H1: Story = TemplateWithBowelbabe.bind({});
+Bowelbabe_H1.storyName = "Bowelbabe H1";
+Bowelbabe_H1.args = {
+  h1: true,
+  children: "This is H1",
+};
+
+export const Bowelbabe_H2: Story = TemplateWithBowelbabe.bind({});
+Bowelbabe_H2.storyName = "Bowelbabe H2";
+Bowelbabe_H2.args = {
+  h2: true,
+  children: "This is H2",
+};
+
+export const Bowelbabe_H3: Story = TemplateWithBowelbabe.bind({});
+Bowelbabe_H3.storyName = "Bowelbabe H3";
+Bowelbabe_H3.args = {
+  h3: true,
+  children: "This is H3",
+};
+
+export const Bowelbabe_H4: Story = TemplateWithBowelbabe.bind({});
+Bowelbabe_H4.storyName = "Bowelbabe H4";
+Bowelbabe_H4.args = {
+  h4: true,
+  children: "This is H4",
+};
+
+export const Bowelbabe_H5: Story = TemplateWithBowelbabe.bind({});
+Bowelbabe_H5.storyName = "Bowelbabe H5";
+Bowelbabe_H5.args = {
+  h5: true,
+  children: "This is H5",
+};
+
+export const Bowelbabe_H6: Story = TemplateWithBowelbabe.bind({});
+Bowelbabe_H6.storyName = "Bowelbabe H6";
+Bowelbabe_H6.args = {
   h6: true,
   children: "This is H6",
 };

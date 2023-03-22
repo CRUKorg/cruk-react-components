@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { GlobalStyle, su2cTheme } from "..";
+import { bowelbabeTheme, GlobalStyle, su2cTheme } from "..";
 import ProgressBar, { ProgressBarProps } from ".";
 
 export default {
@@ -47,6 +47,30 @@ export const SU2CProgressBarCircular: Story<ProgressBarProps> =
   TemplateWithSU2C.bind({});
 SU2CProgressBarCircular.storyName = "SU2C ProgressBar Circular";
 SU2CProgressBarCircular.args = {
+  percentage: 74,
+  secondaryPercentage: 90,
+  isCircular: true,
+};
+
+const TemplateWithBowelbabe: Story<ProgressBarProps> = (args) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
+    <ProgressBar {...args} />
+  </ThemeProvider>
+);
+
+export const BowelbabeProgressBar: Story<ProgressBarProps> =
+  TemplateWithBowelbabe.bind({});
+BowelbabeProgressBar.storyName = "Bowelbabe ProgressBar";
+BowelbabeProgressBar.args = {
+  percentage: 74,
+  secondaryPercentage: 90,
+};
+
+export const BowelbabeProgressBarCircular: Story<ProgressBarProps> =
+  TemplateWithBowelbabe.bind({});
+BowelbabeProgressBarCircular.storyName = "Bowelbabe ProgressBar Circular";
+BowelbabeProgressBarCircular.args = {
   percentage: 74,
   secondaryPercentage: 90,
   isCircular: true,

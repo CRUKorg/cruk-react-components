@@ -4,7 +4,7 @@ import React, { ChangeEvent } from "react";
 import { mount } from "cypress/react";
 
 import { TestThemeWrapper } from "../TestWrapper";
-import { RadioConsent, su2cTheme, crukTheme } from "..";
+import { RadioConsent, su2cTheme, crukTheme, bowelbabeTheme } from "..";
 
 const uncontrolledContent = () => (
   <div id="radios">
@@ -90,6 +90,16 @@ describe("RadioConsent", () => {
     });
   });
 
+  it("is accessible Bowelbabe theme", () => {
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>
+        <Content />
+      </TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
   it("should match CRUK snapshot", () => {
     Cypress.config("waitForAnimations", true);
     Cypress.config("animationDistanceThreshold", 2);
@@ -97,11 +107,24 @@ describe("RadioConsent", () => {
     cy.document().its("fonts.status").should("equal", "loaded");
     cy.get("#radios").first().matchImageSnapshot();
   });
+
   it("should match SU2C snapshot", () => {
     Cypress.config("waitForAnimations", true);
     Cypress.config("animationDistanceThreshold", 2);
     mount(
       <TestThemeWrapper theme={su2cTheme}>
+        {uncontrolledContent()}
+      </TestThemeWrapper>
+    );
+    cy.document().its("fonts.status").should("equal", "loaded");
+    cy.get("#radios").first().matchImageSnapshot();
+  });
+
+  it("should match Bowelbabe snapshot", () => {
+    Cypress.config("waitForAnimations", true);
+    Cypress.config("animationDistanceThreshold", 2);
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>
         {uncontrolledContent()}
       </TestThemeWrapper>
     );

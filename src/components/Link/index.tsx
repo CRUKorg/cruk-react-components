@@ -50,9 +50,18 @@ export const Link = forwardRef((props: LinkProps, ref?: Ref<HTMLElement>) => {
     ? "noopener noreferrer"
     : "";
 
+  // only forward As anchor if we are not casting as something that is not an anchor
+  const forwardAs = props.as && props.as !== "a" ? undefined : "a";
+
   return (
     <ThemeProvider theme={theme}>
-      <StyledLink {...props} theme={theme} rel={rel} forwardedAs="a" ref={ref}>
+      <StyledLink
+        {...props}
+        theme={theme}
+        rel={rel}
+        forwardedAs={forwardAs}
+        ref={ref}
+      >
         {props.appearance === "primary" && (
           <ChevyWithLevee faIcon={faChevronRight} size="0.8em" />
         )}

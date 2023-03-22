@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { GlobalStyle, su2cTheme } from "..";
+import { GlobalStyle, su2cTheme, bowelbabeTheme } from "..";
 import AddressLookup, { AddressLookupProps } from ".";
 
 export default {
@@ -39,3 +39,14 @@ const TemplateWithSU2C: Story<AddressLookupProps> = (args) => (
 export const SU2CAddressLookUp: Story<AddressLookupProps> =
   TemplateWithSU2C.bind({});
 SU2CAddressLookUp.storyName = "SU2C AddressLookUp";
+
+const TemplateWithBowelbabe: Story<AddressLookupProps> = (args) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
+    <AddressLookupWithState {...args} />
+  </ThemeProvider>
+);
+
+export const BowelbabeAddressLookUp: Story<AddressLookupProps> =
+  TemplateWithBowelbabe.bind({});
+BowelbabeAddressLookUp.storyName = "Bowelbabe AddressLookUp";

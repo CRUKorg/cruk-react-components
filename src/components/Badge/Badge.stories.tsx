@@ -7,7 +7,7 @@ import {
   faComment,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { su2cTheme, IconFa, GlobalStyle } from "..";
+import { su2cTheme, IconFa, GlobalStyle, bowelbabeTheme } from "..";
 import Badge, { BadgeProps } from ".";
 
 export default {
@@ -73,6 +73,44 @@ SU2CBadgeWithColour.args = {
 export const SU2CBadgeWithInverseColours: Story = TemplateWithSU2C.bind({});
 SU2CBadgeWithInverseColours.storyName = "SU2C With Inverse Colours";
 SU2CBadgeWithInverseColours.args = {
+  backgroundColor: "textLight",
+  textColor: "tertiary",
+  borderColor: "tertiary",
+  children: <IconFa faIcon={faComment} />,
+};
+
+const TemplateWithBowelbabe: Story = (args) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
+    <Badge {...args} />
+  </ThemeProvider>
+);
+
+export const BowelbabeBadgeWithText: Story = TemplateWithBowelbabe.bind({});
+BowelbabeBadgeWithText.storyName = "Bowelbabe With Text";
+BowelbabeBadgeWithText.args = {
+  children: "this is text",
+  backgroundColor: "primary",
+  textColor: "textOnPrimary",
+};
+
+export const BowelbabeDefault: Story = TemplateWithBowelbabe.bind({});
+BowelbabeDefault.storyName = "Bowelbabe Default";
+BowelbabeDefault.args = {
+  children: <IconFa faIcon={faPoundSign} />,
+};
+
+export const BowelbabeBadgeWithColour: Story = TemplateWithBowelbabe.bind({});
+BowelbabeBadgeWithColour.storyName = "Bowelbabe With Colour";
+BowelbabeBadgeWithColour.args = {
+  backgroundColor: "secondary",
+  children: <IconFa faIcon={faSearch} />,
+};
+
+export const BowelbabeBadgeWithInverseColours: Story =
+  TemplateWithBowelbabe.bind({});
+BowelbabeBadgeWithInverseColours.storyName = "Bowelbabe With Inverse Colours";
+BowelbabeBadgeWithInverseColours.args = {
   backgroundColor: "textLight",
   textColor: "tertiary",
   borderColor: "tertiary",
