@@ -1,6 +1,7 @@
 import { CustomFontType } from "../types";
 import crukTheme from "../themes/cruk";
 import su2cTheme from "../themes/su2c";
+import bowelbabeTheme from "../themes/bowelbabe";
 
 // font-display fall back to stop font's flickering on SSR rehydration
 const buildCustomFonts = (customFonts: Array<CustomFontType>) =>
@@ -24,6 +25,7 @@ const buildCustomFonts = (customFonts: Array<CustomFontType>) =>
 export const fontFaceStyleString = `
 ${buildCustomFonts(crukTheme.typography.customFonts)}
 ${buildCustomFonts(su2cTheme.typography.customFonts)}
+${buildCustomFonts(bowelbabeTheme.typography.customFonts)}
 `;
 
 export default fontFaceStyleString;
