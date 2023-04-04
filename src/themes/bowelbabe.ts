@@ -22,6 +22,8 @@ export const SITE_CONFIG: SiteConfigType = {
   ...defaultTheme.siteConfig,
   logoSrc:
     "https://rcl.assets.cancerresearchuk.org/images/logos/bowelbabe-logo-160.png",
+  footerCopyText:
+    "The Bowelbabe Fund for Cancer Research UK, raises money to fund clinical trials, research and cancer information and awareness, as well as other initiatives to combat cancer and support those affected by cancer. The Bowelbabe Fund is a restricted fund within Cancer Research UK. Cancer Research UK is a registered charity in England and Wales (1089464), Scotland (SC041666), the Isle of Man (1103) and Jersey (247) and is registered with the Fundraising Regulator.",
 };
 
 export const AVATAR: AvatarType = {
