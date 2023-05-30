@@ -67,7 +67,7 @@
     "@react-theming/storybook-addon": "^1.1.6",
     "@rollup/plugin-babel": "^5.0.0",
     "@rollup/plugin-commonjs": "^25.0.0",
-    "@rollup/plugin-node-resolve": "^13.0.5",
+    "@rollup/plugin-node-resolve": "^15.0.2",
     "@simonsmith/cypress-image-snapshot": "^5.0.4",
     "@storybook/addon-a11y": "6.5.16",
     "@storybook/addon-actions": "^6.5.13",
