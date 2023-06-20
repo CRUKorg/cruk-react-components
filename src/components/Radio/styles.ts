@@ -76,7 +76,10 @@ export const StyledLabel = styled.label<StyledLabelProps>`
       : checked && !theme.utilities.useDefaultFocusRect
       ? theme.colors.primary
       : theme.colors.inputBorder};
-  cursor: pointer;
+  border-color: ${({ theme, disabled }: ThemeProp & DisabledProp) =>
+    disabled && theme.colors.disabled};
+  cursor: ${({ disabled }: DisabledProp) =>
+    disabled ? "not-allowed" : "pointer"};
   display: inline-block;
   font-weight: ${({ checked }: CheckedProp) => (checked ? "bold" : "normal")};
   color: ${({ theme, disabled }: ThemeProp & DisabledProp) =>
@@ -131,7 +134,7 @@ export const StyledInput = styled.input`
     },
   }: ThemeProp) => xxs};
 
-  ${({ theme }: ThemeProp) =>
+  ${({ theme, disabled }: ThemeProp & DisabledProp) =>
     theme.utilities.useDefaultFromControls
       ? css`
           position: absolute;
@@ -162,7 +165,13 @@ export const StyledInput = styled.input`
           }
 
           &:checked ~ ${CheckWrapper} ${Check}::before {
-            background: ${theme.colors.primary};
+            background: ${disabled
+              ? theme.colors.disabled
+              : theme.colors.primary};
+          }
+
+          &:disabled ~ ${CheckWrapper} ${Check} {
+            border: 2px solid ${theme.colors.disabled};
           }
         `}
 `;
