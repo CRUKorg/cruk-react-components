@@ -14,6 +14,11 @@ type StyledLabelProps = {
 type ThemeProps = {
   theme: ThemeType;
 };
+
+type DisabledProp = {
+  disabled: boolean;
+};
+
 export const CheckWrapper = styled.div`
   display: inline-block;
   height: ${CHECK_BOX_SIZE};
@@ -63,13 +68,16 @@ export const StyledLabel = styled.label<StyledLabelProps>`
       : checked && !theme.utilities.useDefaultFocusRect
       ? theme.colors.primary
       : theme.colors.inputBorder};
-  cursor: pointer;
+  border-color: ${({ theme, disabled }: ThemeProps & DisabledProp) =>
+    disabled && theme.colors.disabled};
+  cursor: ${({ disabled }: DisabledProp) =>
+    disabled ? "not-allowed" : "pointer"};
   display: block;
   font-weight: ${({ theme, checked }: StyledLabelProps) =>
     checked || !theme.utilities.useDefaultFocusRect
       ? theme.typography.fontWeightHeavy
       : theme.typography.fontWeightNormal};
-  color: ${({ theme, disabled }: StyledLabelProps) =>
+  color: ${({ theme, disabled }: ThemeProps & DisabledProp) =>
     disabled ? theme.colors.disabled : theme.colors.textDark};
   padding: ${({ theme }: ThemeProps) =>
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
@@ -78,20 +86,24 @@ export const StyledLabel = styled.label<StyledLabelProps>`
     outline: 5px auto -webkit-focus-ring-color;
   }
 
-  ${({ theme }: ThemeProps) =>
+  ${({ theme, disabled }: ThemeProps & DisabledProp) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
           min-height: 2rem;
           &:hover ${CheckWrapper} ${Check} {
-            border: solid 1px
-              ${({
-                theme: {
-                  colors: { primary },
-                },
-              }: ThemeProps) => primary};
+            border: "1px solid ${disabled
+              ? theme.colors.disabled
+              : theme.colors.primary}";
           }
         `}
+
+  svg {
+    path {
+      fill: ${({ theme, disabled }: ThemeProps & DisabledProp) =>
+        disabled && theme.colors.disabled};
+    }
+  }
 `;
 
 export const SelectedBorder = styled.div`
