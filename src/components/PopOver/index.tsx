@@ -16,18 +16,19 @@ import { PopOverPositionType } from "../../types";
 import { PopOverWrapper, PopOverModal } from "./styles";
 
 export type PopOverProps = {
-  /** used for aria-label of modal */
+  /** modalLabel: used for aria-label of modal */
   modalLabel: string;
-  /** contents in side the popover modal */
+  /** modalContent: contents in side the popover modal */
   modalContent: ReactNode;
-  /**  position that the popover opens relative to the triggering element, the trigger element is the child of the component */
+  /** position: position that the popover opens relative to the triggering element, the trigger element is the child of the component */
   position?: PopOverPositionType;
-  css?: string;
-  /**  popover modal max width */
+  /** full: enable child button extend full width */
+  full?: boolean;
+  /**  maxWidth: popover modal max width */
   maxWidth?: string;
-  /**  popover modal min width */
+  /**  minWidth: popover modal min width */
   minWidth?: string;
-  /**  popover isOpen changed handler */
+  /**  onPopOverIsOpenChange: popover isOpen changed handler */
   onPopOverIsOpenChange?: (isOpen: boolean) => void;
   children?: ReactNode;
 };
@@ -44,7 +45,7 @@ const PopOver = ({
   position,
   modalLabel,
   modalContent,
-  css,
+  full = false,
 }: PopOverProps) => {
   const popRef = useRef<HTMLDivElement>(null);
   const [showPopOver, setShowPopOver] = useState(false);
@@ -92,7 +93,7 @@ const PopOver = ({
 
   return (
     <ThemeProvider theme={theme}>
-      <PopOverWrapper css={css} ref={popRef}>
+      <PopOverWrapper full={full} ref={popRef}>
         {React.Children.map(
           children as ReactElement,
           (child: React.ReactElement) =>
