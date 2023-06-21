@@ -57,8 +57,10 @@ export const StyledLabel = styled.label<StyledLabelProps>`
   position: relative;
   border-width: ${({ theme }: ThemeProps) => theme.utilities.inputBorderWidth};
   border-style: solid;
-  border-color: ${({ hasError, theme, checked }: StyledLabelProps) =>
-    hasError
+  border-color: ${({ disabled, hasError, theme, checked }: StyledLabelProps) =>
+    disabled
+      ? theme.colors.disabled
+      : hasError
       ? theme.colors.textError
       : checked && !theme.utilities.useDefaultFocusRect
       ? theme.colors.primary
