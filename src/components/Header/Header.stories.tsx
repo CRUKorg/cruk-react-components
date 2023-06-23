@@ -1,58 +1,75 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { su2cTheme, Button, GlobalStyle, bowelbabeTheme } from "..";
+import { su2cTheme, Button, bowelbabeTheme } from "..";
 import Header, { HeaderProps } from ".";
 
-export default {
-  title: "Header (experimental)",
-  component: Header,
-} as Meta<HeaderProps>;
-
-const Template: Story<HeaderProps> = (args) => (
+const HeaderInTallContainer = (args: HeaderProps) => (
   <div>
     <Header {...args} />
     <div style={{ height: "200vh" }}></div>
   </div>
 );
 
-export const HeaderDefault: Story<HeaderProps> = Template.bind({});
-HeaderDefault.args = {
-  siteSlogan: "Header slogan here",
-  children: <Button>Log in</Button>,
-  isSticky: false,
-  fullWidth: false,
+export default {
+  title: "Header (experimental)",
+  component: Header,
+  args: {
+    siteSlogan: "Header slogan here",
+    children: <Button>Log in</Button>,
+    isSticky: false,
+    fullWidth: false,
+  },
+  tags: ["autodocs"],
 };
 
-const TemplateWithSU2C: Story<HeaderProps> = (args) => (
+type Story = StoryObj<typeof Header>;
+
+export const HeaderDefault: Story = {
+  name: "HeaderDefault",
+  render: HeaderInTallContainer,
+};
+
+export const HeaderFullWidth: Story = {
+  name: "HeaderFullWidth",
+  render: HeaderInTallContainer,
+  args: {
+    fullWidth: true,
+  },
+};
+
+export const HeaderSticky: Story = {
+  name: "HeaderSticky",
+  render: HeaderInTallContainer,
+  args: {
+    isSticky: true,
+    fullWidth: true,
+  },
+};
+
+/// SU2C
+
+const su2cRender = (args: HeaderProps) => (
   <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
-    <Header {...args} />
+    <HeaderInTallContainer {...args} />
   </ThemeProvider>
 );
 
-export const SU2CHeader: Story = TemplateWithSU2C.bind({});
-SU2CHeader.storyName = "SU2C Header";
-SU2CHeader.args = {
-  siteSlogan: "Header slogan here",
-  children: <Button>Child component</Button>,
-  isSticky: false,
-  fullWidth: false,
+export const HeaderSU2C: Story = {
+  name: "HeaderSU2C",
+  render: su2cRender,
 };
 
-const TemplateWithBowelbabe: Story<HeaderProps> = (args) => (
+/// Bowelbabe
+
+const bowelbabeRender = (args: HeaderProps) => (
   <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
-    <Header {...args} />
+    <HeaderInTallContainer {...args} />
   </ThemeProvider>
 );
 
-export const BowelbabeHeader: Story = TemplateWithBowelbabe.bind({});
-BowelbabeHeader.storyName = "Bowelbabe Header";
-BowelbabeHeader.args = {
-  siteSlogan: "Header slogan here",
-  children: <Button>Log in</Button>,
-  isSticky: false,
-  fullWidth: false,
+export const HeaderBowelbabe: Story = {
+  name: "HeaderBowelbabe",
+  render: bowelbabeRender,
 };

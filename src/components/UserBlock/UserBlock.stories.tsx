@@ -1,133 +1,112 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 
-import {
-  crukTheme,
-  su2cTheme,
-  Text,
-  IconFa,
-  GlobalStyle,
-  bowelbabeTheme,
-} from "..";
+import { su2cTheme, Text, IconFa, bowelbabeTheme } from "..";
 import UserBlock, { UserBlockProps } from ".";
 
 export default {
   title: "UserBlock (experimental)",
   component: UserBlock,
-} as Meta<UserBlockProps>;
-
-const Template: Story = (args) => <UserBlock {...args} />;
-
-export const UserBlockDefault: Story = Template.bind({});
-UserBlockDefault.storyName = "UserBlock";
-UserBlockDefault.args = {};
-
-export const UserBlockWithName: Story = Template.bind({});
-UserBlockWithName.storyName = "UserBlock With Name";
-UserBlockWithName.args = {
-  name: "Sam Smith",
-  size: "s",
+  args: {
+    name: "Sam Smith",
+    size: "s",
+  },
+  tags: ["autodocs"],
 };
 
-export const UserBlockWithCustomAvatar: Story = Template.bind({});
-UserBlockWithCustomAvatar.storyName = "UserBlock With Custom Avatar";
-UserBlockWithCustomAvatar.args = {
-  name: "Sam Smith",
-  size: "s",
-  avatarUrl: "https://via.placeholder.com/300/2e008b/d9318a?text=avatar",
+type Story = StoryObj<typeof UserBlock>;
+
+export const UserBlockDefault: Story = {
+  name: "UserBlock",
+  args: {},
+};
+export const UserBlockCustomAvatar: Story = {
+  name: "UserBlock Custom Avatar",
+  args: {
+    avatarUrl: "https://via.placeholder.com/300/2e008b/d9318a?text=avatar",
+  },
+};
+export const UserBlockWithExtra: Story = {
+  name: "UserBlock Custom Avatar",
+  args: {
+    extra: (
+      <Text>
+        <IconFa faIcon={faClock} /> Just now
+      </Text>
+    ),
+  },
 };
 
-export const UserBlockWithExtra: Story = Template.bind({});
-UserBlockWithExtra.storyName = "UserBlock With Extra Component";
-UserBlockWithExtra.args = {
-  name: "Sam Smith",
-  size: "s",
-  extra: (
-    <Text>
-      <IconFa faIcon={faClock} /> Just now
-    </Text>
-  ),
-};
+/// SU2C
 
-const TemplateWithSU2C: Story = (args) => (
+const su2cRender = (args: UserBlockProps) => (
   <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
     <UserBlock {...args} />
   </ThemeProvider>
 );
 
-export const SU2CUserBlock: Story = TemplateWithSU2C.bind({});
-SU2CUserBlock.storyName = "SU2C UserBlock";
-SU2CUserBlock.args = {};
-
-export const SU2CUserBlockWithName: Story = TemplateWithSU2C.bind({});
-SU2CUserBlockWithName.storyName = "SU2C UserBlock With Name";
-SU2CUserBlockWithName.args = {
-  name: "Sam Smith",
-  size: "s",
+export const UserBlockDefaultSU2C: Story = {
+  name: "UserBlock SU2C",
+  args: {},
+  render: su2cRender,
+};
+export const UserBlockCustomAvatarSU2C: Story = {
+  name: "UserBlock Custom Avatar SU2C",
+  args: {
+    avatarUrl: "https://via.placeholder.com/300/2e008b/d9318a?text=avatar",
+  },
+  render: su2cRender,
+};
+export const UserBlockWithExtraSU2C: Story = {
+  name: "UserBlock Custom Avatar SU2C",
+  args: {
+    extra: (
+      <Text>
+        <IconFa faIcon={faClock} /> Just now
+      </Text>
+    ),
+  },
+  render: su2cRender,
 };
 
-export const SU2CUserBlockWithCustomAvatar: Story = TemplateWithSU2C.bind({});
-SU2CUserBlockWithCustomAvatar.storyName = "SU2C UserBlock With Custom Avatar";
-SU2CUserBlockWithCustomAvatar.args = {
-  name: "Sam Smith",
-  size: "s",
-  avatarUrl: `${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`,
-};
+/// Bowelbabe
 
-export const SU2CUserBlockWithExtra: Story = TemplateWithSU2C.bind({});
-SU2CUserBlockWithExtra.storyName = "SU2C UserBlock With Extra Component";
-SU2CUserBlockWithExtra.args = {
-  name: "Sam Smith",
-  size: "s",
-  extra: (
-    <Text>
-      <IconFa faIcon={faClock} /> Just now
-    </Text>
-  ),
-};
-
-const TemplateWithBowelbabe: Story = (args) => (
+const bowelbabeRender = (args: UserBlockProps) => (
   <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
     <UserBlock {...args} />
   </ThemeProvider>
 );
 
-export const BowelbabeUserBlock: Story = TemplateWithBowelbabe.bind({});
-BowelbabeUserBlock.storyName = "Bowelbabe UserBlock";
-BowelbabeUserBlock.args = {};
-
-export const BowelbabeUserBlockWithName: Story = TemplateWithBowelbabe.bind({});
-BowelbabeUserBlockWithName.storyName = "Bowelbabe UserBlock With Name";
-BowelbabeUserBlockWithName.args = {
-  name: "Sam Smith",
-  size: "s",
+export const ErrorTextBowelbabe: Story = {
+  name: "ErrorTextBowelbabe",
+  args: {},
+  render: bowelbabeRender,
 };
 
-export const BowelbabeUserBlockWithCustomAvatar: Story =
-  TemplateWithBowelbabe.bind({});
-BowelbabeUserBlockWithCustomAvatar.storyName =
-  "Bowelbabe UserBlock With Custom Avatar";
-BowelbabeUserBlockWithCustomAvatar.args = {
-  name: "Sam Smith",
-  size: "s",
-  avatarUrl: `${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`,
+export const UserBlockDefaultBowelbabe: Story = {
+  name: "UserBlock Bowelbabe",
+  args: {},
+  render: bowelbabeRender,
 };
 
-export const BowelbabeUserBlockWithExtra: Story = TemplateWithBowelbabe.bind(
-  {}
-);
-BowelbabeUserBlockWithExtra.storyName =
-  "Bowelbabe UserBlock With Extra Component";
-BowelbabeUserBlockWithExtra.args = {
-  name: "Sam Smith",
-  size: "s",
-  extra: (
-    <Text>
-      <IconFa faIcon={faClock} /> Just now
-    </Text>
-  ),
+export const UserBlockCustomAvatarBowelbabe: Story = {
+  name: "UserBlock Custom Avatar Bowelbabe",
+  args: {
+    avatarUrl: "https://via.placeholder.com/300/2e008b/d9318a?text=avatar",
+  },
+  render: bowelbabeRender,
+};
+
+export const UserBlockWithExtraBowelbabe: Story = {
+  name: "UserBlock Custom Avatar Bowelbabe",
+  args: {
+    extra: (
+      <Text>
+        <IconFa faIcon={faClock} /> Just now
+      </Text>
+    ),
+  },
+  render: bowelbabeRender,
 };

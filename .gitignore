@@ -5,6 +5,7 @@
 /lib
 /public
 /storybook-static
+storybook.log
 
 # test
 /cypress/screenshots

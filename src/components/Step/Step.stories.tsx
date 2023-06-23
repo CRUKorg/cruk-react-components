@@ -1,48 +1,51 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { bowelbabeTheme, GlobalStyle, su2cTheme } from "..";
+import { bowelbabeTheme, su2cTheme } from "..";
 import Step, { StepProps } from ".";
 
 export default {
   title: "Step (experimental)",
   component: Step,
-} as Meta<StepProps>;
-
-const Template: Story<StepProps> = (args) => <Step {...args} />;
-
-export const StepsDefault: Story<StepProps> = Template.bind({});
-StepsDefault.storyName = "Step";
-StepsDefault.args = {
-  current: 3,
-  steps: ["Account", "Details", "Activity", "Motivation", "Page"],
+  args: {
+    current: 3,
+    steps: ["Account", "Details", "Activity", "Motivation", "Page"],
+  },
+  tags: ["autodocs"],
 };
 
-const TemplateWithSU2C: Story<StepProps> = (args) => (
+type Story = StoryObj<typeof Step>;
+
+export const StepDefault: Story = {
+  name: "StepDefault",
+  args: {},
+};
+
+/// SU2C
+
+const su2cRender = (args: StepProps) => (
   <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
     <Step {...args} />
   </ThemeProvider>
 );
 
-export const SU2CStep: Story<StepProps> = TemplateWithSU2C.bind({});
-SU2CStep.storyName = "SU2C Step";
-SU2CStep.args = {
-  current: 3,
-  steps: ["Account", "Details", "Activity", "Motivation", "Page"],
+export const StepSU2C: Story = {
+  name: "StepSU2C",
+  args: {},
+  render: su2cRender,
 };
 
-const TemplateWithBowelbabe: Story<StepProps> = (args) => (
+/// Bowelbabe
+
+const bowelbabeRender = (args: StepProps) => (
   <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
     <Step {...args} />
   </ThemeProvider>
 );
 
-export const BowelbabeStep: Story<StepProps> = TemplateWithBowelbabe.bind({});
-BowelbabeStep.storyName = "Bowelbabe Step";
-BowelbabeStep.args = {
-  current: 3,
-  steps: ["Account", "Details", "Activity", "Motivation", "Page"],
+export const StepBowelbabe: Story = {
+  name: "StepBowelbabe",
+  args: {},
+  render: bowelbabeRender,
 };

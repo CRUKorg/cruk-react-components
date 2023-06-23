@@ -1,48 +1,51 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 
-import { bowelbabeTheme, GlobalStyle, su2cTheme } from "..";
+import { bowelbabeTheme, su2cTheme } from "..";
 import Text, { TextProps } from ".";
 
 export default {
   title: "Text",
   component: Text,
-} as Meta<TextProps>;
-
-const Template: Story = (args) => <Text {...args} />;
-
-export const TextDefault: Story = Template.bind({});
-TextDefault.storyName = "Text";
-TextDefault.args = {
-  children: "This is text it defaults to a paragraph tag",
-  textColor: "textDark",
+  args: {
+    children: "This is text it defaults to a paragraph tag",
+    textColor: "textDark",
+  },
+  tags: ["autodocs"],
 };
 
-const TemplateWithSU2C: Story = (args) => (
+type Story = StoryObj<typeof Text>;
+
+export const TextDefault: Story = {
+  name: "TextDefault",
+  args: {},
+};
+
+/// SU2C
+
+const su2cRender = (args: TextProps) => (
   <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
     <Text {...args} />
   </ThemeProvider>
 );
 
-export const SU2CText: Story = TemplateWithSU2C.bind({});
-SU2CText.storyName = "SU2C Text";
-SU2CText.args = {
-  children: "This is text it defaults to a paragraph tag",
-  textColor: "textDark",
+export const TextSU2C: Story = {
+  name: "TextSU2C",
+  args: {},
+  render: su2cRender,
 };
 
-const TemplateWithBowelbabe: Story = (args) => (
+/// Bowelbabe
+
+const bowelbabeRender = (args: TextProps) => (
   <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
     <Text {...args} />
   </ThemeProvider>
 );
 
-export const BowelbabeText: Story = TemplateWithBowelbabe.bind({});
-BowelbabeText.storyName = "Bowelbabe Text";
-BowelbabeText.args = {
-  children: "This is text it defaults to a paragraph tag",
-  textColor: "textDark",
+export const TextBowelbabe: Story = {
+  name: "TextBowelbabe",
+  args: {},
+  render: bowelbabeRender,
 };

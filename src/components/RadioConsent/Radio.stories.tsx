@@ -1,89 +1,69 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { bowelbabeTheme, GlobalStyle, su2cTheme } from "..";
+import { bowelbabeTheme, su2cTheme } from "..";
 import RadioConsent, { RadioConsentProps } from ".";
 
 export default {
   title: "RadioConsent (experimental)",
   component: RadioConsent,
-} as Meta<RadioConsentProps>;
+  args: {
+    legend: "Email",
+    name: "email",
+    attributes: [
+      { option: "Yes", value: "yes" },
+      { option: "No", value: "no" },
+    ],
+  },
+  tags: ["autodocs"],
+};
 
-const Template: Story<RadioConsentProps> = (args) => {
+type Story = StoryObj<typeof RadioConsent>;
+
+const RadioConsentWithState = (args: RadioConsentProps) => {
   const [selectedEmail, setSelectedEmail] = React.useState("yes");
   return (
     <fieldset style={{ border: "none" }}>
       <RadioConsent
         {...args}
-        legend="Email"
-        name="email"
         onChange={(e) => setSelectedEmail(e.target.value)}
-        attributes={[
-          { option: "Yes", value: "yes" },
-          { option: "No", value: "no" },
-        ]}
         selectedValue={selectedEmail}
       />
     </fieldset>
   );
 };
 
-export const RadioDefault: Story<RadioConsentProps> = Template.bind({});
-RadioDefault.storyName = "Radio Consent";
-RadioDefault.args = {};
-
-const TemplateWithSU2C: Story<RadioConsentProps> = (args) => {
-  const [selectedEmail, setSelectedEmail] = React.useState("yes");
-
-  return (
-    <ThemeProvider theme={su2cTheme}>
-      <GlobalStyle />
-      <fieldset style={{ border: "none" }}>
-        <RadioConsent
-          {...args}
-          legend="Email"
-          name="email"
-          onChange={(e) => setSelectedEmail(e.target.value)}
-          attributes={[
-            { option: "Yes", value: "yes" },
-            { option: "No", value: "no" },
-          ]}
-          selectedValue={selectedEmail}
-        />
-      </fieldset>
-    </ThemeProvider>
-  );
+export const RadioConsentDefault: Story = {
+  name: "RadioConsentDefault",
+  args: {},
+  render: RadioConsentWithState,
 };
 
-export const SU2CRadio: Story<RadioConsentProps> = TemplateWithSU2C.bind({});
-SU2CRadio.storyName = "SU2C Radio Consent";
-SU2CRadio.args = {};
+/// SU2C
 
-const TemplateWithBowelbabe: Story<RadioConsentProps> = (args) => {
-  const [selectedEmail, setSelectedEmail] = React.useState("yes");
+const su2cRender = (args: RadioConsentProps) => (
+  <ThemeProvider theme={su2cTheme}>
+    <RadioConsentWithState {...args} />
+  </ThemeProvider>
+);
 
-  return (
-    <ThemeProvider theme={bowelbabeTheme}>
-      <GlobalStyle />
-      <fieldset style={{ border: "none" }}>
-        <RadioConsent
-          {...args}
-          legend="Email"
-          name="email"
-          onChange={(e) => setSelectedEmail(e.target.value)}
-          attributes={[
-            { option: "Yes", value: "yes" },
-            { option: "No", value: "no" },
-          ]}
-          selectedValue={selectedEmail}
-        />
-      </fieldset>
-    </ThemeProvider>
-  );
+export const RadioConsentSU2C: Story = {
+  name: "RadioConsentSU2C",
+  args: {},
+  render: su2cRender,
 };
 
-export const BowelbabeRadio: Story<RadioConsentProps> =
-  TemplateWithBowelbabe.bind({});
-BowelbabeRadio.storyName = "Bowelbabe Radio Consent";
-BowelbabeRadio.args = {};
+/// Bowelbabe
+
+const bowelbabeRender = (args: RadioConsentProps) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <RadioConsentWithState {...args} />
+  </ThemeProvider>
+);
+
+export const RadioConsentBowelbabe: Story = {
+  name: "RadioConsentBowelbabe",
+  args: {},
+  render: bowelbabeRender,
+};

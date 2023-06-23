@@ -1,32 +1,50 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { GlobalStyle, su2cTheme } from "..";
+import { su2cTheme, bowelbabeTheme } from "..";
 import Icon, { IconProps } from ".";
 
 export default {
   title: "Icon (deprecated)",
   component: Icon,
-} as Meta<IconProps>;
-
-const Template: Story<IconProps> = (args) => <Icon {...args} />;
-
-export const IconDefault: Story<IconProps> = Template.bind({});
-IconDefault.storyName = "Icon";
-IconDefault.args = {
-  name: "comment",
+  args: {
+    name: "comment",
+  },
+  tags: ["autodocs"],
 };
 
-const TemplateWithSU2C: Story<IconProps> = (args) => (
+type Story = StoryObj<typeof Icon>;
+
+export const IconDefault: Story = {
+  name: "IconDefault",
+  args: {},
+};
+
+/// SU2C
+
+const su2cRender = (args: IconProps) => (
   <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
     <Icon {...args} />
   </ThemeProvider>
 );
 
-export const SU2CIcon: Story<IconProps> = TemplateWithSU2C.bind({});
-SU2CIcon.storyName = "SU2C Icon";
-SU2CIcon.args = {
-  name: "comment",
+export const IconSU2C: Story = {
+  name: "IconSU2C",
+  args: {},
+  render: su2cRender,
+};
+
+/// Bowelbabe
+
+const bowelbabeRender = (args: IconProps) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <Icon {...args} />
+  </ThemeProvider>
+);
+
+export const IconBowelbabe: Story = {
+  name: "IconBowelbabe",
+  args: {},
+  render: bowelbabeRender,
 };

@@ -1,39 +1,47 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { bowelbabeTheme, GlobalStyle, su2cTheme } from "..";
+import { bowelbabeTheme, su2cTheme } from "..";
 import Loader from ".";
 
 export default {
   title: "Loader",
   component: Loader,
-} as Meta<{}>;
+  args: {},
+  tags: ["autodocs"],
+};
+type Story = StoryObj<typeof Loader>;
 
-const Template: Story = () => <Loader />;
+export const LoaderDefault: Story = {
+  name: "Loader",
+  args: {},
+};
 
-export const LoaderDefault: Story = Template.bind({});
-LoaderDefault.storyName = "Loader";
-LoaderDefault.args = {};
+/// SU2C
 
-const TemplateWithSU2C: Story = () => (
+const su2cRender = () => (
   <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
     <Loader />
   </ThemeProvider>
 );
 
-export const SU2CLoader: Story = TemplateWithSU2C.bind({});
-SU2CLoader.storyName = "SU2C Loader";
-SU2CLoader.args = {};
+export const LoaderSU2C: Story = {
+  name: "Loader SU2C",
+  args: {},
+  render: su2cRender,
+};
 
-const TemplateWithBowelbabe: Story = () => (
+/// Bowelbabe
+
+const bowelbabeRender = () => (
   <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
     <Loader />
   </ThemeProvider>
 );
 
-export const BowelbabeLoader: Story = TemplateWithBowelbabe.bind({});
-BowelbabeLoader.storyName = "Bowelbabe Loader";
-BowelbabeLoader.args = {};
+export const LoaderBowelbabe: Story = {
+  name: "Loader Bowelbabe",
+  args: {},
+  render: bowelbabeRender,
+};
