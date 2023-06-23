@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 import {
   faShareAlt,
@@ -52,7 +52,7 @@ export default {
     ),
   },
   tags: ["autodocs"],
-} as Meta<PopOverProps>;
+};
 
 type Story = StoryObj<typeof PopOver>;
 

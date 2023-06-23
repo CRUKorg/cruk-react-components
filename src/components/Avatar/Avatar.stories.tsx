@@ -1,9 +1,9 @@
 import React from "react";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
 import { su2cTheme, crukTheme, bowelbabeTheme } from "..";
-import Avatar, { AvatarProps } from ".";
+import Avatar from ".";
 
 export default {
   title: "Avatar",
@@ -14,7 +14,7 @@ export default {
     alt: "sam's profile",
   },
   tags: ["autodocs"],
-} as Meta<AvatarProps>;
+};
 
 type Story = StoryObj<typeof Avatar>;
 

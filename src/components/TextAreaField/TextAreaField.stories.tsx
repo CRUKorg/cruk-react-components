@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
 import { bowelbabeTheme, su2cTheme } from "..";
@@ -22,7 +22,7 @@ export default {
     errorMessage: undefined,
   },
   tags: ["autodocs"],
-} as Meta<TextAreaFieldProps>;
+};
 
 type Story = StoryObj<typeof TextAreaField>;
 

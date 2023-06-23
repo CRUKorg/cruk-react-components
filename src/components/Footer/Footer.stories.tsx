@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
 import { su2cTheme, Link, bowelbabeTheme } from "..";
@@ -27,7 +27,7 @@ export default {
   component: Footer,
   render: FooterWithChildren,
   tags: ["autodocs"],
-} as Meta<FooterProps>;
+};
 
 type Story = StoryObj<typeof Footer>;
 

@@ -1,9 +1,9 @@
 import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
 import { su2cTheme, bowelbabeTheme } from "..";
-import AddressLookup, { AddressLookupProps } from ".";
+import AddressLookup from ".";
 
 export default {
   title: "AddressLookup",
@@ -19,7 +19,7 @@ export default {
     isInvalidVisible: false,
   },
   tags: ["autodocs"],
-} as Meta<AddressLookupProps>;
+};
 
 type Story = StoryObj<typeof AddressLookup>;
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 import { su2cTheme, bowelbabeTheme } from "..";
 import Radio from "../Radio";
@@ -15,7 +15,7 @@ export default {
     hintText: "This is hint text",
   },
   tags: ["autodocs"],
-} as Meta<LegendWrapperProps>;
+};
 
 type Story = StoryObj<typeof LegendWrapper>;
 

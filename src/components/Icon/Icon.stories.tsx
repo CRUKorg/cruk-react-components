@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
 import { su2cTheme, bowelbabeTheme } from "..";
@@ -12,7 +12,7 @@ export default {
     name: "comment",
   },
   tags: ["autodocs"],
-} as Meta<IconProps>;
+};
 
 type Story = StoryObj<typeof Icon>;
 

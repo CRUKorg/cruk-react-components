@@ -1,6 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 
 import { bowelbabeTheme, su2cTheme } from "..";
 import Text, { TextProps } from ".";
@@ -13,7 +13,7 @@ export default {
     textColor: "textDark",
   },
   tags: ["autodocs"],
-} as Meta<TextProps>;
+};
 
 type Story = StoryObj<typeof Text>;
 

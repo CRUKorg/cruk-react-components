@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
 import { su2cTheme, Box, bowelbabeTheme } from "..";
@@ -16,7 +16,7 @@ export default {
     errorMessage: "",
   },
   tags: ["autodocs"],
-} as Meta<CheckBoxProps>;
+};
 
 type Story = StoryObj<typeof CheckBox>;
 

@@ -1,8 +1,8 @@
 import React from "react";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { bowelbabeTheme, GlobalStyle, su2cTheme } from "..";
+import { bowelbabeTheme, su2cTheme } from "..";
 import Step, { StepProps } from ".";
 
 export default {
@@ -13,7 +13,7 @@ export default {
     steps: ["Account", "Details", "Activity", "Motivation", "Page"],
   },
   tags: ["autodocs"],
-} as Meta<StepProps>;
+};
 
 type Story = StoryObj<typeof Step>;
 
