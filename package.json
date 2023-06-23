@@ -1,6 +1,6 @@
 {
   "name": "@cruk/cruk-react-components",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "React components implementing CRUK, SU2C & Bowelbabe designs",
   "license": "UNLICENSED",
   "publishConfig": {

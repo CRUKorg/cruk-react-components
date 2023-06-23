@@ -7,11 +7,11 @@ type ThemeProp = {
 };
 
 export const PopOverWrapper = styled.div<{
+  full: boolean;
   css?: string;
 }>`
   position: relative;
-  display: inline-block;
-
+  display: ${({ full }) => (full ? "block" : "inline-block")};
   ${(props: { css?: string }) =>
     props.css &&
     css`
