@@ -1,122 +1,73 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { bowelbabeTheme, GlobalStyle, su2cTheme } from "..";
+import { bowelbabeTheme, su2cTheme } from "..";
 import DateField, { DateFieldProps } from ".";
 
 export default {
   title: "DateField",
   component: DateField,
+  args: {
+    dayName: "birthDay",
+    monthName: "birthMonth",
+    yearName: "birthYear",
+    label: "When were they born?",
+    hintText: "for example: 24 11 1988",
+    onChange: () => {},
+    onBlur: () => {},
+    onFocus: () => {},
+    disabled: false,
+    required: true,
+    dayHasError: false,
+    monthHasError: false,
+    yearHasError: false,
+    errorMessage: "",
+  },
+  tags: ["autodocs"],
 } as Meta<DateFieldProps>;
 
-const Template: Story<DateFieldProps> = (args) => <DateField {...args} />;
+type Story = StoryObj<typeof DateField>;
 
-export const DateFieldWithLabel: Story<DateFieldProps> = Template.bind({});
-DateFieldWithLabel.args = {
-  dayName: "birthDay",
-  monthName: "birthMonth",
-  yearName: "birthYear",
-  label: "When were they born?",
-  hintText: "for example: 24 11 1988",
-  onChange: () => {},
-  onBlur: () => {},
-  onFocus: () => {},
-  disabled: false,
-  required: true,
+export const Default: Story = {
+  name: "Default",
 };
 
-export const DateFieldWithError: Story<DateFieldProps> = Template.bind({});
-DateFieldWithError.args = {
-  label: "Date with all fields with errors",
-  hintText: "for example: 24 11 1988",
-  onChange: () => {},
-  onBlur: () => {},
-  onFocus: () => {},
-  dayHasError: true,
-  monthHasError: true,
-  yearHasError: true,
-  errorMessage: "Day month and year invalid",
-  disabled: false,
-  required: true,
+export const DateFieldWithError: Story = {
+  name: "DateFieldWithError",
+  args: {
+    label: "Date with all fields with errors",
+    dayHasError: true,
+    monthHasError: true,
+    yearHasError: true,
+    errorMessage: "Day month and year invalid",
+  },
 };
 
-const TemplateWithSU2C: Story<DateFieldProps> = (args) => (
+/// SU2C
+
+const su2cRender = (args: DateFieldProps) => (
   <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
     <DateField {...args} />
   </ThemeProvider>
 );
 
-export const SU2CDateFieldWithLabel: Story<DateFieldProps> =
-  TemplateWithSU2C.bind({});
-SU2CDateFieldWithLabel.storyName = "SU2C DateField With Label";
-SU2CDateFieldWithLabel.args = {
-  dayName: "birthDay",
-  monthName: "birthMonth",
-  yearName: "birthYear",
-  label: "When were they born?",
-  hintText: "for example: 24 11 1988",
-  onChange: () => {},
-  onBlur: () => {},
-  onFocus: () => {},
-  disabled: false,
-  required: true,
+export const DateFieldSU2C: Story = {
+  name: "DateFieldSU2C",
+  args: {},
+  render: su2cRender,
 };
 
-export const SU2CDateFieldWithError: Story<DateFieldProps> =
-  TemplateWithSU2C.bind({});
-SU2CDateFieldWithError.storyName = "SU2C DateField With Error";
-SU2CDateFieldWithError.args = {
-  label: "Date with all fields with errors",
-  hintText: "for example: 24 11 1988",
-  onChange: () => {},
-  onBlur: () => {},
-  onFocus: () => {},
-  dayHasError: true,
-  monthHasError: true,
-  yearHasError: true,
-  errorMessage: "Day month and year invalid",
-  disabled: false,
-  required: true,
-};
+/// Bowelbabe
 
-const TemplateWithBowelbabe: Story<DateFieldProps> = (args) => (
+const bowelbabeRender = (args: DateFieldProps) => (
   <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
     <DateField {...args} />
   </ThemeProvider>
 );
 
-export const BowelbabeDateFieldWithLabel: Story<DateFieldProps> =
-  TemplateWithBowelbabe.bind({});
-BowelbabeDateFieldWithLabel.storyName = "Bowelbabe DateField With Label";
-BowelbabeDateFieldWithLabel.args = {
-  dayName: "birthDay",
-  monthName: "birthMonth",
-  yearName: "birthYear",
-  label: "When were they born?",
-  hintText: "for example: 24 11 1988",
-  onChange: () => {},
-  onBlur: () => {},
-  onFocus: () => {},
-  disabled: false,
-  required: true,
-};
-
-export const BowelbabeDateFieldWithError: Story<DateFieldProps> =
-  TemplateWithBowelbabe.bind({});
-BowelbabeDateFieldWithError.storyName = "Bowelbabe DateField With Error";
-BowelbabeDateFieldWithError.args = {
-  label: "Date with all fields with errors",
-  hintText: "for example: 24 11 1988",
-  onChange: () => {},
-  onBlur: () => {},
-  onFocus: () => {},
-  dayHasError: true,
-  monthHasError: true,
-  yearHasError: true,
-  errorMessage: "Day month and year invalid",
-  disabled: false,
-  required: true,
+export const DateFieldBowelbabe: Story = {
+  name: "DateFieldBowelbabe",
+  args: {},
+  render: bowelbabeRender,
 };

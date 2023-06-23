@@ -1,45 +1,50 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { bowelbabeTheme, GlobalStyle, su2cTheme } from "..";
+import { bowelbabeTheme, su2cTheme } from "..";
 import ErrorText, { ErrorTextProps } from ".";
 
 export default {
   title: "ErrorText",
   component: ErrorText,
+  args: {
+    children: "this is error text",
+  },
+  tags: ["autodocs"],
 } as Meta<ErrorTextProps>;
 
-const Template: Story = (args) => <ErrorText {...args} />;
+type Story = StoryObj<typeof ErrorText>;
 
-export const ErrorTextDefault: Story = Template.bind({});
-ErrorTextDefault.storyName = "ErrorText";
-ErrorTextDefault.args = {
-  children: "this is error text",
+export const ErrorTextDefault: Story = {
+  name: "ErrorTextDefault",
+  args: {},
 };
 
-const TemplateWithSU2C: Story = (args) => (
+/// SU2C
+
+const su2cRender = (args: ErrorTextProps) => (
   <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
     <ErrorText {...args} />
   </ThemeProvider>
 );
 
-export const SU2CErrorText: Story = TemplateWithSU2C.bind({});
-SU2CErrorText.storyName = "SU2C ErrorText";
-SU2CErrorText.args = {
-  children: "this is error text",
+export const ErrorTextSU2C: Story = {
+  name: "ErrorTextSU2C",
+  args: {},
+  render: su2cRender,
 };
 
-const TemplateWithBowelbabe: Story = (args) => (
+/// Bowelbabe
+
+const bowelbabeRender = (args: ErrorTextProps) => (
   <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
     <ErrorText {...args} />
   </ThemeProvider>
 );
 
-export const BowelbabeErrorText: Story = TemplateWithBowelbabe.bind({});
-BowelbabeErrorText.storyName = "Bowelbabe ErrorText";
-BowelbabeErrorText.args = {
-  children: "this is error text",
+export const ErrorTextBowelbabe: Story = {
+  name: "ErrorTextBowelbabe",
+  args: {},
+  render: bowelbabeRender,
 };

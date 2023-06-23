@@ -1,5 +1,5 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,132 +12,92 @@ import TextField, { TextFieldProps } from ".";
 export default {
   title: "TextField",
   component: TextField,
+  args: {
+    value: undefined,
+    disabled: false,
+    required: false,
+    label: "TextField",
+    hintText: "hint text here",
+    hasError: false,
+    errorMessage: undefined,
+  },
+  tags: ["autodocs"],
 } as Meta<TextFieldProps>;
 
-const Template: Story<TextFieldProps> = (args) => <TextField {...args} />;
-const TemplateExtraRight: Story<TextFieldProps> = (args) => (
-  <TextField
-    {...args}
-    extraRight={
-      <Button appearance="tertiary" aria-label="search">
+type Story = StoryObj<typeof TextField>;
+
+export const TextFieldDefault: Story = {
+  name: "TextField Default",
+  args: {},
+};
+
+export const TextFieldExtraLeft: Story = {
+  name: "TextField Extra Left",
+  args: {
+    extraLeft: "£",
+  },
+};
+export const TextFieldExtraRight: Story = {
+  name: "TextField Extra Right",
+  args: {
+    extraRight: (
+      <Button appearance="tertiary">
         <IconFa faIcon={faSearch} />
       </Button>
-    }
-  />
-);
-
-export const TextFieldDefault: Story<TextFieldProps> = Template.bind({});
-TextFieldDefault.storyName = "TextField";
-TextFieldDefault.args = {
-  value: undefined,
-  disabled: false,
-  required: false,
-  label: "TextField",
-  hintText: undefined,
-  hasError: false,
-  errorMessage: undefined,
+    ),
+  },
 };
 
-export const TextFieldWithError: Story<TextFieldProps> = Template.bind({});
-TextFieldWithError.storyName = "TextField With Error";
-TextFieldWithError.args = {
-  id: "textfield",
-  value: undefined,
-  disabled: false,
-  required: false,
-  label: "TextField",
-  hintText: undefined,
-  hasError: true,
-  errorMessage: "error message",
+export const TextFieldWithError: Story = {
+  name: "TextField With Error",
+  args: {
+    hasError: true,
+    errorMessage: "error message",
+  },
 };
 
-export const TextFieldWithExtraLeft: Story<TextFieldProps> = Template.bind({});
-TextFieldWithExtraLeft.storyName = "TextField extra left";
-TextFieldWithExtraLeft.args = {
-  value: undefined,
-  disabled: false,
-  required: false,
-  label: "Fundrasing Target",
-  hintText: undefined,
-  hasError: false,
-  errorMessage: undefined,
-  extraLeft: "£",
-};
+/// SU2C
 
-export const TextFieldWithExtraRight: Story<TextFieldProps> =
-  TemplateExtraRight.bind({});
-TextFieldWithExtraRight.storyName = "TextField extra right";
-TextFieldWithExtraRight.args = {
-  value: undefined,
-  disabled: false,
-  required: false,
-  label: "Search",
-  hintText: undefined,
-  hasError: false,
-  errorMessage: undefined,
-};
-
-const TemplateWithSU2C: Story<TextFieldProps> = (args) => (
+const su2cRender = (args: TextFieldProps) => (
   <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
     <TextField {...args} />
   </ThemeProvider>
 );
 
-export const SU2CTextField: Story<TextFieldProps> = TemplateWithSU2C.bind({});
-SU2CTextField.storyName = "SU2C TextField";
-SU2CTextField.args = {
-  value: undefined,
-  disabled: false,
-  required: false,
-  label: "TextField",
-  hintText: undefined,
-  hasError: false,
-  errorMessage: undefined,
+export const TextFieldSU2C: Story = {
+  name: "TextField SU2C",
+  args: {},
+  render: su2cRender,
 };
 
-export const SU2CTextFieldWithError: Story<TextFieldProps> =
-  TemplateWithSU2C.bind({});
-SU2CTextFieldWithError.storyName = "SU2C TextField With Error";
-SU2CTextFieldWithError.args = {
-  value: undefined,
-  disabled: false,
-  required: false,
-  label: "TextField",
-  hintText: undefined,
-  hasError: true,
-  errorMessage: "error message",
+export const TextFieldWithErrorSU2C: Story = {
+  name: "TextField With Error SU2C",
+  args: {
+    hasError: true,
+    errorMessage: "error message",
+  },
+  render: su2cRender,
 };
 
-const TemplateWithBowelbabe: Story<TextFieldProps> = (args) => (
+/// Bowelbabe
+
+const bowelbabeRender = (args: TextFieldProps) => (
   <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
     <TextField {...args} />
   </ThemeProvider>
 );
 
-export const BowelbabeTextField: Story<TextFieldProps> =
-  TemplateWithBowelbabe.bind({});
-BowelbabeTextField.storyName = "Bowelbabe TextField";
-BowelbabeTextField.args = {
-  value: undefined,
-  disabled: false,
-  required: false,
-  label: "TextField",
-  hintText: undefined,
-  hasError: false,
-  errorMessage: undefined,
+export const TextFieldBowelbabe: Story = {
+  name: "TextField Bowelbabe",
+  args: {},
+  render: bowelbabeRender,
 };
 
-export const BowelbabeTextFieldWithError: Story<TextFieldProps> =
-  TemplateWithBowelbabe.bind({});
-BowelbabeTextFieldWithError.storyName = "Bowelbabe TextField With Error";
-BowelbabeTextFieldWithError.args = {
-  value: undefined,
-  disabled: false,
-  required: false,
-  label: "TextField",
-  hintText: undefined,
-  hasError: true,
-  errorMessage: "error message",
+export const TextFieldWithErrorBowelbabe: Story = {
+  name: "TextField With Error Bowelbabe",
+  args: {
+    hasError: true,
+    errorMessage: "error message",
+  },
+  render: bowelbabeRender,
 };

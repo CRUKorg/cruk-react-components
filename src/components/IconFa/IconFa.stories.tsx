@@ -1,48 +1,51 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
 import { faBullseye } from "@fortawesome/free-solid-svg-icons";
-import { GlobalStyle, su2cTheme, IconFa } from "..";
+import { su2cTheme, bowelbabeTheme, IconFa } from "..";
 import { IconFaProps } from ".";
 
 export default {
   title: "IconFa",
   component: IconFa,
+  args: {
+    faIcon: faBullseye,
+  },
+  tags: ["autodocs"],
 } as Meta<IconFaProps>;
 
-const Template: Story<IconFaProps> = (args) => <IconFa {...args} />;
+type Story = StoryObj<typeof IconFa>;
 
-export const IconFaDefault: Story<IconFaProps> = Template.bind({});
-IconFaDefault.storyName = "IconFa";
-IconFaDefault.args = {
-  faIcon: faBullseye,
+export const IconFADefault: Story = {
+  name: "IconFA Default",
+  args: {},
 };
 
-const TemplateWithSU2C: Story<IconFaProps> = (args) => (
+/// SU2C
+
+const su2cRender = (args: IconFaProps) => (
   <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
     <IconFa {...args} />
   </ThemeProvider>
 );
 
-export const SU2CIconFa: Story<IconFaProps> = TemplateWithSU2C.bind({});
-SU2CIconFa.storyName = "SU2C IconFa";
-SU2CIconFa.args = {
-  faIcon: faBullseye,
+export const IconSU2C: Story = {
+  name: "IconFA SU2C",
+  args: {},
+  render: su2cRender,
 };
 
-const TemplateWithBowelbabe: Story<IconFaProps> = (args) => (
-  <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
+/// Bowelbabe
+
+const bowelbabeRender = (args: IconFaProps) => (
+  <ThemeProvider theme={bowelbabeTheme}>
     <IconFa {...args} />
   </ThemeProvider>
 );
 
-export const BowelbabeIconFa: Story<IconFaProps> = TemplateWithBowelbabe.bind(
-  {}
-);
-BowelbabeIconFa.storyName = "Bowelbabe IconFa";
-BowelbabeIconFa.args = {
-  faIcon: faBullseye,
+export const IconBowelbabe: Story = {
+  name: "IconFA Bowelbabe",
+  args: {},
+  render: bowelbabeRender,
 };

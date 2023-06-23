@@ -1,16 +1,11 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { su2cTheme, Link, GlobalStyle, bowelbabeTheme } from "..";
+import { su2cTheme, Link, bowelbabeTheme } from "..";
 import Footer, { FooterProps } from ".";
 
-export default {
-  title: "Footer (experimental)",
-  component: Footer,
-} as Meta<FooterProps>;
-
-const Template: Story = (args) => (
+const FooterWithChildren = (args: FooterProps) => (
   <Footer {...args}>
     <Link
       appearance="secondary"
@@ -27,53 +22,44 @@ const Template: Story = (args) => (
   </Footer>
 );
 
-export const FooterDefault: Story = Template.bind({});
-FooterDefault.args = {};
+export default {
+  title: "Footer (experimental)",
+  component: Footer,
+  render: FooterWithChildren,
+  tags: ["autodocs"],
+} as Meta<FooterProps>;
 
-const TemplateWithSU2C: Story = (args) => (
+type Story = StoryObj<typeof Footer>;
+
+export const FooterDefault: Story = {
+  name: "FooterDefault",
+  args: {},
+};
+
+/// SU2C
+
+const su2cRender = (args: FooterProps) => (
   <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
-    <Footer {...args}>
-      <Link
-        appearance="secondary"
-        href="https://www.cancerresearchuk.org/about-us/contact-us"
-      >
-        Contact us
-      </Link>
-      <Link
-        appearance="secondary"
-        href="https://www.cancerresearchuk.org/privacy-statement"
-      >
-        Privacy
-      </Link>
-    </Footer>
+    <FooterWithChildren {...args} />
   </ThemeProvider>
 );
 
-export const SU2CFooter: Story = TemplateWithSU2C.bind({});
-SU2CFooter.storyName = "SU2C Footer";
-SU2CFooter.args = {};
+export const FooterSU2C: Story = {
+  name: "FooterSU2C",
+  args: {},
+  render: su2cRender,
+};
 
-const TemplateWithBowelbabe: Story = (args) => (
+/// Bowelbabe
+
+const bowelbabeRender = (args: FooterProps) => (
   <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
-    <Footer {...args}>
-      <Link
-        appearance="secondary"
-        href="https://www.cancerresearchuk.org/about-us/contact-us"
-      >
-        Contact us
-      </Link>
-      <Link
-        appearance="secondary"
-        href="https://www.cancerresearchuk.org/privacy-statement"
-      >
-        Privacy
-      </Link>
-    </Footer>
+    <FooterWithChildren {...args} />
   </ThemeProvider>
 );
 
-export const BowelbabeFooter: Story = TemplateWithBowelbabe.bind({});
-BowelbabeFooter.storyName = "Bowelbabe Footer";
-BowelbabeFooter.args = {};
+export const FooterBowelbabe: Story = {
+  name: "FooterBowelbabe",
+  args: {},
+  render: bowelbabeRender,
+};
