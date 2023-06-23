@@ -65,7 +65,8 @@ export const StyledLabel = styled.label<StyledLabelProps>`
       : checked && !theme.utilities.useDefaultFocusRect
       ? theme.colors.primary
       : theme.colors.inputBorder};
-  cursor: pointer;
+  cursor: ${({ disabled }: StyledLabelProps) =>
+    disabled ? "not-allowed" : "pointer"};
   display: block;
   font-weight: ${({ theme, checked }: StyledLabelProps) =>
     checked || !theme.utilities.useDefaultFocusRect
@@ -80,7 +81,14 @@ export const StyledLabel = styled.label<StyledLabelProps>`
     outline: 5px auto -webkit-focus-ring-color;
   }
 
-  ${({ theme }: ThemeProps) =>
+  svg {
+    path {
+      fill: ${({ theme, disabled }: StyledLabelProps) =>
+        disabled && theme.colors.disabled};
+    }
+  }
+
+  ${({ theme, disabled: isDisabled }: StyledLabelProps) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
@@ -89,9 +97,9 @@ export const StyledLabel = styled.label<StyledLabelProps>`
             border: solid 1px
               ${({
                 theme: {
-                  colors: { primary },
+                  colors: { primary, disabled },
                 },
-              }: ThemeProps) => primary};
+              }: ThemeProps) => (isDisabled ? disabled : primary)};
           }
         `}
 `;

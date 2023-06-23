@@ -78,7 +78,8 @@ export const StyledLabel = styled.label<StyledLabelProps>`
       : checked && !theme.utilities.useDefaultFocusRect
       ? theme.colors.primary
       : theme.colors.inputBorder};
-  cursor: pointer;
+  cursor: ${({ disabled }: StyledLabelProps) =>
+    disabled ? "not-allowed" : "pointer"};
   display: inline-block;
   font-weight: ${({ checked }: CheckedProp) => (checked ? "bold" : "normal")};
   color: ${({ theme, disabled }: ThemeProp & DisabledProp) =>
@@ -92,7 +93,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
     outline: 5px auto -webkit-focus-ring-color;
   }
 
-  ${({ theme }: ThemeProp) =>
+  ${({ theme, disabled: isDisabled }: ThemeProp & DisabledProp) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
@@ -102,9 +103,9 @@ export const StyledLabel = styled.label<StyledLabelProps>`
             border: solid 2px
               ${({
                 theme: {
-                  colors: { primary },
+                  colors: { primary, disabled },
                 },
-              }: ThemeProp) => primary};
+              }: ThemeProp) => (isDisabled ? disabled : primary)};
           }
         `}
 `;
@@ -133,7 +134,7 @@ export const StyledInput = styled.input`
     },
   }: ThemeProp) => xxs};
 
-  ${({ theme }: ThemeProp) =>
+  ${({ theme, disabled }: ThemeProp & DisabledProp) =>
     theme.utilities.useDefaultFromControls
       ? css`
           position: absolute;
@@ -164,7 +165,9 @@ export const StyledInput = styled.input`
           }
 
           &:checked ~ ${CheckWrapper} ${Check}::before {
-            background: ${theme.colors.primary};
+            background: ${disabled
+              ? theme.colors.disabled
+              : theme.colors.primary};
           }
         `}
 `;
