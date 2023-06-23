@@ -9,9 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-(BREAKING CHANGES)
-
-- Removes 'css' prop from PopOver, added 'full' for a more explicit way of enabling the child button to extend full width [#697](https://github.com/CRUKorg/cruk-react-components/issues/#697))
+- Using Storybook 7 for docsite
+- Added 'full' on PopOver for a more explicit way of enabling the child button to extend full width [#697](https://github.com/CRUKorg/cruk-react-components/issues/#697))
 
 ### Fixed
 

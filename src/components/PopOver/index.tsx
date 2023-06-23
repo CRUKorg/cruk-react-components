@@ -31,6 +31,7 @@ export type PopOverProps = {
   /**  onPopOverIsOpenChange: popover isOpen changed handler */
   onPopOverIsOpenChange?: (isOpen: boolean) => void;
   children?: ReactNode;
+  css?: string;
 };
 
 /**
@@ -45,6 +46,7 @@ const PopOver = ({
   position,
   modalLabel,
   modalContent,
+  css,
   full = false,
 }: PopOverProps) => {
   const popRef = useRef<HTMLDivElement>(null);
@@ -93,7 +95,7 @@ const PopOver = ({
 
   return (
     <ThemeProvider theme={theme}>
-      <PopOverWrapper full={full} ref={popRef}>
+      <PopOverWrapper full={full} css={css} ref={popRef}>
         {React.Children.map(
           children as ReactElement,
           (child: React.ReactElement) =>

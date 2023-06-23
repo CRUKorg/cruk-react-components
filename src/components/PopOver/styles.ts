@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { ThemeType, PopOverPositionType } from "../../types";
 
@@ -8,9 +8,15 @@ type ThemeProp = {
 
 export const PopOverWrapper = styled.div<{
   full: boolean;
+  css?: string;
 }>`
   position: relative;
   display: ${({ full }) => (full ? "block" : "inline-block")};
+  ${(props: { css?: string }) =>
+    props.css &&
+    css`
+      ${props.css}
+    `}
 `;
 
 export const PopOverModal = styled.div<{
