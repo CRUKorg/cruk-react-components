@@ -1,146 +1,135 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 
 import IconFa from "../IconFa";
-import Button, { Props } from ".";
-import { bowelbabeTheme, GlobalStyle, su2cTheme } from "..";
+
+import { Button, ButtonProps } from "./";
+
+import { bowelbabeTheme, su2cTheme } from "..";
 
 export default {
   title: "Button",
   component: Button,
-} as Meta<Props>;
-
-const Template: Story = (args) => <Button {...args} />;
-
-const TemplateWithElement: Story = (args) => (
-  <Button {...args}>A button</Button>
-);
-
-export const Primary: Story = Template.bind({});
-Primary.args = {
-  appearance: "primary",
-  disabled: false,
-  children: "A button",
-  full: false,
-  size: "m",
+  args: {
+    appearance: "primary",
+    disabled: false,
+    children: "A button",
+    full: false,
+    size: "m",
+  },
+  tags: ["autodocs"],
 };
 
-export const PrimaryAnchorButton: Story = TemplateWithElement.bind({});
-PrimaryAnchorButton.storyName = "primary as anchor";
-PrimaryAnchorButton.args = {
-  appearance: "primary",
-  disabled: false,
-  full: false,
-  size: "m",
-  href: "https://www.cancerresearchuk.org/",
+type Story = StoryObj<typeof Button>;
+
+export const Default: Story = {
+  name: "Default",
+  args: {},
 };
 
-export const Secondary: Story = Template.bind({});
-Secondary.args = {
-  appearance: "secondary",
-  disabled: false,
-  children: "A button",
-  full: false,
-  size: "m",
+export const Primary: Story = {
+  name: "Primary",
+  args: {
+    appearance: "primary",
+  },
 };
 
-export const Tertiary: Story = Template.bind({});
-Tertiary.args = {
-  appearance: "tertiary",
-  disabled: false,
-  children: "A button",
-  full: false,
-  size: "m",
+export const PrimaryAnchorButton: Story = {
+  name: "PrimaryAnchorButton",
+  args: {
+    appearance: "primary",
+    href: "https://www.cancerresearchuk.org/",
+  },
 };
 
-const TemplateWithIcon: Story = (args) => (
-  <Button {...args}>
-    <IconFa faIcon={faClock} />
-    A Button
-    <IconFa faIcon={faClock} />
-  </Button>
-);
-
-export const WithIcons: Story = TemplateWithIcon.bind({});
-WithIcons.args = {
-  appearance: "primary",
-  disabled: false,
-  full: false,
-  size: "m",
+export const Secondary: Story = {
+  name: "Secondary",
+  args: {
+    appearance: "secondary",
+  },
 };
 
-const TemplateWithSU2C: Story = (args) => (
+export const Tertiary: Story = {
+  name: "Tertiary",
+  args: {
+    appearance: "tertiary",
+  },
+};
+
+export const WithIcons: Story = {
+  name: "WithIcons",
+  args: {
+    children: (
+      <>
+        <IconFa faIcon={faClock} />A Button
+        <IconFa faIcon={faClock} />
+      </>
+    ),
+  },
+};
+
+/// SU2C
+
+const su2cRender = (args: ButtonProps) => (
   <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
-    <Button {...args}>A button</Button>
+    <Button {...args} />
   </ThemeProvider>
 );
 
-export const SU2CPrimary: Story = TemplateWithSU2C.bind({});
-SU2CPrimary.storyName = "SU2C Primary";
-SU2CPrimary.args = {
-  appearance: "primary",
-  disabled: false,
-  children: "A button",
-  full: false,
-  size: "m",
+export const PrimarySU2C: Story = {
+  name: "PrimarySU2C",
+  args: {
+    appearance: "primary",
+  },
+  render: su2cRender,
 };
 
-export const SU2CSecondary: Story = TemplateWithSU2C.bind({});
-SU2CSecondary.storyName = "SU2C Secondary";
-SU2CSecondary.args = {
-  appearance: "secondary",
-  disabled: false,
-  children: "A button",
-  full: false,
-  size: "m",
+export const SecondarySU2C: Story = {
+  name: "SecondarySU2C",
+  args: {
+    appearance: "secondary",
+  },
+  render: su2cRender,
 };
 
-export const SU2CTertiary: Story = TemplateWithSU2C.bind({});
-SU2CTertiary.storyName = "SU2C Tertiary";
-SU2CTertiary.args = {
-  appearance: "tertiary",
-  disabled: false,
-  children: "A button",
-  full: false,
-  size: "m",
+export const TertiarySU2C: Story = {
+  name: "TertiarySU2C",
+  args: {
+    appearance: "tertiary",
+  },
+  render: su2cRender,
 };
 
-const TemplateWithBowelbabe: Story = (args) => (
+/// Bowelbabe
+
+const bowelbabeRender = (args: ButtonProps) => (
   <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
-    <Button {...args}>A button</Button>
+    <Button {...args} />
   </ThemeProvider>
 );
 
-export const BowelbabePrimary: Story = TemplateWithBowelbabe.bind({});
-BowelbabePrimary.storyName = "Bowelbabe Primary";
-BowelbabePrimary.args = {
-  appearance: "primary",
-  disabled: false,
-  children: "A button",
-  full: false,
-  size: "m",
+export const PrimaryBowelbabe: Story = {
+  name: "PrimarBowelbabe",
+  args: {
+    appearance: "primary",
+  },
+  render: bowelbabeRender,
 };
 
-export const BowelbabeSecondary: Story = TemplateWithBowelbabe.bind({});
-BowelbabeSecondary.storyName = "Bowelbabe Secondary";
-BowelbabeSecondary.args = {
-  appearance: "secondary",
-  disabled: false,
-  children: "A button",
-  full: false,
-  size: "m",
+export const SecondaryBowelbabe: Story = {
+  name: "SecondaryBowelbabe",
+  args: {
+    appearance: "secondary",
+  },
+  render: bowelbabeRender,
 };
 
-export const BowelbabeTertiary: Story = TemplateWithBowelbabe.bind({});
-BowelbabeTertiary.storyName = "Bowelbabe Tertiary";
-BowelbabeTertiary.args = {
-  appearance: "tertiary",
-  disabled: false,
-  children: "A button",
-  full: false,
-  size: "m",
+export const TertiaryBowelbabe: Story = {
+  name: "TertiaryBowelbabe",
+  args: {
+    appearance: "tertiary",
+  },
+  render: bowelbabeRender,
 };

@@ -1,15 +1,9 @@
 import React from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 
 import { bowelbabeTheme, su2cTheme, Text } from "..";
 import Carousel, { CarouselProps } from ".";
-
-export default {
-  title: "Carousel (experimental)",
-  argTypes: { fullWidthChild: { control: "boolean" } },
-  component: Carousel,
-} as Meta<CarouselProps>;
 
 const Item = styled.div`
   height: 200px;
@@ -19,7 +13,7 @@ const Item = styled.div`
   justify-content: space-around;
 `;
 
-const Template: Story = (args) => (
+const CarouselWithChildren = (args: CarouselProps) => (
   <Carousel {...args}>
     <Item>
       <Text textAlign="center" marginVertical="auto" textSize="l">
@@ -54,88 +48,45 @@ const Template: Story = (args) => (
   </Carousel>
 );
 
-export const CarouselDefault: Story = Template.bind({});
-CarouselDefault.storyName = "Carousel";
-CarouselDefault.args = {};
+export default {
+  title: "Carousel",
+  component: Carousel,
+  args: {},
+  render: CarouselWithChildren,
+  tags: ["autodocs"],
+};
 
-const TemplateWithSU2C: Story = (args) => (
+type Story = StoryObj<typeof Carousel>;
+
+export const Default: Story = {
+  name: "Default",
+  args: {},
+};
+
+/// SU2C
+
+const su2cRender = (args: CarouselProps) => (
   <ThemeProvider theme={su2cTheme}>
-    <Carousel {...args}>
-      <Item>
-        <Text textAlign="center" marginVertical="auto" textSize="l">
-          Item 1
-        </Text>
-      </Item>
-      <Item>
-        <Text textAlign="center" marginVertical="auto" textSize="l">
-          Item 2
-        </Text>
-      </Item>
-      <Item>
-        <Text textAlign="center" marginVertical="auto" textSize="l">
-          Item 3
-        </Text>
-      </Item>
-      <Item>
-        <Text textAlign="center" marginVertical="auto" textSize="l">
-          Item 4
-        </Text>
-      </Item>
-      <Item>
-        <Text textAlign="center" marginVertical="auto" textSize="l">
-          Item 5
-        </Text>
-      </Item>
-      <Item>
-        <Text textAlign="center" marginVertical="auto" textSize="l">
-          Item 6
-        </Text>
-      </Item>
-    </Carousel>
+    <CarouselWithChildren {...args} />
   </ThemeProvider>
 );
 
-export const SU2CCarousel: Story = TemplateWithSU2C.bind({});
-SU2CCarousel.storyName = "SU2C Carousel";
-SU2CCarousel.args = {};
+export const CarouselSU2C: Story = {
+  name: "CarouselSU2C",
+  args: {},
+  render: su2cRender,
+};
 
-const TemplateWithBowelbabe: Story = (args) => (
+/// Bowelbabe
+
+const bowelbabeRender = (args: CarouselProps) => (
   <ThemeProvider theme={bowelbabeTheme}>
-    <Carousel {...args}>
-      <Item>
-        <Text textAlign="center" marginVertical="auto" textSize="l">
-          Item 1
-        </Text>
-      </Item>
-      <Item>
-        <Text textAlign="center" marginVertical="auto" textSize="l">
-          Item 2
-        </Text>
-      </Item>
-      <Item>
-        <Text textAlign="center" marginVertical="auto" textSize="l">
-          Item 3
-        </Text>
-      </Item>
-      <Item>
-        <Text textAlign="center" marginVertical="auto" textSize="l">
-          Item 4
-        </Text>
-      </Item>
-      <Item>
-        <Text textAlign="center" marginVertical="auto" textSize="l">
-          Item 5
-        </Text>
-      </Item>
-      <Item>
-        <Text textAlign="center" marginVertical="auto" textSize="l">
-          Item 6
-        </Text>
-      </Item>
-    </Carousel>
+    <CarouselWithChildren {...args} />
   </ThemeProvider>
 );
 
-export const BowelbabeCarousel: Story = TemplateWithBowelbabe.bind({});
-BowelbabeCarousel.storyName = "Bowelbabe Carousel";
-BowelbabeCarousel.args = {};
+export const CarouselBowelbabe: Story = {
+  name: "CarouselBowelbabe",
+  args: {},
+  render: bowelbabeRender,
+};

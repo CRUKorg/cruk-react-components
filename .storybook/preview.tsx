@@ -1,0 +1,84 @@
+import React from "react";
+import type { Preview } from "@storybook/react";
+import { ThemeProvider } from "styled-components";
+import { withThemeFromJSXProvider } from "@storybook/addon-styling";
+
+import { su2cTheme, bowelbabeTheme, crukTheme } from "../src/components";
+import { GlobalStyle, Text } from "../src/components";
+
+import {
+  Title,
+  Heading,
+  Subtitle,
+  Description,
+  Primary,
+  ArgsTable,
+  Stories,
+  Controls,
+  PRIMARY_STORY,
+  Source,
+} from "@storybook/addon-docs";
+
+const preview: Preview = {
+  parameters: {
+    actions: { argTypesRegex: "^on[A-Z].*" },
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/,
+      },
+    },
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <Controls />
+          <Stories />
+          <Heading>Theming</Heading>
+          <Text>
+            Our component library is built on styled components, the different
+            themes can be imported from the component library and implemented
+            using ThemeProvider, GlobalStyle is a bit like a css reset
+          </Text>
+          <Source
+            code={`
+            import { ThemeProvider } from 'styled-components';
+            import {
+              Button,
+              crukTheme,
+              su2cTheme,
+              GlobalStyle
+            } from '@cruk/cruk-react-components';
+
+            const component = () => {
+              return (
+                <ThemeProvider theme={crukTheme}>
+                  <GlobalStyle/>
+                  <Button>A button</Button>
+                <ThemeProvider>
+              )
+            }`}
+          />
+        </>
+      ),
+    },
+  },
+};
+
+export default preview;
+
+export const decorators = [
+  withThemeFromJSXProvider({
+    themes: {
+      cruk: crukTheme,
+      su2c: su2cTheme,
+      bowelbabe: bowelbabeTheme,
+    },
+    defaultTheme: "cruk",
+    Provider: ThemeProvider,
+    GlobalStyles: GlobalStyle,
+  }),
+];

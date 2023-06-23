@@ -1,123 +1,86 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { bowelbabeTheme, GlobalStyle, su2cTheme } from "..";
+import { bowelbabeTheme, su2cTheme } from "..";
 import TextAreaField, { TextAreaFieldProps } from ".";
 
 export default {
   title: "TextAreaField",
   component: TextAreaField,
-} as Meta<TextAreaFieldProps>;
-
-const Template: Story<TextAreaFieldProps> = (args) => (
-  <TextAreaField {...args} />
-);
-
-export const TextAreaFieldDefault: Story<TextAreaFieldProps> = Template.bind(
-  {}
-);
-TextAreaFieldDefault.storyName = "TextAreaField";
-TextAreaFieldDefault.args = {
-  value: undefined,
-  disabled: false,
-  required: false,
-  label: "TextAreaField",
-  hintText: undefined,
-  resize: "horizontal",
-  lineCount: 5,
-  hasError: false,
-  errorMessage: undefined,
+  args: {
+    children: "This is text it defaults to a paragraph tag",
+    textColor: "textDark",
+    value: undefined,
+    disabled: false,
+    required: false,
+    label: "TextAreaField",
+    hintText: undefined,
+    resize: "horizontal",
+    lineCount: 5,
+    hasError: false,
+    errorMessage: undefined,
+  },
+  tags: ["autodocs"],
 };
 
-export const TextAreaFieldWithError: Story<TextAreaFieldProps> = Template.bind(
-  {}
-);
-TextAreaFieldWithError.storyName = "TextAreaField With Error";
-TextAreaFieldWithError.args = {
-  id: "textarea",
-  value: undefined,
-  disabled: false,
-  label: "TextAreaField",
-  hintText: undefined,
-  resize: "horizontal",
-  lineCount: 5,
-  required: false,
-  hasError: true,
-  errorMessage: "error message",
+type Story = StoryObj<typeof TextAreaField>;
+
+export const TextAreaFieldDefault: Story = {
+  name: "TextAreaField Default",
+  args: {},
 };
 
-const TemplateWithSU2C: Story<TextAreaFieldProps> = (args) => (
+export const TextAreaFieldWithError: Story = {
+  name: "TextAreaField With Error",
+  args: {
+    hasError: true,
+    errorMessage: "error message",
+  },
+};
+
+/// SU2C
+
+const su2cRender = (args: TextAreaFieldProps) => (
   <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
     <TextAreaField {...args} />
   </ThemeProvider>
 );
 
-export const SU2CTextAreaField: Story<TextAreaFieldProps> =
-  TemplateWithSU2C.bind({});
-SU2CTextAreaField.storyName = "SU2C TextAreaField";
-SU2CTextAreaField.args = {
-  value: undefined,
-  disabled: false,
-  required: false,
-  label: "TextAreaField",
-  hintText: undefined,
-  resize: "horizontal",
-  lineCount: 5,
-  hasError: false,
-  errorMessage: undefined,
+export const TextAreaFieldSU2C: Story = {
+  name: "TextAreaField SU2C",
+  args: {},
+  render: su2cRender,
 };
 
-export const SU2CTextAreaFieldWithError: Story<TextAreaFieldProps> =
-  TemplateWithSU2C.bind({});
-SU2CTextAreaFieldWithError.storyName = "SU2C TextAreaField With Error";
-SU2CTextAreaFieldWithError.args = {
-  value: undefined,
-  disabled: false,
-  required: false,
-  label: "TextAreaField",
-  hintText: undefined,
-  resize: "horizontal",
-  lineCount: 5,
-  hasError: true,
-  errorMessage: "error message",
+export const TextAreaFieldWithErrorSU2C: Story = {
+  name: "TextAreaField With Error SU2C",
+  args: {
+    hasError: true,
+    errorMessage: "error message",
+  },
+  render: su2cRender,
 };
 
-const TemplateWithBowelbabe: Story<TextAreaFieldProps> = (args) => (
+/// Bowelbabe
+
+const bowelbabeRender = (args: TextAreaFieldProps) => (
   <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
     <TextAreaField {...args} />
   </ThemeProvider>
 );
 
-export const BowelbabeTextAreaField: Story<TextAreaFieldProps> =
-  TemplateWithBowelbabe.bind({});
-BowelbabeTextAreaField.storyName = "Bowelbabe TextAreaField";
-BowelbabeTextAreaField.args = {
-  value: undefined,
-  disabled: false,
-  required: false,
-  label: "TextAreaField",
-  hintText: undefined,
-  resize: "horizontal",
-  lineCount: 5,
-  hasError: false,
-  errorMessage: undefined,
+export const TextAreaFielBowelbabe: Story = {
+  name: "TextAreaField Bowelbabe",
+  args: {},
+  render: bowelbabeRender,
 };
 
-export const BowelbabeTextAreaFieldWithError: Story<TextAreaFieldProps> =
-  TemplateWithBowelbabe.bind({});
-BowelbabeTextAreaFieldWithError.storyName =
-  "Bowelbabe TextAreaField With Error";
-BowelbabeTextAreaFieldWithError.args = {
-  value: undefined,
-  disabled: false,
-  required: false,
-  label: "TextAreaField",
-  hintText: undefined,
-  resize: "horizontal",
-  lineCount: 5,
-  hasError: true,
-  errorMessage: "error message",
+export const TextAreaFieldWithErrorBowelbabe: Story = {
+  name: "TextAreaField With Error Bowelbabe",
+  args: {
+    hasError: true,
+    errorMessage: "error message",
+  },
+  render: bowelbabeRender,
 };

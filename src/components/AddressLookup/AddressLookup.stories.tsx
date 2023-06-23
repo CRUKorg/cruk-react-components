@@ -1,52 +1,46 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { GlobalStyle, su2cTheme, bowelbabeTheme } from "..";
-import AddressLookup, { AddressLookupProps } from ".";
+import { su2cTheme, bowelbabeTheme } from "..";
+import AddressLookup from ".";
 
 export default {
   title: "AddressLookup",
   component: AddressLookup,
-} as Meta<AddressLookupProps>;
-
-const AddressLookupWithState = (args: AddressLookupProps) => (
-  <AddressLookup
-    {...args}
-    apiKey="MG17-ZD93-FF33-KF13"
-    onAddressSelected={(address) => alert(JSON.stringify(address, null, 2))}
-    onChange={(e) => console.log("value", e.target.value)}
-  />
-);
-
-const Template: Story<AddressLookupProps> = (args) => (
-  <AddressLookupWithState {...args} />
-);
-
-export const AddressLookUp: Story<AddressLookupProps> = Template.bind({});
-AddressLookUp.storyName = "AddressLookUp";
-AddressLookUp.args = {
-  disabled: false,
+  args: {
+    disabled: false,
+    errorMessage: "",
+    hasError: false,
+    label: "Home address",
+    required: true,
+    isValid: true,
+    isValidVisible: false,
+    isInvalidVisible: false,
+  },
+  tags: ["autodocs"],
 };
 
-const TemplateWithSU2C: Story<AddressLookupProps> = (args) => (
-  <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
-    <AddressLookupWithState {...args} />
-  </ThemeProvider>
-);
+type Story = StoryObj<typeof AddressLookup>;
 
-export const SU2CAddressLookUp: Story<AddressLookupProps> =
-  TemplateWithSU2C.bind({});
-SU2CAddressLookUp.storyName = "SU2C AddressLookUp";
+export const AddressLookupStory: Story = {
+  name: "AddressLookup",
+};
 
-const TemplateWithBowelbabe: Story<AddressLookupProps> = (args) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
-    <AddressLookupWithState {...args} />
-  </ThemeProvider>
-);
+export const AddressLookupSU2C: Story = {
+  name: "AddressLookup SU2C",
+  render: (args) => (
+    <ThemeProvider theme={su2cTheme}>
+      <AddressLookup {...args} />
+    </ThemeProvider>
+  ),
+};
 
-export const BowelbabeAddressLookUp: Story<AddressLookupProps> =
-  TemplateWithBowelbabe.bind({});
-BowelbabeAddressLookUp.storyName = "Bowelbabe AddressLookUp";
+export const AddressLookupBowelbabe: Story = {
+  name: "AddressLookup bowelbabeTheme",
+  render: (args) => (
+    <ThemeProvider theme={bowelbabeTheme}>
+      <AddressLookup {...args} />
+    </ThemeProvider>
+  ),
+};

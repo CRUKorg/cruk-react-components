@@ -1,138 +1,201 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { GlobalStyle, su2cTheme, crukTheme, bowelbabeTheme } from "..";
-import Avatar, { AvatarProps } from ".";
+import { su2cTheme, crukTheme, bowelbabeTheme } from "..";
+import Avatar from ".";
 
 export default {
   title: "Avatar",
   component: Avatar,
-} as Meta<AvatarProps>;
-
-const Template: Story = (args) => <Avatar {...args} />;
-
-export const Default: Story = Template.bind({});
-Default.args = {};
-
-export const Small: Story = Template.bind({});
-Small.args = {
-  name: "Sam",
-  size: "s",
-  alt: "sam's profile",
+  args: {
+    name: "Sam",
+    size: "s",
+    alt: "sam's profile",
+  },
+  tags: ["autodocs"],
 };
 
-export const Medium: Story = Template.bind({});
-Medium.args = {
-  name: "Sam",
-  size: "m",
-  alt: "sam's profile",
+type Story = StoryObj<typeof Avatar>;
+
+export const Default: Story = {
+  name: "Default",
 };
 
-export const Large: Story = Template.bind({});
-Large.args = {
-  name: "Sam",
-  size: "l",
-  alt: "sam's profile",
+export const Small: Story = {
+  name: "Small",
+  args: {
+    size: "s",
+  },
 };
 
-export const ExtraLarge: Story = Template.bind({});
-Large.args = {
-  name: "Sam",
-  size: "xl",
-  alt: "sam's profile",
+export const Medium: Story = {
+  name: "Medium",
+  args: {
+    size: "m",
+  },
 };
 
-export const CustomImage: Story = Template.bind({});
-CustomImage.args = {
-  name: "Sam",
-  size: "xl",
-  alt: "sam's profile",
-  url: `${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`,
+export const Large: Story = {
+  name: "Large",
+  args: {
+    size: "l",
+  },
 };
 
-const TemplateWithSU2C: Story = (args) => (
-  <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
-    <Avatar {...args} />
-  </ThemeProvider>
-);
-
-export const SU2CDefault: Story = TemplateWithSU2C.bind({});
-SU2CDefault.storyName = "SU2C Default";
-SU2CDefault.args = {};
-
-export const SU2CSmall: Story = TemplateWithSU2C.bind({});
-SU2CSmall.storyName = "SU2C Small";
-SU2CSmall.args = {
-  name: "Sam",
-  size: "s",
-  alt: "sam's profile",
+export const ExtraLarge: Story = {
+  name: "ExtraLarge",
+  args: {
+    size: "xl",
+  },
 };
 
-export const SU2CMedium: Story = TemplateWithSU2C.bind({});
-SU2CMedium.storyName = "SU2C Medium";
-SU2CMedium.args = {
-  name: "Sam",
-  size: "m",
-  alt: "sam's profile",
+export const CustomImage: Story = {
+  name: "CustomImage",
+  args: {
+    size: "xl",
+    url: `${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`,
+  },
 };
 
-export const SU2CLarge: Story = TemplateWithSU2C.bind({});
-SU2CLarge.storyName = "SU2C large";
-SU2CLarge.args = {
-  name: "Sam",
-  size: "l",
-  alt: "sam's profile",
+export const DefaultSU2C: Story = {
+  name: "DefaultSU2C",
+  render: (args) => (
+    <ThemeProvider theme={su2cTheme}>
+      <Avatar {...args} />
+    </ThemeProvider>
+  ),
 };
 
-export const SU2CExtraLarge: Story = TemplateWithSU2C.bind({});
-SU2CExtraLarge.storyName = "SU2C Extra Large";
-SU2CExtraLarge.args = {
-  name: "Sam",
-  size: "xl",
-  alt: "sam's profile",
+export const SmallSU2C: Story = {
+  name: "SmallSU2C",
+  args: {
+    size: "s",
+  },
+  render: (args) => (
+    <ThemeProvider theme={su2cTheme}>
+      <Avatar {...args} />
+    </ThemeProvider>
+  ),
 };
 
-const TemplateWithBowelbabe: Story = (args) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
-    <Avatar {...args} />
-  </ThemeProvider>
-);
-
-export const BowelbabeDefault: Story = TemplateWithBowelbabe.bind({});
-BowelbabeDefault.storyName = "Bowelbabe Default";
-BowelbabeDefault.args = {};
-
-export const BowelbabeSmall: Story = TemplateWithBowelbabe.bind({});
-BowelbabeSmall.storyName = "Bowelbabe Small";
-BowelbabeSmall.args = {
-  name: "Sam",
-  size: "s",
-  alt: "sam's profile",
+export const MediumSU2C: Story = {
+  name: "MediumSU2C",
+  args: {
+    size: "m",
+  },
+  render: (args) => (
+    <ThemeProvider theme={su2cTheme}>
+      <Avatar {...args} />
+    </ThemeProvider>
+  ),
 };
 
-export const BowelbabeMedium: Story = TemplateWithBowelbabe.bind({});
-BowelbabeMedium.storyName = "Bowelbabe Medium";
-BowelbabeMedium.args = {
-  name: "Sam",
-  size: "m",
-  alt: "sam's profile",
+export const LargeSU2C: Story = {
+  name: "LargeSU2C",
+  args: {
+    size: "l",
+  },
+  render: (args) => (
+    <ThemeProvider theme={su2cTheme}>
+      <Avatar {...args} />
+    </ThemeProvider>
+  ),
 };
 
-export const BowelbabeLarge: Story = TemplateWithBowelbabe.bind({});
-BowelbabeLarge.storyName = "Bowelbabe large";
-BowelbabeLarge.args = {
-  name: "Sam",
-  size: "l",
-  alt: "sam's profile",
+export const ExtraLargeSU2C: Story = {
+  name: "ExtraLargeSU2C",
+  args: {
+    size: "xl",
+  },
+  render: (args) => (
+    <ThemeProvider theme={su2cTheme}>
+      <Avatar {...args} />
+    </ThemeProvider>
+  ),
 };
 
-export const BowelbabeExtraLarge: Story = TemplateWithBowelbabe.bind({});
-BowelbabeExtraLarge.storyName = "Bowelbabe Extra Large";
-BowelbabeExtraLarge.args = {
-  name: "Sam",
-  size: "xl",
-  alt: "sam's profile",
+export const CustomImageSU2C: Story = {
+  name: "CustomImageSU2C",
+  args: {
+    size: "xl",
+    url: `${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`,
+  },
+  render: (args) => (
+    <ThemeProvider theme={su2cTheme}>
+      <Avatar {...args} />
+    </ThemeProvider>
+  ),
+};
+
+/////////
+
+export const DefaultBowelBabe: Story = {
+  name: "DefaultBowelBabe",
+  render: (args) => (
+    <ThemeProvider theme={bowelbabeTheme}>
+      <Avatar {...args} />
+    </ThemeProvider>
+  ),
+};
+
+export const SmallBowelBabe: Story = {
+  name: "SmallBowelBabe",
+  args: {
+    size: "s",
+  },
+  render: (args) => (
+    <ThemeProvider theme={bowelbabeTheme}>
+      <Avatar {...args} />
+    </ThemeProvider>
+  ),
+};
+
+export const MediumBowelBabe: Story = {
+  name: "MediumBowelBabe",
+  args: {
+    size: "m",
+  },
+  render: (args) => (
+    <ThemeProvider theme={bowelbabeTheme}>
+      <Avatar {...args} />
+    </ThemeProvider>
+  ),
+};
+
+export const LargeBowelBabe: Story = {
+  name: "LargeBowelBabe",
+  args: {
+    size: "l",
+  },
+  render: (args) => (
+    <ThemeProvider theme={bowelbabeTheme}>
+      <Avatar {...args} />
+    </ThemeProvider>
+  ),
+};
+
+export const ExtraLargeBowelBabe: Story = {
+  name: "ExtraLargeBowelBabe",
+  args: {
+    size: "xl",
+  },
+  render: (args) => (
+    <ThemeProvider theme={bowelbabeTheme}>
+      <Avatar {...args} />
+    </ThemeProvider>
+  ),
+};
+
+export const CustomImageBowelBabe: Story = {
+  name: "CustomImageBowelBabe",
+  args: {
+    size: "xl",
+    url: `${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`,
+  },
+  render: (args) => (
+    <ThemeProvider theme={bowelbabeTheme}>
+      <Avatar {...args} />
+    </ThemeProvider>
+  ),
 };

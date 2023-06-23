@@ -1,5 +1,5 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
 import {
@@ -15,10 +15,14 @@ import Modal, { ModalProps } from ".";
 export default {
   title: "Modal",
   component: Modal,
-} as Meta<ModalProps>;
+  args: {},
+  tags: ["autodocs"],
+};
 
-const Template: Story<ModalProps> = (args) => {
-  const [showModal, setShowModal] = React.useState(true);
+type Story = StoryObj<typeof Modal>;
+
+const ModalWithTriggerButton = (args: ModalProps) => {
+  const [showModal, setShowModal] = React.useState(false);
   const toggleShowModal = () => setShowModal(!showModal);
 
   return (
@@ -41,68 +45,38 @@ const Template: Story<ModalProps> = (args) => {
   );
 };
 
-export const ModalDefault: Story<ModalProps> = Template.bind({});
-ModalDefault.storyName = "Modal";
-ModalDefault.args = {};
-
-const TemplateWithSU2C: Story<ModalProps> = (args) => {
-  const [showModal, setShowModal] = React.useState(false);
-  const toggleShowModal = () => setShowModal(!showModal);
-
-  return (
-    <>
-      <ThemeProvider theme={su2cTheme}>
-        <GlobalStyle />
-        <Button appearance="primary" onClick={toggleShowModal}>
-          Show me a modal
-        </Button>
-        {showModal && (
-          <Modal {...args} closeFunction={toggleShowModal}>
-            <Heading h2 marginTop="none" textSize="xl">
-              Modal title
-            </Heading>
-            <Text>Some really important information</Text>
-            <Button appearance="primary" onClick={toggleShowModal}>
-              OK
-            </Button>
-          </Modal>
-        )}
-      </ThemeProvider>
-    </>
-  );
+export const ModalDefault: Story = {
+  name: "ModalDefault",
+  args: {},
+  render: ModalWithTriggerButton,
 };
 
-export const SU2CModal: Story<ModalProps> = TemplateWithSU2C.bind({});
-SU2CModal.storyName = "SU2C Modal";
-SU2CModal.args = {};
+/// SU2C
 
-const TemplateWithBowelbabe: Story<ModalProps> = (args) => {
-  const [showModal, setShowModal] = React.useState(false);
-  const toggleShowModal = () => setShowModal(!showModal);
+const su2cRender = (args: ModalProps) => (
+  <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
+    <ModalWithTriggerButton {...args} />
+  </ThemeProvider>
+);
 
-  return (
-    <>
-      <ThemeProvider theme={bowelbabeTheme}>
-        <GlobalStyle />
-        <Button appearance="primary" onClick={toggleShowModal}>
-          Show me a modal
-        </Button>
-        {showModal && (
-          <Modal {...args} closeFunction={toggleShowModal}>
-            <Heading h2 marginTop="none" textSize="xl">
-              Modal title
-            </Heading>
-            <Text>Some really important information</Text>
-            <Button appearance="primary" onClick={toggleShowModal}>
-              OK
-            </Button>
-          </Modal>
-        )}
-      </ThemeProvider>
-    </>
-  );
+export const ModalSU2C: Story = {
+  name: "ModalSU2C",
+  args: {},
+  render: su2cRender,
 };
 
-export const BowelbabeModal: Story<ModalProps> = TemplateWithBowelbabe.bind({});
-BowelbabeModal.storyName = "Bowelbabe Modal";
-BowelbabeModal.args = {};
+/// Bowelbabe
+
+const bowelbabeRender = (args: ModalProps) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
+    <ModalWithTriggerButton {...args} />
+  </ThemeProvider>
+);
+
+export const ModalBowelbabe: Story = {
+  name: "ModalBowelbabe",
+  args: {},
+  render: bowelbabeRender,
+};

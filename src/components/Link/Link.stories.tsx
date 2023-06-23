@@ -1,140 +1,113 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
 import { su2cTheme, crukTheme, bowelbabeTheme } from "..";
 import Link, { LinkProps } from ".";
-import GlobalStyle from "../GlobalStyle";
 
 export default {
   title: "Link",
   component: Link,
-} as Meta<LinkProps>;
-
-const Template: Story<LinkProps> = (args) => <Link {...args} />;
-
-export const Default: Story<LinkProps> = Template.bind({});
-Default.args = {
-  appearance: undefined,
-  href: "http://www.google.com",
-  children: "Default link",
-  rel: undefined,
-  target: undefined,
+  args: {
+    appearance: undefined,
+    href: "http://www.google.com",
+    children: "Default link",
+    rel: undefined,
+    target: undefined,
+  },
+  tags: ["autodocs"],
 };
 
-export const Primary: Story<LinkProps> = Template.bind({});
-Primary.args = {
-  appearance: "primary",
-  href: "http://www.google.com",
-  children: "Primary link",
-  rel: undefined,
-  target: undefined,
+type Story = StoryObj<typeof Link>;
+
+export const Default: Story = {
+  name: "Default",
+  args: {},
 };
 
-export const Secondary: Story<LinkProps> = Template.bind({});
-Secondary.args = {
-  appearance: "secondary",
-  href: "http://www.google.com",
-  children: "Secondary link",
-  rel: undefined,
-  target: undefined,
+export const Primary: Story = {
+  name: "Primary",
+  args: {
+    appearance: "primary",
+  },
 };
 
-const TemplateWithImage: Story<LinkProps> = (args) => (
-  <Link {...args}>
-    <img
-      style={{ width: "80px", height: "30px" }}
-      alt=""
-      src={`${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`}
-    />
-  </Link>
-);
-
-export const WithImage: Story<LinkProps> = TemplateWithImage.bind({});
-WithImage.args = {
-  appearance: undefined,
-  href: "http://www.google.com",
-  "aria-label": "google homepage",
-  rel: undefined,
-  target: undefined,
+export const Secondary: Story = {
+  name: "Secondary",
+  args: {
+    appearance: "secondary",
+  },
 };
 
-const TemplateWithSU2C: Story<LinkProps> = (args) => (
+export const WithImage: Story = {
+  name: "WithImage",
+  args: {
+    children: (
+      <img
+        style={{ width: "80px", height: "30px" }}
+        alt=""
+        src={`${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`}
+      />
+    ),
+  },
+};
+
+/// SU2C
+
+const su2cRender = (args: LinkProps) => (
   <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
     <Link {...args} />
   </ThemeProvider>
 );
 
-export const SU2CDefault: Story<LinkProps> = TemplateWithSU2C.bind({});
-SU2CDefault.storyName = "SU2C Default";
-SU2CDefault.args = {
-  appearance: undefined,
-  href: "http://www.google.com",
-  children: "Default link",
-  rel: undefined,
-  target: undefined,
+export const DefaultSU2C: Story = {
+  name: "Default SU2C",
+  args: {},
+  render: su2cRender,
 };
 
-export const SU2CPrimary: Story<LinkProps> = TemplateWithSU2C.bind({});
-SU2CPrimary.storyName = "SU2C Primary";
-SU2CPrimary.args = {
-  appearance: "primary",
-  href: "http://www.google.com",
-  children: "Primary link",
-  rel: undefined,
-  target: undefined,
+export const PrimarySU2C: Story = {
+  name: "Primary SU2C",
+  args: {
+    appearance: "primary",
+  },
+  render: su2cRender,
 };
 
-export const SU2CSecondary: Story<LinkProps> = TemplateWithSU2C.bind({});
-SU2CSecondary.storyName = "SU2C Secondary";
-SU2CSecondary.args = {
-  appearance: "secondary",
-  href: "http://www.google.com",
-  children: "Secondary link",
-  rel: undefined,
-  target: undefined,
+export const SecondarySU2C: Story = {
+  name: "Secondary SU2C",
+  args: {
+    appearance: "secondary",
+  },
+  render: su2cRender,
 };
 
-const TemplateWithBowelbabe: Story<LinkProps> = (args) => (
+/// Bowelbabe
+
+const bowelbabeRender = (args: LinkProps) => (
   <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
     <Link {...args} />
   </ThemeProvider>
 );
 
-export const BowelbabeDefault: Story<LinkProps> = TemplateWithBowelbabe.bind(
-  {}
-);
-BowelbabeDefault.storyName = "Bowelbabe Default";
-BowelbabeDefault.args = {
-  appearance: undefined,
-  href: "http://www.google.com",
-  children: "Default link",
-  rel: undefined,
-  target: undefined,
+export const DefaultBowelbabe: Story = {
+  name: "Default Bowelbabe",
+  args: {},
+  render: bowelbabeRender,
 };
 
-export const BowelbabePrimary: Story<LinkProps> = TemplateWithBowelbabe.bind(
-  {}
-);
-BowelbabePrimary.storyName = "Bowelbabe Primary";
-BowelbabePrimary.args = {
-  appearance: "primary",
-  href: "http://www.google.com",
-  children: "Primary link",
-  rel: undefined,
-  target: undefined,
+export const PrimaryBowelbabe: Story = {
+  name: "Primary Bowelbabe",
+  args: {
+    appearance: "primary",
+  },
+  render: bowelbabeRender,
 };
 
-export const BowelbabeSecondary: Story<LinkProps> = TemplateWithBowelbabe.bind(
-  {}
-);
-BowelbabeSecondary.storyName = "Bowelbabe Secondary";
-BowelbabeSecondary.args = {
-  appearance: "secondary",
-  href: "http://www.google.com",
-  children: "Secondary link",
-  rel: undefined,
-  target: undefined,
+export const SecondaryBowelbabe: Story = {
+  name: "Secondary Bowelbabe",
+  args: {
+    appearance: "secondary",
+  },
+  render: bowelbabeRender,
 };

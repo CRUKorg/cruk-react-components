@@ -15,7 +15,7 @@ import IconFa from "../IconFa";
 import { Spacer, StyledButton } from "./styles";
 import { ButtonAppearanceType } from "../../types";
 
-export type Props = ButtonHTMLAttributes<HTMLElement> & {
+export type ButtonProps = ButtonHTMLAttributes<HTMLElement> & {
   /** the look and feel of the button */
   appearance?: ButtonAppearanceType;
   /** flag to streatch but to 100% width */
@@ -40,49 +40,52 @@ export type Props = ButtonHTMLAttributes<HTMLElement> & {
  *
  * Design system documentation SU2C https://zeroheight.com/79db39f7e/p/22ff0e-button/b/32e1a2
  */
-export const Button = forwardRef((props: Props, ref?: Ref<HTMLElement>) => {
-  const foundTheme = useTheme();
+export const Button = forwardRef(
+  (props: ButtonProps, ref?: Ref<HTMLElement>) => {
+    const foundTheme = useTheme();
 
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-  const { appearance = "primary", isIconButton = false } = props;
-  const childArray = React.Children.toArray(props.children);
-  const isChildString = typeof childArray[0] === "string";
-  const firstElement = childArray[0] as ReactElement;
+    const theme = {
+      ...defaultTheme,
+      ...foundTheme,
+    };
+    const { appearance = "primary", isIconButton = false } = props;
+    const childArray = React.Children.toArray(props.children);
+    const isChildString = typeof childArray[0] === "string";
+    const firstElement = childArray[0] as ReactElement;
 
-  // button has a fixed width if there is a single icon
-  const setIconButton = !!(
-    isIconButton ||
-    (childArray.length === 1 && !isChildString && firstElement?.type) ===
-      Icon ||
-    (childArray.length === 1 && !isChildString && firstElement?.type) === IconFa
-  );
+    // button has a fixed width if there is a single icon
+    const setIconButton = !!(
+      isIconButton ||
+      (childArray.length === 1 && !isChildString && firstElement?.type) ===
+        Icon ||
+      (childArray.length === 1 && !isChildString && firstElement?.type) ===
+        IconFa
+    );
 
-  return (
-    <StyledButton
-      as={props.href ? "a" : "button"}
-      {...(props.href ? { role: "button" } : {})}
-      {...props}
-      appearance={appearance}
-      isIconButton={setIconButton}
-      theme={theme}
-      ref={ref}
-    >
-      {props.children && childArray.length
-        ? React.Children.map(
-            props.children,
-            (child: ReactNode, index: number) => (
-              <Spacer theme={theme} key={index}>
-                {child}
-              </Spacer>
+    return (
+      <StyledButton
+        as={props.href ? "a" : "button"}
+        {...(props.href ? { role: "button" } : {})}
+        {...props}
+        appearance={appearance}
+        isIconButton={setIconButton}
+        theme={theme}
+        ref={ref}
+      >
+        {props.children && childArray.length
+          ? React.Children.map(
+              props.children,
+              (child: ReactNode, index: number) => (
+                <Spacer theme={theme} key={index}>
+                  {child}
+                </Spacer>
+              )
             )
-          )
-        : null}
-    </StyledButton>
-  );
-});
+          : null}
+      </StyledButton>
+    );
+  }
+);
 
 Button.defaultProps = {
   appearance: "primary",

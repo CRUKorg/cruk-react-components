@@ -1,16 +1,26 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { su2cTheme, Box, GlobalStyle, bowelbabeTheme } from "..";
+import { su2cTheme, Box, bowelbabeTheme } from "..";
 import CheckBox, { CheckBoxProps } from ".";
 
 export default {
   title: "CheckBox",
   component: CheckBox,
-} as Meta<CheckBoxProps>;
+  args: {
+    id: "check",
+    disabled: false,
+    value: "one",
+    hasError: false,
+    errorMessage: "",
+  },
+  tags: ["autodocs"],
+};
 
-const Template: Story = (args) => {
+type Story = StoryObj<typeof CheckBox>;
+
+const FullComponentWithCheckboxes = (args: CheckBoxProps) => {
   const [selected, setSelected] = React.useState<Array<string>>([]);
   const handleChange = (value: string) => {
     if (selected.indexOf(value) === -1) {
@@ -19,6 +29,7 @@ const Template: Story = (args) => {
       setSelected(selected.filter((item) => item !== value));
     }
   };
+
   return (
     <fieldset style={{ border: "none" }}>
       <CheckBox
@@ -37,101 +48,45 @@ const Template: Story = (args) => {
   );
 };
 
-export const CheckboxDefault: Story = Template.bind({});
-CheckboxDefault.storyName = "CheckBox";
-CheckboxDefault.args = {
-  disabled: false,
-  value: "one",
-};
-const TemplateError: Story = (args) => {
-  const [selected, setSelected] = React.useState<Array<string>>([]);
-  const handleChange = (value: string) => {
-    if (selected.indexOf(value) === -1) {
-      setSelected([...selected, value]);
-    } else {
-      setSelected(selected.filter((item) => item !== value));
-    }
-  };
-  return (
-    <fieldset style={{ border: "none" }}>
-      <CheckBox
-        onChange={(e) => handleChange(e.target.value)}
-        checked={selected.indexOf("one") >= 0}
-        {...args}
-      />
-      <Box marginTop="s">
-        <CheckBox
-          onChange={(e) => handleChange(e.target.value)}
-          checked={selected.indexOf("two") >= 0}
-          value="two"
-        />
-      </Box>
-    </fieldset>
-  );
+export const Default: Story = {
+  name: "Default",
+  args: {},
+  render: FullComponentWithCheckboxes,
 };
 
-export const CheckboxDefaultError: Story = TemplateError.bind({});
-CheckboxDefaultError.storyName = "CheckBox Error";
-CheckboxDefaultError.args = {
-  id: "check",
-  value: "one",
-  disabled: false,
-  hasError: true,
-  errorMessage: "Error Message",
+export const CheckboxDefaultError: Story = {
+  name: "CheckboxDefaultError",
+  args: {
+    hasError: true,
+    errorMessage: "Error Message",
+  },
+  render: FullComponentWithCheckboxes,
 };
 
-const TemplateWithSU2C: Story = (args) => {
-  const [selected, setSelected] = React.useState<Array<string>>([]);
-  const handleChange = (value: string) => {
-    if (selected.indexOf(value) === -1) {
-      setSelected([...selected, value]);
-    } else {
-      setSelected(selected.filter((item) => item !== value));
-    }
-  };
-  return (
-    <ThemeProvider theme={su2cTheme}>
-      <GlobalStyle />
-      <CheckBox
-        onChange={(e) => handleChange(e.target.value)}
-        checked={selected.indexOf("one") >= 0}
-        {...args}
-      />
-    </ThemeProvider>
-  );
+/// SU2C
+
+const su2cRender = (args: CheckBoxProps) => (
+  <ThemeProvider theme={su2cTheme}>
+    <FullComponentWithCheckboxes {...args} />
+  </ThemeProvider>
+);
+
+export const CheckBoxSU2C: Story = {
+  name: "CheckBoxSU2C",
+  args: {},
+  render: su2cRender,
 };
 
-export const SU2CCheckbox: Story = TemplateWithSU2C.bind({});
-SU2CCheckbox.storyName = "SU2C CheckBox";
-SU2CCheckbox.args = {
-  value: "one",
-  disabled: false,
-};
+/// Bowelbabe
 
-const TemplateWithBowelbabe: Story = (args) => {
-  const [selected, setSelected] = React.useState<Array<string>>([]);
-  const handleChange = (value: string) => {
-    if (selected.indexOf(value) === -1) {
-      setSelected([...selected, value]);
-    } else {
-      setSelected(selected.filter((item) => item !== value));
-    }
-  };
-  return (
-    <ThemeProvider theme={bowelbabeTheme}>
-      <GlobalStyle />
-      <CheckBox
-        onChange={(e) => handleChange(e.target.value)}
-        checked={selected.indexOf("one") >= 0}
-        {...args}
-      />
-    </ThemeProvider>
-  );
-};
+const bowelbabeRender = (args: CheckBoxProps) => (
+  <ThemeProvider theme={bowelbabeTheme}>
+    <FullComponentWithCheckboxes {...args} />
+  </ThemeProvider>
+);
 
-export const BowelbabeCheckbox: Story = TemplateWithBowelbabe.bind({});
-BowelbabeCheckbox.storyName = "Bowelbabe CheckBox";
-BowelbabeCheckbox.args = {
-  value: "one",
-  disabled: false,
+export const CheckBoxBowelbabe: Story = {
+  name: "CheckBoxBowelbabe",
+  args: {},
+  render: bowelbabeRender,
 };
