@@ -71,13 +71,14 @@ function () {
 
 ## Props
 
-| Name         | Type              |                       Options                        | Default | Description                    |
-| :----------- | :---------------- | :--------------------------------------------------: | :------ | :----------------------------- |
-| position     | String            | "top" "bottom" "left" "right" "topLeft" "bottomLeft" | "top"   | Where to place the popover     |
-| modalContent | String/React node |                                                      |         | Content to show in the popover |
-| maxWidth     | String            |                                                      | "auto"  | Max width for popover content  |
-| minWidth     | String            |                                                      | "auto"  | Min width for popover content  |
-| modalLabel   | String            |                                                      |         | aria-label for modal           |
+| Name         | Type              |                       Options                        | Default | Description                                      |
+| :----------- | :---------------- | :--------------------------------------------------: | :------ | :----------------------------------------------- |
+| position     | String            | "top" "bottom" "left" "right" "topLeft" "bottomLeft" | "top"   | Where to place the popover                       |
+| modalContent | String/React node |                                                      |         | Content to show in the popover                   |
+| maxWidth     | String            |                                                      | "auto"  | Max width for popover content                    |
+| minWidth     | String            |                                                      | "auto"  | Min width for popover content                    |
+| full         | boolean           |                                                      | "false" | Enables the child button wrapper to go fullwidth |
+| modalLabel   | String            |                                                      |         | aria-label for modal                             |
 
 ## Usage
 
