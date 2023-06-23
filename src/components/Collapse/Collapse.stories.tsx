@@ -1,191 +1,138 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { su2cTheme, Text, Box, GlobalStyle, bowelbabeTheme } from "..";
+import { su2cTheme, Text, Box, bowelbabeTheme } from "..";
 import Collapse, { CollapseProps } from ".";
 
 export default {
   title: "Collapse (experimental)",
   component: Collapse,
+  args: {
+    id: "default",
+    headerTitleText: "Lorem Ipsum",
+    children: (
+      <Text>
+        {`Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s, when an unknown printer took a galley of type and scrambled it to
+      make a type specimen book. It has survived not only five centuries, but
+      also the leap into electronic typesetting, remaining essentially
+      unchanged. It was popularised in the 1960s with the release of Letraset
+      sheets containing Lorem Ipsum passages, and more recently with desktop
+      publishing software like Aldus PageMaker including versions of`}
+      </Text>
+    ),
+  },
+  tags: ["autodocs"],
 } as Meta<CollapseProps>;
 
-const Template: Story<CollapseProps> = (args) => <Collapse {...args} />;
+type Story = StoryObj<typeof Collapse>;
 
-export const CollapseWithTextHeader: Story<CollapseProps> = Template.bind({});
-CollapseWithTextHeader.args = {
-  id: "default",
-  headerTitleText: "Lorem Ipsum",
-  children: (
-    <Text>
-      {`Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the
-      1500s, when an unknown printer took a galley of type and scrambled it to
-      make a type specimen book. It has survived not only five centuries, but
-      also the leap into electronic typesetting, remaining essentially
-      unchanged. It was popularised in the 1960s with the release of Letraset
-      sheets containing Lorem Ipsum passages, and more recently with desktop
-      publishing software like Aldus PageMaker including versions of`}
-    </Text>
-  ),
+export const CollapseWithTextHeader: Story = {
+  name: "CollapseWithTextHeader",
+  args: {},
 };
 
-export const CollapseWithModifiedText: Story<CollapseProps> = Template.bind({});
-CollapseWithModifiedText.args = {
-  id: "default",
-  headerTitleText:
-    "A long title with headerTitleTextColor and headerTitleTextSize",
-  headerTitleTextColor: "primary",
-  headerTitleTextSize: "xl",
-  children: (
-    <Text>
-      {`Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the
-      1500s`}
-    </Text>
-  ),
+export const CollapseWithModifiedText: Story = {
+  name: "CollapseWithModifiedText",
+  args: {
+    headerTitleText:
+      "A long title with headerTitleTextColor and headerTitleTextSize",
+    headerTitleTextColor: "primary",
+    headerTitleTextSize: "xl",
+  },
 };
 
-export const CollapseWitCustomHeader: Story<CollapseProps> = Template.bind({});
-CollapseWitCustomHeader.args = {
-  id: "custom",
-  headerComponent: (
-    <Box backgroundColor="primary">
-      <Text textColor="textOnPrimary">This is box header click me</Text>
-    </Box>
-  ),
-  children: (
-    <Box backgroundColor="primary">
-      <Text textColor="textOnPrimary">This is box</Text>
-    </Box>
-  ),
+export const CollapseWitCustomHeader: Story = {
+  name: "CollapseWithModifiedText",
+  args: {
+    id: "custom",
+    headerComponent: (
+      <Box backgroundColor="primary">
+        <Text textColor="textOnPrimary">This is box header click me</Text>
+      </Box>
+    ),
+    children: (
+      <Box backgroundColor="primary">
+        <Text textColor="textOnPrimary">This is box</Text>
+      </Box>
+    ),
+  },
 };
 
-const TemplateWithSU2C: Story<CollapseProps> = (args) => (
+/// SU2C
+
+const su2cRender = (args: CollapseProps) => (
   <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
     <Collapse {...args} />
   </ThemeProvider>
 );
 
-export const SU2CCollapseWithTextHeader: Story<CollapseProps> =
-  TemplateWithSU2C.bind({});
-SU2CCollapseWithTextHeader.storyName = "SU2C Collapse With Text Header";
-SU2CCollapseWithTextHeader.args = {
-  id: "default",
-  headerTitleText: "Lorem Ipsum",
-  children: (
-    <Text>
-      {`Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the
-      1500s, when an unknown printer took a galley of type and scrambled it to
-      make a type specimen book. It has survived not only five centuries, but
-      also the leap into electronic typesetting, remaining essentially
-      unchanged. It was popularised in the 1960s with the release of Letraset
-      sheets containing Lorem Ipsum passages, and more recently with desktop
-      publishing software like Aldus PageMaker including versions of`}
-    </Text>
-  ),
+export const CollapseWithTextHeaderSU2C: Story = {
+  name: "CollapseWithTextHeaderSU2C",
+  args: {},
+  render: su2cRender,
 };
 
-export const SU2CCollapseWithModifiedText: Story<CollapseProps> =
-  TemplateWithSU2C.bind({});
-SU2CCollapseWithModifiedText.storyName = "SU2C Collapse With Modified Text";
-SU2CCollapseWithModifiedText.args = {
-  id: "default",
-  headerTitleText:
-    "A long title with headerTitleTextColor and headerTitleTextSize",
-  headerTitleTextColor: "primary",
-  headerTitleTextSize: "xl",
-  children: (
-    <Text>
-      {`Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the
-      1500s`}
-    </Text>
-  ),
+export const CollapseWithModifiedTextSU2C: Story = {
+  name: "CollapseWithModifiedTextSU2C",
+  args: {
+    headerTitleText:
+      "A long title with headerTitleTextColor and headerTitleTextSize",
+    headerTitleTextColor: "primary",
+    headerTitleTextSize: "xl",
+  },
+  render: su2cRender,
 };
 
-export const SU2CCollapseWitCustomHeader: Story<CollapseProps> =
-  TemplateWithSU2C.bind({});
-SU2CCollapseWitCustomHeader.storyName = "SU2C Collapse With Custom Header";
-SU2CCollapseWitCustomHeader.args = {
-  id: "custom",
-  headerComponent: (
-    <Box backgroundColor="primary">
-      <Text textColor="textOnPrimary">This is box header click me</Text>
-    </Box>
-  ),
-  children: (
-    <Box backgroundColor="primary">
-      <Text textColor="textOnPrimary">This is box</Text>
-    </Box>
-  ),
+export const CollapseWitCustomHeaderSU2C: Story = {
+  name: "CollapseWithModifiedTextSU2C",
+  args: {
+    id: "custom",
+    headerComponent: (
+      <Box backgroundColor="primary">
+        <Text textColor="textOnPrimary">This is box header click me</Text>
+      </Box>
+    ),
+  },
+  render: su2cRender,
 };
 
-////
+/// Bowelbabe
 
-const TemplateWithBowelbabe: Story<CollapseProps> = (args) => (
+const bowelbabeRender = (args: CollapseProps) => (
   <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
     <Collapse {...args} />
   </ThemeProvider>
 );
 
-export const BowelbabeCollapseWithTextHeader: Story<CollapseProps> =
-  TemplateWithBowelbabe.bind({});
-BowelbabeCollapseWithTextHeader.storyName =
-  "Bowelbabe Collapse With Text Header";
-BowelbabeCollapseWithTextHeader.args = {
-  id: "default",
-  headerTitleText: "Lorem Ipsum",
-  children: (
-    <Text>
-      {`Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the
-      1500s, when an unknown printer took a galley of type and scrambled it to
-      make a type specimen book. It has survived not only five centuries, but
-      also the leap into electronic typesetting, remaining essentially
-      unchanged. It was popularised in the 1960s with the release of Letraset
-      sheets containing Lorem Ipsum passages, and more recently with desktop
-      publishing software like Aldus PageMaker including versions of`}
-    </Text>
-  ),
+export const CollapseWithTextHeaderBowelbabe: Story = {
+  name: "CollapseWithTextHeaderBowelbabe",
+  args: {},
+  render: bowelbabeRender,
 };
 
-export const BowelbabeCollapseWithModifiedText: Story<CollapseProps> =
-  TemplateWithBowelbabe.bind({});
-BowelbabeCollapseWithModifiedText.storyName =
-  "Bowelbabe Collapse With Modified Text";
-BowelbabeCollapseWithModifiedText.args = {
-  id: "default",
-  headerTitleText:
-    "A long title with headerTitleTextColor and headerTitleTextSize",
-  headerTitleTextColor: "primary",
-  headerTitleTextSize: "xl",
-  children: (
-    <Text>
-      {`Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry's standard dummy text ever since the
-      1500s`}
-    </Text>
-  ),
+export const CollapseWithModifiedTextBowelbabe: Story = {
+  name: "CollapseWithModifiedTextBowelbabe",
+  args: {
+    headerTitleText:
+      "A long title with headerTitleTextColor and headerTitleTextSize",
+    headerTitleTextColor: "primary",
+    headerTitleTextSize: "xl",
+  },
+  render: bowelbabeRender,
 };
 
-export const BowelbabeCollapseWitCustomHeader: Story<CollapseProps> =
-  TemplateWithBowelbabe.bind({});
-BowelbabeCollapseWitCustomHeader.storyName =
-  "Bowelbabe Collapse With Custom Header";
-BowelbabeCollapseWitCustomHeader.args = {
-  id: "custom",
-  headerComponent: (
-    <Box backgroundColor="primary">
-      <Text textColor="textOnPrimary">This is box header click me</Text>
-    </Box>
-  ),
-  children: (
-    <Box backgroundColor="primary">
-      <Text textColor="textOnPrimary">This is box</Text>
-    </Box>
-  ),
+export const CollapseWitCustomHeaderBowelbabe: Story = {
+  name: "CollapseWitCustomHeaderBowelbabe",
+  args: {
+    id: "custom",
+    headerComponent: (
+      <Box backgroundColor="primary">
+        <Text textColor="textOnPrimary">This is box header click me</Text>
+      </Box>
+    ),
+  },
+  render: bowelbabeRender,
 };

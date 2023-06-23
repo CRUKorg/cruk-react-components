@@ -1,100 +1,118 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { Text, su2cTheme, GlobalStyle, bowelbabeTheme } from "..";
+import { Text, su2cTheme, bowelbabeTheme } from "..";
 import Box, { BoxProps } from ".";
 
 export default {
   title: "Box",
   component: Box,
+  args: {},
+  tags: ["autodocs"],
 } as Meta<BoxProps>;
 
-const Template: Story = (args) => <Box {...args} />;
+type Story = StoryObj<typeof Box>;
 
-export const Default: Story = Template.bind({});
-Default.args = {
-  children: <Text textColor="textDark">this is a box</Text>,
+export const Default: Story = {
+  name: "Default",
+  args: {
+    children: <Text textColor="textDark">this is a box</Text>,
+  },
 };
 
-export const BoxWithColour: Story = Template.bind({});
-BoxWithColour.args = {
-  backgroundColor: "primary",
-  children: <Text textColor="textOnPrimary">this is a box with colours</Text>,
+export const BoxWithColour: Story = {
+  name: "BoxWithColour",
+  args: {
+    backgroundColor: "primary",
+    children: <Text textColor="textOnPrimary">this is a box with colours</Text>,
+  },
 };
 
-export const BoxWithColourWithCustomSpacing: Story = Template.bind({});
-BoxWithColourWithCustomSpacing.args = {
-  backgroundColor: "primary",
-  paddingVertical: "xl",
-  paddingBottom: "xs",
-  children: (
-    <Text textColor="textOnPrimary">this is a box with custom spacing</Text>
-  ),
+export const BoxWithColourWithCustomSpacing: Story = {
+  name: "BoxWithColourWithCustomSpacing",
+  args: {
+    backgroundColor: "primary",
+    paddingVertical: "xl",
+    paddingBottom: "xs",
+    children: (
+      <Text textColor="textOnPrimary">this is a box with custom spacing</Text>
+    ),
+  },
 };
 
-const TemplateWithSU2C: Story = (args) => (
+/// SU2C
+
+const su2cRender = (args: BoxProps) => (
   <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
     <Box {...args} />
   </ThemeProvider>
 );
 
-export const SU2CDefault: Story = TemplateWithSU2C.bind({});
-SU2CDefault.storyName = "SU2C Default";
-SU2CDefault.args = {
-  children: <Text textColor="textDark">this is a box</Text>,
+export const DefaultSU2C: Story = {
+  name: "DefaultSU2C",
+  args: {
+    children: <Text textColor="textDark">this is a box</Text>,
+  },
+  render: su2cRender,
 };
 
-export const SU2CBoxWithColour: Story = TemplateWithSU2C.bind({});
-SU2CBoxWithColour.storyName = "SU2C Box With Colour";
-SU2CBoxWithColour.args = {
-  backgroundColor: "primary",
-  children: <Text textColor="textOnPrimary">this is a box with colours</Text>,
+export const BoxWithColourSU2C: Story = {
+  name: "BoxWithColourSU2C",
+  args: {
+    backgroundColor: "primary",
+    children: <Text textColor="textOnPrimary">this is a box with colours</Text>,
+  },
+  render: su2cRender,
 };
 
-export const SU2CBoxWithColourWithCustomSpacing: Story = TemplateWithSU2C.bind(
-  {}
-);
-SU2CBoxWithColourWithCustomSpacing.storyName = "SU2C Box With Custom Spacing";
-SU2CBoxWithColourWithCustomSpacing.args = {
-  backgroundColor: "primary",
-  paddingVertical: "xl",
-  paddingBottom: "xs",
-  children: (
-    <Text textColor="textOnPrimary">this is a box with custom spacing</Text>
-  ),
+export const BoxWithColourWithCustomSpacingSU2C: Story = {
+  name: "BoxWithColourWithCustomSpacingSU2C",
+  args: {
+    backgroundColor: "primary",
+    paddingVertical: "xl",
+    paddingBottom: "xs",
+    children: (
+      <Text textColor="textOnPrimary">this is a box with custom spacing</Text>
+    ),
+  },
+  render: su2cRender,
 };
 
-const TemplateWithBowelbabe: Story = (args) => (
+/// bowelbabe
+
+const bowelbabeRender = (args: BoxProps) => (
   <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
     <Box {...args} />
   </ThemeProvider>
 );
 
-export const BowelbabeDefault: Story = TemplateWithBowelbabe.bind({});
-BowelbabeDefault.storyName = "Bowelbabe Default";
-BowelbabeDefault.args = {
-  children: <Text textColor="textDark">this is a box</Text>,
+export const DefaultBowelBabe: Story = {
+  name: "DefaultBowelBabe",
+  args: {
+    children: <Text textColor="textDark">this is a box</Text>,
+  },
+  render: bowelbabeRender,
 };
 
-export const BowelbabeBoxWithColour: Story = TemplateWithBowelbabe.bind({});
-BowelbabeBoxWithColour.storyName = "Bowelbabe Box With Colour";
-BowelbabeBoxWithColour.args = {
-  backgroundColor: "primary",
-  children: <Text textColor="textOnPrimary">this is a box with colours</Text>,
+export const BoxWithColourBowelBabe: Story = {
+  name: "BoxWithColourBowelBabe",
+  args: {
+    backgroundColor: "primary",
+    children: <Text textColor="textOnPrimary">this is a box with colours</Text>,
+  },
+  render: bowelbabeRender,
 };
 
-export const BowelbabeBoxWithColourWithCustomSpacing: Story =
-  TemplateWithBowelbabe.bind({});
-BowelbabeBoxWithColourWithCustomSpacing.storyName =
-  "Bowelbabe Box With Custom Spacing";
-BowelbabeBoxWithColourWithCustomSpacing.args = {
-  backgroundColor: "primary",
-  paddingVertical: "xl",
-  paddingBottom: "xs",
-  children: (
-    <Text textColor="textOnPrimary">this is a box with custom spacing</Text>
-  ),
+export const BoxWithColourWithCustomSpacingBowelBabe: Story = {
+  name: "BoxWithColourWithCustomSpacingBowelBabe",
+  args: {
+    backgroundColor: "primary",
+    paddingVertical: "xl",
+    paddingBottom: "xs",
+    children: (
+      <Text textColor="textOnPrimary">this is a box with custom spacing</Text>
+    ),
+  },
+  render: bowelbabeRender,
 };

@@ -1,170 +1,214 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj, Meta } from "@storybook/react";
 import Heading, { HeadingProps } from ".";
-import { su2cTheme, GlobalStyle, bowelbabeTheme } from "..";
+import { su2cTheme, bowelbabeTheme, GlobalStyle } from "..";
 
 export default {
   title: "Heading",
   component: Heading,
+  args: {},
+  tags: ["autodocs"],
 } as Meta<HeadingProps>;
 
-const Template: Story = (args) => <Heading {...args} />;
+type Story = StoryObj<typeof Heading>;
 
-export const DefaultHeading: Story = Template.bind({});
-DefaultHeading.args = {
-  children: "H2 is the default",
-  textColor: "textDark",
+export const DefaultHeading: Story = {
+  name: "DefaultHeading",
+  args: {
+    children: "H2 is the default",
+  },
 };
 
-export const HeadingSize: Story = Template.bind({});
-HeadingSize.args = {
-  textSize: "xxxxl",
-  children: "This is H2 with H1 size",
+export const HeadingSize: Story = {
+  name: "HeadingSize",
+  args: {
+    textSize: "xxxxl",
+    children: "This is H2 with H1 size",
+  },
 };
 
-export const HeadingAligned: Story = Template.bind({});
-HeadingAligned.args = {
-  textAlign: "center",
-  children: "This is center aligned",
+export const HeadingAligned: Story = {
+  name: "HeadingAligned",
+  args: {
+    textAlign: "center",
+    children: "This is center aligned",
+  },
 };
 
-export const H1: Story = Template.bind({});
-H1.storyName = "H1";
-H1.args = {
-  h1: true,
-  children: "This is H1",
+export const H1: Story = {
+  name: "H1",
+  args: {
+    h1: true,
+    children: "This is H1",
+  },
 };
 
-export const H2: Story = Template.bind({});
-H2.storyName = "H2";
-H2.args = {
-  h2: true,
-  children: "This is H2",
+export const H2: Story = {
+  name: "H2",
+  args: {
+    h2: true,
+    children: "This is H2",
+  },
 };
 
-export const H3: Story = Template.bind({});
-H3.storyName = "H3";
-H3.args = {
-  h3: true,
-  children: "This is H3",
+export const H3: Story = {
+  name: "H3",
+  args: {
+    h3: true,
+    children: "This is H3",
+  },
 };
 
-export const H4: Story = Template.bind({});
-H4.storyName = "H4";
-H4.args = {
-  h4: true,
-  children: "This is H4",
+export const H4: Story = {
+  name: "H4",
+  args: {
+    h4: true,
+    children: "This is H4",
+  },
 };
 
-export const H5: Story = Template.bind({});
-H5.storyName = "H5";
-H5.args = {
-  h5: true,
-  children: "This is H5",
+export const H5: Story = {
+  name: "H5",
+  args: {
+    h5: true,
+    children: "This is H5",
+  },
 };
 
-export const H6: Story = Template.bind({});
-H6.storyName = "H6";
-H6.args = {
-  h6: true,
-  children: "This is H6",
+export const H6: Story = {
+  name: "H6",
+  args: {
+    h6: true,
+    children: "This is H6",
+  },
 };
 
-const TemplateWithSU2C: Story = (args) => (
+/// SU2C
+
+const su2cRender = (args: HeadingProps) => (
   <ThemeProvider theme={su2cTheme}>
     <GlobalStyle />
     <Heading {...args} />
   </ThemeProvider>
 );
 
-export const SU2C_H1: Story = TemplateWithSU2C.bind({});
-SU2C_H1.storyName = "SU2C H1";
-SU2C_H1.args = {
-  h1: true,
-  children: "This is H1",
+// export const FooterSU2C: Story = {
+//   name: "FooterSU2C",
+//   args: {},
+//   render: su2cRender,
+// };
+
+export const H1SU2C: Story = {
+  name: "H1 SU2C",
+  args: {
+    h1: true,
+    children: "This is H1",
+  },
+  render: su2cRender,
 };
 
-export const SU2C_H2: Story = TemplateWithSU2C.bind({});
-SU2C_H2.storyName = "SU2C H2";
-SU2C_H2.args = {
-  h2: true,
-  children: "This is H2",
+export const H2SU2C: Story = {
+  name: "H2 SU2C",
+  args: {
+    h2: true,
+    children: "This is H2",
+  },
+  render: su2cRender,
 };
 
-export const SU2C_H3: Story = TemplateWithSU2C.bind({});
-SU2C_H3.storyName = "SU2C H3";
-SU2C_H3.args = {
-  h3: true,
-  children: "This is H3",
+export const H3SU2C: Story = {
+  name: "H3 SU2C",
+  args: {
+    h3: true,
+    children: "This is H3",
+  },
+  render: su2cRender,
 };
 
-export const SU2C_H4: Story = TemplateWithSU2C.bind({});
-SU2C_H4.storyName = "SU2C H4";
-SU2C_H4.args = {
-  h4: true,
-  children: "This is H4",
+export const H4SU2C: Story = {
+  name: "H4 SU2C",
+  args: {
+    h4: true,
+    children: "This is H4",
+  },
+  render: su2cRender,
+};
+export const H5SU2C: Story = {
+  name: "H5 SU2C",
+  args: {
+    h5: true,
+    children: "This is H5",
+  },
+};
+export const H6SU2C: Story = {
+  name: "H6 SU2C",
+  args: {
+    h6: true,
+    children: "This is H6",
+  },
+  render: su2cRender,
 };
 
-export const SU2C_H5: Story = TemplateWithSU2C.bind({});
-SU2C_H5.storyName = "SU2C H5";
-SU2C_H5.args = {
-  h5: true,
-  children: "This is H5",
-};
+/// Bowelbabe
 
-export const SU2C_H6: Story = TemplateWithSU2C.bind({});
-SU2C_H6.storyName = "SU2C H6";
-SU2C_H6.args = {
-  h6: true,
-  children: "This is H6",
-};
-
-const TemplateWithBowelbabe: Story = (args) => (
+const bowelbabeRender = (args: HeadingProps) => (
   <ThemeProvider theme={bowelbabeTheme}>
     <GlobalStyle />
     <Heading {...args} />
   </ThemeProvider>
 );
 
-export const Bowelbabe_H1: Story = TemplateWithBowelbabe.bind({});
-Bowelbabe_H1.storyName = "Bowelbabe H1";
-Bowelbabe_H1.args = {
-  h1: true,
-  children: "This is H1",
+export const H1Bowelbabe: Story = {
+  name: "H1 Bowelbabe",
+  args: {
+    h1: true,
+    children: "This is H1",
+  },
+  render: bowelbabeRender,
 };
 
-export const Bowelbabe_H2: Story = TemplateWithBowelbabe.bind({});
-Bowelbabe_H2.storyName = "Bowelbabe H2";
-Bowelbabe_H2.args = {
-  h2: true,
-  children: "This is H2",
+export const H2Bowelbabe: Story = {
+  name: "H2 Bowelbabe",
+  args: {
+    h2: true,
+    children: "This is H2",
+  },
+  render: bowelbabeRender,
 };
 
-export const Bowelbabe_H3: Story = TemplateWithBowelbabe.bind({});
-Bowelbabe_H3.storyName = "Bowelbabe H3";
-Bowelbabe_H3.args = {
-  h3: true,
-  children: "This is H3",
+export const H3Bowelbabe: Story = {
+  name: "H3 Bowelbabe",
+  args: {
+    h3: true,
+    children: "This is H3",
+  },
+  render: bowelbabeRender,
 };
 
-export const Bowelbabe_H4: Story = TemplateWithBowelbabe.bind({});
-Bowelbabe_H4.storyName = "Bowelbabe H4";
-Bowelbabe_H4.args = {
-  h4: true,
-  children: "This is H4",
+export const H4Bowelbabe: Story = {
+  name: "H4 Bowelbabe",
+  args: {
+    h4: true,
+    children: "This is H4",
+  },
+  render: bowelbabeRender,
 };
 
-export const Bowelbabe_H5: Story = TemplateWithBowelbabe.bind({});
-Bowelbabe_H5.storyName = "Bowelbabe H5";
-Bowelbabe_H5.args = {
-  h5: true,
-  children: "This is H5",
+export const H5Bowelbabe: Story = {
+  name: "H5 Bowelbabe",
+  args: {
+    h5: true,
+    children: "This is H5",
+  },
+  render: bowelbabeRender,
 };
 
-export const Bowelbabe_H6: Story = TemplateWithBowelbabe.bind({});
-Bowelbabe_H6.storyName = "Bowelbabe H6";
-Bowelbabe_H6.args = {
-  h6: true,
-  children: "This is H6",
+export const H6Bowelbabe: Story = {
+  name: "H6 Bowelbabe",
+  args: {
+    h6: true,
+    children: "This is H6",
+  },
+  render: bowelbabeRender,
 };

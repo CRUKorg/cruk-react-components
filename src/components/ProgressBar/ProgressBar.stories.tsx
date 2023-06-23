@@ -1,77 +1,65 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryObj, Meta } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { bowelbabeTheme, GlobalStyle, su2cTheme } from "..";
+import { bowelbabeTheme, su2cTheme } from "..";
 import ProgressBar, { ProgressBarProps } from ".";
 
 export default {
   title: "ProgressBar (experimental)",
   component: ProgressBar,
+  args: {
+    percentage: 74,
+    secondaryPercentage: 90,
+  },
+  tags: ["autodocs"],
 } as Meta<ProgressBarProps>;
 
-const Template: Story<ProgressBarProps> = (args) => <ProgressBar {...args} />;
+type Story = StoryObj<typeof ProgressBar>;
 
-export const ProgressBarDefault: Story<ProgressBarProps> = Template.bind({});
-ProgressBarDefault.storyName = "ProgressBar";
-ProgressBarDefault.args = {
-  percentage: 74,
-  secondaryPercentage: 90,
+export const ProgressBarDefault: Story = {
+  name: "ProgressBarDefault",
+  args: {},
+};
+export const ProgressBarCircular: Story = {
+  name: "ProgressBarDefault",
+  args: { isCircular: true },
 };
 
-export const ProgressBarCircular: Story<ProgressBarProps> = Template.bind({});
-ProgressBarCircular.storyName = "ProgressBar Circular";
-ProgressBarCircular.args = {
-  percentage: 74,
-  secondaryPercentage: 90,
-  isCircular: true,
-};
+/// SU2C
 
-const TemplateWithSU2C: Story<ProgressBarProps> = (args) => (
+const su2cRender = (args: ProgressBarProps) => (
   <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
     <ProgressBar {...args} />
   </ThemeProvider>
 );
 
-export const SU2CProgressBar: Story<ProgressBarProps> = TemplateWithSU2C.bind(
-  {}
-);
-SU2CProgressBar.storyName = "SU2C ProgressBar";
-SU2CProgressBar.args = {
-  percentage: 74,
-  secondaryPercentage: 90,
+export const ProgressBarSU2C: Story = {
+  name: "ProgressBarSU2C",
+  args: {},
+  render: su2cRender,
+};
+export const ProgressBarCircularSU2C: Story = {
+  name: "ProgressBarSU2C",
+  args: { isCircular: true },
+  render: su2cRender,
 };
 
-export const SU2CProgressBarCircular: Story<ProgressBarProps> =
-  TemplateWithSU2C.bind({});
-SU2CProgressBarCircular.storyName = "SU2C ProgressBar Circular";
-SU2CProgressBarCircular.args = {
-  percentage: 74,
-  secondaryPercentage: 90,
-  isCircular: true,
-};
+/// Bowelbabe
 
-const TemplateWithBowelbabe: Story<ProgressBarProps> = (args) => (
+const bowelbabeRender = (args: ProgressBarProps) => (
   <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
     <ProgressBar {...args} />
   </ThemeProvider>
 );
 
-export const BowelbabeProgressBar: Story<ProgressBarProps> =
-  TemplateWithBowelbabe.bind({});
-BowelbabeProgressBar.storyName = "Bowelbabe ProgressBar";
-BowelbabeProgressBar.args = {
-  percentage: 74,
-  secondaryPercentage: 90,
+export const ProgressBarBowelbabe: Story = {
+  name: "ProgressBarBowelbabe",
+  args: {},
+  render: bowelbabeRender,
 };
-
-export const BowelbabeProgressBarCircular: Story<ProgressBarProps> =
-  TemplateWithBowelbabe.bind({});
-BowelbabeProgressBarCircular.storyName = "Bowelbabe ProgressBar Circular";
-BowelbabeProgressBarCircular.args = {
-  percentage: 74,
-  secondaryPercentage: 90,
-  isCircular: true,
+export const ProgressBarCircularBowelbabe: Story = {
+  name: "ProgressBarCircularBowelbabe",
+  args: { isCircular: true },
+  render: bowelbabeRender,
 };
