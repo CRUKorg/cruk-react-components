@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 
@@ -14,7 +14,7 @@ export default {
     size: "s",
   },
   tags: ["autodocs"],
-} as Meta<UserBlockProps>;
+};
 
 type Story = StoryObj<typeof UserBlock>;
 

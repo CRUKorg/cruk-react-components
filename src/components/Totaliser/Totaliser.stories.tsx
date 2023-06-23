@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
@@ -16,7 +16,7 @@ export default {
     giftAid: 25,
   },
   tags: ["autodocs"],
-} as Meta<TotaliserProps>;
+};
 
 type Story = StoryObj<typeof Totaliser>;
 

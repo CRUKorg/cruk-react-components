@@ -1,12 +1,12 @@
 import React from "react";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import Button from "../Button";
 import IconFa from "../IconFa";
 
-import { bowelbabeTheme, GlobalStyle, su2cTheme } from "..";
+import { bowelbabeTheme, su2cTheme } from "..";
 import TextField, { TextFieldProps } from ".";
 
 export default {
@@ -22,7 +22,7 @@ export default {
     errorMessage: undefined,
   },
   tags: ["autodocs"],
-} as Meta<TextFieldProps>;
+};
 
 type Story = StoryObj<typeof TextField>;
 

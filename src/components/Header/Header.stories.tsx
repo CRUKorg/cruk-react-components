@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
 import { su2cTheme, Button, bowelbabeTheme } from "..";
@@ -22,7 +22,7 @@ export default {
     fullWidth: false,
   },
   tags: ["autodocs"],
-} as Meta<HeaderProps>;
+};
 
 type Story = StoryObj<typeof Header>;
 

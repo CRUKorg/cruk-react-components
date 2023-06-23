@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { bowelbabeTheme, GlobalStyle, IconFa, su2cTheme, Text } from "..";
 import InfoBox, { InfoBoxProps } from ".";
 import {
@@ -21,7 +21,7 @@ export default {
     icon: <IconFa faIcon={faCircleCheck} color="#008000" size="1.5em" />,
   },
   tags: ["autodocs"],
-} as Meta<InfoBoxProps>;
+};
 
 type Story = StoryObj<typeof InfoBox>;
 

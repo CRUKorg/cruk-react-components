@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 
 import { bowelbabeTheme, su2cTheme, Text } from "..";
 import Carousel, { CarouselProps } from ".";
@@ -54,7 +54,7 @@ export default {
   args: {},
   render: CarouselWithChildren,
   tags: ["autodocs"],
-} as Meta<CarouselProps>;
+};
 
 type Story = StoryObj<typeof Carousel>;
 

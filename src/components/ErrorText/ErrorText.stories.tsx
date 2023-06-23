@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
 import { bowelbabeTheme, su2cTheme } from "..";
@@ -12,7 +12,7 @@ export default {
     children: "this is error text",
   },
   tags: ["autodocs"],
-} as Meta<ErrorTextProps>;
+};
 
 type Story = StoryObj<typeof ErrorText>;
 

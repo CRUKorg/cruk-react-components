@@ -1,6 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import Heading, { HeadingProps } from ".";
 import { su2cTheme, bowelbabeTheme, GlobalStyle } from "..";
 
@@ -9,7 +9,7 @@ export default {
   component: Heading,
   args: {},
   tags: ["autodocs"],
-} as Meta<HeadingProps>;
+};
 
 type Story = StoryObj<typeof Heading>;
 

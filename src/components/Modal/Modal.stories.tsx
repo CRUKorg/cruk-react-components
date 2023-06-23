@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
 import {
@@ -17,7 +17,7 @@ export default {
   component: Modal,
   args: {},
   tags: ["autodocs"],
-} as Meta<ModalProps>;
+};
 
 type Story = StoryObj<typeof Modal>;
 

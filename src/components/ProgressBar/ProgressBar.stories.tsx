@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj, Meta } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
 import { bowelbabeTheme, su2cTheme } from "..";
@@ -13,7 +13,7 @@ export default {
     secondaryPercentage: 90,
   },
   tags: ["autodocs"],
-} as Meta<ProgressBarProps>;
+};
 
 type Story = StoryObj<typeof ProgressBar>;
 
