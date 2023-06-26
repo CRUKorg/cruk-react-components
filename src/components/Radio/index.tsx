@@ -44,6 +44,7 @@ const Radio = forwardRef((props: RadioProps, ref?: Ref<HTMLInputElement>) => {
       >
         <StyledInput
           {...propsWithoutChildren}
+          disabled={props.disabled || false}
           type="radio"
           ref={ref}
           aria-describedby={
