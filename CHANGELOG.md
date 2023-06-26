@@ -10,7 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Using Storybook 7 for docsite
-- Added 'full' for a more explicit way of enabling the child button to extend full width
+- Added 'full' on PopOver for a more explicit way of enabling the child button to extend full width [#697](https://github.com/CRUKorg/cruk-react-components/issues/#697))
+
+### Fixed
+
+Disabled styles for checkbox and radio [#675](https://github.com/CRUKorg/cruk-react-components/issues/#675))
 
 ## [2.0.1] - 2023-04-04
 
