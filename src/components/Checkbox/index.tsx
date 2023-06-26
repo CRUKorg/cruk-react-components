@@ -46,6 +46,7 @@ const Checkbox = forwardRef(
         >
           <StyledInput
             {...propsWithoutChildren}
+            disabled={props.disabled || false}
             type="checkbox"
             ref={ref}
             aria-describedby={

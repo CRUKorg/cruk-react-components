@@ -50,25 +50,20 @@ export const Check = styled.span`
   }
 `;
 
-type CheckedProp = {
-  checked: boolean;
-};
-
-type DisabledProp = {
-  disabled: boolean;
-};
-
 type StyledLabelProps = {
   hasError: boolean;
-} & ThemeProp &
-  CheckedProp &
-  DisabledProp;
+  disabled: boolean;
+  checked: boolean;
+  theme: ThemeType;
+};
 
 export const StyledLabel = styled.label<StyledLabelProps>`
-  background-color: ${({ theme }: ThemeProp) => theme.colors.backgroundLight};
+  background-color: ${({ theme }: StyledLabelProps) =>
+    theme.colors.backgroundLight};
   width: 100%;
   position: relative;
-  border-width: ${({ theme }: ThemeProp) => theme.utilities.inputBorderWidth};
+  border-width: ${({ theme }: StyledLabelProps) =>
+    theme.utilities.inputBorderWidth};
   border-style: solid;
   border-color: ${({ disabled, hasError, theme, checked }: StyledLabelProps) =>
     disabled
@@ -81,10 +76,11 @@ export const StyledLabel = styled.label<StyledLabelProps>`
   cursor: ${({ disabled }: StyledLabelProps) =>
     disabled ? "not-allowed" : "pointer"};
   display: inline-block;
-  font-weight: ${({ checked }: CheckedProp) => (checked ? "bold" : "normal")};
-  color: ${({ theme, disabled }: ThemeProp & DisabledProp) =>
+  font-weight: ${({ checked }: StyledLabelProps) =>
+    checked ? "bold" : "normal"};
+  color: ${({ theme, disabled }: StyledLabelProps) =>
     disabled ? theme.colors.disabled : theme.colors.textDark};
-  padding: ${({ theme }: ThemeProp) =>
+  padding: ${({ theme }: StyledLabelProps) =>
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
   vertical-align: middle;
 
@@ -93,7 +89,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
     outline: 5px auto -webkit-focus-ring-color;
   }
 
-  ${({ theme, disabled: isDisabled }: ThemeProp & DisabledProp) =>
+  ${({ theme, disabled: isDisabled }: StyledLabelProps) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
@@ -127,14 +123,19 @@ export const SelectedBorder = styled.div`
   z-index: 0;
 `;
 
+type StyledInputType = {
+  disabled: boolean;
+  theme: ThemeType;
+};
+
 export const StyledInput = styled.input`
   margin-right: ${({
     theme: {
       spacing: { xxs },
     },
-  }: ThemeProp) => xxs};
+  }: StyledInputType) => xxs};
 
-  ${({ theme, disabled }: ThemeProp & DisabledProp) =>
+  ${({ theme, disabled }: StyledInputType) =>
     theme.utilities.useDefaultFromControls
       ? css`
           position: absolute;
