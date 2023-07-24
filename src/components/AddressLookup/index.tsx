@@ -48,6 +48,8 @@ export type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
   isInvalidVisible?: boolean;
   /** label text */
   label?: string;
+  /** hint text text */
+  hintText?: string;
   /** callback function which is passed the error */
   onAddressError?: (error: Error) => void;
   /** onBlur handler */
@@ -73,7 +75,9 @@ const AddressLookup = forwardRef(
       isValidVisible,
       isInvalidVisible,
       label,
-      onAddressError = (err: Error) => {},
+      hintText,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      onAddressError = (error: Error) => {},
       onAddressSelected,
       onChange,
       onBlur,
@@ -133,7 +137,18 @@ const AddressLookup = forwardRef(
         })
         .then((data: { Items: AddressDataType[] }) => {
           clearOptions();
-          onAddressSelected(data.Items[0]);
+          const selectedAddress: AddressDataType = data.Items[0];
+          const selectedAddressEntries = Object.entries(selectedAddress);
+          const selectedAddressWithoutCommas = selectedAddressEntries.reduce(
+            (result, current) => {
+              const key = current[0];
+              const value = current[1].replace(/,/g, "");
+              const newResult = { ...result, [key]: value };
+              return newResult;
+            },
+            selectedAddress
+          );
+          onAddressSelected(selectedAddressWithoutCommas);
           return null;
         })
         .catch((err) => onAddressError(err as Error));
@@ -216,7 +231,7 @@ const AddressLookup = forwardRef(
           autoComplete="off"
           hasError={hasError || !!errorMessage}
           errorMessage={errorMessage}
-          hintText="Start typing your address or postcode"
+          hintText={hintText ?? "Start typing your address or postcode"}
           isValid={isValid}
           isValidVisible={isValidVisible}
           isInvalidVisible={isInvalidVisible}
