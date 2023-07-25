@@ -17,6 +17,8 @@ export default {
     isValid: true,
     isValidVisible: false,
     isInvalidVisible: false,
+    apiKey: "MG17-ZD93-FF33-KF13",
+    onAddressSelected: (address: unknown) => console.table(address),
   },
   tags: ["autodocs"],
 };
