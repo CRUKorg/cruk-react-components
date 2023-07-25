@@ -17,6 +17,7 @@ import { AddressDataType, AddressOptionsType } from "../../types";
 import { useKey } from "../../hooks/useKey";
 
 import debounce from "../../utils/debounce";
+import { removeCommasFromObjectStringValues } from "../../utils/Helper";
 import Text from "../Text";
 import TextField from "../TextField";
 import IconFa from "../IconFa";
@@ -138,13 +139,10 @@ const AddressLookup = forwardRef(
         .then((data: { Items: AddressDataType[] }) => {
           clearOptions();
           const selectedAddress: AddressDataType = data.Items[0];
-          const selectedAddressWithoutCommas = Object.entries(
-            selectedAddress
-          ).reduce((result, current) => {
-            const key = current[0];
-            const value = current[1].replace(/,/g, "");
-            return { ...result, [key]: value };
-          }, selectedAddress);
+          const selectedAddressWithoutCommas =
+            removeCommasFromObjectStringValues<AddressDataType>(
+              selectedAddress
+            );
           onAddressSelected(selectedAddressWithoutCommas);
           return null;
         })

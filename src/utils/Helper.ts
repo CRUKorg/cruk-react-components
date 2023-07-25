@@ -49,3 +49,10 @@ export const camelize = (str: string): string =>
       index === 0 ? word.toLowerCase() : word.toUpperCase()
     )
     .replace(/\s+/g, "");
+
+export const removeCommasFromObjectStringValues = <T>(object: T) =>
+  Object.entries(object as object).reduce((result, current) => {
+    const key = current[0];
+    const value = (current[1] as string).replace(/,/g, "");
+    return { ...result, [key]: value } as T;
+  }, object);
