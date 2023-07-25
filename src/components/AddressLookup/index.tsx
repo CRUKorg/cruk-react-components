@@ -138,7 +138,7 @@ const AddressLookup = forwardRef(
         })
         .then((data: { Items: AddressDataType[] }) => {
           clearOptions();
-          const selectedAddress: AddressDataType = data.Items[0];
+          const selectedAddress = data.Items[0];
           const selectedAddressWithoutCommas =
             removeCommasFromObjectStringValues<AddressDataType>(
               selectedAddress
