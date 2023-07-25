@@ -137,13 +137,13 @@ const AddressLookup = forwardRef(
           return res.json();
         })
         .then((data: { Items: AddressDataType[] }) => {
-          clearOptions();
           const selectedAddress = data.Items[0];
           const selectedAddressWithoutCommas =
             removeCommasFromObjectStringValues<AddressDataType>(
               selectedAddress
             );
           onAddressSelected(selectedAddressWithoutCommas);
+          clearOptions();
           return null;
         })
         .catch((err) => onAddressError(err as Error));
