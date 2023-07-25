@@ -7,6 +7,7 @@ import {
   calculatePercentRounded,
   numberWithCommas,
   formatMoneyWithCommas,
+  removeCommasFromObjectStringValues,
 } from "../Helper";
 
 describe("camelize", () => {
@@ -63,5 +64,17 @@ describe("calculatePercentRounded", () => {
     expect(calculatePercentRounded(1, 2)).toEqual(50);
     expect(calculatePercentRounded(1.000000003, 2)).toEqual(50);
     expect(calculatePercentRounded(1, 2.000000003)).toEqual(49);
+  });
+});
+
+describe("removeCommasFromObjectStringValues", () => {
+  it("Removes commas from object values", () => {
+    expect(
+      removeCommasFromObjectStringValues({
+        a: "foo, foo, foo",
+        b: "bar,, bar",
+        c: "baz baz",
+      })
+    ).toEqual({ a: "foo foo foo", b: "bar bar", c: "baz baz" });
   });
 });

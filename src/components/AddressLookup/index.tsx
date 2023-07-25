@@ -17,6 +17,7 @@ import { AddressDataType, AddressOptionsType } from "../../types";
 import { useKey } from "../../hooks/useKey";
 
 import debounce from "../../utils/debounce";
+import { removeCommasFromObjectStringValues } from "../../utils/Helper";
 import Text from "../Text";
 import TextField from "../TextField";
 import IconFa from "../IconFa";
@@ -48,6 +49,8 @@ export type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
   isInvalidVisible?: boolean;
   /** label text */
   label?: string;
+  /** hint text text */
+  hintText?: string;
   /** callback function which is passed the error */
   onAddressError?: (error: Error) => void;
   /** onBlur handler */
@@ -73,7 +76,9 @@ const AddressLookup = forwardRef(
       isValidVisible,
       isInvalidVisible,
       label,
-      onAddressError = (err: Error) => {},
+      hintText,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      onAddressError = (error: Error) => {},
       onAddressSelected,
       onChange,
       onBlur,
@@ -133,7 +138,12 @@ const AddressLookup = forwardRef(
         })
         .then((data: { Items: AddressDataType[] }) => {
           clearOptions();
-          onAddressSelected(data.Items[0]);
+          const selectedAddress = data.Items[0];
+          const selectedAddressWithoutCommas =
+            removeCommasFromObjectStringValues<AddressDataType>(
+              selectedAddress
+            );
+          onAddressSelected(selectedAddressWithoutCommas);
           return null;
         })
         .catch((err) => onAddressError(err as Error));
@@ -216,7 +226,7 @@ const AddressLookup = forwardRef(
           autoComplete="off"
           hasError={hasError || !!errorMessage}
           errorMessage={errorMessage}
-          hintText="Start typing your address or postcode"
+          hintText={hintText ?? "Start typing your address or postcode"}
           isValid={isValid}
           isValidVisible={isValidVisible}
           isInvalidVisible={isInvalidVisible}
