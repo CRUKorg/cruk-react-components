@@ -138,16 +138,13 @@ const AddressLookup = forwardRef(
         .then((data: { Items: AddressDataType[] }) => {
           clearOptions();
           const selectedAddress: AddressDataType = data.Items[0];
-          const selectedAddressEntries = Object.entries(selectedAddress);
-          const selectedAddressWithoutCommas = selectedAddressEntries.reduce(
-            (result, current) => {
-              const key = current[0];
-              const value = current[1].replace(/,/g, "");
-              const newResult = { ...result, [key]: value };
-              return newResult;
-            },
+          const selectedAddressWithoutCommas = Object.entries(
             selectedAddress
-          );
+          ).reduce((result, current) => {
+            const key = current[0];
+            const value = current[1].replace(/,/g, "");
+            return { ...result, [key]: value };
+          }, selectedAddress);
           onAddressSelected(selectedAddressWithoutCommas);
           return null;
         })
