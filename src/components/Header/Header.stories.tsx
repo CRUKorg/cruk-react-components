@@ -2,7 +2,7 @@ import React from "react";
 import { StoryObj } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 
-import { su2cTheme, Button, bowelbabeTheme } from "..";
+import { su2cTheme, Button, bowelbabeTheme, GlobalStyle } from "..";
 import Header, { HeaderProps } from ".";
 
 const HeaderInTallContainer = (args: HeaderProps) => (
@@ -52,6 +52,7 @@ export const HeaderSticky: Story = {
 
 const su2cRender = (args: HeaderProps) => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <HeaderInTallContainer {...args} />
   </ThemeProvider>
 );
@@ -65,6 +66,7 @@ export const HeaderSU2C: Story = {
 
 const bowelbabeRender = (args: HeaderProps) => (
   <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
     <HeaderInTallContainer {...args} />
   </ThemeProvider>
 );

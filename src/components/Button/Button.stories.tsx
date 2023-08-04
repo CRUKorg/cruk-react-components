@@ -7,7 +7,7 @@ import IconFa from "../IconFa";
 
 import { Button, ButtonProps } from "./";
 
-import { bowelbabeTheme, su2cTheme } from "..";
+import { GlobalStyle, bowelbabeTheme, su2cTheme } from "..";
 
 export default {
   title: "Button",
@@ -74,6 +74,7 @@ export const WithIcons: Story = {
 
 const su2cRender = (args: ButtonProps) => (
   <ThemeProvider theme={su2cTheme}>
+    <GlobalStyle />
     <Button {...args} />
   </ThemeProvider>
 );
@@ -106,6 +107,7 @@ export const TertiarySU2C: Story = {
 
 const bowelbabeRender = (args: ButtonProps) => (
   <ThemeProvider theme={bowelbabeTheme}>
+    <GlobalStyle />
     <Button {...args} />
   </ThemeProvider>
 );
