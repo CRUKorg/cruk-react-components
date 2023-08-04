@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.1] - 2023-7-25
+
+### Fixed
+
+- Fixed commas in AddressLookup found address fields, when some fields contains number not strings [#712](https://github.com/CRUKorg/cruk-react-components/issues/#712))
+
+## [3.1.0] - 2023-7-25
+
+### Changed
+
+- AddressLookup hintText now customisable, can be blank string
+
+### Fixed
+
+- Fixed commas in AddressLookup found address fields [#712](https://github.com/CRUKorg/cruk-react-components/issues/#712))
+
 ## [3.0.0] - 2023-6-21
 
 ### Changed

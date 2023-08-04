@@ -103,9 +103,7 @@ export const Header = ({
             isSmall={isSmall}
             isSticky={isSticky}
           >
-            <SkipToMain className="skip-main" href="#main">
-              Skip to main content
-            </SkipToMain>
+            <SkipToMain href="#main">Skip to main content</SkipToMain>
             <HeaderMainContent fullWidth={fullWidth}>
               <StyledLink
                 href={logoLinkUrl ?? theme.siteConfig.logoUrl}

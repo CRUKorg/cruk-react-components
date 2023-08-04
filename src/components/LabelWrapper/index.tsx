@@ -34,7 +34,8 @@ export const LabelWrapper = ({
 
   const hintTextElement =
     !!hintText &&
-    (typeof hintText === "string" || typeof hintText === "number") ? (
+    ((typeof hintText === "string" && hintText.length) ||
+      typeof hintText === "number") ? (
       <Text>{hintText}</Text>
     ) : (
       hintText
