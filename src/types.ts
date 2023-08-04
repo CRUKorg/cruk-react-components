@@ -206,6 +206,12 @@ export type TypographyType = {
   headerTextTransform: string;
 };
 
+export type ShadowsType = {
+  s: string;
+  m: string;
+  l: string;
+};
+
 export type ThemeType = {
   name: string;
   avatar: AvatarType;
@@ -217,6 +223,7 @@ export type ThemeType = {
   fontSizes: FontSizesType;
   siteConfig: SiteConfigType;
   typography: TypographyType;
+  shadows: ShadowsType;
   utilities: UtilitiesType;
 };
 

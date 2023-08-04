@@ -8,6 +8,7 @@ import {
   ColorsType,
   SpacingType,
   FontSizesType,
+  ShadowsType,
   TypographyType,
   ThemeType,
 } from "../types";
@@ -226,6 +227,12 @@ export const TYPOGRAPHY: TypographyType = {
   headerTextTransform: "none",
 };
 
+export const SHADOWS: ShadowsType = {
+  s: `0px 0px 2px 1px ${TOKEN_COLORS.grey_300}`,
+  m: `0px 0px 4px 1px ${TOKEN_COLORS.grey_300}`,
+  l: `0px 0px 7px 1px ${TOKEN_COLORS.grey_300}`,
+};
+
 const theme: ThemeType = {
   name: "cruk",
   avatar: AVATAR,
@@ -237,6 +244,7 @@ const theme: ThemeType = {
   fontSizes: FONT_SIZES,
   siteConfig: SITE_CONFIG,
   typography: TYPOGRAPHY,
+  shadows: SHADOWS,
   utilities: UTILITIES,
 };
 
