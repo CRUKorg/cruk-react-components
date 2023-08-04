@@ -68,7 +68,7 @@
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^25.0.0",
     "@rollup/plugin-node-resolve": "^15.1.0",
-    "@simonsmith/cypress-image-snapshot": "^5.0.4",
+    "@simonsmith/cypress-image-snapshot": "^8.0.2",
     "@storybook/addon-a11y": "^7.0.22",
     "@storybook/addon-actions": "^7.0.22",
     "@storybook/addon-docs": "^7.0.22",
