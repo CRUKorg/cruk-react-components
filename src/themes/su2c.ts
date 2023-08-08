@@ -10,6 +10,7 @@ import {
   FontSizesType,
   TypographyType,
   ThemeType,
+  ShadowsType,
 } from "../types";
 
 import defaultTheme from "./cruk";
@@ -116,6 +117,10 @@ export const SPACING: SpacingType = {
   ...defaultTheme.spacing,
 };
 
+export const SHADOWS: ShadowsType = {
+  ...defaultTheme.shadows,
+};
+
 export const FONT_SIZES: FontSizesType = {
   ...defaultTheme.fontSizes,
 };
@@ -145,6 +150,7 @@ const theme: ThemeType = {
   fontSizes: FONT_SIZES,
   siteConfig: SITE_CONFIG,
   typography: TYPOGRAPHY,
+  shadows: SHADOWS,
   utilities: UTILITIES,
 };
 

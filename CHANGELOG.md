@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.2.10] - 2023-8-04
+
+### Added
+
+- Added range of box shadows in themes and added shaddow large to sticky header which should float on top of everything [#721](https://github.com/CRUKorg/cruk-react-components/issues/#721))
+
+### Fixed
+
+- Storybook stories when GlobalStyle component was required to override font set by theme in outer theme switcher
+
 ## [3.1.1] - 2023-7-25
 
 ### Fixed
