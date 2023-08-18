@@ -29,7 +29,7 @@ import ErrorTextReadme from "../components/ErrorText/README.md";
 import FooterReadme from "../components/Footer/README.md";
 import HeadingReadme from "../components/Heading/README.md";
 import HeaderReadme from "../components/Header/README.md";
-import IconReadme from "../components/Icon/README.md";
+import InfoBoxReadme from "../components/InfoBox/README.md";
 import LinkReadme from "../components/Link/README.md";
 import LegendWrapperReadme from "../components/LegendWrapper/README.md";
 import LoaderReadme from "../components/Loader/README.md";
@@ -50,7 +50,6 @@ import UserBlockReadme from "../components/UserBlock/README.md";
 import crukTheme, { BREAKPOINT, COLORS } from "../themes/cruk";
 import su2cTheme from "../themes/su2c";
 import GlobalStyle from "../components/GlobalStyle";
-import { InfoBoxReadme } from "../components";
 
 const ThemeCheatSheetRoute = (props: RouteComponentProps) => (
   <ThemeCheatSheet />
@@ -330,7 +329,6 @@ const Docs = () => {
               <FooterReadme path="/footer" />
               <HeadingReadme path="/heading" />
               <HeaderReadme path="/header" />
-              <IconReadme path="/icon" />
               <InfoBoxReadme path="/info-box" />
               <LinkReadme path="/link" />
               <LegendWrapperReadme path="/legendwrapper" />
