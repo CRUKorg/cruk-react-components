@@ -19,9 +19,9 @@ jobs:
         if: failure()
         run: |
           mkdir output
-          tar cvfj output/videos.tar.bz2 -C cypress/videos .
-          tar cvfj output/screenshots.tar.bz2 -C cypress/screenshots .
-          tar cvfj output/snapshots.tar.bz2 -C cypress/snapshots .
+          [[ -d cypress/videos ]] && tar cvfj output/videos.tar.bz2 -C cypress/videos .
+          [[ -d cypress/screenshots ]] && tar cvfj output/screenshots.tar.bz2 -C cypress/screenshots .
+          [[ -d cypress/snapshots ]] && tar cvfj output/snapshots.tar.bz2 -C cypress/snapshots .
       - name: Upload Cypress output
         if: failure()
         uses: actions/upload-artifact@v3
