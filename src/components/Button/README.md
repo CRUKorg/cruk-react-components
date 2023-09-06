@@ -43,20 +43,30 @@ for multiple sizes, states, and more.
 
 ### Other Buttons
 
+
+  <Button>
+      <IconFa faIcon={faEye} />
+      Icon with text
+    </Button>
+    <Button>
+      Icon right
+      <IconFa faIcon={faPenToSquare} />
+    </Button>
+
 ```.jsx
 <>
   <Button appearance="secondary">
-    <Icon name="view" />
+    <IconFa faIcon={faEye} />
     Icon with text
   </Button>
   <Button>
     Icon right
-    <Icon name="edit" />
+    <IconFa faIcon={faPenToSquare} />
   </Button>
   <Button appearance="tertiary">
-    <Icon name="view" />
+    <IconFa faIcon={faEye} />
     Icon either side
-    <Icon name="view" />
+    <IconFa faIcon={faEye} />
   </Button>
   <Button href="https://www.styled-components.com/">Link as Button</Button>
   <Button aria-label="Upload a photo">
