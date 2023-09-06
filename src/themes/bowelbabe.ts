@@ -29,11 +29,13 @@ export const SITE_CONFIG: SiteConfigType = {
 
 export const AVATAR: AvatarType = {
   ...defaultTheme.avatar,
+  path: `${SITE_CONFIG.assetPath}images/avatar/bowelbabe/`,
 };
 
 export const BUTTON: ButtonType = {
   ...defaultTheme.button,
   horizontalPadding: "1rem",
+  borderRadius: "2em",
 };
 
 export const BREAKPOINT: BreakPointType = {
@@ -47,9 +49,11 @@ export const TOKEN_COLORS: TokenColorsType = {
   bbGreen: "#26bb98",
   bbPastelGreen: "#d4f1ea",
   bbPink: "#d81272",
+  bbPastelPink: "#EB88B8",
   bbBlue: "#009ed1",
   bbTeal: "#005e85",
   bbYellow: "#e4b50b",
+  bbPastelYellow: "#F1DA85",
 };
 
 export const COLORS: ColorsType = {
@@ -90,24 +94,24 @@ export const COLORS: ColorsType = {
   totaliserBubbleTextColor: TOKEN_COLORS.bbLightGreen,
   totaliserBubbleTotalColor: TOKEN_COLORS.white,
 
-  buttonPrimaryBackground: TOKEN_COLORS.bbPurple,
-  buttonPrimaryText: TOKEN_COLORS.white,
-  buttonPrimaryBorder: TOKEN_COLORS.bbPurple,
-  buttonPrimaryBackgroundHover: TOKEN_COLORS.bbPink,
-  buttonPrimaryTextHover: TOKEN_COLORS.white,
-  buttonPrimaryBorderHover: TOKEN_COLORS.bbPink,
+  buttonPrimaryBackground: TOKEN_COLORS.bbPastelYellow,
+  buttonPrimaryText: TOKEN_COLORS.bbPurple,
+  buttonPrimaryBorder: TOKEN_COLORS.bbPastelYellow,
+  buttonPrimaryBackgroundHover: TOKEN_COLORS.bbPastelPink,
+  buttonPrimaryTextHover: TOKEN_COLORS.bbPurple,
+  buttonPrimaryBorderHover: TOKEN_COLORS.bbPastelPink,
   buttonPrimaryDisabledBackground: TOKEN_COLORS.grey_300,
-  buttonPrimaryDisabledText: TOKEN_COLORS.white,
+  buttonPrimaryDisabledText: TOKEN_COLORS.grey_800,
   buttonPrimaryDisabledBorder: TOKEN_COLORS.grey_300,
 
   buttonSecondaryBackground: TOKEN_COLORS.white,
   buttonSecondaryText: TOKEN_COLORS.bbPurple,
-  buttonSecondaryBorder: TOKEN_COLORS.bbPurple,
-  buttonSecondaryBackgroundHover: TOKEN_COLORS.white,
-  buttonSecondaryTextHover: TOKEN_COLORS.bbPink,
-  buttonSecondaryBorderHover: TOKEN_COLORS.bbPink,
-  buttonSecondaryDisabledBackground: TOKEN_COLORS.white,
-  buttonSecondaryDisabledText: TOKEN_COLORS.grey_300,
+  buttonSecondaryBorder: TOKEN_COLORS.bbPastelYellow,
+  buttonSecondaryBackgroundHover: TOKEN_COLORS.bbPastelPink,
+  buttonSecondaryTextHover: TOKEN_COLORS.bbPurple,
+  buttonSecondaryBorderHover: TOKEN_COLORS.bbPastelYellow,
+  buttonSecondaryDisabledBackground: TOKEN_COLORS.grey_300,
+  buttonSecondaryDisabledText: TOKEN_COLORS.grey_800,
   buttonSecondaryDisabledBorder: TOKEN_COLORS.grey_300,
 
   buttonTertiaryText: TOKEN_COLORS.bbPurple,
