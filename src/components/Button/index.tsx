@@ -9,7 +9,6 @@ import React, {
 import { useTheme } from "styled-components";
 
 import defaultTheme from "../../themes/cruk";
-import Icon from "../Icon";
 import IconFa from "../IconFa";
 
 import { Spacer, StyledButton } from "./styles";
@@ -56,8 +55,6 @@ export const Button = forwardRef(
     // button has a fixed width if there is a single icon
     const setIconButton = !!(
       isIconButton ||
-      (childArray.length === 1 && !isChildString && firstElement?.type) ===
-        Icon ||
       (childArray.length === 1 && !isChildString && firstElement?.type) ===
         IconFa
     );
