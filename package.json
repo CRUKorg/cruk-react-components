@@ -40,7 +40,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "eslint:test": "eslint src",
-    "eslint:fix": "eslint src --fix"
+    "eslint:fix": "eslint src --fix",
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "repository": {
     "type": "git",
@@ -96,6 +97,7 @@
     "axe-core": "^4.2.1",
     "babel-loader": "8.3.0",
     "babel-plugin-styled-components": "^2.0.2",
+    "chromatic": "^6.21.0",
     "cypress": "^10.4.0",
     "cypress-axe": "1.2.0",
     "cypress-plugin-tab": "^1.0.5",
