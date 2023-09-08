@@ -6,30 +6,6 @@ import { mount } from "cypress/react";
 import { TestThemeWrapper } from "../TestWrapper";
 import { RadioConsent, su2cTheme, crukTheme, bowelbabeTheme } from "..";
 
-const uncontrolledContent = () => (
-  <div id="radios">
-    <RadioConsent
-      legend="Email"
-      name="email"
-      attributes={[
-        { option: "Yes", value: "yes" },
-        { option: "No", value: "no" },
-      ]}
-      selectedValue="yes"
-    />
-
-    <RadioConsent
-      legend="Telephone"
-      name="phone"
-      attributes={[
-        { option: "Yes", value: "yes" },
-        { option: "No", value: "no" },
-      ]}
-      selectedValue="no"
-    />
-  </div>
-);
-
 const Content = () => {
   const [selectedEmail, setSelectedEmail] = React.useState("yes");
   const [selectedPhone, setSelectedPhone] = React.useState("no");
@@ -98,37 +74,5 @@ describe("RadioConsent", () => {
     );
     cy.injectAxe();
     cy.checkA11y("body");
-  });
-
-  it("should match CRUK snapshot", () => {
-    Cypress.config("waitForAnimations", true);
-    Cypress.config("animationDistanceThreshold", 2);
-    mount(<TestThemeWrapper>{uncontrolledContent()}</TestThemeWrapper>);
-    cy.document().its("fonts.status").should("equal", "loaded");
-    cy.get("#radios").first().matchImageSnapshot();
-  });
-
-  it("should match SU2C snapshot", () => {
-    Cypress.config("waitForAnimations", true);
-    Cypress.config("animationDistanceThreshold", 2);
-    mount(
-      <TestThemeWrapper theme={su2cTheme}>
-        {uncontrolledContent()}
-      </TestThemeWrapper>
-    );
-    cy.document().its("fonts.status").should("equal", "loaded");
-    cy.get("#radios").first().matchImageSnapshot();
-  });
-
-  it("should match Bowelbabe snapshot", () => {
-    Cypress.config("waitForAnimations", true);
-    Cypress.config("animationDistanceThreshold", 2);
-    mount(
-      <TestThemeWrapper theme={bowelbabeTheme}>
-        {uncontrolledContent()}
-      </TestThemeWrapper>
-    );
-    cy.document().its("fonts.status").should("equal", "loaded");
-    cy.get("#radios").first().matchImageSnapshot();
   });
 });

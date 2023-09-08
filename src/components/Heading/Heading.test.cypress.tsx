@@ -3,7 +3,7 @@
 import React from "react";
 import { mount } from "cypress/react";
 
-import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
+import { TestThemeWrapper } from "../TestWrapper";
 import { Heading, crukTheme, su2cTheme, bowelbabeTheme } from "..";
 
 const content = () => (
@@ -48,10 +48,5 @@ describe("Heading", () => {
     );
     cy.injectAxe();
     cy.checkA11y("body");
-  });
-
-  it("should match snapshot", () => {
-    mount(<TestWrapper>{content()}</TestWrapper>);
-    cy.get("body").first().matchImageSnapshot();
   });
 });

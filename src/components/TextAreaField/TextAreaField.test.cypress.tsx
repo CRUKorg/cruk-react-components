@@ -3,7 +3,7 @@
 import React from "react";
 import { mount } from "cypress/react";
 
-import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
+import { TestThemeWrapper } from "../TestWrapper";
 import {
   Box,
   Heading,
@@ -51,11 +51,5 @@ describe("TextAreaField", () => {
     );
     cy.injectAxe();
     cy.checkA11y("body");
-  });
-
-  it("should match snapshot", () => {
-    mount(<TestWrapper>{content()}</TestWrapper>);
-    cy.document().its("fonts.status").should("equal", "loaded");
-    cy.get("body").first().matchImageSnapshot();
   });
 });

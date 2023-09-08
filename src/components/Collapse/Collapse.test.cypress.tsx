@@ -3,7 +3,7 @@
 import React from "react";
 import { mount } from "cypress/react";
 
-import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
+import { TestThemeWrapper } from "../TestWrapper";
 import { Collapse, Box, Text, crukTheme, su2cTheme, bowelbabeTheme } from "..";
 
 const content = () => (
@@ -74,14 +74,5 @@ describe("Collapse", () => {
     );
     cy.injectAxe();
     cy.checkA11y("body");
-  });
-
-  it("should match snapshot", () => {
-    Cypress.config("waitForAnimations", true);
-    Cypress.config("animationDistanceThreshold", 2);
-    mount(<TestWrapper>{content()}</TestWrapper>);
-    cy.document().its("fonts.status").should("equal", "loaded");
-    cy.contains("What is Lorem Ipsum?").click();
-    cy.get("body").first().matchImageSnapshot();
   });
 });

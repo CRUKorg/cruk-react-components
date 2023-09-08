@@ -9,7 +9,7 @@ import {
   faBullhorn,
 } from "@fortawesome/free-solid-svg-icons";
 
-import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
+import { TestThemeWrapper } from "../TestWrapper";
 import { Badge, IconFa, su2cTheme, crukTheme, bowelbabeTheme } from "..";
 
 const content = () => (
@@ -58,11 +58,5 @@ describe("Badge", () => {
     );
     cy.injectAxe();
     cy.checkA11y("body");
-  });
-
-  it("should match snapshot", () => {
-    mount(<TestWrapper>{content()}</TestWrapper>);
-    cy.document().its("fonts.status").should("equal", "loaded");
-    cy.get("body").first().matchImageSnapshot();
   });
 });

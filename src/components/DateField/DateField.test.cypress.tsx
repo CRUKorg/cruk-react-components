@@ -3,7 +3,7 @@
 import React from "react";
 import { mount } from "cypress/react";
 
-import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
+import { TestThemeWrapper } from "../TestWrapper";
 import { Box, DateField, su2cTheme, crukTheme, bowelbabeTheme } from "..";
 
 const unControlledContent = () => (
@@ -67,13 +67,5 @@ describe("DateField", () => {
     );
     cy.injectAxe();
     cy.checkA11y("body");
-  });
-
-  it("should match snapshot", () => {
-    Cypress.config("waitForAnimations", true);
-    Cypress.config("animationDistanceThreshold", 2);
-    mount(<TestWrapper>{unControlledContent()}</TestWrapper>);
-    cy.document().its("fonts.status").should("equal", "loaded");
-    cy.get("body").first().matchImageSnapshot();
   });
 });

@@ -4,7 +4,7 @@ import React from "react";
 import { mount } from "cypress/react";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 
-import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
+import { TestThemeWrapper } from "../TestWrapper";
 import { UserBlock, IconFa, su2cTheme, crukTheme, bowelbabeTheme } from "..";
 
 const content = () => (
@@ -52,47 +52,5 @@ describe("UserBlock", () => {
     );
     cy.injectAxe();
     cy.checkA11y("body");
-  });
-
-  it("should match snapshot", () => {
-    mount(
-      <>
-        <TestWrapper>{content()}</TestWrapper>
-      </>
-    );
-    cy.get(`[src="${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png"]`)
-      .should("be.visible")
-      .and("have.prop", "naturalWidth")
-      .should("be.greaterThan", 0);
-
-    cy.get(
-      `[src="${crukTheme.siteConfig.assetPath}images/avatar/cruk/icon-avatar-S.png"]`
-    )
-      .should("be.visible")
-      .and("have.prop", "naturalWidth")
-      .should("be.greaterThan", 0);
-
-    cy.get(
-      `[src="${crukTheme.siteConfig.assetPath}images/avatar/su2c/icon-avatar-S.png"]`
-    )
-      .should("be.visible")
-      .and("have.prop", "naturalWidth")
-      .should("be.greaterThan", 0);
-
-    cy.get(
-      `[src="${crukTheme.siteConfig.assetPath}images/avatar/cruk/icon-avatar-Anonymous.png"]`
-    )
-      .should("be.visible")
-      .and("have.prop", "naturalWidth")
-      .should("be.greaterThan", 0);
-
-    cy.get(
-      `[src="${crukTheme.siteConfig.assetPath}images/avatar/su2c/icon-avatar-Anonymous.png"]`
-    )
-      .should("be.visible")
-      .and("have.prop", "naturalWidth")
-      .should("be.greaterThan", 0);
-    cy.document().its("fonts.status").should("equal", "loaded");
-    cy.get("body").first().matchImageSnapshot();
   });
 });

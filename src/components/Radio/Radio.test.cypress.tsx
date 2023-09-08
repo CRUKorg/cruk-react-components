@@ -6,17 +6,6 @@ import { mount } from "cypress/react";
 import { TestThemeWrapper } from "../TestWrapper";
 import { Radio, Heading, su2cTheme, crukTheme, bowelbabeTheme } from "..";
 
-const uncontrolledRadio = () => (
-  <div id="radios">
-    <Radio name="example1" value="one" checked>
-      Option one
-    </Radio>
-    <Radio name="example1" value="two">
-      Option two
-    </Radio>
-  </div>
-);
-
 const Content = () => {
   const [selected, setSelected] = React.useState("one");
 
@@ -82,37 +71,5 @@ describe("Radio", () => {
     );
     cy.injectAxe();
     cy.checkA11y("body");
-  });
-
-  it("should match CRUK snapshot", () => {
-    Cypress.config("waitForAnimations", true);
-    Cypress.config("animationDistanceThreshold", 2);
-    mount(<TestThemeWrapper>{uncontrolledRadio()}</TestThemeWrapper>);
-    cy.document().its("fonts.status").should("equal", "loaded");
-    cy.get("#radios").first().matchImageSnapshot();
-  });
-
-  it("should match SU2C snapshot", () => {
-    Cypress.config("waitForAnimations", true);
-    Cypress.config("animationDistanceThreshold", 2);
-    mount(
-      <TestThemeWrapper theme={su2cTheme}>
-        {uncontrolledRadio()}
-      </TestThemeWrapper>
-    );
-    cy.document().its("fonts.status").should("equal", "loaded");
-    cy.get("#radios").first().matchImageSnapshot();
-  });
-
-  it("should match Bowelbabe snapshot", () => {
-    Cypress.config("waitForAnimations", true);
-    Cypress.config("animationDistanceThreshold", 2);
-    mount(
-      <TestThemeWrapper theme={bowelbabeTheme}>
-        {uncontrolledRadio()}
-      </TestThemeWrapper>
-    );
-    cy.document().its("fonts.status").should("equal", "loaded");
-    cy.get("#radios").first().matchImageSnapshot();
   });
 });

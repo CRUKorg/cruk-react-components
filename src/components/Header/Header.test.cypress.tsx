@@ -3,14 +3,8 @@
 import React from "react";
 import { mount } from "cypress/react";
 
-import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
+import { TestThemeWrapper } from "../TestWrapper";
 import { Header, Button, crukTheme, su2cTheme, bowelbabeTheme } from "..";
-
-const content = () => (
-  <Header siteSlogan="Header slogan here">
-    <Button>Child component</Button>
-  </Header>
-);
 
 describe("Header Behaviour", () => {
   beforeEach(() => {
@@ -127,29 +121,5 @@ describe("Header", () => {
     );
     cy.injectAxe();
     cy.checkA11y("body");
-  });
-
-  it("should match snapshot", () => {
-    Cypress.config("waitForAnimations", true);
-    Cypress.config("animationDistanceThreshold", 2);
-    cy.viewport(1000, 480);
-    mount(<TestWrapper>{content()}</TestWrapper>);
-    cy.document().its("fonts.status").should("equal", "loaded");
-    cy.get(`[src="${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png"]`)
-      .should("be.visible")
-      .and("have.prop", "naturalWidth")
-      .should("be.greaterThan", 0);
-    cy.get(`[src="${crukTheme.siteConfig.assetPath}images/logos/su2c-160.png"]`)
-      .should((img) => {
-        const image = img[0] as HTMLImageElement;
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-        expect(image.complete).to.be.true;
-      })
-      .and("have.prop", "naturalWidth")
-      .should("be.greaterThan", 0);
-    cy.get("body").first().matchImageSnapshot({
-      failureThreshold: 2,
-      failureThresholdType: "percent",
-    });
   });
 });

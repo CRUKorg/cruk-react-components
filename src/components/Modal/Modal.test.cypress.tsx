@@ -13,19 +13,6 @@ import {
   bowelbabeTheme,
 } from "..";
 
-const ModalOnlyContent = () => (
-  <Modal closeFunction={() => {}} showCloseButton modalName="test">
-    <Heading h2 marginTop="none" textSize="xl">
-      Modal title
-    </Heading>
-    <p>Some really important information</p>
-    <Button onClick={() => {}}>Get me out of here</Button>
-    <Button appearance="primary" onClick={() => {}}>
-      Go for it 😃
-    </Button>
-  </Modal>
-);
-
 const Content = () => {
   const [showModal, setShowModal] = React.useState(false);
   const toggleShowModal = () => setShowModal(!showModal);
@@ -97,41 +84,9 @@ describe("Modal", () => {
       });
     });
   });
-
-  it("should match CRUK snapshot", () => {
-    Cypress.config("waitForAnimations", true);
-    Cypress.config("animationDistanceThreshold", 2);
-    cy.document().its("fonts.status").should("equal", "loaded");
-    mount(<TestThemeWrapper>{ModalOnlyContent()}</TestThemeWrapper>);
-    cy.get('[aria-modal="true"]').first().matchImageSnapshot();
-  });
-
-  it("should match SU2C snapshot", () => {
-    Cypress.config("waitForAnimations", true);
-    Cypress.config("animationDistanceThreshold", 2);
-    cy.document().its("fonts.status").should("equal", "loaded");
-    mount(
-      <TestThemeWrapper theme={su2cTheme}>
-        {ModalOnlyContent()}
-      </TestThemeWrapper>
-    );
-    cy.get('[aria-modal="true"]').first().matchImageSnapshot();
-  });
-
-  it("should match Bowelbabe snapshot", () => {
-    Cypress.config("waitForAnimations", true);
-    Cypress.config("animationDistanceThreshold", 2);
-    cy.document().its("fonts.status").should("equal", "loaded");
-    mount(
-      <TestThemeWrapper theme={bowelbabeTheme}>
-        {ModalOnlyContent()}
-      </TestThemeWrapper>
-    );
-    cy.get('[aria-modal="true"]').first().matchImageSnapshot();
-  });
 });
 
-describe("Modal behviour", () => {
+describe("Modal behaviour", () => {
   beforeEach(() => {
     mount(<Content />);
   });

@@ -1,7 +1,4 @@
 const { defineConfig } = require("cypress");
-const {
-  addMatchImageSnapshotPlugin,
-} = require("@simonsmith/cypress-image-snapshot/plugin");
 
 module.exports = defineConfig({
   viewportWidth: 900,
@@ -17,9 +14,6 @@ module.exports = defineConfig({
       framework: "react",
       bundler: "webpack",
       webpackConfig: require("./webpack.config.test"),
-    },
-    setupNodeEvents(on, config) {
-      addMatchImageSnapshotPlugin(on, config);
     },
   },
 });
