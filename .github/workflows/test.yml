@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout cruk-react-components
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: npm install
         run: docker-compose run --entrypoint=npm cypress ci
       - name: Test
@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout cruk-react-components
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: npm install
         run: npm ci --legacy-peer-deps
       - name: Test
@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout cruk-react-components
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: npm install
         run: npm ci --legacy-peer-deps
       - name: Test
@@ -50,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout cruk-react-components
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: npm install
         run: npm ci --legacy-peer-deps
       - name: Test
@@ -59,7 +59,7 @@ jobs:
     if: github.actor!= 'depbot'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # 👈 Required to retrieve git history
       - name: Install dependencies
