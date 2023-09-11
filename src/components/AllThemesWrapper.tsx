@@ -1,17 +1,23 @@
 import React, { ReactNode } from "react";
-import { ThemeProvider } from "styled-components";
-import GlobalStyle from "src/components/GlobalStyle";
-import crukTheme from "src/themes/cruk";
-import su2cTheme from "src/themes/su2c";
-import Heading from "src/components/Heading";
-import Box from "src/components/Box";
-import { ThemeType } from "src/types";
+import styled, { ThemeProvider } from "styled-components";
+import GlobalStyle from "./GlobalStyle";
+import crukTheme from "../themes/cruk";
+import su2cTheme from "../themes/su2c";
+import Box from "./Box";
+import { ThemeType } from "../types";
 import { bowelbabeTheme } from ".";
 
 type TestThemeWrapperProps = {
   theme?: ThemeType;
   children?: ReactNode;
 };
+
+const Line = styled.div`
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+  margin: 1em 0;
+`;
 
 export const TestThemeWrapper = ({
   children,
@@ -30,31 +36,37 @@ export const TestThemeWrapper = ({
   </main>
 );
 
-type TestWrapperProps = {
+type AllThemesWrapperProps = {
   children?: ReactNode;
 };
 
-export const TestWrapper = ({ children }: TestWrapperProps) => (
+export const AllThemesWrapper = ({ children }: AllThemesWrapperProps) => (
   <main>
     {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
     <div style={{ overflow: "auto" }} tabIndex={0}>
       <ThemeProvider theme={crukTheme}>
         <GlobalStyle />
-        <Heading>CRUK Theme</Heading>
+        <h2>CRUK Theme:</h2>
+
         {children}
+        <Line />
       </ThemeProvider>
       <ThemeProvider theme={su2cTheme}>
         <GlobalStyle />
-        <Heading>SU2C Theme</Heading>
+        <h2>SU2C Theme:</h2>
+
         {children}
+        <Line />
       </ThemeProvider>
       <ThemeProvider theme={bowelbabeTheme}>
         <GlobalStyle />
-        <Heading>Bowelbabe Theme</Heading>
+        <h2>Bowelbabe Theme:</h2>
+
         {children}
+        <Line />
       </ThemeProvider>
     </div>
   </main>
 );
 
-export default TestWrapper;
+export default AllThemesWrapper;

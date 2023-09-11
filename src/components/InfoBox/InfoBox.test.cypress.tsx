@@ -4,7 +4,7 @@ import React from "react";
 import { mount } from "cypress/react";
 import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 
-import { TestThemeWrapper } from "../TestWrapper";
+import { TestThemeWrapper } from "../AllThemesWrapper";
 import {
   bowelbabeTheme,
   crukTheme,

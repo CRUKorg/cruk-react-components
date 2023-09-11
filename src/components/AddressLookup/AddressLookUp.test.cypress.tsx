@@ -3,7 +3,7 @@
 import React from "react";
 import { mount } from "cypress/react";
 
-import { TestThemeWrapper, TestWrapper } from "../TestWrapper";
+import { TestThemeWrapper, AllThemesWrapper } from "../AllThemesWrapper";
 
 import { AddressLookup, bowelbabeTheme, crukTheme, su2cTheme } from "..";
 
@@ -77,9 +77,9 @@ describe("AddressLookup", () => {
 
   it("can find address", () => {
     mount(
-      <TestWrapper>
+      <AllThemesWrapper>
         <Content />
-      </TestWrapper>
+      </AllThemesWrapper>
     );
     cy.get("body")
       .first()
@@ -97,9 +97,9 @@ describe("AddressLookup", () => {
 
   it("can focus address dropdown", () => {
     mount(
-      <TestWrapper>
+      <AllThemesWrapper>
         <Content />
-      </TestWrapper>
+      </AllThemesWrapper>
     );
     cy.getInputByLabel("Home address").type("N10");
     cy.contains("li", "N17 0AB High Road, London - 14 Addresses")

@@ -3,7 +3,7 @@
 import React from "react";
 import { mount } from "cypress/react";
 
-import { TestThemeWrapper } from "../TestWrapper";
+import { TestThemeWrapper } from "../AllThemesWrapper";
 import { Collapse, Box, Text, crukTheme, su2cTheme, bowelbabeTheme } from "..";
 
 const content = () => (

@@ -1,9 +1,8 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
 
-import { bowelbabeTheme, su2cTheme } from "..";
-import Pagination, { PaginationProps } from ".";
+import Pagination from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {
   title: "Pagination",
@@ -22,6 +21,11 @@ type Story = StoryObj<typeof Pagination>;
 export const PaginationDefault: Story = {
   name: "PaginationDefault",
   args: {},
+  render: (args) => (
+    <AllThemesWrapper>
+      <Pagination {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const PaginationFirstPage: Story = {
@@ -29,6 +33,11 @@ export const PaginationFirstPage: Story = {
   args: {
     current: 6,
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Pagination {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const PaginationLastPage: Story = {
@@ -36,31 +45,9 @@ export const PaginationLastPage: Story = {
   args: {
     current: 11,
   },
-};
-/// SU2C
-
-const su2cRender = (args: PaginationProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <Pagination {...args} />
-  </ThemeProvider>
-);
-
-export const ErrorTextSU2C: Story = {
-  name: "PaginationSU2C",
-  args: {},
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: PaginationProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <Pagination {...args} />
-  </ThemeProvider>
-);
-
-export const ErrorTextBowelbabe: Story = {
-  name: "PaginationBowelbabe",
-  args: {},
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <Pagination {...args} />
+    </AllThemesWrapper>
+  ),
 };

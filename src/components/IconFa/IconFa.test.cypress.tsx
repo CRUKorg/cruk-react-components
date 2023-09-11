@@ -4,7 +4,7 @@ import React from "react";
 import { mount } from "cypress/react";
 import { faBullseye } from "@fortawesome/free-solid-svg-icons";
 
-import TestWrapper from "../TestWrapper";
+import AllThemesWrapper from "../AllThemesWrapper";
 import { IconFa } from "..";
 
 const content = () => (
@@ -17,7 +17,7 @@ const content = () => (
 
 describe("IconFa", () => {
   it("is accessible", () => {
-    mount(<TestWrapper>{content()}</TestWrapper>);
+    mount(<AllThemesWrapper>{content()}</AllThemesWrapper>);
     cy.injectAxe();
     cy.checkA11y("body");
   });

@@ -9,7 +9,7 @@ import {
   faBullhorn,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { TestThemeWrapper } from "../TestWrapper";
+import { TestThemeWrapper } from "../AllThemesWrapper";
 import { Badge, IconFa, su2cTheme, crukTheme, bowelbabeTheme } from "..";
 
 const content = () => (

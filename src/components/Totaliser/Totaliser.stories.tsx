@@ -1,10 +1,10 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
-import { su2cTheme, Text, IconFa, bowelbabeTheme } from "..";
-import Totaliser, { TotaliserProps } from ".";
+import { Text, IconFa } from "..";
+import Totaliser from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {
   title: "Totaliser (experimental)",
@@ -25,6 +25,11 @@ export const TotaliserWithoutTarget: Story = {
   args: {
     target: 0,
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Totaliser {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const TotaliserTextSummaryMessage: Story = {
@@ -32,6 +37,11 @@ export const TotaliserTextSummaryMessage: Story = {
   args: {
     summaryMessage: "Custom text summary message",
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Totaliser {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const TotaliserTextSummaryMessageAsComponent: Story = {
@@ -43,6 +53,11 @@ export const TotaliserTextSummaryMessageAsComponent: Story = {
       </Text>
     ),
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Totaliser {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const TotaliserCompact: Story = {
@@ -50,90 +65,9 @@ export const TotaliserCompact: Story = {
   args: {
     isCompact: true,
   },
-};
-
-/// SU2C
-
-const su2cRender = (args: TotaliserProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <Totaliser {...args} />
-  </ThemeProvider>
-);
-
-export const TotaliserWithoutTargetSU2C: Story = {
-  name: "Totalise rWithout Target SU2C",
-  args: {
-    target: 0,
-  },
-  render: su2cRender,
-};
-
-export const TotaliserTextSummaryMessageSU2C: Story = {
-  name: "Totaliser Text Summary Message SU2C",
-  args: {
-    summaryMessage: "Custom text summary message",
-  },
-  render: su2cRender,
-};
-
-export const TotaliserTextSummaryMessageAsComponentSU2C: Story = {
-  name: "Totaliser Text Summary Message as Component SU2C",
-  args: {
-    summaryMessage: (
-      <Text>
-        Custom component summary message <IconFa faIcon={faEdit} />
-      </Text>
-    ),
-  },
-};
-
-export const TotaliserCompactSU2C: Story = {
-  name: "Totaliser Compact SU2C",
-  args: {
-    isCompact: true,
-  },
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: TotaliserProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <Totaliser {...args} />
-  </ThemeProvider>
-);
-
-export const TotaliserWithoutTargetBowelbabe: Story = {
-  name: "Totalise rWithout Target Bowelbabe",
-  args: {
-    target: 0,
-  },
-  render: bowelbabeRender,
-};
-
-export const TotaliserTextSummaryMessageBowelbabe: Story = {
-  name: "Totaliser Text Summary Message Bowelbabe",
-  args: {
-    summaryMessage: "Custom text summary message",
-  },
-  render: bowelbabeRender,
-};
-
-export const TotaliserTextSummaryMessageAsComponentBowelbabe: Story = {
-  name: "Totaliser Text Summary Message as Component Bowelbabe",
-  args: {
-    summaryMessage: (
-      <Text>
-        Custom component summary message <IconFa faIcon={faEdit} />
-      </Text>
-    ),
-  },
-};
-
-export const TotaliserCompactBowelbabe: Story = {
-  name: "Totaliser Compact Bowelbabe",
-  args: {
-    isCompact: true,
-  },
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <Totaliser {...args} />
+    </AllThemesWrapper>
+  ),
 };

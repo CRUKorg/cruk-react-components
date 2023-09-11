@@ -4,7 +4,7 @@ import React from "react";
 import { mount } from "cypress/react";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-import { TestThemeWrapper } from "../TestWrapper";
+import { TestThemeWrapper } from "../AllThemesWrapper";
 import {
   TextField,
   Box,

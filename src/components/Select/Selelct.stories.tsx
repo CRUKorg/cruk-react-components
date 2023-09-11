@@ -1,9 +1,8 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
 
-import { bowelbabeTheme, su2cTheme } from "..";
 import Select, { SelectProps } from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {
   title: "Select",
@@ -41,50 +40,19 @@ const SelectWithState = (args: SelectProps) => {
 export const SelectDefault: Story = {
   name: "SelectDefault",
   args: {},
-  render: SelectWithState,
+  render: (args) => (
+    <AllThemesWrapper>
+      <SelectWithState {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const SelectWithError: Story = {
   name: "SelectWithError",
   args: { hasError: true, errorMessage: "error message" },
-  render: SelectWithState,
-};
-
-/// SU2C
-
-const su2cRender = (args: SelectProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <SelectWithState {...args} />
-  </ThemeProvider>
-);
-
-export const SelectSU2C: Story = {
-  name: "SelectSU2C",
-  args: {},
-  render: su2cRender,
-};
-
-export const SelectWithErrorSU2C: Story = {
-  name: "SelectWithErrorSU2C",
-  args: { hasError: true, errorMessage: "error message" },
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: SelectProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <SelectWithState {...args} />
-  </ThemeProvider>
-);
-export const SelectBowelbabe: Story = {
-  name: "SelectBowelbabe",
-  args: {},
-  render: bowelbabeRender,
-};
-
-export const SelectWithErrorBowelbabe: Story = {
-  name: "SelectWithErrorBowelbabe",
-  args: { hasError: true, errorMessage: "error message" },
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <SelectWithState {...args} />
+    </AllThemesWrapper>
+  ),
 };

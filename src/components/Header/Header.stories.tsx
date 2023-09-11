@@ -1,14 +1,14 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
 
-import { su2cTheme, Button, bowelbabeTheme, GlobalStyle } from "..";
+import { Button } from "..";
 import Header, { HeaderProps } from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 const HeaderInTallContainer = (args: HeaderProps) => (
   <div>
     <Header {...args} />
-    <div style={{ height: "200vh" }}></div>
+    <div style={{ height: "200px" }}></div>
   </div>
 );
 
@@ -28,50 +28,30 @@ type Story = StoryObj<typeof Header>;
 
 export const HeaderDefault: Story = {
   name: "HeaderDefault",
-  render: HeaderInTallContainer,
+  render: (args: HeaderProps) => (
+    <AllThemesWrapper>
+      <HeaderInTallContainer {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const HeaderFullWidth: Story = {
   name: "HeaderFullWidth",
-  render: HeaderInTallContainer,
   args: {
     fullWidth: true,
   },
+  render: (args: HeaderProps) => (
+    <AllThemesWrapper>
+      <HeaderInTallContainer {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const HeaderSticky: Story = {
   name: "HeaderSticky",
-  render: HeaderInTallContainer,
   args: {
     isSticky: true,
     fullWidth: true,
   },
-};
-
-/// SU2C
-
-const su2cRender = (args: HeaderProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
-    <HeaderInTallContainer {...args} />
-  </ThemeProvider>
-);
-
-export const HeaderSU2C: Story = {
-  name: "HeaderSU2C",
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: HeaderProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
-    <HeaderInTallContainer {...args} />
-  </ThemeProvider>
-);
-
-export const HeaderBowelbabe: Story = {
-  name: "HeaderBowelbabe",
-  render: bowelbabeRender,
+  render: (args: HeaderProps) => <HeaderInTallContainer {...args} />,
 };

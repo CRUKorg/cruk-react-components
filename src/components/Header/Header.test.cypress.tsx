@@ -3,7 +3,7 @@
 import React from "react";
 import { mount } from "cypress/react";
 
-import { TestThemeWrapper } from "../TestWrapper";
+import { TestThemeWrapper } from "../AllThemesWrapper";
 import { Header, Button, crukTheme, su2cTheme, bowelbabeTheme } from "..";
 
 describe("Header Behaviour", () => {

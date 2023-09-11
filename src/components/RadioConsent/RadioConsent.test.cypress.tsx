@@ -3,7 +3,7 @@
 import React, { ChangeEvent } from "react";
 import { mount } from "cypress/react";
 
-import { TestThemeWrapper } from "../TestWrapper";
+import { TestThemeWrapper } from "../AllThemesWrapper";
 import { RadioConsent, su2cTheme, crukTheme, bowelbabeTheme } from "..";
 
 const Content = () => {
