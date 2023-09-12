@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ElementType } from "react";
 
 import spacing, { SpacingProps } from "../Spacing";
 import {
@@ -14,7 +15,7 @@ export type TextStyledProps = SpacingProps & {
   textAlign?: "left" | "right" | "center" | "justify";
   textSize?: FontSizeType;
   textWeight?: number;
-  as?: any;
+  as?: ElementType;
   wordBreak?: WordBreakType;
   overflowWrap?: OverflowWrapType;
   theme: ThemeType;

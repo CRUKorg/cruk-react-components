@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import { mount } from "cypress/react";
 
-import TestWrapper, { TestThemeWrapper } from "src/components/TestWrapper";
+import { TestThemeWrapper } from "src/components/AllThemesWrapper";
 import { su2cTheme, crukTheme, Carousel, Text, bowelbabeTheme } from "..";
 
 const Item = styled.div`
@@ -83,15 +83,5 @@ describe("Carousel", () => {
     );
     cy.injectAxe();
     cy.checkA11y("body");
-  });
-
-  it("should match snapshot", () => {
-    mount(
-      <TestWrapper>
-        <Content />
-      </TestWrapper>
-    );
-    cy.document().its("fonts.status").should("equal", "loaded");
-    cy.get("body").first().matchImageSnapshot();
   });
 });

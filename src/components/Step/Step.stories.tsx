@@ -1,9 +1,8 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
 
-import { bowelbabeTheme, su2cTheme } from "..";
-import Step, { StepProps } from ".";
+import Step from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {
   title: "Step (experimental)",
@@ -20,32 +19,9 @@ type Story = StoryObj<typeof Step>;
 export const StepDefault: Story = {
   name: "StepDefault",
   args: {},
-};
-
-/// SU2C
-
-const su2cRender = (args: StepProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <Step {...args} />
-  </ThemeProvider>
-);
-
-export const StepSU2C: Story = {
-  name: "StepSU2C",
-  args: {},
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: StepProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <Step {...args} />
-  </ThemeProvider>
-);
-
-export const StepBowelbabe: Story = {
-  name: "StepBowelbabe",
-  args: {},
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <Step {...args} />
+    </AllThemesWrapper>
+  ),
 };

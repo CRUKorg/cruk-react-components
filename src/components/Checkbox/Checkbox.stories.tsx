@@ -1,9 +1,10 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
 
-import { su2cTheme, Box, bowelbabeTheme } from "..";
+import { Box, ThemeType } from "..";
 import CheckBox, { CheckBoxProps } from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
+import { useTheme } from "styled-components";
 
 export default {
   title: "CheckBox",
@@ -21,7 +22,10 @@ export default {
 type Story = StoryObj<typeof CheckBox>;
 
 const FullComponentWithCheckboxes = (args: CheckBoxProps) => {
-  const [selected, setSelected] = React.useState<Array<string>>([]);
+  const [selected, setSelected] = React.useState<Array<string>>(["one"]);
+  const theme = useTheme();
+  const themeTyped = theme as ThemeType;
+  const themeName = themeTyped.name;
   const handleChange = (value: string) => {
     if (selected.indexOf(value) === -1) {
       setSelected([...selected, value]);
@@ -33,12 +37,14 @@ const FullComponentWithCheckboxes = (args: CheckBoxProps) => {
   return (
     <fieldset style={{ border: "none" }}>
       <CheckBox
+        name={`checkbox1-${themeName}`}
         onChange={(e) => handleChange(e.target.value)}
         checked={selected.indexOf("one") >= 0}
         {...args}
       />
       <Box marginTop="s">
         <CheckBox
+          name={`checkbox1-${themeName}`}
           onChange={(e) => handleChange(e.target.value)}
           checked={selected.indexOf("two") >= 0}
           value="two"
@@ -51,7 +57,11 @@ const FullComponentWithCheckboxes = (args: CheckBoxProps) => {
 export const Default: Story = {
   name: "Default",
   args: {},
-  render: FullComponentWithCheckboxes,
+  render: (args) => (
+    <AllThemesWrapper>
+      <FullComponentWithCheckboxes {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const CheckboxDefaultError: Story = {
@@ -60,33 +70,9 @@ export const CheckboxDefaultError: Story = {
     hasError: true,
     errorMessage: "Error Message",
   },
-  render: FullComponentWithCheckboxes,
-};
-
-/// SU2C
-
-const su2cRender = (args: CheckBoxProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <FullComponentWithCheckboxes {...args} />
-  </ThemeProvider>
-);
-
-export const CheckBoxSU2C: Story = {
-  name: "CheckBoxSU2C",
-  args: {},
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: CheckBoxProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <FullComponentWithCheckboxes {...args} />
-  </ThemeProvider>
-);
-
-export const CheckBoxBowelbabe: Story = {
-  name: "CheckBoxBowelbabe",
-  args: {},
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <FullComponentWithCheckboxes {...args} />
+    </AllThemesWrapper>
+  ),
 };

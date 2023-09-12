@@ -1,9 +1,9 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
 
-import { su2cTheme, Link, bowelbabeTheme } from "..";
+import { Link } from "..";
 import Footer, { FooterProps } from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 const FooterWithChildren = (args: FooterProps) => (
   <Footer {...args}>
@@ -34,32 +34,9 @@ type Story = StoryObj<typeof Footer>;
 export const FooterDefault: Story = {
   name: "FooterDefault",
   args: {},
-};
-
-/// SU2C
-
-const su2cRender = (args: FooterProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <FooterWithChildren {...args} />
-  </ThemeProvider>
-);
-
-export const FooterSU2C: Story = {
-  name: "FooterSU2C",
-  args: {},
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: FooterProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <FooterWithChildren {...args} />
-  </ThemeProvider>
-);
-
-export const FooterBowelbabe: Story = {
-  name: "FooterBowelbabe",
-  args: {},
-  render: bowelbabeRender,
+  render: (args: FooterProps) => (
+    <AllThemesWrapper>
+      <FooterWithChildren {...args} />
+    </AllThemesWrapper>
+  ),
 };

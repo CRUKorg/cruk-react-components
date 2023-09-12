@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
 
-import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
+import { TestThemeWrapper } from "../AllThemesWrapper";
 import { su2cTheme, crukTheme, IconFa, Button, Box, bowelbabeTheme } from "..";
 
 const content = () => (
@@ -75,11 +75,5 @@ describe("Button", () => {
     );
     cy.injectAxe();
     cy.checkA11y("body");
-  });
-
-  it("should match snapshot", () => {
-    mount(<TestWrapper>{content()}</TestWrapper>);
-    cy.document().its("fonts.status").should("equal", "loaded");
-    cy.get("body").first().matchImageSnapshot();
   });
 });

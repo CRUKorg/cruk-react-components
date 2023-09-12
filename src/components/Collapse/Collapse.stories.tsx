@@ -1,9 +1,9 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
 
-import { su2cTheme, Text, Box, bowelbabeTheme } from "..";
-import Collapse, { CollapseProps } from ".";
+import { Text, Box } from "..";
+import Collapse from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {
   title: "Collapse (experimental)",
@@ -32,6 +32,11 @@ type Story = StoryObj<typeof Collapse>;
 export const CollapseWithTextHeader: Story = {
   name: "CollapseWithTextHeader",
   args: {},
+  render: (args) => (
+    <AllThemesWrapper>
+      <Collapse {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const CollapseWithModifiedText: Story = {
@@ -42,6 +47,11 @@ export const CollapseWithModifiedText: Story = {
     headerTitleTextColor: "primary",
     headerTitleTextSize: "xl",
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Collapse {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const CollapseWitCustomHeader: Story = {
@@ -59,80 +69,9 @@ export const CollapseWitCustomHeader: Story = {
       </Box>
     ),
   },
-};
-
-/// SU2C
-
-const su2cRender = (args: CollapseProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <Collapse {...args} />
-  </ThemeProvider>
-);
-
-export const CollapseWithTextHeaderSU2C: Story = {
-  name: "CollapseWithTextHeaderSU2C",
-  args: {},
-  render: su2cRender,
-};
-
-export const CollapseWithModifiedTextSU2C: Story = {
-  name: "CollapseWithModifiedTextSU2C",
-  args: {
-    headerTitleText:
-      "A long title with headerTitleTextColor and headerTitleTextSize",
-    headerTitleTextColor: "primary",
-    headerTitleTextSize: "xl",
-  },
-  render: su2cRender,
-};
-
-export const CollapseWitCustomHeaderSU2C: Story = {
-  name: "CollapseWithModifiedTextSU2C",
-  args: {
-    id: "custom",
-    headerComponent: (
-      <Box backgroundColor="primary">
-        <Text textColor="textOnPrimary">This is box header click me</Text>
-      </Box>
-    ),
-  },
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: CollapseProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <Collapse {...args} />
-  </ThemeProvider>
-);
-
-export const CollapseWithTextHeaderBowelbabe: Story = {
-  name: "CollapseWithTextHeaderBowelbabe",
-  args: {},
-  render: bowelbabeRender,
-};
-
-export const CollapseWithModifiedTextBowelbabe: Story = {
-  name: "CollapseWithModifiedTextBowelbabe",
-  args: {
-    headerTitleText:
-      "A long title with headerTitleTextColor and headerTitleTextSize",
-    headerTitleTextColor: "primary",
-    headerTitleTextSize: "xl",
-  },
-  render: bowelbabeRender,
-};
-
-export const CollapseWitCustomHeaderBowelbabe: Story = {
-  name: "CollapseWitCustomHeaderBowelbabe",
-  args: {
-    id: "custom",
-    headerComponent: (
-      <Box backgroundColor="primary">
-        <Text textColor="textOnPrimary">This is box header click me</Text>
-      </Box>
-    ),
-  },
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <Collapse {...args} />
+    </AllThemesWrapper>
+  ),
 };

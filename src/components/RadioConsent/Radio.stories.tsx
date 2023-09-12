@@ -1,9 +1,8 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
 
-import { bowelbabeTheme, su2cTheme } from "..";
 import RadioConsent, { RadioConsentProps } from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {
   title: "RadioConsent (experimental)",
@@ -37,33 +36,9 @@ const RadioConsentWithState = (args: RadioConsentProps) => {
 export const RadioConsentDefault: Story = {
   name: "RadioConsentDefault",
   args: {},
-  render: RadioConsentWithState,
-};
-
-/// SU2C
-
-const su2cRender = (args: RadioConsentProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <RadioConsentWithState {...args} />
-  </ThemeProvider>
-);
-
-export const RadioConsentSU2C: Story = {
-  name: "RadioConsentSU2C",
-  args: {},
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: RadioConsentProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <RadioConsentWithState {...args} />
-  </ThemeProvider>
-);
-
-export const RadioConsentBowelbabe: Story = {
-  name: "RadioConsentBowelbabe",
-  args: {},
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <RadioConsentWithState {...args} />
+    </AllThemesWrapper>
+  ),
 };

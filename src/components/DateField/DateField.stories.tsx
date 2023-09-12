@@ -1,9 +1,8 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
 
-import { bowelbabeTheme, su2cTheme } from "..";
-import DateField, { DateFieldProps } from ".";
+import DateField from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {
   title: "DateField",
@@ -31,6 +30,11 @@ type Story = StoryObj<typeof DateField>;
 
 export const Default: Story = {
   name: "Default",
+  render: (args) => (
+    <AllThemesWrapper>
+      <DateField {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const DateFieldWithError: Story = {
@@ -42,32 +46,9 @@ export const DateFieldWithError: Story = {
     yearHasError: true,
     errorMessage: "Day month and year invalid",
   },
-};
-
-/// SU2C
-
-const su2cRender = (args: DateFieldProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <DateField {...args} />
-  </ThemeProvider>
-);
-
-export const DateFieldSU2C: Story = {
-  name: "DateFieldSU2C",
-  args: {},
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: DateFieldProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <DateField {...args} />
-  </ThemeProvider>
-);
-
-export const DateFieldBowelbabe: Story = {
-  name: "DateFieldBowelbabe",
-  args: {},
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <DateField {...args} />
+    </AllThemesWrapper>
+  ),
 };

@@ -1,4 +1,3 @@
-import { addMatchImageSnapshotCommand } from "@simonsmith/cypress-image-snapshot/command";
 import "cypress-plugin-tab";
 import "cypress-axe";
 import "./commands";
@@ -27,11 +26,3 @@ Cypress.Commands.add(
     }
   }
 );
-
-if (Cypress.config("isInteractive")) {
-  Cypress.Commands.add("matchImageSnapshot", () => {
-    cy.log("Skipping snapshot");
-  });
-} else {
-  addMatchImageSnapshotCommand();
-}

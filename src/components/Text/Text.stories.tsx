@@ -1,9 +1,8 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
 import { StoryObj } from "@storybook/react";
 
-import { bowelbabeTheme, su2cTheme } from "..";
-import Text, { TextProps } from ".";
+import Text from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {
   title: "Text",
@@ -20,32 +19,9 @@ type Story = StoryObj<typeof Text>;
 export const TextDefault: Story = {
   name: "TextDefault",
   args: {},
-};
-
-/// SU2C
-
-const su2cRender = (args: TextProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <Text {...args} />
-  </ThemeProvider>
-);
-
-export const TextSU2C: Story = {
-  name: "TextSU2C",
-  args: {},
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: TextProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <Text {...args} />
-  </ThemeProvider>
-);
-
-export const TextBowelbabe: Story = {
-  name: "TextBowelbabe",
-  args: {},
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <Text {...args} />
+    </AllThemesWrapper>
+  ),
 };

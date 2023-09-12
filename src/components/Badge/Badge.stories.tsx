@@ -1,14 +1,14 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
 import {
   faPoundSign,
   faSearch,
   faComment,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { su2cTheme, IconFa, bowelbabeTheme } from "..";
-import Badge, { BadgeProps } from ".";
+import { IconFa } from "..";
+import Badge from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {
   title: "Badge",
@@ -28,6 +28,11 @@ export const Default: Story = {
   args: {
     children: <IconFa faIcon={faPoundSign} />,
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Badge {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const BadgeWithText: Story = {
@@ -36,6 +41,11 @@ export const BadgeWithText: Story = {
     children: "this is text",
     backgroundColor: "primary",
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Badge {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const BadgeWithColour: Story = {
@@ -44,6 +54,11 @@ export const BadgeWithColour: Story = {
     backgroundColor: "secondary",
     children: <IconFa faIcon={faSearch} />,
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Badge {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const BadgeWithInverseColours: Story = {
@@ -54,94 +69,9 @@ export const BadgeWithInverseColours: Story = {
     borderColor: "tertiary",
     children: <IconFa faIcon={faComment} />,
   },
-};
-
-/// SU2C
-
-const su2cRender = (args: BadgeProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <Badge {...args} />
-  </ThemeProvider>
-);
-
-export const DefaultSU2C: Story = {
-  name: "DefaultSU2C",
-  args: {
-    children: <IconFa faIcon={faPoundSign} />,
-  },
-  render: su2cRender,
-};
-
-export const BadgeWithTextSU2C: Story = {
-  name: "BadgeWithTextSU2C",
-  args: {
-    children: "this is text",
-    backgroundColor: "primary",
-  },
-  render: su2cRender,
-};
-
-export const BadgeWithColourSU2C: Story = {
-  name: "BadgeWithColourSU2C",
-  args: {
-    backgroundColor: "secondary",
-    children: <IconFa faIcon={faSearch} />,
-  },
-  render: su2cRender,
-};
-
-export const BadgeWithInverseColoursSU2C: Story = {
-  name: "BadgeWithInverseColoursSU2C",
-  args: {
-    backgroundColor: "textLight",
-    textColor: "tertiary",
-    borderColor: "tertiary",
-    children: <IconFa faIcon={faComment} />,
-  },
-  render: su2cRender,
-};
-
-/// bowelbabe
-
-const bowelbabeRender = (args: BadgeProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <Badge {...args} />
-  </ThemeProvider>
-);
-
-export const DefaultBowelbabe: Story = {
-  name: "DefaultBowelbabe",
-  args: {
-    children: <IconFa faIcon={faPoundSign} />,
-  },
-  render: bowelbabeRender,
-};
-
-export const BadgeWithTextBowelbabe: Story = {
-  name: "BadgeWithTextBowelbabe",
-  args: {
-    children: "this is text",
-    backgroundColor: "primary",
-  },
-  render: bowelbabeRender,
-};
-
-export const BadgeWithColourBowelbabe: Story = {
-  name: "BadgeWithColourBowelbabe",
-  args: {
-    backgroundColor: "secondary",
-    children: <IconFa faIcon={faSearch} />,
-  },
-  render: bowelbabeRender,
-};
-
-export const BadgeWithInverseColoursBowelbabe: Story = {
-  name: "BadgeWithInverseColoursBowelbabe",
-  args: {
-    backgroundColor: "textLight",
-    textColor: "tertiary",
-    borderColor: "tertiary",
-    children: <IconFa faIcon={faComment} />,
-  },
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <Badge {...args} />
+    </AllThemesWrapper>
+  ),
 };

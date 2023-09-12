@@ -1,9 +1,10 @@
 import React from "react";
-import styled, { ThemeProvider } from "styled-components";
+import styled from "styled-components";
 import { StoryObj } from "@storybook/react";
 
-import { bowelbabeTheme, su2cTheme, Text } from "..";
+import { Text } from "..";
 import Carousel, { CarouselProps } from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 const Item = styled.div`
   height: 200px;
@@ -61,32 +62,9 @@ type Story = StoryObj<typeof Carousel>;
 export const Default: Story = {
   name: "Default",
   args: {},
-};
-
-/// SU2C
-
-const su2cRender = (args: CarouselProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <CarouselWithChildren {...args} />
-  </ThemeProvider>
-);
-
-export const CarouselSU2C: Story = {
-  name: "CarouselSU2C",
-  args: {},
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: CarouselProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <CarouselWithChildren {...args} />
-  </ThemeProvider>
-);
-
-export const CarouselBowelbabe: Story = {
-  name: "CarouselBowelbabe",
-  args: {},
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <CarouselWithChildren {...args} />
+    </AllThemesWrapper>
+  ),
 };

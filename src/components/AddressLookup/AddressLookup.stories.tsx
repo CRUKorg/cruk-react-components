@@ -1,9 +1,8 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
 
-import { su2cTheme, bowelbabeTheme } from "..";
 import AddressLookup from ".";
+import { AllThemesWrapper } from "../AllThemesWrapper";
 
 export default {
   title: "AddressLookup",
@@ -27,22 +26,9 @@ type Story = StoryObj<typeof AddressLookup>;
 
 export const AddressLookupStory: Story = {
   name: "AddressLookup",
-};
-
-export const AddressLookupSU2C: Story = {
-  name: "AddressLookup SU2C",
   render: (args) => (
-    <ThemeProvider theme={su2cTheme}>
+    <AllThemesWrapper>
       <AddressLookup {...args} />
-    </ThemeProvider>
-  ),
-};
-
-export const AddressLookupBowelbabe: Story = {
-  name: "AddressLookup bowelbabeTheme",
-  render: (args) => (
-    <ThemeProvider theme={bowelbabeTheme}>
-      <AddressLookup {...args} />
-    </ThemeProvider>
+    </AllThemesWrapper>
   ),
 };
