@@ -1,9 +1,8 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
 
-import { bowelbabeTheme, su2cTheme } from "..";
-import TextAreaField, { TextAreaFieldProps } from ".";
+import TextAreaField from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {
   title: "TextAreaField",
@@ -29,6 +28,11 @@ type Story = StoryObj<typeof TextAreaField>;
 export const TextAreaFieldDefault: Story = {
   name: "TextAreaField Default",
   args: {},
+  render: (args) => (
+    <AllThemesWrapper>
+      <TextAreaField {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const TextAreaFieldWithError: Story = {
@@ -37,50 +41,9 @@ export const TextAreaFieldWithError: Story = {
     hasError: true,
     errorMessage: "error message",
   },
-};
-
-/// SU2C
-
-const su2cRender = (args: TextAreaFieldProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <TextAreaField {...args} />
-  </ThemeProvider>
-);
-
-export const TextAreaFieldSU2C: Story = {
-  name: "TextAreaField SU2C",
-  args: {},
-  render: su2cRender,
-};
-
-export const TextAreaFieldWithErrorSU2C: Story = {
-  name: "TextAreaField With Error SU2C",
-  args: {
-    hasError: true,
-    errorMessage: "error message",
-  },
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: TextAreaFieldProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <TextAreaField {...args} />
-  </ThemeProvider>
-);
-
-export const TextAreaFielBowelbabe: Story = {
-  name: "TextAreaField Bowelbabe",
-  args: {},
-  render: bowelbabeRender,
-};
-
-export const TextAreaFieldWithErrorBowelbabe: Story = {
-  name: "TextAreaField With Error Bowelbabe",
-  args: {
-    hasError: true,
-    errorMessage: "error message",
-  },
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <TextAreaField {...args} />
+    </AllThemesWrapper>
+  ),
 };

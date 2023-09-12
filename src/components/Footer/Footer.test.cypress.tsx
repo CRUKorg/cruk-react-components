@@ -3,7 +3,7 @@
 import React from "react";
 import { mount } from "cypress/react";
 
-import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
+import { TestThemeWrapper } from "../AllThemesWrapper";
 import { Footer, Link, crukTheme, su2cTheme, bowelbabeTheme } from "..";
 
 const content = () => (
@@ -48,18 +48,5 @@ describe("Footer", () => {
     );
     cy.injectAxe();
     cy.checkA11y("body");
-  });
-
-  it("should match snapshot", () => {
-    mount(<TestWrapper>{content()}</TestWrapper>);
-    cy.document().its("fonts.status").should("equal", "loaded");
-
-    cy.get(
-      `[src="${crukTheme.siteConfig.assetPath}images/logos/fundreg.png"]`
-    ).should(($img) => {
-      const img = $img[0] as HTMLImageElement;
-      expect(img.naturalWidth).to.be.greaterThan(0);
-    });
-    cy.get("body").first().matchImageSnapshot();
   });
 });

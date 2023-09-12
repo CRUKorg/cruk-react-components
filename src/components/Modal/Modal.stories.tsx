@@ -11,6 +11,7 @@ import {
   bowelbabeTheme,
 } from "..";
 import Modal, { ModalProps } from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {
   title: "Modal",
@@ -48,7 +49,11 @@ const ModalWithTriggerButton = (args: ModalProps) => {
 export const ModalDefault: Story = {
   name: "ModalDefault",
   args: {},
-  render: ModalWithTriggerButton,
+  render: (args) => (
+    <AllThemesWrapper>
+      <ModalWithTriggerButton {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 /// SU2C
