@@ -14,7 +14,6 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import { addMatchImageSnapshotCommand } from "@simonsmith/cypress-image-snapshot/command";
 import "cypress-plugin-tab";
 import "cypress-axe";
 
@@ -52,11 +51,3 @@ Cypress.Commands.add(
     }
   }
 );
-
-if (Cypress.config("isInteractive")) {
-  Cypress.Commands.add("matchImageSnapshot", () => {
-    cy.log("Skipping snapshot");
-  });
-} else {
-  addMatchImageSnapshotCommand();
-}

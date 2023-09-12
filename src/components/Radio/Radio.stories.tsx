@@ -1,9 +1,44 @@
 import React, { useState } from "react";
 import { StoryObj } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
+import { useTheme } from "styled-components";
 
-import { su2cTheme, Box, bowelbabeTheme } from "..";
+import { Box, ThemeType } from "..";
 import Radio, { RadioProps } from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
+
+const FullComponentWithRadios = (args: RadioProps) => {
+  const [selected, setSelected] = useState("one");
+  const handleChange = (targetValue: string) => {
+    setSelected(targetValue);
+  };
+  const theme = useTheme();
+  const themeTyped = theme as ThemeType;
+  const themeName = themeTyped.name;
+
+  const hasError = !!args.hasError;
+  return (
+    <fieldset style={{ border: "none" }}>
+      <Radio
+        name={`raidio1-${hasError ? "error" : "no-error"}-${themeName}`}
+        onChange={(e) => handleChange(e.target.value)}
+        checked={selected === "one"}
+        {...args}
+      >
+        Option one
+      </Radio>
+      <Box marginTop="s">
+        <Radio
+          name={`raidio1-${hasError ? "error" : "no-error"}-${themeName}`}
+          onChange={(e) => handleChange(e.target.value)}
+          checked={selected === "two"}
+          value="two"
+        >
+          Option two
+        </Radio>
+      </Box>
+    </fieldset>
+  );
+};
 
 export default {
   title: "Radio",
@@ -20,39 +55,14 @@ export default {
 
 type Story = StoryObj<typeof Radio>;
 
-const FullComponentWithRadios = (args: RadioProps) => {
-  const [selected, setSelected] = useState(args.value);
-  const handleChange = (value: string) => {
-    setSelected(value);
-  };
-
-  return (
-    <fieldset style={{ border: "none" }}>
-      <Radio
-        onChange={(e) => handleChange(e.target.value)}
-        checked={selected === "one"}
-        {...args}
-      >
-        Option one
-      </Radio>
-      <Box marginTop="s">
-        <Radio
-          onChange={(e) => handleChange(e.target.value)}
-          checked={selected === "two"}
-          name="example2"
-          value="two"
-        >
-          Option two
-        </Radio>
-      </Box>
-    </fieldset>
-  );
-};
-
 export const Default: Story = {
   name: "Default",
   args: {},
-  render: FullComponentWithRadios,
+  render: (args) => (
+    <AllThemesWrapper>
+      <FullComponentWithRadios {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const RadioWithError: Story = {
@@ -61,45 +71,9 @@ export const RadioWithError: Story = {
     hasError: true,
     errorMessage: "Error Message",
   },
-  render: FullComponentWithRadios,
-};
-
-/// SU2C
-
-const su2cRender = (args: RadioProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <FullComponentWithRadios {...args} />
-  </ThemeProvider>
-);
-
-export const RadioSU2C: Story = {
-  name: "RadioSU2C",
-  args: {},
-  render: su2cRender,
-};
-
-export const RadioErrorSU2C: Story = {
-  name: "RadioSU2C",
-  args: { hasError: true, errorMessage: "Error Message" },
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: RadioProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <FullComponentWithRadios {...args} />
-  </ThemeProvider>
-);
-
-export const RadioBowelbabe: Story = {
-  name: "RadioBowelbabe",
-  args: {},
-  render: bowelbabeRender,
-};
-
-export const RadioErrorBowelbabe: Story = {
-  name: "RadioErrorBowelbabe",
-  args: { hasError: true, errorMessage: "Error Message" },
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <FullComponentWithRadios {...args} />
+    </AllThemesWrapper>
+  ),
 };

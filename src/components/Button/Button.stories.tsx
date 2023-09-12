@@ -1,13 +1,11 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 
 import IconFa from "../IconFa";
 
-import { Button, ButtonProps } from "./";
-
-import { GlobalStyle, bowelbabeTheme, su2cTheme } from "..";
+import { Button } from "./";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {
   title: "Button",
@@ -27,6 +25,11 @@ type Story = StoryObj<typeof Button>;
 export const Default: Story = {
   name: "Default",
   args: {},
+  render: (args) => (
+    <AllThemesWrapper>
+      <Button {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const Primary: Story = {
@@ -34,6 +37,11 @@ export const Primary: Story = {
   args: {
     appearance: "primary",
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Button {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const PrimaryAnchorButton: Story = {
@@ -42,6 +50,11 @@ export const PrimaryAnchorButton: Story = {
     appearance: "primary",
     href: "https://www.cancerresearchuk.org/",
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Button {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const Secondary: Story = {
@@ -49,6 +62,11 @@ export const Secondary: Story = {
   args: {
     appearance: "secondary",
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Button {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const Tertiary: Story = {
@@ -56,6 +74,11 @@ export const Tertiary: Story = {
   args: {
     appearance: "tertiary",
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Button {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const WithIcons: Story = {
@@ -68,70 +91,9 @@ export const WithIcons: Story = {
       </>
     ),
   },
-};
-
-/// SU2C
-
-const su2cRender = (args: ButtonProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
-    <Button {...args} />
-  </ThemeProvider>
-);
-
-export const PrimarySU2C: Story = {
-  name: "PrimarySU2C",
-  args: {
-    appearance: "primary",
-  },
-  render: su2cRender,
-};
-
-export const SecondarySU2C: Story = {
-  name: "SecondarySU2C",
-  args: {
-    appearance: "secondary",
-  },
-  render: su2cRender,
-};
-
-export const TertiarySU2C: Story = {
-  name: "TertiarySU2C",
-  args: {
-    appearance: "tertiary",
-  },
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: ButtonProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
-    <Button {...args} />
-  </ThemeProvider>
-);
-
-export const PrimaryBowelbabe: Story = {
-  name: "PrimarBowelbabe",
-  args: {
-    appearance: "primary",
-  },
-  render: bowelbabeRender,
-};
-
-export const SecondaryBowelbabe: Story = {
-  name: "SecondaryBowelbabe",
-  args: {
-    appearance: "secondary",
-  },
-  render: bowelbabeRender,
-};
-
-export const TertiaryBowelbabe: Story = {
-  name: "TertiaryBowelbabe",
-  args: {
-    appearance: "tertiary",
-  },
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <Button {...args} />
+    </AllThemesWrapper>
+  ),
 };

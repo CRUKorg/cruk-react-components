@@ -1,9 +1,9 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
 
-import { Text, su2cTheme, bowelbabeTheme } from "..";
-import Box, { BoxProps } from ".";
+import { Text } from "..";
+import Box from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {
   title: "Box",
@@ -19,6 +19,11 @@ export const Default: Story = {
   args: {
     children: <Text textColor="textDark">this is a box</Text>,
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Box {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const BoxWithColour: Story = {
@@ -27,6 +32,11 @@ export const BoxWithColour: Story = {
     backgroundColor: "primary",
     children: <Text textColor="textOnPrimary">this is a box with colours</Text>,
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Box {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const BoxWithColourWithCustomSpacing: Story = {
@@ -39,80 +49,9 @@ export const BoxWithColourWithCustomSpacing: Story = {
       <Text textColor="textOnPrimary">this is a box with custom spacing</Text>
     ),
   },
-};
-
-/// SU2C
-
-const su2cRender = (args: BoxProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <Box {...args} />
-  </ThemeProvider>
-);
-
-export const DefaultSU2C: Story = {
-  name: "DefaultSU2C",
-  args: {
-    children: <Text textColor="textDark">this is a box</Text>,
-  },
-  render: su2cRender,
-};
-
-export const BoxWithColourSU2C: Story = {
-  name: "BoxWithColourSU2C",
-  args: {
-    backgroundColor: "primary",
-    children: <Text textColor="textOnPrimary">this is a box with colours</Text>,
-  },
-  render: su2cRender,
-};
-
-export const BoxWithColourWithCustomSpacingSU2C: Story = {
-  name: "BoxWithColourWithCustomSpacingSU2C",
-  args: {
-    backgroundColor: "primary",
-    paddingVertical: "xl",
-    paddingBottom: "xs",
-    children: (
-      <Text textColor="textOnPrimary">this is a box with custom spacing</Text>
-    ),
-  },
-  render: su2cRender,
-};
-
-/// bowelbabe
-
-const bowelbabeRender = (args: BoxProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <Box {...args} />
-  </ThemeProvider>
-);
-
-export const DefaultBowelBabe: Story = {
-  name: "DefaultBowelBabe",
-  args: {
-    children: <Text textColor="textDark">this is a box</Text>,
-  },
-  render: bowelbabeRender,
-};
-
-export const BoxWithColourBowelBabe: Story = {
-  name: "BoxWithColourBowelBabe",
-  args: {
-    backgroundColor: "primary",
-    children: <Text textColor="textOnPrimary">this is a box with colours</Text>,
-  },
-  render: bowelbabeRender,
-};
-
-export const BoxWithColourWithCustomSpacingBowelBabe: Story = {
-  name: "BoxWithColourWithCustomSpacingBowelBabe",
-  args: {
-    backgroundColor: "primary",
-    paddingVertical: "xl",
-    paddingBottom: "xs",
-    children: (
-      <Text textColor="textOnPrimary">this is a box with custom spacing</Text>
-    ),
-  },
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <Box {...args} />
+    </AllThemesWrapper>
+  ),
 };

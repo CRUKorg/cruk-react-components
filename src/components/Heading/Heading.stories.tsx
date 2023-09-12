@@ -1,8 +1,7 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
 import { StoryObj } from "@storybook/react";
-import Heading, { HeadingProps } from ".";
-import { su2cTheme, bowelbabeTheme, GlobalStyle } from "..";
+import Heading from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {
   title: "Heading",
@@ -18,6 +17,11 @@ export const DefaultHeading: Story = {
   args: {
     children: "H2 is the default",
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Heading {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const HeadingSize: Story = {
@@ -26,6 +30,11 @@ export const HeadingSize: Story = {
     textSize: "xxxxl",
     children: "This is H2 with H1 size",
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Heading {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const HeadingAligned: Story = {
@@ -34,6 +43,11 @@ export const HeadingAligned: Story = {
     textAlign: "center",
     children: "This is center aligned",
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Heading {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const H1: Story = {
@@ -42,6 +56,11 @@ export const H1: Story = {
     h1: true,
     children: "This is H1",
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Heading {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const H2: Story = {
@@ -50,6 +69,11 @@ export const H2: Story = {
     h2: true,
     children: "This is H2",
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Heading {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const H3: Story = {
@@ -58,6 +82,11 @@ export const H3: Story = {
     h3: true,
     children: "This is H3",
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Heading {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const H4: Story = {
@@ -66,6 +95,11 @@ export const H4: Story = {
     h4: true,
     children: "This is H4",
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Heading {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const H5: Story = {
@@ -74,6 +108,11 @@ export const H5: Story = {
     h5: true,
     children: "This is H5",
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Heading {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const H6: Story = {
@@ -82,133 +121,9 @@ export const H6: Story = {
     h6: true,
     children: "This is H6",
   },
-};
-
-/// SU2C
-
-const su2cRender = (args: HeadingProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
-    <Heading {...args} />
-  </ThemeProvider>
-);
-
-// export const FooterSU2C: Story = {
-//   name: "FooterSU2C",
-//   args: {},
-//   render: su2cRender,
-// };
-
-export const H1SU2C: Story = {
-  name: "H1 SU2C",
-  args: {
-    h1: true,
-    children: "This is H1",
-  },
-  render: su2cRender,
-};
-
-export const H2SU2C: Story = {
-  name: "H2 SU2C",
-  args: {
-    h2: true,
-    children: "This is H2",
-  },
-  render: su2cRender,
-};
-
-export const H3SU2C: Story = {
-  name: "H3 SU2C",
-  args: {
-    h3: true,
-    children: "This is H3",
-  },
-  render: su2cRender,
-};
-
-export const H4SU2C: Story = {
-  name: "H4 SU2C",
-  args: {
-    h4: true,
-    children: "This is H4",
-  },
-  render: su2cRender,
-};
-export const H5SU2C: Story = {
-  name: "H5 SU2C",
-  args: {
-    h5: true,
-    children: "This is H5",
-  },
-};
-export const H6SU2C: Story = {
-  name: "H6 SU2C",
-  args: {
-    h6: true,
-    children: "This is H6",
-  },
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: HeadingProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
-    <Heading {...args} />
-  </ThemeProvider>
-);
-
-export const H1Bowelbabe: Story = {
-  name: "H1 Bowelbabe",
-  args: {
-    h1: true,
-    children: "This is H1",
-  },
-  render: bowelbabeRender,
-};
-
-export const H2Bowelbabe: Story = {
-  name: "H2 Bowelbabe",
-  args: {
-    h2: true,
-    children: "This is H2",
-  },
-  render: bowelbabeRender,
-};
-
-export const H3Bowelbabe: Story = {
-  name: "H3 Bowelbabe",
-  args: {
-    h3: true,
-    children: "This is H3",
-  },
-  render: bowelbabeRender,
-};
-
-export const H4Bowelbabe: Story = {
-  name: "H4 Bowelbabe",
-  args: {
-    h4: true,
-    children: "This is H4",
-  },
-  render: bowelbabeRender,
-};
-
-export const H5Bowelbabe: Story = {
-  name: "H5 Bowelbabe",
-  args: {
-    h5: true,
-    children: "This is H5",
-  },
-  render: bowelbabeRender,
-};
-
-export const H6Bowelbabe: Story = {
-  name: "H6 Bowelbabe",
-  args: {
-    h6: true,
-    children: "This is H6",
-  },
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <Heading {...args} />
+    </AllThemesWrapper>
+  ),
 };

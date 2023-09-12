@@ -1,13 +1,13 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { bowelbabeTheme, GlobalStyle, IconFa, su2cTheme, Text } from "..";
-import InfoBox, { InfoBoxProps } from ".";
+import { IconFa, Text } from "..";
+import InfoBox from ".";
 import {
   faCircleCheck,
   faCircleInfo,
   faTriangleExclamation,
 } from "@fortawesome/free-solid-svg-icons";
-import { ThemeProvider } from "styled-components";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {
   title: "InfoBox",
@@ -28,6 +28,11 @@ type Story = StoryObj<typeof InfoBox>;
 export const InfoBoxDefault: Story = {
   name: "InfoBox Default",
   args: {},
+  render: (args) => (
+    <AllThemesWrapper>
+      <InfoBox {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const InfoBoxCustomBackground: Story = {
@@ -41,6 +46,11 @@ export const InfoBoxCustomBackground: Story = {
     descriptionTextColor: "#fff",
     icon: <IconFa faIcon={faCircleInfo} color="#fff" size="1.5em" />,
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <InfoBox {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const InfoBoxWithChildren: Story = {
@@ -58,34 +68,9 @@ export const InfoBoxWithChildren: Story = {
       </Text>
     ),
   },
-};
-
-/// SU2C
-
-const su2cRender = (args: InfoBoxProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <GlobalStyle />
-    <InfoBox {...args} />
-  </ThemeProvider>
-);
-
-export const InfoBoxSU2C: Story = {
-  name: "InfoBox SU2C",
-  args: {},
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: InfoBoxProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <GlobalStyle />
-    <InfoBox {...args} />
-  </ThemeProvider>
-);
-
-export const InfoBoxBowelbabe: Story = {
-  name: "InfoBox Bowelbabe",
-  args: {},
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <InfoBox {...args} />
+    </AllThemesWrapper>
+  ),
 };

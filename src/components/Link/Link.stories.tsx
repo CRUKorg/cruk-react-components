@@ -1,9 +1,9 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
 
-import { su2cTheme, crukTheme, bowelbabeTheme } from "..";
-import Link, { LinkProps } from ".";
+import Link from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
+import { crukTheme } from "..";
 
 export default {
   title: "Link",
@@ -23,6 +23,11 @@ type Story = StoryObj<typeof Link>;
 export const Default: Story = {
   name: "Default",
   args: {},
+  render: (args) => (
+    <AllThemesWrapper>
+      <Link {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const Primary: Story = {
@@ -30,6 +35,11 @@ export const Primary: Story = {
   args: {
     appearance: "primary",
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Link {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const Secondary: Story = {
@@ -37,6 +47,11 @@ export const Secondary: Story = {
   args: {
     appearance: "secondary",
   },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Link {...args} />
+    </AllThemesWrapper>
+  ),
 };
 
 export const WithImage: Story = {
@@ -50,64 +65,9 @@ export const WithImage: Story = {
       />
     ),
   },
-};
-
-/// SU2C
-
-const su2cRender = (args: LinkProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <Link {...args} />
-  </ThemeProvider>
-);
-
-export const DefaultSU2C: Story = {
-  name: "Default SU2C",
-  args: {},
-  render: su2cRender,
-};
-
-export const PrimarySU2C: Story = {
-  name: "Primary SU2C",
-  args: {
-    appearance: "primary",
-  },
-  render: su2cRender,
-};
-
-export const SecondarySU2C: Story = {
-  name: "Secondary SU2C",
-  args: {
-    appearance: "secondary",
-  },
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: LinkProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <Link {...args} />
-  </ThemeProvider>
-);
-
-export const DefaultBowelbabe: Story = {
-  name: "Default Bowelbabe",
-  args: {},
-  render: bowelbabeRender,
-};
-
-export const PrimaryBowelbabe: Story = {
-  name: "Primary Bowelbabe",
-  args: {
-    appearance: "primary",
-  },
-  render: bowelbabeRender,
-};
-
-export const SecondaryBowelbabe: Story = {
-  name: "Secondary Bowelbabe",
-  args: {
-    appearance: "secondary",
-  },
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <Link {...args} />
+    </AllThemesWrapper>
+  ),
 };

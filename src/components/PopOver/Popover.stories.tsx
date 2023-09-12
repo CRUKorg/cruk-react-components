@@ -1,6 +1,5 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
 import {
   faShareAlt,
   faEnvelopeSquare,
@@ -13,8 +12,9 @@ import {
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 
-import { su2cTheme, Box, Button, IconFa, bowelbabeTheme } from "..";
+import { Box, Button, IconFa } from "..";
 import PopOver, { PopOverProps } from ".";
+import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {
   title: "PopOver (experimental)",
@@ -65,33 +65,9 @@ const PopOverInBox = (args: PopOverProps) => (
 export const PopOverDefault: Story = {
   name: "PopOverDefault",
   args: {},
-  render: PopOverInBox,
-};
-
-/// SU2C
-
-const su2cRender = (args: PopOverProps) => (
-  <ThemeProvider theme={su2cTheme}>
-    <PopOverInBox {...args} />
-  </ThemeProvider>
-);
-
-export const PopOverSU2C: Story = {
-  name: "PopOverSU2C",
-  args: {},
-  render: su2cRender,
-};
-
-/// Bowelbabe
-
-const bowelbabeRender = (args: PopOverProps) => (
-  <ThemeProvider theme={bowelbabeTheme}>
-    <PopOverInBox {...args} />
-  </ThemeProvider>
-);
-
-export const PopOverBowelbabe: Story = {
-  name: "PopOverBowelbabe",
-  args: {},
-  render: bowelbabeRender,
+  render: (args) => (
+    <AllThemesWrapper>
+      <PopOverInBox {...args} />
+    </AllThemesWrapper>
+  ),
 };

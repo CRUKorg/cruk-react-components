@@ -3,7 +3,7 @@
 import React from "react";
 import { mount } from "cypress/react";
 
-import TestWrapper, { TestThemeWrapper } from "../TestWrapper";
+import { TestThemeWrapper } from "../AllThemesWrapper";
 import { Totaliser, Box, Text, su2cTheme, crukTheme, bowelbabeTheme } from "..";
 
 const content = () => (
@@ -62,12 +62,5 @@ describe("Totaliser", () => {
     );
     cy.injectAxe();
     cy.checkA11y("body");
-  });
-
-  it("should match snapshot", () => {
-    Cypress.config("waitForAnimations", true);
-    Cypress.config("animationDistanceThreshold", 2);
-    mount(<TestWrapper>{content()}</TestWrapper>);
-    cy.get("body").first().matchImageSnapshot();
   });
 });

@@ -11,6 +11,10 @@
       "es2015",
       "es2016"
     ],
+    "types": [
+      "cypress",
+      "cypress-axe"
+    ],
     "jsx": "react",
     "target": "es5",
     "module": "es6",
