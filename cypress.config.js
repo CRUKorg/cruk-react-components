@@ -4,8 +4,6 @@ module.exports = defineConfig({
   viewportWidth: 900,
   viewportHeight: 900,
   experimentalFetchPolyfill: true,
-  video: true,
-  videoUploadOnPasses: false,
   scrollBehavior: "center",
 
   component: {
