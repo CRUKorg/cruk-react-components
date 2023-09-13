@@ -53,6 +53,19 @@ export const Check = styled.span`
 `;
 
 export const StyledLabel = styled.label<StyledLabelProps>`
+  box-sizing: border-box;
+  *,
+  *:after,
+  *:before {
+    box-sizing: border-box;
+  }
+  line-height: ${({ theme }: StyledLabelProps) => theme.typography.lineHeight};
+  font-size: ${({ theme }: ThemeProps) => theme.typography.fontSizeBase};
+  font-family: ${({ theme, checked }: StyledLabelProps) =>
+    checked
+      ? theme.typography.fontFamilyLabel
+      : theme.typography.fontFamilyBase};
+
   background-color: ${({ theme }: ThemeProps) => theme.colors.backgroundLight};
   position: relative;
   border-width: ${({ theme }: ThemeProps) => theme.utilities.inputBorderWidth};

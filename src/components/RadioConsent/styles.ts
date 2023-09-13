@@ -25,9 +25,16 @@ export const StyledLegend = styled.legend`
   width: ${LEGEND_WIDTH};
   display: block;
   float: left;
+  font-family: ${({ theme }: ThemeProp) => theme.typography.fontFamilyBase};
 `;
 
 export const StyledFieldSet = styled.fieldset`
+  box-sizing: border-box;
+  *,
+  *:after,
+  *:before {
+    box-sizing: border-box;
+  }
   display: block;
   position: relative;
   border: none;

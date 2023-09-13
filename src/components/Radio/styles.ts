@@ -58,6 +58,17 @@ type StyledLabelProps = {
 };
 
 export const StyledLabel = styled.label<StyledLabelProps>`
+  box-sizing: border-box;
+  *,
+  *:after,
+  *:before {
+    box-sizing: border-box;
+  }
+  line-height: ${({ theme }: StyledLabelProps) => theme.typography.lineHeight};
+  font-size: ${({ theme }: StyledLabelProps) => theme.typography.fontSizeBase};
+  font-family: ${({ theme }: StyledLabelProps) =>
+    theme.typography.fontFamilyBase};
+
   background-color: ${({ theme }: StyledLabelProps) =>
     theme.colors.backgroundLight};
   width: 100%;
@@ -107,9 +118,11 @@ export const StyledLabel = styled.label<StyledLabelProps>`
 `;
 
 export const VerticalAlign = styled.span`
+  display: inline;
   vertical-align: middle;
   line-height: 100%;
   background-color: ${({ theme }: ThemeProp) => theme.colors.backgroundLight};
+  min-height: 2em;
   z-index: 1;
 `;
 
@@ -129,6 +142,13 @@ type StyledInputType = {
 };
 
 export const StyledInput = styled.input`
+  *,
+  *:after,
+  *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
   margin-right: ${({
     theme: {
       spacing: { xxs },

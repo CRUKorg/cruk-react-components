@@ -37,6 +37,7 @@ export const FooterContentWrapper = styled.div`
 `;
 
 export const FooterSection = styled.div`
+  box-sizing: border-box;
   display: inline-block;
   padding: ${({
     theme: {

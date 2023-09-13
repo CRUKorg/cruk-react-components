@@ -18,12 +18,13 @@ export type TextStyledProps = SpacingProps & {
   as?: ElementType;
   wordBreak?: WordBreakType;
   overflowWrap?: OverflowWrapType;
+  textFontFamily?: string;
   theme: ThemeType;
 };
 
 export const TextStyled = styled.p<TextStyledProps>`
-  font-family: ${({ theme }: TextStyledProps) =>
-    theme.typography.fontFamilyBase};
+  font-family: ${({ textFontFamily, theme }: TextStyledProps) =>
+    textFontFamily || theme.typography.fontFamilyBase};
   word-break: ${({ wordBreak }: TextStyledProps) => wordBreak || "normal"};
   overflow-wrap: ${({ overflowWrap }: TextStyledProps) =>
     overflowWrap || "break-word"};

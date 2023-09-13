@@ -55,6 +55,7 @@ type HeaderStickyProps = {
 };
 
 export const HeaderStickyContainer = styled.div<HeaderStickyProps>`
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
   padding: 0 ${HEADER_PADDING};
@@ -89,6 +90,7 @@ export const HeaderStickyContainer = styled.div<HeaderStickyProps>`
 `;
 
 export const HeaderMainContent = styled.div<{ fullWidth?: boolean }>`
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;

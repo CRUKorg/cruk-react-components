@@ -34,6 +34,8 @@ export type TextProps = SpacingProps &
     textSize?: FontSizeType;
     /** font weight theme.typography{fontWeightHeavy/fontWeightNormal/fontWeightMedium/fontWeightLight/fontWeightVLight} is better than a random number */
     textWeight?: number;
+    /** font family theme.typography{fontFamilyBase/fontFamilyHeadings} is better than a random string */
+    textFontFamily?: string;
     /** styled-components polymorphism where you can set this to "span", "p" or "h2" it default to "p" */
     as?: ElementType;
     /** word-break behaviour */

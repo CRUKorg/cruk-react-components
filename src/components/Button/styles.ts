@@ -28,6 +28,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   height: min-content;
   display: inline-block;
   vertical-align: middle;
+
   padding: ${({ theme, isIconButton }: StyledButtonProps) =>
     isIconButton
       ? "0"

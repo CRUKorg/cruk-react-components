@@ -19,6 +19,8 @@ export const LegendSpan = styled.span<{
     theme.typography.lineHeight};
   font-weight: ${({ theme }: StyledFieldsetProps) =>
     theme.typography.fontWeightHeavy};
+  font-family: ${({ theme }: StyledFieldsetProps) =>
+    theme.typography.fontFamilyLabel};
   min-width: 3em;
   margin-bottom: ${({ hasHintText, theme }: StyledFieldsetProps) =>
     hasHintText ? theme.spacing.xxs : 0};
@@ -30,6 +32,13 @@ export const LegendSpan = styled.span<{
 `;
 
 export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
+  *,
+  *:after,
+  *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
   border: none;
   padding: 0;
   legend {

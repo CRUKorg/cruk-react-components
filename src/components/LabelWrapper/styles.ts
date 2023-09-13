@@ -6,10 +6,15 @@ type LabelTextProp = {
   theme: ThemeType;
 };
 
+type LabelProp = {
+  theme: ThemeType;
+};
+
 export const Label = styled.label`
   position: relative;
   display: block;
   width: 100%;
+  font-family: ${({ theme }: LabelProp) => theme.typography.fontFamilyLabel};
 `;
 
 export const LabelText = styled.span<{

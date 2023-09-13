@@ -27,7 +27,7 @@ const UserBlock = ({
   avatarName,
   avatarUrl,
   extra,
-  size,
+  size = "l",
 }: UserBlockProps) => {
   const foundTheme = useTheme();
   const theme = {
