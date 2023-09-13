@@ -141,6 +141,10 @@ export const TYPOGRAPHY: TypographyType = {
     },
   ],
   fontFamilyHeadings: "juana-semibold,Arial,sans-serif",
+  fontFamilyBase:
+    "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
+  fontFamilyLabel:
+    "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
   // headerLineHeight: "1.5em",
 };
 

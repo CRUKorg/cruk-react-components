@@ -134,6 +134,10 @@ export const TYPOGRAPHY: TypographyType = {
     },
   ],
   fontFamilyHeadings: "itc_avant_garde_pro_mdbold,Arial,sans-serif",
+  fontFamilyBase:
+    "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
+  fontFamilyLabel:
+    "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
   linkTextDecoration: "none",
   headerLineHeight: "1.5em",
   headerTextTransform: "uppercase",

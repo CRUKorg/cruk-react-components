@@ -25,7 +25,7 @@ export const SITE_CONFIG: SiteConfigType = {
   assetPath: "https://rcl.assets.cancerresearchuk.org/",
   logoUrl: "/",
   logoAlt: "Cancer Research UK Giving Page",
-  logoSrc: "https://rcl.assets.cancerresearchuk.org/images/logos/cruk-160.png",
+  logoSrc: "https://rcl.assets.cancerresearchuk.org/images/logos/cruk.svg",
   footerCopyText:
     "Cancer Research UK is a registered charity in England and Wales (1089464), Scotland (SC041666), the Isle of Man (1103) and Jersey (247). A company limited by guarantee. Registered company in England and Wales(4325234) and the Isle of Man (5713F).",
   footerLogoAlt: "Registered with Fundraising Regulator",
@@ -34,11 +34,11 @@ export const SITE_CONFIG: SiteConfigType = {
 };
 
 export const AVATAR: AvatarType = {
-  s: "35px",
-  m: "50px",
-  l: "60px",
-  xl: "90px",
-  path: `${SITE_CONFIG.assetPath}images/avatar/cruk/`,
+  s: "32px",
+  m: "48px",
+  l: "64px",
+  xl: "128px",
+  path: `${SITE_CONFIG.assetPath}images/avatar/cruk2/`,
 };
 
 export const BUTTON: ButtonType = {
@@ -207,14 +207,21 @@ export const FONT_SIZES: FontSizesType = {
 export const TYPOGRAPHY: TypographyType = {
   customFonts: [
     {
-      family: "MuseoSans-500",
-      urlWoff: `${SITE_CONFIG.assetPath}fonts/MuseoSansRounded-500.woff`,
-      urlWoff2: `${SITE_CONFIG.assetPath}fonts/MuseoSansRounded-500.woff2`,
+      family: "Progress",
+      urlWoff: `${SITE_CONFIG.assetPath}fonts/Progress-Regular.woff`,
+    },
+    {
+      family: "Poppins-SemiBold",
+      urlWoff: `${SITE_CONFIG.assetPath}fonts/Poppins-SemiBold.woff2`,
+    },
+    {
+      family: "Poppins-Regular",
+      urlWoff: `${SITE_CONFIG.assetPath}fonts/Poppins-Regular.woff2`,
     },
   ],
-  fontFamilyBase:
-    "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
-  fontFamilyHeadings: "MuseoSans-500,Calibri,Arial,sans-serif",
+  fontFamilyBase: "Poppins-Regular,sans-serif",
+  fontFamilyLabel: "Poppins-SemiBold,sans-serif",
+  fontFamilyHeadings: "Progress,Arial,Helvetica,sans-serif",
   fontSizeBase: "16px",
   fontWeightHeavy: "700",
   fontWeightMedium: "500", // default heading

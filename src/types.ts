@@ -191,9 +191,10 @@ export type CustomFontType = {
 };
 
 export type TypographyType = {
-  customFonts: [CustomFontType];
+  customFonts: CustomFontType[];
   fontFamilyBase: string;
   fontFamilyHeadings: string;
+  fontFamilyLabel: string;
   fontSizeBase: string;
   fontWeightHeavy: string;
   fontWeightNormal: string;
