@@ -214,7 +214,7 @@ export const FONT_SIZES: FontSizesType = {
 export const TYPOGRAPHY: TypographyType = {
   customFonts: [
     {
-      family: "Progress",
+      family: "Progress-Regular",
       urlWoff: `${SITE_CONFIG.assetPath}fonts/Progress-Regular.woff`,
     },
     {
@@ -228,7 +228,7 @@ export const TYPOGRAPHY: TypographyType = {
   ],
   fontFamilyBase: "Poppins-Regular,sans-serif",
   fontWeightBase: "300",
-  fontFamilyHeadings: "Progress,Arial,Helvetica,sans-serif",
+  fontFamilyHeadings: "Progress-Regular,Arial,Helvetica,sans-serif",
   fontWeightHeadings: "400",
   fontFamilyLabel: "Poppins-SemiBold,sans-serif",
   fontSizeBase: "16px",
