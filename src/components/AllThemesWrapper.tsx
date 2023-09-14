@@ -43,7 +43,7 @@ type AllThemesWrapperProps = {
 export const AllThemesWrapper = ({ children }: AllThemesWrapperProps) => (
   <main>
     {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-    <div style={{ overflow: "auto" }} tabIndex={0}>
+    <div tabIndex={0}>
       <h2>CRUK Theme:</h2>
       <ThemeProvider theme={crukTheme}>
         {/* <GlobalStyle /> */}
