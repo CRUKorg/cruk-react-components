@@ -94,19 +94,19 @@ export const StyledLabel = styled.label<StyledLabelProps>`
             border: solid 2px
               ${({
                 theme: {
-                  colors: { primary, disabled, inputBorder },
+                  colors: { check, disabled, inputBorder },
                 },
               }: ThemeProp) =>
-                isDisabled ? disabled : checked ? primary : inputBorder};
+                isDisabled ? disabled : checked ? check : inputBorder};
           }
 
           &:hover ${CheckWrapper} ${Check} {
             border: solid 2px
               ${({
                 theme: {
-                  colors: { primary, disabled },
+                  colors: { check, disabled },
                 },
-              }: ThemeProp) => (isDisabled ? disabled : primary)};
+              }: ThemeProp) => (isDisabled ? disabled : check)};
           }
         `}
 `;
@@ -182,7 +182,7 @@ export const StyledInput = styled.input`
           &:checked ~ ${CheckWrapper} ${Check}::before {
             background: ${disabled
               ? theme.colors.disabled
-              : theme.colors.primary};
+              : theme.colors.check};
           }
         `}
 `;

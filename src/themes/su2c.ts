@@ -61,6 +61,7 @@ export const COLORS: ColorsType = {
   primary: TOKEN_COLORS.su2cOrange5,
   secondary: TOKEN_COLORS.su2cOrange5,
   tertiary: TOKEN_COLORS.su2cBlack,
+  textHeaderDefault: TOKEN_COLORS.su2cBlack,
 
   textOnPrimary: TOKEN_COLORS.su2cBlack,
 
@@ -87,6 +88,9 @@ export const COLORS: ColorsType = {
   totaliserBubbleTotalColor: TOKEN_COLORS.white,
 
   collapseHeaderColor: TOKEN_COLORS.su2cOrange5,
+  check: TOKEN_COLORS.su2cBlack,
+
+  headerTaglineText: TOKEN_COLORS.su2cOrange5,
 
   buttonPrimaryBackground: TOKEN_COLORS.su2cOrange5,
   buttonPrimaryText: TOKEN_COLORS.su2cBlack,
@@ -141,6 +145,7 @@ export const TYPOGRAPHY: TypographyType = {
   linkTextDecoration: "none",
   headerLineHeight: "1.5em",
   headerTextTransform: "uppercase",
+  fontWeightBase: "400",
 };
 
 const theme: ThemeType = {

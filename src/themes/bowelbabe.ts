@@ -82,6 +82,9 @@ export const COLORS: ColorsType = {
   backgroundLightColor: TOKEN_COLORS.bbPastelGreen,
 
   collapseHeaderColor: TOKEN_COLORS.bbPink,
+  check: TOKEN_COLORS.bbPurple,
+
+  headerTaglineText: TOKEN_COLORS.bbPurple,
 
   loaderColor1: TOKEN_COLORS.bbPurple,
   loaderColor2: TOKEN_COLORS.bbLightGreen,
@@ -146,6 +149,7 @@ export const TYPOGRAPHY: TypographyType = {
   fontFamilyLabel:
     "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
   // headerLineHeight: "1.5em",
+  fontWeightBase: "400",
 };
 
 const theme: ThemeType = {

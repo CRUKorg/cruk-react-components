@@ -98,19 +98,19 @@ export const StyledLabel = styled.label<StyledLabelProps>`
             border: solid ${BORDER_THICKNESS}
               ${({
                 theme: {
-                  colors: { primary, disabled, inputBorder },
+                  colors: { check, disabled, inputBorder },
                 },
               }: ThemeProps) =>
-                isDisabled ? disabled : checked ? primary : inputBorder};
+                isDisabled ? disabled : checked ? check : inputBorder};
           }
 
           &:hover ${CheckWrapper} ${Check} {
             border: solid ${BORDER_THICKNESS}
               ${({
                 theme: {
-                  colors: { primary, disabled },
+                  colors: { check, disabled },
                 },
-              }: ThemeProps) => (isDisabled ? disabled : primary)};
+              }: ThemeProps) => (isDisabled ? disabled : check)};
           }
         `}
 `;

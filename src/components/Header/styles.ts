@@ -176,17 +176,13 @@ export const Tagline = styled.p<{ isSmall?: boolean; isSticky?: boolean }>`
   flex: 1 1 auto;
   font-family: ${({ theme }: StyledHeaderProps) =>
     theme.typography.fontFamilyHeadings};
-  font-weight: ${({
-    theme: {
-      typography: { fontWeightLight },
-    },
-  }: StyledHeaderProps) => fontWeightLight};
+
   font-size: ${({
     theme: {
       fontSizes: { xl },
     },
   }: StyledHeaderProps) => xl};
-  color: ${({ theme }: StyledHeaderProps) => theme.colors.primary};
+  color: ${({ theme }: StyledHeaderProps) => theme.colors.headerTaglineText};
   text-align: center;
   opacity: 0;
   transition: opacity ${ANIMATION_SPEED} ease;

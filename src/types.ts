@@ -71,6 +71,7 @@ export type ColorsType = {
   textOnPrimary: string;
   textOnSecondary: string;
   textOnTertiary: string;
+  textHeaderDefault: string;
 
   disabled: string;
   danger: string;
@@ -121,6 +122,7 @@ export type ColorsType = {
 
   selectionBorder: string;
   inputBorder: string;
+  check: string;
 
   headerBackground: string;
   backgroundLight: string;
@@ -138,6 +140,7 @@ export type ColorsType = {
   footerBackground: string;
 
   headerBorder: string;
+  headerTaglineText: string;
 
   stepBorder: string;
   stepBackground: string;
@@ -193,7 +196,9 @@ export type CustomFontType = {
 export type TypographyType = {
   customFonts: CustomFontType[];
   fontFamilyBase: string;
+  fontWeightBase: string;
   fontFamilyHeadings: string;
+  fontWeightHeadings: string;
   fontFamilyLabel: string;
   fontSizeBase: string;
   fontWeightHeavy: string;

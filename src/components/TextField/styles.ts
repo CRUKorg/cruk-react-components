@@ -23,6 +23,7 @@ type StyledInputProps = {
 };
 
 export const Extra = styled.span<ExtraProps>`
+  box-sizing: border-box;
   display: block;
   background-color: ${({ theme }: ExtraProps) =>
     theme.colors.textInputExtraInfo};
@@ -38,6 +39,7 @@ export const Extra = styled.span<ExtraProps>`
 `;
 
 export const ExtraLeft = styled(Extra)`
+  box-sizing: border-box;
   width: initial;
   vertical-align: middle;
   height: ${MIN_HEIGHT};
@@ -49,6 +51,7 @@ export const ExtraLeft = styled(Extra)`
 `;
 
 export const ExtraRight = styled(Extra)`
+  box-sizing: border-box;
   width: initial;
   border: ${({ theme }: ExtraProps) =>
     `solid ${theme.utilities.inputBorderWidth} ${theme.colors.textInputBorder}`};
@@ -66,11 +69,13 @@ export const ExtraRight = styled(Extra)`
 `;
 
 export const ExtraWrapper = styled.span`
+  box-sizing: border-box;
   display: flex;
   align-items: center;
 `;
 
 export const StyledInputWrapper = styled.span<StyledInputProps>`
+  box-sizing: border-box;
   position: relative;
   display: block;
   flex: 1 1;
@@ -103,6 +108,7 @@ export const StyledInputWrapper = styled.span<StyledInputProps>`
 `;
 
 export const StyledInput = styled.input<StyledInputProps>`
+  box-sizing: border-box;
   background-color: ${({ theme }: ExtraProps) => theme.colors.backgroundLight};
   background-image: none;
   border: ${({ hasError, theme }: StyledInputProps) =>

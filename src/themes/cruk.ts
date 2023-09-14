@@ -96,6 +96,7 @@ export const COLORS: ColorsType = {
   textOnPrimary: TOKEN_COLORS.white,
   textOnSecondary: TOKEN_COLORS.white,
   textOnTertiary: TOKEN_COLORS.white,
+  textHeaderDefault: TOKEN_COLORS.black,
 
   disabled: TOKEN_COLORS.grey_100,
   danger: TOKEN_COLORS.red,
@@ -148,6 +149,7 @@ export const COLORS: ColorsType = {
 
   textInputBorder: TOKEN_COLORS.grey_900,
   inputBorder: TOKEN_COLORS.grey_900,
+  check: TOKEN_COLORS.magenta_700,
 
   headerBackground: TOKEN_COLORS.white,
   backgroundLight: TOKEN_COLORS.white,
@@ -165,6 +167,7 @@ export const COLORS: ColorsType = {
   footerBackground: TOKEN_COLORS.grey_100,
 
   headerBorder: TOKEN_COLORS.grey_100,
+  headerTaglineText: TOKEN_COLORS.black,
 
   stepBorder: TOKEN_COLORS.grey_100,
   stepBackground: TOKEN_COLORS.white,
@@ -224,8 +227,10 @@ export const TYPOGRAPHY: TypographyType = {
     },
   ],
   fontFamilyBase: "Poppins-Regular,sans-serif",
-  fontFamilyLabel: "Poppins-SemiBold,sans-serif",
+  fontWeightBase: "300",
   fontFamilyHeadings: "Progress,Arial,Helvetica,sans-serif",
+  fontWeightHeadings: "400",
+  fontFamilyLabel: "Poppins-SemiBold,sans-serif",
   fontSizeBase: "16px",
   fontWeightHeavy: "700",
   fontWeightMedium: "500", // default heading
