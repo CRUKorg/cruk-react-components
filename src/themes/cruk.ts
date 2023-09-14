@@ -42,8 +42,8 @@ export const AVATAR: AvatarType = {
 };
 
 export const BUTTON: ButtonType = {
-  borderRadius: "4px",
-  borderRadiusLarge: "4px",
+  borderRadius: "0px",
+  borderRadiusLarge: "0px",
   buttonBorderThickness: "2px",
   textDecoration: "none",
   textTransform: "none",
@@ -58,21 +58,25 @@ export const BREAKPOINT: BreakPointType = {
 };
 
 export const TOKEN_COLORS: TokenColorsType = {
-  darkBlue_100: "#edeaf5",
-  darkBlue_200: "#dad2ea",
-  darkBlue_300: "#a896cf",
-  darkBlue_500: "#2e008b",
-  magenta_100: "#fdeaf5",
-  magenta_500: "#e40087",
-  magenta_800: "#BB0071",
-  magenta_900: "#710044",
-  cyan_500: "#00b6ed",
-  cyan_900: "#005870",
+  navy_100: "#E5E5FF",
+  navy_600: "#00007E",
+  navy_700: "#000066",
+  navy_800: "#00004D",
 
-  grey_100: "#f5f5f5",
-  grey_200: "#ededed",
-  grey_300: "#c6c6c6",
-  grey_500: "#9A9A9A",
+  magenta_100: "#FFE6F3",
+  magenta_600: "#FF0087",
+  magenta_700: "#E60079",
+  magenta_800: "#CC006C",
+
+  cyan_600: "#009CEE",
+  cyan_700: "#006DA7",
+
+  grey_50: "#F5F5F5",
+  grey_100: "#E6E6E6",
+
+  grey_300: "#c6c6c6", // used for shadows
+
+  grey_600: "#666666",
   grey_800: "#575757",
   grey_900: "#2e2d2c",
 
@@ -85,97 +89,97 @@ export const TOKEN_COLORS: TokenColorsType = {
 };
 
 export const COLORS: ColorsType = {
-  primary: TOKEN_COLORS.darkBlue_500,
-  secondary: TOKEN_COLORS.magenta_500,
-  tertiary: TOKEN_COLORS.cyan_500,
+  primary: TOKEN_COLORS.navy_600,
+  secondary: TOKEN_COLORS.magenta_600,
+  tertiary: TOKEN_COLORS.cyan_600,
 
   textOnPrimary: TOKEN_COLORS.white,
   textOnSecondary: TOKEN_COLORS.white,
   textOnTertiary: TOKEN_COLORS.white,
 
-  disabled: TOKEN_COLORS.grey_300,
+  disabled: TOKEN_COLORS.grey_100,
   danger: TOKEN_COLORS.red,
   warning: TOKEN_COLORS.yellow,
   success: TOKEN_COLORS.green,
-  info: TOKEN_COLORS.cyan_500,
+  info: TOKEN_COLORS.cyan_600,
   textError: TOKEN_COLORS.red,
 
-  linkColor: TOKEN_COLORS.darkBlue_500,
-  linkColorHover: TOKEN_COLORS.magenta_800,
-  textDark: TOKEN_COLORS.grey_900,
+  linkColor: TOKEN_COLORS.navy_600,
+  linkColorHover: TOKEN_COLORS.magenta_700,
+  textDark: TOKEN_COLORS.black,
   textLight: TOKEN_COLORS.white,
-  linkColorSecondary: TOKEN_COLORS.magenta_500,
-  linkColorSecondaryHover: TOKEN_COLORS.magenta_800,
+  linkColorSecondary: TOKEN_COLORS.magenta_700,
+  linkColorSecondaryHover: TOKEN_COLORS.magenta_700,
 
-  progressBar: TOKEN_COLORS.darkBlue_500,
-  progressBarSecondary: TOKEN_COLORS.magenta_500,
-  progressBarBackground: TOKEN_COLORS.grey_200,
-  circularProgress: TOKEN_COLORS.cyan_500,
-  circularProgressSecondary: TOKEN_COLORS.magenta_500,
-  circularProgressBackground: TOKEN_COLORS.grey_300,
+  progressBar: TOKEN_COLORS.navy_600,
+  progressBarSecondary: TOKEN_COLORS.magenta_700,
+  progressBarBackground: TOKEN_COLORS.grey_100,
+  circularProgress: TOKEN_COLORS.cyan_600,
+  circularProgressSecondary: TOKEN_COLORS.magenta_700,
+  circularProgressBackground: TOKEN_COLORS.grey_100,
 
-  buttonPrimaryBackground: TOKEN_COLORS.magenta_500,
+  buttonPrimaryBackground: TOKEN_COLORS.magenta_700,
   buttonPrimaryText: TOKEN_COLORS.white,
-  buttonPrimaryBorder: TOKEN_COLORS.magenta_500,
+  buttonPrimaryBorder: TOKEN_COLORS.magenta_700,
   buttonPrimaryBackgroundHover: TOKEN_COLORS.magenta_800,
   buttonPrimaryTextHover: TOKEN_COLORS.white,
   buttonPrimaryBorderHover: TOKEN_COLORS.magenta_800,
   buttonPrimaryDisabledBackground: TOKEN_COLORS.grey_100,
-  buttonPrimaryDisabledText: TOKEN_COLORS.grey_500,
+  buttonPrimaryDisabledText: TOKEN_COLORS.grey_600,
   buttonPrimaryDisabledBorder: TOKEN_COLORS.grey_100,
 
   buttonSecondaryBackground: TOKEN_COLORS.white,
-  buttonSecondaryText: TOKEN_COLORS.magenta_500,
-  buttonSecondaryBorder: TOKEN_COLORS.magenta_500,
+  buttonSecondaryText: TOKEN_COLORS.magenta_700,
+  buttonSecondaryBorder: TOKEN_COLORS.magenta_700,
   buttonSecondaryBackgroundHover: TOKEN_COLORS.magenta_100,
-  buttonSecondaryTextHover: TOKEN_COLORS.magenta_800,
-  buttonSecondaryBorderHover: TOKEN_COLORS.magenta_800,
+  buttonSecondaryTextHover: TOKEN_COLORS.magenta_700,
+  buttonSecondaryBorderHover: TOKEN_COLORS.magenta_100,
   buttonSecondaryDisabledBackground: TOKEN_COLORS.grey_100,
-  buttonSecondaryDisabledText: TOKEN_COLORS.grey_500,
+  buttonSecondaryDisabledText: TOKEN_COLORS.grey_600,
   buttonSecondaryDisabledBorder: TOKEN_COLORS.grey_100,
 
-  buttonTertiaryText: TOKEN_COLORS.magenta_500,
-  buttonTertiaryTextHover: TOKEN_COLORS.magenta_800,
-  buttonTertiaryDisabledText: TOKEN_COLORS.grey_500,
+  buttonTertiaryText: TOKEN_COLORS.magenta_700,
+  buttonTertiaryTextHover: TOKEN_COLORS.magenta_700,
+  buttonTertiaryDisabledText: TOKEN_COLORS.grey_600,
 
-  collapseHeaderColor: TOKEN_COLORS.magenta_500,
+  collapseHeaderColor: TOKEN_COLORS.magenta_700,
 
-  selectionBorder: TOKEN_COLORS.grey_500,
+  selectionBorder: TOKEN_COLORS.grey_600,
 
   textInputBorder: TOKEN_COLORS.grey_900,
   inputBorder: TOKEN_COLORS.grey_900,
 
   headerBackground: TOKEN_COLORS.white,
   backgroundLight: TOKEN_COLORS.white,
-  backgroundLightColor: TOKEN_COLORS.darkBlue_200,
+  backgroundLightColor: TOKEN_COLORS.navy_100,
   backgroundMid: TOKEN_COLORS.grey_100,
 
-  loaderColor1: TOKEN_COLORS.darkBlue_500,
-  loaderColor2: TOKEN_COLORS.magenta_500,
-  loaderColor3: TOKEN_COLORS.cyan_500,
+  loaderColor1: TOKEN_COLORS.navy_600,
+  loaderColor2: TOKEN_COLORS.magenta_600,
+  loaderColor3: TOKEN_COLORS.cyan_600,
 
-  paginationText: TOKEN_COLORS.darkBlue_500,
-  paginationActive: TOKEN_COLORS.grey_300,
-  paginationBackground: TOKEN_COLORS.darkBlue_500,
+  paginationText: TOKEN_COLORS.navy_600,
+  paginationActive: TOKEN_COLORS.grey_100,
+  paginationBackground: TOKEN_COLORS.navy_600,
 
-  footerBackground: TOKEN_COLORS.grey_200,
+  footerBackground: TOKEN_COLORS.grey_100,
 
-  headerBorder: TOKEN_COLORS.grey_300,
+  headerBorder: TOKEN_COLORS.grey_100,
 
-  stepBorder: TOKEN_COLORS.grey_300,
+  stepBorder: TOKEN_COLORS.grey_100,
   stepBackground: TOKEN_COLORS.white,
 
   popoverBackground: TOKEN_COLORS.white,
 
-  textInputExtraInfo: TOKEN_COLORS.grey_200,
+  textInputExtraInfo: TOKEN_COLORS.grey_100,
 
-  totaliserBubbleColor: TOKEN_COLORS.grey_200,
-  totaliserBubbleTextColor: TOKEN_COLORS.grey_900,
-  totaliserBubbleTotalColor: TOKEN_COLORS.darkBlue_500,
+  totaliserBubbleColor: TOKEN_COLORS.grey_100,
+  totaliserBubbleTextColor: TOKEN_COLORS.black,
+  totaliserBubbleTotalColor: TOKEN_COLORS.navy_600,
 
-  selectBackground: TOKEN_COLORS.grey_900,
+  selectBackground: TOKEN_COLORS.black,
 
-  modalBackdrop: TOKEN_COLORS.grey_900,
+  modalBackdrop: TOKEN_COLORS.black,
 
   userBlockExtraText: TOKEN_COLORS.grey_800,
 };

@@ -3,6 +3,7 @@ import { ThemeType } from "../../types";
 
 const CHECK_BOX_SIZE = "1.5rem";
 const BUTTON_HEIGHT = "3em";
+const BORDER_THICKNESS = "1px";
 
 type StyledLabelProps = {
   checked: boolean;
@@ -61,30 +62,16 @@ export const StyledLabel = styled.label<StyledLabelProps>`
   }
   line-height: ${({ theme }: StyledLabelProps) => theme.typography.lineHeight};
   font-size: ${({ theme }: ThemeProps) => theme.typography.fontSizeBase};
-  font-family: ${({ theme, checked }: StyledLabelProps) =>
-    checked
-      ? theme.typography.fontFamilyLabel
-      : theme.typography.fontFamilyBase};
+  font-family: ${({ theme }: StyledLabelProps) =>
+    theme.typography.fontFamilyBase};
 
   background-color: ${({ theme }: ThemeProps) => theme.colors.backgroundLight};
   position: relative;
-  border-width: ${({ theme }: ThemeProps) => theme.utilities.inputBorderWidth};
-  border-style: solid;
-  border-color: ${({ disabled, hasError, theme, checked }: StyledLabelProps) =>
-    disabled
-      ? theme.colors.disabled
-      : hasError
-      ? theme.colors.textError
-      : checked && !theme.utilities.useDefaultFocusRect
-      ? theme.colors.primary
-      : theme.colors.inputBorder};
+
   cursor: ${({ disabled }: StyledLabelProps) =>
     disabled ? "not-allowed" : "pointer"};
   display: block;
-  font-weight: ${({ theme, checked }: StyledLabelProps) =>
-    checked || !theme.utilities.useDefaultFocusRect
-      ? theme.typography.fontWeightHeavy
-      : theme.typography.fontWeightNormal};
+
   color: ${({ theme, disabled }: StyledLabelProps) =>
     disabled ? theme.colors.disabled : theme.colors.textDark};
   padding: ${({ theme }: ThemeProps) =>
@@ -101,13 +88,24 @@ export const StyledLabel = styled.label<StyledLabelProps>`
     }
   }
 
-  ${({ theme, disabled: isDisabled }: StyledLabelProps) =>
+  ${({ theme, disabled: isDisabled, checked }: StyledLabelProps) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
           min-height: 2rem;
+
+          ${CheckWrapper} ${Check} {
+            border: solid ${BORDER_THICKNESS}
+              ${({
+                theme: {
+                  colors: { primary, disabled, inputBorder },
+                },
+              }: ThemeProps) =>
+                isDisabled ? disabled : checked ? primary : inputBorder};
+          }
+
           &:hover ${CheckWrapper} ${Check} {
-            border: solid 1px
+            border: solid ${BORDER_THICKNESS}
               ${({
                 theme: {
                   colors: { primary, disabled },

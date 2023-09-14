@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { ThemeType } from "../../types";
 
 const RADIO_SIZE = "1.5rem";
-const RADIO_INNER_SIZE = "1rem";
+const RADIO_INNER_SIZE = "0.75rem";
 const BUTTON_HEIGHT = "3em";
 
 type ThemeProp = {
@@ -73,38 +73,32 @@ export const StyledLabel = styled.label<StyledLabelProps>`
     theme.colors.backgroundLight};
   width: 100%;
   position: relative;
-  border-width: ${({ theme }: StyledLabelProps) =>
-    theme.utilities.inputBorderWidth};
-  border-style: solid;
-  border-color: ${({ disabled, hasError, theme, checked }: StyledLabelProps) =>
-    disabled
-      ? theme.colors.disabled
-      : hasError
-      ? theme.colors.textError
-      : checked && !theme.utilities.useDefaultFocusRect
-      ? theme.colors.primary
-      : theme.colors.inputBorder};
+
   cursor: ${({ disabled }: StyledLabelProps) =>
     disabled ? "not-allowed" : "pointer"};
   display: inline-block;
-  font-weight: ${({ checked }: StyledLabelProps) =>
-    checked ? "bold" : "normal"};
+
   color: ${({ theme, disabled }: StyledLabelProps) =>
     disabled ? theme.colors.disabled : theme.colors.textDark};
   padding: ${({ theme }: StyledLabelProps) =>
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
   vertical-align: middle;
 
-  &:focus ~ ${CheckWrapper} ${Check} {
-    outline: 2px solid #7aacfe; /* for non-webkit browsers */
-    outline: 5px auto -webkit-focus-ring-color;
-  }
-
-  ${({ theme, disabled: isDisabled }: StyledLabelProps) =>
+  ${({ theme, disabled: isDisabled, checked }: StyledLabelProps) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
           min-height: 2rem;
+
+          ${CheckWrapper} ${Check} {
+            border: solid 2px
+              ${({
+                theme: {
+                  colors: { primary, disabled, inputBorder },
+                },
+              }: ThemeProp) =>
+                isDisabled ? disabled : checked ? primary : inputBorder};
+          }
 
           &:hover ${CheckWrapper} ${Check} {
             border: solid 2px
