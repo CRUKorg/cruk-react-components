@@ -8,8 +8,8 @@ type AvatarStyledProps = {
 
 export const StyledAvatar = styled.img<AvatarStyledProps>`
   border-radius: 50%;
-  height: ${({ size }) => size};
   object-fit: cover;
+  height: ${({ size }) => size};
   width: ${({ size }) => size};
 `;
 

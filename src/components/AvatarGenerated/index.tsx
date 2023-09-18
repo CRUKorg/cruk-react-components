@@ -51,18 +51,6 @@ const AvatarGenerated = ({
     ...foundTheme,
   };
 
-  // const avatarUrl = () => {
-  //   if (url) return url;
-  //   const fileName =
-  //     name &&
-  //     typeof name === "string" &&
-  //     name !== "Anonymous" &&
-  //     /[a-z]/i.exec(name[0].trim())
-  //       ? `icon-avatar-${name[0].trim().toUpperCase()}.png`
-  //       : "icon-avatar-Anonymous.png";
-
-  //   return `${theme.avatar.path}${fileName}`;
-  // };
 
   return (
     <>
