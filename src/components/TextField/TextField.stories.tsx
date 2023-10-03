@@ -19,6 +19,8 @@ export default {
     hintText: "hint text here",
     hasError: false,
     errorMessage: undefined,
+    extraLeft: "",
+    extraRight: "",
   },
   tags: ["autodocs"],
 };
