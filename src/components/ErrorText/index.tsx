@@ -29,11 +29,15 @@ const ErrorText: FunctionComponent<ErrorTextProps> = ({
     ...defaultTheme,
     ...foundTheme,
   };
+
+  const shouldShowIcon = typeof children === "string" && children.length;
   return (
     <StyledErrorText forwardedAs={as} {...props} theme={theme} role="alert">
-      <Box as="span" marginRight="xxs">
-        <IconFa faIcon={faTriangleExclamation} size="1em" />
-      </Box>
+      {shouldShowIcon ? (
+        <Box as="span" marginRight="xxs">
+          <IconFa faIcon={faTriangleExclamation} size="1em" />
+        </Box>
+      ) : null}
       {children}
     </StyledErrorText>
   );
