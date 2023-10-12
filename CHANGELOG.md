@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.5.0] - 2023-10-12
+
+### Fixed
+
+- Fixed where text field collapses and additional fix for #759 [#767](https://github.com/CRUKorg/cruk-react-components/issues/#767))
+
+### Added
+
+- ErrorText component now includes an error icon for colour blind users [#672](https://github.com/CRUKorg/cruk-react-components/issues/#672))
+
+### Changed
+
+- Hinttext attribute for AddressLookup component now matches TextInput component which access strings and ReactNodes
+
 ## [3.4.1] - 2023-10-03
 
 ### Fixed
