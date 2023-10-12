@@ -40,7 +40,7 @@ export const Extra = styled.span<ExtraProps>`
 
 export const ExtraLeft = styled(Extra)`
   box-sizing: border-box;
-  width: initial;
+  width: auto;
   vertical-align: middle;
   height: ${MIN_HEIGHT};
 
@@ -52,7 +52,7 @@ export const ExtraLeft = styled(Extra)`
 
 export const ExtraRight = styled(Extra)`
   box-sizing: border-box;
-  width: initial;
+  width: auto;
   border: ${({ theme }: ExtraProps) =>
     `solid ${theme.utilities.inputBorderWidth} ${theme.colors.textInputBorder}`};
   transition: border-color 150ms linear;
