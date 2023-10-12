@@ -12,6 +12,7 @@ export default {
     errorMessage: "",
     hasError: false,
     label: "Home address",
+    hintText: "Start typing your address or postcode",
     required: true,
     isValid: true,
     isValidVisible: false,

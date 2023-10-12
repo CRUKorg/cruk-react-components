@@ -9,6 +9,7 @@ import React, {
   ChangeEvent,
   KeyboardEvent,
   useState,
+  ReactNode,
 } from "react";
 import { useTheme } from "styled-components";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
@@ -50,7 +51,7 @@ export type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
   /** label text */
   label?: string;
   /** hint text text */
-  hintText?: string;
+  hintText?: ReactNode;
   /** callback function which is passed the error */
   onAddressError?: (error: Error) => void;
   /** onBlur handler */
