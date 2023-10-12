@@ -34,7 +34,7 @@ export const Extra = styled.span<ExtraProps>`
     `calc((${MIN_HEIGHT} - 1em ) / 2) ${theme.spacing.xs}`};
   margin: 0;
   line-height: 1rem;
-  width: 100%;
+  width: auto;
 `;
 
 export const ExtraLeft = styled(Extra)`
