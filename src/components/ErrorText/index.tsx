@@ -1,9 +1,12 @@
 import React, { FunctionComponent, HTMLAttributes } from "react";
 import { useTheme } from "styled-components";
 
+import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 import defaultTheme from "../../themes/cruk";
 import { SpacingProps } from "../Spacing";
 import { StyledErrorText } from "./styles";
+import IconFa from "../IconFa";
+import Box from "../Box";
 
 export type ErrorTextProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
@@ -28,6 +31,9 @@ const ErrorText: FunctionComponent<ErrorTextProps> = ({
   };
   return (
     <StyledErrorText forwardedAs={as} {...props} theme={theme} role="alert">
+      <Box as="span" marginRight="xxs">
+        <IconFa faIcon={faTriangleExclamation} size="1em" />
+      </Box>
       {children}
     </StyledErrorText>
   );
