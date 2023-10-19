@@ -45,12 +45,9 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
     margin-bottom: ${({ theme }: StyledFieldsetProps) => theme.spacing.xs};
   }
   label {
-    border-style: solid;
-    border-width: ${({ theme }: StyledFieldsetProps) =>
-      theme.utilities.inputBorderWidth};
     border-color: ${({ hasError, theme }: StyledFieldsetProps) =>
       hasError && theme.colors.textError};
-    margin-bottom: ${({ theme }: StyledFieldsetProps) => theme.spacing.s};
+    margin-bottom: ${({ theme }: StyledFieldsetProps) => theme.spacing.none};
     &:last-of-type {
       margin-bottom: 0;
     }

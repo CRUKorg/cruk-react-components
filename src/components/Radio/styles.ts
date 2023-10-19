@@ -84,7 +84,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
   vertical-align: middle;
 
-  ${({ theme, disabled: isDisabled, checked }: StyledLabelProps) =>
+  ${({ theme, disabled: isDisabled, checked, hasError }: StyledLabelProps) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
@@ -94,10 +94,16 @@ export const StyledLabel = styled.label<StyledLabelProps>`
             border: solid 2px
               ${({
                 theme: {
-                  colors: { check, disabled, inputBorder },
+                  colors: { check, disabled, inputBorder, danger },
                 },
               }: ThemeProp) =>
-                isDisabled ? disabled : checked ? check : inputBorder};
+                isDisabled
+                  ? disabled
+                  : hasError
+                  ? danger
+                  : checked
+                  ? check
+                  : inputBorder};
           }
 
           &:hover ${CheckWrapper} ${Check} {

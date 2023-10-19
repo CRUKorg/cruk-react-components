@@ -80,10 +80,10 @@ export type ColorsType = {
   info: string;
   textError: string;
 
-  linkColor: string;
-  linkColorHover: string;
   textDark: string;
   textLight: string;
+  linkColor: string;
+  linkColorHover: string;
   linkColorSecondary: string;
   linkColorSecondaryHover: string;
 
@@ -198,6 +198,8 @@ export type TypographyType = {
   fontFamilyBase: string;
   fontWeightBase: string;
   fontFamilyHeadings: string;
+  fontFamilyButtons: string;
+  fontFamilyLinks: string;
   fontWeightHeadings: string;
   fontFamilyLabel: string;
   fontSizeBase: string;
@@ -207,6 +209,8 @@ export type TypographyType = {
   fontWeightLight: string;
   fontWeightVLight: string;
   linkTextDecoration: string;
+  LinkPrimaryTextDecoration: string;
+  LinkLetterSpacing: string;
   lineHeight: string;
   headerLineHeight: string;
   headerTextTransform: string;

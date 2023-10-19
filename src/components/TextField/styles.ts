@@ -109,19 +109,20 @@ export const StyledInputWrapper = styled.span<StyledInputProps>`
 
 export const StyledInput = styled.input<StyledInputProps>`
   box-sizing: border-box;
-  background-color: ${({ theme }: ExtraProps) => theme.colors.backgroundLight};
+  background-color: ${({ theme }: StyledInputProps) =>
+    theme.colors.backgroundLight};
   background-image: none;
   border: ${({ hasError, theme }: StyledInputProps) =>
     `solid ${theme.utilities.inputBorderWidth} ${
       hasError ? theme.colors.textError : theme.colors.textInputBorder
     }`};
   border-radius: 0;
-  color: ${({ theme }: ExtraProps) => theme.colors.textDark};
+  color: ${({ theme }: StyledInputProps) => theme.colors.textDark};
   display: block;
-  font-size: ${({ theme }: ExtraProps) => theme.fontSizes.m};
-  line-height: ${({ theme }: ExtraProps) => theme.typography.lineHeight};
+  font-size: ${({ theme }: StyledInputProps) => theme.fontSizes.m};
+  line-height: ${({ theme }: StyledInputProps) => theme.typography.lineHeight};
   min-width: 3em;
-  padding: ${({ theme }: ExtraProps) =>
+  padding: ${({ theme }: StyledInputProps) =>
     `calc((${MIN_HEIGHT} - (${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xs}`};
 
   /* Make sure text doesn't go behind the valid indicatior icon */
@@ -133,12 +134,15 @@ export const StyledInput = styled.input<StyledInputProps>`
 
   width: 100%;
   transition: border-color 150ms linear;
+  &:hover {
+    border-color: ${({ theme }: StyledInputProps) => theme.colors.secondary};
+  }
   &:disabled {
-    border-color: ${({ theme }: ExtraProps) => theme.colors.disabled};
-    color: ${({ theme }: ExtraProps) => theme.colors.disabled};
+    border-color: ${({ theme }: StyledInputProps) => theme.colors.disabled};
+    color: ${({ theme }: StyledInputProps) => theme.colors.disabled};
   }
 
-  ${({ theme }: ExtraProps) =>
+  ${({ theme }: StyledInputProps) =>
     !theme.utilities.useDefaultFocusRect
       ? css`
           &:focus {

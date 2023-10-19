@@ -105,12 +105,12 @@ export const COLORS: ColorsType = {
   info: TOKEN_COLORS.cyan_600,
   textError: TOKEN_COLORS.red,
 
-  linkColor: TOKEN_COLORS.navy_600,
-  linkColorHover: TOKEN_COLORS.magenta_700,
   textDark: TOKEN_COLORS.black,
   textLight: TOKEN_COLORS.white,
+  linkColor: TOKEN_COLORS.magenta_700,
+  linkColorHover: TOKEN_COLORS.magenta_800,
   linkColorSecondary: TOKEN_COLORS.magenta_700,
-  linkColorSecondaryHover: TOKEN_COLORS.magenta_700,
+  linkColorSecondaryHover: TOKEN_COLORS.magenta_800,
 
   progressBar: TOKEN_COLORS.navy_600,
   progressBarSecondary: TOKEN_COLORS.magenta_700,
@@ -140,10 +140,10 @@ export const COLORS: ColorsType = {
   buttonSecondaryDisabledBorder: TOKEN_COLORS.grey_100,
 
   buttonTertiaryText: TOKEN_COLORS.magenta_700,
-  buttonTertiaryTextHover: TOKEN_COLORS.magenta_700,
+  buttonTertiaryTextHover: TOKEN_COLORS.magenta_800,
   buttonTertiaryDisabledText: TOKEN_COLORS.grey_600,
 
-  collapseHeaderColor: TOKEN_COLORS.magenta_700,
+  collapseHeaderColor: TOKEN_COLORS.navy_600,
 
   selectionBorder: TOKEN_COLORS.grey_600,
 
@@ -225,19 +225,27 @@ export const TYPOGRAPHY: TypographyType = {
       family: "Poppins-Regular",
       urlWoff: `${SITE_CONFIG.assetPath}fonts/Poppins-Regular.woff2`,
     },
+    {
+      family: "Poppins-Medium",
+      urlWoff: `${SITE_CONFIG.assetPath}fonts/Poppins-Medium.woff`,
+    },
   ],
   fontFamilyBase: "Poppins-Regular,sans-serif",
   fontWeightBase: "300",
+  fontFamilyButtons: "Poppins-Regular,sans-serif",
+  fontFamilyLinks: "Poppins-Regular,sans-serif",
   fontFamilyHeadings: "Progress-Regular,Arial,Helvetica,sans-serif",
   fontWeightHeadings: "400",
   fontFamilyLabel: "Poppins-SemiBold,sans-serif",
   fontSizeBase: "16px",
   fontWeightHeavy: "700",
-  fontWeightMedium: "500", // default heading
-  fontWeightNormal: "400", // default body
+  fontWeightMedium: "500",
+  fontWeightNormal: "400",
   fontWeightLight: "300",
   fontWeightVLight: "100",
   linkTextDecoration: "underline",
+  LinkLetterSpacing: "0px",
+  LinkPrimaryTextDecoration: "underline",
   lineHeight: "1.5em",
   headerLineHeight: "1.25em",
   headerTextTransform: "none",

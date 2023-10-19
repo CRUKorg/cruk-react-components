@@ -3,7 +3,7 @@ import { ThemeType } from "../../types";
 
 const CHECK_BOX_SIZE = "1.5rem";
 const BUTTON_HEIGHT = "3em";
-const BORDER_THICKNESS = "1px";
+const BORDER_THICKNESS = "2px";
 
 type StyledLabelProps = {
   checked: boolean;
@@ -31,7 +31,7 @@ export const CheckWrapper = styled.div`
 export const Check = styled.span`
   display: block;
   position: relative;
-  border: 1px solid ${({ theme }: ThemeProps) => theme.colors.selectionBorder};
+  border: 2px solid ${({ theme }: ThemeProps) => theme.colors.selectionBorder};
   height: ${CHECK_BOX_SIZE};
   width: ${CHECK_BOX_SIZE};
   top: 0;
@@ -43,8 +43,6 @@ export const Check = styled.span`
   overflow: hidden;
 
   svg {
-    /* asset is little wonky */
-    margin-left: 0.05rem;
     path {
       transition: transform 0.25s ease;
       transform: rotateY(90deg);
@@ -88,7 +86,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
     }
   }
 
-  ${({ theme, disabled: isDisabled, checked }: StyledLabelProps) =>
+  ${({ theme, disabled: isDisabled, checked, hasError }: StyledLabelProps) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
@@ -98,10 +96,16 @@ export const StyledLabel = styled.label<StyledLabelProps>`
             border: solid ${BORDER_THICKNESS}
               ${({
                 theme: {
-                  colors: { check, disabled, inputBorder },
+                  colors: { check, disabled, inputBorder, danger },
                 },
               }: ThemeProps) =>
-                isDisabled ? disabled : checked ? check : inputBorder};
+                isDisabled
+                  ? disabled
+                  : hasError
+                  ? danger
+                  : checked
+                  ? check
+                  : inputBorder};
           }
 
           &:hover ${CheckWrapper} ${Check} {

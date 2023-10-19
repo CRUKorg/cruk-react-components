@@ -144,12 +144,16 @@ export const TYPOGRAPHY: TypographyType = {
     },
   ],
   fontFamilyHeadings: "juana-semibold,Arial,sans-serif",
+  fontFamilyLinks: "juana-semibold,Arial,sans-serif",
+  fontFamilyButtons: "juana-semibold,Arial,sans-serif",
   fontFamilyBase:
     "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
   fontFamilyLabel:
     "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
   // headerLineHeight: "1.5em",
   fontWeightBase: "400",
+  LinkPrimaryTextDecoration: "none",
+  LinkLetterSpacing: "0px",
 };
 
 const theme: ThemeType = {

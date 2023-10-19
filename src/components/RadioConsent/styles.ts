@@ -5,6 +5,7 @@ import RadioInput from "../Radio";
 import { ThemeType } from "../../types";
 
 const LEGEND_WIDTH = "20%";
+const MAX_WIDTH = "5em";
 
 type ThemeProp = {
   theme: ThemeType;
@@ -15,8 +16,9 @@ type StyleRadioWidthProp = { numberOfAttributes: number } & ThemeProp;
 export const StyledRadio = styled(RadioInput)`
   display: block;
   float: left;
-  text-align: center;
+  text-align: left;
   margin-left: ${({ theme }: ThemeProp) => theme.spacing.s};
+  max-width: ${MAX_WIDTH};
   width: ${({ numberOfAttributes, theme }: StyleRadioWidthProp) =>
     `calc(((100% - ${LEGEND_WIDTH}) / ${numberOfAttributes}) - ${theme.spacing.s})`};
 `;

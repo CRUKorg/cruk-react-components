@@ -138,6 +138,8 @@ export const TYPOGRAPHY: TypographyType = {
     },
   ],
   fontFamilyHeadings: "itc_avant_garde_pro_mdbold,Arial,sans-serif",
+  fontFamilyLinks: "itc_avant_garde_pro_mdbold,Arial,sans-serif",
+  fontFamilyButtons: "itc_avant_garde_pro_mdbold,Arial,sans-serif",
   fontFamilyBase:
     "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
   fontFamilyLabel:
@@ -146,6 +148,8 @@ export const TYPOGRAPHY: TypographyType = {
   headerLineHeight: "1.5em",
   headerTextTransform: "uppercase",
   fontWeightBase: "400",
+  LinkPrimaryTextDecoration: "none",
+  LinkLetterSpacing: "0px",
 };
 
 const theme: ThemeType = {

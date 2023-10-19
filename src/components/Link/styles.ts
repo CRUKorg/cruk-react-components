@@ -2,23 +2,8 @@ import { AnchorHTMLAttributes } from "react";
 import styled, { css } from "styled-components";
 
 import Text, { TextProps } from "../Text";
-import IconFa from "../IconFa";
 
 import { ThemeType, ColorKeyType } from "../../types";
-
-type ThemeProp = {
-  theme: ThemeType;
-};
-
-export const ChevyWithLevee = styled(IconFa)`
-  margin-right: ${({
-    theme: {
-      spacing: { xxs },
-    },
-  }: ThemeProp) => xxs};
-  stroke: currentColor;
-  stroke-width: 70;
-`;
 
 type StyledLinkProps = AnchorHTMLAttributes<HTMLElement> &
   TextProps & {
@@ -52,16 +37,33 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
   text-decoration: ${({
     appearance,
     theme: {
-      typography: { linkTextDecoration },
+      typography: { linkTextDecoration, LinkPrimaryTextDecoration },
+    },
+  }: StyledLinkProps) =>
+    appearance === "primary"
+      ? LinkPrimaryTextDecoration
+      : appearance === "secondary"
+      ? "none"
+      : linkTextDecoration};
+  font-family: ${({
+    appearance,
+    theme: {
+      typography: { fontFamilyBase, fontFamilyLinks },
     },
   }: StyledLinkProps) =>
     appearance === "primary" || appearance === "secondary"
-      ? "none"
-      : linkTextDecoration};
-  font-weight: ${({ theme }: ThemeProp) =>
-    theme.utilities.useBackgroundStyleLinks
-      ? theme.typography.fontWeightHeavy
-      : theme.typography.fontWeightNormal};
+      ? fontFamilyLinks
+      : fontFamilyBase};
+  letter-spacing: ${({
+    appearance,
+    theme: {
+      typography: { LinkLetterSpacing },
+    },
+  }: StyledLinkProps) =>
+    appearance === "primary" || appearance === "secondary"
+      ? LinkLetterSpacing
+      : "0px"};
+
   background: ${({
     appearance,
     theme,
@@ -114,3 +116,5 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
         : colors.linkColorHover};
   }
 `;
+
+export default StyledLink;
