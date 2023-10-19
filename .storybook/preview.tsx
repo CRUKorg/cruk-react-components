@@ -49,7 +49,6 @@ const preview: Preview = {
               su2cTheme,
               GlobalStyle
             } from '@cruk/cruk-react-components';
-
             const component = () => {
               return (
                 <ThemeProvider theme={crukTheme}>

@@ -44,7 +44,6 @@ const StyledSelect = styled.select<StyledSelectProps>`
   &:hover {
     border-color: ${({ theme }: StyledSelectProps) => theme.colors.secondary};
   }
-
   &:disabled {
     border-color: ${({ theme }: StyledSelectProps) => theme.colors.disabled};
     color: ${({ theme }: StyledSelectProps) => theme.colors.disabled};
