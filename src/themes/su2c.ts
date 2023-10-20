@@ -151,7 +151,7 @@ export const TYPOGRAPHY: TypographyType = {
   fontWeightBase: "400",
   fontWeightLinks: "700",
   fontWeightButtons: "700",
-  fontWeightLabels: "500",
+  fontWeightLabels: "600",
   LinkPrimaryTextDecoration: "none",
   LinkLetterSpacing: "0px",
 };
