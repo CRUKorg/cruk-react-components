@@ -68,11 +68,21 @@ const DateField = ({
     <Fieldset>
       <Text
         as="legend"
-        textWeight={700}
+        textWeight={parseInt(typedTheme.typography.fontWeightLabels, 10)}
         marginBottom="xxs"
         textFontFamily={typedTheme.typography.fontFamilyLabel}
       >
-        {label} {!!required && ` (required)`}
+        {label}{" "}
+        {!!required && (
+          <span
+            style={{
+              fontWeight: parseInt(typedTheme.typography.fontWeightBase, 10),
+            }}
+          >
+            {" "}
+            (required)
+          </span>
+        )}
       </Text>
       {hintText && <Text>{hintText}</Text>}
       <DateTextFieldWrapper>
