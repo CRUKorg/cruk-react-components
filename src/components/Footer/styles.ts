@@ -89,8 +89,6 @@ export const FooterSectionLinks = styled(FooterSection)`
 export const StyledNav = styled.nav`
   display: flex;
   flex-direction: column;
-
-  /* TODO: make this work with themes currently there is no difference, will fix when themes are strongly typed */
   a {
     font-size: ${({
       theme: {
@@ -99,9 +97,9 @@ export const StyledNav = styled.nav`
     }: ThemeProps) => s};
     font-weight: ${({
       theme: {
-        typography: { fontWeightHeavy },
+        typography: { fontWeightLinks },
       },
-    }: ThemeProps) => fontWeightHeavy};
+    }: ThemeProps) => fontWeightLinks};
   }
 `;
 

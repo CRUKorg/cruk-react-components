@@ -18,7 +18,7 @@ export const LegendSpan = styled.span<{
   line-height: ${({ theme }: StyledFieldsetProps) =>
     theme.typography.lineHeight};
   font-weight: ${({ theme }: StyledFieldsetProps) =>
-    theme.typography.fontWeightHeavy};
+    theme.typography.fontWeightLabels};
   font-family: ${({ theme }: StyledFieldsetProps) =>
     theme.typography.fontFamilyLabel};
   min-width: 3em;

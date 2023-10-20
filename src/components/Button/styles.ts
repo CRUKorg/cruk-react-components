@@ -59,9 +59,9 @@ export const StyledButton = styled.button<StyledButtonProps>`
   }: StyledButtonProps) => fontFamilyButtons};
   font-weight: ${({
     theme: {
-      typography: { fontWeightMedium },
+      typography: { fontWeightButtons },
     },
-  }: StyledButtonProps) => fontWeightMedium};
+  }: StyledButtonProps) => fontWeightButtons};
   text-align: center;
   text-transform: ${({ theme }: StyledButtonProps) =>
     theme.button.textTransform};

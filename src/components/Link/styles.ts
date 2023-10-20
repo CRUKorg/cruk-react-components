@@ -77,17 +77,8 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
   background-repeat: no-repeat;
   background-position-y: calc(100%);
   background-size: 100% 2px;
-
-  ${({
-    appearance,
-    theme: {
-      typography: { fontWeightHeavy },
-    },
-  }: StyledLinkProps) =>
-    (appearance === "primary" || appearance === "secondary") &&
-    css`
-      font-weight: ${fontWeightHeavy};
-    `}
+  font-weight: ${({ theme }: StyledLinkProps) =>
+    theme.typography.fontWeightLinks}};
 
   &:focus-visible {
     outline: auto;

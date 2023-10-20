@@ -191,16 +191,20 @@ export type CustomFontType = {
   family: string;
   urlWoff?: string;
   urlWoff2?: string;
+  fontWeight: string;
 };
 
 export type TypographyType = {
   customFonts: CustomFontType[];
   fontFamilyBase: string;
   fontWeightBase: string;
+  fontWeightHeadings: string;
+  fontWeightLabels: string;
+  fontWeightLinks: string;
+  fontWeightButtons: string;
   fontFamilyHeadings: string;
   fontFamilyButtons: string;
   fontFamilyLinks: string;
-  fontWeightHeadings: string;
   fontFamilyLabel: string;
   fontSizeBase: string;
   fontWeightHeavy: string;

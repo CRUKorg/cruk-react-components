@@ -138,20 +138,24 @@ export const TYPOGRAPHY: TypographyType = {
   ...defaultTheme.typography,
   customFonts: [
     {
-      family: "juana-semibold",
+      family: "juana",
       urlWoff: `${SITE_CONFIG.assetPath}fonts/juana-semibold-webfont.woff`,
       urlWoff2: `${SITE_CONFIG.assetPath}fonts/juana-semibold-webfont.woff2`,
+      fontWeight: "600",
     },
   ],
-  fontFamilyHeadings: "juana-semibold,Arial,sans-serif",
-  fontFamilyLinks: "juana-semibold,Arial,sans-serif",
-  fontFamilyButtons: "juana-semibold,Arial,sans-serif",
+  fontFamilyHeadings: "juana,Arial,sans-serif",
+  fontFamilyLinks: "juana,Arial,sans-serif",
+  fontFamilyButtons: "juana,Arial,sans-serif",
   fontFamilyBase:
     "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
   fontFamilyLabel:
     "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
   // headerLineHeight: "1.5em",
   fontWeightBase: "400",
+  fontWeightLinks: "600",
+  fontWeightHeadings: "600",
+  fontWeightButtons: "600",
   LinkPrimaryTextDecoration: "none",
   LinkLetterSpacing: "0px",
 };

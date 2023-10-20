@@ -133,13 +133,14 @@ export const TYPOGRAPHY: TypographyType = {
   ...defaultTheme.typography,
   customFonts: [
     {
-      family: "itc_avant_garde_pro_mdbold",
+      family: "itc_avant_garde_pro",
       urlWoff: `${SITE_CONFIG.assetPath}fonts/itc_-_itcavantgardepro-bold-webfont.woff`,
+      fontWeight: "700",
     },
   ],
-  fontFamilyHeadings: "itc_avant_garde_pro_mdbold,Arial,sans-serif",
-  fontFamilyLinks: "itc_avant_garde_pro_mdbold,Arial,sans-serif",
-  fontFamilyButtons: "itc_avant_garde_pro_mdbold,Arial,sans-serif",
+  fontFamilyHeadings: "itc_avant_garde_pro,Arial,sans-serif",
+  fontFamilyLinks: "itc_avant_garde_pro,Arial,sans-serif",
+  fontFamilyButtons: "itc_avant_garde_pro,Arial,sans-serif",
   fontFamilyBase:
     "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
   fontFamilyLabel:
@@ -148,6 +149,8 @@ export const TYPOGRAPHY: TypographyType = {
   headerLineHeight: "1.5em",
   headerTextTransform: "uppercase",
   fontWeightBase: "400",
+  fontWeightLinks: "700",
+  fontWeightButtons: "700",
   LinkPrimaryTextDecoration: "none",
   LinkLetterSpacing: "0px",
 };

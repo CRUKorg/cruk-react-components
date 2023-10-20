@@ -21,12 +21,12 @@ export const LabelText = styled.span<{
   hasHintText: boolean;
   theme: ThemeType;
 }>`
-  font-weight: bold;
+  font-weight: ${({ theme }: LabelProp) => theme.typography.fontWeightLabels};
   display: block;
   margin-bottom: ${({ hasHintText, theme }: LabelTextProp) =>
     hasHintText ? theme.spacing.xxs : theme.spacing.xs};
 
   & > * {
-    font-weight: normal;
+    font-weight: ${({ theme }: LabelProp) => theme.typography.fontWeightBase};
   }
 `;

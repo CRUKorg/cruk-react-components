@@ -33,9 +33,9 @@ const StyledHeading = (props: StyledHeadingProps) => css`
   overflow-wrap: ${() => props.overflowWrap || "break-word"};
   font-weight: ${({
     theme: {
-      typography: { fontWeightMedium },
+      typography: { fontWeightHeadings },
     },
-  }: StyledHeadingProps) => fontWeightMedium};
+  }: StyledHeadingProps) => fontWeightHeadings};
   color: ${({ theme: { colors }, textColor }: StyledHeadingProps) =>
     textColor && typeof colors[textColor as ColorKeyType] !== "undefined"
       ? colors[textColor as ColorKeyType]
