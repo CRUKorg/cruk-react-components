@@ -8,13 +8,13 @@ import AllThemesWrapper from "../AllThemesWrapper";
 const FooterWithChildren = (args: FooterProps) => (
   <Footer {...args}>
     <Link
-      appearance="secondary"
+      appearance="primary"
       href="https://www.cancerresearchuk.org/about-us/contact-us"
     >
       Contact us
     </Link>
     <Link
-      appearance="secondary"
+      appearance="primary"
       href="https://www.cancerresearchuk.org/privacy-statement"
     >
       Privacy

@@ -5,6 +5,11 @@ type ThemeProps = {
   theme: ThemeType;
 };
 export const StyledFooter = styled.footer`
+  ${({
+    theme: {
+      colors: { inputBorder },
+    },
+  }: ThemeProps) => inputBorder};
   box-sizing: border-box;
   display: block;
   position: relative;
