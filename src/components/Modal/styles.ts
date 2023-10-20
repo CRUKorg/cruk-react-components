@@ -45,11 +45,6 @@ export const Content = styled(Box)<ContentProps>`
         : backgroundColor
       : colors.backgroundLight};
   position: relative;
-  border-radius: ${({
-    theme: {
-      button: { borderRadius },
-    },
-  }: ThemeProp) => borderRadius};
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
   margin: ${({ top }: ContentProps) => `${top} auto auto auto`};
   width: ${({ width }: ContentProps) => width};
