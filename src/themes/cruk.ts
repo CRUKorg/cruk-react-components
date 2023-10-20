@@ -90,7 +90,7 @@ export const TOKEN_COLORS: TokenColorsType = {
 
 export const COLORS: ColorsType = {
   primary: TOKEN_COLORS.navy_600,
-  secondary: TOKEN_COLORS.magenta_600,
+  secondary: TOKEN_COLORS.magenta_700,
   tertiary: TOKEN_COLORS.cyan_600,
 
   textOnPrimary: TOKEN_COLORS.white,
