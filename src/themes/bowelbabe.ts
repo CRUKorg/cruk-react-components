@@ -103,9 +103,9 @@ export const COLORS: ColorsType = {
   buttonPrimaryBackgroundHover: TOKEN_COLORS.bbPastelPink,
   buttonPrimaryTextHover: TOKEN_COLORS.bbPurple,
   buttonPrimaryBorderHover: TOKEN_COLORS.bbPastelPink,
-  buttonPrimaryDisabledBackground: TOKEN_COLORS.grey_100,
+  buttonPrimaryDisabledBackground: TOKEN_COLORS.grey_200,
   buttonPrimaryDisabledText: TOKEN_COLORS.grey_800,
-  buttonPrimaryDisabledBorder: TOKEN_COLORS.grey_100,
+  buttonPrimaryDisabledBorder: TOKEN_COLORS.grey_200,
 
   buttonSecondaryBackground: TOKEN_COLORS.white,
   buttonSecondaryText: TOKEN_COLORS.bbPurple,
@@ -113,13 +113,13 @@ export const COLORS: ColorsType = {
   buttonSecondaryBackgroundHover: TOKEN_COLORS.bbPastelPink,
   buttonSecondaryTextHover: TOKEN_COLORS.bbPurple,
   buttonSecondaryBorderHover: TOKEN_COLORS.bbPastelYellow,
-  buttonSecondaryDisabledBackground: TOKEN_COLORS.grey_100,
+  buttonSecondaryDisabledBackground: TOKEN_COLORS.grey_200,
   buttonSecondaryDisabledText: TOKEN_COLORS.grey_800,
-  buttonSecondaryDisabledBorder: TOKEN_COLORS.grey_100,
+  buttonSecondaryDisabledBorder: TOKEN_COLORS.grey_200,
 
   buttonTertiaryText: TOKEN_COLORS.bbPurple,
   buttonTertiaryTextHover: TOKEN_COLORS.bbPink,
-  buttonTertiaryDisabledText: TOKEN_COLORS.grey_100,
+  buttonTertiaryDisabledText: TOKEN_COLORS.grey_200,
 };
 
 export const SPACING: SpacingType = {

@@ -98,9 +98,9 @@ export const COLORS: ColorsType = {
   buttonPrimaryBackgroundHover: TOKEN_COLORS.su2cOrange3,
   buttonPrimaryTextHover: TOKEN_COLORS.su2cBlack,
   buttonPrimaryBorderHover: TOKEN_COLORS.su2cOrange3,
-  buttonPrimaryDisabledBackground: TOKEN_COLORS.grey_100,
+  buttonPrimaryDisabledBackground: TOKEN_COLORS.grey_200,
   buttonPrimaryDisabledText: TOKEN_COLORS.grey_600,
-  buttonPrimaryDisabledBorder: TOKEN_COLORS.grey_100,
+  buttonPrimaryDisabledBorder: TOKEN_COLORS.grey_200,
 
   buttonSecondaryBackground: TOKEN_COLORS.white,
   buttonSecondaryText: TOKEN_COLORS.su2cOrange5,
@@ -109,12 +109,12 @@ export const COLORS: ColorsType = {
   buttonSecondaryTextHover: TOKEN_COLORS.su2cOrange5,
   buttonSecondaryBorderHover: TOKEN_COLORS.su2cOrange5,
   buttonSecondaryDisabledBackground: TOKEN_COLORS.white,
-  buttonSecondaryDisabledText: TOKEN_COLORS.grey_100,
-  buttonSecondaryDisabledBorder: TOKEN_COLORS.grey_100,
+  buttonSecondaryDisabledText: TOKEN_COLORS.grey_200,
+  buttonSecondaryDisabledBorder: TOKEN_COLORS.grey_200,
 
   buttonTertiaryText: TOKEN_COLORS.su2cOrange5,
   buttonTertiaryTextHover: TOKEN_COLORS.su2cOrange5,
-  buttonTertiaryDisabledText: TOKEN_COLORS.grey_100,
+  buttonTertiaryDisabledText: TOKEN_COLORS.grey_200,
 };
 
 export const SPACING: SpacingType = {
