@@ -1,6 +1,6 @@
 {
   "name": "@cruk/cruk-react-components",
-  "version": "3.5.1",
+  "version": "4.0.0",
   "description": "React components implementing CRUK, SU2C & Bowelbabe designs",
   "license": "UNLICENSED",
   "publishConfig": {
@@ -13,9 +13,6 @@
   "files": [
     "lib"
   ],
-  "engines": {
-    "node": "^14 || ^16 || ^18"
-  },
   "scripts": {
     "dev": "NODE_ENV=development npm i && npm run start",
     "start": "webpack server --config webpack.config.docs.js --mode development",
