@@ -72,15 +72,14 @@ const DateField = ({
         marginBottom="xxs"
         textFontFamily={typedTheme.typography.fontFamilyLabel}
       >
-        {label}{" "}
+        {label}
         {!!required && (
           <span
             style={{
               fontWeight: typedTheme.typography.fontWeightBase,
             }}
           >
-            {" "}
-            (required)
+            {` (required)`}
           </span>
         )}
       </Text>

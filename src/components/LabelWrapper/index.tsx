@@ -46,9 +46,9 @@ export const LabelWrapper = ({
       {label ? (
         <Label {...otherHTMLLabelProps}>
           <LabelText hasHintText={!!hintText}>
-            {label}{" "}
+            {label}
             {required && !hideRequiredInLabel && (
-              <RequiredText>(required)</RequiredText>
+              <RequiredText>{` (required)`}</RequiredText>
             )}
           </LabelText>
           {hintTextElement}
