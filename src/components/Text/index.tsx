@@ -33,7 +33,7 @@ export type TextProps = SpacingProps &
     /** font size FontSizeType t-shirt sizes  */
     textSize?: FontSizeType;
     /** font weight theme.typography{fontWeightHeavy/fontWeightNormal/fontWeightMedium/fontWeightLight/fontWeightVLight} is better than a random number */
-    textWeight?: number;
+    textWeight?: number | string;
     /** font family theme.typography{fontFamilyBase/fontFamilyHeadings} is better than a random string */
     textFontFamily?: string;
     /** styled-components polymorphism where you can set this to "span", "p" or "h2" it default to "p" */

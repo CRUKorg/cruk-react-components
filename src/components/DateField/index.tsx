@@ -68,7 +68,7 @@ const DateField = ({
     <Fieldset>
       <Text
         as="legend"
-        textWeight={parseInt(typedTheme.typography.fontWeightLabels, 10)}
+        textWeight={typedTheme.typography.fontWeightLabels || 700}
         marginBottom="xxs"
         textFontFamily={typedTheme.typography.fontFamilyLabel}
       >
@@ -76,7 +76,7 @@ const DateField = ({
         {!!required && (
           <span
             style={{
-              fontWeight: parseInt(typedTheme.typography.fontWeightBase, 10),
+              fontWeight: typedTheme.typography.fontWeightBase,
             }}
           >
             {" "}

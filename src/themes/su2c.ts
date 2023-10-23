@@ -135,7 +135,7 @@ export const TYPOGRAPHY: TypographyType = {
     {
       family: "itc_avant_garde_pro",
       urlWoff: `${SITE_CONFIG.assetPath}fonts/itc_-_itcavantgardepro-bold-webfont.woff`,
-      fontWeight: "700",
+      fontWeight: 700,
     },
   ],
   fontFamilyHeadings: "itc_avant_garde_pro,Arial,sans-serif",
@@ -148,10 +148,10 @@ export const TYPOGRAPHY: TypographyType = {
   linkTextDecoration: "none",
   headerLineHeight: "1.5em",
   headerTextTransform: "uppercase",
-  fontWeightBase: "400",
-  fontWeightLinks: "700",
-  fontWeightButtons: "700",
-  fontWeightLabels: "600",
+  fontWeightBase: 400,
+  fontWeightLinks: 700,
+  fontWeightButtons: 700,
+  fontWeightLabels: 600,
   LinkPrimaryTextDecoration: "none",
   LinkLetterSpacing: "0px",
 };

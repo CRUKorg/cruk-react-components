@@ -1,5 +1,5 @@
 import { AnchorHTMLAttributes } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import Text, { TextProps } from "../Text";
 

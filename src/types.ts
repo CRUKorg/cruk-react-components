@@ -191,27 +191,27 @@ export type CustomFontType = {
   family: string;
   urlWoff?: string;
   urlWoff2?: string;
-  fontWeight: string;
+  fontWeight: string | number;
 };
 
 export type TypographyType = {
   customFonts: CustomFontType[];
+  fontWeightBase: string | number;
+  fontWeightHeadings: string | number;
+  fontWeightLabels: string | number;
+  fontWeightLinks: string | number;
+  fontWeightButtons: string | number;
   fontFamilyBase: string;
-  fontWeightBase: string;
-  fontWeightHeadings: string;
-  fontWeightLabels: string;
-  fontWeightLinks: string;
-  fontWeightButtons: string;
   fontFamilyHeadings: string;
   fontFamilyButtons: string;
   fontFamilyLinks: string;
   fontFamilyLabel: string;
   fontSizeBase: string;
-  fontWeightHeavy: string;
-  fontWeightNormal: string;
-  fontWeightMedium: string;
-  fontWeightLight: string;
-  fontWeightVLight: string;
+  fontWeightHeavy: string | number;
+  fontWeightNormal: string | number;
+  fontWeightMedium: string | number;
+  fontWeightLight: string | number;
+  fontWeightVLight: string | number;
   linkTextDecoration: string;
   LinkPrimaryTextDecoration: string;
   LinkLetterSpacing: string;
