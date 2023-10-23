@@ -128,6 +128,7 @@ export type ColorsType = {
   backgroundLight: string;
   backgroundLightColor: string;
   backgroundMid: string;
+  backgroundMidLight: string;
 
   loaderColor1: string;
   loaderColor2: string;

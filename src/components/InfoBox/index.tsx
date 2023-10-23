@@ -62,7 +62,7 @@ const InfoBox: FunctionComponent<InfoBoxProps> = forwardRef(
     };
 
     const backgroundColorOrDefault =
-      spacingAndHTMLElementProps.backgroundColor || theme.tokenColors.grey_100;
+      spacingAndHTMLElementProps.backgroundColor || theme.tokenColors.grey_200;
 
     return (
       <StyledInfoBox

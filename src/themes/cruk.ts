@@ -71,9 +71,8 @@ export const TOKEN_COLORS: TokenColorsType = {
   cyan_600: "#009CEE",
   cyan_700: "#006DA7",
 
-  grey_50: "#F5F5F5",
-  grey_100: "#E6E6E6",
-
+  grey_100: "#F2F2F2",
+  grey_200: "#E6E6E6",
   grey_300: "#c6c6c6", // used for shadows
 
   grey_600: "#666666",
@@ -98,7 +97,7 @@ export const COLORS: ColorsType = {
   textOnTertiary: TOKEN_COLORS.white,
   textHeaderDefault: TOKEN_COLORS.black,
 
-  disabled: TOKEN_COLORS.grey_100,
+  disabled: TOKEN_COLORS.grey_200,
   danger: TOKEN_COLORS.red,
   warning: TOKEN_COLORS.yellow,
   success: TOKEN_COLORS.green,
@@ -114,10 +113,10 @@ export const COLORS: ColorsType = {
 
   progressBar: TOKEN_COLORS.navy_600,
   progressBarSecondary: TOKEN_COLORS.magenta_700,
-  progressBarBackground: TOKEN_COLORS.grey_100,
+  progressBarBackground: TOKEN_COLORS.grey_200,
   circularProgress: TOKEN_COLORS.cyan_600,
   circularProgressSecondary: TOKEN_COLORS.magenta_700,
-  circularProgressBackground: TOKEN_COLORS.grey_100,
+  circularProgressBackground: TOKEN_COLORS.grey_200,
 
   buttonPrimaryBackground: TOKEN_COLORS.magenta_700,
   buttonPrimaryText: TOKEN_COLORS.white,
@@ -125,9 +124,9 @@ export const COLORS: ColorsType = {
   buttonPrimaryBackgroundHover: TOKEN_COLORS.magenta_800,
   buttonPrimaryTextHover: TOKEN_COLORS.white,
   buttonPrimaryBorderHover: TOKEN_COLORS.magenta_800,
-  buttonPrimaryDisabledBackground: TOKEN_COLORS.grey_100,
+  buttonPrimaryDisabledBackground: TOKEN_COLORS.grey_200,
   buttonPrimaryDisabledText: TOKEN_COLORS.grey_600,
-  buttonPrimaryDisabledBorder: TOKEN_COLORS.grey_100,
+  buttonPrimaryDisabledBorder: TOKEN_COLORS.grey_200,
 
   buttonSecondaryBackground: TOKEN_COLORS.white,
   buttonSecondaryText: TOKEN_COLORS.magenta_700,
@@ -135,9 +134,9 @@ export const COLORS: ColorsType = {
   buttonSecondaryBackgroundHover: TOKEN_COLORS.magenta_100,
   buttonSecondaryTextHover: TOKEN_COLORS.magenta_700,
   buttonSecondaryBorderHover: TOKEN_COLORS.magenta_100,
-  buttonSecondaryDisabledBackground: TOKEN_COLORS.grey_100,
+  buttonSecondaryDisabledBackground: TOKEN_COLORS.grey_200,
   buttonSecondaryDisabledText: TOKEN_COLORS.grey_600,
-  buttonSecondaryDisabledBorder: TOKEN_COLORS.grey_100,
+  buttonSecondaryDisabledBorder: TOKEN_COLORS.grey_200,
 
   buttonTertiaryText: TOKEN_COLORS.magenta_700,
   buttonTertiaryTextHover: TOKEN_COLORS.magenta_800,
@@ -154,29 +153,30 @@ export const COLORS: ColorsType = {
   headerBackground: TOKEN_COLORS.white,
   backgroundLight: TOKEN_COLORS.white,
   backgroundLightColor: TOKEN_COLORS.navy_100,
-  backgroundMid: TOKEN_COLORS.grey_100,
+  backgroundMid: TOKEN_COLORS.grey_200,
+  backgroundMidLight: TOKEN_COLORS.grey_100,
 
   loaderColor1: TOKEN_COLORS.navy_600,
   loaderColor2: TOKEN_COLORS.magenta_600,
   loaderColor3: TOKEN_COLORS.cyan_600,
 
   paginationText: TOKEN_COLORS.navy_600,
-  paginationActive: TOKEN_COLORS.grey_100,
+  paginationActive: TOKEN_COLORS.grey_200,
   paginationBackground: TOKEN_COLORS.navy_600,
 
   footerBackground: TOKEN_COLORS.backgroundLight,
 
-  headerBorder: TOKEN_COLORS.grey_100,
+  headerBorder: TOKEN_COLORS.grey_200,
   headerTaglineText: TOKEN_COLORS.black,
 
-  stepBorder: TOKEN_COLORS.grey_100,
+  stepBorder: TOKEN_COLORS.grey_200,
   stepBackground: TOKEN_COLORS.white,
 
   popoverBackground: TOKEN_COLORS.white,
 
-  textInputExtraInfo: TOKEN_COLORS.grey_100,
+  textInputExtraInfo: TOKEN_COLORS.grey_200,
 
-  totaliserBubbleColor: TOKEN_COLORS.grey_100,
+  totaliserBubbleColor: TOKEN_COLORS.grey_200,
   totaliserBubbleTextColor: TOKEN_COLORS.black,
   totaliserBubbleTotalColor: TOKEN_COLORS.navy_600,
 
