@@ -18,12 +18,13 @@ export type TextStyledProps = SpacingProps & {
   as?: ElementType;
   wordBreak?: WordBreakType;
   overflowWrap?: OverflowWrapType;
+  textFontFamily?: string;
   theme: ThemeType;
 };
 
 export const TextStyled = styled.p<TextStyledProps>`
-  font-family: ${({ theme }: TextStyledProps) =>
-    theme.typography.fontFamilyBase};
+  font-family: ${({ textFontFamily, theme }: TextStyledProps) =>
+    textFontFamily || theme.typography.fontFamilyBase};
   word-break: ${({ wordBreak }: TextStyledProps) => wordBreak || "normal"};
   overflow-wrap: ${({ overflowWrap }: TextStyledProps) =>
     overflowWrap || "break-word"};
@@ -41,7 +42,7 @@ export const TextStyled = styled.p<TextStyledProps>`
   }: TextStyledProps) => (textSize ? fontSizes[textSize] : m)};
   line-height: ${({ theme }: TextStyledProps) => theme.typography.lineHeight};
   font-weight: ${({ textWeight, theme }: TextStyledProps) =>
-    textWeight || theme.typography.fontWeightNormal};
+    textWeight || theme.typography.fontWeightBase};
   padding: 0;
   margin: 0;
   margin-bottom: ${({

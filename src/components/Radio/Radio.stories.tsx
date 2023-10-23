@@ -16,6 +16,7 @@ const FullComponentWithRadios = (args: RadioProps) => {
   const themeName = themeTyped.name;
 
   const hasError = !!args.hasError;
+
   return (
     <fieldset style={{ border: "none" }}>
       <Radio

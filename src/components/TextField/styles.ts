@@ -23,6 +23,7 @@ type StyledInputProps = {
 };
 
 export const Extra = styled.span<ExtraProps>`
+  box-sizing: border-box;
   display: block;
   background-color: ${({ theme }: ExtraProps) =>
     theme.colors.textInputExtraInfo};
@@ -38,6 +39,7 @@ export const Extra = styled.span<ExtraProps>`
 `;
 
 export const ExtraLeft = styled(Extra)`
+  box-sizing: border-box;
   width: auto;
   vertical-align: middle;
   height: ${MIN_HEIGHT};
@@ -49,6 +51,7 @@ export const ExtraLeft = styled(Extra)`
 `;
 
 export const ExtraRight = styled(Extra)`
+  box-sizing: border-box;
   width: auto;
   border: ${({ theme }: ExtraProps) =>
     `solid ${theme.utilities.inputBorderWidth} ${theme.colors.textInputBorder}`};
@@ -66,11 +69,13 @@ export const ExtraRight = styled(Extra)`
 `;
 
 export const ExtraWrapper = styled.span`
+  box-sizing: border-box;
   display: flex;
   align-items: center;
 `;
 
 export const StyledInputWrapper = styled.span<StyledInputProps>`
+  box-sizing: border-box;
   position: relative;
   display: block;
   flex: 1 1;
@@ -103,19 +108,21 @@ export const StyledInputWrapper = styled.span<StyledInputProps>`
 `;
 
 export const StyledInput = styled.input<StyledInputProps>`
-  background-color: ${({ theme }: ExtraProps) => theme.colors.backgroundLight};
+  box-sizing: border-box;
+  background-color: ${({ theme }: StyledInputProps) =>
+    theme.colors.backgroundLight};
   background-image: none;
   border: ${({ hasError, theme }: StyledInputProps) =>
     `solid ${theme.utilities.inputBorderWidth} ${
       hasError ? theme.colors.textError : theme.colors.textInputBorder
     }`};
   border-radius: 0;
-  color: ${({ theme }: ExtraProps) => theme.colors.textDark};
+  color: ${({ theme }: StyledInputProps) => theme.colors.textDark};
   display: block;
-  font-size: ${({ theme }: ExtraProps) => theme.fontSizes.m};
-  line-height: ${({ theme }: ExtraProps) => theme.typography.lineHeight};
+  font-size: ${({ theme }: StyledInputProps) => theme.fontSizes.m};
+  line-height: ${({ theme }: StyledInputProps) => theme.typography.lineHeight};
   min-width: 3em;
-  padding: ${({ theme }: ExtraProps) =>
+  padding: ${({ theme }: StyledInputProps) =>
     `calc((${MIN_HEIGHT} - (${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xs}`};
 
   /* Make sure text doesn't go behind the valid indicatior icon */
@@ -127,12 +134,15 @@ export const StyledInput = styled.input<StyledInputProps>`
 
   width: 100%;
   transition: border-color 150ms linear;
+  &:hover {
+    border-color: ${({ theme }: StyledInputProps) => theme.colors.secondary};
+  }
   &:disabled {
-    border-color: ${({ theme }: ExtraProps) => theme.colors.disabled};
-    color: ${({ theme }: ExtraProps) => theme.colors.disabled};
+    border-color: ${({ theme }: StyledInputProps) => theme.colors.disabled};
+    color: ${({ theme }: StyledInputProps) => theme.colors.disabled};
   }
 
-  ${({ theme }: ExtraProps) =>
+  ${({ theme }: StyledInputProps) =>
     !theme.utilities.useDefaultFocusRect
       ? css`
           &:focus {

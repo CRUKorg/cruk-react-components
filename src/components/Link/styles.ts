@@ -1,24 +1,9 @@
 import { AnchorHTMLAttributes } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import Text, { TextProps } from "../Text";
-import IconFa from "../IconFa";
 
 import { ThemeType, ColorKeyType } from "../../types";
-
-type ThemeProp = {
-  theme: ThemeType;
-};
-
-export const ChevyWithLevee = styled(IconFa)`
-  margin-right: ${({
-    theme: {
-      spacing: { xxs },
-    },
-  }: ThemeProp) => xxs};
-  stroke: currentColor;
-  stroke-width: 70;
-`;
 
 type StyledLinkProps = AnchorHTMLAttributes<HTMLElement> &
   TextProps & {
@@ -52,16 +37,33 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
   text-decoration: ${({
     appearance,
     theme: {
-      typography: { linkTextDecoration },
+      typography: { linkTextDecoration, LinkPrimaryTextDecoration },
+    },
+  }: StyledLinkProps) =>
+    appearance === "primary"
+      ? LinkPrimaryTextDecoration
+      : appearance === "secondary"
+      ? "none"
+      : linkTextDecoration};
+  font-family: ${({
+    appearance,
+    theme: {
+      typography: { fontFamilyBase, fontFamilyLinks },
     },
   }: StyledLinkProps) =>
     appearance === "primary" || appearance === "secondary"
-      ? "none"
-      : linkTextDecoration};
-  font-weight: ${({ theme }: ThemeProp) =>
-    theme.utilities.useBackgroundStyleLinks
-      ? theme.typography.fontWeightHeavy
-      : theme.typography.fontWeightNormal};
+      ? fontFamilyLinks
+      : fontFamilyBase};
+  letter-spacing: ${({
+    appearance,
+    theme: {
+      typography: { LinkLetterSpacing },
+    },
+  }: StyledLinkProps) =>
+    appearance === "primary" || appearance === "secondary"
+      ? LinkLetterSpacing
+      : "0px"};
+
   background: ${({
     appearance,
     theme,
@@ -75,17 +77,8 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
   background-repeat: no-repeat;
   background-position-y: calc(100%);
   background-size: 100% 2px;
-
-  ${({
-    appearance,
-    theme: {
-      typography: { fontWeightHeavy },
-    },
-  }: StyledLinkProps) =>
-    (appearance === "primary" || appearance === "secondary") &&
-    css`
-      font-weight: ${fontWeightHeavy};
-    `}
+  font-weight: ${({ theme }: StyledLinkProps) =>
+    theme.typography.fontWeightLinks}};
 
   &:focus-visible {
     outline: auto;
@@ -114,3 +107,5 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
         : colors.linkColorHover};
   }
 `;
+
+export default StyledLink;

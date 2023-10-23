@@ -11,7 +11,7 @@ export default {
   component: UserBlock,
   args: {
     name: "Sam Smith",
-    size: "s",
+    size: "m",
   },
   tags: ["autodocs"],
 };

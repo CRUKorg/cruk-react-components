@@ -190,7 +190,7 @@ export const CircleSvg = styled.svg`
 `;
 
 export const EmptyCircle = styled.circle`
-  stroke: ${({ theme }: ThemeProp) => theme.tokenColors.grey_200};
+  stroke: ${({ theme }: ThemeProp) => theme.tokenColors.grey_100};
 `;
 
 export const FullCircle = styled.circle<CircleProps>`

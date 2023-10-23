@@ -35,4 +35,4 @@ Links are for wrapping plain text or elements to create clickable link. This is 
 | textHoverColor | string                     |         | 'currentColor'        | Hover color of text                                                                 |
 | textAlign      | 'left' /'right' / 'center' |         | 'left'                | Horizontal text alignment                                                           |
 | textSize       | FontSizeType               |         | 'm'                   | Font size uses t-shirt sizes of s/m/l etc                                           |
-| textWeight     | number                     |         | '500'                 | Font weight                                                                         |
+| textWeight     | number / string            |         | '500'                 | Font weight                                                                         |

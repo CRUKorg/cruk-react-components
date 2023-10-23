@@ -82,6 +82,9 @@ export const COLORS: ColorsType = {
   backgroundLightColor: TOKEN_COLORS.bbPastelGreen,
 
   collapseHeaderColor: TOKEN_COLORS.bbPink,
+  check: TOKEN_COLORS.bbPurple,
+
+  headerTaglineText: TOKEN_COLORS.bbPurple,
 
   loaderColor1: TOKEN_COLORS.bbPurple,
   loaderColor2: TOKEN_COLORS.bbLightGreen,
@@ -100,9 +103,9 @@ export const COLORS: ColorsType = {
   buttonPrimaryBackgroundHover: TOKEN_COLORS.bbPastelPink,
   buttonPrimaryTextHover: TOKEN_COLORS.bbPurple,
   buttonPrimaryBorderHover: TOKEN_COLORS.bbPastelPink,
-  buttonPrimaryDisabledBackground: TOKEN_COLORS.grey_300,
+  buttonPrimaryDisabledBackground: TOKEN_COLORS.grey_100,
   buttonPrimaryDisabledText: TOKEN_COLORS.grey_800,
-  buttonPrimaryDisabledBorder: TOKEN_COLORS.grey_300,
+  buttonPrimaryDisabledBorder: TOKEN_COLORS.grey_100,
 
   buttonSecondaryBackground: TOKEN_COLORS.white,
   buttonSecondaryText: TOKEN_COLORS.bbPurple,
@@ -110,13 +113,13 @@ export const COLORS: ColorsType = {
   buttonSecondaryBackgroundHover: TOKEN_COLORS.bbPastelPink,
   buttonSecondaryTextHover: TOKEN_COLORS.bbPurple,
   buttonSecondaryBorderHover: TOKEN_COLORS.bbPastelYellow,
-  buttonSecondaryDisabledBackground: TOKEN_COLORS.grey_300,
+  buttonSecondaryDisabledBackground: TOKEN_COLORS.grey_100,
   buttonSecondaryDisabledText: TOKEN_COLORS.grey_800,
-  buttonSecondaryDisabledBorder: TOKEN_COLORS.grey_300,
+  buttonSecondaryDisabledBorder: TOKEN_COLORS.grey_100,
 
   buttonTertiaryText: TOKEN_COLORS.bbPurple,
   buttonTertiaryTextHover: TOKEN_COLORS.bbPink,
-  buttonTertiaryDisabledText: TOKEN_COLORS.grey_300,
+  buttonTertiaryDisabledText: TOKEN_COLORS.grey_100,
 };
 
 export const SPACING: SpacingType = {
@@ -135,13 +138,27 @@ export const TYPOGRAPHY: TypographyType = {
   ...defaultTheme.typography,
   customFonts: [
     {
-      family: "juana-semibold",
+      family: "juana",
       urlWoff: `${SITE_CONFIG.assetPath}fonts/juana-semibold-webfont.woff`,
       urlWoff2: `${SITE_CONFIG.assetPath}fonts/juana-semibold-webfont.woff2`,
+      fontWeight: 600,
     },
   ],
-  fontFamilyHeadings: "juana-semibold,Arial,sans-serif",
+  fontFamilyHeadings: "juana,Arial,sans-serif",
+  fontFamilyLinks: "juana,Arial,sans-serif",
+  fontFamilyButtons: "juana,Arial,sans-serif",
+  fontFamilyBase:
+    "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
+  fontFamilyLabel:
+    "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
   // headerLineHeight: "1.5em",
+  fontWeightBase: 400,
+  fontWeightLinks: 600,
+  fontWeightHeadings: 600,
+  fontWeightButtons: 600,
+  fontWeightLabels: 600,
+  LinkPrimaryTextDecoration: "none",
+  LinkLetterSpacing: "0px",
 };
 
 const theme: ThemeType = {

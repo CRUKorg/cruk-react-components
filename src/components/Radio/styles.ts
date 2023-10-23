@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { ThemeType } from "../../types";
 
 const RADIO_SIZE = "1.5rem";
-const RADIO_INNER_SIZE = "1rem";
+const RADIO_INNER_SIZE = "0.75rem";
 const BUTTON_HEIGHT = "3em";
 
 type ThemeProp = {
@@ -58,58 +58,71 @@ type StyledLabelProps = {
 };
 
 export const StyledLabel = styled.label<StyledLabelProps>`
+  box-sizing: border-box;
+  *,
+  *:after,
+  *:before {
+    box-sizing: border-box;
+  }
+  line-height: ${({ theme }: StyledLabelProps) => theme.typography.lineHeight};
+  font-size: ${({ theme }: StyledLabelProps) => theme.typography.fontSizeBase};
+  font-family: ${({ theme }: StyledLabelProps) =>
+    theme.typography.fontFamilyBase};
+
   background-color: ${({ theme }: StyledLabelProps) =>
     theme.colors.backgroundLight};
   width: 100%;
   position: relative;
-  border-width: ${({ theme }: StyledLabelProps) =>
-    theme.utilities.inputBorderWidth};
-  border-style: solid;
-  border-color: ${({ disabled, hasError, theme, checked }: StyledLabelProps) =>
-    disabled
-      ? theme.colors.disabled
-      : hasError
-      ? theme.colors.textError
-      : checked && !theme.utilities.useDefaultFocusRect
-      ? theme.colors.primary
-      : theme.colors.inputBorder};
+
   cursor: ${({ disabled }: StyledLabelProps) =>
     disabled ? "not-allowed" : "pointer"};
   display: inline-block;
-  font-weight: ${({ checked }: StyledLabelProps) =>
-    checked ? "bold" : "normal"};
+
   color: ${({ theme, disabled }: StyledLabelProps) =>
     disabled ? theme.colors.disabled : theme.colors.textDark};
   padding: ${({ theme }: StyledLabelProps) =>
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
   vertical-align: middle;
 
-  &:focus ~ ${CheckWrapper} ${Check} {
-    outline: 2px solid #7aacfe; /* for non-webkit browsers */
-    outline: 5px auto -webkit-focus-ring-color;
-  }
-
-  ${({ theme, disabled: isDisabled }: StyledLabelProps) =>
+  ${({ theme, disabled: isDisabled, checked, hasError }: StyledLabelProps) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
           min-height: 2rem;
 
+          ${CheckWrapper} ${Check} {
+            border: solid 2px
+              ${({
+                theme: {
+                  colors: { check, disabled, inputBorder, danger },
+                },
+              }: ThemeProp) =>
+                isDisabled
+                  ? disabled
+                  : hasError
+                  ? danger
+                  : checked
+                  ? check
+                  : inputBorder};
+          }
+
           &:hover ${CheckWrapper} ${Check} {
             border: solid 2px
               ${({
                 theme: {
-                  colors: { primary, disabled },
+                  colors: { check, disabled },
                 },
-              }: ThemeProp) => (isDisabled ? disabled : primary)};
+              }: ThemeProp) => (isDisabled ? disabled : check)};
           }
         `}
 `;
 
 export const VerticalAlign = styled.span`
+  display: inline;
   vertical-align: middle;
   line-height: 100%;
   background-color: ${({ theme }: ThemeProp) => theme.colors.backgroundLight};
+  min-height: 2em;
   z-index: 1;
 `;
 
@@ -129,6 +142,13 @@ type StyledInputType = {
 };
 
 export const StyledInput = styled.input`
+  *,
+  *:after,
+  *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
   margin-right: ${({
     theme: {
       spacing: { xxs },
@@ -168,7 +188,7 @@ export const StyledInput = styled.input`
           &:checked ~ ${CheckWrapper} ${Check}::before {
             background: ${disabled
               ? theme.colors.disabled
-              : theme.colors.primary};
+              : theme.colors.check};
           }
         `}
 `;

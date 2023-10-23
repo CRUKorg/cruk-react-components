@@ -6,12 +6,11 @@ import React, {
   ReactNode,
 } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 import defaultTheme from "../../themes/cruk";
 
 import { TextProps } from "../Text";
-import { StyledLink, ChevyWithLevee } from "./styles";
+import { StyledLink } from "./styles";
 
 export type LinkProps = Omit<AnchorHTMLAttributes<HTMLElement>, "nonce"> &
   Omit<TextProps, "as" | "ref" | "nonce"> & {
@@ -62,9 +61,6 @@ export const Link = forwardRef((props: LinkProps, ref?: Ref<HTMLElement>) => {
         forwardedAs={forwardAs}
         ref={ref}
       >
-        {props.appearance === "primary" && (
-          <ChevyWithLevee faIcon={faChevronRight} size="0.8em" />
-        )}
         {props.children}
       </StyledLink>
     </ThemeProvider>

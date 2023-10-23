@@ -5,6 +5,11 @@ type ThemeProps = {
   theme: ThemeType;
 };
 export const StyledFooter = styled.footer`
+  ${({
+    theme: {
+      colors: { inputBorder },
+    },
+  }: ThemeProps) => inputBorder};
   box-sizing: border-box;
   display: block;
   position: relative;
@@ -37,6 +42,7 @@ export const FooterContentWrapper = styled.div`
 `;
 
 export const FooterSection = styled.div`
+  box-sizing: border-box;
   display: inline-block;
   padding: ${({
     theme: {
@@ -83,8 +89,6 @@ export const FooterSectionLinks = styled(FooterSection)`
 export const StyledNav = styled.nav`
   display: flex;
   flex-direction: column;
-
-  /* TODO: make this work with themes currently there is no difference, will fix when themes are strongly typed */
   a {
     font-size: ${({
       theme: {
@@ -93,9 +97,9 @@ export const StyledNav = styled.nav`
     }: ThemeProps) => s};
     font-weight: ${({
       theme: {
-        typography: { fontWeightHeavy },
+        typography: { fontWeightLinks },
       },
-    }: ThemeProps) => fontWeightHeavy};
+    }: ThemeProps) => fontWeightLinks};
   }
 `;
 

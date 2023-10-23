@@ -4,7 +4,7 @@ import { useTheme, ThemeProvider } from "styled-components";
 import Text from "../Text";
 import defaultTheme from "../../themes/cruk";
 
-import { LabelText, Label } from "./styles";
+import { LabelText, Label, RequiredText } from "./styles";
 
 type LabelWrapperProps = LabelHTMLAttributes<HTMLLabelElement> & {
   /** label text */
@@ -46,8 +46,10 @@ export const LabelWrapper = ({
       {label ? (
         <Label {...otherHTMLLabelProps}>
           <LabelText hasHintText={!!hintText}>
-            {label}{" "}
-            {required && !hideRequiredInLabel && <span>(required)</span>}
+            {label}
+            {required && !hideRequiredInLabel && (
+              <RequiredText>{` (required)`}</RequiredText>
+            )}
           </LabelText>
           {hintTextElement}
           {children}

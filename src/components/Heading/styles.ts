@@ -24,17 +24,22 @@ const StyledHeading = (props: StyledHeadingProps) => css`
       typography: { fontFamilyHeadings },
     },
   }: StyledHeadingProps) => fontFamilyHeadings};
+  font-weight: ${({
+    theme: {
+      typography: { fontWeightHeadings },
+    },
+  }: StyledHeadingProps) => fontWeightHeadings};
   word-break: ${() => props.wordBreak || "normal"};
   overflow-wrap: ${() => props.overflowWrap || "break-word"};
   font-weight: ${({
     theme: {
-      typography: { fontWeightMedium },
+      typography: { fontWeightHeadings },
     },
-  }: StyledHeadingProps) => fontWeightMedium};
+  }: StyledHeadingProps) => fontWeightHeadings};
   color: ${({ theme: { colors }, textColor }: StyledHeadingProps) =>
     textColor && typeof colors[textColor as ColorKeyType] !== "undefined"
       ? colors[textColor as ColorKeyType]
-      : textColor || colors.textDark};
+      : textColor || colors.textHeaderDefault};
   line-height: ${({
     theme: {
       typography: { headerLineHeight },
@@ -155,7 +160,7 @@ export const H1 = styled.h1<StyledHeadingProps>`
       theme.breakpoint.desktop}) {
     font-size: ${({ theme, textSize }: StyledHeadingProps) =>
       desktopFontSize(textSize || null, theme.fontSizes.xxxxl, theme)};
-  } ;
+  }
 `;
 
 export const H2 = styled.h2<StyledHeadingProps>`

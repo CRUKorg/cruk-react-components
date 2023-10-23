@@ -2,6 +2,12 @@ import styled, { css } from "styled-components";
 import { ThemeType } from "../../types";
 
 export const StepWrapper = styled.div`
+  box-sizing: border-box;
+  *,
+  *:after,
+  *:before {
+    box-sizing: border-box;
+  }
   text-align: center;
   text-transform: capitalize;
 `;
@@ -89,6 +95,7 @@ export const StepItem = styled.li<StepItemProps>`
   display: flex;
   flex-direction: column;
   position: relative;
+  font-family: ${({ theme }: ThemeProps) => theme.typography.fontFamilyBase};
 
   ${(props) =>
     props.active &&

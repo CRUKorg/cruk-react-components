@@ -28,6 +28,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   height: min-content;
   display: inline-block;
   vertical-align: middle;
+
   padding: ${({ theme, isIconButton }: StyledButtonProps) =>
     isIconButton
       ? "0"
@@ -53,14 +54,14 @@ export const StyledButton = styled.button<StyledButtonProps>`
   }: StyledButtonProps) => m};
   font-family: ${({
     theme: {
-      typography: { fontFamilyHeadings },
+      typography: { fontFamilyButtons },
     },
-  }: StyledButtonProps) => fontFamilyHeadings};
+  }: StyledButtonProps) => fontFamilyButtons};
   font-weight: ${({
     theme: {
-      typography: { fontWeightMedium },
+      typography: { fontWeightButtons },
     },
-  }: StyledButtonProps) => fontWeightMedium};
+  }: StyledButtonProps) => fontWeightButtons};
   text-align: center;
   text-transform: ${({ theme }: StyledButtonProps) =>
     theme.button.textTransform};

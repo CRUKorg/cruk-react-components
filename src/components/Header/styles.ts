@@ -55,6 +55,7 @@ type HeaderStickyProps = {
 };
 
 export const HeaderStickyContainer = styled.div<HeaderStickyProps>`
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
   padding: 0 ${HEADER_PADDING};
@@ -89,6 +90,7 @@ export const HeaderStickyContainer = styled.div<HeaderStickyProps>`
 `;
 
 export const HeaderMainContent = styled.div<{ fullWidth?: boolean }>`
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -174,17 +176,13 @@ export const Tagline = styled.p<{ isSmall?: boolean; isSticky?: boolean }>`
   flex: 1 1 auto;
   font-family: ${({ theme }: StyledHeaderProps) =>
     theme.typography.fontFamilyHeadings};
-  font-weight: ${({
-    theme: {
-      typography: { fontWeightLight },
-    },
-  }: StyledHeaderProps) => fontWeightLight};
+
   font-size: ${({
     theme: {
       fontSizes: { xl },
     },
   }: StyledHeaderProps) => xl};
-  color: ${({ theme }: StyledHeaderProps) => theme.colors.primary};
+  color: ${({ theme }: StyledHeaderProps) => theme.colors.headerTaglineText};
   text-align: center;
   opacity: 0;
   transition: opacity ${ANIMATION_SPEED} ease;

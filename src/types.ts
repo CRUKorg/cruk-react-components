@@ -71,6 +71,7 @@ export type ColorsType = {
   textOnPrimary: string;
   textOnSecondary: string;
   textOnTertiary: string;
+  textHeaderDefault: string;
 
   disabled: string;
   danger: string;
@@ -79,10 +80,10 @@ export type ColorsType = {
   info: string;
   textError: string;
 
-  linkColor: string;
-  linkColorHover: string;
   textDark: string;
   textLight: string;
+  linkColor: string;
+  linkColorHover: string;
   linkColorSecondary: string;
   linkColorSecondaryHover: string;
 
@@ -121,6 +122,7 @@ export type ColorsType = {
 
   selectionBorder: string;
   inputBorder: string;
+  check: string;
 
   headerBackground: string;
   backgroundLight: string;
@@ -138,6 +140,7 @@ export type ColorsType = {
   footerBackground: string;
 
   headerBorder: string;
+  headerTaglineText: string;
 
   stepBorder: string;
   stepBackground: string;
@@ -188,19 +191,30 @@ export type CustomFontType = {
   family: string;
   urlWoff?: string;
   urlWoff2?: string;
+  fontWeight: string | number;
 };
 
 export type TypographyType = {
-  customFonts: [CustomFontType];
+  customFonts: CustomFontType[];
+  fontWeightBase: string | number;
+  fontWeightHeadings: string | number;
+  fontWeightLabels: string | number;
+  fontWeightLinks: string | number;
+  fontWeightButtons: string | number;
   fontFamilyBase: string;
   fontFamilyHeadings: string;
+  fontFamilyButtons: string;
+  fontFamilyLinks: string;
+  fontFamilyLabel: string;
   fontSizeBase: string;
-  fontWeightHeavy: string;
-  fontWeightNormal: string;
-  fontWeightMedium: string;
-  fontWeightLight: string;
-  fontWeightVLight: string;
+  fontWeightHeavy: string | number;
+  fontWeightNormal: string | number;
+  fontWeightMedium: string | number;
+  fontWeightLight: string | number;
+  fontWeightVLight: string | number;
   linkTextDecoration: string;
+  LinkPrimaryTextDecoration: string;
+  LinkLetterSpacing: string;
   lineHeight: string;
   headerLineHeight: string;
   headerTextTransform: string;

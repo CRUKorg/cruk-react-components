@@ -41,6 +41,9 @@ const StyledSelect = styled.select<StyledSelectProps>`
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xs}`};
   width: 100%;
   transition: border-color 150ms linear;
+  &:hover {
+    border-color: ${({ theme }: StyledSelectProps) => theme.colors.secondary};
+  }
   &:disabled {
     border-color: ${({ theme }: StyledSelectProps) => theme.colors.disabled};
     color: ${({ theme }: StyledSelectProps) => theme.colors.disabled};

@@ -61,6 +61,7 @@ export const COLORS: ColorsType = {
   primary: TOKEN_COLORS.su2cOrange5,
   secondary: TOKEN_COLORS.su2cOrange5,
   tertiary: TOKEN_COLORS.su2cBlack,
+  textHeaderDefault: TOKEN_COLORS.su2cBlack,
 
   textOnPrimary: TOKEN_COLORS.su2cBlack,
 
@@ -87,6 +88,9 @@ export const COLORS: ColorsType = {
   totaliserBubbleTotalColor: TOKEN_COLORS.white,
 
   collapseHeaderColor: TOKEN_COLORS.su2cOrange5,
+  check: TOKEN_COLORS.su2cBlack,
+
+  headerTaglineText: TOKEN_COLORS.su2cOrange5,
 
   buttonPrimaryBackground: TOKEN_COLORS.su2cOrange5,
   buttonPrimaryText: TOKEN_COLORS.su2cBlack,
@@ -94,9 +98,9 @@ export const COLORS: ColorsType = {
   buttonPrimaryBackgroundHover: TOKEN_COLORS.su2cOrange3,
   buttonPrimaryTextHover: TOKEN_COLORS.su2cBlack,
   buttonPrimaryBorderHover: TOKEN_COLORS.su2cOrange3,
-  buttonPrimaryDisabledBackground: TOKEN_COLORS.grey_300,
-  buttonPrimaryDisabledText: TOKEN_COLORS.white,
-  buttonPrimaryDisabledBorder: TOKEN_COLORS.grey_300,
+  buttonPrimaryDisabledBackground: TOKEN_COLORS.grey_100,
+  buttonPrimaryDisabledText: TOKEN_COLORS.grey_600,
+  buttonPrimaryDisabledBorder: TOKEN_COLORS.grey_100,
 
   buttonSecondaryBackground: TOKEN_COLORS.white,
   buttonSecondaryText: TOKEN_COLORS.su2cOrange5,
@@ -105,12 +109,12 @@ export const COLORS: ColorsType = {
   buttonSecondaryTextHover: TOKEN_COLORS.su2cOrange5,
   buttonSecondaryBorderHover: TOKEN_COLORS.su2cOrange5,
   buttonSecondaryDisabledBackground: TOKEN_COLORS.white,
-  buttonSecondaryDisabledText: TOKEN_COLORS.grey_300,
-  buttonSecondaryDisabledBorder: TOKEN_COLORS.grey_300,
+  buttonSecondaryDisabledText: TOKEN_COLORS.grey_100,
+  buttonSecondaryDisabledBorder: TOKEN_COLORS.grey_100,
 
   buttonTertiaryText: TOKEN_COLORS.su2cOrange5,
   buttonTertiaryTextHover: TOKEN_COLORS.su2cOrange5,
-  buttonTertiaryDisabledText: TOKEN_COLORS.grey_300,
+  buttonTertiaryDisabledText: TOKEN_COLORS.grey_100,
 };
 
 export const SPACING: SpacingType = {
@@ -129,14 +133,27 @@ export const TYPOGRAPHY: TypographyType = {
   ...defaultTheme.typography,
   customFonts: [
     {
-      family: "itc_avant_garde_pro_mdbold",
+      family: "itc_avant_garde_pro",
       urlWoff: `${SITE_CONFIG.assetPath}fonts/itc_-_itcavantgardepro-bold-webfont.woff`,
+      fontWeight: 700,
     },
   ],
-  fontFamilyHeadings: "itc_avant_garde_pro_mdbold,Arial,sans-serif",
+  fontFamilyHeadings: "itc_avant_garde_pro,Arial,sans-serif",
+  fontFamilyLinks: "itc_avant_garde_pro,Arial,sans-serif",
+  fontFamilyButtons: "itc_avant_garde_pro,Arial,sans-serif",
+  fontFamilyBase:
+    "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
+  fontFamilyLabel:
+    "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
   linkTextDecoration: "none",
   headerLineHeight: "1.5em",
   headerTextTransform: "uppercase",
+  fontWeightBase: 400,
+  fontWeightLinks: 700,
+  fontWeightButtons: 700,
+  fontWeightLabels: 600,
+  LinkPrimaryTextDecoration: "none",
+  LinkLetterSpacing: "0px",
 };
 
 const theme: ThemeType = {

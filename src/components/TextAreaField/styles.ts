@@ -28,6 +28,9 @@ const StyledTextArea = styled.textarea<StyledTextareaProps>`
     `calc(${theme.typography.lineHeight} * ${lineCount})`};
 
   transition: border-color 150ms linear;
+  &:hover {
+    border-color: ${({ theme }: StyledTextareaProps) => theme.colors.secondary};
+  }
   &:disabled {
     border-color: ${({ theme }: StyledTextareaProps) => theme.colors.disabled};
     color: ${({ theme }: StyledTextareaProps) => theme.colors.disabled};

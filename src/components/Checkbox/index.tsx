@@ -60,7 +60,7 @@ const Checkbox = forwardRef(
           {theme.utilities.useDefaultFromControls ? null : (
             <CheckWrapper>
               <Check>
-                <IconFa faIcon={faCheck} color="primary" size="1.25em" />
+                <IconFa faIcon={faCheck} color="check" size="1.25em" />
               </Check>
             </CheckWrapper>
           )}

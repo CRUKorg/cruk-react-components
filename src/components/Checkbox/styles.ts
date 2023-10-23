@@ -3,6 +3,7 @@ import { ThemeType } from "../../types";
 
 const CHECK_BOX_SIZE = "1.5rem";
 const BUTTON_HEIGHT = "3em";
+const BORDER_THICKNESS = "2px";
 
 type StyledLabelProps = {
   checked: boolean;
@@ -30,7 +31,7 @@ export const CheckWrapper = styled.div`
 export const Check = styled.span`
   display: block;
   position: relative;
-  border: 1px solid ${({ theme }: ThemeProps) => theme.colors.selectionBorder};
+  border: 2px solid ${({ theme }: ThemeProps) => theme.colors.selectionBorder};
   height: ${CHECK_BOX_SIZE};
   width: ${CHECK_BOX_SIZE};
   top: 0;
@@ -42,8 +43,6 @@ export const Check = styled.span`
   overflow: hidden;
 
   svg {
-    /* asset is little wonky */
-    margin-left: 0.05rem;
     path {
       transition: transform 0.25s ease;
       transform: rotateY(90deg);
@@ -53,25 +52,24 @@ export const Check = styled.span`
 `;
 
 export const StyledLabel = styled.label<StyledLabelProps>`
+  box-sizing: border-box;
+  *,
+  *:after,
+  *:before {
+    box-sizing: border-box;
+  }
+  line-height: ${({ theme }: StyledLabelProps) => theme.typography.lineHeight};
+  font-size: ${({ theme }: ThemeProps) => theme.typography.fontSizeBase};
+  font-family: ${({ theme }: StyledLabelProps) =>
+    theme.typography.fontFamilyBase};
+
   background-color: ${({ theme }: ThemeProps) => theme.colors.backgroundLight};
   position: relative;
-  border-width: ${({ theme }: ThemeProps) => theme.utilities.inputBorderWidth};
-  border-style: solid;
-  border-color: ${({ disabled, hasError, theme, checked }: StyledLabelProps) =>
-    disabled
-      ? theme.colors.disabled
-      : hasError
-      ? theme.colors.textError
-      : checked && !theme.utilities.useDefaultFocusRect
-      ? theme.colors.primary
-      : theme.colors.inputBorder};
+
   cursor: ${({ disabled }: StyledLabelProps) =>
     disabled ? "not-allowed" : "pointer"};
   display: block;
-  font-weight: ${({ theme, checked }: StyledLabelProps) =>
-    checked || !theme.utilities.useDefaultFocusRect
-      ? theme.typography.fontWeightHeavy
-      : theme.typography.fontWeightNormal};
+
   color: ${({ theme, disabled }: StyledLabelProps) =>
     disabled ? theme.colors.disabled : theme.colors.textDark};
   padding: ${({ theme }: ThemeProps) =>
@@ -88,18 +86,35 @@ export const StyledLabel = styled.label<StyledLabelProps>`
     }
   }
 
-  ${({ theme, disabled: isDisabled }: StyledLabelProps) =>
+  ${({ theme, disabled: isDisabled, checked, hasError }: StyledLabelProps) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
           min-height: 2rem;
-          &:hover ${CheckWrapper} ${Check} {
-            border: solid 1px
+
+          ${CheckWrapper} ${Check} {
+            border: solid ${BORDER_THICKNESS}
               ${({
                 theme: {
-                  colors: { primary, disabled },
+                  colors: { check, disabled, inputBorder, danger },
                 },
-              }: ThemeProps) => (isDisabled ? disabled : primary)};
+              }: ThemeProps) =>
+                isDisabled
+                  ? disabled
+                  : hasError
+                  ? danger
+                  : checked
+                  ? check
+                  : inputBorder};
+          }
+
+          &:hover ${CheckWrapper} ${Check} {
+            border: solid ${BORDER_THICKNESS}
+              ${({
+                theme: {
+                  colors: { check, disabled },
+                },
+              }: ThemeProps) => (isDisabled ? disabled : check)};
           }
         `}
 `;

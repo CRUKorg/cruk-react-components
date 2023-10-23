@@ -1,10 +1,7 @@
 import React from "react";
 import type { Preview } from "@storybook/react";
-import { ThemeProvider } from "styled-components";
-import { withThemeFromJSXProvider } from "@storybook/addon-styling";
 
-import { su2cTheme, bowelbabeTheme, crukTheme } from "../src/components";
-import { GlobalStyle, Text } from "../src/components";
+import { Text } from "../src/components";
 
 import {
   Title,
@@ -52,7 +49,6 @@ const preview: Preview = {
               su2cTheme,
               GlobalStyle
             } from '@cruk/cruk-react-components';
-
             const component = () => {
               return (
                 <ThemeProvider theme={crukTheme}>
@@ -69,16 +65,3 @@ const preview: Preview = {
 };
 
 export default preview;
-
-export const decorators = [
-  withThemeFromJSXProvider({
-    themes: {
-      cruk: crukTheme,
-      su2c: su2cTheme,
-      bowelbabe: bowelbabeTheme,
-    },
-    defaultTheme: "cruk",
-    Provider: ThemeProvider,
-    GlobalStyles: GlobalStyle,
-  }),
-];
