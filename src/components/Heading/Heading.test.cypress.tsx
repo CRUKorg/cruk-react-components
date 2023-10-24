@@ -4,7 +4,7 @@ import React from "react";
 import { mount } from "cypress/react";
 
 import { TestThemeWrapper } from "../AllThemesWrapper";
-import { Heading, crukTheme, su2cTheme, bowelbabeTheme } from "..";
+import { Heading, crukTheme, su2cTheme, bowelbabeTheme, rflTheme } from "..";
 
 const content = () => (
   <>
@@ -28,6 +28,12 @@ const content = () => (
 describe("Heading", () => {
   it("is accessible CRUK theme", () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
+  it("is accessible RFL theme", () => {
+    mount(<TestThemeWrapper theme={rflTheme}>{content()}</TestThemeWrapper>);
     cy.injectAxe();
     cy.checkA11y("body");
   });

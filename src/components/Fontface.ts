@@ -1,5 +1,6 @@
 import { CustomFontType } from "../types";
 import crukTheme from "../themes/cruk";
+import rflTheme from "../themes/rfl";
 import su2cTheme from "../themes/su2c";
 import bowelbabeTheme from "../themes/bowelbabe";
 
@@ -24,6 +25,7 @@ const buildCustomFonts = (customFonts: Array<CustomFontType>) =>
 
 export const fontFaceStyleString = `
 ${buildCustomFonts(crukTheme.typography.customFonts)}
+${buildCustomFonts(rflTheme.typography.customFonts)}
 ${buildCustomFonts(su2cTheme.typography.customFonts)}
 ${buildCustomFonts(bowelbabeTheme.typography.customFonts)}
 `;

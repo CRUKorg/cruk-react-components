@@ -11,6 +11,7 @@ import {
   crukTheme,
   su2cTheme,
   bowelbabeTheme,
+  rflTheme,
 } from "..";
 
 const Content = () => {
@@ -72,6 +73,20 @@ describe("Pagination", () => {
     );
     cy.injectAxe();
     cy.checkA11y("body");
+  });
+
+  it("is accessible RFL theme", () => {
+    mount(
+      <TestThemeWrapper theme={rflTheme}>
+        <Content />
+      </TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body", {
+      rules: {
+        tabindex: { enabled: false }, // TODO this is disabled because this is how focus lock works and this IS what we want for a11y.
+      },
+    });
   });
 
   it("is accessible SU2C theme", () => {

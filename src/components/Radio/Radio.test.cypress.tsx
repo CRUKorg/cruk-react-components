@@ -4,7 +4,14 @@ import React from "react";
 import { mount } from "cypress/react";
 
 import { TestThemeWrapper } from "../AllThemesWrapper";
-import { Radio, Heading, su2cTheme, crukTheme, bowelbabeTheme } from "..";
+import {
+  Radio,
+  Heading,
+  su2cTheme,
+  crukTheme,
+  bowelbabeTheme,
+  rflTheme,
+} from "..";
 
 const Content = () => {
   const [selected, setSelected] = React.useState("one");
@@ -42,6 +49,16 @@ describe("Radio", () => {
   it("is accessible CRUK theme", () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>
+        <Content />
+      </TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
+  it("is accessible RFL theme", () => {
+    mount(
+      <TestThemeWrapper theme={rflTheme}>
         <Content />
       </TestThemeWrapper>
     );

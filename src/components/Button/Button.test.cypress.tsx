@@ -10,7 +10,15 @@ import {
 import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
 
 import { TestThemeWrapper } from "../AllThemesWrapper";
-import { su2cTheme, crukTheme, IconFa, Button, Box, bowelbabeTheme } from "..";
+import {
+  su2cTheme,
+  crukTheme,
+  IconFa,
+  Button,
+  Box,
+  bowelbabeTheme,
+  rflTheme,
+} from "..";
 
 const content = () => (
   <Box backgroundColor="backgroundLight" padding="none">
@@ -55,6 +63,12 @@ const content = () => (
 describe("Button", () => {
   it("is accessible CRUK theme", () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
+  it("is accessible RFL theme", () => {
+    mount(<TestThemeWrapper theme={rflTheme}>{content()}</TestThemeWrapper>);
     cy.injectAxe();
     cy.checkA11y("body");
   });

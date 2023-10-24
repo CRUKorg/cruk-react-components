@@ -5,7 +5,13 @@ import { mount } from "cypress/react";
 
 import { TestThemeWrapper, AllThemesWrapper } from "../AllThemesWrapper";
 
-import { AddressLookup, bowelbabeTheme, crukTheme, su2cTheme } from "..";
+import {
+  AddressLookup,
+  bowelbabeTheme,
+  crukTheme,
+  rflTheme,
+  su2cTheme,
+} from "..";
 
 const Content = () => (
   <fieldset>
@@ -44,6 +50,16 @@ describe("AddressLookup", () => {
   it("is accessible CRUK theme", () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>
+        <Content />
+      </TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
+  it("is accessible RFL theme", () => {
+    mount(
+      <TestThemeWrapper theme={rflTheme}>
         <Content />
       </TestThemeWrapper>
     );

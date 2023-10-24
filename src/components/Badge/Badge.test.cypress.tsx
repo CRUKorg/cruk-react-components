@@ -10,7 +10,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { TestThemeWrapper } from "../AllThemesWrapper";
-import { Badge, IconFa, su2cTheme, crukTheme, bowelbabeTheme } from "..";
+import {
+  Badge,
+  IconFa,
+  su2cTheme,
+  crukTheme,
+  bowelbabeTheme,
+  rflTheme,
+} from "..";
 
 const content = () => (
   <>
@@ -38,6 +45,12 @@ const content = () => (
 describe("Badge", () => {
   it("is accessible CRUK theme", () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
+  it("is accessible RFL theme", () => {
+    mount(<TestThemeWrapper theme={rflTheme}>{content()}</TestThemeWrapper>);
     cy.injectAxe();
     cy.checkA11y("body");
   });

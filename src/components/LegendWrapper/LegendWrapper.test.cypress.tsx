@@ -10,7 +10,9 @@ import {
   Heading,
   LegendWrapper,
   Radio,
+  bowelbabeTheme,
   crukTheme,
+  rflTheme,
   su2cTheme,
 } from "..";
 
@@ -96,6 +98,12 @@ describe("LegendWrapper", () => {
     cy.checkA11y("body");
   });
 
+  it("is accessible RFL theme", () => {
+    mount(<TestThemeWrapper theme={rflTheme}>{content()}</TestThemeWrapper>);
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
   it("is accessible SU2C theme", () => {
     mount(<TestThemeWrapper theme={su2cTheme}>{content()}</TestThemeWrapper>);
     cy.injectAxe();
@@ -104,5 +112,13 @@ describe("LegendWrapper", () => {
         "color-contrast": { enabled: false }, // TODO disabled because brand does not pass WCAG AA.
       },
     });
+  });
+
+  it("is accessible Bowelbabe theme", () => {
+    mount(
+      <TestThemeWrapper theme={bowelbabeTheme}>{content()}</TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
   });
 });

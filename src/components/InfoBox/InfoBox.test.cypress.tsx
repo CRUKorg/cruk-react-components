@@ -10,6 +10,7 @@ import {
   crukTheme,
   IconFa,
   InfoBox,
+  rflTheme,
   su2cTheme,
   Text,
 } from "..";
@@ -33,6 +34,12 @@ const content = () => (
 describe("IconFa", () => {
   it("is accessible CRUK theme", () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
+  it("is accessible RFL theme", () => {
+    mount(<TestThemeWrapper theme={rflTheme}>{content()}</TestThemeWrapper>);
     cy.injectAxe();
     cy.checkA11y("body");
   });
