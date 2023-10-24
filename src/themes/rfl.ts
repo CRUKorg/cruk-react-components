@@ -21,8 +21,7 @@ export const UTILITIES: UtilitiesType = {
 
 export const SITE_CONFIG: SiteConfigType = {
   ...defaultTheme.siteConfig,
-  logoSrc:
-    "https://rcl.assets.cancerresearchuk.org/images/logos/bowelbabe-logo-160.png",
+  logoSrc: "https://rcl.assets.cancerresearchuk.org/images/logos/rfl-sl.svg",
 };
 
 export const AVATAR: AvatarType = {
@@ -44,6 +43,7 @@ export const TOKEN_COLORS: TokenColorsType = {
 
 export const COLORS: ColorsType = {
   ...defaultTheme.colors,
+  textHeaderDefault: TOKEN_COLORS.navy_600,
 };
 
 export const SPACING: SpacingType = {
