@@ -220,7 +220,7 @@ export const TYPOGRAPHY: TypographyType = {
     },
     {
       family: "Poppins",
-      urlWoff: `${SITE_CONFIG.assetPath}fonts/Poppins-Light.woff2`,
+      urlWoff: `${SITE_CONFIG.assetPath}fonts/Poppins-Light.woff`,
       fontWeight: 300,
     },
     {
