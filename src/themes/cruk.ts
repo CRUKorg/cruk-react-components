@@ -132,7 +132,7 @@ export const COLORS: ColorsType = {
   buttonSecondaryText: TOKEN_COLORS.magenta_700,
   buttonSecondaryBorder: TOKEN_COLORS.magenta_700,
   buttonSecondaryBackgroundHover: TOKEN_COLORS.magenta_100,
-  buttonSecondaryTextHover: TOKEN_COLORS.magenta_700,
+  buttonSecondaryTextHover: TOKEN_COLORS.magenta_800,
   buttonSecondaryBorderHover: TOKEN_COLORS.magenta_100,
   buttonSecondaryDisabledBackground: TOKEN_COLORS.grey_200,
   buttonSecondaryDisabledText: TOKEN_COLORS.grey_600,
