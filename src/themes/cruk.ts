@@ -219,6 +219,11 @@ export const TYPOGRAPHY: TypographyType = {
       fontWeight: 400,
     },
     {
+      family: "Progress",
+      urlWoff: `${SITE_CONFIG.assetPath}fonts/Progress-Medium.woff`,
+      fontWeight: 500,
+    },
+    {
       family: "Poppins",
       urlWoff: `${SITE_CONFIG.assetPath}fonts/Poppins-Light.woff`,
       fontWeight: 300,

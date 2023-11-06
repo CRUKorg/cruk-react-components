@@ -60,6 +60,7 @@ export const FONT_SIZES: FontSizesType = {
 
 export const TYPOGRAPHY: TypographyType = {
   ...defaultTheme.typography,
+  fontWeightHeadings: 500,
 };
 
 const theme: ThemeType = {
