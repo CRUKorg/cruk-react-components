@@ -44,6 +44,7 @@ export const TOKEN_COLORS: TokenColorsType = {
 export const COLORS: ColorsType = {
   ...defaultTheme.colors,
   textHeaderDefault: TOKEN_COLORS.navy_600,
+  headerTaglineText: TOKEN_COLORS.navy_600,
 };
 
 export const SPACING: SpacingType = {
