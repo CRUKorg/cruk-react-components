@@ -176,7 +176,8 @@ export const Tagline = styled.p<{ isSmall?: boolean; isSticky?: boolean }>`
   flex: 1 1 auto;
   font-family: ${({ theme }: StyledHeaderProps) =>
     theme.typography.fontFamilyHeadings};
-
+  font-weight: ${({ theme }: StyledHeaderProps) =>
+    theme.typography.fontWeightHeadings};
   font-size: ${({
     theme: {
       fontSizes: { xl },

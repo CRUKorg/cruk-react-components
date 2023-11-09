@@ -4,7 +4,14 @@ import React from "react";
 import { mount } from "cypress/react";
 
 import { TestThemeWrapper } from "../AllThemesWrapper";
-import { bowelbabeTheme, Box, Checkbox, crukTheme, su2cTheme } from "..";
+import {
+  bowelbabeTheme,
+  Box,
+  Checkbox,
+  crukTheme,
+  rflTheme,
+  su2cTheme,
+} from "..";
 
 const unControlledContent = () => (
   <>
@@ -25,6 +32,16 @@ describe("Checkbox", () => {
   it("is accessible CRUK theme", () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>
+        {unControlledContent()}
+      </TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
+  it("is accessible RFL theme", () => {
+    mount(
+      <TestThemeWrapper theme={rflTheme}>
         {unControlledContent()}
       </TestThemeWrapper>
     );

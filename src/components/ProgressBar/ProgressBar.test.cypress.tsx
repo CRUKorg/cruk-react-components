@@ -4,7 +4,14 @@ import React from "react";
 import { mount } from "cypress/react";
 
 import { TestThemeWrapper } from "../AllThemesWrapper";
-import { ProgressBar, Text, crukTheme, su2cTheme, bowelbabeTheme } from "..";
+import {
+  ProgressBar,
+  Text,
+  crukTheme,
+  su2cTheme,
+  bowelbabeTheme,
+  rflTheme,
+} from "..";
 
 const content = () => (
   <>
@@ -26,6 +33,12 @@ const content = () => (
 describe("ProgressBar", () => {
   it("is accessible CRUK theme", () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
+  it("is accessible RFL theme", () => {
+    mount(<TestThemeWrapper theme={rflTheme}>{content()}</TestThemeWrapper>);
     cy.injectAxe();
     cy.checkA11y("body");
   });

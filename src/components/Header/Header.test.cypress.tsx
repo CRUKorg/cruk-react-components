@@ -4,7 +4,14 @@ import React from "react";
 import { mount } from "cypress/react";
 
 import { TestThemeWrapper } from "../AllThemesWrapper";
-import { Header, Button, crukTheme, su2cTheme, bowelbabeTheme } from "..";
+import {
+  Header,
+  Button,
+  crukTheme,
+  su2cTheme,
+  bowelbabeTheme,
+  rflTheme,
+} from "..";
 
 describe("Header Behaviour", () => {
   beforeEach(() => {
@@ -75,6 +82,21 @@ describe("Header", () => {
     cy.viewport(1000, 480); // desktop breakpoint for full size header
     mount(
       <TestThemeWrapper theme={crukTheme}>
+        <Header siteSlogan="Header slogan here">
+          <Button>Child component</Button>
+        </Header>
+        <div id="main" tabIndex={-1}>
+          blah
+        </div>
+      </TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
+  it("is accessible RFL theme", () => {
+    mount(
+      <TestThemeWrapper theme={rflTheme}>
         <Header siteSlogan="Header slogan here">
           <Button>Child component</Button>
         </Header>

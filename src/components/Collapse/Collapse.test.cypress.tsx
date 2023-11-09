@@ -4,7 +4,15 @@ import React from "react";
 import { mount } from "cypress/react";
 
 import { TestThemeWrapper } from "../AllThemesWrapper";
-import { Collapse, Box, Text, crukTheme, su2cTheme, bowelbabeTheme } from "..";
+import {
+  Collapse,
+  Box,
+  Text,
+  crukTheme,
+  su2cTheme,
+  bowelbabeTheme,
+  rflTheme,
+} from "..";
 
 const content = () => (
   <>
@@ -54,6 +62,12 @@ const content = () => (
 describe("Collapse", () => {
   it("is accessible CRUK theme", () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
+  it("is accessible RFL theme", () => {
+    mount(<TestThemeWrapper theme={rflTheme}>{content()}</TestThemeWrapper>);
     cy.injectAxe();
     cy.checkA11y("body");
   });

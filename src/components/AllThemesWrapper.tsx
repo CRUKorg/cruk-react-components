@@ -1,11 +1,15 @@
 import React, { ReactNode } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import GlobalStyle from "./GlobalStyle";
+
 import crukTheme from "../themes/cruk";
+import rflTheme from "../themes/rfl";
 import su2cTheme from "../themes/su2c";
+import bowelbabeTheme from "../themes/bowelbabe";
+
 import Box from "./Box";
+import GlobalStyle from "./GlobalStyle";
+
 import { ThemeType } from "../types";
-import { bowelbabeTheme } from ".";
 
 type TestThemeWrapperProps = {
   theme?: ThemeType;
@@ -46,6 +50,12 @@ export const AllThemesWrapper = ({ children }: AllThemesWrapperProps) => (
     <div tabIndex={0}>
       <h2>CRUK Theme:</h2>
       <ThemeProvider theme={crukTheme}>
+        {/* <GlobalStyle /> */}
+        {children}
+        <Line />
+      </ThemeProvider>
+      <h2>RFL Theme:</h2>
+      <ThemeProvider theme={rflTheme}>
         {/* <GlobalStyle /> */}
         {children}
         <Line />

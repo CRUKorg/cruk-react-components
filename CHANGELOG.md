@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.1.0] - 2023-09-11
+
+### Added
+
+- Fix RFL theme [#785](https://github.com/CRUKorg/cruk-react-components/issues/#785))
+
 ## [4.0.4] - 2023-10-30
 
 ### Fixed

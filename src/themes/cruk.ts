@@ -215,8 +215,13 @@ export const TYPOGRAPHY: TypographyType = {
   customFonts: [
     {
       family: "Progress",
-      urlWoff: `${SITE_CONFIG.assetPath}fonts/Progress-Regular.woff`,
+      urlWoff: `${SITE_CONFIG.assetPath}fonts/Progress-Regular.woff2`,
       fontWeight: 400,
+    },
+    {
+      family: "Progress",
+      urlWoff: `${SITE_CONFIG.assetPath}fonts/Progress-SemiBold.woff2`,
+      fontWeight: 600,
     },
     {
       family: "Poppins",

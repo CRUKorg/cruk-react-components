@@ -11,6 +11,7 @@ import {
   su2cTheme,
   crukTheme,
   bowelbabeTheme,
+  rflTheme,
 } from "..";
 
 const Content = () => {
@@ -47,6 +48,20 @@ describe("Modal", () => {
     );
     cy.injectAxe();
     cy.contains("Show me a modal").click();
+    cy.checkA11y("body", {
+      rules: {
+        tabindex: { enabled: false }, // TODO this is disabled because this is how focus lock works and this IS what we want for a11y.
+      },
+    });
+  });
+
+  it("is accessible RFL theme", () => {
+    mount(
+      <TestThemeWrapper theme={rflTheme}>
+        <Content />
+      </TestThemeWrapper>
+    );
+    cy.injectAxe();
     cy.checkA11y("body", {
       rules: {
         tabindex: { enabled: false }, // TODO this is disabled because this is how focus lock works and this IS what we want for a11y.

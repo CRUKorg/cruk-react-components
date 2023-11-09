@@ -4,7 +4,13 @@ import React, { ChangeEvent } from "react";
 import { mount } from "cypress/react";
 
 import { TestThemeWrapper } from "../AllThemesWrapper";
-import { RadioConsent, su2cTheme, crukTheme, bowelbabeTheme } from "..";
+import {
+  RadioConsent,
+  su2cTheme,
+  crukTheme,
+  bowelbabeTheme,
+  rflTheme,
+} from "..";
 
 const Content = () => {
   const [selectedEmail, setSelectedEmail] = React.useState("yes");
@@ -45,6 +51,16 @@ describe("RadioConsent", () => {
   it("is accessible CRUK theme", () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>
+        <Content />
+      </TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
+  it("is accessible RFL theme", () => {
+    mount(
+      <TestThemeWrapper theme={rflTheme}>
         <Content />
       </TestThemeWrapper>
     );

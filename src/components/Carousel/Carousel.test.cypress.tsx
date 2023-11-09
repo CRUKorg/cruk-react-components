@@ -5,7 +5,14 @@ import styled from "styled-components";
 import { mount } from "cypress/react";
 
 import { TestThemeWrapper } from "src/components/AllThemesWrapper";
-import { su2cTheme, crukTheme, Carousel, Text, bowelbabeTheme } from "..";
+import {
+  su2cTheme,
+  crukTheme,
+  Carousel,
+  Text,
+  bowelbabeTheme,
+  rflTheme,
+} from "..";
 
 const Item = styled.div`
   height: 200px;
@@ -54,6 +61,16 @@ describe("Carousel", () => {
   it("is accessible CRUK theme", () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>
+        <Content />
+      </TestThemeWrapper>
+    );
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
+  it("is accessible RFL theme", () => {
+    mount(
+      <TestThemeWrapper theme={rflTheme}>
         <Content />
       </TestThemeWrapper>
     );

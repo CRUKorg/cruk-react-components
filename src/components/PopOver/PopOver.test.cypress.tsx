@@ -23,6 +23,7 @@ import {
   su2cTheme,
   crukTheme,
   bowelbabeTheme,
+  rflTheme,
 } from "..";
 
 const internalContent = () => (
@@ -121,6 +122,13 @@ const content = () => (
 describe("Popover", () => {
   it("is accessible CRUK theme", () => {
     mount(<TestThemeWrapper theme={crukTheme}>{content()}</TestThemeWrapper>);
+    cy.contains("Share left").click();
+    cy.injectAxe();
+    cy.checkA11y("body");
+  });
+
+  it("is accessible RFL theme", () => {
+    mount(<TestThemeWrapper theme={rflTheme}>{content()}</TestThemeWrapper>);
     cy.contains("Share left").click();
     cy.injectAxe();
     cy.checkA11y("body");

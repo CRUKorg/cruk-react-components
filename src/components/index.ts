@@ -39,5 +39,6 @@ export { default as InfoBox } from "./InfoBox";
 export { default as bowelbabeTheme } from "../themes/bowelbabe";
 export { default as crukTheme } from "../themes/cruk";
 export { default as su2cTheme } from "../themes/su2c";
+export { default as rflTheme } from "../themes/rfl";
 
 export * from "../types";
