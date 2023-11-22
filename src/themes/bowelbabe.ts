@@ -70,6 +70,7 @@ export const COLORS: ColorsType = {
   success: TOKEN_COLORS.bbGreen,
   info: TOKEN_COLORS.bbBlue,
 
+  avatarBorder: TOKEN_COLORS.bbPurple,
   progressBar: TOKEN_COLORS.bbLightGreen,
   progressBarSecondary: TOKEN_COLORS.bbGreen,
   circularProgress: TOKEN_COLORS.bbLightGreen,
