@@ -111,6 +111,7 @@ export const COLORS: ColorsType = {
   linkColorSecondary: TOKEN_COLORS.magenta_700,
   linkColorSecondaryHover: TOKEN_COLORS.magenta_800,
 
+  avatarBorder: TOKEN_COLORS.navy_600,
   progressBar: TOKEN_COLORS.navy_600,
   progressBarSecondary: TOKEN_COLORS.magenta_700,
   progressBarBackground: TOKEN_COLORS.grey_200,

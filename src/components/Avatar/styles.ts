@@ -12,7 +12,9 @@ export const StyledAvatar = styled.img<AvatarStyledProps>`
   height: ${({ size }) => size};
   object-fit: cover;
   width: ${({ size }) => size};
-  box-shadow: ${({ theme }: AvatarStyledProps) => theme.shadows.s};
+  border-style: solid;
+  border-width: 2px;
+  border-color: ${({ theme }: AvatarStyledProps) => theme.colors.avatarBorder};
 `;
 
 export default StyledAvatar;

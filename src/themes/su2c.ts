@@ -65,6 +65,7 @@ export const COLORS: ColorsType = {
 
   textOnPrimary: TOKEN_COLORS.su2cBlack,
 
+  avatarBorder: TOKEN_COLORS.su2cBlack,
   progressBar: TOKEN_COLORS.su2cOrange5,
   progressBarSecondary: TOKEN_COLORS.su2cRed,
   circularProgress: TOKEN_COLORS.su2cOrange3,
