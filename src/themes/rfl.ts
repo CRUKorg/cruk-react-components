@@ -45,6 +45,8 @@ export const COLORS: ColorsType = {
   ...defaultTheme.colors,
   textHeaderDefault: TOKEN_COLORS.navy_600,
   headerTaglineText: TOKEN_COLORS.navy_600,
+  progressBar: TOKEN_COLORS.magenta_700,
+  progressBarSecondary: TOKEN_COLORS.navy_600,
 };
 
 export const SPACING: SpacingType = {
