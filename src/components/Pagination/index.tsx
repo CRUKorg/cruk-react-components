@@ -68,7 +68,7 @@ const Pagination = ({
       list.push(
         <PagerItem key={number}>
           <PagerLink
-            data-cta={id}
+            data-cta={id ? `${id}-${number}` : null}
             active={number === active}
             {...linkProps(number)}
             aria-label={`page ${number} of ${total}`}
@@ -114,7 +114,7 @@ const Pagination = ({
           <PagerList>
             <PagerItem key="Prev">
               <PagerLink
-                data-cta={id}
+                data-cta={id ? `${id}-prev` : null}
                 name="Prev"
                 disabled={current === 1}
                 aria-disabled={current === 1}
@@ -127,7 +127,7 @@ const Pagination = ({
             {renderPager(current, totalPages)}
             <PagerItem key="Next">
               <PagerLink
-                data-cta={id}
+                data-cta={id ? `${id}-next` : null}
                 name="Next"
                 disabled={current === totalPages}
                 aria-disabled={current === totalPages}
