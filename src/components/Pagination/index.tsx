@@ -1,4 +1,9 @@
-import React, { MouseEvent, ReactNode, TouchEvent } from "react";
+import React, {
+  HTMLAttributes,
+  MouseEvent,
+  ReactNode,
+  TouchEvent,
+} from "react";
 import { ThemeProvider, useTheme } from "styled-components";
 
 import defaultTheme from "../../themes/cruk";
@@ -19,7 +24,7 @@ export type PaginationProps = {
   /** the name of the search param in the url that is modified on page click, defaults to 'page' */
   searchParam?: string;
   children?: ReactNode;
-};
+} & HTMLAttributes<HTMLElement>;
 
 /**
  * 
@@ -35,6 +40,7 @@ const Pagination = ({
   perPage,
   searchParam = "page",
   children,
+  id,
 }: PaginationProps) => {
   const foundTheme = useTheme();
   const theme = {
@@ -62,26 +68,27 @@ const Pagination = ({
       list.push(
         <PagerItem key={number}>
           <PagerLink
+            data-cta={id ? `${id}-${number}` : null}
             active={number === active}
             {...linkProps(number)}
             aria-label={`page ${number} of ${total}`}
           >
             {number}
           </PagerLink>
-        </PagerItem>
+        </PagerItem>,
       );
     }
     const first = list.slice(0, 1).concat(
       <PagerItem key="first">
         <span>...</span>
-      </PagerItem>
+      </PagerItem>,
     );
     const last = list
       .slice(list.length - 1)
       .concat(
         <PagerItem key="last">
           <span>...</span>
-        </PagerItem>
+        </PagerItem>,
       )
       .reverse();
     pager = list.slice(0, total);
@@ -107,6 +114,7 @@ const Pagination = ({
           <PagerList>
             <PagerItem key="Prev">
               <PagerLink
+                data-cta={id ? `${id}-prev` : null}
                 name="Prev"
                 disabled={current === 1}
                 aria-disabled={current === 1}
@@ -119,6 +127,7 @@ const Pagination = ({
             {renderPager(current, totalPages)}
             <PagerItem key="Next">
               <PagerLink
+                data-cta={id ? `${id}-next` : null}
                 name="Next"
                 disabled={current === totalPages}
                 aria-disabled={current === totalPages}
