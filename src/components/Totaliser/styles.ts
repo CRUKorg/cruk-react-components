@@ -104,7 +104,7 @@ export const TotaliserWrapper = styled.div<TotaliserWrapperProps>`
 `;
 
 export const CompactWrapper = styled.div`
-  justify-content: space-between;
+  justify-content: flex-end;
   display: flex;
 `;
 

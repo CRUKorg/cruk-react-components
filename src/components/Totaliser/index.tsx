@@ -62,51 +62,56 @@ const Totaliser = ({
   const percentageOfTotal = calculatePercentRounded(+total, target || 0);
   const withAdditionalPercentageOfTotal = calculatePercentRounded(
     additionalAmount ? +total + (additionalAmount || 0) : 0,
-    target || 0
+    target || 0,
   );
 
   const summaryString = `${percentageOfTotal}% of the £${formatMoneyWithCommas(
-    target || 0
+    target || 0,
   )} target`;
 
   return (
     <TotaliserWrapper isCompact={isCompact || false} theme={theme}>
-      {isCompact ? (
-        <CompactWrapper theme={theme}>
-          <Box marginHorizontal="none" marginRight="xxs" marginBottom="none">
-            <Badge>{`£${formatMoneyWithCommas(total)}`}</Badge>
-          </Box>
-          {target !== null && (
-            <Summary>
-              <Text as="span">{summaryString}</Text>
-            </Summary>
-          )}
-        </CompactWrapper>
-      ) : (
+      {!isCompact ? (
         <BubbleWrapper theme={theme}>
           <BubbleText>Total raised</BubbleText>
           <Total>£{formatMoneyWithCommas(total)}</Total>
           <GiftAid>+ £{formatMoneyWithCommas(giftAid || 0)} Gift Aid</GiftAid>
         </BubbleWrapper>
+      ) : (
+        <Box marginHorizontal="none" marginRight="xxs" marginBottom="none">
+          <Badge>{`£${formatMoneyWithCommas(total)}`}</Badge>
+        </Box>
       )}
       {/* We don't want to show the default summaryMessage if there is no target, because the summary is associated with the target progress bar */}
       {/* However, if we explicitly pass a summaryMessage string/component, then we want to always display it even if the target is zero */}
+
       {(!!target || !!summaryMessage) && (
-        <ProgressBarWrapper isCompact={isCompact || false} theme={theme}>
-          <StyledProgressBar
-            theme={theme}
-            percentage={percentageOfTotal}
-            secondaryPercentage={withAdditionalPercentageOfTotal}
-          />
-          {!isCompact &&
-            (summaryMessage ? (
-              <Summary>{summaryMessage}</Summary>
+        <>
+          <ProgressBarWrapper isCompact={isCompact || false} theme={theme}>
+            <StyledProgressBar
+              theme={theme}
+              percentage={percentageOfTotal}
+              secondaryPercentage={withAdditionalPercentageOfTotal}
+            />
+            {!isCompact ? (
+              summaryMessage ? (
+                <Summary>{summaryMessage}</Summary>
+              ) : (
+                <Summary>
+                  <Text as="span">{summaryString}</Text>
+                </Summary>
+              )
             ) : (
-              <Summary>
-                <Text as="span">{summaryString}</Text>
-              </Summary>
-            ))}
-        </ProgressBarWrapper>
+              <CompactWrapper theme={theme}>
+                {target !== null && (
+                  <Summary>
+                    <Text as="span">{summaryString}</Text>
+                  </Summary>
+                )}
+              </CompactWrapper>
+            )}
+          </ProgressBarWrapper>
+        </>
       )}
       {children}
     </TotaliserWrapper>
