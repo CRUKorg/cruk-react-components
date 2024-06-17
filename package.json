@@ -72,7 +72,7 @@
     "@storybook/addon-interactions": "^7.5.0",
     "@storybook/addon-links": "^7.5.0",
     "@storybook/blocks": "^7.5.0",
-    "@storybook/builder-webpack5": "^7.5.0",
+    "@storybook/builder-webpack5": "^8.1.9",
     "@storybook/react": "^7.5.0",
     "@storybook/react-webpack5": "^7.5.0",
     "@storybook/testing-library": "^0.2.0",
