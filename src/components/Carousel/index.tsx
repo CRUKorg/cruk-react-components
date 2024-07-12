@@ -28,6 +28,7 @@ export type CarouselProps = {
  *
  * Lightweight carousel component that works with mouse and touch events,
  * Accepts react node array as children so will work with any html element as a child.
+ *
  * Also works with external state that holds carousel postion,
  * by accepting a starting position as a prop, whilst also accepting a handler
  * with current position as a prop triggered when carousel component is interacted with.
@@ -57,8 +58,11 @@ export const Carousel = ({
     }
     timer.current = setTimeout(() => {
       if (onPositionChanged && smoothScrolling) {
-        // we need to debounce here if we are using external state as we don't want to
-        // fire many new positions if we are scrolling past multiple cards
+        // Timer to debounce and only send the new position at the end of the scroll.
+        // When using external state which also sets start position,
+        // if scrolling to a new position past multiple cards,
+        // it would effectively scroll to the past the first adjacent card,
+        // receive the postion of the first card and stop there before it scrolls any further.
         onPositionChanged(to);
       }
     }, 500);
