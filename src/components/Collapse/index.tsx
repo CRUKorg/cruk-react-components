@@ -59,7 +59,7 @@ const Collapse = ({
 }: CollapseProps): JSX.Element => {
   const [openStatus, setOpenStatus] = useState(startOpen || false);
   const [contentHeight, setContentHeight] = useState(
-    startOpen ? "initial" : "0"
+    startOpen ? "initial" : "0",
   );
   const content = useRef<HTMLDivElement>(null);
   const transitionTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -85,7 +85,7 @@ const Collapse = ({
     } else {
       transitionTimer.current = setTimeout(
         () => setContentHeight("initial"),
-        transitionDurationSeconds * 1000
+        transitionDurationSeconds * 1000,
       );
     }
     if (onOpenChange !== undefined) {
@@ -111,7 +111,7 @@ const Collapse = ({
   }, [startOpen]);
 
   return (
-    <div>
+    <div id={id}>
       {headerComponent ? (
         <CustomHeader
           theme={theme}
