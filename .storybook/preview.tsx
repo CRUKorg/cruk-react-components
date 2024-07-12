@@ -9,16 +9,15 @@ import {
   Subtitle,
   Description,
   Primary,
-  ArgsTable,
   Stories,
   Controls,
-  PRIMARY_STORY,
+  // PRIMARY_STORY,
   Source,
 } from "@storybook/addon-docs";
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
+
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -62,6 +61,8 @@ const preview: Preview = {
       ),
     },
   },
+
+  tags: ["autodocs"]
 };
 
 export default preview;
