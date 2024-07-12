@@ -26,17 +26,23 @@ export type CarouselProps = {
 
 /**
  *
- * Light weight carousel component that works with mouse and touch events, will work with divs and much anything you chuck in children
+ * Lightweight carousel component that works with mouse and touch events,
+ * Accepts react node array as children so will work with any html element as a child.
+ * Also works with external state that holds carousel postion,
+ * by accepting a starting position as a prop, whilst also accepting a handler
+ * with current position as a prop triggered when carousel component is interacted with.
  */
 export const Carousel = ({
-  startPosition = 0,
+  startPosition,
   children,
   onPositionChanged,
   shrinkUnselectedPages = false,
   fullWidthChild = false,
 }: CarouselProps) => {
-  const [currentPosition, setCurrentPosition] = useState(startPosition);
-  const [smoothScrolling, setSmoothScrolling] = useState(true);
+  const timer = React.useRef<NodeJS.Timeout | string | number | undefined>();
+  const isStartPositionSet = typeof startPosition !== "undefined";
+  const [currentPosition, setCurrentPosition] = useState(startPosition || 0);
+  const [smoothScrolling, setSmoothScrolling] = useState(!isStartPositionSet);
   const scrollRef = useRef<HTMLUListElement>(null);
 
   // remove null children
@@ -44,12 +50,18 @@ export const Carousel = ({
 
   const setPosition = (to: number) => {
     if (currentPosition === to) return;
-
     setCurrentPosition(to);
 
-    if (onPositionChanged) {
-      onPositionChanged(to);
+    if (timer) {
+      clearTimeout(timer?.current);
     }
+    timer.current = setTimeout(() => {
+      if (onPositionChanged && smoothScrolling) {
+        // we need to debounce here if we are using external state as we don't want to
+        // fire many new positions if we are scrolling past multiple cards
+        onPositionChanged(to);
+      }
+    }, 500);
   };
 
   const next = () => {
@@ -79,24 +91,23 @@ export const Carousel = ({
         scrollRef.current.scrollTo(newScroll, 0);
       }
 
-      // Reset to normal behaviour after setting starting scroll position
+      // always resume normal smooth scrolling behaviour after the first scroll
       if (!smoothScrolling) {
         setSmoothScrolling(true);
       }
     }
   };
 
-  // Funky use effects to stop smooth scrolling when
-  // carousel appears and a starting position other than zero is set
+  // Stop smooth scrolling when moving to a starting position
   useEffect(() => {
-    if (startPosition !== 0) {
+    if (isStartPositionSet) {
       setSmoothScrolling(false);
     }
   }, [startPosition]);
 
   useEffect(() => {
-    if (smoothScrolling === false) {
-      scrollToPosition(startPosition);
+    if (!smoothScrolling) {
+      scrollToPosition(startPosition || 0);
     }
   }, [smoothScrolling]);
 
@@ -114,11 +125,10 @@ export const Carousel = ({
           >
             {childArray.map((child, index) => {
               const isSelected = index === currentPosition;
+              const keyString = `card-${index}`;
               return (
-                // not ideal but we only have indexes here
-                // eslint-disable-next-line react/no-array-index-key
                 <CarouselCard
-                  key={`card${index}`}
+                  key={keyString}
                   onlyChild={onlyChild}
                   fullWidthChild={fullWidthChild}
                 >
