@@ -21,7 +21,7 @@ type LabelWrapperProps = LabelHTMLAttributes<HTMLLabelElement> & {
 export function LabelWrapper({
   label,
   hintText,
-  required,
+  required = false,
   hideRequiredInLabel = false,
   children,
   ...otherHTMLLabelProps
@@ -60,9 +60,5 @@ export function LabelWrapper({
     </ThemeProvider>
   );
 }
-
-LabelWrapper.defaultProps = {
-  required: false,
-};
 
 export default LabelWrapper;

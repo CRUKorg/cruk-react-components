@@ -64,7 +64,11 @@ export const Button: FunctionComponent<ButtonProps> = forwardRef(
       <StyledButton
         as={props.href ? "a" : "button"}
         {...(props.href ? { role: "button" } : {})}
-        {...props}
+        {...{
+          full: false,
+          size: "m",
+          ...props,
+        }}
         appearance={appearance}
         isIconButton={setIconButton}
         theme={theme}
@@ -84,11 +88,5 @@ export const Button: FunctionComponent<ButtonProps> = forwardRef(
     );
   },
 );
-
-Button.defaultProps = {
-  appearance: "primary",
-  full: false,
-  size: "m",
-};
 
 export default Button;

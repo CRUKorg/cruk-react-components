@@ -84,9 +84,4 @@ export const TextAreaField: FunctionComponent<TextAreaFieldProps> = forwardRef(
   },
 );
 
-TextAreaField.defaultProps = {
-  lineCount: 3,
-  resize: "vertical",
-};
-
 export default TextAreaField;
