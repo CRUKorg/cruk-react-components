@@ -1,4 +1,4 @@
-import  { type StorybookConfig } from "@storybook/react-webpack5";
+import { type StorybookConfig } from "@storybook/react-webpack5";
 const config: StorybookConfig = {
   stories: ["../src/**/*.stories.@(js|jsx|ts|tsx)"],
 
@@ -10,7 +10,7 @@ const config: StorybookConfig = {
     // "@storybook/addon-styling",
     "@storybook/addon-a11y",
     "@chromatic-com/storybook",
-    "@storybook/addon-webpack5-compiler-swc"
+    "@storybook/addon-webpack5-compiler-swc",
   ],
 
   framework: {
@@ -19,7 +19,7 @@ const config: StorybookConfig = {
   },
 
   docs: {
-    autodocs: true
+    autodocs: true,
   },
 
   typescript: {
@@ -30,6 +30,6 @@ const config: StorybookConfig = {
     //   shouldExtractLiteralValuesFromEnum: true,
     //   shouldRemoveUndefinedFromOptional: true,
     // },
-  }
+  },
 };
 export default config;

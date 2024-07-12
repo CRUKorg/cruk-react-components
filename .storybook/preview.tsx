@@ -17,7 +17,6 @@ import {
 
 const preview: Preview = {
   parameters: {
-
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -62,7 +61,7 @@ const preview: Preview = {
     },
   },
 
-  tags: ["autodocs"]
+  tags: ["autodocs"],
 };
 
 export default preview;

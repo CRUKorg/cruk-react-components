@@ -20,8 +20,6 @@ module.exports = {
     //     namedComponents: ["arrow-function"],
     //   },
     // ],
-    "jest/expect-expect": [0],
-    "jest/valid-expect": [0],
     "react/jsx-no-useless-fragment": [0],
   },
   ignorePatterns: ["cypress", "*.config.js", "webpack.*.js", "node_modules"],

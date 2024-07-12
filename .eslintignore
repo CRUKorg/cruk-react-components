@@ -14,9 +14,6 @@
 /cypress/fixtures/example.json 
 /src/**/**/*.cypress.tsx
 
-#jest
-*.jest.ts
-
 #docs
 /src/docs/*.js
 

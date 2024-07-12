@@ -70,11 +70,11 @@ However this isn't as well maintained as the storybook stories and will soon be 
 
 ## Testing
 
-Jest: Unit testing,
+Node: Unit testing,
 Cypress: Component function, accessibility
 Chromatic: Image snapshot comparison service, this happens in CI, people are given access to this service via their Github login.
 
-Run all tests Jest and Cypress
+Run all tests Unit and Cypress
 
 ```sh
  npm run test
