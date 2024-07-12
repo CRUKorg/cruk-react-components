@@ -71,19 +71,13 @@ However this isn't as well maintained as the storybook stories and will soon be 
 ## Testing
 
 Jest: Unit testing,
-Cypress: Component function, accessibility and image snapshot tests (Image snapshot test are run in headless mode only they will be skipped in interactive mode).
+Cypress: Component function, accessibility
+Chromatic: Image snapshot comparison service, this happens in CI, people are given access to this service via their Github login.
 
-Run all tests Jest and Cypress including image snapshots
-Make sure you have the docker desktop app running in the background
+Run all tests Jest and Cypress
 
 ```sh
  npm run test
-```
-
-Update Cypress image snapshots
-
-```sh
-npm run test:update
 ```
 
 Run Cypress interactive testing suite (functional and accessibility tests)
@@ -110,59 +104,7 @@ To run and update a specific snapshot headlessly
 ARGS="--spec src/components/Modal/test.cypress.tsx" npm run cypress-headless:update
 ```
 
-## Docker
-
-A docker-compose.yml file is provided to aid development/testing in a consistent environment.
-
-Install dependencies.
-
-```bash
-docker-compose run npm
-```
-
-Start local development environment
-
-```bash
-docker-compose up server
-```
-
-This should start the server and you should be able to see it running here: http://127.0.0.1:8080/
-Tests will not work locally unless this is running in a terminal
-
-Run Cypress tests
-
-```bash
-docker-compose run cypress
-```
-
-## Run Percy Test
-
-To run percy test locally , create an [.env](.env.example) file with PERCY_TOKEN:
-
-```bash
-npm run percy
-```
-
-To test specific component , go to .percy.yml and add the regex to match story to the include attribute. Example
-
-```
-#.percy.yml
-
-storybook:
-include: [UserBlock]
-```
-
 ### Maintaining
-
-## Releases
-
-Please update the version number in the package.json and follow the semver standards for version numbers.
-
-Make sure that your current node version is Node 16.
-Run `npm i` to make sure that the correct version in the lockfile.
-Update the CHANGELOG.md which should list the changes for the release, instructions are at the bottom of the file.
-Make sure that you have the correct permissions for the @cruk on NPM
-Run the release script with `npm run release` this should make and push the tag, build the lib and release it on NPM.
 
 ## Dependencies
 
@@ -175,3 +117,13 @@ npm run rollup:build-lib
 ```
 
 and see if it can successfully build the library before running the release script
+
+## Releases
+
+Please update the version number in the package.json and follow the semver standards for version numbers.
+
+Make sure that your current node version is Node 16.
+Run `npm i` to make sure that the correct version in the lockfile.
+Update the CHANGELOG.md which should list the changes for the release, instructions are at the bottom of the file.
+Make sure that you have the correct permissions for the @cruk on NPM
+Run the release script with `npm run release` this should make and push the tag, build the lib and release it on NPM.

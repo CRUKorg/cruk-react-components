@@ -5,11 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [4.2.2] - 2024-07-11
+## [4.2.2] - 2024-07-12
 
 ### Fixed
 
 - Fixed carousel to debounce onPositionChanged handler to work better when using external state [#874](https://github.com/CRUKorg/cruk-react-components/issues/860)
+- Fixed ID not being passed to Collapse parent container [#847](https://github.com/CRUKorg/cruk-react-components/issues/860)
+
+### Removed
+
+- removed out-of-date references in README about using docker for snapshot tests and percy tests.
 
 ## [4.2.1] - 2024-06-12
 
