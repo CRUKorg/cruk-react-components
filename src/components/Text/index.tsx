@@ -1,20 +1,19 @@
 import React, {
-  FunctionComponent,
-  HTMLAttributes,
-  Ref,
+  type HTMLAttributes,
+  type Ref,
   forwardRef,
-  ElementType,
+  type ElementType,
+  type FunctionComponent,
 } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
 
-import { SpacingProps } from "../Spacing";
+import { type SpacingProps } from "../Spacing";
 import {
-  WordBreakType,
-  FontSizeType,
-  ColorKeyType,
-  OverflowWrapType,
+  type WordBreakType,
+  type FontSizeType,
+  type OverflowWrapType,
 } from "../../types";
 import { TextStyled } from "./styles";
 
@@ -27,7 +26,7 @@ import { TextStyled } from "./styles";
 export type TextProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
     /** text colour  */
-    textColor?: ColorKeyType | string;
+    textColor?: string;
     /** text horizontal alignment  */
     textAlign?: "left" | "right" | "center" | "justify";
     /** font size FontSizeType t-shirt sizes  */

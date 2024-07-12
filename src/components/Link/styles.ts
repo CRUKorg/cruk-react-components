@@ -1,9 +1,9 @@
-import { AnchorHTMLAttributes } from "react";
+import { type AnchorHTMLAttributes } from "react";
 import styled from "styled-components";
 
-import Text, { TextProps } from "../Text";
+import Text, { type TextProps } from "../Text";
 
-import { ThemeType, ColorKeyType } from "../../types";
+import { type ThemeType, type ColorKeyType } from "../../types";
 
 type StyledLinkProps = AnchorHTMLAttributes<HTMLElement> &
   TextProps & {

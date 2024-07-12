@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
-import { ThemeType } from "../../types";
-import Box, { BoxProps } from "../Box";
+import { type ThemeType } from "../../types";
+import Box, { type BoxProps } from "../Box";
 
 type InfoBoxProps = BoxProps & {
   css?: string;

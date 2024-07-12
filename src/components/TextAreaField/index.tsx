@@ -1,15 +1,15 @@
 import React, {
-  FunctionComponent,
-  ReactNode,
-  TextareaHTMLAttributes,
-  Ref,
+  type ReactNode,
+  type TextareaHTMLAttributes,
+  type Ref,
   forwardRef,
+  type FunctionComponent,
 } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
-import ErrorText from "../ErrorText";
-import LabelWrapper from "../LabelWrapper";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { ErrorText } from "../ErrorText";
+import { LabelWrapper } from "../LabelWrapper";
 
 import { StyledTextArea } from "./styles";
 
@@ -33,7 +33,7 @@ export type TextAreaFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
 /**
  * TextAreaField lets users enter and edit multiline text.
  */
-const TextField: FunctionComponent<TextAreaFieldProps> = forwardRef(
+export const TextAreaField: FunctionComponent<TextAreaFieldProps> = forwardRef(
   (
     {
       errorMessage,
@@ -84,9 +84,9 @@ const TextField: FunctionComponent<TextAreaFieldProps> = forwardRef(
   },
 );
 
-TextField.defaultProps = {
+TextAreaField.defaultProps = {
   lineCount: 3,
   resize: "vertical",
 };
 
-export default TextField;
+export default TextAreaField;

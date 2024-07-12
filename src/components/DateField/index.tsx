@@ -1,9 +1,9 @@
-import React, { InputHTMLAttributes } from "react";
+import React, { type InputHTMLAttributes } from "react";
 
 import { useTheme } from "styled-components";
-import ErrorText from "../ErrorText";
-import Text from "../Text";
-import TextField from "../TextField";
+import { ErrorText } from "../ErrorText";
+import { Text } from "../Text";
+import { TextField } from "../TextField";
 
 import {
   Fieldset,
@@ -11,7 +11,7 @@ import {
   LargeDateTextFieldWrapper,
   ErrorTextWrapper,
 } from "./styles";
-import { ThemeType } from "../../types";
+import { type ThemeType } from "../../types";
 
 export type DateFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   /** label text */
@@ -43,7 +43,7 @@ export type DateFieldProps = InputHTMLAttributes<HTMLInputElement> & {
 /**
  * To be used in forms entering dates like date of birth which are known dates and would take too long to get to with a date picker
  * */
-const DateField = ({
+export function DateField({
   label,
   hintText,
   day,
@@ -56,12 +56,18 @@ const DateField = ({
   monthHasError,
   yearHasError,
   errorMessage,
-  onChange = () => {},
-  onBlur = () => {},
-  onFocus = () => {},
+  onChange = () => {
+    // no op
+  },
+  onBlur = () => {
+    // no op
+  },
+  onFocus = () => {
+    // no op
+  },
   disabled,
   required,
-}: DateFieldProps) => {
+}: DateFieldProps) {
   const theme = useTheme();
   const typedTheme = theme as ThemeType;
   return (
@@ -148,6 +154,6 @@ const DateField = ({
       )}
     </Fieldset>
   );
-};
+}
 
 export default DateField;

@@ -1,16 +1,16 @@
 import {
-  UtilitiesType,
-  SiteConfigType,
-  AvatarType,
-  ButtonType,
-  BreakPointType,
-  TokenColorsType,
-  ColorsType,
-  SpacingType,
-  FontSizesType,
-  TypographyType,
-  ThemeType,
-  ShadowsType,
+  type UtilitiesType,
+  type SiteConfigType,
+  type AvatarType,
+  type ButtonType,
+  type BreakPointType,
+  type TokenColorsType,
+  type ColorsType,
+  type SpacingType,
+  type FontSizesType,
+  type TypographyType,
+  type ThemeType,
+  type ShadowsType,
 } from "../types";
 
 import defaultTheme from "./cruk";
@@ -66,7 +66,7 @@ export const TYPOGRAPHY: TypographyType = {
   fontWeightHeadings: 600,
 };
 
-const theme: ThemeType = {
+export const rflTheme: ThemeType = {
   name: "rfl",
   avatar: AVATAR,
   breakpoint: BREAKPOINT,
@@ -81,4 +81,4 @@ const theme: ThemeType = {
   utilities: UTILITIES,
 };
 
-export default theme;
+export default rflTheme;

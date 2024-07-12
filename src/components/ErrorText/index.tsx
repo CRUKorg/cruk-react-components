@@ -1,12 +1,12 @@
-import React, { FunctionComponent, HTMLAttributes } from "react";
+import React, { type HTMLAttributes } from "react";
 import { useTheme } from "styled-components";
 
 import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
-import defaultTheme from "../../themes/cruk";
-import { SpacingProps } from "../Spacing";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { type SpacingProps } from "../Spacing";
 import { StyledErrorText } from "./styles";
-import IconFa from "../IconFa";
-import Box from "../Box";
+import { IconFa } from "../IconFa";
+import { Box } from "../Box";
 
 export type ErrorTextProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
@@ -19,11 +19,7 @@ export type ErrorTextProps = SpacingProps &
  *
  * Please be aware that some input components already have this component built in and can be passed an "errorMessage" prop
  */
-const ErrorText: FunctionComponent<ErrorTextProps> = ({
-  children,
-  as = "span",
-  ...props
-}) => {
+export function ErrorText({ children, as = "span", ...props }: ErrorTextProps) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -41,6 +37,6 @@ const ErrorText: FunctionComponent<ErrorTextProps> = ({
       {children}
     </StyledErrorText>
   );
-};
+}
 
 export default ErrorText;

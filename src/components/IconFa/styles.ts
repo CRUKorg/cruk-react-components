@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ThemeType, ColorKeyType } from "../../types";
+import { type ThemeType, type ColorKeyType } from "../../types";
 
 type StyledIconProp = {
   theme: ThemeType;

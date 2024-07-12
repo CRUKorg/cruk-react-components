@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Text from "../Text";
-import { ThemeType } from "../../types";
+import { type ThemeType } from "../../types";
 
 type ThemeProps = {
   theme: ThemeType;

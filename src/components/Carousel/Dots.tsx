@@ -1,7 +1,7 @@
-import React, { ButtonHTMLAttributes } from "react";
+import React, { type ButtonHTMLAttributes } from "react";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 
-import IconFa from "../IconFa";
+import { IconFa } from "../IconFa";
 
 import {
   DotContainer,

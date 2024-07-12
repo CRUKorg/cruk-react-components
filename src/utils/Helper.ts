@@ -51,7 +51,7 @@ export const camelize = (str: string): string =>
     .replace(/\s+/g, "");
 
 export const removeCommasFromObjectStringValues = <T>(object: T) =>
-  Object.entries(object as { [s: string]: unknown }).reduce((acc, [k, v]) => {
+  Object.entries(object as Record<string, unknown>).reduce((acc, [k, v]) => {
     const value = typeof v === "string" ? v.replace(/,/g, "") : v;
     return {
       ...acc,

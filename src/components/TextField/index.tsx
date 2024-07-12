@@ -1,8 +1,8 @@
 import React, {
-  FunctionComponent,
-  InputHTMLAttributes,
-  ReactNode,
-  Ref,
+  type FunctionComponent,
+  type InputHTMLAttributes,
+  type ReactNode,
+  type Ref,
   forwardRef,
 } from "react";
 import { useTheme } from "styled-components";
@@ -52,7 +52,7 @@ export type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
 /**
  * TextFields let users enter and edit text. For multiline text entry please consider using the TextAreaFieldComponent.
  * */
-const TextField: FunctionComponent<TextFieldProps> = forwardRef(
+export const TextField: FunctionComponent<TextFieldProps> = forwardRef(
   (
     {
       errorMessage,

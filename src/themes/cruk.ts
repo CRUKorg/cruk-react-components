@@ -1,16 +1,16 @@
 import {
-  UtilitiesType,
-  SiteConfigType,
-  AvatarType,
-  ButtonType,
-  BreakPointType,
-  TokenColorsType,
-  ColorsType,
-  SpacingType,
-  FontSizesType,
-  ShadowsType,
-  TypographyType,
-  ThemeType,
+  type UtilitiesType,
+  type SiteConfigType,
+  type AvatarType,
+  type ButtonType,
+  type BreakPointType,
+  type TokenColorsType,
+  type ColorsType,
+  type SpacingType,
+  type FontSizesType,
+  type ShadowsType,
+  type TypographyType,
+  type ThemeType,
 } from "../types";
 
 export const UTILITIES: UtilitiesType = {
@@ -275,7 +275,7 @@ export const SHADOWS: ShadowsType = {
   l: `0px 0px 7px 1px ${TOKEN_COLORS.grey_300}`,
 };
 
-const theme: ThemeType = {
+export const crukTheme: ThemeType = {
   name: "cruk",
   avatar: AVATAR,
   breakpoint: BREAKPOINT,
@@ -290,4 +290,4 @@ const theme: ThemeType = {
   utilities: UTILITIES,
 };
 
-export default theme;
+export default crukTheme;

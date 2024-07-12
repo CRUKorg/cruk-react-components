@@ -1,5 +1,5 @@
-import styled, { css, keyframes, Keyframes } from "styled-components";
-import { ThemeType } from "../../types";
+import styled, { css, keyframes, type Keyframes } from "styled-components";
+import { type ThemeType } from "../../types";
 
 const BAR_HEIGHT = "16px";
 

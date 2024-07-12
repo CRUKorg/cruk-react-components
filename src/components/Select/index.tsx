@@ -1,15 +1,15 @@
 import React, {
-  FunctionComponent,
-  ReactNode,
-  SelectHTMLAttributes,
-  Ref,
+  type FunctionComponent,
+  type ReactNode,
+  type SelectHTMLAttributes,
+  type Ref,
   forwardRef,
 } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
-import LabelWrapper from "../LabelWrapper";
-import ErrorText from "../ErrorText";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { LabelWrapper } from "../LabelWrapper";
+import { ErrorText } from "../ErrorText";
 
 import { StyledSelect } from "./styles";
 
@@ -32,7 +32,7 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
  * Select components are used for collecting user provided information from a list of options.
  *
  */
-const Select: FunctionComponent<SelectProps> = forwardRef(
+export const Select: FunctionComponent<SelectProps> = forwardRef(
   (
     {
       errorMessage,

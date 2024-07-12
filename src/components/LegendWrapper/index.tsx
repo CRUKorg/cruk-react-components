@@ -1,9 +1,9 @@
-import React, { HTMLAttributes, ReactNode } from "react";
+import React, { type HTMLAttributes, type ReactNode } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
-import ErrorText from "../ErrorText";
-import Text from "../Text";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { ErrorText } from "../ErrorText";
+import { Text } from "../Text";
 
 import { StyledFieldset, LegendSpan } from "./styles";
 
@@ -26,7 +26,7 @@ export type LegendWrapperProps = HTMLAttributes<HTMLLegendElement> & {
  * hasError and errorMessage props are just props that can be passed into the component.
  * There is no functionality checking if the children are valid/required etc this functionality will be needed to ne added outside of this component.
  */
-export const LegendWrapper = ({
+export function LegendWrapper({
   children,
   legendText,
   required,
@@ -34,7 +34,7 @@ export const LegendWrapper = ({
   hasError,
   hintText,
   ...restOfHTMLAttributes
-}: LegendWrapperProps) => {
+}: LegendWrapperProps) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -68,6 +68,6 @@ export const LegendWrapper = ({
       </StyledFieldset>
     </ThemeProvider>
   );
-};
+}
 
 export default LegendWrapper;

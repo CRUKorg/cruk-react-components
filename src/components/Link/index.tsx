@@ -1,15 +1,16 @@
 import React, {
-  AnchorHTMLAttributes,
+  type AnchorHTMLAttributes,
   forwardRef,
-  Ref,
-  ElementType,
-  ReactNode,
+  type Ref,
+  type ElementType,
+  type ReactNode,
+  type FunctionComponent,
 } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
 
-import { TextProps } from "../Text";
+import { type TextProps } from "../Text";
 import { StyledLink } from "./styles";
 
 export type LinkProps = Omit<AnchorHTMLAttributes<HTMLElement>, "nonce"> &
@@ -36,35 +37,37 @@ export type LinkProps = Omit<AnchorHTMLAttributes<HTMLElement>, "nonce"> &
  * If you want something that looks like a link but behaves like a button ie. nothing to do with navigation, please consider using Link with as='button'
  *
  * If you want something that looks like a button but behaves like a link ie. it takes the user to a new location, please consider using Button and simply passing it an href, it will automatically turn into a link. */
-export const Link = forwardRef((props: LinkProps, ref?: Ref<HTMLElement>) => {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-  // security by default
-  const rel = props.rel
-    ? props.rel
-    : props.target === "_blank"
-      ? "noopener noreferrer"
-      : "";
+export const Link: FunctionComponent<LinkProps> = forwardRef(
+  (props: LinkProps, ref?: Ref<HTMLElement>) => {
+    const foundTheme = useTheme();
+    const theme = {
+      ...defaultTheme,
+      ...foundTheme,
+    };
+    // security by default
+    const rel = props.rel
+      ? props.rel
+      : props.target === "_blank"
+        ? "noopener noreferrer"
+        : "";
 
-  // only forward As anchor if we are not casting as something that is not an anchor
-  const forwardAs = props.as && props.as !== "a" ? undefined : "a";
+    // only forward As anchor if we are not casting as something that is not an anchor
+    const forwardAs = props.as && props.as !== "a" ? undefined : "a";
 
-  return (
-    <ThemeProvider theme={theme}>
-      <StyledLink
-        {...props}
-        theme={theme}
-        rel={rel}
-        forwardedAs={forwardAs}
-        ref={ref}
-      >
-        {props.children}
-      </StyledLink>
-    </ThemeProvider>
-  );
-});
+    return (
+      <ThemeProvider theme={theme}>
+        <StyledLink
+          {...props}
+          theme={theme}
+          rel={rel}
+          forwardedAs={forwardAs}
+          ref={ref}
+        >
+          {props.children}
+        </StyledLink>
+      </ThemeProvider>
+    );
+  },
+);
 
 export default Link;

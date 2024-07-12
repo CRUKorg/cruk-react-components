@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ThemeType } from "../../types";
+import { type ThemeType } from "../../types";
 
 export const StepWrapper = styled.div`
   box-sizing: border-box;

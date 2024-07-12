@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-import { ThemeType } from "../../types";
+import { type ThemeType } from "../../types";
 
 const MIN_HEIGHT = "48px";
 

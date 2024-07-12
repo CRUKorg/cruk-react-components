@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
-import Spacing, { SpacingProps } from "../Spacing";
-import { ColorKeyType, ThemeType } from "../../types";
+import Spacing, { type SpacingProps } from "../Spacing";
+import { type ColorKeyType, type ThemeType } from "../../types";
 
 type StyledBoxProps = SpacingProps & {
   backgroundColor?: string;

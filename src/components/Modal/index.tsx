@@ -1,15 +1,15 @@
-import React, { ReactNode, useEffect } from "react";
+import React, { type ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { ThemeProvider, useTheme } from "styled-components";
 import FocusLock from "react-focus-lock";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 
-import IconFa from "../IconFa";
-import defaultTheme from "../../themes/cruk";
+import { IconFa } from "../IconFa";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { CloseButton, Wrapper, Content, Background } from "./styles";
 
-import { SpacingProps } from "../Spacing";
+import { type SpacingProps } from "../Spacing";
 
 export type ModalProps = SpacingProps & {
   /** modal name used for aria-label */
@@ -40,7 +40,7 @@ export type ModalProps = SpacingProps & {
  * ## Accessibility
  * - Once the Modal is appeared on the screen, the focus must be within the Modal container which will enable the screen readers to be able to navigate within the Modal. You may wish to hide the close button so that a user must click on another button to confirm a choice before the modal is closed. However closing with the 'ESC' key must always work, so the props which contains the function that allows the modal to close itself 'closeFunction' is always required.
  */
-const Modal = ({
+export function Modal({
   modalName,
   closeFunction,
   showCloseButton,
@@ -63,7 +63,7 @@ const Modal = ({
   paddingRight,
   paddingBottom,
   paddingLeft,
-}: ModalProps) => {
+}: ModalProps) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -92,7 +92,6 @@ const Modal = ({
   }, []);
 
   return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {typeof window !== `undefined`
         ? createPortal(
@@ -147,6 +146,6 @@ const Modal = ({
         : null}
     </>
   );
-};
+}
 
 export default Modal;

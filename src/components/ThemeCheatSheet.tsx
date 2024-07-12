@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from "react";
+import React, { type FunctionComponent } from "react";
 import styled, { withTheme } from "styled-components";
 
-import { ThemeType } from "../types";
-import defaultTheme from "../themes/cruk";
-import Heading from "./Heading";
+import { type ThemeType } from "../types";
+import { crukTheme as defaultTheme } from "../themes/cruk";
+import { Heading } from "./Heading";
 
 type Props = {
   theme?: ThemeType;
@@ -16,7 +16,7 @@ const PreStyled = styled.pre`
 `;
 
 const ThemeCheatSheet: FunctionComponent<Props> = ({ theme }) => {
-  const foundTheme = theme && theme.colors ? theme : defaultTheme;
+  const foundTheme = theme?.colors ? theme : defaultTheme;
 
   return (
     <>

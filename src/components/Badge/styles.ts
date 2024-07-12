@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-import { ColorKeyType, SpaceType, ThemeType } from "../../types";
+import { type ColorKeyType, type SpaceType, type ThemeType } from "../../types";
 
 type StyleBadgeProps = {
   backgroundColor?: string;

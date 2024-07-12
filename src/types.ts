@@ -62,7 +62,7 @@ export type BreakPointType = {
   desktopLarge: string;
 };
 
-export type TokenColorsType = { [key: string]: string };
+export type TokenColorsType = Record<string, string>;
 
 export type ColorsType = {
   primary: string;

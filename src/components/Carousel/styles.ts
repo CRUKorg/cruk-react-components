@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { ButtonHTMLAttributes } from "react";
+import { type ButtonHTMLAttributes } from "react";
 
-import { ThemeType } from "../../types";
+import { type ThemeType } from "../../types";
 
 export const CarouselWrapper = styled.div`
   position: relative;

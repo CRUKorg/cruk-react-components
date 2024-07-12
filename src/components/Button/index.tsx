@@ -1,29 +1,30 @@
 import React, {
-  ReactNode,
-  ButtonHTMLAttributes,
-  Ref,
+  type ReactNode,
+  type ButtonHTMLAttributes,
+  type Ref,
   forwardRef,
-  ReactElement,
-  ElementType,
+  type ReactElement,
+  type ElementType,
+  type FunctionComponent,
 } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
-import IconFa from "../IconFa";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { IconFa } from "../IconFa";
 
 import { Spacer, StyledButton } from "./styles";
-import { ButtonAppearanceType } from "../../types";
+import { type ButtonAppearanceType } from "../../types";
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLElement> & {
   /** the look and feel of the button */
   appearance?: ButtonAppearanceType;
-  /** flag to streatch but to 100% width */
+  /** flag to stretch but to 100% width */
   full?: boolean;
   /** this is a url which will convert the button to an anchor tag */
   href?: string;
   /** the height of the button, this will add padding not increase text size */
   size?: "m" | "l";
-  css?: any;
+  css?: unknown;
   /** styled-components polymorphism where you can use the styling of a button but convert to another element like an anchor tag */
   as?: ElementType;
   /** flag to force button into an icon button shape which is square or round */
@@ -39,7 +40,7 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLElement> & {
  *
  * Design system documentation SU2C https://zeroheight.com/79db39f7e/p/22ff0e-button/b/32e1a2
  */
-export const Button = forwardRef(
+export const Button: FunctionComponent<ButtonProps> = forwardRef(
   (props: ButtonProps, ref?: Ref<HTMLElement>) => {
     const foundTheme = useTheme();
 

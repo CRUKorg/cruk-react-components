@@ -1,18 +1,20 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { StyledFieldSet, StyledLegend, StyledRadio } from "./styles";
+
+type Attribute = {
+  value: string;
+  option: string;
+};
 
 export type RadioConsentProps = {
   /** because each radio has its own label this is the consent group label text */
   legend: string;
   /** array of option for radio constent group where option is the option name and value is the option value  */
-  attributes: Array<{
-    value: string;
-    option: string;
-  }>;
+  attributes: Attribute[];
   /** on change handler callback passed change event */
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   /** set the value of selected option */
@@ -27,29 +29,25 @@ export type RadioConsentProps = {
  *
  * This is always a controlled component that will only change state with the selectedValue prop
  */
-const RadioConsent: FunctionComponent<RadioConsentProps> = ({
-  selectedValue = "",
-  ...props
-}) => {
+export function RadioConsent(props: RadioConsentProps) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
     ...foundTheme,
   };
-
-  const numberOfAttributes = props.attributes.length;
+  const { legend, attributes, onChange, selectedValue = "", name } = props;
 
   return (
     <ThemeProvider theme={theme}>
       <StyledFieldSet>
-        <StyledLegend>{props.legend}</StyledLegend>
-        {props.attributes.map((item) => (
+        <StyledLegend>{legend}</StyledLegend>
+        {attributes.map((item: Attribute) => (
           <StyledRadio
-            numberOfAttributes={numberOfAttributes}
+            numberOfAttributes={attributes.length || 0}
             key={item.value}
             checked={selectedValue === item.value}
-            onChange={props.onChange}
-            name={props.name}
+            onChange={onChange}
+            name={name}
             value={item.value}
           >
             {item.option}
@@ -58,6 +56,6 @@ const RadioConsent: FunctionComponent<RadioConsentProps> = ({
       </StyledFieldSet>
     </ThemeProvider>
   );
-};
+}
 
 export default RadioConsent;

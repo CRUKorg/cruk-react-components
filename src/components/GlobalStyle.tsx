@@ -1,9 +1,9 @@
 import { createGlobalStyle, withTheme } from "styled-components";
-import { CustomFontType } from "../types";
-import defaultTheme from "../themes/cruk";
+import { type CustomFontType } from "../types";
+import { crukTheme as defaultTheme } from "../themes/cruk";
 
 // font-display fall back to stop font's flickering on SSR rehydration
-const buildCustomFonts = (customFonts: Array<CustomFontType>) =>
+const buildCustomFonts = (customFonts: CustomFontType[]) =>
   customFonts
     .map(
       (font) => `
@@ -21,7 +21,7 @@ const buildCustomFonts = (customFonts: Array<CustomFontType>) =>
     )
     .join("");
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = withTheme(createGlobalStyle`
   ${(props) => {
     const theme = {
       ...defaultTheme,
@@ -80,10 +80,10 @@ const GlobalStyle = createGlobalStyle`
     button {
     font-size: 1em;
   }
-`;
+`);
 
 GlobalStyle.defaultProps = {
   theme: defaultTheme,
 };
 
-export default withTheme(GlobalStyle);
+export default GlobalStyle;

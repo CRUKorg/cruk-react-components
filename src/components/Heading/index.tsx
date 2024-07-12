@@ -1,10 +1,14 @@
-import React, { HTMLAttributes, ElementType } from "react";
+import React, { type HTMLAttributes, type ElementType } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
-import { SpacingProps } from "../Spacing";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { type SpacingProps } from "../Spacing";
 
-import { FontSizeType, WordBreakType, OverflowWrapType } from "../../types";
+import {
+  type FontSizeType,
+  type WordBreakType,
+  type OverflowWrapType,
+} from "../../types";
 import { H1, H2, H3, H4, H5, H6 } from "./styles";
 
 export type HeadingProps = SpacingProps &
@@ -36,7 +40,7 @@ Markup headings semantically using the appropriate <h#> level HTML element and
 use the corresponding heading class (h1, h2, h3, ....). Write all headings in sentence case. Heading differs from the Text component by using a different font-family and it changes the font size according to the screen width breakpoints.
  * 
  */
-const Heading = ({ h1, h2, h3, h4, h5, h6, ...props }: HeadingProps) => {
+export function Heading({ h1, h2, h3, h4, h5, h6, ...props }: HeadingProps) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -55,6 +59,6 @@ const Heading = ({ h1, h2, h3, h4, h5, h6, ...props }: HeadingProps) => {
   if (h5) return <H5 {...propsWithTheme} />;
   if (h6) return <H6 {...propsWithTheme} />;
   return <H2 {...propsWithTheme} />;
-};
+}
 
 export default Heading;

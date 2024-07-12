@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-import { FontSizeType, ThemeType, ColorKeyType } from "../../types";
+import {
+  type FontSizeType,
+  type ThemeType,
+  type ColorKeyType,
+} from "../../types";
 import Button from "../Button";
 import IconFa from "../IconFa";
 

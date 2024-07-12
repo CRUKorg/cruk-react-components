@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import RadioInput from "../Radio";
 
-import { ThemeType } from "../../types";
+import { type ThemeType } from "../../types";
 
 const LEGEND_WIDTH = "20%";
 const MAX_WIDTH = "5em";

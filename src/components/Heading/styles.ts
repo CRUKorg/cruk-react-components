@@ -1,19 +1,19 @@
 import styled, { css } from "styled-components";
 
-import spacing, { SpacingProps } from "../Spacing";
+import spacing, { type SpacingProps } from "../Spacing";
 
 import {
-  ThemeType,
-  FontSizeType,
-  ColorKeyType,
-  WordBreakType,
+  type ThemeType,
+  type FontSizeType,
+  type ColorKeyType,
+  type WordBreakType,
 } from "../../types";
 
 type StyledHeadingProps = SpacingProps & {
   theme: ThemeType;
   textSize?: FontSizeType;
   textAlign?: "left" | "right" | "center";
-  textColor?: ColorKeyType | string;
+  textColor?: string;
   wordBreak?: WordBreakType;
   overflowWrap?: WordBreakType;
 };
@@ -68,6 +68,7 @@ const StyledHeading = (props: StyledHeadingProps) => css`
   }
 
   ${() => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { theme, ...propsWithoutTheme } = props;
     return spacing(propsWithoutTheme, props.theme);
   }}

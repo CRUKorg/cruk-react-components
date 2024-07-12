@@ -1,12 +1,12 @@
 import React, {
-  HTMLAttributes,
-  MouseEvent,
-  ReactNode,
-  TouchEvent,
+  type HTMLAttributes,
+  type MouseEvent,
+  type ReactNode,
+  type TouchEvent,
 } from "react";
 import { ThemeProvider, useTheme } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { PagerItem, PagerLink, PagerList, PagerWrapper } from "./styles";
 
@@ -32,7 +32,7 @@ export type PaginationProps = {
 Data is split into multiple pages and pagination is used to
 easily navigate through these pages.
  */
-const Pagination = ({
+export function Pagination({
   current,
   items,
   hideLast,
@@ -41,7 +41,7 @@ const Pagination = ({
   searchParam = "page",
   children,
   id,
-}: PaginationProps) => {
+}: PaginationProps) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -143,6 +143,6 @@ const Pagination = ({
       )}
     </ThemeProvider>
   );
-};
+}
 
 export default Pagination;

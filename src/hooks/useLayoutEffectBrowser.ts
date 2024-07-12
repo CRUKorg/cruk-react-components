@@ -1,4 +1,8 @@
-import { useLayoutEffect, EffectCallback, DependencyList } from "react";
+import {
+  useLayoutEffect,
+  type EffectCallback,
+  type DependencyList,
+} from "react";
 
 const isBrowser = typeof window !== `undefined`;
 

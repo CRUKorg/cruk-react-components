@@ -1,4 +1,4 @@
-import { SpaceType, ThemeType } from "../../types";
+import { type SpaceType, type ThemeType } from "../../types";
 
 export type SpacingProps = {
   margin?: SpaceType;
@@ -17,7 +17,7 @@ export type SpacingProps = {
   paddingHorizontal?: SpaceType;
 };
 
-export const Spacing = (props: SpacingProps, theme: ThemeType) => {
+export function Spacing(props: SpacingProps, theme: ThemeType) {
   const {
     margin,
     marginHorizontal,
@@ -107,6 +107,6 @@ export const Spacing = (props: SpacingProps, theme: ThemeType) => {
     ${pbString}
     ${plString}
   `;
-};
+}
 
 export default Spacing;

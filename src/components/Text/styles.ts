@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import { ElementType } from "react";
+import { type ElementType } from "react";
 
-import spacing, { SpacingProps } from "../Spacing";
+import spacing, { type SpacingProps } from "../Spacing";
 import {
-  WordBreakType,
-  FontSizeType,
-  ThemeType,
-  ColorKeyType,
-  OverflowWrapType,
+  type WordBreakType,
+  type FontSizeType,
+  type ThemeType,
+  type ColorKeyType,
+  type OverflowWrapType,
 } from "../../types";
 
 export type TextStyledProps = SpacingProps & {

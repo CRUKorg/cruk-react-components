@@ -1,4 +1,9 @@
-import { useRef, DependencyList, RefObject, MutableRefObject } from "react";
+import {
+  useRef,
+  type DependencyList,
+  type RefObject,
+  type MutableRefObject,
+} from "react";
 
 import { useLayoutEffectBrowser } from "./useLayoutEffectBrowser";
 

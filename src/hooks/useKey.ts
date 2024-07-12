@@ -1,4 +1,4 @@
-import { useEffect, DependencyList } from "react";
+import { useEffect, type DependencyList } from "react";
 import { isBrowser } from "../utils/Helper";
 
 // useKey((pressedKey, event) => {

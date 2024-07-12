@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import spacing, { SpacingProps } from "./Spacing";
-import { ThemeType } from "../types";
+import spacing, { type SpacingProps } from "./Spacing";
+import { type ThemeType } from "../types";
 
 type ThemeProps = {
   theme: ThemeType;
 };
 
-const Flex = styled.div<SpacingProps>`
+export const Flex = styled.div<SpacingProps>`
   display: block;
   @media (min-width: ${({ theme }: ThemeProps) => theme.breakpoint.tablet}) {
     display: flex;

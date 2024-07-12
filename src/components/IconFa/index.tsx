@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "styled-components";
-import { IconDefinition } from "@fortawesome/fontawesome-common-types";
-import defaultTheme from "../../themes/cruk";
+import { type IconDefinition } from "@fortawesome/fontawesome-common-types";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { StyledIcon } from "./styles";
 
@@ -19,7 +19,12 @@ export type IconFaProps = {
  *
  * This is an svg icon wrapper where a font awesome icon definition can be passed in a long with colour and size
  * */
-const IconFa = ({ faIcon, color, size = "1.1rem", ...rest }: IconFaProps) => {
+export function IconFa({
+  faIcon,
+  color,
+  size = "1.1rem",
+  ...rest
+}: IconFaProps) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -41,6 +46,6 @@ const IconFa = ({ faIcon, color, size = "1.1rem", ...rest }: IconFaProps) => {
       {svgPathData && <path d={svgPathData as string} />}
     </StyledIcon>
   );
-};
+}
 
 export default IconFa;

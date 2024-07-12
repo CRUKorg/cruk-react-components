@@ -1,8 +1,8 @@
-import React, { ReactNode, HTMLAttributes } from "react";
+import React, { type ReactNode, type HTMLAttributes } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
-import Text from "../Text";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { Text } from "../Text";
 
 import {
   StyledFooter,
@@ -27,7 +27,7 @@ export type FooterProps = HTMLAttributes<HTMLElement> & {
 /**
  * There should be only one footer component at the bottom of the body of each page. Links can be passed as children
  * */
-export const Footer = ({ children, middleSection }: FooterProps) => {
+export function Footer({ children, middleSection }: FooterProps) {
   const childArray = React.Children.toArray(children);
 
   const foundTheme = useTheme();
@@ -52,11 +52,10 @@ export const Footer = ({ children, middleSection }: FooterProps) => {
             <StyledNav aria-label="footer links">
               <StyledUL>
                 {childArray.length
-                  ? childArray.map((child, index) => (
-                      // not ideal but we don't have anything other than indexes here
-                      // eslint-disable-next-line react/no-array-index-key
-                      <StyledLI key={`footerLink${index}`}>{child}</StyledLI>
-                    ))
+                  ? childArray.map((child, index) => {
+                      const footerLinkKey = `footerLink${index}`;
+                      return <StyledLI key={footerLinkKey}>{child}</StyledLI>;
+                    })
                   : null}
               </StyledUL>
             </StyledNav>
@@ -91,6 +90,6 @@ export const Footer = ({ children, middleSection }: FooterProps) => {
       </StyledFooter>
     </ThemeProvider>
   );
-};
+}
 
 export default Footer;
