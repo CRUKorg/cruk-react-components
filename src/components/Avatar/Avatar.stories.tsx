@@ -3,7 +3,7 @@ import { StoryObj } from "@storybook/react";
 
 import { crukTheme } from "..";
 import { Avatar } from ".";
-import { AllThemesWrapper} from "../AllThemesWrapper";
+import { AllThemesWrapper } from "../AllThemesWrapper";
 
 export default {
   title: "Avatar",

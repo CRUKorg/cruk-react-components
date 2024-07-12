@@ -1,8 +1,8 @@
 import React, { type ReactNode, type HTMLAttributes } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
-import Avatar from "../Avatar";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { Avatar } from "../Avatar";
 
 import { StyledUserBlock, Details, Name, Extra } from "./styles";
 

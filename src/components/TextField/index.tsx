@@ -7,9 +7,9 @@ import React, {
 } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
-import ErrorText from "../ErrorText";
-import LabelWrapper from "../LabelWrapper";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { ErrorText } from "../ErrorText";
+import { LabelWrapper } from "../LabelWrapper";
 
 import {
   ExtraLeft,

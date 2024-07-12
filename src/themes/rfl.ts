@@ -13,7 +13,7 @@ import {
   type ShadowsType,
 } from "../types";
 
-import defaultTheme from "./cruk";
+import { crukTheme as defaultTheme } from "./cruk";
 
 export const UTILITIES: UtilitiesType = {
   ...defaultTheme.utilities,

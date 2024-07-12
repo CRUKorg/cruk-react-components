@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { type ThemeType } from "../../types";
 
 const HEADER_HEIGHT_LARGE = "120px";

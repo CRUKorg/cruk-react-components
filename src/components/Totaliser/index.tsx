@@ -6,10 +6,10 @@ import {
   formatMoneyWithCommas,
 } from "../../utils/Helper";
 
-import defaultTheme from "../../themes/cruk";
-import Text from "../Text";
-import Badge from "../Badge";
-import Box from "../Box";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { Text } from "../Text";
+import { Badge } from "../Badge";
+import { Box } from "../Box";
 
 import {
   TotaliserWrapper,
