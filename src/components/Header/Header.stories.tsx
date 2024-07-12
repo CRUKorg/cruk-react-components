@@ -1,9 +1,10 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
 
-import { Button } from "..";
+import { Button, crukTheme } from "..";
 import Header, { HeaderProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import { ThemeProvider } from "styled-components";
 
 const HeaderInTallContainer = (args: HeaderProps) => (
   <div>
@@ -53,5 +54,9 @@ export const HeaderSticky: Story = {
     isSticky: true,
     fullWidth: true,
   },
-  render: (args: HeaderProps) => <HeaderInTallContainer {...args} />,
+  render: (args: HeaderProps) => (
+    <ThemeProvider theme={crukTheme}>
+      <HeaderInTallContainer {...args} />
+    </ThemeProvider>
+  ),
 };

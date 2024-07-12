@@ -77,9 +77,8 @@
     "@types/mdx": "^2.0.2",
     "@types/mdx-js__react": "^1.5.1",
     "@types/node": "^18.11.17",
-    "@types/react": "^17",
-    "@types/react-dom": "^17.0.17",
-    "@types/styled-components": "^5.1.22",
+    "@types/react": "^18.0.1",
+    "@types/react-dom": "^18.0.1",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
     "@typescript-eslint/parser": "^7.0.0",
     "axe-core": "^4.8.2",
@@ -117,7 +116,7 @@
   "peerDependencies": {
     "react": "^18.0.1",
     "react-dom": "^18.0.1",
-    "styled-components": "^5.3.5"
+    "styled-components": "^6.1.11"
   },
   "dependencies": {
     "@fortawesome/fontawesome-common-types": "^6.4.2",
@@ -126,6 +125,6 @@
     "react-focus-lock": "^2.5.2",
     "react-intersection-observer": "^9.1.0",
     "react-is": "^18.2.0",
-    "styled-components": "^5.3.5"
+    "styled-components": "^6.1.11"
   }
 }
