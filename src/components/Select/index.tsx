@@ -43,7 +43,7 @@ const Select: FunctionComponent<SelectProps> = forwardRef(
       hideRequiredInLabel,
       ...props
     }: SelectProps,
-    ref?: Ref<HTMLSelectElement>
+    ref?: Ref<HTMLSelectElement>,
   ) => {
     const foundTheme = useTheme();
     const theme = {
@@ -78,7 +78,7 @@ const Select: FunctionComponent<SelectProps> = forwardRef(
         )}
       </LabelWrapper>
     );
-  }
+  },
 );
 
 export default Select;

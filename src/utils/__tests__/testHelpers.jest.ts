@@ -13,13 +13,13 @@ import {
 describe("camelize", () => {
   it("converts a string to camel case correctly", () => {
     expect(camelize("This Is A Camel Case String")).toEqual(
-      "thisIsACamelCaseString"
+      "thisIsACamelCaseString",
     );
     expect(camelize("thisIsACamelCaseString")).toEqual(
-      "thisIsACamelCaseString"
+      "thisIsACamelCaseString",
     );
     expect(camelize("ThisIsACamelCaseString")).toEqual(
-      "thisIsACamelCaseString"
+      "thisIsACamelCaseString",
     );
     expect(camelize("This")).toEqual("this");
   });
@@ -74,7 +74,7 @@ describe("removeCommasFromObjectStringValues", () => {
         a: "foo, foo, foo",
         b: "bar,, bar",
         c: "baz baz",
-      })
+      }),
     ).toEqual({ a: "foo foo foo", b: "bar bar", c: "baz baz" });
   });
 });

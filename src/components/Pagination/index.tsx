@@ -100,8 +100,8 @@ const Pagination = ({
           active > total - 4
             ? first.concat(list.slice(-5))
             : hideLast
-            ? first.concat(list.slice(active - 3, active + 2))
-            : first.concat(list.slice(active - 2, active + 1)).concat(last);
+              ? first.concat(list.slice(active - 3, active + 2))
+              : first.concat(list.slice(active - 2, active + 1)).concat(last);
       }
     }
     return pager;

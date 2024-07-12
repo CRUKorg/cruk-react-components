@@ -43,7 +43,9 @@ export const StyledButton = styled.button<StyledButtonProps>`
   border-width: ${({ theme }: StyledButtonProps) =>
     theme.button.buttonBorderThickness};
 
-  transition: color 0.2s ease, background-color 0.2s ease,
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
     border-color 0.2s ease;
 
   cursor: pointer;

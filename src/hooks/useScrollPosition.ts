@@ -33,7 +33,7 @@ const useScrollPosition = (
   deps: DependencyList,
   element: RefObject<HTMLElement> | MutableRefObject<undefined> | null,
   useWindow: boolean,
-  wait: number
+  wait: number,
 ): void => {
   const position = useRef(getScrollPosition({ useWindow, element }));
 

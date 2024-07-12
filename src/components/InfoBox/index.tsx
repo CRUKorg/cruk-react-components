@@ -53,7 +53,7 @@ const InfoBox: FunctionComponent<InfoBoxProps> = forwardRef(
       icon,
       ...spacingAndHTMLElementProps
     }: InfoBoxProps,
-    ref?: Ref<HTMLElement>
+    ref?: Ref<HTMLElement>,
   ) => {
     const foundTheme = useTheme();
     const theme = {
@@ -97,7 +97,7 @@ const InfoBox: FunctionComponent<InfoBoxProps> = forwardRef(
         </div>
       </StyledInfoBox>
     );
-  }
+  },
 );
 
 export default InfoBox;

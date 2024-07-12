@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-
 import React from "react";
 import { mount } from "cypress/react";
 import {
@@ -146,7 +144,7 @@ describe("Popover", () => {
   });
   it("is accessible Bowelbabe theme", () => {
     mount(
-      <TestThemeWrapper theme={bowelbabeTheme}>{content()}</TestThemeWrapper>
+      <TestThemeWrapper theme={bowelbabeTheme}>{content()}</TestThemeWrapper>,
     );
     cy.contains("Share left").click();
     cy.injectAxe();

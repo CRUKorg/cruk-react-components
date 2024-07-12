@@ -23,7 +23,9 @@ export const Background = styled.div`
   position: fixed;
   right: 0;
   top: 0;
-  transition: opacity 0.3s, bottom 0s 0.3s;
+  transition:
+    opacity 0.3s,
+    bottom 0s 0.3s;
   z-index: 100;
 `;
 

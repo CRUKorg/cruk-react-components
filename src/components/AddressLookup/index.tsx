@@ -85,10 +85,10 @@ const AddressLookup = forwardRef(
       onBlur,
       ...props
     }: AddressLookupProps,
-    ref?: Ref<HTMLInputElement>
+    ref?: Ref<HTMLInputElement>,
   ) => {
     const [addressOptions, setAddressOptions] = useState<AddressOptionsType[]>(
-      []
+      [],
     );
     const [activeOption, setActiveOption] = useState(-1);
     const wrapperRef = useRef<HTMLDivElement>(null);
@@ -105,7 +105,7 @@ const AddressLookup = forwardRef(
 
     const searchDebounced = useCallback(
       debounce(500, (query: string) => search(query)),
-      []
+      [],
     );
 
     const search = (query: string, id = "") => {
@@ -141,7 +141,7 @@ const AddressLookup = forwardRef(
           const selectedAddress = data.Items[0];
           const selectedAddressWithoutCommas =
             removeCommasFromObjectStringValues<AddressDataType>(
-              selectedAddress
+              selectedAddress,
             );
           onAddressSelected(selectedAddressWithoutCommas);
           clearOptions();
@@ -163,7 +163,7 @@ const AddressLookup = forwardRef(
           getAddress(addressOptions[activeOption].Id);
         search(
           addressOptions[activeOption].Text,
-          addressOptions[activeOption].Id
+          addressOptions[activeOption].Id,
         );
         setActiveOption(-1);
       } else if (e.key === "ArrowUp") {
@@ -212,7 +212,7 @@ const AddressLookup = forwardRef(
       {
         detectKeys: ["Escape", "Tab"],
       },
-      []
+      [],
     );
 
     return (
@@ -294,7 +294,7 @@ const AddressLookup = forwardRef(
         )}
       </>
     );
-  }
+  },
 );
 
 export default AddressLookup;

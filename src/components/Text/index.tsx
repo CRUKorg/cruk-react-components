@@ -55,7 +55,7 @@ export const Text: FunctionComponent<TextProps> = forwardRef(
     };
 
     return <TextStyled {...props} ref={ref} theme={theme} />;
-  }
+  },
 );
 
 export default Text;

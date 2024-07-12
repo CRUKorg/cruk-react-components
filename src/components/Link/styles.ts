@@ -32,8 +32,8 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
         (!appearance && useBackgroundStyleLinks
           ? "currentColor"
           : appearance && appearance === "primary"
-          ? colors.linkColorSecondary
-          : colors.linkColor)};
+            ? colors.linkColorSecondary
+            : colors.linkColor)};
   text-decoration: ${({
     appearance,
     theme: {
@@ -43,8 +43,8 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
     appearance === "primary"
       ? LinkPrimaryTextDecoration
       : appearance === "secondary"
-      ? "none"
-      : linkTextDecoration};
+        ? "none"
+        : linkTextDecoration};
   font-family: ${({
     appearance,
     theme: {
@@ -98,13 +98,13 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
       !textHoverColor && useBackgroundStyleLinks
         ? colors.textDark
         : textHoverColor &&
-          typeof colors[textHoverColor as ColorKeyType] !== "undefined"
-        ? colors[textHoverColor as ColorKeyType]
-        : textHoverColor
-        ? appearance && appearance === "primary"
-          ? colors.linkColorHover
-          : colors.linkColorSecondaryHover
-        : colors.linkColorHover};
+            typeof colors[textHoverColor as ColorKeyType] !== "undefined"
+          ? colors[textHoverColor as ColorKeyType]
+          : textHoverColor
+            ? appearance && appearance === "primary"
+              ? colors.linkColorHover
+              : colors.linkColorSecondaryHover
+            : colors.linkColorHover};
   }
 `;
 

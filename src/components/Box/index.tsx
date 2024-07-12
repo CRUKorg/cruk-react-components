@@ -43,7 +43,7 @@ const Box: FunctionComponent<BoxProps> = forwardRef(
         {children}
       </StyledBox>
     );
-  }
+  },
 );
 
 export default Box;

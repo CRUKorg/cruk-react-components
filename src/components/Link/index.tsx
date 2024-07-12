@@ -46,8 +46,8 @@ export const Link = forwardRef((props: LinkProps, ref?: Ref<HTMLElement>) => {
   const rel = props.rel
     ? props.rel
     : props.target === "_blank"
-    ? "noopener noreferrer"
-    : "";
+      ? "noopener noreferrer"
+      : "";
 
   // only forward As anchor if we are not casting as something that is not an anchor
   const forwardAs = props.as && props.as !== "a" ? undefined : "a";

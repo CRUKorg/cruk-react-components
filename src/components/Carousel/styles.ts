@@ -88,11 +88,13 @@ export const CarouselButton = styled.button`
     disabled
       ? theme.colors.disabled
       : theme.name === "su2c"
-      ? theme.colors.textDark
-      : theme.colors.primary};
+        ? theme.colors.textDark
+        : theme.colors.primary};
   font-size: ${({ theme }: CarouselButtonProps) => theme.fontSizes.xxxl};
   font-weight: 600;
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
   max-width: 3rem;
   padding: 0;
   vertical-align: middle;
@@ -151,7 +153,9 @@ export const Dot = styled.button`
         }`
       : theme.colors.backgroundLight};
   user-select: none;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
   transform: scale(0.8);
   &:hover {
     transform: scale(1);

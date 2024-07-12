@@ -142,7 +142,7 @@ const Modal = ({
                 </ThemeProvider>
               </FocusLock>
             </section>,
-            document.body
+            document.body,
           )
         : null}
     </>

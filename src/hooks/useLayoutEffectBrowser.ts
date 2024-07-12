@@ -7,7 +7,7 @@ const isBrowser = typeof window !== `undefined`;
 // which waits for components to be mounted to the DOM for scroll handlers etc.
 const useLayoutEffectBrowser = (
   action: EffectCallback,
-  deps: DependencyList
+  deps: DependencyList,
 ) => {
   if (!isBrowser) return null;
   return useLayoutEffect(action, deps);

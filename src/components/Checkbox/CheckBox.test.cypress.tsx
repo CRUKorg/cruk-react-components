@@ -33,7 +33,7 @@ describe("Checkbox", () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>
         {unControlledContent()}
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");
@@ -43,7 +43,7 @@ describe("Checkbox", () => {
     mount(
       <TestThemeWrapper theme={rflTheme}>
         {unControlledContent()}
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");
@@ -53,7 +53,7 @@ describe("Checkbox", () => {
     mount(
       <TestThemeWrapper theme={su2cTheme}>
         {unControlledContent()}
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body", {
@@ -67,7 +67,7 @@ describe("Checkbox", () => {
     mount(
       <TestThemeWrapper theme={bowelbabeTheme}>
         {unControlledContent()}
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");
@@ -77,7 +77,7 @@ describe("Checkbox", () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>
         {unControlledContent()}
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.contains("Option two").click();
     cy.getInputByLabel("Option two").should("be.checked");

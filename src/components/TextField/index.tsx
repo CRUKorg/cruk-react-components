@@ -69,7 +69,7 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
       hideRequiredInLabel,
       ...props
     }: TextFieldProps,
-    ref?: Ref<HTMLInputElement>
+    ref?: Ref<HTMLInputElement>,
   ) => {
     const foundTheme = useTheme();
     const theme = {
@@ -139,7 +139,7 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
         )}
       </LabelWrapper>
     );
-  }
+  },
 );
 
 export default TextField;

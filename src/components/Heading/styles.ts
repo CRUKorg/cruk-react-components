@@ -76,7 +76,7 @@ const StyledHeading = (props: StyledHeadingProps) => css`
 const desktopFontSize = (
   textSize: FontSizeType | null,
   defaultFontSize: string,
-  theme: ThemeType
+  theme: ThemeType,
 ) => {
   switch (textSize) {
     case "m":
@@ -101,7 +101,7 @@ const desktopFontSize = (
 const tabletFontSize = (
   textSize: FontSizeType | null,
   defaultFontSize: string,
-  theme: ThemeType
+  theme: ThemeType,
 ) => {
   switch (textSize) {
     case "m":
@@ -126,7 +126,7 @@ const tabletFontSize = (
 const mobileFontSize = (
   textSize: FontSizeType | null,
   defaultFontSize: string,
-  theme: ThemeType
+  theme: ThemeType,
 ) => {
   switch (textSize) {
     case "m":

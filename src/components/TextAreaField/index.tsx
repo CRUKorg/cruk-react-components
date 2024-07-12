@@ -44,7 +44,7 @@ const TextField: FunctionComponent<TextAreaFieldProps> = forwardRef(
       lineCount = 3,
       ...props
     }: TextAreaFieldProps,
-    ref?: Ref<HTMLTextAreaElement>
+    ref?: Ref<HTMLTextAreaElement>,
   ) => {
     const foundTheme = useTheme();
     const theme = {
@@ -81,7 +81,7 @@ const TextField: FunctionComponent<TextAreaFieldProps> = forwardRef(
         )}
       </LabelWrapper>
     );
-  }
+  },
 );
 
 TextField.defaultProps = {

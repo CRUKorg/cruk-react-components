@@ -94,7 +94,7 @@ describe("Select", () => {
 
   it("is accessible Bowelbabe theme", () => {
     mount(
-      <TestThemeWrapper theme={bowelbabeTheme}>{content()}</TestThemeWrapper>
+      <TestThemeWrapper theme={bowelbabeTheme}>{content()}</TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");
@@ -104,7 +104,7 @@ describe("Select", () => {
 describe("Arrow Keys", () => {
   it("can change selection with keyboard controls", () => {
     mount(
-      <TestThemeWrapper theme={crukTheme}>{selectSection()}</TestThemeWrapper>
+      <TestThemeWrapper theme={crukTheme}>{selectSection()}</TestThemeWrapper>,
     );
     cy.getInputByLabel("Test Select Option")
       .trigger("keydown", { key: "Space Bar" })
@@ -132,7 +132,7 @@ describe("Tab", () => {
             </Select>
           </Box>
         </>
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.contains("Click me").focus().tab();
     cy.focused().contains("select").should("exist");

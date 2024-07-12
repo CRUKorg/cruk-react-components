@@ -67,7 +67,7 @@ const PopOver = ({
         closePopOver();
       }
     },
-    [popRef.current]
+    [popRef.current],
   );
 
   useKey(
@@ -77,7 +77,7 @@ const PopOver = ({
     {
       detectKeys: ["Escape"],
     },
-    []
+    [],
   );
 
   useEffect(() => {
@@ -103,7 +103,7 @@ const PopOver = ({
               onClick: toggle,
               "aria-expanded": showPopOver,
               "aria-haspopup": "dialog",
-            })
+            }),
         )}
         {showPopOver ? (
           <PopOverModal

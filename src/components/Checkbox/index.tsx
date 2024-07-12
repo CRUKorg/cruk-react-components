@@ -75,7 +75,7 @@ const Checkbox = forwardRef(
         )}
       </ThemeProvider>
     );
-  }
+  },
 );
 
 export default Checkbox;

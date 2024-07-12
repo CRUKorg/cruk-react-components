@@ -14,7 +14,7 @@ export const useKey = (
     detectKeys?: string[];
     keyevent?: "keydown" | "keyup" | "keypress";
   },
-  dependencies?: DependencyList
+  dependencies?: DependencyList,
 ): void => {
   const { detectKeys = [], keyevent } = options;
 

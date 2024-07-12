@@ -24,7 +24,9 @@ const StyledSelect = styled.select<StyledSelectProps>`
     );
   background-color: ${({ theme }: StyledSelectProps) =>
     theme.colors.backgroundLight};
-  background-position: calc(100% - 16px) 50%, calc(100% - 10px) 50%;
+  background-position:
+    calc(100% - 16px) 50%,
+    calc(100% - 10px) 50%;
   background-size: 6px 6px;
   background-repeat: no-repeat;
   border: ${({ theme, hasError, errorMessage }: StyledSelectProps) =>

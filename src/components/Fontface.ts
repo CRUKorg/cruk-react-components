@@ -19,7 +19,7 @@ const buildCustomFonts = (customFonts: Array<CustomFontType>) =>
           font-style: normal;
           font-display: fallback;
         }
-      `
+      `,
     )
     .join("");
 

@@ -76,12 +76,12 @@ export const Button = forwardRef(
                 <Spacer theme={theme} key={index}>
                   {child}
                 </Spacer>
-              )
+              ),
             )
           : null}
       </StyledButton>
     );
-  }
+  },
 );
 
 Button.defaultProps = {

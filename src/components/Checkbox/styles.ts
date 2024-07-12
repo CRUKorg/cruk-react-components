@@ -102,10 +102,10 @@ export const StyledLabel = styled.label<StyledLabelProps>`
                 isDisabled
                   ? disabled
                   : hasError
-                  ? danger
-                  : checked
-                  ? check
-                  : inputBorder};
+                    ? danger
+                    : checked
+                      ? check
+                      : inputBorder};
           }
 
           &:hover ${CheckWrapper} ${Check} {

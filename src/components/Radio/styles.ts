@@ -34,7 +34,9 @@ export const Check = styled.span`
   left: 0;
   right: 0;
   z-index: 5;
-  transition: border 0.25s linear, box-shadow 0.25s linear;
+  transition:
+    border 0.25s linear,
+    box-shadow 0.25s linear;
 
   ::before {
     display: block;
@@ -100,10 +102,10 @@ export const StyledLabel = styled.label<StyledLabelProps>`
                 isDisabled
                   ? disabled
                   : hasError
-                  ? danger
-                  : checked
-                  ? check
-                  : inputBorder};
+                    ? danger
+                    : checked
+                      ? check
+                      : inputBorder};
           }
 
           &:hover ${CheckWrapper} ${Check} {
