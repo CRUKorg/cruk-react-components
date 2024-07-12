@@ -9,8 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fixed carousel to debounce onPositionChanged handler to work better when using external state [#874](https://github.com/CRUKorg/cruk-react-components/issues/860)
-- Fixed ID not being passed to Collapse parent container [#847](https://github.com/CRUKorg/cruk-react-components/issues/860)
+- Fixed carousel to debounce onPositionChanged handler to work better when using external state [#874](https://github.com/CRUKorg/cruk-react-components/issues/874)
+- Fixed ID not being passed to Collapse parent container [#847](https://github.com/CRUKorg/cruk-react-components/issues/847)
+- Fixed add heigh and with where possible to images in header and footer to improve rendering speeds [#336](https://github.com/CRUKorg/cruk-react-components/issues/336)
 
 ### Removed
 

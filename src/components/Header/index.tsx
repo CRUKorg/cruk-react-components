@@ -91,7 +91,7 @@ export const Header = ({
     [isSmall],
     null,
     true,
-    50
+    50,
   );
 
   return (
@@ -111,6 +111,7 @@ export const Header = ({
               >
                 <LogoWrapper isSmall={isSmall} isSticky={isSticky}>
                   <Logo
+                    height={80}
                     src={logoImageSrc ?? theme.siteConfig.logoSrc}
                     alt={logoAltText ?? theme.siteConfig.logoAlt}
                   />
