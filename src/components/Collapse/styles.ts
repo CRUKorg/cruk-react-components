@@ -17,8 +17,8 @@ type DefaultHeaderProps = {
 
 export const transitionDurationSeconds = 0.5;
 
-export const FlippingIcon = styled(IconFa)`
-  transform: ${({ open }: { open: boolean }) =>
+export const FlippingIcon = styled(IconFa)<{ open: boolean }>`
+  transform: ${({ open }) =>
     open ? "translateY(0.1em) scaleY(-1)" : "initial"};
   transition-duration: ${transitionDurationSeconds}s;
 `;
@@ -27,12 +27,14 @@ export const DefaultHeader = styled(Button)<{
   textColor?: string;
   textSize?: FontSizeType;
   textFontFamily?: string;
+  theme: ThemeType;
 }>`
   display: flex;
-  color: ${({ theme: { colors }, textColor }: DefaultHeaderProps) =>
-    textColor && typeof colors[textColor as ColorKeyType] !== "undefined"
-      ? colors[textColor as ColorKeyType]
-      : textColor || colors.collapseHeaderColor};
+  color: ${({ theme, textColor }) =>
+    !!textColor &&
+    typeof theme.colors[textColor as ColorKeyType] !== "undefined"
+      ? theme.colors[textColor as ColorKeyType]
+      : textColor || theme.colors.collapseHeaderColor};
   font-size: ${({
     theme: {
       fontSizes,

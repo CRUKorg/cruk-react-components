@@ -5,7 +5,6 @@ import React, {
   forwardRef,
   type ReactElement,
   type ElementType,
-  type FunctionComponent,
 } from "react";
 import { useTheme } from "styled-components";
 
@@ -40,7 +39,7 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLElement> & {
  *
  * Design system documentation SU2C https://zeroheight.com/79db39f7e/p/22ff0e-button/b/32e1a2
  */
-export const Button: FunctionComponent<ButtonProps> = forwardRef(
+export const Button = forwardRef(
   (props: ButtonProps, ref?: Ref<HTMLElement>) => {
     const foundTheme = useTheme();
 

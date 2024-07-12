@@ -15,8 +15,8 @@ type ContentProps = {
   maxWidth: string;
 };
 
-export const Background = styled.div`
-  background: ${({ theme }: ThemeProp) => theme.colors.modalBackdrop};
+export const Background = styled.div<ThemeProp>`
+  background: ${({ theme }) => theme.colors.modalBackdrop};
   bottom: 0;
   left: 0;
   opacity: 0.5;
@@ -40,7 +40,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Content = styled(Box)<ContentProps>`
-  background-color: ${({ theme: { colors }, backgroundColor }: ContentProps) =>
+  background-color: ${({ theme: { colors }, backgroundColor }) =>
     backgroundColor !== undefined && typeof backgroundColor !== undefined
       ? colors[backgroundColor as ColorKeyType] !== undefined
         ? colors[backgroundColor as ColorKeyType]
@@ -48,20 +48,20 @@ export const Content = styled(Box)<ContentProps>`
       : colors.backgroundLight};
   position: relative;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-  margin: ${({ top }: ContentProps) => `${top} auto auto auto`};
-  width: ${({ width }: ContentProps) => width};
+  margin: ${({ top }) => `${top} auto auto auto`};
+  width: ${({ width }) => width};
   min-height: 10rem;
-  max-width: ${({ maxWidth }: ContentProps) => maxWidth};
+  max-width: ${({ maxWidth }) => maxWidth};
   z-index: 9999;
 `;
 
-export const CloseButton = styled(Button)`
+export const CloseButton = styled(Button)<ThemeProp>`
   float: right;
   margin-left: ${({
     theme: {
       spacing: { xs },
     },
-  }: ThemeProp) => xs};
+  }) => xs};
   font-size: 1.2rem;
   padding: 0;
 `;

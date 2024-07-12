@@ -3,7 +3,6 @@ import React, {
   type Ref,
   forwardRef,
   type ElementType,
-  type FunctionComponent,
 } from "react";
 import { useTheme } from "styled-components";
 
@@ -45,16 +44,14 @@ export type TextProps = SpacingProps &
     ref?: Ref<HTMLElement>;
   };
 
-export const Text: FunctionComponent<TextProps> = forwardRef(
-  (props: TextProps, ref?: Ref<HTMLElement>) => {
-    const foundTheme = useTheme();
-    const theme = {
-      ...defaultTheme,
-      ...foundTheme,
-    };
+export const Text = forwardRef((props: TextProps, ref?: Ref<HTMLElement>) => {
+  const foundTheme = useTheme();
+  const theme = {
+    ...defaultTheme,
+    ...foundTheme,
+  };
 
-    return <TextStyled {...props} ref={ref} theme={theme} />;
-  },
-);
+  return <TextStyled {...props} ref={ref} theme={theme} />;
+});
 
 export default Text;

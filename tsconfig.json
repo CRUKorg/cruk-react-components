@@ -25,5 +25,6 @@
     ".eslintrc.js",
     "rollup.config.mjs",
     "src/docs/index.jsx"
-  ]
+  ],
+  "typeRoots": ["./node_modules/@types", "*.d.ts"]
 }

@@ -56,35 +56,16 @@ export const StyledBadge = styled.span<StyleBadgeProps>`
     },
   }: StyleBadgeProps) => `calc(${spacing[size]} + ${xs})`};
 
-  ${(props: StyleBadgeProps) =>
-    !props.isText &&
+  ${({ isText, theme, size }: StyleBadgeProps) =>
+    !isText &&
     css`
       padding: 0;
       border-radius: 50%;
-      height: ${({
-        size,
-        theme: {
-          spacing,
-          spacing: { xs },
-        },
-      }: StyleBadgeProps) => `calc(${spacing[size]} + ${xs})`};
-      width: ${({
-        size,
-        theme: {
-          spacing,
-          spacing: { xs },
-        },
-      }: StyleBadgeProps) => `calc(${spacing[size]} + ${xs})`};
-      line-height: ${({
-        size,
-        theme: {
-          spacing,
-          spacing: { xs },
-        },
-      }: StyleBadgeProps) => `calc(${spacing[size]} + ${xs})`};
+      height: ${`calc(${theme.spacing[size]} + ${theme.spacing.xs})`};
+      width: ${`calc(${theme.spacing[size]} + ${theme.spacing.xs})`};
+      line-height: ${`calc(${theme.spacing[size]} + ${theme.spacing.xs})`};
       svg {
-        height: ${({ size, theme: { spacing } }: StyleBadgeProps) =>
-          spacing[size]};
+        height: ${`calc(${theme.spacing[size]}`};
       }
     `}
 `;

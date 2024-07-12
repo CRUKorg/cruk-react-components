@@ -1,4 +1,4 @@
-import styled, { css, keyframes, type Keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { type ThemeType } from "../../types";
 
 const BAR_HEIGHT = "16px";
@@ -11,20 +11,25 @@ type LineProgressBarProps = {
   percentage: number;
   barColor?: string;
   isSecondary?: boolean;
+  theme: ThemeType;
 };
 type LineProgressWrapperProps = {
   percentage: number;
   secondaryPercentage: number;
+  theme: ThemeType;
 };
 
 type CircleProps = ThemeProp & {
   strokeDashoffsetInit: number;
+  strokeDashoffset: number;
   barColor?: string;
   isSecondary?: boolean;
+  theme: ThemeType;
 };
 
 type CircleWrapperProps = {
   circleSize: string;
+  theme: ThemeType;
 };
 
 type CircleKeyCircleFillKeyFramesProps = {
@@ -103,10 +108,10 @@ export const LineProgressBarWrapper = styled.div<LineProgressWrapperProps>`
     theme: {
       colors: { progressBarBackground },
     },
-  }: ThemeProp) => progressBarBackground};
+  }) => progressBarBackground};
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 
-  ${({ percentage, secondaryPercentage }: LineProgressWrapperProps) =>
+  ${({ percentage, secondaryPercentage }) =>
     (percentage === 100 || secondaryPercentage === 100) &&
     css`
       animation: ${LineBarPulseKeyFrames} 0.3s 0.5s 1 ease-out;
@@ -117,14 +122,10 @@ export const LineProgressBar = styled.div<LineProgressBarProps>`
   position: absolute;
   left: 0;
   height: ${BAR_HEIGHT};
-  background-color: ${({
-    barColor,
-    isSecondary,
-    theme: {
-      colors: { progressBar, progressBarSecondary },
-    },
-  }: LineProgressBarProps & ThemeProp) =>
-    barColor || isSecondary ? progressBarSecondary : progressBar};
+  background-color: ${({ barColor, isSecondary, theme }) =>
+    !!barColor || !!isSecondary
+      ? theme.colors.progressBarSecondary
+      : theme.colors.progressBar};
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   transition: width 0.6s ease;
   width: ${({ percentage }) => percentage}%;
@@ -149,10 +150,9 @@ export const LineProgressBar = styled.div<LineProgressBarProps>`
       theme: {
         colors: { progressBar, progressBarSecondary },
       },
-    }: LineProgressBarProps & ThemeProp) =>
-      barColor || isSecondary ? progressBarSecondary : progressBar};
+    }) => (barColor || isSecondary ? progressBarSecondary : progressBar)};
 
-    ${({ percentage }: LineProgressBarProps) =>
+    ${({ percentage }) =>
       percentage === 100 &&
       css`
         animation: ${TargetBarPulseKeyFrames} 0.33s 0.75s 3 ease-in;
@@ -189,8 +189,8 @@ export const CircleSvg = styled.svg`
   height: 100%;
 `;
 
-export const EmptyCircle = styled.circle`
-  stroke: ${({ theme }: ThemeProp) => theme.tokenColors.grey_200};
+export const EmptyCircle = styled.circle<ThemeProp>`
+  stroke: ${({ theme }) => theme.tokenColors.grey_200};
 `;
 
 export const FullCircle = styled.circle<CircleProps>`
@@ -200,16 +200,19 @@ export const FullCircle = styled.circle<CircleProps>`
     theme: {
       colors: { circularProgress, circularProgressSecondary },
     },
-  }: CircleProps) =>
+  }) =>
     barColor || isSecondary ? circularProgressSecondary : circularProgress};
-  animation: ${({ isSecondary }: CircleProps) =>
+  animation: ${({ isSecondary, strokeDashoffset, strokeDashoffsetInit }) =>
       isSecondary
-        ? (SecondaryCircleFillKeyFrames as () => Keyframes)
-        : (CircleFillKeyFrames as () => Keyframes)}
+        ? SecondaryCircleFillKeyFrames({
+            strokeDashoffset,
+            strokeDashoffsetInit,
+          })
+        : CircleFillKeyFrames({ strokeDashoffset, strokeDashoffsetInit })}
     1s linear;
 `;
 
-export const CircularValue = styled.div`
+export const CircularValue = styled.div<ThemeProp>`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -224,7 +227,7 @@ export const CircularValue = styled.div`
     theme: {
       fontSizes: { l },
     },
-  }: ThemeProp) => l};
+  }) => l};
   line-height: ${({
     theme: {
       fontSizes: { l },

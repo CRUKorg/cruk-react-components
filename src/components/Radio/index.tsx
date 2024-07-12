@@ -3,7 +3,6 @@ import React, {
   type Ref,
   forwardRef,
   type ReactNode,
-  type FunctionComponent,
 } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
@@ -33,7 +32,7 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
  *
  * The value or children becomes the label, if you want an outer label for a radio or group of radios please use a LegendWrapper component
  */
-export const Radio: FunctionComponent<RadioProps> = forwardRef(
+export const Radio = forwardRef(
   (props: RadioProps, ref?: Ref<HTMLInputElement>) => {
     const foundTheme = useTheme();
     const theme = {

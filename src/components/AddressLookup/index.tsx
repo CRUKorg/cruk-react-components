@@ -10,7 +10,6 @@ import React, {
   type KeyboardEvent,
   useState,
   type ReactNode,
-  type FunctionComponent,
 } from "react";
 import { useTheme } from "styled-components";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
@@ -67,7 +66,7 @@ export type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
  * You will need a Loqate api key, the examples below use "MG17-ZD93-FF33-KF13" our development key.
  * This component is generally only used for country codes including "GBR", "GGY", "IMN", "JEY". An example of this behavior is included bellow.
  */
-export const AddressLookup: FunctionComponent<AddressLookupProps> = forwardRef(
+export const AddressLookup = forwardRef(
   (
     {
       apiKey,

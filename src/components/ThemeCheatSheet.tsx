@@ -1,4 +1,4 @@
-import React, { type FunctionComponent } from "react";
+import React from "react";
 import styled, { withTheme } from "styled-components";
 
 import { type ThemeType } from "../types";
@@ -15,8 +15,8 @@ const PreStyled = styled.pre`
   word-wrap: break-word;
 `;
 
-const ThemeCheatSheet: FunctionComponent<Props> = ({ theme }) => {
-  const foundTheme = theme?.colors ? theme : defaultTheme;
+export function ThemeCheatSheet({ theme }: Props) {
+  const foundTheme = !!theme?.colors ? theme : defaultTheme;
 
   return (
     <>
@@ -24,6 +24,6 @@ const ThemeCheatSheet: FunctionComponent<Props> = ({ theme }) => {
       <PreStyled>{JSON.stringify(foundTheme, null, 2)}</PreStyled>;
     </>
   );
-};
+}
 
 export default withTheme(ThemeCheatSheet);

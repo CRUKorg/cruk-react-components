@@ -14,12 +14,6 @@ module.exports = {
         devDependencies: ["**/*.cypress.tsx", "**/*.stories.tsx"],
       },
     ],
-    // "react/function-component-definition": [
-    //   2,
-    //   {
-    //     namedComponents: ["arrow-function"],
-    //   },
-    // ],
     "react/jsx-no-useless-fragment": [0],
   },
   ignorePatterns: ["cypress", "*.config.js", "webpack.*.js", "node_modules"],

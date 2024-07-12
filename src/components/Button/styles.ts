@@ -5,8 +5,8 @@ import { type ThemeType, type ButtonAppearanceType } from "../../types";
 const BUTTON_HEIGHT = "3rem";
 const BUTTON_HEIGHT_LARGE = "4rem";
 
-export const Spacer = styled.span`
-  margin-left: ${({ theme }: { theme: ThemeType }) => theme.spacing.xxs};
+export const Spacer = styled.span<{ theme: ThemeType }>`
+  margin-left: ${({ theme }) => theme.spacing.xxs};
   &:first-of-type {
     margin-left: 0;
   }
@@ -136,20 +136,16 @@ export const StyledButton = styled.button<StyledButtonProps>`
       }
     `}
   
-  ${(props: StyledButtonProps) =>
-    props.size === "l" &&
+  ${({ theme, size, isIconButton }: StyledButtonProps) =>
+    size === "l" &&
     css`
       min-height: ${BUTTON_HEIGHT_LARGE};
-      border-radius: ${({ theme }: StyledButtonProps) =>
-        theme.button.borderRadiusLarge};
-      padding: ${({ theme, isIconButton }: StyledButtonProps) =>
-        isIconButton
-          ? "0"
-          : `calc( (${BUTTON_HEIGHT_LARGE} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m}`};
-      min-width: ${({ isIconButton }: StyledButtonProps) =>
-        isIconButton ? `${BUTTON_HEIGHT_LARGE}` : "auto"};
-      height: ${({ isIconButton }: StyledButtonProps) =>
-        isIconButton ? `${BUTTON_HEIGHT_LARGE}` : "min-content"};
+      border-radius: ${theme.button.borderRadiusLarge};
+      padding: ${isIconButton
+        ? "0"
+        : `calc( (${BUTTON_HEIGHT_LARGE} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m}`};
+      min-width: ${isIconButton ? `${BUTTON_HEIGHT_LARGE}` : "auto"};
+      height: ${isIconButton ? `${BUTTON_HEIGHT_LARGE}` : "min-content"};
     `}
 
   ${(props: StyledButtonProps) =>

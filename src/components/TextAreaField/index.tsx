@@ -3,7 +3,6 @@ import React, {
   type TextareaHTMLAttributes,
   type Ref,
   forwardRef,
-  type FunctionComponent,
 } from "react";
 import { useTheme } from "styled-components";
 
@@ -33,7 +32,7 @@ export type TextAreaFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
 /**
  * TextAreaField lets users enter and edit multiline text.
  */
-export const TextAreaField: FunctionComponent<TextAreaFieldProps> = forwardRef(
+export const TextAreaField = forwardRef(
   (
     {
       errorMessage,

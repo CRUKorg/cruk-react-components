@@ -16,7 +16,7 @@ export const StyledInfoBox = styled(Box)<InfoBoxProps>`
     margin-top: 0;
   }
 
-  ${(props: InfoBoxProps) =>
+  ${(props) =>
     props.css &&
     css`
       ${props.css}

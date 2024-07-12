@@ -13,24 +13,24 @@ type ThemeProp = {
 
 type StyleRadioWidthProp = { numberOfAttributes: number } & ThemeProp;
 
-export const StyledRadio = styled(RadioInput)`
+export const StyledRadio = styled(RadioInput)<StyleRadioWidthProp>`
   display: block;
   float: left;
   text-align: left;
-  margin-left: ${({ theme }: ThemeProp) => theme.spacing.s};
+  margin-left: ${({ theme }) => theme.spacing.s};
   max-width: ${MAX_WIDTH};
-  width: ${({ numberOfAttributes, theme }: StyleRadioWidthProp) =>
+  width: ${({ numberOfAttributes, theme }) =>
     `calc(((100% - ${LEGEND_WIDTH}) / ${numberOfAttributes}) - ${theme.spacing.s})`};
 `;
 
-export const StyledLegend = styled.legend`
+export const StyledLegend = styled.legend<ThemeProp>`
   width: ${LEGEND_WIDTH};
   display: block;
   float: left;
-  font-family: ${({ theme }: ThemeProp) => theme.typography.fontFamilyBase};
+  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
 `;
 
-export const StyledFieldSet = styled.fieldset`
+export const StyledFieldSet = styled.fieldset<ThemeProp>`
   box-sizing: border-box;
   *,
   *:after,
@@ -41,6 +41,6 @@ export const StyledFieldSet = styled.fieldset`
   position: relative;
   border: none;
   padding: 0;
-  margin: 0 0 ${({ theme }: ThemeProp) => theme.spacing.s} 0;
+  margin: 0 0 ${({ theme }) => theme.spacing.s} 0;
   width: 100%;
 `;

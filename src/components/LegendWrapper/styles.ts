@@ -13,21 +13,17 @@ export const LegendSpan = styled.span<{
   theme: ThemeType;
 }>`
   display: block;
-  color: ${({ theme }: StyledFieldsetProps) => theme.colors.textDark};
-  font-size: ${({ theme }: StyledFieldsetProps) => theme.fontSizes.m};
-  line-height: ${({ theme }: StyledFieldsetProps) =>
-    theme.typography.lineHeight};
-  font-weight: ${({ theme }: StyledFieldsetProps) =>
-    theme.typography.fontWeightLabels};
-  font-family: ${({ theme }: StyledFieldsetProps) =>
-    theme.typography.fontFamilyLabel};
+  color: ${({ theme }) => theme.colors.textDark};
+  font-size: ${({ theme }) => theme.fontSizes.m};
+  line-height: ${({ theme }) => theme.typography.lineHeight};
+  font-weight: ${({ theme }) => theme.typography.fontWeightLabels};
+  font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
   min-width: 3em;
-  margin-bottom: ${({ hasHintText, theme }: StyledFieldsetProps) =>
+  margin-bottom: ${({ hasHintText, theme }) =>
     hasHintText ? theme.spacing.xxs : 0};
 
   & > * {
-    font-weight: ${({ theme }: StyledFieldsetProps) =>
-      theme.typography.fontWeightBase};
+    font-weight: ${({ theme }) => theme.typography.fontWeightBase};
   }
 `;
 
@@ -42,12 +38,12 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
   border: none;
   padding: 0;
   legend {
-    margin-bottom: ${({ theme }: StyledFieldsetProps) => theme.spacing.xs};
+    margin-bottom: ${({ theme }) => theme.spacing.xs};
   }
   label {
-    border-color: ${({ hasError, theme }: StyledFieldsetProps) =>
+    border-color: ${({ hasError, theme }) =>
       hasError && theme.colors.textError};
-    margin-bottom: ${({ theme }: StyledFieldsetProps) => theme.spacing.none};
+    margin-bottom: ${({ theme }) => theme.spacing.none};
     &:last-of-type {
       margin-bottom: 0;
     }

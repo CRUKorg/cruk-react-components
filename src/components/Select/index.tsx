@@ -1,5 +1,4 @@
 import React, {
-  type FunctionComponent,
   type ReactNode,
   type SelectHTMLAttributes,
   type Ref,
@@ -32,7 +31,7 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
  * Select components are used for collecting user provided information from a list of options.
  *
  */
-export const Select: FunctionComponent<SelectProps> = forwardRef(
+export const Select = forwardRef(
   (
     {
       errorMessage,

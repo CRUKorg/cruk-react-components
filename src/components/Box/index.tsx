@@ -1,5 +1,4 @@
 import React, {
-  type FunctionComponent,
   type HTMLAttributes,
   type Ref,
   forwardRef,
@@ -30,7 +29,7 @@ export type BoxProps = SpacingProps &
  * The more specific the the target the higher priority the css will have.
  * For example `margin` will be overridden by the `marginVertical` or `marginHorizontal` props. `marginTop`, `marginBottom`, `marginLeft`, `marginRight` will override the the `marginVertical` and `marginHorizontal` props.
  */
-export const Box: FunctionComponent<BoxProps> = forwardRef(
+export const Box = forwardRef(
   ({ ...props }: BoxProps, ref?: Ref<HTMLDivElement>) => {
     const { children, ...rest } = props;
     const foundTheme = useTheme();

@@ -1,5 +1,4 @@
 import React, {
-  type FunctionComponent,
   type InputHTMLAttributes,
   type ReactNode,
   type Ref,
@@ -52,7 +51,7 @@ export type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
 /**
  * TextFields let users enter and edit text. For multiline text entry please consider using the TextAreaFieldComponent.
  * */
-export const TextField: FunctionComponent<TextFieldProps> = forwardRef(
+export const TextField = forwardRef(
   (
     {
       errorMessage,
