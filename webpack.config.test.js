@@ -19,7 +19,7 @@ module.exports = createWebpackConfig({
       },
       {
         test: /\.md?$/,
-        use: ["babel-loader", "@mdx-js/loader"],
+        use: ["babel-loader"],
       },
     ],
   },
