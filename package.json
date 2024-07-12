@@ -24,7 +24,6 @@
     "jest-ci": "NODE_ENV=test jest --watchAll=false",
     "jest": "NODE_ENV=test jest --watch",
     "test": "npm run jest-ci && npm run cypress-headless",
-    "test:update": "NODE_ENV=test npm run cypress-headless:update",
     "clean": "rm -rf node_modules/",
     "release": "node release.js",
     "rollup:build-lib": "npm run clean-lib && rollup --config",
