@@ -13,6 +13,7 @@ import {
   bowelbabeTheme,
   rflTheme,
 } from "..";
+import { ThemeProvider } from "styled-components";
 
 const Content = () => {
   const [showModal, setShowModal] = React.useState(false);
@@ -103,7 +104,11 @@ describe("Modal", () => {
 
 describe("Modal behaviour", () => {
   beforeEach(() => {
-    mount(<Content />);
+    mount(
+      <ThemeProvider theme={crukTheme}>
+        <Content />
+      </ThemeProvider>,
+    );
   });
 
   it("should open modal, focus trap inside the modal", () => {
