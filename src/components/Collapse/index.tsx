@@ -135,6 +135,7 @@ export function Collapse({
           onClick={toggleCollapse}
           theme={theme}
           type="button"
+          appearance="tertiary"
           $textColor={headerTitleTextColor}
           $textSize={headerTitleTextSize}
           $textFontFamily={headerTitleTextFontFamily}
