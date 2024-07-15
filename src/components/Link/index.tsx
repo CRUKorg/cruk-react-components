@@ -52,10 +52,14 @@ export const Link = forwardRef((props: LinkProps, ref?: Ref<HTMLElement>) => {
   // only forward As anchor if we are not casting as something that is not an anchor
   const forwardAs = props.as && props.as !== "a" ? undefined : "a";
 
+  const { textHoverColor, appearance, ...rest } = props;
+
   return (
     <ThemeProvider theme={theme}>
       <StyledLink
-        {...props}
+        {...rest}
+        $textHoverColor={textHoverColor}
+        $appearance={appearance}
         theme={theme}
         rel={rel}
         forwardedAs={forwardAs}

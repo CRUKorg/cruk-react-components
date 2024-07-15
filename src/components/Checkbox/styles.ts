@@ -8,7 +8,7 @@ const BORDER_THICKNESS = "2px";
 type StyledLabelProps = {
   checked: boolean;
   disabled: boolean;
-  hasError: boolean;
+  $hasError: boolean;
   theme: ThemeType;
 };
 
@@ -84,7 +84,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
     }
   }
 
-  ${({ theme, disabled: isDisabled, checked, hasError }) =>
+  ${({ theme, disabled: isDisabled, checked, $hasError }) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
@@ -94,7 +94,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
             border: solid ${BORDER_THICKNESS}
               ${isDisabled
                 ? theme.colors.disabled
-                : hasError
+                : $hasError
                   ? theme.colors.danger
                   : checked
                     ? theme.colors.check

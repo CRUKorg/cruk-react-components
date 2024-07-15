@@ -10,14 +10,7 @@ const HEADER_LOGO_HEIGHT_LARGE = "80px";
 const HEADER_LOGO_HEIGHT_SMALL = "40px";
 const ANIMATION_SPEED = "0.2s";
 
-type StyledHeaderProps = {
-  theme: ThemeType;
-  isSmall?: boolean;
-  isSticky?: boolean;
-  fullWidth?: boolean;
-};
-
-export const StyledHeader = styled.header<StyledHeaderProps>`
+export const StyledHeader = styled.header<{ theme: ThemeType }>`
   box-sizing: border-box;
   position: relative;
   width: 100%;
@@ -29,7 +22,7 @@ export const StyledHeader = styled.header<StyledHeaderProps>`
   z-index: 9998;
 `;
 
-export const HeaderStickyPlaceHolder = styled.div<StyledHeaderProps>`
+export const HeaderStickyPlaceHolder = styled.div<{ theme: ThemeType }>`
   position: relative;
   box-sizing: border-box;
   width: 100%;
@@ -40,13 +33,11 @@ export const HeaderStickyPlaceHolder = styled.div<StyledHeaderProps>`
   }
 `;
 
-type HeaderStickyProps = {
-  isSmall?: boolean;
-  isSticky?: boolean;
+export const HeaderStickyContainer = styled.div<{
+  $isSmall?: boolean;
+  $isSticky?: boolean;
   theme: ThemeType;
-};
-
-export const HeaderStickyContainer = styled.div<HeaderStickyProps>`
+}>`
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -63,20 +54,21 @@ export const HeaderStickyContainer = styled.div<HeaderStickyProps>`
     },
   }) => `solid 1px ${headerBorder}`};
   height: ${HEADER_HEIGHT_SMALL};
-  box-shadow: ${({ theme, isSticky }) => (isSticky ? theme.shadows.l : "none")};
-  top: ${({ isSticky }) => (isSticky ? 0 : "auto")};
-  position: ${({ isSticky }) => (isSticky ? "fixed" : "relative")};
+  box-shadow: ${({ theme, $isSticky }) =>
+    $isSticky ? theme.shadows.l : "none"};
+  top: ${({ $isSticky }) => ($isSticky ? 0 : "auto")};
+  position: ${({ $isSticky }) => ($isSticky ? "fixed" : "relative")};
   transition: height ${ANIMATION_SPEED} ease;
 
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
-    position: ${({ isSticky }) => (isSticky ? "fixed" : "relative")};
-    height: ${({ isSmall, isSticky }) =>
-      isSmall && isSticky ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE};
+    position: ${({ $isSticky }) => ($isSticky ? "fixed" : "relative")};
+    height: ${({ $isSmall, $isSticky }) =>
+      $isSmall && $isSticky ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE};
   }
 `;
 
 export const HeaderMainContent = styled.div<{
-  fullWidth?: boolean;
+  $fullWidth?: boolean;
   theme: ThemeType;
 }>`
   box-sizing: border-box;
@@ -87,11 +79,11 @@ export const HeaderMainContent = styled.div<{
   height: 100%;
   margin: 0 auto;
   max-width: ${({
-    fullWidth,
+    $fullWidth,
     theme: {
       utilities: { contentMaxWidth },
     },
-  }) => (fullWidth ? `100%` : contentMaxWidth)};
+  }) => ($fullWidth ? `100%` : contentMaxWidth)};
 `;
 
 export const Logo = styled.img`
@@ -101,13 +93,11 @@ export const Logo = styled.img`
   max-height: 100%;
 `;
 
-type LogoWrapperProps = {
-  isSmall?: boolean;
-  isSticky?: boolean;
+export const LogoWrapper = styled.div<{
+  $isSmall?: boolean;
+  $isSticky?: boolean;
   theme: ThemeType;
-};
-
-export const LogoWrapper = styled.div<LogoWrapperProps>`
+}>`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -117,8 +107,8 @@ export const LogoWrapper = styled.div<LogoWrapperProps>`
   height: ${HEADER_LOGO_HEIGHT_SMALL};
 
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
-    height: ${({ isSmall, isSticky }) =>
-      isSmall && isSticky
+    height: ${({ $isSmall, $isSticky }) =>
+      $isSmall && $isSticky
         ? HEADER_LOGO_HEIGHT_SMALL
         : HEADER_LOGO_HEIGHT_LARGE};
   }
@@ -128,7 +118,7 @@ export const StyledLink = styled.a`
   display: inline-block;
 `;
 
-export const SkipToMain = styled.a<StyledHeaderProps>`
+export const SkipToMain = styled.a<{ theme: ThemeType }>`
   left: -999px;
   position: absolute;
   top: auto;
@@ -159,8 +149,8 @@ export const SkipToMain = styled.a<StyledHeaderProps>`
 `;
 
 export const Tagline = styled.p<{
-  isSmall?: boolean;
-  isSticky?: boolean;
+  $isSmall?: boolean;
+  $isSticky?: boolean;
   theme: ThemeType;
 }>`
   flex: 1 1 auto;
@@ -179,7 +169,7 @@ export const Tagline = styled.p<{
 
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
     display: block;
-    opacity: ${({ isSmall, isSticky }) => (isSmall && isSticky ? 0 : 1)};
+    opacity: ${({ $isSmall, $isSticky }) => ($isSmall && $isSticky ? 0 : 1)};
   }
 `;
 

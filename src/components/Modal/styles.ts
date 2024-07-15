@@ -3,19 +3,9 @@ import { type ColorKeyType, type ThemeType } from "../../types";
 import Box from "../Box";
 import { Button } from "../Button";
 
-type ThemeProp = {
+export const Background = styled.div<{
   theme: ThemeType;
-};
-
-type ContentProps = {
-  backgroundColor?: string;
-  theme: ThemeType;
-  top: string;
-  width: string;
-  maxWidth: string;
-};
-
-export const Background = styled.div<ThemeProp>`
+}>`
   background: ${({ theme }) => theme.colors.modalBackdrop};
   bottom: 0;
   left: 0;
@@ -39,7 +29,13 @@ export const Wrapper = styled.div`
   z-index: 9999;
 `;
 
-export const Content = styled(Box)<ContentProps>`
+export const Content = styled(Box)<{
+  $backgroundColor?: string;
+  $top: string;
+  $width: string;
+  $maxWidth: string;
+  theme: ThemeType;
+}>`
   background-color: ${({ theme: { colors }, backgroundColor }) =>
     backgroundColor !== undefined && typeof backgroundColor !== undefined
       ? colors[backgroundColor as ColorKeyType] !== undefined
@@ -48,14 +44,16 @@ export const Content = styled(Box)<ContentProps>`
       : colors.backgroundLight};
   position: relative;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-  margin: ${({ top }) => `${top} auto auto auto`};
-  width: ${({ width }) => width};
+  margin: ${({ $top }) => `${$top} auto auto auto`};
+  width: ${({ $width }) => $width};
   min-height: 10rem;
-  max-width: ${({ maxWidth }) => maxWidth};
+  max-width: ${({ $maxWidth }) => $maxWidth};
   z-index: 9999;
 `;
 
-export const CloseButton = styled(Button)<ThemeProp>`
+export const CloseButton = styled(Button)<{
+  theme: ThemeType;
+}>`
   float: right;
   margin-left: ${({
     theme: {

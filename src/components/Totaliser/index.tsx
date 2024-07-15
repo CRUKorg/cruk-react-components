@@ -1,4 +1,4 @@
-import React, { type ReactChild, type ReactNode } from "react";
+import React, { type ReactNode } from "react";
 import { useTheme } from "styled-components";
 
 import {
@@ -35,7 +35,7 @@ export type TotaliserProps = {
   /** flag for low height compact appearance */
   isCompact?: boolean;
   /** component for custom summary message underneath total graph only visible if there is a target */
-  summaryMessage?: ReactChild;
+  summaryMessage?: ReactNode;
   /** component children */
   children?: ReactNode;
 };
@@ -70,7 +70,7 @@ export function Totaliser({
   )} target`;
 
   return (
-    <TotaliserWrapper isCompact={isCompact || false} theme={theme}>
+    <TotaliserWrapper $isCompact={isCompact || false} theme={theme}>
       {!isCompact ? (
         <BubbleWrapper theme={theme}>
           <BubbleText>Total raised</BubbleText>
@@ -87,7 +87,7 @@ export function Totaliser({
 
       {(!!target || !!summaryMessage) && (
         <>
-          <ProgressBarWrapper isCompact={isCompact || false} theme={theme}>
+          <ProgressBarWrapper $isCompact={isCompact || false} theme={theme}>
             <StyledProgressBar
               theme={theme}
               percentage={percentageOfTotal}

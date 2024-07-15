@@ -100,16 +100,16 @@ export function Header({
         <HeaderStickyPlaceHolder>
           <HeaderStickyContainer
             data-cy="header-sticky-container"
-            isSmall={isSmall}
-            isSticky={isSticky}
+            $isSmall={isSmall}
+            $isSticky={isSticky}
           >
             <SkipToMain href="#main">Skip to main content</SkipToMain>
-            <HeaderMainContent fullWidth={fullWidth}>
+            <HeaderMainContent $fullWidth={fullWidth}>
               <StyledLink
                 href={logoLinkUrl ?? theme.siteConfig.logoUrl}
                 title={logoLinkTitle ?? "Home"}
               >
-                <LogoWrapper isSmall={isSmall} isSticky={isSticky}>
+                <LogoWrapper $isSmall={isSmall} $isSticky={isSticky}>
                   <Logo
                     height={80}
                     src={logoImageSrc ?? theme.siteConfig.logoSrc}
@@ -118,7 +118,7 @@ export function Header({
                 </LogoWrapper>
               </StyledLink>
               {siteSlogan ? (
-                <Tagline isSmall={isSmall} isSticky={isSticky}>
+                <Tagline $isSmall={isSmall} $isSticky={isSticky}>
                   {siteSlogan}
                 </Tagline>
               ) : null}

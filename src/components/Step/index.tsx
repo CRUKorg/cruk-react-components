@@ -33,15 +33,15 @@ export function Step({ steps = [], current = 1, children }: StepProps) {
   return (
     <ThemeProvider theme={theme}>
       <StepWrapper>
-        <StepList total={totalSteps}>
+        <StepList $total={totalSteps}>
           {Array.isArray(steps) &&
             steps.map((step, i) => {
               const key = `step${i}`;
               return (
                 <StepItem
                   key={key}
-                  active={i + 1 === current}
-                  done={i + 1 < current}
+                  $active={i + 1 === current}
+                  $done={i + 1 < current}
                 >
                   <StepBar>{i + 1 < current && <StepTick />}</StepBar>
                   {step}

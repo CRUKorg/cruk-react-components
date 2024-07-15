@@ -63,9 +63,9 @@ export const TextAreaField = forwardRef(
           aria-describedby={
             !!props.id && !!errorMessage ? `${props.id}-error` : undefined
           }
-          hasError={hasError || !!errorMessage || false}
+          $hasError={hasError || !!errorMessage || false}
           resize={resize}
-          lineCount={lineCount}
+          $lineCount={lineCount}
           theme={theme}
           ref={ref}
           data-hj-suppress

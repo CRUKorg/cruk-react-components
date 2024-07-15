@@ -69,7 +69,7 @@ export function Pagination({
         <PagerItem key={number}>
           <PagerLink
             data-cta={id ? `${id}-${number}` : null}
-            active={number === active}
+            $active={number === active}
             {...linkProps(number)}
             aria-label={`page ${number} of ${total}`}
           >

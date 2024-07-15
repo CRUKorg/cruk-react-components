@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { type ButtonHTMLAttributes } from "react";
 
 import { type ThemeType } from "../../types";
+import { type ButtonHTMLAttributes } from "react";
 
 export const CarouselWrapper = styled.div`
   position: relative;
@@ -14,27 +14,27 @@ type ThemeProps = {
 };
 
 type CarouselScrollAreaProps = {
-  smoothScrolling: boolean;
+  $smoothScrolling: boolean;
 };
 
 type CarouselCardProps = {
-  onlyChild: boolean;
-  fullWidthChild: boolean;
+  $onlyChild: boolean;
+  $fullWidthChild: boolean;
 };
 
 type CarouselCardInnerProps = {
-  isSelected: boolean;
-  shrinkUnselectedPages: boolean;
-  onlyChild: boolean;
-  fullWidthChild: boolean;
+  $isSelected: boolean;
+  $shrinkUnselectedPages: boolean;
+  $onlyChild: boolean;
+  $fullWidthChild: boolean;
 };
 
 export const CarouselScrollArea = styled.ul<CarouselScrollAreaProps>`
   position: relative;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
-  scroll-behavior: ${({ smoothScrolling }) =>
-    smoothScrolling ? "smooth" : "auto"};
+  scroll-behavior: ${({ $smoothScrolling }) =>
+    $smoothScrolling ? "smooth" : "auto"};
   -webkit-overflow-scrolling: touch;
   white-space: nowrap;
   padding-left: 0;
@@ -47,19 +47,19 @@ export const CarouselScrollArea = styled.ul<CarouselScrollAreaProps>`
 export const CarouselCard = styled.li<CarouselCardProps>`
   scroll-snap-align: center;
   display: inline-block;
-  width: ${({ onlyChild, fullWidthChild }) =>
-    onlyChild || fullWidthChild ? "100%" : "80%"};
+  width: ${({ $onlyChild, $fullWidthChild }) =>
+    $onlyChild || $fullWidthChild ? "100%" : "80%"};
 `;
 
 export const CarouselCardInner = styled.div<CarouselCardInnerProps>`
   transition: transform 0.2s linear;
   transform: ${({
-    isSelected,
-    shrinkUnselectedPages,
-    onlyChild,
-    fullWidthChild,
+    $isSelected,
+    $shrinkUnselectedPages,
+    $onlyChild,
+    $fullWidthChild,
   }) =>
-    onlyChild || (isSelected && shrinkUnselectedPages) || fullWidthChild
+    $onlyChild || ($isSelected && $shrinkUnselectedPages) || $fullWidthChild
       ? "scale(1)"
       : "scale(0.9)"};
 `;

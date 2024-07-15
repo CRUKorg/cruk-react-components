@@ -45,7 +45,7 @@ export function LabelWrapper({
     <ThemeProvider theme={theme}>
       {label ? (
         <Label {...otherHTMLLabelProps}>
-          <LabelText hasHintText={!!hintText}>
+          <LabelText $hasHintText={!!hintText}>
             {label}
             {required && !hideRequiredInLabel && (
               <RequiredText>{` (required)`}</RequiredText>

@@ -1,4 +1,4 @@
-import React, { type ReactNode } from "react";
+import React, { type HTMLAttributes, type ReactNode } from "react";
 import { useTheme } from "styled-components";
 
 import { type SpaceType } from "../../types";
@@ -6,7 +6,7 @@ import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { StyledBadge } from "./styles";
 
-export type BadgeProps = {
+export type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
   /** background colour of badge */
   backgroundColor?: string;
   /** border colour of badge */
@@ -32,7 +32,14 @@ at the end of a sentence, link, or button. Unless the context is clear,
 consider including additional context with a visually hidden piece of
 additional text.
  */
-export function Badge({ children, ...rest }: BadgeProps) {
+export function Badge({
+  children,
+  size = "xs",
+  backgroundColor,
+  borderColor,
+  textColor,
+  ...rest
+}: BadgeProps) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -41,8 +48,11 @@ export function Badge({ children, ...rest }: BadgeProps) {
   return (
     <StyledBadge
       theme={theme}
-      isText={typeof children === "string"}
-      size="xs"
+      $isText={typeof children === "string"}
+      $size={size}
+      $backgroundColor={backgroundColor}
+      $borderColor={borderColor}
+      $textColor={textColor}
       {...rest}
     >
       {children}

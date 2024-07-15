@@ -15,11 +15,11 @@ type ExtraProps = {
 };
 
 type StyledInputProps = {
-  hasError: boolean;
-  isValid: boolean;
+  $hasError: boolean;
+  $isValid: boolean;
   theme: ThemeType;
-  isValidVisible?: boolean;
-  isInvalidVisible?: boolean;
+  $isValidVisible?: boolean;
+  $isInvalidVisible?: boolean;
 };
 
 export const Extra = styled.span<ExtraProps>`
@@ -79,8 +79,8 @@ export const StyledInputWrapper = styled.span<StyledInputProps>`
   display: block;
   flex: 1 1;
   &:after {
-    display: ${({ isValidVisible, isInvalidVisible }) =>
-      !!isInvalidVisible || !!isValidVisible ? "block" : "none"};
+    display: ${({ $isValidVisible, $isInvalidVisible }) =>
+      !!$isInvalidVisible || !!$isValidVisible ? "block" : "none"};
     position: absolute;
     width: 2em;
     z-index: 1;
@@ -91,15 +91,15 @@ export const StyledInputWrapper = styled.span<StyledInputProps>`
     background-repeat: no-repeat;
     background-position: ${({ theme }) =>
       `calc( 100% - ${theme.spacing.xxs}) 50% `};
-    ${({ isValid, isInvalidVisible }) =>
-      !isValid &&
-      isInvalidVisible &&
+    ${({ $isValid, $isInvalidVisible }) =>
+      !$isValid &&
+      $isInvalidVisible &&
       css`
         background-image: url("data:image/png;base64,${crossBase64}");
       `}
-    ${({ isValid, isValidVisible }) =>
-      isValid &&
-      isValidVisible &&
+    ${({ $isValid, $isValidVisible }) =>
+      $isValid &&
+      $isValidVisible &&
       css`
         background-image: url("data:image/png;base64,${checkBase64}");
       `}
@@ -110,9 +110,9 @@ export const StyledInput = styled.input<StyledInputProps>`
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.colors.backgroundLight};
   background-image: none;
-  border: ${({ hasError, theme }) =>
+  border: ${({ $hasError, theme }) =>
     `solid ${theme.utilities.inputBorderWidth} ${
-      hasError ? theme.colors.textError : theme.colors.textInputBorder
+      $hasError ? theme.colors.textError : theme.colors.textInputBorder
     }`};
   border-radius: 0;
   color: ${({ theme }) => theme.colors.textDark};
@@ -124,8 +124,8 @@ export const StyledInput = styled.input<StyledInputProps>`
     `calc((${MIN_HEIGHT} - (${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xs}`};
 
   /* Make sure text doesn't go behind the valid indicatior icon */
-  ${({ isValidVisible, isInvalidVisible }) =>
-    (isValidVisible || isInvalidVisible) &&
+  ${({ $isValidVisible, $isInvalidVisible }) =>
+    ($isValidVisible || $isInvalidVisible) &&
     css`
       padding-right: 3rem;
     `}
@@ -153,8 +153,8 @@ export const StyledInput = styled.input<StyledInputProps>`
         `
       : null};
 
-  ${({ hasError, theme }) =>
-    hasError &&
+  ${({ $hasError, theme }) =>
+    $hasError &&
     css`
       ~ ${ExtraRight} {
         border-color: ${theme.colors.textError};

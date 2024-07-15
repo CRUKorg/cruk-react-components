@@ -95,7 +95,7 @@ export function PopOver({
 
   return (
     <ThemeProvider theme={theme}>
-      <PopOverWrapper full={full} css={css} ref={popRef}>
+      <PopOverWrapper $full={full} $css={css} ref={popRef}>
         {React.Children.map(
           children as ReactElement,
           (child: React.ReactElement) =>
@@ -107,9 +107,9 @@ export function PopOver({
         )}
         {showPopOver ? (
           <PopOverModal
-            maxWidth={maxWidth || "none"}
-            minWidth={minWidth || "auto"}
-            position={position || "top"}
+            $maxWidth={maxWidth || "none"}
+            $minWidth={minWidth || "auto"}
+            $position={position || "top"}
             theme={theme}
             role="dialog"
             aria-label={modalLabel}

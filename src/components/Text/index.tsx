@@ -3,12 +3,16 @@ import React, {
   type Ref,
   forwardRef,
   type ElementType,
+  type LegacyRef,
 } from "react";
 import { useTheme } from "styled-components";
 
 import { crukTheme as defaultTheme } from "../../themes/cruk";
 
-import { type SpacingProps } from "../Spacing";
+import {
+  spacingPropsToSpacingPropsInternal,
+  type SpacingProps,
+} from "../Spacing";
 import {
   type WordBreakType,
   type FontSizeType,
@@ -50,8 +54,33 @@ export const Text = forwardRef((props: TextProps, ref?: Ref<HTMLElement>) => {
     ...defaultTheme,
     ...foundTheme,
   };
+  const {
+    textColor,
+    textAlign,
+    textSize,
+    textWeight,
+    textFontFamily,
+    wordBreak,
+    overflowWrap,
+    ...rest
+  } = props;
 
-  return <TextStyled {...props} ref={ref} theme={theme} />;
+  const withInternalSpacingProps = spacingPropsToSpacingPropsInternal(rest);
+
+  return (
+    <TextStyled
+      $textColor={textColor}
+      $textAlign={textAlign}
+      $textSize={textSize}
+      $textWeight={textWeight}
+      $textFontFamily={textFontFamily}
+      $wordBreak={wordBreak}
+      $overflowWrap={overflowWrap}
+      {...withInternalSpacingProps}
+      theme={theme}
+      ref={ref as LegacyRef<HTMLParagraphElement>}
+    />
+  );
 });
 
 export default Text;

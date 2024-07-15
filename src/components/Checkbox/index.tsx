@@ -41,24 +41,23 @@ export const Checkbox = forwardRef(
       ...defaultTheme,
       ...foundTheme,
     };
-    const { children, ...propsWithoutChildren } = props;
+
+    const { children, hasError, errorMessage, ...rest } = props;
 
     return (
       <ThemeProvider theme={theme}>
         <StyledLabel
-          hasError={props.hasError || !!props.errorMessage || false}
+          $hasError={hasError || !!errorMessage || false}
           checked={props.checked || props.defaultChecked || false}
           disabled={props.disabled || false}
         >
           <StyledInput
-            {...propsWithoutChildren}
+            {...rest}
             disabled={props.disabled || false}
             type="checkbox"
             ref={ref}
             aria-describedby={
-              !!props.id && !!props.errorMessage
-                ? `${props.id}-error`
-                : undefined
+              !!props.id && !!errorMessage ? `${props.id}-error` : undefined
             }
           />
           <SelectedBorder />
@@ -71,12 +70,12 @@ export const Checkbox = forwardRef(
             </CheckWrapper>
           )}
         </StyledLabel>
-        {!!props.errorMessage && (
+        {!!errorMessage && (
           <ErrorText
             marginTop="xxs"
             id={props.id ? `${props.id}-error` : undefined}
           >
-            {props.errorMessage}
+            {errorMessage}
           </ErrorText>
         )}
       </ThemeProvider>

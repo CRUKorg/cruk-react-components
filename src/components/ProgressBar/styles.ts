@@ -3,46 +3,17 @@ import { type ThemeType } from "../../types";
 
 const BAR_HEIGHT = "16px";
 
-type ThemeProp = {
-  theme: ThemeType;
-};
-
-type LineProgressBarProps = {
-  percentage: number;
-  barColor?: string;
-  isSecondary?: boolean;
-  theme: ThemeType;
-};
-type LineProgressWrapperProps = {
-  percentage: number;
-  secondaryPercentage: number;
-  theme: ThemeType;
-};
-
-type CircleProps = ThemeProp & {
-  strokeDashoffsetInit: number;
-  strokeDashoffset: number;
-  barColor?: string;
-  isSecondary?: boolean;
-  theme: ThemeType;
-};
-
-type CircleWrapperProps = {
-  circleSize: string;
-  theme: ThemeType;
-};
-
 type CircleKeyCircleFillKeyFramesProps = {
-  strokeDashoffsetInit: number;
+  $strokeDashoffsetInit: number;
   strokeDashoffset: number;
 };
 
 const CircleFillKeyFrames = ({
-  strokeDashoffsetInit,
+  $strokeDashoffsetInit,
   strokeDashoffset,
 }: CircleKeyCircleFillKeyFramesProps) => keyframes`
   0% {
-     stroke-dashoffset: ${strokeDashoffsetInit} ;
+     stroke-dashoffset: ${$strokeDashoffsetInit} ;
   }
   50% {
      stroke-dashoffset: ${strokeDashoffset} ;
@@ -53,11 +24,11 @@ const CircleFillKeyFrames = ({
 `;
 
 const SecondaryCircleFillKeyFrames = ({
-  strokeDashoffsetInit,
+  $strokeDashoffsetInit,
   strokeDashoffset,
 }: CircleKeyCircleFillKeyFramesProps) => keyframes`
   0% {
-     stroke-dashoffset: ${strokeDashoffsetInit} ;
+     stroke-dashoffset: ${$strokeDashoffsetInit} ;
   }
   100% {
      stroke-dashoffset: ${strokeDashoffset} ;
@@ -100,7 +71,11 @@ export const ProgressBarWrapper = styled.div`
   margin-top: ${BAR_HEIGHT};
 `;
 
-export const LineProgressBarWrapper = styled.div<LineProgressWrapperProps>`
+export const LineProgressBarWrapper = styled.div<{
+  $percentage: number;
+  $secondaryPercentage: number;
+  theme: ThemeType;
+}>`
   position: relative;
   height: ${BAR_HEIGHT};
   margin-bottom: 0;
@@ -111,24 +86,29 @@ export const LineProgressBarWrapper = styled.div<LineProgressWrapperProps>`
   }) => progressBarBackground};
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 
-  ${({ percentage, secondaryPercentage }) =>
-    (percentage === 100 || secondaryPercentage === 100) &&
+  ${({ $percentage, $secondaryPercentage }) =>
+    ($percentage === 100 || $secondaryPercentage === 100) &&
     css`
       animation: ${LineBarPulseKeyFrames} 0.3s 0.5s 1 ease-out;
     `}
 `;
 
-export const LineProgressBar = styled.div<LineProgressBarProps>`
+export const LineProgressBar = styled.div<{
+  $percentage: number;
+  $barColor?: string;
+  $isSecondary?: boolean;
+  theme: ThemeType;
+}>`
   position: absolute;
   left: 0;
   height: ${BAR_HEIGHT};
-  background-color: ${({ barColor, isSecondary, theme }) =>
-    !!barColor || !!isSecondary
+  background-color: ${({ $barColor, $isSecondary, theme }) =>
+    !!$barColor || !!$isSecondary
       ? theme.colors.progressBarSecondary
       : theme.colors.progressBar};
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   transition: width 0.6s ease;
-  width: ${({ percentage }) => percentage}%;
+  width: ${({ $percentage }) => $percentage}%;
 
   &::before {
     content: "";
@@ -145,15 +125,15 @@ export const LineProgressBar = styled.div<LineProgressBarProps>`
     opacity: 0;
     filter: blur(2px);
     background-color: ${({
-      barColor,
-      isSecondary,
+      $barColor,
+      $isSecondary,
       theme: {
         colors: { progressBar, progressBarSecondary },
       },
-    }) => (barColor || isSecondary ? progressBarSecondary : progressBar)};
+    }) => ($barColor || $isSecondary ? progressBarSecondary : progressBar)};
 
-    ${({ percentage }) =>
-      percentage === 100 &&
+    ${({ $percentage }) =>
+      $percentage === 100 &&
       css`
         animation: ${TargetBarPulseKeyFrames} 0.33s 0.75s 3 ease-in;
       `}
@@ -171,10 +151,13 @@ export const ScreenReaderOnly = styled.span`
   border: 0;
 `;
 
-export const CircularWrapper = styled.div<CircleWrapperProps>`
+export const CircularWrapper = styled.div<{
+  $circleSize: string;
+  theme: ThemeType;
+}>`
   position: relative;
-  width: ${({ circleSize }) => circleSize};
-  height: ${({ circleSize }) => circleSize};
+  width: ${({ $circleSize }) => $circleSize};
+  height: ${({ $circleSize }) => $circleSize};
   background: none;
   margin: 0 auto;
   box-shadow: none;
@@ -189,30 +172,40 @@ export const CircleSvg = styled.svg`
   height: 100%;
 `;
 
-export const EmptyCircle = styled.circle<ThemeProp>`
+export const EmptyCircle = styled.circle<{
+  theme: ThemeType;
+}>`
   stroke: ${({ theme }) => theme.tokenColors.grey_200};
 `;
 
-export const FullCircle = styled.circle<CircleProps>`
+export const FullCircle = styled.circle<{
+  $strokeDashoffsetInit: number;
+  strokeDashoffset: number;
+  $barColor?: string;
+  $isSecondary?: boolean;
+  theme: ThemeType;
+}>`
   stroke: ${({
-    isSecondary,
-    barColor,
+    $isSecondary,
+    $barColor,
     theme: {
       colors: { circularProgress, circularProgressSecondary },
     },
   }) =>
-    barColor || isSecondary ? circularProgressSecondary : circularProgress};
-  animation: ${({ isSecondary, strokeDashoffset, strokeDashoffsetInit }) =>
-      isSecondary
+    $barColor || $isSecondary ? circularProgressSecondary : circularProgress};
+  animation: ${({ $isSecondary, strokeDashoffset, $strokeDashoffsetInit }) =>
+      $isSecondary
         ? SecondaryCircleFillKeyFrames({
             strokeDashoffset,
-            strokeDashoffsetInit,
+            $strokeDashoffsetInit,
           })
-        : CircleFillKeyFrames({ strokeDashoffset, strokeDashoffsetInit })}
+        : CircleFillKeyFrames({ strokeDashoffset, $strokeDashoffsetInit })}
     1s linear;
 `;
 
-export const CircularValue = styled.div<ThemeProp>`
+export const CircularValue = styled.div<{
+  theme: ThemeType;
+}>`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -232,12 +225,12 @@ export const CircularValue = styled.div<ThemeProp>`
     theme: {
       fontSizes: { l },
     },
-  }: ThemeProp) => l};
+  }) => l};
   text-align: center;
   height: 100%;
   color: ${({
     theme: {
       colors: { textDark },
     },
-  }: ThemeProp) => textDark};
+  }) => textDark};
 `;

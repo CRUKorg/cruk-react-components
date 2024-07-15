@@ -12,15 +12,9 @@ export const StepWrapper = styled.div`
   text-transform: capitalize;
 `;
 
-type StepListProps = {
-  total: number;
-};
-
-type ThemeProps = {
-  theme: ThemeType;
-};
-
-export const StepList = styled.ul<StepListProps>`
+export const StepList = styled.ul<{
+  $total: number;
+}>`
   list-style: none;
   padding: 0;
   margin: 0;
@@ -28,11 +22,11 @@ export const StepList = styled.ul<StepListProps>`
   justify-content: space-between;
   width: 100%;
 
-  ${(props) =>
-    props.total &&
+  ${({ $total }) =>
+    $total &&
     css`
       li {
-        width: ${100 / props.total}%;
+        width: ${100 / $total}%;
       }
       li:last-child span:after {
         display: none;
@@ -40,7 +34,9 @@ export const StepList = styled.ul<StepListProps>`
     `}
 `;
 
-export const StepBar = styled.span<ThemeProps>`
+export const StepBar = styled.span<{
+  theme: ThemeType;
+}>`
   border-radius: 50%;
   background-clip: padding-box;
   width: 24px;
@@ -65,7 +61,9 @@ export const StepBar = styled.span<ThemeProps>`
   }
 `;
 
-export const StepTick = styled.span<ThemeProps>`
+export const StepTick = styled.span<{
+  theme: ThemeType;
+}>`
   display: block;
   transform: rotate(45deg);
   transform-origin: center center;
@@ -85,27 +83,25 @@ export const StepTick = styled.span<ThemeProps>`
   margin-left: 8px;
 `;
 
-type StepItemProps = {
-  active: boolean;
-  done: boolean;
+export const StepItem = styled.li<{
+  $active: boolean;
+  $done: boolean;
   theme: ThemeType;
-};
-
-export const StepItem = styled.li<StepItemProps>`
+}>`
   display: flex;
   flex-direction: column;
   position: relative;
   font-family: ${({ theme }) => theme.typography.fontFamilyBase};
 
-  ${({ theme, active }: StepItemProps) =>
-    active &&
+  ${({ theme, $active }) =>
+    $active &&
     css`
       ${StepBar} {
         border-color: ${theme.colors.tertiary};
       }
     `}
-  ${({ done, theme }) =>
-    done &&
+  ${({ $done, theme }) =>
+    $done &&
     css`
       ${StepBar} {
         border: none;

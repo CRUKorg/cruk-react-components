@@ -40,6 +40,7 @@ export function LegendWrapper({
     ...defaultTheme,
     ...foundTheme,
   };
+
   const hintTextElement =
     !!hintText &&
     (typeof hintText === "string" || typeof hintText === "number") ? (
@@ -50,12 +51,12 @@ export function LegendWrapper({
   return (
     <ThemeProvider theme={theme}>
       <StyledFieldset
-        hasError={hasError || !!errorMessage || false}
-        hasHintText={!!hintText}
+        $hasError={hasError || !!errorMessage || false}
+        $hasHintText={!!hintText}
       >
         {legendText && (
           <legend {...restOfHTMLAttributes}>
-            <LegendSpan hasHintText={!!hintText}>
+            <LegendSpan $hasHintText={!!hintText}>
               {legendText} {required && <span>(required)</span>}
             </LegendSpan>
             {hintTextElement}

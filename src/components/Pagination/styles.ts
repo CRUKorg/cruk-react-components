@@ -1,17 +1,7 @@
 import styled, { css } from "styled-components";
 import { type ThemeType } from "../../types";
 
-type ThemeProps = {
-  theme: ThemeType;
-};
-
-type PaginationStyledProps = ThemeProps & {
-  active?: boolean;
-  name?: string;
-  disabled?: boolean;
-};
-
-export const PagerWrapper = styled.div<PaginationStyledProps>`
+export const PagerWrapper = styled.div`
   display: table;
   width: 100%;
   clear: both;
@@ -24,24 +14,28 @@ export const PagerList = styled.ul`
   margin: 20px 0;
 `;
 
-export const PagerLink = styled.a<PaginationStyledProps>`
+export const PagerLink = styled.a<{
+  $active?: boolean;
+  name?: string;
+  disabled?: boolean;
+  theme: ThemeType;
+}>`
   font-weight: normal;
   font-family: ${({
     theme: {
       typography: { fontFamilyBase },
     },
-  }: ThemeProps) => fontFamilyBase};
+  }) => fontFamilyBase};
   font-size: ${({
     theme: {
       fontSizes: { s },
     },
-  }: ThemeProps) => s};
-  color: ${({ theme }: ThemeProps) => theme.colors.textLight};
-  background-color: ${({ theme }: ThemeProps) =>
-    theme.colors.paginationBackground};
+  }) => s};
+  color: ${({ theme }) => theme.colors.textLight};
+  background-color: ${({ theme }) => theme.colors.paginationBackground};
   cursor: pointer;
   border-radius: 0;
-  margin: ${({ theme }: ThemeProps) => theme.spacing.xxs};
+  margin: ${({ theme }) => theme.spacing.xxs};
   padding: 7px 11px;
   text-decoration: none;
   &:active,
@@ -58,8 +52,8 @@ export const PagerLink = styled.a<PaginationStyledProps>`
     outline: auto;
   }
 
-  ${({ active, theme }: PaginationStyledProps) =>
-    active &&
+  ${({ $active, theme }) =>
+    $active &&
     css`
       color: ${theme.colors.textDark};
       background-color: ${theme.colors.paginationActive};
@@ -70,7 +64,7 @@ export const PagerLink = styled.a<PaginationStyledProps>`
       }
     `}
 
-  ${({ name, theme, disabled }: PaginationStyledProps) =>
+  ${({ name, theme, disabled }) =>
     (name === "Prev" || name === "Next") &&
     css`
       color: ${disabled ? theme.colors.disabled : theme.colors.paginationText};
@@ -89,7 +83,7 @@ export const PagerLink = styled.a<PaginationStyledProps>`
       }
     `}
 
-  ${({ theme, disabled }: PaginationStyledProps) =>
+  ${({ theme, disabled }) =>
     disabled &&
     css`
       color: $ ${theme.colors.disabled};
@@ -106,7 +100,7 @@ export const PagerLink = styled.a<PaginationStyledProps>`
     `}
 `;
 
-export const PagerItem = styled.li<ThemeProps>`
+export const PagerItem = styled.li<{ theme: ThemeType }>`
   display: none;
   &:first-child,
   &:last-child {
