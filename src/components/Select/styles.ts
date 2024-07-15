@@ -5,8 +5,8 @@ import { type ThemeType } from "../../types";
 const BUTTON_HEIGHT = "3rem";
 
 type StyledSelectProps = {
-  hasError: boolean;
-  errorMessage?: string;
+  $hasError: boolean;
+  $errorMessage?: string;
   theme: ThemeType;
 };
 
@@ -28,9 +28,9 @@ const StyledSelect = styled.select<StyledSelectProps>`
     calc(100% - 10px) 50%;
   background-size: 6px 6px;
   background-repeat: no-repeat;
-  border: ${({ theme, hasError, errorMessage }) =>
+  border: ${({ theme, $hasError, $errorMessage }) =>
     `solid ${theme.utilities.inputBorderWidth} ${
-      hasError || errorMessage
+      $hasError || $errorMessage
         ? theme.colors.textError
         : theme.colors.textInputBorder
     }`};

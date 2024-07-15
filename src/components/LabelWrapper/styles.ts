@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { type ThemeType } from "../../types";
 
 type LabelTextProp = {
-  hasHintText: boolean;
+  $hasHintText: boolean;
   theme: ThemeType;
 };
 
@@ -23,6 +23,6 @@ export const LabelText = styled.span<LabelTextProp>`
   font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
   font-weight: ${({ theme }) => theme.typography.fontWeightLabels};
   display: block;
-  margin-bottom: ${({ hasHintText, theme }) =>
-    hasHintText ? theme.spacing.xxs : theme.spacing.xs};
+  margin-bottom: ${({ $hasHintText, theme }) =>
+    $hasHintText ? theme.spacing.xxs : theme.spacing.xs};
 `;

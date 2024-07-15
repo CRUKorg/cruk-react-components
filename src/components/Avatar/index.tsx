@@ -47,7 +47,7 @@ export function Avatar({
   return (
     <StyledAvatar
       {...rest}
-      size={theme.avatar[size || "m"]}
+      $size={theme.avatar[size || "m"]}
       src={avatarUrl()}
       alt={alt}
     />

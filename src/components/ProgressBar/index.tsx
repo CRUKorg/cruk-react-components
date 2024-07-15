@@ -80,7 +80,7 @@ export function ProgressBar({
     <ThemeProvider theme={theme}>
       <ProgressBarWrapper>
         {isCircular ? (
-          <CircularWrapper circleSize={circleSize || DEFAULT_CIRCLE_SIZE}>
+          <CircularWrapper $circleSize={circleSize || DEFAULT_CIRCLE_SIZE}>
             <CircleSvg viewBox={`0 0 ${d} ${d}`}>
               <EmptyCircle
                 cx={r + strokeWidth}
@@ -89,44 +89,44 @@ export function ProgressBar({
                 strokeWidth={strokeWidth}
               />
               <FullCircle
-                isSecondary
-                barColor={secondaryBarColor}
+                $isSecondary
+                $barColor={secondaryBarColor}
                 cx={r + strokeWidth}
                 cy={r + strokeWidth}
                 r={r}
                 strokeWidth={strokeWidth}
                 strokeDasharray={c}
                 strokeDashoffset={c * (1 - secondaryPercentageLimited / 100)}
-                strokeDashoffsetInit={c}
+                $strokeDashoffsetInit={c}
               />
 
               <FullCircle
-                barColor={barColor}
+                $barColor={barColor}
                 cx={r + strokeWidth}
                 cy={r + strokeWidth}
                 r={r}
                 strokeWidth={strokeWidth}
                 strokeDasharray={c}
                 strokeDashoffset={c * (1 - percentageLimited / 100)}
-                strokeDashoffsetInit={c}
+                $strokeDashoffsetInit={c}
               />
             </CircleSvg>
             <CircularValue>{textOrPercentString}</CircularValue>
           </CircularWrapper>
         ) : (
           <LineProgressBarWrapper
-            percentage={percentageLimited}
-            secondaryPercentage={secondaryPercentageLimited}
+            $percentage={percentageLimited}
+            $secondaryPercentage={secondaryPercentageLimited}
           >
             <LineProgressBar
-              isSecondary
-              percentage={secondaryPercentageLimited}
-              barColor={secondaryBarColor}
+              $isSecondary
+              $percentage={secondaryPercentageLimited}
+              $barColor={secondaryBarColor}
             />
 
             <LineProgressBar
-              percentage={percentageLimited}
-              barColor={barColor}
+              $percentage={percentageLimited}
+              $barColor={barColor}
             />
             <ScreenReaderOnly>{descriptivePercentageString}</ScreenReaderOnly>
           </LineProgressBarWrapper>

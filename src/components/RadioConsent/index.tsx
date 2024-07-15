@@ -43,7 +43,7 @@ export function RadioConsent(props: RadioConsentProps) {
         <StyledLegend>{legend}</StyledLegend>
         {attributes.map((item: Attribute) => (
           <StyledRadio
-            numberOfAttributes={attributes.length || 0}
+            $numberOfAttributes={attributes.length || 0}
             key={item.value}
             checked={selectedValue === item.value}
             onChange={onChange}

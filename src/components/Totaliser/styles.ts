@@ -4,11 +4,9 @@ import { type ThemeType } from "../../types";
 
 import ProgressBar from "../ProgressBar";
 
-type ThemeProps = {
+export const BubbleWrapper = styled.div<{
   theme: ThemeType;
-};
-
-export const BubbleWrapper = styled.div<ThemeProps>`
+}>`
   text-align: center;
   background-color: ${({ theme }) => theme.colors.totaliserBubbleColor};
   border-radius: 3.2rem;
@@ -19,17 +17,16 @@ export const BubbleWrapper = styled.div<ThemeProps>`
   }
 `;
 
-export const ProgressBarWrapper = styled.div<
-  ThemeProps & {
-    isCompact?: boolean;
-  }
->`
+export const ProgressBarWrapper = styled.div<{
+  $isCompact?: boolean;
+  theme: ThemeType;
+}>`
   padding: 0 46px 12px;
   margin-top: ${({ theme }) => theme.spacing.s};
   position: relative;
 
-  ${({ isCompact, theme }) =>
-    !!isCompact !== true &&
+  ${({ $isCompact, theme }) =>
+    !!$isCompact !== true &&
     css`
       div > div > div:not(:first-child) {
         &:after {
@@ -44,7 +41,9 @@ export const ProgressBarWrapper = styled.div<
     `};
 `;
 
-export const Total = styled.p<ThemeProps>`
+export const Total = styled.p<{
+  theme: ThemeType;
+}>`
   color: ${({ theme }) => theme.colors.totaliserBubbleTotalColor};
   font-size: 2.625rem;
   line-height: 3rem;
@@ -52,7 +51,7 @@ export const Total = styled.p<ThemeProps>`
   text-transform: ${({ theme }) => theme.typography.headerTextTransform};
 `;
 
-export const BubbleText = styled.p<ThemeProps>`
+export const BubbleText = styled.p<{ theme: ThemeType }>`
   color: ${({ theme }) => theme.colors.totaliserBubbleTextColor};
   font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
   text-transform: ${({
@@ -62,7 +61,7 @@ export const BubbleText = styled.p<ThemeProps>`
   }) => headerTextTransform};
 `;
 
-export const GiftAid = styled.p<ThemeProps>`
+export const GiftAid = styled.p<{ theme: ThemeType }>`
   color: ${({ theme }) => theme.colors.totaliserBubbleTotalColor};
   font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
   text-transform: ${({
@@ -73,7 +72,7 @@ export const GiftAid = styled.p<ThemeProps>`
 `;
 
 /* span not a div so that we don't end up with two speech bubble arrows from ProgressBarWrapper */
-export const Summary = styled.span<ThemeProps>`
+export const Summary = styled.span<{ theme: ThemeType }>`
   display: block;
   text-align: right;
   margin-top: 12px;
@@ -81,16 +80,14 @@ export const Summary = styled.span<ThemeProps>`
   font-family: ${({ theme }) => theme.typography.fontFamilyBase};
 `;
 
-type TotaliserWrapperProps = {
-  isCompact: boolean;
+export const TotaliserWrapper = styled.div<{
+  $isCompact: boolean;
   theme: ThemeType;
-};
-
-export const TotaliserWrapper = styled.div<TotaliserWrapperProps>`
+}>`
   font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
   margin: 0;
   ${(props) =>
-    props.isCompact &&
+    props.$isCompact &&
     css`
       ${ProgressBarWrapper} {
         border: none;

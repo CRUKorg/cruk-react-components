@@ -41,17 +41,17 @@ export const Radio = forwardRef(
       ...foundTheme,
     };
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { children, ...propsWithoutChildren } = props;
+    const { children, hasError, errorMessage, ...rest } = props;
     return (
       <ThemeProvider theme={theme}>
         <StyledLabel
-          hasError={props.hasError || !!props.errorMessage || false}
+          $hasError={props.hasError || !!props.errorMessage || false}
           className={props.className}
           checked={props.checked || false}
           disabled={props.disabled || false}
         >
           <StyledInput
-            {...propsWithoutChildren}
+            {...rest}
             disabled={props.disabled || false}
             type="radio"
             ref={ref}

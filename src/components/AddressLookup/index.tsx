@@ -263,7 +263,7 @@ export const AddressLookup = forwardRef(
                   <ListItem
                     tabIndex={0}
                     id={`addressOptions-${index}`}
-                    isActive={index === activeOption}
+                    $isActive={index === activeOption}
                     key={address.Id}
                     onClick={() => {
                       selectAddress(address);

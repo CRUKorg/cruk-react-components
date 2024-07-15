@@ -80,20 +80,20 @@ export const TextField = forwardRef(
       <>
         {!!extraLeft && <ExtraLeft theme={theme}>{extraLeft}</ExtraLeft>}
         <StyledInputWrapper
-          hasError={hasError || !!errorMessage || false}
-          isValid={
+          $hasError={hasError || !!errorMessage || false}
+          $isValid={
             typeof isValid !== "undefined"
               ? isValid
               : !hasError && !errorMessage
           }
           aria-invalid={hasError || !!errorMessage || false}
-          isValidVisible={isValidVisible || false}
-          isInvalidVisible={isInvalidVisible || false}
+          $isValidVisible={isValidVisible || false}
+          $isInvalidVisible={isInvalidVisible || false}
           theme={theme}
         >
           <StyledInput
-            hasError={hasError || !!errorMessage || false}
-            isValid={
+            $hasError={hasError || !!errorMessage || false}
+            $isValid={
               typeof isValid !== "undefined"
                 ? isValid
                 : !hasError && !errorMessage
@@ -102,8 +102,8 @@ export const TextField = forwardRef(
             aria-describedby={
               !!props.id && !!errorMessage ? `${props.id}-error` : undefined
             }
-            isValidVisible={isValidVisible || false}
-            isInvalidVisible={isInvalidVisible || false}
+            $isValidVisible={isValidVisible || false}
+            $isInvalidVisible={isInvalidVisible || false}
             {...props}
             theme={theme}
             data-hj-suppress

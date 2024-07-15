@@ -9,8 +9,8 @@ const StyledDivider = styled.div`
   padding-top: 10px;
   text-align: center;
   width: 100%;
-  :before,
-  :after {
+  &:before,
+  &:after {
     background-color: #333;
     content: "";
     display: inline-block;

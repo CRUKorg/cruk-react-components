@@ -9,7 +9,6 @@ export default {
   component: TextAreaField,
   args: {
     defaultValue: "This is text it defaults to a paragraph tag",
-    textColor: "textDark",
     disabled: false,
     required: false,
     label: "TextAreaField",

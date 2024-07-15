@@ -42,13 +42,20 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLElement> & {
 export const Button = forwardRef(
   (props: ButtonProps, ref?: Ref<HTMLElement>) => {
     const foundTheme = useTheme();
-
     const theme = {
       ...defaultTheme,
       ...foundTheme,
     };
-    const { appearance = "primary", isIconButton = false } = props;
-    const childArray = React.Children.toArray(props.children);
+    const {
+      appearance = "primary",
+      isIconButton = false,
+      full = false,
+      size = "m",
+      children,
+      ...rest
+    } = props;
+
+    const childArray = React.Children.toArray(children);
     const isChildString = typeof childArray[0] === "string";
     const firstElement = childArray[0] as ReactElement;
 
@@ -63,13 +70,11 @@ export const Button = forwardRef(
       <StyledButton
         as={props.href ? "a" : "button"}
         {...(props.href ? { role: "button" } : {})}
-        {...{
-          full: false,
-          size: "m",
-          ...props,
-        }}
-        appearance={appearance}
-        isIconButton={setIconButton}
+        $full={!!full}
+        $size={size}
+        $appearance={appearance}
+        $isIconButton={setIconButton}
+        {...rest}
         theme={theme}
         ref={ref}
       >

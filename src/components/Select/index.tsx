@@ -66,7 +66,7 @@ export const Select = forwardRef(
           aria-describedby={
             !!props.id && !!errorMessage ? `${props.id}-error` : undefined
           }
-          hasError={hasError || !!errorMessage || false}
+          $hasError={hasError || !!errorMessage || false}
         />
         {!!errorMessage && (
           <ErrorText

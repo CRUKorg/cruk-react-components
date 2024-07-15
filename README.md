@@ -52,6 +52,30 @@ export const StyledButton = styled(Button)<StyledButtonProps>`
 `;
 ```
 
+Styled components 6 also no longer filters out custom props, so to stop a prop bleeding into child components or the underlying html element prefix the prop name with a $ see size prop in example below:
+
+### Before:
+
+```tsx
+<StyledAvatar
+  {...rest}
+  size={theme.avatar[size || "m"]}
+  src={avatarUrl()}
+  alt={alt}
+/>
+```
+
+### Now:
+
+```tsx
+<StyledAvatar
+  {...rest}
+  $size={theme.avatar[size || "m"]}
+  src={avatarUrl()}
+  alt={alt}
+/>
+```
+
 ## Migration from V0 to V1
 
 1.  Find all instances of RadioGroup and change it to the new component name of RadioConsent

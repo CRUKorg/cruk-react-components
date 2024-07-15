@@ -9,7 +9,10 @@ import { useTheme } from "styled-components";
 
 import { crukTheme as defaultTheme } from "../../themes/cruk";
 
-import { type SpacingProps } from "../Spacing";
+import {
+  spacingPropsToSpacingPropsInternal,
+  type SpacingProps,
+} from "../Spacing";
 import { StyledBox } from "./styles";
 
 export type BoxProps = SpacingProps &
@@ -31,15 +34,23 @@ export type BoxProps = SpacingProps &
  */
 export const Box = forwardRef(
   ({ ...props }: BoxProps, ref?: Ref<HTMLDivElement>) => {
-    const { children, ...rest } = props;
+    const { children, backgroundColor, css, ...rest } = props;
     const foundTheme = useTheme();
     const theme = {
       ...defaultTheme,
       ...foundTheme,
     };
+    const restWithInternalSpacingProps =
+      spacingPropsToSpacingPropsInternal(rest);
 
     return (
-      <StyledBox theme={theme} {...rest} ref={ref}>
+      <StyledBox
+        theme={theme}
+        $css={css}
+        $backgroundColor={backgroundColor}
+        {...restWithInternalSpacingProps}
+        ref={ref}
+      >
         {children}
       </StyledBox>
     );

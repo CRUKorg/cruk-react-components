@@ -105,9 +105,9 @@ export function Modal({
                   >
                     <Content
                       backgroundColor={backgroundColor}
-                      maxWidth={maxWidth}
-                      width={width}
-                      top={top}
+                      $maxWidth={maxWidth}
+                      $width={width}
+                      $top={top}
                       margin={margin}
                       marginHorizontal={marginHorizontal}
                       marginVertical={marginVertical}

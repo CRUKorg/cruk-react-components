@@ -134,14 +134,13 @@ export function Collapse({
           id={`${id}-header`}
           onClick={toggleCollapse}
           theme={theme}
-          appearance="tertiary"
           type="button"
-          textColor={headerTitleTextColor}
-          textSize={headerTitleTextSize}
-          textFontFamily={headerTitleTextFontFamily}
+          $textColor={headerTitleTextColor}
+          $textSize={headerTitleTextSize}
+          $textFontFamily={headerTitleTextFontFamily}
         >
           {headerTitleText}
-          <FlippingIcon faIcon={faChevronDown} open={openStatus} />
+          <FlippingIcon faIcon={faChevronDown} $open={openStatus} />
         </DefaultHeader>
       )}
       <CollapseContent
@@ -151,8 +150,8 @@ export function Collapse({
         role="region"
         aria-hidden={!openStatus}
         aria-labelledby={`${id}-header`}
-        contentHeight={contentHeight}
-        openStatus={openStatus}
+        $contentHeight={contentHeight}
+        $openStatus={openStatus}
       >
         {children}
       </CollapseContent>

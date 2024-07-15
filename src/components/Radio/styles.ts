@@ -5,11 +5,9 @@ const RADIO_SIZE = "1.5rem";
 const RADIO_INNER_SIZE = "0.75rem";
 const BUTTON_HEIGHT = "3em";
 
-type ThemeProp = {
+export const CheckWrapper = styled.div<{
   theme: ThemeType;
-};
-
-export const CheckWrapper = styled.div<ThemeProp>`
+}>`
   display: inline-block;
   height: ${RADIO_SIZE};
   width: ${RADIO_SIZE};
@@ -22,7 +20,9 @@ export const CheckWrapper = styled.div<ThemeProp>`
   }) => xs};
 `;
 
-export const Check = styled.span<ThemeProp>`
+export const Check = styled.span<{
+  theme: ThemeType;
+}>`
   display: block;
   position: relative;
   border: 2px solid ${({ theme }) => theme.colors.selectionBorder};
@@ -55,14 +55,12 @@ export const Check = styled.span<ThemeProp>`
   }
 `;
 
-type StyledLabelProps = {
-  hasError: boolean;
+export const StyledLabel = styled.label<{
+  $hasError: boolean;
   disabled: boolean;
   checked: boolean;
   theme: ThemeType;
-};
-
-export const StyledLabel = styled.label<StyledLabelProps>`
+}>`
   box-sizing: border-box;
   *,
   *:after,
@@ -86,7 +84,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
   vertical-align: middle;
 
-  ${({ theme, disabled: isDisabled, checked, hasError }) =>
+  ${({ theme, disabled: isDisabled, checked, $hasError }) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
@@ -96,7 +94,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
             border: solid 2px
               ${isDisabled
                 ? theme.colors.disabled
-                : hasError
+                : $hasError
                   ? theme.colors.danger
                   : checked
                     ? theme.colors.check
@@ -115,7 +113,9 @@ export const StyledLabel = styled.label<StyledLabelProps>`
         `}
 `;
 
-export const VerticalAlign = styled.span<ThemeProp>`
+export const VerticalAlign = styled.span<{
+  theme: ThemeType;
+}>`
   display: inline;
   vertical-align: middle;
   line-height: 100%;
@@ -134,12 +134,10 @@ export const SelectedBorder = styled.div`
   z-index: 0;
 `;
 
-type StyledInputType = {
+export const StyledInput = styled.input<{
   disabled: boolean;
   theme: ThemeType;
-};
-
-export const StyledInput = styled.input<StyledInputType>`
+}>`
   *,
   *:after,
   *:before {

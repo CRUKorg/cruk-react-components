@@ -8,8 +8,8 @@ import { type ThemeType, type ColorKeyType } from "../../types";
 type StyledLinkProps = AnchorHTMLAttributes<HTMLElement> &
   TextProps & {
     theme: ThemeType;
-    appearance?: "primary" | "secondary";
-    textHoverColor?: string;
+    $appearance?: "primary" | "secondary";
+    $textHoverColor?: string;
   };
 
 export const StyledLink = styled(Text)<StyledLinkProps>`
@@ -26,54 +26,54 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
       utilities: { useBackgroundStyleLinks },
     },
     textColor,
-    appearance,
+    $appearance,
   }) =>
     textColor && typeof colors[textColor as ColorKeyType] !== "undefined"
       ? colors[textColor as ColorKeyType]
       : textColor ||
-        (!appearance && useBackgroundStyleLinks
+        (!$appearance && useBackgroundStyleLinks
           ? "currentColor"
-          : appearance && appearance === "primary"
+          : $appearance && $appearance === "primary"
             ? colors.linkColorSecondary
             : colors.linkColor)};
   text-decoration: ${({
-    appearance,
+    $appearance,
     theme: {
       typography: { linkTextDecoration, LinkPrimaryTextDecoration },
     },
   }) =>
-    appearance === "primary"
+    $appearance === "primary"
       ? LinkPrimaryTextDecoration
-      : appearance === "secondary"
+      : $appearance === "secondary"
         ? "none"
         : linkTextDecoration};
   font-family: ${({
-    appearance,
+    $appearance,
     theme: {
       typography: { fontFamilyBase, fontFamilyLinks },
     },
   }) =>
-    appearance === "primary" || appearance === "secondary"
+    $appearance === "primary" || $appearance === "secondary"
       ? fontFamilyLinks
       : fontFamilyBase};
   letter-spacing: ${({
-    appearance,
+    $appearance,
     theme: {
       typography: { LinkLetterSpacing },
     },
   }) =>
-    appearance === "primary" || appearance === "secondary"
+    $appearance === "primary" || $appearance === "secondary"
       ? LinkLetterSpacing
       : "0px"};
 
   background: ${({
-    appearance,
+    $appearance,
     theme,
     theme: {
       utilities: { useBackgroundStyleLinks },
     },
   }) =>
-    useBackgroundStyleLinks && !appearance
+    useBackgroundStyleLinks && !$appearance
       ? `linear-gradient(180deg, rgba(255, 255, 255, 0) 0px, ${theme.colors.primary} -4px);`
       : undefined};
   background-repeat: no-repeat;
@@ -93,16 +93,16 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
         colors,
         utilities: { useBackgroundStyleLinks },
       },
-      textHoverColor,
-      appearance,
+      $textHoverColor,
+      $appearance,
     }) =>
-      !textHoverColor && useBackgroundStyleLinks
+      !$textHoverColor && useBackgroundStyleLinks
         ? colors.textDark
-        : textHoverColor &&
-            typeof colors[textHoverColor as ColorKeyType] !== "undefined"
-          ? colors[textHoverColor as ColorKeyType]
-          : textHoverColor
-            ? appearance && appearance === "primary"
+        : $textHoverColor &&
+            typeof colors[$textHoverColor as ColorKeyType] !== "undefined"
+          ? colors[$textHoverColor as ColorKeyType]
+          : $textHoverColor
+            ? $appearance && $appearance === "primary"
               ? colors.linkColorHover
               : colors.linkColorSecondaryHover
             : colors.linkColorHover};

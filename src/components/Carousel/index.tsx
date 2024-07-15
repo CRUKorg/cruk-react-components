@@ -130,7 +130,7 @@ export const Carousel = ({
           <CarouselScrollArea
             ref={scrollRef}
             aria-live="assertive"
-            smoothScrolling={smoothScrolling}
+            $smoothScrolling={smoothScrolling}
             tabIndex={0}
           >
             {childArray.map((child, index) => {
@@ -139,8 +139,8 @@ export const Carousel = ({
               return (
                 <CarouselCard
                   key={keyString}
-                  onlyChild={onlyChild}
-                  fullWidthChild={fullWidthChild}
+                  $onlyChild={onlyChild}
+                  $fullWidthChild={fullWidthChild}
                 >
                   <InView
                     threshold={0.5}
@@ -152,10 +152,10 @@ export const Carousel = ({
                     }}
                   >
                     <CarouselCardInner
-                      onlyChild={onlyChild}
-                      isSelected={isSelected}
-                      shrinkUnselectedPages={shrinkUnselectedPages}
-                      fullWidthChild={fullWidthChild}
+                      $onlyChild={onlyChild}
+                      $isSelected={isSelected}
+                      $shrinkUnselectedPages={shrinkUnselectedPages}
+                      $fullWidthChild={fullWidthChild}
                     >
                       {child}
                     </CarouselCardInner>

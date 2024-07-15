@@ -7,7 +7,7 @@ interface ListWrapperProps extends React.HTMLProps<HTMLDivElement> {
 
 type ListProps = {
   theme: ThemeType;
-  isActive?: boolean;
+  $isActive?: boolean;
 };
 
 export const ListWrapper = styled.div<ListWrapperProps>`
@@ -37,8 +37,8 @@ export const ListItem = styled.li<
   }
 >`
   align-items: center;
-  background-color: ${({ theme, isActive }: ListProps) =>
-    isActive ? theme.colors.backgroundMid : theme.colors.backgroundLight};
+  background-color: ${({ theme, $isActive }: ListProps) =>
+    $isActive ? theme.colors.backgroundMid : theme.colors.backgroundLight};
   cursor: pointer;
   display: flex;
   justify-content: space-between;

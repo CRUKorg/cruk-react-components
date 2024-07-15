@@ -7,11 +7,7 @@ import { type ThemeType } from "../../types";
 const LEGEND_WIDTH = "20%";
 const MAX_WIDTH = "5em";
 
-type ThemeProp = {
-  theme: ThemeType;
-};
-
-type StyleRadioWidthProp = { numberOfAttributes: number } & ThemeProp;
+type StyleRadioWidthProp = { $numberOfAttributes: number; theme: ThemeType };
 
 export const StyledRadio = styled(RadioInput)<StyleRadioWidthProp>`
   display: block;
@@ -19,18 +15,22 @@ export const StyledRadio = styled(RadioInput)<StyleRadioWidthProp>`
   text-align: left;
   margin-left: ${({ theme }) => theme.spacing.s};
   max-width: ${MAX_WIDTH};
-  width: ${({ numberOfAttributes, theme }) =>
-    `calc(((100% - ${LEGEND_WIDTH}) / ${numberOfAttributes}) - ${theme.spacing.s})`};
+  width: ${({ $numberOfAttributes, theme }) =>
+    `calc(((100% - ${LEGEND_WIDTH}) / ${$numberOfAttributes}) - ${theme.spacing.s})`};
 `;
 
-export const StyledLegend = styled.legend<ThemeProp>`
+export const StyledLegend = styled.legend<{
+  theme: ThemeType;
+}>`
   width: ${LEGEND_WIDTH};
   display: block;
   float: left;
   font-family: ${({ theme }) => theme.typography.fontFamilyBase};
 `;
 
-export const StyledFieldSet = styled.fieldset<ThemeProp>`
+export const StyledFieldSet = styled.fieldset<{
+  theme: ThemeType;
+}>`
   box-sizing: border-box;
   *,
   *:after,

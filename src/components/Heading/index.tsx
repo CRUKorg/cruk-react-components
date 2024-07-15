@@ -2,7 +2,10 @@ import React, { type HTMLAttributes, type ElementType } from "react";
 import { useTheme } from "styled-components";
 
 import { crukTheme as defaultTheme } from "../../themes/cruk";
-import { type SpacingProps } from "../Spacing";
+import {
+  spacingPropsToSpacingPropsInternal,
+  type SpacingProps,
+} from "../Spacing";
 
 import {
   type FontSizeType,
@@ -25,12 +28,12 @@ export type HeadingProps = SpacingProps &
     textAlign?: "left" | "right" | "center";
     /** color of text */
     textColor?: string;
-    /** styled-component polymorphic feature so you take the styling of a header and cast the component to be a "span" for example */
-    as?: ElementType;
     /** word-break behavior */
     wordBreak?: WordBreakType;
     /** overflow-wrap behavior */
     overflowWrap?: OverflowWrapType;
+    /** styled-component polymorphic feature so you take the styling of a header and cast the component to be a "span" for example */
+    as?: ElementType;
   };
 
 /**
@@ -47,18 +50,85 @@ export function Heading({ h1, h2, h3, h4, h5, h6, ...props }: HeadingProps) {
     ...foundTheme,
   };
 
-  const propsWithTheme = {
-    ...props,
-    theme,
-  };
+  const { textSize, textAlign, textColor, wordBreak, overflowWrap, ...rest } =
+    props;
 
-  if (h1) return <H1 {...propsWithTheme} />;
-  if (h2) return <H2 {...propsWithTheme} />;
-  if (h3) return <H3 {...propsWithTheme} />;
-  if (h4) return <H4 {...propsWithTheme} />;
-  if (h5) return <H5 {...propsWithTheme} />;
-  if (h6) return <H6 {...propsWithTheme} />;
-  return <H2 {...propsWithTheme} />;
+  const propsConvertedToInternalSpacingProps =
+    spacingPropsToSpacingPropsInternal(rest);
+
+  if (h1)
+    return (
+      <H1
+        theme={theme}
+        $textSize={textSize}
+        $textAlign={textAlign}
+        $textColor={textColor}
+        $wordBreak={wordBreak}
+        $overflowWrap={overflowWrap}
+        {...propsConvertedToInternalSpacingProps}
+      />
+    );
+  if (h2)
+    return (
+      <H2
+        theme={theme}
+        $textSize={textSize}
+        $textAlign={textAlign}
+        $textColor={textColor}
+        $wordBreak={wordBreak}
+        $overflowWrap={overflowWrap}
+        {...propsConvertedToInternalSpacingProps}
+      />
+    );
+  if (h3)
+    return (
+      <H3
+        theme={theme}
+        $textSize={textSize}
+        $textAlign={textAlign}
+        $textColor={textColor}
+        $wordBreak={wordBreak}
+        $overflowWrap={overflowWrap}
+        {...propsConvertedToInternalSpacingProps}
+      />
+    );
+  if (h4)
+    return (
+      <H4
+        theme={theme}
+        $textSize={textSize}
+        $textAlign={textAlign}
+        $textColor={textColor}
+        $wordBreak={wordBreak}
+        $overflowWrap={overflowWrap}
+        {...propsConvertedToInternalSpacingProps}
+      />
+    );
+  if (h5)
+    return (
+      <H5
+        theme={theme}
+        $textSize={textSize}
+        $textAlign={textAlign}
+        $textColor={textColor}
+        $wordBreak={wordBreak}
+        $overflowWrap={overflowWrap}
+        {...propsConvertedToInternalSpacingProps}
+      />
+    );
+  if (h6)
+    return (
+      <H6
+        theme={theme}
+        $textSize={textSize}
+        $textAlign={textAlign}
+        $textColor={textColor}
+        $wordBreak={wordBreak}
+        $overflowWrap={overflowWrap}
+        {...propsConvertedToInternalSpacingProps}
+      />
+    );
+  return <H2 {...propsConvertedToInternalSpacingProps} />;
 }
 
 export default Heading;

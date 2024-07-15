@@ -3,31 +3,31 @@ import styled, { css } from "styled-components";
 import { type ThemeType, type PopOverPositionType } from "../../types";
 
 export const PopOverWrapper = styled.div<{
-  full: boolean;
-  css?: string;
+  $full: boolean;
+  $css?: string;
 }>`
   position: relative;
-  display: ${({ full }) => (full ? "block" : "inline-block")};
-  ${(props: { css?: string }) =>
-    props.css &&
+  display: ${({ $full }) => ($full ? "block" : "inline-block")};
+  ${(props) =>
+    props.$css &&
     css`
-      ${props.css}
+      ${props.$css}
     `}
 `;
 
 export const PopOverModal = styled.div<{
-  position: PopOverPositionType;
+  $position: PopOverPositionType;
+  $maxWidth: string;
+  $minWidth: string;
   theme?: ThemeType;
-  maxWidth: string;
-  minWidth: string;
 }>`
   position: absolute;
   display: flex;
   justify-content: center;
   word-wrap: break-word;
   z-index: 9999;
-  max-width: ${({ maxWidth }: { maxWidth: string }) => maxWidth};
-  min-width: ${({ minWidth }: { minWidth: string }) => minWidth};
+  max-width: ${({ $maxWidth }) => $maxWidth};
+  min-width: ${({ $minWidth }) => $minWidth};
   font-size: ${({
     theme: {
       fontSizes: { s },
@@ -42,8 +42,8 @@ export const PopOverModal = styled.div<{
   border: 1px solid rgba(0, 0, 0, 0.25);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 
-  margin-bottom: ${({ position }) => {
-    switch (position) {
+  margin-bottom: ${({ $position }) => {
+    switch ($position) {
       case "top":
         return "10px";
       case "topLeft":
@@ -61,8 +61,8 @@ export const PopOverModal = styled.div<{
     }
   }};
 
-  margin-top: ${({ position }) => {
-    switch (position) {
+  margin-top: ${({ $position }) => {
+    switch ($position) {
       case "bottom":
         return "10px";
       case "bottomLeft":
@@ -75,8 +75,8 @@ export const PopOverModal = styled.div<{
         return 0;
     }
   }};
-  top: ${({ position }) => {
-    switch (position) {
+  top: ${({ $position }) => {
+    switch ($position) {
       case "top":
         return "auto";
       case "topLeft":
@@ -94,8 +94,8 @@ export const PopOverModal = styled.div<{
     }
   }};
 
-  bottom: ${({ position }) => {
-    switch (position) {
+  bottom: ${({ $position }) => {
+    switch ($position) {
       case "top":
         return "100%";
       case "topLeft":
@@ -113,8 +113,8 @@ export const PopOverModal = styled.div<{
     }
   }};
 
-  left: ${({ position }) => {
-    switch (position) {
+  left: ${({ $position }) => {
+    switch ($position) {
       case "top":
         return 0;
       case "topLeft":
@@ -131,8 +131,8 @@ export const PopOverModal = styled.div<{
         return "auto";
     }
   }};
-  right: ${({ position }) => {
-    switch (position) {
+  right: ${({ $position }) => {
+    switch ($position) {
       case "top":
         return "auto";
       case "topLeft":
@@ -158,8 +158,8 @@ export const PopOverModal = styled.div<{
     width: 0;
     height: 0;
     position: absolute;
-    top: ${({ position }) => {
-      switch (position) {
+    top: ${({ $position }) => {
+      switch ($position) {
         case "top":
           return "100%";
         case "topLeft":
@@ -176,8 +176,8 @@ export const PopOverModal = styled.div<{
           return "100%";
       }
     }};
-    bottom: ${({ position }) => {
-      switch (position) {
+    bottom: ${({ $position }) => {
+      switch ($position) {
         case "top":
           return "auto";
         case "topLeft":
@@ -195,8 +195,8 @@ export const PopOverModal = styled.div<{
       }
     }};
 
-    left: ${({ position, theme }) => {
-      switch (position) {
+    left: ${({ $position, theme }) => {
+      switch ($position) {
         case "top":
           return `${theme.spacing.s}`;
         case "topLeft":
@@ -213,8 +213,8 @@ export const PopOverModal = styled.div<{
           return `${theme.spacing.s}`;
       }
     }};
-    right: ${({ position, theme }) => {
-      switch (position) {
+    right: ${({ $position, theme }) => {
+      switch ($position) {
         case "top":
           return `auto`;
         case "topLeft":
@@ -233,8 +233,8 @@ export const PopOverModal = styled.div<{
     }};
   }
   &:before {
-    border-color: ${({ position }) => {
-      switch (position) {
+    border-color: ${({ $position }) => {
+      switch ($position) {
         case "top":
           return "rgba(0, 0, 0, 0.25) transparent transparent";
         case "topLeft":
@@ -253,8 +253,8 @@ export const PopOverModal = styled.div<{
     }};
   }
   &:after {
-    margin: ${({ position }) => {
-      switch (position) {
+    margin: ${({ $position }) => {
+      switch ($position) {
         case "top":
           return "-1px 0 0 0";
         case "topLeft":
@@ -271,8 +271,8 @@ export const PopOverModal = styled.div<{
           return "-1px 0 0 0";
       }
     }};
-    border-color: ${({ theme, position }) => {
-      switch (position) {
+    border-color: ${({ theme, $position }) => {
+      switch ($position) {
         case "top":
           return `${theme.colors.popoverBackground} transparent transparent`;
         case "topLeft":
@@ -292,8 +292,8 @@ export const PopOverModal = styled.div<{
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
-    margin-top: ${({ position }) => {
-      switch (position) {
+    margin-top: ${({ $position }) => {
+      switch ($position) {
         case "bottom":
           return "10px";
         case "bottomLeft":
@@ -303,16 +303,16 @@ export const PopOverModal = styled.div<{
       }
     }};
 
-    margin-left: ${({ position }) => {
-      switch (position) {
+    margin-left: ${({ $position }) => {
+      switch ($position) {
         case "right":
           return "10px";
         default:
           return 0;
       }
     }};
-    margin-right: ${({ position }) => {
-      switch (position) {
+    margin-right: ${({ $position }) => {
+      switch ($position) {
         case "left":
           return "10px";
         default:
@@ -320,8 +320,8 @@ export const PopOverModal = styled.div<{
       }
     }};
 
-    top: ${({ position }) => {
-      switch (position) {
+    top: ${({ $position }) => {
+      switch ($position) {
         case "top":
           return "auto";
         case "topLeft":
@@ -339,8 +339,8 @@ export const PopOverModal = styled.div<{
       }
     }};
 
-    left: ${({ position }) => {
-      switch (position) {
+    left: ${({ $position }) => {
+      switch ($position) {
         case "top":
           return 0;
         case "topLeft":
@@ -357,8 +357,8 @@ export const PopOverModal = styled.div<{
           return "auto";
       }
     }};
-    right: ${({ position }) => {
-      switch (position) {
+    right: ${({ $position }) => {
+      switch ($position) {
         case "top":
           return "auto";
         case "topLeft":
@@ -379,8 +379,8 @@ export const PopOverModal = styled.div<{
     &:after,
     &:before {
       content: "";
-      top: ${({ position, theme }) => {
-        switch (position) {
+      top: ${({ $position, theme }) => {
+        switch ($position) {
           case "top":
             return "100%";
           case "topLeft":
@@ -397,8 +397,8 @@ export const PopOverModal = styled.div<{
             return "100%";
         }
       }};
-      bottom: ${({ position }) => {
-        switch (position) {
+      bottom: ${({ $position }) => {
+        switch ($position) {
           case "top":
             return "auto";
           case "topLeft":
@@ -416,8 +416,8 @@ export const PopOverModal = styled.div<{
         }
       }};
 
-      left: ${({ position, theme }) => {
-        switch (position) {
+      left: ${({ $position, theme }) => {
+        switch ($position) {
           case "top":
             return `${theme.spacing.s}`;
           case "topLeft":
@@ -434,8 +434,8 @@ export const PopOverModal = styled.div<{
             return `${theme.spacing.s}`;
         }
       }};
-      right: ${({ position, theme }) => {
-        switch (position) {
+      right: ${({ $position, theme }) => {
+        switch ($position) {
           case "top":
             return `auto`;
           case "topLeft":
@@ -454,8 +454,8 @@ export const PopOverModal = styled.div<{
       }};
     }
     &:before {
-      border-color: ${({ position }) => {
-        switch (position) {
+      border-color: ${({ $position }) => {
+        switch ($position) {
           case "top":
             return "rgba(0, 0, 0, 0.25) transparent transparent";
           case "topLeft":
@@ -474,8 +474,8 @@ export const PopOverModal = styled.div<{
       }};
     }
     &:after {
-      margin: ${({ position }) => {
-        switch (position) {
+      margin: ${({ $position }) => {
+        switch ($position) {
           case "top":
             return "-1px 0 0 0";
           case "topLeft":
@@ -492,8 +492,8 @@ export const PopOverModal = styled.div<{
             return "-1px 0 0 0";
         }
       }};
-      border-color: ${({ theme, position }) => {
-        switch (position) {
+      border-color: ${({ theme, $position }) => {
+        switch ($position) {
           case "top":
             return `${theme.colors.popoverBackground} transparent transparent`;
           case "topLeft":
