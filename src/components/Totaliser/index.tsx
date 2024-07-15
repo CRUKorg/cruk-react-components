@@ -1,4 +1,4 @@
-import React, { ReactChild, ReactNode } from "react";
+import React, { type ReactChild, type ReactNode } from "react";
 import { useTheme } from "styled-components";
 
 import {
@@ -6,10 +6,10 @@ import {
   formatMoneyWithCommas,
 } from "../../utils/Helper";
 
-import defaultTheme from "../../themes/cruk";
-import Text from "../Text";
-import Badge from "../Badge";
-import Box from "../Box";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { Text } from "../Text";
+import { Badge } from "../Badge";
+import { Box } from "../Box";
 
 import {
   TotaliserWrapper,
@@ -45,7 +45,7 @@ export type TotaliserProps = {
 /**
  * Think Blue Peter, used to display total raised and if target prop is passed will display tercentage of target reached.
  * */
-const Totaliser = ({
+export function Totaliser({
   total,
   additionalAmount,
   giftAid,
@@ -53,7 +53,7 @@ const Totaliser = ({
   isCompact,
   summaryMessage = undefined,
   children,
-}: TotaliserProps) => {
+}: TotaliserProps) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -116,6 +116,6 @@ const Totaliser = ({
       {children}
     </TotaliserWrapper>
   );
-};
+}
 
 export default Totaliser;

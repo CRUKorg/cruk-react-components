@@ -12,14 +12,17 @@ import {
   bowelbabeTheme,
   rflTheme,
 } from "..";
+import { ThemeProvider } from "styled-components";
 
 describe("Header Behaviour", () => {
   beforeEach(() => {
     cy.viewport(2000, 200);
     mount(
-      <Header siteSlogan="Header slogan here">
-        <Button>Child component</Button>
-      </Header>
+      <ThemeProvider theme={crukTheme}>
+        <Header siteSlogan="Header slogan here">
+          <Button>Child component</Button>
+        </Header>
+      </ThemeProvider>,
     );
   });
 
@@ -56,14 +59,16 @@ describe("Header Sticky Behaviour", () => {
     cy.viewport(2000, 200);
     mount(
       <>
-        <Header siteSlogan="Header slogan here" isSticky>
-          <Button>Child component</Button>
-        </Header>
-        <div
-          className="making-a-tall-scroll-able-page"
-          style={{ height: 2000 }}
-        />
-      </>
+        <ThemeProvider theme={crukTheme}>
+          <Header siteSlogan="Header slogan here" isSticky>
+            <Button>Child component</Button>
+          </Header>
+          <div
+            className="making-a-tall-scroll-able-page"
+            style={{ height: 2000 }}
+          />
+        </ThemeProvider>
+      </>,
     );
   });
 
@@ -88,7 +93,7 @@ describe("Header", () => {
         <div id="main" tabIndex={-1}>
           blah
         </div>
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");
@@ -103,7 +108,7 @@ describe("Header", () => {
         <div id="main" tabIndex={-1}>
           blah
         </div>
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");
@@ -119,7 +124,7 @@ describe("Header", () => {
         <div id="main" tabIndex={-1}>
           blah
         </div>
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body", {
@@ -139,7 +144,7 @@ describe("Header", () => {
         <div id="main" tabIndex={-1}>
           blah
         </div>
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");

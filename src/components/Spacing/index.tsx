@@ -1,4 +1,4 @@
-import { SpaceType, ThemeType } from "../../types";
+import { type SpaceType, type ThemeType } from "../../types";
 
 export type SpacingProps = {
   margin?: SpaceType;
@@ -17,7 +17,7 @@ export type SpacingProps = {
   paddingHorizontal?: SpaceType;
 };
 
-export const Spacing = (props: SpacingProps, theme: ThemeType) => {
+export function Spacing(props: SpacingProps, theme: ThemeType) {
   const {
     margin,
     marginHorizontal,
@@ -47,23 +47,23 @@ export const Spacing = (props: SpacingProps, theme: ThemeType) => {
   const mtString = mt
     ? `margin-top: ${mt} !important;`
     : mv
-    ? `margin-top: ${mv} !important;`
-    : "";
+      ? `margin-top: ${mv} !important;`
+      : "";
   const mrString = mr
     ? `margin-right: ${mr} !important;`
     : mh
-    ? `margin-right: ${mh} !important;`
-    : "";
+      ? `margin-right: ${mh} !important;`
+      : "";
   const mbString = mb
     ? `margin-bottom: ${mb} !important;`
     : mv
-    ? `margin-bottom: ${mv} !important;`
-    : "";
+      ? `margin-bottom: ${mv} !important;`
+      : "";
   const mlString = ml
     ? `margin-left: ${ml} !important;`
     : mh
-    ? `margin-left: ${mh} !important;`
-    : "";
+      ? `margin-left: ${mh} !important;`
+      : "";
 
   const pa = padding ? theme.spacing[padding] : null;
   const pv = paddingVertical ? theme.spacing[paddingVertical] : null;
@@ -77,23 +77,23 @@ export const Spacing = (props: SpacingProps, theme: ThemeType) => {
   const ptString = pt
     ? `padding-top: ${pt} !important;`
     : pv
-    ? `padding-top: ${pv} !important;`
-    : "";
+      ? `padding-top: ${pv} !important;`
+      : "";
   const prString = pr
     ? `padding-right: ${pr} !important;`
     : ph
-    ? `padding-right: ${ph} !important;`
-    : "";
+      ? `padding-right: ${ph} !important;`
+      : "";
   const pbString = pb
     ? `padding-bottom: ${pb} !important;`
     : pv
-    ? `padding-bottom: ${pv} !important;`
-    : "";
+      ? `padding-bottom: ${pv} !important;`
+      : "";
   const plString = pl
     ? `padding-left: ${pl} !important;`
     : ph
-    ? `padding-left: ${ph} !important;`
-    : "";
+      ? `padding-left: ${ph} !important;`
+      : "";
 
   return `
     ${maString}
@@ -107,6 +107,6 @@ export const Spacing = (props: SpacingProps, theme: ThemeType) => {
     ${pbString}
     ${plString}
   `;
-};
+}
 
 export default Spacing;

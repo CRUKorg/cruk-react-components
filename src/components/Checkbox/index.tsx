@@ -1,10 +1,16 @@
-import React, { InputHTMLAttributes, Ref, forwardRef, ReactNode } from "react";
+import React, {
+  type InputHTMLAttributes,
+  type Ref,
+  forwardRef,
+  type ReactNode,
+  type LegacyRef,
+} from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-import defaultTheme from "../../themes/cruk";
-import ErrorText from "../ErrorText";
-import IconFa from "../IconFa";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { ErrorText } from "../ErrorText";
+import { IconFa } from "../IconFa";
 
 import {
   StyledLabel,
@@ -15,7 +21,7 @@ import {
 } from "./styles";
 
 export type CheckBoxProps = InputHTMLAttributes<HTMLInputElement> & {
-  ref?: Ref<HTMLInputElement>;
+  ref?: Ref<HTMLInputElement> | LegacyRef<HTMLInputElement>;
   /** flag for error styling */
   hasError?: boolean;
   /** error message text  */
@@ -28,7 +34,7 @@ export type CheckBoxProps = InputHTMLAttributes<HTMLInputElement> & {
  *
  * The value or children becomes the label, if you want an outer label for a checkbox or group of checkboxes please use a LegendWrapper component
  */
-const Checkbox = forwardRef(
+export const Checkbox = forwardRef(
   (props: CheckBoxProps, ref?: Ref<HTMLInputElement>) => {
     const foundTheme = useTheme();
     const theme = {
@@ -75,7 +81,7 @@ const Checkbox = forwardRef(
         )}
       </ThemeProvider>
     );
-  }
+  },
 );
 
 export default Checkbox;

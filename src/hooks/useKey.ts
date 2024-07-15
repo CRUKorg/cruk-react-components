@@ -1,4 +1,4 @@
-import { useEffect, DependencyList } from "react";
+import { useEffect, type DependencyList } from "react";
 import { isBrowser } from "../utils/Helper";
 
 // useKey((pressedKey, event) => {
@@ -14,7 +14,7 @@ export const useKey = (
     detectKeys?: string[];
     keyevent?: "keydown" | "keyup" | "keypress";
   },
-  dependencies?: DependencyList
+  dependencies?: DependencyList,
 ): void => {
   const { detectKeys = [], keyevent } = options;
 

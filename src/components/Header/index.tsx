@@ -1,8 +1,8 @@
-import React, { useState, HTMLAttributes, ReactNode } from "react";
+import React, { useState, type HTMLAttributes, type ReactNode } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
 import { useScrollPosition } from "../../hooks/useScrollPosition";
-import defaultTheme from "../../themes/cruk";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import {
   StyledHeader,
@@ -56,7 +56,7 @@ export type HeaderProps = HTMLAttributes<HTMLElement> & {
  * There is a hidden skip link in the header which will only reveals itself on the first tab and to screen readers. This link helps users skip to the main page content, however this will only work with there is an element with an id of 'main' which the developer should create for every page.
  *
  */
-export const Header = ({
+export function Header({
   isSticky,
   siteSlogan,
   logoAltText,
@@ -65,7 +65,7 @@ export const Header = ({
   logoLinkUrl,
   fullWidth,
   children,
-}: HeaderProps) => {
+}: HeaderProps) {
   const [isSmall, setIsSmall] = useState(false);
   const isBrowser = typeof window !== `undefined`;
   const foundTheme = useTheme();
@@ -131,6 +131,6 @@ export const Header = ({
       </StyledHeader>
     </ThemeProvider>
   );
-};
+}
 
 export default Header;

@@ -1,8 +1,8 @@
-import React, { ReactNode } from "react";
+import React, { type ReactNode } from "react";
 import { useTheme } from "styled-components";
 
-import { SpaceType } from "../../types";
-import defaultTheme from "../../themes/cruk";
+import { type SpaceType } from "../../types";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { StyledBadge } from "./styles";
 
@@ -32,7 +32,7 @@ at the end of a sentence, link, or button. Unless the context is clear,
 consider including additional context with a visually hidden piece of
 additional text.
  */
-const Badge = ({ children, ...rest }: BadgeProps) => {
+export function Badge({ children, ...rest }: BadgeProps) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -48,6 +48,6 @@ const Badge = ({ children, ...rest }: BadgeProps) => {
       {children}
     </StyledBadge>
   );
-};
+}
 
 export default Badge;

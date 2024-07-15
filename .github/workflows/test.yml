@@ -12,9 +12,9 @@ jobs:
       - name: Checkout cruk-react-components
         uses: actions/checkout@v4
       - name: npm install
-        run: docker-compose run --entrypoint=npm cypress ci
+        run: npm ci
       - name: Test
-        run: docker-compose run cypress
+        run: npm run cypress-headless
       - name: Work around our usage of Github storage
         if: failure()
         run: |
@@ -27,22 +27,22 @@ jobs:
         with:
           name: output
           path: output
-  Jest:
+  Unit:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout cruk-react-components
         uses: actions/checkout@v4
       - name: npm install
-        run: npm ci --legacy-peer-deps
+        run: npm ci
       - name: Test
-        run: npm run jest-ci --verbose
+        run: npm run node-test --verbose
   Prettier:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout cruk-react-components
         uses: actions/checkout@v4
       - name: npm install
-        run: npm ci --legacy-peer-deps
+        run: npm ci
       - name: Test
         run: npm run prettier:debug
   ESLint:
@@ -51,7 +51,7 @@ jobs:
       - name: Checkout cruk-react-components
         uses: actions/checkout@v4
       - name: npm install
-        run: npm ci --legacy-peer-deps
+        run: npm ci
       - name: Test
         run: npm run eslint:test
   Chromatic:
@@ -62,7 +62,7 @@ jobs:
         with:
           fetch-depth: 0 # 👈 Required to retrieve git history
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+        run: npm ci
       - name: Publish to Chromatic
         uses: chromaui/action@v11
         with:

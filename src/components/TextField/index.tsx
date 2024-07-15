@@ -1,15 +1,14 @@
 import React, {
-  FunctionComponent,
-  InputHTMLAttributes,
-  ReactNode,
-  Ref,
+  type InputHTMLAttributes,
+  type ReactNode,
+  type Ref,
   forwardRef,
 } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
-import ErrorText from "../ErrorText";
-import LabelWrapper from "../LabelWrapper";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { ErrorText } from "../ErrorText";
+import { LabelWrapper } from "../LabelWrapper";
 
 import {
   ExtraLeft,
@@ -52,7 +51,7 @@ export type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
 /**
  * TextFields let users enter and edit text. For multiline text entry please consider using the TextAreaFieldComponent.
  * */
-const TextField: FunctionComponent<TextFieldProps> = forwardRef(
+export const TextField = forwardRef(
   (
     {
       errorMessage,
@@ -69,7 +68,7 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
       hideRequiredInLabel,
       ...props
     }: TextFieldProps,
-    ref?: Ref<HTMLInputElement>
+    ref?: Ref<HTMLInputElement>,
   ) => {
     const foundTheme = useTheme();
     const theme = {
@@ -139,7 +138,7 @@ const TextField: FunctionComponent<TextFieldProps> = forwardRef(
         )}
       </LabelWrapper>
     );
-  }
+  },
 );
 
 export default TextField;

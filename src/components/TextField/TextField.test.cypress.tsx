@@ -191,7 +191,7 @@ describe("TextField", () => {
 
   it("is accessible Bowelbabe theme", () => {
     mount(
-      <TestThemeWrapper theme={bowelbabeTheme}>{content()}</TestThemeWrapper>
+      <TestThemeWrapper theme={bowelbabeTheme}>{content()}</TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");

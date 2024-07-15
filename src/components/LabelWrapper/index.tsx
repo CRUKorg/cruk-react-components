@@ -1,8 +1,8 @@
-import React, { LabelHTMLAttributes, ReactNode } from "react";
+import React, { type LabelHTMLAttributes, type ReactNode } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
-import Text from "../Text";
-import defaultTheme from "../../themes/cruk";
+import { Text } from "../Text";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { LabelText, Label, RequiredText } from "./styles";
 
@@ -18,14 +18,14 @@ type LabelWrapperProps = LabelHTMLAttributes<HTMLLabelElement> & {
   children?: ReactNode;
 };
 
-export const LabelWrapper = ({
+export function LabelWrapper({
   label,
   hintText,
-  required,
+  required = false,
   hideRequiredInLabel = false,
   children,
   ...otherHTMLLabelProps
-}: LabelWrapperProps) => {
+}: LabelWrapperProps) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -59,10 +59,6 @@ export const LabelWrapper = ({
       )}
     </ThemeProvider>
   );
-};
-
-LabelWrapper.defaultProps = {
-  required: false,
-};
+}
 
 export default LabelWrapper;

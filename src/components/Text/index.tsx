@@ -1,20 +1,18 @@
 import React, {
-  FunctionComponent,
-  HTMLAttributes,
-  Ref,
+  type HTMLAttributes,
+  type Ref,
   forwardRef,
-  ElementType,
+  type ElementType,
 } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
 
-import { SpacingProps } from "../Spacing";
+import { type SpacingProps } from "../Spacing";
 import {
-  WordBreakType,
-  FontSizeType,
-  ColorKeyType,
-  OverflowWrapType,
+  type WordBreakType,
+  type FontSizeType,
+  type OverflowWrapType,
 } from "../../types";
 import { TextStyled } from "./styles";
 
@@ -27,7 +25,7 @@ import { TextStyled } from "./styles";
 export type TextProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
     /** text colour  */
-    textColor?: ColorKeyType | string;
+    textColor?: string;
     /** text horizontal alignment  */
     textAlign?: "left" | "right" | "center" | "justify";
     /** font size FontSizeType t-shirt sizes  */
@@ -46,16 +44,14 @@ export type TextProps = SpacingProps &
     ref?: Ref<HTMLElement>;
   };
 
-export const Text: FunctionComponent<TextProps> = forwardRef(
-  (props: TextProps, ref?: Ref<HTMLElement>) => {
-    const foundTheme = useTheme();
-    const theme = {
-      ...defaultTheme,
-      ...foundTheme,
-    };
+export const Text = forwardRef((props: TextProps, ref?: Ref<HTMLElement>) => {
+  const foundTheme = useTheme();
+  const theme = {
+    ...defaultTheme,
+    ...foundTheme,
+  };
 
-    return <TextStyled {...props} ref={ref} theme={theme} />;
-  }
-);
+  return <TextStyled {...props} ref={ref} theme={theme} />;
+});
 
 export default Text;

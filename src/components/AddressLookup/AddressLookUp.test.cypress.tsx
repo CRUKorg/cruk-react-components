@@ -51,7 +51,7 @@ describe("AddressLookup", () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>
         <Content />
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");
@@ -61,7 +61,7 @@ describe("AddressLookup", () => {
     mount(
       <TestThemeWrapper theme={rflTheme}>
         <Content />
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");
@@ -71,7 +71,7 @@ describe("AddressLookup", () => {
     mount(
       <TestThemeWrapper theme={su2cTheme}>
         <Content />
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body", {
@@ -85,7 +85,7 @@ describe("AddressLookup", () => {
     mount(
       <TestThemeWrapper theme={bowelbabeTheme}>
         <Content />
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");
@@ -95,14 +95,14 @@ describe("AddressLookup", () => {
     mount(
       <AllThemesWrapper>
         <Content />
-      </AllThemesWrapper>
+      </AllThemesWrapper>,
     );
     cy.get("body")
       .first()
       .within(() => {
         cy.getInputByLabel("Home address").type("N10").blur();
         cy.contains("li", "N17 0AB High Road, London - 14 Addresses").should(
-          "exist"
+          "exist",
         );
       });
     cy.wait("@find")
@@ -115,7 +115,7 @@ describe("AddressLookup", () => {
     mount(
       <AllThemesWrapper>
         <Content />
-      </AllThemesWrapper>
+      </AllThemesWrapper>,
     );
     cy.getInputByLabel("Home address").type("N10");
     cy.contains("li", "N17 0AB High Road, London - 14 Addresses")
@@ -123,7 +123,7 @@ describe("AddressLookup", () => {
       .focus();
     cy.focused().should(
       "have.text",
-      "N17 0AB High Road, London - 14 Addressespress enter for these addresses"
+      "N17 0AB High Road, London - 14 Addressespress enter for these addresses",
     );
   });
 });

@@ -18,7 +18,7 @@ describe("Step", () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>
         <BasicContent />
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");
@@ -28,7 +28,7 @@ describe("Step", () => {
     mount(
       <TestThemeWrapper theme={rflTheme}>
         <BasicContent />
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");
@@ -38,7 +38,7 @@ describe("Step", () => {
     mount(
       <TestThemeWrapper theme={su2cTheme}>
         <BasicContent />
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body", {
@@ -52,7 +52,7 @@ describe("Step", () => {
     mount(
       <TestThemeWrapper theme={bowelbabeTheme}>
         <BasicContent />
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");

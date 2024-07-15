@@ -13,6 +13,7 @@ import {
   bowelbabeTheme,
   rflTheme,
 } from "..";
+import { ThemeProvider } from "styled-components";
 
 const Content = () => {
   const [showModal, setShowModal] = React.useState(false);
@@ -44,7 +45,7 @@ describe("Modal", () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>
         <Content />
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.contains("Show me a modal").click();
@@ -59,7 +60,7 @@ describe("Modal", () => {
     mount(
       <TestThemeWrapper theme={rflTheme}>
         <Content />
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body", {
@@ -73,7 +74,7 @@ describe("Modal", () => {
     mount(
       <TestThemeWrapper theme={su2cTheme}>
         <Content />
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.contains("Show me a modal").click();
@@ -88,7 +89,7 @@ describe("Modal", () => {
       mount(
         <TestThemeWrapper theme={bowelbabeTheme}>
           <Content />
-        </TestThemeWrapper>
+        </TestThemeWrapper>,
       );
       cy.injectAxe();
       cy.contains("Show me a modal").click();
@@ -103,7 +104,11 @@ describe("Modal", () => {
 
 describe("Modal behaviour", () => {
   beforeEach(() => {
-    mount(<Content />);
+    mount(
+      <ThemeProvider theme={crukTheme}>
+        <Content />
+      </ThemeProvider>,
+    );
   });
 
   it("should open modal, focus trap inside the modal", () => {

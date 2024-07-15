@@ -1,54 +1,34 @@
 import styled from "styled-components";
-import { ThemeType } from "../../types";
+import { type ThemeType } from "../../types";
 
 type ThemeProps = {
   theme: ThemeType;
 };
-export const StyledFooter = styled.footer`
-  ${({
-    theme: {
-      colors: { inputBorder },
-    },
-  }: ThemeProps) => inputBorder};
+export const StyledFooter = styled.footer<ThemeProps>`
+  ${({ theme }) => theme.colors.inputBorder};
   box-sizing: border-box;
   display: block;
   position: relative;
   width: 100%;
-  background-color: ${({
-    theme: {
-      colors: { footerBackground },
-    },
-  }: ThemeProps) => footerBackground};
+  background-color: ${({ theme }) => theme.colors.footerBackground};
 `;
 
-export const FooterContentWrapper = styled.div`
-  max-width: ${({
-    theme: {
-      utilities: { contentMaxWidth },
-    },
-  }: ThemeProps) => contentMaxWidth};
+export const FooterContentWrapper = styled.div<ThemeProps>`
+  max-width: ${({ theme }) => theme.utilities.contentMaxWidth};
   display: block;
   margin: 0 auto;
 
-  @media (min-width: ${({
-      theme: {
-        breakpoint: { desktop },
-      },
-    }: ThemeProps) => desktop}) {
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
 `;
 
-export const FooterSection = styled.div`
+export const FooterSection = styled.div<ThemeProps>`
   box-sizing: border-box;
   display: inline-block;
-  padding: ${({
-    theme: {
-      spacing: { xs },
-    },
-  }: ThemeProps) => xs};
+  padding: ${({ theme }) => theme.spacing.xs};
   position: relative;
   width: 100%;
   flex: 0 1 auto;
@@ -59,11 +39,7 @@ export const FooterSectionLogo = styled(FooterSection)`
   display: block;
   float: left;
 
-  @media (min-width: ${({
-      theme: {
-        breakpoint: { desktop },
-      },
-    }: ThemeProps) => desktop}) {
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
     flex: 0 0 140px;
     width: auto;
   }
@@ -76,25 +52,17 @@ export const FooterSectionLinks = styled(FooterSection)`
   display: block;
   float: left;
 
-  @media (min-width: ${({
-      theme: {
-        breakpoint: { desktop },
-      },
-    }: ThemeProps) => desktop}) {
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
     flex: 0 0 170px;
     width: auto;
   }
 `;
 
-export const StyledNav = styled.nav`
+export const StyledNav = styled.nav<ThemeProps>`
   display: flex;
   flex-direction: column;
   a {
-    font-size: ${({
-      theme: {
-        fontSizes: { s },
-      },
-    }: ThemeProps) => s};
+    font-size: ${({ theme }) => theme.fontSizes.s};
     font-weight: ${({
       theme: {
         typography: { fontWeightLinks },
@@ -108,7 +76,7 @@ export const StyledUL = styled.ul`
   margin: 0;
 `;
 
-export const StyledLI = styled.li`
+export const StyledLI = styled.li<ThemeProps>`
   list-style-type: none;
   display: block;
   padding: 0;
@@ -118,7 +86,7 @@ export const StyledLI = styled.li`
     theme: {
       spacing: { xxs },
     },
-  }: ThemeProps) => xxs};
+  }) => xxs};
 `;
 
 export const FooterSectionAddress = styled(FooterSection)`

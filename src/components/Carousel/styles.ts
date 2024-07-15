@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { ButtonHTMLAttributes } from "react";
+import { type ButtonHTMLAttributes } from "react";
 
-import { ThemeType } from "../../types";
+import { type ThemeType } from "../../types";
 
 export const CarouselWrapper = styled.div`
   position: relative;
@@ -44,10 +44,10 @@ export const CarouselScrollArea = styled.ul<CarouselScrollAreaProps>`
   height: 100%;
 `;
 
-export const CarouselCard = styled.li`
+export const CarouselCard = styled.li<CarouselCardProps>`
   scroll-snap-align: center;
   display: inline-block;
-  width: ${({ onlyChild, fullWidthChild }: CarouselCardProps) =>
+  width: ${({ onlyChild, fullWidthChild }) =>
     onlyChild || fullWidthChild ? "100%" : "80%"};
 `;
 
@@ -78,21 +78,23 @@ export const VerticalAlign = styled.span`
 
 type CarouselButtonProps = ThemeProps & ButtonHTMLAttributes<HTMLElement>;
 
-export const CarouselButton = styled.button`
+export const CarouselButton = styled.button<CarouselButtonProps>`
   height: 100%;
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0);
   border: none;
   /* TODO if this makes it into the component library carouselButtonColor should be a theme prop */
-  color: ${({ disabled, theme }: CarouselButtonProps) =>
+  color: ${({ disabled, theme }) =>
     disabled
       ? theme.colors.disabled
       : theme.name === "su2c"
-      ? theme.colors.textDark
-      : theme.colors.primary};
-  font-size: ${({ theme }: CarouselButtonProps) => theme.fontSizes.xxxl};
+        ? theme.colors.textDark
+        : theme.colors.primary};
+  font-size: ${({ theme }) => theme.fontSizes.xxxl};
   font-weight: 600;
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
   max-width: 3rem;
   padding: 0;
   vertical-align: middle;
@@ -108,50 +110,44 @@ type DotContainerProps = ThemeProps & {
   count: number;
 };
 
-export const DotContainer = styled.div`
+export const DotContainer = styled.div<DotContainerProps>`
   display: flex;
   flex-direction: row;
   justify-content: center;
   display: ${({ count }) => (count > 6 ? "none" : "flex")};
 
-  @media (min-width: ${({ theme }: DotContainerProps) =>
-      theme.breakpoint.tablet}) {
+  @media (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
     display: ${({ count }) => (count > 10 ? "none" : "flex")};
   }
 
-  @media (min-width: ${({ theme }: DotContainerProps) =>
-      theme.breakpoint.desktop}) {
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
     display: ${({ count }) => (count > 20 ? "none" : "flex")};
   }
 `;
 
-export const Dot = styled.button`
+export const Dot = styled.button<ThemeProps & { selected: boolean }>`
   border: none;
-  outline-offset: ${({ theme }: ThemeProps) => theme.spacing.xxs};
+  outline-offset: ${({ theme }) => theme.spacing.xxs};
   padding: 0;
-  margin: ${({ theme }: ThemeProps) => `auto ${theme.spacing.xxs}`};
-  width: ${({ theme }: ThemeProps) => theme.fontSizes.l};
-  height: ${({ theme }: ThemeProps) => theme.fontSizes.l};
+  margin: ${({ theme }) => `auto ${theme.spacing.xxs}`};
+  width: ${({ theme }) => theme.fontSizes.l};
+  height: ${({ theme }) => theme.fontSizes.l};
   border-radius: 50%;
   /* TODO if this makes it into the component library carouselButtonColor should be a theme prop */
-  border: ${({ theme }: ThemeProps) =>
+  border: ${({ theme }) =>
     `solid 1px ${
       theme.name === "su2c" ? theme.colors.textDark : theme.colors.primary
     }`};
-  background-color: ${({
-    theme,
-    selected,
-  }: {
-    theme: ThemeType;
-    selected: boolean;
-  }) =>
+  background-color: ${({ theme, selected }) =>
     selected
       ? `${
           theme.name === "su2c" ? theme.colors.textDark : theme.colors.primary
         }`
       : theme.colors.backgroundLight};
   user-select: none;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
   transform: scale(0.8);
   &:hover {
     transform: scale(1);

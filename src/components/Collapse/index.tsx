@@ -1,17 +1,17 @@
 import React, {
   useState,
   useRef,
-  KeyboardEvent,
-  ReactNode,
+  type KeyboardEvent,
+  type ReactNode,
   useEffect,
-  HTMLAttributes,
+  type HTMLAttributes,
 } from "react";
 import { useTheme } from "styled-components";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-import defaultTheme from "../../themes/cruk";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
 
-import { FontSizeType, ThemeType } from "../../types";
+import { type FontSizeType, type ThemeType } from "../../types";
 import {
   CustomHeader,
   DefaultHeader,
@@ -46,7 +46,7 @@ export type CollapseProps = HTMLAttributes<HTMLElement> & {
  * Use a collapse component to show and hide content. It has a default view; however, it can be overwritten by passing a custom component as a prop.
  *
  */
-const Collapse = ({
+export function Collapse({
   id,
   headerTitleText,
   headerTitleTextColor,
@@ -56,7 +56,7 @@ const Collapse = ({
   startOpen,
   onOpenChange,
   children,
-}: CollapseProps): JSX.Element => {
+}: CollapseProps) {
   const [openStatus, setOpenStatus] = useState(startOpen || false);
   const [contentHeight, setContentHeight] = useState(
     startOpen ? "initial" : "0",
@@ -158,6 +158,6 @@ const Collapse = ({
       </CollapseContent>
     </div>
   );
-};
+}
 
 export default Collapse;

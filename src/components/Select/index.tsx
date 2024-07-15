@@ -1,15 +1,15 @@
 import React, {
-  FunctionComponent,
-  ReactNode,
-  SelectHTMLAttributes,
-  Ref,
+  type ReactNode,
+  type SelectHTMLAttributes,
+  type Ref,
   forwardRef,
+  type LegacyRef,
 } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
-import LabelWrapper from "../LabelWrapper";
-import ErrorText from "../ErrorText";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { LabelWrapper } from "../LabelWrapper";
+import { ErrorText } from "../ErrorText";
 
 import { StyledSelect } from "./styles";
 
@@ -25,14 +25,14 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   /** flag to stop (required) appearing in label, useful for compound form components like DateInput */
   hideRequiredInLabel?: boolean;
   /** react DOM reference of object used scrolling to it with errors etc */
-  ref?: Ref<HTMLSelectElement>;
+  ref?: Ref<HTMLSelectElement> | LegacyRef<HTMLSelectElement>;
 };
 
 /**
  * Select components are used for collecting user provided information from a list of options.
  *
  */
-const Select: FunctionComponent<SelectProps> = forwardRef(
+export const Select = forwardRef(
   (
     {
       errorMessage,
@@ -43,7 +43,7 @@ const Select: FunctionComponent<SelectProps> = forwardRef(
       hideRequiredInLabel,
       ...props
     }: SelectProps,
-    ref?: Ref<HTMLSelectElement>
+    ref?: Ref<HTMLSelectElement>,
   ) => {
     const foundTheme = useTheme();
     const theme = {
@@ -78,7 +78,7 @@ const Select: FunctionComponent<SelectProps> = forwardRef(
         )}
       </LabelWrapper>
     );
-  }
+  },
 );
 
 export default Select;

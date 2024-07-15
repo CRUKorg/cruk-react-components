@@ -1,8 +1,8 @@
-import React, { ReactNode, HTMLAttributes } from "react";
+import React, { type ReactNode, type HTMLAttributes } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
-import Avatar from "../Avatar";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { Avatar } from "../Avatar";
 
 import { StyledUserBlock, Details, Name, Extra } from "./styles";
 
@@ -22,13 +22,13 @@ export type UserBlockProps = HTMLAttributes<HTMLElement> & {
 /**
  * Display an avatar with title and subtitle
  */
-const UserBlock = ({
+export function UserBlock({
   name,
   avatarName,
   avatarUrl,
   extra,
   size = "l",
-}: UserBlockProps) => {
+}: UserBlockProps) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -50,6 +50,6 @@ const UserBlock = ({
       </Details>
     </StyledUserBlock>
   );
-};
+}
 
 export default UserBlock;

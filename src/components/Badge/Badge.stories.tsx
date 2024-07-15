@@ -7,8 +7,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { IconFa } from "..";
-import Badge from ".";
-import AllThemesWrapper from "../AllThemesWrapper";
+import { Badge } from ".";
+import { AllThemesWrapper } from "../AllThemesWrapper";
 
 export default {
   title: "Badge",

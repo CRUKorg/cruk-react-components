@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ThemeType } from "../../types";
+import { type ThemeType } from "../../types";
 
 type StyledTextareaProps = {
   hasError: boolean;
@@ -9,34 +9,30 @@ type StyledTextareaProps = {
 };
 
 const StyledTextArea = styled.textarea<StyledTextareaProps>`
-  resize: ${({ resize }: StyledTextareaProps) => resize};
-  background-color: ${({ theme }: StyledTextareaProps) =>
-    theme.colors.backgroundLight};
+  resize: ${({ resize }) => resize};
+  background-color: ${({ theme }) => theme.colors.backgroundLight};
   background-image: none;
-  border: ${({ theme, hasError }: StyledTextareaProps) => `solid ${
-    theme.utilities.inputBorderWidth
-  }
+  border: ${({ theme, hasError }) => `solid ${theme.utilities.inputBorderWidth}
     ${hasError ? theme.colors.textError : theme.colors.textInputBorder}`};
-  color: ${({ theme }: StyledTextareaProps) => theme.colors.textDark};
+  color: ${({ theme }) => theme.colors.textDark};
   display: block;
-  font-family: ${({ theme }: StyledTextareaProps) =>
-    theme.typography.fontFamilyBase};
-  font-size: ${({ theme }: StyledTextareaProps) => theme.fontSizes.m};
+  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
+  font-size: ${({ theme }) => theme.fontSizes.m};
   padding: 6px 8px;
   width: 100%;
-  height: ${({ lineCount, theme }: StyledTextareaProps) =>
+  height: ${({ lineCount, theme }) =>
     `calc(${theme.typography.lineHeight} * ${lineCount})`};
 
   transition: border-color 150ms linear;
   &:hover {
-    border-color: ${({ theme }: StyledTextareaProps) => theme.colors.secondary};
+    border-color: ${({ theme }) => theme.colors.secondary};
   }
   &:disabled {
-    border-color: ${({ theme }: StyledTextareaProps) => theme.colors.disabled};
-    color: ${({ theme }: StyledTextareaProps) => theme.colors.disabled};
+    border-color: ${({ theme }) => theme.colors.disabled};
+    color: ${({ theme }) => theme.colors.disabled};
   }
 
-  ${({ theme }: StyledTextareaProps) =>
+  ${({ theme }) =>
     !theme.utilities.useDefaultFocusRect
       ? css`
           &:focus {

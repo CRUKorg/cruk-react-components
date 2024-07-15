@@ -1,15 +1,15 @@
 import React, {
-  AnchorHTMLAttributes,
+  type AnchorHTMLAttributes,
   forwardRef,
-  Ref,
-  ElementType,
-  ReactNode,
+  type Ref,
+  type ElementType,
+  type ReactNode,
 } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
 
-import { TextProps } from "../Text";
+import { type TextProps } from "../Text";
 import { StyledLink } from "./styles";
 
 export type LinkProps = Omit<AnchorHTMLAttributes<HTMLElement>, "nonce"> &
@@ -46,8 +46,8 @@ export const Link = forwardRef((props: LinkProps, ref?: Ref<HTMLElement>) => {
   const rel = props.rel
     ? props.rel
     : props.target === "_blank"
-    ? "noopener noreferrer"
-    : "";
+      ? "noopener noreferrer"
+      : "";
 
   // only forward As anchor if we are not casting as something that is not an anchor
   const forwardAs = props.as && props.as !== "a" ? undefined : "a";

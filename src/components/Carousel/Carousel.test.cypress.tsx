@@ -62,7 +62,7 @@ describe("Carousel", () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>
         <Content />
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");
@@ -72,7 +72,7 @@ describe("Carousel", () => {
     mount(
       <TestThemeWrapper theme={rflTheme}>
         <Content />
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");
@@ -82,7 +82,7 @@ describe("Carousel", () => {
     mount(
       <TestThemeWrapper theme={su2cTheme}>
         <Content />
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body", {
@@ -96,7 +96,7 @@ describe("Carousel", () => {
     mount(
       <TestThemeWrapper theme={bowelbabeTheme}>
         <Content />
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");

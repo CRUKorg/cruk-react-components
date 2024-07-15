@@ -1,7 +1,13 @@
-import React, { useState, useRef, useEffect, memo, ReactNode } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  memo,
+  type ReactNode,
+} from "react";
 import { InView } from "react-intersection-observer";
 
-import Box from "../Box";
+import { Box } from "../Box";
 import { Dots } from "./Dots";
 
 import {
@@ -77,7 +83,7 @@ export const Carousel = ({
   };
 
   const scrollToPosition = (to: number) => {
-    if (scrollRef && scrollRef.current) {
+    if (scrollRef?.current) {
       const containerWidth = scrollRef.current.scrollWidth;
       const totalItems = scrollRef.current.children.length;
       const atBegining = to === 0;

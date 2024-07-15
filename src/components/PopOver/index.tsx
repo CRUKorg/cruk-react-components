@@ -3,16 +3,16 @@ import React, {
   useEffect,
   useRef,
   useCallback,
-  ReactElement,
-  ReactNode,
+  type ReactElement,
+  type ReactNode,
 } from "react";
 import { ThemeProvider, useTheme } from "styled-components";
 
 import { useKey } from "../../hooks/useKey";
-import defaultTheme from "../../themes/cruk";
-import useEffectBrowser from "../../hooks/useEffectBrowser";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { useEffectBrowser } from "../../hooks/useEffectBrowser";
 
-import { PopOverPositionType } from "../../types";
+import { type PopOverPositionType } from "../../types";
 import { PopOverWrapper, PopOverModal } from "./styles";
 
 export type PopOverProps = {
@@ -38,7 +38,7 @@ export type PopOverProps = {
  * Popover is a non-modal dialog that floats around its disclosure. It's
 commonly used for displaying additional rich content on top of something.
 */
-const PopOver = ({
+export function PopOver({
   onPopOverIsOpenChange,
   children,
   minWidth,
@@ -48,7 +48,7 @@ const PopOver = ({
   modalContent,
   css,
   full = false,
-}: PopOverProps) => {
+}: PopOverProps) {
   const popRef = useRef<HTMLDivElement>(null);
   const [showPopOver, setShowPopOver] = useState(false);
   const foundTheme = useTheme();
@@ -67,7 +67,7 @@ const PopOver = ({
         closePopOver();
       }
     },
-    [popRef.current]
+    [popRef.current],
   );
 
   useKey(
@@ -77,7 +77,7 @@ const PopOver = ({
     {
       detectKeys: ["Escape"],
     },
-    []
+    [],
   );
 
   useEffect(() => {
@@ -103,7 +103,7 @@ const PopOver = ({
               onClick: toggle,
               "aria-expanded": showPopOver,
               "aria-haspopup": "dialog",
-            })
+            }),
         )}
         {showPopOver ? (
           <PopOverModal
@@ -121,6 +121,6 @@ const PopOver = ({
       </PopOverWrapper>
     </ThemeProvider>
   );
-};
+}
 
 export default PopOver;

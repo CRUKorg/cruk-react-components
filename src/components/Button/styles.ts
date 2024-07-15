@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components";
 
-import { ThemeType, ButtonAppearanceType } from "../../types";
+import { type ThemeType, type ButtonAppearanceType } from "../../types";
 
 const BUTTON_HEIGHT = "3rem";
 const BUTTON_HEIGHT_LARGE = "4rem";
 
-export const Spacer = styled.span`
-  margin-left: ${({ theme }: { theme: ThemeType }) => theme.spacing.xxs};
+export const Spacer = styled.span<{ theme: ThemeType }>`
+  margin-left: ${({ theme }) => theme.spacing.xxs};
   &:first-of-type {
     margin-left: 0;
   }
@@ -29,21 +29,21 @@ export const StyledButton = styled.button<StyledButtonProps>`
   display: inline-block;
   vertical-align: middle;
 
-  padding: ${({ theme, isIconButton }: StyledButtonProps) =>
+  padding: ${({ theme, isIconButton }) =>
     isIconButton
       ? "0"
       : `calc( (${BUTTON_HEIGHT} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.button.horizontalPadding}`};
-  width: ${({ isIconButton }: StyledButtonProps) =>
-    isIconButton ? `${BUTTON_HEIGHT}` : "auto"};
-  min-width: ${({ isIconButton }: StyledButtonProps) =>
+  width: ${({ isIconButton }) => (isIconButton ? `${BUTTON_HEIGHT}` : "auto")};
+  min-width: ${({ isIconButton }) =>
     isIconButton ? `${BUTTON_HEIGHT}` : "auto"};
 
-  border-radius: ${({ theme }: StyledButtonProps) => theme.button.borderRadius};
+  border-radius: ${({ theme }) => theme.button.borderRadius};
   border-style: solid;
-  border-width: ${({ theme }: StyledButtonProps) =>
-    theme.button.buttonBorderThickness};
+  border-width: ${({ theme }) => theme.button.buttonBorderThickness};
 
-  transition: color 0.2s ease, background-color 0.2s ease,
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
     border-color 0.2s ease;
 
   cursor: pointer;
@@ -51,28 +51,26 @@ export const StyledButton = styled.button<StyledButtonProps>`
     theme: {
       fontSizes: { m },
     },
-  }: StyledButtonProps) => m};
+  }) => m};
   font-family: ${({
     theme: {
       typography: { fontFamilyButtons },
     },
-  }: StyledButtonProps) => fontFamilyButtons};
+  }) => fontFamilyButtons};
   font-weight: ${({
     theme: {
       typography: { fontWeightButtons },
     },
-  }: StyledButtonProps) => fontWeightButtons};
+  }) => fontWeightButtons};
   text-align: center;
-  text-transform: ${({ theme }: StyledButtonProps) =>
-    theme.button.textTransform};
-  text-decoration: ${({ theme }: StyledButtonProps) =>
-    theme.button.textDecoration};
+  text-transform: ${({ theme }) => theme.button.textTransform};
+  text-decoration: ${({ theme }) => theme.button.textDecoration};
 
   &:focus-visible {
     outline: auto;
   }
 
-  ${(props: StyledButtonProps) =>
+  ${(props) =>
     props.appearance === "primary" &&
     css`
       background-color: ${props.theme.colors.buttonPrimaryBackground};
@@ -92,7 +90,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
       }
     `}
 
-  ${(props: StyledButtonProps) =>
+  ${(props) =>
     props.appearance === "secondary" &&
     css`
       background-color: ${props.theme.colors.buttonSecondaryBackground};
@@ -113,7 +111,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
       }
     `}
 
-  ${(props: StyledButtonProps) =>
+  ${(props) =>
     props.appearance === "tertiary" &&
     css`
       display: inline-block;
@@ -134,29 +132,25 @@ export const StyledButton = styled.button<StyledButtonProps>`
       }
     `}
   
-  ${(props: StyledButtonProps) =>
-    props.size === "l" &&
+  ${({ theme, size, isIconButton }) =>
+    size === "l" &&
     css`
       min-height: ${BUTTON_HEIGHT_LARGE};
-      border-radius: ${({ theme }: StyledButtonProps) =>
-        theme.button.borderRadiusLarge};
-      padding: ${({ theme, isIconButton }: StyledButtonProps) =>
-        isIconButton
-          ? "0"
-          : `calc( (${BUTTON_HEIGHT_LARGE} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m}`};
-      min-width: ${({ isIconButton }: StyledButtonProps) =>
-        isIconButton ? `${BUTTON_HEIGHT_LARGE}` : "auto"};
-      height: ${({ isIconButton }: StyledButtonProps) =>
-        isIconButton ? `${BUTTON_HEIGHT_LARGE}` : "min-content"};
+      border-radius: ${theme.button.borderRadiusLarge};
+      padding: ${isIconButton
+        ? "0"
+        : `calc( (${BUTTON_HEIGHT_LARGE} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m}`};
+      min-width: ${isIconButton ? `${BUTTON_HEIGHT_LARGE}` : "auto"};
+      height: ${isIconButton ? `${BUTTON_HEIGHT_LARGE}` : "min-content"};
     `}
 
-  ${(props: StyledButtonProps) =>
+  ${(props) =>
     props.full &&
     css`
       width: 100%;
     `}
 
-  ${(props: StyledButtonProps) =>
+  ${(props) =>
     props.css &&
     css`
       ${props.css}

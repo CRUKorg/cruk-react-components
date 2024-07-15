@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import { ElementType } from "react";
+import { type ElementType } from "react";
 
-import spacing, { SpacingProps } from "../Spacing";
+import spacing, { type SpacingProps } from "../Spacing";
 import {
-  WordBreakType,
-  FontSizeType,
-  ThemeType,
-  ColorKeyType,
-  OverflowWrapType,
+  type WordBreakType,
+  type FontSizeType,
+  type ThemeType,
+  type ColorKeyType,
+  type OverflowWrapType,
 } from "../../types";
 
 export type TextStyledProps = SpacingProps & {
@@ -23,25 +23,24 @@ export type TextStyledProps = SpacingProps & {
 };
 
 export const TextStyled = styled.p<TextStyledProps>`
-  font-family: ${({ textFontFamily, theme }: TextStyledProps) =>
+  font-family: ${({ textFontFamily, theme }) =>
     textFontFamily || theme.typography.fontFamilyBase};
-  word-break: ${({ wordBreak }: TextStyledProps) => wordBreak || "normal"};
-  overflow-wrap: ${({ overflowWrap }: TextStyledProps) =>
-    overflowWrap || "break-word"};
-  color: ${({ theme: { colors }, textColor }: TextStyledProps) =>
+  word-break: ${({ wordBreak }) => wordBreak || "normal"};
+  overflow-wrap: ${({ overflowWrap }) => overflowWrap || "break-word"};
+  color: ${({ theme: { colors }, textColor }) =>
     textColor && typeof colors[textColor] !== "undefined"
       ? colors[textColor]
       : textColor || colors.textDark};
-  text-align: ${({ textAlign }: TextStyledProps) => textAlign || "left"};
+  text-align: ${({ textAlign }) => textAlign || "left"};
   font-size: ${({
     theme: {
       fontSizes,
       fontSizes: { m },
     },
     textSize,
-  }: TextStyledProps) => (textSize ? fontSizes[textSize] : m)};
-  line-height: ${({ theme }: TextStyledProps) => theme.typography.lineHeight};
-  font-weight: ${({ textWeight, theme }: TextStyledProps) =>
+  }) => (textSize ? fontSizes[textSize] : m)};
+  line-height: ${({ theme }) => theme.typography.lineHeight};
+  font-weight: ${({ textWeight, theme }) =>
     textWeight || theme.typography.fontWeightBase};
   padding: 0;
   margin: 0;
@@ -50,8 +49,7 @@ export const TextStyled = styled.p<TextStyledProps>`
     theme: {
       spacing: { xs },
     },
-  }: TextStyledProps) =>
-    typeof as === "undefined" || as === "p" ? `${xs}` : 0};
+  }) => (typeof as === "undefined" || as === "p" ? `${xs}` : 0)};
 
   &:last-child {
     margin-bottom: 0;

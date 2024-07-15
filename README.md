@@ -32,6 +32,26 @@ const MyComponent = () => (
 );
 ```
 
+## Migration from V4 to V5
+
+Because Styped Components now manages its own types on stead of relying on the community efforts on the DefinitelyTyped project, you may need to use generics instead of inline prop type definition inside styledComponents componets.
+
+### Before:
+
+```tsx
+export const StyledButton = styled(Button)`
+  border-radius: ${({ theme }: StyledButtonProps) => theme.button.borderRadius};
+`;
+```
+
+### Now:
+
+```tsx
+export const StyledButton = styled(Button)<StyledButtonProps>`
+  border-radius: ${({ theme }) => theme.button.borderRadius};
+`;
+```
+
 ## Migration from V0 to V1
 
 1.  Find all instances of RadioGroup and change it to the new component name of RadioConsent
@@ -70,11 +90,11 @@ However this isn't as well maintained as the storybook stories and will soon be 
 
 ## Testing
 
-Jest: Unit testing,
+Node: Unit testing,
 Cypress: Component function, accessibility
 Chromatic: Image snapshot comparison service, this happens in CI, people are given access to this service via their Github login.
 
-Run all tests Jest and Cypress
+Run all tests Unit and Cypress
 
 ```sh
  npm run test
@@ -92,21 +112,9 @@ Run Cypress headlessly including image snapshots, docker desktop app will need t
 npm run cypress-headless
 ```
 
-To run a specific test Cypress headlessly
+## Maintaining
 
-```sh
-ARGS="--spec src/components/Modal/test.cypress.tsx" npm run cypress-headless
-```
-
-To run and update a specific snapshot headlessly
-
-```sh
-ARGS="--spec src/components/Modal/test.cypress.tsx" npm run cypress-headless:update
-```
-
-### Maintaining
-
-## Dependencies
+### Dependencies
 
 If you update cypress version make sure you update it in the package.json and in the in docker compose file.
 
@@ -118,7 +126,7 @@ npm run rollup:build-lib
 
 and see if it can successfully build the library before running the release script
 
-## Releases
+### Releases
 
 Please update the version number in the package.json and follow the semver standards for version numbers.
 

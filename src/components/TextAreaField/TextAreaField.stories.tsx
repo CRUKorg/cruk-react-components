@@ -8,9 +8,8 @@ export default {
   title: "TextAreaField",
   component: TextAreaField,
   args: {
-    children: "This is text it defaults to a paragraph tag",
+    defaultValue: "This is text it defaults to a paragraph tag",
     textColor: "textDark",
-    value: undefined,
     disabled: false,
     required: false,
     label: "TextAreaField",

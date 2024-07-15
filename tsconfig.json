@@ -6,15 +6,8 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "lib": [
-      "dom",
-      "es2015",
-      "es2016"
-    ],
-    "types": [
-      "cypress",
-      "cypress-axe"
-    ],
+    "lib": ["dom", "es2015", "es2016"],
+    "types": ["cypress", "cypress-axe"],
     "jsx": "react",
     "target": "es5",
     "module": "es6",
@@ -24,12 +17,14 @@
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true, // This is needed for the React components.
     "noErrorTruncation": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".eslintrc.js",
+    "rollup.config.mjs",
     "src/docs/index.jsx"
   ],
+  "typeRoots": ["./node_modules/@types", "*.d.ts"]
 }

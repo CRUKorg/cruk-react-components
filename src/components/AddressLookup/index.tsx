@@ -1,28 +1,28 @@
 import React, {
-  InputHTMLAttributes,
+  type InputHTMLAttributes,
   useCallback,
   useEffect,
-  Ref,
+  type Ref,
   useRef,
   forwardRef,
-  FocusEvent,
-  ChangeEvent,
-  KeyboardEvent,
+  type FocusEvent,
+  type ChangeEvent,
+  type KeyboardEvent,
   useState,
-  ReactNode,
+  type ReactNode,
 } from "react";
 import { useTheme } from "styled-components";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-import { AddressDataType, AddressOptionsType } from "../../types";
+import { type AddressDataType, type AddressOptionsType } from "../../types";
 import { useKey } from "../../hooks/useKey";
 
-import debounce from "../../utils/debounce";
+import { debounce } from "../../utils/debounce";
 import { removeCommasFromObjectStringValues } from "../../utils/Helper";
-import Text from "../Text";
-import TextField from "../TextField";
-import IconFa from "../IconFa";
-import defaultTheme from "../../themes/cruk";
+import { Text } from "../Text";
+import { TextField } from "../TextField";
+import { IconFa } from "../IconFa";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { ListWrapper, ListItem, ScreenReaderOnly, List } from "./styles";
 
@@ -66,7 +66,7 @@ export type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
  * You will need a Loqate api key, the examples below use "MG17-ZD93-FF33-KF13" our development key.
  * This component is generally only used for country codes including "GBR", "GGY", "IMN", "JEY". An example of this behavior is included bellow.
  */
-const AddressLookup = forwardRef(
+export const AddressLookup = forwardRef(
   (
     {
       apiKey,
@@ -79,16 +79,18 @@ const AddressLookup = forwardRef(
       label,
       hintText,
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      onAddressError = (error: Error) => {},
+      onAddressError = (error: Error) => {
+        console.log(error);
+      },
       onAddressSelected,
       onChange,
       onBlur,
       ...props
     }: AddressLookupProps,
-    ref?: Ref<HTMLInputElement>
+    ref?: Ref<HTMLInputElement>,
   ) => {
     const [addressOptions, setAddressOptions] = useState<AddressOptionsType[]>(
-      []
+      [],
     );
     const [activeOption, setActiveOption] = useState(-1);
     const wrapperRef = useRef<HTMLDivElement>(null);
@@ -105,7 +107,7 @@ const AddressLookup = forwardRef(
 
     const searchDebounced = useCallback(
       debounce(500, (query: string) => search(query)),
-      []
+      [],
     );
 
     const search = (query: string, id = "") => {
@@ -141,7 +143,7 @@ const AddressLookup = forwardRef(
           const selectedAddress = data.Items[0];
           const selectedAddressWithoutCommas =
             removeCommasFromObjectStringValues<AddressDataType>(
-              selectedAddress
+              selectedAddress,
             );
           onAddressSelected(selectedAddressWithoutCommas);
           clearOptions();
@@ -163,7 +165,7 @@ const AddressLookup = forwardRef(
           getAddress(addressOptions[activeOption].Id);
         search(
           addressOptions[activeOption].Text,
-          addressOptions[activeOption].Id
+          addressOptions[activeOption].Id,
         );
         setActiveOption(-1);
       } else if (e.key === "ArrowUp") {
@@ -212,7 +214,7 @@ const AddressLookup = forwardRef(
       {
         detectKeys: ["Escape", "Tab"],
       },
-      []
+      [],
     );
 
     return (
@@ -294,7 +296,7 @@ const AddressLookup = forwardRef(
         )}
       </>
     );
-  }
+  },
 );
 
 export default AddressLookup;

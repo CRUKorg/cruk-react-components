@@ -1,19 +1,18 @@
 import React, {
-  FunctionComponent,
-  HTMLAttributes,
-  Ref,
+  type HTMLAttributes,
+  type Ref,
   forwardRef,
-  ReactNode,
-  ElementType,
+  type ReactNode,
+  type ElementType,
 } from "react";
 import { useTheme } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
-import Box from "../Box";
-import Text from "../Text";
-import Heading from "../Heading";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { Box } from "../Box";
+import { Text } from "../Text";
+import { Heading } from "../Heading";
 
-import { SpacingProps } from "../Spacing";
+import { type SpacingProps } from "../Spacing";
 import { StyledInfoBox } from "./styles";
 
 export type InfoBoxProps = SpacingProps &
@@ -42,7 +41,7 @@ export type InfoBoxProps = SpacingProps &
   
   The more specific the the target the higher priority the css will have. For example `margin` will be overridden by the `marginVertical` or `marginHorizontal` props. `marginTop`, `marginBottom`, `marginLeft`, `marginRight` will override the the `marginVertical` and `marginHorizontal` props.
    */
-const InfoBox: FunctionComponent<InfoBoxProps> = forwardRef(
+export const InfoBox = forwardRef(
   (
     {
       children,
@@ -53,7 +52,7 @@ const InfoBox: FunctionComponent<InfoBoxProps> = forwardRef(
       icon,
       ...spacingAndHTMLElementProps
     }: InfoBoxProps,
-    ref?: Ref<HTMLElement>
+    ref?: Ref<HTMLElement>,
   ) => {
     const foundTheme = useTheme();
     const theme = {
@@ -97,7 +96,7 @@ const InfoBox: FunctionComponent<InfoBoxProps> = forwardRef(
         </div>
       </StyledInfoBox>
     );
-  }
+  },
 );
 
 export default InfoBox;

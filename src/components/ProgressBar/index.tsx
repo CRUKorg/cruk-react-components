@@ -1,7 +1,7 @@
-import React, { ReactNode } from "react";
+import React, { type ReactNode } from "react";
 import { ThemeProvider, useTheme } from "styled-components";
 
-import defaultTheme from "../../themes/cruk";
+import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import {
   ProgressBarWrapper,
@@ -39,7 +39,7 @@ export type ProgressBarProps = {
  * Provide up-to-date feedback on the progress of a workflow or action with
 simple yet flexible progress bars.
 */
-const ProgressBar = ({
+export function ProgressBar({
   percentage = 0,
   isCircular,
   circleContents,
@@ -48,7 +48,7 @@ const ProgressBar = ({
   secondaryBarColor,
   secondaryPercentage,
   children,
-}: ProgressBarProps) => {
+}: ProgressBarProps) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -135,6 +135,6 @@ const ProgressBar = ({
       </ProgressBarWrapper>
     </ThemeProvider>
   );
-};
+}
 
 export default ProgressBar;

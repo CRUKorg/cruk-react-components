@@ -1,7 +1,7 @@
-import React, { ButtonHTMLAttributes } from "react";
+import React, { type ButtonHTMLAttributes } from "react";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 
-import IconFa from "../IconFa";
+import { IconFa } from "../IconFa";
 
 import {
   DotContainer,
@@ -21,7 +21,7 @@ type DotProps = {
 };
 
 export const CarouselLeftButton = (
-  props: ButtonHTMLAttributes<HTMLElement>
+  props: ButtonHTMLAttributes<HTMLElement>,
 ) => (
   <div>
     <CarouselButton {...props} aria-label="previous">
@@ -34,7 +34,7 @@ export const CarouselLeftButton = (
 );
 
 export const CarouselRightButton = (
-  props: ButtonHTMLAttributes<HTMLElement>
+  props: ButtonHTMLAttributes<HTMLElement>,
 ) => (
   <div>
     <CarouselButton {...props} aria-label="next">

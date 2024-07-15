@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import Text from "../Text";
-import { ThemeType } from "../../types";
+import { type ThemeType } from "../../types";
 
 type ThemeProps = {
   theme: ThemeType;
 };
-export const StyledErrorText = styled(Text)`
+export const StyledErrorText = styled(Text)<ThemeProps>`
   display: inline-block;
-  color: ${({ theme }: ThemeProps) => theme.colors.textError};
-  font-weight: ${({ theme }: ThemeProps) => theme.typography.fontWeightHeavy};
+  color: ${({ theme }) => theme.colors.textError};
+  font-weight: ${({ theme }) => theme.typography.fontWeightHeavy};
 `;
 
 export default StyledErrorText;

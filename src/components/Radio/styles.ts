@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ThemeType } from "../../types";
+import { type ThemeType } from "../../types";
 
 const RADIO_SIZE = "1.5rem";
 const RADIO_INNER_SIZE = "0.75rem";
@@ -9,7 +9,7 @@ type ThemeProp = {
   theme: ThemeType;
 };
 
-export const CheckWrapper = styled.div`
+export const CheckWrapper = styled.div<ThemeProp>`
   display: inline-block;
   height: ${RADIO_SIZE};
   width: ${RADIO_SIZE};
@@ -19,13 +19,14 @@ export const CheckWrapper = styled.div`
     theme: {
       spacing: { xs },
     },
-  }: ThemeProp) => xs};
+  }) => xs};
 `;
 
-export const Check = styled.span`
+export const Check = styled.span<ThemeProp>`
   display: block;
   position: relative;
-  border: 2px solid ${({ theme }: ThemeProp) => theme.colors.selectionBorder};
+  border: 2px solid ${({ theme }) => theme.colors.selectionBorder};
+  pointer-events: none;
   border-radius: 100%;
   height: ${RADIO_SIZE};
   width: ${RADIO_SIZE};
@@ -34,18 +35,22 @@ export const Check = styled.span`
   left: 0;
   right: 0;
   z-index: 5;
-  transition: border 0.25s linear, box-shadow 0.25s linear;
+  transition:
+    border 0.25s linear,
+    box-shadow 0.25s linear;
 
-  ::before {
+  &:before {
     display: block;
     position: absolute;
     content: "";
     border-radius: 100%;
+    pointer-events: none;
     height: ${RADIO_INNER_SIZE};
     width: ${RADIO_INNER_SIZE};
     top: calc(50% - (${RADIO_INNER_SIZE} / 2));
     left: calc(50% - (${RADIO_INNER_SIZE} / 2));
     margin: auto;
+    background-color: rgba(255, 255, 255, 0);
     transition: background-color 0.25s linear;
   }
 `;
@@ -64,27 +69,24 @@ export const StyledLabel = styled.label<StyledLabelProps>`
   *:before {
     box-sizing: border-box;
   }
-  line-height: ${({ theme }: StyledLabelProps) => theme.typography.lineHeight};
-  font-size: ${({ theme }: StyledLabelProps) => theme.typography.fontSizeBase};
-  font-family: ${({ theme }: StyledLabelProps) =>
-    theme.typography.fontFamilyBase};
+  line-height: ${({ theme }) => theme.typography.lineHeight};
+  font-size: ${({ theme }) => theme.typography.fontSizeBase};
+  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
 
-  background-color: ${({ theme }: StyledLabelProps) =>
-    theme.colors.backgroundLight};
+  background-color: ${({ theme }) => theme.colors.backgroundLight};
   width: 100%;
   position: relative;
 
-  cursor: ${({ disabled }: StyledLabelProps) =>
-    disabled ? "not-allowed" : "pointer"};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   display: inline-block;
 
-  color: ${({ theme, disabled }: StyledLabelProps) =>
+  color: ${({ theme, disabled }) =>
     disabled ? theme.colors.disabled : theme.colors.textDark};
-  padding: ${({ theme }: StyledLabelProps) =>
+  padding: ${({ theme }) =>
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
   vertical-align: middle;
 
-  ${({ theme, disabled: isDisabled, checked, hasError }: StyledLabelProps) =>
+  ${({ theme, disabled: isDisabled, checked, hasError }) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
@@ -92,36 +94,32 @@ export const StyledLabel = styled.label<StyledLabelProps>`
 
           ${CheckWrapper} ${Check} {
             border: solid 2px
-              ${({
-                theme: {
-                  colors: { check, disabled, inputBorder, danger },
-                },
-              }: ThemeProp) =>
-                isDisabled
-                  ? disabled
-                  : hasError
-                  ? danger
+              ${isDisabled
+                ? theme.colors.disabled
+                : hasError
+                  ? theme.colors.danger
                   : checked
-                  ? check
-                  : inputBorder};
+                    ? theme.colors.check
+                    : theme.colors.inputBorder};
+            &:before {
+              background-color: ${checked
+                ? theme.colors.check
+                : `rgba(255, 255, 255, 0)`};
+            }
           }
 
           &:hover ${CheckWrapper} ${Check} {
             border: solid 2px
-              ${({
-                theme: {
-                  colors: { check, disabled },
-                },
-              }: ThemeProp) => (isDisabled ? disabled : check)};
+              ${isDisabled ? theme.colors.disabled : theme.colors.check};
           }
         `}
 `;
 
-export const VerticalAlign = styled.span`
+export const VerticalAlign = styled.span<ThemeProp>`
   display: inline;
   vertical-align: middle;
   line-height: 100%;
-  background-color: ${({ theme }: ThemeProp) => theme.colors.backgroundLight};
+  background-color: ${({ theme }) => theme.colors.backgroundLight};
   min-height: 2em;
   z-index: 1;
 `;
@@ -141,7 +139,7 @@ type StyledInputType = {
   theme: ThemeType;
 };
 
-export const StyledInput = styled.input`
+export const StyledInput = styled.input<StyledInputType>`
   *,
   *:after,
   *:before {
@@ -153,9 +151,9 @@ export const StyledInput = styled.input`
     theme: {
       spacing: { xxs },
     },
-  }: StyledInputType) => xxs};
+  }) => xxs};
 
-  ${({ theme, disabled }: StyledInputType) =>
+  ${({ theme }) =>
     theme.utilities.useDefaultFromControls
       ? css`
           position: absolute;
@@ -164,31 +162,17 @@ export const StyledInput = styled.input`
           top: 50%;
           margin: 0;
           padding: 0;
-          left: ${({
-            theme: {
-              spacing: { s },
-            },
-          }: ThemeProp) => s};
+          left: ${theme.spacing.s};
         `
       : css`
           position: absolute;
-          left: ${({
-            theme: {
-              spacing: { xxs },
-            },
-          }: ThemeProp) => xxs};
+          left: ${theme.spacing.xxs};
           opacity: 0;
 
           &:focus ~ ${SelectedBorder} {
             outline: none !important;
             box-shadow: inset 0 0 0 2px ${theme.colors.inputBorder};
             box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
-          }
-
-          &:checked ~ ${CheckWrapper} ${Check}::before {
-            background: ${disabled
-              ? theme.colors.disabled
-              : theme.colors.check};
           }
         `}
 `;

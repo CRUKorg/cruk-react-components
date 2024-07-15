@@ -46,7 +46,7 @@ describe("DateField", () => {
     mount(
       <TestThemeWrapper theme={crukTheme}>
         {unControlledContent()}
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");
@@ -56,7 +56,7 @@ describe("DateField", () => {
     mount(
       <TestThemeWrapper theme={rflTheme}>
         {unControlledContent()}
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");
@@ -66,7 +66,7 @@ describe("DateField", () => {
     mount(
       <TestThemeWrapper theme={su2cTheme}>
         {unControlledContent()}
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body", {
@@ -80,7 +80,7 @@ describe("DateField", () => {
     mount(
       <TestThemeWrapper theme={bowelbabeTheme}>
         {unControlledContent()}
-      </TestThemeWrapper>
+      </TestThemeWrapper>,
     );
     cy.injectAxe();
     cy.checkA11y("body");

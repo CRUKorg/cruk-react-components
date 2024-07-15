@@ -1,7 +1,7 @@
 import { createGlobalStyle, withTheme } from "styled-components";
-import defaultTheme from "../themes/cruk";
+import { crukTheme as defaultTheme } from "../themes/cruk";
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyleNoFontFace = withTheme(createGlobalStyle`
   ${(props) => {
     const theme = {
       ...defaultTheme,
@@ -59,10 +59,10 @@ const GlobalStyle = createGlobalStyle`
     button {
     font-size: 1em;
   }
-`;
+`);
 
-GlobalStyle.defaultProps = {
+GlobalStyleNoFontFace.defaultProps = {
   theme: defaultTheme,
 };
 
-export default withTheme(GlobalStyle);
+export default GlobalStyleNoFontFace;

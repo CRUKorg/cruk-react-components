@@ -1,19 +1,19 @@
 import {
-  UtilitiesType,
-  SiteConfigType,
-  AvatarType,
-  ButtonType,
-  BreakPointType,
-  TokenColorsType,
-  ColorsType,
-  SpacingType,
-  FontSizesType,
-  TypographyType,
-  ThemeType,
-  ShadowsType,
+  type UtilitiesType,
+  type SiteConfigType,
+  type AvatarType,
+  type ButtonType,
+  type BreakPointType,
+  type TokenColorsType,
+  type ColorsType,
+  type SpacingType,
+  type FontSizesType,
+  type TypographyType,
+  type ThemeType,
+  type ShadowsType,
 } from "../types";
 
-import defaultTheme from "./cruk";
+import { crukTheme as defaultTheme } from "./cruk";
 
 export const UTILITIES: UtilitiesType = {
   ...defaultTheme.utilities,
@@ -157,7 +157,7 @@ export const TYPOGRAPHY: TypographyType = {
   LinkLetterSpacing: "0px",
 };
 
-const theme: ThemeType = {
+export const su2cTheme: ThemeType = {
   name: "su2c",
   avatar: AVATAR,
   breakpoint: BREAKPOINT,
@@ -172,4 +172,4 @@ const theme: ThemeType = {
   utilities: UTILITIES,
 };
 
-export default theme;
+export default su2cTheme;

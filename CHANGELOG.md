@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.0] - 2024-07-15
+
+### Breaking Changes
+
+- Minimum Node version 18
+- Minimum React version 18
+- Minimum Styled Components version 6.1
+
+### Changed
+
+- Updated StoryBook to v8
+- Updated Rollup to v4.18
+- Updated Prettier to v3
+
+### Removed
+
+- Removed Jest for unit tests in favour of build in Node assertions
+
+### Fixed
+
+- Bump node and React [#875](https://github.com/CRUKorg/cruk-react-components/issues/875)
+
 ## [4.2.2] - 2024-07-12
 
 ### Fixed
