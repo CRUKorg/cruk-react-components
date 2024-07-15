@@ -43,92 +43,112 @@ Markup headings semantically using the appropriate <h#> level HTML element and
 use the corresponding heading class (h1, h2, h3, ....). Write all headings in sentence case. Heading differs from the Text component by using a different font-family and it changes the font size according to the screen width breakpoints.
  * 
  */
-export function Heading({ h1, h2, h3, h4, h5, h6, ...props }: HeadingProps) {
+export function Heading({
+  textSize,
+  textAlign,
+  textColor,
+  wordBreak,
+  overflowWrap,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  ...props
+}: HeadingProps) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
     ...foundTheme,
   };
 
-  const { textSize, textAlign, textColor, wordBreak, overflowWrap, ...rest } =
-    props;
-
   const propsConvertedToInternalSpacingProps =
-    spacingPropsToSpacingPropsInternal(rest);
+    spacingPropsToSpacingPropsInternal(props);
 
   if (h1)
     return (
       <H1
+        {...propsConvertedToInternalSpacingProps}
         theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
         $textColor={textColor}
         $wordBreak={wordBreak}
         $overflowWrap={overflowWrap}
-        {...propsConvertedToInternalSpacingProps}
       />
     );
   if (h2)
     return (
       <H2
+        {...propsConvertedToInternalSpacingProps}
         theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
         $textColor={textColor}
         $wordBreak={wordBreak}
         $overflowWrap={overflowWrap}
-        {...propsConvertedToInternalSpacingProps}
       />
     );
   if (h3)
     return (
       <H3
+        {...propsConvertedToInternalSpacingProps}
         theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
         $textColor={textColor}
         $wordBreak={wordBreak}
         $overflowWrap={overflowWrap}
-        {...propsConvertedToInternalSpacingProps}
       />
     );
   if (h4)
     return (
       <H4
+        {...propsConvertedToInternalSpacingProps}
         theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
         $textColor={textColor}
         $wordBreak={wordBreak}
         $overflowWrap={overflowWrap}
-        {...propsConvertedToInternalSpacingProps}
       />
     );
   if (h5)
     return (
       <H5
+        {...propsConvertedToInternalSpacingProps}
         theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
         $textColor={textColor}
         $wordBreak={wordBreak}
         $overflowWrap={overflowWrap}
-        {...propsConvertedToInternalSpacingProps}
       />
     );
   if (h6)
     return (
       <H6
+        {...propsConvertedToInternalSpacingProps}
         theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
         $textColor={textColor}
         $wordBreak={wordBreak}
         $overflowWrap={overflowWrap}
-        {...propsConvertedToInternalSpacingProps}
       />
     );
-  return <H2 {...propsConvertedToInternalSpacingProps} />;
+  return (
+    <H2
+      {...propsConvertedToInternalSpacingProps}
+      theme={theme}
+      $textSize={textSize}
+      $textAlign={textAlign}
+      $textColor={textColor}
+      $wordBreak={wordBreak}
+      $overflowWrap={overflowWrap}
+    />
+  );
 }
 
 export default Heading;
