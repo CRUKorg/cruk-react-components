@@ -6,7 +6,7 @@ type LabelTextProp = {
   theme: ThemeType;
 };
 
-export const Label = styled.label<LabelTextProp>`
+export const Label = styled.label<{ theme: ThemeType }>`
   position: relative;
   display: block;
   width: 100%;
@@ -14,7 +14,7 @@ export const Label = styled.label<LabelTextProp>`
   font-weight: ${({ theme }) => theme.typography.fontWeightLabels};
 `;
 
-export const RequiredText = styled.span<LabelTextProp>`
+export const RequiredText = styled.span<{ theme: ThemeType }>`
   font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
   font-weight: ${({ theme }) => theme.typography.fontWeightBase};
 `;

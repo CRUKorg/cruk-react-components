@@ -3,6 +3,7 @@ import React, {
   type Ref,
   forwardRef,
   type ReactNode,
+  type LegacyRef,
 } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
@@ -20,7 +21,7 @@ import {
 } from "./styles";
 
 export type CheckBoxProps = InputHTMLAttributes<HTMLInputElement> & {
-  ref?: Ref<HTMLInputElement>;
+  ref?: Ref<HTMLInputElement> | LegacyRef<HTMLInputElement>;
   /** flag for error styling */
   hasError?: boolean;
   /** error message text  */

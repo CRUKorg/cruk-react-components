@@ -3,6 +3,7 @@ import React, {
   type Ref,
   forwardRef,
   type ReactNode,
+  type LegacyRef,
 } from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
@@ -19,7 +20,7 @@ import {
 } from "./styles";
 
 export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
-  ref?: Ref<HTMLInputElement>;
+  ref?: Ref<HTMLInputElement> | LegacyRef<HTMLInputElement>;
   /** flag for error styling */
   hasError?: boolean;
   /** error message text  */
