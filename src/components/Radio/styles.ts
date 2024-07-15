@@ -26,6 +26,7 @@ export const Check = styled.span<ThemeProp>`
   display: block;
   position: relative;
   border: 2px solid ${({ theme }) => theme.colors.selectionBorder};
+  pointer-events: none;
   border-radius: 100%;
   height: ${RADIO_SIZE};
   width: ${RADIO_SIZE};
@@ -38,16 +39,18 @@ export const Check = styled.span<ThemeProp>`
     border 0.25s linear,
     box-shadow 0.25s linear;
 
-  ::before {
+  &:before {
     display: block;
     position: absolute;
     content: "";
     border-radius: 100%;
+    pointer-events: none;
     height: ${RADIO_INNER_SIZE};
     width: ${RADIO_INNER_SIZE};
     top: calc(50% - (${RADIO_INNER_SIZE} / 2));
     left: calc(50% - (${RADIO_INNER_SIZE} / 2));
     margin: auto;
+    background-color: rgba(255, 255, 255, 0);
     transition: background-color 0.25s linear;
   }
 `;
@@ -98,6 +101,11 @@ export const StyledLabel = styled.label<StyledLabelProps>`
                   : checked
                     ? theme.colors.check
                     : theme.colors.inputBorder};
+            &:before {
+              background-color: ${checked
+                ? theme.colors.check
+                : `rgba(255, 255, 255, 0)`};
+            }
           }
 
           &:hover ${CheckWrapper} ${Check} {
@@ -145,7 +153,7 @@ export const StyledInput = styled.input<StyledInputType>`
     },
   }) => xxs};
 
-  ${({ theme, disabled }) =>
+  ${({ theme }) =>
     theme.utilities.useDefaultFromControls
       ? css`
           position: absolute;
@@ -165,12 +173,6 @@ export const StyledInput = styled.input<StyledInputType>`
             outline: none !important;
             box-shadow: inset 0 0 0 2px ${theme.colors.inputBorder};
             box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
-          }
-
-          &:checked ~ ${CheckWrapper} ${Check}::before {
-            background: ${disabled
-              ? theme.colors.disabled
-              : theme.colors.check};
           }
         `}
 `;
