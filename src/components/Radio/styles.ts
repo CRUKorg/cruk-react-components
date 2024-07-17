@@ -57,8 +57,8 @@ export const Check = styled.span<{
 
 export const StyledLabel = styled.label<{
   $hasError: boolean;
-  disabled: boolean;
-  checked: boolean;
+  $disabled: boolean;
+  $checked: boolean;
   theme: ThemeType;
 }>`
   box-sizing: border-box;
@@ -75,16 +75,16 @@ export const StyledLabel = styled.label<{
   width: 100%;
   position: relative;
 
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
   display: inline-block;
 
-  color: ${({ theme, disabled }) =>
-    disabled ? theme.colors.disabled : theme.colors.textDark};
+  color: ${({ theme, $disabled }) =>
+    $disabled ? theme.colors.disabled : theme.colors.textDark};
   padding: ${({ theme }) =>
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
   vertical-align: middle;
 
-  ${({ theme, disabled: isDisabled, checked, $hasError }) =>
+  ${({ theme, $disabled: isDisabled, $checked, $hasError }) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
@@ -96,11 +96,11 @@ export const StyledLabel = styled.label<{
                 ? theme.colors.disabled
                 : $hasError
                   ? theme.colors.danger
-                  : checked
+                  : $checked
                     ? theme.colors.check
                     : theme.colors.inputBorder};
             &:before {
-              background-color: ${checked
+              background-color: ${$checked
                 ? theme.colors.check
                 : `rgba(255, 255, 255, 0)`};
             }

@@ -179,11 +179,11 @@ export const EmptyCircle = styled.circle<{
 `;
 
 export const FullCircle = styled.circle<{
-  $strokeDashoffsetInit: number;
   strokeDashoffset: number;
+  theme: ThemeType;
+  $strokeDashoffsetInit: number;
   $barColor?: string;
   $isSecondary?: boolean;
-  theme: ThemeType;
 }>`
   stroke: ${({
     $isSecondary,

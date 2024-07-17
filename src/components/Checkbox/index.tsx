@@ -48,8 +48,8 @@ export const Checkbox = forwardRef(
       <ThemeProvider theme={theme}>
         <StyledLabel
           $hasError={hasError || !!errorMessage || false}
-          checked={props.checked || props.defaultChecked || false}
-          disabled={props.disabled || false}
+          $checked={props.checked || props.defaultChecked || false}
+          $disabled={props.disabled || false}
         >
           <StyledInput
             {...rest}

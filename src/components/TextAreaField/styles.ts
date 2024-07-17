@@ -4,12 +4,12 @@ import { type ThemeType } from "../../types";
 type StyledTextareaProps = {
   $hasError: boolean;
   $lineCount: number;
-  resize: "both" | "vertical" | "horizontal" | "none";
+  $resize: "both" | "vertical" | "horizontal" | "none";
   theme: ThemeType;
 };
 
 const StyledTextArea = styled.textarea<StyledTextareaProps>`
-  resize: ${({ resize }) => resize};
+  resize: ${({ $resize }) => $resize};
   background-color: ${({ theme }) => theme.colors.backgroundLight};
   background-image: none;
   border: ${({ theme, $hasError }) => `solid ${theme.utilities.inputBorderWidth}

@@ -11,11 +11,6 @@ import { GlobalStyle } from "./GlobalStyle";
 
 import { type ThemeType } from "../types";
 
-type TestThemeWrapperProps = {
-  theme?: ThemeType;
-  children?: ReactNode;
-};
-
 const Line = styled.div`
   width: 100%;
   height: 1px;
@@ -26,7 +21,10 @@ const Line = styled.div`
 export const TestThemeWrapper = ({
   children,
   theme,
-}: TestThemeWrapperProps) => (
+}: {
+  theme?: ThemeType;
+  children?: ReactNode;
+}) => (
   <main>
     <div style={{ overflow: "auto" }} tabIndex={0}>
       <ThemeProvider theme={theme || crukTheme}>
@@ -39,11 +37,7 @@ export const TestThemeWrapper = ({
   </main>
 );
 
-type AllThemesWrapperProps = {
-  children?: ReactNode;
-};
-
-export const AllThemesWrapper = ({ children }: AllThemesWrapperProps) => (
+export const AllThemesWrapper = ({ children }: { children?: ReactNode }) => (
   <main>
     <div tabIndex={0}>
       <h2>CRUK Theme:</h2>

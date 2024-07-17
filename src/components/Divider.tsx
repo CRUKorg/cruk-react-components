@@ -19,11 +19,7 @@ const StyledDivider = styled.div`
   }
 `;
 
-type DividerProps = {
-  children?: ReactNode;
-};
-
-export const Divider = ({ children }: DividerProps) => (
+export const Divider = ({ children }: { children?: ReactNode }) => (
   <StyledDivider>{children}</StyledDivider>
 );
 

@@ -12,19 +12,11 @@ import {
   ScreenReaderOnly,
 } from "./styles";
 
-type DotProps = {
-  count: number;
-  currentPosition: number;
-  scrollToPosition: (to: number) => void;
-  next: () => void;
-  previous: () => void;
-};
-
 export const CarouselLeftButton = (
   props: ButtonHTMLAttributes<HTMLElement>,
 ) => (
   <div>
-    <CarouselButton {...props} aria-label="previous">
+    <CarouselButton disabled={!!props.disabled} aria-label="previous">
       <VerticalAlign>
         <IconFa faIcon={faCaretLeft} size="1.25em" />
         <ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
@@ -37,7 +29,7 @@ export const CarouselRightButton = (
   props: ButtonHTMLAttributes<HTMLElement>,
 ) => (
   <div>
-    <CarouselButton {...props} aria-label="next">
+    <CarouselButton disabled={!!props.disabled} aria-label="next">
       <VerticalAlign>
         <IconFa faIcon={faCaretRight} size="1.25em" />
         <ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
@@ -52,7 +44,13 @@ export const Dots = ({
   scrollToPosition,
   next,
   previous,
-}: DotProps) => {
+}: {
+  count: number;
+  currentPosition: number;
+  scrollToPosition: (to: number) => void;
+  next: () => void;
+  previous: () => void;
+}) => {
   const moreOnRight = currentPosition !== count - 1;
   const moreOnLeft = currentPosition !== 0;
   const countArray = Array.from({ length: count }, (e, i) => `arrayIndex${i}`);
@@ -61,7 +59,7 @@ export const Dots = ({
     <ButtonWrapper>
       <CarouselLeftButton disabled={!moreOnLeft} onClick={previous} />
 
-      <DotContainer count={count}>
+      <DotContainer $count={count}>
         {countArray.map((item, index) => {
           const isSelected = index === currentPosition;
           const scrollTo = () => {
@@ -70,10 +68,10 @@ export const Dots = ({
           return (
             <Dot
               key={item}
-              selected={isSelected}
               role="switch"
               aria-checked={isSelected}
               onClick={scrollTo}
+              $selected={isSelected}
             >
               <ScreenReaderOnly>{`Scroll carousel to index ${index}`}</ScreenReaderOnly>
             </Dot>

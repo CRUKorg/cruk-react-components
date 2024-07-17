@@ -2,9 +2,6 @@ import styled from "styled-components";
 import { type ThemeType } from "../../types";
 import Text from "../Text";
 
-type ThemeProps = {
-  theme: ThemeType;
-};
 export const Fieldset = styled.fieldset`
   margin: 0;
   padding: 0;
@@ -18,11 +15,11 @@ export const Fieldset = styled.fieldset`
   }
 `;
 
-export const TextAsLabel = styled(Text)<ThemeProps>`
+export const TextAsLabel = styled(Text)<{ theme: ThemeType }>`
   font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
 `;
 
-export const DateTextFieldWrapper = styled.div<ThemeProps>`
+export const DateTextFieldWrapper = styled.div<{ theme: ThemeType }>`
   display: inline-block;
   width: 60px;
   margin-right: ${({ theme }) => theme.spacing.xs};
