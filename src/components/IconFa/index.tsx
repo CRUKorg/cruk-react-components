@@ -19,12 +19,7 @@ export type IconFaProps = {
  *
  * This is an svg icon wrapper where a font awesome icon definition can be passed in a long with colour and size
  * */
-export function IconFa({
-  faIcon,
-  color,
-  size = "1.1rem",
-  ...rest
-}: IconFaProps) {
+export function IconFa({ faIcon, color, size = "1.1rem" }: IconFaProps) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -36,12 +31,10 @@ export function IconFa({
   return (
     <StyledIcon
       theme={theme}
-      alt-text=""
       role="presentation"
       viewBox={`0 0 ${width} ${height}`}
       size={size || "1.1rem"}
       color={color}
-      {...rest}
     >
       {svgPathData && <path d={svgPathData as string} />}
     </StyledIcon>

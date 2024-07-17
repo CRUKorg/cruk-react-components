@@ -1,12 +1,10 @@
 import styled from "styled-components";
 import { type ThemeType } from "../../types";
 
-type AvatarStyledProps = {
+export const StyledAvatar = styled.img<{
   $size?: string;
   theme: ThemeType;
-};
-
-export const StyledAvatar = styled.img<AvatarStyledProps>`
+}>`
   box-sizing: border-box;
   border-radius: 50%;
   height: ${({ $size }) => $size};
@@ -14,7 +12,7 @@ export const StyledAvatar = styled.img<AvatarStyledProps>`
   width: ${({ $size }) => $size};
   border-style: solid;
   border-width: 2px;
-  border-color: ${({ theme }: AvatarStyledProps) => theme.colors.avatarBorder};
+  border-color: ${({ theme }) => theme.colors.avatarBorder};
 `;
 
 export default StyledAvatar;

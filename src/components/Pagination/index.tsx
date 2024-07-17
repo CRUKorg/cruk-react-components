@@ -116,10 +116,10 @@ export function Pagination({
               <PagerLink
                 data-cta={id ? `${id}-prev` : null}
                 name="Prev"
-                disabled={current === 1}
                 aria-disabled={current === 1}
                 {...(current === 1 && { tabIndex: -1 })}
                 {...(current !== 1 && linkProps(current - 1))}
+                $disabled={current === 1}
               >
                 Prev
               </PagerLink>
@@ -129,10 +129,10 @@ export function Pagination({
               <PagerLink
                 data-cta={id ? `${id}-next` : null}
                 name="Next"
-                disabled={current === totalPages}
                 aria-disabled={current === totalPages}
                 {...(current === totalPages && { tabIndex: -1 })}
                 {...(current !== totalPages && linkProps(current + 1))}
+                $disabled={current === totalPages}
               >
                 Next
               </PagerLink>

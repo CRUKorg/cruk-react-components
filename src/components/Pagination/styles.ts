@@ -15,10 +15,10 @@ export const PagerList = styled.ul`
 `;
 
 export const PagerLink = styled.a<{
-  $active?: boolean;
   name?: string;
-  disabled?: boolean;
   theme: ThemeType;
+  $active?: boolean;
+  $disabled?: boolean;
 }>`
   font-weight: normal;
   font-family: ${({
@@ -64,10 +64,10 @@ export const PagerLink = styled.a<{
       }
     `}
 
-  ${({ name, theme, disabled }) =>
+  ${({ name, theme, $disabled }) =>
     (name === "Prev" || name === "Next") &&
     css`
-      color: ${disabled ? theme.colors.disabled : theme.colors.paginationText};
+      color: ${$disabled ? theme.colors.disabled : theme.colors.paginationText};
       background-color: transparent;
       font-weight: bold;
       padding: 8px 6px;
@@ -83,8 +83,8 @@ export const PagerLink = styled.a<{
       }
     `}
 
-  ${({ theme, disabled }) =>
-    disabled &&
+  ${({ theme, $disabled }) =>
+    $disabled &&
     css`
       color: $ ${theme.colors.disabled};
       cursor: not-allowed;

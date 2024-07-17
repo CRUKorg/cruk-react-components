@@ -5,18 +5,9 @@ const CHECK_BOX_SIZE = "1.5rem";
 const BUTTON_HEIGHT = "3em";
 const BORDER_THICKNESS = "2px";
 
-type StyledLabelProps = {
-  checked: boolean;
-  disabled: boolean;
-  $hasError: boolean;
+export const CheckWrapper = styled.div<{
   theme: ThemeType;
-};
-
-type ThemeProps = {
-  theme: ThemeType;
-};
-
-export const CheckWrapper = styled.div<ThemeProps>`
+}>`
   display: inline-block;
   height: ${CHECK_BOX_SIZE};
   width: ${CHECK_BOX_SIZE};
@@ -29,7 +20,9 @@ export const CheckWrapper = styled.div<ThemeProps>`
   }) => xs};
 `;
 
-export const Check = styled.span<ThemeProps>`
+export const Check = styled.span<{
+  theme: ThemeType;
+}>`
   display: block;
   position: relative;
   border: 2px solid ${({ theme }) => theme.colors.selectionBorder};
@@ -52,7 +45,12 @@ export const Check = styled.span<ThemeProps>`
   }
 `;
 
-export const StyledLabel = styled.label<StyledLabelProps>`
+export const StyledLabel = styled.label<{
+  $checked: boolean;
+  $disabled: boolean;
+  $hasError: boolean;
+  theme: ThemeType;
+}>`
   box-sizing: border-box;
   *,
   *:after,
@@ -66,11 +64,11 @@ export const StyledLabel = styled.label<StyledLabelProps>`
   background-color: ${({ theme }) => theme.colors.backgroundLight};
   position: relative;
 
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
   display: block;
 
-  color: ${({ theme, disabled }) =>
-    disabled ? theme.colors.disabled : theme.colors.textDark};
+  color: ${({ theme, $disabled }) =>
+    $disabled ? theme.colors.disabled : theme.colors.textDark};
   padding: ${({ theme }) =>
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
   &:focus ~ ${CheckWrapper} ${Check} {
@@ -80,11 +78,11 @@ export const StyledLabel = styled.label<StyledLabelProps>`
 
   svg {
     path {
-      fill: ${({ theme, disabled }) => disabled && theme.colors.disabled};
+      fill: ${({ theme, $disabled }) => $disabled && theme.colors.disabled};
     }
   }
 
-  ${({ theme, disabled: isDisabled, checked, $hasError }) =>
+  ${({ theme, $disabled, $checked, $hasError }) =>
     theme.utilities.useDefaultFromControls
       ? null
       : css`
@@ -92,18 +90,18 @@ export const StyledLabel = styled.label<StyledLabelProps>`
 
           ${CheckWrapper} ${Check} {
             border: solid ${BORDER_THICKNESS}
-              ${isDisabled
+              ${$disabled
                 ? theme.colors.disabled
                 : $hasError
                   ? theme.colors.danger
-                  : checked
+                  : $checked
                     ? theme.colors.check
                     : theme.colors.inputBorder};
           }
 
           &:hover ${CheckWrapper} ${Check} {
             border: solid ${BORDER_THICKNESS}
-              ${isDisabled ? theme.colors.disabled : theme.colours};
+              ${$disabled ? theme.colors.disabled : theme.colours};
           }
         `}
 `;
@@ -117,7 +115,9 @@ export const SelectedBorder = styled.div`
 `;
 
 // TODO when we get rid of bootstrap remove !important.
-export const StyledInput = styled.input<ThemeProps>`
+export const StyledInput = styled.input<{
+  theme: ThemeType;
+}>`
   margin-right: 5px !important;
 
   ${({ theme }) =>

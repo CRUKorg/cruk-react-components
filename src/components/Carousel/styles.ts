@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 import { type ThemeType } from "../../types";
-import { type ButtonHTMLAttributes } from "react";
 
 export const CarouselWrapper = styled.div`
   position: relative;
@@ -9,27 +8,9 @@ export const CarouselWrapper = styled.div`
   overflow-y: hidden;
 `;
 
-type ThemeProps = {
-  theme: ThemeType;
-};
-
-type CarouselScrollAreaProps = {
+export const CarouselScrollArea = styled.ul<{
   $smoothScrolling: boolean;
-};
-
-type CarouselCardProps = {
-  $onlyChild: boolean;
-  $fullWidthChild: boolean;
-};
-
-type CarouselCardInnerProps = {
-  $isSelected: boolean;
-  $shrinkUnselectedPages: boolean;
-  $onlyChild: boolean;
-  $fullWidthChild: boolean;
-};
-
-export const CarouselScrollArea = styled.ul<CarouselScrollAreaProps>`
+}>`
   position: relative;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
@@ -44,14 +25,22 @@ export const CarouselScrollArea = styled.ul<CarouselScrollAreaProps>`
   height: 100%;
 `;
 
-export const CarouselCard = styled.li<CarouselCardProps>`
+export const CarouselCard = styled.li<{
+  $onlyChild: boolean;
+  $fullWidthChild: boolean;
+}>`
   scroll-snap-align: center;
   display: inline-block;
   width: ${({ $onlyChild, $fullWidthChild }) =>
     $onlyChild || $fullWidthChild ? "100%" : "80%"};
 `;
 
-export const CarouselCardInner = styled.div<CarouselCardInnerProps>`
+export const CarouselCardInner = styled.div<{
+  $isSelected: boolean;
+  $shrinkUnselectedPages: boolean;
+  $onlyChild: boolean;
+  $fullWidthChild: boolean;
+}>`
   transition: transform 0.2s linear;
   transform: ${({
     $isSelected,
@@ -76,9 +65,10 @@ export const VerticalAlign = styled.span`
   line-height: 1.75rem;
 `;
 
-type CarouselButtonProps = ThemeProps & ButtonHTMLAttributes<HTMLElement>;
-
-export const CarouselButton = styled.button<CarouselButtonProps>`
+export const CarouselButton = styled.button<{
+  disabled: boolean;
+  theme: ThemeType;
+}>`
   height: 100%;
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0);
@@ -106,26 +96,22 @@ export const CarouselButton = styled.button<CarouselButtonProps>`
   }
 `;
 
-type DotContainerProps = ThemeProps & {
-  count: number;
-};
-
-export const DotContainer = styled.div<DotContainerProps>`
+export const DotContainer = styled.div<{ $count: number; theme: ThemeType }>`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  display: ${({ count }) => (count > 6 ? "none" : "flex")};
+  display: ${({ $count }) => ($count > 6 ? "none" : "flex")};
 
   @media (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
-    display: ${({ count }) => (count > 10 ? "none" : "flex")};
+    display: ${({ $count }) => ($count > 10 ? "none" : "flex")};
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
-    display: ${({ count }) => (count > 20 ? "none" : "flex")};
+    display: ${({ $count }) => ($count > 20 ? "none" : "flex")};
   }
 `;
 
-export const Dot = styled.button<ThemeProps & { selected: boolean }>`
+export const Dot = styled.button<{ $selected: boolean; theme: ThemeType }>`
   border: none;
   outline-offset: ${({ theme }) => theme.spacing.xxs};
   padding: 0;
@@ -138,8 +124,8 @@ export const Dot = styled.button<ThemeProps & { selected: boolean }>`
     `solid 1px ${
       theme.name === "su2c" ? theme.colors.textDark : theme.colors.primary
     }`};
-  background-color: ${({ theme, selected }) =>
-    selected
+  background-color: ${({ theme, $selected }) =>
+    $selected
       ? `${
           theme.name === "su2c" ? theme.colors.textDark : theme.colors.primary
         }`

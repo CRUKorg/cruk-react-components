@@ -5,17 +5,13 @@ import { type ThemeType } from "../types";
 import { crukTheme as defaultTheme } from "../themes/cruk";
 import { Heading } from "./Heading";
 
-type Props = {
-  theme?: ThemeType;
-};
-
 const PreStyled = styled.pre`
   overflow: hidden;
   white-space: pre-wrap;
   word-wrap: break-word;
 `;
 
-export function ThemeCheatSheet({ theme }: Props) {
+export function ThemeCheatSheet({ theme }: { theme?: ThemeType }) {
   const foundTheme = !!theme?.colors ? theme : defaultTheme;
 
   return (

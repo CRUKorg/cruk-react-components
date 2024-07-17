@@ -47,8 +47,8 @@ export const Radio = forwardRef(
         <StyledLabel
           $hasError={props.hasError || !!props.errorMessage || false}
           className={props.className}
-          checked={props.checked || false}
-          disabled={props.disabled || false}
+          $checked={props.checked || false}
+          $disabled={props.disabled || false}
         >
           <StyledInput
             {...rest}

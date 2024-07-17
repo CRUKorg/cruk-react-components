@@ -12,17 +12,15 @@ export const Spacer = styled.span<{ theme: ThemeType }>`
   }
 `;
 
-type StyledButtonProps = {
+export const StyledButton = styled.button<{
+  theme: ThemeType;
+  href?: string;
   $isIconButton: boolean;
   $appearance?: ButtonAppearanceType;
   $full?: boolean;
-  theme: ThemeType;
-  href?: string;
   $size?: "m" | "l";
   $css?: string;
-};
-
-export const StyledButton = styled.button<StyledButtonProps>`
+}>`
   box-sizing: border-box;
   min-height: ${BUTTON_HEIGHT};
   height: min-content;

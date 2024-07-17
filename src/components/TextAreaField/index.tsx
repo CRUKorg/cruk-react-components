@@ -64,7 +64,7 @@ export const TextAreaField = forwardRef(
             !!props.id && !!errorMessage ? `${props.id}-error` : undefined
           }
           $hasError={hasError || !!errorMessage || false}
-          resize={resize}
+          $resize={resize}
           $lineCount={lineCount}
           theme={theme}
           ref={ref}
