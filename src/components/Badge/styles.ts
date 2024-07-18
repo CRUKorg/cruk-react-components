@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { type ColorKeyType, type SpaceType, type ThemeType } from "../../types";
+import { type SpaceType, type ThemeType } from "../../types";
 
 export const StyledBadge = styled.span<{
   $backgroundColor: string;
@@ -26,21 +26,9 @@ export const StyledBadge = styled.span<{
   min-width: ${({ $size, theme }) =>
     `calc(${theme.spacing[$size]} + ${theme.spacing.xs})`};
 
-  background-color: ${({ theme, $backgroundColor }) =>
-    $backgroundColor &&
-    typeof theme.colors[$backgroundColor as ColorKeyType] !== "undefined"
-      ? theme.colors[$backgroundColor as ColorKeyType]
-      : $backgroundColor};
-  border-color: ${({ theme, $borderColor }) =>
-    $borderColor &&
-    typeof theme.colors[$borderColor as ColorKeyType] !== "undefined"
-      ? theme.colors[$borderColor as ColorKeyType]
-      : $borderColor};
-  color: ${({ theme, $textColor }) =>
-    $textColor &&
-    typeof theme.colors[$textColor as ColorKeyType] !== "undefined"
-      ? theme.colors[$textColor as ColorKeyType]
-      : $textColor};
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
+  border-color: ${({ $borderColor }) => $borderColor};
+  color: ${({ $textColor }) => $textColor};
 `;
 
 export default StyledBadge;

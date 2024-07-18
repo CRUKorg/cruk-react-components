@@ -5,6 +5,7 @@ import { type SpaceType } from "../../types";
 import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { StyledBadge } from "./styles";
+import { themeColorOrString } from "../../utils/themeUtils";
 
 export type BadgeProps = {
   /** background colour of badge */
@@ -37,22 +38,23 @@ export function Badge({
   size = "xs",
   backgroundColor = "primary",
   borderColor = "primary",
-  textColor = "inherit",
+  textColor = "textOnPrimary",
 }: BadgeProps) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
     ...foundTheme,
   };
+
   const isText = typeof children === "string";
   return (
     <StyledBadge
       theme={theme}
       $isText={isText}
       $size={size}
-      $backgroundColor={backgroundColor}
-      $borderColor={borderColor}
-      $textColor={textColor}
+      $backgroundColor={themeColorOrString(backgroundColor, theme)}
+      $borderColor={themeColorOrString(borderColor, theme)}
+      $textColor={themeColorOrString(textColor, theme)}
     >
       {children}
     </StyledBadge>
