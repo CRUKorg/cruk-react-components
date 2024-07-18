@@ -14,7 +14,6 @@ export default {
   title: "Badge",
   component: Badge,
   args: {
-    borderColor: "primary",
     backgroundColor: "primary",
     textColor: "textOnPrimary",
   },

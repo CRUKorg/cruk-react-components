@@ -1,12 +1,13 @@
-import React, { type HTMLAttributes, type ReactNode } from "react";
+import React, { type ReactNode } from "react";
 import { useTheme } from "styled-components";
 
 import { type SpaceType } from "../../types";
 import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { StyledBadge } from "./styles";
+import { themeColorOrString } from "../../utils/themeUtils";
 
-export type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
+export type BadgeProps = {
   /** background colour of badge */
   backgroundColor?: string;
   /** border colour of badge */
@@ -35,25 +36,25 @@ additional text.
 export function Badge({
   children,
   size = "xs",
-  backgroundColor,
-  borderColor,
-  textColor,
-  ...rest
+  backgroundColor = "primary",
+  borderColor = "transparent",
+  textColor = "textOnPrimary",
 }: BadgeProps) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
     ...foundTheme,
   };
+
+  const isText = typeof children === "string";
   return (
     <StyledBadge
       theme={theme}
-      $isText={typeof children === "string"}
+      $isText={isText}
       $size={size}
-      $backgroundColor={backgroundColor}
-      $borderColor={borderColor}
-      $textColor={textColor}
-      {...rest}
+      $backgroundColor={themeColorOrString(backgroundColor, theme)}
+      $borderColor={themeColorOrString(borderColor, theme)}
+      $textColor={themeColorOrString(textColor, theme)}
     >
       {children}
     </StyledBadge>

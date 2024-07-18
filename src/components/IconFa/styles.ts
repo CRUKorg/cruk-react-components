@@ -1,23 +1,18 @@
 import styled from "styled-components";
-import { type ThemeType, type ColorKeyType } from "../../types";
+import { type ThemeType } from "../../types";
 
-type StyledIconProp = {
+export const StyledIcon = styled.svg<{
   theme: ThemeType;
-  color?: string;
-  size: string;
-};
-
-export const StyledIcon = styled.svg<StyledIconProp>`
+  $color?: string;
+  $size: string;
+}>`
   display: inline-block;
-  height: ${(props) => props.size};
+  height: ${({ $size }) => $size};
   margin-top: -0.2em;
   vertical-align: middle;
-  width: ${(props) => props.size};
+  width: ${({ $size }) => $size};
   path {
-    fill: ${({ theme: { colors }, color }) =>
-      color && typeof colors[color as ColorKeyType] !== "undefined"
-        ? colors[color as ColorKeyType]
-        : color || "currentColor"};
+    fill: ${({ $color }) => $color};
   }
 `;
 

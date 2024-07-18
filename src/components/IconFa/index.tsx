@@ -4,6 +4,7 @@ import { type IconDefinition } from "@fortawesome/fontawesome-common-types";
 import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { StyledIcon } from "./styles";
+import { themeColorOrString, themeSizeOrString } from "../../utils/themeUtils";
 
 export type IconFaProps = {
   /** imported icon definition from "@fortawesome/free-solid-svg-icons" or "@fortawesome/free-brands-svg-icons" */
@@ -25,7 +26,6 @@ export function IconFa({ faIcon, color, size = "1.1rem" }: IconFaProps) {
     ...defaultTheme,
     ...foundTheme,
   };
-
   const [width, height, , , svgPathData] = faIcon.icon;
 
   return (
@@ -33,8 +33,8 @@ export function IconFa({ faIcon, color, size = "1.1rem" }: IconFaProps) {
       theme={theme}
       role="presentation"
       viewBox={`0 0 ${width} ${height}`}
-      size={size || "1.1rem"}
-      color={color}
+      $size={themeSizeOrString(size, theme)}
+      $color={themeColorOrString(color, theme)}
     >
       {svgPathData && <path d={svgPathData as string} />}
     </StyledIcon>
