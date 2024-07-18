@@ -37,7 +37,7 @@ export function Badge({
   children,
   size = "xs",
   backgroundColor = "primary",
-  borderColor = "primary",
+  borderColor = "transparent",
   textColor = "textOnPrimary",
 }: BadgeProps) {
   const foundTheme = useTheme();
