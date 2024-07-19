@@ -6,11 +6,11 @@ import {
   type ColorKeyType,
 } from "../../types";
 import Button from "../Button";
-import IconFa from "../IconFa";
 
 export const transitionDurationSeconds = 0.5;
 
-export const FlippingIcon = styled(IconFa)<{ $open: boolean }>`
+export const FlippingIcon = styled.span<{ $open: boolean }>`
+  display: inline-block;
   transform: ${({ $open }) =>
     $open ? "translateY(0.1em) scaleY(-1)" : "initial"};
   transition-duration: ${transitionDurationSeconds}s;
