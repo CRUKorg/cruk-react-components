@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Collapse chevron not flipping [#890](https://github.com/CRUKorg/cruk-react-components/issues/888)
+- Collapse chevron not flipping [#890](https://github.com/CRUKorg/cruk-react-components/issues/890)
 
 ## [5.0.3] - 2024-07-18
 
