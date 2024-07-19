@@ -10,6 +10,7 @@ import { useTheme } from "styled-components";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { IconFa } from "../IconFa";
 
 import { type FontSizeType, type ThemeType } from "../../types";
 import {
@@ -141,7 +142,9 @@ export function Collapse({
           $textFontFamily={headerTitleTextFontFamily}
         >
           {headerTitleText}
-          <FlippingIcon faIcon={faChevronDown} $open={openStatus} />
+          <FlippingIcon $open={openStatus}>
+            <IconFa faIcon={faChevronDown} />
+          </FlippingIcon>
         </DefaultHeader>
       )}
       <CollapseContent
