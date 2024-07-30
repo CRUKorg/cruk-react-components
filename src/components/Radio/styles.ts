@@ -151,7 +151,7 @@ export const StyledInput = styled.input<{
     },
   }) => xxs};
 
-  ${({ theme }) =>
+  ${({ theme, disabled }) =>
     theme.utilities.useDefaultFromControls
       ? css`
           position: absolute;
@@ -171,6 +171,12 @@ export const StyledInput = styled.input<{
             outline: none !important;
             box-shadow: inset 0 0 0 2px ${theme.colors.inputBorder};
             box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
+          }
+
+          &:checked ~ ${CheckWrapper} ${Check}::before {
+            background: ${disabled
+              ? theme.colors.disabled
+              : theme.colors.check};
           }
         `}
 `;
