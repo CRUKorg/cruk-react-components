@@ -1,4 +1,4 @@
-import React, { type ButtonHTMLAttributes } from "react";
+import React from "react";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 
 import { IconFa } from "../IconFa";
@@ -11,32 +11,6 @@ import {
   VerticalAlign,
   ScreenReaderOnly,
 } from "./styles";
-
-export const CarouselLeftButton = (
-  props: ButtonHTMLAttributes<HTMLElement>,
-) => (
-  <div>
-    <CarouselButton disabled={!!props.disabled} aria-label="previous">
-      <VerticalAlign>
-        <IconFa faIcon={faCaretLeft} size="1.25em" />
-        <ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
-      </VerticalAlign>
-    </CarouselButton>
-  </div>
-);
-
-export const CarouselRightButton = (
-  props: ButtonHTMLAttributes<HTMLElement>,
-) => (
-  <div>
-    <CarouselButton disabled={!!props.disabled} aria-label="next">
-      <VerticalAlign>
-        <IconFa faIcon={faCaretRight} size="1.25em" />
-        <ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
-      </VerticalAlign>
-    </CarouselButton>
-  </div>
-);
 
 export const Dots = ({
   count,
@@ -57,7 +31,18 @@ export const Dots = ({
 
   return (
     <ButtonWrapper>
-      <CarouselLeftButton disabled={!moreOnLeft} onClick={previous} />
+      <CarouselButton
+        disabled={!moreOnLeft}
+        aria-label="previous"
+        onClick={() => {
+          previous();
+        }}
+      >
+        <VerticalAlign>
+          <IconFa faIcon={faCaretLeft} size="1.25em" />
+          <ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
+        </VerticalAlign>
+      </CarouselButton>
 
       <DotContainer $count={count}>
         {countArray.map((item, index) => {
@@ -79,7 +64,18 @@ export const Dots = ({
         })}
       </DotContainer>
 
-      <CarouselRightButton disabled={!moreOnRight} onClick={next} />
+      <CarouselButton
+        disabled={!moreOnRight}
+        aria-label="next"
+        onClick={() => {
+          next();
+        }}
+      >
+        <VerticalAlign>
+          <IconFa faIcon={faCaretRight} size="1.25em" />
+          <ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
+        </VerticalAlign>
+      </CarouselButton>
     </ButtonWrapper>
   );
 };
