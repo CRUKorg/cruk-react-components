@@ -28,6 +28,8 @@ export type ModalProps = SpacingProps & {
   children?: ReactNode;
   /** width of modal */
   width?: string;
+  /** turn on animate in modal */
+  isAnimated?: boolean;
 };
 
 /**
@@ -63,6 +65,7 @@ export function Modal({
   paddingRight,
   paddingBottom,
   paddingLeft,
+  isAnimated = true,
 }: ModalProps) {
   const foundTheme = useTheme();
   const theme = {
@@ -122,6 +125,7 @@ export function Modal({
                       paddingRight={paddingRight}
                       paddingBottom={paddingBottom}
                       paddingLeft={paddingLeft}
+                      $isAnimated={isAnimated}
                     >
                       {showCloseButton && closeFunction ? (
                         <CloseButton
@@ -136,7 +140,7 @@ export function Modal({
                       ) : null}
                       {children}
                     </Content>
-                    <Background />
+                    <Background $isAnimated={isAnimated} />
                   </Wrapper>
                 </ThemeProvider>
               </FocusLock>

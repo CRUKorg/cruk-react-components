@@ -1,7 +1,7 @@
 import React from "react";
 import type { Preview } from "@storybook/react";
 
-import { crukTheme, Text } from "../src/components";
+import { crukTheme, GlobalStyle, Text } from "../src/components";
 
 import {
   Title,
@@ -28,6 +28,7 @@ const preview: Preview = {
       page: () => (
         <>
           <ThemeProvider theme={crukTheme}>
+            <GlobalStyle />
             <Title />
             <Subtitle />
             <Description />

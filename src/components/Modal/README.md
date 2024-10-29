@@ -56,6 +56,7 @@ function () {
 | paddingRight      | SpaceType | unset   | padding right right                                                                             |
 | paddingBottom     | SpaceType | unset   | padding bottom bottom                                                                           |
 | paddingLeft       | SpaceType | unset   | padding left left                                                                               |
+| isAnimated        | Boolean   | true    | turns on animate in of modal                                                                    |
 
 ## Accessibility
 
