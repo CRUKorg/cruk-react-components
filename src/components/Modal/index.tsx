@@ -65,7 +65,7 @@ export function Modal({
   paddingRight,
   paddingBottom,
   paddingLeft,
-  isAnimated,
+  isAnimated = true,
 }: ModalProps) {
   const foundTheme = useTheme();
   const theme = {
