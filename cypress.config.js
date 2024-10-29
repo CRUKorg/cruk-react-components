@@ -5,6 +5,7 @@ module.exports = defineConfig({
   viewportHeight: 900,
   experimentalFetchPolyfill: true,
   scrollBehavior: "center",
+  waitForAnimations: true,
 
   component: {
     specPattern: "src/components/**/*.cypress.*",
