@@ -24,6 +24,6 @@
     "autoGenerate": false
   },
   "hooks": {
-    "before:npm:release": "npm ci && npm run rollup:build-lib"
+    "before:git:init": "npm ci && npm run rollup:build-lib"
   }
 }
