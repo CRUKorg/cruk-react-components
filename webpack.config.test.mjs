@@ -1,7 +1,11 @@
-var path = require("path");
-const createWebpackConfig = require("./webpack.common").createWebpackConfig;
+import path from "path";
+import { fileURLToPath } from "url";
+import { createWebpackConfig } from "./webpack.common";
 
-module.exports = createWebpackConfig({
+const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
+const __dirname = path.dirname(__filename); //
+
+export default createWebpackConfig({
   mode: "development",
   module: {
     rules: [

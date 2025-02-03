@@ -20,8 +20,6 @@ export const config = [
       "react-hooks": pluginReactHooks,
     },
     rules: {
-      "react/react-in-jsx-scope": "off",
-      "react/prop-types": "off",
       ...pluginReactHooks.configs.recommended.rules,
     },
   },

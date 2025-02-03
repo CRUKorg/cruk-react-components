@@ -107,7 +107,9 @@ export const AddressLookup = forwardRef(
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const searchDebounced = useCallback(
-      debounce(500, (query: string) => search(query)),
+      debounce(500, (query: string) => {
+        search(query);
+      }),
       [],
     );
 

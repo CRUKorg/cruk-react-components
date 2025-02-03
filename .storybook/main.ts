@@ -6,8 +6,6 @@ const config: StorybookConfig = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
-    // "@storybook/addon-docs",
-    // "@storybook/addon-styling",
     "@storybook/addon-a11y",
     "@chromatic-com/storybook",
     "@storybook/addon-webpack5-compiler-swc",
@@ -16,10 +14,6 @@ const config: StorybookConfig = {
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
-  },
-
-  docs: {
-    autodocs: true,
   },
 
   typescript: {
@@ -31,5 +25,7 @@ const config: StorybookConfig = {
     //   shouldRemoveUndefinedFromOptional: true,
     // },
   },
+
+  docs: {},
 };
 export default config;

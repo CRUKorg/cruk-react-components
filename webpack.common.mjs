@@ -1,6 +1,10 @@
-const path = require("path");
+import path from "path";
+import { fileURLToPath } from "url";
 
-function createWebpackConfig(config) {
+const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
+const __dirname = path.dirname(__filename); //
+
+export function createWebpackConfig(config) {
   const defaults = {
     module: {
       rules: [
@@ -49,5 +53,3 @@ function createWebpackConfig(config) {
 
   return Object.assign({}, defaults, config);
 }
-
-exports.createWebpackConfig = createWebpackConfig;
