@@ -22,5 +22,8 @@
     "web": true,
     "releaseName": "RCL Release ${version}",
     "autoGenerate": false
+  },
+  "hooks": {
+    "before:npm:release": "npm ci && npm run rollup:build-lib"
   }
 }
