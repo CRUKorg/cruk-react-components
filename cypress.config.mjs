@@ -1,6 +1,7 @@
-const { defineConfig } = require("cypress");
+import { defineConfig } from "cypress";
+import testConfig from "./webpack.config.test";
 
-module.exports = defineConfig({
+export default defineConfig({
   viewportWidth: 900,
   viewportHeight: 900,
   experimentalFetchPolyfill: true,
@@ -12,7 +13,7 @@ module.exports = defineConfig({
     devServer: {
       framework: "react",
       bundler: "webpack",
-      webpackConfig: require("./webpack.config.test"),
+      webpackConfig: testConfig,
     },
   },
 });

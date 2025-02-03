@@ -28,7 +28,7 @@
     "src/docs/index.jsx",
     "eslint.config.mjs",
     "babel.config.cjs",
-    "cypress.config.cjs",
+    "cypress.config.mjs",
     "webpack.config.test.mjs",
     "webpack.common.mjs"
   ],
