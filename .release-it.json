@@ -13,7 +13,7 @@
   },
   "npm": {
     "publish": true,
-    "ignoreVersion": false,
+    "ignoreVersion": true,
     "allowSameVersion": false,
     "skipChecks": true
   },
