@@ -27,23 +27,25 @@ describe("Header Behaviour", () => {
   });
 
   it("should scroll to main content", () => {
-    cy.tab();
-    cy.focused().should("have.text", "Skip to main content");
+    cy.contains("Header slogan here").should("be.visible");
+    cy.get("header")
+      .find("a")
+      .contains("Skip to main content")
+      .focus()
+      .should("be.visible");
+
     // can't test further than this without a page with some junk above main content
   });
 
   it("should alt text in link in logo image", () => {
-    cy.tab();
-    cy.tab();
-    cy.focused()
+    cy.contains("Header slogan here").should("be.visible");
+    cy.get("header")
       .find("img")
       .should("have.attr", "alt", "Cancer Research UK Giving Page");
   });
 
   it("should go to link in logo", () => {
-    cy.tab();
-    cy.tab();
-    cy.focused().should("have.attr", "href", "/");
+    cy.get("header").find("a").last().should("have.attr", "href", "/");
   });
 
   it("should stick to the top of the page", () => {

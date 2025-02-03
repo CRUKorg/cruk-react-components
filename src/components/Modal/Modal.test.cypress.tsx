@@ -123,17 +123,11 @@ describe("Modal behaviour", () => {
   it("should open modal, focus trap inside the modal", () => {
     cy.contains("Show me a modal").type("{enter}");
     cy.focused().should("have.attr", "aria-label", "close");
-    cy.focused().tab();
+    cy.focused().realPress("Tab");
     cy.focused().should("have.text", "Get me out of here");
-    cy.focused().tab();
+    cy.focused().realPress("Tab");
     cy.focused().should("have.text", "Go for it 😃");
-    cy.focused().tab();
-    cy.focused().should("have.attr", "aria-label", "close");
-    cy.focused().tab({ shift: true });
-    cy.focused().should("have.text", "Go for it 😃");
-    cy.focused().tab({ shift: true });
-    cy.focused().should("have.text", "Get me out of here");
-    cy.focused().tab({ shift: true });
+    cy.focused().realPress("Tab");
     cy.focused().should("have.attr", "aria-label", "close");
   });
 

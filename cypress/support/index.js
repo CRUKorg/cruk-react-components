@@ -1,6 +1,5 @@
-import "cypress-plugin-tab";
 import "cypress-axe";
-import "./commands";
+import "cypress-real-events";
 
 Cypress.Commands.add(
   "getInputByLabel",

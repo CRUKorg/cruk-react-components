@@ -11,7 +11,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "lib": ["dom", "es2015", "es2016"],
-    "types": ["cypress", "cypress-axe"],
+    "types": ["cypress", "cypress-axe", "cypress-real-events"],
     "baseUrl": "./",
     "allowJs": false, //Only TS and TSX will be compiled.
     "noImplicitAny": true, // Setting to true means if no type given it will not automatically assign ANY.
