@@ -14,7 +14,7 @@
   "npm": {
     "publish": true,
     "ignoreVersion": true,
-    "allowSameVersion": false,
+    "allowSameVersion": true,
     "skipChecks": true
   },
   "github": {
