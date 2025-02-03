@@ -21,6 +21,6 @@
     "release": true,
     "web": true,
     "releaseName": "RCL Release ${version}",
-    "autoGenerate": true
+    "autoGenerate": false
   }
 }
