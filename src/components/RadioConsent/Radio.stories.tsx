@@ -1,7 +1,7 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react";
 
-import RadioConsent, { RadioConsentProps } from ".";
+import RadioConsent, { type RadioConsentProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {

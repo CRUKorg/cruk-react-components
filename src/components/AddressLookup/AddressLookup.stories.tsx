@@ -1,7 +1,7 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react";
 
-import AddressLookup from ".";
+import AddressLookup, { type AddressLookupProps } from ".";
 import { AllThemesWrapper } from "../AllThemesWrapper";
 
 export default {
@@ -23,13 +23,13 @@ export default {
   tags: ["autodocs"],
 };
 
-type Story = StoryObj<typeof AddressLookup>;
+type Story = StoryObj;
 
 export const AddressLookupStory: Story = {
   name: "AddressLookup",
   render: (args) => (
     <AllThemesWrapper>
-      <AddressLookup {...args} />
+      <AddressLookup {...(args as AddressLookupProps)} />
     </AllThemesWrapper>
   ),
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react";
 
 import { Text } from "..";
 import Box from ".";
@@ -15,7 +15,6 @@ export default {
 type Story = StoryObj<typeof Box>;
 
 export const Default: Story = {
-  name: "Default",
   args: {
     children: <Text textColor="textDark">this is a box</Text>,
   },

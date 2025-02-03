@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 
 import IconFa from "../IconFa";
@@ -23,7 +23,6 @@ export default {
 type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
-  name: "Default",
   args: {},
   render: (args) => (
     <AllThemesWrapper>
@@ -33,7 +32,6 @@ export const Default: Story = {
 };
 
 export const Primary: Story = {
-  name: "Primary",
   args: {
     appearance: "primary",
   },
@@ -58,7 +56,6 @@ export const PrimaryAnchorButton: Story = {
 };
 
 export const Secondary: Story = {
-  name: "Secondary",
   args: {
     appearance: "secondary",
   },
@@ -70,7 +67,6 @@ export const Secondary: Story = {
 };
 
 export const Tertiary: Story = {
-  name: "Tertiary",
   args: {
     appearance: "tertiary",
   },

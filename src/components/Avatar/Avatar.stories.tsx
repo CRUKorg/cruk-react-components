@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react";
 
 import { crukTheme } from "..";
 import { Avatar } from ".";
@@ -19,7 +19,6 @@ export default {
 type Story = StoryObj<typeof Avatar>;
 
 export const Default: Story = {
-  name: "Default",
   render: (args) => (
     <AllThemesWrapper>
       <Avatar {...args} />
@@ -28,7 +27,6 @@ export const Default: Story = {
 };
 
 export const Small: Story = {
-  name: "Small",
   args: {
     size: "s",
   },
@@ -40,7 +38,6 @@ export const Small: Story = {
 };
 
 export const Medium: Story = {
-  name: "Medium",
   args: {
     size: "m",
   },
@@ -52,7 +49,6 @@ export const Medium: Story = {
 };
 
 export const Large: Story = {
-  name: "Large",
   args: {
     size: "l",
   },
@@ -64,7 +60,6 @@ export const Large: Story = {
 };
 
 export const ExtraLarge: Story = {
-  name: "ExtraLarge",
   args: {
     size: "xl",
   },

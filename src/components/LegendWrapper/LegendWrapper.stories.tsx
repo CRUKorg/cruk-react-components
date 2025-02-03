@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react";
 
 import Radio from "../Radio";
 import CheckBox from "../Checkbox";
 
-import LegendWrapper, { LegendWrapperProps } from ".";
+import LegendWrapper, { type LegendWrapperProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
 import { useTheme } from "styled-components";
-import { ThemeType } from "..";
+import { type ThemeType } from "..";
 
 export default {
   title: "Legend Wrapper",
@@ -55,7 +55,7 @@ const LegendWrapperWithRadios = (args: LegendWrapperProps) => {
 };
 
 const LegendWrapperWithCheckboxes = (args: LegendWrapperProps) => {
-  const [selected, setSelected] = React.useState<Array<string>>(["one"]);
+  const [selected, setSelected] = React.useState<string[]>(["one"]);
   const handleChange = (value: string) => {
     if (selected.indexOf(value) === -1) {
       setSelected([...selected, value]);

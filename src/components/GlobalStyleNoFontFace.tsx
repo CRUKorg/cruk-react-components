@@ -61,8 +61,4 @@ export const GlobalStyleNoFontFace = withTheme(createGlobalStyle`
   }
 `);
 
-GlobalStyleNoFontFace.defaultProps = {
-  theme: defaultTheme,
-};
-
 export default GlobalStyleNoFontFace;

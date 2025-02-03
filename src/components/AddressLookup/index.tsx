@@ -1,14 +1,14 @@
 import React, {
-  type InputHTMLAttributes,
   useCallback,
   useEffect,
-  type Ref,
-  useRef,
+  useState,
   forwardRef,
+  useRef,
+  type InputHTMLAttributes,
+  type Ref,
   type FocusEvent,
   type ChangeEvent,
   type KeyboardEvent,
-  useState,
   type ReactNode,
 } from "react";
 import { useTheme } from "styled-components";
@@ -55,7 +55,7 @@ export type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
   /** callback function which is passed the error */
   onAddressError?: (error: Error) => void;
   /** onBlur handler */
-  onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (e: FocusEvent) => void;
   /** attach a DOM reference variable to your component */
   ref?: Ref<HTMLInputElement>;
 };
@@ -78,7 +78,7 @@ export const AddressLookup = forwardRef(
       isInvalidVisible,
       label,
       hintText,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
       onAddressError = (error: Error) => {
         console.log(error);
       },
@@ -105,6 +105,7 @@ export const AddressLookup = forwardRef(
       setAddressOptions([]);
     };
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const searchDebounced = useCallback(
       debounce(500, (query: string) => search(query)),
       [],
@@ -158,7 +159,7 @@ export const AddressLookup = forwardRef(
       return null;
     };
 
-    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
+    const handleKeyDown = (e: KeyboardEvent): void => {
       if (e.key === "Enter" && addressOptions[activeOption]) {
         e.preventDefault();
         if (addressOptions[activeOption].Type === "Address")
@@ -186,7 +187,7 @@ export const AddressLookup = forwardRef(
       if (onChange) onChange(e);
     };
 
-    const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
+    const handleBlur = (e: FocusEvent) => {
       const isOptionsOpen = !!addressOptions.length;
       if (onBlur && !isOptionsOpen) onBlur(e);
     };
@@ -298,5 +299,7 @@ export const AddressLookup = forwardRef(
     );
   },
 );
+
+AddressLookup.displayName = "AddressLookup";
 
 export default AddressLookup;

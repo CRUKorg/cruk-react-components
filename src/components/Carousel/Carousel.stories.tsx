@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react";
 
 import { Button, Text } from "..";
-import Carousel, { CarouselProps } from ".";
+import Carousel, { type CarouselProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
 
 const Item = styled.div`
@@ -144,7 +144,6 @@ export default {
 type Story = StoryObj<typeof Carousel>;
 
 export const Default: Story = {
-  name: "Default",
   args: {},
   render: (args) => (
     <AllThemesWrapper>

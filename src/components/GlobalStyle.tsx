@@ -82,8 +82,4 @@ export const GlobalStyle = withTheme(createGlobalStyle`
   }
 `);
 
-GlobalStyle.defaultProps = {
-  theme: defaultTheme,
-};
-
 export default GlobalStyle;

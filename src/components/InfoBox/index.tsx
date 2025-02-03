@@ -99,4 +99,6 @@ export const InfoBox = forwardRef(
   },
 );
 
+InfoBox.displayName = "InfoBox";
+
 export default InfoBox;

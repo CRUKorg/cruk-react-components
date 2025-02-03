@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react";
 import {
   faShareAlt,
   faEnvelopeSquare,
@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 import { Box, Button, IconFa } from "..";
-import PopOver, { PopOverProps } from ".";
+import PopOver, { type PopOverProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {

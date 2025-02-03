@@ -141,4 +141,6 @@ export const TextField = forwardRef(
   },
 );
 
+TextField.displayName = "TextField";
+
 export default TextField;

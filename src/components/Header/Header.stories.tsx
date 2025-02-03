@@ -1,8 +1,8 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react";
 
 import { Button, crukTheme } from "..";
-import Header, { HeaderProps } from ".";
+import Header, { type HeaderProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
 import { ThemeProvider } from "styled-components";
 

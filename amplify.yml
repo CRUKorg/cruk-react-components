@@ -3,8 +3,8 @@ frontend:
   phases:
     preBuild:
       commands:
-        - echo "//npm.pkg.github.com/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
-        - npm ci --legacy-peer-deps
+        - nvm use
+        - npm ci
     build:
       commands:
         - npm run build-storybook

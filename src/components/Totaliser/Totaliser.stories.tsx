@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 import { Text, IconFa } from "..";
@@ -21,7 +21,6 @@ export default {
 type Story = StoryObj<typeof Totaliser>;
 
 export const TotaliserWithoutTarget: Story = {
-  name: "Totaliser Without Target",
   args: {
     target: 0,
   },
@@ -33,7 +32,6 @@ export const TotaliserWithoutTarget: Story = {
 };
 
 export const TotaliserTextSummaryMessage: Story = {
-  name: "Totaliser Text Summary Message",
   args: {
     summaryMessage: "Custom text summary message",
   },
@@ -45,7 +43,6 @@ export const TotaliserTextSummaryMessage: Story = {
 };
 
 export const TotaliserTextSummaryMessageAsComponent: Story = {
-  name: "Totaliser Text Summary Message as Component",
   args: {
     summaryMessage: (
       <Text>
@@ -61,7 +58,6 @@ export const TotaliserTextSummaryMessageAsComponent: Story = {
 };
 
 export const TotaliserCompact: Story = {
-  name: "Totaliser Compact",
   args: {
     isCompact: true,
   },

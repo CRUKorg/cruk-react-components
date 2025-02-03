@@ -1,8 +1,8 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react";
 
 import { Button, Heading, Text } from "..";
-import Modal, { ModalProps } from ".";
+import Modal, { type ModalProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {
