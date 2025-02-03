@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import React, { ChangeEvent } from "react";
+import React, { type ChangeEvent } from "react";
 import { mount } from "cypress/react";
 
 import { TestThemeWrapper } from "../AllThemesWrapper";

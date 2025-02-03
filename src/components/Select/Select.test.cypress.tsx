@@ -17,7 +17,13 @@ import {
 const content = () => (
   <>
     <Box>
-      <Select value="" label="Disabled option" onChange={(event) => {}}>
+      <Select
+        value=""
+        label="Disabled option"
+        onChange={(event) => {
+          console.log({ event });
+        }}
+      >
         <option disabled value="">
           --Please choose an option--
         </option>
@@ -29,7 +35,9 @@ const content = () => (
       <Select
         value=""
         label="Disabled control"
-        onChange={(event) => {}}
+        onChange={(event) => {
+          console.log({ event });
+        }}
         disabled
       >
         <option disabled value="">
@@ -40,7 +48,14 @@ const content = () => (
       </Select>
     </Box>
     <Box>
-      <Select required hasError label="Has error" onChange={(event) => {}}>
+      <Select
+        required
+        hasError
+        label="Has error"
+        onChange={(event) => {
+          console.log({ event });
+        }}
+      >
         <option value="dog">Dog</option>
         <option value="red_panda">Red panda</option>
         <option value="axolotl">Axolotl</option>
@@ -49,9 +64,11 @@ const content = () => (
     <Box>
       <Select
         required
-        errorMessage="This felid is required ☹️"
+        errorMessage="This field is required ☹️"
         label="Error message"
-        onChange={(event) => {}}
+        onChange={(event) => {
+          console.log({ event });
+        }}
       >
         <option value="cat">Cat</option>
       </Select>

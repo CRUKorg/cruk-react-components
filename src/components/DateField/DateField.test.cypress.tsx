@@ -23,9 +23,15 @@ const unControlledContent = () => (
       month="07"
       year="1990"
       label="When were they born?"
-      onChange={() => {}}
-      onBlur={() => {}}
-      onFocus={() => {}}
+      onChange={() => {
+        // onChange
+      }}
+      onBlur={() => {
+        // onBlur
+      }}
+      onFocus={() => {
+        // onFocus
+      }}
       errorMessage="invalid birthday"
     />
     <DateField

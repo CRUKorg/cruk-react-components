@@ -83,4 +83,6 @@ export const TextAreaField = forwardRef(
   },
 );
 
+TextAreaField.displayName = "TextAreaField";
+
 export default TextAreaField;

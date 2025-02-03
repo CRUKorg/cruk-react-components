@@ -20,8 +20,12 @@ const Content = () => (
       <AddressLookup
         countries={["GBR"]}
         apiKey="MG17-ZD93-FF33-KF13"
-        onAddressSelected={() => {}}
-        onChange={() => {}}
+        onAddressSelected={() => {
+          // onAddressSelected
+        }}
+        onChange={() => {
+          // onChange
+        }}
       />
     </div>
   </fieldset>

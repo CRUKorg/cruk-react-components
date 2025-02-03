@@ -1,6 +1,6 @@
 # Totaliser
 
-Think Blue Peter, used to display total rasised and if target prop is passed will display tercentage of target reached.
+Think Blue Peter, used to display total raised and if target prop is passed will display tercentage of target reached.
 
 ### Try them out
 

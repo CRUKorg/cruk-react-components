@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react";
 
 import DateField from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
@@ -13,9 +13,15 @@ export default {
     yearName: "birthYear",
     label: "When were they born?",
     hintText: "for example: 24 11 1988",
-    onChange: () => {},
-    onBlur: () => {},
-    onFocus: () => {},
+    onChange: () => {
+      // onChange
+    },
+    onBlur: () => {
+      // onBlur
+    },
+    onFocus: () => {
+      // onFocus
+    },
     disabled: false,
     required: true,
     dayHasError: false,
@@ -29,7 +35,6 @@ export default {
 type Story = StoryObj<typeof DateField>;
 
 export const Default: Story = {
-  name: "Default",
   render: (args) => (
     <AllThemesWrapper>
       <DateField {...args} />

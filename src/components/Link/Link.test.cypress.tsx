@@ -55,7 +55,6 @@ const content = () => (
       </Link>
     </div>
     <div>
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
       <Link
         href="#"
         onClick={() => {

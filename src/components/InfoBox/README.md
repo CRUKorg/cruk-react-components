@@ -14,7 +14,7 @@ The InfoBox component displays information box view. It provides a variety of op
       descriptionText="This is a description block for the infobox default component"
       titleText="InfoBox Default"
       icon={<IconFa faIcon={faBullseye} size="1.5em" color="#fff">}
-    />}
+    />
    </>
 ```
 

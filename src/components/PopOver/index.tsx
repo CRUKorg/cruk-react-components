@@ -2,7 +2,6 @@ import React, {
   useState,
   useEffect,
   useRef,
-  useCallback,
   type ReactElement,
   type ReactNode,
 } from "react";
@@ -61,14 +60,11 @@ export function PopOver({
   const closePopOver = () => setShowPopOver(false);
 
   // outside click closes popover
-  const handleDocumentClick = useCallback(
-    (e: MouseEvent) => {
-      if (!!popRef.current && !popRef.current.contains(e.target as Node)) {
-        closePopOver();
-      }
-    },
-    [popRef.current],
-  );
+  const handleDocumentClick = (e: MouseEvent) => {
+    if (!!popRef.current && !popRef.current.contains(e.target as Node)) {
+      closePopOver();
+    }
+  };
 
   useKey(
     () => {
@@ -84,7 +80,7 @@ export function PopOver({
     if (onPopOverIsOpenChange) {
       onPopOverIsOpenChange(showPopOver);
     }
-  }, [showPopOver]);
+  }, [showPopOver, onPopOverIsOpenChange]);
 
   useEffectBrowser(() => {
     document.addEventListener("click", handleDocumentClick, true);

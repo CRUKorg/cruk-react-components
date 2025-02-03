@@ -8,7 +8,7 @@ export type FontSizeType =
   | "xxxl"
   | "xxxxl";
 
-export type FontSizesType = { [key in FontSizeType]: string };
+export type FontSizesType = Record<FontSizeType, string>;
 
 export type UtilitiesType = {
   contentMaxWidth: string;

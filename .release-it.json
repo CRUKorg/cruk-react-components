@@ -4,7 +4,7 @@
     "requireBranch": false,
     "requireUpstream": true,
     "requireCommits": false,
-    "addUntrackedFiles": true,
+    "addUntrackedFiles": false,
     "commit": false,
     "tag": true,
     "tagAnnotation": "Release ${version}",
@@ -15,7 +15,7 @@
     "publish": true,
     "ignoreVersion": true,
     "allowSameVersion": true,
-    "skipChecks": true
+    "skipChecks": false
   },
   "github": {
     "release": true,

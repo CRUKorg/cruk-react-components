@@ -12,7 +12,7 @@ const PreStyled = styled.pre`
 `;
 
 export function ThemeCheatSheet({ theme }: { theme?: ThemeType }) {
-  const foundTheme = !!theme?.colors ? theme : defaultTheme;
+  const foundTheme = theme?.colors ? theme : defaultTheme;
 
   return (
     <>

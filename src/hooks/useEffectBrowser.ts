@@ -1,12 +1,13 @@
 import { useEffect, type EffectCallback, type DependencyList } from "react";
 
-const isBrowser = typeof window !== `undefined`;
-
 // this is a useEffect hook which automatically checks if the code is running
 // in the browser before executing the action
 export function useEffectBrowser(action: EffectCallback, deps: DependencyList) {
-  if (!isBrowser) return null;
-  return useEffect(action, deps);
+  useEffect(() => {
+    if (typeof window === `undefined`) return;
+    return action();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [deps]);
 }
 
 export default useEffectBrowser;

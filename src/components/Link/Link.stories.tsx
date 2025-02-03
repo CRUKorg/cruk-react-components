@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react";
 
 import Link from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
@@ -21,7 +21,6 @@ export default {
 type Story = StoryObj<typeof Link>;
 
 export const Default: Story = {
-  name: "Default",
   args: {},
   render: (args) => (
     <AllThemesWrapper>
@@ -31,7 +30,6 @@ export const Default: Story = {
 };
 
 export const Primary: Story = {
-  name: "Primary",
   args: {
     appearance: "primary",
   },
@@ -43,7 +41,6 @@ export const Primary: Story = {
 };
 
 export const Secondary: Story = {
-  name: "Secondary",
   args: {
     appearance: "secondary",
   },

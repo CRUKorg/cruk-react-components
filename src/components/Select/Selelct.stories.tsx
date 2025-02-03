@@ -1,7 +1,7 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react";
 
-import Select, { SelectProps } from ".";
+import Select, { type SelectProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {

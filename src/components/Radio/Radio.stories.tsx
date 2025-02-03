@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react";
 import { useTheme } from "styled-components";
 
-import { Box, ThemeType } from "..";
-import Radio, { RadioProps } from ".";
+import { Box, type ThemeType } from "..";
+import Radio, { type RadioProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
 
 const FullComponentWithRadios = (args: RadioProps) => {
@@ -57,7 +57,6 @@ export default {
 type Story = StoryObj<typeof Radio>;
 
 export const Default: Story = {
-  name: "Default",
   args: {},
   render: (args) => (
     <AllThemesWrapper>

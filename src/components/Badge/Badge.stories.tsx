@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react";
 import {
   faPoundSign,
   faSearch,
@@ -23,7 +23,6 @@ export default {
 type Story = StoryObj<typeof Badge>;
 
 export const Default: Story = {
-  name: "Default",
   args: {
     children: <IconFa faIcon={faPoundSign} />,
   },

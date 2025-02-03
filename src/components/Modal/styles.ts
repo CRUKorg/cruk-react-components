@@ -42,7 +42,7 @@ export const Content = styled(Box)<{
   theme: ThemeType;
 }>`
   background-color: ${({ theme: { colors }, backgroundColor }) =>
-    backgroundColor !== undefined && typeof backgroundColor !== undefined
+    backgroundColor !== undefined
       ? colors[backgroundColor as ColorKeyType] !== undefined
         ? colors[backgroundColor as ColorKeyType]
         : backgroundColor

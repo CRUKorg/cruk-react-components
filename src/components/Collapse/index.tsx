@@ -108,7 +108,11 @@ export function Collapse({
   useEffect(() => {
     setOpenStatus(startOpen || false);
     // if start open changes then we want to set the height without animation
-    startOpen ? setContentHeight("initial") : setContentHeight("0");
+    if (startOpen) {
+      setContentHeight("initial");
+    } else {
+      setContentHeight("0");
+    }
   }, [startOpen]);
 
   return (

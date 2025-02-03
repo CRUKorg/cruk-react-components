@@ -1,8 +1,8 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react";
 
-import { Box, ThemeType } from "..";
-import CheckBox, { CheckBoxProps } from ".";
+import { Box, type ThemeType } from "..";
+import CheckBox, { type CheckBoxProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
 import { useTheme } from "styled-components";
 
@@ -22,7 +22,7 @@ export default {
 type Story = StoryObj<typeof CheckBox>;
 
 const FullComponentWithCheckboxes = (args: CheckBoxProps) => {
-  const [selected, setSelected] = React.useState<Array<string>>(["one"]);
+  const [selected, setSelected] = React.useState<string[]>(["one"]);
   const theme = useTheme();
   const themeTyped = theme as ThemeType;
   const themeName = themeTyped.name;
@@ -55,7 +55,6 @@ const FullComponentWithCheckboxes = (args: CheckBoxProps) => {
 };
 
 export const Default: Story = {
-  name: "Default",
   args: {},
   render: (args) => (
     <AllThemesWrapper>

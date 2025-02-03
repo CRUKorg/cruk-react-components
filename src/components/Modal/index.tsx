@@ -72,11 +72,14 @@ export function Modal({
     ...defaultTheme,
     ...foundTheme,
   };
-  const closeByEsc = (event: KeyboardEvent): void => {
-    if (event.key === "Escape" && !!closeFunction) {
-      closeFunction();
-    }
-  };
+  const closeByEsc = React.useCallback(
+    (event: KeyboardEvent): void => {
+      if (event.key === "Escape" && !!closeFunction) {
+        closeFunction();
+      }
+    },
+    [closeFunction],
+  );
 
   useEffect(() => {
     if (typeof window === `undefined`) {
@@ -92,7 +95,7 @@ export function Modal({
       document.body.style.overflow = "unset";
       document.removeEventListener("keydown", closeByEsc);
     };
-  }, []);
+  }, [closeByEsc]);
 
   return (
     <>

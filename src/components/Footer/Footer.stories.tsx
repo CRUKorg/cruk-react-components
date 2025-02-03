@@ -1,8 +1,8 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react";
 
 import { Link } from "..";
-import Footer, { FooterProps } from ".";
+import Footer, { type FooterProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
 
 const FooterWithChildren = (args: FooterProps) => (

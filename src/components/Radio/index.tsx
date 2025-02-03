@@ -82,4 +82,6 @@ export const Radio = forwardRef(
   },
 );
 
+Radio.displayName = "Radio";
+
 export default Radio;
