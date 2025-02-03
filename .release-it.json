@@ -13,7 +13,7 @@
   },
   "npm": {
     "publish": true,
-    "ignoreVersion": false,
+    "ignoreVersion": true,
     "allowSameVersion": false,
     "skipChecks": true
   },
@@ -22,5 +22,8 @@
     "web": true,
     "releaseName": "RCL Release ${version}",
     "autoGenerate": false
+  },
+  "hooks": {
+    "before:git:init": "npm ci && npm run rollup:build-lib"
   }
 }
