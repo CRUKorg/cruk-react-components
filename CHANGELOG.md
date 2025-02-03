@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Using Eslint 9 [#979](https://github.com/CRUKorg/cruk-react-components/issues/979)
+- Bumping storybook to 8.5 [#981](https://github.com/CRUKorg/cruk-react-components/issues/981)
 
 ## [5.0.7] - 2025-02-03
 

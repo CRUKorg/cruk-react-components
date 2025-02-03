@@ -22,11 +22,13 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
+    ".storybook/*.ts",
+    ".storybook/*.tsx",
     "rollup.config.mjs",
     "src/docs/index.jsx",
     "eslint.config.mjs",
     "babel.config.cjs",
-    "cypress.config.cjs"
+    "cypress.config.mjs"
   ],
   "typeRoots": ["./node_modules/@types", "*.d.ts"]
 }
