@@ -1,6 +1,6 @@
 {
   "name": "@cruk/cruk-react-components",
-  "version": "5.0.6",
+  "version": "5.0.7",
   "description": "React components implementing CRUK, RFL, SU2C & Bowelbabe designs",
   "license": "MIT",
   "publishConfig": {
@@ -125,6 +125,7 @@
     "react-focus-lock": "^2.5.2",
     "react-intersection-observer": "^9.1.0",
     "react-is": "^18.2.0",
-    "styled-components": "^6.1.11"
+    "styled-components": "^6.1.11",
+    "release-it": "^17.10.0"
   }
 }

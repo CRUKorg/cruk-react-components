@@ -18,6 +18,8 @@ export type BadgeProps = {
   size?: SpaceType;
   /** contents of badge */
   children?: ReactNode;
+  /** forces shape to have equal width and height set by size attribute */
+  isSquare?: boolean;
 };
 
 /**
@@ -39,6 +41,7 @@ export function Badge({
   backgroundColor = "primary",
   borderColor = "transparent",
   textColor = "textOnPrimary",
+  isSquare,
 }: BadgeProps) {
   const foundTheme = useTheme();
   const theme = {
@@ -46,11 +49,12 @@ export function Badge({
     ...foundTheme,
   };
 
-  const isText = typeof children === "string";
+  const isSquareCalculated = isSquare ?? !(typeof children === "string");
+
   return (
     <StyledBadge
       theme={theme}
-      $isText={isText}
+      $isSquare={isSquareCalculated}
       $size={size}
       $backgroundColor={themeColorOrString(backgroundColor, theme)}
       $borderColor={themeColorOrString(borderColor, theme)}

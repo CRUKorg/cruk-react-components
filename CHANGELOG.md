@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.7] - 2025-02-03
+
+### Changed
+
+- Changed badge API to grow by default but allow force circle/square [#971](https://github.com/CRUKorg/cruk-react-components/issues/971)
+
 ## [5.0.6] - 2024-10-29
 
 ### Added

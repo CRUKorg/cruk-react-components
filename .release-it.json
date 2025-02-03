@@ -1,0 +1,26 @@
+{
+  "git": {
+    "requireCleanWorkingDir": true,
+    "requireBranch": false,
+    "requireUpstream": true,
+    "requireCommits": false,
+    "addUntrackedFiles": true,
+    "commit": false,
+    "tag": true,
+    "tagAnnotation": "Release ${version}",
+    "push": true,
+    "pushArgs": ["--follow-tags"]
+  },
+  "npm": {
+    "publish": true,
+    "ignoreVersion": false,
+    "allowSameVersion": false,
+    "skipChecks": true
+  },
+  "github": {
+    "release": true,
+    "web": true,
+    "releaseName": "RCL Release ${version}",
+    "autoGenerate": false
+  }
+}
