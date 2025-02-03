@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
+    "target": "es5",
+    "module": "es6",
     "jsx": "react",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true, // This is needed for the React components.
@@ -22,14 +22,11 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    ".storybook/*.ts",
-    ".storybook/*.tsx",
     "rollup.config.mjs",
     "src/docs/index.jsx",
     "eslint.config.mjs",
     "babel.config.cjs",
-    "cypress.config.mjs",
-    "cypress/*/*.js"
+    "cypress.config.mjs"
   ],
   "typeRoots": ["./node_modules/@types", "*.d.ts"]
 }
