@@ -28,7 +28,8 @@
     "src/docs/index.jsx",
     "eslint.config.mjs",
     "babel.config.cjs",
-    "cypress.config.mjs"
+    "cypress.config.mjs",
+    "cypress/*/*.js"
   ],
   "typeRoots": ["./node_modules/@types", "*.d.ts"]
 }

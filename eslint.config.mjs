@@ -24,6 +24,7 @@ export const config = [
     },
   },
   {
+    ignores: ["cypress/**"],
     languageOptions: {
       parser: tsEslintPlugin.parser,
       parserOptions: {
