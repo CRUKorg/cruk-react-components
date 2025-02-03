@@ -2,8 +2,8 @@ import React, {
   useState,
   useEffect,
   useRef,
-  type ReactElement,
   type ReactNode,
+  type DetailedReactHTMLElement,
 } from "react";
 import { ThemeProvider, useTheme } from "styled-components";
 
@@ -92,14 +92,15 @@ export function PopOver({
   return (
     <ThemeProvider theme={theme}>
       <PopOverWrapper $full={full} $css={css} ref={popRef}>
-        {React.Children.map(
-          children as ReactElement,
-          (child: React.ReactElement) =>
-            React.cloneElement(child, {
+        {React.Children.map(children, (child) =>
+          React.cloneElement(
+            child as DetailedReactHTMLElement<object, HTMLElement>,
+            {
               onClick: toggle,
               "aria-expanded": showPopOver,
               "aria-haspopup": "dialog",
-            }),
+            },
+          ),
         )}
         {showPopOver ? (
           <PopOverModal

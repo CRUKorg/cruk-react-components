@@ -14,9 +14,8 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import "cypress-plugin-tab";
+import "cypress-real-events";
 import "cypress-axe";
-
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
@@ -39,15 +38,21 @@ Cypress.Commands.add(
         .contains("label", text)
         .then(($label) => {
           const name = $label.attr("for");
-          if (name) return cy.get(`#${name}`);
-          cy.wrap($label).find("input, select, textarea");
+          if (name) {
+            return cy.get(`#${name}`);
+          } else {
+            return cy.wrap($label).find("input, select, textarea");
+          }
         });
     } else {
       return cy.contains("label", text).then(($label) => {
         const name = $label.attr("for");
-        if (name) return cy.get(`#${name}`);
-        cy.wrap($label).find("input, select, textarea");
+        if (name) {
+          return cy.get(`#${name}`);
+        } else {
+          return cy.wrap($label).find("input, select, textarea");
+        }
       });
     }
-  }
+  },
 );

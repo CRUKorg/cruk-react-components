@@ -2,7 +2,6 @@ import React, {
   useCallback,
   useEffect,
   useState,
-  forwardRef,
   useRef,
   type InputHTMLAttributes,
   type Ref,
@@ -66,242 +65,233 @@ export type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
  * You will need a Loqate api key, the examples below use "MG17-ZD93-FF33-KF13" our development key.
  * This component is generally only used for country codes including "GBR", "GGY", "IMN", "JEY". An example of this behavior is included bellow.
  */
-export const AddressLookup = forwardRef(
-  (
-    {
-      apiKey,
-      countries,
-      errorMessage,
-      hasError,
-      isValid,
-      isValidVisible,
-      isInvalidVisible,
-      label,
-      hintText,
-
-      onAddressError = (error: Error) => {
-        console.log(error);
-      },
-      onAddressSelected,
-      onChange,
-      onBlur,
-      ...props
-    }: AddressLookupProps,
-    ref?: Ref<HTMLInputElement>,
-  ) => {
-    const [addressOptions, setAddressOptions] = useState<AddressOptionsType[]>(
-      [],
-    );
-    const [activeOption, setActiveOption] = useState(-1);
-    const wrapperRef = useRef<HTMLDivElement>(null);
-    const foundTheme = useTheme();
-    const theme = {
-      ...defaultTheme,
-      ...foundTheme,
-    };
-
-    const clearOptions = () => {
-      setActiveOption(-1);
-      setAddressOptions([]);
-    };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    const searchDebounced = useCallback(
-      debounce(500, (query: string) => {
-        search(query);
-      }),
-      [],
-    );
-
-    const search = (query: string, id = "") => {
-      if (query.length === 0) return setAddressOptions([]);
-      let searchUrl = `${FIND_URL}?Key=${apiKey}&Text=${query}&Container=${id}`;
-      if (countries !== undefined) {
-        searchUrl = `${searchUrl}&Countries=${countries.join(",")}`;
-      }
-      fetch(searchUrl)
-        .then((res: Response) => {
-          if (!res.ok) throw new Error("Something went wrong please try again");
-          return res.json();
-        })
-        .then((data: { Items: AddressOptionsType[] }) => {
-          // Occasionally get the error "The query didn't respond fast enough, it may be too complex."
-          // returned with a 200 response. Example query "n17 6t"
-          if (data.Items[0].Error)
-            throw new Error("Something went wrong please try again");
-          setAddressOptions(data.Items || []);
-          return null;
-        })
-        .catch((err) => onAddressError(err as Error));
-      return null;
-    };
-
-    const getAddress = (id: string) => {
-      fetch(`${RETRIEVE_URL}?Key=${apiKey}&Id=${id}`)
-        .then((res: Response) => {
-          if (!res.ok) throw new Error("Something went wrong please try again");
-          return res.json();
-        })
-        .then((data: { Items: AddressDataType[] }) => {
-          const selectedAddress = data.Items[0];
-          const selectedAddressWithoutCommas =
-            removeCommasFromObjectStringValues<AddressDataType>(
-              selectedAddress,
-            );
-          onAddressSelected(selectedAddressWithoutCommas);
-          clearOptions();
-          return null;
-        })
-        .catch((err) => onAddressError(err as Error));
-    };
-
-    const selectAddress = (address: AddressOptionsType) => {
-      if (address.Type === "Address") return getAddress(address.Id);
-      search(address.Text, address.Id);
-      return null;
-    };
-
-    const handleKeyDown = (e: KeyboardEvent): void => {
-      if (e.key === "Enter" && addressOptions[activeOption]) {
-        e.preventDefault();
-        if (addressOptions[activeOption].Type === "Address")
-          getAddress(addressOptions[activeOption].Id);
-        search(
-          addressOptions[activeOption].Text,
-          addressOptions[activeOption].Id,
-        );
-        setActiveOption(-1);
-      } else if (e.key === "ArrowUp") {
-        e.preventDefault();
-        if (activeOption <= -1) setActiveOption(addressOptions.length - 1);
-        setActiveOption(activeOption - 1);
-      } else if (e.key === "ArrowDown") {
-        e.preventDefault();
-        if (activeOption + 1 >= addressOptions.length) setActiveOption(0);
-        setActiveOption(activeOption + 1);
-      } else {
-        setActiveOption(-1);
-      }
-    };
-
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-      searchDebounced(e.target.value);
-      if (onChange) onChange(e);
-    };
-
-    const handleBlur = (e: FocusEvent) => {
-      const isOptionsOpen = !!addressOptions.length;
-      if (onBlur && !isOptionsOpen) onBlur(e);
-    };
-
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        wrapperRef.current &&
-        event.target instanceof HTMLElement &&
-        !wrapperRef.current.contains(event.target)
-      )
-        clearOptions();
-    };
-
-    useEffect(() => {
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    });
-
-    useKey(
-      () => {
-        clearOptions();
-      },
-      {
-        detectKeys: ["Escape", "Tab"],
-      },
-      [],
-    );
-
-    return (
-      <>
-        <TextField
-          aria-activedescendant={
-            addressOptions.length ? `addressOptions-${activeOption}` : ""
-          }
-          aria-owns="found_addresses"
-          aria-autocomplete="both"
-          aria-expanded={addressOptions.length ? "true" : "false"}
-          autoComplete="off"
-          hasError={hasError || !!errorMessage}
-          errorMessage={errorMessage}
-          hintText={hintText ?? "Start typing your address or postcode"}
-          isValid={isValid}
-          isValidVisible={isValidVisible}
-          isInvalidVisible={isInvalidVisible}
-          label={label ?? "Home address"}
-          ref={ref}
-          required
-          role="combobox"
-          type="search"
-          {...props}
-          onKeyDown={handleKeyDown}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-
-        {!!addressOptions.length && (
-          <>
-            <ScreenReaderOnly role="status" aria-live="assertive">
-              {!!addressOptions.length &&
-                `We have found ${addressOptions.length} result${
-                  addressOptions.length !== 1 ? "s" : ""
-                } matching your search. Use up and down arrow keys to navigate`}
-            </ScreenReaderOnly>
-            <ListWrapper ref={wrapperRef}>
-              <List
-                aria-label="found addresses"
-                id="found_addresses"
-                role="listbox"
-                theme={theme}
-              >
-                {addressOptions.map((address, index) => (
-                  <ListItem
-                    tabIndex={0}
-                    id={`addressOptions-${index}`}
-                    $isActive={index === activeOption}
-                    key={address.Id}
-                    onClick={() => {
-                      selectAddress(address);
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        selectAddress(address);
-                      }
-                    }}
-                    role="option"
-                    data-hj-suppress
-                    theme={theme}
-                  >
-                    <Text as="span" data-hj-suppress>
-                      {address.Text} {address.Description}
-                    </Text>
-                    {address.Type !== "Address" && (
-                      <>
-                        <ScreenReaderOnly>
-                          press enter for these addresses
-                        </ScreenReaderOnly>
-                        <IconFa faIcon={faChevronRight} />
-                      </>
-                    )}
-                  </ListItem>
-                ))}
-              </List>
-            </ListWrapper>
-          </>
-        )}
-      </>
-    );
+export const AddressLookup = ({
+  apiKey,
+  countries,
+  errorMessage,
+  hasError,
+  isValid,
+  isValidVisible,
+  isInvalidVisible,
+  label,
+  hintText,
+  ref,
+  onAddressError = (error: Error) => {
+    console.log(error);
   },
-);
+  onAddressSelected,
+  onChange,
+  onBlur,
+  ...props
+}: AddressLookupProps) => {
+  const [addressOptions, setAddressOptions] = useState<AddressOptionsType[]>(
+    [],
+  );
+  const [activeOption, setActiveOption] = useState(-1);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const foundTheme = useTheme();
+  const theme = {
+    ...defaultTheme,
+    ...foundTheme,
+  };
 
-AddressLookup.displayName = "AddressLookup";
+  const clearOptions = () => {
+    setActiveOption(-1);
+    setAddressOptions([]);
+  };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const searchDebounced = useCallback(
+    debounce(500, (query: string) => {
+      search(query);
+    }),
+    [],
+  );
+
+  const search = (query: string, id = "") => {
+    if (query.length === 0) return setAddressOptions([]);
+    let searchUrl = `${FIND_URL}?Key=${apiKey}&Text=${query}&Container=${id}`;
+    if (countries !== undefined) {
+      searchUrl = `${searchUrl}&Countries=${countries.join(",")}`;
+    }
+    fetch(searchUrl)
+      .then((res: Response) => {
+        if (!res.ok) throw new Error("Something went wrong please try again");
+        return res.json();
+      })
+      .then((data: { Items: AddressOptionsType[] }) => {
+        // Occasionally get the error "The query didn't respond fast enough, it may be too complex."
+        // returned with a 200 response. Example query "n17 6t"
+        if (data.Items[0].Error)
+          throw new Error("Something went wrong please try again");
+        setAddressOptions(data.Items || []);
+        return null;
+      })
+      .catch((err) => onAddressError(err as Error));
+    return null;
+  };
+
+  const getAddress = (id: string) => {
+    fetch(`${RETRIEVE_URL}?Key=${apiKey}&Id=${id}`)
+      .then((res: Response) => {
+        if (!res.ok) throw new Error("Something went wrong please try again");
+        return res.json();
+      })
+      .then((data: { Items: AddressDataType[] }) => {
+        const selectedAddress = data.Items[0];
+        const selectedAddressWithoutCommas =
+          removeCommasFromObjectStringValues<AddressDataType>(selectedAddress);
+        onAddressSelected(selectedAddressWithoutCommas);
+        clearOptions();
+        return null;
+      })
+      .catch((err) => onAddressError(err as Error));
+  };
+
+  const selectAddress = (address: AddressOptionsType) => {
+    if (address.Type === "Address") return getAddress(address.Id);
+    search(address.Text, address.Id);
+    return null;
+  };
+
+  const handleKeyDown = (e: KeyboardEvent): void => {
+    if (e.key === "Enter" && addressOptions[activeOption]) {
+      e.preventDefault();
+      if (addressOptions[activeOption].Type === "Address")
+        getAddress(addressOptions[activeOption].Id);
+      search(
+        addressOptions[activeOption].Text,
+        addressOptions[activeOption].Id,
+      );
+      setActiveOption(-1);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      if (activeOption <= -1) setActiveOption(addressOptions.length - 1);
+      setActiveOption(activeOption - 1);
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (activeOption + 1 >= addressOptions.length) setActiveOption(0);
+      setActiveOption(activeOption + 1);
+    } else {
+      setActiveOption(-1);
+    }
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    searchDebounced(e.target.value);
+    if (onChange) onChange(e);
+  };
+
+  const handleBlur = (e: FocusEvent) => {
+    const isOptionsOpen = !!addressOptions.length;
+    if (onBlur && !isOptionsOpen) onBlur(e);
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      wrapperRef.current &&
+      event.target instanceof HTMLElement &&
+      !wrapperRef.current.contains(event.target)
+    )
+      clearOptions();
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  });
+
+  useKey(
+    () => {
+      clearOptions();
+    },
+    {
+      detectKeys: ["Escape", "Tab"],
+    },
+    [],
+  );
+
+  return (
+    <>
+      <TextField
+        aria-activedescendant={
+          addressOptions.length ? `addressOptions-${activeOption}` : ""
+        }
+        aria-owns="found_addresses"
+        aria-autocomplete="both"
+        aria-expanded={addressOptions.length ? "true" : "false"}
+        autoComplete="off"
+        hasError={hasError || !!errorMessage}
+        errorMessage={errorMessage}
+        hintText={hintText ?? "Start typing your address or postcode"}
+        isValid={isValid}
+        isValidVisible={isValidVisible}
+        isInvalidVisible={isInvalidVisible}
+        label={label ?? "Home address"}
+        ref={ref}
+        required
+        role="combobox"
+        type="search"
+        {...props}
+        onKeyDown={handleKeyDown}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
+
+      {!!addressOptions.length && (
+        <>
+          <ScreenReaderOnly role="status" aria-live="assertive">
+            {!!addressOptions.length &&
+              `We have found ${addressOptions.length} result${
+                addressOptions.length !== 1 ? "s" : ""
+              } matching your search. Use up and down arrow keys to navigate`}
+          </ScreenReaderOnly>
+          <ListWrapper ref={wrapperRef}>
+            <List
+              aria-label="found addresses"
+              id="found_addresses"
+              role="listbox"
+              theme={theme}
+            >
+              {addressOptions.map((address, index) => (
+                <ListItem
+                  tabIndex={0}
+                  id={`addressOptions-${index}`}
+                  $isActive={index === activeOption}
+                  key={address.Id}
+                  onClick={() => {
+                    selectAddress(address);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      selectAddress(address);
+                    }
+                  }}
+                  role="option"
+                  data-hj-suppress
+                  theme={theme}
+                >
+                  <Text as="span" data-hj-suppress>
+                    {address.Text} {address.Description}
+                  </Text>
+                  {address.Type !== "Address" && (
+                    <>
+                      <ScreenReaderOnly>
+                        press enter for these addresses
+                      </ScreenReaderOnly>
+                      <IconFa faIcon={faChevronRight} />
+                    </>
+                  )}
+                </ListItem>
+              ))}
+            </List>
+          </ListWrapper>
+        </>
+      )}
+    </>
+  );
+};
 
 export default AddressLookup;

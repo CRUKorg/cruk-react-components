@@ -14,9 +14,9 @@ Add cruk-react-components and its peer dependencies react, react-dom and styled-
 
 ```sh
 "dependencies": {
-  "react": "^16.2.0",
-  "react-dom": "^16.2.0",
-  "styled-components": "^5.0.0"
+  "react": "^19",
+  "react-dom": "^19",
+  "styled-components": "^6"
 }
 ```
 
@@ -152,10 +152,23 @@ and see if it can successfully build the library before running the release scri
 
 ### Releases
 
-Please update the version number in the package.json and follow the semver standards for version numbers.
+#### Pre-release
 
-Make sure that your current node version is Node 16.
+Please update the version number in the package.json and follow the semver standards for version numbers.
+Run `nvm use` to make sure that you are on the correct version of node.
 Run `npm i` to make sure that the correct version in the lockfile.
 Update the CHANGELOG.md which should list the changes for the release, instructions are at the bottom of the file.
-Make sure that you have the correct permissions for the @cruk on NPM
-Run the release script with `npm run release` this should make and push the tag, build the lib and release it on NPM.
+These changes need to be merged into master.
+
+#### Releasing
+
+Make sure that you have the correct permissions for the @cruk org on NPM.
+Run the release script with `npm run release` this should use `release-it` to allow you to select the same version number as stated in the package JSON and it should take care of the rest:
+
+- it runs npm ci
+- it does the build
+- it makes and pushes the tag
+- it releases the build lib to NPM
+- it requestions if you want to document the release on github and autogenerates the release notes.
+
+Agree to all these steps release-it walks through and when Github opens up with the release click on the `Publish` button. If anything goes wrong release-it should roll back.

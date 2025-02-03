@@ -151,7 +151,7 @@ describe("Tab", () => {
         </>
       </TestThemeWrapper>,
     );
-    cy.contains("Click me").focus().tab();
+    cy.contains("Click me").focus().realPress("Tab");
     cy.focused().contains("select").should("exist");
   });
 });

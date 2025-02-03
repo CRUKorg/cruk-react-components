@@ -1,6 +1,5 @@
-import "cypress-plugin-tab";
 import "cypress-axe";
-import "./commands";
+import "cypress-real-events";
 
 Cypress.Commands.add(
   "getInputByLabel",
@@ -14,15 +13,21 @@ Cypress.Commands.add(
         .contains("label", text)
         .then(($label) => {
           const name = $label.attr("for");
-          if (name) return cy.get(`#${name}`);
-          cy.wrap($label).find("input, select, textarea");
+          if (name) {
+            return cy.get(`#${name}`);
+          } else {
+            return cy.wrap($label).find("input, select, textarea");
+          }
         });
     } else {
       return cy.contains("label", text).then(($label) => {
         const name = $label.attr("for");
-        if (name) return cy.get(`#${name}`);
-        cy.wrap($label).find("input, select, textarea");
+        if (name) {
+          return cy.get(`#${name}`);
+        } else {
+          return cy.wrap($label).find("input, select, textarea");
+        }
       });
     }
-  }
+  },
 );

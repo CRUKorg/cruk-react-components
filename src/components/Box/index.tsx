@@ -1,7 +1,6 @@
 import React, {
   type HTMLAttributes,
   type Ref,
-  forwardRef,
   type ReactNode,
   type ElementType,
 } from "react";
@@ -31,30 +30,25 @@ export type BoxProps = SpacingProps &
  * The more specific the the target the higher priority the css will have.
  * For example `margin` will be overridden by the `marginVertical` or `marginHorizontal` props. `marginTop`, `marginBottom`, `marginLeft`, `marginRight` will override the the `marginVertical` and `marginHorizontal` props.
  */
-export const Box = forwardRef(
-  ({ ...props }: BoxProps, ref?: Ref<HTMLDivElement>) => {
-    const { children, backgroundColor, ...rest } = props;
-    const foundTheme = useTheme();
-    const theme = {
-      ...defaultTheme,
-      ...foundTheme,
-    };
-    const restWithInternalSpacingProps =
-      spacingPropsToSpacingPropsInternal(rest);
+export const Box = ({ ...props }: BoxProps) => {
+  const { children, backgroundColor, ref, ...rest } = props;
+  const foundTheme = useTheme();
+  const theme = {
+    ...defaultTheme,
+    ...foundTheme,
+  };
+  const restWithInternalSpacingProps = spacingPropsToSpacingPropsInternal(rest);
 
-    return (
-      <StyledBox
-        theme={theme}
-        $backgroundColor={backgroundColor}
-        {...restWithInternalSpacingProps}
-        ref={ref}
-      >
-        {children}
-      </StyledBox>
-    );
-  },
-);
-
-Box.displayName = "Box";
+  return (
+    <StyledBox
+      theme={theme}
+      $backgroundColor={backgroundColor}
+      {...restWithInternalSpacingProps}
+      ref={ref}
+    >
+      {children}
+    </StyledBox>
+  );
+};
 
 export default Box;
