@@ -46,7 +46,9 @@ export const Carousel = ({
   shrinkUnselectedPages = false,
   fullWidthChild = false,
 }: CarouselProps) => {
-  const timer = React.useRef<NodeJS.Timeout | string | number | undefined>();
+  const timer = React.useRef<NodeJS.Timeout | string | number | undefined>(
+    undefined,
+  );
   const isStartPositionSet = typeof startPosition !== "undefined";
   const [currentPosition, setCurrentPosition] = useState(startPosition || 0);
   const [smoothScrolling, setSmoothScrolling] = useState(!isStartPositionSet);

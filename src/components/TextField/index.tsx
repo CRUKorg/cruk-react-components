@@ -2,7 +2,6 @@ import React, {
   type InputHTMLAttributes,
   type ReactNode,
   type Ref,
-  forwardRef,
 } from "react";
 import { useTheme } from "styled-components";
 
@@ -51,35 +50,42 @@ export type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
 /**
  * TextFields let users enter and edit text. For multiline text entry please consider using the TextAreaFieldComponent.
  * */
-export const TextField = forwardRef(
-  (
-    {
-      errorMessage,
-      extraBottom,
-      extraLeft,
-      extraRight,
-      extraTop,
-      hasError,
-      hintText,
-      isValid,
-      isValidVisible,
-      isInvalidVisible,
-      label,
-      hideRequiredInLabel,
-      ...props
-    }: TextFieldProps,
-    ref?: Ref<HTMLInputElement>,
-  ) => {
-    const foundTheme = useTheme();
-    const theme = {
-      ...defaultTheme,
-      ...foundTheme,
-    };
+export const TextField = ({
+  errorMessage,
+  extraBottom,
+  extraLeft,
+  extraRight,
+  extraTop,
+  hasError,
+  hintText,
+  isValid,
+  isValidVisible,
+  isInvalidVisible,
+  label,
+  hideRequiredInLabel,
+  ref,
+  ...props
+}: TextFieldProps) => {
+  const foundTheme = useTheme();
+  const theme = {
+    ...defaultTheme,
+    ...foundTheme,
+  };
 
-    const renderContent = (
-      <>
-        {!!extraLeft && <ExtraLeft theme={theme}>{extraLeft}</ExtraLeft>}
-        <StyledInputWrapper
+  const renderContent = (
+    <>
+      {!!extraLeft && <ExtraLeft theme={theme}>{extraLeft}</ExtraLeft>}
+      <StyledInputWrapper
+        $hasError={hasError || !!errorMessage || false}
+        $isValid={
+          typeof isValid !== "undefined" ? isValid : !hasError && !errorMessage
+        }
+        aria-invalid={hasError || !!errorMessage || false}
+        $isValidVisible={isValidVisible || false}
+        $isInvalidVisible={isInvalidVisible || false}
+        theme={theme}
+      >
+        <StyledInput
           $hasError={hasError || !!errorMessage || false}
           $isValid={
             typeof isValid !== "undefined"
@@ -87,60 +93,45 @@ export const TextField = forwardRef(
               : !hasError && !errorMessage
           }
           aria-invalid={hasError || !!errorMessage || false}
+          aria-describedby={
+            !!props.id && !!errorMessage ? `${props.id}-error` : undefined
+          }
           $isValidVisible={isValidVisible || false}
           $isInvalidVisible={isInvalidVisible || false}
+          {...props}
           theme={theme}
+          data-hj-suppress
+          ref={ref}
+        />
+      </StyledInputWrapper>
+      {!!extraRight && <ExtraRight theme={theme}>{extraRight}</ExtraRight>}
+    </>
+  );
+
+  return (
+    <LabelWrapper
+      label={label}
+      hintText={hintText}
+      required={props.required || false}
+      hideRequiredInLabel={hideRequiredInLabel}
+    >
+      {!!extraTop && <Extra theme={theme}>{extraTop}</Extra>}
+      {!!extraRight || !!extraLeft ? (
+        <ExtraWrapper>{renderContent}</ExtraWrapper>
+      ) : (
+        renderContent
+      )}
+      {!!extraBottom && <Extra theme={theme}>{extraBottom}</Extra>}
+      {!!errorMessage && (
+        <ErrorText
+          marginTop="xxs"
+          id={props.id ? `${props.id}-error` : undefined}
         >
-          <StyledInput
-            $hasError={hasError || !!errorMessage || false}
-            $isValid={
-              typeof isValid !== "undefined"
-                ? isValid
-                : !hasError && !errorMessage
-            }
-            aria-invalid={hasError || !!errorMessage || false}
-            aria-describedby={
-              !!props.id && !!errorMessage ? `${props.id}-error` : undefined
-            }
-            $isValidVisible={isValidVisible || false}
-            $isInvalidVisible={isInvalidVisible || false}
-            {...props}
-            theme={theme}
-            data-hj-suppress
-            ref={ref}
-          />
-        </StyledInputWrapper>
-        {!!extraRight && <ExtraRight theme={theme}>{extraRight}</ExtraRight>}
-      </>
-    );
-
-    return (
-      <LabelWrapper
-        label={label}
-        hintText={hintText}
-        required={props.required || false}
-        hideRequiredInLabel={hideRequiredInLabel}
-      >
-        {!!extraTop && <Extra theme={theme}>{extraTop}</Extra>}
-        {!!extraRight || !!extraLeft ? (
-          <ExtraWrapper>{renderContent}</ExtraWrapper>
-        ) : (
-          renderContent
-        )}
-        {!!extraBottom && <Extra theme={theme}>{extraBottom}</Extra>}
-        {!!errorMessage && (
-          <ErrorText
-            marginTop="xxs"
-            id={props.id ? `${props.id}-error` : undefined}
-          >
-            {errorMessage}
-          </ErrorText>
-        )}
-      </LabelWrapper>
-    );
-  },
-);
-
-TextField.displayName = "TextField";
+          {errorMessage}
+        </ErrorText>
+      )}
+    </LabelWrapper>
+  );
+};
 
 export default TextField;

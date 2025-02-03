@@ -1,7 +1,6 @@
 import React, {
   type HTMLAttributes,
   type Ref,
-  forwardRef,
   type ReactNode,
   type ElementType,
 } from "react";
@@ -41,64 +40,58 @@ export type InfoBoxProps = SpacingProps &
   
   The more specific the the target the higher priority the css will have. For example `margin` will be overridden by the `marginVertical` or `marginHorizontal` props. `marginTop`, `marginBottom`, `marginLeft`, `marginRight` will override the the `marginVertical` and `marginHorizontal` props.
    */
-export const InfoBox = forwardRef(
-  (
-    {
-      children,
-      titleText,
-      titleTextColor,
-      descriptionText,
-      descriptionTextColor,
-      icon,
-      ...spacingAndHTMLElementProps
-    }: InfoBoxProps,
-    ref?: Ref<HTMLElement>,
-  ) => {
-    const foundTheme = useTheme();
-    const theme = {
-      ...defaultTheme,
-      ...foundTheme,
-    };
+export const InfoBox = ({
+  children,
+  titleText,
+  titleTextColor,
+  descriptionText,
+  descriptionTextColor,
+  icon,
+  ref,
+  ...spacingAndHTMLElementProps
+}: InfoBoxProps) => {
+  const foundTheme = useTheme();
+  const theme = {
+    ...defaultTheme,
+    ...foundTheme,
+  };
 
-    const backgroundColorOrDefault =
-      spacingAndHTMLElementProps.backgroundColor || theme.tokenColors.grey_200;
+  const backgroundColorOrDefault =
+    spacingAndHTMLElementProps.backgroundColor || theme.tokenColors.grey_200;
 
-    return (
-      <StyledInfoBox
-        theme={theme}
-        {...spacingAndHTMLElementProps}
-        backgroundColor={backgroundColorOrDefault}
-        margin={spacingAndHTMLElementProps.margin || "none"}
-        ref={ref}
-      >
-        {icon && <Box marginRight="s">{icon}</Box>}
-        <div>
-          {titleText && (
-            <Heading
-              as="p"
-              margin="none"
-              h4
-              marginBottom="xxs"
-              textColor={titleTextColor || theme.colors.textDark}
-            >
-              {titleText}
-            </Heading>
-          )}
-          {descriptionText && (
-            <Text
-              textColor={descriptionTextColor || theme.colors.textDark}
-              marginBottom="none"
-            >
-              {descriptionText}
-            </Text>
-          )}
-          {children}
-        </div>
-      </StyledInfoBox>
-    );
-  },
-);
-
-InfoBox.displayName = "InfoBox";
+  return (
+    <StyledInfoBox
+      theme={theme}
+      {...spacingAndHTMLElementProps}
+      backgroundColor={backgroundColorOrDefault}
+      margin={spacingAndHTMLElementProps.margin || "none"}
+      ref={ref}
+    >
+      {icon && <Box marginRight="s">{icon}</Box>}
+      <div>
+        {titleText && (
+          <Heading
+            as="p"
+            margin="none"
+            h4
+            marginBottom="xxs"
+            textColor={titleTextColor || theme.colors.textDark}
+          >
+            {titleText}
+          </Heading>
+        )}
+        {descriptionText && (
+          <Text
+            textColor={descriptionTextColor || theme.colors.textDark}
+            marginBottom="none"
+          >
+            {descriptionText}
+          </Text>
+        )}
+        {children}
+      </div>
+    </StyledInfoBox>
+  );
+};
 
 export default InfoBox;

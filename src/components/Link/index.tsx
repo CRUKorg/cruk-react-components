@@ -1,6 +1,5 @@
 import React, {
   type AnchorHTMLAttributes,
-  forwardRef,
   type Ref,
   type ElementType,
   type ReactNode,
@@ -36,7 +35,7 @@ export type LinkProps = Omit<AnchorHTMLAttributes<HTMLElement>, "nonce"> &
  * If you want something that looks like a link but behaves like a button ie. nothing to do with navigation, please consider using Link with as='button'
  *
  * If you want something that looks like a button but behaves like a link ie. it takes the user to a new location, please consider using Button and simply passing it an href, it will automatically turn into a link. */
-export const Link = forwardRef((props: LinkProps, ref?: Ref<HTMLElement>) => {
+export const Link = (props: LinkProps) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -52,7 +51,7 @@ export const Link = forwardRef((props: LinkProps, ref?: Ref<HTMLElement>) => {
   // only forward As anchor if we are not casting as something that is not an anchor
   const forwardAs = props.as && props.as !== "a" ? undefined : "a";
 
-  const { textHoverColor, appearance, ...rest } = props;
+  const { textHoverColor, appearance, ref, children, ...rest } = props;
 
   return (
     <ThemeProvider theme={theme}>
@@ -65,11 +64,11 @@ export const Link = forwardRef((props: LinkProps, ref?: Ref<HTMLElement>) => {
         forwardedAs={forwardAs}
         ref={ref}
       >
-        {props.children}
+        {children}
       </StyledLink>
     </ThemeProvider>
   );
-});
+};
 
 Link.displayName = "Link";
 

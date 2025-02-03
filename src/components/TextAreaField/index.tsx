@@ -2,7 +2,6 @@ import React, {
   type ReactNode,
   type TextareaHTMLAttributes,
   type Ref,
-  forwardRef,
 } from "react";
 import { useTheme } from "styled-components";
 
@@ -32,57 +31,51 @@ export type TextAreaFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
 /**
  * TextAreaField lets users enter and edit multiline text.
  */
-export const TextAreaField = forwardRef(
-  (
-    {
-      errorMessage,
-      hasError,
-      hintText,
-      label,
-      resize = "vertical",
-      lineCount = 3,
-      ...props
-    }: TextAreaFieldProps,
-    ref?: Ref<HTMLTextAreaElement>,
-  ) => {
-    const foundTheme = useTheme();
-    const theme = {
-      ...defaultTheme,
-      ...foundTheme,
-    };
+export const TextAreaField = ({
+  errorMessage,
+  hasError,
+  hintText,
+  label,
+  resize = "vertical",
+  lineCount = 3,
+  ref,
+  ...props
+}: TextAreaFieldProps) => {
+  const foundTheme = useTheme();
+  const theme = {
+    ...defaultTheme,
+    ...foundTheme,
+  };
 
-    return (
-      <LabelWrapper
-        label={label}
-        hintText={hintText}
-        required={props.required || false}
-      >
-        <StyledTextArea
-          {...props}
-          aria-invalid={hasError || !!errorMessage || false}
-          aria-describedby={
-            !!props.id && !!errorMessage ? `${props.id}-error` : undefined
-          }
-          $hasError={hasError || !!errorMessage || false}
-          $resize={resize}
-          $lineCount={lineCount}
-          theme={theme}
-          ref={ref}
-          data-hj-suppress
-        />
-        {!!errorMessage && (
-          <ErrorText
-            marginTop="xxs"
-            id={props.id ? `${props.id}-error` : undefined}
-          >
-            {errorMessage}
-          </ErrorText>
-        )}
-      </LabelWrapper>
-    );
-  },
-);
-
-TextAreaField.displayName = "TextAreaField";
+  return (
+    <LabelWrapper
+      label={label}
+      hintText={hintText}
+      required={props.required || false}
+    >
+      <StyledTextArea
+        {...props}
+        aria-invalid={hasError || !!errorMessage || false}
+        aria-describedby={
+          !!props.id && !!errorMessage ? `${props.id}-error` : undefined
+        }
+        $hasError={hasError || !!errorMessage || false}
+        $resize={resize}
+        $lineCount={lineCount}
+        theme={theme}
+        ref={ref}
+        data-hj-suppress
+      />
+      {!!errorMessage && (
+        <ErrorText
+          marginTop="xxs"
+          id={props.id ? `${props.id}-error` : undefined}
+        >
+          {errorMessage}
+        </ErrorText>
+      )}
+    </LabelWrapper>
+  );
+};
 
 export default TextAreaField;

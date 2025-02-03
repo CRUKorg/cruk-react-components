@@ -1,10 +1,4 @@
-import React, {
-  type HTMLAttributes,
-  type Ref,
-  forwardRef,
-  type ElementType,
-  type LegacyRef,
-} from "react";
+import React, { type HTMLAttributes, type Ref, type ElementType } from "react";
 import { useTheme } from "styled-components";
 
 import { crukTheme as defaultTheme } from "../../themes/cruk";
@@ -48,7 +42,7 @@ export type TextProps = SpacingProps &
     ref?: Ref<HTMLElement>;
   };
 
-export const Text = forwardRef((props: TextProps, ref?: Ref<HTMLElement>) => {
+export const Text = (props: TextProps) => {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -62,6 +56,7 @@ export const Text = forwardRef((props: TextProps, ref?: Ref<HTMLElement>) => {
     textFontFamily,
     wordBreak,
     overflowWrap,
+    ref,
     ...rest
   } = props;
 
@@ -78,11 +73,9 @@ export const Text = forwardRef((props: TextProps, ref?: Ref<HTMLElement>) => {
       $overflowWrap={overflowWrap}
       {...withInternalSpacingProps}
       theme={theme}
-      ref={ref as LegacyRef<HTMLParagraphElement>}
+      ref={ref as Ref<HTMLParagraphElement>}
     />
   );
-});
-
-Text.displayName = "Text";
+};
 
 export default Text;
