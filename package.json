@@ -25,7 +25,7 @@
     "node-test-watch": "node --import tsx --test-reporter=spec --watch --test 'src/utils/__tests__/testHelpers.test.ts'",
     "test": "npm run node-test && npm run cypress-headless",
     "clean": "rm -rf node_modules/",
-    "release": "node release.js",
+    "release": "release-it",
     "rollup:build-lib": "npm run clean-lib && rollup --config",
     "prettier": "prettier --write '**/*.{ts,tsx}'",
     "prettier:test": "prettier --check src/**/*.{ts,tsx}",
