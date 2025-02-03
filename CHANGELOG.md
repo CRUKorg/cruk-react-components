@@ -11,15 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Changed badge API to grow by default but allow force circle/square [#971](https://github.com/CRUKorg/cruk-react-components/issues/971)
 
+### Fixed
+
+- Carousel Previous and Next buttons not working when component imported [#903](https://github.com/CRUKorg/cruk-react-components/issues/903)
+
 ## [5.0.6] - 2024-10-29
 
 ### Added
 
 - Added option to animate in modals [#940](https://github.com/CRUKorg/cruk-react-components/issues/940)
-
-### Fixed
-
-- Carousel Previous and Next buttons not working when component imported [#903](https://github.com/CRUKorg/cruk-react-components/issues/903)
 
 ## [5.0.5] - 2024-07-30
 
