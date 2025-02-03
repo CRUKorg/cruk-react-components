@@ -49,6 +49,8 @@ describe("Modal", () => {
     );
     cy.injectAxe();
     cy.contains("Show me a modal").click();
+    cy.wait(1000);
+    cy.contains("Modal title").should("be.visible");
     cy.checkA11y("body", {
       rules: {
         tabindex: { enabled: false }, // TODO this is disabled because this is how focus lock works and this IS what we want for a11y.
@@ -63,6 +65,9 @@ describe("Modal", () => {
       </TestThemeWrapper>,
     );
     cy.injectAxe();
+    cy.contains("Show me a modal").click();
+    cy.wait(1000);
+    cy.contains("Modal title").should("be.visible");
     cy.checkA11y("body", {
       rules: {
         tabindex: { enabled: false }, // TODO this is disabled because this is how focus lock works and this IS what we want for a11y.
@@ -78,6 +83,8 @@ describe("Modal", () => {
     );
     cy.injectAxe();
     cy.contains("Show me a modal").click();
+    cy.wait(1000);
+    cy.contains("Modal title").should("be.visible");
     cy.checkA11y("body", {
       rules: {
         tabindex: { enabled: false }, // TODO this is disabled because this is how focus lock works and this IS what we want for a11y.
@@ -93,6 +100,8 @@ describe("Modal", () => {
       );
       cy.injectAxe();
       cy.contains("Show me a modal").click();
+      cy.wait(1000);
+      cy.contains("Modal title").should("be.visible");
       cy.checkA11y("body", {
         rules: {
           tabindex: { enabled: false }, // TODO this is disabled because this is how focus lock works and this IS what we want for a11y.
