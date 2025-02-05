@@ -277,17 +277,17 @@ export const SHADOWS: ShadowsType = {
 
 export const crukTheme: ThemeType = {
   name: "cruk",
-  avatar: AVATAR,
-  breakpoint: BREAKPOINT,
-  button: BUTTON,
-  tokenColors: TOKEN_COLORS,
-  colors: COLORS,
-  spacing: SPACING,
-  fontSizes: FONT_SIZES,
-  siteConfig: SITE_CONFIG,
-  typography: TYPOGRAPHY,
-  shadows: SHADOWS,
-  utilities: UTILITIES,
+  avatar: { ...AVATAR },
+  breakpoint: { ...BREAKPOINT },
+  button: { ...BUTTON },
+  tokenColors: { ...TOKEN_COLORS },
+  colors: { ...COLORS },
+  spacing: { ...SPACING },
+  fontSizes: { ...FONT_SIZES },
+  siteConfig: { ...SITE_CONFIG },
+  typography: { ...TYPOGRAPHY },
+  shadows: { ...SHADOWS },
+  utilities: { ...UTILITIES },
 };
 
 export default crukTheme;
