@@ -159,17 +159,17 @@ export const TYPOGRAPHY: TypographyType = {
 
 export const su2cTheme: ThemeType = {
   name: "su2c",
-  avatar: AVATAR,
-  breakpoint: BREAKPOINT,
-  button: BUTTON,
-  tokenColors: TOKEN_COLORS,
-  colors: COLORS,
-  spacing: SPACING,
-  fontSizes: FONT_SIZES,
-  siteConfig: SITE_CONFIG,
-  typography: TYPOGRAPHY,
-  shadows: SHADOWS,
-  utilities: UTILITIES,
+  avatar: { ...AVATAR },
+  breakpoint: { ...BREAKPOINT },
+  button: { ...BUTTON },
+  tokenColors: { ...TOKEN_COLORS },
+  colors: { ...COLORS },
+  spacing: { ...SPACING },
+  fontSizes: { ...FONT_SIZES },
+  siteConfig: { ...SITE_CONFIG },
+  typography: { ...TYPOGRAPHY },
+  shadows: { ...SHADOWS },
+  utilities: { ...UTILITIES },
 };
 
 export default su2cTheme;

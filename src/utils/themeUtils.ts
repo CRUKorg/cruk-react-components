@@ -1,4 +1,4 @@
-import { type ThemeType, type SpacingType, type ColorsType } from "src/types";
+import { type ThemeType, type SpacingType, type ColorsType } from "../types";
 
 export const themeSizeOrString = (
   spaceString: string,

@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import { mount } from "cypress/react";
 
-import { TestThemeWrapper } from "src/components/AllThemesWrapper";
+import { TestThemeWrapper } from "../AllThemesWrapper";
 import {
   su2cTheme,
   crukTheme,
