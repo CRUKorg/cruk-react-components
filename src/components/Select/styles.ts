@@ -12,7 +12,8 @@ type StyledSelectProps = {
 
 const StyledSelect = styled.select<StyledSelectProps>`
   appearance: none;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       45deg,
       ${({ theme }) => theme.colors.backgroundLight} 50%,
       ${({ theme }) => theme.colors.selectBackground} 50%

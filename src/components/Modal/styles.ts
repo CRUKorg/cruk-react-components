@@ -57,6 +57,7 @@ export const Content = styled(Box)<{
   animation-direction: normal;
   animation-timing-function: ease-in-out;
   animation-duration: 0.2s;
+  transform-origin: top center;
   animation-name: ${({ $isAnimated }) => ($isAnimated ? grow : "none")};
 `;
 

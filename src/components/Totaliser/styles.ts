@@ -49,6 +49,7 @@ export const Total = styled.p<{
   line-height: 3rem;
   font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
   text-transform: ${({ theme }) => theme.typography.headerTextTransform};
+  font-weight: ${({ theme }) => theme.typography.fontWeightLabels};
 `;
 
 export const BubbleText = styled.p<{ theme: ThemeType }>`
@@ -59,6 +60,7 @@ export const BubbleText = styled.p<{ theme: ThemeType }>`
       typography: { headerTextTransform },
     },
   }) => headerTextTransform};
+  font-weight: ${({ theme }) => theme.typography.fontWeightLabels};
 `;
 
 export const GiftAid = styled.p<{ theme: ThemeType }>`
@@ -69,6 +71,7 @@ export const GiftAid = styled.p<{ theme: ThemeType }>`
       typography: { headerTextTransform },
     },
   }) => headerTextTransform};
+  font-weight: ${({ theme }) => theme.typography.fontWeightLabels};
 `;
 
 /* span not a div so that we don't end up with two speech bubble arrows from ProgressBarWrapper */

@@ -134,25 +134,31 @@ export const TYPOGRAPHY: TypographyType = {
   ...defaultTheme.typography,
   customFonts: [
     {
-      family: "itc_avant_garde_pro",
+      family: "ITCAvantGarde",
       urlWoff: `${SITE_CONFIG.assetPath}fonts/itc_-_itcavantgardepro-bold-webfont.woff`,
       fontWeight: 700,
     },
+    {
+      family: "ITCAvantGarde",
+      urlWoff: `${SITE_CONFIG.assetPath}fonts/ITCAvantGardeStd-Bk.woff`,
+      fontWeight: 400,
+    },
   ],
-  fontFamilyHeadings: "itc_avant_garde_pro,Arial,sans-serif",
-  fontFamilyLinks: "itc_avant_garde_pro,Arial,sans-serif",
-  fontFamilyButtons: "itc_avant_garde_pro,Arial,sans-serif",
+  fontFamilyHeadings: "ITCAvantGarde,Arial,sans-serif",
+  fontFamilyLinks: "ITCAvantGarde,Arial,sans-serif",
+  fontFamilyButtons: "ITCAvantGarde,Arial,sans-serif",
   fontFamilyBase:
-    "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
+    "ITCAvantGarde, Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
   fontFamilyLabel:
-    "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
+    "ITCAvantGarde, Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif",
   linkTextDecoration: "none",
   headerLineHeight: "1.5em",
   headerTextTransform: "uppercase",
   fontWeightBase: 400,
   fontWeightLinks: 700,
   fontWeightButtons: 700,
-  fontWeightLabels: 600,
+  fontWeightLabels: 700,
+  fontWeightHeadings: 700,
   LinkPrimaryTextDecoration: "none",
   LinkLetterSpacing: "0px",
 };
