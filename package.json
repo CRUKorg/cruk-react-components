@@ -100,7 +100,7 @@
     "storybook": "^8.5.3",
     "ts-loader": "9.5.1",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.20.0",
+    "typescript-eslint": "^8.31.1",
     "webpack": "^5.53.0",
     "webpack-cli": "5.1.4",
     "webpack-dev-server": "^4.7.3"
@@ -111,13 +111,13 @@
     "styled-components": "^6.1.11"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-common-types": "^6.4.2",
-    "@fortawesome/free-brands-svg-icons": "^6.4.2",
-    "@fortawesome/free-solid-svg-icons": "^6.4.2",
-    "react-focus-lock": "^2",
+    "@fortawesome/fontawesome-common-types": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "react-focus-lock": "^2.13.6",
     "react-intersection-observer": "^9.1.0",
     "react-is": "^18.2.0",
-    "release-it": "^17.10.0",
+    "release-it": "^19",
     "styled-components": "^6.1.11"
   }
 }
