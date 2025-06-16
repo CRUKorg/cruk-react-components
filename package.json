@@ -58,7 +58,7 @@
     "@mdx-js/loader": "^3",
     "@mdx-js/mdx": "^3",
     "@mdx-js/react": "^3",
-    "@rollup/plugin-commonjs": "^26.0.0",
+    "@rollup/plugin-commonjs": "^28.0.5",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
