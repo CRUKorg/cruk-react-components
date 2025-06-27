@@ -115,34 +115,26 @@ However this isn't as well maintained as the storybook stories and will soon be 
 ## Testing
 
 Node: Unit testing,
-Cypress: Component function, accessibility
+Playwright: Component function, accessibility
 Chromatic: Image snapshot comparison service, this happens in CI, people are given access to this service via their Github login.
 
-Run all tests Unit and Cypress
+Run all tests Unit and Playwright
 
 ```sh
  npm run test
 ```
 
-Run Cypress interactive testing suite (functional and accessibility tests)
+Run Playright interactive testing suite (functional and accessibility tests) you might need to run `npx playwright install` the first time you use Playwright
 
 ```sh
-npx cypress open --component
-```
-
-Run Cypress headlessly including image snapshots, docker desktop app will need to be running in the background for any headless activities
-
-```sh
-npm run cypress-headless
+test-ct:ui
 ```
 
 ## Maintaining
 
 ### Dependencies
 
-If you update cypress version make sure you update it in the package.json and in the in docker compose file.
-
-It is also advices that if you make change to storybook you try and run it before merging and if you make changes to roll up and it's plug ins you try and run
+If you make change to storybook please try and run it locally before merging and if you make changes to roll up and it's plug ins you try and run
 
 ```bash
 npm run rollup:build-lib

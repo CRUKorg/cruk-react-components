@@ -11,7 +11,6 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "lib": ["dom", "es2015", "es2016"],
-    "types": ["cypress", "cypress-axe", "cypress-real-events"],
     "baseUrl": "./",
     "allowJs": false, //Only TS and TSX will be compiled.
     "noImplicitAny": true, // Setting to true means if no type given it will not automatically assign ANY.
@@ -25,8 +24,7 @@
     "rollup.config.mjs",
     "src/docs/index.jsx",
     "eslint.config.mjs",
-    "babel.config.cjs",
-    "cypress.config.mjs"
+    "babel.config.cjs"
   ],
   "typeRoots": ["./node_modules/@types", "*.d.ts"]
 }
