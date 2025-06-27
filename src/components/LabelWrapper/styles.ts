@@ -14,7 +14,7 @@ export const Label = styled.label<{ theme: ThemeType }>`
   font-weight: ${({ theme }) => theme.typography.fontWeightLabels};
 `;
 
-export const RequiredText = styled.span<{ theme: ThemeType }>`
+export const RequiredIndicationText = styled.span<{ theme: ThemeType }>`
   font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
   font-weight: ${({ theme }) => theme.typography.fontWeightBase};
 `;
