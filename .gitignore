@@ -14,6 +14,10 @@ build-storybook.log
 /cypress/snapshots/**/__diff_output__
 /cypress/snapshots/**/**(failed).snap.png
 /cypress/fixtures/example.json 
+playwright-report
+/playwright-results.json
+/playwright/.cache  
+/test-results
 
 .idea
 .env

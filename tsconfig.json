@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "es6",
+    "module": "esnext",
     "jsx": "react",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true, // This is needed for the React components.
@@ -11,7 +11,6 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "lib": ["dom", "es2015", "es2016"],
-    "types": ["cypress", "cypress-axe", "cypress-real-events"],
     "baseUrl": "./",
     "allowJs": false, //Only TS and TSX will be compiled.
     "noImplicitAny": true, // Setting to true means if no type given it will not automatically assign ANY.
@@ -22,11 +21,13 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
+    ".storybook/",
+
     "rollup.config.mjs",
     "src/docs/index.jsx",
     "eslint.config.mjs",
     "babel.config.cjs",
-    "cypress.config.mjs"
+    "vite.config.ts"
   ],
   "typeRoots": ["./node_modules/@types", "*.d.ts"]
 }

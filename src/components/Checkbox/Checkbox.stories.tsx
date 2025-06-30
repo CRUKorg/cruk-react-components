@@ -1,5 +1,5 @@
 import React from "react";
-import { type StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react-vite";
 
 import { Box, type ThemeType } from "..";
 import CheckBox, { type CheckBoxProps } from ".";

@@ -7,16 +7,16 @@ Links are for wrapping plain text or elements to create clickable link. This is 
 ```.jsx
   <>
     <div>
-      <Link href="http://www.google.com">Default link</Link>
+      <Link href="https://www.google.com">Default link</Link>
     </div>
     <div>
-      <Link href="http://www.google.com" appearance="primary">Primary link</Link>
+      <Link href="https://www.google.com" appearance="primary">Primary link</Link>
     </div>
     <div>
-      <Link href="http://www.google.com" appearance="secondary">secondary link</Link>
+      <Link href="https://www.google.com" appearance="secondary">secondary link</Link>
     </div>
     <div>
-    <Link href="http://www.google.com" aria-label="google homepage"><img style={{width: '80px', height: '30px'}} alt="" src='https://rcl.assets.cancerresearchuk.org/images/logos/cruk-160.png'/></Link>
+    <Link href="https://www.google.com" aria-label="google homepage"><img style={{width: '80px', height: '30px'}} alt="" src='https://rcl.assets.cancerresearchuk.org/images/logos/cruk-160.png'/></Link>
     </div>
   </>
 ```

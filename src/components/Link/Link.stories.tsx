@@ -1,5 +1,5 @@
 import React from "react";
-import { type StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react-vite";
 
 import Link from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
@@ -10,7 +10,7 @@ export default {
   component: Link,
   args: {
     appearance: undefined,
-    href: "http://www.google.com",
+    href: "https://www.google.com",
     children: "Default link",
     rel: undefined,
     target: undefined,

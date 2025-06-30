@@ -1,8 +1,5 @@
 import React from "react";
-import type { Preview } from "@storybook/react";
-
-import { crukTheme, GlobalStyle, Text } from "../src/components";
-
+import type { Preview } from "@storybook/react-vite";
 import {
   Title,
   Heading,
@@ -13,8 +10,10 @@ import {
   Controls,
   // PRIMARY_STORY,
   Source,
-} from "@storybook/addon-docs";
+} from "@storybook/addon-docs/blocks";
 import { ThemeProvider } from "styled-components";
+
+import { crukTheme, GlobalStyle, Text } from "../src/components";
 
 const preview: Preview = {
   parameters: {

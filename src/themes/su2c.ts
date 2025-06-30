@@ -64,6 +64,7 @@ export const COLORS: ColorsType = {
   textHeaderDefault: TOKEN_COLORS.su2cBlack,
 
   textOnPrimary: TOKEN_COLORS.su2cBlack,
+  textOnSecondary: TOKEN_COLORS.su2cBlack,
 
   avatarBorder: TOKEN_COLORS.su2cBlack,
   progressBar: TOKEN_COLORS.su2cOrange5,
@@ -91,7 +92,7 @@ export const COLORS: ColorsType = {
   collapseHeaderColor: TOKEN_COLORS.su2cOrange5,
   check: TOKEN_COLORS.su2cBlack,
 
-  headerTaglineText: TOKEN_COLORS.su2cOrange5,
+  headerTaglineText: TOKEN_COLORS.su2cBlack,
 
   buttonPrimaryBackground: TOKEN_COLORS.su2cOrange5,
   buttonPrimaryText: TOKEN_COLORS.su2cBlack,
