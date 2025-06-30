@@ -1,50 +1,16 @@
 import React from "react";
 import { test, expect } from "@playwright/experimental-ct-react";
 
-import { Modal } from ".";
 import { TestModalWithState } from "./TestModalWithState";
-import { Button, crukTheme, Heading } from "..";
+import { TestModalWithContent } from "./TestModalWithContent";
+import { crukTheme } from "..";
 
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 import { TestThemeWrapper } from "../AllThemesWrapper";
 
-function component() {
-  return (
-    <>
-      <Modal
-        closeFunction={() => {
-          // nothing
-        }}
-        showCloseButton
-        modalName="test"
-      >
-        <Heading h2 marginTop="none" textSize="xl">
-          Modal title
-        </Heading>
-        <p>Some really important information</p>
-        <Button
-          onClick={() => {
-            // nothing
-          }}
-        >
-          Get me out of here
-        </Button>
-        <Button
-          appearance="primary"
-          onClick={() => {
-            // nothing
-          }}
-        >
-          Go for it 😃
-        </Button>
-      </Modal>
-    </>
-  );
-}
-
 testAccessibilityOnAllThemes({
   componentName: "Modal",
-  component: component,
+  component: TestModalWithContent,
 });
 
 test("should open modal, focus trap inside the modal", async ({
