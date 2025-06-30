@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "es6",
+    "module": "esnext",
     "jsx": "react",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true, // This is needed for the React components.
@@ -24,7 +24,9 @@
     "rollup.config.mjs",
     "src/docs/index.jsx",
     "eslint.config.mjs",
-    "babel.config.cjs"
+    "babel.config.cjs",
+    ".storybook/main.ts",
+    "vite.config.ts"
   ],
   "typeRoots": ["./node_modules/@types", "*.d.ts"]
 }

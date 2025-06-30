@@ -90,19 +90,28 @@ export const StyledLabel = styled.label<{
 
           ${CheckWrapper} ${Check} {
             border: solid ${BORDER_THICKNESS}
-              ${$disabled
+              ${
+                $disabled
+                  ? theme.colors.disabled
+                  : $hasError
+                    ? theme.colors.danger
+                    : $checked
+                      ? theme.colors.check
+                      : theme.colors.inputBorder
+              };
+          }
+
+          &:hover ${CheckWrapper} ${Check} {
+            border: solid ${BORDER_THICKNESS}
+            ${
+              $disabled
                 ? theme.colors.disabled
                 : $hasError
                   ? theme.colors.danger
                   : $checked
                     ? theme.colors.check
-                    : theme.colors.inputBorder};
-          }
-
-          &:hover ${CheckWrapper} ${Check} {
-            border: solid ${BORDER_THICKNESS}
-              ${$disabled ? theme.colors.disabled : theme.colours};
-          }
+                    : theme.colors.inputBorder
+            }
         `}
 `;
 

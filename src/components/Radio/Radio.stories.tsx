@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { type StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react-vite";
 import { useTheme } from "styled-components";
 
 import { Box, type ThemeType } from "..";

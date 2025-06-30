@@ -6,4 +6,10 @@
 /public
 /storybook-static
 
+# generated
+/dist
+/.cache
+/.storybook-out
+/test-results
+
 .idea

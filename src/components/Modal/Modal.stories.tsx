@@ -1,5 +1,5 @@
 import React from "react";
-import { type StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react-vite";
 
 import { Button, Heading, Text } from "..";
 import Modal, { type ModalProps } from ".";
