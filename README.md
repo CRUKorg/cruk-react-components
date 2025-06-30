@@ -103,15 +103,6 @@ you may need to run
 npm run build-storybook
 ```
 
-The docsite still works if you run
-
-```sh
-npm run dev
-```
-
-Then view the docs site at: http://127.0.0.1:8080/
-However this isn't as well maintained as the storybook stories and will soon be deprecated
-
 ## Testing
 
 Node: Unit testing,
