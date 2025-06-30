@@ -14,10 +14,6 @@
     "lib"
   ],
   "scripts": {
-    "dev": "NODE_ENV=development npm i && npm run start",
-    "start": "webpack server --config webpack.config.docs.js --mode development",
-    "clean-lib": "rm -rf ./lib",
-    "preanalyze": "npm run build-lib",
     "analyze": "source-map-explorer lib/index.js",
     "test-ct": "playwright test -c playwright-ct.config.ts",
     "test-ct:debug": "playwright test -c playwright-ct.config.ts --debug --project=chromium",
@@ -25,8 +21,8 @@
     "node-test": " node --import tsx --test-reporter=spec --test src/utils/__tests__/testHelpers.test.ts",
     "node-test-watch": "node --import tsx --test-reporter=spec --watch --test src/utils/__tests__/testHelpers.test.ts",
     "test": "npm run node-test && npm run test-ct",
-    "clean": "rm -rf node_modules/",
     "release": "release-it",
+    "clean-lib": "rm -rf ./lib",
     "rollup:build-lib": "npm run clean-lib && rollup --config",
     "prettier": "prettier --write '**/*.{ts,tsx}'",
     "prettier:test": "prettier --check src/**/*.{ts,tsx}",

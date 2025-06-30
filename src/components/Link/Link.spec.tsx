@@ -9,31 +9,31 @@ function component() {
   return (
     <>
       <div>
-        <Link href="http://www.google.com">Default link</Link>
+        <Link href="https://www.google.com">Default link</Link>
       </div>
       <div>
-        <Link href="http://www.google.com" appearance="primary">
+        <Link href="https://www.google.com" appearance="primary">
           Primary link
         </Link>
       </div>
       <div>
-        <Link href="http://www.google.com" appearance="secondary">
+        <Link href="https://www.google.com" appearance="secondary">
           secondary link
         </Link>
       </div>
       <div>
-        <Link href="http://www.google.com" target="_blank">
+        <Link href="https://www.google.com" target="_blank">
           Link opens new page
         </Link>
       </div>
       <div>
-        <Link href="http://www.google.com" rel="noopener noreferrer nofollow">
+        <Link href="https://www.google.com" rel="noopener noreferrer nofollow">
           External link that that want web crawlers wont follow
         </Link>
       </div>
       <div>
         <Link
-          href="http://www.google.com"
+          href="https://www.google.com"
           textColor="secondary"
           textHoverColor="#004400"
         >
@@ -41,12 +41,12 @@ function component() {
         </Link>
       </div>
       <div>
-        <Link href="http://www.google.com" textSize="xl">
+        <Link href="https://www.google.com" textSize="xl">
           Link with extra large text
         </Link>
       </div>
       <div>
-        <Link href="http://www.google.com" aria-label="google homepage">
+        <Link href="https://www.google.com" aria-label="google homepage">
           <img
             style={{ width: "80px", height: "30px" }}
             alt=""

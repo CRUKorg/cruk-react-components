@@ -10,7 +10,7 @@ export default {
   component: Link,
   args: {
     appearance: undefined,
-    href: "http://www.google.com",
+    href: "https://www.google.com",
     children: "Default link",
     rel: undefined,
     target: undefined,
