@@ -99,7 +99,7 @@ export function Header({
       <StyledHeader>
         <HeaderStickyPlaceHolder>
           <HeaderStickyContainer
-            data-cy="header-sticky-container"
+            data-testid="header-sticky-container"
             $isSmall={isSmall}
             $isSticky={isSticky}
           >

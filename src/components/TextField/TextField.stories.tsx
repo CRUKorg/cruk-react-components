@@ -1,5 +1,5 @@
 import React from "react";
-import { type StoryObj } from "@storybook/react";
+import { type StoryObj } from "@storybook/react-vite";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import Button from "../Button";
