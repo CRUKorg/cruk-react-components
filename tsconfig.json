@@ -21,11 +21,12 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
+    ".storybook/",
+
     "rollup.config.mjs",
     "src/docs/index.jsx",
     "eslint.config.mjs",
     "babel.config.cjs",
-    ".storybook/main.ts",
     "vite.config.ts"
   ],
   "typeRoots": ["./node_modules/@types", "*.d.ts"]
