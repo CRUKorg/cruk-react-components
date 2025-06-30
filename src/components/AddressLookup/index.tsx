@@ -122,7 +122,7 @@ export const AddressLookup = ({
       .then((data: { Items: AddressOptionsType[] }) => {
         // Occasionally get the error "The query didn't respond fast enough, it may be too complex."
         // returned with a 200 response. Example query "n17 6t"
-        if (data.Items.length && data.Items[0].Error)
+        if (data?.Items?.length > 0 && data.Items[0].Error)
           throw new Error("Something went wrong please try again");
         setAddressOptions(data.Items || []);
         return null;

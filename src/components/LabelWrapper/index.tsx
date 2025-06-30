@@ -11,7 +11,7 @@ type LabelWrapperProps = LabelHTMLAttributes<HTMLLabelElement> & {
   label: string;
   /** hint text or react element in it's place */
   hintText?: ReactNode;
-  /** when not required (optional) appears in label */
+  /** if field is required, when not required (optional) appears in label */
   required?: boolean;
   /** flag to stop (optional) appearing in label, useful for compound form components like DateInput */
   hideRequiredIndicationInLabel?: boolean;
