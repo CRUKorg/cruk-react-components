@@ -15,7 +15,7 @@ export type LegendWrapperProps = HTMLAttributes<HTMLLegendElement> & {
   errorMessage?: string;
   /** flag for error styling */
   hasError?: boolean;
-  /** when required (required) appears in legend */
+  /** if field is required, when not required (optional) appears in legend */
   required?: boolean;
   /** hint text */
   hintText?: ReactNode;
@@ -57,7 +57,7 @@ export function LegendWrapper({
         {legendText && (
           <legend {...restOfHTMLAttributes}>
             <LegendSpan $hasHintText={!!hintText}>
-              {legendText} {required && <span>(required)</span>}
+              {legendText} {!required && <span>(optional)</span>}
             </LegendSpan>
             {hintTextElement}
           </legend>

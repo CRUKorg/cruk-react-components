@@ -79,13 +79,13 @@ export function DateField({
         textFontFamily={typedTheme.typography.fontFamilyLabel}
       >
         {label}
-        {!!required && (
+        {!required && (
           <span
             style={{
               fontWeight: typedTheme.typography.fontWeightBase,
             }}
           >
-            {` (required)`}
+            {` (optional)`}
           </span>
         )}
       </Text>
@@ -96,7 +96,7 @@ export function DateField({
           type="text"
           name={dayName}
           required={!!required}
-          hideRequiredInLabel
+          hideRequiredIndicationInLabel
           maxLength={2}
           autoComplete="bday-day"
           pattern="[0-9]*"
@@ -115,7 +115,7 @@ export function DateField({
           type="text"
           name={monthName}
           required={!!required}
-          hideRequiredInLabel
+          hideRequiredIndicationInLabel
           maxLength={2}
           autoComplete="bday-month"
           pattern="[0-9]*"
@@ -134,7 +134,7 @@ export function DateField({
           type="text"
           name={yearName}
           required={!!required}
-          hideRequiredInLabel
+          hideRequiredIndicationInLabel
           maxLength={4}
           autoComplete="bday-year"
           pattern="[0-9]*"

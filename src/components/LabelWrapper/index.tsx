@@ -4,17 +4,17 @@ import { useTheme, ThemeProvider } from "styled-components";
 import { Text } from "../Text";
 import { crukTheme as defaultTheme } from "../../themes/cruk";
 
-import { LabelText, Label, RequiredText } from "./styles";
+import { LabelText, Label, RequiredIndicationText } from "./styles";
 
 type LabelWrapperProps = LabelHTMLAttributes<HTMLLabelElement> & {
   /** label text */
   label: string;
   /** hint text or react element in it's place */
   hintText?: ReactNode;
-  /** when required (required) appears in label */
+  /** if field is required, when not required (optional) appears in label */
   required?: boolean;
-  /** flag to stop (required) appearing in label, useful for compound form components like DateInput */
-  hideRequiredInLabel?: boolean;
+  /** flag to stop (optional) appearing in label, useful for compound form components like DateInput */
+  hideRequiredIndicationInLabel?: boolean;
   children?: ReactNode;
 };
 
@@ -22,7 +22,7 @@ export function LabelWrapper({
   label,
   hintText,
   required = false,
-  hideRequiredInLabel = false,
+  hideRequiredIndicationInLabel = false,
   children,
   ...otherHTMLLabelProps
 }: LabelWrapperProps) {
@@ -47,8 +47,8 @@ export function LabelWrapper({
         <Label {...otherHTMLLabelProps}>
           <LabelText $hasHintText={!!hintText}>
             {label}
-            {required && !hideRequiredInLabel && (
-              <RequiredText>{` (required)`}</RequiredText>
+            {!required && !hideRequiredIndicationInLabel && (
+              <RequiredIndicationText>{` (optional)`}</RequiredIndicationText>
             )}
           </LabelText>
           {hintTextElement}

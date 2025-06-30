@@ -20,8 +20,8 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   label: string;
   /** hind text or custom component */
   hintText?: ReactNode;
-  /** flag to stop (required) appearing in label, useful for compound form components like DateInput */
-  hideRequiredInLabel?: boolean;
+  /** flag to stop (optional) appearing in label, useful for compound form components like DateInput */
+  hideRequiredIndicationInLabel?: boolean;
   /** react DOM reference of object used scrolling to it with errors etc */
   ref?: Ref<HTMLSelectElement>;
 };
@@ -36,7 +36,7 @@ export const Select = ({
   required,
   label,
   hintText,
-  hideRequiredInLabel,
+  hideRequiredIndicationInLabel,
   ref,
   ...props
 }: SelectProps) => {
@@ -50,7 +50,7 @@ export const Select = ({
     <LabelWrapper
       label={label}
       hintText={hintText}
-      required={(!hideRequiredInLabel && required) || false}
+      required={(!hideRequiredIndicationInLabel && required) || false}
     >
       <StyledSelect
         {...props}

@@ -41,8 +41,8 @@ export type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   hintText?: ReactNode;
   /** label text */
   label: string;
-  /** flag to stop (required) appearing in label, useful for compound form components like DateInput */
-  hideRequiredInLabel?: boolean;
+  /** flag to stop (optional) appearing in label, useful for compound form components like DateInput */
+  hideRequiredIndicationInLabel?: boolean;
   /** react reference to the DOM element sometime used to scroll to or set focus after an error */
   ref?: Ref<HTMLInputElement>;
 };
@@ -62,7 +62,7 @@ export const TextField = ({
   isValidVisible,
   isInvalidVisible,
   label,
-  hideRequiredInLabel,
+  hideRequiredIndicationInLabel,
   ref,
   ...props
 }: TextFieldProps) => {
@@ -113,7 +113,7 @@ export const TextField = ({
       label={label}
       hintText={hintText}
       required={props.required || false}
-      hideRequiredInLabel={hideRequiredInLabel}
+      hideRequiredIndicationInLabel={hideRequiredIndicationInLabel}
     >
       {!!extraTop && <Extra theme={theme}>{extraTop}</Extra>}
       {!!extraRight || !!extraLeft ? (
