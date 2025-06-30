@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated webpack/babel to vite/swc, also updated all tests from Cypress component tests to Playwright component tests [#1028](https://github.com/CRUKorg/cruk-react-components/1028)
+- Now showing (optional) for optional fields instead of (required) for required fields [#1027](https://github.com/CRUKorg/cruk-react-components/1027)
 
 ## [6.0.3] - 2025-05-06
 
