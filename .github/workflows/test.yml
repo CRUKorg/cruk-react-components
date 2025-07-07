@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Setup Node
-        uses: actions/setup-node@v4.2.0
+        uses: actions/setup-node@v4.4.0
         with:
           node-version-file: ".nvmrc"
           cache: "npm"
@@ -47,7 +47,7 @@ jobs:
       - name: Checkout cruk-react-components
         uses: actions/checkout@v4
       - name: Setup Node
-        uses: actions/setup-node@v4.2.0
+        uses: actions/setup-node@v4.4.0
         with:
           node-version-file: ".nvmrc"
           cache: "npm"
@@ -62,7 +62,7 @@ jobs:
       - name: Checkout cruk-react-components
         uses: actions/checkout@v4
       - name: Setup Node
-        uses: actions/setup-node@v4.2.0
+        uses: actions/setup-node@v4.4.0
         with:
           node-version-file: ".nvmrc"
           cache: "npm"
@@ -79,7 +79,7 @@ jobs:
         with:
           fetch-depth: 0 # 👈 Required to retrieve git history
       - name: Setup Node
-        uses: actions/setup-node@v4.2.0
+        uses: actions/setup-node@v4.4.0
         with:
           node-version-file: ".nvmrc"
           cache: "npm"
