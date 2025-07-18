@@ -1,6 +1,6 @@
 {
   "name": "@cruk/cruk-react-components",
-  "version": "6.1.0",
+  "version": "6.1.1",
   "description": "React components implementing CRUK, RFL, SU2C & Bowelbabe designs",
   "license": "MIT",
   "publishConfig": {
@@ -8,7 +8,7 @@
   },
   "module": "lib/src/components/index.js",
   "jsnext:main": "lib/src/components/index.js",
-  "types": "lib/components/index.d.ts",
+  "types": "lib/src/components/index.d.ts",
   "sideEffects": false,
   "files": [
     "lib"
