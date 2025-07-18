@@ -5,31 +5,37 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.1.1] - 2025-07-18
+
+### Fixed
+
+- Fix missing types on export [#1042](https://github.com/CRUKorg/cruk-react-components/issues/1042)
+
 ## [6.1.0] - 2025-06-30
 
 ### Changed
 
-- Updated webpack/babel to vite/swc, also updated all tests from Cypress component tests to Playwright component tests [#1028](https://github.com/CRUKorg/cruk-react-components/1028)
-- Now showing (optional) for optional fields instead of (required) for required fields [#1027](https://github.com/CRUKorg/cruk-react-components/1027)
+- Updated webpack/babel to vite/swc, also updated all tests from Cypress component tests to Playwright component tests [#1028](https://github.com/CRUKorg/cruk-react-components/issues/1028)
+- Now showing (optional) for optional fields instead of (required) for required fields [#1027](https://github.com/CRUKorg/cruk-react-components/issues/1027)
 
 ## [6.0.3] - 2025-05-06
 
 ### Fixes
 
-- SU2C body font updated [#1005](https://github.com/CRUKorg/cruk-react-components/1005)
+- SU2C body font updated [#1005](https://github.com/CRUKorg/cruk-react-components/issues/1005)
 - When Modal open animates, set transform origin to the top, so scroll position starts are the top not the middle.
 
 ## [6.0.2] - 2025-02-05
 
 ### Fixes
 
-- Theme objects in lib export seem to be missing sections [#987](https://github.com/CRUKorg/cruk-react-components/987)
+- Theme objects in lib export seem to be missing sections [#987](https://github.com/CRUKorg/cruk-react-components/issues/987)
 
 ## [6.0.1] - 2025-02-03
 
 ### Fixes
 
-- reverting tsconfig outputs [#985](https://github.com/CRUKorg/cruk-react-components/985)
+- reverting tsconfig outputs [#985](https://github.com/CRUKorg/cruk-react-components/issues/985)
 
 ## [6.0.0] - 2025-02-03
 
