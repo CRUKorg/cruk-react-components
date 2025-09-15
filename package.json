@@ -96,6 +96,6 @@
     "react-intersection-observer": "^9.1.0",
     "react-is": "^19",
     "styled-components": "^6.1.11",
-    "vite": "^6.0.0"
+    "vite": "^7.1.5"
   }
 }
