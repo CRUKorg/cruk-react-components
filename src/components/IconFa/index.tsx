@@ -20,7 +20,7 @@ export type IconFaProps = {
  *
  * This is an svg icon wrapper where a font awesome icon definition can be passed in a long with colour and size
  * */
-export function IconFa({ faIcon, color, size = "1.1rem" }: IconFaProps) {
+export function IconFa({ faIcon, color, size = "1rem" }: IconFaProps) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,

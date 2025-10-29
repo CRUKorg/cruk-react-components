@@ -5,7 +5,7 @@ import legacy from "@vitejs/plugin-legacy";
 export default defineConfig(({ mode }) => ({
   plugins: [
     react({ plugins: [["@swc/plugin-styled-components", {}]] }),
-    legacy(),
+    legacy({ targets: ["defaults", "not IE 11"] }),
   ],
   define: {
     "process.env.NODE_ENV": `'${mode || "production"}'`, // browser throws an error about process not defined on determineTheme.ts

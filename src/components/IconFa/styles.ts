@@ -7,9 +7,8 @@ export const StyledIcon = styled.svg<{
   $size: string;
 }>`
   display: inline-block;
-  height: ${({ $size }) => $size};
-  margin-top: -0.2em;
   vertical-align: middle;
+  height: ${({ $size }) => $size};
   width: ${({ $size }) => $size};
   path {
     fill: ${({ $color }) => $color};

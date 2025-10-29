@@ -56,13 +56,13 @@ export const CarouselCardInner = styled.div<{
 export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
+  font-size: 1em;
 `;
 
 export const VerticalAlign = styled.span`
   display: block;
   margin: auto;
-  height: 2rem;
-  line-height: 1.75rem;
+  height: 1.25em; // should be same size a icon size
 `;
 
 export const CarouselButton = styled.button<{

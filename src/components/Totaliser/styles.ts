@@ -33,7 +33,7 @@ export const ProgressBarWrapper = styled.div<{
           content: "\\25bc";
           color: ${theme.colors.totaliserBubbleColor};
           position: absolute;
-          top: -30px;
+          top: -36px;
           right: -15px;
           font-size: 32px;
         }

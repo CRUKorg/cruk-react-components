@@ -3,7 +3,7 @@
     "target": "es5",
     "module": "esnext",
     "jsx": "react",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true, // This is needed for the React components.
     "strict": true,
     "declaration": true,
@@ -21,8 +21,8 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    ".storybook/",
-
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx",
     "rollup.config.mjs",
     "src/docs/index.jsx",
     "eslint.config.mjs",
