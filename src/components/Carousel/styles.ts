@@ -61,8 +61,6 @@ export const ButtonWrapper = styled.div`
 export const VerticalAlign = styled.span`
   display: block;
   margin: auto;
-  height: 2rem;
-  line-height: 1.75rem;
 `;
 
 export const CarouselButton = styled.button<{
