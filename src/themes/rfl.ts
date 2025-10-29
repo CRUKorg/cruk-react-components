@@ -21,7 +21,7 @@ export const UTILITIES: UtilitiesType = {
 
 export const SITE_CONFIG: SiteConfigType = {
   ...defaultTheme.siteConfig,
-  logoSrc: "https://rcl.assets.cancerresearchuk.org/images/logos/rfl-sl.svg",
+  logoSrc: "https://rcl.assets.cancerresearchuk.org/images/logos/rfl.svg",
 };
 
 export const AVATAR: AvatarType = {
