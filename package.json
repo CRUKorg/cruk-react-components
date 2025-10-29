@@ -53,7 +53,7 @@
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
-    "@storybook/addon-a11y": "^9.0.14",
+    "@storybook/addon-a11y": "^10.0.1",
     "@storybook/addon-docs": "^9.0.14",
     "@storybook/addon-links": "^10.0.1",
     "@storybook/react-vite": "^9.0.14",
