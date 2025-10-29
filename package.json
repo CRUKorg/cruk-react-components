@@ -55,7 +55,7 @@
     "@rollup/plugin-typescript": "^11.1.6",
     "@storybook/addon-a11y": "^9.0.14",
     "@storybook/addon-docs": "^9.0.14",
-    "@storybook/addon-links": "^9.0.14",
+    "@storybook/addon-links": "^10.0.1",
     "@storybook/react-vite": "^9.0.14",
     "@types/assert": "^1.5.1",
     "@types/node": "^20",
