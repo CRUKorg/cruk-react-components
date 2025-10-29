@@ -20,7 +20,14 @@ export default {
     resolve({ modulesOnly: true }),
     commonjs(),
     // typescript({ useTsconfigDeclarationDir: true }),
-    typescript(),
+    typescript({
+      exclude: [
+        "**/*.spec.tsx",
+        "playwright/**",
+        "**/*.stories.tsx",
+        ".storybook/**",
+      ],
+    }),
     terser(),
   ],
 };
