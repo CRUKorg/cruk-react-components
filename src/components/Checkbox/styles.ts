@@ -37,6 +37,7 @@ export const Check = styled.span<{
   overflow: hidden;
 
   svg {
+    vertical-align: baseline;
     path {
       transition: transform 0.25s ease;
       transform: rotateY(90deg);
