@@ -10,7 +10,6 @@
   "jsnext:main": "lib/src/components/index.js",
   "types": "lib/src/components/index.d.ts",
   "sideEffects": false,
-  "type": "module",
   "files": [
     "lib"
   ],

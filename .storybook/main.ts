@@ -1,4 +1,4 @@
-import { type StorybookConfig } from "@storybook/react-vite";
+import type { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {
   // Replace your-framework with the framework you are using, e.g. react-vite, nextjs-vite, vue3-vite, etc.
