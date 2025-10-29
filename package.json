@@ -67,7 +67,7 @@
     "eslint": "^9",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
-    "eslint-plugin-storybook": "^9.0.14",
+    "eslint-plugin-storybook": "^10.0.1",
     "prettier": "^3",
     "prop-types": "^15.8.1",
     "react": "^19",
