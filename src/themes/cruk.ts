@@ -106,6 +106,7 @@ export const COLORS: ColorsType = {
 
   textDark: TOKEN_COLORS.black,
   textLight: TOKEN_COLORS.white,
+  textMid: TOKEN_COLORS.grey_600,
   linkColor: TOKEN_COLORS.magenta_700,
   linkColorHover: TOKEN_COLORS.magenta_800,
   linkColorSecondary: TOKEN_COLORS.magenta_700,
@@ -192,6 +193,7 @@ export const COLORS: ColorsType = {
 export const SPACING: SpacingType = {
   none: "0",
   auto: "auto",
+  xxxs: "0.25rem", // 4px
   xxs: "0.5rem", // 8px
   xs: "1rem", // 16px
   s: "1.5rem", // 24px
@@ -205,6 +207,7 @@ export const FONT_SIZES: FontSizesType = {
   xs: "0.75rem", // 12px
   s: "0.875rem", // 14px
   m: "1rem", // 16px
+  ml: "1.125rem", // 18px
   l: "1.25rem", // 20px
   xl: "1.5625rem", // 25px
   xxl: "2rem", // 32px
@@ -216,12 +219,12 @@ export const TYPOGRAPHY: TypographyType = {
   customFonts: [
     {
       family: "Progress",
-      urlWoff: `${SITE_CONFIG.assetPath}fonts/Progress-Regular.woff2`,
+      urlWoff2: `${SITE_CONFIG.assetPath}fonts/Progress-Regular.woff2`,
       fontWeight: 400,
     },
     {
       family: "Progress",
-      urlWoff: `${SITE_CONFIG.assetPath}fonts/Progress-SemiBold.woff2`,
+      urlWoff2: `${SITE_CONFIG.assetPath}fonts/Progress-SemiBold.woff2`,
       fontWeight: 600,
     },
     {
@@ -231,12 +234,12 @@ export const TYPOGRAPHY: TypographyType = {
     },
     {
       family: "Poppins",
-      urlWoff: `${SITE_CONFIG.assetPath}fonts/Poppins-Regular.woff2`,
+      urlWoff2: `${SITE_CONFIG.assetPath}fonts/Poppins-Regular.woff2`,
       fontWeight: 400,
     },
     {
       family: "Poppins",
-      urlWoff: `${SITE_CONFIG.assetPath}fonts/Poppins-SemiBold.woff2`,
+      urlWoff2: `${SITE_CONFIG.assetPath}fonts/Poppins-SemiBold.woff2`,
       fontWeight: 600,
     },
     {
@@ -255,7 +258,7 @@ export const TYPOGRAPHY: TypographyType = {
   fontWeightHeadings: 400,
   fontWeightLinks: 700,
   fontWeightButtons: 400,
-  fontWeightLabels: 400,
+  fontWeightLabels: 500,
   fontWeightHeavy: 700,
   fontWeightMedium: 500,
   fontWeightNormal: 400,

@@ -3,9 +3,8 @@ import { useTheme, ThemeProvider } from "styled-components";
 
 import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { ErrorText } from "../ErrorText";
-import { Text } from "../Text";
 
-import { StyledFieldset, LegendSpan } from "./styles";
+import { StyledFieldset, LegendSpan, HintText } from "./styles";
 
 export type LegendWrapperProps = HTMLAttributes<HTMLLegendElement> & {
   children?: ReactNode;
@@ -44,7 +43,7 @@ export function LegendWrapper({
   const hintTextElement =
     !!hintText &&
     (typeof hintText === "string" || typeof hintText === "number") ? (
-      <Text as="span">{hintText}</Text>
+      <HintText>{hintText}</HintText>
     ) : (
       hintText
     );

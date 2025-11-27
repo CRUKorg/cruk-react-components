@@ -12,6 +12,15 @@ export const Label = styled.label<{ theme: ThemeType }>`
   width: 100%;
   font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
   font-weight: ${({ theme }) => theme.typography.fontWeightLabels};
+  margin-bottom: ${({ theme }) => theme.spacing.s};
+`;
+
+export const HintText = styled.span<{ theme: ThemeType }>`
+  font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
+  font-weight: ${({ theme }) => theme.typography.fontWeightBase};
+  display: block;
+  color: ${({ theme }) => theme.colors.textMid};
+  margin-bottom: ${({ theme }) => theme.spacing.xs};
 `;
 
 export const RequiredIndicationText = styled.span<{ theme: ThemeType }>`
@@ -24,5 +33,10 @@ export const LabelText = styled.span<LabelTextProp>`
   font-weight: ${({ theme }) => theme.typography.fontWeightLabels};
   display: block;
   margin-bottom: ${({ $hasHintText, theme }) =>
-    $hasHintText ? theme.spacing.xxs : theme.spacing.xs};
+    $hasHintText ? theme.spacing.xxxs : theme.spacing.xs};
+
+  // increase font size for desktop
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+    font-size: ${({ theme }) => theme.fontSizes.ml};
+  }
 `;

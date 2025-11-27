@@ -141,6 +141,11 @@ export const TYPOGRAPHY: TypographyType = {
     },
     {
       family: "ITCAvantGarde",
+      urlWoff: `${SITE_CONFIG.assetPath}fonts/ITCAvantGardePro-Demi.woff`,
+      fontWeight: 600,
+    },
+    {
+      family: "ITCAvantGarde",
       urlWoff: `${SITE_CONFIG.assetPath}fonts/ITCAvantGardeStd-Bk.woff`,
       fontWeight: 400,
     },
@@ -158,7 +163,7 @@ export const TYPOGRAPHY: TypographyType = {
   fontWeightBase: 400,
   fontWeightLinks: 700,
   fontWeightButtons: 700,
-  fontWeightLabels: 700,
+  fontWeightLabels: 600,
   fontWeightHeadings: 700,
   LinkPrimaryTextDecoration: "none",
   LinkLetterSpacing: "0px",

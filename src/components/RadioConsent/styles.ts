@@ -17,6 +17,11 @@ export const StyledRadio = styled(RadioInput)<StyleRadioWidthProp>`
   max-width: ${MAX_WIDTH};
   width: ${({ $numberOfAttributes, theme }) =>
     `calc(((100% - ${LEGEND_WIDTH}) / ${$numberOfAttributes}) - ${theme.spacing.s})`};
+
+  // increase font size for desktop
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+    font-size: ${({ theme }) => theme.fontSizes.ml};
+  }
 `;
 
 export const StyledLegend = styled.legend<{
@@ -26,6 +31,11 @@ export const StyledLegend = styled.legend<{
   display: block;
   float: left;
   font-family: ${({ theme }) => theme.typography.fontFamilyBase};
+
+  // increase font size for desktop
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+    font-size: ${({ theme }) => theme.fontSizes.ml};
+  }
 `;
 
 export const StyledFieldSet = styled.fieldset<{

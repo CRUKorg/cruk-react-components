@@ -111,6 +111,10 @@ export const StyledLabel = styled.label<{
               ${isDisabled ? theme.colors.disabled : theme.colors.check};
           }
         `}
+  // increase font size for desktop
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+    font-size: ${({ theme }) => theme.fontSizes.ml};
+  }
 `;
 
 export const VerticalAlign = styled.span<{

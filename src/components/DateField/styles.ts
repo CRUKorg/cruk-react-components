@@ -15,6 +15,17 @@ export const Fieldset = styled.fieldset`
   }
 `;
 
+export const LegendText = styled.legend<{ theme: ThemeType }>`
+  font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
+  font-weight: ${({ theme }) => theme.typography.fontWeightLabels || 500};
+  margin-bottom: ${({ theme }) => theme.spacing.xxs};
+
+  // do not increase font size of check icon at this breakpoint
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+    font-size: ${({ theme }) => theme.fontSizes.ml};
+  }
+`;
+
 export const TextAsLabel = styled(Text)<{ theme: ThemeType }>`
   font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
 `;
