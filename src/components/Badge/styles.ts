@@ -31,6 +31,9 @@ export const StyledBadge = styled.span<{
   background-color: ${({ $backgroundColor }) => $backgroundColor};
   border-color: ${({ $borderColor }) => $borderColor};
   color: ${({ $textColor }) => $textColor};
+  svg {
+    vertical-align: baseline;
+  }
 `;
 
 export default StyledBadge;
