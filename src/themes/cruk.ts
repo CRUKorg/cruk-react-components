@@ -258,7 +258,7 @@ export const TYPOGRAPHY: TypographyType = {
   fontWeightHeadings: 400,
   fontWeightLinks: 700,
   fontWeightButtons: 400,
-  fontWeightLabels: 400,
+  fontWeightLabels: 500,
   fontWeightHeavy: 700,
   fontWeightMedium: 500,
   fontWeightNormal: 400,
