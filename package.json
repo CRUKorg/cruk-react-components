@@ -63,7 +63,7 @@
     "@types/react-dom": "^19",
     "@vitejs/plugin-legacy": "^7",
     "@vitejs/plugin-react-swc": "^3.11.0",
-    "chromatic": "^11.28.2",
+    "chromatic": "^13.3.4",
     "eslint": "^9",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
