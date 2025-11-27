@@ -93,7 +93,7 @@
     "@fortawesome/free-solid-svg-icons": "^7",
     "@swc/plugin-styled-components": "^10",
     "react-focus-lock": "^2.13.6",
-    "react-intersection-observer": "^9.1.0",
+    "react-intersection-observer": "^10.0.0",
     "react-is": "^19",
     "styled-components": "^6.1.11",
     "vite": "^7",
