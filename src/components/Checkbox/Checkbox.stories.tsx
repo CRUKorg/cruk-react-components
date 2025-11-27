@@ -42,7 +42,7 @@ const FullComponentWithCheckboxes = (args: CheckBoxProps) => {
         checked={selected.indexOf("one") >= 0}
         {...args}
       />
-      <Box marginTop="s">
+      <Box>
         <CheckBox
           name={`checkbox1-${themeName}`}
           onChange={(e) => handleChange(e.target.value)}

@@ -27,7 +27,7 @@ const FullComponentWithRadios = (args: RadioProps) => {
       >
         Option one
       </Radio>
-      <Box marginTop="s">
+      <Box>
         <Radio
           name={`raidio1-${hasError ? "error" : "no-error"}-${themeName}`}
           onChange={(e) => handleChange(e.target.value)}
