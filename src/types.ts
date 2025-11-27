@@ -2,6 +2,7 @@ export type FontSizeType =
   | "xs"
   | "s"
   | "m"
+  | "ml"
   | "l"
   | "xl"
   | "xxl"
@@ -82,6 +83,7 @@ export type ColorsType = {
 
   textDark: string;
   textLight: string;
+  textMid: string;
   linkColor: string;
   linkColorHover: string;
   linkColorSecondary: string;
@@ -180,6 +182,7 @@ export type SpaceType =
 
 export type SpacingType = {
   auto: string;
+  xxxs: string;
   xxs: string;
   xs: string;
   s: string;
