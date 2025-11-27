@@ -12,7 +12,7 @@ export default {
     disabled: false,
     required: false,
     label: "TextAreaField",
-    hintText: undefined,
+    hintText: "hint text",
     resize: "horizontal",
     lineCount: 5,
     hasError: false,
