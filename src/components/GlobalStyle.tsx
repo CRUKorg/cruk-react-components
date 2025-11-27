@@ -43,6 +43,9 @@ export const GlobalStyle = withTheme(createGlobalStyle`
         -webkit-text-size-adjust: 100%;
         -moz-text-size-adjust: none;
         -ms-text-size-adjust: 100%;
+        font-feature-settings: "kern";
+        text-rendering: optimizeLegibility;
+        font-smoothing: antialiased;
       }
     `;
   }}

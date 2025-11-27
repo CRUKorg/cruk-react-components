@@ -141,6 +141,11 @@ export const TYPOGRAPHY: TypographyType = {
     },
     {
       family: "ITCAvantGarde",
+      urlWoff: `${SITE_CONFIG.assetPath}fonts/ITCAvantGardePro-Demi.woff`,
+      fontWeight: 600,
+    },
+    {
+      family: "ITCAvantGarde",
       urlWoff: `${SITE_CONFIG.assetPath}fonts/ITCAvantGardeStd-Bk.woff`,
       fontWeight: 400,
     },

@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.2.0] - 2025-10-29
+
+### Changed
+
+- Changed the input labels to match helix designs in size and colors [#1117](https://github.com/CRUKorg/cruk-react-components/issues/1104)
+
 ## [6.1.2] - 2025-10-29
 
 ### Fixes
@@ -516,7 +522,7 @@ CRUK magenta_500 from #e40074 to #e40087 to match design system
 (BREAKING CHANGES)
 
 - Renamed RadioGroup to RadioConsent to discorage people to use this pattern in other scenarios
-- The old Button variant 'tertiary' has been removed and old Button variant 'text' is now Button variant 'teriary'
+- The old Button variant 'tertiary' has been removed and old Button variant 'text' is now Button variant 'tertiary'
 - Changed avatar name prop type from ReactNode to string
 
 ### Added

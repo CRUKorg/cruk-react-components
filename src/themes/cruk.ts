@@ -219,12 +219,12 @@ export const TYPOGRAPHY: TypographyType = {
   customFonts: [
     {
       family: "Progress",
-      urlWoff: `${SITE_CONFIG.assetPath}fonts/Progress-Regular.woff2`,
+      urlWoff2: `${SITE_CONFIG.assetPath}fonts/Progress-Regular.woff2`,
       fontWeight: 400,
     },
     {
       family: "Progress",
-      urlWoff: `${SITE_CONFIG.assetPath}fonts/Progress-SemiBold.woff2`,
+      urlWoff2: `${SITE_CONFIG.assetPath}fonts/Progress-SemiBold.woff2`,
       fontWeight: 600,
     },
     {
@@ -234,12 +234,12 @@ export const TYPOGRAPHY: TypographyType = {
     },
     {
       family: "Poppins",
-      urlWoff: `${SITE_CONFIG.assetPath}fonts/Poppins-Regular.woff2`,
+      urlWoff2: `${SITE_CONFIG.assetPath}fonts/Poppins-Regular.woff2`,
       fontWeight: 400,
     },
     {
       family: "Poppins",
-      urlWoff: `${SITE_CONFIG.assetPath}fonts/Poppins-SemiBold.woff2`,
+      urlWoff2: `${SITE_CONFIG.assetPath}fonts/Poppins-SemiBold.woff2`,
       fontWeight: 600,
     },
     {
