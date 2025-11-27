@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Changed the input labels to match helix designs in size and colors [#1117](https://github.com/CRUKorg/cruk-react-components/issues/1104)
+- Changed step current dot styling so that the dot shows a block of color [#1116](https://github.com/CRUKorg/cruk-react-components/issues/1104)
 
 ## [6.1.2] - 2025-10-29
 

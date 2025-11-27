@@ -98,6 +98,7 @@ export const StepItem = styled.li<{
     css`
       ${StepBar} {
         border-color: ${theme.colors.tertiary};
+        background-color: ${theme.colors.tertiary};
       }
     `}
   ${({ $done, theme }) =>
