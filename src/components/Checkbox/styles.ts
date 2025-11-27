@@ -35,6 +35,10 @@ export const Check = styled.span<{
   z-index: 5;
   transition: border 0.25s ease;
   overflow: hidden;
+  // do not increase font size of check icon at this breakpoint
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+    font-size: ${({ theme }) => theme.fontSizes.m};
+  }
 
   svg {
     vertical-align: baseline;
@@ -62,6 +66,11 @@ export const StyledLabel = styled.label<{
   font-size: ${({ theme }) => theme.typography.fontSizeBase};
   font-family: ${({ theme }) => theme.typography.fontFamilyBase};
 
+  // increase font size for desktop
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+    font-size: ${({ theme }) => theme.fontSizes.ml};
+  }
+
   background-color: ${({ theme }) => theme.colors.backgroundLight};
   position: relative;
 
@@ -88,31 +97,26 @@ export const StyledLabel = styled.label<{
       ? null
       : css`
           min-height: 2rem;
-
           ${CheckWrapper} ${Check} {
             border: solid ${BORDER_THICKNESS}
-              ${
-                $disabled
-                  ? theme.colors.disabled
-                  : $hasError
-                    ? theme.colors.danger
-                    : $checked
-                      ? theme.colors.check
-                      : theme.colors.inputBorder
-              };
-          }
-
-          &:hover ${CheckWrapper} ${Check} {
-            border: solid ${BORDER_THICKNESS}
-            ${
-              $disabled
+              ${$disabled
                 ? theme.colors.disabled
                 : $hasError
                   ? theme.colors.danger
                   : $checked
                     ? theme.colors.check
-                    : theme.colors.inputBorder
-            }
+                    : theme.colors.inputBorder};
+          }
+          &:hover ${CheckWrapper} ${Check} {
+            border: solid ${BORDER_THICKNESS}
+              ${$disabled
+                ? theme.colors.disabled
+                : $hasError
+                  ? theme.colors.danger
+                  : $checked
+                    ? theme.colors.check
+                    : theme.colors.inputBorder};
+          }
         `}
 `;
 

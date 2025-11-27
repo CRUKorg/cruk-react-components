@@ -164,4 +164,9 @@ export const StyledInput = styled.input<StyledInputProps>`
     &:-webkit-autofill:focus {
     box-shadow: 0 0 0 3em white inset !important;
   }
+
+  // increase font size for desktop
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+    font-size: ${({ theme }) => theme.fontSizes.ml};
+  }
 `;

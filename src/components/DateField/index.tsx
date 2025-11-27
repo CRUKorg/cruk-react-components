@@ -10,6 +10,7 @@ import {
   DateTextFieldWrapper,
   LargeDateTextFieldWrapper,
   ErrorTextWrapper,
+  LegendText,
 } from "./styles";
 import { type ThemeType } from "../../types";
 
@@ -72,12 +73,7 @@ export function DateField({
   const typedTheme = theme as ThemeType;
   return (
     <Fieldset>
-      <Text
-        as="legend"
-        textWeight={typedTheme.typography.fontWeightLabels || 700}
-        marginBottom="xxs"
-        textFontFamily={typedTheme.typography.fontFamilyLabel}
-      >
+      <LegendText>
         {label}
         {!required && (
           <span
@@ -88,8 +84,10 @@ export function DateField({
             {` (optional)`}
           </span>
         )}
-      </Text>
-      {hintText && <Text>{hintText}</Text>}
+      </LegendText>
+      {hintText && (
+        <Text textColor={typedTheme.colors.textMid}>{hintText}</Text>
+      )}
       <DateTextFieldWrapper>
         <TextField
           label="Day"

@@ -41,6 +41,11 @@ const StyledTextArea = styled.textarea<StyledTextareaProps>`
           }
         `
       : null};
+
+  // increase font size for desktop
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+    font-size: ${({ theme }) => theme.fontSizes.ml};
+  }
 `;
 
 export default StyledTextArea;

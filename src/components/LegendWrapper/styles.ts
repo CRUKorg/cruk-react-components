@@ -22,9 +22,20 @@ export const LegendSpan = styled.span<{
   margin-bottom: ${({ $hasHintText, theme }) =>
     $hasHintText ? theme.spacing.xxs : 0};
 
+  // increase font size for desktop
+  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+    font-size: ${({ theme }) => theme.fontSizes.ml};
+  }
   & > * {
     font-weight: ${({ theme }) => theme.typography.fontWeightBase};
   }
+`;
+
+export const HintText = styled.span<{ theme: ThemeType }>`
+  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
+  font-weight: ${({ theme }) => theme.typography.fontWeightBase};
+  display: block;
+  color: ${({ theme }) => theme.colors.textMid};
 `;
 
 export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
