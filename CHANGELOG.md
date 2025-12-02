@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [6.2.2] - 2025-12-02
 
+### Added
+
+- Added font-smoothing to global styles [#1129](https://github.com/CRUKorg/cruk-react-components/issues/1104)
+
+## [6.2.2] - 2025-12-02
+
 ### Fixes
 
 - More fixes for radio consent to handle smaller screen widths more gracefully [#1126](https://github.com/CRUKorg/cruk-react-components/issues/1104)

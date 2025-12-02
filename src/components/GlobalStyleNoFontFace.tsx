@@ -22,6 +22,7 @@ export const GlobalStyleNoFontFace = withTheme(createGlobalStyle`
         -webkit-text-size-adjust: 100%;
         -moz-text-size-adjust: none;
         -ms-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
       }
     `;
   }}
