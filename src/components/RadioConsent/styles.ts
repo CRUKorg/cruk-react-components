@@ -24,7 +24,7 @@ export const StyledFieldSet = styled.fieldset<{
     box-sizing: border-box;
   }
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(8rem, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(8em, 100%), 0.25fr));
   position: relative;
   border: none;
   padding: 0;
@@ -36,4 +36,11 @@ export const OptionWrapper = styled.div<{
 }>`
   display: flex;
   flex-direction: row;
+  gap: ${({ theme }) => theme.spacing.m};
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0px;
+  label {
+    min-width: 0px;
+  }
 `;
