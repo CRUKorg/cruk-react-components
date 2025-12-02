@@ -2,8 +2,8 @@ import React from "react";
 import { useTheme, ThemeProvider } from "styled-components";
 
 import { crukTheme as defaultTheme } from "../../themes/cruk";
-
-import { StyledFieldSet, StyledLegend, StyledRadio } from "./styles";
+import StyledRadio from "../Radio";
+import { StyledFieldSet, StyledLegend, OptionWrapper } from "./styles";
 
 type Attribute = {
   value: string;
@@ -41,18 +41,19 @@ export function RadioConsent(props: RadioConsentProps) {
     <ThemeProvider theme={theme}>
       <StyledFieldSet>
         <StyledLegend>{legend}</StyledLegend>
-        {attributes.map((item: Attribute) => (
-          <StyledRadio
-            $numberOfAttributes={attributes.length || 0}
-            key={item.value}
-            checked={selectedValue === item.value}
-            onChange={onChange}
-            name={name}
-            value={item.value}
-          >
-            {item.option}
-          </StyledRadio>
-        ))}
+        <OptionWrapper>
+          {attributes.map((item: Attribute) => (
+            <StyledRadio
+              key={item.value}
+              checked={selectedValue === item.value}
+              onChange={onChange}
+              name={name}
+              value={item.value}
+            >
+              {item.option}
+            </StyledRadio>
+          ))}
+        </OptionWrapper>
       </StyledFieldSet>
     </ThemeProvider>
   );
