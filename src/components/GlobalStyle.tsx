@@ -45,7 +45,7 @@ export const GlobalStyle = withTheme(createGlobalStyle`
         -ms-text-size-adjust: 100%;
         font-feature-settings: "kern";
         text-rendering: optimizeLegibility;
-        font-smoothing: antialiased;
+        -webkit-font-smoothing: antialiased;
       }
     `;
   }}
