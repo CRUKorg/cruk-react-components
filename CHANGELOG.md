@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [6.2.1] - 2025-12-02
 
-### Fixed
+### Fixes
 
 - Fixed radio consent to handle smaller screen widths more gracefully [#1126](https://github.com/CRUKorg/cruk-react-components/issues/1104)
 
