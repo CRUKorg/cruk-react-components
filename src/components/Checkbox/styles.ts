@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { type ThemeType } from "../../types";
 
 const CHECK_BOX_SIZE = "1.5rem";
@@ -92,32 +92,32 @@ export const StyledLabel = styled.label<{
     }
   }
 
-  ${({ theme, $disabled, $checked, $hasError }) =>
-    theme.utilities.useDefaultFromControls
-      ? null
-      : css`
-          min-height: 2rem;
-          ${CheckWrapper} ${Check} {
-            border: solid ${BORDER_THICKNESS}
-              ${$disabled
-                ? theme.colors.disabled
-                : $hasError
-                  ? theme.colors.danger
-                  : $checked
-                    ? theme.colors.check
-                    : theme.colors.inputBorder};
-          }
-          &:hover ${CheckWrapper} ${Check} {
-            border: solid ${BORDER_THICKNESS}
-              ${$disabled
-                ? theme.colors.disabled
-                : $hasError
-                  ? theme.colors.danger
-                  : $checked
-                    ? theme.colors.check
-                    : theme.colors.inputBorder};
-          }
-        `}
+  min-height: 2rem;
+
+  ${CheckWrapper} ${Check} {
+    border-style: solid;
+    border-width: ${BORDER_THICKNESS};
+    border-color: ${({ theme, $disabled, $hasError, $checked }) =>
+      $disabled
+        ? theme.colors.disabled
+        : $hasError
+          ? theme.colors.danger
+          : $checked
+            ? theme.colors.check
+            : theme.colors.inputBorder};
+  }
+  &:hover ${CheckWrapper} ${Check} {
+    border-style: solid;
+    border-width: ${BORDER_THICKNESS};
+    border-color: ${({ theme, $disabled, $hasError, $checked }) =>
+      $disabled
+        ? theme.colors.disabled
+        : $hasError
+          ? theme.colors.danger
+          : $checked
+            ? theme.colors.check
+            : theme.colors.inputBorder};
+  }
 `;
 
 export const SelectedBorder = styled.div`
@@ -134,31 +134,18 @@ export const StyledInput = styled.input<{
 }>`
   margin-right: 5px !important;
 
-  ${({ theme }) =>
-    theme.utilities.useDefaultFromControls
-      ? css`
-          position: absolute;
-          display: inline-block;
-          transform: translate(-50%, -50%);
-          top: 50%;
-          margin: 0;
-          padding: 0;
-          left: ${theme.spacing.s};
-        `
-      : css`
-          /* This hides the original input */
-          position: absolute;
-          left: ${theme.spacing.xxs};
-          opacity: 0;
+  /* This hides the original input */
+  position: absolute;
+  left: ${({ theme }) => theme.spacing.xxs};
+  opacity: 0;
 
-          &:focus ~ ${SelectedBorder} {
-            outline: none !important;
-            box-shadow: inset 0 0 0 2px ${theme.colors.inputBorder};
-            box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
-          }
+  &:focus ~ ${SelectedBorder} {
+    outline: none !important;
+    box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.inputBorder};
+    box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
+  }
 
-          &:checked ~ ${CheckWrapper} svg path {
-            transform: rotateY(0deg);
-          }
-        `}
+  &:checked ~ ${CheckWrapper} svg path {
+    transform: rotateY(0deg);
+  }
 `;

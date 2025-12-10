@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { type ThemeType } from "../../types";
 
 const RADIO_SIZE = "1.5rem";
@@ -84,33 +84,29 @@ export const StyledLabel = styled.label<{
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
   vertical-align: middle;
 
-  ${({ theme, $disabled: isDisabled, $checked, $hasError }) =>
-    theme.utilities.useDefaultFromControls
-      ? null
-      : css`
-          min-height: 2rem;
+  min-height: 2rem;
 
-          ${CheckWrapper} ${Check} {
-            border: solid 2px
-              ${isDisabled
-                ? theme.colors.disabled
-                : $hasError
-                  ? theme.colors.danger
-                  : $checked
-                    ? theme.colors.check
-                    : theme.colors.inputBorder};
-            &:before {
-              background-color: ${$checked
-                ? theme.colors.check
-                : `rgba(255, 255, 255, 0)`};
-            }
-          }
+  ${CheckWrapper} ${Check} {
+    border: solid 2px
+      ${({ theme, $disabled, $hasError }) =>
+        $disabled
+          ? theme.colors.disabled
+          : $hasError
+            ? theme.colors.danger
+            : theme.colors.inputBorder};
 
-          &:hover ${CheckWrapper} ${Check} {
-            border: solid 2px
-              ${isDisabled ? theme.colors.disabled : theme.colors.check};
-          }
-        `}
+    &:before {
+      background-color: ${({ $checked, theme }) =>
+        $checked ? theme.colors.check : `rgba(255, 255, 255, 0)`};
+    }
+  }
+
+  &:hover ${CheckWrapper} ${Check} {
+    border: solid 2px
+      ${({ theme, $disabled }) =>
+        $disabled ? theme.colors.disabled : theme.colors.check};
+  }
+
   // increase font size for desktop
   @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
     font-size: ${({ theme }) => theme.fontSizes.ml};
@@ -155,32 +151,18 @@ export const StyledInput = styled.input<{
     },
   }) => xxs};
 
-  ${({ theme, disabled }) =>
-    theme.utilities.useDefaultFromControls
-      ? css`
-          position: absolute;
-          display: inline-block;
-          transform: translate(-50%, -50%);
-          top: 50%;
-          margin: 0;
-          padding: 0;
-          left: ${theme.spacing.s};
-        `
-      : css`
-          position: absolute;
-          left: ${theme.spacing.xxs};
-          opacity: 0;
+  position: absolute;
+  left: ${({ theme }) => theme.spacing.xxs};
+  opacity: 0;
 
-          &:focus ~ ${SelectedBorder} {
-            outline: none !important;
-            box-shadow: inset 0 0 0 2px ${theme.colors.inputBorder};
-            box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
-          }
+  &:focus ~ ${SelectedBorder} {
+    outline: none !important;
+    box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.inputBorder};
+    box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
+  }
 
-          &:checked ~ ${CheckWrapper} ${Check}::before {
-            background: ${disabled
-              ? theme.colors.disabled
-              : theme.colors.check};
-          }
-        `}
+  &:checked ~ ${CheckWrapper} ${Check}::before {
+    background: ${({ disabled, theme }) =>
+      disabled ? theme.colors.disabled : theme.colors.check};
+  }
 `;

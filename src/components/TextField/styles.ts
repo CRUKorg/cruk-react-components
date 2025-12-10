@@ -140,19 +140,6 @@ export const StyledInput = styled.input<StyledInputProps>`
     color: ${({ theme }) => theme.colors.disabled};
   }
 
-  ${({ theme }) =>
-    !theme.utilities.useDefaultFocusRect
-      ? css`
-          &:focus {
-            outline: 0;
-            border-color: ${theme.colors.tertiary};
-            ~ ${ExtraRight} {
-              border-color: ${theme.colors.tertiary};
-            }
-          }
-        `
-      : null};
-
   ${({ $hasError, theme }) =>
     $hasError &&
     css`

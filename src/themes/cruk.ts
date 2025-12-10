@@ -15,8 +15,6 @@ import {
 
 export const UTILITIES: UtilitiesType = {
   contentMaxWidth: "1020px",
-  useDefaultFocusRect: true,
-  useDefaultFromControls: false,
   useBackgroundStyleLinks: false,
   inputBorderWidth: "1px",
 };
@@ -26,11 +24,6 @@ export const SITE_CONFIG: SiteConfigType = {
   logoUrl: "/",
   logoAlt: "Cancer Research UK Giving Page",
   logoSrc: "https://rcl.assets.cancerresearchuk.org/images/logos/cruk.svg",
-  footerCopyText:
-    "Cancer Research UK is a registered charity in England and Wales (1089464), Scotland (SC041666), the Isle of Man (1103) and Jersey (247). A company limited by guarantee. Registered company in England and Wales(4325234) and the Isle of Man (5713F).",
-  footerLogoAlt: "Registered with Fundraising Regulator",
-  footerLogoSrc:
-    "https://rcl.assets.cancerresearchuk.org/images/logos/fundreg.png",
 };
 
 export const AVATAR: AvatarType = {

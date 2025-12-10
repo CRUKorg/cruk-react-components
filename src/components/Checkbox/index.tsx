@@ -59,13 +59,11 @@ export const Checkbox = (props: CheckBoxProps) => {
         />
         <SelectedBorder />
         {children || props.value}
-        {theme.utilities.useDefaultFromControls ? null : (
-          <CheckWrapper>
-            <Check>
-              <IconFa faIcon={faCheck} color="check" size="1.25em" />
-            </Check>
-          </CheckWrapper>
-        )}
+        <CheckWrapper>
+          <Check>
+            <IconFa faIcon={faCheck} color="check" size="1.25em" />
+          </Check>
+        </CheckWrapper>
       </StyledLabel>
       {!!errorMessage && (
         <ErrorText

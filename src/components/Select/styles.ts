@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import { type ThemeType } from "../../types";
 
@@ -50,16 +50,6 @@ const StyledSelect = styled.select<StyledSelectProps>`
     border-color: ${({ theme }) => theme.colors.disabled};
     color: ${({ theme }) => theme.colors.disabled};
   }
-
-  ${({ theme }) =>
-    !theme.utilities.useDefaultFocusRect
-      ? css`
-          &:focus {
-            outline: 0;
-            border-color: ${theme.colors.tertiary};
-          }
-        `
-      : null};
 
   // increase font size for desktop
   @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {

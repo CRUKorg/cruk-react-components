@@ -57,11 +57,10 @@ export const Radio = (props: RadioProps) => {
           }
         />
         <SelectedBorder />
-        {theme.utilities.useDefaultFromControls ? null : (
-          <CheckWrapper>
-            <Check />
-          </CheckWrapper>
-        )}
+        <CheckWrapper>
+          <Check />
+        </CheckWrapper>
+
         <VerticalAlign>{props.children || props.value}</VerticalAlign>
       </StyledLabel>
       {!!props.errorMessage && (
