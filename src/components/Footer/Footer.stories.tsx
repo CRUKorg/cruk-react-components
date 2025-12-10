@@ -34,6 +34,9 @@ type Story = StoryObj<typeof Footer>;
 export const FooterDefault: Story = {
   name: "FooterDefault",
   args: {},
+  argTypes: {
+    footerText: { control: "text" },
+  },
   render: (args: FooterProps) => (
     <AllThemesWrapper>
       <FooterWithChildren {...args} />
