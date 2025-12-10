@@ -20,7 +20,9 @@ There should be only one footer component at the bottom of the body of each page
 
 ## Props
 
-| Name          | Type      | Options | Default | Description                              |
-| :------------ | :-------- | :-----: | :------ | :--------------------------------------- |
-| children      | String    |         |         | Used to place quick links inside the nav |
-| middleSection | ReactNode |         |         | Used to add content or components        |
+| Name          | Type      | Options | Default   | Description                                       |
+| :------------ | :-------- | :-----: | :-------- | :------------------------------------------------ |
+| children      | String    |         |           | Used to place quick links inside the nav          |
+| middleSection | ReactNode |         |           | Used to add content or components                 |
+| theme         | string    |         | "cruk"    | theme use to set theme specific content in footer |
+| footerText    | string    |         | undefined | text in footer                                    |

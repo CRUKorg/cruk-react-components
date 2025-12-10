@@ -20,6 +20,7 @@ export type FooterProps = HTMLAttributes<HTMLElement> & {
   middleSection?: ReactNode;
   children?: ReactNode;
   theme?: string;
+  footerText?: string;
 };
 
 const footerTextCruk =
@@ -47,6 +48,7 @@ export function Footer({
   children,
   middleSection,
   theme = "cruk",
+  footerText,
 }: FooterProps) {
   const childArray = React.Children.toArray(children);
 
@@ -82,7 +84,7 @@ export function Footer({
               <>{middleSection}</>
             )
           ) : (
-            <Text textSize="s">{footerTextForTheme(theme)}</Text>
+            <Text textSize="s">{footerText || footerTextForTheme(theme)}</Text>
           )}
         </FooterSection>
 
