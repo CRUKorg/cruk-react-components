@@ -13,8 +13,6 @@ export type FontSizesType = Record<FontSizeType, string>;
 
 export type UtilitiesType = {
   contentMaxWidth: string;
-  useDefaultFocusRect: boolean;
-  useDefaultFromControls: boolean;
   useBackgroundStyleLinks: boolean;
   inputBorderWidth: string;
 };
@@ -24,9 +22,6 @@ export type SiteConfigType = {
   logoUrl: string;
   logoAlt: string;
   logoSrc: string;
-  footerCopyText: string;
-  footerLogoSrc: string;
-  footerLogoAlt: string;
 };
 
 export type AvatarType = {
