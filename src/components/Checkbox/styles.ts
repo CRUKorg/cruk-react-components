@@ -33,7 +33,7 @@ export const Check = styled.span<{
   overflow: hidden;
   // do not increase font size of check icon at this breakpoint
   @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
-    font-size: var(--font-size-m, 1rem);
+    font-size: var(--font-size-ml, 1.25rem);
   }
 
   svg {
