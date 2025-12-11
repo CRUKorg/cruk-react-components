@@ -218,6 +218,7 @@ export const CircularValue = styled.div<{
   z-index: 2;
   font-size: var(--font-size-l, 1.25rem);
   line-height: var(--font-size-l, 1.25rem);
+  font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
   text-align: center;
   height: 100%;
   color: ${({
