@@ -62,7 +62,7 @@ export const StyledNav = styled.nav<ThemeProps>`
   display: flex;
   flex-direction: column;
   a {
-    font-size: var(--font-size-l, 1rem);
+    font-size: var(--font-size-m, 1rem);
     font-weight: ${({
       theme: {
         typography: { fontWeightLinks },

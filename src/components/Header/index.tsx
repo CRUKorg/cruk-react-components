@@ -25,9 +25,9 @@ const crukLogoUrl =
 const rflLogoUrl =
   "https://rcl.assets.cancerresearchuk.org/images/logos/rfl.svg";
 const su2cLogoUrl =
-  "https://rcl.assets.cancerresearchuk.org/images/logos//su2c-160.png";
+  "https://rcl.assets.cancerresearchuk.org/images/logos/su2c-160.png";
 const bowelbabeLogoUrl =
-  "https://rcl.assets.cancerresearchuk.org/images/logos//bowelbabe-logo-160.png";
+  "https://rcl.assets.cancerresearchuk.org/images/logos/bowelbabe-logo-160.png";
 
 function getLogoFromThemeName(themeName: ThemeNameType) {
   switch (themeName) {
