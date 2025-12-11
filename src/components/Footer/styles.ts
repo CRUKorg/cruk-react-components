@@ -18,7 +18,7 @@ export const FooterContentWrapper = styled.div<ThemeProps>`
   display: block;
   margin: 0 auto;
 
-  @media (min-width: var(--breakpoint-desktop, 1024px)) {
+  @media (min-width: 1200px) {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -39,7 +39,7 @@ export const FooterSectionLogo = styled(FooterSection)`
   display: block;
   float: left;
 
-  @media (min-width: var(--breakpoint-desktop, 992px)) {
+  @media (min-width: 1200px) {
     flex: 0 0 140px;
     width: auto;
   }
@@ -52,7 +52,7 @@ export const FooterSectionLinks = styled(FooterSection)`
   display: block;
   float: left;
 
-  @media (min-width: var(--breakpoint-desktop, 992px)) {
+  @media (min-width: 992px) {
     flex: 0 0 170px;
     width: auto;
   }

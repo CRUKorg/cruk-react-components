@@ -23,7 +23,7 @@ export const LegendSpan = styled.span<{
     $hasHintText ? "var(--spacing-xxs, 0.5rem)" : 0};
 
   // increase font size for desktop
-  @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
+  @media (min-width: 1200px) {
     font-size: var(--font-size-ml, 1.125rem);
   }
   & > * {

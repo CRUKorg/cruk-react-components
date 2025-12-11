@@ -9,7 +9,7 @@ export const StyledLegend = styled.legend<{
   font-family: ${({ theme }) => theme.typography.fontFamilyBase};
 
   // increase font size for desktop
-  @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
+  @media (min-width: 1200px) {
     font-size: var(--font-size-ml, 1.125rem);
   }
 `;

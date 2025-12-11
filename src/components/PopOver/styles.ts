@@ -287,7 +287,7 @@ export const PopOverModal = styled.div<{
     }};
   }
 
-  @media (min-width: var(--breakpoint-desktop, 992px)) {
+  @media (min-width: 992px) {
     margin-top: ${({ $position }) => {
       switch ($position) {
         case "bottom":

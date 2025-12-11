@@ -38,7 +38,7 @@ export const LabelText = styled.span<LabelTextProp>`
       : "var(--spacing-xs, 0.5rem)"};
 
   // increase font size for desktop
-  @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
+  @media (min-width: 1200px) {
     font-size: var(--font-size-ml, 1.125rem);
   }
 `;

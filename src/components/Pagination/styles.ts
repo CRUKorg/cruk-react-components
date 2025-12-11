@@ -102,7 +102,7 @@ export const PagerItem = styled.li<{ theme: ThemeType }>`
   &:last-child {
     display: inline;
   }
-  @media (min-width: var(--breakpoint-mobile, 576px)) {
+  @media (min-width: 576px) {
     display: inline;
   }
   span {

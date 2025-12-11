@@ -32,7 +32,7 @@ export const Check = styled.span<{
   transition: border 0.25s ease;
   overflow: hidden;
   // do not increase font size of check icon at this breakpoint
-  @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
+  @media (min-width: 1200px) {
     font-size: var(--font-size-ml, 1.125rem);
   }
 
@@ -63,7 +63,7 @@ export const StyledLabel = styled.label<{
   font-family: ${({ theme }) => theme.typography.fontFamilyBase};
 
   // increase font size for desktop
-  @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
+  @media (min-width: 1200px) {
     font-size: var(--font-size-ml, 1.125rem);
   }
 

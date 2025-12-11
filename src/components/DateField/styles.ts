@@ -21,8 +21,8 @@ export const LegendText = styled.legend<{ theme: ThemeType }>`
   margin-bottom: var(--spacing-xxs, 1rem);
 
   // do not increase font size of check icon at this breakpoint
-  @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
-    font-size: var(--font-size-ml, 1.25rem);
+  @media (min-width: 1200px) {
+    font-size: var(--font-size-ml, 1.125rem);
   }
 `;
 

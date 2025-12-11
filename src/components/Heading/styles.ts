@@ -122,11 +122,11 @@ export const H1 = styled.h1<StyledHeadingProps>`
   ${(props) => StyledHeading(props)}
   font-size: ${({ $textSize }) =>
     mobileFontSize($textSize || null, "var(--font-size-xxl, 1.75rem)")};
-  @media (min-width: var(--breakpoint-tablet, 768px)) {
+  @media (min-width: 768px) {
     font-size: ${({ $textSize }) =>
       tabletFontSize($textSize || null, "var(--font-size-xxxl, 2rem)")};
   }
-  @media (min-width: var(--breakpoint-desktop, 992px)) {
+  @media (min-width: 992px) {
     font-size: ${({ $textSize }) =>
       desktopFontSize($textSize || null, "var(--font-size-xxxxl, 2.25rem)")};
   }
@@ -137,11 +137,11 @@ export const H2 = styled.h2<StyledHeadingProps>`
   font-size: ${({ $textSize }) =>
     mobileFontSize($textSize || null, "var(--font-size-xl, 1.5rem)")};
 
-  @media (min-width: var(--breakpoint-tablet, 768px)) {
+  @media (min-width: 768px) {
     font-size: ${({ $textSize }) =>
       tabletFontSize($textSize || null, "var(--font-size-xxl, 1.75rem)")};
   }
-  @media (min-width: var(--breakpoint-desktop, 992px)) {
+  @media (min-width: 992px) {
     font-size: ${({ $textSize }) =>
       desktopFontSize($textSize || null, "var(--font-size-xxxl, 2rem)")};
   }
@@ -151,11 +151,11 @@ export const H3 = styled.h3<StyledHeadingProps>`
   ${(props) => StyledHeading(props)}
   font-size: ${({ $textSize }) =>
     mobileFontSize($textSize || null, "var(--font-size-l, 1.25rem)")};
-  @media (min-width: var(--breakpoint-tablet, 768px)) {
+  @media (min-width: 768px) {
     font-size: ${({ $textSize }) =>
       tabletFontSize($textSize || null, "var(--font-size-xl, 1.5rem)")};
   }
-  @media (min-width: var(--breakpoint-desktop, 992px)) {
+  @media (min-width: 992px) {
     font-size: ${({ $textSize }) =>
       desktopFontSize($textSize || null, "var(--font-size-xxl, 1.75rem)")};
   }
@@ -165,11 +165,11 @@ export const H4 = styled.h4<StyledHeadingProps>`
   ${(props) => StyledHeading(props)}
   font-size: ${({ $textSize }) =>
     mobileFontSize($textSize || null, "var(--font-size-l, 1.25rem)")};
-  @media (min-width: var(--breakpoint-tablet, 768px)) {
+  @media (min-width: 768px) {
     font-size: ${({ $textSize }) =>
       tabletFontSize($textSize || null, "var(--font-size-l, 1.25rem)")};
   }
-  @media (min-width: var(--breakpoint-desktop, 992px)) {
+  @media (min-width: 992px) {
     font-size: ${({ $textSize }) =>
       desktopFontSize($textSize || null, "var(--font-size-xl, 1.5rem)")};
   }
@@ -180,11 +180,11 @@ export const H5 = styled.h5<StyledHeadingProps>`
 
   font-size: ${({ $textSize }) =>
     mobileFontSize($textSize || null, "var(--font-size-l, 1.25rem)")};
-  @media (min-width: var(--breakpoint-tablet, 768px)) {
+  @media (min-width: 768px) {
     font-size: ${({ $textSize }) =>
       tabletFontSize($textSize || null, "var(--font-size-l, 1.25rem)")};
   }
-  @media (min-width: var(--breakpoint-desktop, 992px)) {
+  @media (min-width: 992px) {
     font-size: ${({ $textSize }) =>
       desktopFontSize($textSize || null, "var(--font-size-l, 1.25rem)")};
   }
@@ -195,11 +195,11 @@ export const H6 = styled.h6<StyledHeadingProps>`
 
   font-size: ${({ $textSize }) =>
     mobileFontSize($textSize || null, "var(--font-size-m, 1rem)")};
-  @media (min-width: var(--breakpoint-tablet, 768px)) {
+  @media (min-width: 768px) {
     font-size: ${({ $textSize }) =>
       tabletFontSize($textSize || null, "var(--font-size-m, 1rem)")};
   }
-  @media (min-width: var(--breakpoint-desktop, 992px)) {
+  @media (min-width: 992px) {
     font-size: ${({ $textSize }) =>
       desktopFontSize($textSize || null, "var(--font-size-m, 1rem)")};
   }

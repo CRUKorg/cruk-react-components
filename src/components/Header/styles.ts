@@ -26,7 +26,7 @@ export const HeaderStickyPlaceHolder = styled.div<{ theme: ThemeType }>`
   width: 100%;
   height: ${HEADER_HEIGHT_SMALL};
 
-  @media (min-width: var(--breakpoint-desktop, 992px)) {
+  @media (min-width: 992px) {
     height: ${HEADER_HEIGHT_LARGE};
   }
 `;
@@ -58,7 +58,7 @@ export const HeaderStickyContainer = styled.div<{
   position: ${({ $isSticky }) => ($isSticky ? "fixed" : "relative")};
   transition: height ${ANIMATION_SPEED} ease;
 
-  @media (min-width: var(--breakpoint-desktop, 992px)) {
+  @media (min-width: 992px) {
     position: ${({ $isSticky }) => ($isSticky ? "fixed" : "relative")};
     height: ${({ $isSmall, $isSticky }) =>
       $isSmall && $isSticky ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE};
@@ -100,7 +100,7 @@ export const LogoWrapper = styled.div<{
 
   height: ${HEADER_LOGO_HEIGHT_SMALL};
 
-  @media (min-width: var(--breakpoint-desktop, 992px)) {
+  @media (min-width: 992px) {
     height: ${({ $isSmall, $isSticky }) =>
       $isSmall && $isSticky
         ? HEADER_LOGO_HEIGHT_SMALL
@@ -153,7 +153,7 @@ export const Tagline = styled.p<{
   transition: opacity ${ANIMATION_SPEED} ease;
   display: none;
 
-  @media (min-width: var(--breakpoint-desktop, 992px)) {
+  @media (min-width: 992px) {
     display: block;
     opacity: ${({ $isSmall, $isSticky }) => ($isSmall && $isSticky ? 0 : 1)};
   }

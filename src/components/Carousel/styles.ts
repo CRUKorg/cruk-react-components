@@ -102,11 +102,11 @@ export const DotContainer = styled.div<{ $count: number; theme: ThemeType }>`
   justify-content: center;
   display: ${({ $count }) => ($count > 6 ? "none" : "flex")};
 
-  @media (min-width: var(--breakpoint-tablet, 768px)) {
+  @media (min-width: 768px) {
     display: ${({ $count }) => ($count > 10 ? "none" : "flex")};
   }
 
-  @media (min-width: var(--breakpoint-desktop, 1024px)) {
+  @media (min-width: 1024px) {
     display: ${({ $count }) => ($count > 20 ? "none" : "flex")};
   }
 `;

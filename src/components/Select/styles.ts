@@ -52,7 +52,7 @@ const StyledSelect = styled.select<StyledSelectProps>`
   }
 
   // increase font size for desktop
-  @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
+  @media (min-width: 1200px) {
     font-size: var(--font-size-ml, 1.125rem);
   }
 `;
