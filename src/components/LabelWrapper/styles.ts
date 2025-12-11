@@ -20,7 +20,7 @@ export const HintText = styled.span<{ theme: ThemeType }>`
   font-weight: ${({ theme }) => theme.typography.fontWeightBase};
   display: block;
   color: ${({ theme }) => theme.colors.textMid};
-  margin-bottom: var(--spacing-xs, 0.5rem);
+  margin-bottom: var(--spacing-xs, 1rem);
 `;
 
 export const RequiredIndicationText = styled.span<{ theme: ThemeType }>`
@@ -33,9 +33,7 @@ export const LabelText = styled.span<LabelTextProp>`
   font-weight: ${({ theme }) => theme.typography.fontWeightLabels};
   display: block;
   margin-bottom: ${({ $hasHintText }) =>
-    $hasHintText
-      ? "var(--spacing-xxxs, 0.25rem)"
-      : "var(--spacing-xs, 0.5rem)"};
+    $hasHintText ? "var(--spacing-xxxs, 0.25rem)" : "var(--spacing-xs, 1rem)"};
 
   // increase font size for desktop
   @media (min-width: 1200px) {

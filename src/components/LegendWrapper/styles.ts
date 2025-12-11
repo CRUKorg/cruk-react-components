@@ -49,7 +49,7 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
   border: none;
   padding: 0;
   legend {
-    margin-bottom: var(--spacing-xs, 0.5rem);
+    margin-bottom: var(--spacing-xs, 1rem);
   }
   label {
     border-color: ${({ $hasError, theme }) =>

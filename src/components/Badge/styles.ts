@@ -15,17 +15,22 @@ export const StyledBadge = styled.span<{
   border-style: solid;
   text-align: center;
   font-size: var(--font-size-m, 1rem);
-  padding: ${({ $isSquare }) => ($isSquare ? 0 : `var(--spacing-xxs)`)};
+  padding: ${({ $isSquare }) => ($isSquare ? 0 : `var(--spacing-xxs, 0.5rem)`)};
   border-radius: ${({ $isSquare }) => ($isSquare ? "50%" : ` 1.5rem`)};
   height: ${({ $isSquare, $size }) =>
-    $isSquare ? `calc(var(--spacing-${$size}) + var(--spacing-xs))` : `auto`};
+    $isSquare
+      ? `calc(var(--spacing-${$size}) + var(--spacing-xs, 1rem))`
+      : `auto`};
   width: ${({ $isSquare, $size }) =>
-    $isSquare ? `calc(var(--spacing-${$size}) + var(--spacing-xs))` : `auto`};
+    $isSquare
+      ? `calc(var(--spacing-${$size}) + var(--spacing-xs, 1rem))`
+      : `auto`};
   line-height: ${({ $isSquare, $size }) =>
-    $isSquare ? `calc(var(--spacing-${$size}) + var(--spacing-xs))` : ` 1rem`};
+    $isSquare
+      ? `calc(var(--spacing-${$size}) + var(--spacing-xs, 1rem))`
+      : ` 1rem`};
   min-width: ${({ $size }) =>
-    `calc(var(--spacing-${$size}) + var(--spacing-xs))`};
-
+    `calc(var(--spacing-${$size}) + var(--spacing-xs, 1rem))`};
   background-color: ${({ $backgroundColor }) => $backgroundColor};
   border-color: ${({ $borderColor }) => $borderColor};
   color: ${({ $textColor }) => $textColor};

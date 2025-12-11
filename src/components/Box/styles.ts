@@ -20,12 +20,10 @@ export const StyledBox = styled.div<StyledBoxProps>`
     margin-bottom: 0;
   }
 
-  background-color: var(--primary);
-
-  /* background-color: ${({ theme, $backgroundColor }) =>
+  background-color: ${({ theme, $backgroundColor }) =>
     $backgroundColor && typeof theme.colors[$backgroundColor] !== "undefined"
       ? theme.colors[$backgroundColor]
-      : $backgroundColor || "transparent"}; */
+      : $backgroundColor || "transparent"};
 
   ${(props) => spacing(props)}
 `;
