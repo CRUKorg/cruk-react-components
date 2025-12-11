@@ -7,7 +7,6 @@ import { su2cTheme } from "../themes/su2c";
 import { bowelbabeTheme } from "../themes/bowelbabe";
 
 import { Box } from "./Box";
-import { GlobalStyle } from "./GlobalStyle";
 
 import { type ThemeType } from "../types";
 
@@ -26,12 +25,13 @@ export const TestThemeWrapper = ({
   children?: ReactNode;
 }) => (
   <main>
-    <div style={{ overflow: "auto" }} tabIndex={0}>
+    <div
+      data-theme={theme?.name || "cruk"}
+      style={{ overflow: "auto" }}
+      tabIndex={0}
+    >
       <ThemeProvider theme={theme || crukTheme}>
-        <Box backgroundColor="backgroundLight">
-          <GlobalStyle />
-          {children}
-        </Box>
+        <Box backgroundColor="backgroundLight">{children}</Box>
       </ThemeProvider>
     </div>
   </main>
@@ -41,27 +41,33 @@ export const AllThemesWrapper = ({ children }: { children?: ReactNode }) => (
   <main>
     <div tabIndex={0}>
       <h2>CRUK Theme:</h2>
-      <ThemeProvider theme={crukTheme}>
-        {/* <GlobalStyle /> */}
-        {children}
-        <Line />
-      </ThemeProvider>
-      <h2>RFL Theme:</h2>
-      <ThemeProvider theme={rflTheme}>
-        {/* <GlobalStyle /> */}
-        {children}
-        <Line />
-      </ThemeProvider>
-      <h2>SU2C Theme:</h2>
-      <ThemeProvider theme={su2cTheme}>
-        {children}
-        <Line />
-      </ThemeProvider>
-      <h2>Bowelbabe Theme:</h2>
-      <ThemeProvider theme={bowelbabeTheme}>
-        {children}
-        <Line />
-      </ThemeProvider>
+      <div data-theme="cruk">
+        <ThemeProvider theme={crukTheme}>
+          {children}
+          <Line />
+        </ThemeProvider>
+      </div>
+      <div data-theme="rfl">
+        <h2>RFL Theme:</h2>
+        <ThemeProvider theme={rflTheme}>
+          {children}
+          <Line />
+        </ThemeProvider>
+      </div>
+      <div data-theme="su2c">
+        <h2>SU2C Theme:</h2>
+        <ThemeProvider theme={su2cTheme}>
+          {children}
+          <Line />
+        </ThemeProvider>
+      </div>
+      <div data-theme="bowelbabe">
+        <h2>Bowelbabe Theme:</h2>
+        <ThemeProvider theme={bowelbabeTheme}>
+          {children}
+          <Line />
+        </ThemeProvider>
+      </div>
     </div>
   </main>
 );
