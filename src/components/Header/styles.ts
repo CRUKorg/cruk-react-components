@@ -129,7 +129,7 @@ export const SkipToMain = styled.a`
     height: auto;
     overflow: auto;
     margin: 10px 35%;
-    padding: var(--spacing-xs, 0.5rem);
+    padding: var(--spacing-xs, 1rem);
     border-radius: 15px;
     border: 4px solid yellow;
     text-align: center;
