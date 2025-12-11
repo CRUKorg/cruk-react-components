@@ -7,7 +7,8 @@ import crukTheme from "../src/themes/cruk";
 import su2cTheme from "../src/themes/su2c";
 import rflTheme from "../src/themes/rfl";
 import bowelbabeTheme from "../src/themes/bowelbabe";
-import { GlobalStyle, type ThemeType } from "src/components";
+
+import { type ThemeType } from "src/components";
 
 type themeNameType = "CRUK" | "SU2C" | "RFL" | "Bowelbabe";
 export type ThemeTypeWithName = {
@@ -43,8 +44,9 @@ export function testAccessibilityForTheme({
       await mount(
         <>
           <ThemeProvider theme={theme}>
-            <GlobalStyle />
-            <main tabIndex={0}>{component()}</main>
+            <div data-theme={theme.name.toLowerCase()}>
+              <main tabIndex={0}>{component()}</main>
+            </div>
           </ThemeProvider>
         </>,
       );

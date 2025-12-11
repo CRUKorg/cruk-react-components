@@ -80,7 +80,7 @@ export const CarouselButton = styled.button<{
       : theme.name === "su2c"
         ? theme.colors.textDark
         : theme.colors.primary};
-  font-size: ${({ theme }) => theme.fontSizes.xxxl};
+  font-size: var(--font-size-xxxxl, 3.125rem);
   font-weight: 600;
   transition:
     color 0.3s ease,
@@ -116,8 +116,8 @@ export const Dot = styled.button<{ $selected: boolean; theme: ThemeType }>`
   outline-offset: var(--spacing-xxs, 1rem);
   padding: 0;
   margin: auto var(--spacing-xxs, 1rem);
-  width: ${({ theme }) => theme.fontSizes.l};
-  height: ${({ theme }) => theme.fontSizes.l};
+  width: var(--font-size-l, 1.25rem);
+  height: var(--font-size-l, 1.25rem);
   border-radius: 50%;
   /* TODO if this makes it into the component library carouselButtonColor should be a theme prop */
   border: ${({ theme }) =>

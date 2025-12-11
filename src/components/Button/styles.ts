@@ -46,11 +46,7 @@ export const StyledButton = styled.button<{
     border-color 0.2s ease;
 
   cursor: pointer;
-  font-size: ${({
-    theme: {
-      fontSizes: { m },
-    },
-  }) => m};
+  font-size: var(--font-size-m, 1rem);
   font-family: ${({
     theme: {
       typography: { fontFamilyButtons },

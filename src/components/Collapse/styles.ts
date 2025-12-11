@@ -28,13 +28,10 @@ export const DefaultHeader = styled(Button)<{
     typeof theme.colors[$textColor as ColorKeyType] !== "undefined"
       ? theme.colors[$textColor as ColorKeyType]
       : $textColor || theme.colors.collapseHeaderColor};
-  font-size: ${({
-    theme: {
-      fontSizes,
-      fontSizes: { m },
-    },
-    $textSize,
-  }) => ($textSize ? fontSizes[$textSize] : m)};
+  font-size: ${({ $textSize }) =>
+    $textSize
+      ? `var(--font-size-${$textSize}, 1rem)`
+      : `var(--font-size-m, 1rem)`};
   font-family: ${({ theme, $textFontFamily }) =>
     $textFontFamily || theme.typography.fontFamilyBase};
   font-weight: normal;

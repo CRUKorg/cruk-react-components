@@ -3,7 +3,6 @@ import {
   type ButtonType,
   type TokenColorsType,
   type ColorsType,
-  type FontSizesType,
   type TypographyType,
   type ThemeType,
   type ShadowsType,
@@ -103,10 +102,6 @@ export const SHADOWS: ShadowsType = {
   ...defaultTheme.shadows,
 };
 
-export const FONT_SIZES: FontSizesType = {
-  ...defaultTheme.fontSizes,
-};
-
 export const TYPOGRAPHY: TypographyType = {
   ...defaultTheme.typography,
   fontFamilyHeadings: "ITCAvantGarde,Arial,sans-serif",
@@ -133,7 +128,6 @@ export const su2cTheme: ThemeType = {
   button: { ...BUTTON },
   tokenColors: { ...TOKEN_COLORS },
   colors: { ...COLORS },
-  fontSizes: { ...FONT_SIZES },
   typography: { ...TYPOGRAPHY },
   shadows: { ...SHADOWS },
   utilities: { ...UTILITIES },

@@ -216,16 +216,8 @@ export const CircularValue = styled.div<{
   justify-content: center;
   border-radius: 50%;
   z-index: 2;
-  font-size: ${({
-    theme: {
-      fontSizes: { l },
-    },
-  }) => l};
-  line-height: ${({
-    theme: {
-      fontSizes: { l },
-    },
-  }) => l};
+  font-size: var(--font-size-l, 1.25rem);
+  line-height: var(--font-size-l, 1.25rem);
   text-align: center;
   height: 100%;
   color: ${({

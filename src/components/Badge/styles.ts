@@ -14,7 +14,7 @@ export const StyledBadge = styled.span<{
   border-width: 1px;
   border-style: solid;
   text-align: center;
-  font-size: ${({ theme }) => theme.fontSizes.m};
+  font-size: var(--font-size-m, 1rem);
   padding: ${({ $isSquare }) => ($isSquare ? 0 : `var(--spacing-xxs)`)};
   border-radius: ${({ $isSquare }) => ($isSquare ? "50%" : ` 1.5rem`)};
   height: ${({ $isSquare, $size }) =>

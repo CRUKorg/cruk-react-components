@@ -37,7 +37,7 @@ const StyledSelect = styled.select<StyledSelectProps>`
     }`};
   color: ${({ theme }) => theme.colors.textDark};
   display: block;
-  font-size: ${({ theme }) => theme.fontSizes.m};
+  font-size: var(--font-size-m, 1rem);
   min-height: ${BUTTON_HEIGHT};
   padding: ${({ theme }) =>
     `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-m, 2rem) calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-xs, 0.5rem)`};
@@ -53,7 +53,7 @@ const StyledSelect = styled.select<StyledSelectProps>`
 
   // increase font size for desktop
   @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
-    font-size: ${({ theme }) => theme.fontSizes.ml};
+    font-size: var(--font-size-ml, 1.125rem);
   }
 `;
 

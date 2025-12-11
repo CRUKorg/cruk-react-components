@@ -32,13 +32,10 @@ export const TextStyled = styled.p<TextStyledProps>`
       ? colors[$textColor as ColorKeyType]
       : $textColor || colors.textDark};
   text-align: ${({ $textAlign }) => $textAlign || "left"};
-  font-size: ${({
-    theme: {
-      fontSizes,
-      fontSizes: { m },
-    },
-    $textSize,
-  }) => ($textSize ? fontSizes[$textSize] : m)};
+  font-size: ${({ $textSize }) =>
+    $textSize
+      ? `var(--font-size-${$textSize}, 1rem)`
+      : `var(--font-size-m, 1rem)`};
   line-height: ${({ theme }) => theme.typography.lineHeight};
   font-weight: ${({ $textWeight, theme }) =>
     $textWeight || theme.typography.fontWeightBase};

@@ -22,7 +22,7 @@ export const LegendText = styled.legend<{ theme: ThemeType }>`
 
   // do not increase font size of check icon at this breakpoint
   @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
-    font-size: ${({ theme }) => theme.fontSizes.ml};
+    font-size: var(--font-size-ml, 1.25rem);
   }
 `;
 

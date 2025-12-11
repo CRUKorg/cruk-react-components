@@ -128,6 +128,16 @@ button {
   --spacing-l: 2.5rem; /* 40px */
   --spacing-xl: 3rem; /* 48px */
   --spacing-xxl: 3.5rem; /* 56px */
+
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-s: 0.875rem; /* 14px */
+  --font-size-m: 1rem; /* 16px */
+  --font-size-ml: 1.125rem; /* 18px */
+  --font-size-l: 1.25rem; /* 20px */
+  --font-size-xl: 1.5625rem; /* 25px */
+  --font-size-xxl: 2rem; /* 32px */
+  --font-size-xxxl: 2.5rem; /* 40px */
+  --font-size-xxxxl: 3.125rem; /* 45px */
 }
 
 [data-theme="cruk"] > * {

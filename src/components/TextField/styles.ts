@@ -27,7 +27,7 @@ export const Extra = styled.span<ExtraProps>`
   display: block;
   background-color: ${({ theme }) => theme.colors.textInputExtraInfo};
   color: ${({ theme }) => theme.colors.textDark};
-  font-size: ${({ theme }) => theme.fontSizes.m};
+  font-size: var(--font-size-m, 1em);
   line-height: ${({ theme }) => theme.typography.lineHeight};
   font-weight: ${({ theme }) => theme.typography.fontWeightLight};
   padding: calc((${MIN_HEIGHT} - 1em) / 2) var(--spacing-xs, 1rem);
@@ -115,7 +115,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   border-radius: 0;
   color: ${({ theme }) => theme.colors.textDark};
   display: block;
-  font-size: ${({ theme }) => theme.fontSizes.m};
+  font-size: var(--font-size-m, 1rem);
   line-height: ${({ theme }) => theme.typography.lineHeight};
   min-width: 3em;
   padding: ${({ theme }) =>
@@ -152,6 +152,6 @@ export const StyledInput = styled.input<StyledInputProps>`
 
   // increase font size for desktop
   @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
-    font-size: ${({ theme }) => theme.fontSizes.ml};
+    font-size: var(--font-size-ml, 1.125rem);
   }
 `;

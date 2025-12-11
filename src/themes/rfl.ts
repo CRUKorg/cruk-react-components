@@ -3,7 +3,6 @@ import {
   type ButtonType,
   type TokenColorsType,
   type ColorsType,
-  type FontSizesType,
   type TypographyType,
   type ThemeType,
   type ShadowsType,
@@ -35,10 +34,6 @@ export const SHADOWS: ShadowsType = {
   ...defaultTheme.shadows,
 };
 
-export const FONT_SIZES: FontSizesType = {
-  ...defaultTheme.fontSizes,
-};
-
 export const TYPOGRAPHY: TypographyType = {
   ...defaultTheme.typography,
   fontWeightHeadings: 600,
@@ -49,7 +44,6 @@ export const rflTheme: ThemeType = {
   button: { ...BUTTON },
   tokenColors: { ...TOKEN_COLORS },
   colors: { ...COLORS },
-  fontSizes: { ...FONT_SIZES },
   typography: { ...TYPOGRAPHY },
   shadows: { ...SHADOWS },
   utilities: { ...UTILITIES },

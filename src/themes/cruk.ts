@@ -3,7 +3,6 @@ import {
   type ButtonType,
   type TokenColorsType,
   type ColorsType,
-  type FontSizesType,
   type ShadowsType,
   type TypographyType,
   type ThemeType,
@@ -155,18 +154,6 @@ export const COLORS: ColorsType = {
   userBlockExtraText: TOKEN_COLORS.grey_800,
 };
 
-export const FONT_SIZES: FontSizesType = {
-  xs: "0.75rem", // 12px
-  s: "0.875rem", // 14px
-  m: "1rem", // 16px
-  ml: "1.125rem", // 18px
-  l: "1.25rem", // 20px
-  xl: "1.5625rem", // 25px
-  xxl: "2rem", // 32px
-  xxxl: "2.5rem", // 40px
-  xxxxl: "3.125rem", // 45px
-};
-
 export const TYPOGRAPHY: TypographyType = {
   fontFamilyBase: "Poppins,sans-serif",
   fontFamilyButtons: "Poppins,sans-serif",
@@ -203,7 +190,6 @@ export const crukTheme: ThemeType = {
   button: { ...BUTTON },
   tokenColors: { ...TOKEN_COLORS },
   colors: { ...COLORS },
-  fontSizes: { ...FONT_SIZES },
   typography: { ...TYPOGRAPHY },
   shadows: { ...SHADOWS },
   utilities: { ...UTILITIES },

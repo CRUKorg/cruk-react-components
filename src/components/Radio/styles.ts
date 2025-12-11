@@ -105,7 +105,7 @@ export const StyledLabel = styled.label<{
 
   // increase font size for desktop
   @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
-    font-size: ${({ theme }) => theme.fontSizes.ml};
+    font-size: var(--font-size-ml, 1.125rem);
   }
 `;
 

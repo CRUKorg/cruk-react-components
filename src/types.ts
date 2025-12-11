@@ -213,7 +213,6 @@ export type ThemeType = {
   button: ButtonType;
   tokenColors: TokenColorsType;
   colors: ColorsType;
-  fontSizes: FontSizesType;
   typography: TypographyType;
   shadows: ShadowsType;
   utilities: UtilitiesType;

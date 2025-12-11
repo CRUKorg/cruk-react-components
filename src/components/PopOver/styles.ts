@@ -28,11 +28,7 @@ export const PopOverModal = styled.div<{
   z-index: 9999;
   max-width: ${({ $maxWidth }) => $maxWidth};
   min-width: ${({ $minWidth }) => $minWidth};
-  font-size: ${({
-    theme: {
-      fontSizes: { s },
-    },
-  }) => s};
+  font-size: var(--font-size-s, 0.875rem);
   background-color: ${({
     theme: {
       colors: { popoverBackground },

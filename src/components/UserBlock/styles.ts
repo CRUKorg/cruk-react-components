@@ -21,7 +21,7 @@ export const Details = styled.div<Props>`
 
 export const Name = styled.div<Props>`
   font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
-  font-size: ${({ theme }) => theme.fontSizes.l};
+  font-size: var(--font-size-m, 1rem);
   white-space: normal;
   word-break: break-word;
 `;

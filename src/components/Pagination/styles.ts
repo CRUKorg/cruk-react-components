@@ -26,11 +26,7 @@ export const PagerLink = styled.a<{
       typography: { fontFamilyBase },
     },
   }) => fontFamilyBase};
-  font-size: ${({
-    theme: {
-      fontSizes: { s },
-    },
-  }) => s};
+  font-size: var(--font-size-s, 0.875rem);
   color: ${({ theme }) => theme.colors.textLight};
   background-color: ${({ theme }) => theme.colors.paginationBackground};
   cursor: pointer;

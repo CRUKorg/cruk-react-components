@@ -14,7 +14,7 @@ export const LegendSpan = styled.span<{
 }>`
   display: block;
   color: ${({ theme }) => theme.colors.textDark};
-  font-size: ${({ theme }) => theme.fontSizes.m};
+  font-size: var(--font-size-m, 1rem);
   line-height: ${({ theme }) => theme.typography.lineHeight};
   font-weight: ${({ theme }) => theme.typography.fontWeightLabels};
   font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
@@ -24,7 +24,7 @@ export const LegendSpan = styled.span<{
 
   // increase font size for desktop
   @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
-    font-size: ${({ theme }) => theme.fontSizes.ml};
+    font-size: var(--font-size-ml, 1.25rem);
   }
   & > * {
     font-weight: ${({ theme }) => theme.typography.fontWeightBase};

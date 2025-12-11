@@ -146,11 +146,7 @@ export const Tagline = styled.p<{
   flex: 1 1 auto;
   font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
   font-weight: ${({ theme }) => theme.typography.fontWeightHeadings};
-  font-size: ${({
-    theme: {
-      fontSizes: { xl },
-    },
-  }) => xl};
+  font-size: var(--font-size-xl, 1.5625rem);
   color: ${({ theme }) => theme.colors.headerTaglineText};
   text-align: center;
   opacity: 0;

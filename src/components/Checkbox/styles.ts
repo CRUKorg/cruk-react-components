@@ -33,7 +33,7 @@ export const Check = styled.span<{
   overflow: hidden;
   // do not increase font size of check icon at this breakpoint
   @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
-    font-size: ${({ theme }) => theme.fontSizes.m};
+    font-size: var(--font-size-m, 1rem);
   }
 
   svg {
@@ -64,7 +64,7 @@ export const StyledLabel = styled.label<{
 
   // increase font size for desktop
   @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
-    font-size: ${({ theme }) => theme.fontSizes.ml};
+    font-size: var(--font-size-ml, 1.25rem);
   }
 
   background-color: ${({ theme }) => theme.colors.backgroundLight};
