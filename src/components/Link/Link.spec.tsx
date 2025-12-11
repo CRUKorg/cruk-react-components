@@ -3,7 +3,6 @@ import React from "react";
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
 import { Link } from ".";
-import crukTheme from "src/themes/cruk";
 
 function component() {
   return (
@@ -50,7 +49,7 @@ function component() {
           <img
             style={{ width: "80px", height: "30px" }}
             alt=""
-            src={`${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`}
+            src={`https://rcl.assets.cancerresearchuk.org/images/logos/cruk-160.png`}
           />
         </Link>
       </div>

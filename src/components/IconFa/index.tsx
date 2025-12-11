@@ -33,7 +33,7 @@ export function IconFa({ faIcon, color, size = "1rem" }: IconFaProps) {
       theme={theme}
       role="presentation"
       viewBox={`0 0 ${width} ${height}`}
-      $size={themeSizeOrString(size, theme)}
+      $size={themeSizeOrString(size)}
       $color={themeColorOrString(color, theme)}
     >
       {svgPathData && <path d={svgPathData as string} />}

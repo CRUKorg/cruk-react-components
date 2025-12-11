@@ -2,10 +2,10 @@ import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
 import { Link } from "..";
-import Footer, { type FooterProps } from ".";
+import Footer from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
 
-const FooterWithChildren = (args: FooterProps) => (
+const FooterWithChildren = (args: React.ComponentProps<typeof Footer>) => (
   <Footer {...args}>
     <Link
       appearance="primary"
@@ -37,7 +37,7 @@ export const FooterDefault: Story = {
   argTypes: {
     footerText: { control: "text" },
   },
-  render: (args: FooterProps) => (
+  render: (args: React.ComponentProps<typeof Footer>) => (
     <AllThemesWrapper>
       <FooterWithChildren {...args} />
     </AllThemesWrapper>

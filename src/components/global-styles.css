@@ -68,6 +68,80 @@
   font-weight: 400;
 }
 
-main {
-  background-color: #ffffff;
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:after,
+  *:before {
+    animation-play-state: paused !important;
+    animation-direction: reverse !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+table,
+td,
+th {
+  border-spacing: 0;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+.no-focus-outline a:focus,
+.no-focus-outline button:focus {
+  outline: none;
+}
+img {
+  width: 100%;
+  height: auto;
+}
+section {
+  width: 100%;
+}
+button {
+  font-size: 1em;
+}
+
+:root {
+  --theme: "cruk";
+
+  --content-max-width: 1020px;
+  --breakpoint-mobile: 576px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 992px;
+  --breakpoint-desktop-large: 1200px;
+
+  --spacing-none: 0;
+  --spacing-auto: auto;
+  --spacing-xxxs: 0.25rem; /* 4px */
+  --spacing-xxs: 0.5rem; /* 8px */
+  --spacing-xs: 1rem; /* 16px */
+  --spacing-s: 1.5rem; /* 24px */
+  --spacing-m: 2rem; /* 32px */
+  --spacing-l: 2.5rem; /* 40px */
+  --spacing-xl: 3rem; /* 48px */
+  --spacing-xxl: 3.5rem; /* 56px */
+}
+
+[data-theme="cruk"] > * {
+  --theme: "cruk";
+}
+
+[data-theme="rfl"] > * {
+  --theme: "rfl";
+}
+
+[data-theme="su2c"] > * {
+  --theme: "su2c";
+}
+
+[data-theme="bowelbabe"] > * {
+  --theme: "bowelbabe";
 }

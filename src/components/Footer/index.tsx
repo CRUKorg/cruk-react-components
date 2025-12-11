@@ -14,14 +14,7 @@ import {
   StyledUL,
   StyledLI,
 } from "./styles";
-
-export type FooterProps = HTMLAttributes<HTMLElement> & {
-  /** used to customise text in middle section, it could also be react element, this is not to be confused with the component children which is primarily for the links in the footer */
-  middleSection?: ReactNode;
-  children?: ReactNode;
-  theme?: string;
-  footerText?: string;
-};
+import { type ThemeNameType } from "src/types";
 
 const footerTextCruk =
   "Cancer Research UK is a registered charity in England and Wales (1089464), Scotland (SC041666), the Isle of Man (1103) and Jersey (247). A company limited by guarantee. Registered company in England and Wales(4325234) and the Isle of Man (5713F).";
@@ -47,9 +40,15 @@ function footerTextForTheme(themeName: string): string {
 export function Footer({
   children,
   middleSection,
-  theme = "cruk",
+  themeName = "cruk",
   footerText,
-}: FooterProps) {
+}: HTMLAttributes<HTMLElement> & {
+  /** used to customise text in middle section, it could also be react element, this is not to be confused with the component children which is primarily for the links in the footer */
+  middleSection?: ReactNode;
+  children?: ReactNode;
+  themeName?: ThemeNameType;
+  footerText?: string;
+}) {
   const childArray = React.Children.toArray(children);
 
   return (
@@ -84,7 +83,9 @@ export function Footer({
               <>{middleSection}</>
             )
           ) : (
-            <Text textSize="s">{footerText || footerTextForTheme(theme)}</Text>
+            <Text textSize="s">
+              {footerText || footerTextForTheme(themeName)}
+            </Text>
           )}
         </FooterSection>
 

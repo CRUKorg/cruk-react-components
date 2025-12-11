@@ -35,7 +35,7 @@ export const PagerLink = styled.a<{
   background-color: ${({ theme }) => theme.colors.paginationBackground};
   cursor: pointer;
   border-radius: 0;
-  margin: ${({ theme }) => theme.spacing.xxs};
+  margin: var(--spacing-xxs, 0.5rem);
   padding: 7px 11px;
   text-decoration: none;
   &:active,
@@ -106,7 +106,7 @@ export const PagerItem = styled.li<{ theme: ThemeType }>`
   &:last-child {
     display: inline;
   }
-  @media (min-width: ${(props) => props.theme.breakpoint.mobile}) {
+  @media (min-width: var(--breakpoint-mobile, 576px)) {
     display: inline;
   }
   span {
@@ -115,6 +115,6 @@ export const PagerItem = styled.li<{ theme: ThemeType }>`
     padding: 5px;
     margin: 1px;
     border-radius: 0;
-    border-width: ${(props) => props.theme.breakpoint.mobile};
+    border-width: var(--breakpoint-mobile, 576px);
   }
 `;

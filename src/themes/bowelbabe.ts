@@ -1,12 +1,8 @@
 import {
   type UtilitiesType,
-  type SiteConfigType,
-  type AvatarType,
   type ButtonType,
-  type BreakPointType,
   type TokenColorsType,
   type ColorsType,
-  type SpacingType,
   type FontSizesType,
   type TypographyType,
   type ThemeType,
@@ -19,25 +15,10 @@ export const UTILITIES: UtilitiesType = {
   ...defaultTheme.utilities,
 };
 
-export const SITE_CONFIG: SiteConfigType = {
-  ...defaultTheme.siteConfig,
-  logoSrc:
-    "https://rcl.assets.cancerresearchuk.org/images/logos/bowelbabe-logo-160.png",
-};
-
-export const AVATAR: AvatarType = {
-  ...defaultTheme.avatar,
-  path: `${SITE_CONFIG.assetPath}images/avatar/bowelbabe/`,
-};
-
 export const BUTTON: ButtonType = {
   ...defaultTheme.button,
   horizontalPadding: "1rem",
   borderRadius: "2em",
-};
-
-export const BREAKPOINT: BreakPointType = {
-  ...defaultTheme.breakpoint,
 };
 
 export const TOKEN_COLORS: TokenColorsType = {
@@ -121,10 +102,6 @@ export const COLORS: ColorsType = {
   buttonTertiaryDisabledText: TOKEN_COLORS.grey_200,
 };
 
-export const SPACING: SpacingType = {
-  ...defaultTheme.spacing,
-};
-
 export const SHADOWS: ShadowsType = {
   ...defaultTheme.shadows,
 };
@@ -135,14 +112,6 @@ export const FONT_SIZES: FontSizesType = {
 
 export const TYPOGRAPHY: TypographyType = {
   ...defaultTheme.typography,
-  customFonts: [
-    {
-      family: "juana",
-      urlWoff: `${SITE_CONFIG.assetPath}fonts/juana-semibold-webfont.woff`,
-      urlWoff2: `${SITE_CONFIG.assetPath}fonts/juana-semibold-webfont.woff2`,
-      fontWeight: 600,
-    },
-  ],
   fontFamilyHeadings: "juana,Arial,sans-serif",
   fontFamilyLinks: "juana,Arial,sans-serif",
   fontFamilyButtons: "juana,Arial,sans-serif",
@@ -162,14 +131,10 @@ export const TYPOGRAPHY: TypographyType = {
 
 export const bowelbabeTheme: ThemeType = {
   name: "bowelbabe",
-  avatar: { ...AVATAR },
-  breakpoint: { ...BREAKPOINT },
   button: { ...BUTTON },
   tokenColors: { ...TOKEN_COLORS },
   colors: { ...COLORS },
-  spacing: { ...SPACING },
   fontSizes: { ...FONT_SIZES },
-  siteConfig: { ...SITE_CONFIG },
   typography: { ...TYPOGRAPHY },
   shadows: { ...SHADOWS },
   utilities: { ...UTILITIES },

@@ -102,20 +102,20 @@ export const DotContainer = styled.div<{ $count: number; theme: ThemeType }>`
   justify-content: center;
   display: ${({ $count }) => ($count > 6 ? "none" : "flex")};
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+  @media (min-width: var(--breakpoint-tablet, 768px)) {
     display: ${({ $count }) => ($count > 10 ? "none" : "flex")};
   }
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
+  @media (min-width: var(--breakpoint-desktop, 1024px)) {
     display: ${({ $count }) => ($count > 20 ? "none" : "flex")};
   }
 `;
 
 export const Dot = styled.button<{ $selected: boolean; theme: ThemeType }>`
   border: none;
-  outline-offset: ${({ theme }) => theme.spacing.xxs};
+  outline-offset: var(--spacing-xxs, 1rem);
   padding: 0;
-  margin: ${({ theme }) => `auto ${theme.spacing.xxs}`};
+  margin: auto var(--spacing-xxs, 1rem);
   width: ${({ theme }) => theme.fontSizes.l};
   height: ${({ theme }) => theme.fontSizes.l};
   border-radius: 50%;

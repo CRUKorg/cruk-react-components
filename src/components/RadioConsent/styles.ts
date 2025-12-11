@@ -9,7 +9,7 @@ export const StyledLegend = styled.legend<{
   font-family: ${({ theme }) => theme.typography.fontFamilyBase};
 
   // increase font size for desktop
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+  @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
     font-size: ${({ theme }) => theme.fontSizes.ml};
   }
 `;
@@ -28,7 +28,7 @@ export const StyledFieldSet = styled.fieldset<{
   position: relative;
   border: none;
   padding: 0;
-  margin: 0 0 ${({ theme }) => theme.spacing.s} 0;
+  margin: 0 0 var(--spacing-s, 1.5rem) 0;
 `;
 
 export const OptionWrapper = styled.div<{
@@ -36,7 +36,7 @@ export const OptionWrapper = styled.div<{
 }>`
   display: flex;
   flex-direction: row;
-  gap: ${({ theme }) => theme.spacing.m};
+  gap: var(--spacing-m, 2rem);
   align-items: flex-start;
   justify-content: flex-start;
   gap: 0px;

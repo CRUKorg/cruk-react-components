@@ -12,7 +12,7 @@ export const Label = styled.label<{ theme: ThemeType }>`
   width: 100%;
   font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
   font-weight: ${({ theme }) => theme.typography.fontWeightLabels};
-  margin-bottom: ${({ theme }) => theme.spacing.s};
+  margin-bottom: var(--spacing-s, 1.5rem);
 `;
 
 export const HintText = styled.span<{ theme: ThemeType }>`
@@ -20,7 +20,7 @@ export const HintText = styled.span<{ theme: ThemeType }>`
   font-weight: ${({ theme }) => theme.typography.fontWeightBase};
   display: block;
   color: ${({ theme }) => theme.colors.textMid};
-  margin-bottom: ${({ theme }) => theme.spacing.xs};
+  margin-bottom: var(--spacing-xs, 0.5rem);
 `;
 
 export const RequiredIndicationText = styled.span<{ theme: ThemeType }>`
@@ -32,11 +32,13 @@ export const LabelText = styled.span<LabelTextProp>`
   font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
   font-weight: ${({ theme }) => theme.typography.fontWeightLabels};
   display: block;
-  margin-bottom: ${({ $hasHintText, theme }) =>
-    $hasHintText ? theme.spacing.xxxs : theme.spacing.xs};
+  margin-bottom: ${({ $hasHintText }) =>
+    $hasHintText
+      ? "var(--spacing-xxxs, 0.25rem)"
+      : "var(--spacing-xs, 0.5rem)"};
 
   // increase font size for desktop
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+  @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
     font-size: ${({ theme }) => theme.fontSizes.ml};
   }
 `;

@@ -13,11 +13,7 @@ export const CheckWrapper = styled.div<{
   width: ${CHECK_BOX_SIZE};
   position: absolute;
   top: calc(50% - (${CHECK_BOX_SIZE} / 2));
-  left: ${({
-    theme: {
-      spacing: { xs },
-    },
-  }) => xs};
+  left: var(--spacing-xs, 0.5rem);
 `;
 
 export const Check = styled.span<{
@@ -36,7 +32,7 @@ export const Check = styled.span<{
   transition: border 0.25s ease;
   overflow: hidden;
   // do not increase font size of check icon at this breakpoint
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+  @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
     font-size: ${({ theme }) => theme.fontSizes.m};
   }
 
@@ -67,7 +63,7 @@ export const StyledLabel = styled.label<{
   font-family: ${({ theme }) => theme.typography.fontFamilyBase};
 
   // increase font size for desktop
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+  @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
     font-size: ${({ theme }) => theme.fontSizes.ml};
   }
 
@@ -80,7 +76,7 @@ export const StyledLabel = styled.label<{
   color: ${({ theme, $disabled }) =>
     $disabled ? theme.colors.disabled : theme.colors.textDark};
   padding: ${({ theme }) =>
-    `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
+    `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-m, 2rem) calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-xl, 3rem)`};
   &:focus ~ ${CheckWrapper} ${Check} {
     outline: 2px solid #7aacfe; /* for non-webkit browsers */
     outline: 5px auto -webkit-focus-ring-color;
@@ -136,7 +132,7 @@ export const StyledInput = styled.input<{
 
   /* This hides the original input */
   position: absolute;
-  left: ${({ theme }) => theme.spacing.xxs};
+  left: var(--spacing-xxs, 0.5rem);
   opacity: 0;
 
   &:focus ~ ${SelectedBorder} {

@@ -19,11 +19,11 @@ export const LegendSpan = styled.span<{
   font-weight: ${({ theme }) => theme.typography.fontWeightLabels};
   font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
   min-width: 3em;
-  margin-bottom: ${({ $hasHintText, theme }) =>
-    $hasHintText ? theme.spacing.xxs : 0};
+  margin-bottom: ${({ $hasHintText }) =>
+    $hasHintText ? "var(--spacing-xxs, 0.5rem)" : 0};
 
   // increase font size for desktop
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+  @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
     font-size: ${({ theme }) => theme.fontSizes.ml};
   }
   & > * {
@@ -49,12 +49,12 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
   border: none;
   padding: 0;
   legend {
-    margin-bottom: ${({ theme }) => theme.spacing.xs};
+    margin-bottom: var(--spacing-xs, 0.5rem);
   }
   label {
     border-color: ${({ $hasError, theme }) =>
       $hasError && theme.colors.textError};
-    margin-bottom: ${({ theme }) => theme.spacing.none};
+    margin-bottom: var(--spacing-none, 0);
     &:last-of-type {
       margin-bottom: 0;
     }

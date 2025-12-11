@@ -44,16 +44,12 @@ export const TextStyled = styled.p<TextStyledProps>`
     $textWeight || theme.typography.fontWeightBase};
   padding: 0;
   margin: 0;
-  margin-bottom: ${({
-    as,
-    theme: {
-      spacing: { xs },
-    },
-  }) => (typeof as === "undefined" || as === "p" ? `${xs}` : 0)};
+  margin-bottom: ${({ as }) =>
+    typeof as === "undefined" || as === "p" ? `var(--spacing-xs, 1rem)` : 0};
 
   &:last-child {
     margin-bottom: 0;
   }
 
-  ${(props) => spacing(props, props.theme as ThemeType)}
+  ${(props) => spacing(props)}
 `;

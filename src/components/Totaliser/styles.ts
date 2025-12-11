@@ -22,7 +22,7 @@ export const ProgressBarWrapper = styled.div<{
   theme: ThemeType;
 }>`
   padding: 0 46px 12px;
-  margin-top: ${({ theme }) => theme.spacing.s};
+  margin-top: var(--spacing-s, 1.5rem);
   position: relative;
 
   ${({ $isCompact, theme }) =>

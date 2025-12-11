@@ -1,11 +1,9 @@
 import styled from "styled-components";
-
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { type ThemeType } from "../../types";
 
 const HEADER_HEIGHT_LARGE = "120px";
 const HEADER_HEIGHT_SMALL = "72px";
-const HEADER_PADDING = defaultTheme.spacing.xs;
+const HEADER_PADDING = "var(--spacing-m, 2rem)";
 const HEADER_LOGO_HEIGHT_LARGE = "80px";
 const HEADER_LOGO_HEIGHT_SMALL = "40px";
 const ANIMATION_SPEED = "0.2s";
@@ -28,7 +26,7 @@ export const HeaderStickyPlaceHolder = styled.div<{ theme: ThemeType }>`
   width: 100%;
   height: ${HEADER_HEIGHT_SMALL};
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
+  @media (min-width: var(--breakpoint-desktop, 992px)) {
     height: ${HEADER_HEIGHT_LARGE};
   }
 `;
@@ -60,7 +58,7 @@ export const HeaderStickyContainer = styled.div<{
   position: ${({ $isSticky }) => ($isSticky ? "fixed" : "relative")};
   transition: height ${ANIMATION_SPEED} ease;
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
+  @media (min-width: var(--breakpoint-desktop, 992px)) {
     position: ${({ $isSticky }) => ($isSticky ? "fixed" : "relative")};
     height: ${({ $isSmall, $isSticky }) =>
       $isSmall && $isSticky ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE};
@@ -78,12 +76,8 @@ export const HeaderMainContent = styled.div<{
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  max-width: ${({
-    $fullWidth,
-    theme: {
-      utilities: { contentMaxWidth },
-    },
-  }) => ($fullWidth ? `100%` : contentMaxWidth)};
+  max-width: ${({ $fullWidth }) =>
+    $fullWidth ? `100%` : `var(--content-max-width, 1000px)`};
 `;
 
 export const Logo = styled.img`
@@ -106,7 +100,7 @@ export const LogoWrapper = styled.div<{
 
   height: ${HEADER_LOGO_HEIGHT_SMALL};
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
+  @media (min-width: var(--breakpoint-desktop, 992px)) {
     height: ${({ $isSmall, $isSticky }) =>
       $isSmall && $isSticky
         ? HEADER_LOGO_HEIGHT_SMALL
@@ -118,7 +112,7 @@ export const StyledLink = styled.a`
   display: inline-block;
 `;
 
-export const SkipToMain = styled.a<{ theme: ThemeType }>`
+export const SkipToMain = styled.a`
   left: -999px;
   position: absolute;
   top: auto;
@@ -135,11 +129,7 @@ export const SkipToMain = styled.a<{ theme: ThemeType }>`
     height: auto;
     overflow: auto;
     margin: 10px 35%;
-    padding: ${({
-      theme: {
-        spacing: { xs },
-      },
-    }) => xs};
+    padding: var(--spacing-xs, 0.5rem);
     border-radius: 15px;
     border: 4px solid yellow;
     text-align: center;
@@ -167,7 +157,7 @@ export const Tagline = styled.p<{
   transition: opacity ${ANIMATION_SPEED} ease;
   display: none;
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
+  @media (min-width: var(--breakpoint-desktop, 992px)) {
     display: block;
     opacity: ${({ $isSmall, $isSticky }) => ($isSmall && $isSticky ? 0 : 1)};
   }

@@ -65,11 +65,7 @@ export const CloseButton = styled(Button)<{
   theme: ThemeType;
 }>`
   float: right;
-  margin-left: ${({
-    theme: {
-      spacing: { xs },
-    },
-  }) => xs};
+  margin-left: var(--spacing-xs, 1rem);
   font-size: 1.2rem;
   padding: 0;
 `;

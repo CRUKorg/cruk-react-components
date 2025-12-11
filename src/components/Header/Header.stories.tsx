@@ -2,9 +2,11 @@ import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
 import { Button, crukTheme } from "..";
-import Header, { type HeaderProps } from ".";
+import Header from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
 import { ThemeProvider } from "styled-components";
+
+type HeaderProps = React.ComponentProps<typeof Header>;
 
 const HeaderInTallContainer = (args: HeaderProps) => (
   <div>

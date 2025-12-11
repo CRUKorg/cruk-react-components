@@ -18,6 +18,64 @@ export const Default: Story = {
   args: {
     children: <Text textColor="textDark">this is a box</Text>,
   },
+  argTypes: {
+    margin: {
+      control: "select",
+      options: ["none", "xs", "s", "m", "l", "xl"],
+    },
+    marginTop: {
+      control: "select",
+      options: ["none", "xs", "s", "m", "l", "xl"],
+    },
+    marginRight: {
+      control: "select",
+      options: ["none", "xs", "s", "m", "l", "xl"],
+    },
+    marginBottom: {
+      control: "select",
+      options: ["none", "xs", "s", "m", "l", "xl"],
+    },
+    marginLeft: {
+      control: "select",
+      options: ["none", "xs", "s", "m", "l", "xl"],
+    },
+    marginVertical: {
+      control: "select",
+      options: ["none", "xs", "s", "m", "l", "xl"],
+    },
+    marginHorizontal: {
+      control: "select",
+      options: ["none", "xs", "s", "m", "l", "xl"],
+    },
+    padding: {
+      control: "select",
+      options: ["none", "xs", "s", "m", "l", "xl"],
+    },
+    paddingTop: {
+      control: "select",
+      options: ["none", "xs", "s", "m", "l", "xl"],
+    },
+    paddingRight: {
+      control: "select",
+      options: ["none", "xs", "s", "m", "l", "xl"],
+    },
+    paddingBottom: {
+      control: "select",
+      options: ["none", "xs", "s", "m", "l", "xl"],
+    },
+    paddingLeft: {
+      control: "select",
+      options: ["none", "xs", "s", "m", "l", "xl"],
+    },
+    paddingVertical: {
+      control: "select",
+      options: ["none", "xs", "s", "m", "l", "xl"],
+    },
+    paddingHorizontal: {
+      control: "select",
+      options: ["none", "xs", "s", "m", "l", "xl"],
+    },
+  },
   render: (args) => (
     <AllThemesWrapper>
       <Box {...args} />

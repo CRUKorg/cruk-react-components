@@ -1,12 +1,8 @@
 import {
   type UtilitiesType,
-  type SiteConfigType,
-  type AvatarType,
   type ButtonType,
-  type BreakPointType,
   type TokenColorsType,
   type ColorsType,
-  type SpacingType,
   type FontSizesType,
   type ShadowsType,
   type TypographyType,
@@ -14,24 +10,8 @@ import {
 } from "../types";
 
 export const UTILITIES: UtilitiesType = {
-  contentMaxWidth: "1020px",
   useBackgroundStyleLinks: false,
   inputBorderWidth: "1px",
-};
-
-export const SITE_CONFIG: SiteConfigType = {
-  assetPath: "https://rcl.assets.cancerresearchuk.org/",
-  logoUrl: "/",
-  logoAlt: "Cancer Research UK Giving Page",
-  logoSrc: "https://rcl.assets.cancerresearchuk.org/images/logos/cruk.svg",
-};
-
-export const AVATAR: AvatarType = {
-  s: "32px",
-  m: "48px",
-  l: "64px",
-  xl: "128px",
-  path: `${SITE_CONFIG.assetPath}images/avatar/cruk2/`,
 };
 
 export const BUTTON: ButtonType = {
@@ -41,13 +21,6 @@ export const BUTTON: ButtonType = {
   textDecoration: "none",
   textTransform: "none",
   horizontalPadding: "2em",
-};
-
-export const BREAKPOINT: BreakPointType = {
-  mobile: "576px",
-  tablet: "768px",
-  desktop: "992px",
-  desktopLarge: "1200px",
 };
 
 export const TOKEN_COLORS: TokenColorsType = {
@@ -182,20 +155,6 @@ export const COLORS: ColorsType = {
   userBlockExtraText: TOKEN_COLORS.grey_800,
 };
 
-// TODO: possibly convert to REMS, once a base font size has been agreed.
-export const SPACING: SpacingType = {
-  none: "0",
-  auto: "auto",
-  xxxs: "0.25rem", // 4px
-  xxs: "0.5rem", // 8px
-  xs: "1rem", // 16px
-  s: "1.5rem", // 24px
-  m: "2rem", // 32px
-  l: "2.5rem", // 40px
-  xl: "3rem", // 48px
-  xxl: "3.5rem", // 56px
-};
-
 export const FONT_SIZES: FontSizesType = {
   xs: "0.75rem", // 12px
   s: "0.875rem", // 14px
@@ -209,38 +168,6 @@ export const FONT_SIZES: FontSizesType = {
 };
 
 export const TYPOGRAPHY: TypographyType = {
-  customFonts: [
-    {
-      family: "Progress",
-      urlWoff2: `${SITE_CONFIG.assetPath}fonts/Progress-Regular.woff2`,
-      fontWeight: 400,
-    },
-    {
-      family: "Progress",
-      urlWoff2: `${SITE_CONFIG.assetPath}fonts/Progress-SemiBold.woff2`,
-      fontWeight: 600,
-    },
-    {
-      family: "Poppins",
-      urlWoff: `${SITE_CONFIG.assetPath}fonts/Poppins-Light.woff`,
-      fontWeight: 300,
-    },
-    {
-      family: "Poppins",
-      urlWoff2: `${SITE_CONFIG.assetPath}fonts/Poppins-Regular.woff2`,
-      fontWeight: 400,
-    },
-    {
-      family: "Poppins",
-      urlWoff2: `${SITE_CONFIG.assetPath}fonts/Poppins-SemiBold.woff2`,
-      fontWeight: 600,
-    },
-    {
-      family: "Poppins",
-      urlWoff: `${SITE_CONFIG.assetPath}fonts/Poppins-Medium.woff`,
-      fontWeight: 500,
-    },
-  ],
   fontFamilyBase: "Poppins,sans-serif",
   fontFamilyButtons: "Poppins,sans-serif",
   fontFamilyLinks: "Poppins,sans-serif",
@@ -273,14 +200,10 @@ export const SHADOWS: ShadowsType = {
 
 export const crukTheme: ThemeType = {
   name: "cruk",
-  avatar: { ...AVATAR },
-  breakpoint: { ...BREAKPOINT },
   button: { ...BUTTON },
   tokenColors: { ...TOKEN_COLORS },
   colors: { ...COLORS },
-  spacing: { ...SPACING },
   fontSizes: { ...FONT_SIZES },
-  siteConfig: { ...SITE_CONFIG },
   typography: { ...TYPOGRAPHY },
   shadows: { ...SHADOWS },
   utilities: { ...UTILITIES },

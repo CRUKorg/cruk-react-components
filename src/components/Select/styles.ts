@@ -40,7 +40,7 @@ const StyledSelect = styled.select<StyledSelectProps>`
   font-size: ${({ theme }) => theme.fontSizes.m};
   min-height: ${BUTTON_HEIGHT};
   padding: ${({ theme }) =>
-    `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xs}`};
+    `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-m, 2rem) calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-xs, 0.5rem)`};
   width: 100%;
   transition: border-color 150ms linear;
   &:hover {
@@ -52,7 +52,7 @@ const StyledSelect = styled.select<StyledSelectProps>`
   }
 
   // increase font size for desktop
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+  @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
     font-size: ${({ theme }) => theme.fontSizes.ml};
   }
 `;

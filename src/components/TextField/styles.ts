@@ -30,8 +30,7 @@ export const Extra = styled.span<ExtraProps>`
   font-size: ${({ theme }) => theme.fontSizes.m};
   line-height: ${({ theme }) => theme.typography.lineHeight};
   font-weight: ${({ theme }) => theme.typography.fontWeightLight};
-  padding: ${({ theme }) =>
-    `calc((${MIN_HEIGHT} - 1em ) / 2) ${theme.spacing.xs}`};
+  padding: calc((${MIN_HEIGHT} - 1em) / 2) var(--spacing-xs, 1rem);
   margin: 0;
   line-height: 1rem;
   width: auto;
@@ -89,8 +88,7 @@ export const StyledInputWrapper = styled.span<StyledInputProps>`
     content: "";
     top: 0;
     background-repeat: no-repeat;
-    background-position: ${({ theme }) =>
-      `calc( 100% - ${theme.spacing.xxs}) 50% `};
+    background-position: calc(100% - var(--spacing-xxs, 0.5rem)) 50%;
     ${({ $isValid, $isInvalidVisible }) =>
       !$isValid &&
       $isInvalidVisible &&
@@ -121,7 +119,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   line-height: ${({ theme }) => theme.typography.lineHeight};
   min-width: 3em;
   padding: ${({ theme }) =>
-    `calc((${MIN_HEIGHT} - (${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xs}`};
+    `calc((${MIN_HEIGHT} - (${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-xs, 1rem)`};
 
   /* Make sure text doesn't go behind the valid indicatior icon */
   ${({ $isValidVisible, $isInvalidVisible }) =>
@@ -153,7 +151,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   }
 
   // increase font size for desktop
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+  @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
     font-size: ${({ theme }) => theme.fontSizes.ml};
   }
 `;

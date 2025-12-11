@@ -1,12 +1,14 @@
-import { type ThemeType, type SpacingType, type ColorsType } from "../types";
+import {
+  type ThemeType,
+  type SpacingType,
+  type ColorsType,
+  spaces,
+} from "../types";
 
-export const themeSizeOrString = (
-  spaceString: string,
-  theme: ThemeType,
-): string =>
-  typeof theme.spacing[spaceString as keyof SpacingType] === "undefined"
-    ? spaceString
-    : theme.spacing[spaceString as keyof SpacingType];
+export const themeSizeOrString = (spaceString: string): string =>
+  spaces.includes(spaceString as (typeof spaces)[number])
+    ? `var(--spacing-${spaceString as keyof SpacingType})`
+    : spaceString;
 
 export const themeColorOrString = (
   colorString: string | undefined,

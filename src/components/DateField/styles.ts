@@ -18,10 +18,10 @@ export const Fieldset = styled.fieldset`
 export const LegendText = styled.legend<{ theme: ThemeType }>`
   font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
   font-weight: ${({ theme }) => theme.typography.fontWeightLabels || 500};
-  margin-bottom: ${({ theme }) => theme.spacing.xxs};
+  margin-bottom: var(--spacing-xxs, 1rem);
 
   // do not increase font size of check icon at this breakpoint
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+  @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
     font-size: ${({ theme }) => theme.fontSizes.ml};
   }
 `;
@@ -33,7 +33,7 @@ export const TextAsLabel = styled(Text)<{ theme: ThemeType }>`
 export const DateTextFieldWrapper = styled.div<{ theme: ThemeType }>`
   display: inline-block;
   width: 60px;
-  margin-right: ${({ theme }) => theme.spacing.xs};
+  margin-right: var(--spacing-xs, 1rem);
   span {
     margin-bottom: 0.25rem; // this is smaller than xxs spacing
     font-weight: ${({ theme }) => theme.typography.fontWeightBase};

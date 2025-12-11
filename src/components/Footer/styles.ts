@@ -14,11 +14,11 @@ export const StyledFooter = styled.footer<ThemeProps>`
 `;
 
 export const FooterContentWrapper = styled.div<ThemeProps>`
-  max-width: ${({ theme }) => theme.utilities.contentMaxWidth};
+  max-width: var(--cruk-content-max-width, 1020px);
   display: block;
   margin: 0 auto;
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
+  @media (min-width: var(--breakpoint-desktop, 1024px)) {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -28,7 +28,7 @@ export const FooterContentWrapper = styled.div<ThemeProps>`
 export const FooterSection = styled.div<ThemeProps>`
   box-sizing: border-box;
   display: inline-block;
-  padding: ${({ theme }) => theme.spacing.xs};
+  padding: var(--spacing-s, 1.5rem);
   position: relative;
   width: 100%;
   flex: 0 1 auto;
@@ -39,7 +39,7 @@ export const FooterSectionLogo = styled(FooterSection)`
   display: block;
   float: left;
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
+  @media (min-width: var(--breakpoint-desktop, 992px)) {
     flex: 0 0 140px;
     width: auto;
   }
@@ -52,7 +52,7 @@ export const FooterSectionLinks = styled(FooterSection)`
   display: block;
   float: left;
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
+  @media (min-width: var(--breakpoint-desktop, 992px)) {
     flex: 0 0 170px;
     width: auto;
   }
@@ -82,11 +82,7 @@ export const StyledLI = styled.li<ThemeProps>`
   padding: 0;
   margin: 0;
   line-height: 1;
-  padding-bottom: ${({
-    theme: {
-      spacing: { xxs },
-    },
-  }) => xxs};
+  padding-bottom: var(--spacing-xs, 1rem);
 `;
 
 export const FooterSectionAddress = styled(FooterSection)`

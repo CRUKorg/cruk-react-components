@@ -1,7 +1,6 @@
 import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
-import { crukTheme } from "..";
 import { Avatar } from ".";
 import { AllThemesWrapper } from "../AllThemesWrapper";
 
@@ -19,6 +18,12 @@ export default {
 type Story = StoryObj<typeof Avatar>;
 
 export const Default: Story = {
+  argTypes: {
+    size: {
+      control: { type: "select" },
+      options: ["s", "m", "l", "xl"],
+    },
+  },
   render: (args) => (
     <AllThemesWrapper>
       <Avatar {...args} />
@@ -74,7 +79,7 @@ export const CustomImage: Story = {
   name: "CustomImage",
   args: {
     size: "xl",
-    url: `${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`,
+    url: `https://rcl.assets.cancerresearchuk.org/images/logos/cruk-160.png`,
   },
   render: (args) => (
     <AllThemesWrapper>

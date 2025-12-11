@@ -28,7 +28,7 @@ export const ScreenReaderOnly = styled.p`
 export const Spinner = styled.div<SpinnerProps>`
   width: 100%;
   text-align: center;
-  margin-top: ${({ theme }) => theme.spacing.s};
+  margin-top: var(--spacing-s, 1.5rem);
 
   span {
     display: inline-block;

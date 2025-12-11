@@ -6,7 +6,7 @@ const BUTTON_HEIGHT = "3rem";
 const BUTTON_HEIGHT_LARGE = "4rem";
 
 export const Spacer = styled.span<{ theme: ThemeType }>`
-  margin-left: ${({ theme }) => theme.spacing.xxs};
+  margin-left: var(--spacing-xxs, 1rem);
   &:first-of-type {
     margin-left: 0;
   }
@@ -138,7 +138,7 @@ export const StyledButton = styled.button<{
       border-radius: ${theme.button.borderRadiusLarge};
       padding: ${$isIconButton
         ? "0"
-        : `calc( (${BUTTON_HEIGHT_LARGE} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m}`};
+        : `calc( (${BUTTON_HEIGHT_LARGE} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-m, 2rem)`};
       min-width: ${$isIconButton ? `${BUTTON_HEIGHT_LARGE}` : "auto"};
       height: ${$isIconButton ? `${BUTTON_HEIGHT_LARGE}` : "min-content"};
     `}

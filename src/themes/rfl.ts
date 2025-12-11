@@ -1,12 +1,8 @@
 import {
   type UtilitiesType,
-  type SiteConfigType,
-  type AvatarType,
   type ButtonType,
-  type BreakPointType,
   type TokenColorsType,
   type ColorsType,
-  type SpacingType,
   type FontSizesType,
   type TypographyType,
   type ThemeType,
@@ -19,22 +15,8 @@ export const UTILITIES: UtilitiesType = {
   ...defaultTheme.utilities,
 };
 
-export const SITE_CONFIG: SiteConfigType = {
-  ...defaultTheme.siteConfig,
-  logoSrc: "https://rcl.assets.cancerresearchuk.org/images/logos/rfl.svg",
-};
-
-export const AVATAR: AvatarType = {
-  ...defaultTheme.avatar,
-  path: `${SITE_CONFIG.assetPath}images/avatar/rfl/`,
-};
-
 export const BUTTON: ButtonType = {
   ...defaultTheme.button,
-};
-
-export const BREAKPOINT: BreakPointType = {
-  ...defaultTheme.breakpoint,
 };
 
 export const TOKEN_COLORS: TokenColorsType = {
@@ -47,10 +29,6 @@ export const COLORS: ColorsType = {
   headerTaglineText: TOKEN_COLORS.navy_600,
   progressBar: TOKEN_COLORS.magenta_700,
   progressBarSecondary: TOKEN_COLORS.navy_600,
-};
-
-export const SPACING: SpacingType = {
-  ...defaultTheme.spacing,
 };
 
 export const SHADOWS: ShadowsType = {
@@ -68,14 +46,10 @@ export const TYPOGRAPHY: TypographyType = {
 
 export const rflTheme: ThemeType = {
   name: "rfl",
-  avatar: { ...AVATAR },
-  breakpoint: { ...BREAKPOINT },
   button: { ...BUTTON },
   tokenColors: { ...TOKEN_COLORS },
   colors: { ...COLORS },
-  spacing: { ...SPACING },
   fontSizes: { ...FONT_SIZES },
-  siteConfig: { ...SITE_CONFIG },
   typography: { ...TYPOGRAPHY },
   shadows: { ...SHADOWS },
   utilities: { ...UTILITIES },

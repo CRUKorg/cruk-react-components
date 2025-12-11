@@ -14,7 +14,7 @@ export const StyledUserBlock = styled.div`
 
 export const Details = styled.div<Props>`
   flex: 1;
-  margin-left: ${({ theme }) => theme.spacing.xs};
+  margin-left: var(--spacing-xs, 1rem);
   text-align: left;
   min-width: 0;
 `;

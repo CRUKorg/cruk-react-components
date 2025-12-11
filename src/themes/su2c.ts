@@ -1,12 +1,8 @@
 import {
   type UtilitiesType,
-  type SiteConfigType,
-  type AvatarType,
   type ButtonType,
-  type BreakPointType,
   type TokenColorsType,
   type ColorsType,
-  type SpacingType,
   type FontSizesType,
   type TypographyType,
   type ThemeType,
@@ -20,25 +16,11 @@ export const UTILITIES: UtilitiesType = {
   useBackgroundStyleLinks: true,
 };
 
-export const SITE_CONFIG: SiteConfigType = {
-  ...defaultTheme.siteConfig,
-  logoSrc: "https://rcl.assets.cancerresearchuk.org/images/logos/su2c-160.png",
-};
-
-export const AVATAR: AvatarType = {
-  ...defaultTheme.avatar,
-  path: `${SITE_CONFIG.assetPath}images/avatar/su2c/`,
-};
-
 export const BUTTON: ButtonType = {
   ...defaultTheme.button,
   borderRadius: "1.5rem",
   borderRadiusLarge: "2rem",
   textTransform: "uppercase",
-};
-
-export const BREAKPOINT: BreakPointType = {
-  ...defaultTheme.breakpoint,
 };
 
 export const TOKEN_COLORS: TokenColorsType = {
@@ -117,10 +99,6 @@ export const COLORS: ColorsType = {
   buttonTertiaryDisabledText: TOKEN_COLORS.grey_200,
 };
 
-export const SPACING: SpacingType = {
-  ...defaultTheme.spacing,
-};
-
 export const SHADOWS: ShadowsType = {
   ...defaultTheme.shadows,
 };
@@ -131,23 +109,6 @@ export const FONT_SIZES: FontSizesType = {
 
 export const TYPOGRAPHY: TypographyType = {
   ...defaultTheme.typography,
-  customFonts: [
-    {
-      family: "ITCAvantGarde",
-      urlWoff: `${SITE_CONFIG.assetPath}fonts/itc_-_itcavantgardepro-bold-webfont.woff`,
-      fontWeight: 700,
-    },
-    {
-      family: "ITCAvantGarde",
-      urlWoff: `${SITE_CONFIG.assetPath}fonts/ITCAvantGardePro-Demi.woff`,
-      fontWeight: 600,
-    },
-    {
-      family: "ITCAvantGarde",
-      urlWoff: `${SITE_CONFIG.assetPath}fonts/ITCAvantGardeStd-Bk.woff`,
-      fontWeight: 400,
-    },
-  ],
   fontFamilyHeadings: "ITCAvantGarde,Arial,sans-serif",
   fontFamilyLinks: "ITCAvantGarde,Arial,sans-serif",
   fontFamilyButtons: "ITCAvantGarde,Arial,sans-serif",
@@ -169,14 +130,10 @@ export const TYPOGRAPHY: TypographyType = {
 
 export const su2cTheme: ThemeType = {
   name: "su2c",
-  avatar: { ...AVATAR },
-  breakpoint: { ...BREAKPOINT },
   button: { ...BUTTON },
   tokenColors: { ...TOKEN_COLORS },
   colors: { ...COLORS },
-  spacing: { ...SPACING },
   fontSizes: { ...FONT_SIZES },
-  siteConfig: { ...SITE_CONFIG },
   typography: { ...TYPOGRAPHY },
   shadows: { ...SHADOWS },
   utilities: { ...UTILITIES },

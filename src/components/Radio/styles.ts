@@ -13,11 +13,7 @@ export const CheckWrapper = styled.div<{
   width: ${RADIO_SIZE};
   position: absolute;
   top: calc(50% - (${RADIO_SIZE} / 2));
-  left: ${({
-    theme: {
-      spacing: { xs },
-    },
-  }) => xs};
+  left: var(--spacing-xs, 1rem);
 `;
 
 export const Check = styled.span<{
@@ -81,7 +77,7 @@ export const StyledLabel = styled.label<{
   color: ${({ theme, $disabled }) =>
     $disabled ? theme.colors.disabled : theme.colors.textDark};
   padding: ${({ theme }) =>
-    `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
+    `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-m, 2rem) calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-xl, 4rem)`};
   vertical-align: middle;
 
   min-height: 2rem;
@@ -108,7 +104,7 @@ export const StyledLabel = styled.label<{
   }
 
   // increase font size for desktop
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
+  @media (min-width: var(--breakpoint-desktop-large, 1200px)) {
     font-size: ${({ theme }) => theme.fontSizes.ml};
   }
 `;
@@ -145,14 +141,10 @@ export const StyledInput = styled.input<{
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
-  margin-right: ${({
-    theme: {
-      spacing: { xxs },
-    },
-  }) => xxs};
+  margin-right: var(--spacing-xxs, 1rem);
 
   position: absolute;
-  left: ${({ theme }) => theme.spacing.xxs};
+  left: var(--spacing-xxs, 1rem);
   opacity: 0;
 
   &:focus ~ ${SelectedBorder} {

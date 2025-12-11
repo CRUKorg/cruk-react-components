@@ -7,17 +7,18 @@ import React, {
 import { useTheme } from "styled-components";
 
 import { crukTheme as defaultTheme } from "../../themes/cruk";
-
 import {
   spacingPropsToSpacingPropsInternal,
   type SpacingProps,
 } from "../Spacing";
 import { StyledBox } from "./styles";
 
+import { type ColorKeyType } from "../../types";
+
 export type BoxProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
     /** background color of box, this will add default padding */
-    backgroundColor?: string;
+    backgroundColor?: ColorKeyType;
     ref?: Ref<HTMLDivElement>;
     children?: ReactNode;
     /** styled-component polymorphic feature so you take the styling of a box and cast the component to be a "span" for example */

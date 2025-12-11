@@ -11,25 +11,11 @@ export type FontSizeType =
 
 export type FontSizesType = Record<FontSizeType, string>;
 
+export type ThemeNameType = "cruk" | "su2c" | "bowelbabe" | "rfl";
+
 export type UtilitiesType = {
-  contentMaxWidth: string;
   useBackgroundStyleLinks: boolean;
   inputBorderWidth: string;
-};
-
-export type SiteConfigType = {
-  assetPath: string;
-  logoUrl: string;
-  logoAlt: string;
-  logoSrc: string;
-};
-
-export type AvatarType = {
-  s: string;
-  m: string;
-  l: string;
-  xl: string;
-  path: string;
 };
 
 export type ButtonType = {
@@ -164,16 +150,19 @@ export type ColorsType = {
 
 export type ColorKeyType = keyof ColorsType;
 
-export type SpaceType =
-  | "auto"
-  | "xxs"
-  | "xs"
-  | "s"
-  | "m"
-  | "l"
-  | "xl"
-  | "xxl"
-  | "none";
+export const spaces = [
+  "auto",
+  "xxs",
+  "xs",
+  "s",
+  "m",
+  "l",
+  "xl",
+  "xxl",
+  "none",
+] as const;
+
+export type SpaceType = (typeof spaces)[number];
 
 export type SpacingType = {
   auto: string;
@@ -188,15 +177,7 @@ export type SpacingType = {
   none: string;
 };
 
-export type CustomFontType = {
-  family: string;
-  urlWoff?: string;
-  urlWoff2?: string;
-  fontWeight: string | number;
-};
-
 export type TypographyType = {
-  customFonts: CustomFontType[];
   fontWeightBase: string | number;
   fontWeightHeadings: string | number;
   fontWeightLabels: string | number;
@@ -229,14 +210,10 @@ export type ShadowsType = {
 
 export type ThemeType = {
   name: string;
-  avatar: AvatarType;
-  breakpoint: BreakPointType;
   button: ButtonType;
   tokenColors: TokenColorsType;
   colors: ColorsType;
-  spacing: SpacingType;
   fontSizes: FontSizesType;
-  siteConfig: SiteConfigType;
   typography: TypographyType;
   shadows: ShadowsType;
   utilities: UtilitiesType;
