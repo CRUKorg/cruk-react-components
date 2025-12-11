@@ -11,6 +11,7 @@ import {
   // PRIMARY_STORY,
 } from "@storybook/addon-docs/blocks";
 import { ThemeProvider } from "styled-components";
+import "../src/components/global-styles.css";
 
 import { crukTheme } from "../src/components";
 
