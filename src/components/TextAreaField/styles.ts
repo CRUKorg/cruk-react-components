@@ -12,7 +12,7 @@ export const StyledTextArea = styled.textarea<StyledTextareaProps>`
   resize: ${({ $resize }) => $resize};
   background-color: var(--color-background-light, #ffffff);
   background-image: none;
-  border: ${({ theme, $hasError }) => `solid ${theme.utilities.inputBorderWidth}
+  border: ${({ $hasError }) => `solid var(--size-border-width, 1px)
     ${$hasError ? "var(--clr-text-error, #ff0000)" : "var(--clr-text-input-border, #2e2d2c)"}`};
   color: var(--color-text-dark, #000000);
   display: block;

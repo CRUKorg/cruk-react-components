@@ -139,6 +139,8 @@ button {
   --font-size-xxxl: 2.5rem; /* 40px */
   --font-size-xxxxl: 3.125rem; /* 45px */
 
+  --size-border-width: 1px;
+
   --clr-cruk-navy-100: #e5e5ff;
   --clr-cruk-navy-600: #00007e;
   --clr-cruk-navy-700: #000066;

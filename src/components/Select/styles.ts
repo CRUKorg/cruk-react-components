@@ -25,8 +25,8 @@ export const StyledSelect = styled.select<{
     calc(100% - 10px) 50%;
   background-size: 6px 6px;
   background-repeat: no-repeat;
-  border: ${({ theme, $hasError, $errorMessage }) =>
-    `solid ${theme.utilities.inputBorderWidth} ${
+  border: ${({ $hasError, $errorMessage }) =>
+    `solid var(--size-border-width, 1px) ${
       $hasError || $errorMessage
         ? "var(--clr-text-error, #f00)"
         : "var(--clr-text-input-border, #2e2c2d)"
@@ -36,7 +36,7 @@ export const StyledSelect = styled.select<{
   font-size: var(--font-size-m, 1rem);
   min-height: var(--_button-height, 3rem);
   padding: ${({ theme }) =>
-    `calc( (var(--_button-height, 3rem) - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-m, 2rem) calc( (var(--_button-height, 3rem) - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-xs, 1rem)`};
+    `calc( (var(--_button-height, 3rem) - ( var(--size-border-width, 1px) * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-m, 2rem) calc( (var(--_button-height, 3rem) - ( var(--size-border-width, 1px) * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-xs, 1rem)`};
   width: 100%;
   transition: border-color 150ms linear;
   &:hover {

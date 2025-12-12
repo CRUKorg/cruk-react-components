@@ -76,7 +76,7 @@ export const StyledLabel = styled.label<{
   color: ${({ $disabled }) =>
     $disabled ? "var(--clr-disabled, #e6e6e6)" : "var(--clr-text-dark, #000)"};
   padding: ${({ theme }) =>
-    `calc( (var(--_button-height, 3em) - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-m, 2rem) calc( (var(--_button-height, 3em) - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-xl, 3rem)`};
+    `calc( (var(--_button-height, 3em) - ( var(--size-border-width, 1px) * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-m, 2rem) calc( (var(--_button-height, 3em) - ( var(--size-border-width, 1px) * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-xl, 3rem)`};
   &:focus ~ ${CheckWrapper} ${Check} {
     outline: 2px solid #7aacfe; /* for non-webkit browsers */
     outline: 5px auto -webkit-focus-ring-color;

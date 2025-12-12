@@ -1,15 +1,6 @@
-import {
-  type UtilitiesType,
-  type ButtonType,
-  type TypographyType,
-  type ThemeType,
-} from "../types";
+import { type ButtonType, type TypographyType, type ThemeType } from "../types";
 
 import { crukTheme as defaultTheme } from "./cruk";
-
-export const UTILITIES: UtilitiesType = {
-  ...defaultTheme.utilities,
-};
 
 export const BUTTON: ButtonType = {
   ...defaultTheme.button,
@@ -40,7 +31,6 @@ export const bowelbabeTheme: ThemeType = {
   name: "bowelbabe",
   button: { ...BUTTON },
   typography: { ...TYPOGRAPHY },
-  utilities: { ...UTILITIES },
 };
 
 export default bowelbabeTheme;

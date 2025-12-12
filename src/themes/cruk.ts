@@ -1,13 +1,4 @@
-import {
-  type UtilitiesType,
-  type ButtonType,
-  type TypographyType,
-  type ThemeType,
-} from "../types";
-
-export const UTILITIES: UtilitiesType = {
-  inputBorderWidth: "1px",
-};
+import { type ButtonType, type TypographyType, type ThemeType } from "../types";
 
 export const BUTTON: ButtonType = {
   borderRadius: "0px",
@@ -47,7 +38,6 @@ export const crukTheme: ThemeType = {
   name: "cruk",
   button: { ...BUTTON },
   typography: { ...TYPOGRAPHY },
-  utilities: { ...UTILITIES },
 };
 
 export default crukTheme;

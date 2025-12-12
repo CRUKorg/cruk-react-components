@@ -14,10 +14,6 @@ export type FontSizeType = (typeof fontSizes)[number];
 
 export type ThemeNameType = "cruk" | "su2c" | "bowelbabe" | "rfl";
 
-export type UtilitiesType = {
-  inputBorderWidth: string;
-};
-
 export type ButtonType = {
   borderRadius: string;
   borderRadiusLarge: string;
@@ -106,7 +102,6 @@ export type ThemeType = {
   name: string;
   button: ButtonType;
   typography: TypographyType;
-  utilities: UtilitiesType;
 };
 
 export type AddressDataType = {
