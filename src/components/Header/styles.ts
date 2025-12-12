@@ -52,8 +52,7 @@ export const HeaderStickyContainer = styled.div<{
     },
   }) => `solid 1px ${headerBorder}`};
   height: ${HEADER_HEIGHT_SMALL};
-  box-shadow: ${({ theme, $isSticky }) =>
-    $isSticky ? theme.shadows.l : "none"};
+  box-shadow: ${({ $isSticky }) => ($isSticky ? "var(--shadow-l)" : "none")};
   top: ${({ $isSticky }) => ($isSticky ? 0 : "auto")};
   position: ${({ $isSticky }) => ($isSticky ? "fixed" : "relative")};
   transition: height ${ANIMATION_SPEED} ease;

@@ -5,7 +5,6 @@ import {
   type ColorsType,
   type TypographyType,
   type ThemeType,
-  type ShadowsType,
 } from "../types";
 
 import { crukTheme as defaultTheme } from "./cruk";
@@ -98,10 +97,6 @@ export const COLORS: ColorsType = {
   buttonTertiaryDisabledText: TOKEN_COLORS.grey_200,
 };
 
-export const SHADOWS: ShadowsType = {
-  ...defaultTheme.shadows,
-};
-
 export const TYPOGRAPHY: TypographyType = {
   ...defaultTheme.typography,
   fontFamilyHeadings: "ITCAvantGarde,Arial,sans-serif",
@@ -129,7 +124,6 @@ export const su2cTheme: ThemeType = {
   tokenColors: { ...TOKEN_COLORS },
   colors: { ...COLORS },
   typography: { ...TYPOGRAPHY },
-  shadows: { ...SHADOWS },
   utilities: { ...UTILITIES },
 };
 

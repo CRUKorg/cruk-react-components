@@ -214,7 +214,6 @@ export type ThemeType = {
   tokenColors: TokenColorsType;
   colors: ColorsType;
   typography: TypographyType;
-  shadows: ShadowsType;
   utilities: UtilitiesType;
 };
 

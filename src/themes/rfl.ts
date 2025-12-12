@@ -5,7 +5,6 @@ import {
   type ColorsType,
   type TypographyType,
   type ThemeType,
-  type ShadowsType,
 } from "../types";
 
 import { crukTheme as defaultTheme } from "./cruk";
@@ -30,10 +29,6 @@ export const COLORS: ColorsType = {
   progressBarSecondary: TOKEN_COLORS.navy_600,
 };
 
-export const SHADOWS: ShadowsType = {
-  ...defaultTheme.shadows,
-};
-
 export const TYPOGRAPHY: TypographyType = {
   ...defaultTheme.typography,
   fontWeightHeadings: 600,
@@ -45,7 +40,6 @@ export const rflTheme: ThemeType = {
   tokenColors: { ...TOKEN_COLORS },
   colors: { ...COLORS },
   typography: { ...TYPOGRAPHY },
-  shadows: { ...SHADOWS },
   utilities: { ...UTILITIES },
 };
 

@@ -3,7 +3,6 @@ import {
   type ButtonType,
   type TokenColorsType,
   type ColorsType,
-  type ShadowsType,
   type TypographyType,
   type ThemeType,
 } from "../types";
@@ -179,19 +178,12 @@ export const TYPOGRAPHY: TypographyType = {
   headerTextTransform: "none",
 };
 
-export const SHADOWS: ShadowsType = {
-  s: `0px 0px 2px 1px ${TOKEN_COLORS.grey_300}`,
-  m: `0px 0px 4px 1px ${TOKEN_COLORS.grey_300}`,
-  l: `0px 0px 7px 1px ${TOKEN_COLORS.grey_300}`,
-};
-
 export const crukTheme: ThemeType = {
   name: "cruk",
   button: { ...BUTTON },
   tokenColors: { ...TOKEN_COLORS },
   colors: { ...COLORS },
   typography: { ...TYPOGRAPHY },
-  shadows: { ...SHADOWS },
   utilities: { ...UTILITIES },
 };
 
