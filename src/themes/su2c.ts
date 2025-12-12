@@ -9,7 +9,6 @@ import { crukTheme as defaultTheme } from "./cruk";
 
 export const UTILITIES: UtilitiesType = {
   ...defaultTheme.utilities,
-  useBackgroundStyleLinks: true,
 };
 
 export const BUTTON: ButtonType = {

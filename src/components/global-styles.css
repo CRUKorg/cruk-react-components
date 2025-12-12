@@ -329,10 +329,10 @@ button {
   --clr-circular-progress: var(--clr-su2c-orange-3);
   --clr-circular-progress-secondary: var(--clr-su2c-red);
 
-  --clr-link: var(--clr-su2c-orange-5);
-  --clr-link-hover: var(--clr-su2c-red);
-  --clr-link-secondary: var(--clr-su2c-orange-5);
-  --clr-link-secondary-hover: var(--clr-su2c-red);
+  --clr-link: var(--clr-su2c-orange-7);
+  --clr-link-hover: var(--clr-su2c-orange-8);
+  --clr-link-secondary: var(--clr-su2c-orange-7);
+  --clr-link-secondary-hover: var(--clr-su2c-orange-8);
 
   --clr-background-light-color: var(--clr-su2c-orange-2);
 

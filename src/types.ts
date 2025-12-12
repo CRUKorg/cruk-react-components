@@ -15,7 +15,6 @@ export type FontSizeType = (typeof fontSizes)[number];
 export type ThemeNameType = "cruk" | "su2c" | "bowelbabe" | "rfl";
 
 export type UtilitiesType = {
-  useBackgroundStyleLinks: boolean;
   inputBorderWidth: string;
 };
 

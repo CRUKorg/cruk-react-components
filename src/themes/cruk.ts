@@ -6,7 +6,6 @@ import {
 } from "../types";
 
 export const UTILITIES: UtilitiesType = {
-  useBackgroundStyleLinks: false,
   inputBorderWidth: "1px",
 };
 

@@ -20,14 +20,9 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
   background-color: rgba(255, 255, 255, 0);
   border: none;
   padding: 0;
-  color: ${({
-    theme: {
-      utilities: { useBackgroundStyleLinks },
-    },
-    $appearance,
-  }) =>
-    !$appearance && useBackgroundStyleLinks
-      ? "currentColor"
+  color: ${({ $appearance }) =>
+    !$appearance
+      ? "var(--clr-link,  #e60079)"
       : $appearance && $appearance === "primary"
         ? "var(--clr-link-secondary,  #e60079)"
         : "var(--clr-link,  #e60079)"};
@@ -61,19 +56,6 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
     $appearance === "primary" || $appearance === "secondary"
       ? LinkLetterSpacing
       : "0px"};
-
-  background: ${({
-    $appearance,
-    theme: {
-      utilities: { useBackgroundStyleLinks },
-    },
-  }) =>
-    useBackgroundStyleLinks && !$appearance
-      ? `linear-gradient(180deg, rgba(255, 255, 255, 0) 0px, var(--clr-primary, #e60079) -4px);`
-      : undefined};
-  background-repeat: no-repeat;
-  background-position-y: calc(100%);
-  background-size: 100% 2px;
   font-weight: ${({ theme }) => theme.typography.fontWeightLinks};
 
   &:focus-visible {
@@ -83,22 +65,14 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
   &:hover {
     cursor: pointer;
     background-size: 100% 100%;
-    color: ${({
-      theme: {
-        utilities: { useBackgroundStyleLinks },
-      },
-      $textHoverColor,
-      $appearance,
-    }) =>
+    color: ${({ $textHoverColor, $appearance }) =>
       $textHoverColor
         ? $textHoverColor
-        : useBackgroundStyleLinks
-          ? "var(--clr-text-dark, #000000)"
-          : !$appearance
-            ? "var(--clr-link-hover, #a5005f)"
-            : $appearance && $appearance === "primary"
-              ? "var(--clr-link-secondary-hover, #a5005f)"
-              : "var(--clr-link-secondary-hover, #a5005f)"};
+        : !$appearance
+          ? "var(--clr-link-hover, #a5005f)"
+          : $appearance && $appearance === "primary"
+            ? "var(--clr-link-secondary-hover, #a5005f)"
+            : "var(--clr-link-secondary-hover, #a5005f)"};
   }
 `;
 
