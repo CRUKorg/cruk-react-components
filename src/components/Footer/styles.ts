@@ -28,7 +28,7 @@ export const FooterContentWrapper = styled.div<ThemeProps>`
 export const FooterSection = styled.div<ThemeProps>`
   box-sizing: border-box;
   display: inline-block;
-  padding: var(--spacing-s, 1.5rem);
+  padding: var(--spacing-xs, 1rem);
   position: relative;
   width: 100%;
   flex: 0 1 auto;
