@@ -2,7 +2,6 @@ import React from "react";
 import type { Preview } from "@storybook/react-vite";
 import {
   Title,
-  Heading,
   Subtitle,
   Description,
   Primary,
@@ -33,7 +32,6 @@ const preview: Preview = {
             <Primary />
             <Controls />
             <Stories />
-            <Heading>Theming</Heading>
           </ThemeProvider>
         </>
       ),
