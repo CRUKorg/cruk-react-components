@@ -1,13 +1,4 @@
-import { type ButtonType, type TypographyType, type ThemeType } from "../types";
-
-export const BUTTON: ButtonType = {
-  borderRadius: "0px",
-  borderRadiusLarge: "0px",
-  buttonBorderThickness: "2px",
-  textDecoration: "none",
-  textTransform: "none",
-  horizontalPadding: "2em",
-};
+import { type TypographyType, type ThemeType } from "../types";
 
 export const TYPOGRAPHY: TypographyType = {
   fontFamilyBase: "Poppins,sans-serif",
@@ -36,7 +27,6 @@ export const TYPOGRAPHY: TypographyType = {
 
 export const crukTheme: ThemeType = {
   name: "cruk",
-  button: { ...BUTTON },
   typography: { ...TYPOGRAPHY },
 };
 

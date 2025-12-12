@@ -1,13 +1,6 @@
-import { type ButtonType, type TypographyType, type ThemeType } from "../types";
+import { type TypographyType, type ThemeType } from "../types";
 
 import { crukTheme as defaultTheme } from "./cruk";
-
-export const BUTTON: ButtonType = {
-  ...defaultTheme.button,
-  borderRadius: "1.5rem",
-  borderRadiusLarge: "2rem",
-  textTransform: "uppercase",
-};
 
 export const TYPOGRAPHY: TypographyType = {
   ...defaultTheme.typography,
@@ -32,7 +25,6 @@ export const TYPOGRAPHY: TypographyType = {
 
 export const su2cTheme: ThemeType = {
   name: "su2c",
-  button: { ...BUTTON },
   typography: { ...TYPOGRAPHY },
 };
 

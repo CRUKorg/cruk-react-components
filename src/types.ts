@@ -14,15 +14,6 @@ export type FontSizeType = (typeof fontSizes)[number];
 
 export type ThemeNameType = "cruk" | "su2c" | "bowelbabe" | "rfl";
 
-export type ButtonType = {
-  borderRadius: string;
-  borderRadiusLarge: string;
-  buttonBorderThickness: string;
-  textDecoration: string;
-  textTransform: string;
-  horizontalPadding: string;
-};
-
 export type ButtonAppearanceType = "primary" | "secondary" | "tertiary";
 
 export type PopOverPositionType =
@@ -100,7 +91,6 @@ export type ShadowsType = {
 
 export type ThemeType = {
   name: string;
-  button: ButtonType;
   typography: TypographyType;
 };
 

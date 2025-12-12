@@ -1,12 +1,6 @@
-import { type ButtonType, type TypographyType, type ThemeType } from "../types";
+import { type TypographyType, type ThemeType } from "../types";
 
 import { crukTheme as defaultTheme } from "./cruk";
-
-export const BUTTON: ButtonType = {
-  ...defaultTheme.button,
-  horizontalPadding: "1rem",
-  borderRadius: "2em",
-};
 
 export const TYPOGRAPHY: TypographyType = {
   ...defaultTheme.typography,
@@ -29,7 +23,6 @@ export const TYPOGRAPHY: TypographyType = {
 
 export const bowelbabeTheme: ThemeType = {
   name: "bowelbabe",
-  button: { ...BUTTON },
   typography: { ...TYPOGRAPHY },
 };
 

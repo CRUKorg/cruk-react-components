@@ -2,9 +2,6 @@ import styled, { css } from "styled-components";
 
 import { type ThemeType, type ButtonAppearanceType } from "../../types";
 
-const BUTTON_HEIGHT = "3rem";
-const BUTTON_HEIGHT_LARGE = "4rem";
-
 export const Spacer = styled.span<{ theme: ThemeType }>`
   margin-left: var(--spacing-xxs, 1rem);
   &:first-of-type {
@@ -21,8 +18,11 @@ export const StyledButton = styled.button<{
   $size?: "m" | "l";
   $css?: string;
 }>`
+  --_button-height: 3rem;
+  --_button-height-large: 4rem;
+
   box-sizing: border-box;
-  min-height: ${BUTTON_HEIGHT};
+  min-height: var(--_button-height, 3rem);
   height: min-content;
   display: inline-block;
   vertical-align: middle;
@@ -30,15 +30,14 @@ export const StyledButton = styled.button<{
   padding: ${({ theme, $isIconButton }) =>
     $isIconButton
       ? "0"
-      : `calc( (${BUTTON_HEIGHT} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.button.horizontalPadding}`};
+      : `calc( (var(--_button-height, 3rem) - ( var(--btn-border-thickness, 2px) * 2) - ${theme.typography.lineHeight} ) / 2) var(--btn-horizontal-padding, 1.5rem)`};
   width: ${({ $isIconButton }) =>
-    $isIconButton ? `${BUTTON_HEIGHT}` : "auto"};
+    $isIconButton ? `var(--_button-height, 3rem)` : "auto"};
   min-width: ${({ $isIconButton }) =>
-    $isIconButton ? `${BUTTON_HEIGHT}` : "auto"};
-
-  border-radius: ${({ theme }) => theme.button.borderRadius};
+    $isIconButton ? `var(--_button-height, 3rem)` : "auto"};
+  border-radius: var(--btn-border-radius, 0px);
   border-style: solid;
-  border-width: ${({ theme }) => theme.button.buttonBorderThickness};
+  border-width: var(--btn-border-thickness, 2px);
 
   transition:
     color 0.2s ease,
@@ -58,8 +57,8 @@ export const StyledButton = styled.button<{
     },
   }) => fontWeightButtons};
   text-align: center;
-  text-transform: ${({ theme }) => theme.button.textTransform};
-  text-decoration: ${({ theme }) => theme.button.textDecoration};
+  text-transform: var(--btn-text-transform, none);
+  text-decoration: var(--btn-text-decoration, none);
 
   &:focus-visible {
     outline: auto;
@@ -135,13 +134,17 @@ export const StyledButton = styled.button<{
   ${({ theme, $size, $isIconButton }) =>
     $size === "l" &&
     css`
-      min-height: ${BUTTON_HEIGHT_LARGE};
-      border-radius: ${theme.button.borderRadiusLarge};
+      min-height: var(--_button-height-large, 4rem);
+      border-radius: var(--btn-border-radius-large, 0px);
       padding: ${$isIconButton
         ? "0"
-        : `calc( (${BUTTON_HEIGHT_LARGE} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-m, 2rem)`};
-      min-width: ${$isIconButton ? `${BUTTON_HEIGHT_LARGE}` : "auto"};
-      height: ${$isIconButton ? `${BUTTON_HEIGHT_LARGE}` : "min-content"};
+        : `calc( (var(--_button-height-large, 4rem) - ( var(--btn-border-thickness, 2px) * 2) - ${theme.typography.lineHeight} ) / 2) var(--btn-horizontal-padding, 2rem)`};
+      min-width: ${$isIconButton
+        ? `var(--_button-height-large, 4rem)`
+        : "auto"};
+      height: ${$isIconButton
+        ? `var(--_button-height-large, 4rem)`
+        : "min-content"};
     `}
 
   ${(props) =>

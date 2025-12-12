@@ -141,6 +141,36 @@ button {
 
   --size-border-width: 1px;
 
+  --btn-border-radius: 0px;
+  --btn-border-radius-large: 0px;
+  --btn-border-thickness: 2px;
+  --btn-text-decoration: none;
+  --btn-text-transform: none;
+  --btn-horizontal-padding: 2em;
+
+  --typ-font-family-base: "Poppins", Arial, sans-serif;
+  --typ-font-family-buttons: "Poppins", Arial, sans-serif;
+  --typ-font-family-links: "Poppins", Arial, sans-serif;
+  --typ-font-family-headings: "Progress", Arial, sans-serif;
+  --typ-font-family-label: "Poppins", Arial, sans-serif;
+  --typ-font-size-base: 16px;
+  --typ-font-weight-base: 300;
+  --typ-font-weight-headings: 400;
+  --typ-font-weight-links: 700;
+  --typ-font-weight-buttons: 400;
+  --typ-font-weight-labels: 500;
+  --typ-font-weight-heavy: 700;
+  --typ-font-weight-medium: 500;
+  --typ-font-weight-normal: 400;
+  --typ-font-weight-light: 300;
+  --typ-font-weight-vlight: 100;
+  --typ-link-text-decoration: underline;
+  --typ-link-letter-spacing: 0px;
+  --typ-link-primary-text-decoration: underline;
+  --typ-line-height: 1.5em;
+  --typ-header-line-height: 1.25em;
+  --typ-header-text-transform: none;
+
   --clr-cruk-navy-100: #e5e5ff;
   --clr-cruk-navy-600: #00007e;
   --clr-cruk-navy-700: #000066;
@@ -317,6 +347,10 @@ button {
 [data-theme="su2c"] > * {
   --theme: "su2c";
 
+  --btn-border-radius: "1.5rem";
+  --btn-border-radius-large: "2rem";
+  --btn-text-transform: "uppercase";
+
   --clr-primary: var(--clr-su2c-orange-5);
   --clr-secondary: var(--clr-su2c-orange-5);
   --clr-tertiary: var(--clr-su2c-black);
@@ -382,6 +416,9 @@ button {
 
 [data-theme="bowelbabe"] > * {
   --theme: "bowelbabe";
+
+  --btn-border-radius: "2em";
+  --btn-horizontal-padding: "1rem";
 
   --clr-primary: var(--clr-bowelbabe-purple);
   --clr-secondary: var(--clr-bowelbabe-green);
