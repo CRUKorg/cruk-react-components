@@ -84,12 +84,14 @@ export const StyledLabel = styled.label<{
 
   ${CheckWrapper} ${Check} {
     border: solid 2px
-      ${({ theme, $disabled, $hasError }) =>
+      ${({ theme, $disabled, $hasError, $checked }) =>
         $disabled
           ? theme.colors.disabled
           : $hasError
             ? theme.colors.danger
-            : theme.colors.inputBorder};
+            : $checked
+              ? theme.colors.check
+              : theme.colors.inputBorder};
 
     &:before {
       background-color: ${({ $checked, theme }) =>
