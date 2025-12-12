@@ -40,30 +40,30 @@ export const TestThemeWrapper = ({
 export const AllThemesWrapper = ({ children }: { children?: ReactNode }) => (
   <main>
     <div tabIndex={0}>
-      <h2>CRUK Theme:</h2>
       <div data-theme="cruk">
         <ThemeProvider theme={crukTheme}>
+          <h2>CRUK Theme:</h2>
           {children}
           <Line />
         </ThemeProvider>
       </div>
       <div data-theme="rfl">
-        <h2>RFL Theme:</h2>
         <ThemeProvider theme={rflTheme}>
+          <h2>RFL Theme:</h2>
           {children}
           <Line />
         </ThemeProvider>
       </div>
       <div data-theme="su2c">
-        <h2>SU2C Theme:</h2>
         <ThemeProvider theme={su2cTheme}>
+          <h2>SU2C Theme:</h2>
           {children}
           <Line />
         </ThemeProvider>
       </div>
       <div data-theme="bowelbabe">
-        <h2>Bowelbabe Theme:</h2>
         <ThemeProvider theme={bowelbabeTheme}>
+          <h2>Bowelbabe Theme:</h2>
           {children}
           <Line />
         </ThemeProvider>
