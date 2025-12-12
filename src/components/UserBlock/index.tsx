@@ -5,6 +5,7 @@ import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { Avatar } from "../Avatar";
 
 import { StyledUserBlock, Details, Name, Extra } from "./styles";
+import { type ThemeNameType } from "src/types";
 
 export type UserBlockProps = HTMLAttributes<HTMLElement> & {
   /** name component or text */
@@ -17,6 +18,7 @@ export type UserBlockProps = HTMLAttributes<HTMLElement> & {
   extra?: ReactNode;
   /** size of avatar component */
   size?: "s" | "m" | "l" | "xl";
+  themeName: ThemeNameType;
 };
 
 /**
@@ -28,6 +30,7 @@ export function UserBlock({
   avatarUrl,
   extra,
   size = "l",
+  themeName = "cruk",
 }: UserBlockProps) {
   const foundTheme = useTheme();
   const theme = {
@@ -43,6 +46,7 @@ export function UserBlock({
         name={avatarName || (typeof name === "string" ? name : "Anonymous")}
         url={avatarUrl || undefined}
         size={size}
+        themeName={themeName}
       />
       <Details>
         <Name>{name || "Anonymous"}</Name>
