@@ -8,7 +8,7 @@ export const BubbleWrapper = styled.div<{
   theme: ThemeType;
 }>`
   text-align: center;
-  background-color: ${({ theme }) => theme.colors.totaliserBubbleColor};
+  background-color: var(--clr-totaliser-bubble, #f2f2f2);
   border-radius: 3.2rem;
   padding: 5px;
   position: relative;
@@ -19,19 +19,18 @@ export const BubbleWrapper = styled.div<{
 
 export const ProgressBarWrapper = styled.div<{
   $isCompact?: boolean;
-  theme: ThemeType;
 }>`
   padding: 0 46px 12px;
   margin-top: var(--spacing-s, 1.5rem);
   position: relative;
 
-  ${({ $isCompact, theme }) =>
+  ${({ $isCompact }) =>
     !!$isCompact !== true &&
     css`
       div > div > div:not(:first-child) {
         &:after {
           content: "\\25bc";
-          color: ${theme.colors.totaliserBubbleColor};
+          color: var(--clr-totaliser-bubble, #f2f2f2);
           position: absolute;
           top: -36px;
           right: -15px;
@@ -44,7 +43,7 @@ export const ProgressBarWrapper = styled.div<{
 export const Total = styled.p<{
   theme: ThemeType;
 }>`
-  color: ${({ theme }) => theme.colors.totaliserBubbleTotalColor};
+  color: var(--clr-totaliser-bubble-total, #00007e);
   font-size: 2.625rem;
   line-height: 3rem;
   font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
@@ -53,7 +52,7 @@ export const Total = styled.p<{
 `;
 
 export const BubbleText = styled.p<{ theme: ThemeType }>`
-  color: ${({ theme }) => theme.colors.totaliserBubbleTextColor};
+  color: var(--clr-totaliser-bubble-text, #000);
   font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
   text-transform: ${({
     theme: {
@@ -64,7 +63,7 @@ export const BubbleText = styled.p<{ theme: ThemeType }>`
 `;
 
 export const GiftAid = styled.p<{ theme: ThemeType }>`
-  color: ${({ theme }) => theme.colors.totaliserBubbleTotalColor};
+  color: var(--clr-totaliser-bubble-total, #00007e);
   font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
   text-transform: ${({
     theme: {

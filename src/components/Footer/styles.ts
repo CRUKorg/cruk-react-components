@@ -5,12 +5,11 @@ type ThemeProps = {
   theme: ThemeType;
 };
 export const StyledFooter = styled.footer<ThemeProps>`
-  ${({ theme }) => theme.colors.inputBorder};
   box-sizing: border-box;
   display: block;
   position: relative;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.footerBackground};
+  background-color: var(--clr-footer-background, #f5f5f5);
 `;
 
 export const FooterContentWrapper = styled.div<ThemeProps>`

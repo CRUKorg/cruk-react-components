@@ -7,21 +7,6 @@ import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { StyledBadge } from "./styles";
 import { themeColorOrString } from "../../utils/themeUtils";
 
-export type BadgeProps = {
-  /** background colour of badge */
-  backgroundColor?: string;
-  /** border colour of badge */
-  borderColor?: string;
-  /** text colour of badge */
-  textColor?: string;
-  /** size of badge */
-  size?: SpaceType;
-  /** contents of badge */
-  children?: ReactNode;
-  /** forces shape to have equal width and height set by size attribute */
-  isSquare?: boolean;
-};
-
 /**
  * Displays a numeric or icon indicator. You can use the icon prop to
 indicate the importance of the badge to the user.
@@ -40,9 +25,22 @@ export function Badge({
   size = "xs",
   backgroundColor = "primary",
   borderColor = "transparent",
-  textColor = "textOnPrimary",
+  textColor = "text-on-primary",
   isSquare,
-}: BadgeProps) {
+}: {
+  /** background colour of badge */
+  backgroundColor?: string;
+  /** border colour of badge */
+  borderColor?: string;
+  /** text colour of badge */
+  textColor?: string;
+  /** size of badge */
+  size?: SpaceType;
+  /** contents of badge */
+  children?: ReactNode;
+  /** forces shape to have equal width and height set by size attribute */
+  isSquare?: boolean;
+}) {
   const foundTheme = useTheme();
   const theme = {
     ...defaultTheme,
@@ -56,9 +54,9 @@ export function Badge({
       theme={theme}
       $isSquare={isSquareCalculated}
       $size={size}
-      $backgroundColor={themeColorOrString(backgroundColor, theme)}
-      $borderColor={themeColorOrString(borderColor, theme)}
-      $textColor={themeColorOrString(textColor, theme)}
+      $backgroundColor={themeColorOrString(backgroundColor)}
+      $borderColor={themeColorOrString(borderColor)}
+      $textColor={themeColorOrString(textColor)}
     >
       {children}
     </StyledBadge>

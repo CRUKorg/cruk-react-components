@@ -13,12 +13,12 @@ import {
 } from "../Spacing";
 import { StyledBox } from "./styles";
 
-import { type ColorKeyType } from "../../types";
+import { type ColourVariableType } from "../../types";
 
 export type BoxProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
     /** background color of box, this will add default padding */
-    backgroundColor?: ColorKeyType;
+    backgroundColor?: string | ColourVariableType;
     ref?: Ref<HTMLDivElement>;
     children?: ReactNode;
     /** styled-component polymorphic feature so you take the styling of a box and cast the component to be a "span" for example */

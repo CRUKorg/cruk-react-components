@@ -60,12 +60,12 @@ export const CollapseWitCustomHeader: Story = {
     id: "custom",
     headerComponent: (
       <Box backgroundColor="primary">
-        <Text textColor="textOnPrimary">This is box header click me</Text>
+        <Text textColor="text-on-primary">This is box header click me</Text>
       </Box>
     ),
     children: (
       <Box backgroundColor="primary">
-        <Text textColor="textOnPrimary">This is box</Text>
+        <Text textColor="text-on-primary">This is box</Text>
       </Box>
     ),
   },

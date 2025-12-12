@@ -1,15 +1,16 @@
-export type FontSizeType =
-  | "xs"
-  | "s"
-  | "m"
-  | "ml"
-  | "l"
-  | "xl"
-  | "xxl"
-  | "xxxl"
-  | "xxxxl";
+export const fontSizes = [
+  "xs",
+  "s",
+  "m",
+  "ml",
+  "l",
+  "xl",
+  "xxl",
+  "xxxl",
+  "xxxxl",
+] as const;
 
-export type FontSizesType = Record<FontSizeType, string>;
+export type FontSizeType = (typeof fontSizes)[number];
 
 export type ThemeNameType = "cruk" | "su2c" | "bowelbabe" | "rfl";
 
@@ -43,112 +44,6 @@ export type BreakPointType = {
   desktop: string;
   desktopLarge: string;
 };
-
-export type TokenColorsType = Record<string, string>;
-
-export type ColorsType = {
-  primary: string;
-  secondary: string;
-  tertiary: string;
-  textOnPrimary: string;
-  textOnSecondary: string;
-  textOnTertiary: string;
-  textHeaderDefault: string;
-
-  disabled: string;
-  danger: string;
-  warning: string;
-  success: string;
-  info: string;
-  textError: string;
-
-  textDark: string;
-  textLight: string;
-  textMid: string;
-  linkColor: string;
-  linkColorHover: string;
-  linkColorSecondary: string;
-  linkColorSecondaryHover: string;
-
-  avatarBorder: string;
-
-  progressBar: string;
-  progressBarSecondary: string;
-  progressBarBackground: string;
-  circularProgress: string;
-  circularProgressSecondary: string;
-  circularProgressBackground: string;
-
-  buttonPrimaryBackground: string;
-  buttonPrimaryText: string;
-  buttonPrimaryBorder: string;
-  buttonPrimaryBackgroundHover: string;
-  buttonPrimaryTextHover: string;
-  buttonPrimaryBorderHover: string;
-  buttonPrimaryDisabledBackground: string;
-  buttonPrimaryDisabledText: string;
-  buttonPrimaryDisabledBorder: string;
-
-  buttonSecondaryBackground: string;
-  buttonSecondaryText: string;
-  buttonSecondaryBorder: string;
-  buttonSecondaryBackgroundHover: string;
-  buttonSecondaryTextHover: string;
-  buttonSecondaryBorderHover: string;
-  buttonSecondaryDisabledBackground: string;
-  buttonSecondaryDisabledText: string;
-  buttonSecondaryDisabledBorder: string;
-
-  buttonTertiaryText: string;
-  buttonTertiaryTextHover: string;
-  buttonTertiaryDisabledText: string;
-
-  collapseHeaderColor: string;
-
-  selectionBorder: string;
-  inputBorder: string;
-  check: string;
-
-  headerBackground: string;
-  backgroundLight: string;
-  backgroundLightColor: string;
-  backgroundMid: string;
-  backgroundMidLight: string;
-
-  loaderColor1: string;
-  loaderColor2: string;
-  loaderColor3: string;
-
-  paginationText: string;
-  paginationBackground: string;
-  paginationActive: string;
-
-  footerBackground: string;
-
-  headerBorder: string;
-  headerTaglineText: string;
-
-  stepBorder: string;
-  stepBackground: string;
-
-  popoverBackground: string;
-
-  textInputExtraInfo: string;
-
-  totaliserBubbleColor: string;
-  totaliserBubbleTextColor: string;
-  totaliserBubbleTotalColor: string;
-
-  textInputBorder: string;
-
-  selectBackground: string;
-
-  modalBackdrop: string;
-
-  userBlockExtraText: string;
-};
-
-export type ColorKeyType = keyof ColorsType;
 
 export const spaces = [
   "auto",
@@ -211,8 +106,6 @@ export type ShadowsType = {
 export type ThemeType = {
   name: string;
   button: ButtonType;
-  tokenColors: TokenColorsType;
-  colors: ColorsType;
   typography: TypographyType;
   utilities: UtilitiesType;
 };
@@ -275,6 +168,110 @@ export type AddressDataType = {
   SubBuilding: string;
   Type: string;
 };
+
+export const colours = [
+  "primary",
+  "secondary",
+  "tertiary",
+  "text-on-primary",
+  "text-on-secondary",
+  "text-on-tertiary",
+  "text-header-default",
+
+  "disabled",
+  "danger",
+  "warning",
+  "success",
+  "info",
+  "text-error",
+  "text-dark",
+  "text-light",
+  "text-mid",
+
+  "link",
+  "link-hover",
+  "link-secondary",
+  "link-secondary-hover",
+
+  "avatar-border",
+
+  "progress-bar",
+  "progress-bar-secondary",
+  "progress-bar-background",
+  "circular-progress",
+  "circular-progress-secondary",
+  "circular-progress-background",
+
+  "button-primary-background",
+  "button-primary-text",
+  "button-primary-border",
+  "button-primary-background-hover",
+  "button-primary-text-hover",
+  "button-primary-border-hover",
+  "button-primary-disabled-background",
+  "button-primary-disabled-text",
+  "button-primary-disabled-border",
+
+  "button-secondary-background",
+  "button-secondary-text",
+  "button-secondary-border",
+  "button-secondary-background-hover",
+  "button-secondary-text-hover",
+  "button-secondary-border-hover",
+  "button-secondary-disabled-background",
+  "button-secondary-disabled-text",
+  "button-secondary-disabled-border",
+
+  "button-tertiary-text",
+  "button-tertiary-text-hover",
+  "button-tertiary-disabled-text",
+
+  "collapse-header",
+
+  "selection-border",
+
+  "input-border",
+  "check",
+
+  "header-background",
+  "background-light",
+  "background-light-color",
+  "background-mid",
+  "background-mid-light",
+
+  "loader-color-1",
+  "loader-color-2",
+  "loader-color-3",
+
+  "pagination-text",
+  "pagination-background",
+  "pagination-active",
+
+  "footer-background",
+
+  "header-border",
+  "header-tagline-text",
+
+  "step-border",
+  "step-background",
+
+  "popover-background",
+
+  "text-input-extra-info",
+
+  "totaliser-bubble",
+  "totaliser-bubble-text",
+  "totaliser-bubble-total",
+
+  "text-input-border",
+
+  "select-background",
+
+  "modal-backdrop",
+
+  "user-block-extra-text",
+] as const;
+export type ColourVariableType = (typeof colours)[number];
 
 export type AddressOptionsType = {
   Description: string;

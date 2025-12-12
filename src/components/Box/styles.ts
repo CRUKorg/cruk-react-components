@@ -1,16 +1,18 @@
 import styled from "styled-components";
 
 import { spacing, type SpacingPropsInternal } from "../Spacing";
-import { type ColorKeyType, type ThemeType } from "../../types";
+import { type colours, type ThemeType } from "../../types";
+import { themeColorOrString } from "../../utils/themeUtils";
 
 type StyledBoxProps = SpacingPropsInternal & {
-  $backgroundColor?: ColorKeyType;
+  $backgroundColor?: (typeof colours)[number] | string;
   $css?: string;
   theme: ThemeType;
 };
 
 export const StyledBox = styled.div<StyledBoxProps>`
-  background-color: ${({ theme }) => theme.colors.backgroundLight};
+  background-color: ${({ $backgroundColor }) =>
+    $backgroundColor ? themeColorOrString($backgroundColor) : "transparent"};
   // if we set a background color, add padding
   padding: ${({ $backgroundColor }) =>
     $backgroundColor ? "var(--spacing-s, 1.5rem)" : 0};
@@ -19,11 +21,6 @@ export const StyledBox = styled.div<StyledBoxProps>`
   &:last-child {
     margin-bottom: 0;
   }
-
-  background-color: ${({ theme, $backgroundColor }) =>
-    $backgroundColor && typeof theme.colors[$backgroundColor] !== "undefined"
-      ? theme.colors[$backgroundColor]
-      : $backgroundColor || "transparent"};
 
   ${(props) => spacing(props)}
 `;

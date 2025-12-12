@@ -40,8 +40,14 @@ export const DateTextFieldWrapper = styled.div<{ theme: ThemeType }>`
   }
 `;
 
-export const LargeDateTextFieldWrapper = styled(DateTextFieldWrapper)`
+export const LargeDateTextFieldWrapper = styled.div<{ theme: ThemeType }>`
+  display: inline-block;
   width: 80px;
+  margin-right: var(--spacing-xs, 1rem);
+  span {
+    margin-bottom: 0.25rem; // this is smaller than xxs spacing
+    font-weight: ${({ theme }) => theme.typography.fontWeightBase};
+  }
 `;
 
 export const ErrorTextWrapper = styled.div`

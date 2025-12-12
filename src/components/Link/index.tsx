@@ -10,6 +10,7 @@ import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { type TextProps } from "../Text";
 import { StyledLink } from "./styles";
+import { themeColorOrString } from "../../utils/themeUtils";
 
 export type LinkProps = Omit<AnchorHTMLAttributes<HTMLElement>, "nonce"> &
   Omit<TextProps, "as" | "ref" | "nonce"> & {
@@ -53,11 +54,15 @@ export const Link = (props: LinkProps) => {
 
   const { textHoverColor, appearance, ref, children, ...rest } = props;
 
+  const textHoverColorFinal = textHoverColor
+    ? themeColorOrString(textHoverColor)
+    : undefined;
+
   return (
     <ThemeProvider theme={theme}>
       <StyledLink
         {...rest}
-        $textHoverColor={textHoverColor}
+        $textHoverColor={textHoverColorFinal}
         $appearance={appearance}
         theme={theme}
         rel={rel}

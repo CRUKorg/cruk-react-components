@@ -6,7 +6,6 @@ import {
   type WordBreakType,
   type FontSizeType,
   type ThemeType,
-  type ColorKeyType,
   type OverflowWrapType,
 } from "../../types";
 
@@ -27,10 +26,7 @@ export const TextStyled = styled.p<TextStyledProps>`
     $textFontFamily || theme.typography.fontFamilyBase};
   word-break: ${({ $wordBreak }) => $wordBreak || "normal"};
   overflow-wrap: ${({ $overflowWrap }) => $overflowWrap || "break-word"};
-  color: ${({ theme: { colors }, $textColor }) =>
-    $textColor && typeof colors[$textColor as ColorKeyType] !== "undefined"
-      ? colors[$textColor as ColorKeyType]
-      : $textColor || colors.textDark};
+  color: ${({ $textColor }) => $textColor};
   text-align: ${({ $textAlign }) => $textAlign || "left"};
   font-size: ${({ $textSize }) =>
     $textSize

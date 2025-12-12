@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import Text, { type TextProps } from "../Text";
 
-import { type ThemeType, type ColorKeyType } from "../../types";
+import { type ThemeType } from "../../types";
 
 type StyledLinkProps = AnchorHTMLAttributes<HTMLElement> &
   TextProps & {
@@ -22,20 +22,16 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
   padding: 0;
   color: ${({
     theme: {
-      colors,
       utilities: { useBackgroundStyleLinks },
     },
-    textColor,
     $appearance,
   }) =>
-    textColor && typeof colors[textColor as ColorKeyType] !== "undefined"
-      ? colors[textColor as ColorKeyType]
-      : textColor ||
-        (!$appearance && useBackgroundStyleLinks
-          ? "currentColor"
-          : $appearance && $appearance === "primary"
-            ? colors.linkColorSecondary
-            : colors.linkColor)};
+    !$appearance && useBackgroundStyleLinks
+      ? "currentColor"
+      : $appearance && $appearance === "primary"
+        ? "var(--clr-link-secondary,  #e60079)"
+        : "var(--clr-link,  #e60079)"};
+
   text-decoration: ${({
     $appearance,
     theme: {
@@ -68,13 +64,12 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
 
   background: ${({
     $appearance,
-    theme,
     theme: {
       utilities: { useBackgroundStyleLinks },
     },
   }) =>
     useBackgroundStyleLinks && !$appearance
-      ? `linear-gradient(180deg, rgba(255, 255, 255, 0) 0px, ${theme.colors.primary} -4px);`
+      ? `linear-gradient(180deg, rgba(255, 255, 255, 0) 0px, var(--clr-primary, #e60079) -4px);`
       : undefined};
   background-repeat: no-repeat;
   background-position-y: calc(100%);
@@ -90,22 +85,20 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
     background-size: 100% 100%;
     color: ${({
       theme: {
-        colors,
         utilities: { useBackgroundStyleLinks },
       },
       $textHoverColor,
       $appearance,
     }) =>
-      !$textHoverColor && useBackgroundStyleLinks
-        ? colors.textDark
-        : $textHoverColor &&
-            typeof colors[$textHoverColor as ColorKeyType] !== "undefined"
-          ? colors[$textHoverColor as ColorKeyType]
-          : $textHoverColor
-            ? $appearance && $appearance === "primary"
-              ? colors.linkColorHover
-              : colors.linkColorSecondaryHover
-            : colors.linkColorHover};
+      $textHoverColor
+        ? $textHoverColor
+        : useBackgroundStyleLinks
+          ? "var(--clr-text-dark, #000000)"
+          : !$appearance
+            ? "var(--clr-link-hover, #a5005f)"
+            : $appearance && $appearance === "primary"
+              ? "var(--clr-link-secondary-hover, #a5005f)"
+              : "var(--clr-link-secondary-hover, #a5005f)"};
   }
 `;
 

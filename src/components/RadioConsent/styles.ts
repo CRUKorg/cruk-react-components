@@ -14,9 +14,7 @@ export const StyledLegend = styled.legend<{
   }
 `;
 
-export const StyledFieldSet = styled.fieldset<{
-  theme: ThemeType;
-}>`
+export const StyledFieldSet = styled.fieldset`
   box-sizing: border-box;
   *,
   *:after,
@@ -31,9 +29,7 @@ export const StyledFieldSet = styled.fieldset<{
   margin: 0 0 var(--spacing-s, 1.5rem) 0;
 `;
 
-export const OptionWrapper = styled.div<{
-  theme: ThemeType;
-}>`
+export const OptionWrapper = styled.div`
   display: flex;
   flex-direction: row;
   gap: var(--spacing-m, 2rem);

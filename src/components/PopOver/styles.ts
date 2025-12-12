@@ -29,11 +29,7 @@ export const PopOverModal = styled.div<{
   max-width: ${({ $maxWidth }) => $maxWidth};
   min-width: ${({ $minWidth }) => $minWidth};
   font-size: var(--font-size-s, 0.875rem);
-  background-color: ${({
-    theme: {
-      colors: { popoverBackground },
-    },
-  }) => popoverBackground};
+  background-color: var(--clr-popover-background, #fff);
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.25);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -267,22 +263,22 @@ export const PopOverModal = styled.div<{
           return "-1px 0 0 0";
       }
     }};
-    border-color: ${({ theme, $position }) => {
+    border-color: ${({ $position }) => {
       switch ($position) {
         case "top":
-          return `${theme.colors.popoverBackground} transparent transparent`;
+          return `var(--clr-popover-background, #fff) transparent transparent`;
         case "topLeft":
-          return `${theme.colors.popoverBackground} transparent transparent`;
+          return `var(--clr-popover-background, #fff) transparent transparent`;
         case "left":
-          return `transparent transparent ${theme.colors.popoverBackground}`;
+          return `transparent transparent var(--clr-popover-background, #fff)`;
         case "right":
-          return `transparent transparent ${theme.colors.popoverBackground}`;
+          return `transparent transparent var(--clr-popover-background, #fff)`;
         case "bottom":
-          return `transparent transparent ${theme.colors.popoverBackground}`;
+          return `transparent transparent var(--clr-popover-background, #fff)`;
         case "bottomLeft":
-          return `transparent transparent ${theme.colors.popoverBackground}`;
+          return `transparent transparent var(--clr-popover-background, #fff)`;
         default:
-          return `${theme.colors.popoverBackground} transparent transparent`;
+          return `var(--clr-popover-background, #fff) transparent transparent`;
       }
     }};
   }
@@ -488,22 +484,22 @@ export const PopOverModal = styled.div<{
             return "-1px 0 0 0";
         }
       }};
-      border-color: ${({ theme, $position }) => {
+      border-color: ${({ $position }) => {
         switch ($position) {
           case "top":
-            return `${theme.colors.popoverBackground} transparent transparent`;
+            return `transparent transparent`;
           case "topLeft":
-            return `${theme.colors.popoverBackground} transparent transparent`;
+            return `var(--clr-popover-background, #fff) transparent transparent`;
           case "left":
-            return `transparent transparent transparent ${theme.colors.popoverBackground}`;
+            return `transparent transparent transparent var(--clr-popover-background, #fff)`;
           case "right":
-            return `transparent ${theme.colors.popoverBackground} transparent transparent`;
+            return `transparent var(--clr-popover-background, #fff) transparent transparent`;
           case "bottom":
-            return `transparent transparent ${theme.colors.popoverBackground}`;
+            return `transparent transparent var(--clr-popover-background, #fff)`;
           case "bottomLeft":
-            return `transparent transparent ${theme.colors.popoverBackground}`;
+            return `transparent transparent var(--clr-popover-background, #fff)`;
           default:
-            return `${theme.colors.popoverBackground} transparent transparent`;
+            return `var(--clr-popover-background, #fff) transparent transparent`;
         }
       }};
     }

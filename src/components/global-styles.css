@@ -208,10 +208,10 @@ button {
   --clr-text-light: var(--clr-cruk-white);
   --clr-text-mid: var(--clr-cruk-grey-600);
 
-  --clr-link-color: var(--clr-cruk-magenta-700);
-  --clr-link-color-hover: var(--clr-cruk-magenta-800);
-  --clr-link-color-secondary: var(--clr-cruk-magenta-700);
-  --clr-link-color-secondary-hover: var(--clr-cruk-magenta-800);
+  --clr-link: var(--clr-cruk-magenta-700);
+  --clr-link-hover: var(--clr-cruk-magenta-800);
+  --clr-link-secondary: var(--clr-cruk-magenta-700);
+  --clr-link-secondary-hover: var(--clr-cruk-magenta-800);
 
   --clr-avatar-border: var(--clr-cruk-navy-600);
 
@@ -246,13 +246,14 @@ button {
   --clr-button-tertiary-text-hover: var(--clr-cruk-magenta-800);
   --clr-button-tertiary-disabled-text: var(--clr-cruk-grey-600);
 
-  --clr-collapse-header-color: var(--clr-cruk-navy-600);
+  --clr-collapse-header: var(--clr-cruk-navy-600);
 
   --clr-selection-border: var(--clr-cruk-grey-600);
 
   --clr-text-input-border: var(--clr-cruk-grey-900);
   --clr-input-border: var(--clr-cruk-grey-900);
   --clr-check: var(--clr-cruk-magenta-700);
+  --clr-carousel-button: var(--clr-primary);
 
   --clr-header-background: var(--clr-cruk-white);
   --clr-background-light: var(--clr-cruk-white);
@@ -326,10 +327,10 @@ button {
   --clr-circular-progress: var(--crl-su2c-orange-3);
   --clr-circular-progress-secondary: var(--clr-su2c-red);
 
-  --clr-link-color: var(--crl-su2c-orange-5);
-  --clr-link-color-hover: var(--clr-su2c-red);
-  --clr-link-color-secondary: var(--crl-su2c-orange-5);
-  --clr-link-color-secondary-hover: var(--clr-su2c-red);
+  --clr-link: var(--crl-su2c-orange-5);
+  --clr-link-hover: var(--clr-su2c-red);
+  --clr-link-secondary: var(--crl-su2c-orange-5);
+  --clr-link-secondary-hover: var(--clr-su2c-red);
 
   --clr-background-light-color: var(--crl-su2c-orange-2);
 
@@ -341,11 +342,12 @@ button {
   --clr-pagination-background: var(--clr-su2c-black);
 
   --clr-totaliser-bubble: var(--clr-su2c-black);
-  --clr-totaliser-bubble-text: var(--clr-white);
-  --clr-totaliser-bubble-total: var(--clr-white);
+  --clr-totaliser-bubble-text: var(--clr-cruk-white);
+  --clr-totaliser-bubble-total: var(--clr-cruk-white);
 
-  --clr-collapse-header-color: var(--crl-su2c-orange-5);
+  --clr-collapse-header: var(--crl-su2c-orange-5);
   --clr-check: var(--clr-su2c-black);
+  --clr-carousel-button: var(--clr-su2c-black);
 
   --clr-header-tagline-text: var(--clr-su2c-black);
 
@@ -359,13 +361,13 @@ button {
   --clr-button-primary-disabled-text: var(--clr-grey-600);
   --clr-button-primary-disabled-border: var(--clr-grey-200);
 
-  --clr-button-secondary-background: var(--clr-white);
+  --clr-button-secondary-background: var(--clr-cruk-white);
   --clr-button-secondary-text: var(--crl-su2c-orange-5);
   --clr-button-secondary-border: var(--crl-su2c-orange-5);
   --clr-button-secondary-background-hover: var(--crl-su2c-orange-1);
   --clr-button-secondary-text-hover: var(--crl-su2c-orange-5);
   --clr-button-secondary-border-hover: var(--crl-su2c-orange-5);
-  --clr-button-secondary-disabled-background: var(--clr-white);
+  --clr-button-secondary-disabled-background: var(--clr-cruk-white);
   --clr-button-secondary-disabled-text: var(--clr-grey-200);
   --clr-button-secondary-disabled-border: var(--clr-grey-200);
 
@@ -381,9 +383,9 @@ button {
   --clr-secondary: var(--clr-bowelbabe-green);
   --clr-tertiary: var(--clr-bowelbabe-teal);
 
-  --clr-text-on-primary: var(--clr-white);
+  --clr-text-on-primary: var(--clr-cruk-white);
   --clr-text-on-secondary: var(--clr-bowelbabe-purple);
-  --clr-text-on-tertiary: var(--clr-white);
+  --clr-text-on-tertiary: var(--clr-cruk-white);
 
   --clr-warning: var(--clr-bowelbabe-yellow);
   --clr-success: var(--clr-bowelbabe-green);
@@ -394,15 +396,16 @@ button {
   --clr-progress-bar-secondary: var(--clr-bowelbabe-green);
   --clr-circular-progress: var(--clr-bowelbabe-light-green);
   --clr-circular-progress-secondary: var(--clr-bowelbabe-green);
-  --clr-link-color: var(--clr-bowelbabe-purple);
-  --clr-link-color-hover: var(--clr-bowelbabe-pink);
-  --clr-link-color-secondary: var(--clr-bowelbabe-purple);
-  --clr-link-color-secondary-hover: var(--clr-bowelbabe-pink);
+  --clr-link: var(--clr-bowelbabe-purple);
+  --clr-link-hover: var(--clr-bowelbabe-pink);
+  --clr-link-secondary: var(--clr-bowelbabe-purple);
+  --clr-link-secondary-hover: var(--clr-bowelbabe-pink);
 
   --clr-background-light-color: var(--clr-bowelbabe-pastel-green);
 
-  --clr-collapse-header-color: var(--clr-bowelbabe-pink);
+  --clr-collapse-header: var(--clr-bowelbabe-pink);
   --clr-check: var(--clr-bowelbabe-purple);
+  --clr-carousel-button: var(--clr-bowelbabe-purple);
 
   --clr-header-tagline-text: var(--clr-bowelbabe-purple);
 
@@ -415,7 +418,7 @@ button {
 
   --clr-totaliser-bubble: var(--clr-bowelbabe-purple);
   --clr-totaliser-bubble-text: var(--clr-bowelbabe-light-green);
-  --clr-totaliser-bubble-total: var(--clr-white);
+  --clr-totaliser-bubble-total: var(--clr-cruk-white);
 
   --clr-button-primary-background: var(--clr-bowelbabe-pastel-yellow);
   --clr-button-primary-text: var(--clr-bowelbabe-purple);
@@ -427,7 +430,7 @@ button {
   --clr-button-primary-disabled-text: var(--clr-cruk-grey-800);
   --clr-button-primary-disabled-border: var(--clr-cruk-grey-200);
 
-  --clr-button-secondary-background: var(--clr-white);
+  --clr-button-secondary-background: var(--clr-cruk-white);
   --clr-button-secondary-text: var(--clr-bowelbabe-purple);
   --clr-button-secondary-border: var(--clr-bowelbabe-pastel-yellow);
   --clr-button-secondary-background-hover: var(--clr-bowelbabe-pastel-pink);

@@ -31,7 +31,7 @@ export const TestThemeWrapper = ({
       tabIndex={0}
     >
       <ThemeProvider theme={theme || crukTheme}>
-        <Box backgroundColor="backgroundLight">{children}</Box>
+        <Box backgroundColor="background-light">{children}</Box>
       </ThemeProvider>
     </div>
   </main>

@@ -27,8 +27,8 @@ export const PagerLink = styled.a<{
     },
   }) => fontFamilyBase};
   font-size: var(--font-size-s, 0.875rem);
-  color: ${({ theme }) => theme.colors.textLight};
-  background-color: ${({ theme }) => theme.colors.paginationBackground};
+  color: var(--clr-text-light, #fff);
+  background-color: var(--clr-pagination-background, #00007e);
   cursor: pointer;
   border-radius: 0;
   margin: var(--spacing-xxs, 0.5rem);
@@ -48,22 +48,24 @@ export const PagerLink = styled.a<{
     outline: auto;
   }
 
-  ${({ $active, theme }) =>
+  ${({ $active }) =>
     $active &&
     css`
-      color: ${theme.colors.textDark};
-      background-color: ${theme.colors.paginationActive};
+      color: var(--clr-text-dark, #000);
+      background-color: var(--clr-pagination-active, #e6e6e6);
       cursor: default;
       &:hover {
-        background-color: ${theme.colors.paginationActive};
+        background-color: var(--clr-pagination-active, #e6e6e6);
         text-decoration: none;
       }
     `}
 
-  ${({ name, theme, $disabled }) =>
+  ${({ name, $disabled }) =>
     (name === "Prev" || name === "Next") &&
     css`
-      color: ${$disabled ? theme.colors.disabled : theme.colors.paginationText};
+      color: ${$disabled
+        ? "var(--clr-disabled, #e6e6e6)"
+        : "var(--clr-pagination-text, #00007e)"};
       background-color: transparent;
       font-weight: bold;
       padding: 8px 6px;
@@ -79,10 +81,10 @@ export const PagerLink = styled.a<{
       }
     `}
 
-  ${({ theme, $disabled }) =>
+  ${({ $disabled }) =>
     $disabled &&
     css`
-      color: $ ${theme.colors.disabled};
+      color: var(--clr-disabled, #e6e6e6);
       cursor: not-allowed;
       pointer-events:none
       text-decoration: none;
@@ -90,7 +92,7 @@ export const PagerLink = styled.a<{
       &:focus,
       &:active,
       &:visited {
-        color: ${theme.colors.disabled};
+        color: $ var(--clr-disabled, #e6e6e6);
         text-decoration: none;
       }
     `}

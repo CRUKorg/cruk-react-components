@@ -10,6 +10,7 @@ import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { CloseButton, Wrapper, Content, Background } from "./styles";
 
 import { type SpacingProps } from "../Spacing";
+import { themeColorOrString } from "../../utils/themeUtils";
 
 export type ModalProps = SpacingProps & {
   /** modal name used for aria-label */
@@ -48,7 +49,7 @@ export function Modal({
   showCloseButton,
   maxWidth = "500px",
   top = "1rem",
-  backgroundColor = "backgroundLight",
+  backgroundColor = "background-light",
   children,
   width = "90%",
   margin,
@@ -72,6 +73,8 @@ export function Modal({
     ...defaultTheme,
     ...foundTheme,
   };
+  const backgroundColour = themeColorOrString(backgroundColor);
+
   const closeByEsc = React.useCallback(
     (event: KeyboardEvent): void => {
       if (event.key === "Escape" && !!closeFunction) {
@@ -110,7 +113,7 @@ export function Modal({
                     aria-label={modalName}
                   >
                     <Content
-                      backgroundColor={backgroundColor}
+                      backgroundColor={backgroundColour}
                       $maxWidth={maxWidth}
                       $width={width}
                       $top={top}

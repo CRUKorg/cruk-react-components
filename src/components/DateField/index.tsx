@@ -85,9 +85,7 @@ export function DateField({
           </span>
         )}
       </LegendText>
-      {hintText && (
-        <Text textColor={typedTheme.colors.textMid}>{hintText}</Text>
-      )}
+      {hintText && <Text textColor="text-mid">{hintText}</Text>}
       <DateTextFieldWrapper>
         <TextField
           label="Day"

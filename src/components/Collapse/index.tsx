@@ -9,6 +9,11 @@ import React, {
 import { useTheme } from "styled-components";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
+import {
+  themeColorOrString,
+  themeFontSizeOrString,
+} from "../../utils/themeUtils";
+
 import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { IconFa } from "../IconFa";
 
@@ -69,6 +74,10 @@ export function Collapse({
     ...defaultTheme,
     ...foundTheme,
   };
+
+  const textColour = headerTitleTextColor
+    ? themeColorOrString(headerTitleTextColor)
+    : "var(--clr-collapse-header, #00007e)";
 
   const toggleCollapse = () => {
     const { current } = content;
@@ -141,8 +150,8 @@ export function Collapse({
           theme={theme}
           type="button"
           appearance="tertiary"
-          $textColor={headerTitleTextColor}
-          $textSize={headerTitleTextSize}
+          $textColor={textColour}
+          $textSize={themeFontSizeOrString(headerTitleTextSize || "m")}
           $textFontFamily={headerTitleTextFontFamily}
         >
           {headerTitleText}

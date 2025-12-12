@@ -16,7 +16,7 @@ type Story = StoryObj<typeof Box>;
 
 export const Default: Story = {
   args: {
-    children: <Text textColor="textDark">this is a box</Text>,
+    children: <Text textColor="text-dark">this is a box</Text>,
   },
   argTypes: {
     margin: {
@@ -87,7 +87,9 @@ export const BoxWithColour: Story = {
   name: "BoxWithColour",
   args: {
     backgroundColor: "primary",
-    children: <Text textColor="textOnPrimary">this is a box with colours</Text>,
+    children: (
+      <Text textColor="text-on-primary">this is a box with colours</Text>
+    ),
   },
   render: (args) => (
     <AllThemesWrapper>
@@ -103,7 +105,7 @@ export const BoxWithColourWithCustomSpacing: Story = {
     paddingVertical: "xl",
     paddingBottom: "xs",
     children: (
-      <Text textColor="textOnPrimary">this is a box with custom spacing</Text>
+      <Text textColor="text-on-primary">this is a box with custom spacing</Text>
     ),
   },
   render: (args) => (

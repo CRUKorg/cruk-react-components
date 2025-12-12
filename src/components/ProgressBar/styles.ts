@@ -1,8 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
 import { type ThemeType } from "../../types";
 
-const BAR_HEIGHT = "16px";
-
 type CircleKeyCircleFillKeyFramesProps = {
   $strokeDashoffsetInit: number;
   strokeDashoffset: number;
@@ -68,22 +66,18 @@ const LineBarPulseKeyFrames = () => keyframes`
 `;
 
 export const ProgressBarWrapper = styled.div`
-  margin-top: ${BAR_HEIGHT};
+  --__progress-bar-height: 16px;
+  margin-top: var(--__progress-bar-height, 16px);
 `;
 
 export const LineProgressBarWrapper = styled.div<{
   $percentage: number;
   $secondaryPercentage: number;
-  theme: ThemeType;
 }>`
   position: relative;
-  height: ${BAR_HEIGHT};
+  height: var(--__progress-bar-height, 16px);
   margin-bottom: 0;
-  background-color: ${({
-    theme: {
-      colors: { progressBarBackground },
-    },
-  }) => progressBarBackground};
+  background-color: var(--clr-progress-bar-background, #e6e6e6);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 
   ${({ $percentage, $secondaryPercentage }) =>
@@ -97,15 +91,14 @@ export const LineProgressBar = styled.div<{
   $percentage: number;
   $barColor?: string;
   $isSecondary?: boolean;
-  theme: ThemeType;
 }>`
   position: absolute;
   left: 0;
-  height: ${BAR_HEIGHT};
-  background-color: ${({ $barColor, $isSecondary, theme }) =>
+  height: var(--__progress-bar-height, 16px);
+  background-color: ${({ $barColor, $isSecondary }) =>
     !!$barColor || !!$isSecondary
-      ? theme.colors.progressBarSecondary
-      : theme.colors.progressBar};
+      ? `var(--clr-progress-bar-secondary, #e60079)`
+      : `var(--clr-progress-bar, #00007e)`};
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   transition: width 0.6s ease;
   width: ${({ $percentage }) => $percentage}%;
@@ -124,13 +117,10 @@ export const LineProgressBar = styled.div<{
     border-radius: 50%;
     opacity: 0;
     filter: blur(2px);
-    background-color: ${({
-      $barColor,
-      $isSecondary,
-      theme: {
-        colors: { progressBar, progressBarSecondary },
-      },
-    }) => ($barColor || $isSecondary ? progressBarSecondary : progressBar)};
+    background-color: ${({ $barColor, $isSecondary }) =>
+      $barColor || $isSecondary
+        ? `var(--clr-progress-bar-secondary, #e60079)`
+        : `var(--clr-progress-bar, #00007e)`};
 
     ${({ $percentage }) =>
       $percentage === 100 &&
@@ -175,7 +165,7 @@ export const CircleSvg = styled.svg`
 export const EmptyCircle = styled.circle<{
   theme: ThemeType;
 }>`
-  stroke: ${({ theme }) => theme.tokenColors.grey_200};
+  stroke: var(--clr-cruk-grey-200, #e6e6e6);
 `;
 
 export const FullCircle = styled.circle<{
@@ -185,14 +175,10 @@ export const FullCircle = styled.circle<{
   $barColor?: string;
   $isSecondary?: boolean;
 }>`
-  stroke: ${({
-    $isSecondary,
-    $barColor,
-    theme: {
-      colors: { circularProgress, circularProgressSecondary },
-    },
-  }) =>
-    $barColor || $isSecondary ? circularProgressSecondary : circularProgress};
+  stroke: ${({ $isSecondary, $barColor }) =>
+    $barColor || $isSecondary
+      ? `var(--clr-progress-bar-secondary, #e60079)`
+      : `var(--clr-progress-bar, #00007e)`};
   animation: ${({ $isSecondary, strokeDashoffset, $strokeDashoffsetInit }) =>
       $isSecondary
         ? SecondaryCircleFillKeyFrames({
@@ -221,9 +207,5 @@ export const CircularValue = styled.div<{
   font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
   text-align: center;
   height: 100%;
-  color: ${({
-    theme: {
-      colors: { textDark },
-    },
-  }) => textDark};
+  color: var(--clr-text-dark, #000);
 `;

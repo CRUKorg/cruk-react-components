@@ -13,19 +13,21 @@ import { Heading } from "../Heading";
 
 import { type SpacingProps } from "../Spacing";
 import { StyledInfoBox } from "./styles";
+import { themeColorOrString } from "../../utils/themeUtils";
+import { type ColourVariableType } from "src/types";
 
 export type InfoBoxProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
     /** background color of wrapping element, this will add default padding */
-    backgroundColor?: string;
+    backgroundColor?: ColourVariableType | string;
     /** Title text */
     titleText: string;
     /** Title text colour */
-    titleTextColor?: string;
+    titleTextColor?: ColourVariableType | string;
     /** Description text */
     descriptionText: string;
     /** Description text colour */
-    descriptionTextColor?: string;
+    descriptionTextColor?: ColourVariableType | string;
     /** Space for extra element underneath description */
     children?: ReactNode;
     /** Icon in left column usually 2em squared */
@@ -47,6 +49,7 @@ export const InfoBox = ({
   descriptionText,
   descriptionTextColor,
   icon,
+  backgroundColor,
   ref,
   ...spacingAndHTMLElementProps
 }: InfoBoxProps) => {
@@ -56,8 +59,17 @@ export const InfoBox = ({
     ...foundTheme,
   };
 
-  const backgroundColorOrDefault =
-    spacingAndHTMLElementProps.backgroundColor || theme.tokenColors.grey_200;
+  const backgroundColorOrDefault = backgroundColor
+    ? themeColorOrString(backgroundColor)
+    : "var(--clr-cruk-grey-200, #e6e6e6)";
+
+  const textColorOrDefault = titleTextColor
+    ? themeColorOrString(titleTextColor)
+    : "var(--clr-text-dark, #000)";
+
+  const descriptionTextColorOrDefault = descriptionTextColor
+    ? themeColorOrString(descriptionTextColor)
+    : "var(--clr-text-dark, #000)";
 
   return (
     <StyledInfoBox
@@ -75,16 +87,13 @@ export const InfoBox = ({
             margin="none"
             h4
             marginBottom="xxs"
-            textColor={titleTextColor || theme.colors.textDark}
+            textColor={textColorOrDefault}
           >
             {titleText}
           </Heading>
         )}
         {descriptionText && (
-          <Text
-            textColor={descriptionTextColor || theme.colors.textDark}
-            marginBottom="none"
-          >
+          <Text textColor={descriptionTextColorOrDefault} marginBottom="none">
             {descriptionText}
           </Text>
         )}

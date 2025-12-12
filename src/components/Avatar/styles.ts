@@ -1,9 +1,7 @@
 import styled from "styled-components";
-import { type ThemeType } from "../../types";
 
 export const StyledAvatar = styled.img<{
   $size: "s" | "m" | "l" | "xl";
-  theme: ThemeType;
 }>`
   --avatar-size-s: 32px;
   --avatar-size-m: 48px;
@@ -20,7 +18,7 @@ export const StyledAvatar = styled.img<{
   object-fit: cover;
   border-style: solid;
   border-width: 2px;
-  border-color: ${({ theme }) => theme.colors.avatarBorder};
+  border-color: var(--clr-avatar-border, #cccccc);
 `;
 
 export default StyledAvatar;

@@ -7,7 +7,7 @@ type ThemeProps = {
 };
 export const StyledErrorText = styled(Text)<ThemeProps>`
   display: inline-block;
-  color: ${({ theme }) => theme.colors.textError};
+  color: var(--clr-text-error, #d93025);
   font-weight: ${({ theme }) => theme.typography.fontWeightHeavy};
 `;
 

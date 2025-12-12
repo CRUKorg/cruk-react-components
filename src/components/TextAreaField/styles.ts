@@ -8,13 +8,13 @@ type StyledTextareaProps = {
   theme: ThemeType;
 };
 
-const StyledTextArea = styled.textarea<StyledTextareaProps>`
+export const StyledTextArea = styled.textarea<StyledTextareaProps>`
   resize: ${({ $resize }) => $resize};
-  background-color: ${({ theme }) => theme.colors.backgroundLight};
+  background-color: var(--color-background-light, #ffffff);
   background-image: none;
   border: ${({ theme, $hasError }) => `solid ${theme.utilities.inputBorderWidth}
-    ${$hasError ? theme.colors.textError : theme.colors.textInputBorder}`};
-  color: ${({ theme }) => theme.colors.textDark};
+    ${$hasError ? "var(--clr-text-error, #ff0000)" : "var(--clr-text-input-border, #2e2d2c)"}`};
+  color: var(--color-text-dark, #000000);
   display: block;
   font-family: ${({ theme }) => theme.typography.fontFamilyBase};
   font-size: var(--font-size-m, 1rem);
@@ -25,11 +25,11 @@ const StyledTextArea = styled.textarea<StyledTextareaProps>`
 
   transition: border-color 150ms linear;
   &:hover {
-    border-color: ${({ theme }) => theme.colors.secondary};
+    border-color: var(--clr-secondary, #e60079);
   }
   &:disabled {
-    border-color: ${({ theme }) => theme.colors.disabled};
-    color: ${({ theme }) => theme.colors.disabled};
+    border-color: var(--clr-disabled, #e6e6e6);
+    color: var(--clr-disabled, #e6e6e6);
   }
 
   // increase font size for desktop
@@ -37,6 +37,3 @@ const StyledTextArea = styled.textarea<StyledTextareaProps>`
     font-size: var(--font-size-ml, 1.125rem);
   }
 `;
-
-export default StyledTextArea;
-export { StyledTextArea };

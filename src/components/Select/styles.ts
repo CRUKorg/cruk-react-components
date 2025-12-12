@@ -1,29 +1,25 @@
+import { type ThemeType } from "src/types";
 import styled from "styled-components";
 
-import { type ThemeType } from "../../types";
-
-const BUTTON_HEIGHT = "3rem";
-
-type StyledSelectProps = {
+export const StyledSelect = styled.select<{
   $hasError: boolean;
   $errorMessage?: string;
   theme: ThemeType;
-};
-
-const StyledSelect = styled.select<StyledSelectProps>`
+}>`
+  --_button-height: 3rem;
   appearance: none;
   background:
     linear-gradient(
       45deg,
-      ${({ theme }) => theme.colors.backgroundLight} 50%,
-      ${({ theme }) => theme.colors.selectBackground} 50%
+      var(--clr-background-light, #fff) 50%,
+      var(--clr-select-background, #000) 50%
     ),
     linear-gradient(
       135deg,
-      ${({ theme }) => theme.colors.selectBackground} 50%,
-      ${({ theme }) => theme.colors.backgroundLight} 50%
+      var(--clr-select-background, #000) 50%,
+      var(--clr-background-light, #fff) 50%
     );
-  background-color: ${({ theme }) => theme.colors.backgroundLight};
+  background-color: var(--clr-background-light, #fff);
   background-position:
     calc(100% - 16px) 50%,
     calc(100% - 10px) 50%;
@@ -32,23 +28,23 @@ const StyledSelect = styled.select<StyledSelectProps>`
   border: ${({ theme, $hasError, $errorMessage }) =>
     `solid ${theme.utilities.inputBorderWidth} ${
       $hasError || $errorMessage
-        ? theme.colors.textError
-        : theme.colors.textInputBorder
+        ? "var(--clr-text-error, #f00)"
+        : "var(--clr-text-input-border, #2e2c2d)"
     }`};
-  color: ${({ theme }) => theme.colors.textDark};
+  color: var(--clr-text-dark, #000);
   display: block;
   font-size: var(--font-size-m, 1rem);
-  min-height: ${BUTTON_HEIGHT};
+  min-height: var(--_button-height, 3rem);
   padding: ${({ theme }) =>
-    `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-m, 2rem) calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-xs, 1rem)`};
+    `calc( (var(--_button-height, 3rem) - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-m, 2rem) calc( (var(--_button-height, 3rem) - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-xs, 1rem)`};
   width: 100%;
   transition: border-color 150ms linear;
   &:hover {
-    border-color: ${({ theme }) => theme.colors.secondary};
+    border-color: var(--clr-secondary, #e60079);
   }
   &:disabled {
-    border-color: ${({ theme }) => theme.colors.disabled};
-    color: ${({ theme }) => theme.colors.disabled};
+    border-color: var(--clr-disabled, #e6e6e6);
+    color: var(--clr-disabled, #e6e6e6);
   }
 
   // increase font size for desktop
@@ -56,6 +52,3 @@ const StyledSelect = styled.select<StyledSelectProps>`
     font-size: var(--font-size-ml, 1.125rem);
   }
 `;
-
-export default StyledSelect;
-export { StyledSelect };

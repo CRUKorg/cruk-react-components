@@ -1,72 +1,59 @@
 import styled from "styled-components";
 import { type ThemeType } from "../../types";
 
-const HEADER_HEIGHT_LARGE = "120px";
-const HEADER_HEIGHT_SMALL = "72px";
-const HEADER_PADDING = "var(--spacing-xs, 1rem)";
-const HEADER_LOGO_HEIGHT_LARGE = "80px";
-const HEADER_LOGO_HEIGHT_SMALL = "40px";
-const ANIMATION_SPEED = "0.2s";
+export const StyledHeader = styled.header`
+  --_header-height-large: 120px;
+  --_header-height-small: 72px;
+  --_header-logo-height-large: 80px;
+  --_header-logo-height-small: 40px;
+  --_header-padding: var(--spacing-xs, 1rem);
+  --_animation-speed: 0.2s;
 
-export const StyledHeader = styled.header<{ theme: ThemeType }>`
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  background-color: ${({
-    theme: {
-      colors: { headerBackground },
-    },
-  }) => headerBackground};
+  background-color: var(--clr-header-background, #ffffff);
   z-index: 9998;
 `;
 
-export const HeaderStickyPlaceHolder = styled.div<{ theme: ThemeType }>`
+export const HeaderStickyPlaceHolder = styled.div`
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  height: ${HEADER_HEIGHT_SMALL};
+  height: var(--_header-height-small, 72px);
 
   @media (min-width: 992px) {
-    height: ${HEADER_HEIGHT_LARGE};
+    height: var(--_header-height-large, 120px);
   }
 `;
 
 export const HeaderStickyContainer = styled.div<{
   $isSmall?: boolean;
   $isSticky?: boolean;
-  theme: ThemeType;
 }>`
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  padding: 0 ${HEADER_PADDING};
-  background-color: ${({
-    theme: {
-      colors: { headerBackground },
-    },
-  }) => headerBackground};
+  padding: 0 var(--_header-padding, 1rem);
+  background-color: var(--clr-header-background, #ffffff);
   position: relative;
-  border-bottom: ${({
-    theme: {
-      colors: { headerBorder },
-    },
-  }) => `solid 1px ${headerBorder}`};
-  height: ${HEADER_HEIGHT_SMALL};
+  border-bottom: solid 1px var(--clr-header-border, #e6e6e6);
+  height: var(--_header-height-small, 72px);
   box-shadow: ${({ $isSticky }) => ($isSticky ? "var(--shadow-l)" : "none")};
   top: ${({ $isSticky }) => ($isSticky ? 0 : "auto")};
   position: ${({ $isSticky }) => ($isSticky ? "fixed" : "relative")};
-  transition: height ${ANIMATION_SPEED} ease;
-
+  transition: height var(--_animation-speed, 0.2s) ease;
   @media (min-width: 992px) {
     position: ${({ $isSticky }) => ($isSticky ? "fixed" : "relative")};
     height: ${({ $isSmall, $isSticky }) =>
-      $isSmall && $isSticky ? HEADER_HEIGHT_SMALL : HEADER_HEIGHT_LARGE};
+      $isSmall && $isSticky
+        ? "var(--_header-height-small, 72px)"
+        : "var(--_header-height-large, 120px)"};
   }
 `;
 
 export const HeaderMainContent = styled.div<{
   $fullWidth?: boolean;
-  theme: ThemeType;
 }>`
   box-sizing: border-box;
   display: flex;
@@ -89,21 +76,20 @@ export const Logo = styled.img`
 export const LogoWrapper = styled.div<{
   $isSmall?: boolean;
   $isSticky?: boolean;
-  theme: ThemeType;
 }>`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   width: auto;
-  transition: height ${ANIMATION_SPEED} ease;
+  transition: height var(--_animation-speed, 0.2s) ease;
 
-  height: ${HEADER_LOGO_HEIGHT_SMALL};
+  height: var(--_header-logo-height-small, 40px);
 
   @media (min-width: 992px) {
     height: ${({ $isSmall, $isSticky }) =>
       $isSmall && $isSticky
-        ? HEADER_LOGO_HEIGHT_SMALL
-        : HEADER_LOGO_HEIGHT_LARGE};
+        ? "var(--_header-logo-height-small, 40px)"
+        : "var(--_header-logo-height-large, 80px)"};
   }
 `;
 
@@ -146,10 +132,10 @@ export const Tagline = styled.p<{
   font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
   font-weight: ${({ theme }) => theme.typography.fontWeightHeadings};
   font-size: var(--font-size-xl, 1.5625rem);
-  color: ${({ theme }) => theme.colors.headerTaglineText};
+  color: var(--clr-header-tagline-text, #000000);
   text-align: center;
   opacity: 0;
-  transition: opacity ${ANIMATION_SPEED} ease;
+  transition: opacity var(--_animation-speed, 0.2s) ease;
   display: none;
 
   @media (min-width: 992px) {

@@ -19,7 +19,7 @@ export const HintText = styled.span<{ theme: ThemeType }>`
   font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
   font-weight: ${({ theme }) => theme.typography.fontWeightBase};
   display: block;
-  color: ${({ theme }) => theme.colors.textMid};
+  color: var(--clr-text-mid, #666);
   margin-bottom: var(--spacing-xs, 1rem);
 `;
 

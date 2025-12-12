@@ -27,7 +27,7 @@ export const Name = styled.div<Props>`
 `;
 
 export const Extra = styled.div<Props>`
-  color: ${({ theme }) => theme.colors.userBlockExtraText};
+  color: var(--clr-user-block-extra, #575757);
   margin-top: 4px;
   white-space: normal;
   word-break: break-word;

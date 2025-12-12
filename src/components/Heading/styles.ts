@@ -5,7 +5,6 @@ import { spacing, type SpacingPropsInternal } from "../Spacing";
 import {
   type ThemeType,
   type FontSizeType,
-  type ColorKeyType,
   type WordBreakType,
   type OverflowWrapType,
 } from "../../types";
@@ -24,10 +23,9 @@ const StyledHeading = (props: StyledHeadingProps) => css`
   font-weight: ${props.theme.typography.fontWeightHeadings};
   word-break: ${props.$wordBreak || "normal"};
   overflow-wrap: ${props.$overflowWrap || "break-word"};
-  color: ${props.$textColor &&
-  typeof props.theme.colors[props.$textColor as ColorKeyType] !== "undefined"
-    ? props.theme.colors[props.$textColor as ColorKeyType]
-    : props.$textColor || props.theme.colors.textHeaderDefault};
+  color: ${props.$textColor
+    ? props.$textColor
+    : `var(--clr-text-header-default, #000)`};
   line-height: ${props.theme.typography.headerLineHeight};
   text-transform: ${props.theme.typography.headerTextTransform};
   margin-top: var(--spacing-m, 2rem);

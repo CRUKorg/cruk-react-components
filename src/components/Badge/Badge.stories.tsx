@@ -15,7 +15,7 @@ export default {
   component: Badge,
   args: {
     backgroundColor: "primary",
-    textColor: "textOnPrimary",
+    textColor: "text-on-primary",
   },
   tags: ["autodocs"],
 };
@@ -62,7 +62,7 @@ export const BadgeWithColour: Story = {
 export const BadgeWithInverseColours: Story = {
   name: "BadgeWithInverseColours",
   args: {
-    backgroundColor: "textLight",
+    backgroundColor: "text-light",
     textColor: "tertiary",
     borderColor: "tertiary",
     children: <IconFa faIcon={faComment} />,

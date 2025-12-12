@@ -25,8 +25,8 @@ type StyledInputProps = {
 export const Extra = styled.span<ExtraProps>`
   box-sizing: border-box;
   display: block;
-  background-color: ${({ theme }) => theme.colors.textInputExtraInfo};
-  color: ${({ theme }) => theme.colors.textDark};
+  background-color: var(--clr-text-input-extra-info, #f0f0f0);
+  color: var(--clr-text-dark, #000);
   font-size: var(--font-size-m, 1em);
   line-height: ${({ theme }) => theme.typography.lineHeight};
   font-weight: ${({ theme }) => theme.typography.fontWeightLight};
@@ -52,7 +52,7 @@ export const ExtraRight = styled(Extra)<ExtraProps>`
   box-sizing: border-box;
   width: auto;
   border: ${({ theme }) =>
-    `solid ${theme.utilities.inputBorderWidth} ${theme.colors.textInputBorder}`};
+    `solid ${theme.utilities.inputBorderWidth} var(--clr-text-input-border, #2e2d2c)`};
   transition: border-color 150ms linear;
   border-left: 0;
   background-color: transparent;
@@ -106,14 +106,16 @@ export const StyledInputWrapper = styled.span<StyledInputProps>`
 
 export const StyledInput = styled.input<StyledInputProps>`
   box-sizing: border-box;
-  background-color: ${({ theme }) => theme.colors.backgroundLight};
+  background-color: var(--clr-background-light, #ffffff);
   background-image: none;
   border: ${({ $hasError, theme }) =>
     `solid ${theme.utilities.inputBorderWidth} ${
-      $hasError ? theme.colors.textError : theme.colors.textInputBorder
+      $hasError
+        ? "var(--clr-text-error, #ff0000)"
+        : "var(--clr-text-input-border, #2e2d2c)"
     }`};
   border-radius: 0;
-  color: ${({ theme }) => theme.colors.textDark};
+  color: var(--clr-text-dark, #000);
   display: block;
   font-size: var(--font-size-m, 1rem);
   line-height: ${({ theme }) => theme.typography.lineHeight};
@@ -130,19 +132,21 @@ export const StyledInput = styled.input<StyledInputProps>`
 
   width: 100%;
   transition: border-color 150ms linear;
+
   &:hover {
-    border-color: ${({ theme }) => theme.colors.secondary};
-  }
-  &:disabled {
-    border-color: ${({ theme }) => theme.colors.disabled};
-    color: ${({ theme }) => theme.colors.disabled};
+    border-color: var(--clr-secondary, #e60079);
   }
 
-  ${({ $hasError, theme }) =>
+  &:disabled {
+    border-color: var(--clr-disabled, #e6e6e6);
+    color: var(--clr-disabled, #e6e6e6);
+  }
+
+  ${({ $hasError }) =>
     $hasError &&
     css`
       ~ ${ExtraRight} {
-        border-color: ${theme.colors.textError};
+        border-color: var(--clr-text-error, #ff0000);
       }
     `}
   &:-webkit-autofill,

@@ -1,9 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import { type ThemeType } from "../../types";
-
-type SpinnerProps = {
-  theme: ThemeType;
-};
 
 const BounceDelay = keyframes`
   0%,
@@ -25,7 +20,7 @@ export const ScreenReaderOnly = styled.p`
   overflow: hidden;
 `;
 
-export const Spinner = styled.div<SpinnerProps>`
+export const Spinner = styled.div`
   width: 100%;
   text-align: center;
   margin-top: var(--spacing-s, 1.5rem);
@@ -35,7 +30,7 @@ export const Spinner = styled.div<SpinnerProps>`
     width: 16px;
     height: 16px;
     margin: 0 2px;
-    background-color: ${({ theme }) => theme.colors.loaderColor1};
+    background-color: var(--clr-loader-color-1, #00007e);
     border-radius: 100%;
     animation: ${BounceDelay} 1.2s infinite ease-in-out both;
   }
@@ -46,11 +41,11 @@ export const Spinner = styled.div<SpinnerProps>`
   }
 
   span:nth-child(2) {
-    background-color: ${({ theme }) => theme.colors.loaderColor2};
+    background-color: var(--clr-loader-color-2, #ff0087);
     animation-delay: -0.16s;
   }
 
   span:nth-child(3) {
-    background-color: ${({ theme }) => theme.colors.loaderColor3};
+    background-color: var(--clr-loader-color-3, #009cee);
   }
 `;

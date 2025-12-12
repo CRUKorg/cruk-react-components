@@ -68,41 +68,46 @@ export const StyledButton = styled.button<{
   ${(props) =>
     props.$appearance === "primary" &&
     css`
-      background-color: ${props.theme.colors.buttonPrimaryBackground};
-      border-color: ${props.theme.colors.buttonPrimaryBorder};
-      color: ${props.theme.colors.buttonPrimaryText} !important;
+      background-color: var(--clr-button-primary-background, #e60079);
+      border-color: var(--clr-button-primary-border, #e60079);
+      color: var(--clr-button-primary-text, #ffffff) !important;
       &:focus,
       &:hover {
-        background-color: ${props.theme.colors.buttonPrimaryBackgroundHover};
-        border-color: ${props.theme.colors.buttonPrimaryBorderHover};
-        color: ${props.theme.colors.buttonPrimaryTextHover} !important;
+        background-color: var(--clr-button-primary-background-hover, #cc006c);
+        border-color: var(--clr-button-primary-border-hover, #cc006c);
+        color: var(--clr-button-primary-text-hover, #ffffff) !important;
       }
       &:disabled {
         cursor: not-allowed;
-        background-color: ${props.theme.colors.buttonPrimaryDisabledBackground};
-        color: ${props.theme.colors.buttonPrimaryDisabledText} !important;
-        border-color: ${props.theme.colors.buttonPrimaryDisabledBorder};
+        background-color: var(
+          --clr-button-primary-disabled-background,
+          #e6e6e6
+        );
+        color: var(--clr-button-primary-disabled-text, #666666) !important;
+        border-color: var(--clr-button-primary-disabled-border, #e6e6e6);
       }
     `}
 
   ${(props) =>
     props.$appearance === "secondary" &&
     css`
-      background-color: ${props.theme.colors.buttonSecondaryBackground};
-      border-color: ${props.theme.colors.buttonSecondaryBorder};
-      color: ${props.theme.colors.buttonSecondaryText} !important;
+      background-color: var(--clr-button-secondary-background, #ffffff);
+      border-color: var(--clr-button-secondary-border, #e60079);
+      color: var(--clr-button-secondary-text, #e60079) !important;
       &:focus,
       &:hover {
-        background-color: ${props.theme.colors.buttonSecondaryBackgroundHover};
-        border-color: ${props.theme.colors.buttonSecondaryBorderHover};
-        color: ${props.theme.colors.buttonSecondaryTextHover} !important;
+        background-color: var(--clr-button-secondary-background-hover, #ffe6f3);
+        border-color: var(--clr-button-secondary-border-hover, #ffe6f3);
+        color: var(--clr-button-secondary-text-hover, #e60079) !important;
       }
       &:disabled {
         cursor: not-allowed;
-        background-color: ${props.theme.colors
-          .buttonSecondaryDisabledBackground};
-        color: ${props.theme.colors.buttonSecondaryDisabledText} !important;
-        border-color: ${props.theme.colors.buttonSecondaryDisabledBorder};
+        background-color: var(
+          --clr-button-secondary-disabled-background,
+          #e6e6e6
+        );
+        color: var(--clr-button-secondary-disabled-text, #666666) !important;
+        border-color: var(--clr-button-secondary-disabled-border, #e6e6e6);
       }
     `}
 
@@ -114,15 +119,15 @@ export const StyledButton = styled.button<{
       border: 0px;
       background-color: rgba(255, 255, 255, 0);
       transition: color 0.2s ease;
-      color: ${props.theme.colors.buttonTertiaryText};
+      color: var(--clr-button-tertiary-text, #e60079);
       &:focus,
       &:hover {
-        color: ${props.theme.colors.buttonTertiaryTextHover};
+        color: var(--clr-button-tertiary-text-hover, #cc006c);
       }
       &:disabled {
         cursor: not-allowed;
         background-color: transparent;
-        color: ${props.theme.colors.buttonTertiaryDisabledText} !important;
+        color: var(--clr-button-tertiary-disabled-text, #666666) !important;
         border-color: transparent;
       }
     `}

@@ -13,10 +13,11 @@ export const StyledBadge = styled.span<{
   --_border-width: 1px;
 
   display: inline-block;
-  border-width: var(--border-width, 1px);
+  border-width: var(--_border-width, 1px);
   border-style: solid;
   text-align: center;
   font-size: var(--font-size-m, 1rem);
+  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
   padding: ${({ $isSquare }) => ($isSquare ? 0 : `var(--spacing-xxs, 0.5rem)`)};
   border-radius: ${({ $isSquare }) => ($isSquare ? "50%" : ` 1.5rem`)};
   height: ${({ $isSquare, $size }) =>

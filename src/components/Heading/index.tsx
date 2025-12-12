@@ -13,6 +13,7 @@ import {
   type OverflowWrapType,
 } from "../../types";
 import { H1, H2, H3, H4, H5, H6 } from "./styles";
+import { themeColorOrString } from "../../utils/themeUtils";
 
 export type HeadingProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
@@ -66,6 +67,10 @@ export function Heading({
   const propsConvertedToInternalSpacingProps =
     spacingPropsToSpacingPropsInternal(props);
 
+  const textColorFinal = textColor
+    ? themeColorOrString(textColor)
+    : "var(--clr-text-header-default, #000)";
+
   if (h1)
     return (
       <H1
@@ -73,7 +78,7 @@ export function Heading({
         theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
-        $textColor={textColor}
+        $textColor={textColorFinal}
         $wordBreak={wordBreak}
         $overflowWrap={overflowWrap}
       />
@@ -85,7 +90,7 @@ export function Heading({
         theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
-        $textColor={textColor}
+        $textColor={textColorFinal}
         $wordBreak={wordBreak}
         $overflowWrap={overflowWrap}
       />
@@ -97,7 +102,7 @@ export function Heading({
         theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
-        $textColor={textColor}
+        $textColor={textColorFinal}
         $wordBreak={wordBreak}
         $overflowWrap={overflowWrap}
       />
@@ -109,7 +114,7 @@ export function Heading({
         theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
-        $textColor={textColor}
+        $textColor={textColorFinal}
         $wordBreak={wordBreak}
         $overflowWrap={overflowWrap}
       />
@@ -121,7 +126,7 @@ export function Heading({
         theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
-        $textColor={textColor}
+        $textColor={textColorFinal}
         $wordBreak={wordBreak}
         $overflowWrap={overflowWrap}
       />
@@ -133,7 +138,7 @@ export function Heading({
         theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
-        $textColor={textColor}
+        $textColor={textColorFinal}
         $wordBreak={wordBreak}
         $overflowWrap={overflowWrap}
       />
@@ -144,7 +149,7 @@ export function Heading({
       theme={theme}
       $textSize={textSize}
       $textAlign={textAlign}
-      $textColor={textColor}
+      $textColor={textColorFinal}
       $wordBreak={wordBreak}
       $overflowWrap={overflowWrap}
     />

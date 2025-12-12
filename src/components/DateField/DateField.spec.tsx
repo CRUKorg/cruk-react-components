@@ -6,7 +6,7 @@ import { DateField } from ".";
 import { Box } from "..";
 
 const unControlledContent = () => (
-  <Box backgroundColor="backgroundLight">
+  <Box backgroundColor="background-light">
     <DateField
       dayName="birthDay"
       monthName="birthMonth"

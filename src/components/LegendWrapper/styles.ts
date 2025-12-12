@@ -13,7 +13,7 @@ export const LegendSpan = styled.span<{
   theme: ThemeType;
 }>`
   display: block;
-  color: ${({ theme }) => theme.colors.textDark};
+  color: var(--clr-text-dark, #000);
   font-size: var(--font-size-m, 1rem);
   line-height: ${({ theme }) => theme.typography.lineHeight};
   font-weight: ${({ theme }) => theme.typography.fontWeightLabels};
@@ -35,7 +35,7 @@ export const HintText = styled.span<{ theme: ThemeType }>`
   font-family: ${({ theme }) => theme.typography.fontFamilyBase};
   font-weight: ${({ theme }) => theme.typography.fontWeightBase};
   display: block;
-  color: ${({ theme }) => theme.colors.textMid};
+  color: var(--clr-text-mid, #666);
 `;
 
 export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
@@ -52,8 +52,8 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
     margin-bottom: var(--spacing-xs, 1rem);
   }
   label {
-    border-color: ${({ $hasError, theme }) =>
-      $hasError && theme.colors.textError};
+    border-color: ${({ $hasError }) =>
+      $hasError && "var(--clr-text-error, #f00)"};
     margin-bottom: var(--spacing-none, 0);
     &:last-of-type {
       margin-bottom: 0;
