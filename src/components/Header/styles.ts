@@ -3,7 +3,7 @@ import { type ThemeType } from "../../types";
 
 const HEADER_HEIGHT_LARGE = "120px";
 const HEADER_HEIGHT_SMALL = "72px";
-const HEADER_PADDING = "var(--spacing-m, 2rem)";
+const HEADER_PADDING = "var(--spacing-xs, 1rem)";
 const HEADER_LOGO_HEIGHT_LARGE = "80px";
 const HEADER_LOGO_HEIGHT_SMALL = "40px";
 const ANIMATION_SPEED = "0.2s";

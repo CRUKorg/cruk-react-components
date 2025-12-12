@@ -43,6 +43,10 @@ export const Check = styled.span<{
       transform: rotateY(90deg);
       transform-origin: center;
     }
+    /* we want the check box check to remain the same size */
+    @media (min-width: 1200px) {
+      font-size: var(--font-size-m, 1rem);
+    }
   }
 `;
 

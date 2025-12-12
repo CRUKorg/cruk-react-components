@@ -17,9 +17,7 @@ const Line = () => (
   />
 );
 
-export const AllThemesWrapper = ({
-  ...args
-}: React.ComponentProps<typeof Avatar>) => (
+const AllThemesWrapper = ({ ...args }: React.ComponentProps<typeof Avatar>) => (
   <main>
     <div tabIndex={0}>
       <h2>CRUK Theme:</h2>
@@ -62,18 +60,18 @@ export default {
     size: "s",
     alt: "sam's profile",
   },
-  tags: ["autodocs"],
-};
-
-type Story = StoryObj<typeof Avatar>;
-
-export const Default: Story = {
   argTypes: {
     size: {
       control: { type: "select" },
       options: ["s", "m", "l", "xl"],
     },
   },
+  tags: ["autodocs"],
+};
+
+type Story = StoryObj<typeof Avatar>;
+
+export const Default: Story = {
   render: (args) => <AllThemesWrapper {...args} />,
 };
 

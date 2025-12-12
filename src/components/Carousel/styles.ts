@@ -80,7 +80,7 @@ export const CarouselButton = styled.button<{
       : theme.name === "su2c"
         ? theme.colors.textDark
         : theme.colors.primary};
-  font-size: var(--font-size-xxxxl, 3.125rem);
+  font-size: var(--font-size-xxxl, 2rem);
   font-weight: 600;
   transition:
     color 0.3s ease,

@@ -17,7 +17,7 @@ const Line = () => (
   />
 );
 
-export const AllThemesWrapper = ({
+const AllThemesWrapper = ({
   ...args
 }: React.ComponentProps<typeof HeaderInTallContainer>) => (
   <main>

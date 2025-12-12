@@ -62,7 +62,7 @@ export const StyledNav = styled.nav<ThemeProps>`
   display: flex;
   flex-direction: column;
   a {
-    font-size: var(--font-size-m, 1rem);
+    font-size: var(--font-size-s, 0.875rem);
     font-weight: ${({
       theme: {
         typography: { fontWeightLinks },
@@ -82,7 +82,7 @@ export const StyledLI = styled.li<ThemeProps>`
   padding: 0;
   margin: 0;
   line-height: 1;
-  padding-bottom: var(--spacing-xs, 1rem);
+  padding-bottom: var(--spacing-xxs, 0.5rem);
 `;
 
 export const FooterSectionAddress = styled(FooterSection)`
