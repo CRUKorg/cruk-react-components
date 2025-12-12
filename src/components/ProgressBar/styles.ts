@@ -177,8 +177,8 @@ export const FullCircle = styled.circle<{
 }>`
   stroke: ${({ $isSecondary, $barColor }) =>
     $barColor || $isSecondary
-      ? `var(--clr-progress-bar-secondary, #e60079)`
-      : `var(--clr-progress-bar, #00007e)`};
+      ? `var(--clr-circular-progress-secondary, #e60079)`
+      : `var(--clr-circular-progress, #009cee)`};
   animation: ${({ $isSecondary, strokeDashoffset, $strokeDashoffsetInit }) =>
       $isSecondary
         ? SecondaryCircleFillKeyFrames({
