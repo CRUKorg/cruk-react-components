@@ -33,7 +33,7 @@ export const Check = styled.span<{
   overflow: hidden;
   // do not increase font size of check icon at this breakpoint
   @media (min-width: 1200px) {
-    font-size: var(--font-size-ml, 1.125rem);
+    font-size: var(--font-size-m, 1rem);
   }
 
   svg {
@@ -42,10 +42,6 @@ export const Check = styled.span<{
       transition: transform 0.25s ease;
       transform: rotateY(90deg);
       transform-origin: center;
-    }
-    /* we want the check box check to remain the same size */
-    @media (min-width: 1200px) {
-      font-size: var(--font-size-m, 1rem);
     }
   }
 `;
