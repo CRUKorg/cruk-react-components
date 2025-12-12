@@ -95,22 +95,14 @@ export const Large: Story = {
   args: {
     size: "l",
   },
-  render: (args) => (
-    <AllThemesWrapper>
-      <Avatar {...args} />
-    </AllThemesWrapper>
-  ),
+  render: (args) => <AllThemesWrapper {...args} />,
 };
 
 export const ExtraLarge: Story = {
   args: {
     size: "xl",
   },
-  render: (args) => (
-    <AllThemesWrapper>
-      <Avatar {...args} />
-    </AllThemesWrapper>
-  ),
+  render: (args) => <AllThemesWrapper {...args} />,
 };
 
 export const CustomImage: Story = {
@@ -119,9 +111,5 @@ export const CustomImage: Story = {
     size: "xl",
     url: `https://rcl.assets.cancerresearchuk.org/images/logos/cruk-160.png`,
   },
-  render: (args) => (
-    <AllThemesWrapper>
-      <Avatar {...args} />
-    </AllThemesWrapper>
-  ),
+  render: (args) => <AllThemesWrapper {...args} />,
 };
