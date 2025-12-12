@@ -166,10 +166,12 @@ button {
   --clr-cruk-yellow: #fdc02f;
   --clr-cruk-green: #3d854d;
 
-  --crl-su2c-orange-5: #ff8e00;
-  --crl-su2c-orange-3: #ffb04d;
-  --crl-su2c-orange-2: #ffdaad;
-  --crl-su2c-orange-1: #fff6eb;
+  --clr-su2c-orange-8: #bd3900;
+  --clr-su2c-orange-7: #d74100;
+  --clr-su2c-orange-5: #ff8e00;
+  --clr-su2c-orange-3: #ffb04d;
+  --clr-su2c-orange-2: #ffdaad;
+  --clr-su2c-orange-1: #fff6eb;
 
   --clr-su2c-black: #231f20;
   --clr-su2c-grey-1: #555759;
@@ -313,8 +315,8 @@ button {
 [data-theme="su2c"] > * {
   --theme: "su2c";
 
-  --clr-primary: var(--crl-su2c-orange-5);
-  --clr-secondary: var(--crl-su2c-orange-5);
+  --clr-primary: var(--clr-su2c-orange-5);
+  --clr-secondary: var(--clr-su2c-orange-5);
   --clr-tertiary: var(--clr-su2c-black);
   --clr-text-header-default: var(--clr-su2c-black);
 
@@ -322,19 +324,19 @@ button {
   --clr-text-on-secondary: var(--clr-su2c-black);
 
   --clr-avatar-border: var(--clr-su2c-black);
-  --clr-progress-bar: var(--crl-su2c-orange-5);
+  --clr-progress-bar: var(--clr-su2c-orange-5);
   --clr-progress-bar-secondary: var(--clr-su2c-red);
-  --clr-circular-progress: var(--crl-su2c-orange-3);
+  --clr-circular-progress: var(--clr-su2c-orange-3);
   --clr-circular-progress-secondary: var(--clr-su2c-red);
 
-  --clr-link: var(--crl-su2c-orange-5);
+  --clr-link: var(--clr-su2c-orange-5);
   --clr-link-hover: var(--clr-su2c-red);
-  --clr-link-secondary: var(--crl-su2c-orange-5);
+  --clr-link-secondary: var(--clr-su2c-orange-5);
   --clr-link-secondary-hover: var(--clr-su2c-red);
 
-  --clr-background-light-color: var(--crl-su2c-orange-2);
+  --clr-background-light-color: var(--clr-su2c-orange-2);
 
-  --clr-loader-color-1: var(--crl-su2c-orange-5);
+  --clr-loader-color-1: var(--clr-su2c-orange-5);
   --clr-loader-color-2: var(--clr-su2c-red);
   --clr-loader-color-3: var(--clr-su2c-black);
 
@@ -345,34 +347,34 @@ button {
   --clr-totaliser-bubble-text: var(--clr-cruk-white);
   --clr-totaliser-bubble-total: var(--clr-cruk-white);
 
-  --clr-collapse-header: var(--crl-su2c-orange-5);
+  --clr-collapse-header: var(--clr-su2c-orange-5);
   --clr-check: var(--clr-su2c-black);
   --clr-carousel-button: var(--clr-su2c-black);
 
   --clr-header-tagline-text: var(--clr-su2c-black);
 
-  --clr-button-primary-background: var(--crl-su2c-orange-5);
+  --clr-button-primary-background: var(--clr-su2c-orange-5);
   --clr-button-primary-text: var(--clr-su2c-black);
-  --clr-button-primary-border: var(--crl-su2c-orange-5);
-  --clr-button-primary-background-hover: var(--crl-su2c-orange-3);
+  --clr-button-primary-border: var(--clr-su2c-orange-5);
+  --clr-button-primary-background-hover: var(--clr-su2c-orange-3);
   --clr-button-primary-text-hover: var(--clr-su2c-black);
-  --clr-button-primary-border-hover: var(--crl-su2c-orange-3);
+  --clr-button-primary-border-hover: var(--clr-su2c-orange-3);
   --clr-button-primary-disabled-background: var(--clr-grey-200);
   --clr-button-primary-disabled-text: var(--clr-grey-600);
   --clr-button-primary-disabled-border: var(--clr-grey-200);
 
   --clr-button-secondary-background: var(--clr-cruk-white);
-  --clr-button-secondary-text: var(--crl-su2c-orange-5);
-  --clr-button-secondary-border: var(--crl-su2c-orange-5);
-  --clr-button-secondary-background-hover: var(--crl-su2c-orange-1);
-  --clr-button-secondary-text-hover: var(--crl-su2c-orange-5);
-  --clr-button-secondary-border-hover: var(--crl-su2c-orange-5);
+  --clr-button-secondary-text: var(--clr-su2c-orange-5);
+  --clr-button-secondary-border: var(--clr-su2c-orange-5);
+  --clr-button-secondary-background-hover: var(--clr-su2c-orange-1);
+  --clr-button-secondary-text-hover: var(--clr-su2c-orange-5);
+  --clr-button-secondary-border-hover: var(--clr-su2c-orange-5);
   --clr-button-secondary-disabled-background: var(--clr-cruk-white);
   --clr-button-secondary-disabled-text: var(--clr-grey-200);
   --clr-button-secondary-disabled-border: var(--clr-grey-200);
 
-  --clr-button-tertiary-text: var(--crl-su2c-orange-5);
-  --clr-button-tertiary-text-hover: var(--crl-su2c-orange-5);
+  --clr-button-tertiary-text: var(--clr-su2c-orange-5);
+  --clr-button-tertiary-text-hover: var(--clr-su2c-orange-5);
   --clr-button-tertiary-disabled-text: var(--clr-grey-200);
 }
 
