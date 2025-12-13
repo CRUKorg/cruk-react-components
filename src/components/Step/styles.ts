@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { type ThemeType } from "../../types";
 
 export const StepWrapper = styled.div`
   box-sizing: border-box;
@@ -74,12 +73,11 @@ export const StepTick = styled.span`
 export const StepItem = styled.li<{
   $active: boolean;
   $done: boolean;
-  theme: ThemeType;
 }>`
   display: flex;
   flex-direction: column;
   position: relative;
-  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
 
   ${({ $active }) =>
     $active &&

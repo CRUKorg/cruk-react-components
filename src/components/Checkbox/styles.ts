@@ -58,9 +58,9 @@ export const StyledLabel = styled.label<{
   *:before {
     box-sizing: border-box;
   }
-  line-height: ${({ theme }) => theme.typography.lineHeight};
-  font-size: ${({ theme }) => theme.typography.fontSizeBase};
-  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
+  line-height: var(--typ-line-height, 1.5rem);
+  font-size: var(--font-size-base, 1rem);
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
 
   // increase font size for desktop
   @media (min-width: 1200px) {
@@ -75,8 +75,22 @@ export const StyledLabel = styled.label<{
 
   color: ${({ $disabled }) =>
     $disabled ? "var(--clr-disabled, #e6e6e6)" : "var(--clr-text-dark, #000)"};
-  padding: ${({ theme }) =>
-    `calc( (var(--_button-height, 3em) - ( var(--size-border-width, 1px) * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-m, 2rem) calc( (var(--_button-height, 3em) - ( var(--size-border-width, 1px) * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-xl, 3rem)`};
+  padding: calc(
+      (
+          var(--_button-height, 3em) -
+            (var(--size-border-width, 1px) * 2) - var(--typ-line-height, 1.5em)
+        ) /
+        2
+    )
+    var(--spacing-m, 2rem)
+    calc(
+      (
+          var(--_button-height, 3em) -
+            (var(--size-border-width, 1px) * 2) - var(--typ-line-height, 1.5em)
+        ) /
+        2
+    )
+    var(--spacing-xl, 3rem);
   &:focus ~ ${CheckWrapper} ${Check} {
     outline: 2px solid #7aacfe; /* for non-webkit browsers */
     outline: 5px auto -webkit-focus-ring-color;

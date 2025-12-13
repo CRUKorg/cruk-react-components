@@ -21,8 +21,9 @@ export const DefaultHeader = styled(Button)<{
   display: flex;
   color: ${({ $textColor }) => $textColor};
   font-size: ${({ $textSize }) => $textSize};
-  font-family: ${({ theme, $textFontFamily }) =>
-    $textFontFamily || theme.typography.fontFamilyBase};
+  font-family: ${({ $textFontFamily }) =>
+    $textFontFamily ||
+    `var(--typ-font-family-base, "Poppins", Arial, sans-serif)`};
   font-weight: normal;
   margin-bottom: 0;
   height: initial;

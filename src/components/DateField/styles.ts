@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { type ThemeType } from "../../types";
 import Text from "../Text";
 
 export const Fieldset = styled.fieldset`
@@ -15,9 +14,9 @@ export const Fieldset = styled.fieldset`
   }
 `;
 
-export const LegendText = styled.legend<{ theme: ThemeType }>`
-  font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
-  font-weight: ${({ theme }) => theme.typography.fontWeightLabels || 500};
+export const LegendText = styled.legend`
+  font-family: var(--typ-font-family-label, "Poppins", Arial, sans-serif);
+  font-weight: var(--typ-font-weight-labels, 500);
   margin-bottom: var(--spacing-xxs, 1rem);
 
   // do not increase font size of check icon at this breakpoint
@@ -26,27 +25,27 @@ export const LegendText = styled.legend<{ theme: ThemeType }>`
   }
 `;
 
-export const TextAsLabel = styled(Text)<{ theme: ThemeType }>`
-  font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
+export const TextAsLabel = styled(Text)`
+  font-family: var(--typ-font-family-label, "Poppins", Arial, sans-serif);
 `;
 
-export const DateTextFieldWrapper = styled.div<{ theme: ThemeType }>`
+export const DateTextFieldWrapper = styled.div`
   display: inline-block;
   width: 60px;
   margin-right: var(--spacing-xs, 1rem);
   span {
     margin-bottom: 0.25rem; // this is smaller than xxs spacing
-    font-weight: ${({ theme }) => theme.typography.fontWeightBase};
+    font-weight: var(--typ-font-weight-base, 300);
   }
 `;
 
-export const LargeDateTextFieldWrapper = styled.div<{ theme: ThemeType }>`
+export const LargeDateTextFieldWrapper = styled.div`
   display: inline-block;
   width: 80px;
   margin-right: var(--spacing-xs, 1rem);
   span {
     margin-bottom: 0.25rem; // this is smaller than xxs spacing
-    font-weight: ${({ theme }) => theme.typography.fontWeightBase};
+    font-weight: var(--typ-font-weight-base, 300);
   }
 `;
 

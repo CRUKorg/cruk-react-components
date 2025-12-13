@@ -3,11 +3,8 @@ import styled from "styled-components";
 
 import Text, { type TextProps } from "../Text";
 
-import { type ThemeType } from "../../types";
-
 type StyledLinkProps = AnchorHTMLAttributes<HTMLElement> &
   TextProps & {
-    theme: ThemeType;
     $appearance?: "primary" | "secondary";
     $textHoverColor?: string;
   };
@@ -27,37 +24,13 @@ export const StyledLink = styled(Text)<StyledLinkProps>`
         ? "var(--clr-link-secondary,  #e60079)"
         : "var(--clr-link,  #e60079)"};
 
-  text-decoration: ${({
-    $appearance,
-    theme: {
-      typography: { linkTextDecoration, LinkPrimaryTextDecoration },
-    },
-  }) =>
-    $appearance === "primary"
-      ? LinkPrimaryTextDecoration
-      : $appearance === "secondary"
-        ? "none"
-        : linkTextDecoration};
-  font-family: ${({
-    $appearance,
-    theme: {
-      typography: { fontFamilyBase, fontFamilyLinks },
-    },
-  }) =>
+  text-decoration: ${({ $appearance }) =>
+    $appearance === "secondary" ? "none" : "underline"};
+  font-family: ${({ $appearance }) =>
     $appearance === "primary" || $appearance === "secondary"
-      ? fontFamilyLinks
-      : fontFamilyBase};
-  letter-spacing: ${({
-    $appearance,
-    theme: {
-      typography: { LinkLetterSpacing },
-    },
-  }) =>
-    $appearance === "primary" || $appearance === "secondary"
-      ? LinkLetterSpacing
-      : "0px"};
-  font-weight: ${({ theme }) => theme.typography.fontWeightLinks};
-
+      ? "var(--typ-font-family-links, 'Poppins', Arial, sans-serif)"
+      : "var(--typ-font-family-base, 'Poppins', Arial, sans-serif)"};
+  font-weight: var(--typ-font-weight-links, 700);
   &:focus-visible {
     outline: auto;
   }

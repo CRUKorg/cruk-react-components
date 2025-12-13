@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { type ThemeType } from "../../types";
 
 export const PagerWrapper = styled.div`
   display: table;
@@ -16,16 +15,11 @@ export const PagerList = styled.ul`
 
 export const PagerLink = styled.a<{
   name?: string;
-  theme: ThemeType;
   $active?: boolean;
   $disabled?: boolean;
 }>`
   font-weight: normal;
-  font-family: ${({
-    theme: {
-      typography: { fontFamilyBase },
-    },
-  }) => fontFamilyBase};
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
   font-size: var(--font-size-s, 0.875rem);
   color: var(--clr-text-light, #fff);
   background-color: var(--clr-pagination-background, #00007e);
@@ -98,7 +92,7 @@ export const PagerLink = styled.a<{
     `}
 `;
 
-export const PagerItem = styled.li<{ theme: ThemeType }>`
+export const PagerItem = styled.li`
   display: none;
   &:first-child,
   &:last-child {

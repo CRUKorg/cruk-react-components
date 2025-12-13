@@ -58,31 +58,6 @@ export type SpacingType = {
   none: string;
 };
 
-export type TypographyType = {
-  fontWeightBase: string | number;
-  fontWeightHeadings: string | number;
-  fontWeightLabels: string | number;
-  fontWeightLinks: string | number;
-  fontWeightButtons: string | number;
-  fontFamilyBase: string;
-  fontFamilyHeadings: string;
-  fontFamilyButtons: string;
-  fontFamilyLinks: string;
-  fontFamilyLabel: string;
-  fontSizeBase: string;
-  fontWeightHeavy: string | number;
-  fontWeightNormal: string | number;
-  fontWeightMedium: string | number;
-  fontWeightLight: string | number;
-  fontWeightVLight: string | number;
-  linkTextDecoration: string;
-  LinkPrimaryTextDecoration: string;
-  LinkLetterSpacing: string;
-  lineHeight: string;
-  headerLineHeight: string;
-  headerTextTransform: string;
-};
-
 export type ShadowsType = {
   s: string;
   m: string;
@@ -91,7 +66,6 @@ export type ShadowsType = {
 
 export type ThemeType = {
   name: string;
-  typography: TypographyType;
 };
 
 export type AddressDataType = {

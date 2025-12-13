@@ -164,8 +164,8 @@ button {
   --typ-font-weight-normal: 400;
   --typ-font-weight-light: 300;
   --typ-font-weight-vlight: 100;
+
   --typ-link-text-decoration: underline;
-  --typ-link-letter-spacing: 0px;
   --typ-link-primary-text-decoration: underline;
   --typ-line-height: 1.5em;
   --typ-header-line-height: 1.25em;
@@ -303,7 +303,7 @@ button {
   --clr-pagination-active: var(--clr-cruk-grey-200);
   --clr-pagination-background: var(--clr-cruk-navy-600);
 
-  --clr-footer-background: var(--clr-cruk-grey-100);
+  --clr-footer-background: var(--clr-cruk-white);
 
   --clr-header-border: var(--clr-cruk-grey-200);
   --clr-header-tagline-text: var(--clr-cruk-black);
@@ -337,6 +337,8 @@ button {
 [data-theme="rfl"] > * {
   --theme: "rfl";
 
+  --typ-font-weight-headings: 600;
+
   --clr-text-header-default: var(--clr-cruk-navy-600);
   --clr-header-tagline-text: var(--clr-cruk-navy-600);
 
@@ -347,9 +349,28 @@ button {
 [data-theme="su2c"] > * {
   --theme: "su2c";
 
-  --btn-border-radius: "1.5rem";
-  --btn-border-radius-large: "2rem";
-  --btn-text-transform: "uppercase";
+  --btn-border-radius: 1.5rem;
+  --btn-border-radius-large: 2rem;
+  --btn-text-transform: uppercase;
+
+  --typ-font-family-headings: "ITCAvantGarde", Arial, sans-serif;
+  --typ-font-family-links: "ITCAvantGarde", Arial, sans-serif;
+  --typ-font-family-buttons: "ITCAvantGarde", Arial, sans-serif;
+  --typ-font-family-base:
+    "ITCAvantGarde", Arial, Calibri, nimbussansl, liberationsans, freesans,
+    clean, sans-serif;
+  --typ-font-family-label:
+    "ITCAvantGarde", Arial, Calibri, nimbussansl, liberationsans, freesans,
+    clean, sans-serif;
+  --typ-link-text-decoration: none;
+  --typ-header-line-height: 1.5em;
+  --typ-header-text-transform: uppercase;
+  --typ-font-weight-base: 400;
+  --typ-font-weight-links: 700;
+  --typ-font-weight-buttons: 700;
+  --typ-font-weight-labels: 600;
+  --typ-font-weight-headings: 700;
+  --typ-link-primary-text-decoration: none;
 
   --clr-primary: var(--clr-su2c-orange-5);
   --clr-secondary: var(--clr-su2c-orange-5);
@@ -417,8 +438,22 @@ button {
 [data-theme="bowelbabe"] > * {
   --theme: "bowelbabe";
 
-  --btn-border-radius: "2em";
-  --btn-horizontal-padding: "1rem";
+  --btn-border-radius: 2em;
+  --btn-horizontal-padding: 1rem;
+
+  --typ-font-family-headings: "juana", Arial, sans-serif;
+  --typ-font-family-links: "juana", Arial, sans-serif;
+  --typ-font-family-buttons: "juana", Arial, sans-serif;
+  --typ-font-family-base: "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif";
+  --typ-font-family-label: "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif";
+  --typ-header-line-height: 1.5em;
+  --typ-font-weight-base: 400;
+  --typ-font-weight-links: 600;
+  --typ-font-weight-headings: 600;
+  --typ-font-weight-buttons: 600;
+  --typ-font-weight-labels: 600;
+  /* might not be needed */
+  --typ-link-primary-text-decoration: none;
 
   --clr-primary: var(--clr-bowelbabe-purple);
   --clr-secondary: var(--clr-bowelbabe-green);

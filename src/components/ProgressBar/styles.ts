@@ -1,5 +1,4 @@
 import styled, { css, keyframes } from "styled-components";
-import { type ThemeType } from "../../types";
 
 type CircleKeyCircleFillKeyFramesProps = {
   $strokeDashoffsetInit: number;
@@ -143,7 +142,6 @@ export const ScreenReaderOnly = styled.span`
 
 export const CircularWrapper = styled.div<{
   $circleSize: string;
-  theme: ThemeType;
 }>`
   position: relative;
   width: ${({ $circleSize }) => $circleSize};
@@ -162,15 +160,12 @@ export const CircleSvg = styled.svg`
   height: 100%;
 `;
 
-export const EmptyCircle = styled.circle<{
-  theme: ThemeType;
-}>`
+export const EmptyCircle = styled.circle`
   stroke: var(--clr-cruk-grey-200, #e6e6e6);
 `;
 
 export const FullCircle = styled.circle<{
   strokeDashoffset: number;
-  theme: ThemeType;
   $strokeDashoffsetInit: number;
   $barColor?: string;
   $isSecondary?: boolean;
@@ -189,9 +184,7 @@ export const FullCircle = styled.circle<{
     1s linear;
 `;
 
-export const CircularValue = styled.div<{
-  theme: ThemeType;
-}>`
+export const CircularValue = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -204,7 +197,7 @@ export const CircularValue = styled.div<{
   z-index: 2;
   font-size: var(--font-size-l, 1.25rem);
   line-height: var(--font-size-l, 1.25rem);
-  font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
+  font-family: var(--typ-font-family-headings, "Progress", Arial, sans-serif);
   text-align: center;
   height: 100%;
   color: var(--clr-text-dark, #000);

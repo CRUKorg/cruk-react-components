@@ -27,10 +27,10 @@ export const StyledButton = styled.button<{
   display: inline-block;
   vertical-align: middle;
 
-  padding: ${({ theme, $isIconButton }) =>
+  padding: ${({ $isIconButton }) =>
     $isIconButton
       ? "0"
-      : `calc( (var(--_button-height, 3rem) - ( var(--btn-border-thickness, 2px) * 2) - ${theme.typography.lineHeight} ) / 2) var(--btn-horizontal-padding, 1.5rem)`};
+      : `calc( (var(--_button-height, 3rem) - ( var(--btn-border-thickness, 2px) * 2) - var(--typ-line-height, 1.5em) ) / 2) var(--btn-horizontal-padding, 1.5em)`};
   width: ${({ $isIconButton }) =>
     $isIconButton ? `var(--_button-height, 3rem)` : "auto"};
   min-width: ${({ $isIconButton }) =>
@@ -46,16 +46,8 @@ export const StyledButton = styled.button<{
 
   cursor: pointer;
   font-size: var(--font-size-m, 1rem);
-  font-family: ${({
-    theme: {
-      typography: { fontFamilyButtons },
-    },
-  }) => fontFamilyButtons};
-  font-weight: ${({
-    theme: {
-      typography: { fontWeightButtons },
-    },
-  }) => fontWeightButtons};
+  font-family: var(--typ-font-family-buttons, "Poppins", Arial, sans-serif);
+  font-weight: var(--typ-font-weight-buttons, 400);
   text-align: center;
   text-transform: var(--btn-text-transform, none);
   text-decoration: var(--btn-text-decoration, none);
@@ -131,14 +123,14 @@ export const StyledButton = styled.button<{
       }
     `}
   
-  ${({ theme, $size, $isIconButton }) =>
+  ${({ $size, $isIconButton }) =>
     $size === "l" &&
     css`
       min-height: var(--_button-height-large, 4rem);
       border-radius: var(--btn-border-radius-large, 0px);
       padding: ${$isIconButton
         ? "0"
-        : `calc( (var(--_button-height-large, 4rem) - ( var(--btn-border-thickness, 2px) * 2) - ${theme.typography.lineHeight} ) / 2) var(--btn-horizontal-padding, 2rem)`};
+        : `calc( (var(--_button-height-large, 4rem) - ( var(--btn-border-thickness, 2px) * 2) - var(--typ-line-height, 1.5em) ) / 2) var(--btn-horizontal-padding, 2rem)`};
       min-width: ${$isIconButton
         ? `var(--_button-height-large, 4rem)`
         : "auto"};

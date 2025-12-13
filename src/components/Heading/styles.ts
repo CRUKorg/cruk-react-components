@@ -3,14 +3,12 @@ import styled, { css } from "styled-components";
 import { spacing, type SpacingPropsInternal } from "../Spacing";
 
 import {
-  type ThemeType,
   type FontSizeType,
   type WordBreakType,
   type OverflowWrapType,
 } from "../../types";
 
 type StyledHeadingProps = SpacingPropsInternal & {
-  theme: ThemeType;
   $textSize?: FontSizeType;
   $textAlign?: "left" | "right" | "center";
   $textColor?: string;
@@ -19,15 +17,15 @@ type StyledHeadingProps = SpacingPropsInternal & {
 };
 
 const StyledHeading = (props: StyledHeadingProps) => css`
-  font-family: ${props.theme.typography.fontFamilyHeadings};
-  font-weight: ${props.theme.typography.fontWeightHeadings};
+  font-family: var(--typ-font-family-headings, "Progress", Arial, sans-serif);
+  font-weight: var(--typ-font-weight-headings, 400);
   word-break: ${props.$wordBreak || "normal"};
   overflow-wrap: ${props.$overflowWrap || "break-word"};
   color: ${props.$textColor
     ? props.$textColor
     : `var(--clr-text-header-default, #000)`};
-  line-height: ${props.theme.typography.headerLineHeight};
-  text-transform: ${props.theme.typography.headerTextTransform};
+  line-height: var(--typ-header-line-height, 1.25);
+  text-transform: var(--typ-header-text-transform, none);
   margin-top: var(--spacing-m, 2rem);
   margin-bottom: var(--spacing-s, 1.5rem);
   max-width: 100%;
@@ -38,8 +36,7 @@ const StyledHeading = (props: StyledHeadingProps) => css`
   }
 
   ${() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { theme, ...propsWithoutTheme } = props;
+    const { ...propsWithoutTheme } = props;
 
     return spacing(propsWithoutTheme);
   }}

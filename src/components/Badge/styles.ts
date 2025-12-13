@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { type SpaceType, type ThemeType } from "../../types";
+import { type SpaceType } from "../../types";
 
 export const StyledBadge = styled.span<{
   $backgroundColor: string;
@@ -8,7 +8,6 @@ export const StyledBadge = styled.span<{
   $textColor: string;
   $isSquare: boolean;
   $size: SpaceType;
-  theme: ThemeType;
 }>`
   --_border-width: 1px;
 
@@ -17,7 +16,7 @@ export const StyledBadge = styled.span<{
   border-style: solid;
   text-align: center;
   font-size: var(--font-size-m, 1rem);
-  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
   padding: ${({ $isSquare }) => ($isSquare ? 0 : `var(--spacing-xxs, 0.5rem)`)};
   border-radius: ${({ $isSquare }) => ($isSquare ? "50%" : ` 1.5rem`)};
   height: ${({ $isSquare, $size }) =>

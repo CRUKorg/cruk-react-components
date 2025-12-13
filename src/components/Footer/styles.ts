@@ -1,18 +1,14 @@
 import styled from "styled-components";
-import { type ThemeType } from "../../types";
 
-type ThemeProps = {
-  theme: ThemeType;
-};
-export const StyledFooter = styled.footer<ThemeProps>`
+export const StyledFooter = styled.footer`
   box-sizing: border-box;
   display: block;
   position: relative;
   width: 100%;
-  background-color: var(--clr-footer-background, #f5f5f5);
+  background-color: var(--clr-footer-background, #fff);
 `;
 
-export const FooterContentWrapper = styled.div<ThemeProps>`
+export const FooterContentWrapper = styled.div`
   max-width: var(--cruk-content-max-width, 1020px);
   display: block;
   margin: 0 auto;
@@ -24,7 +20,7 @@ export const FooterContentWrapper = styled.div<ThemeProps>`
   }
 `;
 
-export const FooterSection = styled.div<ThemeProps>`
+export const FooterSection = styled.div`
   box-sizing: border-box;
   display: inline-block;
   padding: var(--spacing-xs, 1rem);
@@ -57,16 +53,12 @@ export const FooterSectionLinks = styled(FooterSection)`
   }
 `;
 
-export const StyledNav = styled.nav<ThemeProps>`
+export const StyledNav = styled.nav`
   display: flex;
   flex-direction: column;
   a {
     font-size: var(--font-size-s, 0.875rem);
-    font-weight: ${({
-      theme: {
-        typography: { fontWeightLinks },
-      },
-    }: ThemeProps) => fontWeightLinks};
+    font-weight: var(--typ-font-weight-links, 700);
   }
 `;
 
@@ -75,7 +67,7 @@ export const StyledUL = styled.ul`
   margin: 0;
 `;
 
-export const StyledLI = styled.li<ThemeProps>`
+export const StyledLI = styled.li`
   list-style-type: none;
   display: block;
   padding: 0;

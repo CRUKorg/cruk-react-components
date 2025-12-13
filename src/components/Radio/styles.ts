@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { type ThemeType } from "../../types";
 
 export const CheckWrapper = styled.div`
   display: inline-block;
@@ -47,7 +46,6 @@ export const StyledLabel = styled.label<{
   $hasError: boolean;
   $disabled: boolean;
   $checked: boolean;
-  theme: ThemeType;
 }>`
   --_radio-size: 1.5rem;
   --_radio-inner-size: 0.75rem;
@@ -59,9 +57,9 @@ export const StyledLabel = styled.label<{
   *:before {
     box-sizing: border-box;
   }
-  line-height: ${({ theme }) => theme.typography.lineHeight};
-  font-size: ${({ theme }) => theme.typography.fontSizeBase};
-  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
+  line-height: var(--typ-line-height, 1.5em);
+  font-size: var(--font-size-base, 16px);
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
 
   background-color: var(--clr-background-light, #fff);
   width: 100%;
@@ -72,8 +70,22 @@ export const StyledLabel = styled.label<{
 
   color: ${({ $disabled }) =>
     $disabled ? "var(--clr-disabled, #e6e6e6)" : "var(--clr-text-dark, #000)"};
-  padding: ${({ theme }) =>
-    `calc( (var(--_button-height, 3em) - ( var(--size-border-width, 1px) * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-m, 2rem) calc( (var(--_button-height, 3em) - ( var(--size-border-width, 1px) * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-xl, 4rem)`};
+  padding: calc(
+      (
+          var(--_button-height, 3em) -
+            (var(--size-border-width, 1px) * 2) - var(--typ-line-height, 1.5em)
+        ) /
+        2
+    )
+    var(--spacing-m, 2rem)
+    calc(
+      (
+          var(--_button-height, 3em) -
+            (var(--size-border-width, 1px) * 2) - var(--typ-line-height, 1.5em)
+        ) /
+        2
+    )
+    var(--spacing-xl, 4rem);
   vertical-align: middle;
 
   min-height: 2rem;

@@ -1,23 +1,19 @@
 import styled from "styled-components";
 
-import { type ThemeType } from "../../types";
-
 type StyledFieldsetProps = {
   $hasError?: boolean;
   $hasHintText?: boolean;
-  theme: ThemeType;
 };
 
 export const LegendSpan = styled.span<{
   $hasHintText: boolean;
-  theme: ThemeType;
 }>`
   display: block;
   color: var(--clr-text-dark, #000);
   font-size: var(--font-size-m, 1rem);
-  line-height: ${({ theme }) => theme.typography.lineHeight};
-  font-weight: ${({ theme }) => theme.typography.fontWeightLabels};
-  font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
+  line-height: var(--typ-line-height, 1.5em);
+  font-weight: var(--typ-font-weight-labels, 500);
+  font-family: var(--typ-font-family-label, "Poppins", Arial, sans-serif);
   min-width: 3em;
   margin-bottom: ${({ $hasHintText }) =>
     $hasHintText ? "var(--spacing-xxs, 0.5rem)" : 0};
@@ -27,13 +23,13 @@ export const LegendSpan = styled.span<{
     font-size: var(--font-size-ml, 1.125rem);
   }
   & > * {
-    font-weight: ${({ theme }) => theme.typography.fontWeightBase};
+    font-weight: var(--typ-font-weight-base, 300);
   }
 `;
 
-export const HintText = styled.span<{ theme: ThemeType }>`
-  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
-  font-weight: ${({ theme }) => theme.typography.fontWeightBase};
+export const HintText = styled.span`
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
+  font-weight: var(--typ-font-weight-base, 300);
   display: block;
   color: var(--clr-text-mid, #666);
 `;

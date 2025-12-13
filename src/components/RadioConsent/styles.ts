@@ -1,12 +1,9 @@
 import styled from "styled-components";
-import { type ThemeType } from "../../types";
 
-export const StyledLegend = styled.legend<{
-  theme: ThemeType;
-}>`
+export const StyledLegend = styled.legend`
   display: block;
   float: left;
-  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
 
   // increase font size for desktop
   @media (min-width: 1200px) {

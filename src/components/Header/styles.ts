@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { type ThemeType } from "../../types";
 
 export const StyledHeader = styled.header`
   --_header-height-large: 120px;
@@ -126,11 +125,10 @@ export const SkipToMain = styled.a`
 export const Tagline = styled.p<{
   $isSmall?: boolean;
   $isSticky?: boolean;
-  theme: ThemeType;
 }>`
   flex: 1 1 auto;
-  font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
-  font-weight: ${({ theme }) => theme.typography.fontWeightHeadings};
+  font-family: var(--typ-font-family-headings, "Progress", Arial, sans-serif);
+  font-weight: var(--typ-font-weight-headings, 400);
   font-size: var(--font-size-xl, 1.5625rem);
   color: var(--clr-header-tagline-text, #000000);
   text-align: center;

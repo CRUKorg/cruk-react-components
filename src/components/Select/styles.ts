@@ -1,10 +1,8 @@
-import { type ThemeType } from "src/types";
 import styled from "styled-components";
 
 export const StyledSelect = styled.select<{
   $hasError: boolean;
   $errorMessage?: string;
-  theme: ThemeType;
 }>`
   --_button-height: 3rem;
   appearance: none;
@@ -35,8 +33,22 @@ export const StyledSelect = styled.select<{
   display: block;
   font-size: var(--font-size-m, 1rem);
   min-height: var(--_button-height, 3rem);
-  padding: ${({ theme }) =>
-    `calc( (var(--_button-height, 3rem) - ( var(--size-border-width, 1px) * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-m, 2rem) calc( (var(--_button-height, 3rem) - ( var(--size-border-width, 1px) * 2) - ${theme.typography.lineHeight} ) / 2) var(--spacing-xs, 1rem)`};
+  padding: calc(
+      (
+          var(--_button-height, 3rem) -
+            (var(--size-border-width, 1px) * 2) - var(--typ-line-height, 1.5em)
+        ) /
+        2
+    )
+    var(--spacing-m, 2rem)
+    calc(
+      (
+          var(--_button-height, 3rem) -
+            (var(--size-border-width, 1px) * 2) - var(--typ-line-height, 1.5em)
+        ) /
+        2
+    )
+    var(--spacing-xs, 1rem);
   width: 100%;
   transition: border-color 150ms linear;
   &:hover {

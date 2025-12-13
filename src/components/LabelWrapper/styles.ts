@@ -1,36 +1,32 @@
 import styled from "styled-components";
-import { type ThemeType } from "../../types";
 
-type LabelTextProp = {
-  $hasHintText: boolean;
-  theme: ThemeType;
-};
-
-export const Label = styled.label<{ theme: ThemeType }>`
+export const Label = styled.label`
   position: relative;
   display: block;
   width: 100%;
-  font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
-  font-weight: ${({ theme }) => theme.typography.fontWeightLabels};
+  font-family: var(--typ-font-family-label, "Poppins", Arial, sans-serif);
+  font-weight: var(--typ-font-weight-labels, 500);
   margin-bottom: var(--spacing-s, 1.5rem);
 `;
 
-export const HintText = styled.span<{ theme: ThemeType }>`
-  font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
-  font-weight: ${({ theme }) => theme.typography.fontWeightBase};
+export const HintText = styled.span`
+  font-family: var(--typ-font-family-label, "Poppins", Arial, sans-serif);
+  font-weight: var(--typ-font-weight-base, 300);
   display: block;
   color: var(--clr-text-mid, #666);
   margin-bottom: var(--spacing-xs, 1rem);
 `;
 
-export const RequiredIndicationText = styled.span<{ theme: ThemeType }>`
-  font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
-  font-weight: ${({ theme }) => theme.typography.fontWeightBase};
+export const RequiredIndicationText = styled.span`
+  font-family: var(--typ-font-family-label, "Poppins", Arial, sans-serif);
+  font-weight: var(--typ-font-weight-base, 300);
 `;
 
-export const LabelText = styled.span<LabelTextProp>`
-  font-family: ${({ theme }) => theme.typography.fontFamilyLabel};
-  font-weight: ${({ theme }) => theme.typography.fontWeightLabels};
+export const LabelText = styled.span<{
+  $hasHintText: boolean;
+}>`
+  font-family: var(--typ-font-family-label, "Poppins", Arial, sans-serif);
+  font-weight: var(--typ-font-weight-labels, 500);
   display: block;
   margin-bottom: ${({ $hasHintText }) =>
     $hasHintText ? "var(--spacing-xxxs, 0.25rem)" : "var(--spacing-xs, 1rem)"};
