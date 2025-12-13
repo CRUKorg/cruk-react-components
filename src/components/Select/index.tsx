@@ -3,9 +3,7 @@ import React, {
   type SelectHTMLAttributes,
   type Ref,
 } from "react";
-import { useTheme } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { LabelWrapper } from "../LabelWrapper";
 import { ErrorText } from "../ErrorText";
 
@@ -40,12 +38,6 @@ export const Select = ({
   ref,
   ...props
 }: SelectProps) => {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-
   return (
     <LabelWrapper
       label={label}
@@ -55,7 +47,6 @@ export const Select = ({
       <StyledSelect
         {...props}
         ref={ref}
-        theme={theme}
         required={required}
         aria-invalid={hasError || !!errorMessage || false}
         aria-describedby={

@@ -5,10 +5,8 @@ import React, {
   type ReactNode,
   type DetailedReactHTMLElement,
 } from "react";
-import { ThemeProvider, useTheme } from "styled-components";
 
 import { useKey } from "../../hooks/useKey";
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { useEffectBrowser } from "../../hooks/useEffectBrowser";
 
 import { type PopOverPositionType } from "../../types";
@@ -50,11 +48,6 @@ export function PopOver({
 }: PopOverProps) {
   const popRef = useRef<HTMLDivElement>(null);
   const [showPopOver, setShowPopOver] = useState(false);
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
 
   const toggle = () => setShowPopOver(!showPopOver);
   const closePopOver = () => setShowPopOver(false);
@@ -90,33 +83,30 @@ export function PopOver({
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <PopOverWrapper $full={full} $css={css} ref={popRef}>
-        {React.Children.map(children, (child) =>
-          React.cloneElement(
-            child as DetailedReactHTMLElement<object, HTMLElement>,
-            {
-              onClick: toggle,
-              "aria-expanded": showPopOver,
-              "aria-haspopup": "dialog",
-            },
-          ),
-        )}
-        {showPopOver ? (
-          <PopOverModal
-            $maxWidth={maxWidth || "none"}
-            $minWidth={minWidth || "auto"}
-            $position={position || "top"}
-            theme={theme}
-            role="dialog"
-            aria-label={modalLabel}
-            aria-modal={showPopOver}
-          >
-            {modalContent}
-          </PopOverModal>
-        ) : null}
-      </PopOverWrapper>
-    </ThemeProvider>
+    <PopOverWrapper $full={full} $css={css} ref={popRef}>
+      {React.Children.map(children, (child) =>
+        React.cloneElement(
+          child as DetailedReactHTMLElement<object, HTMLElement>,
+          {
+            onClick: toggle,
+            "aria-expanded": showPopOver,
+            "aria-haspopup": "dialog",
+          },
+        ),
+      )}
+      {showPopOver ? (
+        <PopOverModal
+          $maxWidth={maxWidth || "none"}
+          $minWidth={minWidth || "auto"}
+          $position={position || "top"}
+          role="dialog"
+          aria-label={modalLabel}
+          aria-modal={showPopOver}
+        >
+          {modalContent}
+        </PopOverModal>
+      ) : null}
+    </PopOverWrapper>
   );
 }
 

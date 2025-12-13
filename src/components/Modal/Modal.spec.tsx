@@ -3,7 +3,6 @@ import { test, expect } from "@playwright/experimental-ct-react";
 
 import { TestModalWithState } from "./TestModalWithState";
 import { TestModalWithContent } from "./TestModalWithContent";
-import { crukTheme } from "..";
 
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 import { TestThemeWrapper } from "../AllThemesWrapper";
@@ -18,7 +17,7 @@ test("should open modal, focus trap inside the modal", async ({
   page,
 }) => {
   await mount(
-    <TestThemeWrapper theme={crukTheme}>
+    <TestThemeWrapper themeName="cruk">
       <TestModalWithState />
     </TestThemeWrapper>,
   );
@@ -45,7 +44,7 @@ test("should open modal, focus trap inside the modal", async ({
 
 test("should close the modal when Esc key pressed", async ({ mount, page }) => {
   await mount(
-    <TestThemeWrapper theme={crukTheme}>
+    <TestThemeWrapper themeName="cruk">
       <TestModalWithState />
     </TestThemeWrapper>,
   );

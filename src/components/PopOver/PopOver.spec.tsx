@@ -2,14 +2,13 @@ import React from "react";
 import { test, expect } from "@playwright/experimental-ct-react";
 import AxeBuilder from "@axe-core/playwright";
 
-import { crukTheme, rflTheme, su2cTheme, bowelbabeTheme } from "..";
 import { TestThemeWrapper } from "../AllThemesWrapper";
 
 import { TestPopOverWithContent } from "./TestPopOverWithContent";
 
 test("is accessible CRUK theme", async ({ mount, page }) => {
   await mount(
-    <TestThemeWrapper theme={crukTheme}>
+    <TestThemeWrapper themeName="cruk">
       {TestPopOverWithContent()}
     </TestThemeWrapper>,
   );
@@ -28,7 +27,7 @@ test("is accessible CRUK theme", async ({ mount, page }) => {
 
 test("is accessible RFL theme", async ({ mount, page }) => {
   await mount(
-    <TestThemeWrapper theme={rflTheme}>
+    <TestThemeWrapper themeName="rfl">
       {TestPopOverWithContent()}
     </TestThemeWrapper>,
   );
@@ -46,7 +45,7 @@ test("is accessible RFL theme", async ({ mount, page }) => {
 
 test("is accessible SU2C theme", async ({ mount, page }) => {
   await mount(
-    <TestThemeWrapper theme={su2cTheme}>
+    <TestThemeWrapper themeName="su2c">
       {TestPopOverWithContent()}
     </TestThemeWrapper>,
   );
@@ -64,7 +63,7 @@ test("is accessible SU2C theme", async ({ mount, page }) => {
 
 test("is accessible Bowelbabe theme", async ({ mount, page }) => {
   await mount(
-    <TestThemeWrapper theme={bowelbabeTheme}>
+    <TestThemeWrapper themeName="bowelbabe">
       {TestPopOverWithContent()}
     </TestThemeWrapper>,
   );

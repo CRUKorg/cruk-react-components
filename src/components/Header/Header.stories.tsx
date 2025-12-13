@@ -1,10 +1,8 @@
 import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
-import { bowelbabeTheme, Button, crukTheme, rflTheme, su2cTheme } from "..";
+import { Button } from "..";
 import Header from ".";
-
-import { ThemeProvider } from "styled-components";
 
 const Line = () => (
   <div
@@ -24,31 +22,23 @@ const AllThemesWrapper = ({
     <div tabIndex={0}>
       <h2>CRUK Theme:</h2>
       <div data-theme="cruk">
-        <ThemeProvider theme={crukTheme}>
-          <HeaderInTallContainer {...args} themeName="cruk" />
-          <Line />
-        </ThemeProvider>
+        <HeaderInTallContainer {...args} themeName="cruk" />
+        <Line />
       </div>
       <div data-theme="rfl">
         <h2>RFL Theme:</h2>
-        <ThemeProvider theme={rflTheme}>
-          <HeaderInTallContainer {...args} themeName="rfl" />
-          <Line />
-        </ThemeProvider>
+        <HeaderInTallContainer {...args} themeName="rfl" />
+        <Line />
       </div>
       <div data-theme="su2c">
         <h2>SU2C Theme:</h2>
-        <ThemeProvider theme={su2cTheme}>
-          <HeaderInTallContainer {...args} themeName="su2c" />
-          <Line />
-        </ThemeProvider>
+        <HeaderInTallContainer {...args} themeName="su2c" />
+        <Line />
       </div>
       <div data-theme="bowelbabe">
         <h2>Bowelbabe Theme:</h2>
-        <ThemeProvider theme={bowelbabeTheme}>
-          <HeaderInTallContainer {...args} themeName="bowelbabe" />
-          <Line />
-        </ThemeProvider>
+        <HeaderInTallContainer {...args} themeName="bowelbabe" />
+        <Line />
       </div>
     </div>
   </main>
@@ -97,8 +87,8 @@ export const HeaderSticky: Story = {
     fullWidth: true,
   },
   render: (args: HeaderProps) => (
-    <ThemeProvider theme={crukTheme}>
+    <div data-theme="cruk">
       <HeaderInTallContainer {...args} />
-    </ThemeProvider>
+    </div>
   ),
 };

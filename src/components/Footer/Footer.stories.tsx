@@ -1,8 +1,7 @@
 import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
-import { ThemeProvider } from "styled-components";
 
-import { bowelbabeTheme, crukTheme, Link, rflTheme, su2cTheme } from "..";
+import { Link } from "..";
 import Footer from ".";
 
 const FooterWithChildren = (args: React.ComponentProps<typeof Footer>) => (
@@ -40,31 +39,23 @@ const AllThemesWrapper = ({
     <div tabIndex={0}>
       <h2>CRUK Theme:</h2>
       <div data-theme="cruk">
-        <ThemeProvider theme={crukTheme}>
-          <FooterWithChildren {...args} themeName="cruk" />
-          <Line />
-        </ThemeProvider>
+        <FooterWithChildren {...args} themeName="cruk" />
+        <Line />
       </div>
       <div data-theme="rfl">
         <h2>RFL Theme:</h2>
-        <ThemeProvider theme={rflTheme}>
-          <FooterWithChildren {...args} themeName="rfl" />
-          <Line />
-        </ThemeProvider>
+        <FooterWithChildren {...args} themeName="rfl" />
+        <Line />
       </div>
       <div data-theme="su2c">
         <h2>SU2C Theme:</h2>
-        <ThemeProvider theme={su2cTheme}>
-          <FooterWithChildren {...args} themeName="su2c" />
-          <Line />
-        </ThemeProvider>
+        <FooterWithChildren {...args} themeName="su2c" />
+        <Line />
       </div>
       <div data-theme="bowelbabe">
         <h2>Bowelbabe Theme:</h2>
-        <ThemeProvider theme={bowelbabeTheme}>
-          <FooterWithChildren {...args} themeName="bowelbabe" />
-          <Line />
-        </ThemeProvider>
+        <FooterWithChildren {...args} themeName="bowelbabe" />
+        <Line />
       </div>
     </div>
   </main>

@@ -4,9 +4,6 @@ import React, {
   type ElementType,
   type ReactNode,
 } from "react";
-import { useTheme, ThemeProvider } from "styled-components";
-
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { type TextProps } from "../Text";
 import { StyledLink } from "./styles";
@@ -37,11 +34,6 @@ export type LinkProps = Omit<AnchorHTMLAttributes<HTMLElement>, "nonce"> &
  *
  * If you want something that looks like a button but behaves like a link ie. it takes the user to a new location, please consider using Button and simply passing it an href, it will automatically turn into a link. */
 export const Link = (props: LinkProps) => {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
   // security by default
   const rel = props.rel
     ? props.rel
@@ -59,19 +51,16 @@ export const Link = (props: LinkProps) => {
     : undefined;
 
   return (
-    <ThemeProvider theme={theme}>
-      <StyledLink
-        {...rest}
-        $textHoverColor={textHoverColorFinal}
-        $appearance={appearance}
-        theme={theme}
-        rel={rel}
-        forwardedAs={forwardAs}
-        ref={ref}
-      >
-        {children}
-      </StyledLink>
-    </ThemeProvider>
+    <StyledLink
+      {...rest}
+      $textHoverColor={textHoverColorFinal}
+      $appearance={appearance}
+      rel={rel}
+      forwardedAs={forwardAs}
+      ref={ref}
+    >
+      {children}
+    </StyledLink>
   );
 };
 

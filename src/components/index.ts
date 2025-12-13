@@ -36,9 +36,4 @@ export { Totaliser } from "./Totaliser";
 export { UserBlock } from "./UserBlock";
 export { InfoBox } from "./InfoBox";
 
-export { bowelbabeTheme } from "../themes/bowelbabe";
-export { crukTheme } from "../themes/cruk";
-export { su2cTheme } from "../themes/su2c";
-export { rflTheme } from "../themes/rfl";
-
 export * from "../types";

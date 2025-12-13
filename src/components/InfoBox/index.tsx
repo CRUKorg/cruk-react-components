@@ -4,9 +4,7 @@ import React, {
   type ReactNode,
   type ElementType,
 } from "react";
-import { useTheme } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { Box } from "../Box";
 import { Text } from "../Text";
 import { Heading } from "../Heading";
@@ -53,12 +51,6 @@ export const InfoBox = ({
   ref,
   ...spacingAndHTMLElementProps
 }: InfoBoxProps) => {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-
   const backgroundColorOrDefault = backgroundColor
     ? themeColorOrString(backgroundColor)
     : "var(--clr-cruk-grey-200, #e6e6e6)";
@@ -73,7 +65,6 @@ export const InfoBox = ({
 
   return (
     <StyledInfoBox
-      theme={theme}
       {...spacingAndHTMLElementProps}
       backgroundColor={backgroundColorOrDefault}
       margin={spacingAndHTMLElementProps.margin || "none"}

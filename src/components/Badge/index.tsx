@@ -1,8 +1,5 @@
 import React, { type ReactNode } from "react";
-import { useTheme } from "styled-components";
-
 import { type SpaceType } from "../../types";
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { StyledBadge } from "./styles";
 import { themeColorOrString } from "../../utils/themeUtils";
@@ -41,17 +38,10 @@ export function Badge({
   /** forces shape to have equal width and height set by size attribute */
   isSquare?: boolean;
 }) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-
   const isSquareCalculated = isSquare ?? !(typeof children === "string");
 
   return (
     <StyledBadge
-      theme={theme}
       $isSquare={isSquareCalculated}
       $size={size}
       $backgroundColor={themeColorOrString(backgroundColor)}

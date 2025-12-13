@@ -1,11 +1,9 @@
 import styled from "styled-components";
-import { type ThemeType } from "../../types";
 
 type StyledTextareaProps = {
   $hasError: boolean;
   $lineCount: number;
   $resize: "both" | "vertical" | "horizontal" | "none";
-  theme: ThemeType;
 };
 
 export const StyledTextArea = styled.textarea<StyledTextareaProps>`
@@ -16,12 +14,12 @@ export const StyledTextArea = styled.textarea<StyledTextareaProps>`
     ${$hasError ? "var(--clr-text-error, #ff0000)" : "var(--clr-text-input-border, #2e2d2c)"}`};
   color: var(--color-text-dark, #000000);
   display: block;
-  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
   font-size: var(--font-size-m, 1rem);
   padding: 6px 8px;
   width: 100%;
-  height: ${({ $lineCount, theme }) =>
-    `calc(${theme.typography.lineHeight} * ${$lineCount})`};
+  height: ${({ $lineCount }) =>
+    `calc(var(--typ-line-height, 1.5em) * ${$lineCount})`};
 
   transition: border-color 150ms linear;
   &:hover {

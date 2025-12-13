@@ -2,17 +2,8 @@ import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 
-import {
-  Text,
-  IconFa,
-  crukTheme,
-  rflTheme,
-  su2cTheme,
-  bowelbabeTheme,
-} from "..";
+import { Text, IconFa } from "..";
 import UserBlock from ".";
-
-import { ThemeProvider } from "styled-components";
 
 export default {
   title: "UserBlock (experimental)",
@@ -44,31 +35,23 @@ const AllThemesWrapper = ({
     <div tabIndex={0}>
       <h2>CRUK Theme:</h2>
       <div data-theme="cruk">
-        <ThemeProvider theme={crukTheme}>
-          <UserBlock {...args} themeName="cruk" />
-          <Line />
-        </ThemeProvider>
+        <UserBlock {...args} themeName="cruk" />
+        <Line />
       </div>
       <div data-theme="rfl">
         <h2>RFL Theme:</h2>
-        <ThemeProvider theme={rflTheme}>
-          <UserBlock {...args} themeName="rfl" />
-          <Line />
-        </ThemeProvider>
+        <UserBlock {...args} themeName="rfl" />
+        <Line />
       </div>
       <div data-theme="su2c">
         <h2>SU2C Theme:</h2>
-        <ThemeProvider theme={su2cTheme}>
-          <UserBlock {...args} themeName="su2c" />
-          <Line />
-        </ThemeProvider>
+        <UserBlock {...args} themeName="su2c" />
+        <Line />
       </div>
       <div data-theme="bowelbabe">
         <h2>Bowelbabe Theme:</h2>
-        <ThemeProvider theme={bowelbabeTheme}>
-          <UserBlock {...args} themeName="bowelbabe" />
-          <Line />
-        </ThemeProvider>
+        <UserBlock {...args} themeName="bowelbabe" />
+        <Line />
       </div>
     </div>
   </main>

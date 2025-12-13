@@ -1,8 +1,5 @@
 import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
-import { ThemeProvider } from "styled-components";
-
-import { crukTheme, rflTheme, su2cTheme, bowelbabeTheme } from "..";
 
 import { Avatar } from ".";
 
@@ -22,31 +19,23 @@ const AllThemesWrapper = ({ ...args }: React.ComponentProps<typeof Avatar>) => (
     <div tabIndex={0}>
       <h2>CRUK Theme:</h2>
       <div data-theme="cruk">
-        <ThemeProvider theme={crukTheme}>
-          <Avatar {...args} themeName="cruk" />
-          <Line />
-        </ThemeProvider>
+        <Avatar {...args} themeName="cruk" />
+        <Line />
       </div>
       <div data-theme="rfl">
         <h2>RFL Theme:</h2>
-        <ThemeProvider theme={rflTheme}>
-          <Avatar {...args} themeName="rfl" />
-          <Line />
-        </ThemeProvider>
+        <Avatar {...args} themeName="rfl" />
+        <Line />
       </div>
       <div data-theme="su2c">
         <h2>SU2C Theme:</h2>
-        <ThemeProvider theme={su2cTheme}>
-          <Avatar {...args} themeName="su2c" />
-          <Line />
-        </ThemeProvider>
+        <Avatar {...args} themeName="su2c" />
+        <Line />
       </div>
       <div data-theme="bowelbabe">
         <h2>Bowelbabe Theme:</h2>
-        <ThemeProvider theme={bowelbabeTheme}>
-          <Avatar {...args} themeName="bowelbabe" />
-          <Line />
-        </ThemeProvider>
+        <Avatar {...args} themeName="bowelbabe" />
+        <Line />
       </div>
     </div>
   </main>

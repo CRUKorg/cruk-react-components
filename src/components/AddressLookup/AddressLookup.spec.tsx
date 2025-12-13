@@ -6,7 +6,6 @@ import { testAccessibilityOnAllThemes } from "playwright/utils";
 import { AddressLookup } from ".";
 
 import { TestThemeWrapper } from "../AllThemesWrapper";
-import { crukTheme } from "src/themes/cruk";
 
 function component() {
   return (
@@ -35,7 +34,7 @@ testAccessibilityOnAllThemes({
 
 test("can find address", async ({ mount, page }) => {
   await mount(
-    <TestThemeWrapper theme={crukTheme}>{component()}</TestThemeWrapper>,
+    <TestThemeWrapper themeName="cruk">{component()}</TestThemeWrapper>,
   );
   await page.route("**/Find/**", async (route) => {
     await route.fulfill({
@@ -75,7 +74,7 @@ test("can find address", async ({ mount, page }) => {
 
 test("can focus address dropdown", async ({ mount, page }) => {
   await mount(
-    <TestThemeWrapper theme={crukTheme}>{component()}</TestThemeWrapper>,
+    <TestThemeWrapper themeName="cruk">{component()}</TestThemeWrapper>,
   );
   await page.route("**/Find/**", async (route) => {
     await route.fulfill({

@@ -1,14 +1,9 @@
 import React, { type ReactNode } from "react";
-import styled, { ThemeProvider } from "styled-components";
-
-import { crukTheme } from "../themes/cruk";
-import { rflTheme } from "../themes/rfl";
-import { su2cTheme } from "../themes/su2c";
-import { bowelbabeTheme } from "../themes/bowelbabe";
+import styled from "styled-components";
 
 import { Box } from "./Box";
 
-import { type ThemeType } from "../types";
+import { type ThemeNameType } from "../types";
 
 const Line = styled.div`
   width: 100%;
@@ -19,20 +14,18 @@ const Line = styled.div`
 
 export const TestThemeWrapper = ({
   children,
-  theme,
+  themeName,
 }: {
-  theme?: ThemeType;
+  themeName: ThemeNameType;
   children?: ReactNode;
 }) => (
   <main>
     <div
-      data-theme={theme?.name || "cruk"}
+      data-theme={themeName || "cruk"}
       style={{ overflow: "auto" }}
       tabIndex={0}
     >
-      <ThemeProvider theme={theme || crukTheme}>
-        <Box backgroundColor="background-light">{children}</Box>
-      </ThemeProvider>
+      <Box backgroundColor="background-light">{children}</Box>
     </div>
   </main>
 );
@@ -41,32 +34,24 @@ export const AllThemesWrapper = ({ children }: { children?: ReactNode }) => (
   <main>
     <div tabIndex={0}>
       <div data-theme="cruk">
-        <ThemeProvider theme={crukTheme}>
-          <h2>CRUK Theme:</h2>
-          {children}
-          <Line />
-        </ThemeProvider>
+        <h2>CRUK Theme:</h2>
+        {children}
+        <Line />
       </div>
       <div data-theme="rfl">
-        <ThemeProvider theme={rflTheme}>
-          <h2>RFL Theme:</h2>
-          {children}
-          <Line />
-        </ThemeProvider>
+        <h2>RFL Theme:</h2>
+        {children}
+        <Line />
       </div>
       <div data-theme="su2c">
-        <ThemeProvider theme={su2cTheme}>
-          <h2>SU2C Theme:</h2>
-          {children}
-          <Line />
-        </ThemeProvider>
+        <h2>SU2C Theme:</h2>
+        {children}
+        <Line />
       </div>
       <div data-theme="bowelbabe">
-        <ThemeProvider theme={bowelbabeTheme}>
-          <h2>Bowelbabe Theme:</h2>
-          {children}
-          <Line />
-        </ThemeProvider>
+        <h2>Bowelbabe Theme:</h2>
+        {children}
+        <Line />
       </div>
     </div>
   </main>

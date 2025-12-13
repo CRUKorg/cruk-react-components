@@ -12,7 +12,8 @@ export const fontSizes = [
 
 export type FontSizeType = (typeof fontSizes)[number];
 
-export type ThemeNameType = "cruk" | "su2c" | "bowelbabe" | "rfl";
+export const themeNames = ["cruk", "su2c", "bowelbabe", "rfl"] as const;
+export type ThemeNameType = (typeof themeNames)[number];
 
 export type ButtonAppearanceType = "primary" | "secondary" | "tertiary";
 

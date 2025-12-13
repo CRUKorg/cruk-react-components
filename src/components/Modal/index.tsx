@@ -1,11 +1,9 @@
 import React, { type ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { ThemeProvider, useTheme } from "styled-components";
 import FocusLock from "react-focus-lock";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 import { IconFa } from "../IconFa";
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { CloseButton, Wrapper, Content, Background } from "./styles";
 
@@ -68,11 +66,6 @@ export function Modal({
   paddingLeft,
   isAnimated = true,
 }: ModalProps) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
   const backgroundColour = themeColorOrString(backgroundColor);
 
   const closeByEsc = React.useCallback(
@@ -106,49 +99,43 @@ export function Modal({
         ? createPortal(
             <section>
               <FocusLock returnFocus>
-                <ThemeProvider theme={theme}>
-                  <Wrapper
-                    role="dialog"
-                    aria-modal="true"
-                    aria-label={modalName}
+                <Wrapper role="dialog" aria-modal="true" aria-label={modalName}>
+                  <Content
+                    backgroundColor={backgroundColour}
+                    $maxWidth={maxWidth}
+                    $width={width}
+                    $top={top}
+                    margin={margin}
+                    marginHorizontal={marginHorizontal}
+                    marginVertical={marginVertical}
+                    marginTop={marginTop}
+                    marginRight={marginRight}
+                    marginBottom={marginBottom}
+                    marginLeft={marginLeft}
+                    padding={padding}
+                    paddingHorizontal={paddingHorizontal}
+                    paddingVertical={paddingVertical}
+                    paddingTop={paddingTop}
+                    paddingRight={paddingRight}
+                    paddingBottom={paddingBottom}
+                    paddingLeft={paddingLeft}
+                    $isAnimated={isAnimated}
                   >
-                    <Content
-                      backgroundColor={backgroundColour}
-                      $maxWidth={maxWidth}
-                      $width={width}
-                      $top={top}
-                      margin={margin}
-                      marginHorizontal={marginHorizontal}
-                      marginVertical={marginVertical}
-                      marginTop={marginTop}
-                      marginRight={marginRight}
-                      marginBottom={marginBottom}
-                      marginLeft={marginLeft}
-                      padding={padding}
-                      paddingHorizontal={paddingHorizontal}
-                      paddingVertical={paddingVertical}
-                      paddingTop={paddingTop}
-                      paddingRight={paddingRight}
-                      paddingBottom={paddingBottom}
-                      paddingLeft={paddingLeft}
-                      $isAnimated={isAnimated}
-                    >
-                      {showCloseButton && closeFunction ? (
-                        <CloseButton
-                          aria-label="close"
-                          appearance="tertiary"
-                          onClick={() => {
-                            closeFunction();
-                          }}
-                        >
-                          <IconFa faIcon={faClose} />
-                        </CloseButton>
-                      ) : null}
-                      {children}
-                    </Content>
-                    <Background $isAnimated={isAnimated} />
-                  </Wrapper>
-                </ThemeProvider>
+                    {showCloseButton && closeFunction ? (
+                      <CloseButton
+                        aria-label="close"
+                        appearance="tertiary"
+                        onClick={() => {
+                          closeFunction();
+                        }}
+                      >
+                        <IconFa faIcon={faClose} />
+                      </CloseButton>
+                    ) : null}
+                    {children}
+                  </Content>
+                  <Background $isAnimated={isAnimated} />
+                </Wrapper>
               </FocusLock>
             </section>,
             document.body,

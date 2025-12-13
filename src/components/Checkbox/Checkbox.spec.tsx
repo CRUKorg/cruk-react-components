@@ -6,7 +6,6 @@ import { testAccessibilityOnAllThemes } from "playwright/utils";
 import { Checkbox } from ".";
 import { Box } from "../Box";
 import { TestThemeWrapper } from "../AllThemesWrapper";
-import { crukTheme } from "src/themes/cruk";
 
 function unControlledContent() {
   return (
@@ -32,7 +31,7 @@ testAccessibilityOnAllThemes({
 
 test("should be able to select a checkbox", async ({ mount, page }) => {
   await mount(
-    <TestThemeWrapper theme={crukTheme}>
+    <TestThemeWrapper themeName="cruk">
       {unControlledContent()}
     </TestThemeWrapper>,
   );

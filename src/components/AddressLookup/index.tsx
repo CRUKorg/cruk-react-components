@@ -10,7 +10,6 @@ import React, {
   type KeyboardEvent,
   type ReactNode,
 } from "react";
-import { useTheme } from "styled-components";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 import { type AddressDataType, type AddressOptionsType } from "../../types";
@@ -21,7 +20,6 @@ import { removeCommasFromObjectStringValues } from "../../utils/Helper";
 import { Text } from "../Text";
 import { TextField } from "../TextField";
 import { IconFa } from "../IconFa";
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { ListWrapper, ListItem, ScreenReaderOnly, List } from "./styles";
 
@@ -89,11 +87,6 @@ export const AddressLookup = ({
   );
   const [activeOption, setActiveOption] = useState(-1);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
 
   const clearOptions = () => {
     setActiveOption(-1);
@@ -253,7 +246,6 @@ export const AddressLookup = ({
               aria-label="found addresses"
               id="found_addresses"
               role="listbox"
-              theme={theme}
             >
               {addressOptions.map((address, index) => (
                 <ListItem
@@ -271,7 +263,6 @@ export const AddressLookup = ({
                   }}
                   role="option"
                   data-hj-suppress
-                  theme={theme}
                 >
                   <Text as="span" data-hj-suppress>
                     {address.Text} {address.Description}

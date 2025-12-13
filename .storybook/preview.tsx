@@ -9,10 +9,7 @@ import {
   Controls,
   // PRIMARY_STORY,
 } from "@storybook/addon-docs/blocks";
-import { ThemeProvider } from "styled-components";
 import "../src/components/global-styles.css";
-
-import { crukTheme } from "../src/components";
 
 const preview: Preview = {
   parameters: {
@@ -25,14 +22,12 @@ const preview: Preview = {
     docs: {
       page: () => (
         <>
-          <ThemeProvider theme={crukTheme}>
-            <Title />
-            <Subtitle />
-            <Description />
-            <Primary />
-            <Controls />
-            <Stories />
-          </ThemeProvider>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <Controls />
+          <Stories />
         </>
       ),
     },

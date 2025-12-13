@@ -5,7 +5,6 @@ import { spacing, type SpacingPropsInternal } from "../Spacing";
 import {
   type WordBreakType,
   type FontSizeType,
-  type ThemeType,
   type OverflowWrapType,
 } from "../../types";
 
@@ -18,12 +17,12 @@ export type TextStyledProps = SpacingPropsInternal & {
   $wordBreak?: WordBreakType;
   $overflowWrap?: OverflowWrapType;
   $textFontFamily?: string;
-  theme: ThemeType;
 };
 
 export const TextStyled = styled.p<TextStyledProps>`
-  font-family: ${({ $textFontFamily, theme }) =>
-    $textFontFamily || theme.typography.fontFamilyBase};
+  font-family: ${({ $textFontFamily }) =>
+    $textFontFamily ||
+    "var(--typ-font-family-base, 'Poppins', Arial, sans-serif)"};
   word-break: ${({ $wordBreak }) => $wordBreak || "normal"};
   overflow-wrap: ${({ $overflowWrap }) => $overflowWrap || "break-word"};
   color: ${({ $textColor }) => $textColor};
@@ -32,9 +31,9 @@ export const TextStyled = styled.p<TextStyledProps>`
     $textSize
       ? `var(--font-size-${$textSize}, 1rem)`
       : `var(--font-size-m, 1rem)`};
-  line-height: ${({ theme }) => theme.typography.lineHeight};
-  font-weight: ${({ $textWeight, theme }) =>
-    $textWeight || theme.typography.fontWeightBase};
+  line-height: var(--typ-line-height, 1.5em);
+  font-weight: ${({ $textWeight }) =>
+    $textWeight || "var(--typ-font-weight-base, 300)"};
   padding: 0;
   margin: 0;
   margin-bottom: ${({ as }) =>

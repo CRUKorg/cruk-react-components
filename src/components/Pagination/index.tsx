@@ -4,9 +4,6 @@ import React, {
   type ReactNode,
   type TouchEvent,
 } from "react";
-import { ThemeProvider, useTheme } from "styled-components";
-
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { PagerItem, PagerLink, PagerList, PagerWrapper } from "./styles";
 
@@ -42,11 +39,6 @@ export function Pagination({
   children,
   id,
 }: PaginationProps) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
   const perPageValue = perPage > 0 ? perPage : 1;
   const totalPages = Math.ceil(items / perPageValue) || 1;
 
@@ -108,7 +100,7 @@ export function Pagination({
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       {items > perPage && (
         <PagerWrapper>
           <PagerList>
@@ -141,7 +133,7 @@ export function Pagination({
           {children}
         </PagerWrapper>
       )}
-    </ThemeProvider>
+    </>
   );
 }
 

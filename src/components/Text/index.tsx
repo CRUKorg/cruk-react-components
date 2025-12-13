@@ -1,7 +1,5 @@
 import React, { type HTMLAttributes, type Ref, type ElementType } from "react";
-import { useTheme } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { themeColorOrString } from "../../utils/themeUtils";
 
 import {
@@ -47,11 +45,6 @@ export type TextProps = SpacingProps &
   };
 
 export const Text = (props: TextProps) => {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
   const {
     textColor,
     textAlign,
@@ -66,9 +59,7 @@ export const Text = (props: TextProps) => {
 
   const withInternalSpacingProps = spacingPropsToSpacingPropsInternal(rest);
 
-  const textColorFound = textColor
-    ? themeColorOrString(textColor)
-    : themeColorOrString("text-dark");
+  const textColorFound = textColor ? themeColorOrString(textColor) : undefined;
 
   return (
     <TextStyled
@@ -80,7 +71,6 @@ export const Text = (props: TextProps) => {
       $wordBreak={wordBreak}
       $overflowWrap={overflowWrap}
       {...withInternalSpacingProps}
-      theme={theme}
       ref={ref as Ref<HTMLParagraphElement>}
     />
   );

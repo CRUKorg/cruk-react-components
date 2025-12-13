@@ -3,9 +3,7 @@ import React, {
   type Ref,
   type ReactNode,
 } from "react";
-import { useTheme, ThemeProvider } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { ErrorText } from "../ErrorText";
 
 import {
@@ -32,15 +30,10 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
  * The value or children becomes the label, if you want an outer label for a radio or group of radios please use a LegendWrapper component
  */
 export const Radio = (props: RadioProps) => {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { children, hasError, errorMessage, ref, ...rest } = props;
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <StyledLabel
         $hasError={props.hasError || !!props.errorMessage || false}
         className={props.className}
@@ -71,7 +64,7 @@ export const Radio = (props: RadioProps) => {
           {props.errorMessage}
         </ErrorText>
       )}
-    </ThemeProvider>
+    </>
   );
 };
 

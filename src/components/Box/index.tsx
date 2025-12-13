@@ -4,9 +4,7 @@ import React, {
   type ReactNode,
   type ElementType,
 } from "react";
-import { useTheme } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import {
   spacingPropsToSpacingPropsInternal,
   type SpacingProps,
@@ -33,16 +31,10 @@ export type BoxProps = SpacingProps &
  */
 export const Box = ({ ...props }: BoxProps) => {
   const { children, backgroundColor, ref, ...rest } = props;
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
   const restWithInternalSpacingProps = spacingPropsToSpacingPropsInternal(rest);
 
   return (
     <StyledBox
-      theme={theme}
       $backgroundColor={backgroundColor}
       {...restWithInternalSpacingProps}
       ref={ref}

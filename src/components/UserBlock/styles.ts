@@ -1,9 +1,4 @@
 import styled from "styled-components";
-import { type ThemeType } from "../../types";
-
-type Props = {
-  theme: ThemeType;
-};
 
 export const StyledUserBlock = styled.div`
   display: flex;
@@ -12,21 +7,21 @@ export const StyledUserBlock = styled.div`
   flex: 1;
 `;
 
-export const Details = styled.div<Props>`
+export const Details = styled.div`
   flex: 1;
   margin-left: var(--spacing-xs, 1rem);
   text-align: left;
   min-width: 0;
 `;
 
-export const Name = styled.div<Props>`
-  font-family: ${({ theme }) => theme.typography.fontFamilyHeadings};
+export const Name = styled.div`
+  font-family: var(--typ-font-family-headings, "Progress", Arial, sans-serif);
   font-size: var(--font-size-l, 1.25rem);
   white-space: normal;
   word-break: break-word;
 `;
 
-export const Extra = styled.div<Props>`
+export const Extra = styled.div`
   color: var(--clr-user-block-extra, #575757);
   margin-top: 4px;
   white-space: normal;

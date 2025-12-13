@@ -1,7 +1,5 @@
 import React, { type ReactNode, type HTMLAttributes } from "react";
-import { useTheme } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { Avatar } from "../Avatar";
 
 import { StyledUserBlock, Details, Name, Extra } from "./styles";
@@ -32,16 +30,10 @@ export function UserBlock({
   size = "l",
   themeName = "cruk",
 }: UserBlockProps) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-
   // name is a reserved html prop so we make sure we don't pass it into the styled component
   // or it will end up in the markup
   return (
-    <StyledUserBlock theme={theme}>
+    <StyledUserBlock>
       <Avatar
         name={avatarName || (typeof name === "string" ? name : "Anonymous")}
         url={avatarUrl || undefined}

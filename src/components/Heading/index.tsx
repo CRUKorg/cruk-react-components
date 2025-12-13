@@ -1,7 +1,5 @@
 import React, { type HTMLAttributes, type ElementType } from "react";
-import { useTheme } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import {
   spacingPropsToSpacingPropsInternal,
   type SpacingProps,
@@ -58,12 +56,6 @@ export function Heading({
   h6,
   ...props
 }: HeadingProps) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-
   const propsConvertedToInternalSpacingProps =
     spacingPropsToSpacingPropsInternal(props);
 
@@ -75,7 +67,6 @@ export function Heading({
     return (
       <H1
         {...propsConvertedToInternalSpacingProps}
-        theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
         $textColor={textColorFinal}
@@ -87,7 +78,6 @@ export function Heading({
     return (
       <H2
         {...propsConvertedToInternalSpacingProps}
-        theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
         $textColor={textColorFinal}
@@ -99,7 +89,6 @@ export function Heading({
     return (
       <H3
         {...propsConvertedToInternalSpacingProps}
-        theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
         $textColor={textColorFinal}
@@ -111,7 +100,6 @@ export function Heading({
     return (
       <H4
         {...propsConvertedToInternalSpacingProps}
-        theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
         $textColor={textColorFinal}
@@ -123,7 +111,6 @@ export function Heading({
     return (
       <H5
         {...propsConvertedToInternalSpacingProps}
-        theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
         $textColor={textColorFinal}
@@ -135,7 +122,6 @@ export function Heading({
     return (
       <H6
         {...propsConvertedToInternalSpacingProps}
-        theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
         $textColor={textColorFinal}
@@ -146,7 +132,6 @@ export function Heading({
   return (
     <H2
       {...propsConvertedToInternalSpacingProps}
-      theme={theme}
       $textSize={textSize}
       $textAlign={textAlign}
       $textColor={textColorFinal}
