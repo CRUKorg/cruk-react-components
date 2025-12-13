@@ -1,7 +1,7 @@
 declare module "*.md";
+declare module "*.css";
 
-declare namespace Cypress {
-  interface Chainable {
-    getInputByLabel(input: string): Chainable;
-  }
+declare module "*.module.css" {
+  const classes: Record<string, string>;
+  export default classes;
 }

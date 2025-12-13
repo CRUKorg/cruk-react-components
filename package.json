@@ -11,7 +11,8 @@
   "types": "lib/src/components/index.d.ts",
   "sideEffects": false,
   "files": [
-    "lib"
+    "lib",
+    "lib/index.css"
   ],
   "scripts": {
     "analyze": "source-map-explorer lib/index.js",
@@ -63,6 +64,7 @@
     "@types/react-dom": "^19",
     "@vitejs/plugin-legacy": "^7",
     "@vitejs/plugin-react-swc": "^3.11.0",
+    "autoprefixer": "^10.4.22",
     "chromatic": "^13.3.4",
     "eslint": "^9",
     "eslint-plugin-react": "^7.37.4",
@@ -74,6 +76,8 @@
     "react-dom": "^19",
     "release-it": "^19",
     "rollup": "^4.22.4",
+    "rollup-plugin-css-only": "^4.5.5",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript2": "^0.36.0",
     "source-map-explorer": "^2.2.2",
     "storybook": "^10",
@@ -91,12 +95,12 @@
     "@fortawesome/fontawesome-common-types": "^7",
     "@fortawesome/free-brands-svg-icons": "^7",
     "@fortawesome/free-solid-svg-icons": "^7",
+    "@swc/core": "1.9.3",
     "@swc/plugin-styled-components": "^10",
     "react-focus-lock": "^2.13.6",
     "react-intersection-observer": "^10.0.0",
     "react-is": "^19",
     "styled-components": "^6.1.11",
-    "vite": "^7",
-    "@swc/core": "1.9.3"
+    "vite": "^7"
   }
 }

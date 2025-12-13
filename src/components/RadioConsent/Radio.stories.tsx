@@ -3,8 +3,6 @@ import { type StoryObj } from "@storybook/react-vite";
 
 import RadioConsent, { type RadioConsentProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
-import { useTheme } from "styled-components";
-import { type ThemeType } from "..";
 
 export default {
   title: "RadioConsent (experimental)",
@@ -24,12 +22,13 @@ type Story = StoryObj<typeof RadioConsent>;
 
 const RadioConsentWithState = (args: RadioConsentProps) => {
   const [selectedEmail, setSelectedEmail] = React.useState("yes");
-  const theme = useTheme();
-  const themeType = theme as ThemeType;
+
+  const id = React.useId();
+
   return (
     <RadioConsent
       {...args}
-      name={`${themeType.name}-email`}
+      name={`${id}-email`}
       onChange={(e) => setSelectedEmail(e.target.value)}
       selectedValue={selectedEmail}
     />

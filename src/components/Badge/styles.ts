@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { type SpaceType, type ThemeType } from "../../types";
+import { type SpaceType } from "../../types";
 
 export const StyledBadge = styled.span<{
   $backgroundColor: string;
@@ -8,26 +8,31 @@ export const StyledBadge = styled.span<{
   $textColor: string;
   $isSquare: boolean;
   $size: SpaceType;
-  theme: ThemeType;
 }>`
+  --_border-width: 1px;
+
   display: inline-block;
-  border-width: 1px;
+  border-width: var(--_border-width, 1px);
   border-style: solid;
   text-align: center;
-  font-size: ${({ theme }) => theme.fontSizes.m};
-  padding: ${({ theme, $isSquare }) => ($isSquare ? 0 : theme.spacing.xxs)};
+  font-size: var(--font-size-m, 1rem);
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
+  padding: ${({ $isSquare }) => ($isSquare ? 0 : `var(--spacing-xxs, 0.5rem)`)};
   border-radius: ${({ $isSquare }) => ($isSquare ? "50%" : ` 1.5rem`)};
-  height: ${({ $isSquare, $size, theme }) =>
-    $isSquare ? `calc(${theme.spacing[$size]} + ${theme.spacing.xs})` : `auto`};
-  width: ${({ $isSquare, $size, theme }) =>
-    $isSquare ? `calc(${theme.spacing[$size]} + ${theme.spacing.xs})` : `auto`};
-  line-height: ${({ $isSquare, $size, theme }) =>
+  height: ${({ $isSquare, $size }) =>
     $isSquare
-      ? `calc(${theme.spacing[$size]} + ${theme.spacing.xs})`
+      ? `calc(var(--spacing-${$size}) + var(--spacing-xs, 1rem) + var(--_border-width, 1px) * 2)`
+      : `auto`};
+  width: ${({ $isSquare, $size }) =>
+    $isSquare
+      ? `calc(var(--spacing-${$size}) + var(--spacing-xs, 1rem) + var(--_border-width, 1px) * 2)`
+      : `auto`};
+  line-height: ${({ $isSquare, $size }) =>
+    $isSquare
+      ? `calc(var(--spacing-${$size}) + var(--spacing-xs, 1rem))`
       : ` 1rem`};
-  min-width: ${({ $size, theme }) =>
-    `calc(${theme.spacing[$size]} + ${theme.spacing.xs})`};
-
+  min-width: ${({ $size }) =>
+    `calc(var(--spacing-${$size}) + var(--spacing-xs, 1rem))`};
   background-color: ${({ $backgroundColor }) => $backgroundColor};
   border-color: ${({ $borderColor }) => $borderColor};
   color: ${({ $textColor }) => $textColor};

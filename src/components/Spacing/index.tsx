@@ -1,4 +1,4 @@
-import { type SpaceType, type ThemeType } from "../../types";
+import { type SpaceType } from "../../types";
 
 export type SpacingProps = {
   margin?: SpaceType;
@@ -105,7 +105,7 @@ export function spacingPropsToSpacingPropsInternal(
   return internalProps;
 }
 
-export function spacing(props: SpacingPropsInternal, theme: ThemeType) {
+export function spacing(props: SpacingPropsInternal) {
   const {
     $margin,
     $marginHorizontal,
@@ -123,13 +123,13 @@ export function spacing(props: SpacingPropsInternal, theme: ThemeType) {
     $paddingLeft,
   } = props;
 
-  const ma = $margin ? theme.spacing[$margin] : null;
-  const mv = $marginVertical ? theme.spacing[$marginVertical] : null;
-  const mh = $marginHorizontal ? theme.spacing[$marginHorizontal] : null;
-  const mt = $marginTop ? theme.spacing[$marginTop] : null;
-  const mr = $marginRight ? theme.spacing[$marginRight] : null;
-  const mb = $marginBottom ? theme.spacing[$marginBottom] : null;
-  const ml = $marginLeft ? theme.spacing[$marginLeft] : null;
+  const ma = $margin ? `var(--spacing-${$margin})` : null;
+  const mv = $marginVertical ? `var(--spacing-${$marginVertical})` : null;
+  const mh = $marginHorizontal ? `var(--spacing-${$marginHorizontal})` : null;
+  const mt = $marginTop ? `var(--spacing-${$marginTop})` : null;
+  const mr = $marginRight ? `var(--spacing-${$marginRight})` : null;
+  const mb = $marginBottom ? `var(--spacing-${$marginBottom})` : null;
+  const ml = $marginLeft ? `var(--spacing-${$marginLeft})` : null;
 
   const maString = ma ? `margin: ${ma} !important;` : "";
   const mtString = mt
@@ -153,13 +153,13 @@ export function spacing(props: SpacingPropsInternal, theme: ThemeType) {
       ? `margin-left: ${mh} !important;`
       : "";
 
-  const pa = $padding ? theme.spacing[$padding] : null;
-  const pv = $paddingVertical ? theme.spacing[$paddingVertical] : null;
-  const ph = $paddingHorizontal ? theme.spacing[$paddingHorizontal] : null;
-  const pt = $paddingTop ? theme.spacing[$paddingTop] : null;
-  const pr = $paddingRight ? theme.spacing[$paddingRight] : null;
-  const pb = $paddingBottom ? theme.spacing[$paddingBottom] : null;
-  const pl = $paddingLeft ? theme.spacing[$paddingLeft] : null;
+  const pa = $padding ? `var(--spacing-${$padding})` : null;
+  const pv = $paddingVertical ? `var(--spacing-${$paddingVertical})` : null;
+  const ph = $paddingHorizontal ? `var(--spacing-${$paddingHorizontal})` : null;
+  const pt = $paddingTop ? `var(--spacing-${$paddingTop})` : null;
+  const pr = $paddingRight ? `var(--spacing-${$paddingRight})` : null;
+  const pb = $paddingBottom ? `var(--spacing-${$paddingBottom})` : null;
+  const pl = $paddingLeft ? `var(--spacing-${$paddingLeft})` : null;
 
   const paString = pa ? `padding: ${pa} !important;` : "";
   const ptString = pt

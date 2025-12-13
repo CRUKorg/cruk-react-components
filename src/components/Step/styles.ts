@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { type ThemeType } from "../../types";
 
 export const StepWrapper = styled.div`
   box-sizing: border-box;
@@ -34,17 +33,15 @@ export const StepList = styled.ul<{
     `}
 `;
 
-export const StepBar = styled.span<{
-  theme: ThemeType;
-}>`
+export const StepBar = styled.span`
   border-radius: 50%;
   background-clip: padding-box;
   width: 24px;
   height: 24px;
-  background-color: ${({ theme }) => theme.colors.stepBackground};
+  background-color: var(--clr-step-background, #fff);
   display: block;
   margin: 0 auto 0.5em auto;
-  border: 2px solid ${({ theme }) => theme.colors.stepBorder};
+  border: 2px solid var(--clr-step-border, #e6e6e6);
   text-indent: -999px;
 
   &:after {
@@ -54,31 +51,21 @@ export const StepBar = styled.span<{
     height: 2px;
     content: "";
     background-color: transparent;
-    border-bottom: 2px solid ${({ theme }) => theme.colors.stepBorder};
+    border-bottom: 2px solid var(--clr-step-border, #e6e6e6);
     left: 50%;
     top: 11px;
     margin-left: 12px;
   }
 `;
 
-export const StepTick = styled.span<{
-  theme: ThemeType;
-}>`
+export const StepTick = styled.span`
   display: block;
   transform: rotate(45deg);
   transform-origin: center center;
   height: 14px;
   width: 8px;
-  border-bottom: ${({
-    theme: {
-      colors: { textLight },
-    },
-  }) => `2px solid ${textLight}`};
-  border-right: ${({
-    theme: {
-      colors: { textLight },
-    },
-  }) => `2px solid ${textLight}`};
+  border-bottom: 2px solid var(--clr-text-light, #fff);
+  border-right: 2px solid var(--clr-text-light, #fff);
   margin-top: 4px;
   margin-left: 8px;
 `;
@@ -86,29 +73,28 @@ export const StepTick = styled.span<{
 export const StepItem = styled.li<{
   $active: boolean;
   $done: boolean;
-  theme: ThemeType;
 }>`
   display: flex;
   flex-direction: column;
   position: relative;
-  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
 
-  ${({ theme, $active }) =>
+  ${({ $active }) =>
     $active &&
     css`
       ${StepBar} {
-        border-color: ${theme.colors.tertiary};
-        background-color: ${theme.colors.tertiary};
+        border-color: var(--clr-tertiary, #009cee);
+        background-color: var(--clr-tertiary, #009cee);
       }
     `}
-  ${({ $done, theme }) =>
+  ${({ $done }) =>
     $done &&
     css`
       ${StepBar} {
         border: none;
-        background-color: ${theme.colors.tertiary};
+        background-color: var(--clr-tertiary, #009cee);
         &:after {
-          border-bottom: 2px solid ${theme.colors.tertiary};
+          border-bottom: 2px solid var(--clr-tertiary, #009cee);
         }
       }
     `}

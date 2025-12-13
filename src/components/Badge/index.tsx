@@ -1,26 +1,8 @@
 import React, { type ReactNode } from "react";
-import { useTheme } from "styled-components";
-
 import { type SpaceType } from "../../types";
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { StyledBadge } from "./styles";
 import { themeColorOrString } from "../../utils/themeUtils";
-
-export type BadgeProps = {
-  /** background colour of badge */
-  backgroundColor?: string;
-  /** border colour of badge */
-  borderColor?: string;
-  /** text colour of badge */
-  textColor?: string;
-  /** size of badge */
-  size?: SpaceType;
-  /** contents of badge */
-  children?: ReactNode;
-  /** forces shape to have equal width and height set by size attribute */
-  isSquare?: boolean;
-};
 
 /**
  * Displays a numeric or icon indicator. You can use the icon prop to
@@ -40,25 +22,31 @@ export function Badge({
   size = "xs",
   backgroundColor = "primary",
   borderColor = "transparent",
-  textColor = "textOnPrimary",
+  textColor = "text-on-primary",
   isSquare,
-}: BadgeProps) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-
+}: {
+  /** background colour of badge */
+  backgroundColor?: string;
+  /** border colour of badge */
+  borderColor?: string;
+  /** text colour of badge */
+  textColor?: string;
+  /** size of badge */
+  size?: SpaceType;
+  /** contents of badge */
+  children?: ReactNode;
+  /** forces shape to have equal width and height set by size attribute */
+  isSquare?: boolean;
+}) {
   const isSquareCalculated = isSquare ?? !(typeof children === "string");
 
   return (
     <StyledBadge
-      theme={theme}
       $isSquare={isSquareCalculated}
       $size={size}
-      $backgroundColor={themeColorOrString(backgroundColor, theme)}
-      $borderColor={themeColorOrString(borderColor, theme)}
-      $textColor={themeColorOrString(textColor, theme)}
+      $backgroundColor={themeColorOrString(backgroundColor)}
+      $borderColor={themeColorOrString(borderColor)}
+      $textColor={themeColorOrString(textColor)}
     >
       {children}
     </StyledBadge>

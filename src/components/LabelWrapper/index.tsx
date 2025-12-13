@@ -1,7 +1,4 @@
 import React, { type LabelHTMLAttributes, type ReactNode } from "react";
-import { useTheme, ThemeProvider } from "styled-components";
-
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { LabelText, Label, RequiredIndicationText, HintText } from "./styles";
 
@@ -25,12 +22,6 @@ export function LabelWrapper({
   children,
   ...otherHTMLLabelProps
 }: LabelWrapperProps) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-
   const hintTextElement =
     !!hintText &&
     ((typeof hintText === "string" && hintText.length) ||
@@ -41,7 +32,7 @@ export function LabelWrapper({
     );
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       {label ? (
         <Label {...otherHTMLLabelProps}>
           <LabelText $hasHintText={!!hintText}>
@@ -56,7 +47,7 @@ export function LabelWrapper({
       ) : (
         <>{children}</>
       )}
-    </ThemeProvider>
+    </>
   );
 }
 

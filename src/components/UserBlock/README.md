@@ -25,3 +25,4 @@ Display an avatar with title and subtitle
 | extra     | String/React node |             |             | subtitle to be displayed as primary text |
 | size      | String            | "s" "m" "l" | "m"         | Define the size of the avatar            |
 | avatarUrl | String            |             |             | URL of image for avatar                  |
+| themeName | String            |             |             | Theme that defines image style of avatar |

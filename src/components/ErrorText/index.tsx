@@ -1,8 +1,6 @@
 import React, { type HTMLAttributes } from "react";
-import { useTheme } from "styled-components";
-
 import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
-import { crukTheme as defaultTheme } from "../../themes/cruk";
+
 import { type SpacingProps } from "../Spacing";
 import { StyledErrorText } from "./styles";
 import { IconFa } from "../IconFa";
@@ -20,15 +18,15 @@ export type ErrorTextProps = SpacingProps &
  * Please be aware that some input components already have this component built in and can be passed an "errorMessage" prop
  */
 export function ErrorText({ children, as = "span", ...props }: ErrorTextProps) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-
   const shouldShowIcon = typeof children === "string" && children.length;
   return (
-    <StyledErrorText forwardedAs={as} {...props} theme={theme} role="alert">
+    <StyledErrorText
+      forwardedAs={as}
+      {...props}
+      role="alert"
+      textColor="var(--clr-text-error, #d93025)"
+      textWeight="var(--typ-font-weight-heavy, 700)"
+    >
       {shouldShowIcon ? (
         <Box as="span" marginRight="xxs">
           <IconFa faIcon={faTriangleExclamation} size="1em" />

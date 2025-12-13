@@ -11,9 +11,9 @@ function component() {
     <>
       <InfoBox
         titleText="InfoBox With Children"
-        titleTextColor="#000"
+        titleTextColor="text-dark"
         descriptionText="This is a description block for the infobox with children"
-        descriptionTextColor="#000"
+        descriptionTextColor="text-dark"
         icon={
           <IconFa faIcon={faTriangleExclamation} color="danger" size="2em" />
         }

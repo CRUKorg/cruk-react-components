@@ -18,28 +18,28 @@ The more specific the the target the higher priority the css will have. For exam
       This is box
     </Text>
   </Box>
-  <Box backgroundColor="backgroundLight">
-    <Text textColor="textDark">
+  <Box backgroundColor="background-light">
+    <Text textColor="text-dark">
       This is box
     </Text>
   </Box>
   <Box backgroundColor="tertiary">
-    <Text textColor="textLight">
+    <Text textColor="text-light">
       This is box
     </Text>
   </Box>
-  <Box backgroundColor="backgroundMid" >
-    <Text textColor="textDark">
+  <Box backgroundColor="background-mid" >
+    <Text textColor="text-dark">
       default spacing
     </Text>
   </Box>
-  <Box backgroundColor="backgroundMid" paddingVertical="xl" paddingBottom="xs">
-    <Text textColor="textDark">
+  <Box backgroundColor="background-mid" paddingVertical="xl" paddingBottom="xs">
+    <Text textColor="text-dark">
       paddingVertical="xl" paddingBottom="xs"
     </Text>
   </Box>
   <Box backgroundColor="primary" marginVertical="l" marginLeft="s">
-    <Text textColor="textLight">
+    <Text textColor="text-light">
       marginVertical="l" marginLeft="s"
     </Text>
   </Box>

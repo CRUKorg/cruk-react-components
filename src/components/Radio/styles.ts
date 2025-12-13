@@ -1,35 +1,22 @@
-import styled, { css } from "styled-components";
-import { type ThemeType } from "../../types";
+import styled from "styled-components";
 
-const RADIO_SIZE = "1.5rem";
-const RADIO_INNER_SIZE = "0.75rem";
-const BUTTON_HEIGHT = "3em";
-
-export const CheckWrapper = styled.div<{
-  theme: ThemeType;
-}>`
+export const CheckWrapper = styled.div`
   display: inline-block;
-  height: ${RADIO_SIZE};
-  width: ${RADIO_SIZE};
+  height: var(--_radio-size, 1.5rem);
+  width: var(--_radio-size, 1.5rem);
   position: absolute;
-  top: calc(50% - (${RADIO_SIZE} / 2));
-  left: ${({
-    theme: {
-      spacing: { xs },
-    },
-  }) => xs};
+  top: calc(50% - (var(--_radio-size, 1.5rem) / 2));
+  left: var(--spacing-xs, 1rem);
 `;
 
-export const Check = styled.span<{
-  theme: ThemeType;
-}>`
+export const Check = styled.span`
   display: block;
   position: relative;
-  border: 2px solid ${({ theme }) => theme.colors.selectionBorder};
+  border: 2px solid var(--clr-selection-border, #666);
   pointer-events: none;
   border-radius: 100%;
-  height: ${RADIO_SIZE};
-  width: ${RADIO_SIZE};
+  height: var(--_radio-size, 1.5rem);
+  width: var(--_radio-size, 1.5rem);
   top: 0;
   bottom: 0;
   left: 0;
@@ -45,10 +32,10 @@ export const Check = styled.span<{
     content: "";
     border-radius: 100%;
     pointer-events: none;
-    height: ${RADIO_INNER_SIZE};
-    width: ${RADIO_INNER_SIZE};
-    top: calc(50% - (${RADIO_INNER_SIZE} / 2));
-    left: calc(50% - (${RADIO_INNER_SIZE} / 2));
+    height: var(--_radio-inner-size, 0.75rem);
+    width: var(--_radio-inner-size, 0.75rem);
+    top: calc(50% - (var(--_radio-inner-size, 0.75rem) / 2));
+    left: calc(50% - (var(--_radio-inner-size, 0.75rem) / 2));
     margin: auto;
     background-color: rgba(255, 255, 255, 0);
     transition: background-color 0.25s linear;
@@ -59,71 +46,86 @@ export const StyledLabel = styled.label<{
   $hasError: boolean;
   $disabled: boolean;
   $checked: boolean;
-  theme: ThemeType;
 }>`
+  --_radio-size: 1.5rem;
+  --_radio-inner-size: 0.75rem;
+  --_button-height: 3em;
+
   box-sizing: border-box;
   *,
   *:after,
   *:before {
     box-sizing: border-box;
   }
-  line-height: ${({ theme }) => theme.typography.lineHeight};
-  font-size: ${({ theme }) => theme.typography.fontSizeBase};
-  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
+  line-height: var(--typ-line-height, 1.5em);
+  font-size: var(--font-size-base, 16px);
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
 
-  background-color: ${({ theme }) => theme.colors.backgroundLight};
+  background-color: var(--clr-background-light, #fff);
   width: 100%;
   position: relative;
 
   cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
   display: inline-block;
 
-  color: ${({ theme, $disabled }) =>
-    $disabled ? theme.colors.disabled : theme.colors.textDark};
-  padding: ${({ theme }) =>
-    `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
+  color: ${({ $disabled }) =>
+    $disabled ? "var(--clr-disabled, #e6e6e6)" : "var(--clr-text-dark, #000)"};
+  padding: calc(
+      (
+          var(--_button-height, 3em) -
+            (var(--size-border-width, 1px) * 2) - var(--typ-line-height, 1.5em)
+        ) /
+        2
+    )
+    var(--spacing-m, 2rem)
+    calc(
+      (
+          var(--_button-height, 3em) -
+            (var(--size-border-width, 1px) * 2) - var(--typ-line-height, 1.5em)
+        ) /
+        2
+    )
+    var(--spacing-xl, 4rem);
   vertical-align: middle;
 
-  ${({ theme, $disabled: isDisabled, $checked, $hasError }) =>
-    theme.utilities.useDefaultFromControls
-      ? null
-      : css`
-          min-height: 2rem;
+  min-height: 2rem;
 
-          ${CheckWrapper} ${Check} {
-            border: solid 2px
-              ${isDisabled
-                ? theme.colors.disabled
-                : $hasError
-                  ? theme.colors.danger
-                  : $checked
-                    ? theme.colors.check
-                    : theme.colors.inputBorder};
-            &:before {
-              background-color: ${$checked
-                ? theme.colors.check
-                : `rgba(255, 255, 255, 0)`};
-            }
-          }
+  ${CheckWrapper} ${Check} {
+    border: solid 2px
+      ${({ $disabled, $hasError, $checked }) =>
+        $disabled
+          ? "var(--clr-disabled, #e6e6e6)"
+          : $hasError
+            ? "var(--clr-danger, #f00)"
+            : $checked
+              ? "var(--clr-check, #d5007d)"
+              : "var(--clr-input-border, #2e2d2c)"};
 
-          &:hover ${CheckWrapper} ${Check} {
-            border: solid 2px
-              ${isDisabled ? theme.colors.disabled : theme.colors.check};
-          }
-        `}
+    &:before {
+      background-color: ${({ $checked }) =>
+        $checked ? "var(--clr-check, #d5007d)" : `rgba(255, 255, 255, 0)`};
+    }
+  }
+
+  &:hover ${CheckWrapper} ${Check} {
+    border: solid 2px
+      ${({ $disabled }) =>
+        $disabled
+          ? "var(--clr-disabled, #e6e6e6;)"
+          : "var(--clr-check, #d5007d)"};
+  }
+
   // increase font size for desktop
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
-    font-size: ${({ theme }) => theme.fontSizes.ml};
+  @media (min-width: 1200px) {
+    font-size: var(--font-size-ml, 1.125rem);
   }
 `;
 
-export const VerticalAlign = styled.span<{
-  theme: ThemeType;
-}>`
+export const VerticalAlign = styled.span`
   display: inline;
   vertical-align: middle;
   line-height: 100%;
-  background-color: ${({ theme }) => theme.colors.backgroundLight};
+  background-color: var(--clr-background-light, #fff);
   min-height: 2em;
   z-index: 1;
 `;
@@ -140,7 +142,6 @@ export const SelectedBorder = styled.div`
 
 export const StyledInput = styled.input<{
   disabled: boolean;
-  theme: ThemeType;
 }>`
   *,
   *:after,
@@ -149,38 +150,20 @@ export const StyledInput = styled.input<{
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
-  margin-right: ${({
-    theme: {
-      spacing: { xxs },
-    },
-  }) => xxs};
+  margin-right: var(--spacing-xxs, 1rem);
 
-  ${({ theme, disabled }) =>
-    theme.utilities.useDefaultFromControls
-      ? css`
-          position: absolute;
-          display: inline-block;
-          transform: translate(-50%, -50%);
-          top: 50%;
-          margin: 0;
-          padding: 0;
-          left: ${theme.spacing.s};
-        `
-      : css`
-          position: absolute;
-          left: ${theme.spacing.xxs};
-          opacity: 0;
+  position: absolute;
+  left: var(--spacing-xxs, 1rem);
+  opacity: 0;
 
-          &:focus ~ ${SelectedBorder} {
-            outline: none !important;
-            box-shadow: inset 0 0 0 2px ${theme.colors.inputBorder};
-            box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
-          }
+  &:focus ~ ${SelectedBorder} {
+    outline: none !important;
+    box-shadow: inset 0 0 0 2px var(--clr-input-border, #2e2c2d);
+    box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
+  }
 
-          &:checked ~ ${CheckWrapper} ${Check}::before {
-            background: ${disabled
-              ? theme.colors.disabled
-              : theme.colors.check};
-          }
-        `}
+  &:checked ~ ${CheckWrapper} ${Check}::before {
+    background: ${({ disabled }) =>
+      disabled ? "var(--clr-disabled, #e6e6e6)" : "var(--clr-check, #d5007d)"};
+  }
 `;

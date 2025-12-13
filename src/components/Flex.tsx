@@ -14,10 +14,10 @@ type StyledProps = SpacingPropsInternal & {
 
 const FlexStyled = styled.div<StyledProps>`
   display: block;
-  @media (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+  @media (min-width: 768px) {
     display: flex;
   }
-  ${(props) => spacing(props, props.theme as ThemeType)}
+  ${(props) => spacing(props)}
 `;
 
 type Props = SpacingProps & {

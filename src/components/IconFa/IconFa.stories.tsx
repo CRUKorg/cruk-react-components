@@ -11,6 +11,7 @@ export default {
   component: IconFa,
   args: {
     faIcon: faBullseye,
+    size: "1rem",
   },
   tags: ["autodocs"],
 };

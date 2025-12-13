@@ -1,18 +1,20 @@
 import React, { type HTMLAttributes, type Ref, type ElementType } from "react";
-import { useTheme } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { themeColorOrString } from "../../utils/themeUtils";
 
 import {
   spacingPropsToSpacingPropsInternal,
   type SpacingProps,
 } from "../Spacing";
+
+import { TextStyled } from "./styles";
+
 import {
   type WordBreakType,
   type FontSizeType,
   type OverflowWrapType,
+  type colours,
 } from "../../types";
-import { TextStyled } from "./styles";
 
 // the 'as' prop is for styled component casting
 // text hover color prop is only used in Link which extends Text
@@ -23,7 +25,7 @@ import { TextStyled } from "./styles";
 export type TextProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
     /** text colour  */
-    textColor?: string;
+    textColor?: (typeof colours)[number] | string;
     /** text horizontal alignment  */
     textAlign?: "left" | "right" | "center" | "justify";
     /** font size FontSizeType t-shirt sizes  */
@@ -43,11 +45,6 @@ export type TextProps = SpacingProps &
   };
 
 export const Text = (props: TextProps) => {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
   const {
     textColor,
     textAlign,
@@ -62,9 +59,11 @@ export const Text = (props: TextProps) => {
 
   const withInternalSpacingProps = spacingPropsToSpacingPropsInternal(rest);
 
+  const textColorFound = textColor ? themeColorOrString(textColor) : undefined;
+
   return (
     <TextStyled
-      $textColor={textColor}
+      $textColor={textColorFound}
       $textAlign={textAlign}
       $textSize={textSize}
       $textWeight={textWeight}
@@ -72,7 +71,6 @@ export const Text = (props: TextProps) => {
       $wordBreak={wordBreak}
       $overflowWrap={overflowWrap}
       {...withInternalSpacingProps}
-      theme={theme}
       ref={ref as Ref<HTMLParagraphElement>}
     />
   );

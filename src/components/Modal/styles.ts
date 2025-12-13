@@ -1,5 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import { type ColorKeyType, type ThemeType } from "../../types";
 import Box from "../Box";
 import { Button } from "../Button";
 
@@ -39,14 +38,8 @@ export const Content = styled(Box)<{
   $width: string;
   $maxWidth: string;
   $isAnimated?: boolean;
-  theme: ThemeType;
 }>`
-  background-color: ${({ theme: { colors }, backgroundColor }) =>
-    backgroundColor !== undefined
-      ? colors[backgroundColor as ColorKeyType] !== undefined
-        ? colors[backgroundColor as ColorKeyType]
-        : backgroundColor
-      : colors.backgroundLight};
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
   position: relative;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
   margin: ${({ $top }) => `${$top} auto auto auto`};
@@ -61,24 +54,17 @@ export const Content = styled(Box)<{
   animation-name: ${({ $isAnimated }) => ($isAnimated ? grow : "none")};
 `;
 
-export const CloseButton = styled(Button)<{
-  theme: ThemeType;
-}>`
+export const CloseButton = styled(Button)`
   float: right;
-  margin-left: ${({
-    theme: {
-      spacing: { xs },
-    },
-  }) => xs};
+  margin-left: var(--spacing-xs, 1rem);
   font-size: 1.2rem;
   padding: 0;
 `;
 
 export const Background = styled.div<{
-  theme: ThemeType;
   $isAnimated?: boolean;
 }>`
-  background: ${({ theme }) => theme.colors.modalBackdrop};
+  background: var(--clr-modal-backdrop, #000);
   bottom: 0;
   left: 0;
   opacity: 0.5;

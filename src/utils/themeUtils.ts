@@ -1,17 +1,18 @@
-import { type ThemeType, type SpacingType, type ColorsType } from "../types";
+import { spaces, colours, fontSizes } from "../types";
 
-export const themeSizeOrString = (
-  spaceString: string,
-  theme: ThemeType,
-): string =>
-  typeof theme.spacing[spaceString as keyof SpacingType] === "undefined"
-    ? spaceString
-    : theme.spacing[spaceString as keyof SpacingType];
+export const themeSpacingSizeOrString = (spaceString: string): string =>
+  spaces.includes(spaceString as (typeof spaces)[number])
+    ? `var(--spacing-${spaceString as (typeof spaces)[number]})`
+    : spaceString;
+
+export const themeFontSizeOrString = (fontSizeString: string): string =>
+  fontSizes.includes(fontSizeString as (typeof fontSizes)[number])
+    ? `var(--font-size-${fontSizeString as (typeof fontSizes)[number]})`
+    : fontSizeString;
 
 export const themeColorOrString = (
-  colorString: string | undefined,
-  theme: ThemeType,
+  colorString: string | (typeof colours)[number] | undefined,
 ): string =>
-  typeof theme.colors[colorString as keyof ColorsType] === "undefined"
-    ? colorString || "currentColor"
-    : theme.colors[colorString as keyof ColorsType];
+  colours.includes(colorString as (typeof colours)[number])
+    ? `var(--clr-${colorString as (typeof colours)[number]})`
+    : colorString || "currentColor";

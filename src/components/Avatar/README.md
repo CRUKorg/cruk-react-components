@@ -23,8 +23,9 @@ You can use an avatar to display ownership of an item of content. It's basically
 
 ## Props
 
-| Name | Type   |     Options      | Default   | Description                           |
-| :--- | :----- | :--------------: | :-------- | :------------------------------------ |
-| name | String |                  | Anonymous | Title to be displayed as primary text |
-| size | String | "s" "m" "l" "xl" | "m"       | Define the size of the avatar         |
-| url  | String |                  |           | URL of image for avatar               |
+| Name      | Type   |     Options      | Default   | Description                              |
+| :-------- | :----- | :--------------: | :-------- | :--------------------------------------- |
+| name      | String |                  | Anonymous | Title to be displayed as primary text    |
+| size      | String | "s" "m" "l" "xl" | "m"       | Define the size of the avatar            |
+| url       | String |                  |           | URL of image for avatar                  |
+| themeName | String |                  | "cruk"    | Theme that defines image style of avatar |

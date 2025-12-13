@@ -1,34 +1,29 @@
 import styled from "styled-components";
-import { type ThemeType } from "../../types";
 
-type ThemeProps = {
-  theme: ThemeType;
-};
-export const StyledFooter = styled.footer<ThemeProps>`
-  ${({ theme }) => theme.colors.inputBorder};
+export const StyledFooter = styled.footer`
   box-sizing: border-box;
   display: block;
   position: relative;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.footerBackground};
+  background-color: var(--clr-footer-background, #fff);
 `;
 
-export const FooterContentWrapper = styled.div<ThemeProps>`
-  max-width: ${({ theme }) => theme.utilities.contentMaxWidth};
+export const FooterContentWrapper = styled.div`
+  max-width: var(--cruk-content-max-width, 1020px);
   display: block;
   margin: 0 auto;
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
+  @media (min-width: 1200px) {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
 `;
 
-export const FooterSection = styled.div<ThemeProps>`
+export const FooterSection = styled.div`
   box-sizing: border-box;
   display: inline-block;
-  padding: ${({ theme }) => theme.spacing.xs};
+  padding: var(--spacing-xs, 1rem);
   position: relative;
   width: 100%;
   flex: 0 1 auto;
@@ -39,7 +34,7 @@ export const FooterSectionLogo = styled(FooterSection)`
   display: block;
   float: left;
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
+  @media (min-width: 1200px) {
     flex: 0 0 140px;
     width: auto;
   }
@@ -52,22 +47,18 @@ export const FooterSectionLinks = styled(FooterSection)`
   display: block;
   float: left;
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
+  @media (min-width: 992px) {
     flex: 0 0 170px;
     width: auto;
   }
 `;
 
-export const StyledNav = styled.nav<ThemeProps>`
+export const StyledNav = styled.nav`
   display: flex;
   flex-direction: column;
   a {
-    font-size: ${({ theme }) => theme.fontSizes.s};
-    font-weight: ${({
-      theme: {
-        typography: { fontWeightLinks },
-      },
-    }: ThemeProps) => fontWeightLinks};
+    font-size: var(--font-size-s, 0.875rem);
+    font-weight: var(--typ-font-weight-links, 700);
   }
 `;
 
@@ -76,17 +67,13 @@ export const StyledUL = styled.ul`
   margin: 0;
 `;
 
-export const StyledLI = styled.li<ThemeProps>`
+export const StyledLI = styled.li`
   list-style-type: none;
   display: block;
   padding: 0;
   margin: 0;
   line-height: 1;
-  padding-bottom: ${({
-    theme: {
-      spacing: { xxs },
-    },
-  }) => xxs};
+  padding-bottom: var(--spacing-xxs, 0.5rem);
 `;
 
 export const FooterSectionAddress = styled(FooterSection)`

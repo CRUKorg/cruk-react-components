@@ -6,13 +6,16 @@ import React, {
   useEffect,
   type HTMLAttributes,
 } from "react";
-import { useTheme } from "styled-components";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
+import {
+  themeColorOrString,
+  themeFontSizeOrString,
+} from "../../utils/themeUtils";
+
 import { IconFa } from "../IconFa";
 
-import { type FontSizeType, type ThemeType } from "../../types";
+import { type FontSizeType } from "../../types";
 import {
   CustomHeader,
   DefaultHeader,
@@ -64,11 +67,10 @@ export function Collapse({
   );
   const content = useRef<HTMLDivElement>(null);
   const transitionTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const foundTheme = useTheme();
-  const theme: ThemeType = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
+
+  const textColour = headerTitleTextColor
+    ? themeColorOrString(headerTitleTextColor)
+    : "var(--clr-collapse-header, #00007e)";
 
   const toggleCollapse = () => {
     const { current } = content;
@@ -119,7 +121,6 @@ export function Collapse({
     <div id={id}>
       {headerComponent ? (
         <CustomHeader
-          theme={theme}
           aria-controls={`${id}-header`}
           aria-expanded={openStatus}
           id={`${id}-header`}
@@ -138,11 +139,10 @@ export function Collapse({
           aria-expanded={openStatus}
           id={`${id}-header`}
           onClick={toggleCollapse}
-          theme={theme}
           type="button"
           appearance="tertiary"
-          $textColor={headerTitleTextColor}
-          $textSize={headerTitleTextSize}
+          $textColor={textColour}
+          $textSize={themeFontSizeOrString(headerTitleTextSize || "m")}
           $textFontFamily={headerTitleTextFontFamily}
         >
           {headerTitleText}
@@ -152,7 +152,6 @@ export function Collapse({
         </DefaultHeader>
       )}
       <CollapseContent
-        theme={theme}
         id={`${id}-content`}
         ref={content}
         role="region"

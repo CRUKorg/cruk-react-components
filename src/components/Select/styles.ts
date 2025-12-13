@@ -1,71 +1,66 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-import { type ThemeType } from "../../types";
-
-const BUTTON_HEIGHT = "3rem";
-
-type StyledSelectProps = {
+export const StyledSelect = styled.select<{
   $hasError: boolean;
   $errorMessage?: string;
-  theme: ThemeType;
-};
-
-const StyledSelect = styled.select<StyledSelectProps>`
+}>`
+  --_button-height: 3rem;
   appearance: none;
   background:
     linear-gradient(
       45deg,
-      ${({ theme }) => theme.colors.backgroundLight} 50%,
-      ${({ theme }) => theme.colors.selectBackground} 50%
+      var(--clr-background-light, #fff) 50%,
+      var(--clr-select-background, #000) 50%
     ),
     linear-gradient(
       135deg,
-      ${({ theme }) => theme.colors.selectBackground} 50%,
-      ${({ theme }) => theme.colors.backgroundLight} 50%
+      var(--clr-select-background, #000) 50%,
+      var(--clr-background-light, #fff) 50%
     );
-  background-color: ${({ theme }) => theme.colors.backgroundLight};
+  background-color: var(--clr-background-light, #fff);
   background-position:
     calc(100% - 16px) 50%,
     calc(100% - 10px) 50%;
   background-size: 6px 6px;
   background-repeat: no-repeat;
-  border: ${({ theme, $hasError, $errorMessage }) =>
-    `solid ${theme.utilities.inputBorderWidth} ${
+  border: ${({ $hasError, $errorMessage }) =>
+    `solid var(--size-border-width, 1px) ${
       $hasError || $errorMessage
-        ? theme.colors.textError
-        : theme.colors.textInputBorder
+        ? "var(--clr-text-error, #f00)"
+        : "var(--clr-text-input-border, #2e2c2d)"
     }`};
-  color: ${({ theme }) => theme.colors.textDark};
+  color: var(--clr-text-dark, #000);
   display: block;
-  font-size: ${({ theme }) => theme.fontSizes.m};
-  min-height: ${BUTTON_HEIGHT};
-  padding: ${({ theme }) =>
-    `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xs}`};
+  font-size: var(--font-size-m, 1rem);
+  min-height: var(--_button-height, 3rem);
+  padding: calc(
+      (
+          var(--_button-height, 3rem) -
+            (var(--size-border-width, 1px) * 2) - var(--typ-line-height, 1.5em)
+        ) /
+        2
+    )
+    var(--spacing-m, 2rem)
+    calc(
+      (
+          var(--_button-height, 3rem) -
+            (var(--size-border-width, 1px) * 2) - var(--typ-line-height, 1.5em)
+        ) /
+        2
+    )
+    var(--spacing-xs, 1rem);
   width: 100%;
   transition: border-color 150ms linear;
   &:hover {
-    border-color: ${({ theme }) => theme.colors.secondary};
+    border-color: var(--clr-secondary, #e60079);
   }
   &:disabled {
-    border-color: ${({ theme }) => theme.colors.disabled};
-    color: ${({ theme }) => theme.colors.disabled};
+    border-color: var(--clr-disabled, #e6e6e6);
+    color: var(--clr-disabled, #e6e6e6);
   }
-
-  ${({ theme }) =>
-    !theme.utilities.useDefaultFocusRect
-      ? css`
-          &:focus {
-            outline: 0;
-            border-color: ${theme.colors.tertiary};
-          }
-        `
-      : null};
 
   // increase font size for desktop
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
-    font-size: ${({ theme }) => theme.fontSizes.ml};
+  @media (min-width: 1200px) {
+    font-size: var(--font-size-ml, 1.125rem);
   }
 `;
-
-export default StyledSelect;
-export { StyledSelect };

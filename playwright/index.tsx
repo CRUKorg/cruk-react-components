@@ -1,1 +1,1 @@
-import "./fonts.css";
+import "../src/components/global-styles.css";

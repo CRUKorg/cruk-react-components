@@ -40,12 +40,12 @@ function component() {
         headerTitleText="Custom header components"
         headerComponent={
           <Box backgroundColor="primary">
-            <Text textColor="textOnPrimary">This is box header</Text>
+            <Text textColor="text-on-primary">This is box header</Text>
           </Box>
         }
       >
         <Box backgroundColor="primary">
-          <Text textColor="textOnPrimary">This is box</Text>
+          <Text textColor="text-on-primary">This is box</Text>
         </Box>
       </Collapse>
     </Box>

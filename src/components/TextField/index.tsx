@@ -3,9 +3,7 @@ import React, {
   type ReactNode,
   type Ref,
 } from "react";
-import { useTheme } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { ErrorText } from "../ErrorText";
 import { LabelWrapper } from "../LabelWrapper";
 
@@ -66,15 +64,9 @@ export const TextField = ({
   ref,
   ...props
 }: TextFieldProps) => {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-
   const renderContent = (
     <>
-      {!!extraLeft && <ExtraLeft theme={theme}>{extraLeft}</ExtraLeft>}
+      {!!extraLeft && <ExtraLeft>{extraLeft}</ExtraLeft>}
       <StyledInputWrapper
         $hasError={hasError || !!errorMessage || false}
         $isValid={
@@ -83,7 +75,6 @@ export const TextField = ({
         aria-invalid={hasError || !!errorMessage || false}
         $isValidVisible={isValidVisible || false}
         $isInvalidVisible={isInvalidVisible || false}
-        theme={theme}
       >
         <StyledInput
           $hasError={hasError || !!errorMessage || false}
@@ -99,12 +90,11 @@ export const TextField = ({
           $isValidVisible={isValidVisible || false}
           $isInvalidVisible={isInvalidVisible || false}
           {...props}
-          theme={theme}
           data-hj-suppress
           ref={ref}
         />
       </StyledInputWrapper>
-      {!!extraRight && <ExtraRight theme={theme}>{extraRight}</ExtraRight>}
+      {!!extraRight && <ExtraRight>{extraRight}</ExtraRight>}
     </>
   );
 
@@ -115,13 +105,13 @@ export const TextField = ({
       required={props.required || false}
       hideRequiredIndicationInLabel={hideRequiredIndicationInLabel}
     >
-      {!!extraTop && <Extra theme={theme}>{extraTop}</Extra>}
+      {!!extraTop && <Extra>{extraTop}</Extra>}
       {!!extraRight || !!extraLeft ? (
         <ExtraWrapper>{renderContent}</ExtraWrapper>
       ) : (
         renderContent
       )}
-      {!!extraBottom && <Extra theme={theme}>{extraBottom}</Extra>}
+      {!!extraBottom && <Extra>{extraBottom}</Extra>}
       {!!errorMessage && (
         <ErrorText
           marginTop="xxs"

@@ -1,22 +1,17 @@
 import styled from "styled-components";
-import { type ThemeType } from "../../types";
 
-export const StyledLegend = styled.legend<{
-  theme: ThemeType;
-}>`
+export const StyledLegend = styled.legend`
   display: block;
   float: left;
-  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
 
   // increase font size for desktop
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
-    font-size: ${({ theme }) => theme.fontSizes.ml};
+  @media (min-width: 1200px) {
+    font-size: var(--font-size-ml, 1.125rem);
   }
 `;
 
-export const StyledFieldSet = styled.fieldset<{
-  theme: ThemeType;
-}>`
+export const StyledFieldSet = styled.fieldset`
   box-sizing: border-box;
   *,
   *:after,
@@ -28,15 +23,13 @@ export const StyledFieldSet = styled.fieldset<{
   position: relative;
   border: none;
   padding: 0;
-  margin: 0 0 ${({ theme }) => theme.spacing.s} 0;
+  margin: 0 0 var(--spacing-s, 1.5rem) 0;
 `;
 
-export const OptionWrapper = styled.div<{
-  theme: ThemeType;
-}>`
+export const OptionWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  gap: ${({ theme }) => theme.spacing.m};
+  gap: var(--spacing-m, 2rem);
   align-items: flex-start;
   justify-content: flex-start;
   gap: 0px;
