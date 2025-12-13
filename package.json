@@ -12,7 +12,7 @@
   "sideEffects": false,
   "files": [
     "lib",
-    "lib/global-styles.css"
+    "lib/index.css"
   ],
   "scripts": {
     "analyze": "source-map-explorer lib/index.js",
@@ -64,6 +64,7 @@
     "@types/react-dom": "^19",
     "@vitejs/plugin-legacy": "^7",
     "@vitejs/plugin-react-swc": "^3.11.0",
+    "autoprefixer": "^10.4.22",
     "chromatic": "^13.3.4",
     "eslint": "^9",
     "eslint-plugin-react": "^7.37.4",
@@ -76,6 +77,7 @@
     "release-it": "^19",
     "rollup": "^4.22.4",
     "rollup-plugin-css-only": "^4.5.5",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript2": "^0.36.0",
     "source-map-explorer": "^2.2.2",
     "storybook": "^10",

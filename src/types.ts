@@ -34,6 +34,7 @@ export type BreakPointType = {
 
 export const spaces = [
   "auto",
+  "xxxs",
   "xxs",
   "xs",
   "s",
@@ -45,19 +46,6 @@ export const spaces = [
 ] as const;
 
 export type SpaceType = (typeof spaces)[number];
-
-export type SpacingType = {
-  auto: string;
-  xxxs: string;
-  xxs: string;
-  xs: string;
-  s: string;
-  m: string;
-  l: string;
-  xl: string;
-  xxl: string;
-  none: string;
-};
 
 export type ShadowsType = {
   s: string;
