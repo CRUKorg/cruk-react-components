@@ -444,8 +444,10 @@ button {
   --typ-font-family-headings: "juana", Arial, sans-serif;
   --typ-font-family-links: "juana", Arial, sans-serif;
   --typ-font-family-buttons: "juana", Arial, sans-serif;
-  --typ-font-family-base: "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif";
-  --typ-font-family-label: "Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif";
+  --typ-font-family-base:
+    Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif;
+  --typ-font-family-label:
+    Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif;
   --typ-header-line-height: 1.5em;
   --typ-font-weight-base: 400;
   --typ-font-weight-links: 600;
