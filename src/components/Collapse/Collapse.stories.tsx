@@ -44,7 +44,7 @@ export const CollapseWithModifiedText: Story = {
   args: {
     headerTitleText:
       "A long title with headerTitleTextColor and headerTitleTextSize",
-    headerTitleTextColor: "primary",
+    headerTitleTextColor: "text-dark",
     headerTitleTextSize: "xl",
   },
   render: (args) => (
