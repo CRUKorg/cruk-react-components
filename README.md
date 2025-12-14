@@ -32,6 +32,46 @@ const MyComponent = () => (
 );
 ```
 
+## Migration from V5 and V6 to V7
+
+This is the fist phase of moving away from Styled Components which has entered maintenance mode.
+
+- The first phase is to uses CSS variables and data attributes on HTML elements for theming, instead of using Styled Components themes and ThemeProvider.
+- The second phase is to convert components writted in styled components with css modules and html to create
+
+### Themeing
+
+So intstead of themeing like this
+
+```tsx
+<ThemeProvider theme={crukTheme}>
+<Button/>
+<ThemeProvider />
+```
+
+you only need an html element with `data-theme="cruk"`, there inner most element with data-theme will override the previous ones.
+
+```tsx
+<span data-theme="su2c">
+<Button/>
+<span/>
+```
+
+### Components with theme dependent content
+
+The following components have content that changes depending on the theme name.
+
+- Avatar
+- Header
+- Footer
+- UserBlock
+
+Because the new themeing strategy only effects styling not content, these components now have a required property of "themeName" this will have to be entered by the app that uses these components
+
+### Theme variable naming conventions
+
+Because the theme names now come from CSS variable instead of theme objects, the theme names that were camel cased, are now snake cased so `textDark` now becomes `text-dark`
+
 ## Migration from V4 to V5
 
 Because Styped Components now manages its own types on stead of relying on the community efforts on the DefinitelyTyped project, you may need to use generics instead of inline prop type definition inside styledComponents componets.
