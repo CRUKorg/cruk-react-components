@@ -1,6 +1,5 @@
 import React from "react";
-
-import { ScreenReaderOnly, Spinner } from "./styles";
+import styles from "./styles.module.css";
 
 /**
  *
@@ -9,12 +8,14 @@ import { ScreenReaderOnly, Spinner } from "./styles";
 export function Loader() {
   return (
     <>
-      <ScreenReaderOnly role="alert">Loading</ScreenReaderOnly>
-      <Spinner>
+      <p className={styles["screen-reader-only"]} role="alert">
+        Loading
+      </p>
+      <div className={styles["spinner"]} aria-hidden="true">
         <span />
         <span />
         <span />
-      </Spinner>
+      </div>
     </>
   );
 }
