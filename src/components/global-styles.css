@@ -87,6 +87,10 @@
   }
 }
 
+body {
+  margin: 0;
+}
+
 table,
 td,
 th {
