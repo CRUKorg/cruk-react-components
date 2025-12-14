@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.0.0] - 2025-12-14
+
+### Breaking Changes
+
+- No longer using styled components theme provider, everything is now themed with the data-theme attribute and CCS variables
+- Colour names that were camel cased in the theme objects are now kebab case to match css variable conventions
+- All content that changes by theme like logo in the header, footer text, or avatar fallback images, now lives in the the component where and additional "themeName" prop is a required attribute so select the correct content.
+
 ## [6.2.2] - 2025-12-02
 
 ### Added
