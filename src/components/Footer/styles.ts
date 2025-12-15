@@ -70,7 +70,7 @@ export const Bar = styled.hr`
   margin-right: calc(50% - 50vw);
   margin-left: calc(
     100% - 100vw
-  ); // to be removed when every page what a while background
+  ); // to be removed when every page has a while background
   border-width: 0px 0px 0.25rem;
   border-image: initial;
   border-color: var(--clr-cruk-black, #000);
