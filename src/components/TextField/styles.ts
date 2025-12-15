@@ -21,6 +21,7 @@ export const Extra = styled.span`
   font-size: var(--font-size-m, 1em);
   line-height: var(--typ-line-height, 1.5em);
   font-weight: var(--typ-font-weight-light, 300);
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
   padding: calc((var(--_min-height, 48px) - 1em) / 2) var(--spacing-xs, 1rem);
   margin: 0;
   line-height: 1rem;
@@ -32,6 +33,7 @@ export const ExtraLeft = styled(Extra)`
   width: auto;
   vertical-align: middle;
   height: var(--_min-height, 48px);
+
   button {
     min-height: calc(
       var(--_min-height, 48px) - (2 * var(--size-border-width, 1px))
