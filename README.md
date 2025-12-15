@@ -44,22 +44,30 @@ Styled Components has entered maintenance mode.
 So intstead of themeing like this
 
 ```tsx
+import { Button, crukTheme } from "cruk-react-components";
+import { ThemeProvider } from "styled-components";
+
+const MyComponent = () => (
 <ThemeProvider theme={crukTheme}>
-<Button/>
+  <Button/>
 <ThemeProvider />
+);
+
 ```
 
-you only need an html element with `data-theme="cruk"`, there inner most element with data-theme will override the previous ones.
+you only need an html element with `data-theme="cruk"`, the inner most element with data-theme will override outer wrapping elements.
 
 ```tsx
-<span data-theme="su2c">
-<Button/>
-<span/>
+const MyComponent = () => (
+  <span data-theme="su2c">
+    <Button/>
+  <span/>
+);
 ```
 
 ### Components with theme dependent content
 
-The following components have content that changes depending on the theme name.
+Because the new themeing strategy only effects CSS and not content, components which have theme specific content now have a required property of "themeName". This prop will have to be entered by the app that uses these components. The following components require the themeName prop:
 
 - Avatar
 - Header
@@ -67,9 +75,7 @@ The following components have content that changes depending on the theme name.
 - UserBlock
 - Modal\*
 
-Because the new themeing strategy only effects styling not content, these components now have a required property of "themeName" this will have to be entered by the app that uses these components
-
-\* Modal is a special case, it needs themeName because the theme provider doesn't work across React Portals which is how the modals works
+\* Modal is a special case, it needs themeName prop because the any theme provider will not work. Modals uses React Portals which places the elements in whole new html context.
 
 ### Theme variable naming conventions
 
