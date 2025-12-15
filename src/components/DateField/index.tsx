@@ -74,7 +74,7 @@ export function DateField({
         {!required && (
           <span
             style={{
-              fontWeight: "var(--typ-font-weight-light, 300)",
+              fontWeight: "var(--typ-font-weight-base, 300)",
             }}
           >
             {` (optional)`}

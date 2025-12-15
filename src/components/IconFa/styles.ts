@@ -1,8 +1,6 @@
 import styled from "styled-components";
-import { type ThemeType } from "../../types";
 
 export const StyledIcon = styled.svg<{
-  theme: ThemeType;
   $color?: string;
   $size: string;
 }>`

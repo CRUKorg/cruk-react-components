@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import { type ThemeType } from "../../types";
 import Button from "../Button";
 
 export const transitionDurationSeconds = 0.5;
@@ -13,7 +12,6 @@ export const FlippingIcon = styled.span<{ $open: boolean }>`
 `;
 
 export const DefaultHeader = styled(Button)<{
-  theme: ThemeType;
   $textColor?: string;
   $textSize?: string;
   $textFontFamily?: string;

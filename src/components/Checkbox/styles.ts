@@ -1,9 +1,6 @@
 import styled from "styled-components";
-import { type ThemeType } from "../../types";
 
-export const CheckWrapper = styled.div<{
-  theme: ThemeType;
-}>`
+export const CheckWrapper = styled.div`
   --_check-box-size: 1.5rem;
   --_button-height: 3em;
   --_border-width: 2px;
@@ -16,9 +13,7 @@ export const CheckWrapper = styled.div<{
   left: var(--spacing-xs, 0.5rem);
 `;
 
-export const Check = styled.span<{
-  theme: ThemeType;
-}>`
+export const Check = styled.span`
   display: block;
   position: relative;
   border: 2px solid var(--clr-selection-border, #666);
@@ -50,7 +45,6 @@ export const StyledLabel = styled.label<{
   $checked: boolean;
   $disabled: boolean;
   $hasError: boolean;
-  theme: ThemeType;
 }>`
   box-sizing: border-box;
   *,
@@ -142,9 +136,7 @@ export const SelectedBorder = styled.div`
 `;
 
 // TODO when we get rid of bootstrap remove !important.
-export const StyledInput = styled.input<{
-  theme: ThemeType;
-}>`
+export const StyledInput = styled.input`
   margin-right: 5px !important;
 
   /* This hides the original input */

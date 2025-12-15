@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-import { type ThemeType, type PopOverPositionType } from "../../types";
+import { type PopOverPositionType } from "../../types";
 
 export const PopOverWrapper = styled.div<{
   $full: boolean;
@@ -19,7 +19,6 @@ export const PopOverModal = styled.div<{
   $position: PopOverPositionType;
   $maxWidth: string;
   $minWidth: string;
-  theme?: ThemeType;
 }>`
   position: absolute;
   display: flex;
@@ -487,7 +486,7 @@ export const PopOverModal = styled.div<{
       border-color: ${({ $position }) => {
         switch ($position) {
           case "top":
-            return `transparent transparent`;
+            return `var(--clr-popover-background, #fff) transparent transparent`;
           case "topLeft":
             return `var(--clr-popover-background, #fff) transparent transparent`;
           case "left":

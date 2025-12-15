@@ -12,6 +12,7 @@ import {
 import { StyledBox } from "./styles";
 
 import { type ColourVariableType } from "../../types";
+import { themeColorOrString } from "../../utils/themeUtils";
 
 export type BoxProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
@@ -32,10 +33,13 @@ export type BoxProps = SpacingProps &
 export const Box = ({ ...props }: BoxProps) => {
   const { children, backgroundColor, ref, ...rest } = props;
   const restWithInternalSpacingProps = spacingPropsToSpacingPropsInternal(rest);
+  const backgroundColorValue = backgroundColor
+    ? themeColorOrString(backgroundColor)
+    : undefined;
 
   return (
     <StyledBox
-      $backgroundColor={backgroundColor}
+      $backgroundColor={backgroundColorValue}
       {...restWithInternalSpacingProps}
       ref={ref}
     >

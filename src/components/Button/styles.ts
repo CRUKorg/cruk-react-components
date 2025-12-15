@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 
-import { type ThemeType, type ButtonAppearanceType } from "../../types";
+import { type ButtonAppearanceType } from "../../types";
 
-export const Spacer = styled.span<{ theme: ThemeType }>`
+export const Spacer = styled.span`
   margin-left: var(--spacing-xxs, 1rem);
   &:first-of-type {
     margin-left: 0;
@@ -10,7 +10,6 @@ export const Spacer = styled.span<{ theme: ThemeType }>`
 `;
 
 export const StyledButton = styled.button<{
-  theme: ThemeType;
   href?: string;
   $isIconButton: boolean;
   $appearance?: ButtonAppearanceType;

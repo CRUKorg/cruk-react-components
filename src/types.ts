@@ -53,10 +53,6 @@ export type ShadowsType = {
   l: string;
 };
 
-export type ThemeType = {
-  name: string;
-};
-
 export type AddressDataType = {
   AdminAreaCode: string;
   AdminAreaName: string;

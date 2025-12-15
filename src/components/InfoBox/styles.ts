@@ -1,11 +1,9 @@
 import styled, { css } from "styled-components";
 
-import { type ThemeType } from "../../types";
-import Box, { type BoxProps } from "../Box";
+import Box from "../Box";
 
-type InfoBoxProps = BoxProps & {
+type InfoBoxProps = React.ComponentProps<typeof Box> & {
   css?: string;
-  theme: ThemeType;
 };
 
 export const StyledInfoBox = styled(Box)<InfoBoxProps>`

@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import { type ThemeType } from "../../types";
-
 export const CarouselWrapper = styled.div`
   position: relative;
   width: 100%;
@@ -96,7 +94,7 @@ export const CarouselButton = styled.button`
   }
 `;
 
-export const DotContainer = styled.div<{ $count: number; theme: ThemeType }>`
+export const DotContainer = styled.div<{ $count: number }>`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -111,7 +109,7 @@ export const DotContainer = styled.div<{ $count: number; theme: ThemeType }>`
   }
 `;
 
-export const Dot = styled.button<{ $selected: boolean; theme: ThemeType }>`
+export const Dot = styled.button<{ $selected: boolean }>`
   border: none;
   outline-offset: var(--spacing-xxs, 1rem);
   padding: 0;

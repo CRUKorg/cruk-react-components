@@ -86,7 +86,7 @@ export const PagerLink = styled.a<{
       &:focus,
       &:active,
       &:visited {
-        color: $ var(--clr-disabled, #e6e6e6);
+        color: var(--clr-disabled, #e6e6e6);
         text-decoration: none;
       }
     `}

@@ -22,7 +22,7 @@ export const Name = styled.div`
 `;
 
 export const Extra = styled.div`
-  color: var(--clr-user-block-extra, #575757);
+  color: var(--clr-user-block-extra-text, #575757);
   margin-top: 4px;
   white-space: normal;
   word-break: break-word;

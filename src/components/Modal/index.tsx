@@ -47,7 +47,7 @@ export function Modal({
   showCloseButton,
   maxWidth = "500px",
   top = "1rem",
-  backgroundColor = "background-light",
+  backgroundColor,
   children,
   width = "90%",
   margin,
@@ -66,7 +66,9 @@ export function Modal({
   paddingLeft,
   isAnimated = true,
 }: ModalProps) {
-  const backgroundColour = themeColorOrString(backgroundColor);
+  const backgroundColourValue = backgroundColor
+    ? themeColorOrString(backgroundColor)
+    : "var(--background-light, #ffffff)";
 
   const closeByEsc = React.useCallback(
     (event: KeyboardEvent): void => {
@@ -101,7 +103,7 @@ export function Modal({
               <FocusLock returnFocus>
                 <Wrapper role="dialog" aria-modal="true" aria-label={modalName}>
                   <Content
-                    backgroundColor={backgroundColour}
+                    backgroundColor={backgroundColourValue}
                     $maxWidth={maxWidth}
                     $width={width}
                     $top={top}

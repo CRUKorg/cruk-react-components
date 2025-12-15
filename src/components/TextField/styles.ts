@@ -16,11 +16,11 @@ type StyledInputProps = {
 export const Extra = styled.span`
   box-sizing: border-box;
   display: block;
-  background-color: var(--clr-text-input-extra-info, #f0f0f0);
+  background-color: var(--clr-text-input-extra-info, #e6e6e6);
   color: var(--clr-text-dark, #000);
   font-size: var(--font-size-m, 1em);
   line-height: var(--typ-line-height, 1.5em);
-  font-weight: var(--typ-font-weight-light, 300);
+  font-weight: var(--typ-font-weight-base, 300);
   font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
   padding: calc((var(--_min-height, 48px) - 1em) / 2) var(--spacing-xs, 1rem);
   margin: 0;

@@ -24,7 +24,7 @@ import {
 // TODO figure out how we want to handle AriaAttributes
 
 /**
- * Think Blue Peter, used to display total raised and if target prop is passed will display tercentage of target reached.
+ * Think Blue Peter, used to display total raised and if target prop is passed will display percentage of target reached.
  * */
 export function Totaliser({
   total,
