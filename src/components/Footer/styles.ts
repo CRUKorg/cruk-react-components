@@ -6,6 +6,7 @@ export const StyledFooter = styled.footer`
   position: relative;
   width: 100%;
   background-color: var(--clr-footer-background, #fff);
+  padding-bottom: var(--spacing-m, 2rem);
 `;
 
 export const FooterContentWrapper = styled.div`
@@ -15,7 +16,7 @@ export const FooterContentWrapper = styled.div`
 
   @media (min-width: 1200px) {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
   }
 `;
@@ -23,41 +24,17 @@ export const FooterContentWrapper = styled.div`
 export const FooterSection = styled.div`
   box-sizing: border-box;
   display: inline-block;
-  padding: var(--spacing-xs, 1rem);
+  padding: var(--spacing-m, 2rem) var(--spacing-xs, 1rem) 0;
   position: relative;
   width: 100%;
   flex: 0 1 auto;
-`;
-
-export const FooterSectionLogo = styled(FooterSection)`
-  width: 50%;
-  display: block;
-  float: left;
-
-  @media (min-width: 1200px) {
-    flex: 0 0 140px;
-    width: auto;
-  }
-`;
-
-// TODO: I'm assuming here that the links have fixed width here with a flex basis
-// and the company info expands to fill the gap but it could be the other way round
-export const FooterSectionLinks = styled(FooterSection)`
-  width: 50%;
-  display: block;
-  float: left;
-
-  @media (min-width: 992px) {
-    flex: 0 0 170px;
-    width: auto;
-  }
 `;
 
 export const StyledNav = styled.nav`
   display: flex;
   flex-direction: column;
   a {
-    font-size: var(--font-size-s, 0.875rem);
+    font-size: var(--font-size-m, 1rem);
     font-weight: var(--typ-font-weight-links, 700);
   }
 `;
@@ -76,17 +53,24 @@ export const StyledLI = styled.li`
   padding-bottom: var(--spacing-xxs, 0.5rem);
 `;
 
-export const FooterSectionAddress = styled(FooterSection)`
-  flex: 0 0 150px;
-`;
-
 export const StyledRegulatorLogo = styled.img`
   height: 40px;
   width: auto;
 `;
 
 export const StyledAddress = styled.address`
-  display: flex;
-  flex-direction: column;
+  display: inline;
   font-style: normal;
+`;
+
+export const Bar = styled.hr`
+  opacity: 1;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: calc(50% - 50vw);
+  border-width: 0px 0px 0.25rem;
+  border-image: initial;
+  border-color: var(--clr-cruk-black, #000);
+  border-style: solid;
+  width: auto;
 `;

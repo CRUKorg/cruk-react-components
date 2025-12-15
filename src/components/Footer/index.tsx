@@ -4,15 +4,13 @@ import { Text } from "../Text";
 import {
   StyledFooter,
   FooterContentWrapper,
-  FooterSectionLogo,
   FooterSection,
-  FooterSectionAddress,
   StyledAddress,
   StyledRegulatorLogo,
-  FooterSectionLinks,
   StyledNav,
   StyledUL,
   StyledLI,
+  Bar,
 } from "./styles";
 import { type ThemeNameType } from "src/types";
 
@@ -39,7 +37,6 @@ function footerTextForTheme(themeName: string): string {
  * */
 export function Footer({
   children,
-  middleSection,
   themeName = "cruk",
   footerText,
 }: HTMLAttributes<HTMLElement> & {
@@ -53,16 +50,9 @@ export function Footer({
 
   return (
     <StyledFooter>
+      <Bar />
       <FooterContentWrapper>
-        <FooterSectionLogo>
-          <StyledRegulatorLogo
-            width={130}
-            height={40}
-            alt="Registered with Fundraising Regulator"
-            src="https://rcl.assets.cancerresearchuk.org/images/logos/fundreg.png"
-          />
-        </FooterSectionLogo>
-        <FooterSectionLinks>
+        <FooterSection>
           <StyledNav aria-label="footer links">
             <StyledUL>
               {childArray.length
@@ -73,35 +63,33 @@ export function Footer({
                 : null}
             </StyledUL>
           </StyledNav>
-        </FooterSectionLinks>
-
+        </FooterSection>
         <FooterSection>
-          {middleSection ? (
-            typeof middleSection === "string" ? (
-              <Text textSize="s">{middleSection}</Text>
-            ) : (
-              <>{middleSection}</>
-            )
-          ) : (
-            <Text textSize="s">
-              {footerText || footerTextForTheme(themeName)}
-            </Text>
-          )}
+          <StyledRegulatorLogo
+            width={130}
+            height={40}
+            alt="Registered with Fundraising Regulator"
+            src="https://rcl.assets.cancerresearchuk.org/images/logos/fundreg.png"
+          />
         </FooterSection>
 
-        <FooterSectionAddress>
-          <StyledAddress>
-            <Text as="span" textSize="s">
-              2 Redman Place
-            </Text>
-            <Text as="span" textSize="s">
-              London
-            </Text>
-            <Text as="span" textSize="s">
-              E20 1JQ
-            </Text>
-          </StyledAddress>
-        </FooterSectionAddress>
+        <FooterSection>
+          {footerText ? (
+            <Text textSize="m">footerText</Text>
+          ) : (
+            <>
+              <Text textSize="m" as="span">
+                {footerTextForTheme(themeName)} Registered address:
+              </Text>
+              <StyledAddress>
+                <Text textSize="m" as="span">
+                  {" "}
+                  2 Redman Place, London, E20 1JQ
+                </Text>
+              </StyledAddress>
+            </>
+          )}
+        </FooterSection>
       </FooterContentWrapper>
     </StyledFooter>
   );
