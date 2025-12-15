@@ -147,7 +147,7 @@ button {
 
   --btn-border-radius: 0px;
   --btn-border-radius-large: 0px;
-  --btn-border-thickness: 2px;
+  --btn-border-thickness: 1px;
   --btn-text-decoration: none;
   --btn-text-transform: none;
   --btn-horizontal-padding: 2em;
@@ -204,10 +204,11 @@ button {
 
   --clr-su2c-orange-8: #bd3900;
   --clr-su2c-orange-7: #d74100;
+  --clr-su2c-orange-6: #ee5a04;
   --clr-su2c-orange-5: #ff8e00;
   --clr-su2c-orange-3: #ffb04d;
-  --clr-su2c-orange-2: #ffdaad;
-  --clr-su2c-orange-1: #fff6eb;
+  /* --clr-su2c-orange-1: #fff6eb; */
+  --clr-su2c-orange-1: #ffefdb;
 
   --clr-su2c-black: #231f20;
   --clr-su2c-grey-1: #555759;
@@ -356,6 +357,7 @@ button {
   --btn-border-radius: 1.5rem;
   --btn-border-radius-large: 2rem;
   --btn-text-transform: uppercase;
+  --btn-border-thickness: 2px;
 
   --typ-font-family-headings: "ITCAvantGarde", Arial, sans-serif;
   --typ-font-family-links: "ITCAvantGarde", Arial, sans-serif;
@@ -417,25 +419,25 @@ button {
   --clr-button-primary-background: var(--clr-su2c-orange-5);
   --clr-button-primary-text: var(--clr-su2c-black);
   --clr-button-primary-border: var(--clr-su2c-orange-5);
-  --clr-button-primary-background-hover: var(--clr-su2c-orange-3);
+  --clr-button-primary-background-hover: var(--clr-su2c-orange-6);
   --clr-button-primary-text-hover: var(--clr-su2c-black);
-  --clr-button-primary-border-hover: var(--clr-su2c-orange-3);
+  --clr-button-primary-border-hover: var(--clr-su2c-orange-6);
   --clr-button-primary-disabled-background: var(--clr-grey-200);
   --clr-button-primary-disabled-text: var(--clr-grey-600);
   --clr-button-primary-disabled-border: var(--clr-grey-200);
 
   --clr-button-secondary-background: var(--clr-cruk-white);
-  --clr-button-secondary-text: var(--clr-su2c-orange-5);
-  --clr-button-secondary-border: var(--clr-su2c-orange-5);
+  --clr-button-secondary-text: var(--clr-su2c-black);
+  --clr-button-secondary-border: var(--clr-su2c-orange-6);
   --clr-button-secondary-background-hover: var(--clr-su2c-orange-1);
-  --clr-button-secondary-text-hover: var(--clr-su2c-orange-5);
-  --clr-button-secondary-border-hover: var(--clr-su2c-orange-5);
+  --clr-button-secondary-text-hover: var(--clr-su2c-black);
+  --clr-button-secondary-border-hover: var(--clr-su2c-orange-1);
   --clr-button-secondary-disabled-background: var(--clr-cruk-white);
   --clr-button-secondary-disabled-text: var(--clr-grey-200);
   --clr-button-secondary-disabled-border: var(--clr-grey-200);
 
-  --clr-button-tertiary-text: var(--clr-su2c-orange-5);
-  --clr-button-tertiary-text-hover: var(--clr-su2c-orange-5);
+  --clr-button-tertiary-text: var(--clr-su2c-orange-7);
+  --clr-button-tertiary-text-hover: var(--clr-su2c-orange-8);
   --clr-button-tertiary-disabled-text: var(--clr-grey-200);
 }
 
@@ -444,6 +446,7 @@ button {
 
   --btn-border-radius: 2em;
   --btn-horizontal-padding: 1rem;
+  --btn-border-thickness: 2px;
 
   --typ-font-family-headings: "juana", Arial, sans-serif;
   --typ-font-family-links: "juana", Arial, sans-serif;
