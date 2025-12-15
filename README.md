@@ -34,10 +34,10 @@ const MyComponent = () => (
 
 ## Migration from V5 and V6 to V7
 
-This is the fist phase of moving away from Styled Components which has entered maintenance mode.
+Styled Components has entered maintenance mode.
 
 - The first phase is to uses CSS variables and data attributes on HTML elements for theming, instead of using Styled Components themes and ThemeProvider.
-- The second phase is to convert components writted in styled components with css modules and html to create
+- The second phase is to convert components written in Styled Components into html and css modules and remove Styled Components.
 
 ### Themeing
 
