@@ -59,7 +59,7 @@
     "@storybook/addon-links": "^10",
     "@storybook/react-vite": "^10",
     "@types/assert": "^1.5.1",
-    "@types/node": "^20",
+    "@types/node": "^25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-legacy": "^7",
