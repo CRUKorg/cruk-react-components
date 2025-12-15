@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-import {
-  type FontSizeType,
-  type ThemeType,
-  type ColorKeyType,
-} from "../../types";
 import Button from "../Button";
 
 export const transitionDurationSeconds = 0.5;
@@ -17,26 +12,16 @@ export const FlippingIcon = styled.span<{ $open: boolean }>`
 `;
 
 export const DefaultHeader = styled(Button)<{
-  theme: ThemeType;
   $textColor?: string;
-  $textSize?: FontSizeType;
+  $textSize?: string;
   $textFontFamily?: string;
 }>`
   display: flex;
-  color: ${({ theme, $textColor }) =>
-    !!$textColor &&
-    typeof theme.colors[$textColor as ColorKeyType] !== "undefined"
-      ? theme.colors[$textColor as ColorKeyType]
-      : $textColor || theme.colors.collapseHeaderColor};
-  font-size: ${({
-    theme: {
-      fontSizes,
-      fontSizes: { m },
-    },
-    $textSize,
-  }) => ($textSize ? fontSizes[$textSize] : m)};
-  font-family: ${({ theme, $textFontFamily }) =>
-    $textFontFamily || theme.typography.fontFamilyBase};
+  color: ${({ $textColor }) => $textColor};
+  font-size: ${({ $textSize }) => $textSize};
+  font-family: ${({ $textFontFamily }) =>
+    $textFontFamily ||
+    `var(--typ-font-family-base, "Poppins", Arial, sans-serif)`};
   font-weight: normal;
   margin-bottom: 0;
   height: initial;
@@ -45,10 +30,7 @@ export const DefaultHeader = styled(Button)<{
   border-radius: 0;
   &:hover,
   &:focus {
-    color: ${({ theme: { colors }, $textColor }) =>
-      $textColor && typeof colors[$textColor as ColorKeyType] !== "undefined"
-        ? colors[$textColor as ColorKeyType]
-        : $textColor || colors.collapseHeaderColor};
+    color: ${({ $textColor }) => $textColor};
   }
 `;
 

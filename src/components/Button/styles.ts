@@ -1,19 +1,15 @@
 import styled, { css } from "styled-components";
 
-import { type ThemeType, type ButtonAppearanceType } from "../../types";
+import { type ButtonAppearanceType } from "../../types";
 
-const BUTTON_HEIGHT = "3rem";
-const BUTTON_HEIGHT_LARGE = "4rem";
-
-export const Spacer = styled.span<{ theme: ThemeType }>`
-  margin-left: ${({ theme }) => theme.spacing.xxs};
+export const Spacer = styled.span`
+  margin-left: var(--spacing-xxs, 1rem);
   &:first-of-type {
     margin-left: 0;
   }
 `;
 
 export const StyledButton = styled.button<{
-  theme: ThemeType;
   href?: string;
   $isIconButton: boolean;
   $appearance?: ButtonAppearanceType;
@@ -21,24 +17,26 @@ export const StyledButton = styled.button<{
   $size?: "m" | "l";
   $css?: string;
 }>`
+  --_button-height: 3rem;
+  --_button-height-large: 4rem;
+
   box-sizing: border-box;
-  min-height: ${BUTTON_HEIGHT};
+  min-height: var(--_button-height, 3rem);
   height: min-content;
   display: inline-block;
   vertical-align: middle;
 
-  padding: ${({ theme, $isIconButton }) =>
+  padding: ${({ $isIconButton }) =>
     $isIconButton
       ? "0"
-      : `calc( (${BUTTON_HEIGHT} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.button.horizontalPadding}`};
+      : `calc( (var(--_button-height, 3rem) - ( var(--btn-border-thickness, 2px) * 2) - var(--typ-line-height, 1.5em) ) / 2) var(--btn-horizontal-padding, 1.5em)`};
   width: ${({ $isIconButton }) =>
-    $isIconButton ? `${BUTTON_HEIGHT}` : "auto"};
+    $isIconButton ? `var(--_button-height, 3rem)` : "auto"};
   min-width: ${({ $isIconButton }) =>
-    $isIconButton ? `${BUTTON_HEIGHT}` : "auto"};
-
-  border-radius: ${({ theme }) => theme.button.borderRadius};
+    $isIconButton ? `var(--_button-height, 3rem)` : "auto"};
+  border-radius: var(--btn-border-radius, 0px);
   border-style: solid;
-  border-width: ${({ theme }) => theme.button.buttonBorderThickness};
+  border-width: var(--btn-border-thickness, 2px);
 
   transition:
     color 0.2s ease,
@@ -46,24 +44,12 @@ export const StyledButton = styled.button<{
     border-color 0.2s ease;
 
   cursor: pointer;
-  font-size: ${({
-    theme: {
-      fontSizes: { m },
-    },
-  }) => m};
-  font-family: ${({
-    theme: {
-      typography: { fontFamilyButtons },
-    },
-  }) => fontFamilyButtons};
-  font-weight: ${({
-    theme: {
-      typography: { fontWeightButtons },
-    },
-  }) => fontWeightButtons};
+  font-size: var(--font-size-m, 1rem);
+  font-family: var(--typ-font-family-buttons, "Poppins", Arial, sans-serif);
+  font-weight: var(--typ-font-weight-buttons, 400);
   text-align: center;
-  text-transform: ${({ theme }) => theme.button.textTransform};
-  text-decoration: ${({ theme }) => theme.button.textDecoration};
+  text-transform: var(--btn-text-transform, none);
+  text-decoration: var(--btn-text-decoration, none);
 
   &:focus-visible {
     outline: auto;
@@ -72,41 +58,46 @@ export const StyledButton = styled.button<{
   ${(props) =>
     props.$appearance === "primary" &&
     css`
-      background-color: ${props.theme.colors.buttonPrimaryBackground};
-      border-color: ${props.theme.colors.buttonPrimaryBorder};
-      color: ${props.theme.colors.buttonPrimaryText} !important;
+      background-color: var(--clr-button-primary-background, #e60079);
+      border-color: var(--clr-button-primary-border, #e60079);
+      color: var(--clr-button-primary-text, #ffffff) !important;
       &:focus,
       &:hover {
-        background-color: ${props.theme.colors.buttonPrimaryBackgroundHover};
-        border-color: ${props.theme.colors.buttonPrimaryBorderHover};
-        color: ${props.theme.colors.buttonPrimaryTextHover} !important;
+        background-color: var(--clr-button-primary-background-hover, #cc006c);
+        border-color: var(--clr-button-primary-border-hover, #cc006c);
+        color: var(--clr-button-primary-text-hover, #ffffff) !important;
       }
       &:disabled {
         cursor: not-allowed;
-        background-color: ${props.theme.colors.buttonPrimaryDisabledBackground};
-        color: ${props.theme.colors.buttonPrimaryDisabledText} !important;
-        border-color: ${props.theme.colors.buttonPrimaryDisabledBorder};
+        background-color: var(
+          --clr-button-primary-disabled-background,
+          #e6e6e6
+        );
+        color: var(--clr-button-primary-disabled-text, #666666) !important;
+        border-color: var(--clr-button-primary-disabled-border, #e6e6e6);
       }
     `}
 
   ${(props) =>
     props.$appearance === "secondary" &&
     css`
-      background-color: ${props.theme.colors.buttonSecondaryBackground};
-      border-color: ${props.theme.colors.buttonSecondaryBorder};
-      color: ${props.theme.colors.buttonSecondaryText} !important;
+      background-color: var(--clr-button-secondary-background, #ffffff);
+      border-color: var(--clr-button-secondary-border, #e60079);
+      color: var(--clr-button-secondary-text, #e60079) !important;
       &:focus,
       &:hover {
-        background-color: ${props.theme.colors.buttonSecondaryBackgroundHover};
-        border-color: ${props.theme.colors.buttonSecondaryBorderHover};
-        color: ${props.theme.colors.buttonSecondaryTextHover} !important;
+        background-color: var(--clr-button-secondary-background-hover, #ffe6f3);
+        border-color: var(--clr-button-secondary-border-hover, #ffe6f3);
+        color: var(--clr-button-secondary-text-hover, #e60079) !important;
       }
       &:disabled {
         cursor: not-allowed;
-        background-color: ${props.theme.colors
-          .buttonSecondaryDisabledBackground};
-        color: ${props.theme.colors.buttonSecondaryDisabledText} !important;
-        border-color: ${props.theme.colors.buttonSecondaryDisabledBorder};
+        background-color: var(
+          --clr-button-secondary-disabled-background,
+          #e6e6e6
+        );
+        color: var(--clr-button-secondary-disabled-text, #666666) !important;
+        border-color: var(--clr-button-secondary-disabled-border, #e6e6e6);
       }
     `}
 
@@ -118,29 +109,33 @@ export const StyledButton = styled.button<{
       border: 0px;
       background-color: rgba(255, 255, 255, 0);
       transition: color 0.2s ease;
-      color: ${props.theme.colors.buttonTertiaryText};
+      color: var(--clr-button-tertiary-text, #e60079);
       &:focus,
       &:hover {
-        color: ${props.theme.colors.buttonTertiaryTextHover};
+        color: var(--clr-button-tertiary-text-hover, #cc006c);
       }
       &:disabled {
         cursor: not-allowed;
         background-color: transparent;
-        color: ${props.theme.colors.buttonTertiaryDisabledText} !important;
+        color: var(--clr-button-tertiary-disabled-text, #666666) !important;
         border-color: transparent;
       }
     `}
   
-  ${({ theme, $size, $isIconButton }) =>
+  ${({ $size, $isIconButton }) =>
     $size === "l" &&
     css`
-      min-height: ${BUTTON_HEIGHT_LARGE};
-      border-radius: ${theme.button.borderRadiusLarge};
+      min-height: var(--_button-height-large, 4rem);
+      border-radius: var(--btn-border-radius-large, 0px);
       padding: ${$isIconButton
         ? "0"
-        : `calc( (${BUTTON_HEIGHT_LARGE} - ( ${theme.button.buttonBorderThickness} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m}`};
-      min-width: ${$isIconButton ? `${BUTTON_HEIGHT_LARGE}` : "auto"};
-      height: ${$isIconButton ? `${BUTTON_HEIGHT_LARGE}` : "min-content"};
+        : `calc( (var(--_button-height-large, 4rem) - ( var(--btn-border-thickness, 2px) * 2) - var(--typ-line-height, 1.5em) ) / 2) var(--btn-horizontal-padding, 2rem)`};
+      min-width: ${$isIconButton
+        ? `var(--_button-height-large, 4rem)`
+        : "auto"};
+      height: ${$isIconButton
+        ? `var(--_button-height-large, 4rem)`
+        : "min-content"};
     `}
 
   ${(props) =>

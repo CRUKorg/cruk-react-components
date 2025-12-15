@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { type StoryObj } from "@storybook/react-vite";
-import { useTheme } from "styled-components";
 
-import { Box, type ThemeType } from "..";
+import { Box } from "..";
 import Radio, { type RadioProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
 
@@ -11,16 +10,16 @@ const FullComponentWithRadios = (args: RadioProps) => {
   const handleChange = (targetValue: string) => {
     setSelected(targetValue);
   };
-  const theme = useTheme();
-  const themeTyped = theme as ThemeType;
-  const themeName = themeTyped.name;
+
+  const id = React.useId();
+  const id2 = React.useId();
 
   const hasError = !!args.hasError;
 
   return (
     <fieldset style={{ border: "none" }}>
       <Radio
-        name={`raidio1-${hasError ? "error" : "no-error"}-${themeName}`}
+        name={`raidio1-${hasError ? "error" : "no-error"}-${id}`}
         onChange={(e) => handleChange(e.target.value)}
         checked={selected === "one"}
         {...args}
@@ -29,7 +28,7 @@ const FullComponentWithRadios = (args: RadioProps) => {
       </Radio>
       <Box>
         <Radio
-          name={`raidio1-${hasError ? "error" : "no-error"}-${themeName}`}
+          name={`raidio1-${hasError ? "error" : "no-error"}-${id2}`}
           onChange={(e) => handleChange(e.target.value)}
           checked={selected === "two"}
           value="two"

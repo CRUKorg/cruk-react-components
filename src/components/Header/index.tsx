@@ -1,8 +1,6 @@
 import React, { useState, type HTMLAttributes, type ReactNode } from "react";
-import { useTheme, ThemeProvider } from "styled-components";
 
 import { useScrollPosition } from "../../hooks/useScrollPosition";
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import {
   StyledHeader,
@@ -18,26 +16,31 @@ import {
   ChildInner,
 } from "./styles";
 
+import { type ThemeNameType } from "../../types";
+
 const HEADER_SCROLL_THRESHOLD = 240;
 
-export type HeaderProps = HTMLAttributes<HTMLElement> & {
-  /** flag which make header fixed to the top even when scrolling */
-  isSticky?: boolean;
-  /** text in the middle of the header */
-  siteSlogan?: string;
-  /** text to explain the content of the icon for a11y usually a description of where the link will take you */
-  logoAltText?: string;
-  /** header logo image url */
-  logoImageSrc?: string;
-  /** title of the header image component, this is mainly for the tooltip text on hover */
-  logoLinkTitle?: string;
-  /** the url of the logo link */
-  logoLinkUrl?: string;
-  /** instead of the contents of the header being centered to max width as defined in theme it is 100% width fo viewport */
-  fullWidth?: boolean;
+const crukLogoUrl =
+  "https://rcl.assets.cancerresearchuk.org/images/logos/cruk.svg";
+const rflLogoUrl =
+  "https://rcl.assets.cancerresearchuk.org/images/logos/rfl.svg";
+const su2cLogoUrl =
+  "https://rcl.assets.cancerresearchuk.org/images/logos/su2c-160.png";
+const bowelbabeLogoUrl =
+  "https://rcl.assets.cancerresearchuk.org/images/logos/bowelbabe-logo-160.png";
 
-  children?: ReactNode;
-};
+function getLogoFromThemeName(themeName: ThemeNameType) {
+  switch (themeName) {
+    case "su2c":
+      return su2cLogoUrl;
+    case "bowelbabe":
+      return bowelbabeLogoUrl;
+    case "rfl":
+      return rflLogoUrl;
+    default:
+      return crukLogoUrl;
+  }
+}
 
 /**
  * There should be only one header component near or at the top of the body of each page.
@@ -57,6 +60,7 @@ export type HeaderProps = HTMLAttributes<HTMLElement> & {
  *
  */
 export function Header({
+  themeName,
   isSticky,
   siteSlogan,
   logoAltText,
@@ -65,14 +69,27 @@ export function Header({
   logoLinkUrl,
   fullWidth,
   children,
-}: HeaderProps) {
+}: HTMLAttributes<HTMLElement> & {
+  themeName: ThemeNameType;
+  /** flag which make header fixed to the top even when scrolling */
+  isSticky?: boolean;
+  /** text in the middle of the header */
+  siteSlogan?: string;
+  /** text to explain the content of the icon for a11y usually a description of where the link will take you */
+  logoAltText?: string;
+  /** header logo image url */
+  logoImageSrc?: string;
+  /** title of the header image component, this is mainly for the tooltip text on hover */
+  logoLinkTitle?: string;
+  /** the url of the logo link */
+  logoLinkUrl?: string;
+  /** instead of the contents of the header being centered to max width as defined in theme it is 100% width fo viewport */
+  fullWidth?: boolean;
+
+  children?: ReactNode;
+}) {
   const [isSmall, setIsSmall] = useState(false);
   const isBrowser = typeof window !== `undefined`;
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
 
   useScrollPosition(
     ({
@@ -94,42 +111,42 @@ export function Header({
     50,
   );
 
+  const logoUrl = getLogoFromThemeName(themeName);
+
   return (
-    <ThemeProvider theme={theme}>
-      <StyledHeader>
-        <HeaderStickyPlaceHolder>
-          <HeaderStickyContainer
-            data-testid="header-sticky-container"
-            $isSmall={isSmall}
-            $isSticky={isSticky}
-          >
-            <SkipToMain href="#main">Skip to main content</SkipToMain>
-            <HeaderMainContent $fullWidth={fullWidth}>
-              <StyledLink
-                href={logoLinkUrl ?? theme.siteConfig.logoUrl}
-                title={logoLinkTitle ?? "Home"}
-              >
-                <LogoWrapper $isSmall={isSmall} $isSticky={isSticky}>
-                  <Logo
-                    height={80}
-                    src={logoImageSrc ?? theme.siteConfig.logoSrc}
-                    alt={logoAltText ?? theme.siteConfig.logoAlt}
-                  />
-                </LogoWrapper>
-              </StyledLink>
-              {siteSlogan ? (
-                <Tagline $isSmall={isSmall} $isSticky={isSticky}>
-                  {siteSlogan}
-                </Tagline>
-              ) : null}
-              <ChildWrapper>
-                <ChildInner>{children}</ChildInner>
-              </ChildWrapper>
-            </HeaderMainContent>
-          </HeaderStickyContainer>
-        </HeaderStickyPlaceHolder>
-      </StyledHeader>
-    </ThemeProvider>
+    <StyledHeader>
+      <HeaderStickyPlaceHolder>
+        <HeaderStickyContainer
+          data-testid="header-sticky-container"
+          $isSmall={isSmall}
+          $isSticky={isSticky}
+        >
+          <SkipToMain href="#main">Skip to main content</SkipToMain>
+          <HeaderMainContent $fullWidth={fullWidth}>
+            <StyledLink
+              href={logoLinkUrl ?? "/"}
+              title={logoLinkTitle ?? "Home"}
+            >
+              <LogoWrapper $isSmall={isSmall} $isSticky={isSticky}>
+                <Logo
+                  height={80}
+                  src={logoImageSrc ?? logoUrl}
+                  alt={logoAltText ?? "Cancer Research UK Giving Pages"}
+                />
+              </LogoWrapper>
+            </StyledLink>
+            {siteSlogan ? (
+              <Tagline $isSmall={isSmall} $isSticky={isSticky}>
+                {siteSlogan}
+              </Tagline>
+            ) : null}
+            <ChildWrapper>
+              <ChildInner>{children}</ChildInner>
+            </ChildWrapper>
+          </HeaderMainContent>
+        </HeaderStickyContainer>
+      </HeaderStickyPlaceHolder>
+    </StyledHeader>
   );
 }
 

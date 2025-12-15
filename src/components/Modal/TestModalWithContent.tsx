@@ -3,10 +3,11 @@ import React from "react";
 import Modal from ".";
 import { Button, Heading } from "..";
 
-export function TestModalWithContent() {
+export function TestModalWithContent({ themeName }: { themeName: string }) {
   return (
     <>
       <Modal
+        themeName={themeName}
         closeFunction={() => {
           // nothing
         }}

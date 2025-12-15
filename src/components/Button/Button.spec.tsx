@@ -13,7 +13,7 @@ import { IconFa, Box } from "..";
 
 function component() {
   return (
-    <Box backgroundColor="backgroundLight" padding="none">
+    <Box backgroundColor="background-light" padding="none">
       <Button appearance="primary">Primary</Button>
       <Button appearance="secondary">Secondary</Button>
       <Button appearance="tertiary">Tertiary</Button>

@@ -1,6 +1,5 @@
 import React, { type InputHTMLAttributes } from "react";
 
-import { useTheme } from "styled-components";
 import { ErrorText } from "../ErrorText";
 import { Text } from "../Text";
 import { TextField } from "../TextField";
@@ -12,7 +11,6 @@ import {
   ErrorTextWrapper,
   LegendText,
 } from "./styles";
-import { type ThemeType } from "../../types";
 
 export type DateFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   /** label text */
@@ -69,8 +67,6 @@ export function DateField({
   disabled,
   required,
 }: DateFieldProps) {
-  const theme = useTheme();
-  const typedTheme = theme as ThemeType;
   return (
     <Fieldset>
       <LegendText>
@@ -78,16 +74,14 @@ export function DateField({
         {!required && (
           <span
             style={{
-              fontWeight: typedTheme.typography.fontWeightBase,
+              fontWeight: "var(--typ-font-weight-base, 300)",
             }}
           >
             {` (optional)`}
           </span>
         )}
       </LegendText>
-      {hintText && (
-        <Text textColor={typedTheme.colors.textMid}>{hintText}</Text>
-      )}
+      {hintText && <Text textColor="text-mid">{hintText}</Text>}
       <DateTextFieldWrapper>
         <TextField
           label="Day"

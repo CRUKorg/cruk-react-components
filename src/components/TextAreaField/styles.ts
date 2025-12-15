@@ -1,52 +1,37 @@
-import styled, { css } from "styled-components";
-import { type ThemeType } from "../../types";
+import styled from "styled-components";
 
 type StyledTextareaProps = {
   $hasError: boolean;
   $lineCount: number;
   $resize: "both" | "vertical" | "horizontal" | "none";
-  theme: ThemeType;
 };
 
-const StyledTextArea = styled.textarea<StyledTextareaProps>`
+export const StyledTextArea = styled.textarea<StyledTextareaProps>`
   resize: ${({ $resize }) => $resize};
-  background-color: ${({ theme }) => theme.colors.backgroundLight};
+  background-color: var(--clr-background-light, #ffffff);
   background-image: none;
-  border: ${({ theme, $hasError }) => `solid ${theme.utilities.inputBorderWidth}
-    ${$hasError ? theme.colors.textError : theme.colors.textInputBorder}`};
-  color: ${({ theme }) => theme.colors.textDark};
+  border: ${({ $hasError }) => `solid var(--size-border-width, 1px)
+    ${$hasError ? "var(--clr-text-error, #ff0000)" : "var(--clr-text-input-border, #2e2d2c)"}`};
+  color: var(--clr-text-dark, #000000);
   display: block;
-  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
-  font-size: ${({ theme }) => theme.fontSizes.m};
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
+  font-size: var(--font-size-m, 1rem);
   padding: 6px 8px;
   width: 100%;
-  height: ${({ $lineCount, theme }) =>
-    `calc(${theme.typography.lineHeight} * ${$lineCount})`};
+  height: ${({ $lineCount }) =>
+    `calc(var(--typ-line-height, 1.5em) * ${$lineCount})`};
 
   transition: border-color 150ms linear;
   &:hover {
-    border-color: ${({ theme }) => theme.colors.secondary};
+    border-color: var(--clr-secondary, #e60079);
   }
   &:disabled {
-    border-color: ${({ theme }) => theme.colors.disabled};
-    color: ${({ theme }) => theme.colors.disabled};
+    border-color: var(--clr-disabled, #e6e6e6);
+    color: var(--clr-disabled, #e6e6e6);
   }
-
-  ${({ theme }) =>
-    !theme.utilities.useDefaultFocusRect
-      ? css`
-          &:focus {
-            outline: 0;
-            border-color: ${theme.colors.tertiary};
-          }
-        `
-      : null};
 
   // increase font size for desktop
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
-    font-size: ${({ theme }) => theme.fontSizes.ml};
+  @media (min-width: 1200px) {
+    font-size: var(--font-size-ml, 1.125rem);
   }
 `;
-
-export default StyledTextArea;
-export { StyledTextArea };

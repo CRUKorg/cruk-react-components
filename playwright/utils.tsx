@@ -1,25 +1,7 @@
 import { test, expect } from "@playwright/experimental-ct-react";
 import { AxeBuilder } from "@axe-core/playwright";
-import { ThemeProvider } from "styled-components";
 import React from "react";
-
-import crukTheme from "../src/themes/cruk";
-import su2cTheme from "../src/themes/su2c";
-import rflTheme from "../src/themes/rfl";
-import bowelbabeTheme from "../src/themes/bowelbabe";
-import { GlobalStyle, type ThemeType } from "src/components";
-
-type themeNameType = "CRUK" | "SU2C" | "RFL" | "Bowelbabe";
-export type ThemeTypeWithName = {
-  name: themeNameType;
-  theme: ThemeType;
-};
-const themes: ThemeTypeWithName[] = [
-  { name: "CRUK", theme: crukTheme },
-  { name: "SU2C", theme: su2cTheme },
-  { name: "RFL", theme: rflTheme },
-  { name: "Bowelbabe", theme: bowelbabeTheme },
-];
+import { type ThemeNameType, themeNames } from "src/types";
 
 export function testAccessibilityForTheme({
   componentName,
@@ -28,24 +10,20 @@ export function testAccessibilityForTheme({
   ignoreRules,
 }: {
   componentName: string;
-  themeName: "CRUK" | "SU2C" | "RFL" | "Bowelbabe";
+  themeName: ThemeNameType;
   component: () => React.ReactElement;
   ignoreRules?: string[];
 }) {
-  const theme = (themes.find((t) => t.name === themeName) as ThemeTypeWithName)
-    .theme;
-
-  test(`${componentName}: Accessible with ${theme.name} theme`, async ({
+  test(`${componentName}: Accessible with ${themeName} theme`, async ({
     mount,
     page,
   }) => {
     try {
       await mount(
         <>
-          <ThemeProvider theme={theme}>
-            <GlobalStyle />
+          <div data-theme={themeName}>
             <main tabIndex={0}>{component()}</main>
-          </ThemeProvider>
+          </div>
         </>,
       );
 
@@ -58,7 +36,7 @@ export function testAccessibilityForTheme({
         }),
       ).toEqual([]);
     } catch (error) {
-      console.error(`Error in ${theme.name}:`, error);
+      console.error(`Error in ${themeName}:`, error);
       throw error;
     }
   });
@@ -73,10 +51,10 @@ export function testAccessibilityOnAllThemes({
   component: () => React.ReactElement;
   ignoreRules?: string[];
 }) {
-  themes.forEach(({ name }) => {
+  themeNames.forEach((nameOfTheme) => {
     testAccessibilityForTheme({
       componentName,
-      themeName: name,
+      themeName: nameOfTheme,
       component,
       ignoreRules,
     });

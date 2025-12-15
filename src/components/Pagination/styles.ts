@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { type ThemeType } from "../../types";
 
 export const PagerWrapper = styled.div`
   display: table;
@@ -16,26 +15,17 @@ export const PagerList = styled.ul`
 
 export const PagerLink = styled.a<{
   name?: string;
-  theme: ThemeType;
   $active?: boolean;
   $disabled?: boolean;
 }>`
   font-weight: normal;
-  font-family: ${({
-    theme: {
-      typography: { fontFamilyBase },
-    },
-  }) => fontFamilyBase};
-  font-size: ${({
-    theme: {
-      fontSizes: { s },
-    },
-  }) => s};
-  color: ${({ theme }) => theme.colors.textLight};
-  background-color: ${({ theme }) => theme.colors.paginationBackground};
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
+  font-size: var(--font-size-s, 0.875rem);
+  color: var(--clr-text-light, #fff);
+  background-color: var(--clr-pagination-background, #00007e);
   cursor: pointer;
   border-radius: 0;
-  margin: ${({ theme }) => theme.spacing.xxs};
+  margin: var(--spacing-xxs, 0.5rem);
   padding: 7px 11px;
   text-decoration: none;
   &:active,
@@ -52,22 +42,24 @@ export const PagerLink = styled.a<{
     outline: auto;
   }
 
-  ${({ $active, theme }) =>
+  ${({ $active }) =>
     $active &&
     css`
-      color: ${theme.colors.textDark};
-      background-color: ${theme.colors.paginationActive};
+      color: var(--clr-text-dark, #000);
+      background-color: var(--clr-pagination-active, #e6e6e6);
       cursor: default;
       &:hover {
-        background-color: ${theme.colors.paginationActive};
+        background-color: var(--clr-pagination-active, #e6e6e6);
         text-decoration: none;
       }
     `}
 
-  ${({ name, theme, $disabled }) =>
+  ${({ name, $disabled }) =>
     (name === "Prev" || name === "Next") &&
     css`
-      color: ${$disabled ? theme.colors.disabled : theme.colors.paginationText};
+      color: ${$disabled
+        ? "var(--clr-disabled, #e6e6e6)"
+        : "var(--clr-pagination-text, #00007e)"};
       background-color: transparent;
       font-weight: bold;
       padding: 8px 6px;
@@ -83,10 +75,10 @@ export const PagerLink = styled.a<{
       }
     `}
 
-  ${({ theme, $disabled }) =>
+  ${({ $disabled }) =>
     $disabled &&
     css`
-      color: $ ${theme.colors.disabled};
+      color: var(--clr-disabled, #e6e6e6);
       cursor: not-allowed;
       pointer-events:none
       text-decoration: none;
@@ -94,19 +86,19 @@ export const PagerLink = styled.a<{
       &:focus,
       &:active,
       &:visited {
-        color: ${theme.colors.disabled};
+        color: var(--clr-disabled, #e6e6e6);
         text-decoration: none;
       }
     `}
 `;
 
-export const PagerItem = styled.li<{ theme: ThemeType }>`
+export const PagerItem = styled.li`
   display: none;
   &:first-child,
   &:last-child {
     display: inline;
   }
-  @media (min-width: ${(props) => props.theme.breakpoint.mobile}) {
+  @media (min-width: 576px) {
     display: inline;
   }
   span {
@@ -115,6 +107,6 @@ export const PagerItem = styled.li<{ theme: ThemeType }>`
     padding: 5px;
     margin: 1px;
     border-radius: 0;
-    border-width: ${(props) => props.theme.breakpoint.mobile};
+    border-width: var(--breakpoint-mobile, 576px);
   }
 `;

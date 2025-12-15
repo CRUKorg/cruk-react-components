@@ -1,7 +1,5 @@
 import React from "react";
-import { useTheme, ThemeProvider } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import StyledRadio from "../Radio";
 import { StyledFieldSet, StyledLegend, OptionWrapper } from "./styles";
 
@@ -30,32 +28,25 @@ export type RadioConsentProps = {
  * This is always a controlled component that will only change state with the selectedValue prop
  */
 export function RadioConsent(props: RadioConsentProps) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
   const { legend, attributes, onChange, selectedValue = "", name } = props;
 
   return (
-    <ThemeProvider theme={theme}>
-      <StyledFieldSet>
-        <StyledLegend>{legend}</StyledLegend>
-        <OptionWrapper>
-          {attributes.map((item: Attribute) => (
-            <StyledRadio
-              key={item.value}
-              checked={selectedValue === item.value}
-              onChange={onChange}
-              name={name}
-              value={item.value}
-            >
-              {item.option}
-            </StyledRadio>
-          ))}
-        </OptionWrapper>
-      </StyledFieldSet>
-    </ThemeProvider>
+    <StyledFieldSet>
+      <StyledLegend>{legend}</StyledLegend>
+      <OptionWrapper>
+        {attributes.map((item: Attribute) => (
+          <StyledRadio
+            key={item.value}
+            checked={selectedValue === item.value}
+            onChange={onChange}
+            name={name}
+            value={item.value}
+          >
+            {item.option}
+          </StyledRadio>
+        ))}
+      </OptionWrapper>
+    </StyledFieldSet>
   );
 }
 

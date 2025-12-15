@@ -5,9 +5,7 @@ import React, {
   type ReactElement,
   type ElementType,
 } from "react";
-import { useTheme } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { IconFa } from "../IconFa";
 
 import { Spacer, StyledButton } from "./styles";
@@ -39,11 +37,6 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLElement> & {
  * Design system documentation SU2C https://zeroheight.com/79db39f7e/p/22ff0e-button/b/32e1a2
  */
 export const Button = (props: ButtonProps) => {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
   const {
     appearance = "primary",
     isIconButton = false,
@@ -73,16 +66,13 @@ export const Button = (props: ButtonProps) => {
       $appearance={appearance}
       $isIconButton={setIconButton}
       {...rest}
-      theme={theme}
       ref={ref}
     >
       {props.children && childArray.length
         ? React.Children.map(
             props.children,
             (child: ReactNode, index: number) => (
-              <Spacer theme={theme} key={index}>
-                {child}
-              </Spacer>
+              <Spacer key={index}>{child}</Spacer>
             ),
           )
         : null}

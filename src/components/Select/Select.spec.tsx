@@ -6,7 +6,6 @@ import { testAccessibilityOnAllThemes } from "playwright/utils";
 import { Select } from ".";
 import { Box, Button } from "..";
 import { TestThemeWrapper } from "../AllThemesWrapper";
-import { crukTheme } from "src/themes/cruk";
 
 const component = () => (
   <>
@@ -90,7 +89,7 @@ const selectSection = () => (
 
 test("can change selection with keyboard controls", async ({ mount, page }) => {
   await mount(
-    <TestThemeWrapper theme={crukTheme}>{selectSection()}</TestThemeWrapper>,
+    <TestThemeWrapper themeName="cruk">{selectSection()}</TestThemeWrapper>,
   );
 
   await page.getByRole("button", { name: "Click me" }).focus();

@@ -1,73 +1,41 @@
 import styled from "styled-components";
-import { type ThemeType } from "../../types";
 
-type ThemeProps = {
-  theme: ThemeType;
-};
-export const StyledFooter = styled.footer<ThemeProps>`
-  ${({ theme }) => theme.colors.inputBorder};
+export const StyledFooter = styled.footer`
   box-sizing: border-box;
   display: block;
   position: relative;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.footerBackground};
+  background-color: var(--clr-footer-background, #fff);
+  padding-bottom: var(--spacing-m, 2rem);
 `;
 
-export const FooterContentWrapper = styled.div<ThemeProps>`
-  max-width: ${({ theme }) => theme.utilities.contentMaxWidth};
+export const FooterContentWrapper = styled.div`
+  max-width: var(--content-max-width, 1020px);
   display: block;
   margin: 0 auto;
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
+  @media (min-width: 1200px) {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
   }
 `;
 
-export const FooterSection = styled.div<ThemeProps>`
+export const FooterSection = styled.div`
   box-sizing: border-box;
   display: inline-block;
-  padding: ${({ theme }) => theme.spacing.xs};
+  padding: var(--spacing-s, 1.5rem) var(--spacing-s, 1.5rem) 0;
   position: relative;
   width: 100%;
   flex: 0 1 auto;
 `;
 
-export const FooterSectionLogo = styled(FooterSection)`
-  width: 50%;
-  display: block;
-  float: left;
-
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
-    flex: 0 0 140px;
-    width: auto;
-  }
-`;
-
-// TODO: I'm assuming here that the links have fixed width here with a flex basis
-// and the company info expands to fill the gap but it could be the other way round
-export const FooterSectionLinks = styled(FooterSection)`
-  width: 50%;
-  display: block;
-  float: left;
-
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktop}) {
-    flex: 0 0 170px;
-    width: auto;
-  }
-`;
-
-export const StyledNav = styled.nav<ThemeProps>`
+export const StyledNav = styled.nav`
   display: flex;
   flex-direction: column;
   a {
-    font-size: ${({ theme }) => theme.fontSizes.s};
-    font-weight: ${({
-      theme: {
-        typography: { fontWeightLinks },
-      },
-    }: ThemeProps) => fontWeightLinks};
+    font-size: var(--font-size-m, 1rem);
+    font-weight: var(--typ-font-weight-links, 700);
   }
 `;
 
@@ -76,21 +44,13 @@ export const StyledUL = styled.ul`
   margin: 0;
 `;
 
-export const StyledLI = styled.li<ThemeProps>`
+export const StyledLI = styled.li`
   list-style-type: none;
   display: block;
   padding: 0;
   margin: 0;
   line-height: 1;
-  padding-bottom: ${({
-    theme: {
-      spacing: { xxs },
-    },
-  }) => xxs};
-`;
-
-export const FooterSectionAddress = styled(FooterSection)`
-  flex: 0 0 150px;
+  padding-bottom: var(--spacing-xxs, 0.5rem);
 `;
 
 export const StyledRegulatorLogo = styled.img`
@@ -99,7 +59,21 @@ export const StyledRegulatorLogo = styled.img`
 `;
 
 export const StyledAddress = styled.address`
-  display: flex;
-  flex-direction: column;
+  display: inline;
   font-style: normal;
+`;
+
+export const Bar = styled.hr`
+  opacity: 1;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: calc(50% - 50vw);
+  margin-left: calc(
+    100% - 100vw
+  ); // to be removed when every page has a white background
+  border-width: 0px 0px 0.25rem;
+  border-image: initial;
+  border-color: var(--clr-cruk-black, #000);
+  border-style: solid;
+  width: auto;
 `;

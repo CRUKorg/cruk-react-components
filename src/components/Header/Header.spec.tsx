@@ -7,12 +7,11 @@ import { Header } from ".";
 import { Button } from "..";
 
 import { TestThemeWrapper } from "../AllThemesWrapper";
-import { crukTheme } from "src/themes/cruk";
 
 function component() {
   return (
     <>
-      <Header siteSlogan="Header slogan here">
+      <Header siteSlogan="Header slogan here" themeName="cruk">
         <Button>Child component</Button>
       </Header>
       <div id="main" tabIndex={-1}>
@@ -29,7 +28,7 @@ testAccessibilityOnAllThemes({
 
 test("should scroll to main content", async ({ mount, page }) => {
   await mount(
-    <TestThemeWrapper theme={crukTheme}>{component()}</TestThemeWrapper>,
+    <TestThemeWrapper themeName="cruk">{component()}</TestThemeWrapper>,
   );
 
   await expect(page.getByText("Header slogan here")).toBeVisible();
@@ -54,8 +53,8 @@ test("should scroll to main content", async ({ mount, page }) => {
 test("sticky header behaviour ", async ({ mount, page }) => {
   await page.setViewportSize({ width: 2000, height: 200 });
   await mount(
-    <TestThemeWrapper theme={crukTheme}>
-      <Header siteSlogan="Header slogan here" isSticky>
+    <TestThemeWrapper themeName="cruk">
+      <Header siteSlogan="Header slogan here" isSticky themeName="cruk">
         <Button>Child component</Button>
       </Header>
       <div

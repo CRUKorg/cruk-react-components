@@ -1,12 +1,10 @@
 import styled from "styled-components";
-import { type ThemeType } from "../../types";
 
 interface ListWrapperProps extends React.HTMLProps<HTMLDivElement> {
   tabIndex?: number;
 }
 
 type ListProps = {
-  theme: ThemeType;
   $isActive?: boolean;
 };
 
@@ -14,10 +12,10 @@ export const ListWrapper = styled.div<ListWrapperProps>`
   position: relative;
 `;
 
-export const List = styled.ul<
-  ListProps & { ref?: React.Ref<HTMLUListElement> }
->`
-  background-color: ${({ theme }) => theme.colors.backgroundLight};
+export const List = styled.ul<{
+  $isActive?: boolean;
+}>`
+  background-color: var(--clr-background-light, #ffffff);
   border-radius: 3px;
   border: 2px solid #ccc;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
@@ -31,14 +29,14 @@ export const List = styled.ul<
   z-index: 999;
 `;
 
-export const ListItem = styled.li<
-  ListProps & {
-    ref?: React.Ref<HTMLLIElement>;
-  }
->`
+export const ListItem = styled.li<{
+  $isActive?: boolean;
+}>`
   align-items: center;
-  background-color: ${({ theme, $isActive }: ListProps) =>
-    $isActive ? theme.colors.backgroundMid : theme.colors.backgroundLight};
+  background-color: ${({ $isActive }: ListProps) =>
+    $isActive
+      ? "var(--clr-background-mid, #f0f0f0)"
+      : "var(--clr-background-light, #ffffff)"};
   cursor: pointer;
   display: flex;
   justify-content: space-between;

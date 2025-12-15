@@ -1,7 +1,5 @@
 import React, { type HTMLAttributes, type ElementType } from "react";
-import { useTheme } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import {
   spacingPropsToSpacingPropsInternal,
   type SpacingProps,
@@ -13,6 +11,7 @@ import {
   type OverflowWrapType,
 } from "../../types";
 import { H1, H2, H3, H4, H5, H6 } from "./styles";
+import { themeColorOrString } from "../../utils/themeUtils";
 
 export type HeadingProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
@@ -57,23 +56,20 @@ export function Heading({
   h6,
   ...props
 }: HeadingProps) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-
   const propsConvertedToInternalSpacingProps =
     spacingPropsToSpacingPropsInternal(props);
+
+  const textColorFinal = textColor
+    ? themeColorOrString(textColor)
+    : "var(--clr-text-header-default, #000)";
 
   if (h1)
     return (
       <H1
         {...propsConvertedToInternalSpacingProps}
-        theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
-        $textColor={textColor}
+        $textColor={textColorFinal}
         $wordBreak={wordBreak}
         $overflowWrap={overflowWrap}
       />
@@ -82,10 +78,9 @@ export function Heading({
     return (
       <H2
         {...propsConvertedToInternalSpacingProps}
-        theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
-        $textColor={textColor}
+        $textColor={textColorFinal}
         $wordBreak={wordBreak}
         $overflowWrap={overflowWrap}
       />
@@ -94,10 +89,9 @@ export function Heading({
     return (
       <H3
         {...propsConvertedToInternalSpacingProps}
-        theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
-        $textColor={textColor}
+        $textColor={textColorFinal}
         $wordBreak={wordBreak}
         $overflowWrap={overflowWrap}
       />
@@ -106,10 +100,9 @@ export function Heading({
     return (
       <H4
         {...propsConvertedToInternalSpacingProps}
-        theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
-        $textColor={textColor}
+        $textColor={textColorFinal}
         $wordBreak={wordBreak}
         $overflowWrap={overflowWrap}
       />
@@ -118,10 +111,9 @@ export function Heading({
     return (
       <H5
         {...propsConvertedToInternalSpacingProps}
-        theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
-        $textColor={textColor}
+        $textColor={textColorFinal}
         $wordBreak={wordBreak}
         $overflowWrap={overflowWrap}
       />
@@ -130,10 +122,9 @@ export function Heading({
     return (
       <H6
         {...propsConvertedToInternalSpacingProps}
-        theme={theme}
         $textSize={textSize}
         $textAlign={textAlign}
-        $textColor={textColor}
+        $textColor={textColorFinal}
         $wordBreak={wordBreak}
         $overflowWrap={overflowWrap}
       />
@@ -141,10 +132,9 @@ export function Heading({
   return (
     <H2
       {...propsConvertedToInternalSpacingProps}
-      theme={theme}
       $textSize={textSize}
       $textAlign={textAlign}
-      $textColor={textColor}
+      $textColor={textColorFinal}
       $wordBreak={wordBreak}
       $overflowWrap={overflowWrap}
     />

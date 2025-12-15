@@ -1,3 +1,6 @@
+// for rollup css plugin to see and output css as file
+import "./global-styles.css";
+
 export { AddressLookup } from "./AddressLookup";
 export { Avatar } from "./Avatar";
 export { Badge } from "./Badge";
@@ -9,11 +12,7 @@ export { Collapse } from "./Collapse";
 export { DateField } from "./DateField";
 export { Divider } from "./Divider";
 export { ErrorText } from "./ErrorText";
-export { Fontface } from "./Fontface";
-export { Flex } from "./Flex";
 export { Footer } from "./Footer";
-export { GlobalStyle } from "./GlobalStyle";
-export { GlobalStyleNoFontFace } from "./GlobalStyleNoFontFace";
 export { Header } from "./Header";
 export { Heading } from "./Heading";
 export { IconFa } from "./IconFa";
@@ -35,10 +34,5 @@ export { TextField } from "./TextField";
 export { Totaliser } from "./Totaliser";
 export { UserBlock } from "./UserBlock";
 export { InfoBox } from "./InfoBox";
-
-export { bowelbabeTheme } from "../themes/bowelbabe";
-export { crukTheme } from "../themes/cruk";
-export { su2cTheme } from "../themes/su2c";
-export { rflTheme } from "../themes/rfl";
 
 export * from "../types";

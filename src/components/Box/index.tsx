@@ -4,9 +4,6 @@ import React, {
   type ReactNode,
   type ElementType,
 } from "react";
-import { useTheme } from "styled-components";
-
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import {
   spacingPropsToSpacingPropsInternal,
@@ -14,10 +11,13 @@ import {
 } from "../Spacing";
 import { StyledBox } from "./styles";
 
+import { type ColourVariableType } from "../../types";
+import { themeColorOrString } from "../../utils/themeUtils";
+
 export type BoxProps = SpacingProps &
   HTMLAttributes<HTMLElement> & {
     /** background color of box, this will add default padding */
-    backgroundColor?: string;
+    backgroundColor?: string | ColourVariableType;
     ref?: Ref<HTMLDivElement>;
     children?: ReactNode;
     /** styled-component polymorphic feature so you take the styling of a box and cast the component to be a "span" for example */
@@ -32,17 +32,14 @@ export type BoxProps = SpacingProps &
  */
 export const Box = ({ ...props }: BoxProps) => {
   const { children, backgroundColor, ref, ...rest } = props;
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
   const restWithInternalSpacingProps = spacingPropsToSpacingPropsInternal(rest);
+  const backgroundColorValue = backgroundColor
+    ? themeColorOrString(backgroundColor)
+    : undefined;
 
   return (
     <StyledBox
-      theme={theme}
-      $backgroundColor={backgroundColor}
+      $backgroundColor={backgroundColorValue}
       {...restWithInternalSpacingProps}
       ref={ref}
     >

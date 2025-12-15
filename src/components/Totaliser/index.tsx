@@ -1,12 +1,10 @@
 import React, { type ReactNode } from "react";
-import { useTheme } from "styled-components";
 
 import {
   calculatePercentRounded,
   formatMoneyWithCommas,
 } from "../../utils/Helper";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { Text } from "../Text";
 import { Badge } from "../Badge";
 import { Box } from "../Box";
@@ -23,7 +21,20 @@ import {
   StyledProgressBar,
 } from "./styles";
 
-export type TotaliserProps = {
+// TODO figure out how we want to handle AriaAttributes
+
+/**
+ * Think Blue Peter, used to display total raised and if target prop is passed will display percentage of target reached.
+ * */
+export function Totaliser({
+  total,
+  additionalAmount,
+  giftAid,
+  target = null,
+  isCompact,
+  summaryMessage = undefined,
+  children,
+}: {
   /** financial total as a number */
   total: number;
   /** additional donation amount as a number */
@@ -38,27 +49,7 @@ export type TotaliserProps = {
   summaryMessage?: ReactNode;
   /** component children */
   children?: ReactNode;
-};
-
-// TODO figure out how we want to handle AriaAttributes
-
-/**
- * Think Blue Peter, used to display total raised and if target prop is passed will display tercentage of target reached.
- * */
-export function Totaliser({
-  total,
-  additionalAmount,
-  giftAid,
-  target = null,
-  isCompact,
-  summaryMessage = undefined,
-  children,
-}: TotaliserProps) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
+}) {
   const percentageOfTotal = calculatePercentRounded(+total, target || 0);
   const withAdditionalPercentageOfTotal = calculatePercentRounded(
     additionalAmount ? +total + (additionalAmount || 0) : 0,
@@ -70,9 +61,9 @@ export function Totaliser({
   )} target`;
 
   return (
-    <TotaliserWrapper $isCompact={isCompact || false} theme={theme}>
+    <TotaliserWrapper $isCompact={isCompact || false}>
       {!isCompact ? (
-        <BubbleWrapper theme={theme}>
+        <BubbleWrapper>
           <BubbleText>Total raised</BubbleText>
           <Total>£{formatMoneyWithCommas(total)}</Total>
           <GiftAid>+ £{formatMoneyWithCommas(giftAid || 0)} Gift Aid</GiftAid>
@@ -87,9 +78,8 @@ export function Totaliser({
 
       {(!!target || !!summaryMessage) && (
         <>
-          <ProgressBarWrapper $isCompact={isCompact || false} theme={theme}>
+          <ProgressBarWrapper $isCompact={isCompact || false}>
             <StyledProgressBar
-              theme={theme}
               percentage={percentageOfTotal}
               secondaryPercentage={withAdditionalPercentageOfTotal}
             />
@@ -102,7 +92,7 @@ export function Totaliser({
                 </Summary>
               )
             ) : (
-              <CompactWrapper theme={theme}>
+              <CompactWrapper>
                 {target !== null && (
                   <Summary>
                     <Text as="span">{summaryString}</Text>

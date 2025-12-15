@@ -1,15 +1,14 @@
 import React, { type ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { ThemeProvider, useTheme } from "styled-components";
 import FocusLock from "react-focus-lock";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 import { IconFa } from "../IconFa";
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 
 import { CloseButton, Wrapper, Content, Background } from "./styles";
 
 import { type SpacingProps } from "../Spacing";
+import { themeColorOrString } from "../../utils/themeUtils";
 
 export type ModalProps = SpacingProps & {
   /** modal name used for aria-label */
@@ -20,6 +19,7 @@ export type ModalProps = SpacingProps & {
   showCloseButton?: boolean;
   /** set max width of modal */
   maxWidth?: string;
+  themeName: string;
   /** set space from top of view port that modal appears */
   top?: string;
   /** background color of dialogue */
@@ -46,9 +46,10 @@ export function Modal({
   modalName,
   closeFunction,
   showCloseButton,
+  themeName,
   maxWidth = "500px",
   top = "1rem",
-  backgroundColor = "backgroundLight",
+  backgroundColor,
   children,
   width = "90%",
   margin,
@@ -67,11 +68,10 @@ export function Modal({
   paddingLeft,
   isAnimated = true,
 }: ModalProps) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
+  const backgroundColourValue = backgroundColor
+    ? themeColorOrString(backgroundColor)
+    : "var(--background-light, #ffffff)";
+
   const closeByEsc = React.useCallback(
     (event: KeyboardEvent): void => {
       if (event.key === "Escape" && !!closeFunction) {
@@ -101,51 +101,45 @@ export function Modal({
     <>
       {typeof window !== `undefined`
         ? createPortal(
-            <section>
+            <section data-theme={themeName}>
               <FocusLock returnFocus>
-                <ThemeProvider theme={theme}>
-                  <Wrapper
-                    role="dialog"
-                    aria-modal="true"
-                    aria-label={modalName}
+                <Wrapper role="dialog" aria-modal="true" aria-label={modalName}>
+                  <Content
+                    backgroundColor={backgroundColourValue}
+                    $maxWidth={maxWidth}
+                    $width={width}
+                    $top={top}
+                    margin={margin}
+                    marginHorizontal={marginHorizontal}
+                    marginVertical={marginVertical}
+                    marginTop={marginTop}
+                    marginRight={marginRight}
+                    marginBottom={marginBottom}
+                    marginLeft={marginLeft}
+                    padding={padding}
+                    paddingHorizontal={paddingHorizontal}
+                    paddingVertical={paddingVertical}
+                    paddingTop={paddingTop}
+                    paddingRight={paddingRight}
+                    paddingBottom={paddingBottom}
+                    paddingLeft={paddingLeft}
+                    $isAnimated={isAnimated}
                   >
-                    <Content
-                      backgroundColor={backgroundColor}
-                      $maxWidth={maxWidth}
-                      $width={width}
-                      $top={top}
-                      margin={margin}
-                      marginHorizontal={marginHorizontal}
-                      marginVertical={marginVertical}
-                      marginTop={marginTop}
-                      marginRight={marginRight}
-                      marginBottom={marginBottom}
-                      marginLeft={marginLeft}
-                      padding={padding}
-                      paddingHorizontal={paddingHorizontal}
-                      paddingVertical={paddingVertical}
-                      paddingTop={paddingTop}
-                      paddingRight={paddingRight}
-                      paddingBottom={paddingBottom}
-                      paddingLeft={paddingLeft}
-                      $isAnimated={isAnimated}
-                    >
-                      {showCloseButton && closeFunction ? (
-                        <CloseButton
-                          aria-label="close"
-                          appearance="tertiary"
-                          onClick={() => {
-                            closeFunction();
-                          }}
-                        >
-                          <IconFa faIcon={faClose} />
-                        </CloseButton>
-                      ) : null}
-                      {children}
-                    </Content>
-                    <Background $isAnimated={isAnimated} />
-                  </Wrapper>
-                </ThemeProvider>
+                    {showCloseButton && closeFunction ? (
+                      <CloseButton
+                        aria-label="close"
+                        appearance="tertiary"
+                        onClick={() => {
+                          closeFunction();
+                        }}
+                      >
+                        <IconFa faIcon={faClose} />
+                      </CloseButton>
+                    ) : null}
+                    {children}
+                  </Content>
+                  <Background $isAnimated={isAnimated} />
+                </Wrapper>
               </FocusLock>
             </section>,
             document.body,

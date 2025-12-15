@@ -3,9 +3,7 @@ import React, {
   type TextareaHTMLAttributes,
   type Ref,
 } from "react";
-import { useTheme } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { ErrorText } from "../ErrorText";
 import { LabelWrapper } from "../LabelWrapper";
 
@@ -41,12 +39,6 @@ export const TextAreaField = ({
   ref,
   ...props
 }: TextAreaFieldProps) => {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-
   return (
     <LabelWrapper
       label={label}
@@ -62,7 +54,6 @@ export const TextAreaField = ({
         $hasError={hasError || !!errorMessage || false}
         $resize={resize}
         $lineCount={lineCount}
-        theme={theme}
         ref={ref}
         data-hj-suppress
       />

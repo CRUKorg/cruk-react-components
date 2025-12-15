@@ -32,6 +32,55 @@ const MyComponent = () => (
 );
 ```
 
+## Migration from V5 and V6 to V7
+
+Styled Components has entered maintenance mode.
+
+- The first phase is to uses CSS variables and data attributes on HTML elements for theming, instead of using Styled Components themes and ThemeProvider.
+- The second phase is to convert components written in Styled Components into html and css modules and remove Styled Components.
+
+### Themeing
+
+So intstead of themeing like this
+
+```tsx
+import { Button, crukTheme } from "cruk-react-components";
+import { ThemeProvider } from "styled-components";
+
+const MyComponent = () => (
+<ThemeProvider theme={crukTheme}>
+  <Button/>
+<ThemeProvider />
+);
+
+```
+
+you only need an html element with `data-theme="cruk"`, the inner most element with data-theme will override outer wrapping elements.
+
+```tsx
+const MyComponent = () => (
+  <span data-theme="su2c">
+    <Button/>
+  <span/>
+);
+```
+
+### Components with theme dependent content
+
+Because the new themeing strategy only effects CSS and not content, components which have theme specific content now have a required property of "themeName". This prop will have to be entered by the app that uses these components. The following components require the themeName prop:
+
+- Avatar
+- Header
+- Footer
+- UserBlock
+- Modal\*
+
+\* Modal is a special case, it needs themeName prop because the any theme provider will not work. Modals uses React Portals which places the elements in whole new html context.
+
+### Theme variable naming conventions
+
+Because the theme names now come from CSS variable instead of theme objects, the theme names that were camel cased, are now snake cased so `textDark` now becomes `text-dark`
+
 ## Migration from V4 to V5
 
 Because Styped Components now manages its own types on stead of relying on the community efforts on the DefinitelyTyped project, you may need to use generics instead of inline prop type definition inside styledComponents componets.

@@ -1,10 +1,50 @@
 import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
-import { Button, crukTheme } from "..";
-import Header, { type HeaderProps } from ".";
-import AllThemesWrapper from "../AllThemesWrapper";
-import { ThemeProvider } from "styled-components";
+import { Button } from "..";
+import Header from ".";
+
+const Line = () => (
+  <div
+    style={{
+      width: "100%",
+      height: "1px",
+      backgroundColor: "#000",
+      margin: "1em 0",
+    }}
+  />
+);
+
+const AllThemesWrapper = ({
+  ...args
+}: React.ComponentProps<typeof HeaderInTallContainer>) => (
+  <main>
+    <div tabIndex={0}>
+      <h2>CRUK Theme:</h2>
+      <div data-theme="cruk">
+        <HeaderInTallContainer {...args} themeName="cruk" />
+        <Line />
+      </div>
+      <div data-theme="rfl">
+        <h2>RFL Theme:</h2>
+        <HeaderInTallContainer {...args} themeName="rfl" />
+        <Line />
+      </div>
+      <div data-theme="su2c">
+        <h2>SU2C Theme:</h2>
+        <HeaderInTallContainer {...args} themeName="su2c" />
+        <Line />
+      </div>
+      <div data-theme="bowelbabe">
+        <h2>Bowelbabe Theme:</h2>
+        <HeaderInTallContainer {...args} themeName="bowelbabe" />
+        <Line />
+      </div>
+    </div>
+  </main>
+);
+
+type HeaderProps = React.ComponentProps<typeof Header>;
 
 const HeaderInTallContainer = (args: HeaderProps) => (
   <div>
@@ -29,11 +69,7 @@ type Story = StoryObj<typeof Header>;
 
 export const HeaderDefault: Story = {
   name: "HeaderDefault",
-  render: (args: HeaderProps) => (
-    <AllThemesWrapper>
-      <HeaderInTallContainer {...args} />
-    </AllThemesWrapper>
-  ),
+  render: (args: HeaderProps) => <AllThemesWrapper {...args} />,
 };
 
 export const HeaderFullWidth: Story = {
@@ -41,11 +77,7 @@ export const HeaderFullWidth: Story = {
   args: {
     fullWidth: true,
   },
-  render: (args: HeaderProps) => (
-    <AllThemesWrapper>
-      <HeaderInTallContainer {...args} />
-    </AllThemesWrapper>
-  ),
+  render: (args: HeaderProps) => <AllThemesWrapper {...args} />,
 };
 
 export const HeaderSticky: Story = {
@@ -55,8 +87,8 @@ export const HeaderSticky: Story = {
     fullWidth: true,
   },
   render: (args: HeaderProps) => (
-    <ThemeProvider theme={crukTheme}>
+    <div data-theme="cruk">
       <HeaderInTallContainer {...args} />
-    </ThemeProvider>
+    </div>
   ),
 };

@@ -1,33 +1,24 @@
-import styled, { css } from "styled-components";
-import { type ThemeType } from "../../types";
+import styled from "styled-components";
 
-const CHECK_BOX_SIZE = "1.5rem";
-const BUTTON_HEIGHT = "3em";
-const BORDER_THICKNESS = "2px";
+export const CheckWrapper = styled.div`
+  --_check-box-size: 1.5rem;
+  --_button-height: 3em;
+  --_border-width: 2px;
 
-export const CheckWrapper = styled.div<{
-  theme: ThemeType;
-}>`
   display: inline-block;
-  height: ${CHECK_BOX_SIZE};
-  width: ${CHECK_BOX_SIZE};
+  height: var(--_check-box-size, 1.5rem);
+  width: var(--_check-box-size, 1.5rem);
   position: absolute;
-  top: calc(50% - (${CHECK_BOX_SIZE} / 2));
-  left: ${({
-    theme: {
-      spacing: { xs },
-    },
-  }) => xs};
+  top: calc(50% - (var(--_check-box-size, 1.5rem) / 2));
+  left: var(--spacing-xs, 0.5rem);
 `;
 
-export const Check = styled.span<{
-  theme: ThemeType;
-}>`
+export const Check = styled.span`
   display: block;
   position: relative;
-  border: 2px solid ${({ theme }) => theme.colors.selectionBorder};
-  height: ${CHECK_BOX_SIZE};
-  width: ${CHECK_BOX_SIZE};
+  border: 2px solid var(--clr-selection-border, #666);
+  height: var(--_check-box-size, 1.5rem);
+  width: var(--_check-box-size, 1.5rem);
   top: 0;
   bottom: 0;
   left: 0;
@@ -36,8 +27,8 @@ export const Check = styled.span<{
   transition: border 0.25s ease;
   overflow: hidden;
   // do not increase font size of check icon at this breakpoint
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
-    font-size: ${({ theme }) => theme.fontSizes.m};
+  @media (min-width: 1200px) {
+    font-size: var(--font-size-m, 1rem);
   }
 
   svg {
@@ -54,7 +45,6 @@ export const StyledLabel = styled.label<{
   $checked: boolean;
   $disabled: boolean;
   $hasError: boolean;
-  theme: ThemeType;
 }>`
   box-sizing: border-box;
   *,
@@ -62,25 +52,39 @@ export const StyledLabel = styled.label<{
   *:before {
     box-sizing: border-box;
   }
-  line-height: ${({ theme }) => theme.typography.lineHeight};
-  font-size: ${({ theme }) => theme.typography.fontSizeBase};
-  font-family: ${({ theme }) => theme.typography.fontFamilyBase};
+  line-height: var(--typ-line-height, 1.5rem);
+  font-size: var(--font-size-base, 1rem);
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
 
   // increase font size for desktop
-  @media (min-width: ${({ theme }) => theme.breakpoint.desktopLarge}) {
-    font-size: ${({ theme }) => theme.fontSizes.ml};
+  @media (min-width: 1200px) {
+    font-size: var(--font-size-ml, 1.125rem);
   }
 
-  background-color: ${({ theme }) => theme.colors.backgroundLight};
+  background-color: var(--clr-background-light, #fff);
   position: relative;
 
   cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
   display: block;
 
-  color: ${({ theme, $disabled }) =>
-    $disabled ? theme.colors.disabled : theme.colors.textDark};
-  padding: ${({ theme }) =>
-    `calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.m} calc( (${BUTTON_HEIGHT} - ( ${theme.utilities.inputBorderWidth} * 2) - ${theme.typography.lineHeight} ) / 2) ${theme.spacing.xl}`};
+  color: ${({ $disabled }) =>
+    $disabled ? "var(--clr-disabled, #e6e6e6)" : "var(--clr-text-dark, #000)"};
+  padding: calc(
+      (
+          var(--_button-height, 3em) -
+            (var(--size-border-width, 1px) * 2) - var(--typ-line-height, 1.5em)
+        ) /
+        2
+    )
+    var(--spacing-m, 2rem)
+    calc(
+      (
+          var(--_button-height, 3em) -
+            (var(--size-border-width, 1px) * 2) - var(--typ-line-height, 1.5em)
+        ) /
+        2
+    )
+    var(--spacing-xl, 3rem);
   &:focus ~ ${CheckWrapper} ${Check} {
     outline: 2px solid #7aacfe; /* for non-webkit browsers */
     outline: 5px auto -webkit-focus-ring-color;
@@ -88,36 +92,39 @@ export const StyledLabel = styled.label<{
 
   svg {
     path {
-      fill: ${({ theme, $disabled }) => $disabled && theme.colors.disabled};
+      fill: ${({ $disabled }) =>
+        $disabled
+          ? "var(--clr-disabled, #e6e6e6)"
+          : "var(--clr-check, #e60079)"};
     }
   }
 
-  ${({ theme, $disabled, $checked, $hasError }) =>
-    theme.utilities.useDefaultFromControls
-      ? null
-      : css`
-          min-height: 2rem;
-          ${CheckWrapper} ${Check} {
-            border: solid ${BORDER_THICKNESS}
-              ${$disabled
-                ? theme.colors.disabled
-                : $hasError
-                  ? theme.colors.danger
-                  : $checked
-                    ? theme.colors.check
-                    : theme.colors.inputBorder};
-          }
-          &:hover ${CheckWrapper} ${Check} {
-            border: solid ${BORDER_THICKNESS}
-              ${$disabled
-                ? theme.colors.disabled
-                : $hasError
-                  ? theme.colors.danger
-                  : $checked
-                    ? theme.colors.check
-                    : theme.colors.inputBorder};
-          }
-        `}
+  min-height: 2rem;
+
+  ${CheckWrapper} ${Check} {
+    border-style: solid;
+    border-width: var(--_border-width, 2px);
+    border-color: ${({ $disabled, $hasError, $checked }) =>
+      $disabled
+        ? "var(--clr-disabled, #e6e6e6)"
+        : $hasError
+          ? "var(--clr-danger, #ff0000)"
+          : $checked
+            ? "var(--clr-check, #e60079)"
+            : "var(--clr-input-border, #2e2d2c)"};
+  }
+  &:hover ${CheckWrapper} ${Check} {
+    border-style: solid;
+    border-width: var(--_border-width, 2px);
+    border-color: ${({ $disabled, $hasError, $checked }) =>
+      $disabled
+        ? "var(--clr-disabled, #e6e6e6)"
+        : $hasError
+          ? "var(--clr-danger, #ff0000)"
+          : $checked
+            ? "var(--clr-check, #e60079)"
+            : "var(--clr-input-border, #2e2d2c)"};
+  }
 `;
 
 export const SelectedBorder = styled.div`
@@ -129,36 +136,21 @@ export const SelectedBorder = styled.div`
 `;
 
 // TODO when we get rid of bootstrap remove !important.
-export const StyledInput = styled.input<{
-  theme: ThemeType;
-}>`
+export const StyledInput = styled.input`
   margin-right: 5px !important;
 
-  ${({ theme }) =>
-    theme.utilities.useDefaultFromControls
-      ? css`
-          position: absolute;
-          display: inline-block;
-          transform: translate(-50%, -50%);
-          top: 50%;
-          margin: 0;
-          padding: 0;
-          left: ${theme.spacing.s};
-        `
-      : css`
-          /* This hides the original input */
-          position: absolute;
-          left: ${theme.spacing.xxs};
-          opacity: 0;
+  /* This hides the original input */
+  position: absolute;
+  left: var(--spacing-xxs, 0.5rem);
+  opacity: 0;
 
-          &:focus ~ ${SelectedBorder} {
-            outline: none !important;
-            box-shadow: inset 0 0 0 2px ${theme.colors.inputBorder};
-            box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
-          }
+  &:focus ~ ${SelectedBorder} {
+    outline: none !important;
+    box-shadow: inset 0 0 0 2px var(--clr-input-border, #2e2d2c);
+    box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
+  }
 
-          &:checked ~ ${CheckWrapper} svg path {
-            transform: rotateY(0deg);
-          }
-        `}
+  &:checked ~ ${CheckWrapper} svg path {
+    transform: rotateY(0deg);
+  }
 `;
