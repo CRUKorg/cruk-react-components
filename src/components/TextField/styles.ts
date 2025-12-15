@@ -31,7 +31,7 @@ export const ExtraLeft = styled(Extra)`
   box-sizing: border-box;
   width: auto;
   vertical-align: middle;
-  height: var(--size-border-width, 1px);
+  height: var(--_min-height, 48px);
   button {
     min-height: calc(
       var(--_min-height, 48px) - (2 * var(--size-border-width, 1px))

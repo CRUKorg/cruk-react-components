@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Colour names that were camel cased in the theme objects are now kebab case to match css variable conventions
 - All content that changes by theme like logo in the header, footer text, or avatar fallback images, now lives in the the component where and additional "themeName" prop is a required attribute so select the correct content.
 
+### Changed
+
+- New footer design to match Helix Design System
+
 ## [6.2.2] - 2025-12-02
 
 ### Added
