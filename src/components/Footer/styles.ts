@@ -24,7 +24,7 @@ export const FooterContentWrapper = styled.div`
 export const FooterSection = styled.div`
   box-sizing: border-box;
   display: inline-block;
-  padding: var(--spacing-m, 2rem) var(--spacing-xs, 1rem) 0;
+  padding: var(--spacing-s, 1.5rem) var(--spacing-s, 1.5rem) 0;
   position: relative;
   width: 100%;
   flex: 0 1 auto;
