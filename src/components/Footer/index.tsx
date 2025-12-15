@@ -75,7 +75,7 @@ export function Footer({
 
         <FooterSection>
           {footerText ? (
-            <Text textSize="m">footerText</Text>
+            <Text textSize="m">{footerText}</Text>
           ) : (
             <>
               <Text textSize="m" as="span">
