@@ -16,7 +16,7 @@ import {
   ChildInner,
 } from "./styles";
 
-import { type ThemeNameType } from "src/types";
+import { type ThemeNameType } from "../../types";
 
 const HEADER_SCROLL_THRESHOLD = 240;
 

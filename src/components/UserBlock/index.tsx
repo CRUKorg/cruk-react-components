@@ -3,7 +3,7 @@ import React, { type ReactNode, type HTMLAttributes } from "react";
 import { Avatar } from "../Avatar";
 
 import { StyledUserBlock, Details, Name, Extra } from "./styles";
-import { type ThemeNameType } from "src/types";
+import { type ThemeNameType } from "../../types";
 
 export type UserBlockProps = HTMLAttributes<HTMLElement> & {
   /** name component or text */

@@ -1,7 +1,7 @@
 import React, { type ImgHTMLAttributes } from "react";
 
 import { StyledAvatar } from "./styles";
-import { type ThemeNameType } from "src/types";
+import { type ThemeNameType } from "../../types";
 
 const crukAvatarBaseUrl =
   "https://rcl.assets.cancerresearchuk.org/images/avatar/cruk2/";
