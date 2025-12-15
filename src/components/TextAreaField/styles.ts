@@ -8,11 +8,11 @@ type StyledTextareaProps = {
 
 export const StyledTextArea = styled.textarea<StyledTextareaProps>`
   resize: ${({ $resize }) => $resize};
-  background-color: var(--color-background-light, #ffffff);
+  background-color: var(--clr-background-light, #ffffff);
   background-image: none;
   border: ${({ $hasError }) => `solid var(--size-border-width, 1px)
     ${$hasError ? "var(--clr-text-error, #ff0000)" : "var(--clr-text-input-border, #2e2d2c)"}`};
-  color: var(--color-text-dark, #000000);
+  color: var(--clr-text-dark, #000000);
   display: block;
   font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
   font-size: var(--font-size-m, 1rem);

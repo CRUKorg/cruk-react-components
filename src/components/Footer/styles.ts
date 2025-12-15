@@ -10,7 +10,7 @@ export const StyledFooter = styled.footer`
 `;
 
 export const FooterContentWrapper = styled.div`
-  max-width: var(--cruk-content-max-width, 1020px);
+  max-width: var(--content-max-width, 1020px);
   display: block;
   margin: 0 auto;
 
@@ -70,7 +70,7 @@ export const Bar = styled.hr`
   margin-right: calc(50% - 50vw);
   margin-left: calc(
     100% - 100vw
-  ); // to be removed when every page has a while background
+  ); // to be removed when every page has a white background
   border-width: 0px 0px 0.25rem;
   border-image: initial;
   border-color: var(--clr-cruk-black, #000);
