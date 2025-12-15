@@ -246,6 +246,7 @@ button {
   --clr-text-dark: var(--clr-cruk-black);
   --clr-text-light: var(--clr-cruk-white);
   --clr-text-mid: var(--clr-cruk-grey-600);
+  --clr-sports-activity: var(--clr-cruk-cyan-700);
 
   --clr-link: var(--clr-cruk-magenta-700);
   --clr-link-hover: var(--clr-cruk-magenta-800);

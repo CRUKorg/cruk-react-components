@@ -130,6 +130,7 @@ export const colours = [
   "text-dark",
   "text-light",
   "text-mid",
+  "sports-activity",
 
   "link",
   "link-hover",

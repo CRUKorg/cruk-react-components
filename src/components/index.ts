@@ -12,7 +12,6 @@ export { Collapse } from "./Collapse";
 export { DateField } from "./DateField";
 export { Divider } from "./Divider";
 export { ErrorText } from "./ErrorText";
-export { Flex } from "./Flex";
 export { Footer } from "./Footer";
 export { Header } from "./Header";
 export { Heading } from "./Heading";

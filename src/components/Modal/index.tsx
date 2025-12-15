@@ -19,6 +19,7 @@ export type ModalProps = SpacingProps & {
   showCloseButton?: boolean;
   /** set max width of modal */
   maxWidth?: string;
+  themeName: string;
   /** set space from top of view port that modal appears */
   top?: string;
   /** background color of dialogue */
@@ -45,6 +46,7 @@ export function Modal({
   modalName,
   closeFunction,
   showCloseButton,
+  themeName,
   maxWidth = "500px",
   top = "1rem",
   backgroundColor,
@@ -99,7 +101,7 @@ export function Modal({
     <>
       {typeof window !== `undefined`
         ? createPortal(
-            <section>
+            <section data-theme={themeName}>
               <FocusLock returnFocus>
                 <Wrapper role="dialog" aria-modal="true" aria-label={modalName}>
                   <Content

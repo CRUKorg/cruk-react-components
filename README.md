@@ -65,8 +65,11 @@ The following components have content that changes depending on the theme name.
 - Header
 - Footer
 - UserBlock
+- Modal\*
 
 Because the new themeing strategy only effects styling not content, these components now have a required property of "themeName" this will have to be entered by the app that uses these components
+
+\* Modal is a special case, it needs themeName because the theme provider doesn't work across React Portals which is how the modals works
 
 ### Theme variable naming conventions
 

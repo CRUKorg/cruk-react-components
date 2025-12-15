@@ -57,6 +57,7 @@ function () {
 | paddingBottom     | SpaceType | unset   | padding bottom bottom                                                                           |
 | paddingLeft       | SpaceType | unset   | padding left left                                                                               |
 | isAnimated        | Boolean   | true    | turns on animate in of modal                                                                    |
+| themeName         | string    | "cruk"  | changes theme of modal setting theme on body won't effect something that uses react portals     |
 
 ## Accessibility
 
