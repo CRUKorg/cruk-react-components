@@ -24,7 +24,7 @@ const StyledHeading = (props: StyledHeadingProps) => css`
   color: ${props.$textColor
     ? props.$textColor
     : `var(--clr-text-header-default, #000)`};
-  line-height: var(--typ-header-line-height, 1.25);
+  line-height: var(--typ-header-line-height, 1.25em);
   text-transform: var(--typ-header-text-transform, none);
   margin-top: var(--spacing-m, 2rem);
   margin-bottom: var(--spacing-s, 1.5rem);
