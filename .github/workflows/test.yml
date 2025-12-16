@@ -27,7 +27,7 @@ jobs:
       - name: Save traces
         continue-on-error: true
         if: ${{ failure() }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: traces-playwright
           path: apps/fwa/test-results
