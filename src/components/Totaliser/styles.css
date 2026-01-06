@@ -18,12 +18,12 @@
     margin-top: var(--spacing-s, 1.5rem);
     position: relative;
 
-    &[data-is-compact="true"] {
+    &:not([data-is-compact="true"]) {
       padding: 0;
       border: none;
       div > div > div:not(:first-child) {
         &:after {
-          content: "";
+          content: "▼";
           color: var(--clr-totaliser-bubble, #f2f2f2);
           position: absolute;
           top: -36px;
