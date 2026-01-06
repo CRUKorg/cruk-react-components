@@ -10,6 +10,10 @@ import AllThemesWrapper from "../AllThemesWrapper";
 import { IconFa, Text } from "..";
 import InfoBox from ".";
 import "./styles.css";
+import "../Text/styles.css";
+import "../Box/styles.css";
+import "../IconFa/styles.css";
+import "../Heading/styles.css";
 
 export default {
   title: "InfoBox",

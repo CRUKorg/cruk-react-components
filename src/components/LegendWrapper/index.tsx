@@ -30,13 +30,6 @@ export function LegendWrapper({
   hintText,
   ...restOfHTMLAttributes
 }: LegendWrapperProps) {
-  const hintTextElement =
-    !!hintText &&
-    (typeof hintText === "string" || typeof hintText === "number") ? (
-      <span className="hint-text">{hintText}</span>
-    ) : (
-      hintText
-    );
   return (
     <fieldset
       className="component-legend-wrapper"
@@ -51,7 +44,12 @@ export function LegendWrapper({
               <span className="required-indication-text">(optional)</span>
             )}
           </span>
-          {hintTextElement}
+          {!!hintText &&
+          (typeof hintText === "string" || typeof hintText === "number") ? (
+            <span className="hint-text">{hintText}</span>
+          ) : (
+            hintText
+          )}
         </legend>
       )}
       {children}
