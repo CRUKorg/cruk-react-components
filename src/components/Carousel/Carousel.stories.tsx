@@ -1,20 +1,29 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { type StoryObj } from "@storybook/react-vite";
 
-import { Button, Text } from "..";
-import Carousel, { type CarouselProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import { Button, Text } from "..";
+import Carousel from ".";
+import "./styles.css";
 
-const Item = styled.div`
-  height: 200px;
-  background-color: #ddd;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-`;
+function Item({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      style={{
+        height: "200px",
+        backgroundColor: "#ddd",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
+      {children}
+    </div>
+  );
+}
 
-const CarouselWithChildren = (args: CarouselProps) => (
+const CarouselWithChildren = (args: React.ComponentProps<typeof Carousel>) => (
   <Carousel {...args}>
     <Item>
       <Text textAlign="center" marginVertical="auto" textSize="l">
@@ -49,7 +58,9 @@ const CarouselWithChildren = (args: CarouselProps) => (
   </Carousel>
 );
 
-const CarouselWithExternalPositionState = (args: CarouselProps) => {
+const CarouselWithExternalPositionState = (
+  args: React.ComponentProps<typeof Carousel>,
+) => {
   const [position, setPosition] = useState<number | undefined>(undefined);
   console.log({ position });
   return (

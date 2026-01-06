@@ -1,0 +1,106 @@
+.component-pagination {
+  display: table;
+  width: 100%;
+  clear: both;
+  text-align: center;
+
+  /* ul */
+  .pager-list {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+  }
+
+  /* a */
+  .pager-link {
+    font-weight: normal;
+    font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
+    font-size: var(--font-size-s, 0.875rem);
+    color: var(--clr-text-light, #fff);
+    background-color: var(--clr-pagination-background, #00007e);
+    cursor: pointer;
+    border-radius: 0;
+    margin: var(--spacing-xxs, 0.5rem);
+    padding: 7px 11px;
+    text-decoration: none;
+
+    &:active,
+    &:focus,
+    &:hover {
+      opacity: 0.88;
+      text-decoration: underline;
+    }
+    &:visited {
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      outline: auto;
+    }
+
+    &[data-is-active="true"] {
+      color: var(--clr-text-dark, #000);
+      background-color: var(--clr-pagination-active, #e6e6e6);
+      cursor: default;
+      &:hover {
+        background-color: var(--clr-pagination-active, #e6e6e6);
+        text-decoration: none;
+      }
+    }
+
+    &[data-name="Prev"],
+    &[data-name="Next"] {
+      color: var(--clr-pagination-text, #00007e);
+      background-color: transparent;
+      font-weight: bold;
+      padding: 8px 6px;
+      background-color: transparent;
+      &:focus,
+      &:hover {
+        background-color: transparent;
+        text-decoration: underline;
+      }
+      &:active,
+      &:visited {
+        text-decoration: none;
+      }
+      &[data-is-disabled="true"] {
+        color: var(--clr-disabled, #e6e6e6);
+      }
+    }
+
+    &[data-is-disabled="true"] {
+      color: var(--clr-disabled, #e6e6e6);
+      cursor: not-allowed;
+      pointer-events: none;
+      text-decoration: none;
+      &:hover,
+      &:focus,
+      &:active,
+      &:visited {
+        color: var(--clr-disabled, #e6e6e6);
+        text-decoration: none;
+      }
+    }
+  }
+
+  /* li */
+  .pager-item {
+    display: none;
+    &:first-child,
+    &:last-child {
+      display: inline;
+    }
+    @media (min-width: 576px) {
+      display: inline;
+    }
+    span {
+      border: none;
+      min-width: 30px;
+      padding: 5px;
+      margin: 1px;
+      border-radius: 0;
+      border-width: var(--breakpoint-mobile, 576px);
+    }
+  }
+}

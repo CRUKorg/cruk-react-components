@@ -7,8 +7,6 @@ import React, {
 import { LabelWrapper } from "../LabelWrapper";
 import { ErrorText } from "../ErrorText";
 
-import { StyledSelect } from "./styles";
-
 export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   /** error message text */
   errorMessage?: string;
@@ -44,7 +42,8 @@ export const Select = ({
       hintText={hintText}
       required={(!hideRequiredIndicationInLabel && required) || false}
     >
-      <StyledSelect
+      <select
+        className="component-select"
         {...props}
         ref={ref}
         required={required}
@@ -52,7 +51,6 @@ export const Select = ({
         aria-describedby={
           !!props.id && !!errorMessage ? `${props.id}-error` : undefined
         }
-        $hasError={hasError || !!errorMessage || false}
       />
       {!!errorMessage && (
         <ErrorText

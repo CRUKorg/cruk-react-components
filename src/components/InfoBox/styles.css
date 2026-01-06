@@ -1,0 +1,17 @@
+.component-info-box {
+  display: flex;
+  flex-shrink: 0;
+  background-color: background-mid;
+  color: "text-dark";
+
+  margin: 0 0 var(--spacing-m, 2rem) 0;
+
+  /* if we have a background color, add padding */
+  &[data-bg-color] {
+    padding: var(--spacing-s, 1.5rem);
+  }
+
+  svg {
+    margin-top: 0;
+  }
+}

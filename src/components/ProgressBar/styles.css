@@ -1,0 +1,198 @@
+/* type CircleKeyCircleFillKeyFramesProps = {
+  $strokeDashoffsetInit: number;
+  strokeDashoffset: number;
+}; */
+@keyframes target-bar-pulse {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    width: 64px;
+    height: 64px;
+    right: -32px;
+  }
+}
+
+@keyframes line-bar-pulse {
+  0% {
+    transform: scale(1);
+    border-radius: 0px;
+  }
+  50% {
+    transform: scale(1.025);
+  }
+  100% {
+    transform: scale(1);
+    border-radius: 0px;
+  }
+}
+
+@keyframes line-fill {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: var(--_line-bar-width);
+  }
+  100% {
+    width: var(--_line-bar-width);
+  }
+}
+
+@keyframes secondary-line-fill {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: var(--_line-bar-width);
+  }
+}
+
+@keyframes circle-fill {
+  0% {
+    stroke-dashoffset: var(--_stroke-dashoffset-init);
+  }
+  50% {
+    stroke-dashoffset: var(--_stroke-dashoffset);
+  }
+  100% {
+    stroke-dashoffset: var(--_stroke-dashoffset);
+  }
+}
+
+@keyframes secondary-circle-fill {
+  0% {
+    stroke-dashoffset: var(--_stroke-dashoffset-init);
+  }
+  100% {
+    stroke-dashoffset: var(--_stroke-dashoffset);
+  }
+}
+
+.component-progress-bar {
+  --_progress-bar-height: 16px;
+  margin-top: var(--_progress-bar-height, 16px);
+
+  /* is-complete  is-secondary-complete */
+  .line-progress-bar-wrapper {
+    position: relative;
+    height: var(--_progress-bar-height, 16px);
+    margin-bottom: 0;
+    background-color: var(--clr-progress-bar-background, #e6e6e6);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  /* width% is-secondary bar-colour, is-complete */
+  .line-progress-bar {
+    position: absolute;
+    left: 0;
+    height: var(--_progress-bar-height, 16px);
+    width: var(--_line-bar-width);
+    transition: width 0.6s ease;
+    animation: line-fill 1s ease forwards;
+    &[data-is-secondary="true"] {
+      animation: secondary-line-fill 1s ease forwards;
+    }
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+
+    --_line-progress-bar-color: var(--clr-progress-bar, #00007e);
+    &[data-is-secondary="true"] {
+      --_line-progress-bar-color: var(--clr-progress-bar-secondary, #e60079);
+    }
+
+    background-color: var(--_line-progress-bar-color);
+
+    &::before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 0px;
+      height: 0px;
+      border-radius: 50%;
+      opacity: 0;
+      filter: blur(2px);
+      background-color: var(--_line-progress-bar-color);
+      animation: none;
+    }
+
+    &[data-is-complete="true"] {
+      /* animation: line-bar-pulse 0.3s 0.5s 1 ease-out; */
+
+      &::before {
+        animation: target-bar-pulse 0.3s 0.5s 1 ease-in;
+      }
+    }
+  }
+
+  /* circle-size */
+  .circular-wrapper {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    background: none;
+    margin: 0 auto;
+    box-shadow: none;
+  }
+
+  .circle-svg {
+    position: absolute;
+    transform: rotate(-90deg);
+    fill: none;
+    stroke-linecap: round;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* circle */
+  .empty-circle {
+    stroke: var(--clr-cruk-grey-200, #e6e6e6);
+  }
+
+  .full-circle {
+    --_circular-progress-color: var(--clr-progress-circular, #00007e);
+    &[data-is-secondary="true"] {
+      --_circular-progress-color: var(
+        --clr-progress-circular-secondary,
+        #e60079
+      );
+    }
+
+    stroke: var(--_circular-progress-color);
+
+    animation: circle-fill 1s linear;
+
+    &[data-is-secondary="true"] {
+      animation: secondary-circle-fill 1s linear;
+    }
+  }
+
+  .circle-value {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    z-index: 2;
+    font-size: var(--font-size-l, 1.25rem);
+    line-height: var(--font-size-l, 1.25rem);
+    font-family: var(--typ-font-family-headings, "Progress", Arial, sans-serif);
+    text-align: center;
+    height: 100%;
+    color: var(--clr-text-dark, #000);
+  }
+}

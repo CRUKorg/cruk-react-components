@@ -10,7 +10,6 @@ import { useKey } from "../../hooks/useKey";
 import { useEffectBrowser } from "../../hooks/useEffectBrowser";
 
 import { type PopOverPositionType } from "../../types";
-import { PopOverWrapper, PopOverModal } from "./styles";
 
 export type PopOverProps = {
   /** modalLabel: used for aria-label of modal */
@@ -43,7 +42,6 @@ export function PopOver({
   position,
   modalLabel,
   modalContent,
-  css,
   full = false,
 }: PopOverProps) {
   const popRef = useRef<HTMLDivElement>(null);
@@ -83,7 +81,12 @@ export function PopOver({
   }, []);
 
   return (
-    <PopOverWrapper $full={full} $css={css} ref={popRef}>
+    <div
+      className="component-popover"
+      ref={popRef}
+      data-full={full}
+      data-position={position || "top"}
+    >
       {React.Children.map(children, (child) =>
         React.cloneElement(
           child as DetailedReactHTMLElement<object, HTMLElement>,
@@ -95,18 +98,20 @@ export function PopOver({
         ),
       )}
       {showPopOver ? (
-        <PopOverModal
-          $maxWidth={maxWidth || "none"}
-          $minWidth={minWidth || "auto"}
-          $position={position || "top"}
+        <div
+          className="popover-modal"
+          style={{
+            maxWidth: maxWidth || "none",
+            minWidth: minWidth || "auto",
+          }}
           role="dialog"
           aria-label={modalLabel}
           aria-modal={showPopOver}
         >
           {modalContent}
-        </PopOverModal>
+        </div>
       ) : null}
-    </PopOverWrapper>
+    </div>
   );
 }
 

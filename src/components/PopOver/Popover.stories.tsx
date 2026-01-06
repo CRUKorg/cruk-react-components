@@ -13,8 +13,9 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 import { Box, Button, IconFa } from "..";
-import PopOver, { type PopOverProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import PopOver, { type PopOverProps } from ".";
+import "./styles.css";
 
 export default {
   title: "PopOver (experimental)",
@@ -50,6 +51,12 @@ export default {
         Share top
       </Button>
     ),
+  },
+  argTypes: {
+    position: {
+      control: "select",
+      options: ["top", "left", "right", "bottom", "topLeft", "bottomLeft", ""],
+    },
   },
   tags: ["autodocs"],
 };

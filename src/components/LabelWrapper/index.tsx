@@ -1,7 +1,5 @@
 import React, { type LabelHTMLAttributes, type ReactNode } from "react";
 
-import { LabelText, Label, RequiredIndicationText, HintText } from "./styles";
-
 type LabelWrapperProps = LabelHTMLAttributes<HTMLLabelElement> & {
   /** label text */
   label: string;
@@ -26,7 +24,7 @@ export function LabelWrapper({
     !!hintText &&
     ((typeof hintText === "string" && hintText.length) ||
       typeof hintText === "number") ? (
-      <HintText>{hintText}</HintText>
+      <span className="hint-text">{hintText}</span>
     ) : (
       hintText
     );
@@ -34,16 +32,16 @@ export function LabelWrapper({
   return (
     <>
       {label ? (
-        <Label {...otherHTMLLabelProps}>
-          <LabelText $hasHintText={!!hintText}>
+        <label className="label-component" {...otherHTMLLabelProps}>
+          <span className="label-text" data-hintext={!!hintText}>
             {label}
             {!required && !hideRequiredIndicationInLabel && (
-              <RequiredIndicationText>{` (optional)`}</RequiredIndicationText>
+              <span className="required-indication-text">{` (optional)`}</span>
             )}
-          </LabelText>
+          </span>
           {hintTextElement}
           {children}
-        </Label>
+        </label>
       ) : (
         <>{children}</>
       )}

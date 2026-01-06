@@ -3,6 +3,7 @@ import React from "react";
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
 import { TextAreaField } from ".";
+import "./styles.css";
 
 function component() {
   return (

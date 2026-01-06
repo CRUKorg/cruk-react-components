@@ -1,10 +1,11 @@
 import React from "react";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
-import { TextField } from ".";
 import { Heading, Box, Button, IconFa } from "..";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { TextField } from ".";
+import "./styles.css";
 
 function component() {
   return (

@@ -2,8 +2,9 @@ import React from "react";
 
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
-import { DateField } from ".";
 import { Box } from "..";
+import { DateField } from ".";
+import "./styles.css";
 
 const unControlledContent = () => (
   <Box backgroundColor="background-light">

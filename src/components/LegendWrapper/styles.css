@@ -1,0 +1,58 @@
+.component-legend-wrapper {
+  *,
+  *:after,
+  *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  border: none;
+  padding: 0;
+
+  legend {
+    position: relative;
+    display: block;
+    width: 100%;
+    font-family: var(--typ-font-family-label, "Poppins", Arial, sans-serif);
+    font-weight: var(--typ-font-weight-labels, 500);
+
+    .legend-span {
+      display: block;
+      color: var(--clr-text-dark, #000);
+      font-size: var(--font-size-m, 1rem);
+      line-height: var(--typ-line-height, 1.5em);
+      font-weight: var(--typ-font-weight-labels, 500);
+      font-family: var(--typ-font-family-label, "Poppins", Arial, sans-serif);
+      min-width: 3em;
+      margin-bottom: 0;
+
+      /* increase font size for desktop */
+      @media (min-width: 1200px) {
+        font-size: var(--font-size-ml, 1.125rem);
+      }
+      & > * {
+        font-weight: var(--typ-font-weight-base, 300);
+      }
+
+      &[data-has-hint-text="true"] {
+        margin-bottom: var(--spacing-xxxs, 0.25rem);
+      }
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      .required-indication-text {
+        font-family: var(--typ-font-family-label, "Poppins", Arial, sans-serif);
+        font-weight: var(--typ-font-weight-base, 300);
+      }
+
+      .hint-text {
+        display: block;
+        font-family: var(--typ-font-family-label, "Poppins", Arial, sans-serif);
+        font-weight: var(--typ-font-weight-base, 300);
+        color: var(--clr-text-mid, #666);
+        margin-bottom: var(--spacing-xs, 1rem);
+      }
+    }
+  }
+}

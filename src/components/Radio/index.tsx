@@ -6,15 +6,6 @@ import React, {
 
 import { ErrorText } from "../ErrorText";
 
-import {
-  StyledLabel,
-  StyledInput,
-  SelectedBorder,
-  CheckWrapper,
-  Check,
-  VerticalAlign,
-} from "./styles";
-
 export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   ref?: Ref<HTMLInputElement>;
   /** flag for error styling */
@@ -32,16 +23,16 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
 export const Radio = (props: RadioProps) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { children, hasError, errorMessage, ref, ...rest } = props;
+
+  const invalid = props.hasError || !!props.errorMessage?.length;
+
   return (
     <>
-      <StyledLabel
-        $hasError={props.hasError || !!props.errorMessage || false}
-        className={props.className}
-        $checked={props.checked || false}
-        $disabled={props.disabled || false}
-      >
-        <StyledInput
+      <label className="component-radio">
+        <input
           {...rest}
+          className="input"
+          aria-invalid={invalid || false}
           disabled={props.disabled || false}
           type="radio"
           ref={ref}
@@ -49,13 +40,12 @@ export const Radio = (props: RadioProps) => {
             !!props.id && !!props.errorMessage ? `${props.id}-error` : undefined
           }
         />
-        <SelectedBorder />
-        <CheckWrapper>
-          <Check />
-        </CheckWrapper>
+        <div className="check-wrapper">
+          <span className="check" />
+        </div>
 
-        <VerticalAlign>{props.children || props.value}</VerticalAlign>
-      </StyledLabel>
+        <span className="vertical-align">{props.children || props.value}</span>
+      </label>
       {!!props.errorMessage && (
         <ErrorText
           marginTop="xxs"

@@ -1,0 +1,31 @@
+.component-textarea-field {
+  cursor: auto;
+  background-color: var(--clr-background-light, #ffffff);
+  background-image: none;
+  border: solid 1px var(--clr-text-input-border, #2e2d2c);
+  color: var(--clr-text-dark, #000000);
+  display: block;
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
+  font-size: var(--font-size-m, 1rem);
+  padding: 6px 8px;
+  width: 100%;
+  transition: border-color 150ms linear;
+
+  /* increase font size for desktop */
+  @media (min-width: 1200px) {
+    font-size: var(--font-size-ml, 1.125rem);
+  }
+
+  &:hover {
+    border-color: var(--clr-secondary, #e60079);
+  }
+  &:disabled {
+    cursor: not-allowed;
+    border-color: var(--clr-disabled, #e6e6e6);
+    color: var(--clr-disabled, #e6e6e6);
+  }
+
+  &[aria-invalid="true"] {
+    border-color: var(--clr-danger, #d51311);
+  }
+}

@@ -3,6 +3,8 @@ import React from "react";
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
 import { Radio } from ".";
+import "./styles.css";
+
 function unControlledContent() {
   return (
     <>

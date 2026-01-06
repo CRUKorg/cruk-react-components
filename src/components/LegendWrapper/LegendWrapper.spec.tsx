@@ -2,8 +2,9 @@ import React from "react";
 
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
-import { LegendWrapper } from ".";
 import { Heading, Box, Radio, Checkbox } from "..";
+import { LegendWrapper } from ".";
+import "./styles.css";
 
 function component() {
   return (

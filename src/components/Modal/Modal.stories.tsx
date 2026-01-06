@@ -2,7 +2,8 @@ import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
 import { Button, Heading, Text } from "..";
-import Modal, { type ModalProps } from ".";
+import Modal from ".";
+import "./styles.css";
 
 export default {
   title: "Modal",
@@ -24,7 +25,7 @@ const Line = () => (
 
 type Story = StoryObj<typeof Modal>;
 
-const ModalWithTriggerButton = (args: ModalProps) => {
+const ModalWithTriggerButton = (args: React.ComponentProps<typeof Modal>) => {
   const [showModal, setShowModal] = React.useState(false);
   const toggleShowModal = () => setShowModal(!showModal);
 
@@ -48,7 +49,7 @@ const ModalWithTriggerButton = (args: ModalProps) => {
   );
 };
 
-export const AllThemesWrapper = (args: ModalProps) => (
+export const AllThemesWrapper = (args: React.ComponentProps<typeof Modal>) => (
   <main>
     <div tabIndex={0}>
       <div data-theme="cruk">

@@ -1,8 +1,9 @@
 import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
-import Step from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import Step from ".";
+import "./styles.css";
 
 export default {
   title: "Step (experimental)",

@@ -4,6 +4,7 @@ import { test, expect } from "@playwright/experimental-ct-react";
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
 import { AddressLookup } from ".";
+import "./styles.css";
 
 import { TestThemeWrapper } from "../AllThemesWrapper";
 

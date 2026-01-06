@@ -47,6 +47,32 @@ export const spaces = [
 
 export type SpaceType = (typeof spaces)[number];
 
+export type SpacingProps = {
+  margin?: SpaceType;
+  marginTop?: SpaceType;
+  marginRight?: SpaceType;
+  marginBottom?: SpaceType;
+  marginLeft?: SpaceType;
+  marginVertical?: SpaceType;
+  marginHorizontal?: SpaceType;
+  padding?: SpaceType;
+  paddingTop?: SpaceType;
+  paddingRight?: SpaceType;
+  paddingBottom?: SpaceType;
+  paddingLeft?: SpaceType;
+  paddingVertical?: SpaceType;
+  paddingHorizontal?: SpaceType;
+};
+
+export type TextProps = {
+  textSize?: FontSizeType;
+  textAlign?: FontAlignType;
+  textWeight?: FontWeightType;
+  textFontFamily?: FontFamilyStylesType;
+  wordBreak?: WordBreakType;
+  overflowWrap?: OverflowWrapType;
+};
+
 export type ShadowsType = {
   s: string;
   m: string;
@@ -113,109 +139,68 @@ export type AddressDataType = {
 };
 
 export const colours = [
+  // Generic colours
+
+  "currentColor",
   "primary",
   "secondary",
   "tertiary",
+
   "text-on-primary",
   "text-on-secondary",
   "text-on-tertiary",
-  "text-header-default",
 
   "disabled",
   "danger",
   "warning",
   "success",
   "info",
-  "text-error",
+  "sports-activity",
+
   "text-dark",
   "text-light",
   "text-mid",
-  "sports-activity",
 
-  "link",
-  "link-hover",
-  "link-secondary",
-  "link-secondary-hover",
-
-  "avatar-border",
-
-  "progress-bar",
-  "progress-bar-secondary",
-  "progress-bar-background",
-  "circular-progress",
-  "circular-progress-secondary",
-  "circular-progress-background",
-
-  "button-primary-background",
-  "button-primary-text",
-  "button-primary-border",
-  "button-primary-background-hover",
-  "button-primary-text-hover",
-  "button-primary-border-hover",
-  "button-primary-disabled-background",
-  "button-primary-disabled-text",
-  "button-primary-disabled-border",
-
-  "button-secondary-background",
-  "button-secondary-text",
-  "button-secondary-border",
-  "button-secondary-background-hover",
-  "button-secondary-text-hover",
-  "button-secondary-border-hover",
-  "button-secondary-disabled-background",
-  "button-secondary-disabled-text",
-  "button-secondary-disabled-border",
-
-  "button-tertiary-text",
-  "button-tertiary-text-hover",
-  "button-tertiary-disabled-text",
-
-  "collapse-header",
-
-  "selection-border",
-
-  "input-border",
-  "check",
-
-  "header-background",
   "background-light",
   "background-light-color",
   "background-mid",
   "background-mid-light",
-
-  "loader-color-1",
-  "loader-color-2",
-  "loader-color-3",
-
-  "pagination-text",
-  "pagination-background",
-  "pagination-active",
-
-  "footer-background",
-
-  "header-border",
-  "header-tagline-text",
-
-  "step-border",
-  "step-background",
-
-  "popover-background",
-
-  "text-input-extra-info",
-
-  "totaliser-bubble",
-  "totaliser-bubble-text",
-  "totaliser-bubble-total",
-
-  "text-input-border",
-
-  "select-background",
-
-  "modal-backdrop",
-
-  "user-block-extra-text",
 ] as const;
+
 export type ColourVariableType = (typeof colours)[number];
+
+export type ColourProps = {
+  textColor?: ColourVariableType;
+  backgroundColor?: ColourVariableType;
+  borderColor?: ColourVariableType;
+};
+
+export const fontFamilyStyles = [
+  "base",
+  "headings",
+  "links",
+  "buttons",
+  "label",
+] as const;
+
+export type FontFamilyStylesType = (typeof fontFamilyStyles)[number];
+
+export const fontWeights = [
+  "base",
+  "headings",
+
+  "links",
+  "buttons",
+  "labels",
+
+  "heavy",
+  "medium",
+  "normal",
+  "light",
+  "vlight",
+] as const;
+
+export type FontWeightType = (typeof fontWeights)[number];
 
 export type AddressOptionsType = {
   Description: string;
@@ -225,21 +210,31 @@ export type AddressOptionsType = {
   Error?: Error;
 };
 
-export type WordBreakType =
-  | "normal"
-  | "break-all"
-  | "keep-all"
-  | "break-word"
-  | "inherit"
-  | "initial"
-  | "unset";
+export const wordBreaks = [
+  "normal",
+  "break-all",
+  "keep-all",
+  "break-word",
+  "inherit",
+  "initial",
+  "unset",
+] as const;
 
-export type OverflowWrapType =
-  | "normal"
-  | "anywhere"
-  | "revert"
-  | "revert-layer"
-  | "break-word"
-  | "inherit"
-  | "initial"
-  | "unset";
+export type WordBreakType = (typeof wordBreaks)[number];
+
+export const overflowWraps = [
+  "normal",
+  "anywhere",
+  "revert",
+  "revert-layer",
+  "break-word",
+  "inherit",
+  "initial",
+  "unset",
+] as const;
+
+export type OverflowWrapType = (typeof overflowWraps)[number];
+
+export const fontAligns = ["left", "right", "center", "justify"] as const;
+
+export type FontAlignType = (typeof fontAligns)[number];

@@ -2,7 +2,6 @@ import React, { type ReactNode, type HTMLAttributes } from "react";
 
 import { Avatar } from "../Avatar";
 
-import { StyledUserBlock, Details, Name, Extra } from "./styles";
 import { type ThemeNameType } from "../../types";
 
 export type UserBlockProps = HTMLAttributes<HTMLElement> & {
@@ -33,18 +32,18 @@ export function UserBlock({
   // name is a reserved html prop so we make sure we don't pass it into the styled component
   // or it will end up in the markup
   return (
-    <StyledUserBlock>
+    <div className="component-user-block">
       <Avatar
         name={avatarName || (typeof name === "string" ? name : "Anonymous")}
         url={avatarUrl || undefined}
         size={size}
         themeName={themeName}
       />
-      <Details>
-        <Name>{name || "Anonymous"}</Name>
-        {!!extra && <Extra>{extra}</Extra>}
-      </Details>
-    </StyledUserBlock>
+      <div className="details">
+        <p className="name">{name || "Anonymous"}</p>
+        {!!extra && <p className="extra">{extra}</p>}
+      </div>
+    </div>
   );
 }
 

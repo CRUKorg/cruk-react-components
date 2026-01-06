@@ -2,8 +2,9 @@ import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
 import { Text, Box } from "..";
-import Collapse from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import Collapse from ".";
+import "./styles.css";
 
 export default {
   title: "Collapse (experimental)",

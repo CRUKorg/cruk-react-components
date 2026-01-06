@@ -3,15 +3,6 @@ import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 
 import { IconFa } from "../IconFa";
 
-import {
-  DotContainer,
-  Dot,
-  CarouselButton,
-  ButtonWrapper,
-  VerticalAlign,
-  ScreenReaderOnly,
-} from "./styles";
-
 export const Dots = ({
   count,
   currentPosition = 0,
@@ -30,53 +21,59 @@ export const Dots = ({
   const countArray = Array.from({ length: count }, (e, i) => `arrayIndex${i}`);
 
   return (
-    <ButtonWrapper>
-      <CarouselButton
+    <div className="button-wrapper">
+      <button
+        className="carousel-button"
         disabled={!moreOnLeft}
         aria-label="previous"
         onClick={() => {
           previous();
         }}
       >
-        <VerticalAlign>
+        <span className="vertical-align">
           <IconFa faIcon={faCaretLeft} size="1.25em" />
-          <ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
-        </VerticalAlign>
-      </CarouselButton>
+          <span className="screen-reader-only">
+            Scroll carousel to previous index
+          </span>
+        </span>
+      </button>
 
-      <DotContainer $count={count}>
+      <div className="dot-container" data-count={count}>
         {countArray.map((item, index) => {
-          const isSelected = index === currentPosition;
+          const isChecked = index === currentPosition;
           const scrollTo = () => {
             scrollToPosition(index);
           };
           return (
-            <Dot
+            <button
+              className="dot"
               key={item}
               role="switch"
-              aria-checked={isSelected}
+              aria-checked={isChecked}
               onClick={scrollTo}
-              $selected={isSelected}
             >
-              <ScreenReaderOnly>{`Scroll carousel to index ${index}`}</ScreenReaderOnly>
-            </Dot>
+              <span className="screen-reader-only">{`Scroll carousel to index ${index}`}</span>
+            </button>
           );
         })}
-      </DotContainer>
+      </div>
 
-      <CarouselButton
+      <button
+        className="carousel-button"
         disabled={!moreOnRight}
         aria-label="next"
         onClick={() => {
           next();
         }}
       >
-        <VerticalAlign>
+        <span className="vertical-align">
           <IconFa faIcon={faCaretRight} size="1.25em" />
-          <ScreenReaderOnly>Scroll carousel to previous index</ScreenReaderOnly>
-        </VerticalAlign>
-      </CarouselButton>
-    </ButtonWrapper>
+          <span className="screen-reader-only">
+            Scroll carousel to next index
+          </span>
+        </span>
+      </button>
+    </div>
   );
 };
 

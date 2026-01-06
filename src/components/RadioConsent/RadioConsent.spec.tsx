@@ -3,6 +3,8 @@ import React, { type ChangeEvent } from "react";
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
 import { RadioConsent } from ".";
+import "./styles.css";
+
 function unControlledContent() {
   return (
     <>

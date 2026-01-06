@@ -1,8 +1,9 @@
 import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
-import RadioConsent, { type RadioConsentProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import RadioConsent from ".";
+import "./styles.css";
 
 export default {
   title: "RadioConsent (experimental)",
@@ -20,7 +21,9 @@ export default {
 
 type Story = StoryObj<typeof RadioConsent>;
 
-const RadioConsentWithState = (args: RadioConsentProps) => {
+const RadioConsentWithState = (
+  args: React.ComponentProps<typeof RadioConsent>,
+) => {
   const [selectedEmail, setSelectedEmail] = React.useState("yes");
 
   const id = React.useId();

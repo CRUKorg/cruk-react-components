@@ -3,9 +3,10 @@ import { test, expect } from "@playwright/experimental-ct-react";
 
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
-import { Checkbox } from ".";
 import { Box } from "../Box";
 import { TestThemeWrapper } from "../AllThemesWrapper";
+import { Checkbox } from ".";
+import "./styles.css";
 
 function unControlledContent() {
   return (

@@ -3,6 +3,7 @@ import { type StoryObj } from "@storybook/react-vite";
 
 import { Link } from "..";
 import Footer from ".";
+import "./styles.css";
 
 const FooterWithChildren = (args: React.ComponentProps<typeof Footer>) => (
   <Footer {...args}>

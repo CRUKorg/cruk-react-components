@@ -3,8 +3,9 @@ import { type StoryObj } from "@storybook/react-vite";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 import { Text, IconFa } from "..";
-import Totaliser from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import Totaliser from ".";
+import "./styles.css";
 
 export default {
   title: "Totaliser (experimental)",

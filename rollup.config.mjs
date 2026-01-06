@@ -22,7 +22,7 @@ export default {
       },
     },
   ],
-  external: ["prop-types", "react", "react-dom", "styled-components"],
+  external: ["prop-types", "react", "react-dom"],
 
   plugins: [
     resolve({ modulesOnly: true }),
@@ -51,7 +51,8 @@ export default {
       plugins: [autoprefixer()],
       sourceMap: true,
       extract: true,
-      minimize: true,
+      minimize: false,
+      generateScopedName: "[name]__[local]",
     }),
     terser(),
   ],

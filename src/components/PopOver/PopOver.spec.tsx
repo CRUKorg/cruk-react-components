@@ -5,6 +5,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { TestThemeWrapper } from "../AllThemesWrapper";
 
 import { TestPopOverWithContent } from "./TestPopOverWithContent";
+import "./styles.css";
 
 test("is accessible CRUK theme", async ({ mount, page }) => {
   await mount(

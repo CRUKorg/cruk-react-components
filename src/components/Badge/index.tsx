@@ -1,7 +1,5 @@
 import React, { type ReactNode } from "react";
-import { type SpaceType } from "../../types";
-
-import { StyledBadge } from "./styles";
+import { type ColourVariableType } from "../../types";
 import { themeColorOrString } from "../../utils/themeUtils";
 
 /**
@@ -19,37 +17,50 @@ additional text.
  */
 export function Badge({
   children,
-  size = "xs",
-  backgroundColor = "primary",
-  borderColor = "transparent",
-  textColor = "text-on-primary",
+  size,
   isSquare,
+  backgroundColor,
+  textColor,
+  borderColor,
 }: {
-  /** background colour of badge */
-  backgroundColor?: string;
-  /** border colour of badge */
-  borderColor?: string;
-  /** text colour of badge */
-  textColor?: string;
-  /** size of badge */
-  size?: SpaceType;
+  size?: "xs" | "s" | "m" | "l" | "xl";
   /** contents of badge */
   children?: ReactNode;
   /** forces shape to have equal width and height set by size attribute */
   isSquare?: boolean;
+  textColor?: ColourVariableType | string;
+  backgroundColor?: ColourVariableType | string;
+  borderColor?: ColourVariableType | string;
+  style?: React.CSSProperties;
 }) {
   const isSquareCalculated = isSquare ?? !(typeof children === "string");
+  const textColourThemeOrString = textColor
+    ? themeColorOrString(textColor)
+    : undefined;
+  const backgroundColourThemeOrString = backgroundColor
+    ? themeColorOrString(backgroundColor)
+    : undefined;
+  const borderColourThemeOrString = borderColor
+    ? themeColorOrString(borderColor)
+    : undefined;
+
+  const convertedProps = {
+    "data-size": size,
+    "data-is-square": isSquareCalculated,
+  };
 
   return (
-    <StyledBadge
-      $isSquare={isSquareCalculated}
-      $size={size}
-      $backgroundColor={themeColorOrString(backgroundColor)}
-      $borderColor={themeColorOrString(borderColor)}
-      $textColor={themeColorOrString(textColor)}
+    <span
+      className={["component-badge"].join(" ")}
+      {...convertedProps}
+      style={{
+        color: textColourThemeOrString,
+        backgroundColor: backgroundColourThemeOrString,
+        borderColor: borderColourThemeOrString,
+      }}
     >
       {children}
-    </StyledBadge>
+    </span>
   );
 }
 

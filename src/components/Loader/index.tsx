@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./styles.module.css";
 
 /**
  *
@@ -7,16 +6,16 @@ import styles from "./styles.module.css";
  */
 export function Loader() {
   return (
-    <>
-      <p className={styles["screen-reader-only"]} role="alert">
+    <span className="component-loader">
+      <p className="screen-reader-only" role="alert">
         Loading
       </p>
-      <div className={styles["spinner"]} aria-hidden="true">
+      <div className="spinner" aria-hidden="true">
         <span />
         <span />
         <span />
       </div>
-    </>
+    </span>
   );
 }
 

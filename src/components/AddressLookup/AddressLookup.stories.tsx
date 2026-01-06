@@ -1,8 +1,9 @@
 import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
-import AddressLookup, { type AddressLookupProps } from ".";
+import AddressLookup from ".";
 import { AllThemesWrapper } from "../AllThemesWrapper";
+import "./styles.css";
 
 export default {
   title: "AddressLookup",
@@ -29,7 +30,9 @@ export const AddressLookupStory: Story = {
   name: "AddressLookup",
   render: (args) => (
     <AllThemesWrapper>
-      <AddressLookup {...(args as AddressLookupProps)} />
+      <AddressLookup
+        {...(args as React.ComponentProps<typeof AddressLookup>)}
+      />
     </AllThemesWrapper>
   ),
 };

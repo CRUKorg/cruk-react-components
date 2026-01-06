@@ -1,13 +1,15 @@
 import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
-import { IconFa, Text } from "..";
-import InfoBox from ".";
 import {
   faCircleCheck,
   faCircleInfo,
   faTriangleExclamation,
 } from "@fortawesome/free-solid-svg-icons";
+
 import AllThemesWrapper from "../AllThemesWrapper";
+import { IconFa, Text } from "..";
+import InfoBox from ".";
+import "./styles.css";
 
 export default {
   title: "InfoBox",
@@ -18,7 +20,7 @@ export default {
     descriptionText:
       "This is a description block for the infobox default component",
     descriptionTextColor: "#000",
-    icon: <IconFa faIcon={faCircleCheck} color="#008000" size="1.5em" />,
+    icon: <IconFa faIcon={faCircleCheck} color="success" size="m" />,
   },
   tags: ["autodocs"],
 };
@@ -38,13 +40,13 @@ export const InfoBoxDefault: Story = {
 export const InfoBoxCustomBackground: Story = {
   name: "InfoBox Custom Background",
   args: {
-    backgroundColor: "#E40173",
+    backgroundColor: "primary",
     titleText: "InfoBox Custom Background",
-    titleTextColor: "#fff",
+    titleTextColor: "text-on-primary",
     descriptionText:
       "This is a description block for the infobox with custom background",
-    descriptionTextColor: "#fff",
-    icon: <IconFa faIcon={faCircleInfo} color="#fff" size="1.5em" />,
+    descriptionTextColor: "text-on-primary",
+    icon: <IconFa faIcon={faCircleInfo} color="text-on-primary" size="m" />,
   },
   render: (args) => (
     <AllThemesWrapper>
@@ -57,13 +59,13 @@ export const InfoBoxWithChildren: Story = {
   name: "InfoBox With Children",
   args: {
     titleText: "InfoBox With Children",
-    titleTextColor: "#000",
+    titleTextColor: "text-dark",
     descriptionText:
       "This is a description block for the infobox with children",
-    descriptionTextColor: "#000",
-    icon: <IconFa faIcon={faTriangleExclamation} color="danger" size="2em" />,
+    descriptionTextColor: "text-dark",
+    icon: <IconFa faIcon={faTriangleExclamation} color="danger" size="m" />,
     children: (
-      <Text color="#000" marginBottom="xs">
+      <Text color="text-dark" marginBottom="xs">
         This is a child text block for infobox component
       </Text>
     ),

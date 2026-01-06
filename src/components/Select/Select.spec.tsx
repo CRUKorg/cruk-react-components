@@ -3,9 +3,10 @@ import { test, expect } from "@playwright/experimental-ct-react";
 
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
-import { Select } from ".";
 import { Box, Button } from "..";
 import { TestThemeWrapper } from "../AllThemesWrapper";
+import { Select } from ".";
+import "./styles.css";
 
 const component = () => (
   <>

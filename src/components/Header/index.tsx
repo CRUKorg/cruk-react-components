@@ -2,20 +2,6 @@ import React, { useState, type HTMLAttributes, type ReactNode } from "react";
 
 import { useScrollPosition } from "../../hooks/useScrollPosition";
 
-import {
-  StyledHeader,
-  HeaderStickyContainer,
-  HeaderStickyPlaceHolder,
-  HeaderMainContent,
-  SkipToMain,
-  StyledLink,
-  Logo,
-  LogoWrapper,
-  Tagline,
-  ChildWrapper,
-  ChildInner,
-} from "./styles";
-
 import { type ThemeNameType } from "../../types";
 
 const HEADER_SCROLL_THRESHOLD = 240;
@@ -114,39 +100,44 @@ export function Header({
   const logoUrl = getLogoFromThemeName(themeName);
 
   return (
-    <StyledHeader>
-      <HeaderStickyPlaceHolder>
-        <HeaderStickyContainer
+    <header
+      className="component-header"
+      data-is-sticky={isSticky || false}
+      data-is-small={isSmall || false}
+      data-full-width={fullWidth || false}
+    >
+      <div className="header-sticky-placeholder">
+        <div
+          className="header-sticky-container"
           data-testid="header-sticky-container"
-          $isSmall={isSmall}
-          $isSticky={isSticky}
         >
-          <SkipToMain href="#main">Skip to main content</SkipToMain>
-          <HeaderMainContent $fullWidth={fullWidth}>
-            <StyledLink
+          <a className="skip-to-main" href="#main">
+            Skip to main content
+          </a>
+          <div className="header-main-content" data-$full-width={fullWidth}>
+            <a
+              className="header-logo-link"
               href={logoLinkUrl ?? "/"}
               title={logoLinkTitle ?? "Home"}
             >
-              <LogoWrapper $isSmall={isSmall} $isSticky={isSticky}>
-                <Logo
+              <div className="logo-wrapper">
+                <img
+                  className="logo"
+                  width={160}
                   height={80}
                   src={logoImageSrc ?? logoUrl}
                   alt={logoAltText ?? "Cancer Research UK Giving Pages"}
                 />
-              </LogoWrapper>
-            </StyledLink>
-            {siteSlogan ? (
-              <Tagline $isSmall={isSmall} $isSticky={isSticky}>
-                {siteSlogan}
-              </Tagline>
-            ) : null}
-            <ChildWrapper>
-              <ChildInner>{children}</ChildInner>
-            </ChildWrapper>
-          </HeaderMainContent>
-        </HeaderStickyContainer>
-      </HeaderStickyPlaceHolder>
-    </StyledHeader>
+              </div>
+            </a>
+            {siteSlogan ? <p className="tagline">{siteSlogan}</p> : null}
+            <div className="child-wrapper">
+              <div className="child-inner">{children}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
   );
 }
 
