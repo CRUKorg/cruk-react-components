@@ -10,6 +10,7 @@ import "../Text/styles.css";
 import "../Box/styles.css";
 import "../IconFa/styles.css";
 import "../Badge/styles.css";
+import "../ProgressBar/styles.css";
 
 export default {
   title: "Totaliser (experimental)",
