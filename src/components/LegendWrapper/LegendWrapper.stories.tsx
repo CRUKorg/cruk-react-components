@@ -7,6 +7,7 @@ import CheckBox from "../Checkbox";
 import AllThemesWrapper from "../AllThemesWrapper";
 import LegendWrapper, { type LegendWrapperProps } from ".";
 import "./styles.css";
+import "../ErrorText/styles.css";
 
 export default {
   title: "Legend Wrapper",

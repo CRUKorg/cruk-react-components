@@ -4,6 +4,7 @@ import { type StoryObj } from "@storybook/react-vite";
 import TextAreaField from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
 import "./styles.css";
+import "../ErrorText/styles.css";
 
 export default {
   title: "TextAreaField",

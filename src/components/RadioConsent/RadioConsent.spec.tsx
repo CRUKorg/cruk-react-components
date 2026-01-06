@@ -4,6 +4,7 @@ import { testAccessibilityOnAllThemes } from "playwright/utils";
 
 import { RadioConsent } from ".";
 import "./styles.css";
+import "../ErrorText/styles.css";
 
 function unControlledContent() {
   return (

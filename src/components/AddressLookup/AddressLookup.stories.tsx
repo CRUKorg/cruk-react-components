@@ -4,6 +4,7 @@ import { type StoryObj } from "@storybook/react-vite";
 import AddressLookup from ".";
 import { AllThemesWrapper } from "../AllThemesWrapper";
 import "./styles.css";
+import "../ErrorText/styles.css";
 
 export default {
   title: "AddressLookup",

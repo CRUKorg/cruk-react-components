@@ -5,6 +5,7 @@ import { testAccessibilityOnAllThemes } from "playwright/utils";
 
 import { AddressLookup } from ".";
 import "./styles.css";
+import "../ErrorText/styles.css";
 
 import { TestThemeWrapper } from "../AllThemesWrapper";
 

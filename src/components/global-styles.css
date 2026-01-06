@@ -96,6 +96,18 @@ body {
   font-weight: var(--typ-font-weight-base, 300);
 }
 
+p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+svg {
+  path {
+    fill: currentColor;
+    stroke: currentColor;
+  }
+}
+
 table,
 td,
 th {

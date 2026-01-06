@@ -5,6 +5,7 @@ import { Box } from "..";
 import AllThemesWrapper from "../AllThemesWrapper";
 import Radio, { type RadioProps } from ".";
 import "./styles.css";
+import "../ErrorText/styles.css";
 
 const FullComponentWithRadios = (args: RadioProps) => {
   const [selected, setSelected] = useState("one");

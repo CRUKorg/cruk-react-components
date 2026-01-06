@@ -7,6 +7,7 @@ import { Box, Button } from "..";
 import { TestThemeWrapper } from "../AllThemesWrapper";
 import { Select } from ".";
 import "./styles.css";
+import "../ErrorText/styles.css";
 
 const component = () => (
   <>

@@ -9,6 +9,7 @@ import AllThemesWrapper from "../AllThemesWrapper";
 import TextField from ".";
 import { fontSizes } from "../../types";
 import "./styles.css";
+import "../ErrorText/styles.css";
 
 export default {
   title: "TextField",

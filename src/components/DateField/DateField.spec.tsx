@@ -5,6 +5,7 @@ import { testAccessibilityOnAllThemes } from "playwright/utils";
 import { Box } from "..";
 import { DateField } from ".";
 import "./styles.css";
+import "../ErrorText/styles.css";
 
 const unControlledContent = () => (
   <Box backgroundColor="background-light">

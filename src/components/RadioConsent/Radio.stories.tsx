@@ -4,6 +4,7 @@ import { type StoryObj } from "@storybook/react-vite";
 import AllThemesWrapper from "../AllThemesWrapper";
 import RadioConsent from ".";
 import "./styles.css";
+import "../ErrorText/styles.css";
 
 export default {
   title: "RadioConsent (experimental)",

@@ -7,6 +7,7 @@ import { Box } from "../Box";
 import { TestThemeWrapper } from "../AllThemesWrapper";
 import { Checkbox } from ".";
 import "./styles.css";
+import "../ErrorText/styles.css";
 
 function unControlledContent() {
   return (
