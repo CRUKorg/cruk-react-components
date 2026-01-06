@@ -7,6 +7,7 @@ import "./styles.css";
 import "../ErrorText/styles.css";
 import "../TextField/styles.css";
 import "../IconFa/styles.css";
+import "../LabelWrapper/styles.css";
 
 export default {
   title: "AddressLookup",
