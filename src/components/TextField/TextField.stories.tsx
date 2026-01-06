@@ -10,6 +10,7 @@ import TextField from ".";
 import { fontSizes } from "../../types";
 import "./styles.css";
 import "../ErrorText/styles.css";
+import "../LabelWrapper/styles.css";
 
 export default {
   title: "TextField",

@@ -5,6 +5,7 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { Text, IconFa } from "..";
 import AllThemesWrapper from "../AllThemesWrapper";
 import Totaliser from ".";
+
 import "./styles.css";
 import "../Text/styles.css";
 import "../Box/styles.css";

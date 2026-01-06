@@ -9,6 +9,14 @@
   border: none;
   padding: 0;
 
+  .hint-text {
+    display: block;
+    font-family: var(--typ-font-family-label, "Poppins", Arial, sans-serif);
+    font-weight: var(--typ-font-weight-base, 300);
+    color: var(--clr-text-mid, #666);
+    margin-bottom: var(--spacing-xs, 1rem);
+  }
+
   legend {
     position: relative;
     display: block;
@@ -44,14 +52,6 @@
       .required-indication-text {
         font-family: var(--typ-font-family-label, "Poppins", Arial, sans-serif);
         font-weight: var(--typ-font-weight-base, 300);
-      }
-
-      .hint-text {
-        display: block;
-        font-family: var(--typ-font-family-label, "Poppins", Arial, sans-serif);
-        font-weight: var(--typ-font-weight-base, 300);
-        color: var(--clr-text-mid, #666);
-        margin-bottom: var(--spacing-xs, 1rem);
       }
     }
   }
