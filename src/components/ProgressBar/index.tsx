@@ -1,17 +1,5 @@
 import React, { type ReactNode } from "react";
 
-import {
-  ProgressBarWrapper,
-  CircularWrapper,
-  CircleSvg,
-  EmptyCircle,
-  FullCircle,
-  CircularValue,
-  LineProgressBarWrapper,
-  LineProgressBar,
-  ScreenReaderOnly,
-} from "./styles";
-
 const DEFAULT_CIRCLE_SIZE = "90px";
 
 export type ProgressBarProps = {
@@ -41,8 +29,8 @@ export function ProgressBar({
   isCircular,
   circleContents,
   circleSize,
-  barColor,
-  secondaryBarColor,
+  // barColor,
+  // secondaryBarColor,
   secondaryPercentage,
   children,
 }: ProgressBarProps) {
@@ -68,62 +56,97 @@ export function ProgressBar({
   const r = d / 2 - strokeWidth;
   const c = 2 * Math.PI * r;
 
+  const strokeDashOffset = c * (1 - percentageLimited / 100);
+  const secondaryStrokeDashOffset = c * (1 - secondaryPercentageLimited / 100);
   return (
-    <ProgressBarWrapper>
+    <div className="component-progress-bar">
       {isCircular ? (
-        <CircularWrapper $circleSize={circleSize || DEFAULT_CIRCLE_SIZE}>
-          <CircleSvg viewBox={`0 0 ${d} ${d}`}>
-            <EmptyCircle
-              cx={r + strokeWidth}
-              cy={r + strokeWidth}
-              r={r}
-              strokeWidth={strokeWidth}
-            />
-            <FullCircle
-              $isSecondary
-              $barColor={secondaryBarColor}
-              cx={r + strokeWidth}
-              cy={r + strokeWidth}
-              r={r}
-              strokeWidth={strokeWidth}
-              strokeDasharray={c}
-              strokeDashoffset={c * (1 - secondaryPercentageLimited / 100)}
-              $strokeDashoffsetInit={c}
-            />
-
-            <FullCircle
-              $barColor={barColor}
-              cx={r + strokeWidth}
-              cy={r + strokeWidth}
-              r={r}
-              strokeWidth={strokeWidth}
-              strokeDasharray={c}
-              strokeDashoffset={c * (1 - percentageLimited / 100)}
-              $strokeDashoffsetInit={c}
-            />
-          </CircleSvg>
-          <CircularValue>{textOrPercentString}</CircularValue>
-        </CircularWrapper>
-      ) : (
-        <LineProgressBarWrapper
-          $percentage={percentageLimited}
-          $secondaryPercentage={secondaryPercentageLimited}
+        <div
+          className="circular-wrapper"
+          style={{
+            width: circleSize || DEFAULT_CIRCLE_SIZE,
+            height: circleSize || DEFAULT_CIRCLE_SIZE,
+          }}
         >
-          <LineProgressBar
-            $isSecondary
-            $percentage={secondaryPercentageLimited}
-            $barColor={secondaryBarColor}
+          <svg className="circle-svg" viewBox={`0 0 ${d} ${d}`}>
+            <circle
+              className="empty-circle"
+              cx={r + strokeWidth}
+              cy={r + strokeWidth}
+              r={r}
+              strokeWidth={strokeWidth}
+            />
+            <circle
+              className="full-circle"
+              data-is-secondary="true"
+              cx={r + strokeWidth}
+              cy={r + strokeWidth}
+              r={r}
+              strokeWidth={strokeWidth}
+              strokeDasharray={c}
+              strokeDashoffset={secondaryStrokeDashOffset}
+              style={
+                {
+                  "--_stroke-dashoffset-init": c,
+                  "--_stroke-dashoffset": secondaryStrokeDashOffset,
+                } as React.CSSProperties
+              }
+            />
+
+            <circle
+              className="full-circle"
+              data-is-secondary="false"
+              cx={r + strokeWidth}
+              cy={r + strokeWidth}
+              r={r}
+              strokeWidth={strokeWidth}
+              strokeDasharray={c}
+              strokeDashoffset={strokeDashOffset}
+              style={
+                {
+                  "--_stroke-dashoffset-init": c,
+                  "--_stroke-dashoffset": strokeDashOffset,
+                } as React.CSSProperties
+              }
+            />
+          </svg>
+          <div className="circle-value">{textOrPercentString}</div>
+        </div>
+      ) : (
+        <div
+          className="line-progress-bar-wrapper"
+          data-is-complete={percentageLimited >= 100}
+        >
+          <div
+            className="line-progress-bar"
+            style={
+              {
+                width: `${secondaryPercentageLimited}%`,
+                "--_line-bar-width": `${secondaryPercentageLimited}%`,
+              } as React.CSSProperties
+            }
+            data-is-secondary="true"
+            data-is-complete={secondaryPercentageLimited >= 100}
           />
 
-          <LineProgressBar
-            $percentage={percentageLimited}
-            $barColor={barColor}
+          <div
+            className="line-progress-bar"
+            style={
+              {
+                width: `${percentageLimited}%`,
+                "--_line-bar-width": `${percentageLimited}%`,
+              } as React.CSSProperties
+            }
+            data-is-secondary="false"
+            data-is-complete={percentageLimited >= 100}
           />
-          <ScreenReaderOnly>{descriptivePercentageString}</ScreenReaderOnly>
-        </LineProgressBarWrapper>
+          <div className="screen-reader-only">
+            {descriptivePercentageString}
+          </div>
+        </div>
       )}
       {children}
-    </ProgressBarWrapper>
+    </div>
   );
 }
 

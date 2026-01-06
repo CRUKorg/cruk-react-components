@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.1.0] - 2025-01-06
+
+### Removed
+
+- No longer using Styled Components, all components share the same API but are written with pure HTML, CSS and React. Technically not a full breaking change because the API remains pretty much the same although `as={HTMLElement}` attribute used for polymorphism only works on specific components for specific elements now. [#1137](https://github.com/CRUKorg/cruk-react-components/issues/1137)
+- Removed Divider component
+- Removed Button size variants
+
+### Added
+
+- Added utility CSS classes "spacing-props", "color-props" and "text-props".
+- Adding `-webkit-font-smoothing: antialiased;` everywhere
+
+### Fixes
+
+- Updated readme demoing how to use and extend styles of components
+- Updated SU2C with new darker oranges
+- All SU2C themed components should be using accessible colours
+- Checkbox styling more closely matches Helix design
+
 ## [7.0.0] - 2025-12-14
 
 ### Breaking Changes
@@ -21,26 +41,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added font-smoothing to global styles [#1129](https://github.com/CRUKorg/cruk-react-components/issues/1104)
+- Added font-smoothing to global styles [#1129](https://github.com/CRUKorg/cruk-react-components/issues/1129)
 
 ## [6.2.2] - 2025-12-02
 
 ### Fixes
 
-- More fixes for radio consent to handle smaller screen widths more gracefully [#1126](https://github.com/CRUKorg/cruk-react-components/issues/1104)
+- More fixes for radio consent to handle smaller screen widths more gracefully [#1126](https://github.com/CRUKorg/cruk-react-components/issues/1126)
 
 ## [6.2.1] - 2025-12-02
 
 ### Fixes
 
-- Fixed radio consent to handle smaller screen widths more gracefully [#1126](https://github.com/CRUKorg/cruk-react-components/issues/1104)
+- Fixed radio consent to handle smaller screen widths more gracefully [#1126](https://github.com/CRUKorg/cruk-react-components/issues/1126)
 
 ## [6.2.0] - 2025-10-29
 
 ### Changed
 
-- Changed the input labels to match helix designs in size and colors [#1117](https://github.com/CRUKorg/cruk-react-components/issues/1104)
-- Changed step current dot styling so that the dot shows a block of color [#1116](https://github.com/CRUKorg/cruk-react-components/issues/1104)
+- Changed the input labels to match helix designs in size and colors [#1117](https://github.com/CRUKorg/cruk-react-components/issues/1117)
+- Changed step current dot styling so that the dot shows a block of color [#1116](https://github.com/CRUKorg/cruk-react-components/issues/11)
 
 ## [6.1.2] - 2025-10-29
 

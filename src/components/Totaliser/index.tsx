@@ -9,17 +9,7 @@ import { Text } from "../Text";
 import { Badge } from "../Badge";
 import { Box } from "../Box";
 
-import {
-  TotaliserWrapper,
-  CompactWrapper,
-  Summary,
-  BubbleWrapper,
-  BubbleText,
-  GiftAid,
-  Total,
-  ProgressBarWrapper,
-  StyledProgressBar,
-} from "./styles";
+import { ProgressBar } from "../ProgressBar";
 
 // TODO figure out how we want to handle AriaAttributes
 
@@ -61,13 +51,15 @@ export function Totaliser({
   )} target`;
 
   return (
-    <TotaliserWrapper $isCompact={isCompact || false}>
+    <div className="component-totaliser">
       {!isCompact ? (
-        <BubbleWrapper>
-          <BubbleText>Total raised</BubbleText>
-          <Total>£{formatMoneyWithCommas(total)}</Total>
-          <GiftAid>+ £{formatMoneyWithCommas(giftAid || 0)} Gift Aid</GiftAid>
-        </BubbleWrapper>
+        <div className="bubble-wrapper">
+          <p className="bubble-text">Total raised</p>
+          <p className="total">£{formatMoneyWithCommas(total)}</p>
+          <p className="gift-aid">
+            + £{formatMoneyWithCommas(giftAid || 0)} Gift Aid
+          </p>
+        </div>
       ) : (
         <Box marginHorizontal="none" marginRight="xxs" marginBottom="none">
           <Badge>{`£${formatMoneyWithCommas(total)}`}</Badge>
@@ -78,33 +70,36 @@ export function Totaliser({
 
       {(!!target || !!summaryMessage) && (
         <>
-          <ProgressBarWrapper $isCompact={isCompact || false}>
-            <StyledProgressBar
+          <div
+            className="progress-bar-wrapper"
+            data-is-compact={isCompact || false}
+          >
+            <ProgressBar
               percentage={percentageOfTotal}
               secondaryPercentage={withAdditionalPercentageOfTotal}
             />
             {!isCompact ? (
               summaryMessage ? (
-                <Summary>{summaryMessage}</Summary>
+                <span className="summary">{summaryMessage}</span>
               ) : (
-                <Summary>
+                <span className="summary">
                   <Text as="span">{summaryString}</Text>
-                </Summary>
+                </span>
               )
             ) : (
-              <CompactWrapper>
+              <div className="compact-wrapper">
                 {target !== null && (
-                  <Summary>
+                  <span className="summary">
                     <Text as="span">{summaryString}</Text>
-                  </Summary>
+                  </span>
                 )}
-              </CompactWrapper>
+              </div>
             )}
-          </ProgressBarWrapper>
+          </div>
         </>
       )}
       {children}
-    </TotaliserWrapper>
+    </div>
   );
 }
 

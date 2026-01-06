@@ -1,8 +1,9 @@
 import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
-import Link from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import Link from ".";
+import "./styles.css";
 
 export default {
   title: "Link",

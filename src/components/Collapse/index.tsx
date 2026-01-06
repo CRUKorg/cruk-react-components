@@ -8,21 +8,9 @@ import React, {
 } from "react";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-import {
-  themeColorOrString,
-  themeFontSizeOrString,
-} from "../../utils/themeUtils";
-
 import { IconFa } from "../IconFa";
 
-import { type FontSizeType } from "../../types";
-import {
-  CustomHeader,
-  DefaultHeader,
-  FlippingIcon,
-  CollapseContent,
-  transitionDurationSeconds,
-} from "./styles";
+import { type ColourVariableType, type FontSizeType } from "../../types";
 
 export type CollapseProps = HTMLAttributes<HTMLElement> & {
   /** id is required for a11y reasons as we use aria attributes which depends on an id  */
@@ -30,7 +18,7 @@ export type CollapseProps = HTMLAttributes<HTMLElement> & {
   /** text of collapse header, even if there is a custom header component this prop is still used for aria attributes */
   headerTitleText: string;
   /** collapse header text colour */
-  headerTitleTextColor?: string;
+  headerTitleTextColor?: ColourVariableType;
   /** collapse header text size */
   headerTitleTextSize?: FontSizeType;
   /** collapse header font family */
@@ -62,34 +50,22 @@ export function Collapse({
   children,
 }: CollapseProps) {
   const [openStatus, setOpenStatus] = useState(startOpen || false);
-  const [contentHeight, setContentHeight] = useState(
-    startOpen ? "initial" : "0",
-  );
+  const [isVisible, setIsVisible] = useState(startOpen ? true : false);
   const content = useRef<HTMLDivElement>(null);
   const transitionTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const textColour = headerTitleTextColor
-    ? themeColorOrString(headerTitleTextColor)
-    : "var(--clr-collapse-header, #00007e)";
-
   const toggleCollapse = () => {
-    const { current } = content;
-    if (transitionTimer?.current) clearTimeout(transitionTimer?.current);
     const newOpenState = !openStatus;
     setOpenStatus(newOpenState);
 
-    if (current !== null) {
-      setContentHeight(`${current.scrollHeight}px`);
-    }
-
     if (newOpenState === false) {
       // Allow height to be rendered before setting to 0 for animation.
-      setTimeout(() => setContentHeight("0"), 10);
-    } else {
       transitionTimer.current = setTimeout(
-        () => setContentHeight("initial"),
-        transitionDurationSeconds * 1000,
+        () => setIsVisible(false),
+        0.5 * 1000,
       );
+    } else {
+      setTimeout(() => setIsVisible(true), 0);
     }
     if (onOpenChange !== undefined) {
       onOpenChange(newOpenState);
@@ -111,16 +87,17 @@ export function Collapse({
     setOpenStatus(startOpen || false);
     // if start open changes then we want to set the height without animation
     if (startOpen) {
-      setContentHeight("initial");
+      setIsVisible(true);
     } else {
-      setContentHeight("0");
+      setIsVisible(false);
     }
   }, [startOpen]);
 
   return (
-    <div id={id}>
+    <div id={id} className="component-collapse">
       {headerComponent ? (
-        <CustomHeader
+        <div
+          className="custom-header"
           aria-controls={`${id}-header`}
           aria-expanded={openStatus}
           id={`${id}-header`}
@@ -132,36 +109,38 @@ export function Collapse({
           tabIndex={0}
         >
           {headerComponent}
-        </CustomHeader>
+        </div>
       ) : (
-        <DefaultHeader
+        <button
+          className={["default-header", "color-props", "text-props"].join(" ")}
+          id={`${id}-header`}
+          type="button"
+          onClick={toggleCollapse}
           aria-controls={`${id}-header`}
           aria-expanded={openStatus}
-          id={`${id}-header`}
-          onClick={toggleCollapse}
-          type="button"
-          appearance="tertiary"
-          $textColor={textColour}
-          $textSize={themeFontSizeOrString(headerTitleTextSize || "m")}
-          $textFontFamily={headerTitleTextFontFamily}
+          data-color={headerTitleTextColor}
+          data-text-size={headerTitleTextSize || "m"}
+          data-text-font-family={headerTitleTextFontFamily}
         >
-          {headerTitleText}
-          <FlippingIcon $open={openStatus}>
-            <IconFa faIcon={faChevronDown} />
-          </FlippingIcon>
-        </DefaultHeader>
+          <span className="spacer">{headerTitleText}</span>
+          <span className="spacer">
+            <span className="flipping-icon">
+              <IconFa faIcon={faChevronDown} />
+            </span>
+          </span>
+        </button>
       )}
-      <CollapseContent
+      <div
+        className="collapse-content"
         id={`${id}-content`}
         ref={content}
         role="region"
         aria-hidden={!openStatus}
+        data-is-visible={isVisible}
         aria-labelledby={`${id}-header`}
-        $contentHeight={contentHeight}
-        $openStatus={openStatus}
       >
-        {children}
-      </CollapseContent>
+        <div style={{ overflow: "hidden" }}>{children}</div>
+      </div>
     </div>
   );
 }

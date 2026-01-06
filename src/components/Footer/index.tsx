@@ -1,17 +1,6 @@
 import React, { type ReactNode, type HTMLAttributes } from "react";
 import { Text } from "../Text";
 
-import {
-  StyledFooter,
-  FooterContentWrapper,
-  FooterSection,
-  StyledAddress,
-  StyledRegulatorLogo,
-  StyledNav,
-  StyledUL,
-  StyledLI,
-  Bar,
-} from "./styles";
 import { type ThemeNameType } from "../../types";
 
 const footerTextCruk =
@@ -49,31 +38,35 @@ export function Footer({
   const childArray = React.Children.toArray(children);
 
   return (
-    <StyledFooter>
-      <Bar />
-      <FooterContentWrapper>
-        <FooterSection>
-          <StyledNav aria-label="footer links">
-            <StyledUL>
+    <footer className="component-footer">
+      <div className="footer-bar" />
+      <div className="footer-wrapper">
+        <div className="footer-section">
+          <nav className="footer-nav" aria-label="footer links">
+            <ul className="footer-ul">
               {childArray.length
                 ? childArray.map((child, index) => {
                     const footerLinkKey = `footerLink${index}`;
-                    return <StyledLI key={footerLinkKey}>{child}</StyledLI>;
+                    return (
+                      <li key={footerLinkKey} className="footer-li">
+                        {child}
+                      </li>
+                    );
                   })
                 : null}
-            </StyledUL>
-          </StyledNav>
-        </FooterSection>
-        <FooterSection>
-          <StyledRegulatorLogo
+            </ul>
+          </nav>
+        </div>
+        <div className="footer-section">
+          <img
+            className="footer-regulator-logo"
             width={130}
             height={40}
             alt="Registered with Fundraising Regulator"
             src="https://rcl.assets.cancerresearchuk.org/images/logos/fundreg.png"
           />
-        </FooterSection>
-
-        <FooterSection>
+        </div>
+        <div className="footer-section">
           {footerText ? (
             <Text textSize="m">{footerText}</Text>
           ) : (
@@ -81,17 +74,17 @@ export function Footer({
               <Text textSize="m" as="span">
                 {footerTextForTheme(themeName)} Registered address:
               </Text>
-              <StyledAddress>
+              <address className="footer-address">
                 <Text textSize="m" as="span">
                   {" "}
                   2 Redman Place, London, E20 1JQ
                 </Text>
-              </StyledAddress>
+              </address>
             </>
           )}
-        </FooterSection>
-      </FooterContentWrapper>
-    </StyledFooter>
+        </div>
+      </div>
+    </footer>
   );
 }
 

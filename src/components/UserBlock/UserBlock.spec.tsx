@@ -3,6 +3,11 @@ import React from "react";
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
 import { UserBlock } from ".";
+import "./styles.css";
+import "../Text/styles.css";
+import "../Box/styles.css";
+import "../IconFa/styles.css";
+import "../Avatar/styles.css";
 
 function component() {
   return (

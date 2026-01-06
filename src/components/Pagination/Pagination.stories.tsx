@@ -1,8 +1,9 @@
 import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
-import Pagination from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import Pagination from ".";
+import "./styles.css";
 
 export default {
   title: "Pagination",
@@ -20,7 +21,9 @@ type Story = StoryObj<typeof Pagination>;
 
 export const PaginationDefault: Story = {
   name: "PaginationDefault",
-  args: {},
+  args: {
+    current: 6,
+  },
   render: (args) => (
     <AllThemesWrapper>
       <Pagination {...args} />
@@ -31,7 +34,7 @@ export const PaginationDefault: Story = {
 export const PaginationFirstPage: Story = {
   name: "PaginationFirstPage",
   args: {
-    current: 6,
+    current: 1,
   },
   render: (args) => (
     <AllThemesWrapper>

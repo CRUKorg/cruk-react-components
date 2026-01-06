@@ -4,8 +4,13 @@ import { type StoryObj } from "@storybook/react-vite";
 import Radio from "../Radio";
 import CheckBox from "../Checkbox";
 
-import LegendWrapper, { type LegendWrapperProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import LegendWrapper, { type LegendWrapperProps } from ".";
+import "./styles.css";
+import "../ErrorText/styles.css";
+import "../Radio/styles.css";
+import "../Checkbox/styles.css";
+import "../LabelWrapper/styles.css";
 
 export default {
   title: "Legend Wrapper",

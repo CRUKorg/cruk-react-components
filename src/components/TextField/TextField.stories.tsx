@@ -5,8 +5,12 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Button from "../Button";
 import IconFa from "../IconFa";
 
-import TextField from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import TextField from ".";
+import { fontSizes } from "../../types";
+import "./styles.css";
+import "../ErrorText/styles.css";
+import "../LabelWrapper/styles.css";
 
 export default {
   title: "TextField",
@@ -21,6 +25,17 @@ export default {
     errorMessage: undefined,
     extraLeft: "",
     extraRight: "",
+  },
+  argTypes: {
+    isValid: { control: "boolean" },
+    isValidVisible: { control: "boolean" },
+    isInvalidVisible: { control: "boolean" },
+    hasError: { control: "boolean" },
+    errorMessage: { control: "text" },
+    textSize: {
+      control: { type: "select" },
+      options: [...fontSizes],
+    },
   },
   tags: ["autodocs"],
 };

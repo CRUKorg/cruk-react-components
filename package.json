@@ -1,6 +1,6 @@
 {
   "name": "@cruk/cruk-react-components",
-  "version": "7.0.0",
+  "version": "7.1.0",
   "description": "React components implementing CRUK, RFL, SU2C & Bowelbabe designs",
   "license": "MIT",
   "publishConfig": {
@@ -54,6 +54,7 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
+    "@swc/core": "1.9.3",
     "@storybook/addon-a11y": "^10",
     "@storybook/addon-docs": "^10",
     "@storybook/addon-links": "^10",
@@ -89,19 +90,15 @@
   },
   "peerDependencies": {
     "react": "^19",
-    "react-dom": "^19",
-    "styled-components": "^6.1.11"
+    "react-dom": "^19"
   },
   "dependencies": {
     "@fortawesome/fontawesome-common-types": "^7",
     "@fortawesome/free-brands-svg-icons": "^7",
     "@fortawesome/free-solid-svg-icons": "^7",
-    "@swc/core": "1.9.3",
-    "@swc/plugin-styled-components": "^10",
     "react-focus-lock": "^2.13.6",
     "react-intersection-observer": "^10.0.0",
     "react-is": "^19",
-    "styled-components": "^6.1.11",
     "vite": "^7"
   }
 }

@@ -3,6 +3,7 @@ import React from "react";
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
 import { Link } from ".";
+import "./styles.css";
 
 function component() {
   return (
@@ -31,11 +32,7 @@ function component() {
         </Link>
       </div>
       <div>
-        <Link
-          href="https://www.google.com"
-          textColor="secondary"
-          textHoverColor="#004400"
-        >
+        <Link href="https://www.google.com" textColor="secondary">
           Link using different colours
         </Link>
       </div>

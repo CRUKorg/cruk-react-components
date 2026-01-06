@@ -4,6 +4,7 @@ import { testAccessibilityOnAllThemes } from "playwright/utils";
 
 import { Box } from ".";
 import { Text } from "..";
+import "./styles.css";
 
 function component() {
   return (

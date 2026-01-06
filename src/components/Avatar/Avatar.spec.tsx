@@ -2,6 +2,7 @@ import React from "react";
 
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 import { Avatar } from ".";
+import "./styles.css";
 
 function component() {
   return (

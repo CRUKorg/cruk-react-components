@@ -4,6 +4,7 @@ import { testAccessibilityOnAllThemes } from "playwright/utils";
 
 import { Footer } from ".";
 import { Link } from "..";
+import "./styles.css";
 
 function component() {
   return (

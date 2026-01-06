@@ -1,6 +1,5 @@
 import React, { type ImgHTMLAttributes } from "react";
 
-import { StyledAvatar } from "./styles";
 import { type ThemeNameType } from "../../types";
 
 const crukAvatarBaseUrl =
@@ -63,15 +62,17 @@ export function Avatar({
   /** image url */
   url?: string;
   /** image size */
-  size?: "s" | "m" | "l" | "xl";
+  size?: "s" | "m" | "l" | "xl" | "full";
   themeName?: ThemeNameType;
+  styles?: React.CSSProperties;
 }) {
   return (
-    <StyledAvatar
-      {...rest}
-      $size={size}
+    <img
+      className="component-avatar"
+      data-size={size}
       src={avatarUrl({ url, name, themeName })}
       alt={alt}
+      {...rest}
     />
   );
 }

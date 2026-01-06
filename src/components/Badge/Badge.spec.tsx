@@ -11,6 +11,7 @@ import { testAccessibilityOnAllThemes } from "playwright/utils";
 
 import { Badge } from ".";
 import { IconFa } from "..";
+import "./styles.css";
 
 function component() {
   return (
@@ -24,9 +25,9 @@ function component() {
       <Badge backgroundColor="tertiary">
         <IconFa faIcon={faBullhorn} />
       </Badge>
-      <Badge backgroundColor="#8bc34a">2</Badge>
+      <Badge backgroundColor="success">2</Badge>
       <Badge
-        backgroundColor="textLight"
+        backgroundColor="text-light"
         textColor="tertiary"
         borderColor="tertiary"
       >

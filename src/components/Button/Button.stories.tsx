@@ -5,6 +5,9 @@ import { faClock } from "@fortawesome/free-solid-svg-icons";
 import IconFa from "../IconFa";
 
 import { Button } from "./";
+import "./styles.css";
+import "../IconFa/styles.css";
+
 import AllThemesWrapper from "../AllThemesWrapper";
 
 export default {
@@ -15,7 +18,25 @@ export default {
     disabled: false,
     children: "A button",
     full: false,
-    size: "m",
+  },
+  argTypes: {
+    full: {
+      control: "boolean",
+    },
+    isIconButton: {
+      control: "boolean",
+    },
+    appearance: {
+      control: "select",
+      options: ["primary", "secondary", "tertiary", ""],
+    },
+    as: {
+      control: "select",
+      options: ["button", "a", "div"],
+    },
+    href: {
+      control: "text",
+    },
   },
   tags: ["autodocs"],
 };
@@ -82,10 +103,23 @@ export const WithIcons: Story = {
   args: {
     children: (
       <>
-        <IconFa faIcon={faClock} />A Button
+        <IconFa faIcon={faClock} />
+        <span>A Button</span>
         <IconFa faIcon={faClock} />
       </>
     ),
+  },
+  render: (args) => (
+    <AllThemesWrapper>
+      <Button {...args} />
+    </AllThemesWrapper>
+  ),
+};
+
+export const IconButton: Story = {
+  name: "IconButton",
+  args: {
+    children: <IconFa faIcon={faClock} size="s" />,
   },
   render: (args) => (
     <AllThemesWrapper>

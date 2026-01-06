@@ -3,8 +3,13 @@ import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
-import { InfoBox } from ".";
 import { IconFa, Text } from "..";
+import { InfoBox } from ".";
+import "./styles.css";
+import "../Text/styles.css";
+import "../Box/styles.css";
+import "../IconFa/styles.css";
+import "../Heading/styles.css";
 
 function component() {
   return (
@@ -14,9 +19,7 @@ function component() {
         titleTextColor="text-dark"
         descriptionText="This is a description block for the infobox with children"
         descriptionTextColor="text-dark"
-        icon={
-          <IconFa faIcon={faTriangleExclamation} color="danger" size="2em" />
-        }
+        icon={<IconFa faIcon={faTriangleExclamation} color="danger" size="m" />}
       >
         <Text color="#000" marginBottom="xs">
           This is children text block for infobox component

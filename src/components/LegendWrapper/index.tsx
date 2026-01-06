@@ -2,8 +2,6 @@ import React, { type HTMLAttributes, type ReactNode } from "react";
 
 import { ErrorText } from "../ErrorText";
 
-import { StyledFieldset, LegendSpan, HintText } from "./styles";
-
 export type LegendWrapperProps = HTMLAttributes<HTMLLegendElement> & {
   children?: ReactNode;
   /** legend text */
@@ -32,29 +30,31 @@ export function LegendWrapper({
   hintText,
   ...restOfHTMLAttributes
 }: LegendWrapperProps) {
-  const hintTextElement =
-    !!hintText &&
-    (typeof hintText === "string" || typeof hintText === "number") ? (
-      <HintText>{hintText}</HintText>
-    ) : (
-      hintText
-    );
   return (
-    <StyledFieldset
-      $hasError={hasError || !!errorMessage || false}
-      $hasHintText={!!hintText}
+    <fieldset
+      className="component-legend-wrapper"
+      data-has-error={hasError || !!errorMessage || false}
+      data-has-hint-text={!!hintText}
     >
       {legendText && (
         <legend {...restOfHTMLAttributes}>
-          <LegendSpan $hasHintText={!!hintText}>
-            {legendText} {!required && <span>(optional)</span>}
-          </LegendSpan>
-          {hintTextElement}
+          <span className="legend-span" data-has-hint-text={!!hintText}>
+            {legendText}{" "}
+            {!required && (
+              <span className="required-indication-text">(optional)</span>
+            )}
+          </span>
+          {!!hintText &&
+          (typeof hintText === "string" || typeof hintText === "number") ? (
+            <span className="hint-text">{hintText}</span>
+          ) : (
+            hintText
+          )}
         </legend>
       )}
       {children}
       {!!errorMessage && <ErrorText marginTop="xxs">{errorMessage}</ErrorText>}
-    </StyledFieldset>
+    </fieldset>
   );
 }
 

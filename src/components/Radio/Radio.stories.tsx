@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
 import { Box } from "..";
-import Radio, { type RadioProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import Radio, { type RadioProps } from ".";
+import "./styles.css";
+import "../ErrorText/styles.css";
 
 const FullComponentWithRadios = (args: RadioProps) => {
   const [selected, setSelected] = useState("one");
@@ -49,6 +51,14 @@ export default {
     disabled: false,
     hasError: false,
     errorMessage: "",
+  },
+  argTypes: {
+    hasError: {
+      control: { type: "boolean" },
+    },
+    errorMessage: {
+      control: { type: "text" },
+    },
   },
   tags: ["autodocs"],
 };

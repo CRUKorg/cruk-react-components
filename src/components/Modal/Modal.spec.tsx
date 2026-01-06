@@ -1,11 +1,12 @@
 import React from "react";
 import { test, expect } from "@playwright/experimental-ct-react";
 
-import { TestModalWithState } from "./TestModalWithState";
-import { TestModalWithContent } from "./TestModalWithContent";
-
 import { testAccessibilityForTheme } from "playwright/utils";
 import { TestThemeWrapper } from "../AllThemesWrapper";
+
+import { TestModalWithState } from "./TestModalWithState";
+import { TestModalWithContent } from "./TestModalWithContent";
+import "./styles.css";
 
 // we have to pump theme into the content as well as the theme wrapper because of react portals ignoring the theme wrapper
 testAccessibilityForTheme({

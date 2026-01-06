@@ -4,12 +4,12 @@ import {
   faEye,
   faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
-import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
 
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
 import { Button } from ".";
 import { IconFa, Box } from "..";
+import "./styles.css";
 
 function component() {
   return (
@@ -26,7 +26,6 @@ function component() {
       <Button disabled appearance="tertiary">
         Disabled secondary
       </Button>
-      <Button size="l">Large button</Button>
       <Button>
         <IconFa faIcon={faEye} />
         Icon with text
@@ -40,13 +39,9 @@ function component() {
         Icon either side
         <IconFa faIcon={faEye} />
       </Button>
-      <Button href="https://www.styled-components.com/">Link as Button</Button>
+      <Button href="https://cancerresearchuk.org/">Link as Button</Button>
       <Button aria-label="Upload a photo">
         <IconFa faIcon={faCamera} />
-      </Button>
-      <Button css="background-color: #4267b2;border-color: #4267b2; color: white !important; :hover {background-color: #365899; border-color:  #365899; color: white !important;}">
-        <IconFa faIcon={faFacebookSquare} size="18px" />
-        Continue with facebook
       </Button>
       <Button full>Full width Button</Button>
     </Box>

@@ -1,8 +1,11 @@
 import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
-import Select, { type SelectProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import Select, { type SelectProps } from ".";
+import "./styles.css";
+import "../ErrorText/styles.css";
+import "../LabelWrapper/styles.css";
 
 export default {
   title: "Select",

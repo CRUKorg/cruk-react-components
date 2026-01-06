@@ -2,8 +2,11 @@ import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
 import { Box } from "..";
-import CheckBox, { type CheckBoxProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import CheckBox from ".";
+import "./styles.css";
+import "../ErrorText/styles.css";
+import "../Box/styles.css";
 
 export default {
   title: "CheckBox",
@@ -20,7 +23,9 @@ export default {
 
 type Story = StoryObj<typeof CheckBox>;
 
-const FullComponentWithCheckboxes = (args: CheckBoxProps) => {
+const FullComponentWithCheckboxes = (
+  args: React.ComponentProps<typeof CheckBox>,
+) => {
   const [selected, setSelected] = React.useState<string[]>(["one"]);
 
   const id = React.useId();

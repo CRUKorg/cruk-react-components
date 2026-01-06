@@ -3,6 +3,9 @@ import React from "react";
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
 import { Radio } from ".";
+import "./styles.css";
+import "../ErrorText/styles.css";
+
 function unControlledContent() {
   return (
     <>

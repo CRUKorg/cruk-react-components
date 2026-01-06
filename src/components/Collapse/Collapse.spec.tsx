@@ -2,12 +2,14 @@ import React from "react";
 
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
-import { Collapse } from ".";
 import { Text, Box } from "..";
+import { Collapse } from ".";
+import "./styles.css";
+import "../Box/styles.css";
 
 function component() {
   return (
-    <Box backgroundColor="bglight">
+    <Box backgroundColor="background-light">
       <Collapse headerTitleText="What is Lorem Ipsum?" id="default">
         <Text>
           {`Lorem Ipsum is simply dummy text of the printing and typesetting

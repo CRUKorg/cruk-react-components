@@ -4,6 +4,11 @@ import { faClock } from "@fortawesome/free-solid-svg-icons";
 
 import { Text, IconFa } from "..";
 import UserBlock from ".";
+import "./styles.css";
+import "../Text/styles.css";
+import "../Box/styles.css";
+import "../IconFa/styles.css";
+import "../Avatar/styles.css";
 
 export default {
   title: "UserBlock (experimental)",

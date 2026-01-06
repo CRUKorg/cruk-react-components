@@ -3,6 +3,9 @@ import { type StoryObj } from "@storybook/react-vite";
 
 import TextAreaField from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import "./styles.css";
+import "../ErrorText/styles.css";
+import "../LabelWrapper/styles.css";
 
 export default {
   title: "TextAreaField",
@@ -13,10 +16,34 @@ export default {
     required: false,
     label: "TextAreaField",
     hintText: "hint text",
-    resize: "horizontal",
+    resize: "vertical",
     lineCount: 5,
     hasError: false,
     errorMessage: undefined,
+  },
+  argTypes: {
+    resize: {
+      control: { type: "select" },
+      options: ["both", "vertical", "horizontal", "none"],
+    },
+    lineCount: {
+      control: { type: "number", min: 1, max: 20, step: 1 },
+    },
+    hasError: {
+      control: { type: "boolean" },
+    },
+    errorMessage: {
+      control: { type: "text" },
+    },
+    hintText: {
+      control: { type: "text" },
+    },
+    disabled: {
+      control: { type: "boolean" },
+    },
+    required: {
+      control: { type: "boolean" },
+    },
   },
   tags: ["autodocs"],
 };

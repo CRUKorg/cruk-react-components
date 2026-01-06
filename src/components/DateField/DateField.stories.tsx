@@ -1,8 +1,12 @@
 import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
-import DateField from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import DateField from ".";
+import "./styles.css";
+import "../ErrorText/styles.css";
+import "../TextField/styles.css";
+import "../LabelWrapper/styles.css";
 
 export default {
   title: "DateField",
@@ -28,6 +32,9 @@ export default {
     monthHasError: false,
     yearHasError: false,
     errorMessage: "",
+  },
+  argTypes: {
+    errorMessage: { control: "text" },
   },
   tags: ["autodocs"],
 };

@@ -3,8 +3,9 @@ import { test, expect } from "@playwright/experimental-ct-react";
 
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
-import { Header } from ".";
 import { Button } from "..";
+import { Header } from ".";
+import "./styles.css";
 
 import { TestThemeWrapper } from "../AllThemesWrapper";
 

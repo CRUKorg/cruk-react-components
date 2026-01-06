@@ -1,0 +1,15 @@
+.component-error-text {
+  word-break: normal;
+  overflow-wrap: break-word;
+  text-align: left;
+  font-size: var(--font-size-m, 1rem);
+  line-height: var(--typ-line-height, 1.5em);
+  padding: 0;
+  margin: 0;
+  margin-bottom: var(--spacing-xs, 1rem);
+
+  display: inline-block;
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
+  font-weight: var(--typ-font-weight-heavy, 700);
+  color: var(--clr-danger, #d51311);
+}

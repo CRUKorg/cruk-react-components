@@ -3,6 +3,7 @@ import { type StoryObj } from "@storybook/react-vite";
 
 import { Button } from "..";
 import Header from ".";
+import "./styles.css";
 
 const Line = () => (
   <div

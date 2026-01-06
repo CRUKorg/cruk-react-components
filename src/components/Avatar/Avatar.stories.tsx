@@ -2,6 +2,7 @@ import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
 import { Avatar } from ".";
+import "./styles.css";
 
 const Line = () => (
   <div
