@@ -6,7 +6,7 @@ import RadioConsent from ".";
 import "./styles.css";
 import "../ErrorText/styles.css";
 import "../Radio/styles.css";
-import "../Label/styles.css";
+import "../LabelWrapper/styles.css";
 
 export default {
   title: "RadioConsent (experimental)",

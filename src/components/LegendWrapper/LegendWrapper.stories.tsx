@@ -10,7 +10,7 @@ import "./styles.css";
 import "../ErrorText/styles.css";
 import "../Radio/styles.css";
 import "../Checkbox/styles.css";
-import "../Label/styles.css";
+import "../LabelWrapper/styles.css";
 
 export default {
   title: "Legend Wrapper",

@@ -5,7 +5,7 @@ import { testAccessibilityOnAllThemes } from "playwright/utils";
 import { TextAreaField } from ".";
 import "./styles.css";
 import "../ErrorText/styles.css";
-import "../Label/styles.css";
+import "../LabelWrapper/styles.css";
 
 function component() {
   return (

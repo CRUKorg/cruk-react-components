@@ -8,7 +8,7 @@ import { TestThemeWrapper } from "../AllThemesWrapper";
 import { Select } from ".";
 import "./styles.css";
 import "../ErrorText/styles.css";
-import "../Label/styles.css";
+import "../LabelWrapper/styles.css";
 
 const component = () => (
   <>
