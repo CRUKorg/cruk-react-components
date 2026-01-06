@@ -44,7 +44,6 @@
     font-weight: var(--typ-font-weight-base, 300);
     font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
     padding: calc((var(--_min-height, 48px) - 1em) / 2) var(--spacing-xs, 1rem);
-    padding: calc((var(--_min-height, 48px) - 1em) / 2) var(--spacing-xs, 1rem);
     margin: 0;
     line-height: 1rem;
     width: auto;
@@ -105,8 +104,6 @@
       top: 0;
       background-repeat: no-repeat;
       background-position: calc(100% - var(--spacing-xxs, 0.5rem)) 50%;
-
-      /* display: none; */
     }
     &[data-is-valid-visible="true"] {
       display: block;

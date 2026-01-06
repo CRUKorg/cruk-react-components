@@ -51,7 +51,7 @@ export function Totaliser({
   )} target`;
 
   return (
-    <div className="component-totaliser" data-is-compact={isCompact || false}>
+    <div className="component-totaliser">
       {!isCompact ? (
         <div className="bubble-wrapper">
           <p className="bubble-text">Total raised</p>

@@ -2,7 +2,7 @@
   cursor: auto;
   background-color: var(--clr-background-light, #ffffff);
   background-image: none;
-  border: solid 1px var(--clr-text-input-border, #2e2d2c);
+  border: solid var(--size-border-width, 1px) var(--clr-text-input-border, #2e2d2c);
   color: var(--clr-text-dark, #000000);
   display: block;
   font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);

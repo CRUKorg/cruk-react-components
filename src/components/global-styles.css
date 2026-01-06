@@ -1357,7 +1357,7 @@ button {
   body &[data-bg-color="text-light"] {
     background-color: var(--clr-text-light);
   }
-  &[data-bg-color="text-mid"] {
+  body &[data-bg-color="text-mid"] {
     background-color: var(--clr-text-mid);
   }
 
