@@ -6,6 +6,7 @@ import AllThemesWrapper from "../AllThemesWrapper";
 import Box from ".";
 
 import "./styles.css";
+import "../Text/styles.css";
 
 import { colours } from "../../types";
 

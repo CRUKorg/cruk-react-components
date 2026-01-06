@@ -5,6 +5,8 @@ import AllThemesWrapper from "../AllThemesWrapper";
 import { Button, Text } from "..";
 import Carousel from ".";
 import "./styles.css";
+import "../Button/styles.css";
+import "../Text/styles.css";
 
 function Item({ children }: { children: React.ReactNode }) {
   return (

@@ -6,6 +6,7 @@ import AllThemesWrapper from "../AllThemesWrapper";
 import CheckBox from ".";
 import "./styles.css";
 import "../ErrorText/styles.css";
+import "../Box/styles.css";
 
 export default {
   title: "CheckBox",

@@ -6,6 +6,10 @@ import { testAccessibilityOnAllThemes } from "playwright/utils";
 import { IconFa, Text } from "..";
 import { InfoBox } from ".";
 import "./styles.css";
+import "../Text/styles.css";
+import "../Box/styles.css";
+import "../IconFa/styles.css";
+import "../Heading/styles.css";
 
 function component() {
   return (

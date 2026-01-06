@@ -5,6 +5,7 @@ import { testAccessibilityOnAllThemes } from "playwright/utils";
 import { Text, Box } from "..";
 import { Collapse } from ".";
 import "./styles.css";
+import "../Box/styles.css";
 
 function component() {
   return (

@@ -6,6 +6,10 @@ import { Text, IconFa } from "..";
 import AllThemesWrapper from "../AllThemesWrapper";
 import Totaliser from ".";
 import "./styles.css";
+import "../Text/styles.css";
+import "../Box/styles.css";
+import "../IconFa/styles.css";
+import "../Badge/styles.css";
 
 export default {
   title: "Totaliser (experimental)",

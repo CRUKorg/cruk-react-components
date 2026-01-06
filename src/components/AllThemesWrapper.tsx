@@ -12,6 +12,10 @@ function Line() {
         height: "1px",
         backgroundColor: "#000",
         margin: "1em 0",
+        color: "black",
+        borderStyle: "solid",
+        borderWidth: "1px",
+        borderBottom: "0px",
       }}
     />
   );

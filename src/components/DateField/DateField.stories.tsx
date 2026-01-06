@@ -5,6 +5,8 @@ import AllThemesWrapper from "../AllThemesWrapper";
 import DateField from ".";
 import "./styles.css";
 import "../ErrorText/styles.css";
+import "../TextField/styles.css";
+import "../Label/styles.css";
 
 export default {
   title: "DateField",

@@ -4,6 +4,7 @@ import { type StoryObj } from "@storybook/react-vite";
 import AllThemesWrapper from "../AllThemesWrapper";
 import ErrorText from ".";
 import "./styles.css";
+import "../Text/styles.css";
 
 import {
   colours,

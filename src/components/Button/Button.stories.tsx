@@ -6,6 +6,7 @@ import IconFa from "../IconFa";
 
 import { Button } from "./";
 import "./styles.css";
+import "../IconFa/styles.css";
 
 import AllThemesWrapper from "../AllThemesWrapper";
 

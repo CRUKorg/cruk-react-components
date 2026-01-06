@@ -8,6 +8,9 @@ import AllThemesWrapper from "../AllThemesWrapper";
 import LegendWrapper, { type LegendWrapperProps } from ".";
 import "./styles.css";
 import "../ErrorText/styles.css";
+import "../Radio/styles.css";
+import "../Checkbox/styles.css";
+import "../Label/styles.css";
 
 export default {
   title: "Legend Wrapper",

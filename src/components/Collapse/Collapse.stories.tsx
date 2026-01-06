@@ -5,6 +5,8 @@ import { Text, Box } from "..";
 import AllThemesWrapper from "../AllThemesWrapper";
 import Collapse from ".";
 import "./styles.css";
+import "../Box/styles.css";
+import "../Text/styles.css";
 
 export default {
   title: "Collapse (experimental)",
