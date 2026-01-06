@@ -5,6 +5,7 @@ import { testAccessibilityOnAllThemes } from "playwright/utils";
 import { Heading, Box, Radio, Checkbox } from "..";
 import { LegendWrapper } from ".";
 import "./styles.css";
+import "../ErrorText/styles.css";
 
 function component() {
   return (
