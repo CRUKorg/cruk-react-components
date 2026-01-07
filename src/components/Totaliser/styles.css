@@ -14,21 +14,21 @@
   }
 
   .progress-bar-wrapper {
-    padding: 0 46px 12px;
+    padding: 0;
     margin-top: var(--spacing-s, 1.5rem);
     position: relative;
 
     &:not([data-is-compact="true"]) {
-      padding: 0;
+      padding: 0 3rem 1rem;
       border: none;
       div > div > div:not(:first-child) {
         &:after {
           content: "▼";
           color: var(--clr-totaliser-bubble, #f2f2f2);
           position: absolute;
-          top: -36px;
-          right: -15px;
-          font-size: 32px;
+          top: -1.75rem;
+          right: -1rem;
+          font-size: 2rem;
         }
       }
     }
