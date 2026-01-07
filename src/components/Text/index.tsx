@@ -38,8 +38,23 @@ export const Text = ({
   ColourProps &
   SpacingProps &
   TextProps & {
-    as?: "span" | "div" | "p" | "address";
-    ref?: Ref<HTMLSpanElement | HTMLDivElement | HTMLParagraphElement>;
+    as?:
+      | "span"
+      | "div"
+      | "p"
+      | "address"
+      | "h1"
+      | "h2"
+      | "h3"
+      | "h4"
+      | "h5"
+      | "h6";
+    ref?: Ref<
+      | HTMLSpanElement
+      | HTMLDivElement
+      | HTMLParagraphElement
+      | HTMLHeadingElement
+    >;
     style?: React.CSSProperties;
   }) => {
   const convertedProps = {
@@ -71,7 +86,7 @@ export const Text = ({
 
   return (
     <>
-      {(!as || as === "p") && (
+      {!as || as === "p" ? (
         <p
           className={[
             "component-text",
@@ -83,8 +98,8 @@ export const Text = ({
           {...htmlAttributes}
           {...convertedPropsFiltered}
         />
-      )}
-      {as === "div" && (
+      ) : null}
+      {as === "div" ? (
         <div
           className={[
             "component-text",
@@ -96,8 +111,8 @@ export const Text = ({
           {...htmlAttributes}
           {...convertedPropsFiltered}
         />
-      )}
-      {as === "span" && (
+      ) : null}
+      {as === "span" ? (
         <span
           className={[
             "component-text",
@@ -109,8 +124,8 @@ export const Text = ({
           {...htmlAttributes}
           {...convertedPropsFiltered}
         />
-      )}
-      {as === "address" && (
+      ) : null}
+      {as === "address" ? (
         <address
           className={[
             "component-text",
@@ -122,7 +137,85 @@ export const Text = ({
           {...htmlAttributes}
           {...convertedPropsFiltered}
         />
-      )}
+      ) : null}
+      {as === "h1" ? (
+        <h1
+          className={[
+            "component-text",
+            "text-props",
+            "spacing-props",
+            "color-props",
+          ].join(" ")}
+          ref={ref as Ref<HTMLHeadingElement>}
+          {...htmlAttributes}
+          {...convertedPropsFiltered}
+        />
+      ) : null}
+      {as === "h2" ? (
+        <h2
+          className={[
+            "component-text",
+            "text-props",
+            "spacing-props",
+            "color-props",
+          ].join(" ")}
+          ref={ref as Ref<HTMLHeadingElement>}
+          {...htmlAttributes}
+          {...convertedPropsFiltered}
+        />
+      ) : null}
+      {as === "h3" ? (
+        <h3
+          className={[
+            "component-text",
+            "text-props",
+            "spacing-props",
+            "color-props",
+          ].join(" ")}
+          ref={ref as Ref<HTMLHeadingElement>}
+          {...htmlAttributes}
+          {...convertedPropsFiltered}
+        />
+      ) : null}
+      {as === "h4" ? (
+        <h4
+          className={[
+            "component-text",
+            "text-props",
+            "spacing-props",
+            "color-props",
+          ].join(" ")}
+          ref={ref as Ref<HTMLHeadingElement>}
+          {...htmlAttributes}
+          {...convertedPropsFiltered}
+        />
+      ) : null}
+      {as === "h5" ? (
+        <h5
+          className={[
+            "component-text",
+            "text-props",
+            "spacing-props",
+            "color-props",
+          ].join(" ")}
+          ref={ref as Ref<HTMLHeadingElement>}
+          {...htmlAttributes}
+          {...convertedPropsFiltered}
+        />
+      ) : null}
+      {as === "h6" ? (
+        <h6
+          className={[
+            "component-text",
+            "text-props",
+            "spacing-props",
+            "color-props",
+          ].join(" ")}
+          ref={ref as Ref<HTMLHeadingElement>}
+          {...htmlAttributes}
+          {...convertedPropsFiltered}
+        />
+      ) : null}
     </>
   );
 };

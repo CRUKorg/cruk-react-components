@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.1.3] - 2025-01-07
+
+### Added
+
+- Better support for Text component as prop, which can now output as H tags. [#1143](https://github.com/CRUKorg/cruk-react-components/issues/1143)
+
 ## [7.1.2] - 2025-01-07
 
 ### Fixes

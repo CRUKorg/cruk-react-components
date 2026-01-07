@@ -23,6 +23,10 @@ export default {
     textColor: "text-dark",
   },
   argTypes: {
+    as: {
+      control: "select",
+      options: ["", "p", "span", "div", "h1", "h2", "h3", "h4", "h5", "h6"],
+    },
     margin: {
       control: "select",
       options: ["none", "xxs", "xs", "s", "m", "l", "xl", "auto", ""],
