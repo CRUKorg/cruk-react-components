@@ -8,7 +8,7 @@
   --_box-shadow: none;
   --_container_top: auto;
   --_container_position: relative;
-  --_sticky-container-height: 100%;
+  --_sticky-container-height: var(--_header-height, 72px);
   --_header-content-max-width: var(--content-max-width, 1000px);
   --_logo-height: var(--_header-logo-height-small, 40px);
   --_tagline-opacity: 0;
@@ -29,7 +29,10 @@
     --_box-shadow: var(--shadow-l);
     --_container_top: 0;
     --_container_position: fixed;
-    --_sticky-container-height: var(--_header-height, 72px);
+  }
+
+  &:not([data-is-sticky="true"]) {
+    --_sticky-container-height: 100%;
   }
 
   @media (min-width: 992px) {
@@ -54,24 +57,15 @@
 
   .header-sticky-container {
     box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    padding: 0 var(--_header-padding, 1rem);
-    background-color: var(--clr-header-background, #ffffff);
-    position: relative;
-    border-bottom: solid 1px var(--clr-header-border, #e6e6e6);
-    height: var(--_header-height, 72px);
-
-    box-shadow: var(--_box-shadow, none);
-    top: var(--_container_top, auto);
-    box-sizing: border-box;
-    width: 100%;
-    height: var(--_sticky-container-height, 100%);
-    padding: 0 var(--_header-padding, 1rem);
-    background-color: var(--clr-header-background, #ffffff);
-    position: relative;
-    border-bottom: solid 1px var(--clr-header-border, #e6e6e6);
     position: var(--_container_position, relative);
+    top: var(--_container_top, auto);
+    width: 100%;
+    height: var(--_sticky-container-height, 72px);
+
+    padding: 0 var(--_header-padding, 1rem);
+    background-color: var(--clr-header-background, #ffffff);
+    box-shadow: var(--_box-shadow, none);
+    border-bottom: solid 1px var(--clr-header-border, #e6e6e6);
 
     transition: height var(--_animation-speed, 0.2s) ease;
   }

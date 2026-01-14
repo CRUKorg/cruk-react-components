@@ -41,7 +41,7 @@ export function UserBlock({
       />
       <div className="details">
         <p className="name">{name || "Anonymous"}</p>
-        {!!extra && <p className="extra">{extra}</p>}
+        {!!extra && <span className="extra">{extra}</span>}
       </div>
     </div>
   );

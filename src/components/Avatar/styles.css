@@ -4,6 +4,7 @@
   --avatar-size-l: 64px;
   --avatar-size-xl: 128px;
 
+  --_avatar-size: var(--avatar-size-m);
   &[data-size="s"] {
     --_avatar-size: var(--avatar-size-s);
   }
@@ -22,8 +23,7 @@
 
   height: var(--_avatar-size);
   width: var(--_avatar-size);
-  --_avatar-size: var(--avatar-size-m);
-  --_avatar-size: var(--avatar-size-$ {({$size}) => $size});
+
   box-sizing: border-box;
   border-radius: 50%;
   object-fit: cover;

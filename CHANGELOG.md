@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.1.4] - 2025-01-14
+
+### Fixes
+
+- Compilation errors caused for bundlers with Avatar css. [#1145](https://github.com/CRUKorg/cruk-react-components/issues/1145)
+- Userblock extra section is a span not p tag, allowing p tags to be children without throwing errors
+
 ## [7.1.3] - 2025-01-07
 
 ### Added
