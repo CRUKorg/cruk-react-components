@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixes
 
 - Compilation errors caused for bundlers with Avatar css. [#1145](https://github.com/CRUKorg/cruk-react-components/issues/1145)
+- Userblock extra section is a span not p tag, allowing p tags to be children without throwing errors
 
 ## [7.1.3] - 2025-01-07
 
