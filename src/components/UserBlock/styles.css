@@ -20,6 +20,7 @@
   }
 
   .extra {
+    display: block;
     color: var(--clr-user-block-extra-text, #575757);
     margin: 0;
     margin-top: 4px;
