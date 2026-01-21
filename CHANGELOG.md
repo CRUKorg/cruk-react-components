@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [7.1.5] - 2025-01-21
 
-### Fixed
+### Fixes
 
 - Double thickness border on TextField when using extraTop or ExtraBottom [#1148](https://github.com/CRUKorg/cruk-react-components/issues/1148)
 
