@@ -20,6 +20,11 @@
 
   &:has(input:hover) {
     --_border-color: var(--_border-color-hover, #e60079);
+
+    .extra-top,
+    .extra-bottom {
+      --_border-color: var(--clr-text-input-border, #2e2d2c);
+    }
   }
   /* has child input which is disabled */
   &:has(input[disabled]),
@@ -51,6 +56,14 @@
     transition: border-color 150ms linear;
     background-color: var(--_background-color, #fff);
     border: solid var(--size-border-width, 1px) var(--_border-color, #2e2d2c);
+  }
+
+  .extra-top {
+    border-bottom-width: 0;
+  }
+
+  .extra-bottom {
+    border-top-width: 0;
   }
 
   .extra-left {
