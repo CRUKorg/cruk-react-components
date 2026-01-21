@@ -79,6 +79,30 @@ export const TextFieldExtraRight: Story = {
   ),
 };
 
+export const TextFieldExtraTop: Story = {
+  name: "TextField Extra Top",
+  args: {
+    extraTop: <span>Extra content above the input</span>,
+  },
+  render: (args) => (
+    <AllThemesWrapper>
+      <TextField {...args} />
+    </AllThemesWrapper>
+  ),
+};
+
+export const TextFieldExtraBottom: Story = {
+  name: "TextField Extra Bottom",
+  args: {
+    extraBottom: <span>Extra content below the input</span>,
+  },
+  render: (args) => (
+    <AllThemesWrapper>
+      <TextField {...args} />
+    </AllThemesWrapper>
+  ),
+};
+
 export const TextFieldWithError: Story = {
   name: "TextField With Error",
   args: {
