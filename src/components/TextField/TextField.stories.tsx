@@ -94,7 +94,7 @@ export const TextFieldExtraTop: Story = {
 export const TextFieldExtraBottom: Story = {
   name: "TextField Extra Bottom",
   args: {
-    extraBottom: <span>Extra content above the input</span>,
+    extraBottom: <span>Extra content below the input</span>,
   },
   render: (args) => (
     <AllThemesWrapper>
