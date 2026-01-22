@@ -102,13 +102,19 @@ export const TextField = ({
       hideRequiredIndicationInLabel={hideRequiredIndicationInLabel}
     >
       <span className="component-text-field">
-        {!!extraTop && <span className="extra">{extraTop}</span>}
+        {!!extraTop && (
+          <span className={["extra-top", "extra"].join(" ")}>{extraTop}</span>
+        )}
         {!!extraRight || !!extraLeft ? (
           <span className="extra-wrapper">{renderContent}</span>
         ) : (
           renderContent
         )}
-        {!!extraBottom && <span className="extra">{extraBottom}</span>}
+        {!!extraBottom && (
+          <span className={["extra-bottom", "extra"].join(" ")}>
+            {extraBottom}
+          </span>
+        )}
         {!!errorMessage?.length && (
           <ErrorText
             marginTop="xxs"

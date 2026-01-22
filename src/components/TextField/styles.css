@@ -53,6 +53,12 @@
     border: solid var(--size-border-width, 1px) var(--_border-color, #2e2d2c);
   }
 
+  .extra-top,
+  .extra-bottom {
+    border-style: none;
+    padding: calc((var(--_min-height, 48px) - 1em) / 2) 0;
+  }
+
   .extra-left {
     box-sizing: border-box;
     width: auto;
