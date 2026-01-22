@@ -9,6 +9,15 @@ export default {
   title: "Modal",
   component: Modal,
   args: {},
+  argTypes: {
+    modalName: { control: "text" },
+    showCloseButton: { control: "boolean" },
+    isAnimated: { control: "boolean" },
+    startOpen: { control: "boolean" },
+    width: { control: "text" },
+    maxWidth: { control: "text" },
+    top: { control: "text" },
+  },
   tags: ["autodocs"],
 };
 
@@ -26,25 +35,33 @@ const Line = () => (
 type Story = StoryObj<typeof Modal>;
 
 const ModalWithTriggerButton = (args: React.ComponentProps<typeof Modal>) => {
-  const [showModal, setShowModal] = React.useState(false);
-  const toggleShowModal = () => setShowModal(!showModal);
+  const modalRef = React.useRef<HTMLDialogElement>(null);
 
   return (
     <>
-      <Button appearance="primary" onClick={toggleShowModal}>
+      <Button
+        appearance="primary"
+        onClick={() => modalRef.current?.showModal()}
+      >
         Show me a modal
       </Button>
-      {showModal && (
-        <Modal {...args} closeFunction={toggleShowModal}>
-          <Heading h2 marginTop="none" textSize="xl">
-            Modal title
-          </Heading>
-          <Text>Some really important information</Text>
-          <Button appearance="primary" onClick={toggleShowModal}>
-            OK
-          </Button>
-        </Modal>
-      )}
+
+      <Modal
+        {...args}
+        closeFunction={() => modalRef.current?.close()}
+        ref={modalRef}
+        startOpen={false}
+        showCloseButton={true}
+        modalName="test"
+      >
+        <Heading h2 marginTop="none" textSize="xl">
+          Modal title
+        </Heading>
+        <Text>Some really important information</Text>
+        <Button appearance="primary" onClick={() => modalRef.current?.close()}>
+          OK
+        </Button>
+      </Modal>
     </>
   );
 };
@@ -54,22 +71,22 @@ export const AllThemesWrapper = (args: React.ComponentProps<typeof Modal>) => (
     <div tabIndex={0}>
       <div data-theme="cruk">
         <h2>CRUK Theme:</h2>
-        <ModalWithTriggerButton {...args} themeName="cruk" />
+        <ModalWithTriggerButton {...args} />
         <Line />
       </div>
       <div data-theme="rfl">
         <h2>RFL Theme:</h2>
-        <ModalWithTriggerButton {...args} themeName="rfl" />
+        <ModalWithTriggerButton {...args} />
         <Line />
       </div>
       <div data-theme="su2c">
         <h2>SU2C Theme:</h2>
-        <ModalWithTriggerButton {...args} themeName="su2c" />
+        <ModalWithTriggerButton {...args} />
         <Line />
       </div>
       <div data-theme="bowelbabe">
         <h2>Bowelbabe Theme:</h2>
-        <ModalWithTriggerButton {...args} themeName="bowelbabe" />
+        <ModalWithTriggerButton {...args} />
         <Line />
       </div>
     </div>

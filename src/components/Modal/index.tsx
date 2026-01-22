@@ -1,6 +1,9 @@
-import React, { type HTMLAttributes, type ReactNode, useEffect } from "react";
-import { createPortal } from "react-dom";
-import FocusLock from "react-focus-lock";
+import React, {
+  type HTMLAttributes,
+  type ReactNode,
+  useEffect,
+  useRef,
+} from "react";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 import { IconFa } from "../IconFa";
@@ -20,20 +23,20 @@ import Button from "../Button";
 export function Modal({
   modalName,
   closeFunction,
+  startOpen = true,
   showCloseButton,
-  themeName,
   children,
   isAnimated = true,
   top,
   maxWidth,
   width,
+  ref: outerRef,
   ...htmlAttributes
-}: HTMLAttributes<HTMLDivElement> & {
-  themeName: string;
+}: HTMLAttributes<HTMLDialogElement> & {
   /** modal name used for aria-label */
   modalName: string;
   /** callback function called on modal close */
-  closeFunction: () => void;
+  closeFunction?: () => void;
   /** flag to reveal close button with cross in the top right of modal */
   showCloseButton?: boolean;
   /** set max width of modal */
@@ -46,17 +49,29 @@ export function Modal({
   width?: string;
   /** turn on animate in modal */
   isAnimated?: boolean;
+  /** set if the modal start open */
+  startOpen: boolean;
+  /** ref to the dialog element */
+  ref?: React.RefObject<HTMLDialogElement | null>;
 }) {
-  const closeByEsc = React.useCallback(
-    (event: KeyboardEvent): void => {
-      if (event.key === "Escape" && !!closeFunction) {
-        closeFunction();
-      }
-    },
-    [closeFunction],
-  );
+  const innerRef = useRef<HTMLDialogElement>(null);
+  const ref = outerRef ?? innerRef;
+
+  const doClose = React.useCallback((): void => {
+    if (!ref.current?.hasAttribute("open")) return;
+    console.log("closing modal");
+    ref.current?.close();
+    if (closeFunction) {
+      closeFunction();
+    }
+  }, [closeFunction, ref]);
 
   useEffect(() => {
+    const closeByEsc = (event: KeyboardEvent): void => {
+      if (event.key === "Escape") {
+        doClose();
+      }
+    };
     if (typeof window === `undefined`) {
       return undefined;
     }
@@ -70,55 +85,46 @@ export function Modal({
       document.body.style.overflow = "unset";
       document.removeEventListener("keydown", closeByEsc);
     };
-  }, [closeByEsc]);
+  }, [doClose]);
+
+  useEffect(() => {
+    if (startOpen && ref && ref.current) {
+      ref.current.showModal();
+    }
+  }, [startOpen, ref]);
 
   return (
     <>
-      {typeof window !== `undefined`
-        ? createPortal(
-            <section className="component-modal" data-theme={themeName}>
-              <FocusLock returnFocus>
-                <div
-                  className="wrapper"
-                  role="dialog"
-                  aria-modal="true"
-                  aria-label={modalName}
-                >
-                  <div
-                    className={[
-                      "content",
-                      "spacing-props",
-                      "colour-props",
-                    ].join(" ")}
-                    style={{
-                      maxWidth,
-                      top,
-                      width,
-                    }}
-                    data-is-animated={isAnimated}
-                    {...htmlAttributes}
-                  >
-                    {showCloseButton && closeFunction ? (
-                      <Button
-                        className="component-button close-button"
-                        aria-label="close"
-                        appearance="tertiary"
-                        onClick={() => {
-                          closeFunction();
-                        }}
-                      >
-                        <IconFa faIcon={faClose} />
-                      </Button>
-                    ) : null}
-                    {children}
-                  </div>
-                  <div className="background" data-is-animated={isAnimated} />
-                </div>
-              </FocusLock>
-            </section>,
-            document.body,
-          )
-        : null}
+      <dialog
+        ref={ref}
+        className={["component-modal", "spacing-props", "colour-props"].join(
+          " ",
+        )}
+        aria-modal="true"
+        aria-label={modalName}
+        open={false}
+        data-is-animated={isAnimated}
+        style={{
+          maxWidth,
+          top,
+          width,
+        }}
+        {...htmlAttributes}
+      >
+        {showCloseButton || closeFunction ? (
+          <Button
+            className="component-button close-button"
+            aria-label="close"
+            appearance="tertiary"
+            onClick={() => {
+              doClose();
+            }}
+          >
+            <IconFa faIcon={faClose} />
+          </Button>
+        ) : null}
+        {children}
+      </dialog>
     </>
   );
 }

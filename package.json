@@ -1,6 +1,6 @@
 {
   "name": "@cruk/cruk-react-components",
-  "version": "7.1.5",
+  "version": "7.2.0",
   "description": "React components implementing CRUK, RFL, SU2C & Bowelbabe designs",
   "license": "MIT",
   "publishConfig": {
@@ -96,9 +96,7 @@
     "@fortawesome/fontawesome-common-types": "^7",
     "@fortawesome/free-brands-svg-icons": "^7",
     "@fortawesome/free-solid-svg-icons": "^7",
-    "react-focus-lock": "^2.13.6",
     "react-intersection-observer": "^10.0.0",
-    "react-is": "^19",
     "vite": "^7"
   }
 }
