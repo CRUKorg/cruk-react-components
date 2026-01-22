@@ -1,0 +1,77 @@
+.component-footer {
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  width: 100%;
+  background-color: var(--clr-footer-background, #fff);
+  padding-bottom: var(--spacing-m, 2rem);
+
+  .footer-wrapper {
+    max-width: var(--content-max-width, 1020px);
+    display: block;
+    margin: 0 auto;
+
+    @media (min-width: 1200px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  .footer-section {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: var(--spacing-s, 1.5rem) var(--spacing-s, 1.5rem) 0;
+    position: relative;
+    width: 100%;
+    flex: 0 1 auto;
+  }
+
+  /* nav */
+  .footer-nav {
+    display: flex;
+    flex-direction: column;
+    a {
+      font-size: var(--font-size-m, 1rem);
+      font-weight: var(--typ-font-weight-links, 700);
+    }
+  }
+
+  .footer-ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-li {
+    list-style-type: none;
+    display: block;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    padding-bottom: var(--spacing-xxs, 0.5rem);
+  }
+
+  .footer-regulator-logo {
+    height: 40px;
+    width: auto;
+  }
+
+  .footer-address {
+    display: inline;
+    font-style: normal;
+  }
+
+  .footer-bar {
+    opacity: 1;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: calc(50% - 50vw);
+    /* to be removed when every page has a white background */
+    margin-left: calc(100% - 100vw);
+    border-width: 0px 0px 0.25rem;
+    border-image: initial;
+    border-color: var(--clr-cruk-black, #000);
+    border-style: solid;
+    width: auto;
+  }
+}

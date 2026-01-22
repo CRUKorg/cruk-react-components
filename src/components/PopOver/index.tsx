@@ -5,14 +5,11 @@ import React, {
   type ReactNode,
   type DetailedReactHTMLElement,
 } from "react";
-import { ThemeProvider, useTheme } from "styled-components";
 
 import { useKey } from "../../hooks/useKey";
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { useEffectBrowser } from "../../hooks/useEffectBrowser";
 
 import { type PopOverPositionType } from "../../types";
-import { PopOverWrapper, PopOverModal } from "./styles";
 
 export type PopOverProps = {
   /** modalLabel: used for aria-label of modal */
@@ -45,16 +42,10 @@ export function PopOver({
   position,
   modalLabel,
   modalContent,
-  css,
   full = false,
 }: PopOverProps) {
   const popRef = useRef<HTMLDivElement>(null);
   const [showPopOver, setShowPopOver] = useState(false);
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
 
   const toggle = () => setShowPopOver(!showPopOver);
   const closePopOver = () => setShowPopOver(false);
@@ -90,33 +81,37 @@ export function PopOver({
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <PopOverWrapper $full={full} $css={css} ref={popRef}>
-        {React.Children.map(children, (child) =>
-          React.cloneElement(
-            child as DetailedReactHTMLElement<object, HTMLElement>,
-            {
-              onClick: toggle,
-              "aria-expanded": showPopOver,
-              "aria-haspopup": "dialog",
-            },
-          ),
-        )}
-        {showPopOver ? (
-          <PopOverModal
-            $maxWidth={maxWidth || "none"}
-            $minWidth={minWidth || "auto"}
-            $position={position || "top"}
-            theme={theme}
-            role="dialog"
-            aria-label={modalLabel}
-            aria-modal={showPopOver}
-          >
-            {modalContent}
-          </PopOverModal>
-        ) : null}
-      </PopOverWrapper>
-    </ThemeProvider>
+    <div
+      className="component-popover"
+      ref={popRef}
+      data-full={full}
+      data-position={position || "top"}
+    >
+      {React.Children.map(children, (child) =>
+        React.cloneElement(
+          child as DetailedReactHTMLElement<object, HTMLElement>,
+          {
+            onClick: toggle,
+            "aria-expanded": showPopOver,
+            "aria-haspopup": "dialog",
+          },
+        ),
+      )}
+      {showPopOver ? (
+        <div
+          className="popover-modal"
+          style={{
+            maxWidth: maxWidth || "none",
+            minWidth: minWidth || "auto",
+          }}
+          role="dialog"
+          aria-label={modalLabel}
+          aria-modal={showPopOver}
+        >
+          {modalContent}
+        </div>
+      ) : null}
+    </div>
   );
 }
 

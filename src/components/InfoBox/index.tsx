@@ -1,39 +1,10 @@
-import React, {
-  type HTMLAttributes,
-  type Ref,
-  type ReactNode,
-  type ElementType,
-} from "react";
-import { useTheme } from "styled-components";
+import React, { type HTMLAttributes, type Ref, type ReactNode } from "react";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { Box } from "../Box";
 import { Text } from "../Text";
 import { Heading } from "../Heading";
 
-import { type SpacingProps } from "../Spacing";
-import { StyledInfoBox } from "./styles";
-
-export type InfoBoxProps = SpacingProps &
-  HTMLAttributes<HTMLElement> & {
-    /** background color of wrapping element, this will add default padding */
-    backgroundColor?: string;
-    /** Title text */
-    titleText: string;
-    /** Title text colour */
-    titleTextColor?: string;
-    /** Description text */
-    descriptionText: string;
-    /** Description text colour */
-    descriptionTextColor?: string;
-    /** Space for extra element underneath description */
-    children?: ReactNode;
-    /** Icon in left column usually 2em squared */
-    icon?: ReactNode;
-    ref?: Ref<HTMLElement>;
-    /** styled-component polymorphic feature so you take the styling of a box and cast the component to be a "span" for example */
-    as?: ElementType;
-  };
+import { type ColourVariableType, type SpacingProps } from "../../types";
 
 /**
    * Box is used to wrap other components to add margin and padding. The values will be in the t-shirt sizes specified in the theme sizes.
@@ -47,24 +18,34 @@ export const InfoBox = ({
   descriptionText,
   descriptionTextColor,
   icon,
+  backgroundColor,
   ref,
   ...spacingAndHTMLElementProps
-}: InfoBoxProps) => {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-
-  const backgroundColorOrDefault =
-    spacingAndHTMLElementProps.backgroundColor || theme.tokenColors.grey_200;
-
+}: SpacingProps &
+  HTMLAttributes<HTMLElement> & {
+    /** background color of wrapping element, this will add default padding */
+    backgroundColor?: ColourVariableType;
+    /** Title text */
+    titleText: string;
+    /** Title text colour */
+    titleTextColor?: ColourVariableType;
+    /** Description text */
+    descriptionText: string;
+    /** Description text colour */
+    descriptionTextColor?: ColourVariableType;
+    /** Space for extra element underneath description */
+    children?: ReactNode;
+    /** Icon in left column usually 2em squared */
+    icon?: ReactNode;
+    ref?: Ref<HTMLDivElement>;
+  }) => {
   return (
-    <StyledInfoBox
-      theme={theme}
+    <div
+      className={["component-info-box", "spacing-props", "color-props"].join(
+        " ",
+      )}
       {...spacingAndHTMLElementProps}
-      backgroundColor={backgroundColorOrDefault}
-      margin={spacingAndHTMLElementProps.margin || "none"}
+      data-bg-color={backgroundColor || "background-mid"}
       ref={ref}
     >
       {icon && <Box marginRight="s">{icon}</Box>}
@@ -75,14 +56,14 @@ export const InfoBox = ({
             margin="none"
             h4
             marginBottom="xxs"
-            textColor={titleTextColor || theme.colors.textDark}
+            textColor={titleTextColor || "text-dark"}
           >
             {titleText}
           </Heading>
         )}
         {descriptionText && (
           <Text
-            textColor={descriptionTextColor || theme.colors.textDark}
+            textColor={descriptionTextColor || "text-dark"}
             marginBottom="none"
           >
             {descriptionText}
@@ -90,7 +71,7 @@ export const InfoBox = ({
         )}
         {children}
       </div>
-    </StyledInfoBox>
+    </div>
   );
 };
 

@@ -1,50 +1,19 @@
-export type FontSizeType =
-  | "xs"
-  | "s"
-  | "m"
-  | "ml"
-  | "l"
-  | "xl"
-  | "xxl"
-  | "xxxl"
-  | "xxxxl";
+export const fontSizes = [
+  "xs",
+  "s",
+  "m",
+  "ml",
+  "l",
+  "xl",
+  "xxl",
+  "xxxl",
+  "xxxxl",
+] as const;
 
-export type FontSizesType = Record<FontSizeType, string>;
+export type FontSizeType = (typeof fontSizes)[number];
 
-export type UtilitiesType = {
-  contentMaxWidth: string;
-  useDefaultFocusRect: boolean;
-  useDefaultFromControls: boolean;
-  useBackgroundStyleLinks: boolean;
-  inputBorderWidth: string;
-};
-
-export type SiteConfigType = {
-  assetPath: string;
-  logoUrl: string;
-  logoAlt: string;
-  logoSrc: string;
-  footerCopyText: string;
-  footerLogoSrc: string;
-  footerLogoAlt: string;
-};
-
-export type AvatarType = {
-  s: string;
-  m: string;
-  l: string;
-  xl: string;
-  path: string;
-};
-
-export type ButtonType = {
-  borderRadius: string;
-  borderRadiusLarge: string;
-  buttonBorderThickness: string;
-  textDecoration: string;
-  textTransform: string;
-  horizontalPadding: string;
-};
+export const themeNames = ["cruk", "su2c", "bowelbabe", "rfl"] as const;
+export type ThemeNameType = (typeof themeNames)[number];
 
 export type ButtonAppearanceType = "primary" | "secondary" | "tertiary";
 
@@ -63,188 +32,51 @@ export type BreakPointType = {
   desktopLarge: string;
 };
 
-export type TokenColorsType = Record<string, string>;
+export const spaces = [
+  "auto",
+  "xxxs",
+  "xxs",
+  "xs",
+  "s",
+  "m",
+  "l",
+  "xl",
+  "xxl",
+  "none",
+] as const;
 
-export type ColorsType = {
-  primary: string;
-  secondary: string;
-  tertiary: string;
-  textOnPrimary: string;
-  textOnSecondary: string;
-  textOnTertiary: string;
-  textHeaderDefault: string;
+export type SpaceType = (typeof spaces)[number];
 
-  disabled: string;
-  danger: string;
-  warning: string;
-  success: string;
-  info: string;
-  textError: string;
-
-  textDark: string;
-  textLight: string;
-  textMid: string;
-  linkColor: string;
-  linkColorHover: string;
-  linkColorSecondary: string;
-  linkColorSecondaryHover: string;
-
-  avatarBorder: string;
-
-  progressBar: string;
-  progressBarSecondary: string;
-  progressBarBackground: string;
-  circularProgress: string;
-  circularProgressSecondary: string;
-  circularProgressBackground: string;
-
-  buttonPrimaryBackground: string;
-  buttonPrimaryText: string;
-  buttonPrimaryBorder: string;
-  buttonPrimaryBackgroundHover: string;
-  buttonPrimaryTextHover: string;
-  buttonPrimaryBorderHover: string;
-  buttonPrimaryDisabledBackground: string;
-  buttonPrimaryDisabledText: string;
-  buttonPrimaryDisabledBorder: string;
-
-  buttonSecondaryBackground: string;
-  buttonSecondaryText: string;
-  buttonSecondaryBorder: string;
-  buttonSecondaryBackgroundHover: string;
-  buttonSecondaryTextHover: string;
-  buttonSecondaryBorderHover: string;
-  buttonSecondaryDisabledBackground: string;
-  buttonSecondaryDisabledText: string;
-  buttonSecondaryDisabledBorder: string;
-
-  buttonTertiaryText: string;
-  buttonTertiaryTextHover: string;
-  buttonTertiaryDisabledText: string;
-
-  collapseHeaderColor: string;
-
-  selectionBorder: string;
-  inputBorder: string;
-  check: string;
-
-  headerBackground: string;
-  backgroundLight: string;
-  backgroundLightColor: string;
-  backgroundMid: string;
-  backgroundMidLight: string;
-
-  loaderColor1: string;
-  loaderColor2: string;
-  loaderColor3: string;
-
-  paginationText: string;
-  paginationBackground: string;
-  paginationActive: string;
-
-  footerBackground: string;
-
-  headerBorder: string;
-  headerTaglineText: string;
-
-  stepBorder: string;
-  stepBackground: string;
-
-  popoverBackground: string;
-
-  textInputExtraInfo: string;
-
-  totaliserBubbleColor: string;
-  totaliserBubbleTextColor: string;
-  totaliserBubbleTotalColor: string;
-
-  textInputBorder: string;
-
-  selectBackground: string;
-
-  modalBackdrop: string;
-
-  userBlockExtraText: string;
+export type SpacingProps = {
+  margin?: SpaceType;
+  marginTop?: SpaceType;
+  marginRight?: SpaceType;
+  marginBottom?: SpaceType;
+  marginLeft?: SpaceType;
+  marginVertical?: SpaceType;
+  marginHorizontal?: SpaceType;
+  padding?: SpaceType;
+  paddingTop?: SpaceType;
+  paddingRight?: SpaceType;
+  paddingBottom?: SpaceType;
+  paddingLeft?: SpaceType;
+  paddingVertical?: SpaceType;
+  paddingHorizontal?: SpaceType;
 };
 
-export type ColorKeyType = keyof ColorsType;
-
-export type SpaceType =
-  | "auto"
-  | "xxs"
-  | "xs"
-  | "s"
-  | "m"
-  | "l"
-  | "xl"
-  | "xxl"
-  | "none";
-
-export type SpacingType = {
-  auto: string;
-  xxxs: string;
-  xxs: string;
-  xs: string;
-  s: string;
-  m: string;
-  l: string;
-  xl: string;
-  xxl: string;
-  none: string;
-};
-
-export type CustomFontType = {
-  family: string;
-  urlWoff?: string;
-  urlWoff2?: string;
-  fontWeight: string | number;
-};
-
-export type TypographyType = {
-  customFonts: CustomFontType[];
-  fontWeightBase: string | number;
-  fontWeightHeadings: string | number;
-  fontWeightLabels: string | number;
-  fontWeightLinks: string | number;
-  fontWeightButtons: string | number;
-  fontFamilyBase: string;
-  fontFamilyHeadings: string;
-  fontFamilyButtons: string;
-  fontFamilyLinks: string;
-  fontFamilyLabel: string;
-  fontSizeBase: string;
-  fontWeightHeavy: string | number;
-  fontWeightNormal: string | number;
-  fontWeightMedium: string | number;
-  fontWeightLight: string | number;
-  fontWeightVLight: string | number;
-  linkTextDecoration: string;
-  LinkPrimaryTextDecoration: string;
-  LinkLetterSpacing: string;
-  lineHeight: string;
-  headerLineHeight: string;
-  headerTextTransform: string;
+export type TextProps = {
+  textSize?: FontSizeType;
+  textAlign?: FontAlignType;
+  textWeight?: FontWeightType;
+  textFontFamily?: FontFamilyStylesType;
+  wordBreak?: WordBreakType;
+  overflowWrap?: OverflowWrapType;
 };
 
 export type ShadowsType = {
   s: string;
   m: string;
   l: string;
-};
-
-export type ThemeType = {
-  name: string;
-  avatar: AvatarType;
-  breakpoint: BreakPointType;
-  button: ButtonType;
-  tokenColors: TokenColorsType;
-  colors: ColorsType;
-  spacing: SpacingType;
-  fontSizes: FontSizesType;
-  siteConfig: SiteConfigType;
-  typography: TypographyType;
-  shadows: ShadowsType;
-  utilities: UtilitiesType;
 };
 
 export type AddressDataType = {
@@ -306,6 +138,70 @@ export type AddressDataType = {
   Type: string;
 };
 
+export const colours = [
+  // Generic colours
+
+  "currentColor",
+  "primary",
+  "secondary",
+  "tertiary",
+
+  "text-on-primary",
+  "text-on-secondary",
+  "text-on-tertiary",
+
+  "disabled",
+  "danger",
+  "warning",
+  "success",
+  "info",
+  "sports-activity",
+
+  "text-dark",
+  "text-light",
+  "text-mid",
+
+  "background-light",
+  "background-light-color",
+  "background-mid",
+  "background-mid-light",
+] as const;
+
+export type ColourVariableType = (typeof colours)[number];
+
+export type ColourProps = {
+  textColor?: ColourVariableType;
+  backgroundColor?: ColourVariableType;
+  borderColor?: ColourVariableType;
+};
+
+export const fontFamilyStyles = [
+  "base",
+  "headings",
+  "links",
+  "buttons",
+  "label",
+] as const;
+
+export type FontFamilyStylesType = (typeof fontFamilyStyles)[number];
+
+export const fontWeights = [
+  "base",
+  "headings",
+
+  "links",
+  "buttons",
+  "labels",
+
+  "heavy",
+  "medium",
+  "normal",
+  "light",
+  "vlight",
+] as const;
+
+export type FontWeightType = (typeof fontWeights)[number];
+
 export type AddressOptionsType = {
   Description: string;
   Type: string;
@@ -314,21 +210,31 @@ export type AddressOptionsType = {
   Error?: Error;
 };
 
-export type WordBreakType =
-  | "normal"
-  | "break-all"
-  | "keep-all"
-  | "break-word"
-  | "inherit"
-  | "initial"
-  | "unset";
+export const wordBreaks = [
+  "normal",
+  "break-all",
+  "keep-all",
+  "break-word",
+  "inherit",
+  "initial",
+  "unset",
+] as const;
 
-export type OverflowWrapType =
-  | "normal"
-  | "anywhere"
-  | "revert"
-  | "revert-layer"
-  | "break-word"
-  | "inherit"
-  | "initial"
-  | "unset";
+export type WordBreakType = (typeof wordBreaks)[number];
+
+export const overflowWraps = [
+  "normal",
+  "anywhere",
+  "revert",
+  "revert-layer",
+  "break-word",
+  "inherit",
+  "initial",
+  "unset",
+] as const;
+
+export type OverflowWrapType = (typeof overflowWraps)[number];
+
+export const fontAligns = ["left", "right", "center", "justify"] as const;
+
+export type FontAlignType = (typeof fontAligns)[number];

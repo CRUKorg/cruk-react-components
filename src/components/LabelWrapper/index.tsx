@@ -1,9 +1,4 @@
 import React, { type LabelHTMLAttributes, type ReactNode } from "react";
-import { useTheme, ThemeProvider } from "styled-components";
-
-import { crukTheme as defaultTheme } from "../../themes/cruk";
-
-import { LabelText, Label, RequiredIndicationText, HintText } from "./styles";
 
 type LabelWrapperProps = LabelHTMLAttributes<HTMLLabelElement> & {
   /** label text */
@@ -25,38 +20,32 @@ export function LabelWrapper({
   children,
   ...otherHTMLLabelProps
 }: LabelWrapperProps) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-
   const hintTextElement =
     !!hintText &&
     ((typeof hintText === "string" && hintText.length) ||
       typeof hintText === "number") ? (
-      <HintText>{hintText}</HintText>
+      <span className="hint-text">{hintText}</span>
     ) : (
       hintText
     );
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       {label ? (
-        <Label {...otherHTMLLabelProps}>
-          <LabelText $hasHintText={!!hintText}>
+        <label className="label-component" {...otherHTMLLabelProps}>
+          <span className="label-text" data-hintext={!!hintText}>
             {label}
             {!required && !hideRequiredIndicationInLabel && (
-              <RequiredIndicationText>{` (optional)`}</RequiredIndicationText>
+              <span className="required-indication-text">{` (optional)`}</span>
             )}
-          </LabelText>
+          </span>
           {hintTextElement}
           {children}
-        </Label>
+        </label>
       ) : (
         <>{children}</>
       )}
-    </ThemeProvider>
+    </>
   );
 }
 

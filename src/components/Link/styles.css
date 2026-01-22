@@ -1,0 +1,32 @@
+.component-link {
+  overflow-wrap: break-word;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  padding: 0;
+  color: var(--clr-link, #e60079);
+  text-decoration: underline;
+  font-family: var(--typ-font-family-links, "Poppins", Arial, sans-serif);
+  font-weight: var(--typ-font-weight-links, 700);
+  line-height: var(--typ-line-height, 1.5em);
+  transition:
+    color 0.2s ease,
+    background-size 0.3s ease;
+
+  &:focus-visible {
+    outline: auto;
+  }
+
+  &[data-appearance="secondary"] {
+    color: var(--clr-link-secondary, #e60079);
+    text-decoration: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: var(--clr-link-hover, #a5005f);
+
+    &[data-appearance="secondary"] {
+      color: var(--clr-link-secondary-hover, #a5005f);
+    }
+  }
+}

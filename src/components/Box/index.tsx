@@ -1,27 +1,20 @@
-import React, {
-  type HTMLAttributes,
-  type Ref,
-  type ReactNode,
-  type ElementType,
-} from "react";
-import { useTheme } from "styled-components";
-
-import { crukTheme as defaultTheme } from "../../themes/cruk";
+import React, { type Ref, type HTMLAttributes, type ReactNode } from "react";
 
 import {
-  spacingPropsToSpacingPropsInternal,
+  type ColourVariableType,
   type SpacingProps,
-} from "../Spacing";
-import { StyledBox } from "./styles";
+  type ColourProps,
+} from "../../types";
 
 export type BoxProps = SpacingProps &
+  ColourProps &
   HTMLAttributes<HTMLElement> & {
     /** background color of box, this will add default padding */
-    backgroundColor?: string;
-    ref?: Ref<HTMLDivElement>;
+    backgroundColor?: string | ColourVariableType;
     children?: ReactNode;
-    /** styled-component polymorphic feature so you take the styling of a box and cast the component to be a "span" for example */
-    as?: ElementType;
+    ref?: Ref<HTMLDivElement | HTMLSpanElement>;
+    as?: "span" | "div";
+    style?: React.CSSProperties;
   };
 
 /**
@@ -31,23 +24,75 @@ export type BoxProps = SpacingProps &
  * For example `margin` will be overridden by the `marginVertical` or `marginHorizontal` props. `marginTop`, `marginBottom`, `marginLeft`, `marginRight` will override the the `marginVertical` and `marginHorizontal` props.
  */
 export const Box = ({ ...props }: BoxProps) => {
-  const { children, backgroundColor, ref, ...rest } = props;
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
+  const {
+    textColor,
+    backgroundColor,
+    margin,
+    marginTop,
+    marginRight,
+    marginBottom,
+    marginLeft,
+    marginVertical,
+    marginHorizontal,
+    padding,
+    paddingTop,
+    paddingRight,
+    paddingBottom,
+    paddingLeft,
+    paddingVertical,
+    paddingHorizontal,
+    as,
+    children,
+    ref,
+    ...htmlAttributes
+  } = props;
+
+  const convertedProps = {
+    "data-color": textColor,
+    "data-bg-color": backgroundColor,
+    "data-margin": margin,
+    "data-margin-top": marginTop,
+    "data-margin-right": marginRight,
+    "data-margin-bottom": marginBottom,
+    "data-margin-left": marginLeft,
+    "data-margin-vertical": marginVertical,
+    "data-margin-horizontal": marginHorizontal,
+    "data-padding": padding,
+    "data-padding-top": paddingTop,
+    "data-padding-right": paddingRight,
+    "data-padding-bottom": paddingBottom,
+    "data-padding-left": paddingLeft,
+    "data-padding-vertical": paddingVertical,
+    "data-padding-horizontal": paddingHorizontal,
   };
-  const restWithInternalSpacingProps = spacingPropsToSpacingPropsInternal(rest);
 
   return (
-    <StyledBox
-      theme={theme}
-      $backgroundColor={backgroundColor}
-      {...restWithInternalSpacingProps}
-      ref={ref}
-    >
-      {children}
-    </StyledBox>
+    <>
+      {!as || as === "div" ? (
+        <div
+          ref={ref as Ref<HTMLDivElement>}
+          className={["component-box", "color-props", "spacing-props"].join(
+            " ",
+          )}
+          {...htmlAttributes}
+          {...convertedProps}
+        >
+          {children}
+        </div>
+      ) : null}
+      {as === "span" ? (
+        <span
+          ref={ref as Ref<HTMLSpanElement>}
+          className={["component-box", "color-props", "spacing-props"].join(
+            " ",
+          )}
+          {...htmlAttributes}
+          {...convertedProps}
+        >
+          {children}
+        </span>
+      ) : null}
+    </>
   );
 };
 

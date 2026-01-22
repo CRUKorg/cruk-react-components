@@ -58,3 +58,11 @@ export const removeCommasFromObjectStringValues = <T>(object: T) =>
       [k as keyof T]: value,
     };
   }, {} as T);
+
+// Removes keys with undefined or null values from an object
+// this is useful for filtering props before passing them to an HTML element to keep the DOM minimal
+export function removeEmpty(obj: Record<string, unknown>) {
+  return Object.fromEntries(
+    Object.entries(obj).filter(([_, v]) => v != undefined),
+  );
+}

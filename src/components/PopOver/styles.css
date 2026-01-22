@@ -1,0 +1,361 @@
+.component-popover {
+  --_position: "top";
+  --_display: inline-block;
+
+  display: var(--_display, inline-block);
+  position: relative;
+
+  --_modal-margin-top: 0;
+  --_modal-margin-bottom: 10px;
+  --_modal-position-top: auto;
+  --_modal-position-bottom: 100%;
+  --_modal-position-left: 0;
+  --_modal-position-right: auto;
+
+  --_triangle-top: 100%;
+  --_triangle-bottom: auto;
+  --_triangle-left: var(--spacing-s, 1.5rem);
+  --_triangle-right: auto;
+
+  --_triangle-shadow-border-color: rgba(0, 0, 0, 0.25) transparent transparent;
+  --_triangle-shadow-margin: -1px 0 0 0;
+
+  --_triangle-border-color: var(--clr-popover-background, #fff) transparent
+    transparent;
+
+  @media (min-width: 992px) {
+    --_modal-margin-top: 0;
+    --_modal-margin-left: 0;
+    --_modal-margin-right: 0;
+
+    --_triangle-top: 100%;
+    --_triangle-bottom: auto;
+    --_triangle-left: var(--spacing-s, 1.5rem);
+    --_triangle-right: auto;
+
+    --_triangle-shadow-border-color: rgba(0, 0, 0, 0.25) transparent transparent;
+    --_triangle-shadow-margin: -1px 0 0 0;
+    --_triangle-border-color: var(--clr-popover-background, #fff) transparent
+      transparent;
+  }
+
+  &[data-full="true"] {
+    --_display: block;
+  }
+
+  &[data-position="top"] {
+    --_position: "top";
+    --_modal-margin-top: 0;
+    --_modal-margin-bottom: 10px;
+    --_modal-position-top: auto;
+    --_modal-position-bottom: 100%;
+    --_modal-position-left: 0;
+    --_modal-position-right: auto;
+
+    --_triangle-top: 100%;
+    --_triangle-bottom: auto;
+    --_triangle-left: var(--spacing-s, 1.5rem);
+    --_triangle-right: auto;
+
+    --_triangle-shadow-border-color: rgba(0, 0, 0, 0.25) transparent transparent;
+    --_triangle-shadow-margin: -1px 0 0 0;
+
+    --_triangle-border-color: var(--clr-popover-background, #fff) transparent
+      transparent;
+
+    @media (min-width: 992px) {
+      --_modal-margin-top: 0;
+      --_modal-margin-left: 0;
+      --_modal-margin-right: 0;
+
+      --_modal-position-top: auto;
+      --_modal-position-left: 0;
+      --_modal-position-right: auto;
+
+      --_triangle-top: 100%;
+      --_triangle-bottom: auto;
+      --_triangle-left: var(--spacing-s, 1.5rem);
+      --_triangle-right: auto;
+
+      --_triangle-shadow-border-color: rgba(0, 0, 0, 0.25) transparent
+        transparent;
+      --_triangle-shadow-margin: -1px 0 0 0;
+      --_triangle-border-color: var(--clr-popover-background, #fff) transparent
+        transparent;
+    }
+  }
+  &[data-position="left"] {
+    --_position: "left";
+
+    --_modal-margin-top: 10px;
+    --_modal-margin-bottom: 0;
+    --_modal-margin-left: 0;
+    --_modal-margin-right: 0;
+    --_modal-position-top: 100%;
+    --_modal-position-bottom: auto;
+    --_modal-position-left: auto;
+    --_modal-position-right: auto;
+
+    --_triangle-top: auto;
+    --_triangle-bottom: 100%;
+    --_triangle-left: var(--spacing-s, 1.5rem);
+    --_triangle-right: auto;
+
+    --_triangle-shadow-border-color: transparent transparent rgba(0, 0, 0, 0.25);
+    --_triangle-shadow-margin: 0 0 -1px 0;
+
+    --_triangle-border-color: transparent transparent
+      var(--clr-popover-background, #fff);
+
+    @media (min-width: 992px) {
+      --_modal-margin-top: 0;
+      --_modal-margin-left: 0;
+      --_modal-margin-right: 10px;
+
+      --_modal-position-top: 100%;
+      --_modal-position-left: auto;
+      --_modal-position-right: auto;
+
+      --_triangle-top: var(--spacing-s, 1.5rem);
+      --_triangle-bottom: auto;
+      --_triangle-left: 100%;
+      --_triangle-right: auto;
+
+      --_triangle-shadow-border-color: transparent transparent transparent
+        rgba(0, 0, 0, 0.25);
+      --_triangle-shadow-margin: 0 0 0 -1px;
+
+      --_triangle-border-color: transparent transparent transparent
+        var(--clr-popover-background, #fff);
+    }
+  }
+  &[data-position="right"] {
+    --_position: "right";
+
+    --_modal-margin-top: 10px;
+    --_modal-margin-bottom: 0;
+    --_modal-position-top: 100%;
+    --_modal-position-bottom: auto;
+    --_modal-position-left: auto;
+    --_modal-position-right: 0;
+
+    --_triangle-top: auto;
+    --_triangle-bottom: 100%;
+    --_triangle-left: auto;
+    --_triangle-right: var(--spacing-s, 1.5rem);
+
+    --_triangle-shadow-border-color: transparent transparent rgba(0, 0, 0, 0.25);
+    --_triangle-shadow-margin: 0 0 -1px 0;
+
+    --_triangle-border-color: transparent transparent
+      var(--clr-popover-background, #fff);
+
+    @media (min-width: 992px) {
+      --_modal-margin-top: 0;
+      --_modal-margin-left: 10px;
+      --_modal-margin-right: 0;
+
+      --_modal-position-top: 0;
+      --_modal-position-left: 100%;
+      --_modal-position-right: auto;
+
+      --_triangle-top: var(--spacing-s, 1.5rem);
+      --_triangle-bottom: auto;
+      --_triangle-left: -20px;
+      --_triangle-right: auto;
+
+      --_triangle-shadow-border-color: transparent rgba(0, 0, 0, 0.25)
+        transparent transparent;
+      --_triangle-shadow-margin: 0 0 0 1px;
+
+      --_triangle-border-color: transparent var(--clr-popover-background, #fff)
+        transparent transparent;
+    }
+  }
+  &[data-position="bottom"] {
+    --_position: "bottom";
+
+    --_modal-margin-top: 10px;
+    --_modal-margin-bottom: 0;
+    --_modal-position-top: 100%;
+    --_modal-position-bottom: auto;
+    --_modal-position-left: auto;
+    --_modal-position-right: auto;
+
+    --_triangle-top: auto;
+    --_triangle-bottom: 100%;
+    --_triangle-left: var(--spacing-s, 1.5rem);
+    --_triangle-right: auto;
+
+    --_triangle-shadow-border-color: transparent transparent rgba(0, 0, 0, 0.25);
+    --_triangle-shadow-margin: 0 0 -1px 0;
+
+    --_triangle-border-color: transparent transparent
+      var(--clr-popover-background, #fff);
+
+    @media (min-width: 992px) {
+      --_modal-margin-top: 10px;
+      --_modal-margin-left: 0;
+      --_modal-margin-right: 0;
+
+      --_modal-position-top: 100%;
+      --_modal-position-left: auto;
+      --_modal-position-right: auto;
+
+      --_triangle-top: auto;
+      --_triangle-bottom: 100%;
+      --_triangle-left: var(--spacing-s, 1.5rem);
+      --_triangle-right: auto;
+
+      --_triangle-shadow-border-color: transparent transparent
+        rgba(0, 0, 0, 0.25);
+      --_triangle-shadow-margin: 0 0 -1px 0;
+
+      --_triangle-border-color: transparent transparent
+        var(--clr-popover-background, #fff);
+    }
+  }
+  &[data-position="topLeft"] {
+    --_position: "topLeft";
+
+    --_modal-margin-top: 0;
+    --_modal-margin-bottom: 10px;
+    --_modal-position-top: auto;
+    --_modal-position-bottom: 100%;
+    --_modal-position-left: auto;
+    --_modal-position-right: 0;
+
+    --_triangle-top: 100%;
+    --_triangle-bottom: auto;
+    --_triangle-left: auto;
+    --_triangle-right: var(--spacing-s, 1.5rem);
+
+    --_triangle-shadow-border-color: rgba(0, 0, 0, 0.25) transparent transparent;
+    --_triangle-shadow-margin: -1px 0 0 0;
+
+    --_triangle-border-color: var(--clr-popover-background, #fff) transparent
+      transparent;
+
+    @media (min-width: 992px) {
+      --_modal-margin-top: 0;
+      --_modal-margin-left: 0;
+      --_modal-margin-right: 0;
+
+      --_modal-position-top: auto;
+      --_modal-position-left: auto;
+      --_modal-position-right: 0;
+
+      --_triangle-top: 100%;
+      --_triangle-bottom: auto;
+      --_triangle-left: var(--spacing-s, 1.5rem);
+      --_triangle-right: var(--spacing-s, 1.5rem);
+
+      --_triangle-shadow-border-color: rgba(0, 0, 0, 0.25) transparent
+        transparent;
+      --_triangle-shadow-margin: -1px 0 0 0;
+
+      --_triangle-border-color: var(--clr-popover-background, #fff) transparent
+        transparent;
+    }
+  }
+
+  &[data-position="bottomLeft"] {
+    --_position: "bottomLeft";
+
+    --_modal-margin-top: 10px;
+    --_modal-margin-bottom: 10px;
+    --_modal-position-top: 100%;
+    --_modal-position-bottom: auto;
+    --_modal-position-left: auto;
+    --_modal-position-right: 0;
+
+    --_triangle-top: auto;
+    --_triangle-bottom: 100%;
+    --_triangle-left: auto;
+    --_triangle-right: var(--spacing-s, 1.5rem);
+
+    --_triangle-shadow-border-color: transparent transparent rgba(0, 0, 0, 0.25);
+    --_triangle-shadow-margin: 0 0 -1px 0;
+
+    --_triangle-border-color: transparent transparent
+      var(--clr-popover-background, #fff);
+
+    @media (min-width: 992px) {
+      --_modal-margin-top: 10px;
+      --_modal-margin-left: 0;
+      --_modal-margin-right: 0;
+
+      --_modal-position-top: 100%;
+      --_modal-position-left: auto;
+      --_modal-position-right: 0;
+
+      --_triangle-top: auto;
+      --_triangle-bottom: 100%;
+      --_triangle-left: auto;
+      --_triangle-right: var(--spacing-s, 1.5rem);
+
+      --_triangle-shadow-border-color: transparent transparent
+        rgba(0, 0, 0, 0.25);
+      --_triangle-shadow-margin: 0 0 -1px 0;
+
+      --_triangle-border-color: transparent transparent
+        var(--clr-popover-background, #fff);
+    }
+  }
+
+  .popover-modal {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    word-wrap: break-word;
+    z-index: 9999;
+    /* allow inline override */
+    max-width: none;
+    /* allow inline override */
+    min-width: auto;
+    font-size: var(--font-size-s, 0.875rem);
+    background-color: var(--clr-popover-background, #fff);
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+
+    margin-top: var(--_modal-margin-top, 0);
+    margin-bottom: var(--_modal-margin-bottom, 10px);
+    margin-left: var(--_modal-margin-left, 0);
+    margin-right: var(--_modal-margin-right, 0);
+
+    top: var(--_modal-position-top, auto);
+    bottom: var(--_modal-position-bottom, 100%);
+    left: var(--_modal-position-left, 0);
+    right: var(--_modal-position-right, auto);
+
+    &:after,
+    &:before {
+      content: "";
+      border-style: solid;
+      border-width: 10px;
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: var(--_triangle-top, 100%);
+      bottom: var(--_triangle-bottom, auto);
+      left: var(--_triangle-left, var(--spacing-s, 1.5rem));
+      right: var(--_triangle-right, auto);
+    }
+
+    &:before {
+      border-color: var(
+        --_triangle-shadow-border-color,
+        rgba(0, 0, 0, 0.25) transparent transparent
+      );
+    }
+
+    &:after {
+      margin: var(--_triangle-shadow-margin, -1px 0 0 0);
+      border-color: var(
+        --_triangle-border-color,
+        var(--clr-popover-background, #fff) transparent transparent
+      );
+    }
+  }
+}

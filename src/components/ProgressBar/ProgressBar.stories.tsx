@@ -1,8 +1,9 @@
 import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
-import ProgressBar from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import ProgressBar from ".";
+import "./styles.css";
 
 export default {
   title: "ProgressBar (experimental)",
@@ -10,6 +11,17 @@ export default {
   args: {
     percentage: 74,
     secondaryPercentage: 90,
+  },
+  argTypes: {
+    percentage: {
+      control: "number",
+    },
+    secondaryPercentage: {
+      control: "number",
+    },
+    isCircular: {
+      control: "boolean",
+    },
   },
   tags: ["autodocs"],
 };

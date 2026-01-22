@@ -1,26 +1,6 @@
 import React, { type ReactNode } from "react";
-import { useTheme } from "styled-components";
-
-import { type SpaceType } from "../../types";
-import { crukTheme as defaultTheme } from "../../themes/cruk";
-
-import { StyledBadge } from "./styles";
+import { type ColourVariableType } from "../../types";
 import { themeColorOrString } from "../../utils/themeUtils";
-
-export type BadgeProps = {
-  /** background colour of badge */
-  backgroundColor?: string;
-  /** border colour of badge */
-  borderColor?: string;
-  /** text colour of badge */
-  textColor?: string;
-  /** size of badge */
-  size?: SpaceType;
-  /** contents of badge */
-  children?: ReactNode;
-  /** forces shape to have equal width and height set by size attribute */
-  isSquare?: boolean;
-};
 
 /**
  * Displays a numeric or icon indicator. You can use the icon prop to
@@ -37,31 +17,50 @@ additional text.
  */
 export function Badge({
   children,
-  size = "xs",
-  backgroundColor = "primary",
-  borderColor = "transparent",
-  textColor = "textOnPrimary",
+  size,
   isSquare,
-}: BadgeProps) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
+  backgroundColor,
+  textColor,
+  borderColor,
+}: {
+  size?: "xs" | "s" | "m" | "l" | "xl";
+  /** contents of badge */
+  children?: ReactNode;
+  /** forces shape to have equal width and height set by size attribute */
+  isSquare?: boolean;
+  textColor?: ColourVariableType | string;
+  backgroundColor?: ColourVariableType | string;
+  borderColor?: ColourVariableType | string;
+  style?: React.CSSProperties;
+}) {
+  const isSquareCalculated = isSquare ?? !(typeof children === "string");
+  const textColourThemeOrString = textColor
+    ? themeColorOrString(textColor)
+    : undefined;
+  const backgroundColourThemeOrString = backgroundColor
+    ? themeColorOrString(backgroundColor)
+    : undefined;
+  const borderColourThemeOrString = borderColor
+    ? themeColorOrString(borderColor)
+    : undefined;
+
+  const convertedProps = {
+    "data-size": size,
+    "data-is-square": isSquareCalculated,
   };
 
-  const isSquareCalculated = isSquare ?? !(typeof children === "string");
-
   return (
-    <StyledBadge
-      theme={theme}
-      $isSquare={isSquareCalculated}
-      $size={size}
-      $backgroundColor={themeColorOrString(backgroundColor, theme)}
-      $borderColor={themeColorOrString(borderColor, theme)}
-      $textColor={themeColorOrString(textColor, theme)}
+    <span
+      className={["component-badge"].join(" ")}
+      {...convertedProps}
+      style={{
+        color: textColourThemeOrString,
+        backgroundColor: backgroundColourThemeOrString,
+        borderColor: borderColourThemeOrString,
+      }}
     >
       {children}
-    </StyledBadge>
+    </span>
   );
 }
 

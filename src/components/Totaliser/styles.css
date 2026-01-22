@@ -1,0 +1,74 @@
+.component-totaliser {
+  font-family: var(--typ-font-family-headings, "Progress", Arial, sans-serif);
+  margin: 0;
+
+  .bubble-wrapper {
+    text-align: center;
+    background-color: var(--clr-totaliser-bubble, #f2f2f2);
+    border-radius: 3.2rem;
+    padding: 5px;
+    position: relative;
+    p {
+      margin: 0;
+    }
+  }
+
+  .progress-bar-wrapper {
+    padding: 0;
+    margin-top: var(--spacing-s, 1.5rem);
+    position: relative;
+
+    &:not([data-is-compact="true"]) {
+      padding: 0 3rem 1rem;
+      border: none;
+      div > div > div:not(:first-child) {
+        &:after {
+          content: "▼";
+          color: var(--clr-totaliser-bubble, #f2f2f2);
+          position: absolute;
+          top: -1.75rem;
+          right: -1rem;
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  /* p */
+  .total {
+    color: var(--clr-totaliser-bubble-total, #00007e);
+    font-size: 2.625rem;
+    line-height: 3rem;
+    font-family: var(--typ-font-family-headings, "Progress", Arial, sans-serif);
+    text-transform: var(--typ-header-text-transform, none);
+    font-weight: var(--typ-font-weight-labels, 500);
+  }
+  /* p */
+  .bubble-text {
+    color: var(--clr-totaliser-bubble-text, #000);
+    font-family: var(--typ-font-family-headings, "Progress", Arial, sans-serif);
+    text-transform: var(--typ-header-text-transform, none);
+    font-weight: var(--typ-font-weight-labels, 500);
+  }
+  /* p */
+  .gift-aid {
+    color: var(--clr-totaliser-bubble-total, #00007e);
+    font-family: var(--typ-font-family-headings, "Progress", Arial, sans-serif);
+    text-transform: var(--typ-header-text-transform, none);
+    font-weight: var(--typ-font-weight-labels, 500);
+  }
+
+  /* span not a div so that we don't end up with two speech bubble arrows from ProgressBarWrapper */
+  .summary {
+    display: block;
+    text-align: right;
+    margin-top: 12px;
+    margin-bottom: 0;
+    font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
+  }
+
+  .compact-wrapper {
+    justify-content: flex-end;
+    display: flex;
+  }
+}

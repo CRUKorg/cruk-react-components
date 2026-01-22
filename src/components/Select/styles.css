@@ -1,0 +1,68 @@
+.component-select {
+  --_button-height: 3rem;
+  appearance: none;
+  background:
+    linear-gradient(
+      45deg,
+      var(--clr-background-light, #fff) 50%,
+      var(--clr-select-background, #000) 50%
+    ),
+    linear-gradient(
+      135deg,
+      var(--clr-select-background, #000) 50%,
+      var(--clr-background-light, #fff) 50%
+    );
+  background-color: var(--clr-background-light, #fff);
+  background-position:
+    calc(100% - 16px) 50%,
+    calc(100% - 10px) 50%;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+  border: solid var(--size-border-width, 1px)
+    var(--clr-text-input-border, #2e2c2d);
+
+  color: var(--clr-text-dark, #000);
+  display: block;
+  font-size: var(--font-size-m, 1rem);
+  min-height: var(--_button-height, 3rem);
+  padding: calc(
+      (
+          var(--_button-height, 3rem) - (var(--size-border-width, 1px) * 2) -
+            var(--typ-line-height, 1.5em)
+        ) /
+        2
+    )
+    var(--spacing-m, 2rem)
+    calc(
+      (
+          var(--_button-height, 3rem) - (var(--size-border-width, 1px) * 2) -
+            var(--typ-line-height, 1.5em)
+        ) /
+        2
+    )
+    var(--spacing-xs, 1rem);
+  width: 100%;
+  transition: border-color 150ms linear;
+
+  &:hover {
+    border-color: var(--clr-secondary, #e60079);
+  }
+
+  &[aria-invalid="true"] {
+    border-color: var(--clr-danger, #d51311);
+  }
+
+  &:disabled {
+    color: var(--clr-disabled, #e6e6e6);
+    cursor: not-allowed;
+
+    &:hover {
+      border-color: var(--clr-text-input-border, #2e2c2d);
+    }
+  }
+
+  /* increase font size for desktop */
+  @media (min-width: 1200px) {
+    font-size: var(--font-size-ml, 1.125rem);
+  }
+}

@@ -1,10 +1,8 @@
 import React, { type ReactNode, type HTMLAttributes } from "react";
-import { useTheme } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { Avatar } from "../Avatar";
 
-import { StyledUserBlock, Details, Name, Extra } from "./styles";
+import { type ThemeNameType } from "../../types";
 
 export type UserBlockProps = HTMLAttributes<HTMLElement> & {
   /** name component or text */
@@ -17,6 +15,7 @@ export type UserBlockProps = HTMLAttributes<HTMLElement> & {
   extra?: ReactNode;
   /** size of avatar component */
   size?: "s" | "m" | "l" | "xl";
+  themeName: ThemeNameType;
 };
 
 /**
@@ -28,27 +27,23 @@ export function UserBlock({
   avatarUrl,
   extra,
   size = "l",
+  themeName = "cruk",
 }: UserBlockProps) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-
   // name is a reserved html prop so we make sure we don't pass it into the styled component
   // or it will end up in the markup
   return (
-    <StyledUserBlock theme={theme}>
+    <div className="component-user-block">
       <Avatar
         name={avatarName || (typeof name === "string" ? name : "Anonymous")}
         url={avatarUrl || undefined}
         size={size}
+        themeName={themeName}
       />
-      <Details>
-        <Name>{name || "Anonymous"}</Name>
-        {!!extra && <Extra>{extra}</Extra>}
-      </Details>
-    </StyledUserBlock>
+      <div className="details">
+        <p className="name">{name || "Anonymous"}</p>
+        {!!extra && <span className="extra">{extra}</span>}
+      </div>
+    </div>
   );
 }
 

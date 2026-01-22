@@ -6,16 +6,37 @@ import {
   faComment,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { IconFa } from "..";
-import { Badge } from ".";
 import { AllThemesWrapper } from "../AllThemesWrapper";
+import { colours, IconFa } from "..";
+import { Badge } from ".";
+import "./styles.css";
 
 export default {
   title: "Badge",
   component: Badge,
   args: {
     backgroundColor: "primary",
-    textColor: "textOnPrimary",
+    textColor: "text-on-primary",
+    size: "m",
+    borderColor: "transparent",
+  },
+  argTypes: {
+    size: {
+      control: { type: "select" },
+      options: ["xs", "s", "m", "l", "xl"],
+    },
+    textColor: {
+      control: "select",
+      options: [...colours, ""],
+    },
+    backgroundColor: {
+      control: "select",
+      options: [...colours, ""],
+    },
+    borderColor: {
+      control: "select",
+      options: [...colours, ""],
+    },
   },
   tags: ["autodocs"],
 };
@@ -62,7 +83,7 @@ export const BadgeWithColour: Story = {
 export const BadgeWithInverseColours: Story = {
   name: "BadgeWithInverseColours",
   args: {
-    backgroundColor: "textLight",
+    backgroundColor: "text-light",
     textColor: "tertiary",
     borderColor: "tertiary",
     children: <IconFa faIcon={faComment} />,

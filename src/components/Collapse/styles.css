@@ -1,0 +1,102 @@
+.component-collapse {
+  --_rc-collapse-transition-duration: 0.5s;
+
+  /* button , need colour props and text props */
+  .default-header {
+    --_button-height: 3rem;
+
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+
+    height: min-content;
+    min-height: var(--_button-height, 3rem);
+    width: auto;
+    min-width: auto;
+
+    /* If we know the button height the border height and the line height we can calculate the padding */
+    padding: 0;
+
+    display: flex;
+    font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
+    font-weight: normal;
+    margin-bottom: 0;
+    height: initial;
+    text-decoration: none;
+    text-align: left;
+    border-radius: 0;
+    color: var(--clr-collapse-header, #00007e);
+    border: none;
+
+    cursor: pointer;
+
+    font-size: var(--font-size-m, 1rem);
+    font-weight: var(--typ-font-weight-normal, 400);
+    text-align: center;
+    text-transform: var(--btn-text-transform, none);
+    text-decoration: var(--btn-text-decoration, none);
+
+    background-color: transparent;
+
+    &:focus-visible {
+      outline: auto;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &:hover,
+    &:focus {
+      color: var(--clr-collapse-header, #00007e);
+    }
+
+    .flipping-icon {
+      display: inline-block;
+      transition: var(--_rc-collapse-transition-duration) ease;
+      transform: initial;
+    }
+
+    &[aria-expanded="true"] {
+      .flipping-icon {
+        transform: translateY(0.1em) scaleY(-1);
+      }
+    }
+  }
+
+  .collapse-content {
+    display: grid;
+    margin: 0;
+    transition: var(--_rc-collapse-transition-duration) ease;
+    /* height: ${({ $contentHeight }: { $contentHeight: string }) => $contentHeight}; */
+    visibility: visible;
+    grid-template-rows: 1fr;
+
+    & > * {
+      overflow: hidden;
+    }
+
+    & > p {
+      margin-top: 0;
+    }
+
+    &[aria-hidden="true"] {
+      grid-template-rows: 0fr;
+    }
+
+    &[data-is-visible="false"] {
+      visibility: hidden;
+    }
+  }
+
+  /* div */
+  .custom-header {
+    cursor: pointer;
+  }
+  .spacer {
+    margin-left: var(--spacing-xxs, 1rem);
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+}

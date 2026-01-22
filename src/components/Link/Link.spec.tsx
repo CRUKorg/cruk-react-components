@@ -3,7 +3,7 @@ import React from "react";
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
 import { Link } from ".";
-import crukTheme from "src/themes/cruk";
+import "./styles.css";
 
 function component() {
   return (
@@ -32,11 +32,7 @@ function component() {
         </Link>
       </div>
       <div>
-        <Link
-          href="https://www.google.com"
-          textColor="secondary"
-          textHoverColor="#004400"
-        >
+        <Link href="https://www.google.com" textColor="secondary">
           Link using different colours
         </Link>
       </div>
@@ -50,7 +46,7 @@ function component() {
           <img
             style={{ width: "80px", height: "30px" }}
             alt=""
-            src={`${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`}
+            src={`https://rcl.assets.cancerresearchuk.org/images/logos/cruk-160.png`}
           />
         </Link>
       </div>

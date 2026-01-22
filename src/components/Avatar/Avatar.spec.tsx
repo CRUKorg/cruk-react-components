@@ -1,9 +1,8 @@
 import React from "react";
 
 import { testAccessibilityOnAllThemes } from "playwright/utils";
-import { crukTheme } from "src/themes/cruk";
-
 import { Avatar } from ".";
+import "./styles.css";
 
 function component() {
   return (
@@ -16,7 +15,7 @@ function component() {
       <Avatar
         name="Sam"
         alt="sam's profile"
-        url={`${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`}
+        url={`https://rcl.assets.cancerresearchuk.org/images/logos/cruk-160.png`}
       />
     </>
   );

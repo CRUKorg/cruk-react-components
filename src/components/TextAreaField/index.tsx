@@ -3,15 +3,23 @@ import React, {
   type TextareaHTMLAttributes,
   type Ref,
 } from "react";
-import { useTheme } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { ErrorText } from "../ErrorText";
 import { LabelWrapper } from "../LabelWrapper";
 
-import { StyledTextArea } from "./styles";
-
-export type TextAreaFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
+/**
+ * TextAreaField lets users enter and edit multiline text.
+ */
+export const TextAreaField = ({
+  errorMessage,
+  hasError,
+  hintText,
+  label,
+  resize = "vertical",
+  lineCount = 3,
+  ref,
+  ...props
+}: TextareaHTMLAttributes<HTMLTextAreaElement> & {
   /** error message text */
   errorMessage?: string;
   /** flag for error styling */
@@ -26,43 +34,25 @@ export type TextAreaFieldProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   lineCount?: number;
   /** react reference to the DOM element sometime used to scroll to or set focus after an error */
   ref?: Ref<HTMLTextAreaElement>;
-};
-
-/**
- * TextAreaField lets users enter and edit multiline text.
- */
-export const TextAreaField = ({
-  errorMessage,
-  hasError,
-  hintText,
-  label,
-  resize = "vertical",
-  lineCount = 3,
-  ref,
-  ...props
-}: TextAreaFieldProps) => {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-
+}) => {
+  const invalid = hasError || !!errorMessage?.length;
   return (
     <LabelWrapper
       label={label}
       hintText={hintText}
       required={props.required || false}
     >
-      <StyledTextArea
+      <textarea
+        className="component-textarea-field"
         {...props}
-        aria-invalid={hasError || !!errorMessage || false}
+        aria-invalid={invalid}
         aria-describedby={
           !!props.id && !!errorMessage ? `${props.id}-error` : undefined
         }
-        $hasError={hasError || !!errorMessage || false}
-        $resize={resize}
-        $lineCount={lineCount}
-        theme={theme}
+        style={{
+          resize: resize,
+          height: `${lineCount * 1.5}em`,
+        }}
         ref={ref}
         data-hj-suppress
       />

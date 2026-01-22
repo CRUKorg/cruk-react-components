@@ -1,45 +1,8 @@
 import React, { type InputHTMLAttributes } from "react";
 
-import { useTheme } from "styled-components";
 import { ErrorText } from "../ErrorText";
 import { Text } from "../Text";
 import { TextField } from "../TextField";
-
-import {
-  Fieldset,
-  DateTextFieldWrapper,
-  LargeDateTextFieldWrapper,
-  ErrorTextWrapper,
-  LegendText,
-} from "./styles";
-import { type ThemeType } from "../../types";
-
-export type DateFieldProps = InputHTMLAttributes<HTMLInputElement> & {
-  /** label text */
-  label: string;
-  /** hind text */
-  hintText?: string;
-  /** day field text value  */
-  day: string;
-  /** month field text value  */
-  month: string;
-  /** year field text value  */
-  year: string;
-  /** name passed to day field input element */
-  dayName?: string;
-  /** name passed to month field input element */
-  monthName?: string;
-  /** name passed to year field input element */
-  yearName?: string;
-  /** flag of error styling on day field */
-  dayHasError?: boolean;
-  /** flag of error styling on month field */
-  monthHasError?: boolean;
-  /** flag of error styling on year field */
-  yearHasError?: boolean;
-  /** error message text */
-  errorMessage?: string;
-};
 
 /**
  * To be used in forms entering dates like date of birth which are known dates and would take too long to get to with a date picker
@@ -68,27 +31,48 @@ export function DateField({
   },
   disabled,
   required,
-}: DateFieldProps) {
-  const theme = useTheme();
-  const typedTheme = theme as ThemeType;
+}: InputHTMLAttributes<HTMLInputElement> & {
+  /** label text */
+  label: string;
+  /** hind text */
+  hintText?: string;
+  /** day field text value  */
+  day: string;
+  /** month field text value  */
+  month: string;
+  /** year field text value  */
+  year: string;
+  /** name passed to day field input element */
+  dayName?: string;
+  /** name passed to month field input element */
+  monthName?: string;
+  /** name passed to year field input element */
+  yearName?: string;
+  /** flag of error styling on day field */
+  dayHasError?: boolean;
+  /** flag of error styling on month field */
+  monthHasError?: boolean;
+  /** flag of error styling on year field */
+  yearHasError?: boolean;
+  /** error message text */
+  errorMessage?: string;
+}) {
   return (
-    <Fieldset>
-      <LegendText>
+    <fieldset className="component-date-field">
+      <legend>
         {label}
         {!required && (
           <span
             style={{
-              fontWeight: typedTheme.typography.fontWeightBase,
+              fontWeight: "var(--typ-font-weight-base, 300)",
             }}
           >
             {` (optional)`}
           </span>
         )}
-      </LegendText>
-      {hintText && (
-        <Text textColor={typedTheme.colors.textMid}>{hintText}</Text>
-      )}
-      <DateTextFieldWrapper>
+      </legend>
+      {hintText && <Text textColor="text-mid">{hintText}</Text>}
+      <div className="date-text-field-wrapper">
         <TextField
           label="Day"
           type="text"
@@ -106,8 +90,8 @@ export function DateField({
           hasError={dayHasError}
           disabled={disabled}
         />
-      </DateTextFieldWrapper>
-      <DateTextFieldWrapper>
+      </div>
+      <div className="date-text-field-wrapper">
         <TextField
           label="Month"
           type="text"
@@ -125,8 +109,8 @@ export function DateField({
           hasError={monthHasError}
           disabled={disabled}
         />
-      </DateTextFieldWrapper>
-      <LargeDateTextFieldWrapper>
+      </div>
+      <div className="large-date-text-field-wrapper">
         <TextField
           label="Year"
           type="text"
@@ -144,13 +128,13 @@ export function DateField({
           hasError={yearHasError}
           disabled={disabled}
         />
-      </LargeDateTextFieldWrapper>
+      </div>
       {errorMessage && (
-        <ErrorTextWrapper>
+        <div className="error-text-wrapper">
           <ErrorText marginTop="xxs">{errorMessage}</ErrorText>
-        </ErrorTextWrapper>
+        </div>
       )}
-    </Fieldset>
+    </fieldset>
   );
 }
 

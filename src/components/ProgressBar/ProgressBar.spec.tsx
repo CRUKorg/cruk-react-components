@@ -2,8 +2,9 @@ import React from "react";
 
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
-import { ProgressBar } from ".";
 import { Text } from "..";
+import { ProgressBar } from ".";
+import "./styles.css";
 
 function component() {
   return (

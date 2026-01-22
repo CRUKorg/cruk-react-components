@@ -1,8 +1,9 @@
 import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
-import Loader from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import Loader from ".";
+import "./styles.css";
 
 export default {
   title: "Loader",

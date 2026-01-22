@@ -4,10 +4,13 @@ import { type StoryObj } from "@storybook/react-vite";
 import Radio from "../Radio";
 import CheckBox from "../Checkbox";
 
-import LegendWrapper, { type LegendWrapperProps } from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
-import { useTheme } from "styled-components";
-import { type ThemeType } from "..";
+import LegendWrapper, { type LegendWrapperProps } from ".";
+import "./styles.css";
+import "../ErrorText/styles.css";
+import "../Radio/styles.css";
+import "../Checkbox/styles.css";
+import "../LabelWrapper/styles.css";
 
 export default {
   title: "Legend Wrapper",
@@ -26,15 +29,14 @@ const LegendWrapperWithRadios = (args: LegendWrapperProps) => {
   const handleChange = (value: string) => {
     setSelected(value);
   };
-  const theme = useTheme();
-  const themeTyped = theme as ThemeType;
-  const themeName = themeTyped.name;
+  const id = React.useId();
+  const id2 = React.useId();
   return (
     <LegendWrapper {...args}>
       <Radio
         onChange={(e) => handleChange(e.target.value)}
         checked={selected === "one"}
-        name={`radio1-${themeName}`}
+        name={`radio1-${id}`}
         value="one"
         hasError={args.hasError}
       >
@@ -44,7 +46,7 @@ const LegendWrapperWithRadios = (args: LegendWrapperProps) => {
       <Radio
         onChange={(e) => handleChange(e.target.value)}
         checked={selected === "two"}
-        name={`radio1-${themeName}`}
+        name={`radio1-${id2}`}
         value="two"
         hasError={args.hasError}
       >
@@ -63,13 +65,13 @@ const LegendWrapperWithCheckboxes = (args: LegendWrapperProps) => {
       setSelected(selected.filter((item) => item !== value));
     }
   };
-  const theme = useTheme();
-  const themeTyped = theme as ThemeType;
-  const themeName = themeTyped.name;
+  const id = React.useId();
+  const id2 = React.useId();
+
   return (
     <LegendWrapper {...args}>
       <CheckBox
-        name={`check1-${themeName}`}
+        name={`check1-${id}`}
         onChange={(e) => handleChange(e.target.value)}
         checked={selected.indexOf("one") >= 0}
         disabled={false}
@@ -78,7 +80,7 @@ const LegendWrapperWithCheckboxes = (args: LegendWrapperProps) => {
       />
 
       <CheckBox
-        name={`check1-${themeName}`}
+        name={`check1-${id2}`}
         onChange={(e) => handleChange(e.target.value)}
         checked={selected.indexOf("two") >= 0}
         disabled={false}

@@ -2,8 +2,11 @@ import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
 import { Text, Box } from "..";
-import Collapse from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
+import Collapse from ".";
+import "./styles.css";
+import "../Box/styles.css";
+import "../Text/styles.css";
 
 export default {
   title: "Collapse (experimental)",
@@ -44,7 +47,7 @@ export const CollapseWithModifiedText: Story = {
   args: {
     headerTitleText:
       "A long title with headerTitleTextColor and headerTitleTextSize",
-    headerTitleTextColor: "primary",
+    headerTitleTextColor: "text-dark",
     headerTitleTextSize: "xl",
   },
   render: (args) => (
@@ -60,12 +63,12 @@ export const CollapseWitCustomHeader: Story = {
     id: "custom",
     headerComponent: (
       <Box backgroundColor="primary">
-        <Text textColor="textOnPrimary">This is box header click me</Text>
+        <Text textColor="text-on-primary">This is box header click me</Text>
       </Box>
     ),
     children: (
       <Box backgroundColor="primary">
-        <Text textColor="textOnPrimary">This is box</Text>
+        <Text textColor="text-on-primary">This is box</Text>
       </Box>
     ),
   },

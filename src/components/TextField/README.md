@@ -160,6 +160,7 @@ Other props not listed here (disabled, placeholder, etc.) will be passed to the 
 | extraRight       | string                 |          |         | Displayed inline after the input                                          |
 | extraBottom      | string                 |          |         | Displayed under the input                                                 |
 | extraLeft        | string                 |          |         | Displayed inline before the input                                         |
+| textSize         | FontSizeType           |          | 'm'     | Font size uses t-shirt sizes of s/m/l                                     |
 
 ## Accessibility
 

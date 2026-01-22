@@ -3,19 +3,8 @@ import React, {
   type Ref,
   type ReactNode,
 } from "react";
-import { useTheme, ThemeProvider } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { ErrorText } from "../ErrorText";
-
-import {
-  StyledLabel,
-  StyledInput,
-  SelectedBorder,
-  CheckWrapper,
-  Check,
-  VerticalAlign,
-} from "./styles";
 
 export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   ref?: Ref<HTMLInputElement>;
@@ -32,23 +21,18 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
  * The value or children becomes the label, if you want an outer label for a radio or group of radios please use a LegendWrapper component
  */
 export const Radio = (props: RadioProps) => {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { children, hasError, errorMessage, ref, ...rest } = props;
+
+  const invalid = props.hasError || !!props.errorMessage?.length;
+
   return (
-    <ThemeProvider theme={theme}>
-      <StyledLabel
-        $hasError={props.hasError || !!props.errorMessage || false}
-        className={props.className}
-        $checked={props.checked || false}
-        $disabled={props.disabled || false}
-      >
-        <StyledInput
+    <>
+      <label className="component-radio">
+        <input
           {...rest}
+          className="input"
+          aria-invalid={invalid || false}
           disabled={props.disabled || false}
           type="radio"
           ref={ref}
@@ -56,14 +40,12 @@ export const Radio = (props: RadioProps) => {
             !!props.id && !!props.errorMessage ? `${props.id}-error` : undefined
           }
         />
-        <SelectedBorder />
-        {theme.utilities.useDefaultFromControls ? null : (
-          <CheckWrapper>
-            <Check />
-          </CheckWrapper>
-        )}
-        <VerticalAlign>{props.children || props.value}</VerticalAlign>
-      </StyledLabel>
+        <div className="check-wrapper">
+          <span className="check" />
+        </div>
+
+        <span className="vertical-align">{props.children || props.value}</span>
+      </label>
       {!!props.errorMessage && (
         <ErrorText
           marginTop="xxs"
@@ -72,7 +54,7 @@ export const Radio = (props: RadioProps) => {
           {props.errorMessage}
         </ErrorText>
       )}
-    </ThemeProvider>
+    </>
   );
 };
 

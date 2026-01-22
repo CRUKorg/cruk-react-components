@@ -1,10 +1,6 @@
 import React, { type HTMLAttributes, type ReactNode } from "react";
-import { useTheme, ThemeProvider } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { ErrorText } from "../ErrorText";
-
-import { StyledFieldset, LegendSpan, HintText } from "./styles";
 
 export type LegendWrapperProps = HTMLAttributes<HTMLLegendElement> & {
   children?: ReactNode;
@@ -34,39 +30,31 @@ export function LegendWrapper({
   hintText,
   ...restOfHTMLAttributes
 }: LegendWrapperProps) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-
-  const hintTextElement =
-    !!hintText &&
-    (typeof hintText === "string" || typeof hintText === "number") ? (
-      <HintText>{hintText}</HintText>
-    ) : (
-      hintText
-    );
   return (
-    <ThemeProvider theme={theme}>
-      <StyledFieldset
-        $hasError={hasError || !!errorMessage || false}
-        $hasHintText={!!hintText}
-      >
-        {legendText && (
-          <legend {...restOfHTMLAttributes}>
-            <LegendSpan $hasHintText={!!hintText}>
-              {legendText} {!required && <span>(optional)</span>}
-            </LegendSpan>
-            {hintTextElement}
-          </legend>
-        )}
-        {children}
-        {!!errorMessage && (
-          <ErrorText marginTop="xxs">{errorMessage}</ErrorText>
-        )}
-      </StyledFieldset>
-    </ThemeProvider>
+    <fieldset
+      className="component-legend-wrapper"
+      data-has-error={hasError || !!errorMessage || false}
+      data-has-hint-text={!!hintText}
+    >
+      {legendText && (
+        <legend {...restOfHTMLAttributes}>
+          <span className="legend-span" data-has-hint-text={!!hintText}>
+            {legendText}{" "}
+            {!required && (
+              <span className="required-indication-text">(optional)</span>
+            )}
+          </span>
+          {!!hintText &&
+          (typeof hintText === "string" || typeof hintText === "number") ? (
+            <span className="hint-text">{hintText}</span>
+          ) : (
+            hintText
+          )}
+        </legend>
+      )}
+      {children}
+      {!!errorMessage && <ErrorText marginTop="xxs">{errorMessage}</ErrorText>}
+    </fieldset>
   );
 }
 

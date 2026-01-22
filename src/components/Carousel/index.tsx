@@ -10,26 +10,6 @@ import { InView } from "react-intersection-observer";
 import { Box } from "../Box";
 import { Dots } from "./Dots";
 
-import {
-  CarouselWrapper,
-  CarouselCardInner,
-  CarouselCard,
-  CarouselScrollArea,
-} from "./styles";
-
-export type CarouselProps = {
-  /** Index in which the carousel is scrolled to on mount */
-  startPosition?: number;
-  /** call back for on position changed first prop is the possition */
-  onPositionChanged?: (position: number) => void;
-  /** show item left and right of current smaller than current item */
-  shrinkUnselectedPages?: boolean;
-  /** childrent item of the carousel */
-  children?: ReactNode;
-  /** set carousel image to full width of parent */
-  fullWidthChild?: boolean;
-};
-
 /**
  *
  * Lightweight carousel component that works with mouse and touch events,
@@ -45,7 +25,18 @@ export const Carousel = ({
   onPositionChanged,
   shrinkUnselectedPages = false,
   fullWidthChild = false,
-}: CarouselProps) => {
+}: {
+  /** Index in which the carousel is scrolled to on mount */
+  startPosition?: number;
+  /** call back for on position changed first prop is the possition */
+  onPositionChanged?: (position: number) => void;
+  /** show item left and right of current smaller than current item */
+  shrinkUnselectedPages?: boolean;
+  /** childrent item of the carousel */
+  children?: ReactNode;
+  /** set carousel image to full width of parent */
+  fullWidthChild?: boolean;
+}) => {
   const timer = React.useRef<NodeJS.Timeout | string | number | undefined>(
     undefined,
   );
@@ -126,47 +117,47 @@ export const Carousel = ({
   const onlyChild = childArray.length === 1;
 
   return (
-    <>
+    <div className="component-carousel" data-only-child={onlyChild}>
       <Box>
-        <CarouselWrapper>
-          <CarouselScrollArea
-            ref={scrollRef}
-            aria-live="assertive"
-            $smoothScrolling={smoothScrolling}
-            tabIndex={0}
-          >
-            {childArray.map((child, index) => {
-              const isSelected = index === currentPosition;
-              const keyString = `card-${index}`;
-              return (
-                <CarouselCard
-                  key={keyString}
-                  $onlyChild={onlyChild}
-                  $fullWidthChild={fullWidthChild}
+        <ul
+          className="carousel-scroll-area"
+          ref={scrollRef}
+          aria-live="assertive"
+          data-smooth-scrolling={smoothScrolling}
+          tabIndex={0}
+        >
+          {childArray.map((child, index) => {
+            const isSelected = index === currentPosition;
+            const keyString = `card-${index}`;
+            return (
+              <li
+                key={keyString}
+                data-only-child={onlyChild}
+                data-full-width-child={fullWidthChild}
+              >
+                <InView
+                  threshold={0.5}
+                  as="div"
+                  onChange={(inView) => {
+                    if (inView) {
+                      setPosition(index);
+                    }
+                  }}
                 >
-                  <InView
-                    threshold={0.5}
-                    as="div"
-                    onChange={(inView) => {
-                      if (inView) {
-                        setPosition(index);
-                      }
-                    }}
+                  <div
+                    className="carousel-card-inner"
+                    data-only-child={onlyChild}
+                    data-selected={isSelected}
+                    data-shrink-unselected-pages={shrinkUnselectedPages}
+                    data-full-width-child={fullWidthChild}
                   >
-                    <CarouselCardInner
-                      $onlyChild={onlyChild}
-                      $isSelected={isSelected}
-                      $shrinkUnselectedPages={shrinkUnselectedPages}
-                      $fullWidthChild={fullWidthChild}
-                    >
-                      {child}
-                    </CarouselCardInner>
-                  </InView>
-                </CarouselCard>
-              );
-            })}
-          </CarouselScrollArea>
-        </CarouselWrapper>
+                    {child}
+                  </div>
+                </InView>
+              </li>
+            );
+          })}
+        </ul>
       </Box>
       {childArray.length > 1 ? (
         <Box>
@@ -179,7 +170,7 @@ export const Carousel = ({
           />
         </Box>
       ) : null}
-    </>
+    </div>
   );
 };
 

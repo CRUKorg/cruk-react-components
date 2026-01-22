@@ -4,11 +4,6 @@ import React, {
   type ReactNode,
   type TouchEvent,
 } from "react";
-import { ThemeProvider, useTheme } from "styled-components";
-
-import { crukTheme as defaultTheme } from "../../themes/cruk";
-
-import { PagerItem, PagerLink, PagerList, PagerWrapper } from "./styles";
 
 export type PaginationProps = {
   /** set current page number */
@@ -42,11 +37,6 @@ export function Pagination({
   children,
   id,
 }: PaginationProps) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
   const perPageValue = perPage > 0 ? perPage : 1;
   const totalPages = Math.ceil(items / perPageValue) || 1;
 
@@ -66,29 +56,30 @@ export function Pagination({
     // get the list of items
     for (let number = 1; number <= total; number += 1) {
       list.push(
-        <PagerItem key={number}>
-          <PagerLink
+        <li className="pager-item" key={number}>
+          <a
+            className="pager-link"
             data-cta={id ? `${id}-${number}` : null}
-            $active={number === active}
+            data-is-active={number === active}
             {...linkProps(number)}
             aria-label={`page ${number} of ${total}`}
           >
             {number}
-          </PagerLink>
-        </PagerItem>,
+          </a>
+        </li>,
       );
     }
     const first = list.slice(0, 1).concat(
-      <PagerItem key="first">
+      <li className="pager-item" key="first">
         <span>...</span>
-      </PagerItem>,
+      </li>,
     );
     const last = list
       .slice(list.length - 1)
       .concat(
-        <PagerItem key="last">
+        <li className="pager-item" key="last">
           <span>...</span>
-        </PagerItem>,
+        </li>,
       )
       .reverse();
     pager = list.slice(0, total);
@@ -108,40 +99,42 @@ export function Pagination({
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       {items > perPage && (
-        <PagerWrapper>
-          <PagerList>
-            <PagerItem key="Prev">
-              <PagerLink
+        <div className="component-pagination" id={id}>
+          <ul className="pager-list">
+            <li className="pager-item" key="Prev">
+              <a
+                className="pager-link"
                 data-cta={id ? `${id}-prev` : null}
-                name="Prev"
+                data-name="Prev"
                 aria-disabled={current === 1}
                 {...(current === 1 && { tabIndex: -1 })}
                 {...(current !== 1 && linkProps(current - 1))}
-                $disabled={current === 1}
+                data-is-disabled={current === 1}
               >
                 Prev
-              </PagerLink>
-            </PagerItem>
+              </a>
+            </li>
             {renderPager(current, totalPages)}
-            <PagerItem key="Next">
-              <PagerLink
+            <li className="pager-item" key="Next">
+              <a
+                className="pager-link"
                 data-cta={id ? `${id}-next` : null}
-                name="Next"
+                data-name="Next"
                 aria-disabled={current === totalPages}
                 {...(current === totalPages && { tabIndex: -1 })}
                 {...(current !== totalPages && linkProps(current + 1))}
-                $disabled={current === totalPages}
+                data-is-disabled={current === totalPages}
               >
                 Next
-              </PagerLink>
-            </PagerItem>
-          </PagerList>
+              </a>
+            </li>
+          </ul>
           {children}
-        </PagerWrapper>
+        </div>
       )}
-    </ThemeProvider>
+    </>
   );
 }
 

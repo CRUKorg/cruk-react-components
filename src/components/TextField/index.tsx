@@ -3,22 +3,14 @@ import React, {
   type ReactNode,
   type Ref,
 } from "react";
-import { useTheme } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { ErrorText } from "../ErrorText";
 import { LabelWrapper } from "../LabelWrapper";
 
-import {
-  ExtraLeft,
-  ExtraRight,
-  Extra,
-  ExtraWrapper,
-  StyledInput,
-  StyledInputWrapper,
-} from "./styles";
+import { type fontSizes } from "../../types";
 
 export type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
+  textSize?: (typeof fontSizes)[number];
   /** error message text  */
   errorMessage?: string;
   /** custom component/text that appears underneath the input field */
@@ -51,6 +43,7 @@ export type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
  * TextFields let users enter and edit text. For multiline text entry please consider using the TextAreaFieldComponent.
  * */
 export const TextField = ({
+  textSize,
   errorMessage,
   extraBottom,
   extraLeft,
@@ -66,45 +59,38 @@ export const TextField = ({
   ref,
   ...props
 }: TextFieldProps) => {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
+  const isValidCalculated =
+    typeof isValid !== "undefined"
+      ? isValid
+      : !hasError && !errorMessage?.length;
 
   const renderContent = (
     <>
-      {!!extraLeft && <ExtraLeft theme={theme}>{extraLeft}</ExtraLeft>}
-      <StyledInputWrapper
-        $hasError={hasError || !!errorMessage || false}
-        $isValid={
-          typeof isValid !== "undefined" ? isValid : !hasError && !errorMessage
-        }
-        aria-invalid={hasError || !!errorMessage || false}
-        $isValidVisible={isValidVisible || false}
-        $isInvalidVisible={isInvalidVisible || false}
-        theme={theme}
+      {!!extraLeft && (
+        <span className={["extra", "extra-left"].join(" ")}>{extraLeft}</span>
+      )}
+      <span
+        className="input-wrapper"
+        data-is-valid-visible={isValidVisible || false}
+        data-is-invalid-visible={isInvalidVisible || false}
       >
-        <StyledInput
-          $hasError={hasError || !!errorMessage || false}
-          $isValid={
-            typeof isValid !== "undefined"
-              ? isValid
-              : !hasError && !errorMessage
-          }
-          aria-invalid={hasError || !!errorMessage || false}
+        <input
+          className="input text-props"
+          aria-invalid={!isValidCalculated}
           aria-describedby={
             !!props.id && !!errorMessage ? `${props.id}-error` : undefined
           }
-          $isValidVisible={isValidVisible || false}
-          $isInvalidVisible={isInvalidVisible || false}
+          data-is-valid-visible={isValidVisible || false}
+          data-is-invalid-visible={isInvalidVisible || false}
+          data-text-size={textSize}
           {...props}
-          theme={theme}
           data-hj-suppress
           ref={ref}
         />
-      </StyledInputWrapper>
-      {!!extraRight && <ExtraRight theme={theme}>{extraRight}</ExtraRight>}
+      </span>
+      {!!extraRight && (
+        <span className={["extra-right", "extra"].join(" ")}>{extraRight}</span>
+      )}
     </>
   );
 
@@ -115,21 +101,29 @@ export const TextField = ({
       required={props.required || false}
       hideRequiredIndicationInLabel={hideRequiredIndicationInLabel}
     >
-      {!!extraTop && <Extra theme={theme}>{extraTop}</Extra>}
-      {!!extraRight || !!extraLeft ? (
-        <ExtraWrapper>{renderContent}</ExtraWrapper>
-      ) : (
-        renderContent
-      )}
-      {!!extraBottom && <Extra theme={theme}>{extraBottom}</Extra>}
-      {!!errorMessage && (
-        <ErrorText
-          marginTop="xxs"
-          id={props.id ? `${props.id}-error` : undefined}
-        >
-          {errorMessage}
-        </ErrorText>
-      )}
+      <span className="component-text-field">
+        {!!extraTop && (
+          <span className={["extra-top", "extra"].join(" ")}>{extraTop}</span>
+        )}
+        {!!extraRight || !!extraLeft ? (
+          <span className="extra-wrapper">{renderContent}</span>
+        ) : (
+          renderContent
+        )}
+        {!!extraBottom && (
+          <span className={["extra-bottom", "extra"].join(" ")}>
+            {extraBottom}
+          </span>
+        )}
+        {!!errorMessage?.length && (
+          <ErrorText
+            marginTop="xxs"
+            id={props.id ? `${props.id}-error` : undefined}
+          >
+            {errorMessage}
+          </ErrorText>
+        )}
+      </span>
     </LabelWrapper>
   );
 };

@@ -1,29 +1,30 @@
 import React, { type ReactNode } from "react";
-import { useTheme } from "styled-components";
 
 import {
   calculatePercentRounded,
   formatMoneyWithCommas,
 } from "../../utils/Helper";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { Text } from "../Text";
 import { Badge } from "../Badge";
 import { Box } from "../Box";
 
-import {
-  TotaliserWrapper,
-  CompactWrapper,
-  Summary,
-  BubbleWrapper,
-  BubbleText,
-  GiftAid,
-  Total,
-  ProgressBarWrapper,
-  StyledProgressBar,
-} from "./styles";
+import { ProgressBar } from "../ProgressBar";
 
-export type TotaliserProps = {
+// TODO figure out how we want to handle AriaAttributes
+
+/**
+ * Think Blue Peter, used to display total raised and if target prop is passed will display percentage of target reached.
+ * */
+export function Totaliser({
+  total,
+  additionalAmount,
+  giftAid,
+  target = null,
+  isCompact,
+  summaryMessage = undefined,
+  children,
+}: {
   /** financial total as a number */
   total: number;
   /** additional donation amount as a number */
@@ -38,27 +39,7 @@ export type TotaliserProps = {
   summaryMessage?: ReactNode;
   /** component children */
   children?: ReactNode;
-};
-
-// TODO figure out how we want to handle AriaAttributes
-
-/**
- * Think Blue Peter, used to display total raised and if target prop is passed will display tercentage of target reached.
- * */
-export function Totaliser({
-  total,
-  additionalAmount,
-  giftAid,
-  target = null,
-  isCompact,
-  summaryMessage = undefined,
-  children,
-}: TotaliserProps) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
+}) {
   const percentageOfTotal = calculatePercentRounded(+total, target || 0);
   const withAdditionalPercentageOfTotal = calculatePercentRounded(
     additionalAmount ? +total + (additionalAmount || 0) : 0,
@@ -70,13 +51,15 @@ export function Totaliser({
   )} target`;
 
   return (
-    <TotaliserWrapper $isCompact={isCompact || false} theme={theme}>
+    <div className="component-totaliser">
       {!isCompact ? (
-        <BubbleWrapper theme={theme}>
-          <BubbleText>Total raised</BubbleText>
-          <Total>£{formatMoneyWithCommas(total)}</Total>
-          <GiftAid>+ £{formatMoneyWithCommas(giftAid || 0)} Gift Aid</GiftAid>
-        </BubbleWrapper>
+        <div className="bubble-wrapper">
+          <p className="bubble-text">Total raised</p>
+          <p className="total">£{formatMoneyWithCommas(total)}</p>
+          <p className="gift-aid">
+            + £{formatMoneyWithCommas(giftAid || 0)} Gift Aid
+          </p>
+        </div>
       ) : (
         <Box marginHorizontal="none" marginRight="xxs" marginBottom="none">
           <Badge>{`£${formatMoneyWithCommas(total)}`}</Badge>
@@ -87,34 +70,36 @@ export function Totaliser({
 
       {(!!target || !!summaryMessage) && (
         <>
-          <ProgressBarWrapper $isCompact={isCompact || false} theme={theme}>
-            <StyledProgressBar
-              theme={theme}
+          <div
+            className="progress-bar-wrapper"
+            data-is-compact={isCompact || false}
+          >
+            <ProgressBar
               percentage={percentageOfTotal}
               secondaryPercentage={withAdditionalPercentageOfTotal}
             />
             {!isCompact ? (
               summaryMessage ? (
-                <Summary>{summaryMessage}</Summary>
+                <span className="summary">{summaryMessage}</span>
               ) : (
-                <Summary>
+                <span className="summary">
                   <Text as="span">{summaryString}</Text>
-                </Summary>
+                </span>
               )
             ) : (
-              <CompactWrapper theme={theme}>
+              <div className="compact-wrapper">
                 {target !== null && (
-                  <Summary>
+                  <span className="summary">
                     <Text as="span">{summaryString}</Text>
-                  </Summary>
+                  </span>
                 )}
-              </CompactWrapper>
+              </div>
             )}
-          </ProgressBarWrapper>
+          </div>
         </>
       )}
       {children}
-    </TotaliserWrapper>
+    </div>
   );
 }
 

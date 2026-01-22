@@ -1,17 +1,48 @@
 import React, { type ImgHTMLAttributes } from "react";
-import { useTheme } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
+import { type ThemeNameType } from "../../types";
 
-import { StyledAvatar } from "./styles";
+const crukAvatarBaseUrl =
+  "https://rcl.assets.cancerresearchuk.org/images/avatar/cruk2/";
+const bowelbabeAvatarBaseUrl =
+  "https://rcl.assets.cancerresearchuk.org/images/avatar/bowelbabe/";
+const rflAvatarBaseUrl =
+  "https://rcl.assets.cancerresearchuk.org/images/avatar/rfl/";
+const su2cAvatarBaseUrl =
+  "https://rcl.assets.cancerresearchuk.org/images/avatar/su2c/";
 
-export type AvatarProps = ImgHTMLAttributes<HTMLElement> & {
-  /** name of user/entity */
-  name?: string;
-  /** image url */
+function getAvatarBaseUrl(themeName: ThemeNameType) {
+  switch (themeName) {
+    case "su2c":
+      return su2cAvatarBaseUrl;
+    case "bowelbabe":
+      return bowelbabeAvatarBaseUrl;
+    case "rfl":
+      return rflAvatarBaseUrl;
+    default:
+      return crukAvatarBaseUrl;
+  }
+}
+
+const avatarUrl = ({
+  url,
+  name,
+  themeName,
+}: {
   url?: string;
-  /** image size */
-  size?: "s" | "m" | "l" | "xl";
+  name?: string;
+  themeName: ThemeNameType;
+}) => {
+  if (url) return url;
+  const fileName =
+    name &&
+    typeof name === "string" &&
+    name !== "Anonymous" &&
+    /[a-z]/i.exec(name[0].trim())
+      ? `icon-avatar-${name[0].trim().toUpperCase()}.png`
+      : "icon-avatar-Anonymous.png";
+  const fullUrl = `${getAvatarBaseUrl(themeName)}${fileName}`;
+  return fullUrl;
 };
 
 /**
@@ -23,33 +54,25 @@ export function Avatar({
   name,
   size = "m",
   alt = "",
+  themeName = "cruk",
   ...rest
-}: AvatarProps) {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-
-  const avatarUrl = () => {
-    if (url) return url;
-    const fileName =
-      name &&
-      typeof name === "string" &&
-      name !== "Anonymous" &&
-      /[a-z]/i.exec(name[0].trim())
-        ? `icon-avatar-${name[0].trim().toUpperCase()}.png`
-        : "icon-avatar-Anonymous.png";
-
-    return `${theme.avatar.path}${fileName}`;
-  };
-
+}: ImgHTMLAttributes<HTMLElement> & {
+  /** name of user/entity */
+  name?: string;
+  /** image url */
+  url?: string;
+  /** image size */
+  size?: "s" | "m" | "l" | "xl" | "full";
+  themeName?: ThemeNameType;
+  styles?: React.CSSProperties;
+}) {
   return (
-    <StyledAvatar
-      {...rest}
-      $size={theme.avatar[size || "m"]}
-      src={avatarUrl()}
+    <img
+      className="component-avatar"
+      data-size={size}
+      src={avatarUrl({ url, name, themeName })}
       alt={alt}
+      {...rest}
     />
   );
 }

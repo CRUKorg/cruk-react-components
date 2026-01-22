@@ -1,0 +1,33 @@
+.component-avatar {
+  --avatar-size-s: 32px;
+  --avatar-size-m: 48px;
+  --avatar-size-l: 64px;
+  --avatar-size-xl: 128px;
+
+  --_avatar-size: var(--avatar-size-m);
+  &[data-size="s"] {
+    --_avatar-size: var(--avatar-size-s);
+  }
+  &[data-size="m"] {
+    --_avatar-size: var(--avatar-size-m);
+  }
+  &[data-size="l"] {
+    --_avatar-size: var(--avatar-size-l);
+  }
+  &[data-size="xl"] {
+    --_avatar-size: var(--avatar-size-xl);
+  }
+  &[data-size="full"] {
+    --_avatar-size: 100%;
+  }
+
+  height: var(--_avatar-size);
+  width: var(--_avatar-size);
+
+  box-sizing: border-box;
+  border-radius: 50%;
+  object-fit: cover;
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--clr-avatar-border, #cccccc);
+}

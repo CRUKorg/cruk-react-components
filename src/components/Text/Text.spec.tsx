@@ -3,6 +3,7 @@ import React from "react";
 import { testAccessibilityOnAllThemes } from "playwright/utils";
 
 import { Text } from ".";
+import "./styles.css";
 
 function component() {
   return (
@@ -12,7 +13,6 @@ function component() {
         {`This is text with spacing props "marginBottom="l" paddingHorizontal="s"`}
       </Text>
       <Text as="span">This is text as a span tag</Text>
-      <Text textColor="#880000">Color is custom colour</Text>
       <Text textSize="l">Text size l</Text>
     </>
   );

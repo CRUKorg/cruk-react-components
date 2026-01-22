@@ -1,0 +1,152 @@
+.component-checkbox {
+  --_check-box-size: 1.5rem;
+  --_button-height: 3em;
+  --_border-width: 2px;
+
+  box-sizing: border-box;
+  *,
+  *:after,
+  *:before {
+    box-sizing: border-box;
+  }
+
+  display: block;
+  line-height: var(--typ-line-height, 1.5rem);
+  min-height: 2rem;
+  font-size: var(--font-size-m, 1rem);
+  font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
+  background-color: var(--clr-background-light, #fff);
+  color: var(--clr-text-dark, #000);
+  position: relative;
+  padding: calc(
+      (
+          var(--_button-height, 3em) - (var(--size-border-width, 1px) * 2) -
+            var(--typ-line-height, 1.5em)
+        ) /
+        2
+    )
+    var(--spacing-m, 2rem)
+    calc(
+      (
+          var(--_button-height, 3em) - (var(--size-border-width, 1px) * 2) -
+            var(--typ-line-height, 1.5em)
+        ) /
+        2
+    )
+    var(--spacing-xl, 3rem);
+  cursor: pointer;
+
+  /* increase font size for desktop */
+  @media (min-width: 1200px) {
+    font-size: var(--font-size-ml, 1.125rem);
+  }
+
+  &:focus-within {
+    outline: none !important;
+    box-shadow: inset 0 0 0 2px var(--clr-input-border, #2e2d2c);
+    box-shadow: inset 0 0 0 2px -webkit-focus-ring-color;
+  }
+
+  input {
+    margin-right: 5px !important;
+    /* This hides the original input */
+    height: var(--_check-box-size, 1.5rem);
+    width: var(--_check-box-size, 1.5rem);
+    position: absolute;
+    left: var(--spacing-xxs, 0.5rem);
+    opacity: 0;
+  }
+
+  .check-wrapper {
+    display: inline-block;
+    height: var(--_check-box-size, 1.5rem);
+    width: var(--_check-box-size, 1.5rem);
+    position: absolute;
+    top: calc(50% - (var(--_check-box-size, 1.5rem) / 2));
+    left: var(--spacing-xs, 0.5rem);
+
+    .check {
+      display: block;
+      position: relative;
+      border: 2px solid var(--clr-input-border, #2e2d2c);
+      height: var(--_check-box-size, 1.5rem);
+      width: var(--_check-box-size, 1.5rem);
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 5;
+      transition:
+        border,
+        background-color 0.25s ease;
+      overflow: hidden;
+
+      /* do not increase font size of check icon at this breakpoint */
+      @media (min-width: 1200px) {
+        font-size: var(--font-size-m, 1rem);
+      }
+
+      svg {
+        vertical-align: baseline;
+        width: 100%;
+        height: 100%;
+        path {
+          fill: var(--clr-check, #e60079);
+          transition: transform 0.25s ease;
+          transform: rotateY(90deg);
+          transform-origin: center;
+        }
+      }
+
+      &:hover {
+        border-color: var(--clr-check, #e60079);
+      }
+    }
+  }
+
+  &:has(input:is(:checked)) {
+    .check-wrapper {
+      .check {
+        border-color: var(--clr-check, #e60079);
+        background-color: var(--clr-check, #e60079);
+        svg {
+          path {
+            fill: var(--clr-text-light, #ffffff);
+            transform: rotateY(0deg);
+          }
+        }
+      }
+    }
+  }
+
+  &:has(input[aria-invalid="true"]) {
+    .check-wrapper {
+      .check {
+        border-color: var(--clr-danger, #ff0000);
+        background-color: var(--clr-background-light, #fff);
+
+        svg {
+          path {
+            fill: var(--clr-danger, #ff0000);
+            transform: rotateY(0deg);
+          }
+        }
+      }
+    }
+  }
+
+  &:has(input:is(:disabled)) {
+    cursor: not-allowed;
+    .check-wrapper {
+      .check {
+        border-color: var(--clr-disabled, #e6e6e6);
+        background-color: var(--clr-disabled, #e6e6e6);
+        svg {
+          path {
+            fill: var(--clr-text-light, #ffffff);
+          }
+        }
+      }
+    }
+  }
+}

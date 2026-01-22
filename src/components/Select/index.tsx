@@ -3,13 +3,9 @@ import React, {
   type SelectHTMLAttributes,
   type Ref,
 } from "react";
-import { useTheme } from "styled-components";
 
-import { crukTheme as defaultTheme } from "../../themes/cruk";
 import { LabelWrapper } from "../LabelWrapper";
 import { ErrorText } from "../ErrorText";
-
-import { StyledSelect } from "./styles";
 
 export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   /** error message text */
@@ -40,28 +36,21 @@ export const Select = ({
   ref,
   ...props
 }: SelectProps) => {
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
-
   return (
     <LabelWrapper
       label={label}
       hintText={hintText}
       required={(!hideRequiredIndicationInLabel && required) || false}
     >
-      <StyledSelect
+      <select
+        className="component-select"
         {...props}
         ref={ref}
-        theme={theme}
         required={required}
         aria-invalid={hasError || !!errorMessage || false}
         aria-describedby={
           !!props.id && !!errorMessage ? `${props.id}-error` : undefined
         }
-        $hasError={hasError || !!errorMessage || false}
       />
       {!!errorMessage && (
         <ErrorText

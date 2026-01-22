@@ -2,8 +2,8 @@ import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
 import { Button, Heading, Text } from "..";
-import Modal, { type ModalProps } from ".";
-import AllThemesWrapper from "../AllThemesWrapper";
+import Modal from ".";
+import "./styles.css";
 
 export default {
   title: "Modal",
@@ -12,9 +12,20 @@ export default {
   tags: ["autodocs"],
 };
 
+const Line = () => (
+  <div
+    style={{
+      width: "100%",
+      height: "1px",
+      backgroundColor: "#000",
+      margin: "1em 0",
+    }}
+  />
+);
+
 type Story = StoryObj<typeof Modal>;
 
-const ModalWithTriggerButton = (args: ModalProps) => {
+const ModalWithTriggerButton = (args: React.ComponentProps<typeof Modal>) => {
   const [showModal, setShowModal] = React.useState(false);
   const toggleShowModal = () => setShowModal(!showModal);
 
@@ -38,12 +49,35 @@ const ModalWithTriggerButton = (args: ModalProps) => {
   );
 };
 
+export const AllThemesWrapper = (args: React.ComponentProps<typeof Modal>) => (
+  <main>
+    <div tabIndex={0}>
+      <div data-theme="cruk">
+        <h2>CRUK Theme:</h2>
+        <ModalWithTriggerButton {...args} themeName="cruk" />
+        <Line />
+      </div>
+      <div data-theme="rfl">
+        <h2>RFL Theme:</h2>
+        <ModalWithTriggerButton {...args} themeName="rfl" />
+        <Line />
+      </div>
+      <div data-theme="su2c">
+        <h2>SU2C Theme:</h2>
+        <ModalWithTriggerButton {...args} themeName="su2c" />
+        <Line />
+      </div>
+      <div data-theme="bowelbabe">
+        <h2>Bowelbabe Theme:</h2>
+        <ModalWithTriggerButton {...args} themeName="bowelbabe" />
+        <Line />
+      </div>
+    </div>
+  </main>
+);
+
 export const ModalDefault: Story = {
   name: "ModalDefault",
   args: {},
-  render: (args) => (
-    <AllThemesWrapper>
-      <ModalWithTriggerButton {...args} />
-    </AllThemesWrapper>
-  ),
+  render: (args) => <AllThemesWrapper {...args} />,
 };

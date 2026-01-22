@@ -10,7 +10,7 @@ import React, {
   type KeyboardEvent,
   type ReactNode,
 } from "react";
-import { useTheme } from "styled-components";
+
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 import { type AddressDataType, type AddressOptionsType } from "../../types";
@@ -21,16 +21,37 @@ import { removeCommasFromObjectStringValues } from "../../utils/Helper";
 import { Text } from "../Text";
 import { TextField } from "../TextField";
 import { IconFa } from "../IconFa";
-import { crukTheme as defaultTheme } from "../../themes/cruk";
-
-import { ListWrapper, ListItem, ScreenReaderOnly, List } from "./styles";
 
 const FIND_URL =
   "https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws";
 const RETRIEVE_URL =
   "https://api.addressy.com/Capture/Interactive/Retrieve/v1/json3.ws";
 
-export type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
+/**
+ * This component creates a combobox for a user to type in a post code or partial address and be presented with a of verified addresses.
+ * We use Loqate (formerly Addressy and Postcode Anywhere) API v3, we have looked at v4 but it is more expensive without many benefits for our use case.
+ * You will need a Loqate api key, the examples below use "MG17-ZD93-FF33-KF13" our development key.
+ * This component is generally only used for country codes including "GBR", "GGY", "IMN", "JEY". An example of this behavior is included bellow.
+ */
+export const AddressLookup = ({
+  apiKey,
+  countries,
+  errorMessage,
+  hasError,
+  isValid,
+  isValidVisible,
+  isInvalidVisible,
+  label,
+  hintText,
+  ref,
+  onAddressError = (error: Error) => {
+    console.log(error);
+  },
+  onAddressSelected,
+  onChange,
+  onBlur,
+  ...props
+}: InputHTMLAttributes<HTMLInputElement> & {
   /** api key for loqate */
   apiKey: string;
   /** list of countries codes you want the address look up to search within */
@@ -57,43 +78,12 @@ export type AddressLookupProps = InputHTMLAttributes<HTMLInputElement> & {
   onBlur?: (e: FocusEvent) => void;
   /** attach a DOM reference variable to your component */
   ref?: Ref<HTMLInputElement>;
-};
-
-/**
- * This component creates a combobox for a user to type in a post code or partial address and be presented with a of verified addresses.
- * We use Loqate (formerly Addressy and Postcode Anywhere) API v3, we have looked at v4 but it is more expensive without many benefits for our use case.
- * You will need a Loqate api key, the examples below use "MG17-ZD93-FF33-KF13" our development key.
- * This component is generally only used for country codes including "GBR", "GGY", "IMN", "JEY". An example of this behavior is included bellow.
- */
-export const AddressLookup = ({
-  apiKey,
-  countries,
-  errorMessage,
-  hasError,
-  isValid,
-  isValidVisible,
-  isInvalidVisible,
-  label,
-  hintText,
-  ref,
-  onAddressError = (error: Error) => {
-    console.log(error);
-  },
-  onAddressSelected,
-  onChange,
-  onBlur,
-  ...props
-}: AddressLookupProps) => {
+}) => {
   const [addressOptions, setAddressOptions] = useState<AddressOptionsType[]>(
     [],
   );
   const [activeOption, setActiveOption] = useState(-1);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const foundTheme = useTheme();
-  const theme = {
-    ...defaultTheme,
-    ...foundTheme,
-  };
 
   const clearOptions = () => {
     setActiveOption(-1);
@@ -242,24 +232,27 @@ export const AddressLookup = ({
 
       {!!addressOptions.length && (
         <>
-          <ScreenReaderOnly role="status" aria-live="assertive">
+          <div
+            className="screen-reader-only"
+            role="status"
+            aria-live="assertive"
+          >
             {!!addressOptions.length &&
               `We have found ${addressOptions.length} result${
                 addressOptions.length !== 1 ? "s" : ""
               } matching your search. Use up and down arrow keys to navigate`}
-          </ScreenReaderOnly>
-          <ListWrapper ref={wrapperRef}>
-            <List
+          </div>
+          <div className="address-lookup-list-wrapper" ref={wrapperRef}>
+            <ul
               aria-label="found addresses"
               id="found_addresses"
               role="listbox"
-              theme={theme}
             >
               {addressOptions.map((address, index) => (
-                <ListItem
+                <li
                   tabIndex={0}
                   id={`addressOptions-${index}`}
-                  $isActive={index === activeOption}
+                  // $isActive={index === activeOption}
                   key={address.Id}
                   onClick={() => {
                     selectAddress(address);
@@ -271,23 +264,22 @@ export const AddressLookup = ({
                   }}
                   role="option"
                   data-hj-suppress
-                  theme={theme}
                 >
                   <Text as="span" data-hj-suppress>
                     {address.Text} {address.Description}
                   </Text>
                   {address.Type !== "Address" && (
                     <>
-                      <ScreenReaderOnly>
+                      <div className="screen-reader-only">
                         press enter for these addresses
-                      </ScreenReaderOnly>
+                      </div>
                       <IconFa faIcon={faChevronRight} />
                     </>
                   )}
-                </ListItem>
+                </li>
               ))}
-            </List>
-          </ListWrapper>
+            </ul>
+          </div>
         </>
       )}
     </>

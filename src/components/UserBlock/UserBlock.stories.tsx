@@ -4,7 +4,11 @@ import { faClock } from "@fortawesome/free-solid-svg-icons";
 
 import { Text, IconFa } from "..";
 import UserBlock from ".";
-import AllThemesWrapper from "../AllThemesWrapper";
+import "./styles.css";
+import "../Text/styles.css";
+import "../Box/styles.css";
+import "../IconFa/styles.css";
+import "../Avatar/styles.css";
 
 export default {
   title: "UserBlock (experimental)",
@@ -18,14 +22,50 @@ export default {
 
 type Story = StoryObj<typeof UserBlock>;
 
+const Line = () => (
+  <div
+    style={{
+      width: "100%",
+      height: "1px",
+      backgroundColor: "#000",
+      margin: "1em 0",
+    }}
+  />
+);
+
+const AllThemesWrapper = ({
+  ...args
+}: React.ComponentProps<typeof UserBlock>) => (
+  <main>
+    <div tabIndex={0}>
+      <h2>CRUK Theme:</h2>
+      <div data-theme="cruk">
+        <UserBlock {...args} themeName="cruk" />
+        <Line />
+      </div>
+      <div data-theme="rfl">
+        <h2>RFL Theme:</h2>
+        <UserBlock {...args} themeName="rfl" />
+        <Line />
+      </div>
+      <div data-theme="su2c">
+        <h2>SU2C Theme:</h2>
+        <UserBlock {...args} themeName="su2c" />
+        <Line />
+      </div>
+      <div data-theme="bowelbabe">
+        <h2>Bowelbabe Theme:</h2>
+        <UserBlock {...args} themeName="bowelbabe" />
+        <Line />
+      </div>
+    </div>
+  </main>
+);
+
 export const UserBlockDefault: Story = {
   name: "UserBlock",
   args: {},
-  render: (args) => (
-    <AllThemesWrapper>
-      <UserBlock {...args} />
-    </AllThemesWrapper>
-  ),
+  render: (args) => <AllThemesWrapper {...args} />,
 };
 
 export const UserBlockCustomAvatar: Story = {
@@ -33,11 +73,7 @@ export const UserBlockCustomAvatar: Story = {
   args: {
     avatarUrl: "https://via.placeholder.com/300/2e008b/d9318a?text=avatar",
   },
-  render: (args) => (
-    <AllThemesWrapper>
-      <UserBlock {...args} />
-    </AllThemesWrapper>
-  ),
+  render: (args) => <AllThemesWrapper {...args} />,
 };
 
 export const UserBlockWithExtra: Story = {
@@ -49,9 +85,5 @@ export const UserBlockWithExtra: Story = {
       </Text>
     ),
   },
-  render: (args) => (
-    <AllThemesWrapper>
-      <UserBlock {...args} />
-    </AllThemesWrapper>
-  ),
+  render: (args) => <AllThemesWrapper {...args} />,
 };

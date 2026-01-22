@@ -1,9 +1,9 @@
 import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
-import Link from ".";
 import AllThemesWrapper from "../AllThemesWrapper";
-import { crukTheme } from "..";
+import Link from ".";
+import "./styles.css";
 
 export default {
   title: "Link",
@@ -58,7 +58,7 @@ export const WithImage: Story = {
       <img
         style={{ width: "80px", height: "30px" }}
         alt=""
-        src={`${crukTheme.siteConfig.assetPath}images/logos/cruk-160.png`}
+        src={`https://rcl.assets.cancerresearchuk.org/images/logos/cruk-160.png`}
       />
     ),
   },

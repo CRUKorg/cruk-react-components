@@ -3,7 +3,7 @@ import Button from "../Button";
 import Modal from ".";
 import Heading from "../Heading";
 
-export function TestModalWithState() {
+export function TestModalWithState({ themeName }: { themeName: string }) {
   const [showModal, setShowModal] = React.useState(false);
   const toggleShowModal = () => setShowModal(!showModal);
 
@@ -13,7 +13,12 @@ export function TestModalWithState() {
         Show me a modal
       </Button>
       {showModal && (
-        <Modal closeFunction={toggleShowModal} showCloseButton modalName="test">
+        <Modal
+          closeFunction={toggleShowModal}
+          showCloseButton
+          modalName="test"
+          themeName={themeName}
+        >
           <Heading h2 marginTop="none" textSize="xl">
             Modal title
           </Heading>

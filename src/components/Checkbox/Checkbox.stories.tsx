@@ -1,10 +1,12 @@
 import React from "react";
 import { type StoryObj } from "@storybook/react-vite";
 
-import { Box, type ThemeType } from "..";
-import CheckBox, { type CheckBoxProps } from ".";
+import { Box } from "..";
 import AllThemesWrapper from "../AllThemesWrapper";
-import { useTheme } from "styled-components";
+import CheckBox from ".";
+import "./styles.css";
+import "../ErrorText/styles.css";
+import "../Box/styles.css";
 
 export default {
   title: "CheckBox",
@@ -21,11 +23,14 @@ export default {
 
 type Story = StoryObj<typeof CheckBox>;
 
-const FullComponentWithCheckboxes = (args: CheckBoxProps) => {
+const FullComponentWithCheckboxes = (
+  args: React.ComponentProps<typeof CheckBox>,
+) => {
   const [selected, setSelected] = React.useState<string[]>(["one"]);
-  const theme = useTheme();
-  const themeTyped = theme as ThemeType;
-  const themeName = themeTyped.name;
+
+  const id = React.useId();
+  const id2 = React.useId();
+
   const handleChange = (value: string) => {
     if (selected.indexOf(value) === -1) {
       setSelected([...selected, value]);
@@ -37,14 +42,14 @@ const FullComponentWithCheckboxes = (args: CheckBoxProps) => {
   return (
     <fieldset style={{ border: "none" }}>
       <CheckBox
-        name={`checkbox1-${themeName}`}
+        name={`checkbox1-${id}`}
         onChange={(e) => handleChange(e.target.value)}
         checked={selected.indexOf("one") >= 0}
         {...args}
       />
       <Box>
         <CheckBox
-          name={`checkbox1-${themeName}`}
+          name={`checkbox1-${id2}`}
           onChange={(e) => handleChange(e.target.value)}
           checked={selected.indexOf("two") >= 0}
           value="two"
