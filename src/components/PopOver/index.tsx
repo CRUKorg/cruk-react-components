@@ -47,7 +47,11 @@ export function PopOver({
   }
 
   return (
-    <div className="component-popover" data-position={position || "top"}>
+    <div
+      className="component-popover"
+      data-position={position || "top"}
+      data-is-animated={isAnimated}
+    >
       {React.Children.map(children, (child) =>
         React.cloneElement(
           child as DetailedReactHTMLElement<object, HTMLElement>,
