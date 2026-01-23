@@ -32,14 +32,14 @@
 
   &[data-is-animated="true"] {
     transition-behavior: allow-discrete;
-    transition-property: opacity, scale, display;
-    transition-duration: 0.3s, 0.5s, 1s;
+    transition-property: all;
+    transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
 
     &::backdrop {
       transition-behavior: allow-discrete;
-      transition-property: background-color, backdrop-filter, display;
-      transition-duration: 0.3s, 0.5s, 1s;
+      transition-property: all;
+      transition-duration: 0.3s;
       transition-timing-function: ease-in-out;
     }
   }
