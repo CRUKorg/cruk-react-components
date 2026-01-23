@@ -17,13 +17,7 @@ export type ThemeNameType = (typeof themeNames)[number];
 
 export type ButtonAppearanceType = "primary" | "secondary" | "tertiary";
 
-export type PopOverPositionType =
-  | "top"
-  | "topLeft"
-  | "left"
-  | "right"
-  | "bottom"
-  | "bottomLeft";
+export type PopOverPositionType = "top" | "left" | "right" | "bottom";
 
 export type BreakPointType = {
   mobile: string;

@@ -47,7 +47,7 @@ export function TestPopOverWithContent() {
           </Button>
         </Box>
       }
-      minWidth="23em"
+      style={{ minWidth: "23em" }}
     >
       <Button>
         <IconFa faIcon={faShareAlt} />

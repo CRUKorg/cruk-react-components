@@ -34,32 +34,32 @@ function () {
 
   return (
     <>
-      <PopOver modalLabel="sharing options" modalContent={content} minWidth="23em">
+      <PopOver modalLabel="sharing options" modalContent={content} style={{minWidth="23em"}}>
         <Button>
           <Icon name="share" />Share top
         </Button>
       </PopOver>
-      <PopOver modalLabel="sharing options" position="topLeft" modalContent={content} minWidth="23em">
+      <PopOver modalLabel="sharing options" position="topLeft" modalContent={content} style={{minWidth="23em"}}>
         <Button>
           <Icon name="share" />Share topLeft
         </Button>
       </PopOver>
-      <PopOver modalLabel="sharing options" position="bottom" modalContent={content} minWidth="23em">
+      <PopOver modalLabel="sharing options" position="bottom" modalContent={content} style={{minWidth="23em"}}>
         <Button>
           <Icon name="share" />Share bottom
         </Button>
       </PopOver>
-      <PopOver modalLabel="sharing options" position="bottomLeft" modalContent={content} minWidth="23em">
+      <PopOver modalLabel="sharing options" position="bottomLeft" modalContent={content} style={{minWidth="23em"}}>
         <Button>
           <Icon name="share" />Share bottomLeft
         </Button>
       </PopOver>
-      <PopOver modalLabel="sharing options" position="left" modalContent={content} minWidth="23em">
+      <PopOver modalLabel="sharing options" position="left" modalContent={content} style={{minWidth="23em"}}>
         <Button>
           <Icon name="share" />Share left
         </Button>
       </PopOver>
-      <PopOver modalLabel="sharing options" position="right" modalContent={content} minWidth="23em">
+      <PopOver modalLabel="sharing options" position="right" modalContent={content} style={{minWidth="23em"}}>
         <Button>
           <Icon name="share" />Share right
         </Button>
@@ -71,14 +71,14 @@ function () {
 
 ## Props
 
-| Name         | Type              |                       Options                        | Default | Description                                      |
-| :----------- | :---------------- | :--------------------------------------------------: | :------ | :----------------------------------------------- |
-| position     | String            | "top" "bottom" "left" "right" "topLeft" "bottomLeft" | "top"   | Where to place the popover                       |
-| modalContent | String/React node |                                                      |         | Content to show in the popover                   |
-| maxWidth     | String            |                                                      | "auto"  | Max width for popover content                    |
-| minWidth     | String            |                                                      | "auto"  | Min width for popover content                    |
-| full         | boolean           |                                                      | "false" | Enables the child button wrapper to go fullwidth |
-| modalLabel   | String            |                                                      |         | aria-label for modal                             |
+| Name                  | Type                      |            Options            | Default | Description                          |
+| :-------------------- | :------------------------ | :---------------------------: | :------ | :----------------------------------- |
+| position              | String                    | "top" "bottom" "left" "right" | "top"   | Where to place the popover           |
+| modalContent          | String/React node         |                               |         | Content to show in the popover       |
+| style                 | ReactStyle object         |                               |         | CSS object                           |
+| modalLabel            | String                    |                               |         | aria-label for modal                 |
+| onPopOverIsOpenChange | (isOpen: boolean) => void |                               |         | Call back function when first opened |
+| isAnimated            | Boolean                   |                               | true    | Enables animations                   |
 
 ## Usage
 
