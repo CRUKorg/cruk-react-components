@@ -1,26 +1,23 @@
 .component-popover {
-  .trigger-wrapper {
-    --anchor-name: --trigger-wrapper;
-  }
-
   &[data-is-animated="true"] {
     [popover],
     [popovertarget]::before,
     [popovertarget]::after {
       transition-behavior: allow-discrete;
-      transition-property: opacity;
+      transition-property: all;
       transition-duration: 0.2s;
       transition-timing-function: ease-in-out;
     }
   }
 
   [popover] {
-    --position-anchor: --trigger-wrapper;
+    --position-anchor: --popovertarget;
     position: absolute;
     inset: auto;
 
     max-width: none;
     min-width: auto;
+    overflow: visible;
 
     justify-content: center;
     word-wrap: break-word;
@@ -42,31 +39,26 @@
   }
 
   [popovertarget] {
+    --anchor-name: --popovertarget;
     position: relative;
 
-    &::before,
-    &::after {
-      display: none;
-      --clip: polygon(50% 100%, 0 0, 100% 0);
+    &::before {
       content: "";
       position: absolute;
+      box-sizing: border-box;
       width: 1rem;
       height: 1rem;
-      -webkit-clip-path: var(--clip);
-      clip-path: var(--clip);
+      rotate: 45deg;
+      transform-origin: center center center;
+      background-color: var(--clr-popover-background, #fff);
+      border: 1px solid var(--clr-cruk-grey-300, #c6c6c6);
+      display: none;
       opacity: 0;
-    }
-    &::before {
-      background-color: var(--clr-cruk-grey-300, #c6c6c6);
-    }
-    &::after {
-      background-color: var(--background-light, #fff);
     }
   }
 
   [popovertarget]:has(+ :popover-open) {
-    &::before,
-    &::after {
+    &::before {
       display: block;
       opacity: 1;
       @starting-style {
@@ -79,38 +71,22 @@
   &:not([data-position]) {
     [popover] {
       position-area: top;
-      position-try-fallbacks: --bottom, --left, --right;
+      position-try-fallbacks: --bottom;
     }
-    [popovertarget]:has(+ :popover-open)::before {
-      top: calc(-0.5rem + 1px);
-      left: 50%;
-      --clip: polygon(50% 100%, 0 0, 100% 0);
-      transform: translateX(-50%);
-    }
-    [popovertarget]:has(+ :popover-open)::after {
+    [popovertarget]::before {
       top: -0.5rem;
-      left: 50%;
-      --clip: polygon(50% 100%, 0 0, 100% 0);
-      transform: translateX(-50%);
+      left: calc(50% - 0.5rem);
     }
   }
 
   &[data-position="bottom"] {
     [popover] {
       position-area: bottom;
-      position-try-fallbacks: --top, --left, --right;
+      position-try-fallbacks: --top;
     }
-    [popovertarget]:has(+ :popover-open)::before {
+    [popovertarget]::before {
       bottom: -0.5rem;
-      left: 50%;
-      --clip: polygon(50% 0, 100% 100%, 0 100%);
-      transform: translateX(-50%);
-    }
-    [popovertarget]:has(+ :popover-open)::after {
-      bottom: calc(-0.5rem - 1px);
-      left: 50%;
-      --clip: polygon(50% 0, 100% 100%, 0 100%);
-      transform: translateX(-50%);
+      left: calc(50% - 0.5rem);
     }
   }
 
@@ -121,15 +97,7 @@
     }
     [popovertarget]:has(+ :popover-open)::before {
       left: -0.5rem;
-      top: 50%;
-      transform: translateY(-50%);
-      --clip: polygon(0 100%, 0 0, 100% 50%);
-    }
-    [popovertarget]:has(+ :popover-open)::after {
-      left: calc(-0.5rem - 1px);
-      top: 50%;
-      transform: translateY(-50%);
-      --clip: polygon(0 100%, 0 0, 100% 50%);
+      top: calc(50% - 0.5rem);
     }
   }
 
@@ -140,15 +108,7 @@
     }
     [popovertarget]:has(+ :popover-open)::before {
       right: -0.5rem;
-      top: 50%;
-      transform: translateY(-50%);
-      --clip: polygon(100% 0, 0 50%, 100% 100%);
-    }
-    [popovertarget]:has(+ :popover-open)::after {
-      right: calc(-0.5rem - 1px);
-      top: 50%;
-      transform: translateY(-50%);
-      --clip: polygon(100% 0, 0 50%, 100% 100%);
+      top: calc(50% - 0.5rem);
     }
   }
 }
