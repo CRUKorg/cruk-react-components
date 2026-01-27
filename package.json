@@ -72,9 +72,7 @@
     "react-dom": "^19",
     "release-it": "^19",
     "rollup": "^4.22.4",
-    "rollup-plugin-css-only": "^4.5.5",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-typescript2": "^0.36.0",
     "storybook": "^10",
     "ts-loader": "9.5.1",
     "tsx": "^4.20.3",
@@ -90,7 +88,6 @@
   "dependencies": {
     "@fortawesome/fontawesome-common-types": "^7",
     "@fortawesome/free-brands-svg-icons": "^7",
-    "@fortawesome/free-solid-svg-icons": "^7",
-    "react-intersection-observer": "^10.0.0"
+    "@fortawesome/free-solid-svg-icons": "^7"
   }
 }
