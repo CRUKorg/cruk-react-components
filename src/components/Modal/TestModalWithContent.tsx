@@ -3,16 +3,16 @@ import React from "react";
 import Modal from ".";
 import { Button, Heading } from "..";
 
-export function TestModalWithContent({ themeName }: { themeName: string }) {
+export function TestModalWithContent() {
   return (
     <>
       <Modal
-        themeName={themeName}
         closeFunction={() => {
           // nothing
         }}
         showCloseButton
         modalName="test"
+        startOpen={true}
       >
         <Heading h2 marginTop="none" textSize="xl">
           Modal title
