@@ -16,17 +16,17 @@ Use a modal to display content over top of the rest of the site which must be in
 
 ```.jsx
 function () {
-  const [showModal, setShowModal] = React.useState(false);
-  const toggleShowModal = () => setShowModal(!showModal);
+ const modalRef = React.useRef<HTMLDialogElement>(null);
+
 
   return (
     <>
-      <Button appearance="primary" onClick={toggleShowModal}>Show me a modal</Button>
+      <Button appearance="primary" onClick={() => modalRef.current?.showModal()}>Show me a modal</Button>
       {showModal &&
-        <Modal closeFunction={toggleShowModal} modalName="test">
+        <Modal closeFunction={modalRef.current?.close()} modalName="test">
           <Heading h2 marginTop='none' textSize="xl">Modal title</Heading>
           <p>Some really important information</p>
-          <Button appearance="primary" onClick={toggleShowModal}>OK</Button>
+          <Button appearance="primary" onClick={modalRef.current?.close()}>OK</Button>
         </Modal>
       }
     </>
@@ -34,30 +34,31 @@ function () {
 }
 ```
 
-| Name              | Type      | Default | Description                                                                                     |
-| :---------------- | :-------- | :------ | :---------------------------------------------------------------------------------------------- |
-| closeFunction     | function  | null    | (Required) function used to close the modal on escape key press and close or close button press |
-| maxWidth          | string    | 500px   | Max width of modal                                                                              |
-| width             | string    | 500px   | width of modal                                                                                  |
-| top               | string    | 1rem    | Height from top of container                                                                    |
-| children          | Any       |         | Any content to be displayed in modal                                                            |
-| showCloseButton   | Boolean   | true    | Toggles visibility of modal close button                                                        |
-| margin            | SpaceType | unset   | margin top, bottom, left and right                                                              |
-| marginVertical    | SpaceType | unset   | margin top and bottom                                                                           |
-| marginHorizontal  | SpaceType | unset   | margin left and right                                                                           |
-| marginTop         | SpaceType | unset   | margin top                                                                                      |
-| marginRight       | SpaceType | unset   | margin right right                                                                              |
-| marginBottom      | SpaceType | 'xs'    | margin bottom bottom                                                                            |
-| marginLeft        | SpaceType | unset   | margin left left                                                                                |
-| padding           | SpaceType | unset   | padding top, bottom, left and right                                                             |
-| paddingVertical   | SpaceType | unset   | padding top and bottom                                                                          |
-| paddingHorizontal | SpaceType | unset   | padding left and right                                                                          |
-| paddingTop        | SpaceType | unset   | padding top                                                                                     |
-| paddingRight      | SpaceType | unset   | padding right right                                                                             |
-| paddingBottom     | SpaceType | unset   | padding bottom bottom                                                                           |
-| paddingLeft       | SpaceType | unset   | padding left left                                                                               |
-| isAnimated        | Boolean   | true    | turns on animate in of modal                                                                    |
-| themeName         | string    | "cruk"  | changes theme of modal setting theme on body won't effect something that uses react portals     |
+| Name              | Type      | Default   | Description                                                                                                                                                        |
+| :---------------- | :-------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| closeFunction     | function  | null      | callback when close is triggered by Escape key or close button                                                                                                     |
+| maxWidth          | string    | 500px     | Max width of modal                                                                                                                                                 |
+| width             | string    | 500px     | width of modal                                                                                                                                                     |
+| top               | string    | 1rem      | Height from top of container                                                                                                                                       |
+| children          | Any       |           | Any content to be displayed in modal                                                                                                                               |
+| showCloseButton   | Boolean   | true      | Toggles visibility of modal close button                                                                                                                           |
+| margin            | SpaceType | unset     | margin top, bottom, left and right                                                                                                                                 |
+| marginVertical    | SpaceType | unset     | margin top and bottom                                                                                                                                              |
+| marginHorizontal  | SpaceType | unset     | margin left and right                                                                                                                                              |
+| marginTop         | SpaceType | unset     | margin top                                                                                                                                                         |
+| marginRight       | SpaceType | unset     | margin right right                                                                                                                                                 |
+| marginBottom      | SpaceType | 'xs'      | margin bottom bottom                                                                                                                                               |
+| marginLeft        | SpaceType | unset     | margin left left                                                                                                                                                   |
+| padding           | SpaceType | unset     | padding top, bottom, left and right                                                                                                                                |
+| paddingVertical   | SpaceType | unset     | padding top and bottom                                                                                                                                             |
+| paddingHorizontal | SpaceType | unset     | padding left and right                                                                                                                                             |
+| paddingTop        | SpaceType | unset     | padding top                                                                                                                                                        |
+| paddingRight      | SpaceType | unset     | padding right right                                                                                                                                                |
+| paddingBottom     | SpaceType | unset     | padding bottom bottom                                                                                                                                              |
+| paddingLeft       | SpaceType | unset     | padding left left                                                                                                                                                  |
+| isAnimated        | Boolean   | true      | turns on animate in of modal                                                                                                                                       |
+| startOpen         | Boolean   | true      | when modal is rendered on page will it immediately open                                                                                                            |
+| ref               | RefObject | undefined | if you want to close the modal or open the modal without adding it or removing it from the document you need access to ref to call ref.showModal() and ref.close() |
 
 ## Accessibility
 

@@ -4,33 +4,34 @@ import { test, expect } from "@playwright/experimental-ct-react";
 import { testAccessibilityForTheme } from "playwright/utils";
 import { TestThemeWrapper } from "../AllThemesWrapper";
 
-import { TestModalWithState } from "./TestModalWithState";
+import { TestModalWithOpenButton } from "./TestModalWithOpenButton";
 import { TestModalWithContent } from "./TestModalWithContent";
+
 import "./styles.css";
 
 // we have to pump theme into the content as well as the theme wrapper because of react portals ignoring the theme wrapper
 testAccessibilityForTheme({
   componentName: "Modal with content",
   themeName: "cruk",
-  component: () => <TestModalWithContent themeName="cruk" />,
+  component: () => <TestModalWithContent />,
   ignoreRules: [],
 });
 testAccessibilityForTheme({
   componentName: "Modal with content",
   themeName: "rfl",
-  component: () => <TestModalWithContent themeName="rfl" />,
+  component: () => <TestModalWithContent />,
   ignoreRules: [],
 });
 testAccessibilityForTheme({
   componentName: "Modal with content",
   themeName: "su2c",
-  component: () => <TestModalWithContent themeName="su2c" />,
+  component: () => <TestModalWithContent />,
   ignoreRules: [],
 });
 testAccessibilityForTheme({
   componentName: "Modal with content",
   themeName: "bowelbabe",
-  component: () => <TestModalWithContent themeName="bowelbabe" />,
+  component: () => <TestModalWithContent />,
   ignoreRules: [],
 });
 
@@ -40,7 +41,7 @@ test("should open modal, focus trap inside the modal", async ({
 }) => {
   await mount(
     <TestThemeWrapper themeName="cruk">
-      <TestModalWithState themeName="cruk" />
+      <TestModalWithOpenButton />
     </TestThemeWrapper>,
   );
 
@@ -57,17 +58,23 @@ test("should open modal, focus trap inside the modal", async ({
     page.getByRole("button", { name: "Get me out of here" }),
   ).toBeFocused();
   await page.keyboard.press("Tab");
+  // what item has focus now?
+
   await expect(
     page.getByRole("button", { name: "Go for it 😃" }),
   ).toBeFocused();
   await page.keyboard.press("Tab");
-  await expect(page.getByRole("button", { name: "close" })).toBeFocused();
+
+  //  don't expect the show modal button to be focused as focus is trapped in the modal
+  await expect(
+    page.getByRole("button", { name: "Show me a modal" }),
+  ).not.toBeFocused();
 });
 
 test("should close the modal when Esc key pressed", async ({ mount, page }) => {
   await mount(
     <TestThemeWrapper themeName="cruk">
-      <TestModalWithState themeName="cruk" />
+      <TestModalWithOpenButton />
     </TestThemeWrapper>,
   );
 

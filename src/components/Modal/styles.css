@@ -1,54 +1,68 @@
-@keyframes grow {
-  from {
-    opacity: 0;
-    transform: scale(0);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0.5;
-  }
-}
-
 .component-modal {
-  .wrapper {
-    box-sizing: border-box;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--clr-background-light, #fff);
+  min-height: 10rem;
+  width: 90%;
+  max-width: 500px;
+  margin: var(--spacing-xs) auto auto auto;
+  margin-bottom: var(--spacing-xxl);
+  padding: var(--spacing-xs);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  border: none;
+  opacity: 0;
+  scale: 0;
+
+  &::backdrop {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999;
+    inset: 0;
+    margin: 0;
+    padding: 0;
+    backdrop-filter: 0.3s;
+    z-index: 100;
+    background-color: hsl(0 0 0 / 0.5);
+    backdrop-filter: blur(4px);
+    display: none;
   }
 
-  .content {
-    position: relative;
-    background-color: var(--clr-background-light, #fff);
-    min-height: 10rem;
-    width: 90%;
-    max-width: 500px;
-    margin: var(--spacing-xs) auto auto auto;
-    margin-bottom: var(--spacing-xxl);
-    padding: var(--spacing-xs);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-    z-index: 9999;
-    animation-direction: normal;
-    transform-origin: top center;
-    animation: none;
+  &[data-is-animated="true"] {
+    transition-behavior: allow-discrete;
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
 
-    &[data-is-animated="true"] {
-      animation: grow 0.2s ease-in-out;
+    &::backdrop {
+      transition-behavior: allow-discrete;
+      transition-property: all;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-in-out;
+    }
+  }
+
+  &[open] {
+    display: block;
+    opacity: 1;
+    scale: 1;
+
+    @starting-style {
+      opacity: 0;
+      scale: 0;
+    }
+
+    &::backdrop {
+      display: block;
+      background-color: hsl(0 0 0 / 0.5);
+      backdrop-filter: blur(4px);
+
+      @starting-style {
+        background-color: hsl(0 0 0 / 0);
+        backdrop-filter: blur(0);
+      }
     }
   }
 
@@ -57,27 +71,5 @@
     margin-left: var(--spacing-xs, 1rem);
     font-size: 1.2rem;
     padding: 0;
-  }
-
-  .background {
-    position: fixed;
-    background: var(--clr-modal-backdrop, #000);
-    bottom: 0;
-    left: 0;
-    opacity: 0.5;
-    right: 0;
-    top: 0;
-    transition:
-      opacity 0.3s,
-      bottom 0s 0.3s;
-    z-index: 100;
-    animation-direction: normal;
-    animation-timing-function: ease-in-out;
-    animation-duration: 0.3s;
-    animation-name: none;
-
-    &[data-is-animated="true"] {
-      animation-name: fade;
-    }
   }
 }
