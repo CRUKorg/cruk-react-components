@@ -79,6 +79,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   *,
+  *::backdrop,
   *:after,
   *:before {
     animation-play-state: paused !important;
