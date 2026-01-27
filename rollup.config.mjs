@@ -22,7 +22,7 @@ export default {
       },
     },
   ],
-  external: ["prop-types", "react", "react-dom"],
+  external: ["react", "react-dom"],
 
   plugins: [
     resolve({ modulesOnly: true }),
@@ -49,7 +49,7 @@ export default {
     // }),
     postcss({
       plugins: [autoprefixer()],
-      sourceMap: true,
+      sourceMap: false,
       extract: true,
       minimize: false,
       generateScopedName: "[name]__[local]",

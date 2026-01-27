@@ -55,8 +55,11 @@ export default {
   argTypes: {
     position: {
       control: "select",
-      options: ["top", "left", "right", "bottom", "topLeft", "bottomLeft", ""],
+      options: ["top", "left", "right", "bottom", ""],
     },
+    full: { control: "boolean" },
+    minWidth: { control: "text" },
+    maxWidth: { control: "text" },
   },
   tags: ["autodocs"],
 };

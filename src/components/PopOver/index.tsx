@@ -1,13 +1,9 @@
 import React, {
-  useState,
-  useEffect,
   useRef,
+  useId,
   type ReactNode,
   type DetailedReactHTMLElement,
 } from "react";
-
-import { useKey } from "../../hooks/useKey";
-import { useEffectBrowser } from "../../hooks/useEffectBrowser";
 
 import { type PopOverPositionType } from "../../types";
 
@@ -18,16 +14,12 @@ export type PopOverProps = {
   modalContent: ReactNode;
   /** position: position that the popover opens relative to the triggering element, the trigger element is the child of the component */
   position?: PopOverPositionType;
-  /** full: enable child button extend full width */
-  full?: boolean;
-  /**  maxWidth: popover modal max width */
-  maxWidth?: string;
-  /**  minWidth: popover modal min width */
-  minWidth?: string;
   /**  onPopOverIsOpenChange: popover isOpen changed handler */
   onPopOverIsOpenChange?: (isOpen: boolean) => void;
+  /** enable animation in modal */
+  isAnimated?: boolean;
   children?: ReactNode;
-  css?: string;
+  style?: React.CSSProperties;
 };
 
 /**
@@ -37,80 +29,52 @@ commonly used for displaying additional rich content on top of something.
 export function PopOver({
   onPopOverIsOpenChange,
   children,
-  minWidth,
-  maxWidth,
   position,
   modalLabel,
   modalContent,
-  full = false,
+  style,
+  isAnimated = true,
 }: PopOverProps) {
-  const popRef = useRef<HTMLDivElement>(null);
-  const [showPopOver, setShowPopOver] = useState(false);
+  const id = useId();
+  const popRef = useRef<HTMLDialogElement>(null);
+  const hasOpenedRef = useRef(false);
 
-  const toggle = () => setShowPopOver(!showPopOver);
-  const closePopOver = () => setShowPopOver(false);
-
-  // outside click closes popover
-  const handleDocumentClick = (e: MouseEvent) => {
-    if (!!popRef.current && !popRef.current.contains(e.target as Node)) {
-      closePopOver();
+  function handleClick() {
+    if (onPopOverIsOpenChange && !hasOpenedRef.current) {
+      onPopOverIsOpenChange(true);
+      hasOpenedRef.current = true;
     }
-  };
-
-  useKey(
-    () => {
-      closePopOver();
-    },
-    {
-      detectKeys: ["Escape"],
-    },
-    [],
-  );
-
-  useEffect(() => {
-    if (onPopOverIsOpenChange) {
-      onPopOverIsOpenChange(showPopOver);
-    }
-  }, [showPopOver, onPopOverIsOpenChange]);
-
-  useEffectBrowser(() => {
-    document.addEventListener("click", handleDocumentClick, true);
-    return () => {
-      document.removeEventListener("click", handleDocumentClick, true);
-    };
-  }, []);
+  }
 
   return (
     <div
       className="component-popover"
-      ref={popRef}
-      data-full={full}
       data-position={position || "top"}
+      data-is-animated={isAnimated}
     >
       {React.Children.map(children, (child) =>
         React.cloneElement(
           child as DetailedReactHTMLElement<object, HTMLElement>,
           {
-            onClick: toggle,
-            "aria-expanded": showPopOver,
-            "aria-haspopup": "dialog",
+            popovertarget: id,
+            onClick: handleClick,
           },
         ),
       )}
-      {showPopOver ? (
-        <div
-          className="popover-modal"
-          style={{
-            maxWidth: maxWidth || "none",
-            minWidth: minWidth || "auto",
-          }}
-          role="dialog"
-          aria-label={modalLabel}
-          aria-modal={showPopOver}
-        >
-          {modalContent}
-        </div>
-      ) : null}
+
+      <dialog
+        popover="auto"
+        id={id}
+        ref={popRef}
+        role="dialog"
+        style={{
+          ...style,
+        }}
+        data-is-animated={isAnimated}
+        aria-label={modalLabel}
+      >
+        {modalContent}
+      </dialog>
     </div>
   );
 }
