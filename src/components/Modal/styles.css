@@ -26,7 +26,6 @@
     backdrop-filter: 0.3s;
     z-index: 100;
     background-color: hsl(0 0 0 / 0.5);
-    backdrop-filter: blur(4px);
     display: none;
   }
 
@@ -57,11 +56,9 @@
     &::backdrop {
       display: block;
       background-color: hsl(0 0 0 / 0.5);
-      backdrop-filter: blur(4px);
 
       @starting-style {
         background-color: hsl(0 0 0 / 0);
-        backdrop-filter: blur(0);
       }
     }
   }
