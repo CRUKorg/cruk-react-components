@@ -56,7 +56,7 @@ export function PopOver({
         React.cloneElement(
           child as DetailedReactHTMLElement<object, HTMLElement>,
           {
-            popovertarget: id,
+            popoverTarget: id,
             onClick: handleClick,
           },
         ),

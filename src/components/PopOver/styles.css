@@ -23,6 +23,7 @@
     --position-anchor: --popovertarget;
     position: absolute;
     inset: auto;
+    margin: 0;
 
     max-width: none;
     min-width: auto;

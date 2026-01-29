@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.2.3] - 2026-01-29
+
+### Fixed
+
+- Fixed PopOver target attribute from `popovertarget` to `popoverTarget` for proper React camelCase convention
+- Corrected PopOver margin styles to prevent unwanted spacing [#1158](https://github.com/CRUKorg/cruk-react-components/issues/1158)
+
 ## [7.2.2] - 2026-01-29
 
 ### Added
