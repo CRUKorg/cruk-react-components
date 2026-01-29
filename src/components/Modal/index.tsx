@@ -18,41 +18,37 @@ import Button from "../Button";
  * - Modals are unmounted when closed.
  * - Modal's "trap" focus in them, ensuring the keyboard navigation cycles through the modal, and not the rest of the page.
  * ## Accessibility
- * - Once the Modal is appeared on the screen, the focus must be within the Modal container which will enable the screen readers to be able to navigate within the Modal. You may wish to hide the close button so that a user must click on another button to confirm a choice before the modal is closed. However closing with the 'ESC' key must always work, so the props which contains the function that allows the modal to close itself 'closeFunction' is always required.
+ * - Once the Modal is appeared on the screen, the focus must be within the Modal container which will enable the screen readers to be able to navigate within the Modal.
+ * You may wish to hide the close button so that a user must click on another button to confirm a choice before the modal is closed. However closing with the 'ESC' key must always work,
+ * so the props which contains the function that allows the modal to close itself 'closeFunction' is always required.
  */
 export function Modal({
   modalName,
-  closeFunction,
   startOpen = true,
+  isAnimated = true,
+  closeFunction,
   showCloseButton,
   children,
-  isAnimated = true,
-  top,
-  maxWidth,
-  width,
   ref: outerRef,
+  style,
   ...htmlAttributes
 }: HTMLAttributes<HTMLDialogElement> & {
   /** modal name used for aria-label */
   modalName: string;
+  /** set if the modal start open */
+  startOpen: boolean;
   /** callback function called on modal close */
   closeFunction?: () => void;
   /** flag to reveal close button with cross in the top right of modal */
   showCloseButton?: boolean;
-  /** set max width of modal */
-  maxWidth?: string;
-  /** set space from top of view port that modal appears */
-  top?: string;
-  /** children components  */
-  children?: ReactNode;
-  /** width of modal */
-  width?: string;
   /** turn on animate in modal */
   isAnimated?: boolean;
-  /** set if the modal start open */
-  startOpen: boolean;
+  /** children components inside modal */
+  children?: ReactNode;
   /** ref to the dialog element */
   ref?: React.RefObject<HTMLDialogElement | null>;
+  /** additional style attributes for the dialog element */
+  style?: React.CSSProperties;
 }) {
   const innerRef = useRef<HTMLDialogElement>(null);
   const ref = outerRef ?? innerRef;
@@ -104,11 +100,7 @@ export function Modal({
         aria-label={modalName}
         open={false}
         data-is-animated={isAnimated}
-        style={{
-          maxWidth,
-          top,
-          width,
-        }}
+        style={style}
         {...htmlAttributes}
       >
         {showCloseButton || closeFunction ? (
