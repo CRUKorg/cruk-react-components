@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated Modal component README.md to accurately reflect current component props and API
-- Improved Popover anchor positioning by adding and anchor-scope on wrapping class
+- Improved Popover anchor positioning by adding an anchor-scope on wrapping class
 - Improved Modal close button alignment
 - Changed Modal props to take a style object instead of specific style attributes
 
