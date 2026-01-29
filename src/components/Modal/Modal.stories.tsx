@@ -14,9 +14,6 @@ export default {
     showCloseButton: { control: "boolean" },
     isAnimated: { control: "boolean" },
     startOpen: { control: "boolean" },
-    width: { control: "text" },
-    maxWidth: { control: "text" },
-    top: { control: "text" },
   },
   tags: ["autodocs"],
 };

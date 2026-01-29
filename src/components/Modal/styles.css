@@ -29,18 +29,12 @@
     display: none;
   }
 
-  &[data-is-animated="true"] {
+  &[data-is-animated="true"],
+  &[data-is-animated="true"]::backdrop {
     transition-behavior: allow-discrete;
     transition-property: all;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
-
-    &::backdrop {
-      transition-behavior: allow-discrete;
-      transition-property: all;
-      transition-duration: 0.3s;
-      transition-timing-function: ease-in-out;
-    }
   }
 
   &[open] {
@@ -65,8 +59,10 @@
 
   .close-button {
     float: right;
-    margin-left: var(--spacing-xs, 1rem);
+    margin-top: calc(var(--spacing-xs, 1rem) * -1);
+    margin-right: calc(var(--spacing-xs, 0.5rem) * -1);
     font-size: 1.2rem;
     padding: 0;
+    outline-offset: -0.5rem;
   }
 }

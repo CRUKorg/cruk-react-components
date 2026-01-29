@@ -17,16 +17,22 @@ Use a modal to display content over top of the rest of the site which must be in
 ```.jsx
 function () {
  const modalRef = React.useRef<HTMLDialogElement>(null);
-
+ const [showModal, setShowModal] = React.useState(false);
 
   return (
     <>
-      <Button appearance="primary" onClick={() => modalRef.current?.showModal()}>Show me a modal</Button>
+      <Button appearance="primary" onClick={() => setShowModal(true)}>Show me a modal</Button>
       {showModal &&
-        <Modal closeFunction={modalRef.current?.close()} modalName="test">
+        <Modal
+          closeFunction={() => setShowModal(false)}
+          modalName="test"
+          startOpen={true}
+          showCloseButton={true}
+          ref={modalRef}
+        >
           <Heading h2 marginTop='none' textSize="xl">Modal title</Heading>
           <p>Some really important information</p>
-          <Button appearance="primary" onClick={modalRef.current?.close()}>OK</Button>
+          <Button appearance="primary" onClick={() => setShowModal(false)}>OK</Button>
         </Modal>
       }
     </>
@@ -34,31 +40,19 @@ function () {
 }
 ```
 
-| Name              | Type      | Default   | Description                                                                                                                                                        |
-| :---------------- | :-------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| closeFunction     | function  | null      | callback when close is triggered by Escape key or close button                                                                                                     |
-| maxWidth          | string    | 500px     | Max width of modal                                                                                                                                                 |
-| width             | string    | 500px     | width of modal                                                                                                                                                     |
-| top               | string    | 1rem      | Height from top of container                                                                                                                                       |
-| children          | Any       |           | Any content to be displayed in modal                                                                                                                               |
-| showCloseButton   | Boolean   | true      | Toggles visibility of modal close button                                                                                                                           |
-| margin            | SpaceType | unset     | margin top, bottom, left and right                                                                                                                                 |
-| marginVertical    | SpaceType | unset     | margin top and bottom                                                                                                                                              |
-| marginHorizontal  | SpaceType | unset     | margin left and right                                                                                                                                              |
-| marginTop         | SpaceType | unset     | margin top                                                                                                                                                         |
-| marginRight       | SpaceType | unset     | margin right right                                                                                                                                                 |
-| marginBottom      | SpaceType | 'xs'      | margin bottom bottom                                                                                                                                               |
-| marginLeft        | SpaceType | unset     | margin left left                                                                                                                                                   |
-| padding           | SpaceType | unset     | padding top, bottom, left and right                                                                                                                                |
-| paddingVertical   | SpaceType | unset     | padding top and bottom                                                                                                                                             |
-| paddingHorizontal | SpaceType | unset     | padding left and right                                                                                                                                             |
-| paddingTop        | SpaceType | unset     | padding top                                                                                                                                                        |
-| paddingRight      | SpaceType | unset     | padding right right                                                                                                                                                |
-| paddingBottom     | SpaceType | unset     | padding bottom bottom                                                                                                                                              |
-| paddingLeft       | SpaceType | unset     | padding left left                                                                                                                                                  |
-| isAnimated        | Boolean   | true      | turns on animate in of modal                                                                                                                                       |
-| startOpen         | Boolean   | true      | when modal is rendered on page will it immediately open                                                                                                            |
-| ref               | RefObject | undefined | if you want to close the modal or open the modal without adding it or removing it from the document you need access to ref to call ref.showModal() and ref.close() |
+## Props
+
+| Name              | Type                               | Default   | Description                                                                                            |
+| :---------------- | :--------------------------------- | :-------- | :----------------------------------------------------------------------------------------------------- |
+| modalName         | string                             | required  | Modal name used for aria-label accessibility                                                           |
+| startOpen         | boolean                            | true      | Set if the modal starts open when rendered                                                             |
+| closeFunction     | function                           | undefined | Callback function called on modal close (triggered by Escape key or close button)                      |
+| showCloseButton   | boolean                            | undefined | Flag to reveal close button with cross in the top right of modal                                       |
+| isAnimated        | boolean                            | true      | Turn on animate in modal                                                                               |
+| children          | ReactNode                          | undefined | Children components inside modal                                                                       |
+| ref               | React.RefObject<HTMLDialogElement> | undefined | Ref to the dialog element - use to programmatically control modal with ref.showModal() and ref.close() |
+| style             | React.CSSProperties                | undefined | Additional style attributes for the dialog element                                                     |
+| ...htmlAttributes | HTMLAttributes<HTMLDialogElement>  | undefined | All other standard HTML dialog element attributes are supported                                        |
 
 ## Accessibility
 
