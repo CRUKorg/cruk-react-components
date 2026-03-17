@@ -102,10 +102,12 @@ p {
   margin-block-end: 0;
 }
 
-svg {
-  path {
-    fill: currentColor;
-    stroke: currentColor;
+[class^="component-"] {
+  svg {
+    path {
+      fill: currentColor;
+      stroke: currentColor;
+    }
   }
 }
 
