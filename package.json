@@ -74,7 +74,7 @@
     "rollup": "^4.22.4",
     "rollup-plugin-postcss": "^4.0.2",
     "storybook": "^10",
-    "ts-loader": "9.5.1",
+    "ts-loader": "9.5.4",
     "tsx": "^4.20.3",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.31.1",
