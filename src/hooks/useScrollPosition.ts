@@ -36,21 +36,22 @@ const useScrollPosition = (
   wait: number,
 ): void => {
   const position = useRef(getScrollPosition({ useWindow, element }));
-
-  let throttleTimeout: ReturnType<typeof setTimeout> | null = null;
+  const throttleTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const callBack = () => {
     const currPos = getScrollPosition({ element, useWindow });
     effect({ prevPos: position.current, currPos });
     position.current = currPos;
-    throttleTimeout = null;
+    throttleTimeoutRef.current = null;
   };
 
   useLayoutEffectBrowser(() => {
     const handleScroll = () => {
       if (wait) {
-        if (throttleTimeout === null) {
-          throttleTimeout = setTimeout(callBack, wait);
+        if (throttleTimeoutRef.current === null) {
+          throttleTimeoutRef.current = setTimeout(() => {
+            callBack();
+          }, wait);
         }
       } else {
         callBack();

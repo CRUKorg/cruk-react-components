@@ -48,9 +48,8 @@ const AllThemesWrapper = ({
 type HeaderProps = React.ComponentProps<typeof Header>;
 
 const HeaderInTallContainer = (args: HeaderProps) => (
-  <div>
+  <div style={{ height: "200vh" }}>
     <Header {...args} />
-    <div style={{ height: "200px" }}></div>
   </div>
 );
 
