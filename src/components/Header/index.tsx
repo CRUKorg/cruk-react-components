@@ -87,14 +87,13 @@ export function Header({
       const shouldShrink = isBrowser
         ? currPos.y > HEADER_SCROLL_THRESHOLD
         : false;
-      if (shouldShrink !== isSmall) {
-        setIsSmall(shouldShrink);
-      }
+
+      setIsSmall(shouldShrink);
     },
     [isSmall],
     null,
     true,
-    50,
+    100,
   );
 
   const logoUrl = getLogoFromThemeName(themeName);
@@ -114,7 +113,7 @@ export function Header({
           <a className="skip-to-main" href="#main">
             Skip to main content
           </a>
-          <div className="header-main-content" data-$full-width={fullWidth}>
+          <div className="header-main-content" data-full-width={fullWidth}>
             <a
               className="header-logo-link"
               href={logoLinkUrl ?? "/"}

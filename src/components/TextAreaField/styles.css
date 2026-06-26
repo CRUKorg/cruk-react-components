@@ -1,9 +1,17 @@
 .component-textarea-field {
-  cursor: auto;
-  background-color: var(--clr-background-light, #ffffff);
+  --_border-color: var(--clr-text-input-border, #2e2d2c);
+  --_border-color-hover: var(--clr-secondary, #e60079);
+  --_background-color: var(--clr-background-light, #ffffff);
+  --_text-color: var(--clr-text-dark, #000000);
+  --_cursor: auto;
+  --_pointer-events: auto;
+
+  cursor: var(--_cursor);
   background-image: none;
-  border: solid var(--size-border-width, 1px) var(--clr-text-input-border, #2e2d2c);
-  color: var(--clr-text-dark, #000000);
+  background-color: var(--_background-color);
+  border: solid var(--size-border-width, 1px) var(--_border-color);
+  color: var(--_text-color);
+
   display: block;
   font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
   font-size: var(--font-size-m, 1rem);
@@ -17,12 +25,14 @@
   }
 
   &:hover {
-    border-color: var(--clr-secondary, #e60079);
+    border-color: var(--_border-color-hover);
   }
-  &:disabled {
-    cursor: not-allowed;
-    border-color: var(--clr-disabled, #e6e6e6);
-    color: var(--clr-disabled, #e6e6e6);
+  &:disabled,
+  &:disabled:hover {
+    --_cursor: not-allowed;
+    --_pointer-events: none;
+    --_background-color: var(--clr-background-mid, #f2f2f2);
+    --_border-color-hover: var(--clr-text-input-border, #2e2dc);
   }
 
   &[aria-invalid="true"] {

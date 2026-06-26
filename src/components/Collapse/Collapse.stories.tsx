@@ -27,6 +27,11 @@ export default {
       </Text>
     ),
   },
+  argTypes: {
+    startOpen: {
+      control: "boolean",
+    },
+  },
   tags: ["autodocs"],
 };
 

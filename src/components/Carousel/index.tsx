@@ -120,6 +120,8 @@ export const Carousel = ({
   // Stop smooth scrolling when moving to a starting position
   useEffect(() => {
     if (isStartPositionSet) {
+      // doing this all in render seems to cause really janky behaviour with snap scrolling.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSmoothScrolling(false);
     }
   }, [isStartPositionSet, startPosition]);

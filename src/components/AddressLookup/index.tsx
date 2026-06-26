@@ -92,6 +92,7 @@ export const AddressLookup = ({
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const searchDebounced = useCallback(
+    // eslint-disable-next-line react-hooks/use-memo
     debounce(500, (query: string) => {
       search(query);
     }),
