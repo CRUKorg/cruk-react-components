@@ -27,6 +27,11 @@ export default {
       </Text>
     ),
   },
+  argTypes: {
+    startOpen: {
+      control: "boolean",
+    },
+  },
   tags: ["autodocs"],
 };
 
@@ -49,6 +54,7 @@ export const CollapseWithModifiedText: Story = {
       "A long title with headerTitleTextColor and headerTitleTextSize",
     headerTitleTextColor: "text-dark",
     headerTitleTextSize: "xl",
+    startOpen: true,
   },
   render: (args) => (
     <AllThemesWrapper>

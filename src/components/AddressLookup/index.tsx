@@ -90,36 +90,40 @@ export const AddressLookup = ({
     setAddressOptions([]);
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const searchDebounced = useCallback(
-    debounce(500, (query: string) => {
-      search(query);
-    }),
-    [],
+  const search = useCallback(
+    (query: string, id = "") => {
+      if (query.length === 0) return setAddressOptions([]);
+      let searchUrl = `${FIND_URL}?Key=${apiKey}&Text=${query}&Container=${id}`;
+      if (countries !== undefined) {
+        searchUrl = `${searchUrl}&Countries=${countries.join(",")}`;
+      }
+      fetch(searchUrl)
+        .then((res: Response) => {
+          if (!res.ok) throw new Error("Something went wrong please try again");
+          return res.json();
+        })
+        .then((data: { Items: AddressOptionsType[] }) => {
+          // Occasionally get the error "The query didn't respond fast enough, it may be too complex."
+          // returned with a 200 response. Example query "n17 6t"
+          if (data?.Items?.length > 0 && data.Items[0].Error)
+            throw new Error("Something went wrong please try again");
+          setAddressOptions(data.Items || []);
+          return null;
+        })
+        .catch((err) => onAddressError(err as Error));
+      return null;
+    },
+    [apiKey, countries, onAddressError],
   );
 
-  const search = (query: string, id = "") => {
-    if (query.length === 0) return setAddressOptions([]);
-    let searchUrl = `${FIND_URL}?Key=${apiKey}&Text=${query}&Container=${id}`;
-    if (countries !== undefined) {
-      searchUrl = `${searchUrl}&Countries=${countries.join(",")}`;
-    }
-    fetch(searchUrl)
-      .then((res: Response) => {
-        if (!res.ok) throw new Error("Something went wrong please try again");
-        return res.json();
-      })
-      .then((data: { Items: AddressOptionsType[] }) => {
-        // Occasionally get the error "The query didn't respond fast enough, it may be too complex."
-        // returned with a 200 response. Example query "n17 6t"
-        if (data?.Items?.length > 0 && data.Items[0].Error)
-          throw new Error("Something went wrong please try again");
-        setAddressOptions(data.Items || []);
-        return null;
-      })
-      .catch((err) => onAddressError(err as Error));
-    return null;
-  };
+  const searchDebounced = useCallback(
+    (query: string) => {
+      debounce(500, () => {
+        search(query);
+      });
+    },
+    [search],
+  );
 
   const getAddress = (id: string) => {
     fetch(`${RETRIEVE_URL}?Key=${apiKey}&Id=${id}`)
