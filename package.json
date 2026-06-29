@@ -47,7 +47,7 @@
     "@cruk/eslint-config": "^5",
     "@playwright/experimental-ct-react": "^1.61.1",
     "@rollup/plugin-commonjs": "^29.0.0",
-    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^1.0.0",
     "@rollup/plugin-typescript": "^12.0.0",
     "@swc/core": "1.15.43",
