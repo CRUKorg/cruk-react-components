@@ -44,7 +44,7 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",
     "@chromatic-com/storybook": "^5.2.1",
-    "@cruk/eslint-config": "^5",
+    "@cruk/eslint-config": "^6",
     "@playwright/experimental-ct-react": "^1.61.1",
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
