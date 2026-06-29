@@ -50,7 +50,7 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^1.0.0",
     "@rollup/plugin-typescript": "^12.0.0",
-    "@swc/core": "1.9.3",
+    "@swc/core": "1.15.43",
     "@storybook/addon-a11y": "^10",
     "@storybook/addon-docs": "^10",
     "@storybook/addon-links": "^10",
