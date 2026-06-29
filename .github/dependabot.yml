@@ -1,22 +1,47 @@
 version: 2
 updates:
   # GitHub Actions
-  - package-ecosystem: 'github-actions'
-    directory: '/'
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
-
-  # Npm
-  - package-ecosystem: 'npm'
-    directory: '/'
-    schedule:
-      interval: 'weekly'
-      day: 'monday'
+      interval: "weekly"
+      day: "monday"
 
   # Docker
-  - package-ecosystem: 'docker'
-    directory: '/'
+  - package-ecosystem: "docker"
+    directory: "/"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
+      interval: "weekly"
+      day: "monday"
+
+  # Npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    cooldown:
+      default-days: 7
+    groups:
+      storybook:
+        patterns:
+          - "storybook"
+          - "eslint-plugin-storybook"
+          - "chromatic*"
+          - "@storybook*"
+          - "@chromatic*"
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "eslint-plugin-react*"
+          - "@types/react*"
+      vite:
+        patterns:
+          - "vite"
+          - "@vitejs/*"
+      rollup:
+        patterns:
+          - "rollup"
+          - "rollup-plugin-*"
+          - "@rollup/*"
