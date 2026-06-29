@@ -45,3 +45,6 @@ updates:
           - "rollup"
           - "rollup-plugin-*"
           - "@rollup/*"
+      icons:
+        patterns:
+          - "@fortawesome/*"
