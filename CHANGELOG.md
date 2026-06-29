@@ -5,11 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.2.7] - 2026-06-29
+
+### Fixed
+
+- Fixed font family in Text Field component [#1200](https://github.com/CRUKorg/cruk-react-components/issues/1200)
+
 ## [7.2.6] - 2026-06-29
 
 ### Fixed
 
-- Fixed font weight in Select component [#1198](https://github.com/CRUKorg/cruk-react-components/issues/1196)
+- Fixed font weight in Select component [#1198](https://github.com/CRUKorg/cruk-react-components/issues/1198)
 
 ## [7.2.5] - 2026-06-26
 
