@@ -102,15 +102,6 @@ p {
   margin-block-end: 0;
 }
 
-[class^="component-"] {
-  svg {
-    path {
-      fill: currentColor;
-      stroke: currentColor;
-    }
-  }
-}
-
 table,
 td,
 th {
