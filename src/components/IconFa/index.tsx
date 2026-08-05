@@ -41,7 +41,12 @@ export function IconFa({
         width: themeSizeValueOrString,
       }}
     >
-      {svgPathData && <path d={svgPathData as string} />}
+      {svgPathData && (
+        <path
+          d={svgPathData as string}
+          style={{ fill: "currentColor", stroke: "currentColor" }}
+        />
+      )}
     </svg>
   );
 }
