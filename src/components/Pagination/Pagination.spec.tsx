@@ -1,6 +1,6 @@
 import React from "react";
 
-import { testAccessibilityOnAllThemes } from "playwright/utils";
+import { testAccessibilityOnAllThemes } from "../../../playwright/utils";
 
 import { Pagination } from ".";
 import "./styles.css";

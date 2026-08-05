@@ -1,7 +1,7 @@
 import React from "react";
 import { test, expect } from "@playwright/experimental-ct-react";
 
-import { testAccessibilityOnAllThemes } from "playwright/utils";
+import { testAccessibilityOnAllThemes } from "../../../playwright/utils";
 
 import { Button } from "..";
 import { Header } from ".";

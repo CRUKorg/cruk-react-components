@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/experimental-ct-react";
 import { AxeBuilder } from "@axe-core/playwright";
 import React from "react";
-import { type ThemeNameType, themeNames } from "src/types";
+import { type ThemeNameType, themeNames } from "../src/types";
 
 export function testAccessibilityForTheme({
   componentName,
