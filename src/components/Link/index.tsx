@@ -4,7 +4,11 @@ import React, {
   type ReactNode,
 } from "react";
 
-import { type ColourProps, type SpacingProps, type TextProps } from "src/types";
+import {
+  type ColourProps,
+  type SpacingProps,
+  type TextProps,
+} from "../../types";
 
 export type LinkProps = Omit<AnchorHTMLAttributes<HTMLElement>, "nonce"> &
   SpacingProps &
