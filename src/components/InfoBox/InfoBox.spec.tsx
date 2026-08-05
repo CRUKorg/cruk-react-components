@@ -1,7 +1,7 @@
 import React from "react";
 import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 
-import { testAccessibilityOnAllThemes } from "playwright/utils";
+import { testAccessibilityOnAllThemes } from "../../../playwright/utils";
 
 import { IconFa, Text } from "..";
 import { InfoBox } from ".";

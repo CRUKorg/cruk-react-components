@@ -7,7 +7,7 @@ import {
   faBullhorn,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { testAccessibilityOnAllThemes } from "playwright/utils";
+import { testAccessibilityOnAllThemes } from "../../../playwright/utils";
 
 import { Badge } from ".";
 import { IconFa } from "..";

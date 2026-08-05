@@ -5,7 +5,7 @@ import {
   faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { testAccessibilityOnAllThemes } from "playwright/utils";
+import { testAccessibilityOnAllThemes } from "../../../playwright/utils";
 
 import { Button } from ".";
 import { IconFa, Box } from "..";

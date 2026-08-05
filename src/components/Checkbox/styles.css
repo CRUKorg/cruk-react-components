@@ -124,10 +124,9 @@
       .check {
         border-color: var(--clr-danger, #ff0000);
         background-color: var(--clr-background-light, #fff);
-
         svg {
           path {
-            fill: var(--clr-danger, #ff0000);
+            fill: var(--clr-danger, #ff0000) !important;
             transform: rotateY(0deg);
           }
         }

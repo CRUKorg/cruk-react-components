@@ -6,7 +6,7 @@ import {
   themeSpacingSizeOrString,
 } from "../../utils/themeUtils";
 
-import { type spaces, type colours } from "src/types";
+import { type spaces, type colours } from "../../types";
 
 /**
  * The IconFa component (Icon Font Awesome) displays an icon glyph as an `<svg>` element.

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { testAccessibilityOnAllThemes } from "playwright/utils";
+import { testAccessibilityOnAllThemes } from "../../../playwright/utils";
 
 import { ErrorText } from ".";
 import "./styles.css";

@@ -1,7 +1,7 @@
 import React from "react";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-import { testAccessibilityOnAllThemes } from "playwright/utils";
+import { testAccessibilityOnAllThemes } from "../../../playwright/utils";
 
 import { Heading, Box, Button, IconFa } from "..";
 import { TextField } from ".";
