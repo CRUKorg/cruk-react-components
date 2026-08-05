@@ -62,7 +62,7 @@
     "@vitejs/plugin-legacy": "^8",
     "@vitejs/plugin-react-swc": "^4.2.3",
     "autoprefixer": "^10.4.22",
-    "chromatic": "^17.5.0",
+    "chromatic": "^18.1.0",
     "eslint": "^9",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^7.0.1",
