@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.2.9] - 2026-07-13
+
+### Fixed
+
+- Fixed SVG global styles breaking SVG outside of components [#1221](https://github.com/CRUKorg/cruk-react-components/issues/1221)
+
+### Added
+
+- Animation to Step component
+
+### Changed
+
+- Removed the automatic padding form Box when a background colour is set [#1234](https://github.com/CRUKorg/cruk-react-components/issues/1234)
+
 ## [7.2.8] - 2026-06-29
 
 ### Fixed

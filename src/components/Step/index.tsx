@@ -31,9 +31,10 @@ export function Step({
               key={`step${i}`}
               data-is-active={i + 1 === current}
               data-is-done={i + 1 < current}
+              data-is-last-done={i + 1 === current - 1}
               style={{ "--_step-item-width": itemWidth } as React.CSSProperties}
             >
-              <span className="step-bar">
+              <span className="step-dot">
                 {i + 1 < current && <span className="step-tick" />}
               </span>
               {step}

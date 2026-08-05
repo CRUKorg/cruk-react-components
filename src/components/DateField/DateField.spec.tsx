@@ -8,7 +8,7 @@ import "./styles.css";
 import "../ErrorText/styles.css";
 
 const unControlledContent = () => (
-  <Box backgroundColor="background-light">
+  <Box backgroundColor="background-light" padding="s">
     <DateField
       dayName="birthDay"
       monthName="birthMonth"

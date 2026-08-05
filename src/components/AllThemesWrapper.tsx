@@ -34,7 +34,9 @@ export const TestThemeWrapper = ({
       style={{ overflow: "auto" }}
       tabIndex={0}
     >
-      <Box backgroundColor="background-light">{children}</Box>
+      <Box backgroundColor="background-light" padding="s">
+        {children}
+      </Box>
     </div>
   </main>
 );
