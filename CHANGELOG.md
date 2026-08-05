@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed SVG global styles breaking SVG outside of components [#1221](https://github.com/CRUKorg/cruk-react-components/issues/1221)
 
+### Added
+
+- Animation to Step component
+
+### Changed
+
+- Removed the automatic padding form Box when a background colour is set [#1234](https://github.com/CRUKorg/cruk-react-components/issues/1234)
+
 ## [7.2.8] - 2026-06-29
 
 ### Fixed

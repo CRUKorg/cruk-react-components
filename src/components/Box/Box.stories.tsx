@@ -100,6 +100,7 @@ export const BoxWithColour: Story = {
   name: "BoxWithColour",
   args: {
     backgroundColor: "primary",
+    padding: "s",
     children: (
       <Text textColor="text-on-primary">this is a box with colours</Text>
     ),
@@ -116,6 +117,7 @@ export const BoxWithColourWithCustomSpacing: Story = {
   args: {
     backgroundColor: "primary",
     paddingVertical: "xl",
+    paddingHorizontal: "s",
     paddingBottom: "xs",
     children: (
       <Text textColor="text-on-primary">this is a box with custom spacing</Text>

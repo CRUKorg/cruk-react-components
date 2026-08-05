@@ -9,7 +9,7 @@ import "../Box/styles.css";
 
 function component() {
   return (
-    <Box backgroundColor="background-light">
+    <Box backgroundColor="background-light" padding="s">
       <Collapse headerTitleText="What is Lorem Ipsum?" id="default">
         <Text>
           {`Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -41,12 +41,12 @@ function component() {
         id="custom"
         headerTitleText="Custom header components"
         headerComponent={
-          <Box backgroundColor="primary">
+          <Box backgroundColor="primary" padding="s">
             <Text textColor="text-on-primary">This is box header</Text>
           </Box>
         }
       >
-        <Box backgroundColor="primary">
+        <Box backgroundColor="primary" padding="s">
           <Text textColor="text-on-primary">This is box</Text>
         </Box>
       </Collapse>

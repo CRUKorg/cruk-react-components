@@ -10,10 +10,10 @@ function component() {
   return (
     <>
       <Box>This is box</Box>
-      <Box backgroundColor="primary">
+      <Box backgroundColor="primary" padding="s">
         <Text textColor="text-on-primary">This is box</Text>
       </Box>
-      <Box backgroundColor="secondary">
+      <Box backgroundColor="secondary" padding="s">
         <Text textColor="text-on-secondary">This is box</Text>
       </Box>
       <Box backgroundColor="secondary">

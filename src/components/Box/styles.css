@@ -6,8 +6,4 @@
   &:last-child {
     margin-bottom: 0;
   }
-  /* if we have a background color, add padding */
-  &[data-bg-color] {
-    padding: var(--spacing-s, 1.5rem);
-  }
 }
