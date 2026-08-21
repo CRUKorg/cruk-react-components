@@ -1,6 +1,6 @@
 .component-popover {
   [popovertarget] {
-    --anchor-name: --popovertarget;
+    --anchor-name: --popover-target;
     position: relative;
 
     /* Tether arrow */
@@ -20,7 +20,7 @@
   }
 
   [popover] {
-    --position-anchor: --popovertarget;
+    --position-anchor: --popover-target;
     position: absolute;
     inset: auto;
     margin: 0;
@@ -38,6 +38,10 @@
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 
     opacity: 0;
+
+    &[data-fixed-position="true"] {
+      position: fixed;
+    }
   }
 
   &[data-is-animated="true"] {
@@ -66,51 +70,51 @@
   /* Positioning variants*/
   &[data-position="top"],
   &:not([data-position]) {
-    [popover] {
-      position-area: top;
-      position-try-fallbacks: --bottom;
-    }
     [popovertarget]::before {
       top: -0.5rem;
       left: calc(50% - 0.5rem);
     }
+    [popover] {
+      position-area: top;
+      position-try-fallbacks: --bottom;
+    }
   }
 
   &[data-position="bottom"] {
-    [popover] {
-      position-area: bottom;
-      position-try-fallbacks: --top;
-    }
     [popovertarget]::before {
       bottom: -0.5rem;
       left: calc(50% - 0.5rem);
     }
+    [popover] {
+      position-area: bottom;
+      position-try-fallbacks: --top;
+    }
   }
 
   &[data-position="left"] {
-    [popover] {
-      position-area: left;
-      position-try-fallbacks: --right, --top, --bottom;
-    }
     [popovertarget]::before {
       left: -0.5rem;
       top: calc(50% - 0.5rem);
     }
+    [popover] {
+      position-area: left;
+      position-try-fallbacks: --right, --top, --bottom;
+    }
   }
 
   &[data-position="right"] {
-    [popover] {
-      position-area: right;
-      position-try-fallbacks: --left, --top, --bottom;
-    }
     [popovertarget]::before {
       right: -0.5rem;
       top: calc(50% - 0.5rem);
     }
+    [popover] {
+      position-area: right;
+      position-try-fallbacks: --left, --top, --bottom;
+    }
   }
 
   /* anchor name only works within this wrapping class */
-  anchor-scope: --popovertarget;
+  anchor-scope: --popover-target;
 }
 
 @position-try --bottom {
