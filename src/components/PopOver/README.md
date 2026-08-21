@@ -71,14 +71,15 @@ function () {
 
 ## Props
 
-| Name                  | Type                      |            Options            | Default | Description                          |
-| :-------------------- | :------------------------ | :---------------------------: | :------ | :----------------------------------- |
-| position              | String                    | "top" "bottom" "left" "right" | "top"   | Where to place the popover           |
-| modalContent          | String/React node         |                               |         | Content to show in the popover       |
-| style                 | ReactStyle object         |                               |         | CSS object                           |
-| modalLabel            | String                    |                               |         | aria-label for modal                 |
-| onPopOverIsOpenChange | (isOpen: boolean) => void |                               |         | Call back function when first opened |
-| isAnimated            | Boolean                   |                               | true    | Enables animations                   |
+| Name                  | Type                      |            Options            | Default | Description                                                                |
+| :-------------------- | :------------------------ | :---------------------------: | :------ | :------------------------------------------------------------------------- |
+| position              | String                    | "top" "bottom" "left" "right" | "top"   | Where to place the popover                                                 |
+| fixedPosition         | boolean                   |                               | "false" | When parent is fixed or sticky position stops users scrolling past popover |
+| modalContent          | String/React node         |                               |         | Content to show in the popover                                             |
+| style                 | ReactStyle object         |                               |         | CSS object                                                                 |
+| modalLabel            | String                    |                               |         | aria-label for modal                                                       |
+| onPopOverIsOpenChange | (isOpen: boolean) => void |                               |         | Call back function when first opened                                       |
+| isAnimated            | Boolean                   |                               | true    | Enables animations                                                         |
 
 ## Usage
 

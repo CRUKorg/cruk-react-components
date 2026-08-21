@@ -14,6 +14,11 @@ export type PopOverProps = {
   modalContent: ReactNode;
   /** position: position that the popover opens relative to the triggering element, the trigger element is the child of the component */
   position?: PopOverPositionType;
+  /** fixedPosition:
+   * false: popover is positioned absolute to the trigger element,
+   * true: popover is positioned fixed to the trigger element,
+   * used for when parent is fixed or sticky and you don't want to lose popover on scroll */
+  fixedPosition?: boolean;
   /**  onPopOverIsOpenChange: popover isOpen changed handler */
   onPopOverIsOpenChange?: (isOpen: boolean) => void;
   /** enable animation in modal */
@@ -30,6 +35,7 @@ export function PopOver({
   onPopOverIsOpenChange,
   children,
   position,
+  fixedPosition = false,
   modalLabel,
   modalContent,
   style,
@@ -71,6 +77,7 @@ export function PopOver({
           ...style,
         }}
         data-is-animated={isAnimated}
+        data-fixed-position={fixedPosition}
         aria-label={modalLabel}
       >
         {modalContent}

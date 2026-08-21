@@ -57,6 +57,10 @@ export default {
       control: "select",
       options: ["top", "left", "right", "bottom", ""],
     },
+    fixedPosition: {
+      control: "boolean",
+      defaultValue: false,
+    },
     full: { control: "boolean" },
     minWidth: { control: "text" },
     maxWidth: { control: "text" },
