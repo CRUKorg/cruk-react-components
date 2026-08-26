@@ -1,45 +1,47 @@
-import React from "react";
-import { test, expect } from "@playwright/experimental-ct-react";
+import AxeBuilder from "@axe-core/playwright";
+import { test, expect } from "@playwright/test";
 
-import { testAccessibilityOnAllThemes } from "../../../playwright/utils";
+test(`AddressLookup Accessible with CRUK theme`, async ({ mount, page }) => {
+  await mount("AddressLookup.spec/CrukTheme");
 
-import { AddressLookup } from ".";
-import "./styles.css";
-import "../ErrorText/styles.css";
-import "../TextField/styles.css";
-import "../IconFa/styles.css";
+  const accessibilityScanResults = await new AxeBuilder({ page })
+    .include("body")
+    .analyze();
+  expect(accessibilityScanResults.violations).toEqual([]);
+});
 
-import { TestThemeWrapper } from "../AllThemesWrapper";
+test(`AddressLookup Accessible with RFL theme`, async ({ mount, page }) => {
+  await mount("AddressLookup.spec/RflTheme");
 
-function component() {
-  return (
-    <fieldset>
-      <legend>Your Address</legend>
-      <div style={{ height: "300px" }}>
-        <AddressLookup
-          countries={["GBR"]}
-          apiKey="MG17-ZD93-FF33-KF13"
-          onAddressSelected={() => {
-            // onAddressSelected
-          }}
-          onChange={() => {
-            // onChange
-          }}
-        />
-      </div>
-    </fieldset>
-  );
-}
+  const accessibilityScanResults = await new AxeBuilder({ page })
+    .include("body")
+    .analyze();
+  expect(accessibilityScanResults.violations).toEqual([]);
+});
 
-testAccessibilityOnAllThemes({
-  componentName: "AddressLookup",
-  component: component,
+test(`AddressLookup Accessible with SU2C theme`, async ({ mount, page }) => {
+  await mount("AddressLookup.spec/Su2cTheme");
+
+  const accessibilityScanResults = await new AxeBuilder({ page })
+    .include("body")
+    .analyze();
+  expect(accessibilityScanResults.violations).toEqual([]);
+});
+
+test(`AddressLookup Accessible with Bowelbabe theme`, async ({
+  mount,
+  page,
+}) => {
+  await mount("AddressLookup.spec/BowelbabeTheme");
+
+  const accessibilityScanResults = await new AxeBuilder({ page })
+    .include("body")
+    .analyze();
+  expect(accessibilityScanResults.violations).toEqual([]);
 });
 
 test("can find address", async ({ mount, page }) => {
-  await mount(
-    <TestThemeWrapper themeName="cruk">{component()}</TestThemeWrapper>,
-  );
+  await mount("AddressLookup.spec/CrukTheme");
   await page.route("**/Find/**", async (route) => {
     await route.fulfill({
       status: 200,
@@ -77,9 +79,7 @@ test("can find address", async ({ mount, page }) => {
 });
 
 test("can focus address dropdown", async ({ mount, page }) => {
-  await mount(
-    <TestThemeWrapper themeName="cruk">{component()}</TestThemeWrapper>,
-  );
+  await mount("AddressLookup.spec/CrukTheme");
   await page.route("**/Find/**", async (route) => {
     await route.fulfill({
       status: 200,

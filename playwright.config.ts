@@ -1,9 +1,8 @@
-import { defineConfig, devices } from "@playwright/experimental-ct-react";
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  testDir: "./src/components",
-  testMatch: "**/*.spec.tsx",
   snapshotDir: "./__snapshots__",
+  testDir: "./src/components",
   timeout: 10 * 1000,
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -12,20 +11,25 @@ export default defineConfig({
   reporter: "html",
   use: {
     trace: "on-first-retry",
-    ctPort: 3100,
   },
 
   projects: [
     {
-      name: "chromium",
+      name: "components",
+      testMatch: ["**/*.spec.ts"],
+
       use: {
         ...devices["Desktop Chrome"],
         viewport: { width: 1600, height: 860 },
+        baseURL: "http://localhost:5173/playwright/index.html",
+        serviceWorkers: "block",
+        reuseContext: true,
       },
     },
-    // {
-    //   name: "Mobile Chrome",
-    //   use: { ...devices["Pixel 7"] },
-    // },
   ],
+  webServer: {
+    command: "npm run dev",
+    url: "http://localhost:5173/playwright/index.html",
+    reuseExistingServer: !process.env.CI,
+  },
 });

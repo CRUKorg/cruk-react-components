@@ -3,7 +3,7 @@
 - Each component should have its own directory with:
   - Index file containing component markup and logic (.tsx)
   - A styles file (styles.css)
-  - Tests where applicable importing from `@playwright/experimental-ct-react` lib (.spec.tsx)
+  - Component test where applicable importing from `@playwright/test` lib (.spec.tsx)
   - A Storybook 10 file importing from `@storybook/react-vite` lib (.stories.tsx)
   - A markdown describing the component and a table of the props (README.md)
 
