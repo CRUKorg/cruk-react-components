@@ -1,6 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 
-import { test, expect } from "playwright/test";
+import { test, expect } from "@playwright/test";
 
 // we have to pump theme into the content as well as the theme wrapper because of react portals ignoring the theme wrapper
 test("Modal with content Accessible with CRUK theme", async ({

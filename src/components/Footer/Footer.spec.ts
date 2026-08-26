@@ -1,6 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 
-import { test, expect } from "playwright/test";
+import { test, expect } from "@playwright/test";
 
 // We know that the color-contrast rule is failing on some SU2C, so we ignore it for now. We have new designs coming soon.
 const ignoreRules = ["color-contrast"];

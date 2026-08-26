@@ -1,6 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 
-import { test, expect } from "playwright/test";
+import { test, expect } from "@playwright/test";
 
 test("Button Accessible with CRUK theme", async ({ mount, page }) => {
   await mount("Button.spec/CrukTheme");

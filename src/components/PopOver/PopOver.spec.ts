@@ -1,6 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 
-import { test, expect } from "playwright/test";
+import { test, expect } from "@playwright/test";
 
 test("PopOver is accessible CRUK theme", async ({ mount, page }) => {
   await mount("PopOver.spec/CrukTheme");
