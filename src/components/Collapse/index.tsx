@@ -84,7 +84,7 @@ export function Collapse({
   };
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+    // oxlint-disable-next-line react/set-state-in-effect
     setOpenStatus(startOpen || false);
     // if start open changes then we want to set the height without animation
     if (startOpen) {

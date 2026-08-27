@@ -13,10 +13,8 @@
 
   /* If we know the button height the border height and the line height we can calculate the padding */
   padding: calc(
-      (
-          var(--_button-height, 3rem) - (var(--btn-border-thickness, 2px) * 2) -
-            var(--typ-line-height, 1.5em)
-        ) /
+      (var(--_button-height, 3rem) - (var(--btn-border-thickness, 2px) * 2) -
+          var(--typ-line-height, 1.5em)) /
         2
     )
     2em;

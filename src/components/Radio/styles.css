@@ -19,18 +19,14 @@
   vertical-align: middle;
   display: inline-block;
   padding: calc(
-      (
-          var(--_button-height, 3em) - (var(--size-border-width, 1px) * 2) -
-            var(--typ-line-height, 1.5em)
-        ) /
+      (var(--_button-height, 3em) - (var(--size-border-width, 1px) * 2) -
+          var(--typ-line-height, 1.5em)) /
         2
     )
     var(--spacing-m, 2rem)
     calc(
-      (
-          var(--_button-height, 3em) - (var(--size-border-width, 1px) * 2) -
-            var(--typ-line-height, 1.5em)
-        ) /
+      (var(--_button-height, 3em) - (var(--size-border-width, 1px) * 2) -
+          var(--typ-line-height, 1.5em)) /
         2
     )
     var(--spacing-xl, 4rem);

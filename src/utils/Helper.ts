@@ -27,9 +27,7 @@ export const numberWithCommas = (n?: number | string): string => {
   }
   const parts = n.toString().split(".");
 
-  return `${parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")}${
-    parts[1] ? `.${parts[1]}` : ""
-  }`;
+  return `${parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")}${parts[1] ? `.${parts[1]}` : ""}`;
 };
 
 export const formatMoneyWithCommas = (value: number): string => {
@@ -63,6 +61,7 @@ export const removeCommasFromObjectStringValues = <T>(object: T) =>
 // this is useful for filtering props before passing them to an HTML element to keep the DOM minimal
 export function removeEmpty(obj: Record<string, unknown>) {
   return Object.fromEntries(
+    // oxlint-disable-next-line no-unused-vars
     Object.entries(obj).filter(([_, v]) => v != undefined),
   );
 }

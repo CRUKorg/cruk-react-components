@@ -1,10 +1,9 @@
-
 # Legend Wrapper
 
 To be used in forms wrapping form elements with a fieldset with a legend.
 
-
 ### Examples
+
 ```.jsx
 <>
     <section>
@@ -85,18 +84,15 @@ To be used in forms wrapping form elements with a fieldset with a legend.
 </>
 ```
 
-
 ## Props
 
-
-| Name             | Type                   | Required | Default | Description                                                                                                         |
-| :------------ | :------------------- | :-----: | :-------- | :---------------------------------------------------------------------------------------------------------------- |
-| legendText            | string                 | Yes      |         | Fieldset with legend
-| required         | boolean                |          | false   | If false, add (optional) to the legend                                      |
-| hasError         | boolean                |          | false   | If true, use error styling for the input                                  |
-| errorMessage     | string                 |          |         | Error message, If defined, use error styling for the children    |
-| hintText         | ReactElement \| string |          |         | Extra help text between the legend and children                               |
-
+| Name         | Type                   | Required | Default | Description                                                   |
+| :----------- | :--------------------- | :------: | :------ | :------------------------------------------------------------ |
+| legendText   | string                 |   Yes    |         | Fieldset with legend                                          |
+| required     | boolean                |          | false   | If false, add (optional) to the legend                        |
+| hasError     | boolean                |          | false   | If true, use error styling for the input                      |
+| errorMessage | string                 |          |         | Error message, If defined, use error styling for the children |
+| hintText     | ReactElement \| string |          |         | Extra help text between the legend and children               |
 
 ## Accessibility
 
