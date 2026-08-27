@@ -41,7 +41,7 @@ jobs:
         run: npm ci
       - name: Test
         run: npm run node-test --verbose
-  Prettier:
+  Format:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout cruk-react-components
@@ -55,8 +55,8 @@ jobs:
       - name: npm install
         run: npm ci
       - name: Test
-        run: npm run prettier:debug
-  ESLint:
+        run: npm run format
+  Lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout cruk-react-components
@@ -70,7 +70,7 @@ jobs:
       - name: npm install
         run: npm ci
       - name: Test
-        run: npm run eslint:test
+        run: npm run lint
   Chromatic:
     if: github.actor!= 'depbot'
     runs-on: ubuntu-latest
