@@ -90,14 +90,12 @@ export const AddressLookup = ({
     setAddressOptions([]);
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const searchDebounced = useCallback(
-    // eslint-disable-next-line react-hooks/use-memo
-    debounce(500, (query: string) => {
-      search(query);
-    }),
-    [],
-  );
+  const searchDebounced = useCallback((query: string) => {
+    debounce(500, (q: string) => {
+      search(q);
+    })(query);
+    // oxlint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const search = (query: string, id = "") => {
     if (query.length === 0) return setAddressOptions([]);

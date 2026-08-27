@@ -13,18 +13,14 @@
   border-radius: var(--size-border-radius, 0px);
   min-height: var(--_button-height, 3rem);
   padding: calc(
-      (
-          var(--_button-height, 3rem) - (var(--size-border-width, 1px) * 2) -
-            var(--typ-line-height, 1.5em)
-        ) /
+      (var(--_button-height, 3rem) - (var(--size-border-width, 1px) * 2) -
+          var(--typ-line-height, 1.5em)) /
         2
     )
     var(--spacing-m, 2rem)
     calc(
-      (
-          var(--_button-height, 3rem) - (var(--size-border-width, 1px) * 2) -
-            var(--typ-line-height, 1.5em)
-        ) /
+      (var(--_button-height, 3rem) - (var(--size-border-width, 1px) * 2) -
+          var(--typ-line-height, 1.5em)) /
         2
     )
     var(--spacing-xs, 1rem);

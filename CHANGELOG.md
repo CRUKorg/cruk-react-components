@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Updated component tests to use build in Playwright component tests instead of @playwright/experimental-ct-react [#1252](https://github.com/CRUKorg/cruk-react-components/issues/1252)
 
+### Changed
+
+- replacing eslint and prettier with oxlint and oxfmt
+
 ## [7.2.10] - 2026-08-21
 
 ### Added

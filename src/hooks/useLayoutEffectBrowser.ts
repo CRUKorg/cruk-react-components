@@ -15,6 +15,7 @@ const useLayoutEffectBrowser = (
     if (typeof window === `undefined`) return;
 
     action();
+    // oxlint-disable-next-line react-hooks/exhaustive-deps
   }, [deps]);
 };
 

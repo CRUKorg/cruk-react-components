@@ -12,9 +12,9 @@ To be used in forms for inline validation. Applies styling and accessibility att
 
 ## Props
 
-| Name | Type | Options | Default | Description |
-| :- | :- | :-: | :- | :- |
-| children | String | |  | Used as error text |
+| Name     | Type   | Options | Default | Description        |
+| :------- | :----- | :-----: | :------ | :----------------- |
+| children | String |         |         | Used as error text |
 
 ## Accessibility
 

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
 // node test catches the errors there are no floating promises in reality
 import assert from "node:assert";
 import { it, test } from "node:test";

@@ -33,6 +33,7 @@ export const useKey = (
     return () => {
       window.document.removeEventListener(keyevent || "keydown", handleEvent);
     };
+    // oxlint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies || []);
 };
 

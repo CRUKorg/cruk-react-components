@@ -21,7 +21,9 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
  * The value or children becomes the label, if you want an outer label for a radio or group of radios please use a LegendWrapper component
  */
 export const Radio = (props: RadioProps) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // It's ok to have unused variables here as we are destructuring props
+  // to remove them from the rest object
+  // oxlint-disable-next-line no-unused-vars
   const { children, hasError, errorMessage, ref, ...rest } = props;
 
   const invalid = props.hasError || !!props.errorMessage?.length;
