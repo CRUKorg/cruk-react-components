@@ -61,7 +61,6 @@ export const removeCommasFromObjectStringValues = <T>(object: T) =>
 // this is useful for filtering props before passing them to an HTML element to keep the DOM minimal
 export function removeEmpty(obj: Record<string, unknown>) {
   return Object.fromEntries(
-    // oxlint-disable-next-line no-unused-vars
-    Object.entries(obj).filter(([_, v]) => v != undefined),
+    Object.entries(obj).filter(([, v]) => v != undefined),
   );
 }
