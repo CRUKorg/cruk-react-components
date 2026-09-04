@@ -51,7 +51,7 @@ export const TextAreaField = ({
         }
         style={{
           resize: resize,
-          height: `${lineCount * 1.5}em`,
+          minHeight: `${lineCount}lh`,
         }}
         ref={ref}
         data-hj-suppress
