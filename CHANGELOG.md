@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Modal props extends from Dialog element attributes [#1267](https://github.com/CRUKorg/cruk-react-components/issues/1267)
+- TextAreaField updated to use min-heigh when specifiying number of lines so that field-sizing content can be used expand the textarea [#1258](https://github.com/CRUKorg/cruk-react-components/issues/1258)
 
 ## [7.2.11] - 2026-08-26
 
