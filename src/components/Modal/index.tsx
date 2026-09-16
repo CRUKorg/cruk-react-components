@@ -1,5 +1,5 @@
 import React, {
-  type HTMLAttributes,
+  type DialogHTMLAttributes,
   type ReactNode,
   useEffect,
   useRef,
@@ -32,7 +32,7 @@ export function Modal({
   ref: outerRef,
   style,
   ...htmlAttributes
-}: HTMLAttributes<HTMLDialogElement> & {
+}: DialogHTMLAttributes<HTMLDialogElement> & {
   /** modal name used for aria-label */
   modalName: string;
   /** set if the modal start open */
