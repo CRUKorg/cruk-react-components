@@ -14,7 +14,6 @@ export default {
       exports: "named",
       sourcemap: true,
       preserveModules: true,
-
       assetFileNames: {
         "[name][extname]": "[name][extname]",
       },
@@ -30,15 +29,26 @@ export default {
       exclude: [
         "playwright.config.ts",
         "playwright/**",
-        "**/*.spec.tsx",
+        "**/*.spec.**",
         "playwright",
         "**/*.stories.tsx",
         ".storybook/**",
         "vite.config.ts",
         ".storybook/**",
+        "**/__tests__/**",
+      ],
+      include: [
+        "src/components/**/*",
+        "src/types.ts",
+        "src/hooks/**/*",
+        "src/utils/**/*",
+        "src/globals.d.ts",
       ],
       compilerOptions: {
-        moduleResolution: "node",
+        module: "esnext",
+        moduleResolution: "bundler",
+        lib: ["esnext", "dom"],
+        types: ["node"],
       },
     }),
     postcss({
