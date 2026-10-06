@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add XXS size to badge, only visiable when square [#1274](https://github.com/CRUKorg/cruk-react-components/issues/1274)
 
+### Changed
+
+- updated rollup config to be compatible with TS 6 without any deprecation warnings
+
 ## [7.2.12] - 2026-09-16
 
 ### Fixed
