@@ -23,7 +23,7 @@ export function Badge({
   textColor,
   borderColor,
 }: {
-  size?: "xs" | "s" | "m" | "l" | "xl";
+  size?: "xxs" | "xs" | "s" | "m" | "l" | "xl";
   /** contents of badge */
   children?: ReactNode;
   /** forces shape to have equal width and height set by size attribute */

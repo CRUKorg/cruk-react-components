@@ -1,6 +1,10 @@
 .component-badge {
   --_badge-size: var(--spacing-xs, 1rem);
 
+  &[data-size="xxs"] {
+    --_badge-size: var(--spacing-xxs, 0.25rem);
+  }
+
   &[data-size="xs"] {
     --_badge-size: var(--spacing-xs, 0.5rem);
   }

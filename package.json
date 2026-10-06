@@ -1,6 +1,6 @@
 {
   "name": "@cruk/cruk-react-components",
-  "version": "7.2.12",
+  "version": "7.2.13",
   "description": "React components implementing CRUK, RFL, SU2C & Bowelbabe designs",
   "license": "MIT",
   "publishConfig": {
@@ -71,7 +71,7 @@
     "rollup-plugin-postcss": "^4.0.2",
     "storybook": "^10.5.10",
     "tsx": "^4.20.3",
-    "typescript": "^5.7.3",
+    "typescript": "^6",
     "typescript-plugin-css-modules": "^5.2.0",
     "vite": "^8"
   },

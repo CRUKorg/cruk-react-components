@@ -23,7 +23,7 @@ export default {
   argTypes: {
     size: {
       control: { type: "select" },
-      options: ["xs", "s", "m", "l", "xl"],
+      options: ["xxs", "xs", "s", "m", "l", "xl"],
     },
     textColor: {
       control: "select",
