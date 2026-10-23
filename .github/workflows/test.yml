@@ -1,9 +1,12 @@
 name: "Test"
 on:
-  pull_request_target:
+  pull_request:
     branches:
       - develop
       - master
+
+permissions:
+  contents: read
 
 jobs:
   PlaywrightTests:
@@ -72,7 +75,11 @@ jobs:
       - name: Test
         run: npm run lint
   Chromatic:
-    if: github.actor!= 'depbot'
+    # Dependabot and fork PRs do not receive Actions secrets.
+    if: >-
+      github.actor != 'dependabot[bot]' &&
+      github.event.pull_request.user.login != 'dependabot[bot]' &&
+      github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
