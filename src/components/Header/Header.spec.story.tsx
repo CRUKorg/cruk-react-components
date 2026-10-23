@@ -40,7 +40,7 @@ export const BowelbabeTheme = () => (
   </main>
 );
 
-export const Sticky = () => (
+export const HeaderWithPageContent = () => (
   <main data-theme="cruk">
     <Header siteSlogan="Header slogan here" isSticky themeName="cruk">
       <Button>Child component</Button>
