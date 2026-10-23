@@ -55,15 +55,3 @@ test("should scroll to main content", async ({ mount, page }) => {
   await expect(stickyContainer).toHaveCSS("height", "120px");
   await expect(stickyContainer).toHaveCSS("position", "relative");
 });
-
-test("sticky header behaviour ", async ({ mount, page }) => {
-  await page.setViewportSize({ width: 2000, height: 200 });
-  const component = await mount("Header.spec/Sticky");
-
-  // should reduce to smaller height when not at top of page
-  await page.evaluate(() => window.scrollTo(0, 800));
-  const stickyContainer = component.getByTestId("header-sticky-container");
-  await expect(stickyContainer).toHaveCSS("height", "72px");
-  await expect(stickyContainer).toHaveCSS("position", "fixed");
-  await expect(stickyContainer).toHaveCSS("top", "0px");
-});

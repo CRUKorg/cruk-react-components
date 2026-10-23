@@ -18,12 +18,13 @@ indicate the importance of the badge to the user.
 
 ## Props
 
-| Name            | Type    | Options | Default                  | Description                                            |
-| :-------------- | :------ | :-----: | :----------------------- | :----------------------------------------------------- |
-| backgroundColor | String  |         | "primary"                | The background colour of the Badge                     |
-| textColor       | String  |         | "textLight"              | The text colour of the Badge                           |
-| borderColor     | String  |         | "primary"                | The border colour of the Badge                         |
-| text            | Boolean |         | depends on children type | Optional, returns true when type of children is string |
+| Name            | Type         | Options | Default                  | Description                                             |
+| :-------------- | :----------- | :-----: | :----------------------- | :------------------------------------------------------ |
+| backgroundColor | String       |         | "primary"                | The background colour of the Badge                      |
+| textColor       | String       |         | "textLight"              | The text colour of the Badge                            |
+| borderColor     | String       |         | "primary"                | The border colour of the Badge                          |
+| isSquare        | Boolean      |         | depends on children type | Optional, returns false when type of children is string |
+| size            | t-shirt size |         | xs (1rem)                | Optional, affect the size of the badge                  |
 
 ## Usage
 

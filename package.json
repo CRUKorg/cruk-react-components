@@ -1,20 +1,28 @@
 {
   "name": "@cruk/cruk-react-components",
-  "version": "7.2.13",
+  "version": "7.2.14",
   "description": "React components implementing CRUK, RFL, SU2C & Bowelbabe designs",
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
+  "homepage": "https://github.com/CRUKorg/cruk-react-components#readme",
+  "bugs": {
+    "url": "https://github.com/CRUKorg/cruk-react-components/issues"
   },
-  "type": "module",
-  "module": "lib/src/components/index.js",
-  "jsnext:main": "lib/src/components/index.js",
-  "types": "lib/src/components/index.d.ts",
-  "sideEffects": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CRUKorg/cruk-react-components.git"
+  },
   "files": [
     "lib",
     "lib/index.css"
   ],
+  "type": "module",
+  "sideEffects": false,
+  "module": "lib/src/components/index.js",
+  "types": "lib/src/components/index.d.ts",
+  "jsnext:main": "lib/src/components/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test-ct": "playwright test -c playwright.config.ts",
     "test-ct:debug": "playwright test -c playwright.config.ts --debug --project=chromium",
@@ -34,14 +42,11 @@
     "format:fix": "oxfmt --write src",
     "chromatic": "chromatic --exit-zero-on-changes"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CRUKorg/cruk-react-components.git"
+  "dependencies": {
+    "@fortawesome/fontawesome-common-types": "^7",
+    "@fortawesome/free-brands-svg-icons": "^7",
+    "@fortawesome/free-solid-svg-icons": "^7"
   },
-  "bugs": {
-    "url": "https://github.com/CRUKorg/cruk-react-components/issues"
-  },
-  "homepage": "https://github.com/CRUKorg/cruk-react-components#readme",
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",
     "@chromatic-com/storybook": "^5.3.0",
@@ -78,10 +83,5 @@
   "peerDependencies": {
     "react": "^19",
     "react-dom": "^19"
-  },
-  "dependencies": {
-    "@fortawesome/fontawesome-common-types": "^7",
-    "@fortawesome/free-brands-svg-icons": "^7",
-    "@fortawesome/free-solid-svg-icons": "^7"
   }
 }

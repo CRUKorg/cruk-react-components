@@ -1,10 +1,6 @@
-import React, { useState, type HTMLAttributes, type ReactNode } from "react";
-
-import { useScrollPosition } from "../../hooks/useScrollPosition";
+import React, { type HTMLAttributes, type ReactNode } from "react";
 
 import { type ThemeNameType } from "../../types";
-
-const HEADER_SCROLL_THRESHOLD = 240;
 
 const crukLogoUrl =
   "https://rcl.assets.cancerresearchuk.org/images/logos/cruk.svg";
@@ -74,35 +70,12 @@ export function Header({
 
   children?: ReactNode;
 }) {
-  const [isSmall, setIsSmall] = useState(false);
-  const isBrowser = typeof window !== `undefined`;
-
-  useScrollPosition(
-    ({
-      currPos,
-    }: {
-      prevPos: { x: number; y: number };
-      currPos: { x: number; y: number };
-    }) => {
-      const shouldShrink = isBrowser
-        ? currPos.y > HEADER_SCROLL_THRESHOLD
-        : false;
-
-      setIsSmall(shouldShrink);
-    },
-    [isSmall],
-    null,
-    true,
-    100,
-  );
-
   const logoUrl = getLogoFromThemeName(themeName);
 
   return (
     <header
       className="component-header"
       data-is-sticky={isSticky || false}
-      data-is-small={isSmall || false}
       data-full-width={fullWidth || false}
     >
       <div className="header-sticky-placeholder">

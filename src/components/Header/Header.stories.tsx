@@ -50,7 +50,7 @@ type HeaderProps = React.ComponentProps<typeof Header>;
 const HeaderInTallContainer = (args: HeaderProps) => (
   <div>
     <Header {...args} />
-    <div style={{ height: "200px" }}></div>
+    <div style={{ height: "2000px" }}></div>
   </div>
 );
 
