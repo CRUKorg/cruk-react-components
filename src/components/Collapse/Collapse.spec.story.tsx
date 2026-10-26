@@ -40,7 +40,7 @@ export const Component = () => (
       headerTitleText="Custom header components"
       headerComponent={
         <Box backgroundColor="background-light" padding="s">
-          <Text textColor="text-dark">"Custom header components</Text>
+          <Text textColor="text-dark">Custom header components</Text>
         </Box>
       }
     >
