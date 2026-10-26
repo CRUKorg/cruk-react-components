@@ -32,7 +32,6 @@ There is a hidden skip link in the header which will only reveals itself on the 
 
 | Name          | Type      | Options | Default            | Description                                                                                                                                       |
 | :------------ | :-------- | :-----: | :----------------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
-| themeName     | String    |         |                    | ThemeName tell the component what logos to use                                                                                                    |
 | isSticky      | boolean   |         | false              | should header stick to the top of the page when the user scrolls                                                                                  |
 | siteSlogan    | string    |         | null               | slogan that appears in the middle of the header                                                                                                   |
 | logoAltText   | string    |         | SITECONFIG.logoAlt | Logo link alternative text for accessibility                                                                                                      |

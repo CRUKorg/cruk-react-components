@@ -7,7 +7,7 @@ import "./styles.css";
 export default {};
 export const Component = () => (
   <>
-    <Header siteSlogan="Header slogan here" themeName="cruk">
+    <Header siteSlogan="Header slogan here">
       <Button>Child component</Button>
     </Header>
     <div id="main" tabIndex={-1}>
@@ -42,7 +42,7 @@ export const BowelbabeTheme = () => (
 
 export const HeaderWithPageContent = () => (
   <main data-theme="cruk">
-    <Header siteSlogan="Header slogan here" isSticky themeName="cruk">
+    <Header siteSlogan="Header slogan here" isSticky>
       <Button>Child component</Button>
     </Header>
     <div className="making-a-tall-scroll-able-page" style={{ height: 2000 }} />
