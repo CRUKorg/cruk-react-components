@@ -8,7 +8,7 @@ import "../Box/styles.css";
 export default {};
 export const Component = () => (
   <Box backgroundColor="background-light" padding="s">
-    <Collapse headerTitleText="What is Lorem Ipsum?" id="default">
+    <Collapse headerTitleText="Lorem Ipsum?" id="default">
       <Text>
         {`Lorem Ipsum is simply dummy text of the printing and typesetting
        industry. Lorem Ipsum has been the industry's standard dummy text ever
@@ -40,12 +40,12 @@ export const Component = () => (
       headerTitleText="Custom header components"
       headerComponent={
         <Box backgroundColor="background-light" padding="s">
-          <Text textColor="text-dark">This is box header</Text>
+          <Text textColor="text-dark">"Custom header components</Text>
         </Box>
       }
     >
       <Box backgroundColor="background-light" padding="s">
-        <Text textColor="text-dark">This is box</Text>
+        <Text textColor="text-dark">This is a box</Text>
       </Box>
     </Collapse>
   </Box>
