@@ -1,4 +1,9 @@
-import React, { useState, type ImgHTMLAttributes } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  type ImgHTMLAttributes,
+} from "react";
 
 import { themeNames, type ThemeNameType } from "../../types";
 
@@ -61,14 +66,28 @@ export function Avatar({
   size?: "s" | "m" | "l" | "xl" | "full";
   styles?: React.CSSProperties;
 }) {
+  const imgRef = useRef<HTMLImageElement>(null);
   const [themeName, setThemeName] = useState<ThemeNameType>();
 
   // theme comes from the nearest data-theme ancestor, so src is withheld until it is known
-  const imgRef = (img: HTMLImageElement | null) => {
-    if (!img) return;
-    const value = img.closest("[data-theme]")?.getAttribute("data-theme");
-    setThemeName(themeNames.find((theme) => theme === value) ?? "cruk");
-  };
+  useEffect(() => {
+    const readTheme = () => {
+      const value = imgRef.current
+        ?.closest("[data-theme]")
+        ?.getAttribute("data-theme");
+      setThemeName(themeNames.find((theme) => theme === value) ?? "cruk");
+    };
+    readTheme();
+
+    // an ancestor's attribute can change without re-rendering this component
+    const observer = new MutationObserver(readTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+      subtree: true,
+    });
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <img
