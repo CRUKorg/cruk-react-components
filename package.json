@@ -1,6 +1,6 @@
 {
   "name": "@cruk/cruk-react-components",
-  "version": "7.2.14",
+  "version": "8.0.0",
   "description": "React components implementing CRUK, RFL, SU2C & Bowelbabe designs",
   "homepage": "https://github.com/CRUKorg/cruk-react-components#readme",
   "bugs": {

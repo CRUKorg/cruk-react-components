@@ -1,29 +1,5 @@
 import React, { type HTMLAttributes, type ReactNode } from "react";
 
-import { type ThemeNameType } from "../../types";
-
-const crukLogoUrl =
-  "https://rcl.assets.cancerresearchuk.org/images/logos/cruk.svg";
-const rflLogoUrl =
-  "https://rcl.assets.cancerresearchuk.org/images/logos/rfl.svg";
-const su2cLogoUrl =
-  "https://rcl.assets.cancerresearchuk.org/images/logos/su2c-160.png";
-const bowelbabeLogoUrl =
-  "https://rcl.assets.cancerresearchuk.org/images/logos/bowelbabe-logo-160.png";
-
-function getLogoFromThemeName(themeName: ThemeNameType) {
-  switch (themeName) {
-    case "su2c":
-      return su2cLogoUrl;
-    case "bowelbabe":
-      return bowelbabeLogoUrl;
-    case "rfl":
-      return rflLogoUrl;
-    default:
-      return crukLogoUrl;
-  }
-}
-
 /**
  * There should be only one header component near or at the top of the body of each page.
  *
@@ -42,7 +18,6 @@ function getLogoFromThemeName(themeName: ThemeNameType) {
  *
  */
 export function Header({
-  themeName,
   isSticky,
   siteSlogan,
   logoAltText,
@@ -52,7 +27,6 @@ export function Header({
   fullWidth,
   children,
 }: HTMLAttributes<HTMLElement> & {
-  themeName: ThemeNameType;
   /** flag which make header fixed to the top even when scrolling */
   isSticky?: boolean;
   /** text in the middle of the header */
@@ -70,8 +44,6 @@ export function Header({
 
   children?: ReactNode;
 }) {
-  const logoUrl = getLogoFromThemeName(themeName);
-
   return (
     <header
       className="component-header"
@@ -94,10 +66,8 @@ export function Header({
             >
               <div className="logo-wrapper">
                 <img
-                  className="logo"
-                  width={160}
-                  height={80}
-                  src={logoImageSrc ?? logoUrl}
+                  className={logoImageSrc ? "logo" : "logo logo-themed"}
+                  src={logoImageSrc}
                   alt={logoAltText ?? "Cancer Research UK Giving Pages"}
                 />
               </div>

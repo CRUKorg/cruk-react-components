@@ -10,14 +10,13 @@ import "../Avatar/styles.css";
 export default {};
 export const Component = () => (
   <>
-    <UserBlock themeName="cruk" />
-    <UserBlock name="Sam Smith" size="s" themeName="cruk" />
-    <UserBlock name="Sam Smith" size="l" themeName="cruk" />
+    <UserBlock />
+    <UserBlock name="Sam Smith" size="s" />
+    <UserBlock name="Sam Smith" size="l" />
     <UserBlock
       name="Sam Smith"
       avatarUrl={`https://rcl.assets.cancerresearchuk.org/images/logos/cruk-160.png`}
       extra="(Managed by My Mum)"
-      themeName="cruk"
     />
   </>
 );

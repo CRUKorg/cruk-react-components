@@ -126,6 +126,7 @@ button {
 
 :root {
   --theme: "cruk";
+  --header-logo-url: url("https://rcl.assets.cancerresearchuk.org/images/logos/cruk.svg");
 
   --content-max-width: 1020px;
   --breakpoint-mobile: 576px;
@@ -367,10 +368,12 @@ button {
 
 [data-theme="cruk"] > * {
   --theme: "cruk";
+  --header-logo-url: url("https://rcl.assets.cancerresearchuk.org/images/logos/cruk.svg");
 }
 
 [data-theme="rfl"] > * {
   --theme: "rfl";
+  --header-logo-url: url("https://rcl.assets.cancerresearchuk.org/images/logos/rfl.svg");
 
   --typ-font-weight-headings: 600;
 
@@ -383,6 +386,7 @@ button {
 
 [data-theme="su2c"] > * {
   --theme: "su2c";
+  --header-logo-url: url("https://rcl.assets.cancerresearchuk.org/images/logos/su2c-160.png");
 
   --btn-border-radius: 1.5rem;
   --btn-border-radius-large: 2rem;
@@ -473,6 +477,7 @@ button {
 
 [data-theme="bowelbabe"] > * {
   --theme: "bowelbabe";
+  --header-logo-url: url("https://rcl.assets.cancerresearchuk.org/images/logos/bowelbabe-logo-160.png");
 
   --btn-border-radius: 2em;
   --btn-horizontal-padding: 1rem;

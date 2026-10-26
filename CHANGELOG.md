@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [8.0.0] - 2026-10-26
+
+### Breaking Changes
+
+- Header and Avatar components work without requiring a theme prop [#1289](https://github.com/CRUKorg/cruk-react-components/issues/1289)
+
 ## [7.2.14] - 2026-10-23
 
 ### Changed

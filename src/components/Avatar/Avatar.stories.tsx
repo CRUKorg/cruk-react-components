@@ -20,22 +20,22 @@ const AllThemesWrapper = ({ ...args }: React.ComponentProps<typeof Avatar>) => (
     <div tabIndex={0}>
       <h2>CRUK Theme:</h2>
       <div data-theme="cruk">
-        <Avatar {...args} themeName="cruk" />
+        <Avatar {...args} />
         <Line />
       </div>
       <div data-theme="rfl">
         <h2>RFL Theme:</h2>
-        <Avatar {...args} themeName="rfl" />
+        <Avatar {...args} />
         <Line />
       </div>
       <div data-theme="su2c">
         <h2>SU2C Theme:</h2>
-        <Avatar {...args} themeName="su2c" />
+        <Avatar {...args} />
         <Line />
       </div>
       <div data-theme="bowelbabe">
         <h2>Bowelbabe Theme:</h2>
-        <Avatar {...args} themeName="bowelbabe" />
+        <Avatar {...args} />
         <Line />
       </div>
     </div>

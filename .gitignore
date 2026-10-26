@@ -22,3 +22,4 @@ playwright-report
 
 .idea
 .env
+chromatic.log

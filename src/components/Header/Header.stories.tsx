@@ -23,22 +23,22 @@ const AllThemesWrapper = ({
     <div tabIndex={0}>
       <h2>CRUK Theme:</h2>
       <div data-theme="cruk">
-        <HeaderInTallContainer {...args} themeName="cruk" />
+        <HeaderInTallContainer {...args} />
         <Line />
       </div>
       <div data-theme="rfl">
         <h2>RFL Theme:</h2>
-        <HeaderInTallContainer {...args} themeName="rfl" />
+        <HeaderInTallContainer {...args} />
         <Line />
       </div>
       <div data-theme="su2c">
         <h2>SU2C Theme:</h2>
-        <HeaderInTallContainer {...args} themeName="su2c" />
+        <HeaderInTallContainer {...args} />
         <Line />
       </div>
       <div data-theme="bowelbabe">
         <h2>Bowelbabe Theme:</h2>
-        <HeaderInTallContainer {...args} themeName="bowelbabe" />
+        <HeaderInTallContainer {...args} />
         <Line />
       </div>
     </div>

@@ -1,6 +1,11 @@
-import React, { type ImgHTMLAttributes } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  type ImgHTMLAttributes,
+} from "react";
 
-import { type ThemeNameType } from "../../types";
+import { themeNames, type ThemeNameType } from "../../types";
 
 const crukAvatarBaseUrl =
   "https://rcl.assets.cancerresearchuk.org/images/avatar/cruk2/";
@@ -25,15 +30,12 @@ function getAvatarBaseUrl(themeName: ThemeNameType) {
 }
 
 const avatarUrl = ({
-  url,
   name,
   themeName,
 }: {
-  url?: string;
   name?: string;
   themeName: ThemeNameType;
 }) => {
-  if (url) return url;
   const fileName =
     name &&
     typeof name === "string" &&
@@ -54,7 +56,6 @@ export function Avatar({
   name,
   size = "m",
   alt = "",
-  themeName = "cruk",
   ...rest
 }: ImgHTMLAttributes<HTMLElement> & {
   /** name of user/entity */
@@ -63,14 +64,37 @@ export function Avatar({
   url?: string;
   /** image size */
   size?: "s" | "m" | "l" | "xl" | "full";
-  themeName?: ThemeNameType;
   styles?: React.CSSProperties;
 }) {
+  const imgRef = useRef<HTMLImageElement>(null);
+  const [themeName, setThemeName] = useState<ThemeNameType>();
+
+  // theme comes from the nearest data-theme ancestor, so src is withheld until it is known
+  useEffect(() => {
+    const readTheme = () => {
+      const value = imgRef.current
+        ?.closest("[data-theme]")
+        ?.getAttribute("data-theme");
+      setThemeName(themeNames.find((theme) => theme === value) ?? "cruk");
+    };
+    readTheme();
+
+    // an ancestor's attribute can change without re-rendering this component
+    const observer = new MutationObserver(readTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+      subtree: true,
+    });
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <img
+      ref={imgRef}
       className="component-avatar"
       data-size={size}
-      src={avatarUrl({ url, name, themeName })}
+      src={url || (themeName && avatarUrl({ name, themeName }))}
       alt={alt}
       {...rest}
     />
