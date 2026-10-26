@@ -59,7 +59,7 @@
     "@storybook/addon-docs": "^10.5.10",
     "@storybook/addon-links": "^10.5.10",
     "@storybook/react-vite": "^10.5.10",
-    "@swc/core": "1.16.2",
+    "@swc/core": "1.16.18",
     "@types/assert": "^1.5.1",
     "@types/node": "^24",
     "@types/react": "^19",
