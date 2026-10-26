@@ -75,7 +75,7 @@ export function Avatar({
       ref={imgRef}
       className="component-avatar"
       data-size={size}
-      src={url ?? (themeName && avatarUrl({ name, themeName }))}
+      src={url || (themeName && avatarUrl({ name, themeName }))}
       alt={alt}
       {...rest}
     />
