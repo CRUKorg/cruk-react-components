@@ -33,7 +33,7 @@
     flex-direction: column;
     a {
       font-size: var(--font-size-m, 1rem);
-      font-weight: var(--typ-font-weight-links, 700);
+      font-weight: var(--typ-font-weight-links, 600);
     }
   }
 

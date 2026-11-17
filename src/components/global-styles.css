@@ -7,6 +7,13 @@
 
 @font-face {
   font-family: "Progress";
+  src: url("https://rcl.assets.cancerresearchuk.org/fonts/Progress-Medium.woff")
+    format("woff");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Progress";
   src: url("https://rcl.assets.cancerresearchuk.org/fonts/Progress-SemiBold.woff2")
     format("woff");
   font-weight: 600;
@@ -94,7 +101,7 @@ body {
   font-size: var(--typ-font-size-base, 16px);
   font-family: var(--typ-font-family-base, "Poppins", Arial, sans-serif);
   line-height: var(--typ-line-height, 1.5em);
-  font-weight: var(--typ-font-weight-base, 300);
+  font-weight: var(--typ-font-weight-base, 400);
 }
 
 p {
@@ -178,10 +185,10 @@ button {
   --typ-font-weight-light: 300;
   --typ-font-weight-vlight: 100;
 
-  --typ-font-weight-base: 300;
-  --typ-font-weight-headings: 400;
-  --typ-font-weight-links: 700;
-  --typ-font-weight-buttons: 400;
+  --typ-font-weight-base: 400;
+  --typ-font-weight-headings: 500;
+  --typ-font-weight-links: 600;
+  --typ-font-weight-buttons: 500;
   --typ-font-weight-labels: 500;
 
   --typ-link-text-decoration: underline;
@@ -405,10 +412,10 @@ button {
   --typ-link-text-decoration: none;
   --typ-header-line-height: 1.5em;
   --typ-header-text-transform: uppercase;
-  --typ-font-weight-base: 400;
+
   --typ-font-weight-links: 700;
   --typ-font-weight-buttons: 700;
-  --typ-font-weight-labels: 600;
+  --typ-font-weight-labels: 700;
   --typ-font-weight-headings: 700;
   --typ-link-primary-text-decoration: none;
 
@@ -491,7 +498,6 @@ button {
   --typ-font-family-label:
     Arial, Calibri, nimbussansl, liberationsans, freesans, clean, sans-serif;
   --typ-header-line-height: 1.5em;
-  --typ-font-weight-base: 400;
   --typ-font-weight-links: 600;
   --typ-font-weight-headings: 600;
   --typ-font-weight-buttons: 600;
