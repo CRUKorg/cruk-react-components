@@ -6,7 +6,7 @@
   color: var(--clr-link, #e60079);
   text-decoration: underline;
   font-family: var(--typ-font-family-links, "Poppins", Arial, sans-serif);
-  font-weight: var(--typ-font-weight-links, 700);
+  font-weight: var(--typ-font-weight-links, 600);
   line-height: var(--typ-line-height, 1.5em);
   transition:
     color 0.2s ease,
